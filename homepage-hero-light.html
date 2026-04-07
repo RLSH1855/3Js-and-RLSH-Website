@@ -322,8 +322,9 @@
     var h = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
     window.parent.postMessage(JSON.stringify({height:h}),'*');
   }
-  window.addEventListener('load', reportHeight);
+  window.addEventListener('load', function(){ reportHeight(); setTimeout(reportHeight,500); setTimeout(reportHeight,1500); });
   window.addEventListener('resize', reportHeight);
+  if(window.ResizeObserver){ new ResizeObserver(reportHeight).observe(document.body); }
 </script>
 </body>
 </html>
