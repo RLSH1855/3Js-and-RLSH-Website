@@ -195,14 +195,28 @@
       z-index:3;
     }
 
+    /* River rat footnote */
+    .river-rat{
+      position:absolute;
+      bottom:22px;left:80px;
+      font-size:9px;font-weight:600;
+      color:rgba(255,255,255,0.22);
+      letter-spacing:0.5px;
+      font-style:italic;
+      z-index:3;
+    }
+    @media(max-width:640px){.river-rat{left:20px;font-size:8px;}}
+
     /* Scroll hint */
     .scroll-hint{
-      position:absolute;bottom:20px;right:48px;
-      display:flex;align-items:center;gap:8px;
-      opacity:0.35;z-index:3;
+      position:absolute;bottom:24px;left:50%;transform:translateX(-50%);
+      display:flex;flex-direction:column;align-items:center;gap:6px;
+      opacity:0.80;z-index:3;
+      animation:bounce 1.8s ease-in-out infinite;
     }
     .scroll-hint span{font-size:8px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:#fff;}
-    .scroll-arrow{width:28px;height:1px;background:rgba(255,255,255,0.6);}
+    .scroll-hint svg{width:22px;height:22px;stroke:#fff;stroke-width:2.5;}
+    @keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(7px);}}
 
     /* Responsive */
     @media(max-width:900px){
@@ -255,7 +269,7 @@
       No corporate. No runaround. No ticket numbers.<br>
       Just James, his crew, and the promise that
       <span class="promise">"We'll know your name before we touch your car."</span>
-      <span class="since">Serving Signal Hill since 1991 — and we're not going anywhere.</span>
+      <span class="since">Serving Signal Hill since 1991 — and we're not going anywhere. <span style="color:rgba(255,255,255,0.28);font-style:italic;">(unless it's to the boat launch ramp)</span></span>
     </div>
 
     <div class="hero-ctas">
@@ -290,11 +304,15 @@
 
   </div>
 
+  <p class="river-rat">* Yes, that is a boat launch ramp. Some of us have our priorities straight.</p>
+
   <div class="hero-bottom-bar"></div>
 
   <div class="scroll-hint">
     <span>Scroll</span>
-    <div class="scroll-arrow"></div>
+    <svg fill="none" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="6 9 12 15 18 9"/>
+    </svg>
   </div>
 
 </section>
