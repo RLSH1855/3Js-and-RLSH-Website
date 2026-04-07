@@ -142,8 +142,9 @@
       background-image:url('https://static.wixstatic.com/media/b95bd9_32c0f2e026394934a4ba8d1132013eb7~mv2.png');
       background-size:cover;
       background-position:center;
-      filter:invert(1) contrast(2);
-      opacity:0.13;
+      filter:invert(1);
+      opacity:1;
+      z-index:0;
       pointer-events:none;
     }
     .insurance-section::after{
@@ -151,7 +152,12 @@
       background:radial-gradient(ellipse at center,rgba(139,0,0,0.08) 0%,transparent 65%);
       pointer-events:none;
     }
-    .insurance-content{position:relative;z-index:1;max-width:960px;margin:0 auto;}
+    .ins-overlay{
+      position:absolute;inset:0;
+      background:rgba(10,10,10,0.78);
+      z-index:1;
+    }
+    .insurance-content{position:relative;z-index:2;max-width:960px;margin:0 auto;}
 
     .ins-eyebrow{
       font-size:10px;font-weight:800;letter-spacing:3px;
@@ -258,6 +264,7 @@
 
 <!-- ═══ INSURANCE SECTION — DARK ═══ -->
 <section class="insurance-section">
+  <div class="ins-overlay"></div>
   <div class="insurance-content">
 
     <p class="ins-eyebrow">Insurance Claims</p>
