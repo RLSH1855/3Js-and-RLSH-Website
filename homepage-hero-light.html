@@ -11,7 +11,7 @@
 
     .hero{
       position:relative;
-      min-height:100vh;
+      min-height:700px;
       display:flex;align-items:center;justify-content:center;
       text-align:center;
       padding:80px 24px;
@@ -217,5 +217,14 @@
 
 </section>
 
+
+<script>
+  function reportHeight(){
+    var h = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
+    window.parent.postMessage(JSON.stringify({height:h}),'*');
+  }
+  window.addEventListener('load', reportHeight);
+  window.addEventListener('resize', reportHeight);
+</script>
 </body>
 </html>

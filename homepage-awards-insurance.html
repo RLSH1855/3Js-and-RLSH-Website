@@ -279,5 +279,14 @@
   </div>
 </section>
 
+
+<script>
+  function reportHeight(){
+    var h = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
+    window.parent.postMessage(JSON.stringify({height:h}),'*');
+  }
+  window.addEventListener('load', reportHeight);
+  window.addEventListener('resize', reportHeight);
+</script>
 </body>
 </html>
