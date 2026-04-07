@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Top Services — 3J's Auto Body</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:'Montserrat',sans-serif;overflow-x:hidden;}
+
+    /* ─── SHARED ─── */
+    .eyebrow{font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;margin-bottom:12px;}
+    .section-title{font-size:clamp(26px,4vw,48px);font-weight:900;letter-spacing:-1px;line-height:1.05;margin-bottom:18px;}
+    .section-title em{font-style:normal;}
+    .section-body{font-size:14px;font-weight:500;line-height:1.85;max-width:520px;}
+    .section-body p+p{margin-top:12px;}
+
+    .feature-list{list-style:none;margin-top:24px;display:flex;flex-direction:column;gap:10px;}
+    .feature-list li{display:flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;}
+    .feature-list li::before{content:'';width:6px;height:6px;border-radius:50%;background:#8B0000;flex-shrink:0;}
+
+    .cta-link{
+      display:inline-flex;align-items:center;gap:8px;
+      font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;
+      text-decoration:none;margin-top:28px;
+      padding:12px 24px;border-radius:6px;
+      transition:background 0.2s,color 0.2s,border-color 0.2s;
+    }
+    .cta-link svg{width:14px;height:14px;}
+
+    /* Two-col layout */
+    .two-col{
+      display:grid;grid-template-columns:1fr 1fr;
+      gap:80px;align-items:center;
+      max-width:1100px;margin:0 auto;
+      padding:100px 40px;
+    }
+    .two-col.flip .col-text{order:2;}
+    .two-col.flip .col-visual{order:1;}
+
+    /* Number badge */
+    .num-badge{
+      font-size:clamp(80px,12vw,140px);font-weight:900;
+      line-height:1;letter-spacing:-4px;
+      opacity:0.06;
+      position:absolute;top:-20px;right:-10px;
+      pointer-events:none;user-select:none;
+    }
+    .col-visual{position:relative;}
+
+    /* Visual box */
+    .visual-box{
+      border-radius:16px;overflow:hidden;
+      aspect-ratio:4/3;
+      display:flex;align-items:center;justify-content:center;
+      position:relative;
+    }
+    .visual-box-inner{
+      position:absolute;inset:0;
+      display:flex;flex-direction:column;
+      align-items:center;justify-content:center;
+      gap:16px;
+      padding:40px;
+      text-align:center;
+    }
+    .visual-icon{
+      width:72px;height:72px;border-radius:50%;
+      display:flex;align-items:center;justify-content:center;
+    }
+    .visual-icon svg{width:34px;height:34px;}
+    .visual-title{font-size:18px;font-weight:900;letter-spacing:-0.3px;}
+    .visual-sub{font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;opacity:0.5;}
+
+    /* ════════════════════════════
+       DARK SECTIONS
+    ════════════════════════════ */
+    .dark{background:#0A0A0A;color:#fff;}
+    .dark .eyebrow{color:#8B0000;}
+    .dark .section-title em{color:#8B0000;}
+    .dark .section-body{color:rgba(255,255,255,0.82);}
+    .dark .feature-list li{color:rgba(255,255,255,0.90);letter-spacing:1.2px;}
+    .dark .cta-link{background:#8B0000;color:#fff;border:2px solid transparent;}
+    .dark .cta-link:hover{background:#A00000;}
+    .dark .visual-box{background:#111;border:1px solid #1e1e1e;}
+    .dark .visual-icon{background:rgba(139,0,0,0.15);}
+    .dark .visual-icon svg{stroke:#8B0000;}
+    .dark .visual-title{color:#fff;}
+    .dark .num-badge{color:#fff;}
+
+    /* ════════════════════════════
+       LIGHT SECTIONS
+    ════════════════════════════ */
+    .light{background:#F2F2F2;color:#1a1a1a;}
+    .light .eyebrow{color:#8B0000;}
+    .light .section-title em{color:#8B0000;}
+    .light .section-body{color:#666;}
+    .light .feature-list li{color:#333;}
+    .light .cta-link{background:transparent;color:#8B0000;border:2px solid #8B0000;}
+    .light .cta-link:hover{background:#8B0000;color:#fff;}
+    .light .visual-box{background:#fff;border:1px solid #e0e0e0;box-shadow:0 4px 30px rgba(0,0,0,0.08);}
+    .light .visual-icon{background:rgba(139,0,0,0.08);}
+    .light .visual-icon svg{stroke:#8B0000;}
+    .light .visual-title{color:#1a1a1a;}
+    .light .num-badge{color:#1a1a1a;}
+
+    /* ─── PAGE HEADER — UNIFORM ACROSS ALL PAGES ─── */
+    .page-header{
+      background:#0A0A0A;color:#fff;
+      height:260px;
+      display:flex;align-items:center;justify-content:center;
+      text-align:center;padding:0 24px;
+      position:relative;overflow:hidden;flex-direction:column;
+    }
+    .page-header::before{
+      content:'';position:absolute;inset:0;
+      background:radial-gradient(ellipse at center,rgba(139,0,0,0.16) 0%,transparent 65%);
+      pointer-events:none;
+    }
+    .page-header::after{
+      content:'';position:absolute;inset:0;
+      background-image:radial-gradient(circle,rgba(255,255,255,0.035) 1px,transparent 1px);
+      background-size:26px 26px;pointer-events:none;
+    }
+    .page-header-content{position:relative;z-index:1;}
+    .page-header .eyebrow{color:#8B0000;margin-bottom:12px;}
+    .page-header h1{font-size:clamp(32px,6vw,64px);font-weight:900;letter-spacing:-2px;line-height:1.0;text-transform:uppercase;}
+    .page-header h1 em{font-style:normal;color:#8B0000;}
+    .page-header-bar{position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(to right,transparent,#8B0000 25%,#8B0000 75%,transparent);}
+
+    /* ════════════════════════════
+       DIAGONAL DIVIDERS
+    ════════════════════════════ */
+    .divider-down-dark{
+      height:60px;background:#0A0A0A;
+      clip-path:polygon(0 0,100% 0,100% 100%,0 0);
+      margin-bottom:-1px;
+    }
+    .divider-down-light{
+      height:60px;background:#F2F2F2;
+      clip-path:polygon(0 0,100% 0,100% 100%,0 0);
+      margin-bottom:-1px;
+    }
+    .divider-up-dark{
+      height:60px;background:#0A0A0A;
+      clip-path:polygon(0 0,100% 100%,0 100%);
+      margin-top:-1px;
+    }
+    .divider-up-light{
+      height:60px;background:#F2F2F2;
+      clip-path:polygon(0 0,100% 100%,0 100%);
+      margin-top:-1px;
+    }
+
+    /* ════════════════════════════
+       TEXTURE BREAKS
+    ════════════════════════════ */
+    /* Noise texture overlay */
+    .texture-dark{
+      position:relative;
+    }
+    .texture-dark::before{
+      content:'';position:absolute;inset:0;
+      background-image:
+        repeating-linear-gradient(
+          45deg,
+          rgba(139,0,0,0.03) 0px,
+          rgba(139,0,0,0.03) 1px,
+          transparent 1px,
+          transparent 8px
+        );
+      pointer-events:none;z-index:0;
+    }
+    .texture-dark .two-col{position:relative;z-index:1;}
+
+    /* Grid texture for light sections */
+    .texture-light{
+      position:relative;
+    }
+    .texture-light::before{
+      content:'';position:absolute;inset:0;
+      background-image:
+        linear-gradient(rgba(139,0,0,0.04) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(139,0,0,0.04) 1px,transparent 1px);
+      background-size:40px 40px;
+      pointer-events:none;z-index:0;
+    }
+    .texture-light .two-col{position:relative;z-index:1;}
+
+    /* Dot accent break */
+    .dot-break{
+      background:#0A0A0A;
+      padding:20px 0;
+      display:flex;justify-content:center;align-items:center;gap:8px;
+    }
+    .dot-break span{
+      width:6px;height:6px;border-radius:50%;
+      background:#8B0000;display:inline-block;
+      opacity:0.6;
+    }
+    .dot-break span:nth-child(2){opacity:1;width:10px;height:10px;}
+    .dot-break span:nth-child(3){opacity:0.6;}
+
+    /* Red stripe break */
+    .stripe-break{
+      height:4px;
+      background:linear-gradient(to right,transparent,#8B0000 20%,#8B0000 80%,transparent);
+    }
+
+    /* ─── CTA BAND ─── */
+    .cta-band{
+      background:#8B0000;padding:64px 24px;text-align:center;
+      position:relative;overflow:hidden;
+    }
+    .cta-band::before{
+      content:'';position:absolute;inset:0;
+      background-image:radial-gradient(circle,rgba(255,255,255,0.04) 1px,transparent 1px);
+      background-size:24px 24px;
+    }
+    .cta-band-content{position:relative;z-index:1;}
+    .cta-band h2{font-size:clamp(22px,3.5vw,38px);font-weight:900;margin-bottom:10px;}
+    .cta-band p{font-size:14px;font-weight:500;color:rgba(255,255,255,0.75);max-width:480px;margin:0 auto 28px;line-height:1.7;}
+    .cta-band-btn{
+      display:inline-flex;align-items:center;gap:8px;
+      background:#fff;color:#8B0000;
+      font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;
+      text-decoration:none;padding:14px 32px;border-radius:8px;
+      transition:background 0.2s;letter-spacing:0.5px;
+    }
+    .cta-band-btn:hover{background:#f0f0f0;}
+
+    /* ─── RESPONSIVE ─── */
+    @media(max-width:900px){
+      .two-col{grid-template-columns:1fr;gap:40px;padding:72px 28px;}
+      .two-col.flip .col-text{order:1;}
+      .two-col.flip .col-visual{order:2;}
+      .num-badge{font-size:80px;top:-10px;right:0;}
+    }
+    @media(max-width:600px){
+      .two-col{padding:56px 20px;}
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══ PAGE HEADER ═══ -->
+<header class="page-header">
+  <div class="page-header-content">
+    <p class="eyebrow">3J's Auto Body · Signal Hill, CA</p>
+    <h1>Our Top <em>Services</em></h1>
+  </div>
+  <div class="page-header-bar"></div>
+</header>
+
+<!-- ═══ DIAGONAL BREAK ═══ -->
+<div class="divider-down-dark" style="background:#0A0A0A;"></div>
+
+<!-- ═══ 1. RHINO LINER — LIGHT ═══ -->
+<section class="light texture-light">
+  <div class="two-col">
+    <div class="col-text">
+      <p class="eyebrow">Service No. 01</p>
+      <h2 class="section-title">Spray-In<br><em>Rhino Liner</em></h2>
+      <div class="section-body">
+        <p>We are a certified Rhino Liner installer — not the drop-in kind. The spray-in liner bonds permanently to your truck bed, creating a textured, waterproof, impact-resistant surface that lasts the life of your truck.</p>
+        <p>Same-day installation available. Lifetime warranty included.</p>
+      </div>
+      <ul class="feature-list">
+        <li>Certified Rhino Liner Installer</li>
+        <li>Same-Day Service Available</li>
+        <li>Lifetime Warranty</li>
+        <li>Color Match Options Available</li>
+      </ul>
+      <a href="tel:+15624246744" class="cta-link">
+        <svg fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.7 10.82 19.79 19.79 0 01.67 2.18 2 2 0 012.66 0h3a2 2 0 012 1.72c.13 1 .36 1.97.7 2.91a2 2 0 01-.45 2.11L6.91 7.74a16 16 0 006.29 6.29l1-.99a2 2 0 012.11-.45c.94.34 1.91.57 2.91.7A2 2 0 0122 16.92z"/></svg>
+        Get a Quote
+      </a>
+    </div>
+    <div class="col-visual">
+      <span class="num-badge">01</span>
+      <div class="visual-box">
+        <div class="visual-box-inner">
+          <div class="visual-icon">
+            <svg fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v4h-7V8zM5.5 21a1.5 1.5 0 100-3 1.5 1.5 0 000 3zm13 0a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"/></svg>
+          </div>
+          <div class="visual-title">Spray-In Bedliner</div>
+          <div class="visual-sub">Permanent · Textured · Warranted</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ STRIPE BREAK ═══ -->
+<div class="stripe-break"></div>
+
+<!-- ═══ 2. TONNEAU COVERS — DARK ═══ -->
+<section class="dark texture-dark">
+  <div class="two-col flip">
+    <div class="col-text">
+      <p class="eyebrow">Service No. 02</p>
+      <h2 class="section-title">Tonneau<br><em>Covers</em></h2>
+      <div class="section-body">
+        <p>Protect your cargo, improve your fuel economy, and give your truck a cleaner look — all with the right tonneau cover. We carry and install the top brands with options for every style and budget.</p>
+        <p>Soft roll-up, hard folding, retractable — we'll help you find the right fit.</p>
+      </div>
+      <ul class="feature-list">
+        <li>Soft Roll-Up &amp; Hard Folding Options</li>
+        <li>Retractable Cover Installs</li>
+        <li>All Major Brands Available</li>
+        <li>Professional Installation</li>
+      </ul>
+      <a href="tel:+15624246744" class="cta-link">
+        <svg fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.7 10.82 19.79 19.79 0 01.67 2.18 2 2 0 012.66 0h3a2 2 0 012 1.72c.13 1 .36 1.97.7 2.91a2 2 0 01-.45 2.11L6.91 7.74a16 16 0 006.29 6.29l1-.99a2 2 0 012.11-.45c.94.34 1.91.57 2.91.7A2 2 0 0122 16.92z"/></svg>
+        Get a Quote
+      </a>
+    </div>
+    <div class="col-visual">
+      <span class="num-badge">02</span>
+      <div class="visual-box">
+        <div class="visual-box-inner">
+          <div class="visual-icon">
+            <svg fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <div class="visual-title">Tonneau Covers</div>
+          <div class="visual-sub">Hard · Soft · Retractable</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ DOT BREAK ═══ -->
+<div class="dot-break">
+  <span></span><span></span><span></span>
+</div>
+
+<!-- ═══ 3. RUNNING BOARDS — LIGHT ═══ -->
+<section class="light">
+  <div class="two-col">
+    <div class="col-text">
+      <p class="eyebrow">Service No. 03</p>
+      <h2 class="section-title">Running Boards<br>&amp; <em>Side Steps</em></h2>
+      <div class="section-body">
+        <p>Fixed boards, nerf bars, and power electric retractable steps for all trucks and SUVs — including lifted vehicles. All major brands available. We handle the sourcing, installation, and any custom finish work.</p>
+      </div>
+      <ul class="feature-list">
+        <li>Fixed &amp; Nerf Bar Options</li>
+        <li>Power Retractable Steps</li>
+        <li>Lifted Vehicle Friendly</li>
+        <li>All Makes &amp; Models</li>
+      </ul>
+      <a href="tel:+15624246744" class="cta-link">
+        <svg fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.7 10.82 19.79 19.79 0 01.67 2.18 2 2 0 012.66 0h3a2 2 0 012 1.72c.13 1 .36 1.97.7 2.91a2 2 0 01-.45 2.11L6.91 7.74a16 16 0 006.29 6.29l1-.99a2 2 0 012.11-.45c.94.34 1.91.57 2.91.7A2 2 0 0122 16.92z"/></svg>
+        Get a Quote
+      </a>
+    </div>
+    <div class="col-visual">
+      <span class="num-badge">03</span>
+      <div class="visual-box">
+        <div class="visual-box-inner">
+          <div class="visual-icon">
+            <svg fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+          </div>
+          <div class="visual-title">Running Boards</div>
+          <div class="visual-sub">Fixed · Nerf · Power Retractable</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ DIAGONAL BREAK ═══ -->
+<div style="height:60px;background:#F2F2F2;clip-path:polygon(0 0,100% 0,100% 0,0 100%);margin-bottom:-1px;"></div>
+
+<!-- ═══ 4. FULL EXTERIOR PAINT — DARK ═══ -->
+<section class="dark texture-dark">
+  <div class="two-col flip">
+    <div class="col-text">
+      <p class="eyebrow">Service No. 04</p>
+      <h2 class="section-title">Full Exterior<br><em>Paint Jobs</em></h2>
+      <div class="section-body">
+        <p>We can match any factory color or go fully custom. Computer-matched paint for a perfect finish — single panels or full repaints. We've even matched colors from home improvement store paint chips.</p>
+        <p>From daily drivers to show trucks, every paint job gets the same level of care and attention to detail.</p>
+      </div>
+      <ul class="feature-list">
+        <li>Computer Color Matching</li>
+        <li>Single Panel or Full Repaint</li>
+        <li>Custom Colors Available</li>
+        <li>Factory Finish Quality</li>
+      </ul>
+      <a href="tel:+15624246744" class="cta-link">
+        <svg fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.7 10.82 19.79 19.79 0 01.67 2.18 2 2 0 012.66 0h3a2 2 0 012 1.72c.13 1 .36 1.97.7 2.91a2 2 0 01-.45 2.11L6.91 7.74a16 16 0 006.29 6.29l1-.99a2 2 0 012.11-.45c.94.34 1.91.57 2.91.7A2 2 0 0122 16.92z"/></svg>
+        Get a Quote
+      </a>
+    </div>
+    <div class="col-visual">
+      <span class="num-badge">04</span>
+      <div class="visual-box">
+        <div class="visual-box-inner">
+          <div class="visual-icon">
+            <svg fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 002 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+          </div>
+          <div class="visual-title">Full Exterior Paint</div>
+          <div class="visual-sub">Factory Match · Custom · Any Panel</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ STRIPE BREAK ═══ -->
+<div class="stripe-break" style="background:linear-gradient(to right,transparent,#8B0000 20%,#8B0000 80%,transparent);"></div>
+
+<!-- ═══ 5. ROCK GUARDS — LIGHT ═══ -->
+<section class="light texture-light">
+  <div class="two-col">
+    <div class="col-text">
+      <p class="eyebrow">Service No. 05</p>
+      <h2 class="section-title">Rock Guard<br><em>Protection</em></h2>
+      <div class="section-body">
+        <p>Rock guard protection is an off-road and outdoors must-have. We protect the lower section of your vehicle's body with Rhino Linings materials to stop chips, rocks, and road debris on and off road.</p>
+        <p>We can color match so it blends in seamlessly — or contrast it for a custom look.</p>
+      </div>
+      <ul class="feature-list">
+        <li>Rhino Linings Material</li>
+        <li>Color Match Available</li>
+        <li>On &amp; Off-Road Protection</li>
+        <li>Stops Chips, Rocks &amp; Debris</li>
+      </ul>
+      <a href="tel:+15624246744" class="cta-link">
+        <svg fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.7 10.82 19.79 19.79 0 01.67 2.18 2 2 0 012.66 0h3a2 2 0 012 1.72c.13 1 .36 1.97.7 2.91a2 2 0 01-.45 2.11L6.91 7.74a16 16 0 006.29 6.29l1-.99a2 2 0 012.11-.45c.94.34 1.91.57 2.91.7A2 2 0 0122 16.92z"/></svg>
+        Get a Quote
+      </a>
+    </div>
+    <div class="col-visual">
+      <span class="num-badge">05</span>
+      <div class="visual-box">
+        <div class="visual-box-inner">
+          <div class="visual-icon">
+            <svg fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div class="visual-title">Rock Guard Protection</div>
+          <div class="visual-sub">Lower Body · Color Match · Rhino</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ DOT BREAK ═══ -->
+<div class="dot-break" style="background:#F2F2F2;">
+  <span style="background:#8B0000;"></span>
+  <span style="background:#8B0000;"></span>
+  <span style="background:#8B0000;"></span>
+</div>
+
+<!-- ═══ 6. UNDERCARRIAGE — DARK ═══ -->
+<section class="dark">
+  <div class="two-col flip">
+    <div class="col-text">
+      <p class="eyebrow">Service No. 06</p>
+      <h2 class="section-title">Undercarriage<br><em>Coating</em></h2>
+      <div class="section-body">
+        <p>Full undercarriage spray coating seals out moisture, road salt, and corrosion. Especially important for trucks used off-road, near the coast, or in wet conditions. One of the best long-term investments you can make in your truck.</p>
+      </div>
+      <ul class="feature-list">
+        <li>Full Undercarriage Coverage</li>
+        <li>Seals Out Moisture &amp; Salt</li>
+        <li>Rust &amp; Corrosion Protection</li>
+        <li>Coast &amp; Off-Road Recommended</li>
+      </ul>
+      <a href="tel:+15624246744" class="cta-link">
+        <svg fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.7 10.82 19.79 19.79 0 01.67 2.18 2 2 0 012.66 0h3a2 2 0 012 1.72c.13 1 .36 1.97.7 2.91a2 2 0 01-.45 2.11L6.91 7.74a16 16 0 006.29 6.29l1-.99a2 2 0 012.11-.45c.94.34 1.91.57 2.91.7A2 2 0 0122 16.92z"/></svg>
+        Get a Quote
+      </a>
+    </div>
+    <div class="col-visual">
+      <span class="num-badge">06</span>
+      <div class="visual-box">
+        <div class="visual-box-inner">
+          <div class="visual-icon">
+            <svg fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+          </div>
+          <div class="visual-title">Undercarriage Coating</div>
+          <div class="visual-sub">Rust · Moisture · Corrosion</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA BAND ═══ -->
+<div class="cta-band">
+  <div class="cta-band-content">
+    <h2>Ready to Get Started?</h2>
+    <p>Walk in Mon–Fri 8AM–5PM · Free estimates · Signal Hill, CA · Same-day Rhino Liner installs available.</p>
+    <a href="tel:+15624246744" class="cta-band-btn">
+      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.7 10.82 19.79 19.79 0 01.67 2.18 2 2 0 012.66 0h3a2 2 0 012 1.72c.13 1 .36 1.97.7 2.91a2 2 0 01-.45 2.11L6.91 7.74a16 16 0 006.29 6.29l1-.99a2 2 0 012.11-.45c.94.34 1.91.57 2.91.7A2 2 0 0122 16.92z"/></svg>
+      Call 562-424-6744
+    </a>
+  </div>
+</div>
+
+</body>
+</html>

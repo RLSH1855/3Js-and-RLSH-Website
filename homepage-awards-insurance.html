@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Awards & Insurance — 3J's Auto Body</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:'Montserrat',sans-serif;background:#0A0A0A;color:#fff;overflow-x:hidden;}
+
+    /* ═══════════════════════════
+       AWARDS SECTION
+    ═══════════════════════════ */
+    .awards-section{
+      background:#0A0A0A;
+      padding:72px 24px;
+      text-align:center;
+      position:relative;overflow:hidden;
+    }
+    .awards-section::before{
+      content:'';position:absolute;inset:0;
+      background-image:radial-gradient(circle,rgba(255,255,255,0.03) 1px,transparent 1px);
+      background-size:28px 28px;pointer-events:none;
+    }
+    .awards-section::after{
+      content:'';position:absolute;inset:0;
+      background:radial-gradient(ellipse at center,rgba(139,0,0,0.10) 0%,transparent 65%);
+      pointer-events:none;
+    }
+    .awards-content{position:relative;z-index:1;max-width:1000px;margin:0 auto;}
+
+    .awards-eyebrow{
+      font-size:10px;font-weight:800;letter-spacing:3px;
+      text-transform:uppercase;color:#8B0000;margin-bottom:14px;
+    }
+    .awards-heading{
+      font-size:clamp(22px,3.5vw,38px);font-weight:900;
+      letter-spacing:-0.5px;margin-bottom:8px;
+    }
+    .awards-heading em{font-style:normal;color:#8B0000;}
+    .awards-sub{
+      font-size:13px;font-weight:500;
+      color:rgba(255,255,255,0.80);
+      margin-bottom:52px;letter-spacing:0.3px;
+    }
+
+    /* Award cards */
+    .awards-grid{
+      display:flex;justify-content:center;
+      gap:24px;flex-wrap:wrap;
+      margin-bottom:48px;
+    }
+    .award-card{
+      background:#111;
+      border:1px solid #1e1e1e;
+      border-radius:16px;
+      padding:36px 40px;
+      min-width:260px;
+      flex:1;max-width:320px;
+      position:relative;
+      transition:border-color 0.25s,transform 0.25s;
+      overflow:hidden;
+    }
+    .award-card:hover{border-color:#8B0000;transform:translateY(-4px);}
+    .award-card::before{
+      content:'';position:absolute;
+      top:0;left:0;right:0;height:3px;
+      background:#8B0000;
+    }
+    .award-year{
+      font-size:clamp(52px,8vw,80px);font-weight:900;
+      letter-spacing:-3px;line-height:1;
+      color:#8B0000;margin-bottom:12px;
+    }
+    .award-title{
+      font-size:11px;font-weight:800;letter-spacing:2px;
+      text-transform:uppercase;color:#fff;
+      margin-bottom:6px;
+    }
+    .award-source{
+      font-size:11px;font-weight:500;
+      color:rgba(255,255,255,0.4);
+      letter-spacing:0.3px;
+      line-height:1.6;
+    }
+    .award-badge{
+      display:inline-flex;align-items:center;gap:6px;
+      background:rgba(139,0,0,0.15);
+      border:1px solid rgba(139,0,0,0.3);
+      border-radius:50px;
+      padding:5px 12px;
+      margin-top:14px;
+      font-size:9px;font-weight:800;
+      letter-spacing:2px;text-transform:uppercase;
+      color:#8B0000;
+    }
+
+    /* 2x Winner callout */
+    .winner-callout{
+      display:inline-flex;align-items:center;gap:16px;
+      background:#8B0000;
+      border-radius:12px;
+      padding:18px 32px;
+    }
+    .winner-icon{
+      width:44px;height:44px;border-radius:50%;
+      background:rgba(255,255,255,0.15);
+      display:flex;align-items:center;justify-content:center;
+      flex-shrink:0;
+    }
+    .winner-icon svg{width:22px;height:22px;stroke:#fff;}
+    .winner-text{}
+    .winner-text .wt-top{
+      font-size:11px;font-weight:700;letter-spacing:2px;
+      text-transform:uppercase;color:rgba(255,255,255,0.7);
+      margin-bottom:3px;
+    }
+    .winner-text .wt-main{
+      font-size:clamp(14px,2vw,18px);font-weight:900;
+      color:#fff;letter-spacing:-0.3px;
+    }
+
+    /* Divider */
+    .section-divider{
+      height:4px;
+      background:linear-gradient(to right,transparent,#8B0000 25%,#8B0000 75%,transparent);
+    }
+
+    /* ═══════════════════════════
+       INSURANCE SECTION
+    ═══════════════════════════ */
+    .insurance-section{
+      background:#F2F2F2;
+      padding:64px 24px;
+      text-align:center;
+      position:relative;overflow:hidden;
+    }
+    .insurance-section::before{
+      content:'';position:absolute;inset:0;
+      background-image:
+        linear-gradient(rgba(139,0,0,0.03) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(139,0,0,0.03) 1px,transparent 1px);
+      background-size:40px 40px;pointer-events:none;
+    }
+    .insurance-content{position:relative;z-index:1;max-width:960px;margin:0 auto;}
+
+    .ins-eyebrow{
+      font-size:10px;font-weight:800;letter-spacing:3px;
+      text-transform:uppercase;color:#8B0000;margin-bottom:12px;
+    }
+    .ins-heading{
+      font-size:clamp(20px,3vw,32px);font-weight:900;
+      color:#1a1a1a;letter-spacing:-0.5px;margin-bottom:8px;
+    }
+    .ins-heading em{font-style:normal;color:#8B0000;}
+    .ins-sub{
+      font-size:13px;font-weight:500;color:#888;
+      margin-bottom:40px;max-width:480px;
+      margin-left:auto;margin-right:auto;line-height:1.7;
+    }
+
+    /* Insurance logo chips */
+    .ins-grid{
+      display:flex;flex-wrap:wrap;
+      justify-content:center;gap:10px;
+      margin-bottom:32px;
+    }
+    .ins-chip{
+      background:#fff;
+      border:1px solid #e0e0e0;
+      border-radius:8px;
+      padding:10px 20px;
+      font-size:12px;font-weight:700;
+      color:#333;letter-spacing:0.3px;
+      transition:border-color 0.2s,color 0.2s;
+      box-shadow:0 2px 8px rgba(0,0,0,0.04);
+    }
+    .ins-chip:hover{border-color:#8B0000;color:#8B0000;}
+    .ins-chip.all{
+      background:#8B0000;color:#fff;
+      border-color:#8B0000;
+    }
+
+    .ins-note{
+      font-size:12px;font-weight:600;
+      color:#aaa;letter-spacing:0.3px;
+    }
+    .ins-note strong{color:#8B0000;}
+
+    /* ─── RESPONSIVE ─── */
+    @media(max-width:700px){
+      .awards-grid{flex-direction:column;align-items:center;}
+      .award-card{min-width:0;width:100%;max-width:100%;}
+      .winner-callout{flex-direction:column;text-align:center;gap:10px;}
+      .awards-section{padding:56px 20px;}
+      .insurance-section{padding:48px 20px;}
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══ AWARDS SECTION ═══ -->
+<section class="awards-section">
+  <div class="awards-content">
+
+    <p class="awards-eyebrow">Recognized by the Community</p>
+    <h2 class="awards-heading">Voted Best Body Shop — <em>Twice.</em></h2>
+    <p class="awards-sub">Press-Telegram &amp; Grunion Gazette · Readers' Choice Awards · Signal Hill &amp; Long Beach</p>
+
+    <div class="awards-grid">
+
+      <div class="award-card">
+        <div class="award-year">2021</div>
+        <div class="award-title">Best Body Shop</div>
+        <div class="award-source">Press-Telegram &amp; Grunion Gazette<br>Readers' Choice Awards</div>
+        <div class="award-badge">
+          <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          Winner
+        </div>
+      </div>
+
+      <div class="award-card">
+        <div class="award-year">2025</div>
+        <div class="award-title">Best Body Shop</div>
+        <div class="award-source">Press-Telegram &amp; Grunion Gazette<br>Readers' Choice Awards</div>
+        <div class="award-badge">
+          <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          Winner
+        </div>
+      </div>
+
+    </div>
+
+    <div class="winner-callout">
+      <div class="winner-icon">
+        <svg fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <div class="winner-text">
+        <div class="wt-top">2-Time Award Winner · Family Owned Since 1991</div>
+        <div class="wt-main">The community has spoken — twice. We're honored every time.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ STRIPE DIVIDER ═══ -->
+<div class="section-divider"></div>
+
+<!-- ═══ INSURANCE SECTION ═══ -->
+<section class="insurance-section">
+  <div class="insurance-content">
+
+    <p class="ins-eyebrow">Insurance Claims</p>
+    <h2 class="ins-heading">We Work With <em>All Major Carriers</em></h2>
+    <p class="ins-sub">We handle the paperwork directly with your insurance company so you don't have to. Just bring your vehicle in — we take it from there.</p>
+
+    <div class="ins-grid">
+      <div class="ins-chip">State Farm</div>
+      <div class="ins-chip">Geico</div>
+      <div class="ins-chip">Progressive</div>
+      <div class="ins-chip">Allstate</div>
+      <div class="ins-chip">Farmers</div>
+      <div class="ins-chip">AAA</div>
+      <div class="ins-chip">Mercury</div>
+      <div class="ins-chip">Safeco</div>
+      <div class="ins-chip">USAA</div>
+      <div class="ins-chip">Kemper</div>
+      <div class="ins-chip">21st Century</div>
+      <div class="ins-chip">Liberty Mutual</div>
+      <div class="ins-chip">MetLife</div>
+      <div class="ins-chip">Nationwide</div>
+      <div class="ins-chip all">+ All Others</div>
+    </div>
+
+    <p class="ins-note">Don't see your carrier? <strong>We work with everyone.</strong> Call us at 562-424-6744.</p>
+
+  </div>
+</section>
+
+</body>
+</html>

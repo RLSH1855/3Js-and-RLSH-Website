@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Body & Paint Repairs — 3J's Auto Body</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:'Montserrat',sans-serif;overflow-x:hidden;}
+
+    /* ─── SHARED ─── */
+    .eyebrow{font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;margin-bottom:12px;}
+    .section-title{font-size:clamp(26px,4vw,48px);font-weight:900;letter-spacing:-1px;line-height:1.05;margin-bottom:18px;}
+    .section-title em{font-style:normal;}
+    .section-body{font-size:14px;font-weight:500;line-height:1.85;max-width:520px;}
+    .section-body p+p{margin-top:12px;}
+
+    .feature-list{list-style:none;margin-top:24px;display:flex;flex-direction:column;gap:10px;}
+    .feature-list li{display:flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;}
+    .feature-list li::before{content:'';width:6px;height:6px;border-radius:50%;background:#8B0000;flex-shrink:0;}
+
+    .cta-link{
+      display:inline-flex;align-items:center;gap:8px;
+      font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;
+      text-decoration:none;margin-top:28px;
+      padding:12px 24px;border-radius:6px;
+      transition:background 0.2s,color 0.2s,border-color 0.2s;
+    }
+    .cta-link svg{width:14px;height:14px;}
+
+    .two-col{
+      display:grid;grid-template-columns:1fr 1fr;
+      gap:80px;align-items:center;
+      max-width:1100px;margin:0 auto;
+      padding:100px 40px;
+    }
+    .two-col.flip .col-text{order:2;}
+    .two-col.flip .col-visual{order:1;}
+
+    .num-badge{
+      font-size:clamp(80px,12vw,140px);font-weight:900;
+      line-height:1;letter-spacing:-4px;opacity:0.06;
+      position:absolute;top:-20px;right:-10px;
+      pointer-events:none;user-select:none;
+    }
+    .col-visual{position:relative;}
+
+    .visual-box{
+      border-radius:16px;overflow:hidden;aspect-ratio:4/3;
+      display:flex;align-items:center;justify-content:center;position:relative;
+    }
+    .visual-box-inner{
+      position:absolute;inset:0;
+      display:flex;flex-direction:column;
+      align-items:center;justify-content:center;
+      gap:16px;padding:40px;text-align:center;
+    }
+    .visual-icon{width:72px;height:72px;border-radius:50%;display:flex;align-items:center;justify-content:center;}
+    .visual-icon svg{width:34px;height:34px;}
+    .visual-title{font-size:18px;font-weight:900;letter-spacing:-0.3px;}
+    .visual-sub{font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;opacity:0.5;}
+
+    /* ─── DARK ─── */
+    .dark{background:#0A0A0A;color:#fff;}
+    .dark .eyebrow{color:#8B0000;}
+    .dark .section-title em{color:#8B0000;}
+    .dark .section-body{color:rgba(255,255,255,0.82);}
+    .dark .feature-list li{color:rgba(255,255,255,0.90);letter-spacing:1.2px;}
+    .dark .cta-link{background:#8B0000;color:#fff;border:2px solid transparent;}
+    .dark .cta-link:hover{background:#A00000;}
+    .dark .visual-box{background:#111;border:1px solid #1e1e1e;}
+    .dark .visual-icon{background:rgba(139,0,0,0.15);}
+    .dark .visual-icon svg{stroke:#8B0000;}
+    .dark .visual-title{color:#fff;}
+    .dark .num-badge{color:#fff;}
+
+    /* ─── LIGHT ─── */
+    .light{background:#F2F2F2;color:#1a1a1a;}
+    .light .eyebrow{color:#8B0000;}
+    .light .section-title em{color:#8B0000;}
+    .light .section-body{color:#666;}
+    .light .feature-list li{color:#333;}
+    .light .cta-link{background:transparent;color:#8B0000;border:2px solid #8B0000;}
+    .light .cta-link:hover{background:#8B0000;color:#fff;}
+    .light .visual-box{background:#fff;border:1px solid #e0e0e0;box-shadow:0 4px 30px rgba(0,0,0,0.08);}
+    .light .visual-icon{background:rgba(139,0,0,0.08);}
+    .light .visual-icon svg{stroke:#8B0000;}
+    .light .visual-title{color:#1a1a1a;}
+    .light .num-badge{color:#1a1a1a;}
+
+    /* ─── TEXTURES ─── */
+    .texture-dark{position:relative;}
+    .texture-dark::before{
+      content:'';position:absolute;inset:0;
+      background-image:repeating-linear-gradient(45deg,rgba(139,0,0,0.03) 0px,rgba(139,0,0,0.03) 1px,transparent 1px,transparent 8px);
+      pointer-events:none;z-index:0;
+    }
+    .texture-dark .two-col{position:relative;z-index:1;}
+
+    .texture-light{position:relative;}
+    .texture-light::before{
+      content:'';position:absolute;inset:0;
+      background-image:
+        linear-gradient(rgba(139,0,0,0.04) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(139,0,0,0.04) 1px,transparent 1px);
+      background-size:40px 40px;
+      pointer-events:none;z-index:0;
+    }
+    .texture-light .two-col{position:relative;z-index:1;}
+
+    /* ─── PAGE HEADER — UNIFORM ACROSS ALL PAGES ─── */
+    .page-header{
+      background:#0A0A0A;color:#fff;
+      height:260px;
+      display:flex;align-items:center;justify-content:center;
+      text-align:center;padding:0 24px;
+      position:relative;overflow:hidden;
+      flex-direction:column;
+    }
+    .page-header::before{
+      content:'';position:absolute;inset:0;
+      background:radial-gradient(ellipse at center,rgba(139,0,0,0.16) 0%,transparent 65%);
+      pointer-events:none;
+    }
+    .page-header::after{
+      content:'';position:absolute;inset:0;
+      background-image:radial-gradient(circle,rgba(255,255,255,0.035) 1px,transparent 1px);
+      background-size:26px 26px;pointer-events:none;
+    }
+    .page-header-content{position:relative;z-index:1;}
+    .page-header .eyebrow{color:#8B0000;margin-bottom:12px;}
+    .page-header h1{
+      font-size:clamp(32px,6vw,64px);font-weight:900;
+      letter-spacing:-2px;line-height:1.0;text-transform:uppercase;
+    }
+    .page-header h1 em{font-style:normal;color:#8B0000;}
+    .page-header-bar{
+      position:absolute;bottom:0;left:0;right:0;
+      height:3px;
+      background:linear-gradient(to right,transparent,#8B0000 25%,#8B0000 75%,transparent);
+    }
+
+    /* ─── STAT BAR ─── */
+    .stat-bar{
+      background:#111;border-top:1px solid #1a1a1a;border-bottom:1px solid #1a1a1a;
+      padding:28px 24px;display:flex;justify-content:center;flex-wrap:wrap;
+    }
+    .stat{flex:1;min-width:140px;max-width:200px;text-align:center;padding:12px 20px;border-right:1px solid #1e1e1e;}
+    .stat:last-child{border-right:none;}
+    .stat-number{font-size:clamp(26px,3.5vw,40px);font-weight:900;color:#8B0000;letter-spacing:-1px;line-height:1;}
+    .stat-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#444;margin-top:6px;}
+
+    /* ─── PROCESS STEPS ─── */
+    .process-section{background:#111;padding:80px 40px;}
+    .process-inner{max-width:1100px;margin:0 auto;}
+    .process-header{text-align:center;margin-bottom:56px;}
+    .process-header .eyebrow{color:#8B0000;}
+    .process-header h2{font-size:clamp(24px,3.5vw,40px);font-weight:900;color:#fff;letter-spacing:-0.5px;}
+    .process-header h2 em{font-style:normal;color:#8B0000;}
+    .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;}
+    .steps::before{
+      content:'';position:absolute;top:32px;left:10%;right:10%;height:1px;
+      background:linear-gradient(to right,transparent,#8B0000,#8B0000,transparent);
+      z-index:0;
+    }
+    .step{text-align:center;padding:0 20px;position:relative;z-index:1;}
+    .step-num{
+      width:64px;height:64px;border-radius:50%;
+      background:#0A0A0A;border:2px solid #8B0000;
+      display:flex;align-items:center;justify-content:center;
+      font-size:18px;font-weight:900;color:#8B0000;
+      margin:0 auto 20px;
+    }
+    .step-title{font-size:13px;font-weight:800;color:#fff;margin-bottom:8px;}
+    .step-desc{font-size:11.5px;font-weight:500;color:#555;line-height:1.7;}
+
+    /* ─── DIVIDERS ─── */
+    .divider-dark-down{height:60px;background:#0A0A0A;clip-path:polygon(0 0,100% 0,100% 100%,0 0);margin-bottom:-1px;}
+    .divider-light-down{height:60px;background:#F2F2F2;clip-path:polygon(0 0,100% 0,100% 100%,0 0);margin-bottom:-1px;}
+    .stripe-break{height:4px;background:linear-gradient(to right,transparent,#8B0000 20%,#8B0000 80%,transparent);}
+    .dot-break{background:#0A0A0A;padding:20px 0;display:flex;justify-content:center;align-items:center;gap:8px;}
+    .dot-break span{width:6px;height:6px;border-radius:50%;background:#8B0000;display:inline-block;opacity:0.6;}
+    .dot-break span:nth-child(2){opacity:1;width:10px;height:10px;}
+    .dot-break-light{background:#F2F2F2;padding:20px 0;display:flex;justify-content:center;align-items:center;gap:8px;}
+    .dot-break-light span{width:6px;height:6px;border-radius:50%;background:#8B0000;display:inline-block;opacity:0.6;}
+    .dot-break-light span:nth-child(2){opacity:1;width:10px;height:10px;}
+
+    /* ─── INSURANCE BAND ─── */
+    .insurance-band{
+      background:#111;padding:64px 24px;text-align:center;
+      border-top:1px solid #1a1a1a;border-bottom:1px solid #1a1a1a;
+    }
+    .insurance-band .eyebrow{color:#8B0000;margin-bottom:14px;}
+    .insurance-band h2{font-size:clamp(22px,3vw,34px);font-weight:900;color:#fff;margin-bottom:10px;letter-spacing:-0.5px;}
+    .insurance-band h2 em{font-style:normal;color:#8B0000;}
+    .insurance-band p{font-size:13px;font-weight:500;color:#555;max-width:540px;margin:0 auto 32px;line-height:1.8;}
+    .ins-logos{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-bottom:32px;}
+    .ins-chip{
+      background:#1a1a1a;border:1px solid #222;border-radius:50px;
+      padding:8px 18px;font-size:11px;font-weight:700;
+      color:#888;letter-spacing:0.5px;
+    }
+
+    /* ─── CERT STRIP ─── */
+    .cert-strip{
+      background:#8B0000;padding:20px 24px;
+      display:flex;justify-content:center;align-items:center;
+      gap:32px;flex-wrap:wrap;
+    }
+    .cert-item{display:flex;align-items:center;gap:8px;}
+    .cert-item svg{width:16px;height:16px;stroke:#fff;flex-shrink:0;}
+    .cert-item span{font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#fff;}
+
+    /* ─── CTA ─── */
+    .cta-band{background:#0A0A0A;padding:72px 24px;text-align:center;position:relative;overflow:hidden;}
+    .cta-band::before{
+      content:'';position:absolute;inset:0;
+      background:radial-gradient(ellipse at center,rgba(139,0,0,0.10) 0%,transparent 65%);
+    }
+    .cta-band::after{
+      content:'';position:absolute;inset:0;
+      background-image:radial-gradient(circle,rgba(255,255,255,0.03) 1px,transparent 1px);
+      background-size:24px 24px;
+    }
+    .cta-content{position:relative;z-index:1;}
+    .cta-band h2{font-size:clamp(22px,3.5vw,40px);font-weight:900;color:#fff;margin-bottom:10px;letter-spacing:-0.5px;}
+    .cta-band h2 em{font-style:normal;color:#8B0000;}
+    .cta-band p{font-size:14px;font-weight:500;color:rgba(255,255,255,0.45);max-width:480px;margin:0 auto 32px;line-height:1.7;}
+    .cta-buttons{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;}
+    .btn-primary{
+      display:inline-flex;align-items:center;gap:8px;
+      background:#8B0000;color:#fff;
+      font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;
+      text-decoration:none;padding:14px 30px;border-radius:8px;
+      transition:background 0.2s;letter-spacing:0.5px;
+    }
+    .btn-primary:hover{background:#A00000;}
+    .btn-secondary{
+      display:inline-flex;align-items:center;gap:8px;
+      background:transparent;color:#fff;
+      font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;
+      text-decoration:none;padding:14px 30px;border-radius:8px;
+      border:2px solid #333;transition:border-color 0.2s;letter-spacing:0.5px;
+    }
+    .btn-secondary:hover{border-color:#8B0000;}
+
+    /* ─── RESPONSIVE ─── */
+    @media(max-width:900px){
+      .two-col{grid-template-columns:1fr;gap:40px;padding:72px 28px;}
+      .two-col.flip .col-text{order:1;}
+      .two-col.flip .col-visual{order:2;}
+      .steps{grid-template-columns:1fr 1fr;gap:32px;}
+      .steps::before{display:none;}
+      .stat{min-width:120px;}
+    }
+    @media(max-width:600px){
+      .two-col{padding:56px 20px;}
+      .steps{grid-template-columns:1fr;}
+      .process-section{padding:56px 20px;}
+      .cert-strip{gap:16px;}
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══ PAGE HEADER ═══ -->
+<header class="page-header">
+  <div class="page-header-content">
+    <p class="eyebrow">3J's Auto Body · Signal Hill, CA</p>
+    <h1>Body &amp; <em>Paint</em> Repairs</h1>
+  </div>
+  <div class="page-header-bar"></div>
+</header>
+
+<!-- ═══ CERT STRIP ═══ -->
+<div class="cert-strip">
+  <div class="cert-item">
+    <svg fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    <span>I-CAR Gold Class Certified</span>
+  </div>
+  <div class="cert-item">
+    <svg fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 12l2.5 2.5L16 9"/></svg>
+    <span>ASE Certified Technicians</span>
+  </div>
+  <div class="cert-item">
+    <svg fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    <span>Lifetime Warranty on All Repairs</span>
+  </div>
+  <div class="cert-item">
+    <svg fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
+    <span>Est. 1991 · Family Owned</span>
+  </div>
+</div>
+
+<!-- ═══ STAT BAR ═══ -->
+<div class="stat-bar">
+  <div class="stat"><div class="stat-number">30+</div><div class="stat-label">Years in Business</div></div>
+  <div class="stat"><div class="stat-number">5★</div><div class="stat-label">Yelp Rated</div></div>
+  <div class="stat"><div class="stat-number">Free</div><div class="stat-label">Estimates</div></div>
+  <div class="stat"><div class="stat-number">All</div><div class="stat-label">Insurance Accepted</div></div>
+</div>
+
+<!-- ═══ PROCESS STEPS ═══ -->
+<section class="process-section">
+  <div class="process-inner">
+    <div class="process-header">
+      <p class="eyebrow">How It Works</p>
+      <h2>From Drop-Off to <em>Drive-Away</em></h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-title">Free Estimate</div>
+        <div class="step-desc">Walk in or call us. We assess the damage, go over everything with you, and give you a straightforward quote — no surprises.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-title">Insurance or Direct Pay</div>
+        <div class="step-desc">We work directly with all major insurance carriers or with customers paying out of pocket. We handle the paperwork — you don't have to.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-title">Repair & Paint</div>
+        <div class="step-desc">I-CAR certified technicians restore your vehicle to pre-accident condition using factory-spec repair methods and computer-matched paint.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-title">Drive Away Confident</div>
+        <div class="step-desc">We do a final quality check before you pick up. Every repair is backed by our lifetime warranty on workmanship.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FAMILY OWNED BAND ═══ -->
+<section class="dark" style="position:relative;overflow:hidden;">
+  <!-- diagonal stripe texture -->
+  <div style="position:absolute;inset:0;background-image:repeating-linear-gradient(-45deg,rgba(139,0,0,0.04) 0px,rgba(139,0,0,0.04) 1px,transparent 1px,transparent 10px);pointer-events:none;"></div>
+  <div style="max-width:900px;margin:0 auto;padding:80px 40px;text-align:center;position:relative;z-index:1;">
+    <p class="eyebrow" style="color:#8B0000;margin-bottom:16px;">The 3J's Difference</p>
+    <h2 style="font-size:clamp(26px,4vw,50px);font-weight:900;letter-spacing:-1.5px;line-height:1.05;color:#fff;margin-bottom:24px;">You Talk to the <em style="font-style:normal;color:#8B0000;">Owner.</em><br>Every Single Time.</h2>
+    <p style="font-size:15px;font-weight:500;color:rgba(255,255,255,0.55);line-height:1.9;max-width:680px;margin:0 auto 16px;">At a corporate shop you get a service writer who passes your car to a manager who assigns it to a tech. Nobody's personally accountable. At 3J's, you walk in, you shake James's hand, you look him in the eye — and he is the person responsible for your vehicle from start to finish. That's not something you get from a chain. That's something you only get from a family — and we've been that family since <strong style="color:#fff;">1991</strong>.</p>
+    <p style="font-size:16px;font-weight:800;color:#fff;letter-spacing:0.5px;margin-bottom:40px;">We welcome you to join the 3J's family.</p>
+    <div style="display:flex;justify-content:center;flex-wrap:wrap;gap:16px;">
+      <div style="background:#111;border:1px solid #1e1e1e;border-radius:12px;padding:20px 28px;min-width:180px;">
+        <div style="font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#8B0000;margin-bottom:6px;">Family Owned</div>
+        <div style="font-size:13px;font-weight:600;color:rgba(255,255,255,0.6);line-height:1.5;">3 generations,<br>same location since 1991</div>
+      </div>
+      <div style="background:#111;border:1px solid #1e1e1e;border-radius:12px;padding:20px 28px;min-width:180px;">
+        <div style="font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#8B0000;margin-bottom:6px;">Face to Face</div>
+        <div style="font-size:13px;font-weight:600;color:rgba(255,255,255,0.6);line-height:1.5;">Meet the owner<br>on your first visit</div>
+      </div>
+      <div style="background:#111;border:1px solid #1e1e1e;border-radius:12px;padding:20px 28px;min-width:180px;">
+        <div style="font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#8B0000;margin-bottom:6px;">Accountable</div>
+        <div style="font-size:13px;font-weight:600;color:rgba(255,255,255,0.6);line-height:1.5;">Your car is personal<br>to us — not a ticket number</div>
+      </div>
+      <div style="background:#111;border:1px solid #1e1e1e;border-radius:12px;padding:20px 28px;min-width:180px;">
+        <div style="font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#8B0000;margin-bottom:6px;">No Corporate</div>
+        <div style="font-size:13px;font-weight:600;color:rgba(255,255,255,0.6);line-height:1.5;">No scripts, no runaround —<br>just honest people</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ DIAGONAL ═══ -->
+<div style="height:60px;background:#0A0A0A;clip-path:polygon(0 0,100% 0,100% 0,0 100%);margin-bottom:-1px;"></div>
+
+<!-- ═══ 1. COLLISION REPAIR — LIGHT ═══ -->
+<section class="light texture-light">
+  <div class="two-col">
+    <div class="col-text">
+      <p class="eyebrow">Service 01</p>
+      <h2 class="section-title">Collision<br><em>Repair</em></h2>
+      <div class="section-body">
+        <p>From minor fender benders to major structural damage — we repair it all. Our I-CAR Gold Class certified technicians are trained to factory standards, meaning every repair is done the right way, not the fast way.</p>
+        <p>We use computerized measuring systems to ensure your vehicle's frame and structure are restored to exact factory specifications before we touch the paint.</p>
+      </div>
+      <ul class="feature-list">
+        <li>I-CAR Gold Class Certified Repairs</li>
+        <li>Frame &amp; Structural Damage</li>
+        <li>Panel Replacement &amp; Repair</li>
+        <li>Factory-Spec Restoration</li>
+        <li>All Makes &amp; Models</li>
+      </ul>
+      <a href="tel:+15624246744" class="cta-link">
+        <svg fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.7 10.82 19.79 19.79 0 01.67 2.18 2 2 0 012.66 0h3a2 2 0 012 1.72c.13 1 .36 1.97.7 2.91a2 2 0 01-.45 2.11L6.91 7.74a16 16 0 006.29 6.29l1-.99a2 2 0 012.11-.45c.94.34 1.91.57 2.91.7A2 2 0 0122 16.92z"/></svg>
+        Get a Free Estimate
+      </a>
+    </div>
+    <div class="col-visual">
+      <span class="num-badge">01</span>
+      <div class="visual-box">
+        <div class="visual-box-inner">
+          <div class="visual-icon">
+            <svg fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+          </div>
+          <div class="visual-title">Collision Repair</div>
+          <div class="visual-sub">I-CAR Certified · Factory Spec</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ STRIPE ═══ -->
+<div class="stripe-break"></div>
+
+<!-- ═══ 2. PAINT & REFINISHING — DARK ═══ -->
+<section class="dark texture-dark">
+  <div class="two-col flip">
+    <div class="col-text">
+      <p class="eyebrow">Service 02</p>
+      <h2 class="section-title">Paint &amp;<br><em>Refinishing</em></h2>
+      <div class="section-body">
+        <p>A repair is only as good as the paint job on top of it. We use advanced computer color-matching technology to ensure repaired panels are completely indistinguishable from the rest of your vehicle.</p>
+        <p>Whether it's a single panel blend or a full exterior repaint, we prep right, spray right, and finish right — every time.</p>
+      </div>
+      <ul class="feature-list">
+        <li>Computer Color Matching</li>
+        <li>Single Panel Blending</li>
+        <li>Full Exterior Repaints</li>
+        <li>Clear Coat &amp; Finish Correction</li>
+        <li>Factory &amp; Custom Colors</li>
+      </ul>
+      <a href="tel:+15624246744" class="cta-link">
+        <svg fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.7 10.82 19.79 19.79 0 01.67 2.18 2 2 0 012.66 0h3a2 2 0 012 1.72c.13 1 .36 1.97.7 2.91a2 2 0 01-.45 2.11L6.91 7.74a16 16 0 006.29 6.29l1-.99a2 2 0 012.11-.45c.94.34 1.91.57 2.91.7A2 2 0 0122 16.92z"/></svg>
+        Get a Free Estimate
+      </a>
+    </div>
+    <div class="col-visual">
+      <span class="num-badge">02</span>
+      <div class="visual-box">
+        <div class="visual-box-inner">
+          <div class="visual-icon">
+            <svg fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="13.5" cy="6.5" r="2.5"/><path d="M17.5 10.5c1.5 1.5 2.5 3.5 2.5 5.5A7 7 0 013 16c0-2 1-4 2.5-5.5"/><path d="M12 22V12"/></svg>
+          </div>
+          <div class="visual-title">Paint &amp; Refinishing</div>
+          <div class="visual-sub">Color Match · Blend · Repaint</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ DOT BREAK ═══ -->
+<div class="dot-break"><span></span><span></span><span></span></div>
+
+<!-- ═══ 3. DENT & SCRATCH — LIGHT ═══ -->
+<section class="light">
+  <div class="two-col">
+    <div class="col-text">
+      <p class="eyebrow">Service 03</p>
+      <h2 class="section-title">Dent &amp; Scratch<br><em>Repair</em></h2>
+      <div class="section-body">
+        <p>Parking lot dings, key scratches, road rash — we handle it all. Small damage doesn't have to cost a fortune or take forever. We assess every job individually and recommend the most cost-effective repair method for your specific situation.</p>
+        <p>Our goal is always to restore, not replace — saving you time and money without cutting corners on quality.</p>
+      </div>
+      <ul class="feature-list">
+        <li>Paintless Dent Repair (PDR)</li>
+        <li>Scratch &amp; Scuff Removal</li>
+        <li>Chip &amp; Road Rash Repair</li>
+        <li>Faded &amp; Oxidized Panel Restoration</li>
+      </ul>
+      <a href="tel:+15624246744" class="cta-link">
+        <svg fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.7 10.82 19.79 19.79 0 01.67 2.18 2 2 0 012.66 0h3a2 2 0 012 1.72c.13 1 .36 1.97.7 2.91a2 2 0 01-.45 2.11L6.91 7.74a16 16 0 006.29 6.29l1-.99a2 2 0 012.11-.45c.94.34 1.91.57 2.91.7A2 2 0 0122 16.92z"/></svg>
+        Get a Free Estimate
+      </a>
+    </div>
+    <div class="col-visual">
+      <span class="num-badge">03</span>
+      <div class="visual-box">
+        <div class="visual-box-inner">
+          <div class="visual-icon">
+            <svg fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 12l2.5 2.5L16 9"/></svg>
+          </div>
+          <div class="visual-title">Dent &amp; Scratch Repair</div>
+          <div class="visual-sub">PDR · Scratch · Chip · Restore</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ DIAGONAL ═══ -->
+<div style="height:60px;background:#F2F2F2;clip-path:polygon(0 0,100% 0,100% 0,0 100%);margin-bottom:-1px;"></div>
+
+<!-- ═══ 4. FRAME & STRUCTURAL — DARK ═══ -->
+<section class="dark texture-dark">
+  <div class="two-col flip">
+    <div class="col-text">
+      <p class="eyebrow">Service 04</p>
+      <h2 class="section-title">Frame &amp;<br><em>Structural Repair</em></h2>
+      <div class="section-body">
+        <p>Frame damage after a collision isn't just a cosmetic issue — it's a safety issue. We use computerized measuring and alignment systems to diagnose and correct structural damage back to factory specifications before any bodywork begins.</p>
+        <p>Driving a vehicle with unrepaired frame damage puts you and everyone on the road at risk. Don't skip this step.</p>
+      </div>
+      <ul class="feature-list">
+        <li>Computerized Frame Measuring</li>
+        <li>Unibody &amp; Full Frame Repair</li>
+        <li>Factory Specification Alignment</li>
+        <li>Pre-Repair Structural Assessment</li>
+      </ul>
+      <a href="tel:+15624246744" class="cta-link">
+        <svg fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.7 10.82 19.79 19.79 0 01.67 2.18 2 2 0 012.66 0h3a2 2 0 012 1.72c.13 1 .36 1.97.7 2.91a2 2 0 01-.45 2.11L6.91 7.74a16 16 0 006.29 6.29l1-.99a2 2 0 012.11-.45c.94.34 1.91.57 2.91.7A2 2 0 0122 16.92z"/></svg>
+        Get a Free Estimate
+      </a>
+    </div>
+    <div class="col-visual">
+      <span class="num-badge">04</span>
+      <div class="visual-box">
+        <div class="visual-box-inner">
+          <div class="visual-icon">
+            <svg fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v4h-7V8zM5.5 21a1.5 1.5 0 100-3 1.5 1.5 0 000 3zm13 0a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"/></svg>
+          </div>
+          <div class="visual-title">Frame &amp; Structural</div>
+          <div class="visual-sub">Computerized · Factory Spec · Safe</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ STRIPE ═══ -->
+<div class="stripe-break"></div>
+
+<!-- ═══ 5. LEASE TURN-IN / OUT OF POCKET — LIGHT ═══ -->
+<section class="light texture-light">
+  <div class="two-col">
+    <div class="col-text">
+      <p class="eyebrow">Service 05</p>
+      <h2 class="section-title">Lease Turn-In &amp;<br><em>Out-of-Pocket Repairs</em></h2>
+      <div class="section-body">
+        <p>Lease ending soon? Don't get hit with dealer fees for damage you could have repaired for less. We specialize in getting lease vehicles back to factory condition quickly and affordably before turn-in.</p>
+        <p>Paying out of pocket? We give you honest, upfront pricing and only recommend what actually needs to be done. No upselling. No pressure.</p>
+      </div>
+      <ul class="feature-list">
+        <li>Lease Vehicle Preparation</li>
+        <li>Avoid Dealer Damage Fees</li>
+        <li>Transparent Out-of-Pocket Pricing</li>
+        <li>Fast Turnaround Available</li>
+      </ul>
+      <a href="tel:+15624246744" class="cta-link">
+        <svg fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.7 10.82 19.79 19.79 0 01.67 2.18 2 2 0 012.66 0h3a2 2 0 012 1.72c.13 1 .36 1.97.7 2.91a2 2 0 01-.45 2.11L6.91 7.74a16 16 0 006.29 6.29l1-.99a2 2 0 012.11-.45c.94.34 1.91.57 2.91.7A2 2 0 0122 16.92z"/></svg>
+        Get a Free Estimate
+      </a>
+    </div>
+    <div class="col-visual">
+      <span class="num-badge">05</span>
+      <div class="visual-box">
+        <div class="visual-box-inner">
+          <div class="visual-icon">
+            <svg fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div class="visual-title">Lease Turn-In Ready</div>
+          <div class="visual-sub">Fast · Affordable · Honest</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ INSURANCE BAND ═══ -->
+<section class="insurance-band">
+  <p class="eyebrow">Insurance Claims</p>
+  <h2>We Work With <em>All Major Carriers</em></h2>
+  <p>You shouldn't have to fight your insurance company on your own. We work directly with all major carriers as a preferred repair facility — handling the claim process so you can focus on getting back on the road.</p>
+  <div class="ins-logos">
+    <div class="ins-chip">State Farm</div>
+    <div class="ins-chip">Geico</div>
+    <div class="ins-chip">Progressive</div>
+    <div class="ins-chip">Allstate</div>
+    <div class="ins-chip">Farmers</div>
+    <div class="ins-chip">AAA</div>
+    <div class="ins-chip">Mercury</div>
+    <div class="ins-chip">21st Century</div>
+    <div class="ins-chip">+ All Others</div>
+  </div>
+  <p style="font-size:12px;color:#444;margin-bottom:0;">Don't see your carrier? Call us — we work with everyone.</p>
+</section>
+
+<!-- ═══ CTA ═══ -->
+<section class="cta-band">
+  <div class="cta-content">
+    <h2>Get Your <em>Free Estimate</em> Today</h2>
+    <p>Walk in Mon–Fri 8AM–5PM · No appointment needed for estimates · Signal Hill, CA</p>
+    <div class="cta-buttons">
+      <a href="tel:+15624246744" class="btn-primary">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.7 10.82 19.79 19.79 0 01.67 2.18 2 2 0 012.66 0h3a2 2 0 012 1.72c.13 1 .36 1.97.7 2.91a2 2 0 01-.45 2.11L6.91 7.74a16 16 0 006.29 6.29l1-.99a2 2 0 012.11-.45c.94.34 1.91.57 2.91.7A2 2 0 0122 16.92z"/></svg>
+        Call 562-424-6744
+      </a>
+      <a href="mailto:info@3jsautobody.com" class="btn-secondary">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Email Us
+      </a>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
