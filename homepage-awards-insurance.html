@@ -7,25 +7,25 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    body{font-family:'Montserrat',sans-serif;background:#0A0A0A;color:#fff;overflow-x:hidden;}
+    body{font-family:'Montserrat',sans-serif;background:#F2F2F2;color:#1a1a1a;overflow-x:hidden;}
 
     /* ═══════════════════════════
-       AWARDS SECTION
+       AWARDS SECTION — LIGHT
     ═══════════════════════════ */
     .awards-section{
-      background:#0A0A0A;
+      background:#F2F2F2;
       padding:72px 24px;
       text-align:center;
       position:relative;overflow:hidden;
     }
     .awards-section::before{
       content:'';position:absolute;inset:0;
-      background-image:radial-gradient(circle,rgba(255,255,255,0.03) 1px,transparent 1px);
+      background-image:radial-gradient(circle,rgba(0,0,0,0.06) 1px,transparent 1px);
       background-size:28px 28px;pointer-events:none;
     }
     .awards-section::after{
       content:'';position:absolute;inset:0;
-      background:radial-gradient(ellipse at center,rgba(139,0,0,0.10) 0%,transparent 65%);
+      background:radial-gradient(ellipse at center,rgba(139,0,0,0.05) 0%,transparent 65%);
       pointer-events:none;
     }
     .awards-content{position:relative;z-index:1;max-width:1000px;margin:0 auto;}
@@ -36,12 +36,12 @@
     }
     .awards-heading{
       font-size:clamp(22px,3.5vw,38px);font-weight:900;
-      letter-spacing:-0.5px;margin-bottom:8px;
+      letter-spacing:-0.5px;margin-bottom:8px;color:#1a1a1a;
     }
     .awards-heading em{font-style:normal;color:#8B0000;}
     .awards-sub{
       font-size:13px;font-weight:500;
-      color:rgba(255,255,255,0.80);
+      color:#777;
       margin-bottom:52px;letter-spacing:0.3px;
     }
 
@@ -52,17 +52,18 @@
       margin-bottom:48px;
     }
     .award-card{
-      background:#111;
-      border:1px solid #1e1e1e;
+      background:#fff;
+      border:1px solid #e0e0e0;
       border-radius:16px;
       padding:36px 40px;
       min-width:260px;
       flex:1;max-width:320px;
       position:relative;
-      transition:border-color 0.25s,transform 0.25s;
+      transition:border-color 0.25s,transform 0.25s,box-shadow 0.25s;
       overflow:hidden;
+      box-shadow:0 4px 20px rgba(0,0,0,0.06);
     }
-    .award-card:hover{border-color:#8B0000;transform:translateY(-4px);}
+    .award-card:hover{border-color:#8B0000;transform:translateY(-4px);box-shadow:0 12px 36px rgba(139,0,0,0.12);}
     .award-card::before{
       content:'';position:absolute;
       top:0;left:0;right:0;height:3px;
@@ -75,19 +76,19 @@
     }
     .award-title{
       font-size:11px;font-weight:800;letter-spacing:2px;
-      text-transform:uppercase;color:#fff;
+      text-transform:uppercase;color:#1a1a1a;
       margin-bottom:6px;
     }
     .award-source{
       font-size:11px;font-weight:500;
-      color:rgba(255,255,255,0.4);
+      color:#999;
       letter-spacing:0.3px;
       line-height:1.6;
     }
     .award-badge{
       display:inline-flex;align-items:center;gap:6px;
-      background:rgba(139,0,0,0.15);
-      border:1px solid rgba(139,0,0,0.3);
+      background:rgba(139,0,0,0.08);
+      border:1px solid rgba(139,0,0,0.25);
       border-radius:50px;
       padding:5px 12px;
       margin-top:14px;
@@ -102,6 +103,7 @@
       background:#8B0000;
       border-radius:12px;
       padding:18px 32px;
+      box-shadow:0 8px 32px rgba(139,0,0,0.25);
     }
     .winner-icon{
       width:44px;height:44px;border-radius:50%;
@@ -110,7 +112,6 @@
       flex-shrink:0;
     }
     .winner-icon svg{width:22px;height:22px;stroke:#fff;}
-    .winner-text{}
     .winner-text .wt-top{
       font-size:11px;font-weight:700;letter-spacing:2px;
       text-transform:uppercase;color:rgba(255,255,255,0.7);
@@ -128,20 +129,27 @@
     }
 
     /* ═══════════════════════════
-       INSURANCE SECTION
+       INSURANCE SECTION — DARK
     ═══════════════════════════ */
     .insurance-section{
-      background:#F2F2F2;
+      background:#0A0A0A;
       padding:64px 24px;
       text-align:center;
       position:relative;overflow:hidden;
     }
     .insurance-section::before{
       content:'';position:absolute;inset:0;
-      background-image:
-        linear-gradient(rgba(139,0,0,0.03) 1px,transparent 1px),
-        linear-gradient(90deg,rgba(139,0,0,0.03) 1px,transparent 1px);
-      background-size:40px 40px;pointer-events:none;
+      background-image:url('https://static.wixstatic.com/media/b95bd9_32c0f2e026394934a4ba8d1132013eb7~mv2.png');
+      background-size:cover;
+      background-position:center;
+      filter:invert(1) contrast(2);
+      opacity:0.13;
+      pointer-events:none;
+    }
+    .insurance-section::after{
+      content:'';position:absolute;inset:0;
+      background:radial-gradient(ellipse at center,rgba(139,0,0,0.08) 0%,transparent 65%);
+      pointer-events:none;
     }
     .insurance-content{position:relative;z-index:1;max-width:960px;margin:0 auto;}
 
@@ -151,32 +159,32 @@
     }
     .ins-heading{
       font-size:clamp(20px,3vw,32px);font-weight:900;
-      color:#1a1a1a;letter-spacing:-0.5px;margin-bottom:8px;
+      color:#fff;letter-spacing:-0.5px;margin-bottom:8px;
     }
     .ins-heading em{font-style:normal;color:#8B0000;}
     .ins-sub{
-      font-size:13px;font-weight:500;color:#888;
+      font-size:13px;font-weight:500;
+      color:rgba(255,255,255,0.82);
       margin-bottom:40px;max-width:480px;
       margin-left:auto;margin-right:auto;line-height:1.7;
     }
 
-    /* Insurance logo chips */
+    /* Insurance chips */
     .ins-grid{
       display:flex;flex-wrap:wrap;
       justify-content:center;gap:10px;
       margin-bottom:32px;
     }
     .ins-chip{
-      background:#fff;
-      border:1px solid #e0e0e0;
+      background:#111;
+      border:1px solid #2a2a2a;
       border-radius:8px;
       padding:10px 20px;
       font-size:12px;font-weight:700;
-      color:#333;letter-spacing:0.3px;
+      color:rgba(255,255,255,0.82);letter-spacing:0.3px;
       transition:border-color 0.2s,color 0.2s;
-      box-shadow:0 2px 8px rgba(0,0,0,0.04);
     }
-    .ins-chip:hover{border-color:#8B0000;color:#8B0000;}
+    .ins-chip:hover{border-color:#8B0000;color:#fff;}
     .ins-chip.all{
       background:#8B0000;color:#fff;
       border-color:#8B0000;
@@ -184,9 +192,9 @@
 
     .ins-note{
       font-size:12px;font-weight:600;
-      color:#aaa;letter-spacing:0.3px;
+      color:rgba(255,255,255,0.78);letter-spacing:1.2px;
     }
-    .ins-note strong{color:#8B0000;}
+    .ins-note strong{color:#ff4444;}
 
     /* ─── RESPONSIVE ─── */
     @media(max-width:700px){
@@ -200,7 +208,7 @@
 </head>
 <body>
 
-<!-- ═══ AWARDS SECTION ═══ -->
+<!-- ═══ AWARDS SECTION — LIGHT ═══ -->
 <section class="awards-section">
   <div class="awards-content">
 
@@ -248,7 +256,7 @@
 <!-- ═══ STRIPE DIVIDER ═══ -->
 <div class="section-divider"></div>
 
-<!-- ═══ INSURANCE SECTION ═══ -->
+<!-- ═══ INSURANCE SECTION — DARK ═══ -->
 <section class="insurance-section">
   <div class="insurance-content">
 
@@ -278,7 +286,6 @@
 
   </div>
 </section>
-
 
 <script>
   function reportHeight(){
