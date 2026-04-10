@@ -868,7 +868,7 @@
 function rh(){
   window.parent.postMessage(JSON.stringify({height:Math.max(document.body.scrollHeight,document.documentElement.scrollHeight)}),'*');
 }
-window.addEventListener('load',function(){rh();setTimeout(rh,500);setTimeout(rh,3800);});
+window.addEventListener('load',function(){rh();setTimeout(rh,500);setTimeout(rh,7800);});
 window.addEventListener('resize',rh);
 if(window.ResizeObserver){new ResizeObserver(rh).observe(document.body);}
 </script>
