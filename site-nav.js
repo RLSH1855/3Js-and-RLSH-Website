@@ -16,7 +16,12 @@
     /* ── Top bar ── */
     .sn-top{
       background:#081523;
-      padding:18px 52px;
+      padding:0;
+    }
+    .sn-top-inner{
+      max-width:980px;
+      margin:0 auto;
+      padding:16px 32px;
       display:flex;
       align-items:center;
       justify-content:space-between;
@@ -35,25 +40,27 @@
     .sn-btn-red{
       display:inline-flex;align-items:center;
       padding:14px 26px;
-      background:#7a1212;color:#fff;
+      background:#8B0000;color:#fff;
+      border:1px solid #A30505;
       font-family:'Montserrat',Arial,sans-serif;
       font-size:12px;font-weight:600;letter-spacing:0.5px;
       text-decoration:none;
       white-space:nowrap;
       transition:background 0.2s;
     }
-    .sn-btn-red:hover{background:#5e0e0e;}
+    .sn-btn-red:hover{background:#6e0000;}
     .sn-btn-blue{
       display:inline-flex;align-items:center;
       padding:14px 26px;
-      background:#3d6680;color:#fff;
+      background:#366B8F;color:#fff;
+      border:1px solid #4181AD;
       font-family:'Montserrat',Arial,sans-serif;
       font-size:12px;font-weight:600;letter-spacing:0.5px;
       text-decoration:none;
       white-space:nowrap;
       transition:background 0.2s;
     }
-    .sn-btn-blue:hover{background:#2d5268;}
+    .sn-btn-blue:hover{background:#2d5a7a;}
     .sn-logo-rlsh img{
       height:78px;
       display:block;
@@ -118,14 +125,14 @@
 
     /* ── Mobile top bar adjustments ── */
     @media(max-width:960px){
-      .sn-top{padding:14px 28px;}
+      .sn-top-inner{padding:14px 24px;}
       .sn-nav{display:none;}
       .sn-hamburger{display:flex;}
       .sn-logo-3js img{height:52px;}
       .sn-logo-rlsh img{height:62px;}
     }
     @media(max-width:600px){
-      .sn-top{padding:12px 18px;gap:10px;}
+      .sn-top-inner{padding:12px 16px;gap:10px;}
       .sn-logo-3js img{height:42px;}
       .sn-logo-rlsh img{height:50px;}
       .sn-btn-red,.sn-btn-blue{font-size:10px;padding:11px 14px;}
@@ -214,23 +221,25 @@
   var header = `
     <header class="sn-header">
       <div class="sn-top">
-        <div class="sn-logo-3js">
-          <a href="https://www.3jsautobody.com/">
-            <img src="https://static.wixstatic.com/media/b95bd9_86c7cf1e525d4b9e961a2738ed9af502~mv2.png" alt="3J's Auto Body & Paint — Signal Hill CA">
-          </a>
+        <div class="sn-top-inner">
+          <div class="sn-logo-3js">
+            <a href="https://www.3jsautobody.com/">
+              <img src="https://static.wixstatic.com/media/b95bd9_86c7cf1e525d4b9e961a2738ed9af502~mv2.png" alt="3J's Auto Body & Paint — Signal Hill CA">
+            </a>
+          </div>
+          <div class="sn-btns">
+            <a href="https://www.3jsautobody.com/rhino-lining-quote" class="sn-btn-red">Bed-Liner Quote</a>
+            <a href="https://www.3jsautobody.com/free-estimate" class="sn-btn-blue">Free Auto Body Estimate</a>
+          </div>
+          <div class="sn-logo-rlsh">
+            <a href="https://www.3jsautobody.com/">
+              <img src="https://static.wixstatic.com/media/b95bd9_8e3e4f256c85462d960aaa1e3ef740c8~mv2.png" alt="RLSH Rhino Lining of Signal Hill">
+            </a>
+          </div>
+          <button class="sn-hamburger" id="sn-hamburger" aria-label="Open menu">
+            <span></span><span></span><span></span>
+          </button>
         </div>
-        <div class="sn-btns">
-          <a href="https://www.3jsautobody.com/rhino-lining-quote" class="sn-btn-red">Bed-Liner Quote</a>
-          <a href="https://www.3jsautobody.com/free-estimate" class="sn-btn-blue">Free Auto Body Estimate</a>
-        </div>
-        <div class="sn-logo-rlsh">
-          <a href="https://www.3jsautobody.com/">
-            <img src="https://static.wixstatic.com/media/b95bd9_8e3e4f256c85462d960aaa1e3ef740c8~mv2.png" alt="RLSH Rhino Lining of Signal Hill">
-          </a>
-        </div>
-        <button class="sn-hamburger" id="sn-hamburger" aria-label="Open menu">
-          <span></span><span></span><span></span>
-        </button>
       </div>
       <nav class="sn-nav" aria-label="Main navigation">
         <a href="https://www.3jsautobody.com/inside-3js">Inside 3J's</a>
