@@ -15,7 +15,7 @@
 
     /* ── Top bar ── */
     .sn-top{
-      background:#081523;
+      background:#081523 url('https://rlsh1855.github.io/3Js-and-RLSH-Website/1-BG_dark_blue_gradiant_edited_edited.jpg') center center / cover no-repeat;
       padding:0;
     }
     .sn-top-inner{
