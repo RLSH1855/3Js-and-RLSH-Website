@@ -395,17 +395,33 @@
       margin-bottom:48px;
     }
     .video-section h2 em{color:#8B0000;font-style:normal;}
+    .video-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:20px;
+      max-width:1100px;
+      margin:0 auto;
+    }
+    .video-item-lbl{
+      font-size:9px;font-weight:700;letter-spacing:3px;
+      text-transform:uppercase;
+      color:rgba(255,255,255,0.55);
+      margin-bottom:10px;
+      text-align:left;
+    }
     .video-wrap{
       position:relative;
-      max-width:900px;
-      margin:0 auto;
       background:#000;
     }
     .video-wrap video{
       width:100%;
       display:block;
-      max-height:520px;
+      max-height:420px;
+      min-height:160px;
       object-fit:contain;
+    }
+    @media(max-width:768px){
+      .video-grid{grid-template-columns:1fr;gap:16px;}
     }
 
     /* ════════════════════════════════
@@ -522,9 +538,9 @@
       .hero-text{padding:36px 20px;}
       .hero-text .label{margin-bottom:16px;}
       .hero-h1{font-size:clamp(44px,13vw,68px);letter-spacing:-2px;line-height:0.9;margin-bottom:16px;}
-      .hero-tagline{font-size:13px;line-height:1.75;margin-bottom:20px;max-width:100%;}
+      .hero-tagline{font-size:14px;line-height:1.75;margin-bottom:20px;max-width:100%;}
       .hero-feats{gap:7px;margin-bottom:24px;}
-      .hero-feats li{font-size:10px;}
+      .hero-feats li{font-size:11px;}
       .hero-img{height:260px;}
       .hero-cta{width:100%;justify-content:center;padding:16px 24px;align-self:stretch;}
 
@@ -532,7 +548,7 @@
       .stats-band{grid-template-columns:1fr 1fr;}
       .stat{padding:18px 12px;}
       .stat-num{font-size:clamp(22px,6vw,32px);margin-bottom:4px;}
-      .stat-lbl{font-size:8px;letter-spacing:1.5px;}
+      .stat-lbl{font-size:9px;letter-spacing:1.5px;}
       .stat:nth-child(2){border-right:none;}
       .stat:nth-child(3){border-top:1px solid #ebebeb;border-right:1px solid #ebebeb;}
       .stat:nth-child(4){border-top:1px solid #ebebeb;border-right:none;}
@@ -549,8 +565,8 @@
       .feat{padding:20px 18px;}
       .feat-icon{margin-bottom:12px;}
       .feat-icon svg{width:48px;height:48px;}
-      .feat-title{font-size:12px;margin-bottom:6px;}
-      .feat-body{font-size:11.5px;line-height:1.65;}
+      .feat-title{font-size:13px;margin-bottom:6px;}
+      .feat-body{font-size:12.5px;line-height:1.65;}
 
       /* — Content card overlay — short, no ghost space — */
       .content-section{min-height:auto;}
@@ -567,7 +583,7 @@
       .s-text h2{margin-bottom:12px;}
       .s-text p{line-height:1.75;}
       .s-list{margin-top:14px;gap:7px;}
-      .s-list li{font-size:9.5px;}
+      .s-list li{font-size:10.5px;}
       .s-img{min-height:220px;}
       .s-cta{width:100%;justify-content:center;padding:15px 24px;margin-top:20px;align-self:stretch;}
 
@@ -582,8 +598,8 @@
       .specs-wrap{padding:36px 20px;}
       .specs-wrap h2{margin-bottom:28px;}
       .specs-table td{padding:11px 0;}
-      .specs-table td:first-child{font-size:8px;letter-spacing:1.5px;width:40%;}
-      .specs-table td:last-child{font-size:12px;}
+      .specs-table td:first-child{font-size:9px;letter-spacing:1.5px;width:40%;}
+      .specs-table td:last-child{font-size:13px;}
 
       /* — CTA band — */
       .cta-band{padding:40px 20px;text-align:center;gap:20px;}
@@ -848,16 +864,23 @@
 <section class="video-section">
   <span class="label" data-a="up">See It In Action</span>
   <h2 data-a="up" data-d="1">The MX4 <em>Up Close</em></h2>
-  <div class="video-wrap" data-a="scale" data-d="2">
-    <video
-      autoplay
-      loop
-      muted
-      playsinline
-      preload="auto"
-      src="../BAK Tonneau Covers Accessories Manufactured by RealTruck.mp4">
-      Your browser does not support the video tag.
-    </video>
+  <div class="video-grid" data-a="up" data-d="2">
+    <div>
+      <div class="video-item-lbl">Water Test</div>
+      <div class="video-wrap">
+        <video autoplay loop muted playsinline preload="auto"
+          src="https://rlsh1855.github.io/3Js-and-RLSH-Website/mx4-water-clip.mp4">
+        </video>
+      </div>
+    </div>
+    <div>
+      <div class="video-item-lbl">Full Overview</div>
+      <div class="video-wrap">
+        <video autoplay loop muted playsinline preload="auto"
+          src="https://rlsh1855.github.io/3Js-and-RLSH-Website/New%20and%20Improved%20RealTruck%20BAKFlip%20MX4%20(Gen3)%20Hard%20Folding%20Tonneau%20Cover.mp4">
+        </video>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -936,6 +959,24 @@
     });
   },{threshold:0.5});
   nums.forEach(function(el){ io.observe(el); });
+})();
+
+/* ── Force autoplay on all videos ── */
+(function(){
+  var videos = document.querySelectorAll('video');
+  videos.forEach(function(v){
+    v.muted = true;
+    v.play().catch(function(){});
+  });
+  if(window.IntersectionObserver){
+    var vio = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.play().catch(function(){}); }
+        else { e.target.pause(); }
+      });
+    },{threshold:0.25});
+    videos.forEach(function(v){ vio.observe(v); });
+  }
 })();
 
 /* ── Wix iframe height ── */
