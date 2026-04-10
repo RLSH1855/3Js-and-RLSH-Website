@@ -28,7 +28,7 @@
       gap:24px;
     }
     .sn-logo-3js img{
-      height:62px;
+      height:72px;
       display:block;
       object-fit:contain;
     }
@@ -39,7 +39,7 @@
     }
     .sn-btn-red{
       display:inline-flex;align-items:center;
-      padding:14px 26px;
+      padding:16px 28px;
       background:#8B0000;color:#fff;
       border:1px solid #A30505;
       font-family:'Montserrat',Arial,sans-serif;
@@ -51,7 +51,7 @@
     .sn-btn-red:hover{background:#6e0000;}
     .sn-btn-blue{
       display:inline-flex;align-items:center;
-      padding:14px 26px;
+      padding:16px 28px;
       background:#366B8F;color:#fff;
       border:1px solid #4181AD;
       font-family:'Montserrat',Arial,sans-serif;
@@ -62,7 +62,7 @@
     }
     .sn-btn-blue:hover{background:#2d5a7a;}
     .sn-logo-rlsh img{
-      height:78px;
+      height:90px;
       display:block;
       object-fit:contain;
     }
@@ -80,7 +80,7 @@
       display:inline-flex;align-items:center;
       padding:14px 18px;
       font-family:'Montserrat',Arial,sans-serif;
-      font-size:10.5px;font-weight:600;
+      font-size:10.5px;font-weight:500;
       letter-spacing:1.5px;text-transform:uppercase;
       color:#fff;text-decoration:none;
       white-space:nowrap;
