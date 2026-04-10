@@ -395,33 +395,75 @@
       margin-bottom:48px;
     }
     .video-section h2 em{color:#8B0000;font-style:normal;}
-    .video-grid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:20px;
-      max-width:1100px;
-      margin:0 auto;
-    }
-    .video-item-lbl{
-      font-size:9px;font-weight:700;letter-spacing:3px;
-      text-transform:uppercase;
-      color:rgba(255,255,255,0.55);
-      margin-bottom:10px;
-      text-align:left;
-    }
     .video-wrap{
       position:relative;
+      max-width:960px;
+      margin:0 auto;
       background:#000;
     }
     .video-wrap video{
       width:100%;
       display:block;
-      max-height:420px;
+      max-height:520px;
       min-height:160px;
       object-fit:contain;
     }
-    @media(max-width:768px){
-      .video-grid{grid-template-columns:1fr;gap:16px;}
+
+    /* ════════════════════════════════
+       WATER VIDEO SECTION
+    ════════════════════════════════ */
+    .water-section{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      background:#0d0d0d;
+      border-top:1px solid #1a1a1a;
+      min-height:380px;
+    }
+    .water-text{
+      display:flex;flex-direction:column;
+      justify-content:center;
+      padding:64px 56px;
+    }
+    .water-h{
+      font-size:clamp(26px,3.5vw,52px);
+      font-weight:900;
+      letter-spacing:-1.5px;
+      line-height:0.95;
+      color:#fff;
+      text-transform:uppercase;
+      margin-bottom:20px;
+    }
+    .water-h em{
+      display:block;
+      color:#e8b000;
+      font-style:normal;
+    }
+    .water-body{
+      font-size:13px;font-weight:500;
+      color:rgba(255,255,255,0.75);
+      line-height:1.85;
+      max-width:360px;
+    }
+    .water-vid{
+      overflow:hidden;
+      position:relative;
+    }
+    .water-vid video{
+      width:100%;height:100%;
+      object-fit:cover;display:block;
+      min-height:300px;
+    }
+    @media(max-width:960px){
+      .water-section{grid-template-columns:1fr;}
+      .water-text{padding:48px 36px;}
+      .water-vid{min-height:280px;}
+      .water-vid video{min-height:280px;}
+    }
+    @media(max-width:600px){
+      .water-text{padding:36px 20px;}
+      .water-body{max-width:100%;}
+      .water-vid{min-height:220px;}
+      .water-vid video{min-height:220px;}
     }
 
     /* ════════════════════════════════
@@ -830,6 +872,21 @@
 </section>
 
 <!-- ════════════════════════════════
+     WATER VIDEO SECTION
+════════════════════════════════ -->
+<section class="water-section">
+  <div class="water-text" data-a="up">
+    <h2 class="water-h">Fits Tighter<em>To Keep Water Out</em></h2>
+    <p class="water-body">Improved seals and all-new tight-fit clamps provide state-of-the-art weather protection.</p>
+  </div>
+  <div class="water-vid" data-a="scale">
+    <video autoplay loop muted playsinline preload="auto"
+      src="https://rlsh1855.github.io/3Js-and-RLSH-Website/mx4-water-clip.mp4">
+    </video>
+  </div>
+</section>
+
+<!-- ════════════════════════════════
      INSTALLATION
 ════════════════════════════════ -->
 <section class="split-section">
@@ -864,23 +921,10 @@
 <section class="video-section">
   <span class="label" data-a="up">See It In Action</span>
   <h2 data-a="up" data-d="1">The MX4 <em>Up Close</em></h2>
-  <div class="video-grid" data-a="up" data-d="2">
-    <div>
-      <div class="video-item-lbl">Water Test</div>
-      <div class="video-wrap">
-        <video autoplay loop muted playsinline preload="auto"
-          src="https://rlsh1855.github.io/3Js-and-RLSH-Website/mx4-water-clip.mp4">
-        </video>
-      </div>
-    </div>
-    <div>
-      <div class="video-item-lbl">Full Overview</div>
-      <div class="video-wrap">
-        <video autoplay loop muted playsinline preload="auto"
-          src="https://rlsh1855.github.io/3Js-and-RLSH-Website/New%20and%20Improved%20RealTruck%20BAKFlip%20MX4%20(Gen3)%20Hard%20Folding%20Tonneau%20Cover.mp4">
-        </video>
-      </div>
-    </div>
+  <div class="video-wrap" data-a="scale" data-d="2">
+    <video autoplay loop muted playsinline preload="auto"
+      src="https://rlsh1855.github.io/3Js-and-RLSH-Website/New%20and%20Improved%20RealTruck%20BAKFlip%20MX4%20(Gen3)%20Hard%20Folding%20Tonneau%20Cover.mp4">
+    </video>
   </div>
 </section>
 
@@ -912,6 +956,7 @@
   <div class="cta-band-text" data-a="up">
     <h2>Ready to Upgrade<br><em>Your Truck?</em></h2>
     <p>Get a free quote from 3J's Auto Body. We source and professionally install the MX4 — Mon–Fri, 8AM–5PM in Signal Hill, CA.</p>
+    <a href="tel:+15624246744" style="display:inline-block;margin-top:12px;font-size:11px;font-weight:700;letter-spacing:2px;color:rgba(255,255,255,0.6);text-decoration:none;text-transform:uppercase;">(562) 424-6744</a>
   </div>
   <a href="/rhino-lining-quote" target="_top" class="cta-band-btn" data-a="up" data-d="2">
     <svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
