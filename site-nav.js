@@ -15,47 +15,47 @@
 
     /* ── Top bar ── */
     .sn-top{
-      background:#0d1b2e;
-      padding:14px 48px;
+      background:#081523;
+      padding:18px 52px;
       display:flex;
       align-items:center;
       justify-content:space-between;
       gap:24px;
     }
     .sn-logo-3js img{
-      height:56px;
+      height:62px;
       display:block;
       object-fit:contain;
     }
     .sn-btns{
       display:flex;
       align-items:center;
-      gap:12px;
+      gap:14px;
     }
     .sn-btn-red{
       display:inline-flex;align-items:center;
-      padding:12px 22px;
-      background:#8B1515;color:#fff;
+      padding:14px 26px;
+      background:#7a1212;color:#fff;
       font-family:'Montserrat',Arial,sans-serif;
-      font-size:11px;font-weight:700;letter-spacing:1.2px;
-      text-transform:uppercase;text-decoration:none;
+      font-size:12px;font-weight:600;letter-spacing:0.5px;
+      text-decoration:none;
       white-space:nowrap;
       transition:background 0.2s;
     }
-    .sn-btn-red:hover{background:#6e1010;}
+    .sn-btn-red:hover{background:#5e0e0e;}
     .sn-btn-blue{
       display:inline-flex;align-items:center;
-      padding:12px 22px;
-      background:#4a6d8c;color:#fff;
+      padding:14px 26px;
+      background:#3d6680;color:#fff;
       font-family:'Montserrat',Arial,sans-serif;
-      font-size:11px;font-weight:700;letter-spacing:1.2px;
-      text-transform:uppercase;text-decoration:none;
+      font-size:12px;font-weight:600;letter-spacing:0.5px;
+      text-decoration:none;
       white-space:nowrap;
       transition:background 0.2s;
     }
-    .sn-btn-blue:hover{background:#3a5a77;}
+    .sn-btn-blue:hover{background:#2d5268;}
     .sn-logo-rlsh img{
-      height:64px;
+      height:78px;
       display:block;
       object-fit:contain;
     }
@@ -118,21 +118,21 @@
 
     /* ── Mobile top bar adjustments ── */
     @media(max-width:960px){
-      .sn-top{padding:12px 28px;}
+      .sn-top{padding:14px 28px;}
       .sn-nav{display:none;}
       .sn-hamburger{display:flex;}
-      .sn-logo-3js img{height:46px;}
-      .sn-logo-rlsh img{height:52px;}
+      .sn-logo-3js img{height:52px;}
+      .sn-logo-rlsh img{height:62px;}
     }
     @media(max-width:600px){
-      .sn-top{padding:10px 18px;gap:12px;}
-      .sn-logo-3js img{height:38px;}
-      .sn-logo-rlsh img{height:44px;}
-      .sn-btn-red,.sn-btn-blue{font-size:9px;padding:10px 12px;letter-spacing:0.8px;}
+      .sn-top{padding:12px 18px;gap:10px;}
+      .sn-logo-3js img{height:42px;}
+      .sn-logo-rlsh img{height:50px;}
+      .sn-btn-red,.sn-btn-blue{font-size:10px;padding:11px 14px;}
     }
     @media(max-width:430px){
-      .sn-btns{gap:6px;}
-      .sn-btn-red,.sn-btn-blue{padding:9px 10px;}
+      .sn-btns{gap:8px;}
+      .sn-btn-red,.sn-btn-blue{font-size:9px;padding:10px 11px;}
     }
 
     /* ════════════════════════════════
