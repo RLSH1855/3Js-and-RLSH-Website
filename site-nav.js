@@ -328,4 +328,90 @@
     });
   }
 
+  /* ════════════════════════════════
+     DESKTOP PHONE MODAL
+     On mobile: tel: links dial normally.
+     On desktop: intercept and show a
+     clean popup with the number instead
+     of the browser's ugly dialog.
+  ════════════════════════════════ */
+  var isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) ||
+                 (window.matchMedia && window.matchMedia('(pointer:coarse)').matches);
+
+  if(!isMobile){
+    var modalCSS = `
+      .sn-phone-overlay{
+        display:none;position:fixed;inset:0;z-index:99999;
+        background:rgba(0,0,0,0.55);
+        align-items:center;justify-content:center;
+      }
+      .sn-phone-overlay.sn-popen{display:flex;}
+      .sn-phone-box{
+        background:#fff;border-radius:16px;
+        padding:44px 52px;text-align:center;
+        box-shadow:0 24px 64px rgba(0,0,0,0.28);
+        font-family:'Montserrat',Arial,sans-serif;
+        max-width:360px;width:90%;
+        animation:snPop 0.22s ease;
+      }
+      @keyframes snPop{from{transform:scale(0.92);opacity:0;}to{transform:scale(1);opacity:1;}}
+      .sn-phone-label{
+        font-size:9px;font-weight:800;letter-spacing:3px;
+        text-transform:uppercase;color:#8B0000;margin-bottom:14px;
+      }
+      .sn-phone-number{
+        font-size:30px;font-weight:900;color:#1a1a1a;
+        letter-spacing:-0.5px;margin-bottom:6px;
+      }
+      .sn-phone-hours{
+        font-size:11px;font-weight:500;color:#999;margin-bottom:28px;
+      }
+      .sn-phone-close{
+        background:#8B0000;color:#fff;border:none;
+        padding:13px 36px;border-radius:8px;
+        font-family:'Montserrat',Arial,sans-serif;
+        font-size:10px;font-weight:700;letter-spacing:1.5px;
+        text-transform:uppercase;cursor:pointer;
+        transition:background 0.2s;
+      }
+      .sn-phone-close:hover{background:#6e0000;}
+    `;
+    var mStyle = document.createElement('style');
+    mStyle.textContent = modalCSS;
+    document.head.appendChild(mStyle);
+
+    document.body.insertAdjacentHTML('beforeend',
+      '<div class="sn-phone-overlay" id="sn-phone-overlay">' +
+        '<div class="sn-phone-box">' +
+          '<div class="sn-phone-label">Give Us a Call</div>' +
+          '<div class="sn-phone-number">(562) 424-6744</div>' +
+          '<div class="sn-phone-hours">Mon – Fri &nbsp; 8 AM – 5 PM</div>' +
+          '<button class="sn-phone-close" id="sn-phone-close">Close</button>' +
+        '</div>' +
+      '</div>'
+    );
+
+    var overlay = document.getElementById('sn-phone-overlay');
+    var closeBtn = document.getElementById('sn-phone-close');
+
+    document.addEventListener('click', function(e){
+      var link = e.target.closest ? e.target.closest('a[href^="tel:"]') : null;
+      if(!link && e.target.tagName === 'A' && e.target.href && e.target.href.indexOf('tel:') === 0) link = e.target;
+      if(link){
+        e.preventDefault();
+        overlay.classList.add('sn-popen');
+      }
+    });
+
+    closeBtn.addEventListener('click', function(){
+      overlay.classList.remove('sn-popen');
+    });
+    overlay.addEventListener('click', function(e){
+      if(e.target === overlay) overlay.classList.remove('sn-popen');
+    });
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape') overlay.classList.remove('sn-popen');
+    });
+  }
+
 })();
