@@ -127,8 +127,14 @@
       align-items:center;justify-content:center;
       gap:16px;padding:40px;text-align:center;
     }
-    .visual-icon{width:72px;height:72px;border-radius:50%;display:flex;align-items:center;justify-content:center;}
-    .visual-icon svg{width:34px;height:34px;}
+    .visual-icon{width:64px;height:64px;border-radius:16px;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(0,0,0,0.22);}
+    .visual-icon svg{width:28px;height:28px;stroke:#fff;stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+    .ic-blue{background:#1565C0;}
+    .ic-red{background:#8B0000;}
+    .ic-green{background:#2E7D32;}
+    .ic-orange{background:#E65100;}
+    .ic-purple{background:#6A1B9A;}
+    .ic-teal{background:#00838F;}
     .visual-title{font-size:18px;font-weight:900;letter-spacing:-0.3px;}
     .visual-sub{font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;opacity:0.5;}
 
@@ -141,8 +147,6 @@
     .dark .cta-link{background:#8B0000;color:#fff;border:2px solid transparent;}
     .dark .cta-link:hover{background:#A00000;}
     .dark .visual-box{background:#111;border:1px solid #1e1e1e;}
-    .dark .visual-icon{background:rgba(139,0,0,0.15);}
-    .dark .visual-icon svg{stroke:#8B0000;}
     .dark .visual-title{color:#fff;}
     .dark .num-badge{color:#fff;}
 
@@ -155,8 +159,6 @@
     .light .cta-link{background:transparent;color:#8B0000;border:2px solid #8B0000;}
     .light .cta-link:hover{background:#8B0000;color:#fff;}
     .light .visual-box{background:#fff;border:1px solid #e0e0e0;box-shadow:0 4px 30px rgba(0,0,0,0.08);}
-    .light .visual-icon{background:rgba(139,0,0,0.08);}
-    .light .visual-icon svg{stroke:#8B0000;}
     .light .visual-title{color:#1a1a1a;}
     .light .num-badge{color:#1a1a1a;}
 
@@ -476,7 +478,7 @@
       <span class="num-badge">01</span>
       <div class="visual-box">
         <div class="visual-box-inner">
-          <div class="visual-icon">
+          <div class="visual-icon ic-red">
             <svg fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
           </div>
           <div class="visual-title">Collision Repair</div>
@@ -516,7 +518,7 @@
       <span class="num-badge">02</span>
       <div class="visual-box">
         <div class="visual-box-inner">
-          <div class="visual-icon">
+          <div class="visual-icon ic-purple">
             <svg fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="13.5" cy="6.5" r="2.5"/><path d="M17.5 10.5c1.5 1.5 2.5 3.5 2.5 5.5A7 7 0 013 16c0-2 1-4 2.5-5.5"/><path d="M12 22V12"/></svg>
           </div>
           <div class="visual-title">Paint &amp; Refinishing</div>
@@ -555,7 +557,7 @@
       <span class="num-badge">03</span>
       <div class="visual-box">
         <div class="visual-box-inner">
-          <div class="visual-icon">
+          <div class="visual-icon ic-green">
             <svg fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 12l2.5 2.5L16 9"/></svg>
           </div>
           <div class="visual-title">Dent &amp; Scratch Repair</div>
@@ -594,7 +596,7 @@
       <span class="num-badge">04</span>
       <div class="visual-box">
         <div class="visual-box-inner">
-          <div class="visual-icon">
+          <div class="visual-icon ic-orange">
             <svg fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v4h-7V8zM5.5 21a1.5 1.5 0 100-3 1.5 1.5 0 000 3zm13 0a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"/></svg>
           </div>
           <div class="visual-title">Frame &amp; Structural</div>
@@ -633,7 +635,7 @@
       <span class="num-badge">05</span>
       <div class="visual-box">
         <div class="visual-box-inner">
-          <div class="visual-icon">
+          <div class="visual-icon ic-teal">
             <svg fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           </div>
           <div class="visual-title">Lease Turn-In Ready</div>
