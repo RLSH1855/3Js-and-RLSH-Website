@@ -1,4 +1,6 @@
 (function(){
+  /* If this page is embedded inside a Wix iframe, skip nav injection entirely */
+  if(window.self !== window.top) return;
 
   /* ════════════════════════════════
      STYLES
