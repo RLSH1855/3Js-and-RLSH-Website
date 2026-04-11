@@ -1,6 +1,8 @@
 (function(){
-  /* If this page is embedded inside a Wix iframe, skip nav injection entirely */
-  if(window.self !== window.top) return;
+  /* Skip nav injection if embedded in Wix (iframe OR ?embed=1 param) */
+  var _inFrame = (function(){try{return window.self!==window.top;}catch(e){return true;}})();
+  var _hasParam = window.location.search.indexOf('embed=1')!==-1;
+  if(_inFrame||_hasParam) return;
 
   /* ════════════════════════════════
      STYLES
