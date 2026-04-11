@@ -78,7 +78,7 @@
     }
     .sn-nav a{
       display:inline-flex;align-items:center;
-      padding:14px 18px;
+      padding:18px 18px;
       font-family:'Montserrat',Arial,sans-serif;
       font-size:10.5px;font-weight:500;
       letter-spacing:1.5px;text-transform:uppercase;
@@ -229,7 +229,7 @@
           </div>
           <div class="sn-btns">
             <a href="https://www.3jsautobody.com/rhino-lining-quote" class="sn-btn-red">Bed-Liner Quote</a>
-            <a href="https://www.3jsautobody.com/free-estimate" class="sn-btn-blue">Free Auto Body Estimate</a>
+            <a href="https://www.carwise.com/online-photo-estimate/3js-autobody-paint-inc-signal-hill-ca-90755/479382?source=shop.profile&referer=estimate.cccone.com" class="sn-btn-blue">Free Auto Body Estimate</a>
           </div>
           <div class="sn-logo-rlsh">
             <a href="https://www.3jsautobody.com/">
@@ -263,7 +263,7 @@
         <a href="https://www.3jsautobody.com/contact-us">Contact Us</a>
         <a href="https://www.3jsautobody.com/faq">FAQ</a>
         <a href="https://www.3jsautobody.com/rhino-lining-quote" class="sn-mob-red">Bed-Liner Quote</a>
-        <a href="https://www.3jsautobody.com/free-estimate">Free Auto Body Estimate</a>
+        <a href="https://www.carwise.com/online-photo-estimate/3js-autobody-paint-inc-signal-hill-ca-90755/479382?source=shop.profile&referer=estimate.cccone.com">Free Auto Body Estimate</a>
       </div>
     </header>
   `;

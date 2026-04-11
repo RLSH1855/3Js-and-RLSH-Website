@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Insurance Carriers We Work With — State Farm, Geico, Progressive & More | 3J's Auto Body</title>
+  <meta name="description" content="3J's Auto Body works with all major insurance carriers in Signal Hill, CA: State Farm, Geico, Progressive, Allstate, Farmers, AAA, and more. We handle the paperwork.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Insurance Carriers — All Major Carriers | 3J's Auto Body Signal Hill CA">
+  <meta property="og:description" content="We work directly with all major insurance carriers. Let 3J's Auto Body handle your claim paperwork in Signal Hill, CA.">
+  <meta property="og:site_name" content="3J's Auto Body &amp; Paint">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:'Montserrat',sans-serif;background:#fff;overflow-x:hidden;}
+
+    .carriers-section{
+      background:#fff;
+      padding:56px 0 64px;
+      text-align:center;
+    }
+
+    .carriers-header{padding:0 24px;margin-bottom:40px;}
+    .carriers-eyebrow{
+      font-size:10px;font-weight:800;letter-spacing:3px;
+      text-transform:uppercase;color:#8B0000;margin-bottom:10px;
+    }
+    .carriers-heading{
+      font-size:clamp(20px,3vw,32px);font-weight:900;
+      color:#1a1a1a;letter-spacing:-0.5px;margin-bottom:6px;
+    }
+    .carriers-heading em{font-style:normal;color:#8B0000;}
+    .carriers-sub{
+      font-size:13px;font-weight:500;color:#888;letter-spacing:0.3px;
+    }
+
+    /* Marquee */
+    .marquee-wrapper{
+      width:100%;overflow:hidden;position:relative;
+      -webkit-mask-image:linear-gradient(to right,transparent 0%,black 8%,black 92%,transparent 100%);
+      mask-image:linear-gradient(to right,transparent 0%,black 8%,black 92%,transparent 100%);
+    }
+    .marquee-track{
+      display:flex;gap:12px;width:max-content;
+      animation:scroll 35s linear infinite;
+    }
+    .marquee-wrapper:hover .marquee-track{animation-play-state:paused;}
+    @keyframes scroll{
+      0%{transform:translateX(0);}
+      100%{transform:translateX(-50%);}
+    }
+
+    /* Logo chip */
+    .logo-chip{
+      display:inline-flex;align-items:center;justify-content:center;
+      height:52px;
+      padding:0 28px;
+      background:#fff;
+      border:1.5px solid #e0e0e0;
+      border-radius:8px;
+      font-size:12px;font-weight:800;
+      letter-spacing:1.5px;text-transform:uppercase;
+      color:#555;
+      white-space:nowrap;
+      cursor:default;
+      transition:color 0.25s,border-color 0.25s,box-shadow 0.25s;
+      box-shadow:0 2px 8px rgba(0,0,0,0.04);
+    }
+    .logo-chip:hover{
+      color:var(--brand);
+      border-color:var(--brand);
+      box-shadow:0 4px 18px rgba(0,0,0,0.10);
+    }
+  </style>
+</head>
+<body>
+
+<section class="carriers-section">
+
+  <div class="carriers-header">
+    <p class="carriers-eyebrow">Insurance Claims</p>
+    <h2 class="carriers-heading">We Work With <em>All Major Carriers</em></h2>
+    <p class="carriers-sub">We handle the paperwork so you don't have to.</p>
+  </div>
+
+  <div class="marquee-wrapper">
+    <div class="marquee-track" id="ins-track">
+      <div class="logo-chip" style="--brand:#CC0000">State Farm</div>
+      <div class="logo-chip" style="--brand:#00A651">Geico</div>
+      <div class="logo-chip" style="--brand:#003087">Progressive</div>
+      <div class="logo-chip" style="--brand:#0000DC">Allstate</div>
+      <div class="logo-chip" style="--brand:#CC0000">Farmers</div>
+      <div class="logo-chip" style="--brand:#00529B">AAA</div>
+      <div class="logo-chip" style="--brand:#1B3A6B">Mercury</div>
+      <div class="logo-chip" style="--brand:#0058A0">Safeco</div>
+      <div class="logo-chip" style="--brand:#1A61AC">USAA</div>
+      <div class="logo-chip" style="--brand:#0075BF">Kemper</div>
+      <div class="logo-chip" style="--brand:#E31837">21st Century</div>
+      <div class="logo-chip" style="--brand:#FAB01A">Liberty Mutual</div>
+      <div class="logo-chip" style="--brand:#00ADEF">MetLife</div>
+      <div class="logo-chip" style="--brand:#1A6496">Nationwide</div>
+      <div class="logo-chip" style="--brand:#8B0000">Bristol West</div>
+      <div class="logo-chip" style="--brand:#004B87">Travelers</div>
+      <div class="logo-chip" style="--brand:#CC0000">Infinity</div>
+      <div class="logo-chip" style="--brand:#8B0000">+ All Others</div>
+    </div>
+  </div>
+
+</section>
+
+<script>
+  var t = document.getElementById('ins-track');
+  t.innerHTML += t.innerHTML;
+
+  function reportHeight(){
+    var h = Math.max(document.body.scrollHeight,document.documentElement.scrollHeight);
+    window.parent.postMessage(JSON.stringify({height:h}),'*');
+  }
+  window.addEventListener('load',reportHeight);
+  window.addEventListener('resize',reportHeight);
+</script>
+</body>
+</html>

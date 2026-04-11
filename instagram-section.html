@@ -3,7 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Instagram — 3J's Auto Body</title>
+  <title>Instagram @rlofsignalhill — See Our Work | 3J's Auto Body Signal Hill CA</title>
+  <meta name="description" content="Follow 3J's Auto Body on Instagram @rlofsignalhill. Real trucks, real jobs, real results — straight from the shop in Signal Hill, CA.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Instagram @rlofsignalhill | 3J's Auto Body Signal Hill CA">
+  <meta property="og:description" content="See our latest work on Instagram. Rhino Liners, tonneau covers, collision repairs and more from our shop in Signal Hill, CA.">
+  <meta property="og:site_name" content="3J's Auto Body &amp; Paint">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
@@ -267,5 +273,14 @@
 
 </section>
 
+<script>
+  function reportHeight(){
+    var h = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
+    window.parent.postMessage(JSON.stringify({height:h}),'*');
+  }
+  window.addEventListener('load', function(){ reportHeight(); setTimeout(reportHeight,500); setTimeout(reportHeight,1500); });
+  window.addEventListener('resize', reportHeight);
+  if(window.ResizeObserver){ new ResizeObserver(reportHeight).observe(document.body); }
+</script>
 </body>
 </html>
