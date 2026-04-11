@@ -13,12 +13,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    body{font-family:'Montserrat',sans-serif;background:#0A0A0A;color:#fff;}
+    body{font-family:'Montserrat',sans-serif;background:#fff;color:#111;}
 
     .ig-section{
-      background:#0A0A0A;
+      background:#fff;
       padding:56px 0 64px;
       text-align:center;
+      border-top:3px solid #8B0000;
     }
     .ig-header{padding:0 24px;}
 
@@ -40,12 +41,12 @@
     /* Profile row */
     .ig-profile{
       display:inline-flex;align-items:center;gap:14px;
-      background:#141414;border:1px solid #222;
+      background:#f5f5f5;border:1px solid #e0e0e0;
       border-radius:50px;padding:10px 22px 10px 10px;
       margin-bottom:36px;text-decoration:none;
       transition:border-color 0.2s,background 0.2s;
     }
-    .ig-profile:hover{background:#1a1a1a;border-color:#8B0000;}
+    .ig-profile:hover{background:#ebebeb;border-color:#8B0000;}
     .ig-avatar{
       width:42px;height:42px;border-radius:50%;
       background:linear-gradient(135deg,#8B0000,#C0392B,#E74C3C);
@@ -54,8 +55,8 @@
     }
     .ig-avatar svg{width:20px;height:20px;}
     .ig-info{text-align:left;}
-    .ig-handle{font-size:13px;font-weight:800;color:#fff;letter-spacing:0.3px;}
-    .ig-name{font-size:11px;font-weight:500;color:#555;margin-top:1px;}
+    .ig-handle{font-size:13px;font-weight:800;color:#1a1a1a;letter-spacing:0.3px;}
+    .ig-name{font-size:11px;font-weight:500;color:#888;margin-top:1px;}
 
     /* Grid */
     .ig-grid{
@@ -73,7 +74,7 @@
     .ig-tile{
       position:relative;
       aspect-ratio:1;
-      background:#111;
+      background:#f0f0f0;
       overflow:hidden;
       cursor:pointer;
       text-decoration:none;
@@ -91,15 +92,15 @@
     .ig-tile::before{
       content:'';
       position:absolute;inset:0;
-      background:linear-gradient(135deg,#0f0f0f 0%,#1a1a1a 50%,#111 100%);
+      background:linear-gradient(135deg,#f0f0f0 0%,#e8e8e8 50%,#f0f0f0 100%);
     }
     /* Subtle pattern per tile */
-    .ig-tile:nth-child(1)::before{background:linear-gradient(135deg,#0d0d0d,#1c1010);}
-    .ig-tile:nth-child(2)::before{background:linear-gradient(145deg,#111,#1a0808);}
-    .ig-tile:nth-child(3)::before{background:linear-gradient(125deg,#0f0f0f,#180a0a);}
-    .ig-tile:nth-child(4)::before{background:linear-gradient(155deg,#131010,#0d0d0d);}
-    .ig-tile:nth-child(5)::before{background:linear-gradient(135deg,#1a0808,#111);}
-    .ig-tile:nth-child(6)::before{background:linear-gradient(120deg,#0f0a0a,#1c1010);}
+    .ig-tile:nth-child(1)::before{background:linear-gradient(135deg,#efefef,#e5e5e5);}
+    .ig-tile:nth-child(2)::before{background:linear-gradient(145deg,#f2f2f2,#e8e8e8);}
+    .ig-tile:nth-child(3)::before{background:linear-gradient(125deg,#efefef,#e6e6e6);}
+    .ig-tile:nth-child(4)::before{background:linear-gradient(155deg,#f0f0f0,#e8e8e8);}
+    .ig-tile:nth-child(5)::before{background:linear-gradient(135deg,#e8e8e8,#f2f2f2);}
+    .ig-tile:nth-child(6)::before{background:linear-gradient(120deg,#efefef,#e5e5e5);}
 
     /* Logo watermark inside each tile */
     .ig-tile-inner{
@@ -112,7 +113,7 @@
     .ig-tile-inner svg{width:32px;height:32px;}
     .ig-tile-inner span{
       font-size:9px;font-weight:900;letter-spacing:2px;
-      text-transform:uppercase;color:#fff;
+      text-transform:uppercase;color:#1a1a1a;
     }
 
     /* Red bar accent on bottom */
