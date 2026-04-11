@@ -266,10 +266,24 @@
     .insurance-band h2{font-size:clamp(22px,3vw,34px);font-weight:900;color:#fff;margin-bottom:10px;letter-spacing:-0.5px;}
     .insurance-band h2 em{font-style:normal;color:#8B0000;}
     .insurance-band p{font-size:13px;font-weight:500;color:#555;max-width:540px;margin:0 auto 32px;line-height:1.8;}
-    .ins-logos{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-bottom:32px;}
+    .ins-logos{
+      width:100%;overflow:hidden;position:relative;margin-bottom:32px;
+      -webkit-mask-image:linear-gradient(to right,transparent 0%,black 8%,black 92%,transparent 100%);
+      mask-image:linear-gradient(to right,transparent 0%,black 8%,black 92%,transparent 100%);
+    }
+    .ins-marquee{
+      display:flex;align-items:center;gap:40px;width:max-content;
+      animation:insScroll 22s linear infinite;
+    }
+    .ins-logos:hover .ins-marquee{animation-play-state:paused;}
+    @keyframes insScroll{
+      0%{transform:translateX(0);}
+      100%{transform:translateX(-50%);}
+    }
     .ins-chip{
-      font-size:11px;font-weight:700;
-      color:#888;letter-spacing:0.5px;
+      font-size:11px;font-weight:800;letter-spacing:2px;
+      text-transform:uppercase;color:#888;
+      white-space:nowrap;flex-shrink:0;
     }
 
     /* ─── CERT STRIP ─── */
@@ -636,16 +650,37 @@
   <h2>We Work With <em>All Major Carriers</em></h2>
   <p>You shouldn't have to fight your insurance company on your own. We work directly with all major carriers as a preferred repair facility — handling the claim process so you can focus on getting back on the road.</p>
   <div class="ins-logos">
-    <div class="ins-chip">State Farm</div>
-    <div class="ins-chip">Geico</div>
-    <div class="ins-chip">Progressive</div>
-    <div class="ins-chip">Allstate</div>
-    <div class="ins-chip">Farmers</div>
-    <div class="ins-chip">AAA</div>
-    <div class="ins-chip">Mercury</div>
-    <div class="ins-chip">21st Century</div>
-    <div class="ins-chip">+ All Others</div>
+    <div class="ins-marquee" id="ins-track">
+      <span class="ins-chip">State Farm</span>
+      <span class="ins-chip">·</span>
+      <span class="ins-chip">Geico</span>
+      <span class="ins-chip">·</span>
+      <span class="ins-chip">Progressive</span>
+      <span class="ins-chip">·</span>
+      <span class="ins-chip">Allstate</span>
+      <span class="ins-chip">·</span>
+      <span class="ins-chip">Farmers</span>
+      <span class="ins-chip">·</span>
+      <span class="ins-chip">AAA</span>
+      <span class="ins-chip">·</span>
+      <span class="ins-chip">Mercury</span>
+      <span class="ins-chip">·</span>
+      <span class="ins-chip">Safeco</span>
+      <span class="ins-chip">·</span>
+      <span class="ins-chip">USAA</span>
+      <span class="ins-chip">·</span>
+      <span class="ins-chip">Kemper</span>
+      <span class="ins-chip">·</span>
+      <span class="ins-chip">21st Century</span>
+      <span class="ins-chip">·</span>
+      <span class="ins-chip">Liberty Mutual</span>
+      <span class="ins-chip">·</span>
+      <span class="ins-chip">Nationwide</span>
+      <span class="ins-chip">·</span>
+      <span class="ins-chip">+ All Others</span>
+    </div>
   </div>
+  <script>var t=document.getElementById('ins-track');if(t){t.innerHTML+=t.innerHTML;}</script>
   <p style="font-size:12px;color:#444;margin-bottom:0;">Don't see your carrier? Call us — we work with everyone.</p>
 </section>
 
