@@ -331,6 +331,49 @@
     }
     .btn-secondary:hover{border-color:#8B0000;}
 
+    /* ─── FAQ ─── */
+    .faq-section{
+      background:#111;
+      padding:80px 24px;
+      border-top:1px solid #1a1a1a;
+      border-bottom:1px solid #1a1a1a;
+    }
+    .faq-inner{max-width:740px;margin:0 auto;}
+    .faq-section .eyebrow{color:#8B0000;text-align:center;margin-bottom:6px;}
+    .faq-section h2{
+      font-size:clamp(22px,3.5vw,34px);font-weight:900;
+      letter-spacing:-1px;color:#fff;
+      text-align:center;margin-bottom:40px;
+    }
+    .faq-section h2 em{color:#8B0000;font-style:normal;}
+    .faq-item{border-bottom:1px solid #1e1e1e;}
+    .faq-item:first-of-type{border-top:1px solid #1e1e1e;}
+    .faq-q{
+      width:100%;background:none;border:none;
+      display:flex;align-items:center;justify-content:space-between;
+      padding:20px 0;cursor:pointer;
+      font-family:'Montserrat',sans-serif;
+      font-size:13px;font-weight:800;color:#fff;
+      text-align:left;gap:16px;
+      transition:color 0.2s;
+    }
+    .faq-q:hover{color:#8B0000;}
+    .faq-q svg{
+      width:18px;height:18px;flex-shrink:0;
+      stroke:#8B0000;stroke-width:2.5;fill:none;
+      stroke-linecap:round;stroke-linejoin:round;
+      transition:transform 0.3s ease;
+    }
+    .faq-item.open .faq-q svg{transform:rotate(45deg);}
+    .faq-a{
+      font-size:13px;font-weight:500;
+      color:#888;line-height:1.8;
+      max-height:0;overflow:hidden;
+      transition:max-height 0.4s ease,padding 0.3s ease;
+      padding:0;
+    }
+    .faq-item.open .faq-a{max-height:200px;padding-bottom:20px;}
+
     /* ─── RESPONSIVE ─── */
     @media(max-width:900px){
       .two-col{grid-template-columns:1fr;gap:40px;padding:72px 28px;}
@@ -345,6 +388,7 @@
       .steps{grid-template-columns:1fr;}
       .process-section{padding:56px 20px;}
       .cert-strip{gap:16px;}
+      .faq-section{padding:56px 20px;}
     }
   </style>
 </head>
@@ -686,6 +730,47 @@
   <p style="font-size:12px;color:#444;margin-bottom:0;">Don't see your carrier? Call us — we work with everyone.</p>
 </section>
 
+<!-- ═══ FAQ ═══ -->
+<section class="faq-section">
+  <div class="faq-inner">
+    <span class="eyebrow">Common Questions</span>
+    <h2>Body &amp; Paint <em>FAQ</em></h2>
+
+    <div class="faq-item">
+      <button class="faq-q">
+        Do you work with insurance companies?
+        <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      </button>
+      <div class="faq-a">Yes — 3J's Auto Body works directly with all major insurance carriers including State Farm, Geico, Progressive, Allstate, Farmers, AAA, and more. We handle the paperwork so you don't have to.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q">
+        How long does collision repair take?
+        <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      </button>
+      <div class="faq-a">Repair time depends on the extent of the damage. Minor repairs can be done same-day or next day. Major collision repairs typically take several days. We keep you informed throughout the process and aim for the fastest turnaround without sacrificing quality.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q">
+        Can you match my car's original paint color?
+        <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      </button>
+      <div class="faq-a">Yes — we use computerized color-matching systems to ensure a perfect match to your factory paint. We can also do custom colors or match colors from other sources.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q">
+        Is frame damage safe to drive on?
+        <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      </button>
+      <div class="faq-a">No — frame damage after a collision is a safety issue. We use computerized measuring and alignment systems to diagnose and repair frame damage back to factory specifications before any bodywork begins.</div>
+    </div>
+
+  </div>
+</section>
+
 <!-- ═══ CTA ═══ -->
 <section class="cta-band">
   <div class="cta-content">
@@ -706,12 +791,25 @@
 
 
 <script>
+  /* FAQ accordion */
+  document.querySelectorAll('.faq-q').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var item = btn.closest('.faq-item');
+      var wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(function(i){ i.classList.remove('open'); });
+      if(!wasOpen) item.classList.add('open');
+    });
+  });
+
   function reportHeight(){
     var h = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
     window.parent.postMessage(JSON.stringify({height:h}),'*');
   }
   window.addEventListener('load', function(){ reportHeight(); setTimeout(reportHeight,500); setTimeout(reportHeight,1500); });
   window.addEventListener('resize', reportHeight);
+  document.querySelectorAll('.faq-q').forEach(function(btn){
+    btn.addEventListener('click', function(){ setTimeout(reportHeight, 450); });
+  });
   if(window.ResizeObserver){ new ResizeObserver(reportHeight).observe(document.body); }
 </script>
 <script src="https://rlsh1855.github.io/3Js-and-RLSH-Website/site-nav.js"></script>

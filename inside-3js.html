@@ -290,6 +290,47 @@
       .warranty-wrap{padding:32px 24px;}
       .stat-bar{gap:0;}
     }
+
+    /* ─── FAQ ─── */
+    .faq-section{
+      max-width:740px;margin:0 auto;
+      padding:80px 24px;
+    }
+    .faq-section .eyebrow{text-align:center;margin-bottom:6px;}
+    .faq-section h2{
+      font-size:clamp(22px,3.5vw,34px);font-weight:900;
+      letter-spacing:-1px;color:#fff;
+      text-align:center;margin-bottom:40px;
+    }
+    .faq-section h2 em{color:#8B0000;font-style:normal;}
+    .faq-item{border-bottom:1px solid #1e1e1e;}
+    .faq-item:first-of-type{border-top:1px solid #1e1e1e;}
+    .faq-q{
+      width:100%;background:none;border:none;
+      display:flex;align-items:center;justify-content:space-between;
+      padding:20px 0;cursor:pointer;
+      font-family:'Montserrat',sans-serif;
+      font-size:13px;font-weight:800;color:#fff;
+      text-align:left;gap:16px;
+      transition:color 0.2s;
+    }
+    .faq-q:hover{color:#8B0000;}
+    .faq-q svg{
+      width:18px;height:18px;flex-shrink:0;
+      stroke:#8B0000;stroke-width:2.5;fill:none;
+      stroke-linecap:round;stroke-linejoin:round;
+      transition:transform 0.3s ease;
+    }
+    .faq-item.open .faq-q svg{transform:rotate(45deg);}
+    .faq-a{
+      font-size:13px;font-weight:500;
+      color:#888;line-height:1.8;
+      max-height:0;overflow:hidden;
+      transition:max-height 0.4s ease,padding 0.3s ease;
+      padding:0;
+    }
+    .faq-item.open .faq-a{max-height:200px;padding-bottom:20px;}
+    @media(max-width:600px){.faq-section{padding:56px 20px;}}
   </style>
 </head>
 <body>
@@ -450,8 +491,39 @@
   </div>
 </section>
 
+<!-- ═══ FAQ ═══ -->
+<section class="faq-section">
+  <span class="eyebrow">Common Questions</span>
+  <h2>About <em>3J's Auto Body</em></h2>
+
+  <div class="faq-item">
+    <button class="faq-q">
+      Is 3J's Auto Body family owned?
+      <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+    </button>
+    <div class="faq-a">Yes — 3J's Auto Body is family owned and operated. Founded in 1991 by Jim Sferrazza, the shop has been passed down through three generations of the Sferrazza family right here in Signal Hill, CA.</div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q">
+      Is 3J's Auto Body certified?
+      <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+    </button>
+    <div class="faq-a">Yes — 3J's Auto Body is I-CAR Gold Class certified, ASE certified, and a certified Rhino Liner installer. I-CAR Gold Class is the highest training recognition in the collision repair industry.</div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q">
+      How long has 3J's Auto Body been in business?
+      <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+    </button>
+    <div class="faq-a">3J's Auto Body has been serving Signal Hill and the greater Long Beach area since 1991 — over 30 years at the same location at 1855 E 29th Street, Signal Hill, CA. Same family, same address, same commitment to quality.</div>
+  </div>
+
+</section>
+
 <!-- ═══ CTA BAND ═══ -->
-<div class="red-band" style="margin-top:80px;">
+<div class="red-band" style="margin-top:0;">
   <h2>Ready to Bring Your Truck In?</h2>
   <p>Walk in Mon–Fri 8AM–5PM · Free estimates on body &amp; paint · Same-day Rhino Liner installs available.</p>
   <a href="tel:+15624246744" class="red-band-btn">
@@ -462,12 +534,25 @@
 
 
 <script>
+  /* FAQ accordion */
+  document.querySelectorAll('.faq-q').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var item = btn.closest('.faq-item');
+      var wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(function(i){ i.classList.remove('open'); });
+      if(!wasOpen) item.classList.add('open');
+    });
+  });
+
   function reportHeight(){
     var h = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
     window.parent.postMessage(JSON.stringify({height:h}),'*');
   }
   window.addEventListener('load', function(){ reportHeight(); setTimeout(reportHeight,500); setTimeout(reportHeight,1500); });
   window.addEventListener('resize', reportHeight);
+  document.querySelectorAll('.faq-q').forEach(function(btn){
+    btn.addEventListener('click', function(){ setTimeout(reportHeight, 450); });
+  });
   if(window.ResizeObserver){ new ResizeObserver(reportHeight).observe(document.body); }
 </script>
 <script src="https://rlsh1855.github.io/3Js-and-RLSH-Website/site-nav.js"></script>

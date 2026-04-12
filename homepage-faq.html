@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FAQ — 3J's Auto Body | Signal Hill CA</title>
+  <meta name="description" content="Common questions about 3J's Auto Body in Signal Hill, CA. Insurance claims, repair time, warranty, estimates, towing, and more. (562) 424-6744.">
+  <meta name="robots" content="index, follow">
+
+  <!-- FAQ Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type":"Question","name":"Do you work with insurance companies?","acceptedAnswer":{"@type":"Answer","text":"Yes — 3J's Auto Body works directly with all major insurance carriers including State Farm, Geico, Progressive, Allstate, Farmers, AAA, and more. We handle the paperwork so you don't have to."}},
+      {"@type":"Question","name":"How long does auto body repair take?","acceptedAnswer":{"@type":"Answer","text":"Repair time depends on the extent of the damage. Minor repairs can be done same-day or next day. Major collision repairs typically take several days to a week. We keep you informed throughout and aim for the fastest turnaround without sacrificing quality."}},
+      {"@type":"Question","name":"Do you offer free estimates?","acceptedAnswer":{"@type":"Answer","text":"Yes — estimates are always free at 3J's Auto Body. Walk in Mon–Fri 8AM–5PM or submit an online photo estimate through our website. No appointment needed."}},
+      {"@type":"Question","name":"Is there a warranty on repairs?","acceptedAnswer":{"@type":"Answer","text":"Yes — 3J's Auto Body backs every repair with a lifetime warranty on our workmanship for as long as you own the vehicle."}},
+      {"@type":"Question","name":"Do you offer towing?","acceptedAnswer":{"@type":"Answer","text":"Yes — we can arrange towing for your vehicle to our shop in Signal Hill. Call us at (562) 424-6744 and we will get you taken care of."}},
+      {"@type":"Question","name":"What areas do you serve?","acceptedAnswer":{"@type":"Answer","text":"We are located in Signal Hill, CA and serve the greater Long Beach area including Long Beach, Lakewood, Carson, Compton, Torrance, and surrounding communities in Los Angeles and Orange County."}}
+    ]
+  }
+  </script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:'Montserrat',sans-serif;background:#F2F2F2;color:#1a1a1a;overflow-x:hidden;}
+
+    /* ─── SECTION ─── */
+    .faq-section{
+      background:#F2F2F2;
+      padding:80px 24px;
+      position:relative;overflow:hidden;
+    }
+    .faq-section::before{
+      content:'';position:absolute;inset:0;
+      background-image:radial-gradient(circle,rgba(0,0,0,0.04) 1px,transparent 1px);
+      background-size:26px 26px;pointer-events:none;
+    }
+    .faq-section::after{
+      content:'';position:absolute;inset:0;
+      background:radial-gradient(ellipse at center,rgba(139,0,0,0.04) 0%,transparent 65%);
+      pointer-events:none;
+    }
+    .faq-inner{
+      position:relative;z-index:1;
+      max-width:740px;margin:0 auto;
+    }
+
+    /* ─── HEADER ─── */
+    .eyebrow{
+      font-size:10px;font-weight:800;letter-spacing:3px;
+      text-transform:uppercase;color:#8B0000;
+      text-align:center;margin-bottom:10px;
+    }
+    .faq-title{
+      font-size:clamp(24px,4vw,42px);font-weight:900;
+      letter-spacing:-1.5px;line-height:1.0;
+      text-align:center;margin-bottom:8px;
+      text-transform:uppercase;color:#1a1a1a;
+    }
+    .faq-title em{font-style:normal;color:#8B0000;}
+    .faq-sub{
+      font-size:13px;font-weight:500;
+      color:#888;
+      text-align:center;margin-bottom:52px;
+      line-height:1.7;
+    }
+
+    /* ─── ACCORDION ─── */
+    .faq-list{border-top:1px solid #e0e0e0;}
+    .faq-item{border-bottom:1px solid #e0e0e0;}
+    .faq-q{
+      width:100%;background:none;border:none;
+      display:flex;align-items:center;justify-content:space-between;
+      padding:22px 0;cursor:pointer;
+      font-family:'Montserrat',sans-serif;
+      font-size:13px;font-weight:800;color:#1a1a1a;
+      text-align:left;gap:16px;
+      transition:color 0.2s;
+    }
+    .faq-q:hover{color:#8B0000;}
+    .faq-q svg{
+      width:18px;height:18px;flex-shrink:0;
+      stroke:#8B0000;stroke-width:2.5;fill:none;
+      stroke-linecap:round;stroke-linejoin:round;
+      transition:transform 0.3s ease;
+    }
+    .faq-item.open .faq-q svg{transform:rotate(45deg);}
+    .faq-a{
+      font-size:13px;font-weight:500;
+      color:#555;line-height:1.85;
+      max-height:0;overflow:hidden;
+      transition:max-height 0.4s ease,padding 0.3s ease;
+      padding:0;
+    }
+    .faq-item.open .faq-a{max-height:200px;padding-bottom:22px;}
+
+    /* ─── CTA ROW ─── */
+    .faq-cta{
+      display:flex;justify-content:center;gap:12px;
+      flex-wrap:wrap;margin-top:52px;
+    }
+    .btn-primary{
+      display:inline-flex;align-items:center;gap:8px;
+      background:#8B0000;color:#fff;
+      font-family:'Montserrat',sans-serif;
+      font-size:12px;font-weight:800;letter-spacing:0.5px;
+      text-decoration:none;padding:13px 28px;border-radius:8px;
+      transition:background 0.2s;
+    }
+    .btn-primary:hover{background:#A00000;}
+    .btn-primary svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;}
+    .btn-secondary{
+      display:inline-flex;align-items:center;gap:8px;
+      background:transparent;color:#8B0000;
+      font-family:'Montserrat',sans-serif;
+      font-size:12px;font-weight:800;letter-spacing:0.5px;
+      text-decoration:none;padding:13px 28px;border-radius:8px;
+      border:2px solid #8B0000;
+      transition:background 0.2s,color 0.2s;
+    }
+    .btn-secondary:hover{background:#8B0000;color:#fff;}
+    .btn-secondary svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;}
+
+    /* ─── RESPONSIVE ─── */
+    @media(max-width:600px){
+      .faq-section{padding:56px 20px;}
+      .faq-q{font-size:12px;padding:18px 0;}
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══ FAQ SECTION ═══ -->
+<section class="faq-section">
+  <div class="faq-inner">
+
+    <p class="eyebrow">Got Questions?</p>
+    <h2 class="faq-title">Common <em>FAQ</em></h2>
+    <p class="faq-sub">Everything you need to know before bringing your vehicle in.</p>
+
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <button class="faq-q">
+          Do you work with insurance companies?
+          <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Yes — 3J's Auto Body works directly with all major insurance carriers including State Farm, Geico, Progressive, Allstate, Farmers, AAA, and more. We handle the paperwork so you don't have to.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          How long does auto body repair take?
+          <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Repair time depends on the extent of the damage. Minor repairs can be done same-day or next day. Major collision repairs typically take several days to a week. We keep you informed throughout and aim for the fastest turnaround without sacrificing quality.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          Do you offer free estimates?
+          <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Yes — estimates are always free at 3J's Auto Body. Walk in Mon–Fri 8AM–5PM or submit an online photo estimate through our website. No appointment needed.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          Is there a warranty on repairs?
+          <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Yes — 3J's Auto Body backs every repair with a lifetime warranty on our workmanship for as long as you own the vehicle.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          Do you offer towing?
+          <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Yes — we can arrange towing for your vehicle to our shop in Signal Hill. Call us at (562) 424-6744 and we will get you taken care of.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          What areas do you serve?
+          <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">We are located in Signal Hill, CA and serve the greater Long Beach area including Long Beach, Lakewood, Carson, Compton, Torrance, and surrounding communities in Los Angeles and Orange County.</div>
+      </div>
+
+    </div>
+
+    <div class="faq-cta">
+      <a href="tel:+15624246744" class="btn-primary">
+        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.7 10.82 19.79 19.79 0 01.67 2.18 2 2 0 012.66 0h3a2 2 0 012 1.72c.13 1 .36 1.97.7 2.91a2 2 0 01-.45 2.11L6.91 7.74a16 16 0 006.29 6.29l1-.99a2 2 0 012.11-.45c.94.34 1.91.57 2.91.7A2 2 0 0122 16.92z"/></svg>
+        Call 562-424-6744
+      </a>
+      <a href="https://www.carwise.com/online-photo-estimate/3js-autobody-paint-inc-signal-hill-ca-90755/479382?source=shop.profile&referer=estimate.cccone.com" class="btn-secondary">
+        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        Free Online Estimate
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  /* FAQ accordion */
+  document.querySelectorAll('.faq-q').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var item = btn.closest('.faq-item');
+      var wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(function(i){ i.classList.remove('open'); });
+      if(!wasOpen) item.classList.add('open');
+    });
+  });
+
+  function reportHeight(){
+    var h = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
+    window.parent.postMessage(JSON.stringify({height:h}),'*');
+  }
+  window.addEventListener('load', function(){ reportHeight(); setTimeout(reportHeight,500); setTimeout(reportHeight,1500); });
+  window.addEventListener('resize', reportHeight);
+  document.querySelectorAll('.faq-q').forEach(function(btn){
+    btn.addEventListener('click', function(){ setTimeout(reportHeight, 450); });
+  });
+  if(window.ResizeObserver){ new ResizeObserver(reportHeight).observe(document.body); }
+</script>
+</body>
+</html>
