@@ -78,7 +78,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    body{font-family:'Montserrat',sans-serif;overflow-x:hidden;}
+    html{overflow-x:hidden;max-width:100%;}
+    body{font-family:'Montserrat',sans-serif;overflow-x:hidden;max-width:100%;}
 
     /* ─── SHARED ─── */
     .eyebrow{font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;margin-bottom:12px;}
@@ -334,32 +335,35 @@
     /* ─── FAQ ─── */
     .faq-section{
       background:#111;
+      width:100%;
       padding:80px 24px;
       border-top:1px solid #1a1a1a;
       border-bottom:1px solid #1a1a1a;
     }
-    .faq-inner{max-width:740px;margin:0 auto;}
+    .faq-inner{max-width:740px;margin:0 auto;width:100%;}
     .faq-section .eyebrow{color:#8B0000;text-align:center;margin-bottom:6px;}
     .faq-section h2{
-      font-size:clamp(22px,3.5vw,34px);font-weight:900;
+      font-size:clamp(22px,5vw,34px);font-weight:900;
       letter-spacing:-1px;color:#fff;
       text-align:center;margin-bottom:40px;
+      line-height:1.1;
     }
     .faq-section h2 em{color:#8B0000;font-style:normal;}
     .faq-item{border-bottom:1px solid #1e1e1e;}
     .faq-item:first-of-type{border-top:1px solid #1e1e1e;}
     .faq-q{
       width:100%;background:none;border:none;
-      display:flex;align-items:center;justify-content:space-between;
+      display:flex;align-items:flex-start;justify-content:space-between;
       padding:20px 0;cursor:pointer;
       font-family:'Montserrat',sans-serif;
       font-size:13px;font-weight:800;color:#fff;
       text-align:left;gap:16px;
       transition:color 0.2s;
+      line-height:1.5;
     }
     .faq-q:hover{color:#8B0000;}
     .faq-q svg{
-      width:18px;height:18px;flex-shrink:0;
+      width:18px;height:18px;flex-shrink:0;margin-top:2px;
       stroke:#8B0000;stroke-width:2.5;fill:none;
       stroke-linecap:round;stroke-linejoin:round;
       transition:transform 0.3s ease;
@@ -367,12 +371,12 @@
     .faq-item.open .faq-q svg{transform:rotate(45deg);}
     .faq-a{
       font-size:13px;font-weight:500;
-      color:#888;line-height:1.8;
+      color:#888;line-height:1.85;
       max-height:0;overflow:hidden;
-      transition:max-height 0.4s ease,padding 0.3s ease;
+      transition:max-height 0.5s ease,padding 0.3s ease;
       padding:0;
     }
-    .faq-item.open .faq-a{max-height:200px;padding-bottom:20px;}
+    .faq-item.open .faq-a{max-height:400px;padding-bottom:20px;}
 
     /* ─── RESPONSIVE ─── */
     @media(max-width:900px){
@@ -389,6 +393,14 @@
       .process-section{padding:56px 20px;}
       .cert-strip{gap:16px;}
       .faq-section{padding:56px 20px;}
+      .faq-q{font-size:12px;padding:18px 0;}
+      .faq-a{font-size:12px;}
+      .cta-buttons{flex-direction:column;align-items:stretch;}
+      .btn-primary,.btn-secondary{width:100%;justify-content:center;}
+    }
+    @media(max-width:400px){
+      .two-col{padding:48px 16px;}
+      .faq-section{padding:48px 16px;}
     }
   </style>
 </head>
