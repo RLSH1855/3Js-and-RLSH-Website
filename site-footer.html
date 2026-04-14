@@ -26,10 +26,16 @@
 
     /* Brand column */
     .footer-brand{}
-    .footer-logo{
-      height:52px;
-      width:auto;
+    .footer-logos{
+      display:flex;
+      align-items:center;
+      gap:16px;
       margin-bottom:16px;
+      flex-wrap:wrap;
+    }
+    .footer-logo{
+      height:48px;
+      width:auto;
       display:block;
     }
     .footer-tagline{
@@ -146,7 +152,10 @@
 
     <!-- Brand -->
     <div class="footer-brand">
-      <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/rlsh-watermark-logo---white--red.png" alt="3J's Auto Body & Paint" class="footer-logo">
+      <div class="footer-logos">
+        <img src="https://static.wixstatic.com/media/b95bd9_86c7cf1e525d4b9e961a2738ed9af502~mv2.png" alt="3J's Auto Body & Paint" class="footer-logo">
+        <img src="https://static.wixstatic.com/media/b95bd9_8e3e4f256c85462d960aaa1e3ef740c8~mv2.png" alt="Rhino Linings of Signal Hill" class="footer-logo">
+      </div>
       <p class="footer-tagline">Signal Hill's trusted auto body, paint, and truck accessory shop. Serving the community since day one.</p>
 
       <!-- RLSH Social -->
