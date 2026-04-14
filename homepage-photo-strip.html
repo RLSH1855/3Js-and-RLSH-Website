@@ -120,13 +120,23 @@
       white-space:nowrap;
     }
 
-    /* Divider lines between panels */
-    .panel + .panel{border-left:1px solid rgba(255,255,255,0.12);}
+    /* ── Panel separators ── */
+    .panel-sep{
+      flex-shrink:0;
+      width:4px;
+      background:linear-gradient(to bottom, transparent 0%, #8B0000 15%, #8B0000 85%, transparent 100%);
+      z-index:5;
+      position:relative;
+    }
 
     @media(max-width:680px){
       .strip{flex-direction:column;height:auto;}
       .panel{height:280px;flex:none;}
-      .panel + .panel{border-left:none;border-top:1px solid rgba(255,255,255,0.12);}
+      .panel-sep{
+        width:100%;
+        height:36px;
+        background:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/divider%20strip.png') center/cover no-repeat;
+      }
     }
   </style>
 </head>
@@ -146,6 +156,9 @@
     </div>
   </div>
 
+  <!-- Divider -->
+  <div class="panel-sep"></div>
+
   <!-- Panel 2: Rhino Linings -->
   <div class="panel">
     <div class="panel-bg" style="background-image:url(https://rlsh1855.github.io/3Js-and-RLSH-Website/rhino%20linings%20of%20signal%20hill-rlsh-jeeps-footer-image.jpg);background-position:top center;"></div>
@@ -157,6 +170,9 @@
       <a class="panel-link" href="https://www.3jsautobody.com/rhino-liner" target="_top">Get a Quote</a>
     </div>
   </div>
+
+  <!-- Divider -->
+  <div class="panel-sep"></div>
 
   <!-- Panel 3: Accessories -->
   <div class="panel">
