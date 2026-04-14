@@ -129,17 +129,8 @@
     @media(max-width:680px){
       .strip{flex-direction:column;height:auto;}
       .panel{height:280px;flex:none;}
-      .panel-sep{
-        display:block;
-        width:100%;
-        height:14px;
-      }
-      .panel-sep .sep-h{
-        display:block;
-        width:100%;
-        height:14px;
-        object-fit:cover;
-      }
+      .panel + .panel{border-top:3px solid #8B0000;}
+      .panel-sep{display:none;}
     }
   </style>
 </head>
