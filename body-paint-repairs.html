@@ -396,9 +396,13 @@
       .cta-buttons{flex-direction:column;align-items:stretch;}
       .btn-primary,.btn-secondary{width:100%;justify-content:center;}
       .section-body{font-size:13px;}
-      .owner-inner{padding:36px 18px !important;}
-      .owner-inner > div:last-child{gap:12px !important;}
-      .owner-inner > div:last-child > div{min-width:0 !important;width:calc(50% - 6px) !important;padding:14px 16px !important;}
+      .owner-inner{padding:32px 16px !important;}
+      .owner-inner h2{font-size:22px !important;letter-spacing:-0.5px !important;margin-bottom:16px !important;}
+      .owner-inner > p{font-size:12px !important;line-height:1.7 !important;margin-bottom:12px !important;}
+      .owner-cards{display:grid !important;grid-template-columns:1fr 1fr !important;gap:10px !important;width:100%;}
+      .owner-cards > div{min-width:0 !important;padding:14px 12px !important;border-radius:10px !important;}
+      .owner-cards > div > div:first-child{font-size:9px !important;letter-spacing:1.5px !important;margin-bottom:5px !important;}
+      .owner-cards > div > div:last-child{font-size:11px !important;line-height:1.45 !important;}
     }
     @media(max-width:400px){
       .two-col{padding:28px 14px;}
@@ -487,7 +491,7 @@
     <h2 style="font-size:clamp(26px,4vw,50px);font-weight:900;letter-spacing:-1.5px;line-height:1.05;color:#fff;margin-bottom:24px;">You Talk to the <em style="font-style:normal;color:#8B0000;">Owner.</em><br>Every Single Time.</h2>
     <p style="font-size:15px;font-weight:500;color:rgba(255,255,255,0.55);line-height:1.9;max-width:680px;margin:0 auto 16px;">At a corporate shop you get a service writer who passes your car to a manager who assigns it to a tech. Nobody's personally accountable. At 3J's, you walk in, you shake James's hand, you look him in the eye — and he is the person responsible for your vehicle from start to finish. That's not something you get from a chain. That's something you only get from a family — and we've been that family since <strong style="color:#fff;">1991</strong>.</p>
     <p style="font-size:16px;font-weight:800;color:#fff;letter-spacing:0.5px;margin-bottom:40px;">We welcome you to join the 3J's family.</p>
-    <div style="display:flex;justify-content:center;flex-wrap:wrap;gap:16px;">
+    <div class="owner-cards" style="display:flex;justify-content:center;flex-wrap:wrap;gap:16px;">
       <div style="background:#111;border:1px solid #1e1e1e;border-radius:12px;padding:20px 28px;min-width:180px;">
         <div style="font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#8B0000;margin-bottom:6px;">Family Owned</div>
         <div style="font-size:13px;font-weight:600;color:rgba(255,255,255,0.6);line-height:1.5;">3 generations,<br>same location since 1991</div>
