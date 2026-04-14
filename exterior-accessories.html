@@ -276,16 +276,19 @@
 
     /* ─── MOBILE ─── */
     @media(max-width:680px){
-      .page-header{padding:44px 20px 40px;}
-      .page-header h1{letter-spacing:-1px;}
-      .products-section{padding:36px 14px 52px;}
-      .products-grid{grid-template-columns:1fr;gap:16px;}
-      .card-body{padding:18px;}
-      .card-name{font-size:18px;}
-      .card-actions{gap:8px;}
-      .btn-details,.btn-quote{font-size:10px;padding:11px 10px;}
-      .cta-band{padding:52px 20px;}
-      .cta-band-btn{padding:13px 28px;font-size:11px;}
+      .page-header{padding:28px 16px 24px;}
+      .page-header h1{letter-spacing:-1px;font-size:clamp(26px,8vw,40px);}
+      .products-section{padding:24px 12px 28px;}
+      .products-grid{grid-template-columns:1fr 1fr;gap:14px;}
+      .card-body{padding:14px;}
+      .card-name{font-size:15px;}
+      .card-actions{gap:6px;}
+      .btn-details,.btn-quote{font-size:9px;padding:10px 8px;}
+      .cta-band{padding:28px 16px;}
+      .cta-band-btn{padding:12px 24px;font-size:11px;}
+    }
+    @media(max-width:400px){
+      .products-grid{grid-template-columns:1fr;}
     }
   </style>
 </head>

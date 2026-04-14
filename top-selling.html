@@ -299,13 +299,26 @@
 
     /* ─── RESPONSIVE ─── */
     @media(max-width:900px){
-      .two-col{grid-template-columns:1fr;gap:40px;padding:72px 28px;}
+      .two-col{grid-template-columns:1fr;gap:28px;padding:56px 24px;}
       .two-col.flip .col-text{order:1;}
       .two-col.flip .col-visual{order:2;}
       .num-badge{font-size:80px;top:-10px;right:0;}
     }
     @media(max-width:600px){
-      .two-col{padding:56px 20px;}
+      .page-header{height:140px;}
+      .two-col{padding:26px 16px;gap:16px;}
+      .visual-box{aspect-ratio:16/9;}
+      .num-badge{display:none;}
+      .section-title{font-size:22px !important;}
+      .section-body{font-size:13px;}
+      .feature-list li{font-size:11px;}
+      .eyebrow{font-size:9px;}
+      .cta-link{margin-top:18px;}
+      .stripe-break{height:2px;}
+      .dot-break,.dot-break-light{padding:10px 0;}
+      .cta-band{padding:32px 16px;}
+      .cta-buttons{flex-direction:column;align-items:stretch;}
+      .btn-primary,.btn-secondary{width:100%;justify-content:center;}
     }
   </style>
 </head>
