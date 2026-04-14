@@ -94,6 +94,8 @@
     }
     .hours-row span:first-child{color:rgba(255,255,255,0.9);font-weight:600;}
     .hours-closed{color:#8B0000 !important;}
+    .day-short{display:none;}
+    .day-full{display:inline;}
 
     /* Contact */
     .contact-item{
@@ -156,8 +158,10 @@
       .social-btn svg{width:11px;height:11px;}
       .social-group{margin-bottom:8px;}
 
-      /* hours rows tighter */
-      .hours-row{font-size:11px;margin-bottom:5px;}
+      /* hours rows tighter — abbreviate day names */
+      .hours-row{font-size:10px;margin-bottom:4px;}
+      .day-short{display:inline;}
+      .day-full{display:none;}
 
       /* contact tighter */
       .contact-item{margin-bottom:10px;gap:8px;}
@@ -245,13 +249,13 @@
     <!-- Hours -->
     <div>
       <p class="footer-col-title">Hours</p>
-      <div class="hours-row"><span>Monday</span><span>8:00 AM – 5:00 PM</span></div>
-      <div class="hours-row"><span>Tuesday</span><span>8:00 AM – 5:00 PM</span></div>
-      <div class="hours-row"><span>Wednesday</span><span>8:00 AM – 5:00 PM</span></div>
-      <div class="hours-row"><span>Thursday</span><span>8:00 AM – 5:00 PM</span></div>
-      <div class="hours-row"><span>Friday</span><span>8:00 AM – 5:00 PM</span></div>
-      <div class="hours-row"><span>Saturday</span><span class="hours-closed">Closed</span></div>
-      <div class="hours-row"><span>Sunday</span><span class="hours-closed">Closed</span></div>
+      <div class="hours-row"><span><span class="day-full">Monday</span><span class="day-short">Mon</span></span><span>8AM – 5PM</span></div>
+      <div class="hours-row"><span><span class="day-full">Tuesday</span><span class="day-short">Tue</span></span><span>8AM – 5PM</span></div>
+      <div class="hours-row"><span><span class="day-full">Wednesday</span><span class="day-short">Wed</span></span><span>8AM – 5PM</span></div>
+      <div class="hours-row"><span><span class="day-full">Thursday</span><span class="day-short">Thu</span></span><span>8AM – 5PM</span></div>
+      <div class="hours-row"><span><span class="day-full">Friday</span><span class="day-short">Fri</span></span><span>8AM – 5PM</span></div>
+      <div class="hours-row"><span><span class="day-full">Saturday</span><span class="day-short">Sat</span></span><span class="hours-closed">Closed</span></div>
+      <div class="hours-row"><span><span class="day-full">Sunday</span><span class="day-short">Sun</span></span><span class="hours-closed">Closed</span></div>
     </div>
 
     <!-- Contact -->
