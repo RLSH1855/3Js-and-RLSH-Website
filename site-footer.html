@@ -7,7 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    html,body{font-family:'Montserrat',sans-serif;background:#111;overflow:hidden;}
+    html,body{font-family:'Montserrat',sans-serif;background:#111;overflow-x:hidden;margin:0;padding:0;}
 
     .footer{
       background:#111;
@@ -308,9 +308,10 @@
 
 <script>
   function reportHeight(){
-    // Measure the footer element directly — avoids scrollHeight inflation from overflow
     var footer = document.querySelector('footer');
-    var h = footer ? footer.offsetHeight : document.documentElement.clientHeight;
+    if(!footer) return;
+    // Use getBoundingClientRect for accurate rendered height
+    var h = Math.ceil(footer.getBoundingClientRect().height);
     var msg = JSON.stringify({height:h});
     try{ window.parent.postMessage(msg,'*'); }catch(e){}
     try{ window.parent.parent.postMessage(msg,'*'); }catch(e){}
@@ -319,7 +320,6 @@
     reportHeight();
     setTimeout(reportHeight,300);
     setTimeout(reportHeight,800);
-    setTimeout(reportHeight,2000);
   });
   window.addEventListener('resize',reportHeight);
   if(window.ResizeObserver){ new ResizeObserver(reportHeight).observe(document.querySelector('footer')); }
