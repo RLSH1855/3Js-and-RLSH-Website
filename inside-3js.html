@@ -76,7 +76,7 @@
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
     html{overflow-x:hidden;max-width:100%;}
-    body{font-family:'Montserrat',sans-serif;background:#0A0A0A;color:#fff;overflow-x:hidden;max-width:100%;}
+    body{font-family:'Montserrat',sans-serif;background:#fff;color:#1a1a1a;overflow-x:hidden;max-width:100%;}
 
     /* ─── PAGE HEADER — UNIFORM ACROSS ALL PAGES ─── */
     .page-header{
@@ -104,9 +104,9 @@
 
     /* ─── STAT BAR ─── */
     .stat-bar{
-      background:#111;
-      border-top:1px solid #1a1a1a;
-      border-bottom:1px solid #1a1a1a;
+      background:#fff;
+      border-top:1px solid #e8e8e8;
+      border-bottom:1px solid #e8e8e8;
       padding:28px 24px;
       display:flex;
       justify-content:center;
@@ -117,7 +117,7 @@
       flex:1;min-width:140px;max-width:200px;
       text-align:center;
       padding:12px 20px;
-      border-right:1px solid #1e1e1e;
+      border-right:1px solid #e0e0e0;
     }
     .stat:last-child{border-right:none;}
     .stat-number{
@@ -126,7 +126,7 @@
     }
     .stat-label{
       font-size:10px;font-weight:700;letter-spacing:2px;
-      text-transform:uppercase;color:#444;margin-top:6px;
+      text-transform:uppercase;color:#999;margin-top:6px;
     }
 
     /* ─── SECTION BASE ─── */
@@ -138,11 +138,11 @@
     }
     .section-title{
       font-size:clamp(24px,3.5vw,40px);font-weight:900;
-      letter-spacing:-0.5px;line-height:1.1;margin-bottom:20px;
+      letter-spacing:-0.5px;line-height:1.1;margin-bottom:20px;color:#1a1a1a;
     }
     .section-title em{font-style:normal;color:#8B0000;}
     .section-body{
-      font-size:14px;font-weight:500;color:rgba(255,255,255,0.55);
+      font-size:14px;font-weight:500;color:#555;
       line-height:1.85;max-width:560px;
     }
     .section-body p+p{margin-top:14px;}
@@ -294,7 +294,8 @@
 
     /* ─── FAQ ─── */
     .faq-section{
-      width:100%;padding:80px 24px;
+      width:100%;padding:80px 24px;background:#fff;
+      border-top:1px solid #e8e8e8;
     }
     .faq-inner{
       max-width:740px;margin:0 auto;width:100%;
@@ -302,19 +303,19 @@
     .faq-section .eyebrow{text-align:center;margin-bottom:6px;}
     .faq-section h2{
       font-size:clamp(22px,5vw,34px);font-weight:900;
-      letter-spacing:-1px;color:#fff;
+      letter-spacing:-1px;color:#1a1a1a;
       text-align:center;margin-bottom:40px;
       line-height:1.1;
     }
     .faq-section h2 em{color:#8B0000;font-style:normal;}
-    .faq-item{border-bottom:1px solid #1e1e1e;}
-    .faq-item:first-of-type{border-top:1px solid #1e1e1e;}
+    .faq-item{border-bottom:1px solid #e8e8e8;}
+    .faq-item:first-of-type{border-top:1px solid #e8e8e8;}
     .faq-q{
       width:100%;background:none;border:none;
       display:flex;align-items:flex-start;justify-content:space-between;
       padding:20px 0;cursor:pointer;
       font-family:'Montserrat',sans-serif;
-      font-size:13px;font-weight:800;color:#fff;
+      font-size:13px;font-weight:800;color:#1a1a1a;
       text-align:left;gap:16px;
       transition:color 0.2s;
       line-height:1.5;
@@ -329,7 +330,7 @@
     .faq-item.open .faq-q svg{transform:rotate(45deg);}
     .faq-a{
       font-size:13px;font-weight:500;
-      color:#888;line-height:1.85;
+      color:#555;line-height:1.85;
       max-height:0;overflow:hidden;
       transition:max-height 0.5s ease,padding 0.3s ease;
       padding:0;
