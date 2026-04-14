@@ -308,15 +308,21 @@
 
 <script>
   function reportHeight(){
-    var h = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
-    window.parent.postMessage(JSON.stringify({height:h}),'*');
-    if(window.parent !== window.parent.parent){
-      window.parent.parent.postMessage(JSON.stringify({height:h}),'*');
-    }
+    // Measure the footer element directly — avoids scrollHeight inflation from overflow
+    var footer = document.querySelector('footer');
+    var h = footer ? footer.offsetHeight : document.documentElement.clientHeight;
+    var msg = JSON.stringify({height:h});
+    try{ window.parent.postMessage(msg,'*'); }catch(e){}
+    try{ window.parent.parent.postMessage(msg,'*'); }catch(e){}
   }
-  window.addEventListener('load',function(){ reportHeight(); setTimeout(reportHeight,500); setTimeout(reportHeight,1500); });
+  window.addEventListener('load',function(){
+    reportHeight();
+    setTimeout(reportHeight,300);
+    setTimeout(reportHeight,800);
+    setTimeout(reportHeight,2000);
+  });
   window.addEventListener('resize',reportHeight);
-  if(window.ResizeObserver){ new ResizeObserver(reportHeight).observe(document.body); }
+  if(window.ResizeObserver){ new ResizeObserver(reportHeight).observe(document.querySelector('footer')); }
 </script>
 
 </body>
