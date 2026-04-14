@@ -7,7 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    html,body{font-family:'Montserrat',sans-serif;background:#111;overflow-x:hidden;}
+    html,body{font-family:'Montserrat',sans-serif;background:#111;overflow:hidden;}
 
     .footer{
       background:#111;
@@ -111,7 +111,7 @@
     }
     .contact-phone-inline a{color:rgba(255,255,255,0.85);text-decoration:none;transition:color 0.2s;}
     .contact-phone-inline a:hover{color:#fff;}
-    .contact-details{display:grid;grid-template-columns:1fr 1fr;gap:8px 12px;}
+    .contact-details{display:flex;flex-direction:column;gap:10px;}
     .contact-item{
       display:flex;align-items:flex-start;gap:8px;
     }
@@ -178,7 +178,6 @@
       .day-full{display:none;}
 
       /* contact tighter */
-      .contact-details{grid-template-columns:1fr;}
       .contact-item p{font-size:11px;}
       .contact-phone-inline{font-size:10px;}
 
