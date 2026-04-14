@@ -41,16 +41,23 @@
       width:100%;overflow:hidden;position:relative;
       -webkit-mask-image:linear-gradient(to right,transparent 0%,black 8%,black 92%,transparent 100%);
       mask-image:linear-gradient(to right,transparent 0%,black 8%,black 92%,transparent 100%);
-      margin-bottom:28px;
+      margin-bottom:16px;
     }
     .marquee-track{
       display:flex;align-items:center;gap:32px;width:max-content;
-      animation:scroll 40s linear infinite;
+      animation:scroll-left 40s linear infinite;
+    }
+    .marquee-track.reverse{
+      animation:scroll-right 40s linear infinite;
     }
     .marquee-wrapper:hover .marquee-track{animation-play-state:paused;}
-    @keyframes scroll{
+    @keyframes scroll-left{
       0%{transform:translateX(0);}
       100%{transform:translateX(-50%);}
+    }
+    @keyframes scroll-right{
+      0%{transform:translateX(-50%);}
+      100%{transform:translateX(0);}
     }
 
     /* Logo tile */
@@ -91,8 +98,9 @@
     <p class="carriers-sub">We handle the paperwork directly with your insurance company so you don't have to. Just bring your vehicle in — we take it from there.</p>
   </div>
 
+  <!-- Row 1 — scrolls left -->
   <div class="marquee-wrapper">
-    <div class="marquee-track" id="ins-track">
+    <div class="marquee-track" id="ins-track-1">
       <div class="logo-tile"><img src="ins-state-farm.png" alt="State Farm"></div>
       <div class="logo-tile"><img src="ins-geico.png" alt="Geico"></div>
       <div class="logo-tile"><img src="ins-progressive.png" alt="Progressive"></div>
@@ -103,6 +111,12 @@
       <div class="logo-tile"><img src="ins-metlife.png" alt="MetLife"></div>
       <div class="logo-tile"><img src="ins-nationwide.png" alt="Nationwide"></div>
       <div class="logo-tile"><img src="ins-safeco.png" alt="Safeco Insurance"></div>
+    </div>
+  </div>
+
+  <!-- Row 2 — scrolls right -->
+  <div class="marquee-wrapper" style="margin-bottom:28px;">
+    <div class="marquee-track reverse" id="ins-track-2">
       <div class="logo-tile"><img src="ins-21st-century.png" alt="21st Century Insurance"></div>
       <div class="logo-tile"><img src="ins-kemper.png" alt="Kemper"></div>
       <div class="logo-tile"><img src="ins-bristol-west.png" alt="Bristol West"></div>
@@ -121,8 +135,10 @@
 </section>
 
 <script>
-  var t = document.getElementById('ins-track');
-  t.innerHTML += t.innerHTML;
+  var t1 = document.getElementById('ins-track-1');
+  t1.innerHTML += t1.innerHTML;
+  var t2 = document.getElementById('ins-track-2');
+  t2.innerHTML += t2.innerHTML;
 
   function reportHeight(){
     var h = Math.max(document.body.scrollHeight,document.documentElement.scrollHeight);
