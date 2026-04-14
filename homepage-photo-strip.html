@@ -123,10 +123,21 @@
     /* ── Panel separators ── */
     .panel-sep{
       flex-shrink:0;
-      width:4px;
-      background:linear-gradient(to bottom, transparent 0%, #8B0000 15%, #8B0000 85%, transparent 100%);
-      z-index:5;
+      width:32px;
+      overflow:hidden;
       position:relative;
+      z-index:5;
+      align-self:stretch;
+    }
+    /* Rotate the horizontal strip 90° to use it as a vertical divider */
+    .panel-sep::after{
+      content:'';
+      position:absolute;
+      top:50%;left:50%;
+      width:600px;
+      height:32px;
+      background:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/divider%20strip.png') center/cover no-repeat;
+      transform:translate(-50%,-50%) rotate(90deg);
     }
 
     @media(max-width:680px){
@@ -135,7 +146,14 @@
       .panel-sep{
         width:100%;
         height:36px;
+        overflow:hidden;
+      }
+      .panel-sep::after{
+        width:100%;
+        height:36px;
         background:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/divider%20strip.png') center/cover no-repeat;
+        transform:none;
+        top:0;left:0;
       }
     }
   </style>
