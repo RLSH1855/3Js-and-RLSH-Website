@@ -135,13 +135,46 @@
     .footer-bottom-links a:hover{color:#fff;}
 
     @media(max-width:768px){
-      .footer{padding:40px 24px 0;}
-      .footer-top{grid-template-columns:1fr 1fr;gap:32px;}
+      .footer{padding:36px 20px 0;}
+      .footer-top{grid-template-columns:1fr 1fr;gap:28px;}
       .footer-brand{grid-column:1/-1;}
     }
     @media(max-width:480px){
-      .footer-top{grid-template-columns:1fr;}
-      .footer-bottom{flex-direction:column;align-items:flex-start;}
+      .footer{padding:28px 16px 0;}
+      .footer-top{grid-template-columns:1fr 1fr;gap:20px;padding-bottom:28px;}
+      .footer-brand{grid-column:1/-1;}
+
+      /* logos smaller on mobile */
+      .footer-logo{height:36px;}
+
+      /* tagline tighter */
+      .footer-tagline{font-size:11px;margin-bottom:14px;max-width:100%;}
+
+      /* condense social — smaller buttons */
+      .social-label{font-size:8px;margin-bottom:6px;}
+      .social-btn{font-size:9px;padding:5px 8px;gap:4px;}
+      .social-btn svg{width:11px;height:11px;}
+      .social-group{margin-bottom:8px;}
+
+      /* hours rows tighter */
+      .hours-row{font-size:11px;margin-bottom:5px;}
+
+      /* contact tighter */
+      .contact-item{margin-bottom:10px;gap:8px;}
+      .contact-item p{font-size:11px;}
+
+      /* links tighter */
+      .footer-links li{margin-bottom:7px;}
+      .footer-links a{font-size:11px;}
+
+      /* col titles */
+      .footer-col-title{font-size:8px;margin-bottom:10px;}
+
+      /* contact spans full width */
+      .footer-brand ~ div:last-of-type{grid-column:1/-1;}
+
+      .footer-bottom{flex-direction:column;align-items:flex-start;gap:6px;padding:14px 0;}
+      .footer-copy,.footer-bottom-links a{font-size:10px;}
     }
   </style>
 </head>
