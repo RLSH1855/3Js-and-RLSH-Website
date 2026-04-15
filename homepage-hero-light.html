@@ -243,11 +243,11 @@
     @media(max-width:640px){
       .hero{min-height:700px;align-items:flex-start;}
       .hero-bg{
-        background-size:contain;
+        background-size:125%;
         background-position:center top;
       }
-      /* padding-top pushes text below the truck image (~230px tall on most phones) */
-      .hero-content{padding:200px 28px 48px 28px;max-width:100%;}
+      /* padding-top clears the now-taller image (125% ≈ 265px on most phones) */
+      .hero-content{padding:230px 28px 48px 28px;max-width:100%;}
       .hero-overlay{background:rgba(0,0,0,0.72);}
       .hero-ctas{flex-direction:column;}
       .btn-primary,.btn-secondary{width:100%;justify-content:center;}
