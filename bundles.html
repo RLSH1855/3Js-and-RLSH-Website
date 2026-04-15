@@ -249,17 +249,57 @@
       filter:drop-shadow(0 0 14px rgba(0,48,135,0.80)) drop-shadow(0 0 28px rgba(139,0,0,0.55)) drop-shadow(0 6px 16px rgba(0,0,0,0.70));
     }
 
-    /* ── WORK BADGE (Working Man) ── */
-    .work-badge{
+    /* ── HARD HAT CORNER (Working Man) ── */
+    .hard-hat-tag{
       position:absolute;
-      top:16px;right:16px;
-      width:40px;height:40px;
-      background:rgba(255,255,255,0.08);
-      border:1.5px solid rgba(255,255,255,0.15);
-      border-radius:8px;
-      display:flex;align-items:center;justify-content:center;
+      top:-8px;right:10px;
+      width:80px;height:auto;
+      filter:drop-shadow(0 4px 10px rgba(0,0,0,0.60));
+      transition:transform 0.3s,filter 0.3s;
+      z-index:5;
+      transform:rotate(8deg);
     }
-    .work-badge svg{width:20px;height:20px;stroke:rgba(255,255,255,0.55);fill:none;stroke-width:2;}
+    .bundle-card:hover .hard-hat-tag{
+      transform:rotate(4deg) scale(1.08);
+      filter:drop-shadow(0 0 12px rgba(255,200,0,0.45)) drop-shadow(0 6px 16px rgba(0,0,0,0.70));
+    }
+    /* Hi-vis jacket hanging off corner */
+    .hiviz{
+      position:absolute;
+      bottom:-2px;left:-2px;
+      width:44px;height:52px;
+      z-index:4;
+      pointer-events:none;
+    }
+    .hiviz-body{
+      position:absolute;
+      bottom:0;left:0;
+      width:44px;height:40px;
+      background:#f5a800;
+      border-radius:0 8px 0 0;
+      clip-path:polygon(0 100%,100% 100%,100% 20%,50% 0%,0 20%);
+    }
+    .hiviz-stripe{
+      position:absolute;
+      bottom:12px;left:0;right:0;
+      height:6px;
+      background:rgba(200,200,200,0.85);
+    }
+    .hiviz-stripe2{
+      position:absolute;
+      bottom:20px;left:0;right:0;
+      height:6px;
+      background:rgba(200,200,200,0.85);
+    }
+    .hiviz-hanger{
+      position:absolute;
+      top:0;left:50%;
+      transform:translateX(-50%);
+      width:10px;height:14px;
+      border:2.5px solid rgba(255,255,255,0.5);
+      border-bottom:none;
+      border-radius:5px 5px 0 0;
+    }
 
     /* ── 3J BADGE (3 Wise Men) ── */
     .threej-badge{
@@ -607,13 +647,19 @@
   <!-- BUNDLE 02: THE WORKING MAN -->
   <div class="bundle-card">
     <div class="card-top">
-      <!-- Ghost hard hat tool icon -->
+      <!-- Ghost hard hat in background -->
       <div class="ghost-tool">
         <svg width="130" height="130" fill="none" stroke="white" stroke-width="1.2" viewBox="0 0 24 24"><path d="M2 18h20M4 18v-4a8 8 0 0116 0v4"/><line x1="12" y1="2" x2="12" y2="6"/></svg>
       </div>
-      <!-- Work badge corner -->
-      <div class="work-badge">
-        <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+      <!-- Hard hat corner image -->
+      <img class="hard-hat-tag" src="https://rlsh1855.github.io/3Js-and-RLSH-Website/Full%20Brim%20Hard%20Hat%20Vented%20Construction%20Safety%20Helmet%20OSHA.png" alt="Hard Hat" />
+      <!-- Hi-vis jacket hanging off corner -->
+      <div class="hiviz">
+        <div class="hiviz-hanger"></div>
+        <div class="hiviz-body">
+          <div class="hiviz-stripe"></div>
+          <div class="hiviz-stripe2"></div>
+        </div>
       </div>
       <div class="card-badge">
         <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
