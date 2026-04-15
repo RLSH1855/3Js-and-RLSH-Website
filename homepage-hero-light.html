@@ -78,10 +78,13 @@
       color:#fff;
     }
 
-    /* Eyebrow */
+    /* Eyebrow — floats independently of content block */
     .hero-eyebrow{
+      position:absolute;
+      top:88px;left:80px;
       display:flex;align-items:center;gap:12px;
-      margin-bottom:28px;
+      z-index:4;
+      margin-bottom:0;
     }
     .eyebrow-line{
       width:36px;height:2px;background:#8B0000;flex-shrink:0;
@@ -249,6 +252,8 @@
       }
       /* padding-top clears the now-taller image (125% ≈ 265px on most phones) */
       .hero-content{padding:230px 28px 48px 28px;max-width:100%;}
+      /* Eyebrow floats into the sky above the mountains */
+      .hero-eyebrow{top:42px;left:50%;transform:translateX(-50%);white-space:nowrap;}
       .hero-overlay{background:rgba(0,0,0,0.62);}
       .hero-ctas{flex-direction:column;}
       .btn-primary,.btn-secondary{width:100%;justify-content:center;}
@@ -265,12 +270,13 @@
   <div class="hero-vignette"></div>
   <div class="hero-accent-bar"></div>
 
-  <div class="hero-content">
+  <!-- Eyebrow floats independently — sky on mobile, top-left on desktop -->
+  <div class="hero-eyebrow">
+    <div class="eyebrow-line"></div>
+    <span class="eyebrow-text">Signal Hill, CA &nbsp;·&nbsp; Est. 1991 &nbsp;·&nbsp; Family Owned</span>
+  </div>
 
-    <div class="hero-eyebrow">
-      <div class="eyebrow-line"></div>
-      <span class="eyebrow-text">Signal Hill, CA &nbsp;·&nbsp; Est. 1991 &nbsp;·&nbsp; Family Owned</span>
-    </div>
+  <div class="hero-content">
 
     <h1 class="hero-headline">
       30+ Years.<br>
