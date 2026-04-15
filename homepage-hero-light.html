@@ -241,21 +241,12 @@
       .hero-stats{gap:24px;}
     }
     @media(max-width:640px){
-      .hero{min-height:560px;}
+      .hero{min-height:560px;align-items:flex-end;}
       .hero-bg{
         background-size:contain;
         background-position:center top;
       }
-      /* Stretch content to full hero height so we can split eyebrow top / content bottom */
-      .hero-content{
-        align-self:stretch;
-        padding:20px 28px 52px 28px;
-        max-width:100%;
-        display:flex;
-        flex-direction:column;
-      }
-      /* Eyebrow stays at top; auto margin pushes everything below it to the bottom */
-      .hero-eyebrow{margin-bottom:auto;}
+      .hero-content{padding:20px 28px 40px 28px;max-width:100%;}
       .hero-overlay{background:rgba(0,0,0,0.72);}
       .hero-ctas{flex-direction:column;}
       .btn-primary,.btn-secondary{width:100%;justify-content:center;}
