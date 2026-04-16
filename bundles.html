@@ -172,6 +172,11 @@
     }
 
     /* ── 405 SNAKE BORDER ── */
+    @property --snake-angle{
+      syntax:'<angle>';
+      inherits:false;
+      initial-value:0deg;
+    }
     .card-405{border:1.5px solid #ebebeb;}
     .card-405::before{
       content:'';
@@ -180,7 +185,7 @@
       border-radius:16px;
       padding:2px;
       background:conic-gradient(
-        from 0deg,
+        from var(--snake-angle),
         transparent 0deg,
         transparent 260deg,
         #003087 275deg,
@@ -195,6 +200,7 @@
       pointer-events:none;
       opacity:0;
       transition:opacity 0.5s;
+      --snake-angle:0deg;
     }
     .card-405:hover::before{
       opacity:1;
@@ -206,8 +212,7 @@
       transform:translateY(-5px);
     }
     @keyframes snakeRun{
-      from{transform:rotate(0deg);}
-      to{transform:rotate(360deg);}
+      to{--snake-angle:360deg;}
     }
 
     .card-top{
