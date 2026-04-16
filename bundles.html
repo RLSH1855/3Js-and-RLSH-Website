@@ -159,7 +159,7 @@
       background:#fff;
       border:1.5px solid #ebebeb;
       border-radius:14px;
-      overflow:hidden;
+      overflow:visible;
       box-shadow:0 4px 24px rgba(0,0,0,0.06);
       transition:box-shadow 0.3s,transform 0.3s,border-color 0.3s;
       display:flex;flex-direction:column;
@@ -200,8 +200,10 @@
     .card-top{
       background:linear-gradient(135deg,#1a1a1a 0%,#2a2a2a 100%);
       padding:28px 28px 24px;
+      padding-top:44px;
       position:relative;
-      overflow:hidden;
+      overflow:visible;
+      border-radius:14px 14px 0 0;
     }
 
     /* ── GHOST ELEMENTS ── */
@@ -238,15 +240,15 @@
     /* ── 405 HIGHWAY SIGN CORNER TAG ── */
     .sign-tag{
       position:absolute;
-      top:12px;right:12px;
-      width:72px;height:auto;
-      filter:drop-shadow(0 3px 8px rgba(0,0,0,0.55));
+      top:-30px;right:-10px;
+      width:145px;height:auto;
+      filter:drop-shadow(0 6px 16px rgba(0,0,0,0.70));
       transition:transform 0.3s,filter 0.3s;
-      z-index:5;
+      z-index:10;
     }
     .card-405:hover .sign-tag{
-      transform:scale(1.08) rotate(-3deg);
-      filter:drop-shadow(0 0 14px rgba(0,48,135,0.80)) drop-shadow(0 0 28px rgba(139,0,0,0.55)) drop-shadow(0 6px 16px rgba(0,0,0,0.70));
+      transform:scale(1.06) rotate(-3deg) translateY(-4px);
+      filter:drop-shadow(0 0 18px rgba(0,48,135,0.90)) drop-shadow(0 0 32px rgba(139,0,0,0.60)) drop-shadow(0 8px 20px rgba(0,0,0,0.80));
     }
 
     /* ── HARD HAT CORNER (Working Man) ── */
