@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Exterior Accessories — BakFlip Tonneau Covers | Professionally Installed | 3J's Auto Body Signal Hill CA</title>
+  <title>Exterior Accessories — Truck Parts & Accessories | 3J's Auto Body Signal Hill CA</title>
 
   <!-- SEO -->
-  <meta name="description" content="Premium truck exterior accessories professionally installed at 3J's Auto Body, Signal Hill CA. BakFlip MX4, X4S tonneau covers and more. Free quote. (562) 424-6744.">
-  <meta name="keywords" content="truck accessories, exterior accessories, BakFlip MX4, BakFlip X4S, tonneau covers, truck bed cover, Signal Hill, Long Beach, Los Angeles, 3J's Auto Body">
+  <meta name="description" content="Premium truck exterior accessories professionally installed at 3J's Auto Body, Signal Hill CA. Tonneau covers, bed liners, steps, towing and more. Free quote. (562) 424-6744.">
+  <meta name="keywords" content="truck accessories, exterior accessories, tonneau covers, bed liner, rhino liner, steps, running boards, towing, hitches, Signal Hill, Long Beach, Los Angeles, 3J's Auto Body">
   <meta name="robots" content="index, follow">
   <meta name="author" content="3J's Auto Body &amp; Paint">
   <meta name="geo.region" content="US-CA">
@@ -16,8 +16,8 @@
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Exterior Accessories — Tonneau Covers &amp; More | 3J's Auto Body">
-  <meta property="og:description" content="BakFlip MX4 and X4S tonneau covers professionally installed at 3J's Auto Body in Signal Hill, CA. Premium truck accessories. Get a free quote.">
+  <meta property="og:title" content="Exterior Accessories — Truck Parts &amp; More | 3J's Auto Body">
+  <meta property="og:description" content="Tonneau covers, Rhino Liner, steps, running boards and towing accessories professionally installed at 3J's Auto Body in Signal Hill, CA.">
   <meta property="og:image" content="https://static.wixstatic.com/media/b95bd9_86c7cf1e525d4b9e961a2738ed9af502~mv2.png">
   <meta property="og:url" content="https://rlsh1855.github.io/3Js-and-RLSH-Website/exterior-accessories.html">
   <meta property="og:site_name" content="3J's Auto Body &amp; Paint">
@@ -25,7 +25,7 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Exterior Accessories | 3J's Auto Body — Signal Hill CA">
-  <meta name="twitter:description" content="BakFlip tonneau covers and premium truck accessories installed by professionals. 3J's Auto Body, Signal Hill CA. (562) 424-6744.">
+  <meta name="twitter:description" content="Premium truck accessories installed by professionals. Tonneau covers, Rhino Liner, steps, towing. 3J's Auto Body, Signal Hill CA. (562) 424-6744.">
   <meta name="twitter:image" content="https://static.wixstatic.com/media/b95bd9_86c7cf1e525d4b9e961a2738ed9af502~mv2.png">
 
   <!-- Structured Data -->
@@ -38,7 +38,6 @@
         "name": "3J's Auto Body & Paint",
         "telephone": "+1-562-424-6744",
         "url": "https://www.3jsautobody.com/",
-        "image": "https://static.wixstatic.com/media/b95bd9_86c7cf1e525d4b9e961a2738ed9af502~mv2.png",
         "address": {
           "@type": "PostalAddress",
           "streetAddress": "1855 E 29th Street",
@@ -49,15 +48,7 @@
         },
         "openingHoursSpecification": [
           {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"08:00","closes":"17:00"}
-        ],
-        "hasOfferCatalog": {
-          "@type": "OfferCatalog",
-          "name": "Truck Exterior Accessories",
-          "itemListElement": [
-            {"@type":"Offer","itemOffered":{"@type":"Service","name":"BakFlip MX4 Tonneau Cover Installation"}},
-            {"@type":"Offer","itemOffered":{"@type":"Service","name":"BakFlip X4S Tonneau Cover Installation"}}
-          ]
-        }
+        ]
       }
     ]
   }
@@ -65,350 +56,523 @@
 
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    body{font-family:'Montserrat',sans-serif;overflow-x:hidden;background:#fff;color:#1a1a1a;}
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Montserrat', sans-serif; overflow-x: hidden; background: #fff; color: #1a1a1a; }
 
-    /* ─── SCROLL ANIMATIONS ─── */
-    [data-anim]{
-      opacity:0;
-      transition:opacity 0.60s ease, transform 0.60s ease;
+    /* ═══════════════════════════════════════
+       HERO BANNER
+    ═══════════════════════════════════════ */
+    .hero {
+      position: relative;
+      height: 500px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
     }
-    [data-anim="fade-up"]  {transform:translateY(30px);}
-    [data-anim="fade-in"]  {transform:none;}
-    [data-anim].visible{opacity:1;transform:none;}
-    [data-delay="100"]{transition-delay:0.10s;}
-    [data-delay="200"]{transition-delay:0.20s;}
-    [data-delay="300"]{transition-delay:0.30s;}
-    [data-delay="400"]{transition-delay:0.40s;}
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://rlsh1855.github.io/3Js-and-RLSH-Website/RLSH-ford-truck.jpg');
+      background-size: cover;
+      background-position: center 40%;
+      transition: transform 8s ease;
+    }
+    .hero:hover .hero-bg { transform: scale(1.03); }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to right,
+        rgba(0,0,0,0.80) 0%,
+        rgba(0,0,0,0.50) 45%,
+        rgba(0,0,0,0.10) 100%
+      );
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 0 64px;
+      max-width: 580px;
+    }
+    .hero-eyebrow {
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 3.5px;
+      text-transform: uppercase;
+      color: #fff;
+      background: #8B0000;
+      display: inline-block;
+      padding: 5px 12px;
+      border-radius: 3px;
+      margin-bottom: 20px;
+    }
+    .hero-content h1 {
+      font-size: clamp(30px, 5.5vw, 58px);
+      font-weight: 900;
+      letter-spacing: -2px;
+      line-height: 0.95;
+      text-transform: uppercase;
+      color: #fff;
+      margin-bottom: 18px;
+    }
+    .hero-content h1 em {
+      font-style: normal;
+      display: block;
+      color: #ff3333;
+    }
+    .hero-content p {
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.80);
+      line-height: 1.75;
+      margin-bottom: 32px;
+      max-width: 390px;
+    }
+    .hero-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #8B0000;
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 15px 34px;
+      border-radius: 4px;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .hero-btn:hover { background: #a00000; transform: translateY(-2px); }
 
-    /* ─── PAGE HEADER ─── */
-    .page-header{
-      background:#fff;
-      border-bottom:1px solid #e8e8e8;
-      height:260px;
-      display:flex;flex-direction:column;align-items:center;justify-content:center;
-      text-align:center;padding:24px 24px 0;
-      position:relative;
+    /* ═══════════════════════════════════════
+       TOP CATEGORIES
+    ═══════════════════════════════════════ */
+    .categories {
+      padding: 64px 40px 72px;
+      background: #fff;
     }
-    .page-header::after{
-      content:'';position:absolute;bottom:0;left:0;right:0;height:3px;
-      background:linear-gradient(to right,transparent,#8B0000 25%,#8B0000 75%,transparent);
+    .section-header {
+      max-width: 1140px;
+      margin: 0 auto 28px;
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
     }
-    .eyebrow{
-      font-size:10px;font-weight:800;letter-spacing:3px;
-      text-transform:uppercase;color:#8B0000;
-      display:block;margin-bottom:12px;
+    .section-title {
+      font-size: 18px;
+      font-weight: 900;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #1a1a1a;
     }
-    .page-header h1{
-      font-size:clamp(28px,5.5vw,56px);font-weight:900;
-      letter-spacing:-2px;line-height:1.0;
-      text-transform:uppercase;color:#1a1a1a;
-      margin-bottom:14px;
-    }
-    .page-header h1 em{font-style:normal;color:#8B0000;}
-    .page-header-sub{
-      font-size:13px;font-weight:500;
-      color:#666;max-width:460px;
-      margin:0 auto;line-height:1.8;
-    }
-
-    /* ─── PRODUCTS SECTION ─── */
-    .products-section{
-      background:#fff;
-      padding:60px 28px 72px;
-    }
-    .products-grid{
-      display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:24px;
-      max-width:960px;
-      margin:0 auto;
-    }
-
-    /* ─── PRODUCT CARD ─── */
-    .product-card{
-      background:#fff;
-      border:1px solid #e8e8e8;
-      border-radius:12px;
-      overflow:hidden;
-      display:flex;flex-direction:column;
-      box-shadow:0 2px 12px rgba(0,0,0,0.06);
-      transition:transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-    }
-    .product-card:hover{
-      transform:translateY(-5px);
-      box-shadow:0 12px 40px rgba(0,0,0,0.12);
-      border-color:#ccc;
-    }
-
-    /* ─── CARD IMAGE ─── */
-    /*
-      HOW TO ADD YOUR PHOTOS:
-      1. Upload your photo to Wix Media Manager
-      2. Right-click the uploaded photo > "Copy image address"
-      3. Replace the placeholder below with: <img src="YOUR_URL" alt="description">
-    */
-    .card-img{
-      width:100%;
-      aspect-ratio:16/9;
-      background:#f5f5f5;
-      position:relative;
-      overflow:hidden;
-    }
-    .card-img-inner{
-      position:absolute;inset:0;
-      transition:transform 0.4s ease;
-    }
-    .product-card:hover .card-img-inner{transform:scale(1.04);}
-    .card-img-inner img{
-      width:100%;height:100%;
-      object-fit:cover;display:block;
-    }
-    .card-img-placeholder{
-      position:absolute;inset:0;
-      display:flex;flex-direction:column;
-      align-items:center;justify-content:center;gap:10px;
-      background:linear-gradient(135deg,#f0f0f0 0%,#e8e8e8 100%);
-    }
-    .card-img-placeholder svg{
-      width:42px;height:42px;
-      stroke:rgba(139,0,0,0.22);stroke-width:1.5;fill:none;
-    }
-    .card-img-placeholder span{
-      font-size:9px;font-weight:800;letter-spacing:3px;
-      text-transform:uppercase;color:rgba(0,0,0,0.18);
-    }
-    .card-badge{
-      position:absolute;top:12px;left:12px;z-index:2;
-      background:#8B0000;color:#fff;
-      font-size:9px;font-weight:800;letter-spacing:2px;
-      text-transform:uppercase;padding:4px 10px;border-radius:4px;
+    .section-rule {
+      flex: 1;
+      height: 2px;
+      background: #e8e8e8;
     }
 
-    /* ─── CARD BODY ─── */
-    .card-body{
-      padding:24px;
-      display:flex;flex-direction:column;
-      flex:1;
+    /* 4-column grid, tall portrait tiles */
+    .cat-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      max-width: 1140px;
+      margin: 0 auto;
     }
-    .card-brand{
-      font-size:9px;font-weight:800;letter-spacing:3px;
-      text-transform:uppercase;color:#8B0000;margin-bottom:4px;
+    .cat-tile {
+      position: relative;
+      aspect-ratio: 3 / 4;
+      overflow: hidden;
+      border-radius: 6px;
+      text-decoration: none;
+      display: block;
+      cursor: pointer;
+      background: #111;
     }
-    .card-name{
-      font-size:22px;font-weight:900;color:#1a1a1a;
-      letter-spacing:-0.5px;line-height:1.05;margin-bottom:10px;
+    .cat-tile-bg {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      transition: transform 0.45s ease, opacity 0.45s ease;
+      opacity: 0.88;
     }
-    .card-tagline{
-      font-size:12px;font-weight:500;
-      color:#666;line-height:1.65;margin-bottom:18px;
+    .cat-tile:hover .cat-tile-bg {
+      transform: scale(1.07);
+      opacity: 0.70;
     }
-    .card-features{
-      list-style:none;
-      display:flex;flex-direction:column;gap:8px;
-      margin-bottom:24px;
+    /* Bottom-heavy gradient for label readability */
+    .cat-tile-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(0,0,0,0.82) 0%,
+        rgba(0,0,0,0.30) 40%,
+        rgba(0,0,0,0.00) 100%
+      );
+      transition: background 0.3s;
     }
-    .card-features li{
-      display:flex;align-items:center;gap:8px;
-      font-size:10px;font-weight:700;letter-spacing:1.2px;
-      text-transform:uppercase;color:#333;
+    .cat-tile:hover .cat-tile-overlay {
+      background: linear-gradient(
+        to top,
+        rgba(139,0,0,0.90) 0%,
+        rgba(139,0,0,0.25) 45%,
+        rgba(0,0,0,0.00) 100%
+      );
     }
-    .card-features li::before{
-      content:'';width:5px;height:5px;border-radius:50%;
-      background:#8B0000;flex-shrink:0;
+    .cat-label {
+      position: absolute;
+      bottom: 20px;
+      left: 18px;
+      right: 18px;
+      font-size: 15px;
+      font-weight: 900;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+      color: #fff;
+      line-height: 1.15;
+    }
+    .cat-label-sub {
+      display: block;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: rgba(255,255,255,0.60);
+      margin-top: 5px;
+      text-transform: uppercase;
+    }
+    /* "Coming Soon" badge */
+    .cat-coming {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.25);
+      color: #fff;
+      font-size: 8px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 4px 9px;
+      border-radius: 30px;
+      backdrop-filter: blur(4px);
     }
 
-    /* ─── CARD BUTTONS ─── */
-    .card-actions{display:flex;gap:10px;margin-top:auto;}
-    .btn-details{
-      flex:1;
-      display:inline-flex;align-items:center;justify-content:center;gap:6px;
-      font-family:'Montserrat',sans-serif;
-      font-size:10px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;
-      text-decoration:none;padding:12px 14px;border-radius:6px;
-      background:transparent;color:#444;
-      border:1.5px solid #ccc;
-      transition:border-color 0.2s,color 0.2s;
+    /* ═══════════════════════════════════════
+       FEATURE BANNERS  (2-up)
+    ═══════════════════════════════════════ */
+    .feature-banners {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
     }
-    .btn-details:hover{border-color:#8B0000;color:#8B0000;}
-    .btn-quote{
-      flex:1;
-      display:inline-flex;align-items:center;justify-content:center;gap:6px;
-      font-family:'Montserrat',sans-serif;
-      font-size:10px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;
-      text-decoration:none;padding:12px 14px;border-radius:6px;
-      background:#8B0000;color:#fff;
-      border:1.5px solid transparent;
-      transition:background 0.2s, transform 0.15s;
+    .feat-banner {
+      position: relative;
+      height: 360px;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
     }
-    .btn-quote:hover{background:#a00000;transform:translateY(-1px);}
+    .feat-banner-bg {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      transition: transform 0.45s ease;
+    }
+    .feat-banner:hover .feat-banner-bg { transform: scale(1.04); }
+    .feat-banner-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(0,0,0,0.80) 0%,
+        rgba(0,0,0,0.20) 55%,
+        rgba(0,0,0,0.00) 100%
+      );
+    }
+    .feat-banner-content {
+      position: relative;
+      z-index: 2;
+      padding: 36px 44px;
+    }
+    .feat-banner-content h3 {
+      font-size: clamp(18px, 2.5vw, 28px);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -0.5px;
+      line-height: 1.05;
+      color: #fff;
+      margin-bottom: 9px;
+    }
+    .feat-banner-content p {
+      font-size: 12px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.65;
+      margin-bottom: 20px;
+      max-width: 280px;
+    }
+    .feat-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+    .feat-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 11px 22px;
+      border-radius: 4px;
+      transition: background 0.2s, color 0.2s, transform 0.15s;
+    }
+    .feat-btn:hover { transform: translateY(-1px); }
+    .feat-btn-primary { background: #8B0000; color: #fff; }
+    .feat-btn-primary:hover { background: #a00000; }
+    .feat-btn-white { background: #fff; color: #1a1a1a; }
+    .feat-btn-white:hover { background: #f0f0f0; }
 
-    /* ─── CTA BAND ─── */
-    .cta-band{
-      background:#8B0000;
-      padding:72px 24px;text-align:center;
-      position:relative;overflow:hidden;color:#fff;
+    /* ═══════════════════════════════════════
+       HELP BAR
+    ═══════════════════════════════════════ */
+    .help-bar {
+      background: #111;
+      padding: 28px 48px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
     }
-    .cta-band::before{
-      content:'';position:absolute;inset:0;
-      background-image:radial-gradient(circle,rgba(255,255,255,0.05) 1px,transparent 1px);
-      background-size:24px 24px;
+    .help-bar-icon {
+      width: 48px;
+      height: 48px;
+      background: #8B0000;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
     }
-    .cta-band-content{position:relative;z-index:1;}
-    .cta-band h2{
-      font-size:clamp(20px,3.5vw,34px);font-weight:900;
-      letter-spacing:-0.5px;margin-bottom:10px;
+    .help-bar-icon svg { width: 22px; height: 22px; }
+    .help-bar-text {
+      flex: 1;
+      min-width: 180px;
     }
-    .cta-band p{
-      font-size:13px;font-weight:500;
-      color:rgba(255,255,255,0.78);
-      max-width:420px;margin:0 auto 30px;line-height:1.75;
+    .help-bar-text strong {
+      display: block;
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #fff;
+      margin-bottom: 3px;
     }
-    .cta-band-btn{
-      display:inline-flex;align-items:center;gap:8px;
-      background:#fff;color:#8B0000;
-      font-family:'Montserrat',sans-serif;
-      font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase;
-      text-decoration:none;padding:15px 38px;border-radius:8px;
-      transition:background 0.2s, transform 0.15s;
+    .help-bar-text span {
+      font-size: 11px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.45);
     }
-    .cta-band-btn:hover{background:#f0f0f0;transform:translateY(-1px);}
-    .cta-band-btn svg{width:14px;height:14px;}
+    .help-bar-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .help-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 12px 22px;
+      border-radius: 4px;
+      transition: opacity 0.2s, transform 0.15s;
+    }
+    .help-btn:hover { opacity: 0.85; transform: translateY(-1px); }
+    .help-btn svg { width: 13px; height: 13px; flex-shrink: 0; }
+    .help-btn-call { background: #8B0000; color: #fff; }
+    .help-btn-quote { background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,0.25); }
+    .help-btn-quote:hover { border-color: rgba(255,255,255,0.55); }
 
-    /* ─── MOBILE ─── */
-    @media(max-width:680px){
-      .page-header{height:150px;padding:16px 16px 0;}
-      .page-header h1{letter-spacing:-1px;font-size:clamp(22px,7vw,34px);}
-      .page-header-sub{font-size:11px;}
-      .products-section{padding:24px 12px 28px;}
-      .products-grid{grid-template-columns:1fr 1fr;gap:14px;}
-      .card-body{padding:14px;}
-      .card-name{font-size:15px;}
-      .card-actions{gap:6px;}
-      .btn-details,.btn-quote{font-size:9px;padding:10px 8px;}
-      .cta-band{padding:28px 16px;}
-      .cta-band-btn{padding:12px 24px;font-size:11px;}
+    /* ═══════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════ */
+    @media (max-width: 960px) {
+      .cat-grid { grid-template-columns: repeat(2, 1fr); }
+      .feature-banners { grid-template-columns: 1fr; }
+      .feat-banner { height: 280px; }
     }
-    @media(max-width:400px){
-      .products-grid{grid-template-columns:1fr;}
+    @media (max-width: 640px) {
+      .hero { height: 400px; }
+      .hero-content { padding: 0 24px; }
+      .hero-content h1 { letter-spacing: -1px; }
+      .categories { padding: 36px 16px 44px; }
+      .section-header { margin-bottom: 16px; }
+      .cat-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+      .cat-label { font-size: 13px; bottom: 14px; left: 14px; right: 14px; }
+      .feat-banner { height: 240px; }
+      .feat-banner-content { padding: 24px 28px; }
+      .help-bar { padding: 22px 24px; flex-direction: column; align-items: flex-start; gap: 16px; }
+      .help-bar-icon { display: none; }
+      .help-btn { font-size: 9px; padding: 11px 18px; }
     }
   </style>
 </head>
 <body>
 
-<!-- ═══ PAGE HEADER ═══ -->
-<header class="page-header">
-  <span class="eyebrow" data-anim="fade-up">3J's Auto Body · Signal Hill, CA</span>
-  <h1 data-anim="fade-up" data-delay="100">Exterior <em>Accessories</em></h1>
-  <p class="page-header-sub" data-anim="fade-up" data-delay="200">Premium truck accessories, professionally installed. We source and install the top brands — built right, the first time.</p>
-</header>
-
-<!-- ═══ PRODUCT GRID ═══ -->
-<section class="products-section">
-  <div class="products-grid">
-
-    <!-- ════ BakFlip MX4 ════ -->
-    <div class="product-card" data-anim="fade-up" data-delay="100">
-      <div class="card-img">
-        <!--
-          MX4 IMAGE:
-          Upload a photo from the mx4 folder to Wix Media Manager.
-          Then replace the placeholder below with:
-          <img src="https://static.wixstatic.com/media/yourfile.jpg" alt="BakFlip MX4">
-        -->
-        <div class="card-img-inner">
-          <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/bak-bakflip-mx4-2016-ford-f150-blue-beach-lifestyle-01.jpg" alt="BakFlip MX4 Hard Folding Tonneau Cover on Ford F-150">
-        </div>
-        <div class="card-badge">Best Seller</div>
-      </div>
-      <div class="card-body">
-        <div class="card-brand">BakFlip</div>
-        <div class="card-name">MX4</div>
-        <p class="card-tagline">The best-selling hard folding tonneau cover in the world. Aircraft-grade aluminum, matte finish, hidden mounting hardware.</p>
-        <ul class="card-features">
-          <li>Aircraft-grade aluminum panels</li>
-          <li>Matte finish — scratch resistant</li>
-          <li>Low-profile, hidden mount system</li>
-        </ul>
-        <div class="card-actions">
-          <a href="/bakflip-mx4" target="_top" class="btn-details">View Details</a>
-          <a href="https://www.3jsautobody.com/rhino-lining-quote" target="_top" class="btn-quote">Get a Quote</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- ════ BakFlip X4S ════ -->
-    <div class="product-card" data-anim="fade-up" data-delay="200">
-      <div class="card-img">
-        <!--
-          X4S IMAGE:
-          Upload an X4S photo to Wix Media Manager.
-          Then replace the placeholder below with:
-          <img src="https://static.wixstatic.com/media/yourfile.jpg" alt="BakFlip X4S">
-        -->
-        <div class="card-img-inner">
-          <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/bak-bakflip-mx4-2017-chevrolet-silverado-2500-hd-silver-studio-12.jpg" alt="BakFlip X4S Hard Folding Tonneau Cover on Chevrolet Silverado">
-        </div>
-        <div class="card-badge">New Model</div>
-      </div>
-      <div class="card-body">
-        <div class="card-brand">BakFlip</div>
-        <div class="card-name">X4S</div>
-        <p class="card-tagline">Diamond plate texture meets solid security. Sleek, low-profile, and built for the truck owner who doesn't compromise.</p>
-        <ul class="card-features">
-          <li>Diamond plate aluminum surface</li>
-          <li>Low-profile flush mount design</li>
-          <li>Dual-action tailgate support</li>
-        </ul>
-        <div class="card-actions">
-          <!--
-            UPDATE THIS LINK once the Wix page slug is changed to /bakflip-x4s
-            Current URL: /copy-of-bakflip-mx4
-          -->
-          <a href="/copy-of-bakflip-mx4" target="_top" class="btn-details">View Details</a>
-          <a href="https://www.3jsautobody.com/rhino-lining-quote" target="_top" class="btn-quote">Get a Quote</a>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ═══ BOTTOM CTA BAND ═══ -->
-<div class="cta-band">
-  <div class="cta-band-content" data-anim="fade-up">
-    <h2>Not Sure Which Cover Is Right for You?</h2>
-    <p>Submit a quote request and we'll help you pick the right fit for your truck, budget, and how you use it.</p>
-    <a href="https://www.3jsautobody.com/rhino-lining-quote" target="_top" class="cta-band-btn">
-      <svg fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
-        <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
-      </svg>
+<!-- ═══════════════════════════════════════
+     HERO BANNER
+═══════════════════════════════════════ -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-eyebrow">3J's Auto Body · Signal Hill, CA</span>
+    <h1>Built Strong.<em>Done Right.</em></h1>
+    <p>Premium truck accessories, professionally installed. We source and install the top brands — built right the first time.</p>
+    <a href="https://www.3jsautobody.com/rhino-lining-quote" target="_top" class="hero-btn">
+      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
       Get a Free Quote
     </a>
   </div>
 </div>
 
-<script>
-/* ── Scroll animations ── */
-(function(){
-  var els = document.querySelectorAll('[data-anim]');
-  if(!els.length) return;
-  var io = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); }
-    });
-  },{threshold:0.12});
-  els.forEach(function(el){ io.observe(el); });
-})();
 
-/* ── Wix iframe height reporting ── */
-function reportHeight(){
+<!-- ═══════════════════════════════════════
+     TOP CATEGORIES
+═══════════════════════════════════════ -->
+<section class="categories">
+  <div class="section-header">
+    <h2 class="section-title">Top Categories</h2>
+    <div class="section-rule"></div>
+  </div>
+
+  <div class="cat-grid">
+
+    <!-- Tonneau Covers -->
+    <a href="https://www.3jsautobody.com/tonneau-covers" target="_top" class="cat-tile">
+      <div class="cat-tile-bg" style="background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/bak-bakflip-mx4-2016-ford-f150-blue-beach-lifestyle-01.jpg')"></div>
+      <div class="cat-tile-overlay"></div>
+      <span class="cat-label">
+        Tonneau<br>Covers
+        <em class="cat-label-sub">BakFlip MX4 · X4S</em>
+      </span>
+    </a>
+
+    <!-- Bed Liners -->
+    <a href="https://www.3jsautobody.com/rhino-lining-quote" target="_top" class="cat-tile">
+      <div class="cat-tile-bg" style="background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/Bedliner-Jeep_exterior.PNG')"></div>
+      <div class="cat-tile-overlay"></div>
+      <span class="cat-label">
+        Bed Liners &<br>Rhino Liner
+        <em class="cat-label-sub">Spray-In · Drop-In</em>
+      </span>
+    </a>
+
+    <!-- Steps & Running Boards -->
+    <a href="#" target="_top" class="cat-tile">
+      <div class="cat-tile-bg" style="background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/Ram%20truck.jpg')"></div>
+      <div class="cat-tile-overlay"></div>
+      <span class="cat-coming">Coming Soon</span>
+      <span class="cat-label">
+        Steps &<br>Running Boards
+        <em class="cat-label-sub">AMP · Westin · More</em>
+      </span>
+    </a>
+
+    <!-- Towing & Hitches -->
+    <a href="#" target="_top" class="cat-tile">
+      <div class="cat-tile-bg" style="background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/B%26W%20Hitches%201.png')"></div>
+      <div class="cat-tile-overlay"></div>
+      <span class="cat-coming">Coming Soon</span>
+      <span class="cat-label">
+        Towing &<br>Hitches
+        <em class="cat-label-sub">CURT · B&amp;W</em>
+      </span>
+    </a>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     FEATURE BANNERS  (2-up)
+═══════════════════════════════════════ -->
+<div class="feature-banners">
+
+  <!-- Rhino Liner -->
+  <div class="feat-banner">
+    <div class="feat-banner-bg" style="background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/rhino%20Jeep%20edited.jpeg')"></div>
+    <div class="feat-banner-overlay"></div>
+    <div class="feat-banner-content">
+      <h3>Rhino Liner<br>Bed Coating</h3>
+      <p>The toughest spray-in bed liner available. Professional application, lifetime results.</p>
+      <div class="feat-btns">
+        <a href="https://www.3jsautobody.com/rhino-lining-quote" target="_top" class="feat-btn feat-btn-primary">Get a Quote</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- BakFlip Tonneau -->
+  <div class="feat-banner">
+    <div class="feat-banner-bg" style="background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/bak-bakflip-mx4-2016-ford-f150-blue-beach-lifestyle-07.jpg')"></div>
+    <div class="feat-banner-overlay"></div>
+    <div class="feat-banner-content">
+      <h3>BakFlip Tonneau<br>Covers</h3>
+      <p>Best-selling hard folding covers. Aircraft-grade aluminum, professionally installed.</p>
+      <div class="feat-btns">
+        <a href="https://www.3jsautobody.com/tonneau-covers" target="_top" class="feat-btn feat-btn-white">Shop Covers</a>
+        <a href="https://www.3jsautobody.com/rhino-lining-quote" target="_top" class="feat-btn feat-btn-primary">Get a Quote</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     NEED HELP BAR
+═══════════════════════════════════════ -->
+<div class="help-bar">
+  <div class="help-bar-icon">
+    <svg fill="none" stroke="#fff" stroke-width="2.2" viewBox="0 0 24 24">
+      <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 2.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+    </svg>
+  </div>
+  <div class="help-bar-text">
+    <strong>Need Help Choosing?</strong>
+    <span>Talk to our team — we'll point you to the right accessories for your truck.</span>
+  </div>
+  <div class="help-bar-actions">
+    <a href="tel:5624246744" class="help-btn help-btn-call">
+      <svg fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+        <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 2.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+      </svg>
+      Call (562) 424-6744
+    </a>
+    <a href="https://www.3jsautobody.com/rhino-lining-quote" target="_top" class="help-btn help-btn-quote">
+      Get a Free Quote
+    </a>
+  </div>
+</div>
+
+
+<script>
+/* Wix iframe height reporting */
+function reportHeight() {
   var h = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
-  window.parent.postMessage(JSON.stringify({height:h}),'*');
+  window.parent.postMessage(JSON.stringify({ height: h }), '*');
 }
-window.addEventListener('load', function(){ reportHeight(); setTimeout(reportHeight,500); setTimeout(reportHeight,1500); });
+window.addEventListener('load', function () { reportHeight(); setTimeout(reportHeight, 500); setTimeout(reportHeight, 1500); });
 window.addEventListener('resize', reportHeight);
-if(window.ResizeObserver){ new ResizeObserver(reportHeight).observe(document.body); }
+if (window.ResizeObserver) { new ResizeObserver(reportHeight).observe(document.body); }
 </script>
 <script src="https://rlsh1855.github.io/3Js-and-RLSH-Website/site-nav.js"></script>
 </body>
