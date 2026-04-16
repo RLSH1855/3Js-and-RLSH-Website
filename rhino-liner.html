@@ -148,12 +148,6 @@
       color:#fff;
     }
     .hero-content .eyebrow{color:#8B0000;}
-    .hero-logo{
-      height:180px;width:auto;
-      margin-bottom:28px;
-      display:block;
-      filter:drop-shadow(0 4px 20px rgba(0,0,0,0.60));
-    }
     .hero h1{
       font-size:clamp(42px,6vw,88px);
       font-weight:900;
@@ -575,6 +569,27 @@
     /* ══════════════════════════════════════════════
        FAQ
     ══════════════════════════════════════════════ */
+    /* ── DEALER FOOTER BADGE ── */
+    .dealer-footer{
+      background:#0d0d0d;
+      border-top:1px solid rgba(255,255,255,0.06);
+      padding:48px 24px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:14px;
+    }
+    .dealer-logo{
+      height:160px;width:auto;
+      filter:drop-shadow(0 6px 24px rgba(0,0,0,0.70));
+      opacity:0.92;
+    }
+    .dealer-text{
+      font-size:11px;font-weight:700;
+      letter-spacing:2px;text-transform:uppercase;
+      color:rgba(255,255,255,0.35);
+    }
+
     .faq-section{
       background:#0d0d0d;
       padding:88px 40px;
@@ -726,7 +741,6 @@
 
   <div class="hero-content">
     <p class="eyebrow">Signal Hill, CA &nbsp;·&nbsp; Authorized Dealer &nbsp;·&nbsp; Est. 1991</p>
-    <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/RLSH_METAL_LOGO-Photoroom.png" alt="Rhino Linings of Signal Hill" class="hero-logo">
     <h1>The Toughest<br>Coating <span>On Earth.</span></h1>
     <div class="hero-rule"></div>
     <p class="hero-body">
@@ -1184,6 +1198,14 @@
 
   </div>
 </section>
+
+<!-- ══════════════════════════════════════════════
+     DEALER BADGE FOOTER
+══════════════════════════════════════════════ -->
+<div class="dealer-footer">
+  <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/RLSH_METAL_LOGO-Photoroom.png" alt="Rhino Linings of Signal Hill — Authorized Dealer" class="dealer-logo">
+  <p class="dealer-text">Authorized Rhino Linings Dealer &nbsp;·&nbsp; Signal Hill, CA</p>
+</div>
 
 <script>
   // Touch device hint
