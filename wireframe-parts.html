@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Parts Page Wireframe — 3J's Auto Body</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:'Montserrat',sans-serif;background:#f0f0f0;color:#1a1a1a;}
+
+    /* ══ PAGE HEADER ══ */
+    .page-title-bar{
+      background:#1a1a1a;color:#fff;
+      padding:20px 32px;
+      display:flex;align-items:center;justify-content:space-between;
+      flex-wrap:wrap;gap:12px;
+    }
+    .page-title-bar h1{font-size:16px;font-weight:900;letter-spacing:1px;text-transform:uppercase;}
+    .page-title-bar p{font-size:11px;color:#aaa;font-weight:500;}
+    .view-toggle{display:flex;gap:8px;}
+    .view-btn{
+      padding:8px 18px;border-radius:6px;
+      font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;
+      letter-spacing:1px;text-transform:uppercase;cursor:pointer;border:none;
+      transition:background 0.2s,color 0.2s;
+    }
+    .view-btn.active{background:#8B0000;color:#fff;}
+    .view-btn:not(.active){background:#333;color:#aaa;}
+
+    /* ══ UX NOTES PANEL ══ */
+    .ux-notes{
+      background:#fff;
+      border-left:4px solid #8B0000;
+      padding:20px 28px;
+      margin:24px 32px;
+      border-radius:0 8px 8px 0;
+    }
+    .ux-notes h2{font-size:12px;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:#8B0000;margin-bottom:12px;}
+    .ux-notes ul{list-style:none;display:flex;flex-wrap:wrap;gap:10px;}
+    .ux-notes li{
+      font-size:11px;font-weight:600;color:#444;
+      background:#f9f9f9;border:1px solid #e8e8e8;
+      padding:6px 12px;border-radius:20px;
+    }
+    .ux-notes li::before{content:"✓ ";color:#8B0000;font-weight:900;}
+
+    /* ══ WIREFRAME WRAP ══ */
+    .wireframe-wrap{padding:0 32px 48px;}
+
+    /* ══ DESKTOP WIREFRAME ══ */
+    #view-desktop{display:block;}
+    #view-mobile{display:none;}
+
+    .wf-label{
+      font-size:10px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;
+      color:#8B0000;margin-bottom:12px;
+    }
+
+    /* Garage bar */
+    .wf-garage-bar{
+      background:#1a1a1a;
+      padding:10px 20px;
+      display:flex;align-items:center;justify-content:space-between;
+      border-radius:8px 8px 0 0;
+      margin-bottom:0;
+    }
+    .wf-garage-left{display:flex;align-items:center;gap:10px;}
+    .wf-garage-truck{
+      width:44px;height:28px;
+      background:#333;border-radius:4px;
+      display:flex;align-items:center;justify-content:center;
+      font-size:16px;
+    }
+    .wf-garage-text{}
+    .wf-garage-label{font-size:8px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#888;}
+    .wf-garage-vehicle{font-size:12px;font-weight:800;color:#fff;}
+    .wf-garage-badge{
+      background:#1a6b1a;color:#fff;
+      font-size:9px;font-weight:800;letter-spacing:1px;text-transform:uppercase;
+      padding:3px 10px;border-radius:20px;
+    }
+    .wf-garage-right{display:flex;gap:16px;}
+    .wf-garage-action{font-size:10px;font-weight:700;color:#888;text-decoration:underline;cursor:pointer;}
+
+    /* Nav bar */
+    .wf-nav{
+      background:#8B0000;
+      padding:12px 20px;
+      display:flex;align-items:center;gap:24px;
+      margin-bottom:0;
+    }
+    .wf-nav-item{font-size:11px;font-weight:700;color:rgba(255,255,255,0.7);cursor:pointer;white-space:nowrap;}
+    .wf-nav-item.active{color:#fff;border-bottom:2px solid #fff;padding-bottom:2px;}
+
+    /* Category chips */
+    .wf-cat-bar{
+      background:#fff;
+      border-bottom:2px solid #e8e8e8;
+      padding:12px 20px;
+      display:flex;gap:8px;overflow-x:auto;
+    }
+    .wf-cat-chip{
+      padding:6px 16px;border-radius:20px;
+      font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase;
+      white-space:nowrap;cursor:pointer;border:2px solid #e8e8e8;
+      background:#fff;color:#666;
+      transition:all 0.2s;
+    }
+    .wf-cat-chip.active{background:#1a1a1a;color:#fff;border-color:#1a1a1a;}
+
+    /* Main layout */
+    .wf-layout{
+      display:grid;
+      grid-template-columns:240px 1fr;
+      gap:0;
+      background:#fff;
+      border:2px solid #e8e8e8;
+      border-top:none;
+      border-radius:0 0 10px 10px;
+      overflow:hidden;
+      min-height:700px;
+    }
+
+    /* Sidebar */
+    .wf-sidebar{
+      background:#fafafa;
+      border-right:2px solid #e8e8e8;
+      padding:20px 16px;
+      position:relative;
+    }
+    .wf-sidebar-section{margin-bottom:20px;}
+    .wf-sidebar-title{
+      font-size:9px;font-weight:900;letter-spacing:2.5px;text-transform:uppercase;
+      color:#8B0000;margin-bottom:10px;
+      padding-bottom:6px;border-bottom:1px solid #e8e8e8;
+    }
+    .wf-filter-item{
+      display:flex;align-items:center;gap:8px;
+      padding:5px 0;cursor:pointer;
+    }
+    .wf-checkbox{
+      width:14px;height:14px;border:2px solid #ccc;border-radius:3px;flex-shrink:0;
+    }
+    .wf-checkbox.checked{background:#8B0000;border-color:#8B0000;}
+    .wf-filter-label{font-size:11px;font-weight:600;color:#444;}
+    .wf-filter-count{font-size:10px;font-weight:600;color:#aaa;margin-left:auto;}
+
+    .wf-price-range{
+      background:#e8e8e8;height:4px;border-radius:2px;margin:10px 0;position:relative;
+    }
+    .wf-price-fill{
+      position:absolute;left:15%;right:20%;
+      height:4px;background:#8B0000;border-radius:2px;
+    }
+    .wf-price-labels{display:flex;justify-content:space-between;font-size:10px;font-weight:600;color:#666;}
+
+    .wf-sidebar-note{
+      position:absolute;bottom:16px;left:16px;right:16px;
+      background:#fff8f0;border:1px dashed #e8c080;border-radius:6px;
+      padding:10px;font-size:9px;color:#886600;font-weight:600;line-height:1.5;
+      text-align:center;
+    }
+
+    /* Main content */
+    .wf-main{padding:0;}
+
+    .wf-toolbar{
+      padding:14px 20px;
+      border-bottom:2px solid #e8e8e8;
+      display:flex;align-items:center;justify-content:space-between;
+      gap:12px;flex-wrap:wrap;
+    }
+    .wf-result-count{font-size:11px;font-weight:700;color:#666;}
+    .wf-result-count span{color:#1a1a1a;font-weight:900;}
+    .wf-sort{display:flex;align-items:center;gap:8px;}
+    .wf-sort-label{font-size:10px;font-weight:700;color:#888;}
+    .wf-sort-select{
+      padding:6px 28px 6px 10px;
+      border:2px solid #e8e8e8;border-radius:6px;
+      font-family:'Montserrat',sans-serif;font-size:11px;font-weight:600;
+      background:#fff;appearance:none;cursor:pointer;
+    }
+    .wf-active-filters{
+      padding:8px 20px;
+      border-bottom:1px solid #e8e8e8;
+      display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+      background:#fafafa;
+    }
+    .wf-active-label{font-size:9px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#888;}
+    .wf-filter-tag{
+      display:flex;align-items:center;gap:5px;
+      padding:4px 10px;
+      background:#1a1a1a;color:#fff;
+      border-radius:20px;font-size:10px;font-weight:700;
+    }
+    .wf-filter-tag-x{font-size:12px;cursor:pointer;opacity:0.7;}
+
+    /* Product grid */
+    .wf-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:1px;
+      background:#e8e8e8;
+      padding:0;
+    }
+
+    .wf-card{
+      background:#fff;
+      padding:0;
+      cursor:pointer;
+      transition:box-shadow 0.2s;
+      position:relative;
+    }
+    .wf-card:hover{box-shadow:inset 0 0 0 2px #8B0000;}
+
+    .wf-card-img{
+      height:140px;
+      background:linear-gradient(135deg,#f0f0f0,#e0e0e0);
+      display:flex;align-items:center;justify-content:center;
+      font-size:11px;font-weight:700;color:#bbb;letter-spacing:1px;
+      text-transform:uppercase;
+      position:relative;
+      overflow:hidden;
+    }
+    .wf-card-img.has-img{background:#e8e8e8;}
+    .wf-fits-badge{
+      position:absolute;top:8px;left:8px;
+      background:#1a6b1a;color:#fff;
+      font-size:8px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;
+      padding:3px 8px;border-radius:20px;
+    }
+    .wf-fits-badge.no-fit{background:#888;}
+    .wf-card-body{padding:12px 14px;}
+    .wf-card-brand{font-size:8px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#8B0000;margin-bottom:3px;}
+    .wf-card-name{font-size:12px;font-weight:800;color:#1a1a1a;margin-bottom:6px;line-height:1.3;}
+    .wf-card-part{font-size:9px;font-weight:600;color:#aaa;margin-bottom:8px;}
+    .wf-card-price{font-size:15px;font-weight:900;color:#1a1a1a;margin-bottom:10px;}
+    .wf-card-btn{
+      display:block;width:100%;
+      padding:8px;
+      background:#8B0000;color:#fff;
+      border:none;border-radius:6px;
+      font-family:'Montserrat',sans-serif;font-size:9px;font-weight:800;
+      letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;
+      text-align:center;
+    }
+
+    /* ══ MOBILE WIREFRAME ══ */
+    .mobile-wrap{
+      max-width:390px;
+      margin:0 auto;
+      background:#f0f0f0;
+      border-radius:40px;
+      overflow:hidden;
+      box-shadow:0 20px 60px rgba(0,0,0,0.3);
+      border:8px solid #1a1a1a;
+    }
+
+    .mob-screen{background:#f5f5f5;min-height:750px;}
+
+    /* Mobile garage bar */
+    .mob-garage{
+      background:#1a1a1a;
+      padding:10px 16px;
+      display:flex;align-items:center;justify-content:space-between;
+    }
+    .mob-garage-left{display:flex;align-items:center;gap:8px;}
+    .mob-garage-icon{font-size:14px;}
+    .mob-garage-vehicle{font-size:11px;font-weight:800;color:#fff;}
+    .mob-garage-badge{
+      background:#1a6b1a;color:#fff;
+      font-size:8px;font-weight:800;padding:2px 7px;border-radius:10px;
+    }
+    .mob-garage-change{font-size:9px;font-weight:700;color:#888;text-decoration:underline;}
+
+    /* Mobile nav */
+    .mob-nav{
+      background:#8B0000;
+      padding:10px 16px;
+      display:flex;align-items:center;justify-content:space-between;
+    }
+    .mob-nav-logo{font-size:12px;font-weight:900;color:#fff;letter-spacing:1px;}
+    .mob-nav-hamburger{display:flex;flex-direction:column;gap:3px;cursor:pointer;}
+    .mob-nav-hamburger span{display:block;width:20px;height:2px;background:#fff;border-radius:2px;}
+
+    /* Mobile category chips */
+    .mob-cats{
+      background:#fff;
+      padding:10px 12px;
+      display:flex;gap:6px;overflow-x:auto;
+      border-bottom:2px solid #e8e8e8;
+    }
+    .mob-cats::-webkit-scrollbar{display:none;}
+    .mob-chip{
+      padding:5px 12px;border-radius:16px;
+      font-size:9px;font-weight:800;letter-spacing:0.5px;text-transform:uppercase;
+      white-space:nowrap;border:2px solid #e8e8e8;background:#fff;color:#666;
+    }
+    .mob-chip.active{background:#1a1a1a;color:#fff;border-color:#1a1a1a;}
+
+    /* Mobile toolbar */
+    .mob-toolbar{
+      padding:10px 12px;
+      background:#fff;
+      border-bottom:1px solid #e8e8e8;
+      display:flex;align-items:center;justify-content:space-between;
+      gap:8px;
+    }
+    .mob-filter-btn{
+      display:flex;align-items:center;gap:6px;
+      padding:7px 14px;
+      border:2px solid #1a1a1a;border-radius:6px;
+      font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;
+      letter-spacing:1px;text-transform:uppercase;
+      background:#fff;cursor:pointer;
+    }
+    .mob-filter-badge{
+      background:#8B0000;color:#fff;
+      font-size:8px;font-weight:900;
+      width:16px;height:16px;border-radius:50%;
+      display:flex;align-items:center;justify-content:center;
+    }
+    .mob-result-count{font-size:10px;font-weight:700;color:#666;}
+    .mob-sort-btn{
+      padding:7px 12px;
+      border:2px solid #e8e8e8;border-radius:6px;
+      font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;
+      background:#fff;cursor:pointer;color:#666;
+    }
+
+    /* Mobile product grid */
+    .mob-grid{
+      display:grid;grid-template-columns:1fr 1fr;
+      gap:1px;background:#e8e8e8;
+    }
+    .mob-card{background:#fff;cursor:pointer;}
+    .mob-card-img{
+      height:100px;
+      background:linear-gradient(135deg,#f0f0f0,#e0e0e0);
+      display:flex;align-items:center;justify-content:center;
+      font-size:9px;font-weight:700;color:#bbb;
+      text-transform:uppercase;letter-spacing:1px;
+      position:relative;
+    }
+    .mob-fits{
+      position:absolute;top:6px;left:6px;
+      background:#1a6b1a;color:#fff;
+      font-size:7px;font-weight:800;padding:2px 6px;border-radius:10px;
+    }
+    .mob-card-body{padding:8px 10px;}
+    .mob-card-brand{font-size:7px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#8B0000;margin-bottom:2px;}
+    .mob-card-name{font-size:10px;font-weight:800;color:#1a1a1a;margin-bottom:4px;line-height:1.3;}
+    .mob-card-price{font-size:12px;font-weight:900;color:#1a1a1a;margin-bottom:6px;}
+    .mob-card-btn{
+      display:block;width:100%;padding:6px;
+      background:#8B0000;color:#fff;border:none;border-radius:4px;
+      font-family:'Montserrat',sans-serif;font-size:8px;font-weight:800;
+      letter-spacing:1px;text-transform:uppercase;text-align:center;cursor:pointer;
+    }
+
+    /* Mobile filter overlay */
+    .mob-filter-overlay{
+      background:#fff;
+      border-top:3px solid #8B0000;
+      margin-top:8px;
+    }
+    .mob-filter-header{
+      padding:14px 16px;
+      display:flex;align-items:center;justify-content:space-between;
+      border-bottom:2px solid #e8e8e8;
+    }
+    .mob-filter-title{font-size:12px;font-weight:900;color:#1a1a1a;}
+    .mob-filter-clear{font-size:10px;font-weight:700;color:#8B0000;text-decoration:underline;cursor:pointer;}
+    .mob-filter-section{padding:12px 16px;border-bottom:1px solid #f0f0f0;}
+    .mob-filter-section-title{font-size:9px;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:#8B0000;margin-bottom:8px;}
+    .mob-filter-chips{display:flex;flex-wrap:wrap;gap:6px;}
+    .mob-filter-chip{
+      padding:5px 12px;border-radius:16px;
+      font-size:9px;font-weight:700;
+      border:2px solid #e8e8e8;background:#fff;color:#666;cursor:pointer;
+    }
+    .mob-filter-chip.selected{background:#1a1a1a;color:#fff;border-color:#1a1a1a;}
+    .mob-apply-btn{
+      margin:12px 16px;
+      display:block;width:calc(100% - 32px);
+      padding:13px;
+      background:#8B0000;color:#fff;border:none;border-radius:8px;
+      font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;
+      letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;text-align:center;
+    }
+
+    /* annotation labels */
+    .annotation{
+      display:inline-flex;align-items:center;gap:6px;
+      background:#fff3cd;border:1px solid #ffc107;
+      border-radius:4px;padding:4px 10px;
+      font-size:9px;font-weight:700;color:#856404;
+    }
+
+    /* section divider */
+    .section-divider{
+      text-align:center;
+      padding:32px 0 20px;
+      font-size:11px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:#888;
+    }
+    .section-divider span{
+      background:#f0f0f0;padding:0 16px;position:relative;
+    }
+
+    /* annotation arrows */
+    .ann-row{display:flex;align-items:flex-start;gap:12px;margin:6px 0;}
+    .ann-arrow{color:#8B0000;font-size:14px;flex-shrink:0;margin-top:2px;}
+    .ann-text{font-size:10px;font-weight:600;color:#555;line-height:1.4;}
+    .annotations-panel{
+      background:#fff;border-radius:10px;padding:20px 24px;
+      border:2px solid #e8e8e8;margin-top:24px;
+    }
+    .annotations-title{font-size:10px;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:#8B0000;margin-bottom:14px;}
+  </style>
+</head>
+<body>
+
+<div class="page-title-bar">
+  <div>
+    <h1>Parts Page — UX Wireframe</h1>
+    <p>3J's Auto Body &amp; Paint · Signal Hill, CA</p>
+  </div>
+  <div class="view-toggle">
+    <button class="view-btn active" onclick="showView('desktop',this)">Desktop</button>
+    <button class="view-btn" onclick="showView('mobile',this)">Mobile</button>
+  </div>
+</div>
+
+<!-- UX Principles -->
+<div class="ux-notes">
+  <h2>UX Principles — Zero Frustration Navigation</h2>
+  <ul>
+    <li>Vehicle saved once — fitment confirmed everywhere</li>
+    <li>2 clicks max to find any product</li>
+    <li>Filters never leave the screen (desktop: sticky sidebar / mobile: overlay)</li>
+    <li>Active filters always visible — easy to remove</li>
+    <li>Fitment badge on every card — green = fits, gray = doesn't</li>
+    <li>No pagination — load more as you scroll</li>
+    <li>Mobile: full-screen filter overlay (industry proven best)</li>
+    <li>Category chips scroll horizontally — always one tap away</li>
+  </ul>
+</div>
+
+<div class="wireframe-wrap">
+
+  <!-- ══ DESKTOP VIEW ══ -->
+  <div id="view-desktop">
+    <p class="wf-label">Desktop Layout — 1280px+</p>
+
+    <!-- Garage bar -->
+    <div class="wf-garage-bar">
+      <div class="wf-garage-left">
+        <div class="wf-garage-truck">🚗</div>
+        <div class="wf-garage-text">
+          <div class="wf-garage-label">My Garage</div>
+          <div class="wf-garage-vehicle">2021 Ford F-150 XLT · 5'7" Bed</div>
+        </div>
+        <div class="wf-garage-badge">✓ Fitment Active</div>
+      </div>
+      <div class="wf-garage-right">
+        <span class="wf-garage-action">Change Vehicle</span>
+        <span class="wf-garage-action">Clear Garage</span>
+      </div>
+    </div>
+
+    <!-- Nav -->
+    <div class="wf-nav">
+      <span class="wf-nav-item">Home</span>
+      <span class="wf-nav-item">Rhino Liner</span>
+      <span class="wf-nav-item active">Truck Accessories ▾</span>
+      <span class="wf-nav-item">Body &amp; Paint</span>
+      <span class="wf-nav-item">About 3J's</span>
+      <span class="wf-nav-item">Get a Quote</span>
+    </div>
+
+    <!-- Category chips -->
+    <div class="wf-cat-bar">
+      <div class="wf-cat-chip active">All Accessories</div>
+      <div class="wf-cat-chip">Tonneau Covers</div>
+      <div class="wf-cat-chip">Steps &amp; Running Boards</div>
+      <div class="wf-cat-chip">Bed Liners</div>
+      <div class="wf-cat-chip">Towing &amp; Hitches</div>
+      <div class="wf-cat-chip">Grille Guards</div>
+      <div class="wf-cat-chip">Headache Racks</div>
+      <div class="wf-cat-chip">Floor Mats</div>
+    </div>
+
+    <!-- Main layout -->
+    <div class="wf-layout">
+
+      <!-- Sidebar -->
+      <div class="wf-sidebar">
+        <div class="wf-sidebar-section">
+          <div class="wf-sidebar-title">Fitment</div>
+          <div class="wf-filter-item">
+            <div class="wf-checkbox checked"></div>
+            <span class="wf-filter-label" style="color:#1a6b1a;font-weight:800;">Fits My Truck Only</span>
+          </div>
+          <div class="wf-filter-item">
+            <div class="wf-checkbox"></div>
+            <span class="wf-filter-label">Show All</span>
+          </div>
+        </div>
+
+        <div class="wf-sidebar-section">
+          <div class="wf-sidebar-title">Brand</div>
+          <div class="wf-filter-item">
+            <div class="wf-checkbox checked"></div>
+            <span class="wf-filter-label">BAK Industries</span>
+            <span class="wf-filter-count">12</span>
+          </div>
+          <div class="wf-filter-item">
+            <div class="wf-checkbox"></div>
+            <span class="wf-filter-label">ARIES</span>
+            <span class="wf-filter-count">34</span>
+          </div>
+          <div class="wf-filter-item">
+            <div class="wf-checkbox"></div>
+            <span class="wf-filter-label">CURT</span>
+            <span class="wf-filter-count">18</span>
+          </div>
+          <div class="wf-filter-item">
+            <div class="wf-checkbox"></div>
+            <span class="wf-filter-label">WeatherTech</span>
+            <span class="wf-filter-count">8</span>
+          </div>
+          <div class="wf-filter-item">
+            <div class="wf-checkbox"></div>
+            <span class="wf-filter-label">Husky Liners</span>
+            <span class="wf-filter-count">6</span>
+          </div>
+        </div>
+
+        <div class="wf-sidebar-section">
+          <div class="wf-sidebar-title">Price Range</div>
+          <div class="wf-price-range"><div class="wf-price-fill"></div></div>
+          <div class="wf-price-labels"><span>$149</span><span>$1,499</span></div>
+        </div>
+
+        <div class="wf-sidebar-section">
+          <div class="wf-sidebar-title">Material</div>
+          <div class="wf-filter-item">
+            <div class="wf-checkbox"></div>
+            <span class="wf-filter-label">Aluminum</span>
+          </div>
+          <div class="wf-filter-item">
+            <div class="wf-checkbox"></div>
+            <span class="wf-filter-label">Steel</span>
+          </div>
+          <div class="wf-filter-item">
+            <div class="wf-checkbox"></div>
+            <span class="wf-filter-label">Vinyl / Fabric</span>
+          </div>
+        </div>
+
+        <div class="wf-sidebar-section">
+          <div class="wf-sidebar-title">Style</div>
+          <div class="wf-filter-item">
+            <div class="wf-checkbox"></div>
+            <span class="wf-filter-label">Hard Folding</span>
+          </div>
+          <div class="wf-filter-item">
+            <div class="wf-checkbox"></div>
+            <span class="wf-filter-label">Soft Folding</span>
+          </div>
+          <div class="wf-filter-item">
+            <div class="wf-checkbox"></div>
+            <span class="wf-filter-label">Roll-Up</span>
+          </div>
+          <div class="wf-filter-item">
+            <div class="wf-checkbox"></div>
+            <span class="wf-filter-label">Retractable</span>
+          </div>
+        </div>
+
+        <div class="wf-sidebar-note">
+          💡 Sidebar stays sticky as customer scrolls — filters always visible, no hunting
+        </div>
+      </div>
+
+      <!-- Main content -->
+      <div class="wf-main">
+
+        <!-- Toolbar -->
+        <div class="wf-toolbar">
+          <div class="wf-result-count">Showing <span>12 products</span> that fit your 2021 Ford F-150</div>
+          <div class="wf-sort">
+            <span class="wf-sort-label">Sort:</span>
+            <select class="wf-sort-select">
+              <option>Best Match</option>
+              <option>Price: Low to High</option>
+              <option>Price: High to Low</option>
+              <option>Brand A–Z</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Active filters -->
+        <div class="wf-active-filters">
+          <span class="wf-active-label">Active:</span>
+          <div class="wf-filter-tag">Fits My Truck <span class="wf-filter-tag-x">×</span></div>
+          <div class="wf-filter-tag">BAK Industries <span class="wf-filter-tag-x">×</span></div>
+          <div class="wf-filter-tag">Tonneau Covers <span class="wf-filter-tag-x">×</span></div>
+        </div>
+
+        <!-- Product grid -->
+        <div class="wf-grid">
+
+          <!-- Card 1 -->
+          <div class="wf-card">
+            <div class="wf-card-img">
+              <div class="wf-fits-badge">✓ Fits Your Truck</div>
+              PRODUCT PHOTO
+            </div>
+            <div class="wf-card-body">
+              <div class="wf-card-brand">BAK Industries</div>
+              <div class="wf-card-name">BAKFlip MX4 Hard Folding Tonneau Cover</div>
+              <div class="wf-card-part">Part #448339 · 5'7" Bed</div>
+              <div class="wf-card-price">$1,149.99</div>
+              <button class="wf-card-btn">Get a Quote</button>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="wf-card">
+            <div class="wf-card-img">
+              <div class="wf-fits-badge">✓ Fits Your Truck</div>
+              PRODUCT PHOTO
+            </div>
+            <div class="wf-card-body">
+              <div class="wf-card-brand">BAK Industries</div>
+              <div class="wf-card-name">BAKFlip X4S Hard Folding Tonneau Cover</div>
+              <div class="wf-card-part">Part #501339 · 5'7" Bed</div>
+              <div class="wf-card-price">$1,349.99</div>
+              <button class="wf-card-btn">Get a Quote</button>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="wf-card">
+            <div class="wf-card-img">
+              <div class="wf-fits-badge">✓ Fits Your Truck</div>
+              PRODUCT PHOTO
+            </div>
+            <div class="wf-card-body">
+              <div class="wf-card-brand">BAK Industries</div>
+              <div class="wf-card-name">BAKFlip F1 Hard Folding Tonneau Cover</div>
+              <div class="wf-card-part">Part #772339 · 5'7" Bed</div>
+              <div class="wf-card-price">$1,349.99</div>
+              <button class="wf-card-btn">Get a Quote</button>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="wf-card">
+            <div class="wf-card-img">
+              <div class="wf-fits-badge">✓ Fits Your Truck</div>
+              PRODUCT PHOTO
+            </div>
+            <div class="wf-card-body">
+              <div class="wf-card-brand">ARIES</div>
+              <div class="wf-card-name">3" Round Side Bars / Running Boards</div>
+              <div class="wf-card-part">Part #205000 · SuperCrew</div>
+              <div class="wf-card-price">$289.99</div>
+              <button class="wf-card-btn">Get a Quote</button>
+            </div>
+          </div>
+
+          <!-- Card 5 -->
+          <div class="wf-card">
+            <div class="wf-card-img">
+              <div class="wf-fits-badge">✓ Fits Your Truck</div>
+              PRODUCT PHOTO
+            </div>
+            <div class="wf-card-body">
+              <div class="wf-card-brand">ARIES</div>
+              <div class="wf-card-name">AdvantEDGE Bull Bar w/ LED Light Bar</div>
+              <div class="wf-card-part">Part #B355014 · F-150</div>
+              <div class="wf-card-price">$499.99</div>
+              <button class="wf-card-btn">Get a Quote</button>
+            </div>
+          </div>
+
+          <!-- Card 6 -->
+          <div class="wf-card">
+            <div class="wf-card-img">
+              <div class="wf-fits-badge no-fit">⚠ Verify Fitment</div>
+              PRODUCT PHOTO
+            </div>
+            <div class="wf-card-body">
+              <div class="wf-card-brand">CURT</div>
+              <div class="wf-card-name">Class IV Trailer Hitch Receiver</div>
+              <div class="wf-card-part">Part #14065 · 2" Receiver</div>
+              <div class="wf-card-price">$219.99</div>
+              <button class="wf-card-btn">Get a Quote</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Desktop annotations -->
+    <div class="annotations-panel">
+      <div class="annotations-title">Why This Layout Works</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;">
+        <div>
+          <div class="ann-row"><span class="ann-arrow">→</span><span class="ann-text"><strong>Garage bar at top</strong> — customer always knows which truck they're shopping for. No re-entering vehicle every page.</span></div>
+        </div>
+        <div>
+          <div class="ann-row"><span class="ann-arrow">→</span><span class="ann-text"><strong>Category chips</strong> — one click to jump between Tonneau Covers, Steps, Hitches. Never buried in menus.</span></div>
+        </div>
+        <div>
+          <div class="ann-row"><span class="ann-arrow">→</span><span class="ann-text"><strong>Sticky sidebar</strong> — filters stay on screen as they scroll. No clicking back to top to change a filter.</span></div>
+        </div>
+        <div>
+          <div class="ann-row"><span class="ann-arrow">→</span><span class="ann-text"><strong>Active filter tags</strong> — customer always sees what filters are on. One click to remove any filter — no confusion.</span></div>
+        </div>
+        <div>
+          <div class="ann-row"><span class="ann-arrow">→</span><span class="ann-text"><strong>Fitment badge on every card</strong> — green check = confirmed fit. They never wonder "will this fit my truck?"</span></div>
+        </div>
+        <div>
+          <div class="ann-row"><span class="ann-arrow">→</span><span class="ann-text"><strong>Result count updates live</strong> — "12 products that fit your F-150" — customer always knows how many options they have.</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ══ MOBILE VIEW ══ -->
+  <div id="view-mobile" style="padding:20px 0;">
+    <p class="wf-label" style="text-align:center;margin-bottom:20px;">Mobile Layout — 390px (iPhone)</p>
+
+    <div style="display:flex;gap:32px;justify-content:center;align-items:flex-start;flex-wrap:wrap;">
+
+      <!-- Screen 1: Browse -->
+      <div>
+        <p style="text-align:center;font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#666;margin-bottom:10px;">BROWSING VIEW</p>
+        <div class="mobile-wrap">
+          <div class="mob-screen">
+            <div class="mob-garage">
+              <div class="mob-garage-left">
+                <span class="mob-garage-icon">🚗</span>
+                <span class="mob-garage-vehicle">2021 Ford F-150 XLT</span>
+                <span class="mob-garage-badge">✓ Fit</span>
+              </div>
+              <span class="mob-garage-change">Change</span>
+            </div>
+            <div class="mob-nav">
+              <span class="mob-nav-logo">3J'S AUTO BODY</span>
+              <div class="mob-nav-hamburger"><span></span><span></span><span></span></div>
+            </div>
+            <div class="mob-cats">
+              <div class="mob-chip active">All</div>
+              <div class="mob-chip">Tonneau</div>
+              <div class="mob-chip">Steps</div>
+              <div class="mob-chip">Hitches</div>
+              <div class="mob-chip">Grille</div>
+              <div class="mob-chip">Mats</div>
+            </div>
+            <div class="mob-toolbar">
+              <button class="mob-filter-btn">
+                ⚡ Filter
+                <div class="mob-filter-badge">2</div>
+              </button>
+              <span class="mob-result-count">12 results</span>
+              <button class="mob-sort-btn">Sort ▾</button>
+            </div>
+            <div class="mob-grid">
+              <div class="mob-card">
+                <div class="mob-card-img"><div class="mob-fits">✓ Fits</div>PHOTO</div>
+                <div class="mob-card-body">
+                  <div class="mob-card-brand">BAK Industries</div>
+                  <div class="mob-card-name">BAKFlip MX4</div>
+                  <div class="mob-card-price">$1,149.99</div>
+                  <button class="mob-card-btn">Get a Quote</button>
+                </div>
+              </div>
+              <div class="mob-card">
+                <div class="mob-card-img"><div class="mob-fits">✓ Fits</div>PHOTO</div>
+                <div class="mob-card-body">
+                  <div class="mob-card-brand">BAK Industries</div>
+                  <div class="mob-card-name">BAKFlip X4S</div>
+                  <div class="mob-card-price">$1,349.99</div>
+                  <button class="mob-card-btn">Get a Quote</button>
+                </div>
+              </div>
+              <div class="mob-card">
+                <div class="mob-card-img"><div class="mob-fits">✓ Fits</div>PHOTO</div>
+                <div class="mob-card-body">
+                  <div class="mob-card-brand">ARIES</div>
+                  <div class="mob-card-name">3" Side Bars</div>
+                  <div class="mob-card-price">$289.99</div>
+                  <button class="mob-card-btn">Get a Quote</button>
+                </div>
+              </div>
+              <div class="mob-card">
+                <div class="mob-card-img"><div class="mob-fits">✓ Fits</div>PHOTO</div>
+                <div class="mob-card-body">
+                  <div class="mob-card-brand">ARIES</div>
+                  <div class="mob-card-name">Bull Bar LED</div>
+                  <div class="mob-card-price">$499.99</div>
+                  <button class="mob-card-btn">Get a Quote</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Screen 2: Filter overlay -->
+      <div>
+        <p style="text-align:center;font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#666;margin-bottom:10px;">FILTER OVERLAY (tap Filter btn)</p>
+        <div class="mobile-wrap">
+          <div class="mob-screen">
+            <div class="mob-garage">
+              <div class="mob-garage-left">
+                <span class="mob-garage-icon">🚗</span>
+                <span class="mob-garage-vehicle">2021 Ford F-150 XLT</span>
+                <span class="mob-garage-badge">✓ Fit</span>
+              </div>
+              <span class="mob-garage-change">Change</span>
+            </div>
+            <div class="mob-filter-overlay">
+              <div class="mob-filter-header">
+                <span class="mob-filter-title">Filter Products</span>
+                <span class="mob-filter-clear">Clear All</span>
+              </div>
+              <div class="mob-filter-section">
+                <div class="mob-filter-section-title">Fitment</div>
+                <div class="mob-filter-chips">
+                  <div class="mob-filter-chip selected">✓ Fits My Truck</div>
+                  <div class="mob-filter-chip">Show All</div>
+                </div>
+              </div>
+              <div class="mob-filter-section">
+                <div class="mob-filter-section-title">Category</div>
+                <div class="mob-filter-chips">
+                  <div class="mob-filter-chip selected">Tonneau Covers</div>
+                  <div class="mob-filter-chip">Steps</div>
+                  <div class="mob-filter-chip">Hitches</div>
+                  <div class="mob-filter-chip">Grille Guards</div>
+                  <div class="mob-filter-chip">Headache Racks</div>
+                </div>
+              </div>
+              <div class="mob-filter-section">
+                <div class="mob-filter-section-title">Brand</div>
+                <div class="mob-filter-chips">
+                  <div class="mob-filter-chip selected">BAK Industries</div>
+                  <div class="mob-filter-chip">ARIES</div>
+                  <div class="mob-filter-chip">CURT</div>
+                  <div class="mob-filter-chip">WeatherTech</div>
+                </div>
+              </div>
+              <div class="mob-filter-section">
+                <div class="mob-filter-section-title">Price Range</div>
+                <div class="mob-filter-chips">
+                  <div class="mob-filter-chip">Under $300</div>
+                  <div class="mob-filter-chip">$300–$800</div>
+                  <div class="mob-filter-chip selected">$800–$1,500</div>
+                </div>
+              </div>
+              <button class="mob-apply-btn">Show 12 Results</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Mobile annotations -->
+    <div class="annotations-panel" style="margin-top:32px;">
+      <div class="annotations-title">Why This Mobile Layout Works</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+        <div class="ann-row"><span class="ann-arrow">→</span><span class="ann-text"><strong>No sidebar on mobile</strong> — sidebars on mobile force tiny text and are hard to tap. Full-screen filter overlay is proven to convert 40% better on mobile.</span></div>
+        <div class="ann-row"><span class="ann-arrow">→</span><span class="ann-text"><strong>Filter badge shows count</strong> — the "2" badge on the Filter button tells customer they have 2 filters active. They always know their state.</span></div>
+        <div class="ann-row"><span class="ann-arrow">→</span><span class="ann-text"><strong>Chip-based filters</strong> — large tap targets, no tiny checkboxes. Customers can toggle multiple options with one thumb.</span></div>
+        <div class="ann-row"><span class="ann-arrow">→</span><span class="ann-text"><strong>"Show X Results" button</strong> — tells customer exactly how many products match before they close the filter. No surprise empty pages.</span></div>
+        <div class="ann-row"><span class="ann-arrow">→</span><span class="ann-text"><strong>2-column grid</strong> — tight enough to show 4 products above the fold without scrolling, wide enough to read the product name.</span></div>
+        <div class="ann-row"><span class="ann-arrow">→</span><span class="ann-text"><strong>Garage bar stays at top</strong> — customer always knows their truck is saved. No re-entering vehicle mid-browse.</span></div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+function showView(view, btn){
+  document.getElementById('view-desktop').style.display = view==='desktop'?'block':'none';
+  document.getElementById('view-mobile').style.display  = view==='mobile'?'block':'none';
+  document.querySelectorAll('.view-btn').forEach(function(b){ b.classList.remove('active'); });
+  btn.classList.add('active');
+}
+</script>
+</body>
+</html>
