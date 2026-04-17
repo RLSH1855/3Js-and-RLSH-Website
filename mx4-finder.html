@@ -69,6 +69,31 @@
     .field select:focus{outline:none;border-color:#8B0000;}
     .field select:disabled{color:#bbb;cursor:not-allowed;background-color:#fafafa;}
 
+    /* Bed size tip */
+    .bed-tip{
+      margin-top:8px;
+      display:none;
+    }
+    .bed-tip.visible{display:block;}
+    .bed-tip-toggle{
+      display:inline-flex;align-items:center;gap:6px;
+      font-size:11px;font-weight:700;color:#8B0000;
+      cursor:pointer;text-decoration:underline;
+      background:none;border:none;padding:0;
+      font-family:'Montserrat',sans-serif;
+    }
+    .bed-tip-content{
+      display:none;
+      margin-top:10px;
+      border:2px solid #e8e8e8;border-radius:8px;overflow:hidden;
+    }
+    .bed-tip-content.open{display:block;}
+    .bed-tip-content img{width:100%;display:block;}
+    .bed-tip-caption{
+      padding:10px 14px;background:#fafafa;
+      font-size:11px;font-weight:600;color:#666;line-height:1.5;
+    }
+
     /* Result */
     .result{
       display:none;
@@ -190,6 +215,14 @@
         <select id="sel-bed" disabled>
           <option value="">Select Bed Size</option>
         </select>
+      </div>
+    </div>
+
+    <div class="bed-tip" id="bed-tip">
+      <button class="bed-tip-toggle" onclick="toggleBedTip()">📏 How do I measure my bed size?</button>
+      <div class="bed-tip-content" id="bed-tip-content">
+        <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/TRUCK%20BED%20MEASURE%20GUIDE.png" alt="How to measure truck bed size — bulkhead to tailgate"/>
+        <p class="bed-tip-caption">Measure from the <strong>inside of the bulkhead</strong> (front wall) to the <strong>inside of the tailgate</strong> (closed). That's your bed length.</p>
       </div>
     </div>
 
@@ -384,8 +417,15 @@ selModel.addEventListener('change', function(){
   var beds = unique(getFiltered(selYear.value,selMake.value,this.value).map(function(f){return f.bed;}));
   beds.forEach(function(b){ var o=document.createElement('option');o.value=b;o.textContent=b;selBed.appendChild(o); });
   selBed.disabled=false;
+  document.getElementById('bed-tip').classList.add('visible');
   if(beds.length===1){ selBed.value=beds[0]; selBed.dispatchEvent(new Event('change')); }
 });
+
+function toggleBedTip(){
+  var c = document.getElementById('bed-tip-content');
+  c.classList.toggle('open');
+  reportHeight();
+}
 
 selBed.addEventListener('change', function(){
   hideResults();
@@ -409,6 +449,8 @@ function doReset(){
   resetDropdown(selModel,'Select Model');
   resetDropdown(selBed,'Select Bed Size');
   hideResults();
+  document.getElementById('bed-tip').classList.remove('visible');
+  document.getElementById('bed-tip-content').classList.remove('open');
   reportHeight();
 }
 document.getElementById('reset-btn').addEventListener('click',doReset);
