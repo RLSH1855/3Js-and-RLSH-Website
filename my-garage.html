@@ -666,32 +666,44 @@ function buildSwatches(){
 }
 
 var TRUCK_PHOTOS = {
-  'Ford':       'https://rlsh1855.github.io/3Js-and-RLSH-Website/Ford%20truck.jpg',
-  'Chevrolet':  'https://rlsh1855.github.io/3Js-and-RLSH-Website/Chevy%20truck.jpg',
-  'GMC':        'https://rlsh1855.github.io/3Js-and-RLSH-Website/Chevy%20truck.jpg',
-  'RAM':        'https://rlsh1855.github.io/3Js-and-RLSH-Website/Ram%20truck.jpg',
-  'Toyota':     'https://rlsh1855.github.io/3Js-and-RLSH-Website/TOYOTA%20TRUCK.jpg',
-  'Nissan':     'https://rlsh1855.github.io/3Js-and-RLSH-Website/RLSH-ford-truck.jpg',
-  'Honda':      'https://rlsh1855.github.io/3Js-and-RLSH-Website/RLSH-ford-truck.jpg',
-  'Jeep':       'https://rlsh1855.github.io/3Js-and-RLSH-Website/rhino%20Jeep%20edited.jpeg',
+  'Ford F-150':          'https://rlsh1855.github.io/3Js-and-RLSH-Website/Ford%20truck.jpg',
+  'Ford Super Duty F-250/F-350': 'https://rlsh1855.github.io/3Js-and-RLSH-Website/Ford%20truck.jpg',
+  'Chevrolet Silverado 1500':    'https://rlsh1855.github.io/3Js-and-RLSH-Website/Chevy%20truck.jpg',
+  'Chevrolet Silverado 2500HD/3500HD': 'https://rlsh1855.github.io/3Js-and-RLSH-Website/Chevy%20truck.jpg',
+  'GMC Sierra 1500':     'https://rlsh1855.github.io/3Js-and-RLSH-Website/Chevy%20truck.jpg',
+  'GMC Sierra 2500HD/3500HD': 'https://rlsh1855.github.io/3Js-and-RLSH-Website/Chevy%20truck.jpg',
+  'RAM 1500':            'https://rlsh1855.github.io/3Js-and-RLSH-Website/Ram%20truck.jpg',
+  'RAM 2500/3500':       'https://rlsh1855.github.io/3Js-and-RLSH-Website/Ram%20truck.jpg',
+  'Toyota Tacoma':       'https://rlsh1855.github.io/3Js-and-RLSH-Website/TOYOTA%20TRUCK.jpg',
+  'Toyota Tundra':       'https://rlsh1855.github.io/3Js-and-RLSH-Website/TOYOTA%20TRUCK.jpg',
+  'Jeep Gladiator':      'https://rlsh1855.github.io/3Js-and-RLSH-Website/rhino%20Jeep%20edited.jpeg',
 };
 
 function renderTruck(color){
-  var make  = pendingVehicle.make || '';
-  var photo = TRUCK_PHOTOS[make] || 'https://rlsh1855.github.io/3Js-and-RLSH-Website/RLSH-ford-truck.jpg';
-  var img   = document.getElementById('truck-photo');
+  var make  = pendingVehicle.make  || '';
+  var model = pendingVehicle.model || '';
+  var key   = (make + ' ' + model).trim();
+  var photo = TRUCK_PHOTOS[key] || null;
+  var visual  = document.getElementById('truck-visual');
+
+  if(!photo){
+    visual.style.display = 'none';
+    return;
+  }
+
+  visual.style.display = 'block';
+  var img     = document.getElementById('truck-photo');
   var overlay = document.getElementById('truck-color-overlay');
   var label   = document.getElementById('truck-photo-label');
   img.src = photo;
-  img.alt = make + ' truck';
-  // White = no tint, other colors = color blend overlay at 40% opacity
+  img.alt = key;
   if(color === '#F5F5F0' || color === '#fff' || color === '#ffffff'){
     overlay.style.background = 'transparent';
   } else {
     overlay.style.background = color;
     overlay.style.opacity = '0.45';
   }
-  label.textContent = make ? make + ' · ' + (pendingVehicle.model||'') : '';
+  label.textContent = key;
 }
 
 // ── Save to localStorage ──
