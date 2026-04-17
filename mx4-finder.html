@@ -77,18 +77,21 @@
     .bed-tip.visible{display:block;}
     .bed-tip-toggle{
       display:inline-flex;align-items:center;gap:6px;
-      font-size:11px;font-weight:700;color:#8B0000;
+      font-size:11px;font-weight:700;color:#1a6bbf;
       cursor:pointer;text-decoration:underline;
       background:none;border:none;padding:0;
       font-family:'Montserrat',sans-serif;
     }
     .bed-tip-content{
-      display:none;
+      max-height:0;overflow:hidden;
+      transition:max-height 0.4s ease;
+      border-radius:8px;
+    }
+    .bed-tip-content-inner{
       margin-top:10px;
       border:2px solid #e8e8e8;border-radius:8px;overflow:hidden;
     }
-    .bed-tip-content.open{display:block;}
-    .bed-tip-content img{width:100%;display:block;}
+    .bed-tip-content-inner img{width:100%;display:block;}
     .bed-tip-caption{
       padding:10px 14px;background:#fafafa;
       font-size:11px;font-weight:600;color:#666;line-height:1.5;
@@ -219,10 +222,12 @@
     </div>
 
     <div class="bed-tip" id="bed-tip">
-      <button class="bed-tip-toggle" onclick="toggleBedTip()">📏 How do I measure my bed size?</button>
+      <a class="bed-tip-toggle" id="bed-tip-toggle" onclick="toggleBedTip()">📏 How to Measure Your Truck Bed</a>
       <div class="bed-tip-content" id="bed-tip-content">
-        <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/TRUCK%20BED%20MEASURE%20GUIDE.png" alt="How to measure truck bed size — bulkhead to tailgate"/>
-        <p class="bed-tip-caption">Measure from the <strong>inside of the bulkhead</strong> (front wall) to the <strong>inside of the tailgate</strong> (closed). That's your bed length.</p>
+        <div class="bed-tip-content-inner">
+          <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/TRUCK%20BED%20MEASURE%20GUIDE.png" alt="How to measure truck bed size — bulkhead to tailgate"/>
+          <p class="bed-tip-caption">Measure from the <strong>inside of the bulkhead</strong> (front wall) to the <strong>inside of the tailgate</strong> (closed). That's your bed length.</p>
+        </div>
       </div>
     </div>
 
@@ -423,7 +428,10 @@ selModel.addEventListener('change', function(){
 
 function toggleBedTip(){
   var c = document.getElementById('bed-tip-content');
-  c.classList.toggle('open');
+  var el = document.getElementById('bed-tip-toggle');
+  var open = c.style.maxHeight && c.style.maxHeight !== '0px';
+  c.style.maxHeight = open ? '0' : c.scrollHeight + 300 + 'px';
+  el.style.color = open ? '#1a6bbf' : '#0a4a8f';
   reportHeight();
 }
 

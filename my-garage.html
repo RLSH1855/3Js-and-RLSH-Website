@@ -334,10 +334,12 @@
 
           <br/>
           <div style="margin-bottom:14px;">
-            <button onclick="toggleGarageBedTip()" style="background:none;border:none;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;color:#8B0000;cursor:pointer;text-decoration:underline;padding:0;">📏 How do I measure my bed size?</button>
-            <div id="garage-bed-tip" style="display:none;margin-top:10px;border:2px solid #e8e8e8;border-radius:8px;overflow:hidden;">
-              <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/TRUCK%20BED%20MEASURE%20GUIDE.png" alt="How to measure truck bed size" style="width:100%;display:block;"/>
-              <p style="padding:10px 14px;background:#fafafa;font-size:11px;font-weight:600;color:#666;line-height:1.5;">Measure from the <strong>inside of the bulkhead</strong> (front wall) to the <strong>inside of the tailgate</strong> (closed). That's your bed length.</p>
+            <a onclick="toggleGarageBedTip(this)" style="font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;color:#1a6bbf;cursor:pointer;text-decoration:underline;">📏 How to Measure Your Truck Bed</a>
+            <div id="garage-bed-tip" style="max-height:0;overflow:hidden;transition:max-height 0.4s ease;border-radius:8px;margin-top:0;">
+              <div style="margin-top:10px;border:2px solid #e8e8e8;border-radius:8px;overflow:hidden;">
+                <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/TRUCK%20BED%20MEASURE%20GUIDE.png" alt="How to measure truck bed size" style="width:100%;display:block;"/>
+                <p style="padding:10px 14px;background:#fafafa;font-size:11px;font-weight:600;color:#666;line-height:1.5;">Measure from the <strong>inside of the bulkhead</strong> (front wall) to the <strong>inside of the tailgate</strong> (closed). That's your bed length.</p>
+              </div>
             </div>
           </div>
           <button class="save-btn" onclick="saveVehicle()">Save to My Garage</button>
@@ -695,9 +697,11 @@ document.getElementById('bar-change-btn').addEventListener('click', resetGarage)
   }
 })();
 
-function toggleGarageBedTip(){
+function toggleGarageBedTip(el){
   var t = document.getElementById('garage-bed-tip');
-  t.style.display = t.style.display==='none' ? 'block' : 'none';
+  var open = t.style.maxHeight && t.style.maxHeight !== '0px';
+  t.style.maxHeight = open ? '0' : t.scrollHeight + 300 + 'px';
+  el.style.color = open ? '#1a6bbf' : '#0a4a8f';
   reportHeight();
 }
 
