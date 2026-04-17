@@ -53,13 +53,31 @@
     }
 
     .card-header{
-      background:linear-gradient(135deg,#8B0000,#a50000);
-      padding:28px 32px;
-      color:#fff;
+      position:relative;
+      min-height:180px;
+      display:flex;align-items:center;
+      overflow:hidden;
+      padding:0;
     }
-    .card-eyebrow{font-size:9px;font-weight:800;letter-spacing:3px;text-transform:uppercase;opacity:0.7;margin-bottom:6px;}
-    .card-title{font-size:22px;font-weight:900;letter-spacing:-0.3px;}
-    .card-sub{font-size:12px;opacity:0.75;margin-top:4px;font-weight:500;}
+    .card-header-bg{
+      position:absolute;inset:0;
+      background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/RLSH-ford-truck.jpg');
+      background-size:cover;
+      background-position:center 40%;
+    }
+    .card-header-overlay{
+      position:absolute;inset:0;
+      background:linear-gradient(to right, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.55) 55%, rgba(0,0,0,0.15) 100%);
+    }
+    .card-header-content{
+      position:relative;z-index:2;
+      padding:32px 36px;
+      max-width:480px;
+    }
+    .card-eyebrow{font-size:9px;font-weight:800;letter-spacing:3.5px;text-transform:uppercase;color:#ff6b6b;margin-bottom:8px;}
+    .card-title{font-size:clamp(22px,4vw,32px);font-weight:900;letter-spacing:-0.5px;color:#fff;line-height:1.1;text-transform:uppercase;}
+    .card-title em{font-style:normal;color:#ff6b6b;}
+    .card-sub{font-size:12px;color:rgba(255,255,255,0.75);margin-top:8px;font-weight:500;letter-spacing:0.3px;}
 
     .card-body{padding:32px;}
 
@@ -230,9 +248,13 @@
   <!-- Entry card -->
   <div class="entry-card" id="entry-card">
     <div class="card-header">
-      <p class="card-eyebrow">3J's Auto Body — My Garage</p>
-      <h1 class="card-title">Add Your Vehicle</h1>
-      <p class="card-sub">Enter your VIN or select your Year / Make / Model to find parts that fit.</p>
+      <div class="card-header-bg"></div>
+      <div class="card-header-overlay"></div>
+      <div class="card-header-content">
+        <p class="card-eyebrow">3J's Auto Body — My Garage</p>
+        <h1 class="card-title">Find Parts That<br><em>Fit Your Truck</em></h1>
+        <p class="card-sub">Enter your VIN or select Year / Make / Model — we'll save your vehicle and show you exactly what fits.</p>
+      </div>
     </div>
     <div class="card-body">
 
