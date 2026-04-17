@@ -127,6 +127,40 @@
     .ymm-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
     @media(max-width:480px){.ymm-grid{grid-template-columns:1fr;}}
 
+    /* Custom year picker */
+    .year-picker{position:relative;}
+    .year-picker-btn{
+      width:100%;padding:12px 14px;
+      border:2px solid #e8e8e8;border-radius:8px;
+      font-family:'Montserrat',sans-serif;font-size:13px;font-weight:600;color:#1a1a1a;
+      background:#fff;cursor:pointer;text-align:left;
+      display:flex;align-items:center;justify-content:space-between;
+      transition:border-color 0.2s;
+    }
+    .year-picker-btn:hover{border-color:#ccc;}
+    .year-picker-btn.open{border-color:#8B0000;}
+    .year-picker-btn .placeholder{color:#bbb;font-weight:500;}
+    .year-picker-arrow{font-size:10px;color:#8B0000;transition:transform 0.2s;}
+    .year-picker-btn.open .year-picker-arrow{transform:rotate(180deg);}
+    .year-grid-panel{
+      display:none;
+      position:absolute;top:calc(100% + 6px);left:0;right:0;
+      background:#fff;border:2px solid #e8e8e8;border-radius:10px;
+      box-shadow:0 8px 32px rgba(0,0,0,0.12);
+      z-index:100;padding:12px;
+      max-height:260px;overflow-y:auto;
+    }
+    .year-grid-panel.open{display:block;}
+    .year-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;}
+    .year-cell{
+      padding:8px 4px;text-align:center;
+      font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;
+      color:#1a1a1a;cursor:pointer;border-radius:6px;
+      transition:background 0.15s,color 0.15s;
+    }
+    .year-cell:hover{background:#f5f5f5;}
+    .year-cell.selected{background:#8B0000;color:#fff;}
+
     .field label{
       display:block;font-size:12px;font-weight:700;letter-spacing:0.5px;
       color:#1a1a1a;margin-bottom:6px;
@@ -290,9 +324,16 @@
         <div class="ymm-grid">
           <div class="field">
             <label>Year</label>
-            <select id="ymm-year" onchange="ymmYearChange()">
-              <option value="">Select Year</option>
-            </select>
+            <div class="year-picker" id="year-picker">
+              <button type="button" class="year-picker-btn" id="year-picker-btn" onclick="toggleYearGrid()">
+                <span id="year-picker-label" class="placeholder">Select Year</span>
+                <span class="year-picker-arrow">▼</span>
+              </button>
+              <div class="year-grid-panel" id="year-grid-panel">
+                <div class="year-grid" id="year-grid"></div>
+              </div>
+            </div>
+            <input type="hidden" id="ymm-year" value=""/>
           </div>
           <div class="field">
             <label>Make</label>
@@ -507,12 +548,44 @@ document.getElementById('vin-input').addEventListener('keydown', function(e){
 });
 
 // ── YMM Dropdowns ──
+// Build year grid 2026 → 1981
 (function(){
-  var yearSel = document.getElementById('ymm-year');
-  for(var y=2026;y>=2002;y--){
-    var o=document.createElement('option');o.value=y;o.textContent=y;yearSel.appendChild(o);
+  var grid = document.getElementById('year-grid');
+  for(var y=2026;y>=1981;y--){
+    (function(yr){
+      var cell = document.createElement('div');
+      cell.className = 'year-cell';
+      cell.textContent = yr;
+      cell.onclick = function(){
+        document.getElementById('ymm-year').value = yr;
+        document.getElementById('year-picker-label').textContent = yr;
+        document.getElementById('year-picker-label').classList.remove('placeholder');
+        document.querySelectorAll('.year-cell').forEach(function(c){c.classList.remove('selected');});
+        cell.classList.add('selected');
+        closeYearGrid();
+        ymmYearChange();
+      };
+      grid.appendChild(cell);
+    })(y);
   }
 })();
+
+function toggleYearGrid(){
+  var panel = document.getElementById('year-grid-panel');
+  var btn   = document.getElementById('year-picker-btn');
+  var open  = panel.classList.contains('open');
+  panel.classList.toggle('open', !open);
+  btn.classList.toggle('open', !open);
+}
+
+function closeYearGrid(){
+  document.getElementById('year-grid-panel').classList.remove('open');
+  document.getElementById('year-picker-btn').classList.remove('open');
+}
+
+document.addEventListener('click', function(e){
+  if(!document.getElementById('year-picker').contains(e.target)) closeYearGrid();
+});
 
 function ymmYearChange(){
   var makeSel = document.getElementById('ymm-make');
@@ -660,6 +733,11 @@ function resetGarage(){
   hideConfirm();
   document.getElementById('vin-input').value='';
   document.getElementById('vin-status').textContent='';
+  document.getElementById('ymm-year').value='';
+  document.getElementById('year-picker-label').textContent='Select Year';
+  document.getElementById('year-picker-label').classList.add('placeholder');
+  document.querySelectorAll('.year-cell').forEach(function(c){c.classList.remove('selected');});
+  closeYearGrid();
   reportHeight();
 }
 
