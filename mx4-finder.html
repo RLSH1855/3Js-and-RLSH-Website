@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BAKFlip MX4 Finder — Find Your Fit | 3J's Auto Body</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:'Montserrat',sans-serif;background:#f5f5f5;color:#1a1a1a;overflow-x:hidden;}
+
+    .finder-wrap{
+      max-width:720px;
+      margin:0 auto;
+      padding:48px 24px 64px;
+    }
+
+    .finder-header{text-align:center;margin-bottom:40px;}
+    .finder-eyebrow{
+      font-size:10px;font-weight:800;letter-spacing:3.5px;
+      text-transform:uppercase;color:#8B0000;margin-bottom:10px;
+    }
+    .finder-title{
+      font-size:clamp(24px,4vw,36px);font-weight:900;
+      color:#1a1a1a;letter-spacing:-0.5px;margin-bottom:8px;
+    }
+    .finder-title em{font-style:normal;color:#8B0000;}
+    .finder-sub{font-size:13px;color:#666;font-weight:500;}
+
+    .finder-card{
+      background:#fff;
+      border-radius:14px;
+      box-shadow:0 4px 24px rgba(0,0,0,0.08);
+      padding:36px 32px;
+    }
+
+    .dropdowns{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:16px;
+      margin-bottom:24px;
+    }
+    @media(max-width:520px){
+      .dropdowns{grid-template-columns:1fr;}
+    }
+
+    .field label{
+      display:block;
+      font-size:10px;font-weight:800;letter-spacing:2px;
+      text-transform:uppercase;color:#8B0000;
+      margin-bottom:7px;
+    }
+    .field select{
+      width:100%;
+      padding:12px 16px;
+      border:2px solid #e8e8e8;
+      border-radius:8px;
+      font-family:'Montserrat',sans-serif;
+      font-size:14px;font-weight:600;
+      color:#1a1a1a;
+      background:#fff;
+      appearance:none;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238B0000' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat:no-repeat;
+      background-position:right 14px center;
+      cursor:pointer;
+      transition:border-color 0.2s;
+    }
+    .field select:focus{outline:none;border-color:#8B0000;}
+    .field select:disabled{color:#bbb;cursor:not-allowed;background-color:#fafafa;}
+
+    /* Result */
+    .result{
+      display:none;
+      margin-top:8px;
+      border-top:2px solid #f0f0f0;
+      padding-top:28px;
+    }
+    .result.visible{display:block;}
+
+    .result-match{
+      background:linear-gradient(135deg,#8B0000 0%,#a00000 100%);
+      border-radius:10px;
+      padding:24px 28px;
+      color:#fff;
+      margin-bottom:20px;
+    }
+    .result-label{
+      font-size:9px;font-weight:800;letter-spacing:3px;
+      text-transform:uppercase;opacity:0.7;margin-bottom:6px;
+    }
+    .result-product{font-size:18px;font-weight:900;margin-bottom:14px;}
+    .result-row{
+      display:flex;gap:32px;flex-wrap:wrap;
+    }
+    .result-item{}
+    .result-item-label{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;opacity:0.65;margin-bottom:3px;}
+    .result-item-value{font-size:16px;font-weight:800;}
+
+    .result-desc{
+      font-size:12px;color:#666;font-weight:500;
+      margin-bottom:20px;line-height:1.6;
+      padding:14px 16px;
+      background:#f9f9f9;
+      border-radius:8px;
+      border-left:3px solid #8B0000;
+    }
+
+    .btn-quote{
+      display:block;width:100%;
+      padding:16px;
+      background:#8B0000;
+      color:#fff;
+      font-family:'Montserrat',sans-serif;
+      font-size:13px;font-weight:800;letter-spacing:1.5px;
+      text-transform:uppercase;
+      text-align:center;
+      text-decoration:none;
+      border:none;border-radius:8px;
+      cursor:pointer;
+      transition:background 0.2s,transform 0.1s;
+    }
+    .btn-quote:hover{background:#6d0000;transform:translateY(-1px);}
+
+    .no-match{
+      display:none;
+      text-align:center;
+      padding:24px;
+      background:#fff8f8;
+      border:2px dashed #e0b0b0;
+      border-radius:10px;
+      margin-top:8px;
+    }
+    .no-match.visible{display:block;}
+    .no-match p{font-size:13px;color:#666;font-weight:500;margin-bottom:12px;}
+    .no-match a{
+      display:inline-block;
+      padding:10px 24px;
+      background:#8B0000;color:#fff;
+      border-radius:6px;font-size:12px;font-weight:700;
+      text-decoration:none;letter-spacing:1px;text-transform:uppercase;
+    }
+
+    .reset-btn{
+      display:block;
+      margin-top:14px;
+      text-align:center;
+      font-size:11px;font-weight:700;
+      color:#999;letter-spacing:1px;text-transform:uppercase;
+      cursor:pointer;
+      background:none;border:none;
+      text-decoration:underline;
+    }
+    .reset-btn:hover{color:#8B0000;}
+  </style>
+</head>
+<body>
+
+<div class="finder-wrap">
+
+  <div class="finder-header">
+    <p class="finder-eyebrow">BAKFlip MX4 — Tonneau Cover</p>
+    <h1 class="finder-title">Find Your <em>Perfect Fit</em></h1>
+    <p class="finder-sub">Select your vehicle below to find the exact part and price for your truck.</p>
+  </div>
+
+  <div class="finder-card">
+
+    <div class="dropdowns">
+      <div class="field">
+        <label for="sel-year">Year</label>
+        <select id="sel-year">
+          <option value="">Select Year</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="sel-make">Make</label>
+        <select id="sel-make" disabled>
+          <option value="">Select Make</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="sel-model">Model</label>
+        <select id="sel-model" disabled>
+          <option value="">Select Model</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="sel-bed">Bed Size</label>
+        <select id="sel-bed" disabled>
+          <option value="">Select Bed Size</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="result" id="result">
+      <div class="result-match">
+        <p class="result-label">Your BAKFlip MX4</p>
+        <p class="result-product">BAKFlip MX4 Tonneau Cover</p>
+        <div class="result-row">
+          <div class="result-item">
+            <p class="result-item-label">Part Number</p>
+            <p class="result-item-value" id="res-part">—</p>
+          </div>
+          <div class="result-item">
+            <p class="result-item-label">MAP Price</p>
+            <p class="result-item-value" id="res-price">—</p>
+          </div>
+        </div>
+      </div>
+      <p class="result-desc" id="res-desc"></p>
+      <a href="/rhino-lining-quote" class="btn-quote">Get a Quote — Installation Included</a>
+      <button class="reset-btn" id="reset-btn">Start Over</button>
+    </div>
+
+    <div class="no-match" id="no-match">
+      <p>We couldn't find an exact match. Contact us and we'll help you find the right fit.</p>
+      <a href="/rhino-lining-quote">Contact Us for Help</a>
+      <button class="reset-btn" id="reset-btn2">Start Over</button>
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+const fitments = [
+  // FORD F-150
+  {part:"448309",make:"Ford",model:"F-150",bed:'5\'7" Bed',years:[2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014],price:"$1,149.99",desc:"04-14 Ford F-150 5.7ft Bed"},
+  {part:"448307",make:"Ford",model:"F-150",bed:'6\'7" Bed',years:[2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014],price:"$1,199.99",desc:"04-14 Ford F-150 6.7ft Bed"},
+  {part:"448329",make:"Ford",model:"F-150",bed:'5\'7" Bed',years:[2015,2016,2017,2018,2019,2020],price:"$1,149.99",desc:"15-20 Ford F-150 5.7ft Bed"},
+  {part:"448327",make:"Ford",model:"F-150",bed:'6\'7" Bed',years:[2015,2016,2017,2018,2019,2020],price:"$1,199.99",desc:"15-20 Ford F-150 6.7ft Bed"},
+  {part:"448328",make:"Ford",model:"F-150",bed:'8\'2" Bed',years:[2015,2016,2017,2018,2019,2020],price:"$1,249.99",desc:"15-20 Ford F-150 8.2ft Bed"},
+  {part:"448339",make:"Ford",model:"F-150",bed:'5\'7" Bed',years:[2021,2022,2023,2024,2025,2026],price:"$1,149.99",desc:"2021-26 Ford F-150 5.7ft Bed"},
+  {part:"448337",make:"Ford",model:"F-150",bed:'6\'5" Bed',years:[2021,2022,2023,2024,2025,2026],price:"$1,199.99",desc:"2021-26 Ford F-150 6.5ft Bed"},
+  {part:"448338",make:"Ford",model:"F-150",bed:'8\' Bed',years:[2021,2022,2023,2024,2025,2026],price:"$1,249.99",desc:"2021-26 Ford F-150 8ft Bed"},
+  // FORD SUPER DUTY
+  {part:"448310",make:"Ford",model:"Super Duty F-250/F-350",bed:'6\'10" Bed',years:[2008,2009,2010,2011,2012,2013,2014,2015,2016],price:"$1,199.99",desc:"08-16 Ford Super Duty 6.10ft Bed"},
+  {part:"448311",make:"Ford",model:"Super Duty F-250/F-350",bed:'8\'2" Bed',years:[2008,2009,2010,2011,2012,2013,2014,2015,2016],price:"$1,249.99",desc:"08-16 Ford Super Duty 8.2ft Bed"},
+  {part:"448330",make:"Ford",model:"Super Duty F-250/F-350",bed:'6\'10" Bed',years:[2017,2018,2019,2020,2021,2022,2023,2024,2025,2026],price:"$1,199.99",desc:"2017-26 Ford Super Duty 6.10ft Bed"},
+  {part:"448331",make:"Ford",model:"Super Duty F-250/F-350",bed:'8\'2" Bed',years:[2017,2018,2019,2020,2021,2022,2023,2024,2025,2026],price:"$1,249.99",desc:"2017-26 Ford Super Duty 8.2ft Bed"},
+  // FORD RANGER
+  {part:"448332",make:"Ford",model:"Ranger",bed:'5\'1" Bed',years:[2019,2020,2021,2022,2023],price:"$1,199.99",desc:"19-23 Ford Ranger 5.1ft Bed"},
+  {part:"448333",make:"Ford",model:"Ranger",bed:'6\'1" Bed',years:[2019,2020,2021,2022,2023],price:"$1,249.99",desc:"19-23 Ford Ranger 6.1ft Bed"},
+  {part:"448342",make:"Ford",model:"Ranger",bed:'5\' Bed',years:[2024,2025,2026],price:"$1,199.99",desc:"2024-26 Ford Ranger 5ft Bed"},
+  // FORD MAVERICK
+  {part:"448324",make:"Ford",model:"Maverick",bed:'4\'5" Bed',years:[2021,2022,2023,2024,2025,2026],price:"$1,149.99",desc:"2021-26 Ford Maverick 4.5ft Bed"},
+  // CHEVROLET SILVERADO 1500
+  {part:"448100",make:"Chevrolet",model:"Silverado 1500",bed:'5\'8" Bed',years:[2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014],price:"$1,149.99",desc:"04-14 Chevy Silverado 1500 5.8ft Bed"},
+  {part:"448101",make:"Chevrolet",model:"Silverado 1500",bed:'6\'6" Bed',years:[2007,2008,2009,2010,2011,2012,2013],price:"$1,199.99",desc:"07-13 Chevy Silverado 1500 6.6ft Bed"},
+  {part:"448122",make:"Chevrolet",model:"Silverado 1500",bed:'8\'2" Bed',years:[2007,2008,2009,2010,2011,2012,2013,2015,2016,2017,2018],price:"$1,249.99",desc:"Chevy Silverado 1500 8.2ft Bed"},
+  {part:"448120",make:"Chevrolet",model:"Silverado 1500",bed:'5\'9" Bed',years:[2014,2015,2016,2017,2018,2019],price:"$1,149.99",desc:"14-19 Chevy Silverado 1500 5.9ft Bed"},
+  {part:"448121",make:"Chevrolet",model:"Silverado 1500",bed:'6\'7" Bed',years:[2014,2015,2016,2017,2018,2019],price:"$1,199.99",desc:"14-19 Chevy Silverado 1500 6.7ft Bed"},
+  {part:"448130",make:"Chevrolet",model:"Silverado 1500",bed:'5\'10" Bed',years:[2019,2020,2021,2022,2023,2024,2025,2026],price:"$1,149.99",desc:"2019-26 Chevy Silverado 1500 5.10ft Bed (New Body Style)"},
+  {part:"448131",make:"Chevrolet",model:"Silverado 1500",bed:'6\'7" Bed',years:[2019,2020,2021,2022,2023,2024,2025,2026],price:"$1,199.99",desc:"2019-26 Chevy Silverado 1500 6.7ft Bed (New Body Style)"},
+  {part:"448132",make:"Chevrolet",model:"Silverado 1500",bed:'8\'2" Bed',years:[2019,2020,2021,2022,2023,2024,2025,2026],price:"$1,249.99",desc:"2019-26 Chevy Silverado 1500 8.2ft Bed (New Body Style)"},
+  // CHEVROLET SILVERADO HD
+  {part:"448133",make:"Chevrolet",model:"Silverado 2500HD/3500HD",bed:'6\'10" Bed',years:[2020,2021,2022,2023,2024,2025,2026],price:"$1,199.99",desc:"2020-26 Chevy Silverado HD 6.10ft Bed"},
+  {part:"448134",make:"Chevrolet",model:"Silverado 2500HD/3500HD",bed:'8\'2" Bed',years:[2020,2021,2022,2023,2024,2025,2026],price:"$1,249.99",desc:"2020-26 Chevy Silverado HD 8.2ft Bed"},
+  // CHEVROLET COLORADO
+  {part:"448126",make:"Chevrolet",model:"Colorado",bed:'5\'2" Bed',years:[2015,2016,2017,2018,2019,2020,2021,2022],price:"$1,149.99",desc:"15-22 Chevy Colorado 5.2ft Bed"},
+  {part:"448125",make:"Chevrolet",model:"Colorado",bed:'6\'2" Bed',years:[2015,2016,2017,2018,2019,2020,2021,2022],price:"$1,199.99",desc:"15-22 Chevy Colorado 6.2ft Bed"},
+  {part:"448146",make:"Chevrolet",model:"Colorado",bed:'5\'2" Bed',years:[2023,2024,2025,2026],price:"$1,149.99",desc:"2023-26 Chevy Colorado 5.2ft Bed"},
+  // GMC SIERRA 1500
+  {part:"448100",make:"GMC",model:"Sierra 1500",bed:'5\'8" Bed',years:[2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014],price:"$1,149.99",desc:"04-14 GMC Sierra 1500 5.8ft Bed"},
+  {part:"448101",make:"GMC",model:"Sierra 1500",bed:'6\'6" Bed',years:[2007,2008,2009,2010,2011,2012,2013],price:"$1,199.99",desc:"07-13 GMC Sierra 1500 6.6ft Bed"},
+  {part:"448120",make:"GMC",model:"Sierra 1500",bed:'5\'9" Bed',years:[2014,2015,2016,2017,2018,2019],price:"$1,149.99",desc:"14-19 GMC Sierra 1500 5.9ft Bed"},
+  {part:"448121",make:"GMC",model:"Sierra 1500",bed:'6\'7" Bed',years:[2014,2015,2016,2017,2018,2019],price:"$1,199.99",desc:"14-19 GMC Sierra 1500 6.7ft Bed"},
+  {part:"448130",make:"GMC",model:"Sierra 1500",bed:'5\'10" Bed',years:[2019,2020,2021,2022,2023,2024,2025,2026],price:"$1,149.99",desc:"2019-26 GMC Sierra 1500 5.10ft Bed (New Body Style)"},
+  {part:"448131",make:"GMC",model:"Sierra 1500",bed:'6\'7" Bed',years:[2019,2020,2021,2022,2023,2024,2025,2026],price:"$1,199.99",desc:"2019-26 GMC Sierra 1500 6.7ft Bed (New Body Style)"},
+  // GMC SIERRA HD
+  {part:"448133",make:"GMC",model:"Sierra 2500HD/3500HD",bed:'6\'10" Bed',years:[2020,2021,2022,2023,2024,2025,2026],price:"$1,199.99",desc:"2020-26 GMC Sierra HD 6.10ft Bed"},
+  {part:"448134",make:"GMC",model:"Sierra 2500HD/3500HD",bed:'8\'2" Bed',years:[2020,2021,2022,2023,2024,2025,2026],price:"$1,249.99",desc:"2020-26 GMC Sierra HD 8.2ft Bed"},
+  // GMC CANYON
+  {part:"448126",make:"GMC",model:"Canyon",bed:'5\'2" Bed',years:[2015,2016,2017,2018,2019,2020,2021,2022],price:"$1,149.99",desc:"15-22 GMC Canyon 5.2ft Bed"},
+  {part:"448125",make:"GMC",model:"Canyon",bed:'6\'2" Bed',years:[2015,2016,2017,2018,2019,2020,2021,2022],price:"$1,199.99",desc:"15-22 GMC Canyon 6.2ft Bed"},
+  {part:"448146",make:"GMC",model:"Canyon",bed:'5\'2" Bed',years:[2023,2024,2025,2026],price:"$1,149.99",desc:"2023-26 GMC Canyon 5.2ft Bed"},
+  // RAM 1500
+  {part:"448207",make:"RAM",model:"1500",bed:'5\'7" Bed (w/o RamBox)',years:[2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023],price:"$1,149.99",desc:"09-23 Ram 1500 5.7ft Bed (Classic / w/o RamBox)"},
+  {part:"448207RB",make:"RAM",model:"1500",bed:'5\'7" Bed (w/ RamBox)',years:[2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023],price:"$1,199.99",desc:"09-23 Ram 1500 5.7ft Bed (Classic / w/ RamBox)"},
+  {part:"448203",make:"RAM",model:"1500",bed:'6\'4" Bed (w/o RamBox)',years:[2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023],price:"$1,199.99",desc:"02-23 Ram 1500 6.4ft Bed (w/o RamBox)"},
+  {part:"448203RB",make:"RAM",model:"1500",bed:'6\'4" Bed (w/ RamBox)',years:[2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023],price:"$1,249.99",desc:"12-23 Ram 1500 6.4ft Bed (w/ RamBox)"},
+  {part:"448204",make:"RAM",model:"1500",bed:'8\' Bed',years:[2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018],price:"$1,249.99",desc:"02-18 Ram 1500 8ft Bed"},
+  {part:"448227",make:"RAM",model:"1500",bed:'5\'7" Bed (w/o RamBox)',years:[2019,2020,2021,2022,2023,2024,2025,2026],price:"$1,149.99",desc:"2019-26 Ram 1500 5.7ft Bed (New Body / w/o RamBox)"},
+  {part:"448227RB",make:"RAM",model:"1500",bed:'5\'7" Bed (w/ RamBox)',years:[2019,2020,2021,2022,2023,2024,2025,2026],price:"$1,199.99",desc:"2019-26 Ram 1500 5.7ft Bed (New Body / w/ RamBox)"},
+  {part:"448223",make:"RAM",model:"1500",bed:'6\'4" Bed (w/o RamBox)',years:[2019,2020,2021,2022,2023,2024,2025,2026],price:"$1,199.99",desc:"2019-26 Ram 1500 6.4ft Bed (New Body / w/o RamBox)"},
+  // RAM 2500/3500
+  {part:"448203",make:"RAM",model:"2500/3500",bed:'6\'4" Bed',years:[2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023],price:"$1,199.99",desc:"Ram 2500/3500 6.4ft Bed"},
+  {part:"448204",make:"RAM",model:"2500/3500",bed:'8\' Bed',years:[2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018],price:"$1,249.99",desc:"Ram 2500/3500 8ft Bed"},
+  {part:"448226",make:"RAM",model:"2500/3500",bed:'5\'7" Bed',years:[2020,2021,2022,2023,2024,2025,2026],price:"$1,199.99",desc:"2020-26 Ram MFTG 5.7ft Bed"},
+  {part:"448225",make:"RAM",model:"2500/3500",bed:'6\'4" Bed',years:[2020,2021,2022,2023,2024,2025,2026],price:"$1,249.99",desc:"2020-26 Ram MFTG 6.4ft Bed"},
+  // TOYOTA TACOMA
+  {part:"448406",make:"Toyota",model:"Tacoma",bed:'5\' Bed',years:[2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015],price:"$1,149.99",desc:"05-15 Toyota Tacoma 5ft Bed"},
+  {part:"448407",make:"Toyota",model:"Tacoma",bed:'6\'2" Bed',years:[2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015],price:"$1,199.99",desc:"05-15 Toyota Tacoma 6.2ft Bed"},
+  {part:"448426",make:"Toyota",model:"Tacoma",bed:'5\'1" Bed',years:[2016,2017,2018,2019,2020,2021,2022,2023],price:"$1,199.99",desc:"16-23 Toyota Tacoma 5.1ft Bed"},
+  {part:"448427",make:"Toyota",model:"Tacoma",bed:'6\'2" Bed',years:[2016,2017,2018,2019,2020,2021,2022,2023],price:"$1,249.99",desc:"16-23 Toyota Tacoma 6.2ft Bed"},
+  {part:"448446",make:"Toyota",model:"Tacoma",bed:'5\' Bed',years:[2024,2025,2026],price:"$1,199.99",desc:"2024-26 Toyota Tacoma 5ft Bed (w/ Deck Rail System)"},
+  {part:"448447",make:"Toyota",model:"Tacoma",bed:'6\' Bed',years:[2024,2025,2026],price:"$1,249.99",desc:"2024-26 Toyota Tacoma 6ft Bed (w/ Deck Rail System)"},
+  // TOYOTA TUNDRA
+  {part:"448409",make:"Toyota",model:"Tundra",bed:'5\'7" Bed',years:[2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021],price:"$1,149.99",desc:"07-21 Toyota Tundra 5.7ft Bed"},
+  {part:"448410",make:"Toyota",model:"Tundra",bed:'6\'7" Bed',years:[2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021],price:"$1,199.99",desc:"07-21 Toyota Tundra 6.7ft Bed"},
+  {part:"448409T",make:"Toyota",model:"Tundra",bed:'5\'7" Bed (w/ OE Track)',years:[2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021],price:"$1,199.99",desc:"07-21 Toyota Tundra 5.7ft Bed w/ OE Track System"},
+  {part:"448410T",make:"Toyota",model:"Tundra",bed:'6\'7" Bed (w/ OE Track)',years:[2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021],price:"$1,249.99",desc:"07-21 Toyota Tundra 6.7ft Bed w/ OE Track System"},
+  {part:"448440",make:"Toyota",model:"Tundra",bed:'5\'6" Bed',years:[2022,2023,2024,2025,2026],price:"$1,199.99",desc:"2022-26 Toyota Tundra 5.6ft Bed"},
+  {part:"448441",make:"Toyota",model:"Tundra",bed:'6\'6" Bed',years:[2022,2023,2024,2025,2026],price:"$1,249.99",desc:"2022-26 Toyota Tundra 6.6ft Bed"},
+  // NISSAN TITAN
+  {part:"448505",make:"Nissan",model:"Titan",bed:'5\'7" Bed',years:[2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015],price:"$1,149.99",desc:"04-15 Nissan Titan 5.7ft Bed"},
+  {part:"448504",make:"Nissan",model:"Titan",bed:'6\'7" Bed',years:[2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015],price:"$1,199.99",desc:"04-15 Nissan Titan 6.7ft Bed"},
+  {part:"448525",make:"Nissan",model:"Titan",bed:'5\'7" Bed',years:[2017,2018,2019,2020,2021,2022,2023,2024,2025],price:"$1,149.99",desc:"17-25 Nissan Titan 5.7ft Bed"},
+  // NISSAN TITAN XD
+  {part:"448524",make:"Nissan",model:"Titan XD",bed:'6\'7" Bed',years:[2016,2017,2018,2019,2020,2021,2022,2023,2024,2025],price:"$1,199.99",desc:"16-25 Nissan Titan XD 6.7ft Bed"},
+  // NISSAN FRONTIER
+  {part:"448506",make:"Nissan",model:"Frontier",bed:'5\' Bed',years:[2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021],price:"$1,149.99",desc:"05-21 Nissan Frontier 5ft Bed"},
+  {part:"448507",make:"Nissan",model:"Frontier",bed:'6\'1" Bed',years:[2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021],price:"$1,199.99",desc:"05-21 Nissan Frontier 6.1ft Bed"},
+  {part:"448538",make:"Nissan",model:"Frontier",bed:'5\' Bed',years:[2022,2023,2024,2025,2026],price:"$1,149.99",desc:"2022-26 Nissan Frontier 5ft Bed"},
+  {part:"448539",make:"Nissan",model:"Frontier",bed:'6\' Bed',years:[2022,2023,2024,2025,2026],price:"$1,199.99",desc:"2022-26 Nissan Frontier 6ft Bed"},
+  // HONDA RIDGELINE
+  {part:"448602",make:"Honda",model:"Ridgeline",bed:'5\'4" Bed',years:[2017,2018,2019,2020,2021,2022,2023,2024,2025,2026],price:"$1,199.99",desc:"2017-26 Honda Ridgeline 5.4ft Bed"},
+  // JEEP GLADIATOR
+  {part:"448701",make:"Jeep",model:"Gladiator",bed:'5\' Bed',years:[2020,2021,2022,2023,2024,2025,2026],price:"$1,199.99",desc:"2020-26 Jeep Gladiator 5ft Bed"},
+];
+
+var selYear  = document.getElementById('sel-year');
+var selMake  = document.getElementById('sel-make');
+var selModel = document.getElementById('sel-model');
+var selBed   = document.getElementById('sel-bed');
+var result   = document.getElementById('result');
+var noMatch  = document.getElementById('no-match');
+
+// Populate years
+var allYears = [];
+fitments.forEach(function(f){ f.years.forEach(function(y){ if(allYears.indexOf(y)<0) allYears.push(y); }); });
+allYears.sort(function(a,b){return b-a;});
+allYears.forEach(function(y){
+  var o = document.createElement('option'); o.value=y; o.textContent=y; selYear.appendChild(o);
+});
+
+function getFiltered(year,make,model){
+  return fitments.filter(function(f){
+    if(year && f.years.indexOf(parseInt(year))<0) return false;
+    if(make && f.make!==make) return false;
+    if(model && f.model!==model) return false;
+    return true;
+  });
+}
+
+function unique(arr){ return arr.filter(function(v,i,a){return a.indexOf(v)===i;}).sort(); }
+
+function resetDropdown(sel,placeholder){
+  sel.innerHTML='<option value="">'+placeholder+'</option>';
+  sel.disabled=true;
+}
+
+function hideResults(){
+  result.classList.remove('visible');
+  noMatch.classList.remove('visible');
+}
+
+selYear.addEventListener('change', function(){
+  resetDropdown(selMake,'Select Make');
+  resetDropdown(selModel,'Select Model');
+  resetDropdown(selBed,'Select Bed Size');
+  hideResults();
+  if(!this.value) return;
+  var makes = unique(getFiltered(this.value,'','').map(function(f){return f.make;}));
+  makes.forEach(function(m){ var o=document.createElement('option');o.value=m;o.textContent=m;selMake.appendChild(o); });
+  selMake.disabled=false;
+});
+
+selMake.addEventListener('change', function(){
+  resetDropdown(selModel,'Select Model');
+  resetDropdown(selBed,'Select Bed Size');
+  hideResults();
+  if(!this.value) return;
+  var models = unique(getFiltered(selYear.value,this.value,'').map(function(f){return f.model;}));
+  models.forEach(function(m){ var o=document.createElement('option');o.value=m;o.textContent=m;selModel.appendChild(o); });
+  selModel.disabled=false;
+});
+
+selModel.addEventListener('change', function(){
+  resetDropdown(selBed,'Select Bed Size');
+  hideResults();
+  if(!this.value) return;
+  var beds = unique(getFiltered(selYear.value,selMake.value,this.value).map(function(f){return f.bed;}));
+  beds.forEach(function(b){ var o=document.createElement('option');o.value=b;o.textContent=b;selBed.appendChild(o); });
+  selBed.disabled=false;
+  if(beds.length===1){ selBed.value=beds[0]; selBed.dispatchEvent(new Event('change')); }
+});
+
+selBed.addEventListener('change', function(){
+  hideResults();
+  if(!this.value) return;
+  var matches = getFiltered(selYear.value,selMake.value,selModel.value).filter(function(f){return f.bed===selBed.value;});
+  if(matches.length>0){
+    var m=matches[0];
+    document.getElementById('res-part').textContent = m.part;
+    document.getElementById('res-price').textContent = m.price;
+    document.getElementById('res-desc').textContent = m.desc;
+    result.classList.add('visible');
+  } else {
+    noMatch.classList.add('visible');
+  }
+  reportHeight();
+});
+
+function doReset(){
+  selYear.value='';
+  resetDropdown(selMake,'Select Make');
+  resetDropdown(selModel,'Select Model');
+  resetDropdown(selBed,'Select Bed Size');
+  hideResults();
+  reportHeight();
+}
+document.getElementById('reset-btn').addEventListener('click',doReset);
+document.getElementById('reset-btn2').addEventListener('click',doReset);
+
+function reportHeight(){
+  var h=Math.max(document.body.scrollHeight,document.documentElement.scrollHeight);
+  window.parent.postMessage(JSON.stringify({height:h}),'*');
+}
+window.addEventListener('load',function(){reportHeight();setTimeout(reportHeight,300);});
+window.addEventListener('resize',reportHeight);
+if(window.ResizeObserver){new ResizeObserver(reportHeight).observe(document.body);}
+</script>
+</body>
+</html>
