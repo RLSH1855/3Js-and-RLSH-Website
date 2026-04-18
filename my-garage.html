@@ -7,7 +7,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    body{font-family:'Montserrat',sans-serif;background:#f5f5f5;color:#1a1a1a;overflow-x:hidden;}
+    html{overflow-x:hidden;}
+
+    body{font-family:'Montserrat',sans-serif;background:#f5f5f5;color:#1a1a1a;}
 
     /* ── GARAGE BAR (shows saved vehicle) ── */
     #garage-bar{
@@ -519,9 +521,10 @@ function decodeVIN(){
       var model = get('Model');
       var trim  = get('Trim');
 
-      // Normalize make (FORD → Ford)
+      // Normalize make (FORD → Ford, GMC → GMC, RAM → RAM)
       make = make.charAt(0).toUpperCase() + make.slice(1).toLowerCase();
       if(make==='Ram') make='RAM';
+      if(make==='Gmc') make='GMC';
 
       if(!year || !make || !model){
         status.className = 'vin-status error';
