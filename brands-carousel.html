@@ -17,7 +17,7 @@
 
     .brands-section{
       background:#fff;
-      padding:56px 0 64px;
+      padding:56px 0 72px;
       text-align:center;
     }
 
@@ -148,12 +148,13 @@
   r2.innerHTML += r2.innerHTML;
 
   function reportHeight(){
-    var h = Math.max(document.body.scrollHeight,document.documentElement.scrollHeight);
+    var section = document.querySelector('.brands-section');
+    var h = section ? section.getBoundingClientRect().height + 20 : 400;
     window.parent.postMessage(JSON.stringify({height:h}),'*');
   }
   window.addEventListener('load', function(){ reportHeight(); setTimeout(reportHeight,500); setTimeout(reportHeight,1500); });
   window.addEventListener('resize',reportHeight);
-  if(window.ResizeObserver){ new ResizeObserver(reportHeight).observe(document.body); }
+  if(window.ResizeObserver){ new ResizeObserver(reportHeight).observe(document.querySelector('.brands-section')); }
 </script>
 </body>
 </html>
