@@ -40,6 +40,8 @@
       .brands-section{padding:24px 0 24px;}
       .brands-header{margin-bottom:20px;}
       .marquee-wrapper:last-child{margin-bottom:0;}
+      .logo-card{width:130px;height:60px;padding:10px 14px;}
+      .logo-card img{width:100px;height:34px;}
     }
 
     /* Marquee */
@@ -151,7 +153,7 @@
 
   function reportHeight(){
     var section = document.querySelector('.brands-section');
-    var h = section ? Math.ceil(section.getBoundingClientRect().height) + 24 : 420;
+    var h = section ? Math.ceil(section.getBoundingClientRect().height) + 32 : 460;
     window.parent.postMessage(JSON.stringify({height:h}),'*');
   }
   window.addEventListener('load', function(){ reportHeight(); setTimeout(reportHeight,500); setTimeout(reportHeight,1500); });
