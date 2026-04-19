@@ -378,6 +378,14 @@
 
           </div>
 
+          <!-- Bed size selector -->
+          <div class="field" id="bed-field" style="margin-bottom:16px;display:none;">
+            <label>Bed Size</label>
+            <select id="sel-bed" onchange="bedSizeChange()">
+              <option value="">Select Bed Size</option>
+            </select>
+          </div>
+
           <!-- Truck visual -->
           <div class="truck-visual" id="truck-visual">
             <img class="truck-photo" id="truck-photo" src="" alt="Your truck"/>
@@ -411,7 +419,7 @@
         <p class="saved-sub">We'll show you parts that fit your truck across every page.</p>
         <div class="saved-vehicle-pill" id="saved-pill">—</div>
         <div class="saved-actions">
-          <a href="mx4-finder.html" class="btn-primary">Find BAKFlip MX4</a>
+          <a href="parts-catalog.html" class="btn-primary">Shop Tonneau Covers</a>
           <button class="btn-secondary" onclick="resetGarage()">Change Vehicle</button>
         </div>
       </div>
@@ -436,6 +444,34 @@ var COLORS = [
   {name:"Yellow",  hex:"#D4A017"},
   {name:"Beige",   hex:"#D2B48C"},
 ];
+
+// ── Bed sizes per model [label, bedIn inches] ──
+var BED_SIZES = {
+  "F-150":                     [["5'6\" Short Bed",66],["6'6\" Standard Bed",78]],
+  "F-150 Lightning":           [["5'6\" Short Bed",66]],
+  "Super Duty F-250/F-350":    [["6'9\" Standard Bed",81],["8' Long Bed",96]],
+  "Ranger":                    [["5' Short Bed",60],["6' Standard Bed",72]],
+  "Maverick":                  [["4'6\" Compact Bed",54]],
+  "Silverado 1500":            [["5'9\" Short Bed",69],["6'7\" Standard Bed",79]],
+  "Silverado 2500HD/3500HD":   [["6'7\" Standard Bed",79],["8' Long Bed",96]],
+  "Silverado/Sierra 1500":     [["5'9\" Short Bed",69],["6'7\" Standard Bed",79]],
+  "Silverado/Sierra 2500HD/3500HD":[["6'7\" Standard Bed",79],["8' Long Bed",96]],
+  "Sierra 1500":               [["5'9\" Short Bed",69],["6'7\" Standard Bed",79]],
+  "Sierra 2500HD/3500HD":      [["6'7\" Standard Bed",79],["8' Long Bed",96]],
+  "Colorado":                  [["5'2\" Short Bed",62],["6'7\" Standard Bed",79]],
+  "Canyon":                    [["5'2\" Short Bed",62],["6'7\" Standard Bed",79]],
+  "Canyon/Colorado":           [["5'2\" Short Bed",62],["6'7\" Standard Bed",79]],
+  "1500/2500/3500":            [["5'7\" Short Bed",67],["6'4\" Standard Bed",76],["8' Long Bed",96]],
+  "1500 W/O Ram Box":          [["5'7\" Short Bed",67],["6'4\" Standard Bed",76]],
+  "1500 With Ram Box":         [["5'7\" Short Bed",67],["6'4\" Standard Bed",76]],
+  "Tacoma":                    [["5' Short Bed",60],["6' Standard Bed",72]],
+  "Tundra":                    [["5'6\" Short Bed",66],["6'6\" Standard Bed",78],["8' Long Bed",96]],
+  "Titan":                     [["5'7\" Short Bed",67],["6'7\" Standard Bed",79]],
+  "Titan XD":                  [["6'7\" Standard Bed",79]],
+  "Frontier":                  [["5' Short Bed",60],["6' Standard Bed",72]],
+  "Ridgeline":                 [["5'4\" Bed",64]],
+  "Gladiator":                 [["5' Bed",60]],
+};
 
 // ── Makes/models for YMM (top US trucks) ──
 var MAKES = {
@@ -637,6 +673,23 @@ function showConfirm(year, make, model, trim){
     trimSel.appendChild(o);
   });
 
+  // Bed size selector
+  var bedSel   = document.getElementById('sel-bed');
+  var bedField = document.getElementById('bed-field');
+  var bedList  = BED_SIZES[model] || [];
+  bedSel.innerHTML = '<option value="">Select Bed Size</option>';
+  if(bedList.length){
+    bedList.forEach(function(b){
+      var o=document.createElement('option');
+      o.value=b[1]; o.textContent=b[0];
+      bedSel.appendChild(o);
+    });
+    if(bedList.length===1){ bedSel.value=bedList[0][1]; }
+    bedField.style.display='block';
+  } else {
+    bedField.style.display='none';
+  }
+
   // Color swatches
   buildSwatches();
 
@@ -706,24 +759,35 @@ function renderTruck(color){
   label.textContent = key;
 }
 
+function bedSizeChange(){}
+
 // ── Save to localStorage ──
 function saveVehicle(){
-  var trim = document.getElementById('sel-trim').value;
+  var trim    = document.getElementById('sel-trim').value;
+  var bedIn   = parseFloat(document.getElementById('sel-bed').value) || null;
+  var bedList = BED_SIZES[pendingVehicle.model] || [];
+  var bedLabel = '';
+  if(bedIn){
+    var match = bedList.find(function(b){ return b[1]===bedIn; });
+    bedLabel = match ? match[0] : '';
+  }
   var vehicle = {
-    year:  pendingVehicle.year,
-    make:  pendingVehicle.make,
-    model: pendingVehicle.model,
-    trim:  trim || pendingVehicle.trim || '',
-    color: selectedColor.name,
+    year:     pendingVehicle.year,
+    make:     pendingVehicle.make,
+    model:    pendingVehicle.model,
+    trim:     trim || pendingVehicle.trim || '',
+    bedIn:    bedIn,
+    bedSize:  bedLabel,
+    color:    selectedColor.name,
     colorHex: selectedColor.hex,
-    vin:   pendingVehicle.vin || '',
+    vin:      pendingVehicle.vin || '',
   };
   localStorage.setItem('garage_vehicle', JSON.stringify(vehicle));
   showSaved(vehicle);
 }
 
 function showSaved(v){
-  var label = v.year+' '+v.make+' '+v.model+(v.trim?' '+v.trim:'');
+  var label = v.year+' '+v.make+' '+v.model+(v.trim?' '+v.trim:'')+(v.bedSize?' · '+v.bedSize:'');
   document.getElementById('saved-pill').textContent = label;
   document.getElementById('entry-card').style.display='none';
   document.getElementById('saved-panel').classList.add('visible');
@@ -732,7 +796,7 @@ function showSaved(v){
 }
 
 function showGarageBar(v){
-  var label = v.year+' '+v.make+' '+v.model+(v.trim?' '+v.trim:'');
+  var label = v.year+' '+v.make+' '+v.model+(v.trim?' '+v.trim:'')+(v.bedSize?' · '+v.bedSize:'');
   document.getElementById('bar-vehicle-name').textContent = label;
   document.getElementById('garage-bar').classList.add('visible');
 }

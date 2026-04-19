@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tonneau Covers — RLSH Truck & Jeep Outfitters</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <script src="catalog-data.js"></script>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:'Montserrat',sans-serif;background:#f0f0f0;color:#1a1a1a;}
+
+    /* ── GARAGE BAR ── */
+    #garage-bar{
+      background:#1a1a1a;padding:10px 24px;
+      display:flex;align-items:center;justify-content:space-between;
+      flex-wrap:wrap;gap:8px;
+    }
+    .gb-left{display:flex;align-items:center;gap:10px;}
+    .gb-icon{font-size:16px;}
+    .gb-vehicle{font-size:12px;font-weight:800;color:#fff;}
+    .gb-badge{
+      background:#1a7a1a;color:#fff;
+      font-size:9px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;
+      padding:3px 10px;border-radius:20px;
+    }
+    .gb-badge.no-garage{background:#666;}
+    .gb-right{display:flex;gap:12px;}
+    .gb-link{font-size:10px;font-weight:700;color:#aaa;text-decoration:underline;cursor:pointer;background:none;border:none;}
+    .gb-link:hover{color:#fff;}
+
+    /* ── PAGE HEADER ── */
+    .page-header{
+      background:#8B0000;padding:20px 28px;
+      display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;
+    }
+    .page-header-title{font-size:18px;font-weight:900;color:#fff;letter-spacing:-0.5px;text-transform:uppercase;}
+    .page-header-sub{font-size:11px;color:rgba(255,255,255,0.7);font-weight:500;margin-top:2px;}
+    .fitment-chip{
+      display:inline-flex;align-items:center;gap:6px;
+      background:rgba(255,255,255,0.15);
+      border:1px solid rgba(255,255,255,0.3);
+      border-radius:20px;padding:6px 14px;
+      font-size:11px;font-weight:700;color:#fff;
+    }
+    .fitment-chip .dot{width:8px;height:8px;border-radius:50%;background:#4caf50;}
+    .fitment-chip.inactive .dot{background:#aaa;}
+
+    /* ── NO GARAGE BANNER ── */
+    #no-garage-banner{
+      background:#fff3cd;border-bottom:3px solid #ffc107;
+      padding:14px 28px;
+      display:flex;align-items:center;justify-content:space-between;
+      flex-wrap:wrap;gap:10px;
+    }
+    #no-garage-banner p{font-size:12px;font-weight:600;color:#856404;}
+    #no-garage-banner a{
+      padding:8px 18px;background:#1a1a1a;color:#fff;
+      border-radius:6px;font-size:11px;font-weight:800;
+      letter-spacing:1px;text-transform:uppercase;text-decoration:none;
+    }
+
+    /* ── LAYOUT ── */
+    .catalog-wrap{
+      display:grid;
+      grid-template-columns:240px 1fr;
+      gap:0;
+      min-height:calc(100vh - 120px);
+    }
+    @media(max-width:768px){.catalog-wrap{grid-template-columns:1fr;}}
+
+    /* ── SIDEBAR ── */
+    .sidebar{
+      background:#fff;
+      border-right:2px solid #e8e8e8;
+      padding:20px 16px;
+      position:sticky;
+      top:0;
+      height:fit-content;
+      max-height:calc(100vh - 80px);
+      overflow-y:auto;
+    }
+    @media(max-width:768px){.sidebar{display:none;}}
+    .sidebar-section{margin-bottom:22px;}
+    .sidebar-title{
+      font-size:9px;font-weight:900;letter-spacing:2.5px;text-transform:uppercase;
+      color:#8B0000;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid #e8e8e8;
+    }
+    .filter-item{
+      display:flex;align-items:center;gap:8px;
+      padding:5px 0;cursor:pointer;user-select:none;
+    }
+    .cb{
+      width:14px;height:14px;border:2px solid #ccc;border-radius:3px;flex-shrink:0;
+      transition:background 0.15s,border-color 0.15s;
+    }
+    .cb.checked{background:#8B0000;border-color:#8B0000;}
+    .filter-label{font-size:11px;font-weight:600;color:#444;}
+    .filter-count{font-size:10px;font-weight:600;color:#aaa;margin-left:auto;}
+
+    /* ── MAIN CONTENT ── */
+    .main{background:#f0f0f0;}
+
+    .toolbar{
+      background:#fff;
+      padding:14px 20px;
+      border-bottom:2px solid #e8e8e8;
+      display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+      position:sticky;top:0;z-index:10;
+    }
+    .result-count{font-size:11px;font-weight:700;color:#666;}
+    .result-count span{color:#1a1a1a;font-weight:900;}
+    .sort-wrap{display:flex;align-items:center;gap:8px;}
+    .sort-label{font-size:10px;font-weight:700;color:#888;}
+    .sort-select{
+      padding:6px 28px 6px 10px;
+      border:2px solid #e8e8e8;border-radius:6px;
+      font-family:'Montserrat',sans-serif;font-size:11px;font-weight:600;
+      background:#fff;appearance:none;cursor:pointer;
+    }
+    .mobile-filter-btn{
+      display:none;
+      align-items:center;gap:6px;
+      padding:7px 14px;border:2px solid #1a1a1a;border-radius:6px;
+      font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;
+      letter-spacing:1px;text-transform:uppercase;background:#fff;cursor:pointer;
+    }
+    @media(max-width:768px){.mobile-filter-btn{display:flex;}}
+    .filter-badge{
+      background:#8B0000;color:#fff;font-size:8px;font-weight:900;
+      width:16px;height:16px;border-radius:50%;
+      display:flex;align-items:center;justify-content:center;
+    }
+
+    .active-filters{
+      background:#fafafa;padding:8px 20px;border-bottom:1px solid #e8e8e8;
+      display:flex;align-items:center;gap:8px;flex-wrap:wrap;min-height:36px;
+    }
+    .active-label{font-size:9px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#888;}
+    .filter-tag{
+      display:flex;align-items:center;gap:5px;
+      padding:4px 10px;background:#1a1a1a;color:#fff;
+      border-radius:20px;font-size:10px;font-weight:700;cursor:pointer;
+    }
+    .filter-tag:hover{background:#333;}
+
+    /* ── PRODUCT GRID ── */
+    .product-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:1px;background:#e8e8e8;
+      padding:0;
+    }
+    @media(max-width:1100px){.product-grid{grid-template-columns:repeat(2,1fr);}}
+    @media(max-width:768px){.product-grid{grid-template-columns:repeat(2,1fr);}}
+
+    .product-card{
+      background:#fff;
+      cursor:pointer;
+      transition:box-shadow 0.2s;
+      position:relative;
+    }
+    .product-card:hover{box-shadow:inset 0 0 0 2px #8B0000;}
+
+    .card-img{
+      height:150px;
+      background:linear-gradient(135deg,#f0f0f0,#e0e0e0);
+      display:flex;align-items:center;justify-content:center;
+      position:relative;overflow:hidden;
+    }
+    .card-img img{width:100%;height:100%;object-fit:cover;}
+    .card-img .placeholder-text{font-size:10px;font-weight:700;color:#bbb;letter-spacing:1px;text-transform:uppercase;}
+
+    .fits-badge{
+      position:absolute;top:8px;left:8px;
+      font-size:8px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;
+      padding:3px 8px;border-radius:20px;
+    }
+    .fits-badge.fits{background:#1a7a1a;color:#fff;}
+    .fits-badge.no-fit{background:#888;color:#fff;}
+
+    .card-body{padding:12px 14px;}
+    .card-brand{font-size:8px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#8B0000;margin-bottom:3px;}
+    .card-name{font-size:12px;font-weight:800;color:#1a1a1a;margin-bottom:4px;line-height:1.3;}
+    .card-bed{font-size:9px;font-weight:600;color:#888;margin-bottom:6px;}
+    .card-part{font-size:9px;font-weight:600;color:#aaa;margin-bottom:8px;}
+    .card-price{font-size:15px;font-weight:900;color:#1a1a1a;margin-bottom:10px;}
+    .card-btn{
+      display:block;width:100%;padding:8px;
+      background:#8B0000;color:#fff;border:none;border-radius:6px;
+      font-family:'Montserrat',sans-serif;font-size:9px;font-weight:800;
+      letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;text-align:center;
+    }
+    .card-btn:hover{background:#6d0000;}
+
+    /* ── FIT NOTE TOOLTIP ── */
+    .fit-note{
+      font-size:9px;font-weight:600;color:#856404;
+      background:#fff8e1;border:1px solid #ffe082;border-radius:4px;
+      padding:4px 8px;margin-top:6px;line-height:1.4;
+      display:none;
+    }
+    .product-card:hover .fit-note{display:block;}
+
+    /* ── EMPTY STATE ── */
+    #empty-state{
+      display:none;padding:60px 24px;text-align:center;background:#fff;
+    }
+    #empty-state .empty-icon{font-size:48px;margin-bottom:12px;}
+    #empty-state p{font-size:13px;font-weight:700;color:#666;margin-bottom:8px;}
+    #empty-state small{font-size:11px;color:#aaa;}
+
+    /* ── MOBILE FILTER OVERLAY ── */
+    #mob-filter{
+      display:none;
+      position:fixed;inset:0;z-index:200;
+      background:#fff;overflow-y:auto;
+    }
+    #mob-filter.open{display:block;}
+    .mob-filter-header{
+      padding:16px 20px;
+      display:flex;align-items:center;justify-content:space-between;
+      border-bottom:2px solid #e8e8e8;
+      position:sticky;top:0;background:#fff;z-index:1;
+    }
+    .mob-filter-title{font-size:14px;font-weight:900;}
+    .mob-filter-close{
+      font-size:20px;cursor:pointer;background:none;border:none;
+      color:#1a1a1a;font-weight:300;line-height:1;
+    }
+    .mob-filter-section{padding:16px 20px;border-bottom:1px solid #f0f0f0;}
+    .mob-filter-section-title{font-size:9px;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:#8B0000;margin-bottom:10px;}
+    .mob-chips{display:flex;flex-wrap:wrap;gap:8px;}
+    .mob-chip{
+      padding:6px 14px;border-radius:20px;
+      font-size:10px;font-weight:700;
+      border:2px solid #e8e8e8;background:#fff;color:#666;cursor:pointer;
+    }
+    .mob-chip.active{background:#1a1a1a;color:#fff;border-color:#1a1a1a;}
+    .mob-apply{
+      margin:16px 20px;display:block;width:calc(100% - 40px);
+      padding:14px;background:#8B0000;color:#fff;border:none;border-radius:8px;
+      font-family:'Montserrat',sans-serif;font-size:12px;font-weight:800;
+      letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;text-align:center;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Garage Bar -->
+<div id="garage-bar">
+  <div class="gb-left">
+    <span class="gb-icon">🚗</span>
+    <span class="gb-vehicle" id="gb-vehicle">No Vehicle Saved</span>
+    <span class="gb-badge no-garage" id="gb-badge">Add Your Truck</span>
+  </div>
+  <div class="gb-right">
+    <a href="my-garage.html" class="gb-link" id="gb-action">Save Your Truck →</a>
+    <button class="gb-link" id="gb-change" style="display:none" onclick="clearGarage()">Change Vehicle</button>
+  </div>
+</div>
+
+<!-- No Garage Banner -->
+<div id="no-garage-banner">
+  <p>🚗 Save your truck to see which covers fit — we'll confirm fitment on every product.</p>
+  <a href="my-garage.html">Add My Truck</a>
+</div>
+
+<!-- Page Header -->
+<div class="page-header">
+  <div>
+    <div class="page-header-title">Tonneau Covers</div>
+    <div class="page-header-sub">BAK · Extang · Retrax · Roll N Lock · TruXedo · UnderCover</div>
+  </div>
+  <div class="fitment-chip inactive" id="fitment-chip">
+    <span class="dot"></span>
+    <span id="fitment-chip-text">No vehicle saved</span>
+  </div>
+</div>
+
+<!-- Mobile filter overlay -->
+<div id="mob-filter">
+  <div class="mob-filter-header">
+    <span class="mob-filter-title">Filter Products</span>
+    <button class="mob-filter-close" onclick="closeMobFilter()">✕</button>
+  </div>
+  <div class="mob-filter-section">
+    <div class="mob-filter-section-title">Fitment</div>
+    <div class="mob-chips" id="mob-chips-fitment">
+      <div class="mob-chip active" data-filter="fitment" data-val="fit" onclick="mobChipToggle(this)">✓ Fits My Truck</div>
+      <div class="mob-chip" data-filter="fitment" data-val="all" onclick="mobChipToggle(this)">Show All</div>
+    </div>
+  </div>
+  <div class="mob-filter-section">
+    <div class="mob-filter-section-title">Brand</div>
+    <div class="mob-chips" id="mob-chips-brand"></div>
+  </div>
+  <div class="mob-filter-section">
+    <div class="mob-filter-section-title">Cover Type</div>
+    <div class="mob-chips" id="mob-chips-type">
+      <div class="mob-chip" data-filter="type" data-val="Hard Folding" onclick="mobChipToggle(this)">Hard Folding</div>
+      <div class="mob-chip" data-filter="type" data-val="Soft Folding" onclick="mobChipToggle(this)">Soft Folding</div>
+      <div class="mob-chip" data-filter="type" data-val="Retractable" onclick="mobChipToggle(this)">Retractable</div>
+      <div class="mob-chip" data-filter="type" data-val="Roll-Up" onclick="mobChipToggle(this)">Roll-Up</div>
+    </div>
+  </div>
+  <button class="mob-apply" onclick="applyMobFilter()">Show Results</button>
+</div>
+
+<!-- Main catalog layout -->
+<div class="catalog-wrap">
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+
+    <div class="sidebar-section">
+      <div class="sidebar-title">Fitment</div>
+      <div class="filter-item" onclick="toggleFitment(true)">
+        <div class="cb checked" id="cb-fit"></div>
+        <span class="filter-label" style="color:#1a7a1a;font-weight:800;">Fits My Truck Only</span>
+      </div>
+      <div class="filter-item" onclick="toggleFitment(false)">
+        <div class="cb" id="cb-all"></div>
+        <span class="filter-label">Show All</span>
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-title">Brand</div>
+      <div id="brand-filters"></div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-title">Cover Type</div>
+      <div id="type-filters"></div>
+    </div>
+
+  </div>
+
+  <!-- Main -->
+  <div class="main">
+
+    <div class="toolbar">
+      <div class="result-count" id="result-count">Loading...</div>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <button class="mobile-filter-btn" onclick="openMobFilter()">
+          ⚡ Filter
+          <div class="filter-badge" id="mob-filter-badge" style="display:none">0</div>
+        </button>
+        <div class="sort-wrap">
+          <span class="sort-label">Sort:</span>
+          <select class="sort-select" id="sort-select" onchange="renderProducts()">
+            <option value="fit">Best Fit</option>
+            <option value="price-asc">Price: Low to High</option>
+            <option value="price-desc">Price: High to Low</option>
+            <option value="brand">Brand A–Z</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="active-filters" id="active-filters">
+      <span class="active-label">Active:</span>
+      <div class="filter-tag" id="tag-fitment" onclick="toggleFitment(false)" style="display:none">Fits My Truck ×</div>
+    </div>
+
+    <div class="product-grid" id="product-grid"></div>
+    <div id="empty-state">
+      <div class="empty-icon">🔍</div>
+      <p>No covers match your current filters.</p>
+      <small>Try removing a filter or showing all vehicles.</small>
+    </div>
+
+  </div>
+</div>
+
+<script>
+// ── Catalog field indexes ──
+// [brand, product, partNum, bedIn, bedSize, startYear, endYear, make, model, desc, fitNote, map, img]
+var F = { brand:0, product:1, partNum:2, bedIn:3, bedSize:4, startYear:5, endYear:6, make:7, model:8, desc:9, fitNote:10, map:11, img:12 };
+
+// ── Cover type classification ──
+var PRODUCT_TYPES = {
+  'BAKFlip F1':'Hard Folding','BAKFlip FiberMax':'Hard Folding','BAKFlip G2':'Hard Folding',
+  'BAKFlip MX4':'Hard Folding','BAKFlip MX4 TS':'Hard Folding',
+  'ArmorFlex':'Hard Folding','Solid Fold 2.0 Toolbox':'Hard Folding','Solid Fold ALX':'Hard Folding',
+  'Endure ALX':'Hard Folding','Deuce':'Hard Folding',
+  'Trifecta 2.0':'Soft Folding','Trifecta ALX':'Soft Folding','Trifecta Signature 2.0':'Soft Folding',
+  'Trifecta Toolbox 2.0':'Soft Folding','Trifecta e-Series':'Soft Folding',
+  'E-Series':'Soft Folding','E-Series XT':'Soft Folding','M-Series':'Soft Folding','M-Series XT':'Soft Folding',
+  'A-Series':'Soft Folding','A-Series XT':'Soft Folding',
+  'Elite':'Soft Folding','Elite LX':'Soft Folding','Elite Smooth':'Soft Folding',
+  'SE':'Soft Folding','SE Smooth':'Soft Folding',
+  'Lo Pro':'Roll-Up','TruXport':'Roll-Up','Lux':'Roll-Up',
+  'Flex':'Roll-Up','Fusion':'Roll-Up','Select':'Roll-Up',
+  'RetraxONE MX':'Retractable','RetraxONE XR':'Retractable',
+  'RetraxPRO MX':'Retractable','RetraxPRO XR':'Retractable',
+  'PowertraxPRO MX':'Retractable','PowertraxPRO XR':'Retractable',
+  'Retrax EQ':'Retractable','Retrax IX':'Retractable',
+  'Revolver X2':'Roll-Up','Revolver X4s':'Roll-Up','Revolver X4ts':'Roll-Up',
+  'Pro X15':'Retractable','Pro X15 TS':'Retractable',
+  'Sentry':'Hard Folding','Sentry CT':'Hard Folding',
+  'Ultra Flex':'Hard Folding',
+};
+
+// ── State ──
+var garage = null;
+var filterFitOnly = true;
+var filterBrands  = {};
+var filterTypes   = {};
+
+// ── Load garage ──
+(function(){
+  var s = localStorage.getItem('garage_vehicle');
+  if(s){ try{ garage = JSON.parse(s); }catch(e){} }
+  initGarageBar();
+  buildFilters();
+  renderProducts();
+})();
+
+function initGarageBar(){
+  if(garage){
+    var label = garage.year+' '+garage.make+' '+garage.model+(garage.trim?' '+garage.trim:'')+(garage.bedSize?' · '+garage.bedSize:'');
+    document.getElementById('gb-vehicle').textContent = label;
+    document.getElementById('gb-badge').textContent   = '✓ Fitment Active';
+    document.getElementById('gb-badge').classList.remove('no-garage');
+    document.getElementById('gb-action').style.display  = 'none';
+    document.getElementById('gb-change').style.display  = 'inline';
+    document.getElementById('fitment-chip').classList.remove('inactive');
+    document.getElementById('fitment-chip-text').textContent = 'Fitment: '+label;
+    document.getElementById('no-garage-banner').style.display = 'none';
+    document.getElementById('tag-fitment').style.display = 'flex';
+  } else {
+    filterFitOnly = false;
+    document.getElementById('no-garage-banner').style.display = 'flex';
+    document.getElementById('cb-fit').classList.remove('checked');
+  }
+}
+
+function clearGarage(){
+  localStorage.removeItem('garage_vehicle');
+  garage = null;
+  location.reload();
+}
+
+// ── Fitment matching ──
+function matchesTruck(row){
+  if(!garage) return false;
+  var year  = parseInt(garage.year);
+  var bedIn = garage.bedIn || null;
+  if(year < row[F.startYear] || year > row[F.endYear]) return false;
+  // make match (normalize)
+  var catalogMake = row[F.make];
+  var gMake = garage.make;
+  var makeOk = catalogMake === gMake ||
+    (gMake==='Chevrolet' && (catalogMake==='GMC'||catalogMake==='Chevrolet')) ||
+    (gMake==='GMC'       && (catalogMake==='GMC'||catalogMake==='Chevrolet'));
+  if(!makeOk) return false;
+  // model match
+  var catalogModel = row[F.model];
+  var gModel = garage.model;
+  var modelOk = catalogModel === gModel ||
+    (catalogModel.indexOf(gModel) !== -1) ||
+    (gModel.indexOf(catalogModel) !== -1) ||
+    // Silverado/Sierra combos
+    (catalogModel==='Silverado/Sierra 1500' && (gModel==='Silverado 1500'||gModel==='Sierra 1500')) ||
+    (catalogModel==='Silverado/Sierra 2500HD/3500HD' && (gModel==='Silverado 2500HD/3500HD'||gModel==='Sierra 2500HD/3500HD')) ||
+    (catalogModel==='Canyon/Colorado' && (gModel==='Canyon'||gModel==='Colorado')) ||
+    // RAM combos
+    (catalogModel==='1500/2500/3500' && (gModel==='1500 W/O Ram Box'||gModel==='1500 With Ram Box'||gModel==='1500/2500/3500'));
+  if(!modelOk) return false;
+  // bed size match (within 2 inches tolerance)
+  if(bedIn && row[F.bedIn]){
+    if(Math.abs(row[F.bedIn] - bedIn) > 2) return false;
+  }
+  return true;
+}
+
+// ── Build sidebar filters ──
+function buildFilters(){
+  var brands = {};
+  var types  = {};
+  CATALOG.forEach(function(r){
+    brands[r[F.brand]] = (brands[r[F.brand]]||0)+1;
+    var t = PRODUCT_TYPES[r[F.product]] || 'Other';
+    types[t] = (types[t]||0)+1;
+  });
+
+  var bf = document.getElementById('brand-filters');
+  Object.keys(brands).sort().forEach(function(b){
+    filterBrands[b] = false;
+    var div = document.createElement('div');
+    div.className='filter-item';
+    div.innerHTML='<div class="cb" id="cb-brand-'+b.replace(/\s/g,'-')+'"></div><span class="filter-label">'+b+'</span><span class="filter-count">'+brands[b]+'</span>';
+    div.onclick=function(){ toggleBrand(b); };
+    bf.appendChild(div);
+    // mobile brand chips
+    var chip=document.createElement('div');
+    chip.className='mob-chip';chip.dataset.filter='brand';chip.dataset.val=b;
+    chip.textContent=b;chip.onclick=function(){ mobChipToggle(this); };
+    document.getElementById('mob-chips-brand').appendChild(chip);
+  });
+
+  var tf = document.getElementById('type-filters');
+  Object.keys(types).sort().forEach(function(t){
+    filterTypes[t] = false;
+    var div=document.createElement('div');
+    div.className='filter-item';
+    div.innerHTML='<div class="cb" id="cb-type-'+t.replace(/\s/g,'-')+'"></div><span class="filter-label">'+t+'</span><span class="filter-count">'+types[t]+'</span>';
+    div.onclick=function(){ toggleType(t); };
+    tf.appendChild(div);
+  });
+}
+
+// ── Filter toggles ──
+function toggleFitment(fitOnly){
+  filterFitOnly = fitOnly && !!garage;
+  document.getElementById('cb-fit').classList.toggle('checked', filterFitOnly);
+  document.getElementById('cb-all').classList.toggle('checked', !filterFitOnly);
+  document.getElementById('tag-fitment').style.display = filterFitOnly ? 'flex' : 'none';
+  renderProducts();
+}
+
+function toggleBrand(b){
+  filterBrands[b] = !filterBrands[b];
+  document.getElementById('cb-brand-'+b.replace(/\s/g,'-')).classList.toggle('checked', filterBrands[b]);
+  renderProducts();
+}
+
+function toggleType(t){
+  filterTypes[t] = !filterTypes[t];
+  document.getElementById('cb-type-'+t.replace(/\s/g,'-')).classList.toggle('checked', filterTypes[t]);
+  renderProducts();
+}
+
+// ── Get filtered + sorted data ──
+function getFiltered(){
+  var activeBrands = Object.keys(filterBrands).filter(function(b){ return filterBrands[b]; });
+  var activeTypes  = Object.keys(filterTypes).filter(function(t){ return filterTypes[t]; });
+
+  return CATALOG.filter(function(r){
+    if(filterFitOnly && !matchesTruck(r)) return false;
+    if(activeBrands.length && activeBrands.indexOf(r[F.brand])===-1) return false;
+    if(activeTypes.length){
+      var t = PRODUCT_TYPES[r[F.product]]||'Other';
+      if(activeTypes.indexOf(t)===-1) return false;
+    }
+    return true;
+  });
+}
+
+// ── Deduplicate to unique product+model combos for display ──
+function dedupe(rows){
+  var seen = {};
+  var out  = [];
+  rows.forEach(function(r){
+    var key = r[F.product]+'|'+r[F.make]+'|'+r[F.model]+(garage && r[F.bedIn]?'|'+r[F.bedIn]:'');
+    if(!seen[key]){ seen[key]=true; out.push(r); }
+  });
+  return out;
+}
+
+function getSort(){ return document.getElementById('sort-select').value; }
+
+function applySort(rows){
+  var s = getSort();
+  rows = rows.slice();
+  if(s==='price-asc') rows.sort(function(a,b){ return (a[F.map]||9999)-(b[F.map]||9999); });
+  else if(s==='price-desc') rows.sort(function(a,b){ return (b[F.map]||0)-(a[F.map]||0); });
+  else if(s==='brand') rows.sort(function(a,b){ return a[F.brand].localeCompare(b[F.brand]); });
+  else {
+    // Best fit: matching rows first
+    rows.sort(function(a,b){
+      var af=matchesTruck(a)?0:1, bf=matchesTruck(b)?0:1;
+      return af-bf;
+    });
+  }
+  return rows;
+}
+
+// ── Render ──
+function renderProducts(){
+  var filtered = getFiltered();
+  var deduped  = dedupe(filtered);
+  var sorted   = applySort(deduped);
+
+  var grid = document.getElementById('product-grid');
+  grid.innerHTML = '';
+  document.getElementById('empty-state').style.display = sorted.length ? 'none' : 'block';
+
+  var fitCount = garage ? sorted.filter(function(r){ return matchesTruck(r); }).length : 0;
+  var label = garage
+    ? '<span>'+fitCount+'</span> covers fit your '+garage.year+' '+garage.make+' '+garage.model+(sorted.length!==fitCount ? ' <span style="color:#aaa;font-weight:600">(+'+( sorted.length-fitCount)+' others shown)</span>' : '')
+    : 'Showing <span>'+sorted.length+'</span> covers';
+  document.getElementById('result-count').innerHTML = label;
+
+  // Active filters bar
+  var af = document.getElementById('active-filters');
+  // remove existing brand/type tags
+  af.querySelectorAll('.filter-tag:not(#tag-fitment)').forEach(function(t){ t.remove(); });
+  Object.keys(filterBrands).forEach(function(b){
+    if(filterBrands[b]){
+      var tag=document.createElement('div');
+      tag.className='filter-tag';tag.textContent=b+' ×';
+      tag.onclick=function(){ toggleBrand(b); };
+      af.appendChild(tag);
+    }
+  });
+  Object.keys(filterTypes).forEach(function(t){
+    if(filterTypes[t]){
+      var tag=document.createElement('div');
+      tag.className='filter-tag';tag.textContent=t+' ×';
+      tag.onclick=function(){ toggleType(t); };
+      af.appendChild(tag);
+    }
+  });
+
+  sorted.forEach(function(r){
+    var fits = garage ? matchesTruck(r) : null;
+    var card = document.createElement('div');
+    card.className = 'product-card';
+
+    var price = r[F.map] ? '$'+r[F.map].toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}) : 'Call for Price';
+    var bedDisplay = r[F.bedSize] ? r[F.bedSize] : (r[F.bedIn] ? r[F.bedIn]+'"' : '');
+    var fitNote = r[F.fitNote] && r[F.fitNote].length > 2 ? r[F.fitNote] : null;
+
+    var imgHtml = r[F.img]
+      ? '<img src="'+r[F.img]+'" alt="'+r[F.product]+'" loading="lazy" onerror="this.parentNode.innerHTML=\'<span class=\\\'placeholder-text\\\'>'+r[F.product]+'</span>\'">'
+      : '<span class="placeholder-text">'+r[F.product]+'</span>';
+
+    var fitBadge = fits===null ? ''
+      : fits
+        ? '<div class="fits-badge fits">✓ Fits Your Truck</div>'
+        : '<div class="fits-badge no-fit">⚠ Verify Fitment</div>';
+
+    card.innerHTML =
+      '<div class="card-img">'+fitBadge+imgHtml+'</div>'+
+      '<div class="card-body">'+
+        '<div class="card-brand">'+r[F.brand]+'</div>'+
+        '<div class="card-name">'+r[F.product]+'</div>'+
+        (bedDisplay ? '<div class="card-bed">'+bedDisplay+' Bed · '+r[F.make]+' '+r[F.model]+'</div>' : '')+
+        '<div class="card-part">Part #'+r[F.partNum]+'</div>'+
+        '<div class="card-price">'+price+'</div>'+
+        (fitNote ? '<div class="fit-note">⚠ '+fitNote+'</div>' : '')+
+        '<button class="card-btn" onclick="getQuote(\''+r[F.product]+'\',\''+r[F.partNum]+'\')">Get a Quote</button>'+
+      '</div>';
+
+    grid.appendChild(card);
+  });
+
+  // mobile filter badge
+  var activeCount = (filterFitOnly?1:0) + Object.values(filterBrands).filter(Boolean).length + Object.values(filterTypes).filter(Boolean).length;
+  var badge = document.getElementById('mob-filter-badge');
+  badge.textContent = activeCount;
+  badge.style.display = activeCount > 0 ? 'flex' : 'none';
+
+  reportHeight();
+}
+
+function getQuote(product, partNum){
+  window.location.href = 'https://rlsh1855.github.io/3Js-and-RLSH-Website/rhino-liner.html';
+}
+
+// ── Mobile filter overlay ──
+function openMobFilter(){ document.getElementById('mob-filter').classList.add('open'); }
+function closeMobFilter(){ document.getElementById('mob-filter').classList.remove('open'); }
+
+function mobChipToggle(chip){
+  var filter = chip.dataset.filter;
+  var val    = chip.dataset.val;
+  if(filter === 'fitment'){
+    document.querySelectorAll('[data-filter="fitment"]').forEach(function(c){ c.classList.remove('active'); });
+    chip.classList.add('active');
+  } else {
+    chip.classList.toggle('active');
+  }
+}
+
+function applyMobFilter(){
+  var fitChip = document.querySelector('[data-filter="fitment"].active');
+  toggleFitment(fitChip && fitChip.dataset.val === 'fit');
+
+  Object.keys(filterBrands).forEach(function(b){ filterBrands[b] = false; });
+  document.querySelectorAll('[data-filter="brand"].active').forEach(function(c){
+    filterBrands[c.dataset.val] = true;
+  });
+  Object.keys(filterBrands).forEach(function(b){
+    var el = document.getElementById('cb-brand-'+b.replace(/\s/g,'-'));
+    if(el) el.classList.toggle('checked', filterBrands[b]);
+  });
+
+  Object.keys(filterTypes).forEach(function(t){ filterTypes[t] = false; });
+  document.querySelectorAll('[data-filter="type"].active').forEach(function(c){
+    filterTypes[c.dataset.val] = true;
+  });
+
+  renderProducts();
+  closeMobFilter();
+}
+
+function reportHeight(){
+  var h = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
+  window.parent.postMessage(JSON.stringify({height:h}),'*');
+}
+window.addEventListener('load', function(){ reportHeight(); setTimeout(reportHeight,400); });
+window.addEventListener('resize', reportHeight);
+</script>
+</body>
+</html>
