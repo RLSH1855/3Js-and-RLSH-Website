@@ -13,7 +13,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    body{font-family:'Montserrat',sans-serif;background:#fff;overflow-x:hidden;}
+    html{overflow:hidden;}
+    body{font-family:'Montserrat',sans-serif;background:#fff;overflow:hidden;}
 
     .brands-section{
       background:#fff;
@@ -150,7 +151,7 @@
 
   function reportHeight(){
     var section = document.querySelector('.brands-section');
-    var h = section ? section.getBoundingClientRect().height + 20 : 400;
+    var h = section ? Math.ceil(section.getBoundingClientRect().height) + 24 : 420;
     window.parent.postMessage(JSON.stringify({height:h}),'*');
   }
   window.addEventListener('load', function(){ reportHeight(); setTimeout(reportHeight,500); setTimeout(reportHeight,1500); });
