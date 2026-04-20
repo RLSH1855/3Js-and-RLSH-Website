@@ -272,11 +272,18 @@
       0%{transform:translateX(0);}
       100%{transform:translateX(-50%);}
     }
-    .ins-chip{
-      font-size:11px;font-weight:800;letter-spacing:2px;
-      text-transform:uppercase;color:#999;
-      white-space:nowrap;flex-shrink:0;
+    .ins-logo-tile{
+      display:inline-flex;align-items:center;justify-content:center;
+      background:#fff;border:1.5px solid #e8e8e8;border-radius:8px;
+      padding:10px 18px;height:56px;min-width:110px;flex-shrink:0;
+      box-shadow:0 2px 8px rgba(0,0,0,0.06);
     }
+    .ins-logo-tile img{
+      height:28px;width:auto;max-width:100px;
+      object-fit:contain;filter:grayscale(1) opacity(0.65);
+      transition:filter 0.2s;
+    }
+    .ins-logos:hover .ins-logo-tile img{filter:grayscale(0) opacity(1);}
 
     /* ─── CERT STRIP ─── */
     .cert-strip{
@@ -683,33 +690,21 @@
   <p>You shouldn't have to fight your insurance company on your own. We work directly with all major carriers as a preferred repair facility — handling the claim process so you can focus on getting back on the road.</p>
   <div class="ins-logos">
     <div class="ins-marquee" id="ins-track">
-      <span class="ins-chip">State Farm</span>
-      <span class="ins-chip">·</span>
-      <span class="ins-chip">Geico</span>
-      <span class="ins-chip">·</span>
-      <span class="ins-chip">Progressive</span>
-      <span class="ins-chip">·</span>
-      <span class="ins-chip">Allstate</span>
-      <span class="ins-chip">·</span>
-      <span class="ins-chip">Farmers</span>
-      <span class="ins-chip">·</span>
-      <span class="ins-chip">AAA</span>
-      <span class="ins-chip">·</span>
-      <span class="ins-chip">Mercury</span>
-      <span class="ins-chip">·</span>
-      <span class="ins-chip">Safeco</span>
-      <span class="ins-chip">·</span>
-      <span class="ins-chip">USAA</span>
-      <span class="ins-chip">·</span>
-      <span class="ins-chip">Kemper</span>
-      <span class="ins-chip">·</span>
-      <span class="ins-chip">21st Century</span>
-      <span class="ins-chip">·</span>
-      <span class="ins-chip">Liberty Mutual</span>
-      <span class="ins-chip">·</span>
-      <span class="ins-chip">Nationwide</span>
-      <span class="ins-chip">·</span>
-      <span class="ins-chip">+ All Others</span>
+      <div class="ins-logo-tile"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/ins-state-farm.png" alt="State Farm"></div>
+      <div class="ins-logo-tile"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/ins-geico.png" alt="Geico"></div>
+      <div class="ins-logo-tile"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/ins-progressive.png" alt="Progressive"></div>
+      <div class="ins-logo-tile"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/ins-allstate.png" alt="Allstate"></div>
+      <div class="ins-logo-tile"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/ins-farmers.png" alt="Farmers"></div>
+      <div class="ins-logo-tile"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/ins-usaa.png" alt="USAA"></div>
+      <div class="ins-logo-tile"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/ins-liberty-mutual.png" alt="Liberty Mutual"></div>
+      <div class="ins-logo-tile"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/ins-nationwide.png" alt="Nationwide"></div>
+      <div class="ins-logo-tile"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/ins-safeco.png" alt="Safeco"></div>
+      <div class="ins-logo-tile"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/ins-kemper.png" alt="Kemper"></div>
+      <div class="ins-logo-tile"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/ins-21st-century.png" alt="21st Century"></div>
+      <div class="ins-logo-tile"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/ins-metlife.png" alt="MetLife"></div>
+      <div class="ins-logo-tile"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/ins-hartford.png" alt="The Hartford"></div>
+      <div class="ins-logo-tile"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/ins-bristol-west.png" alt="Bristol West"></div>
+      <div class="ins-logo-tile"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/ins-american-family.png" alt="American Family"></div>
     </div>
   </div>
   <script>var t=document.getElementById('ins-track');if(t){t.innerHTML+=t.innerHTML;}</script>
