@@ -349,7 +349,15 @@
     .amp-section{
       background:#0d0d0d;
       padding:88px 40px;
+      position:relative;overflow:hidden;
     }
+    .amp-section::before{
+      content:'';position:absolute;inset:0;
+      background-image:url('imgi_212_diagonal-line-abstract-background-vector-14199909.png');
+      background-size:cover;background-position:center;
+      opacity:0.05;pointer-events:none;z-index:0;
+    }
+    .amp-section > *{position:relative;z-index:1;}
     .amp-inner{
       max-width:1100px;margin:0 auto;
       display:grid;grid-template-columns:1fr 1fr;
@@ -488,7 +496,15 @@
     .faq-section{
       background:#0d0d0d;
       padding:88px 40px;
+      position:relative;overflow:hidden;
     }
+    .faq-section::before{
+      content:'';position:absolute;inset:0;
+      background-image:url('AUTO%20GEARS%20BACKGROUND%20BLACK%20WITH%20WHITE.jpg');
+      background-size:cover;background-position:center;
+      opacity:0.06;pointer-events:none;z-index:0;
+    }
+    .faq-section > *{position:relative;z-index:1;}
     .faq-inner{max-width:800px;margin:0 auto;}
     .faq-section .eyebrow{color:#8B0000;text-align:center;}
     .faq-section .section-title{color:#fff;text-align:center;margin-bottom:48px;}

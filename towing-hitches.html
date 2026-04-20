@@ -257,7 +257,15 @@
     .curt-section{
       background:#0d0d0d;
       padding:88px 40px;
+      position:relative;overflow:hidden;
     }
+    .curt-section::before{
+      content:'';position:absolute;inset:0;
+      background-image:url('imgi_212_diagonal-line-abstract-background-vector-14199909.png');
+      background-size:cover;background-position:center;
+      opacity:0.05;pointer-events:none;z-index:0;
+    }
+    .curt-section > *{position:relative;z-index:1;}
     .curt-inner{max-width:1100px;margin:0 auto;}
     .curt-header{margin-bottom:52px;}
     .curt-header .eyebrow{color:#8B0000;}
@@ -452,7 +460,15 @@
     .why-section{
       background:#111;
       padding:80px 40px;
+      position:relative;overflow:hidden;
     }
+    .why-section::before{
+      content:'';position:absolute;inset:0;
+      background-image:url('imgi_212_diagonal-line-abstract-background-vector-14199909.png');
+      background-size:cover;background-position:center;
+      opacity:0.05;pointer-events:none;z-index:0;
+    }
+    .why-section > *{position:relative;z-index:1;}
     .why-inner{max-width:1100px;margin:0 auto;}
     .why-section .eyebrow{color:#8B0000;}
     .why-section .section-title{color:#fff;margin-bottom:44px;}
@@ -538,7 +554,14 @@
     /* ══════════════════════════════════════════════
        FAQ
     ══════════════════════════════════════════════ */
-    .faq-section{background:#0d0d0d;padding:88px 40px;}
+    .faq-section{background:#0d0d0d;padding:88px 40px;position:relative;overflow:hidden;}
+    .faq-section::before{
+      content:'';position:absolute;inset:0;
+      background-image:url('AUTO%20GEARS%20BACKGROUND%20BLACK%20WITH%20WHITE.jpg');
+      background-size:cover;background-position:center;
+      opacity:0.06;pointer-events:none;z-index:0;
+    }
+    .faq-section > *{position:relative;z-index:1;}
     .faq-inner{max-width:800px;margin:0 auto;}
     .faq-section .eyebrow{color:#8B0000;text-align:center;}
     .faq-section .section-title{color:#fff;text-align:center;margin-bottom:48px;}
