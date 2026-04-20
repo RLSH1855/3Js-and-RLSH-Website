@@ -484,17 +484,30 @@
           </div>
         </div>
 
-        <!-- Areas We Service dropdown -->
-        <div class="sn-dd">
-          <button class="sn-dd-trigger">Areas We Service <span class="sn-caret">▾</span></button>
-          <div class="sn-dd-panel">
-            <a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_LONG_BEACH.html">Long Beach</a>
-            <a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_BELLFLOWER.html">Bellflower</a>
-            <a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_CARSON.html">Carson</a>
-            <a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_COMPTON.html">Compton</a>
-            <a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_DOWNEY.html">Downey</a>
-            <a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_LAKEWOOD.html">Lakewood</a>
-            <a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_TORRANCE.html">Torrance</a>
+        <!-- Areas We Service mega menu -->
+        <div class="sn-mega">
+          <button class="sn-mega-trigger">Areas We Service <span class="sn-caret">▾</span></button>
+          <div class="sn-mega-panel">
+            <div class="sn-mega-col">
+              <div class="sn-mega-col-title">South Bay</div>
+              <a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_LONG_BEACH.html"><span class="sn-mega-icon">📍</span>Long Beach</a>
+              <a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_TORRANCE.html"><span class="sn-mega-icon">📍</span>Torrance</a>
+              <a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_CARSON.html"><span class="sn-mega-icon">📍</span>Carson</a>
+              <a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_LAKEWOOD.html"><span class="sn-mega-icon">📍</span>Lakewood</a>
+            </div>
+            <div class="sn-mega-col">
+              <div class="sn-mega-col-title">Southeast LA</div>
+              <a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_COMPTON.html"><span class="sn-mega-icon">📍</span>Compton</a>
+              <a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_DOWNEY.html"><span class="sn-mega-icon">📍</span>Downey</a>
+              <a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_BELLFLOWER.html"><span class="sn-mega-icon">📍</span>Bellflower</a>
+            </div>
+            <div class="sn-mega-col sn-mega-cta-col">
+              <div class="sn-mega-cta-title">Visit Us</div>
+              <div class="sn-mega-hours">1855 E 29th Street<br>Signal Hill, CA 90755</div>
+              <a href="tel:+15624246744" class="sn-mega-cta-btn outline">Call Us Now</a>
+              <div class="sn-mega-phone">(562) 424-6744</div>
+              <div class="sn-mega-hours">Mon – Fri &nbsp; 8 AM – 5 PM</div>
+            </div>
           </div>
         </div>
 
@@ -529,13 +542,15 @@
         <div class="sn-mob-item" id="sn-mob-areas">
           <button class="sn-mob-top">Areas We Service <span class="sn-mob-arrow">▶</span></button>
           <div class="sn-mob-sub">
+            <span class="sn-mob-sub-label">South Bay</span>
             <a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_LONG_BEACH.html">Long Beach</a>
-            <a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_BELLFLOWER.html">Bellflower</a>
+            <a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_TORRANCE.html">Torrance</a>
             <a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_CARSON.html">Carson</a>
+            <a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_LAKEWOOD.html">Lakewood</a>
+            <span class="sn-mob-sub-label">Southeast LA</span>
             <a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_COMPTON.html">Compton</a>
             <a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_DOWNEY.html">Downey</a>
-            <a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_LAKEWOOD.html">Lakewood</a>
-            <a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_TORRANCE.html">Torrance</a>
+            <a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_BELLFLOWER.html">Bellflower</a>
           </div>
         </div>
 
