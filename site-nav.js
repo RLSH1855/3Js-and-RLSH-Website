@@ -173,19 +173,70 @@
       top:100%;
       left:50%;
       transform:translateX(-50%);
-      background:#111;
-      border:1px solid #1e1e1e;
-      border-top:2px solid #8B0000;
-      width:680px;
+      background:#fff;
+      border:1px solid #e0e0e0;
+      border-top:3px solid #8B0000;
       z-index:9999;
-      box-shadow:0 12px 40px rgba(0,0,0,0.55);
+      box-shadow:0 12px 40px rgba(0,0,0,0.15);
       padding:28px 32px;
     }
-    .sn-mega:hover .sn-mega-panel{display:flex;gap:0;}
+    .sn-mega:hover .sn-mega-panel{display:block;}
+
+    /* ── Accessories image grid panel ── */
+    .sn-mega-panel.sn-grid-panel{
+      width:900px;
+    }
+    .sn-mega-grid-header{
+      font-size:8.5px;font-weight:800;
+      letter-spacing:2.5px;text-transform:uppercase;
+      color:#8B0000;
+      margin-bottom:20px;
+      padding-bottom:12px;
+      border-bottom:1px solid #eee;
+    }
+    .sn-mega-grid{
+      display:grid;
+      grid-template-columns:repeat(5,1fr);
+      gap:8px;
+    }
+    .sn-mega-item{
+      display:flex;flex-direction:column;
+      align-items:center;text-align:center;
+      text-decoration:none;
+      padding:14px 8px;
+      border-radius:8px;
+      border:1.5px solid transparent;
+      transition:border-color 0.2s,background 0.2s;
+    }
+    .sn-mega-item:hover{
+      background:#fafafa;
+      border-color:#e8e8e8;
+    }
+    .sn-mega-item img{
+      width:80px;height:60px;
+      object-fit:contain;
+      margin-bottom:10px;
+    }
+    .sn-mega-item span{
+      font-family:'Montserrat',Arial,sans-serif;
+      font-size:10px;font-weight:700;
+      color:#1a1a1a;
+      letter-spacing:0.3px;
+      line-height:1.4;
+      text-transform:uppercase;
+    }
+    .sn-mega-item:hover span{color:#8B0000;}
+
+    /* ── Areas We Service columns panel ── */
+    .sn-mega-panel.sn-cols-panel{
+      width:720px;
+      display:none;
+    }
+    .sn-mega:hover .sn-mega-panel.sn-cols-panel{display:flex;gap:0;}
     .sn-mega-col{
       flex:1;
       padding:0 20px;
-      border-right:1px solid #1e1e1e;
+      border-right:1px solid #eee;
     }
     .sn-mega-col:first-child{padding-left:0;}
     .sn-mega-col:last-child{border-right:none;padding-right:0;}
@@ -195,7 +246,7 @@
       color:#8B0000;
       margin-bottom:14px;
       padding-bottom:10px;
-      border-bottom:1px solid #1e1e1e;
+      border-bottom:1px solid #eee;
     }
     .sn-mega-col a{
       display:flex;align-items:center;gap:8px;
@@ -203,23 +254,18 @@
       font-family:'Montserrat',Arial,sans-serif;
       font-size:10px;font-weight:600;
       letter-spacing:0.8px;text-transform:uppercase;
-      color:rgba(255,255,255,0.70);
+      color:#444;
       text-decoration:none;
-      border-bottom:1px solid #191919;
+      border-bottom:1px solid #f0f0f0;
       transition:color 0.15s,padding-left 0.15s;
       white-space:nowrap;
     }
     .sn-mega-col a:last-child{border-bottom:none;}
-    .sn-mega-col a:hover{color:#fff;padding-left:6px;}
-    .sn-mega-col a .sn-mega-icon{
-      font-size:13px;
-      flex-shrink:0;
-    }
+    .sn-mega-col a:hover{color:#8B0000;padding-left:6px;}
+    .sn-mega-col a .sn-mega-icon{font-size:13px;flex-shrink:0;}
     .sn-mega-cta-col{
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-      align-items:flex-start;
+      display:flex;flex-direction:column;
+      justify-content:center;align-items:flex-start;
       gap:10px;
     }
     .sn-mega-cta-title{
@@ -228,7 +274,7 @@
       color:#8B0000;
       margin-bottom:4px;
       padding-bottom:10px;
-      border-bottom:1px solid #1e1e1e;
+      border-bottom:1px solid #eee;
       width:100%;
     }
     .sn-mega-cta-btn{
@@ -245,16 +291,16 @@
     }
     .sn-mega-cta-btn.red{background:#8B0000;color:#fff;}
     .sn-mega-cta-btn.red:hover{background:#6e0000;transform:translateY(-1px);}
-    .sn-mega-cta-btn.outline{background:transparent;color:rgba(255,255,255,0.70);border:1px solid #333;}
-    .sn-mega-cta-btn.outline:hover{border-color:#555;color:#fff;}
+    .sn-mega-cta-btn.outline{background:transparent;color:#444;border:1px solid #ccc;}
+    .sn-mega-cta-btn.outline:hover{border-color:#8B0000;color:#8B0000;}
     .sn-mega-phone{
       font-size:13px;font-weight:800;
-      color:#fff;margin-top:6px;
+      color:#1a1a1a;margin-top:6px;
       letter-spacing:-0.3px;
     }
     .sn-mega-hours{
       font-size:9.5px;font-weight:500;
-      color:rgba(255,255,255,0.40);
+      color:#888;
       letter-spacing:0.3px;
       line-height:1.6;
     }
@@ -458,28 +504,32 @@
         <a href="https://www.3jsautobody.com/inside-3js">Inside 3J's</a>
         <a href="https://www.3jsautobody.com/body-paint-repairs">Body &amp; Paint</a>
 
-        <!-- Services mega menu -->
+        <!-- Truck Accessories mega menu — image grid -->
         <div class="sn-mega">
           <button class="sn-mega-trigger">Truck Accessories <span class="sn-caret">▾</span></button>
-          <div class="sn-mega-panel">
-            <div class="sn-mega-col">
-              <div class="sn-mega-col-title">Bed Protection</div>
-              <a href="https://www.3jsautobody.com/rhino-liner"><span class="sn-mega-icon">🛡️</span>Rhino Liner</a>
-              <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/floor-liners.html"><span class="sn-mega-icon">🚗</span>Floor Liners</a>
-            </div>
-            <div class="sn-mega-col">
-              <div class="sn-mega-col-title">Covers &amp; Steps</div>
-              <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/tonneau-covers.html"><span class="sn-mega-icon">📦</span>Tonneau Covers</a>
-              <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/bakflip-mx4.html"><span class="sn-mega-icon">↳</span>BakFlip MX4</a>
-              <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/steps-running-boards.html"><span class="sn-mega-icon">🦶</span>Steps &amp; Running Boards</a>
-              <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/towing-hitches.html"><span class="sn-mega-icon">🔗</span>Towing &amp; Hitches</a>
-            </div>
-            <div class="sn-mega-col sn-mega-cta-col">
-              <div class="sn-mega-cta-title">Get Started</div>
-              <a href="https://www.3jsautobody.com/rhino-lining-quote" class="sn-mega-cta-btn red">Get a Quote</a>
-              <a href="tel:+15624246744" class="sn-mega-cta-btn outline">Call Us Now</a>
-              <div class="sn-mega-phone">(562) 424-6744</div>
-              <div class="sn-mega-hours">Mon – Fri &nbsp; 8 AM – 5 PM</div>
+          <div class="sn-mega-panel sn-grid-panel">
+            <div class="sn-mega-grid-header">Truck Accessories &amp; Upgrades</div>
+            <div class="sn-mega-grid">
+              <a href="https://www.3jsautobody.com/rhino-liner" class="sn-mega-item">
+                <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/BED%20LINER%20W-LOGO.png" alt="Rhino Liner">
+                <span>Rhino Liner</span>
+              </a>
+              <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/tonneau-covers.html" class="sn-mega-item">
+                <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/BK_BAKFlipMX4.jpg" alt="Tonneau Covers">
+                <span>Tonneau Covers</span>
+              </a>
+              <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/steps-running-boards.html" class="sn-mega-item">
+                <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/go-rhino/oe-xtreme-silver-truck.png" alt="Steps &amp; Running Boards">
+                <span>Steps &amp; Running Boards</span>
+              </a>
+              <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/towing-hitches.html" class="sn-mega-item">
+                <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/Curt%20Rebellion%20XD.png" alt="Towing &amp; Hitches">
+                <span>Towing &amp; Hitches</span>
+              </a>
+              <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/floor-liners.html" class="sn-mega-item">
+                <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/Husky%20Liner%20images/3d_icons%20(20).png" alt="Floor Liners">
+                <span>Floor Liners</span>
+              </a>
             </div>
           </div>
         </div>
@@ -487,7 +537,7 @@
         <!-- Areas We Service mega menu -->
         <div class="sn-mega">
           <button class="sn-mega-trigger">Areas We Service <span class="sn-caret">▾</span></button>
-          <div class="sn-mega-panel">
+          <div class="sn-mega-panel sn-cols-panel">
             <div class="sn-mega-col">
               <div class="sn-mega-col-title">South Bay</div>
               <a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_LONG_BEACH.html"><span class="sn-mega-icon">📍</span>Long Beach</a>
