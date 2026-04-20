@@ -519,6 +519,98 @@
     }
 
     /* ══════════════════════════════════════════════
+       GO RHINO SECTION
+    ══════════════════════════════════════════════ */
+    .gorhino-section{
+      background:#f5f5f5;
+      padding:88px 40px;
+    }
+    .gorhino-inner{max-width:1100px;margin:0 auto;}
+    .gorhino-header{margin-bottom:52px;}
+    .gorhino-header .eyebrow{color:#8B0000;}
+    .gorhino-header .section-title{color:#111;}
+    .gorhino-header p{
+      font-size:14px;font-weight:500;color:#555;
+      line-height:1.85;max-width:640px;margin-top:14px;
+    }
+
+    .gorhino-products{
+      display:grid;grid-template-columns:1fr 1fr;
+      gap:20px;margin-bottom:24px;
+    }
+    .gr-product-card{
+      background:#fff;border-radius:12px;overflow:hidden;
+      box-shadow:0 2px 16px rgba(0,0,0,0.07);
+      transition:box-shadow 0.25s,transform 0.25s;
+    }
+    .gr-product-card:hover{box-shadow:0 8px 36px rgba(0,0,0,0.12);transform:translateY(-3px);}
+    .gr-product-img{
+      position:relative;height:260px;overflow:hidden;
+    }
+    .gr-product-img img{
+      width:100%;height:100%;object-fit:cover;display:block;
+      transition:transform 0.5s ease;
+    }
+    .gr-product-card:hover .gr-product-img img{transform:scale(1.04);}
+    .gr-product-badge{
+      position:absolute;top:14px;left:14px;
+      background:#8B0000;color:#fff;
+      font-size:8px;font-weight:800;letter-spacing:2px;text-transform:uppercase;
+      padding:5px 10px;border-radius:4px;
+    }
+    .gr-product-body{padding:24px 22px 26px;}
+    .gr-product-eyebrow{
+      font-size:9px;font-weight:800;letter-spacing:2.5px;
+      text-transform:uppercase;color:#8B0000;margin-bottom:8px;
+    }
+    .gr-product-name{
+      font-size:18px;font-weight:900;color:#111;
+      letter-spacing:-0.5px;margin-bottom:10px;
+    }
+    .gr-product-desc{
+      font-size:12px;font-weight:500;color:#555;
+      line-height:1.75;margin-bottom:18px;
+    }
+    .gr-product-specs{
+      display:flex;gap:18px;margin-bottom:20px;flex-wrap:wrap;
+    }
+    .gr-spec{display:flex;flex-direction:column;gap:2px;}
+    .gr-spec-val{font-size:16px;font-weight:900;color:#111;letter-spacing:-0.5px;}
+    .gr-spec-val span{color:#8B0000;}
+    .gr-spec-label{font-size:8px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#999;}
+    .gr-product-cta{
+      display:inline-flex;align-items:center;gap:7px;
+      background:#8B0000;color:#fff;
+      font-family:'Montserrat',sans-serif;
+      font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase;
+      text-decoration:none;padding:12px 22px;border-radius:6px;
+      transition:background 0.2s;
+    }
+    .gr-product-cta:hover{background:#a50000;}
+    .gr-product-cta svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2.5;}
+
+    .gorhino-gallery{
+      display:grid;grid-template-columns:repeat(3,1fr);
+      gap:12px;
+    }
+    .gr-gallery-item{
+      border-radius:10px;overflow:hidden;position:relative;
+      height:200px;
+    }
+    .gr-gallery-item img{
+      width:100%;height:100%;object-fit:cover;display:block;
+      transition:transform 0.5s ease;
+    }
+    .gr-gallery-item:hover img{transform:scale(1.05);}
+    .gr-gallery-item-label{
+      position:absolute;bottom:0;left:0;right:0;
+      background:linear-gradient(to top,rgba(0,0,0,0.70) 0%,transparent 100%);
+      padding:12px 14px 11px;
+      font-size:9px;font-weight:800;letter-spacing:1.5px;
+      text-transform:uppercase;color:rgba(255,255,255,0.90);
+    }
+
+    /* ══════════════════════════════════════════════
        RESPONSIVE
     ══════════════════════════════════════════════ */
     @media(max-width:960px){
@@ -530,6 +622,8 @@
       .amp-inner{grid-template-columns:1fr;gap:40px;}
       .why-grid{grid-template-columns:repeat(2,1fr);}
       .nfab-badge-cta{width:100%;}
+      .gorhino-products{grid-template-columns:1fr;}
+      .gorhino-gallery{grid-template-columns:1fr 1fr;}
     }
     @media(max-width:640px){
       .hero{min-height:640px;}
@@ -537,9 +631,10 @@
       .hero h1{letter-spacing:-2px;}
       .hero-ctas{flex-direction:column;}
       .btn-red,.btn-ghost{width:100%;justify-content:center;}
-      .nfab-section,.fitment-section,.amp-section,.why-section,.faq-section{padding:60px 24px;}
+      .nfab-section,.fitment-section,.amp-section,.gorhino-section,.why-section,.faq-section{padding:60px 24px;}
       .nfab-mosaic{gap:8px;}
       .fitment-grid{grid-template-columns:repeat(2,1fr);}
+      .gorhino-gallery{grid-template-columns:1fr;}
       .why-grid{grid-template-columns:1fr;}
       .cta-section{padding:52px 24px;}
       .cta-btns{flex-direction:column;align-items:center;}
@@ -582,6 +677,7 @@
     <div class="hero-tags">
       <span class="hero-tag">N-FAB Dealer</span>
       <span class="hero-tag">AMP Research</span>
+      <span class="hero-tag">Go Rhino</span>
       <span class="hero-tag">Westin</span>
       <span class="hero-tag">Same-Day Install Available</span>
     </div>
@@ -600,6 +696,7 @@
       <span class="brand-logo-text">N-FAB</span>
       <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/amp.png" alt="AMP Research" class="brand-logo-img">
       <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/westin.png" alt="Westin" class="brand-logo-img">
+      <span class="brand-logo-text">Go Rhino</span>
     </div>
   </div>
 </div>
@@ -810,6 +907,109 @@
       <div class="amp-visual-badge">
         <p>Auto Deploy</p>
         <span>AMP Research PowerStep™</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════
+     GO RHINO
+══════════════════════════════════════════════ -->
+<section class="gorhino-section">
+  <div class="gorhino-inner">
+
+    <div class="gorhino-header">
+      <p class="eyebrow">Go Rhino</p>
+      <h2 class="section-title">OE Xtreme Steps &<br>RB Running Boards</h2>
+      <p>Go Rhino builds truck steps and running boards that blend form with real-world function. The OE Xtreme SideStep gives you an aggressive tube-step look with a grip-textured tread pad, while the RB Running Boards deliver a wide, flat platform with a low-profile stance. Both are engineered to bolt directly onto your factory mounting points — no drilling, no modification.</p>
+    </div>
+
+    <div class="gorhino-products">
+
+      <!-- OE Xtreme Sidesteps -->
+      <div class="gr-product-card">
+        <div class="gr-product-img">
+          <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/go-rhino/oe-xtreme-silver-truck.png"
+               alt="Go Rhino OE Xtreme SideStep installed on silver truck" loading="lazy">
+          <span class="gr-product-badge">Tube Steps</span>
+        </div>
+        <div class="gr-product-body">
+          <p class="gr-product-eyebrow">Go Rhino</p>
+          <h3 class="gr-product-name">OE Xtreme SideStep</h3>
+          <p class="gr-product-desc">A round tube nerf bar with Go Rhino's signature aggressive tread pad. Available in 4", 5", and 6" diameters — all in durable Textured Black powder coat. Fits most full-size trucks and SUVs. Vehicle-specific brackets, no drilling.</p>
+          <div class="gr-product-specs">
+            <div class="gr-spec">
+              <div class="gr-spec-val">4<span>"</span>–6<span>"</span></div>
+              <div class="gr-spec-label">Diameter Options</div>
+            </div>
+            <div class="gr-spec">
+              <div class="gr-spec-val">From <span>$174</span></div>
+              <div class="gr-spec-label">MAP Price</div>
+            </div>
+            <div class="gr-spec">
+              <div class="gr-spec-val">0</div>
+              <div class="gr-spec-label">Holes to Drill</div>
+            </div>
+          </div>
+          <a href="https://www.3jsautobody.com/rhino-lining-quote" target="_top" class="gr-product-cta">
+            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            Get a Quote
+          </a>
+        </div>
+      </div>
+
+      <!-- RB Running Boards -->
+      <div class="gr-product-card">
+        <div class="gr-product-img">
+          <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/go-rhino/rb-running-board-red-truck.png"
+               alt="Go Rhino RB Running Board installed on red truck" loading="lazy">
+          <span class="gr-product-badge">Running Boards</span>
+        </div>
+        <div class="gr-product-body">
+          <p class="gr-product-eyebrow">Go Rhino</p>
+          <h3 class="gr-product-name">RB Running Boards</h3>
+          <p class="gr-product-desc">Wide, perforated aluminum running boards with a flat, non-slip surface and a clean, low-profile stance. The RB30 series runs full cab length for maximum step coverage. Powder-coated in Textured Black — built for real use, not just looks.</p>
+          <div class="gr-product-specs">
+            <div class="gr-spec">
+              <div class="gr-spec-val">Full<span>-Length</span></div>
+              <div class="gr-spec-label">Cab Coverage</div>
+            </div>
+            <div class="gr-spec">
+              <div class="gr-spec-val">From <span>$469</span></div>
+              <div class="gr-spec-label">MAP Price</div>
+            </div>
+            <div class="gr-spec">
+              <div class="gr-spec-val">0</div>
+              <div class="gr-spec-label">Holes to Drill</div>
+            </div>
+          </div>
+          <a href="https://www.3jsautobody.com/rhino-lining-quote" target="_top" class="gr-product-cta">
+            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            Get a Quote
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Gallery strip -->
+    <div class="gorhino-gallery">
+      <div class="gr-gallery-item">
+        <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/go-rhino/tacoma-hero.png"
+             alt="Go Rhino steps on orange Toyota Tacoma TRD" loading="lazy">
+        <div class="gr-gallery-item-label">Toyota Tacoma TRD</div>
+      </div>
+      <div class="gr-gallery-item">
+        <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/go-rhino/rb-running-board-action.png"
+             alt="Go Rhino running board action shot" loading="lazy">
+        <div class="gr-gallery-item-label">RB Running Board · In Use</div>
+      </div>
+      <div class="gr-gallery-item">
+        <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/go-rhino/oe-xtreme-tacoma-step.png"
+             alt="Go Rhino OE Xtreme tube step on Toyota Tacoma" loading="lazy">
+        <div class="gr-gallery-item-label">OE Xtreme · Tacoma</div>
       </div>
     </div>
 
