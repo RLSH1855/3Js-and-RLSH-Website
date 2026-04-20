@@ -521,6 +521,73 @@
     }
 
     /* ══════════════════════════════════════════════
+       GARAGE FITMENT BAR
+    ══════════════════════════════════════════════ */
+    .garage-fitment-bar{
+      display:none;
+      background:#fff;
+      border:2px solid #e8e8e8;
+      border-radius:10px;
+      padding:16px 20px;
+      margin-bottom:32px;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+    .garage-fitment-bar.visible{display:flex;}
+    .gfb-left{display:flex;align-items:center;gap:12px;}
+    .gfb-icon{
+      width:36px;height:36px;background:#111;border-radius:8px;
+      display:flex;align-items:center;justify-content:center;flex-shrink:0;
+    }
+    .gfb-icon svg{width:16px;height:16px;stroke:#fff;fill:none;stroke-width:2;}
+    .gfb-vehicle{font-size:13px;font-weight:800;color:#111;letter-spacing:0.3px;}
+    .gfb-fits{
+      display:inline-flex;align-items:center;gap:5px;
+      font-size:9px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;
+      padding:4px 10px;border-radius:20px;margin-left:8px;
+    }
+    .gfb-fits.yes{background:#d4f0d4;color:#1a7a1a;}
+    .gfb-fits.call{background:#fff3cd;color:#7a5a00;}
+    .gfb-change{
+      font-size:10px;font-weight:700;color:#8B0000;
+      text-decoration:none;letter-spacing:0.5px;white-space:nowrap;
+    }
+    .gfb-change:hover{text-decoration:underline;}
+
+    .garage-fitment-prompt{
+      display:none;
+      background:#f9f9f9;
+      border:2px dashed #ddd;
+      border-radius:10px;
+      padding:16px 20px;
+      margin-bottom:32px;
+      align-items:center;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+    .garage-fitment-prompt.visible{display:flex;}
+    .gfp-text{font-size:12px;font-weight:600;color:#666;}
+    .gfp-link{
+      font-size:11px;font-weight:800;letter-spacing:0.5px;
+      color:#8B0000;text-decoration:none;margin-left:auto;white-space:nowrap;
+    }
+    .gfp-link:hover{text-decoration:underline;}
+
+    .fitment-card.garage-match{
+      border-color:#8B0000;
+      box-shadow:0 4px 20px rgba(139,0,0,0.15);
+      position:relative;
+    }
+    .fitment-match-badge{
+      display:inline-block;
+      background:#8B0000;color:#fff;
+      font-size:8px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;
+      padding:3px 8px;border-radius:4px;margin-top:6px;
+    }
+
+    /* ══════════════════════════════════════════════
        GO RHINO SECTION
     ══════════════════════════════════════════════ */
     .gorhino-section{
@@ -814,58 +881,77 @@
     <p class="eyebrow">Fitment Guide</p>
     <h2 class="section-title">Fits Your Truck.</h2>
     <p class="fitment-sub">N-FAB Nerf Steps are built for your exact year, make, and model. Here are the most popular fitments we install — call us to confirm yours.</p>
-    <div class="fitment-grid">
-      <div class="fitment-card">
+
+    <!-- Garage vehicle bar -->
+    <div class="garage-fitment-bar" id="gfb">
+      <div class="gfb-left">
+        <div class="gfb-icon">
+          <svg viewBox="0 0 24 24"><path d="M5 17H3a2 2 0 01-2-2V5a2 2 0 012-2h11a2 2 0 012 2v3"/><rect x="9" y="11" width="14" height="10" rx="2"/><circle cx="12" cy="21" r="1"/><circle cx="20" cy="21" r="1"/></svg>
+        </div>
+        <span class="gfb-vehicle" id="gfb-vehicle">—</span>
+        <span class="gfb-fits" id="gfb-fits"></span>
+      </div>
+      <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/my-garage.html" target="_top" class="gfb-change">Change Vehicle →</a>
+    </div>
+
+    <!-- No vehicle saved prompt -->
+    <div class="garage-fitment-prompt" id="gfp">
+      <span class="gfp-text">Save your truck in My Garage for instant fitment results.</span>
+      <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/my-garage.html" target="_top" class="gfp-link">Set My Vehicle →</a>
+    </div>
+
+    <div class="fitment-grid" id="fitment-grid">
+      <div class="fitment-card" data-makes="ford" data-models="f-150" data-minyear="2015" data-maxyear="2024">
         <div class="fitment-make">Ford</div>
         <div class="fitment-model">F-150</div>
         <div class="fitment-years">2015–2024 · SuperCab & SuperCrew</div>
       </div>
-      <div class="fitment-card">
+      <div class="fitment-card" data-makes="ford" data-models="super duty f-250/f-350,f-250,f-350" data-minyear="2017" data-maxyear="2024">
         <div class="fitment-make">Ford</div>
         <div class="fitment-model">F-250 / F-350</div>
         <div class="fitment-years">2017–2024 · SuperCab & Crew</div>
       </div>
-      <div class="fitment-card">
+      <div class="fitment-card" data-makes="ford" data-models="ranger" data-minyear="2019" data-maxyear="2024">
         <div class="fitment-make">Ford</div>
         <div class="fitment-model">Ranger</div>
         <div class="fitment-years">2019–2024 · Crew Cab</div>
       </div>
-      <div class="fitment-card">
+      <div class="fitment-card" data-makes="ford" data-models="bronco" data-minyear="2021" data-maxyear="2024">
         <div class="fitment-make">Ford</div>
         <div class="fitment-model">Bronco</div>
         <div class="fitment-years">2021–2024 · 2-Door & 4-Door</div>
       </div>
-      <div class="fitment-card">
+      <div class="fitment-card" data-makes="chevrolet,gmc" data-models="silverado 1500,sierra 1500" data-minyear="2014" data-maxyear="2024">
         <div class="fitment-make">Chevy / GMC</div>
         <div class="fitment-model">Silverado / Sierra 1500</div>
         <div class="fitment-years">2014–2024 · Double & Crew Cab</div>
       </div>
-      <div class="fitment-card">
+      <div class="fitment-card" data-makes="chevrolet,gmc" data-models="silverado 2500hd/3500hd,sierra 2500hd/3500hd,silverado hd,sierra hd" data-minyear="2020" data-maxyear="2024">
         <div class="fitment-make">Chevy / GMC</div>
         <div class="fitment-model">Silverado / Sierra HD</div>
         <div class="fitment-years">2020–2024 · Double & Crew Cab</div>
       </div>
-      <div class="fitment-card">
+      <div class="fitment-card" data-makes="chevrolet,gmc" data-models="colorado,canyon" data-minyear="2015" data-maxyear="2024">
         <div class="fitment-make">Chevy / GMC</div>
         <div class="fitment-model">Colorado / Canyon</div>
         <div class="fitment-years">2015–2024 · Crew Cab</div>
       </div>
-      <div class="fitment-card">
+      <div class="fitment-card" data-makes="ram" data-models="1500" data-minyear="2009" data-maxyear="2024">
         <div class="fitment-make">RAM</div>
         <div class="fitment-model">1500</div>
         <div class="fitment-years">2009–2024 · Quad & Crew Cab</div>
       </div>
-      <div class="fitment-card">
+      <div class="fitment-card" data-makes="ram" data-models="2500/3500,2500,3500" data-minyear="2010" data-maxyear="2024">
         <div class="fitment-make">RAM</div>
         <div class="fitment-model">2500 / 3500</div>
         <div class="fitment-years">2010–2024 · Crew Cab</div>
       </div>
-      <div class="fitment-card">
+      <div class="fitment-card" data-makes="jeep" data-models="wrangler jk,wrangler" data-minyear="2007" data-maxyear="2018">
         <div class="fitment-make">Jeep</div>
         <div class="fitment-model">Wrangler JK</div>
         <div class="fitment-years">2007–2018 · 4-Door</div>
       </div>
-      <div class="fitment-card">
+      <div class="fitment-card" data-makes="jeep" data-models="wrangler jl,wrangler" data-minyear="2018" data-maxyear="2024">
         <div class="fitment-make">Jeep</div>
         <div class="fitment-model">Wrangler JL</div>
         <div class="fitment-years">2018–2024 · 2-Door & 4-Door</div>
@@ -1107,6 +1193,52 @@
 </section>
 
 <script>
+  // ── My Garage fitment check ──
+  (function(){
+    var saved = localStorage.getItem('garage_vehicle');
+    var gfb = document.getElementById('gfb');
+    var gfp = document.getElementById('gfp');
+    if(!saved){ gfp.classList.add('visible'); return; }
+    var v;
+    try{ v = JSON.parse(saved); } catch(e){ gfp.classList.add('visible'); return; }
+
+    var vMake  = (v.make||'').toLowerCase();
+    var vModel = (v.model||'').toLowerCase();
+    var vYear  = parseInt(v.year)||0;
+    var label  = v.year+' '+v.make+' '+v.model+(v.trim?' '+v.trim:'');
+
+    document.getElementById('gfb-vehicle').textContent = label;
+    gfb.classList.add('visible');
+
+    var matched = false;
+    document.querySelectorAll('.fitment-card[data-makes]').forEach(function(card){
+      var makes  = card.dataset.makes.split(',').map(function(s){return s.trim();});
+      var models = card.dataset.models.split(',').map(function(s){return s.trim();});
+      var minY   = parseInt(card.dataset.minyear);
+      var maxY   = parseInt(card.dataset.maxyear);
+      var makeOk  = makes.some(function(m){ return vMake===m; });
+      var modelOk = models.some(function(m){ return vModel.indexOf(m)!==-1 || m.indexOf(vModel)!==-1; });
+      var yearOk  = vYear>=minY && vYear<=maxY;
+      if(makeOk && modelOk && yearOk){
+        card.classList.add('garage-match');
+        var badge = document.createElement('div');
+        badge.className = 'fitment-match-badge';
+        badge.textContent = 'Your Truck ✓';
+        card.appendChild(badge);
+        matched = true;
+      }
+    });
+
+    var fitsEl = document.getElementById('gfb-fits');
+    if(matched){
+      fitsEl.className='gfb-fits yes';
+      fitsEl.textContent='✓ Fits';
+    } else {
+      fitsEl.className='gfb-fits call';
+      fitsEl.textContent='Call to Confirm';
+    }
+  })();
+
   document.querySelectorAll('.faq-q').forEach(function(btn){
     btn.addEventListener('click', function(){
       var item = btn.closest('.faq-item');
