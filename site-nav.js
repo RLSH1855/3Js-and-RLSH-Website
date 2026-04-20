@@ -79,10 +79,11 @@
       justify-content:center;
       flex-wrap:wrap;
       padding:0 32px;
+      position:relative;
     }
-    .sn-nav a{
+    .sn-nav > a{
       display:inline-flex;align-items:center;
-      padding:18px 18px;
+      padding:18px 16px;
       font-family:'Montserrat',Arial,sans-serif;
       font-size:10.5px;font-weight:500;
       letter-spacing:1.5px;text-transform:uppercase;
@@ -90,7 +91,173 @@
       white-space:nowrap;
       transition:color 0.2s;
     }
-    .sn-nav a:hover{color:#c0392b;}
+    .sn-nav > a:hover{color:#c0392b;}
+
+    /* ── Dropdown (simple list) ── */
+    .sn-dd{
+      position:relative;
+      display:inline-flex;
+      align-items:center;
+    }
+    .sn-dd-trigger{
+      display:inline-flex;align-items:center;gap:5px;
+      padding:18px 16px;
+      font-family:'Montserrat',Arial,sans-serif;
+      font-size:10.5px;font-weight:500;
+      letter-spacing:1.5px;text-transform:uppercase;
+      color:#fff;text-decoration:none;
+      white-space:nowrap;
+      cursor:pointer;
+      transition:color 0.2s;
+      background:none;border:none;
+    }
+    .sn-dd-trigger:hover,.sn-dd:hover .sn-dd-trigger{color:#c0392b;}
+    .sn-caret{
+      font-size:8px;
+      transition:transform 0.2s;
+      display:inline-block;
+      opacity:0.6;
+    }
+    .sn-dd:hover .sn-caret{transform:rotate(180deg);}
+    .sn-dd-panel{
+      display:none;
+      position:absolute;
+      top:100%;
+      left:0;
+      background:#111;
+      border:1px solid #1e1e1e;
+      border-top:2px solid #8B0000;
+      min-width:190px;
+      z-index:9999;
+      box-shadow:0 12px 32px rgba(0,0,0,0.5);
+    }
+    .sn-dd:hover .sn-dd-panel{display:block;}
+    .sn-dd-panel a{
+      display:block;
+      padding:12px 18px;
+      font-family:'Montserrat',Arial,sans-serif;
+      font-size:10px;font-weight:600;
+      letter-spacing:1px;text-transform:uppercase;
+      color:rgba(255,255,255,0.72);
+      text-decoration:none;
+      border-bottom:1px solid #1a1a1a;
+      transition:color 0.15s,background 0.15s,padding-left 0.15s;
+      white-space:nowrap;
+    }
+    .sn-dd-panel a:last-child{border-bottom:none;}
+    .sn-dd-panel a:hover{color:#fff;background:#1a1a1a;padding-left:22px;}
+
+    /* ── Mega menu ── */
+    .sn-mega{
+      position:static;
+      display:inline-flex;
+      align-items:center;
+    }
+    .sn-mega-trigger{
+      display:inline-flex;align-items:center;gap:5px;
+      padding:18px 16px;
+      font-family:'Montserrat',Arial,sans-serif;
+      font-size:10.5px;font-weight:500;
+      letter-spacing:1.5px;text-transform:uppercase;
+      color:#fff;text-decoration:none;
+      white-space:nowrap;
+      cursor:pointer;
+      transition:color 0.2s;
+      background:none;border:none;
+    }
+    .sn-mega-trigger:hover,.sn-mega:hover .sn-mega-trigger{color:#c0392b;}
+    .sn-mega:hover .sn-caret{transform:rotate(180deg);}
+    .sn-mega-panel{
+      display:none;
+      position:absolute;
+      top:100%;
+      left:50%;
+      transform:translateX(-50%);
+      background:#111;
+      border:1px solid #1e1e1e;
+      border-top:2px solid #8B0000;
+      width:680px;
+      z-index:9999;
+      box-shadow:0 12px 40px rgba(0,0,0,0.55);
+      padding:28px 32px;
+    }
+    .sn-mega:hover .sn-mega-panel{display:flex;gap:0;}
+    .sn-mega-col{
+      flex:1;
+      padding:0 20px;
+      border-right:1px solid #1e1e1e;
+    }
+    .sn-mega-col:first-child{padding-left:0;}
+    .sn-mega-col:last-child{border-right:none;padding-right:0;}
+    .sn-mega-col-title{
+      font-size:8.5px;font-weight:800;
+      letter-spacing:2.5px;text-transform:uppercase;
+      color:#8B0000;
+      margin-bottom:14px;
+      padding-bottom:10px;
+      border-bottom:1px solid #1e1e1e;
+    }
+    .sn-mega-col a{
+      display:flex;align-items:center;gap:8px;
+      padding:8px 0;
+      font-family:'Montserrat',Arial,sans-serif;
+      font-size:10px;font-weight:600;
+      letter-spacing:0.8px;text-transform:uppercase;
+      color:rgba(255,255,255,0.70);
+      text-decoration:none;
+      border-bottom:1px solid #191919;
+      transition:color 0.15s,padding-left 0.15s;
+      white-space:nowrap;
+    }
+    .sn-mega-col a:last-child{border-bottom:none;}
+    .sn-mega-col a:hover{color:#fff;padding-left:6px;}
+    .sn-mega-col a .sn-mega-icon{
+      font-size:13px;
+      flex-shrink:0;
+    }
+    .sn-mega-cta-col{
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:flex-start;
+      gap:10px;
+    }
+    .sn-mega-cta-title{
+      font-size:8.5px;font-weight:800;
+      letter-spacing:2.5px;text-transform:uppercase;
+      color:#8B0000;
+      margin-bottom:4px;
+      padding-bottom:10px;
+      border-bottom:1px solid #1e1e1e;
+      width:100%;
+    }
+    .sn-mega-cta-btn{
+      display:inline-flex;align-items:center;
+      width:100%;
+      padding:11px 16px;
+      font-family:'Montserrat',Arial,sans-serif;
+      font-size:10px;font-weight:700;
+      letter-spacing:1px;text-transform:uppercase;
+      text-decoration:none;
+      border-radius:4px;
+      transition:background 0.2s,transform 0.15s;
+      white-space:nowrap;
+    }
+    .sn-mega-cta-btn.red{background:#8B0000;color:#fff;}
+    .sn-mega-cta-btn.red:hover{background:#6e0000;transform:translateY(-1px);}
+    .sn-mega-cta-btn.outline{background:transparent;color:rgba(255,255,255,0.70);border:1px solid #333;}
+    .sn-mega-cta-btn.outline:hover{border-color:#555;color:#fff;}
+    .sn-mega-phone{
+      font-size:13px;font-weight:800;
+      color:#fff;margin-top:6px;
+      letter-spacing:-0.3px;
+    }
+    .sn-mega-hours{
+      font-size:9.5px;font-weight:500;
+      color:rgba(255,255,255,0.40);
+      letter-spacing:0.3px;
+      line-height:1.6;
+    }
 
     /* ── Hamburger ── */
     .sn-hamburger{
@@ -114,8 +281,9 @@
       border-top:1px solid #1a1a1a;
     }
     .sn-mobile-menu.sn-open{display:flex;}
-    .sn-mobile-menu a{
-      display:block;
+    .sn-mobile-menu > a,
+    .sn-mob-item > .sn-mob-top{
+      display:flex;align-items:center;justify-content:space-between;
       padding:14px 24px;
       font-family:'Montserrat',Arial,sans-serif;
       font-size:11px;font-weight:600;
@@ -123,9 +291,48 @@
       color:#fff;text-decoration:none;
       border-bottom:1px solid #1a1a1a;
       transition:color 0.2s;
+      cursor:pointer;
+      background:none;border:none;width:100%;text-align:left;
+      border-bottom:1px solid #1a1a1a;
     }
-    .sn-mobile-menu a:hover{color:#c0392b;}
-    .sn-mobile-menu a.sn-mob-red{color:#c0392b;}
+    .sn-mobile-menu > a:hover,.sn-mob-top:hover{color:#c0392b;}
+    .sn-mobile-menu > a.sn-mob-red{color:#c0392b;}
+    .sn-mob-item > .sn-mob-top{
+      color:#fff;
+    }
+    .sn-mob-arrow{
+      font-size:9px;opacity:0.5;
+      transition:transform 0.2s;
+    }
+    .sn-mob-item.sn-mob-open > .sn-mob-top .sn-mob-arrow{transform:rotate(90deg);}
+    .sn-mob-sub{
+      display:none;
+      flex-direction:column;
+      background:#050505;
+      border-bottom:1px solid #1a1a1a;
+    }
+    .sn-mob-item.sn-mob-open > .sn-mob-sub{display:flex;}
+    .sn-mob-sub a{
+      display:block;
+      padding:11px 24px 11px 36px;
+      font-family:'Montserrat',Arial,sans-serif;
+      font-size:10px;font-weight:600;
+      letter-spacing:1px;text-transform:uppercase;
+      color:rgba(255,255,255,0.55);
+      text-decoration:none;
+      border-bottom:1px solid #111;
+      transition:color 0.2s;
+    }
+    .sn-mob-sub a:last-child{border-bottom:none;}
+    .sn-mob-sub a:hover{color:#fff;}
+    .sn-mob-sub-label{
+      display:block;
+      padding:8px 24px 4px 36px;
+      font-family:'Montserrat',Arial,sans-serif;
+      font-size:8px;font-weight:800;
+      letter-spacing:2px;text-transform:uppercase;
+      color:#8B0000;
+    }
 
     /* ── Mobile top bar adjustments ── */
     @media(max-width:960px){
@@ -245,29 +452,99 @@
           </button>
         </div>
       </div>
+
       <nav class="sn-nav" aria-label="Main navigation">
+
         <a href="https://www.3jsautobody.com/inside-3js">Inside 3J's</a>
-        <a href="https://www.3jsautobody.com/body-paint-repairs">Body &amp; Paint Repairs</a>
-        <a href="https://www.3jsautobody.com/areas-we-service">Areas We Service</a>
+        <a href="https://www.3jsautobody.com/body-paint-repairs">Body &amp; Paint</a>
+
+        <!-- Services mega menu -->
+        <div class="sn-mega">
+          <button class="sn-mega-trigger">Truck Accessories <span class="sn-caret">▾</span></button>
+          <div class="sn-mega-panel">
+            <div class="sn-mega-col">
+              <div class="sn-mega-col-title">Bed Protection</div>
+              <a href="https://www.3jsautobody.com/rhino-liner"><span class="sn-mega-icon">🛡️</span>Rhino Liner</a>
+              <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/floor-liners.html"><span class="sn-mega-icon">🚗</span>Floor Liners</a>
+            </div>
+            <div class="sn-mega-col">
+              <div class="sn-mega-col-title">Covers &amp; Steps</div>
+              <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/tonneau-covers.html"><span class="sn-mega-icon">📦</span>Tonneau Covers</a>
+              <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/bakflip-mx4.html"><span class="sn-mega-icon">↳</span>BakFlip MX4</a>
+              <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/steps-running-boards.html"><span class="sn-mega-icon">🦶</span>Steps &amp; Running Boards</a>
+              <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/towing-hitches.html"><span class="sn-mega-icon">🔗</span>Towing &amp; Hitches</a>
+            </div>
+            <div class="sn-mega-col sn-mega-cta-col">
+              <div class="sn-mega-cta-title">Get Started</div>
+              <a href="https://www.3jsautobody.com/rhino-lining-quote" class="sn-mega-cta-btn red">Get a Quote</a>
+              <a href="tel:+15624246744" class="sn-mega-cta-btn outline">Call Us Now</a>
+              <div class="sn-mega-phone">(562) 424-6744</div>
+              <div class="sn-mega-hours">Mon – Fri &nbsp; 8 AM – 5 PM</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Areas We Service dropdown -->
+        <div class="sn-dd">
+          <button class="sn-dd-trigger">Areas We Service <span class="sn-caret">▾</span></button>
+          <div class="sn-dd-panel">
+            <a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_LONG_BEACH.html">Long Beach</a>
+            <a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_BELLFLOWER.html">Bellflower</a>
+            <a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_CARSON.html">Carson</a>
+            <a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_COMPTON.html">Compton</a>
+            <a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_DOWNEY.html">Downey</a>
+            <a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_LAKEWOOD.html">Lakewood</a>
+            <a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_TORRANCE.html">Torrance</a>
+          </div>
+        </div>
+
         <a href="https://www.3jsautobody.com/rhino-liner">Rhino Liner</a>
-        <a href="https://www.3jsautobody.com/tonneau-covers">Tonneau Covers</a>
-        <a href="https://www.3jsautobody.com/running-boards">Running Boards</a>
-        <a href="https://www.3jsautobody.com/off-road-lighting">Off-Road Lighting</a>
         <a href="https://www.3jsautobody.com/contact-us">Contact Us</a>
         <a href="https://www.3jsautobody.com/faq">FAQ</a>
+
       </nav>
+
+      <!-- Mobile menu -->
       <div class="sn-mobile-menu" id="sn-mobile-menu" aria-label="Mobile navigation">
+
         <a href="https://www.3jsautobody.com/inside-3js">Inside 3J's</a>
-        <a href="https://www.3jsautobody.com/body-paint-repairs">Body &amp; Paint Repairs</a>
-        <a href="https://www.3jsautobody.com/areas-we-service">Areas We Service</a>
+        <a href="https://www.3jsautobody.com/body-paint-repairs">Body &amp; Paint</a>
+
+        <!-- Truck Accessories mobile accordion -->
+        <div class="sn-mob-item" id="sn-mob-accessories">
+          <button class="sn-mob-top">Truck Accessories <span class="sn-mob-arrow">▶</span></button>
+          <div class="sn-mob-sub">
+            <span class="sn-mob-sub-label">Bed Protection</span>
+            <a href="https://www.3jsautobody.com/rhino-liner">Rhino Liner</a>
+            <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/floor-liners.html">Floor Liners</a>
+            <span class="sn-mob-sub-label">Covers &amp; Steps</span>
+            <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/tonneau-covers.html">Tonneau Covers</a>
+            <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/bakflip-mx4.html">BakFlip MX4</a>
+            <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/steps-running-boards.html">Steps &amp; Running Boards</a>
+            <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/towing-hitches.html">Towing &amp; Hitches</a>
+          </div>
+        </div>
+
+        <!-- Areas We Service mobile accordion -->
+        <div class="sn-mob-item" id="sn-mob-areas">
+          <button class="sn-mob-top">Areas We Service <span class="sn-mob-arrow">▶</span></button>
+          <div class="sn-mob-sub">
+            <a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_LONG_BEACH.html">Long Beach</a>
+            <a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_BELLFLOWER.html">Bellflower</a>
+            <a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_CARSON.html">Carson</a>
+            <a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_COMPTON.html">Compton</a>
+            <a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_DOWNEY.html">Downey</a>
+            <a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_LAKEWOOD.html">Lakewood</a>
+            <a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_TORRANCE.html">Torrance</a>
+          </div>
+        </div>
+
         <a href="https://www.3jsautobody.com/rhino-liner">Rhino Liner</a>
-        <a href="https://www.3jsautobody.com/tonneau-covers">Tonneau Covers</a>
-        <a href="https://www.3jsautobody.com/running-boards">Running Boards</a>
-        <a href="https://www.3jsautobody.com/off-road-lighting">Off-Road Lighting</a>
         <a href="https://www.3jsautobody.com/contact-us">Contact Us</a>
         <a href="https://www.3jsautobody.com/faq">FAQ</a>
         <a href="https://www.3jsautobody.com/rhino-lining-quote" class="sn-mob-red">Bed-Liner Quote</a>
         <a href="https://www.carwise.com/online-photo-estimate/3js-autobody-paint-inc-signal-hill-ca-90755/479382?source=shop.profile&referer=estimate.cccone.com">Free Auto Body Estimate</a>
+
       </div>
     </header>
   `;
@@ -333,11 +610,19 @@
   }
 
   /* ════════════════════════════════
+     MOBILE ACCORDION TOGGLES
+  ════════════════════════════════ */
+  document.querySelectorAll('.sn-mob-item').forEach(function(item){
+    var btn = item.querySelector('.sn-mob-top');
+    if(btn){
+      btn.addEventListener('click', function(){
+        item.classList.toggle('sn-mob-open');
+      });
+    }
+  });
+
+  /* ════════════════════════════════
      DESKTOP PHONE MODAL
-     On mobile: tel: links dial normally.
-     On desktop: intercept and show a
-     clean popup with the number instead
-     of the browser's ugly dialog.
   ════════════════════════════════ */
   var isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) ||
                  (window.matchMedia && window.matchMedia('(pointer:coarse)').matches);
