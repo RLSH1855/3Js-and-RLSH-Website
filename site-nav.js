@@ -511,23 +511,23 @@
             <div class="sn-mega-grid-header">Truck Accessories &amp; Upgrades</div>
             <div class="sn-mega-grid">
               <a href="https://www.3jsautobody.com/rhino-liner" class="sn-mega-item">
-                <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/BED%20LINER%20W-LOGO.png" alt="Rhino Liner">
+                <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/PROTECTION%20-%20RHINO%20LININGS.png" alt="Rhino Liner">
                 <span>Rhino Liner</span>
               </a>
               <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/tonneau-covers.html" class="sn-mega-item">
-                <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/BK_BAKFlipMX4.jpg" alt="Tonneau Covers">
+                <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/MEGA%20MENU%20IMAGES/TONNEAU%20COVER.png" alt="Tonneau Covers">
                 <span>Tonneau Covers</span>
               </a>
               <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/steps-running-boards.html" class="sn-mega-item">
-                <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/go-rhino/oe-xtreme-silver-truck.png" alt="Steps &amp; Running Boards">
+                <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/MEGA%20MENU%20IMAGES/RUNNING%20BOARDS%20-%20SIDE%20STEPS.png" alt="Steps &amp; Running Boards">
                 <span>Steps &amp; Running Boards</span>
               </a>
               <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/towing-hitches.html" class="sn-mega-item">
-                <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/Curt%20Rebellion%20XD.png" alt="Towing &amp; Hitches">
+                <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/MEGA%20MENU%20IMAGES/TOWING.png" alt="Towing &amp; Hitches">
                 <span>Towing &amp; Hitches</span>
               </a>
               <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/floor-liners.html" class="sn-mega-item">
-                <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/Husky%20Liner%20images/3d_icons%20(20).png" alt="Floor Liners">
+                <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/MEGA%20MENU%20IMAGES/FLOOR%20MATS.png" alt="Floor Liners">
                 <span>Floor Liners</span>
               </a>
             </div>
