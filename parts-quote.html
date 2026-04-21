@@ -214,17 +214,17 @@
         <div class="form-row">
           <div class="form-group">
             <label for="f-name">Full Name <span class="req">*</span></label>
-            <input type="text" id="f-name" placeholder="John Smith" required/>
+            <input type="text" id="f-name" placeholder="John Smith" required autocomplete="name" style="text-transform:capitalize;"/>
           </div>
           <div class="form-group">
             <label for="f-phone">Phone <span class="req">*</span></label>
-            <input type="tel" id="f-phone" placeholder="(562) 555-0100" required/>
+            <input type="tel" id="f-phone" placeholder="(562) 555-0100" required autocomplete="tel" inputmode="numeric"/>
           </div>
         </div>
 
         <div class="form-group">
           <label for="f-email">Email <span class="req">*</span></label>
-          <input type="email" id="f-email" placeholder="you@email.com" required/>
+          <input type="email" id="f-email" placeholder="you@email.com" required autocomplete="email" style="text-transform:lowercase;"/>
         </div>
 
         <button type="submit" class="submit-btn" id="submit-btn">Request Quote</button>
@@ -338,6 +338,15 @@ document.getElementById('quote-form').addEventListener('submit', function(e){
       document.getElementById('form-error').style.display = 'block';
       document.getElementById('form-error').textContent = 'Something went wrong. Please try again or call us at (562) 424-6744.';
     });
+});
+// ── Phone formatter ──
+document.getElementById('f-phone').addEventListener('input', function(e){
+  var digits = e.target.value.replace(/\D/g,'').slice(0,10);
+  var fmt = '';
+  if(digits.length > 6)      fmt = '('+digits.slice(0,3)+') '+digits.slice(3,6)+'-'+digits.slice(6);
+  else if(digits.length > 3) fmt = '('+digits.slice(0,3)+') '+digits.slice(3);
+  else if(digits.length > 0) fmt = '('+digits;
+  e.target.value = fmt;
 });
 </script>
 
