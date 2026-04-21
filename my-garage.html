@@ -366,9 +366,13 @@
             <div>
               <div class="field">
                 <label>Trim Level</label>
-                <select id="sel-trim">
+                <select id="sel-trim" onchange="handleTrimChange()">
                   <option value="">Select Trim</option>
                 </select>
+              </div>
+              <div class="field" id="trim-other-field" style="display:none;margin-top:8px;">
+                <label>Enter Trim</label>
+                <input type="text" id="trim-other-input" placeholder="e.g. FX4, Sport, Off-Road" style="width:100%;padding:10px 12px;border:2px solid #e0e0e0;border-radius:7px;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:600;"/>
               </div>
             </div>
 
@@ -608,6 +612,11 @@ document.getElementById('vin-input').addEventListener('keydown', function(e){
   }
 })();
 
+function handleTrimChange(){
+  var val = document.getElementById('sel-trim').value;
+  document.getElementById('trim-other-field').style.display = val === '__other__' ? 'block' : 'none';
+}
+
 function toggleYearGrid(){
   var panel = document.getElementById('year-grid-panel');
   var btn   = document.getElementById('year-picker-btn');
@@ -675,6 +684,11 @@ function showConfirm(year, make, model, trim){
     if(t===trim) o.selected=true;
     trimSel.appendChild(o);
   });
+  var other=document.createElement('option');
+  other.value='__other__';other.textContent='Other — type it in';
+  trimSel.appendChild(other);
+  document.getElementById('trim-other-field').style.display='none';
+  document.getElementById('trim-other-input').value='';
 
   // Bed size selector
   var bedSel   = document.getElementById('sel-bed');
@@ -766,7 +780,8 @@ function bedSizeChange(){}
 
 // ── Save to localStorage ──
 function saveVehicle(){
-  var trim    = document.getElementById('sel-trim').value;
+  var trimRaw = document.getElementById('sel-trim').value;
+  var trim    = trimRaw === '__other__' ? document.getElementById('trim-other-input').value.trim() : trimRaw;
   var bedIn   = parseFloat(document.getElementById('sel-bed').value) || null;
   var bedList = BED_SIZES[pendingVehicle.model] || [];
   var bedLabel = '';
