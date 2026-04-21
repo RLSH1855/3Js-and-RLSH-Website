@@ -18,15 +18,15 @@
     }
     .gb-left{display:flex;align-items:center;gap:10px;}
     .gb-icon{font-size:16px;}
-    .gb-vehicle{font-size:12px;font-weight:800;color:#fff;}
+    .gb-vehicle{font-size:13px;font-weight:800;color:#fff;}
     .gb-badge{
       background:#1a7a1a;color:#fff;
-      font-size:9px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;
+      font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;
       padding:3px 10px;border-radius:20px;
     }
-    .gb-badge.no-garage{background:#666;}
+    .gb-badge.no-garage{background:#555;}
     .gb-right{display:flex;gap:12px;}
-    .gb-link{font-size:10px;font-weight:700;color:#aaa;text-decoration:underline;cursor:pointer;background:none;border:none;}
+    .gb-link{font-size:11px;font-weight:700;color:#999;text-decoration:underline;cursor:pointer;background:none;border:none;}
     .gb-link:hover{color:#fff;}
 
     /* ── PAGE HEADER ── */
@@ -34,14 +34,14 @@
       background:#8B0000;padding:20px 28px;
       display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;
     }
-    .page-header-title{font-size:18px;font-weight:900;color:#fff;letter-spacing:-0.5px;text-transform:uppercase;}
-    .page-header-sub{font-size:11px;color:rgba(255,255,255,0.7);font-weight:500;margin-top:2px;}
+    .page-header-title{font-size:20px;font-weight:900;color:#fff;letter-spacing:-0.5px;text-transform:uppercase;}
+    .page-header-sub{font-size:13px;color:rgba(255,255,255,0.8);font-weight:500;margin-top:2px;}
     .fitment-chip{
       display:inline-flex;align-items:center;gap:6px;
       background:rgba(255,255,255,0.15);
       border:1px solid rgba(255,255,255,0.3);
       border-radius:20px;padding:6px 14px;
-      font-size:11px;font-weight:700;color:#fff;
+      font-size:12px;font-weight:700;color:#fff;
     }
     .fitment-chip .dot{width:8px;height:8px;border-radius:50%;background:#4caf50;}
     .fitment-chip.inactive .dot{background:#aaa;}
@@ -83,7 +83,7 @@
     @media(max-width:768px){.sidebar{display:none;}}
     .sidebar-section{margin-bottom:22px;}
     .sidebar-title{
-      font-size:9px;font-weight:900;letter-spacing:2.5px;text-transform:uppercase;
+      font-size:10px;font-weight:900;letter-spacing:2.5px;text-transform:uppercase;
       color:#8B0000;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid #e8e8e8;
     }
     .filter-item{
@@ -95,8 +95,8 @@
       transition:background 0.15s,border-color 0.15s;
     }
     .cb.checked{background:#8B0000;border-color:#8B0000;}
-    .filter-label{font-size:11px;font-weight:600;color:#444;}
-    .filter-count{font-size:10px;font-weight:600;color:#aaa;margin-left:auto;}
+    .filter-label{font-size:12px;font-weight:600;color:#333;}
+    .filter-count{font-size:11px;font-weight:600;color:#666;margin-left:auto;}
 
     /* ── MAIN CONTENT ── */
     .main{background:#f0f0f0;}
@@ -108,21 +108,21 @@
       display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
       position:sticky;top:0;z-index:10;
     }
-    .result-count{font-size:11px;font-weight:700;color:#666;}
+    .result-count{font-size:12px;font-weight:700;color:#444;}
     .result-count span{color:#1a1a1a;font-weight:900;}
     .sort-wrap{display:flex;align-items:center;gap:8px;}
-    .sort-label{font-size:10px;font-weight:700;color:#888;}
+    .sort-label{font-size:11px;font-weight:700;color:#555;}
     .sort-select{
       padding:6px 28px 6px 10px;
       border:2px solid #e8e8e8;border-radius:6px;
-      font-family:'Montserrat',sans-serif;font-size:11px;font-weight:600;
+      font-family:'Montserrat',sans-serif;font-size:12px;font-weight:600;
       background:#fff;appearance:none;cursor:pointer;
     }
     .mobile-filter-btn{
       display:none;
       align-items:center;gap:6px;
       padding:7px 14px;border:2px solid #1a1a1a;border-radius:6px;
-      font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;
+      font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;
       letter-spacing:1px;text-transform:uppercase;background:#fff;cursor:pointer;
     }
     @media(max-width:768px){.mobile-filter-btn{display:flex;}}
@@ -136,11 +136,11 @@
       background:#fafafa;padding:8px 20px;border-bottom:1px solid #e8e8e8;
       display:flex;align-items:center;gap:8px;flex-wrap:wrap;min-height:36px;
     }
-    .active-label{font-size:9px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#888;}
+    .active-label{font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#555;}
     .filter-tag{
       display:flex;align-items:center;gap:5px;
       padding:4px 10px;background:#1a1a1a;color:#fff;
-      border-radius:20px;font-size:10px;font-weight:700;cursor:pointer;
+      border-radius:20px;font-size:11px;font-weight:700;cursor:pointer;
     }
     .filter-tag:hover{background:#333;}
 
@@ -169,7 +169,7 @@
       position:relative;overflow:hidden;
     }
     .card-img img{width:100%;height:100%;object-fit:cover;}
-    .card-img .placeholder-text{font-size:10px;font-weight:700;color:#bbb;letter-spacing:1px;text-transform:uppercase;}
+    .card-img .placeholder-text{font-size:11px;font-weight:700;color:#888;letter-spacing:1px;text-transform:uppercase;}
 
     .fits-badge{
       position:absolute;top:8px;left:8px;
@@ -180,16 +180,16 @@
     .fits-badge.no-fit{background:#888;color:#fff;}
 
     .card-body{padding:12px 14px;}
-    .card-brand{font-size:8px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#8B0000;margin-bottom:3px;}
-    .card-name{font-size:12px;font-weight:800;color:#1a1a1a;margin-bottom:4px;line-height:1.3;}
-    .card-bed{font-size:9px;font-weight:600;color:#888;margin-bottom:6px;}
-    .card-part{font-size:9px;font-weight:600;color:#aaa;margin-bottom:8px;}
-    .card-price{font-size:15px;font-weight:900;color:#1a1a1a;margin-bottom:10px;}
+    .card-brand{font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#8B0000;margin-bottom:3px;}
+    .card-name{font-size:13px;font-weight:800;color:#1a1a1a;margin-bottom:4px;line-height:1.3;}
+    .card-bed{font-size:11px;font-weight:600;color:#555;margin-bottom:6px;}
+    .card-part{font-size:10px;font-weight:600;color:#777;margin-bottom:8px;}
+    .card-price{font-size:16px;font-weight:900;color:#1a1a1a;margin-bottom:10px;}
     .card-btns{display:grid;grid-template-columns:1fr 1fr;gap:6px;}
     .card-btn{
       display:block;width:100%;padding:8px 4px;
       background:#8B0000;color:#fff;border:none;border-radius:6px;
-      font-family:'Montserrat',sans-serif;font-size:8px;font-weight:800;
+      font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;
       letter-spacing:1px;text-transform:uppercase;cursor:pointer;text-align:center;
       text-decoration:none;line-height:1;
     }
@@ -199,7 +199,7 @@
 
     /* ── FIT NOTE TOOLTIP ── */
     .fit-note{
-      font-size:9px;font-weight:600;color:#856404;
+      font-size:11px;font-weight:600;color:#856404;
       background:#fff8e1;border:1px solid #ffe082;border-radius:4px;
       padding:4px 8px;margin-top:6px;line-height:1.4;
       display:none;
@@ -211,8 +211,8 @@
       display:none;padding:60px 24px;text-align:center;background:#fff;
     }
     #empty-state .empty-icon{font-size:48px;margin-bottom:12px;}
-    #empty-state p{font-size:13px;font-weight:700;color:#666;margin-bottom:8px;}
-    #empty-state small{font-size:11px;color:#aaa;}
+    #empty-state p{font-size:14px;font-weight:700;color:#444;margin-bottom:8px;}
+    #empty-state small{font-size:12px;color:#666;}
 
     /* ── MOBILE FILTER OVERLAY ── */
     #mob-filter{
@@ -233,12 +233,12 @@
       color:#1a1a1a;font-weight:300;line-height:1;
     }
     .mob-filter-section{padding:16px 20px;border-bottom:1px solid #f0f0f0;}
-    .mob-filter-section-title{font-size:9px;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:#8B0000;margin-bottom:10px;}
+    .mob-filter-section-title{font-size:10px;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:#8B0000;margin-bottom:10px;}
     .mob-chips{display:flex;flex-wrap:wrap;gap:8px;}
     .mob-chip{
       padding:6px 14px;border-radius:20px;
-      font-size:10px;font-weight:700;
-      border:2px solid #e8e8e8;background:#fff;color:#666;cursor:pointer;
+      font-size:11px;font-weight:700;
+      border:2px solid #e8e8e8;background:#fff;color:#444;cursor:pointer;
     }
     .mob-chip.active{background:#1a1a1a;color:#fff;border-color:#1a1a1a;}
     .mob-apply{
