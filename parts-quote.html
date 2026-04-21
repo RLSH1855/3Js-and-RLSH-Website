@@ -325,6 +325,12 @@ document.getElementById('quote-form').addEventListener('submit', function(e){
     phone:     phone,
     email:     email,
     vehicle:   vehicleStr || 'Not saved',
+    garageYear:    (garage && garage.year)    ? garage.year    : '',
+    garageMake:    (garage && garage.make)    ? garage.make    : '',
+    garageModel:   (garage && garage.model)   ? garage.model   : '',
+    garageTrim:    (garage && garage.trim)    ? garage.trim    : '',
+    garageBedSize: (garage && garage.bedSize) ? garage.bedSize : '',
+    garageVin:     (garage && garage.vin)     ? garage.vin     : '',
     product:   product,
     partNum:   partNum,
     quoteType: 'Part + Installation'
