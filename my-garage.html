@@ -252,14 +252,17 @@
       padding:32px 24px;
     }
     #saved-panel.visible{display:block;}
-    .saved-check{font-size:48px;margin-bottom:12px;}
+    .saved-check{
+      width:64px;height:64px;border-radius:50%;
+      background:#1a7a1a;display:flex;align-items:center;justify-content:center;
+      margin:0 auto 16px;font-size:30px;line-height:1;
+    }
     .saved-title{font-size:18px;font-weight:900;color:#1a1a1a;margin-bottom:6px;}
     .saved-sub{font-size:12px;color:#666;font-weight:500;margin-bottom:20px;}
     .saved-vehicle-pill{
-      display:inline-block;
-      background:#1a1a1a;color:#fff;
-      font-size:13px;font-weight:800;
-      padding:10px 24px;border-radius:30px;
+      display:block;
+      font-size:15px;font-weight:900;color:#1a1a1a;
+      letter-spacing:1px;text-transform:uppercase;
       margin-bottom:20px;
     }
     .saved-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
@@ -280,7 +283,6 @@
 <!-- Garage bar (persistent across pages) -->
 <div id="garage-bar">
   <div class="garage-bar-left">
-    <span class="garage-icon">🚗</span>
     <span class="garage-vehicle-name" id="bar-vehicle-name">—</span>
     <span class="garage-fits-badge">✓ Your Vehicle</span>
   </div>
@@ -414,7 +416,7 @@
   <div id="saved-panel">
     <div class="entry-card">
       <div class="card-body">
-        <div class="saved-check">✅</div>
+        <div class="saved-check">✓</div>
         <p class="saved-title">Vehicle Saved!</p>
         <p class="saved-sub">We'll show you parts that fit your truck across every page.</p>
         <div class="saved-vehicle-pill" id="saved-pill">—</div>
