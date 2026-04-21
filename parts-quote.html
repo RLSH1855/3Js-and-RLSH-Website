@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Request a Quote — RLSH Truck & Jeep Outfitters</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:'Montserrat',sans-serif;background:#f0f0f0;color:#1a1a1a;min-height:100vh;}
+
+    /* ── PAGE HEADER ── */
+    .page-header{
+      background:#1a1a1a;padding:28px 28px 24px;
+      border-bottom:3px solid #8B0000;
+    }
+    .page-header .eyebrow{
+      font-size:9px;font-weight:800;letter-spacing:3px;text-transform:uppercase;
+      color:#8B0000;margin-bottom:8px;
+    }
+    .page-header h1{
+      font-size:clamp(22px,4vw,36px);font-weight:900;color:#fff;
+      letter-spacing:-1px;line-height:1.05;
+    }
+    .page-header .sub{
+      font-size:12px;font-weight:500;color:rgba(255,255,255,0.5);margin-top:6px;
+    }
+
+    /* ── MAIN WRAP ── */
+    .page-wrap{max-width:680px;margin:0 auto;padding:32px 20px 60px;}
+
+    /* ── NO PRODUCT STATE ── */
+    #no-product{
+      display:none;text-align:center;padding:60px 24px;
+      background:#fff;border-radius:10px;margin-top:32px;
+    }
+    #no-product .np-icon{font-size:48px;margin-bottom:16px;}
+    #no-product h2{font-size:18px;font-weight:800;color:#1a1a1a;margin-bottom:8px;}
+    #no-product p{font-size:13px;color:#666;margin-bottom:24px;}
+    #no-product a{
+      display:inline-block;padding:12px 28px;
+      background:#8B0000;color:#fff;border-radius:7px;
+      font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;
+      text-decoration:none;
+    }
+
+    /* ── CARDS ── */
+    .info-card{
+      background:#fff;border-radius:10px;
+      border:2px solid #e8e8e8;
+      padding:20px 22px;margin-bottom:16px;
+      position:relative;overflow:hidden;
+    }
+    .info-card::before{
+      content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:#8B0000;
+    }
+    .info-card.amber::before{background:#e6a817;}
+    .card-eyebrow{
+      font-size:8px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;
+      color:#8B0000;margin-bottom:6px;
+    }
+    .info-card.amber .card-eyebrow{color:#e6a817;}
+    .card-title{font-size:16px;font-weight:900;color:#1a1a1a;margin-bottom:4px;}
+    .card-sub{font-size:11px;font-weight:600;color:#888;}
+    .card-part{font-size:10px;font-weight:700;color:#aaa;margin-top:4px;}
+    .no-vehicle-note{
+      font-size:11px;font-weight:700;color:#856404;
+      background:#fff8e1;border:1px solid #ffe082;border-radius:6px;
+      padding:10px 14px;margin-top:0;
+    }
+
+    /* ── QUOTE INCLUDES BANNER ── */
+    .quote-includes{
+      background:#1a1a1a;border-radius:10px;
+      padding:16px 20px;margin-bottom:20px;
+      display:flex;align-items:center;gap:14px;
+    }
+    .qi-icon{
+      width:38px;height:38px;border-radius:50%;
+      background:#8B0000;display:flex;align-items:center;justify-content:center;
+      flex-shrink:0;font-size:18px;
+    }
+    .qi-text{font-size:11px;font-weight:700;color:#fff;line-height:1.5;}
+    .qi-text strong{color:#fff;font-weight:900;display:block;font-size:13px;margin-bottom:2px;}
+
+    /* ── FORM ── */
+    .form-card{
+      background:#fff;border-radius:10px;
+      border:2px solid #e8e8e8;padding:24px 22px;margin-bottom:16px;
+    }
+    .form-section-title{
+      font-size:9px;font-weight:900;letter-spacing:2.5px;text-transform:uppercase;
+      color:#8B0000;margin-bottom:18px;padding-bottom:8px;border-bottom:1px solid #f0f0f0;
+    }
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;}
+    @media(max-width:560px){.form-row{grid-template-columns:1fr;}}
+    .form-group{margin-bottom:14px;}
+    .form-group:last-child{margin-bottom:0;}
+    label{
+      display:block;font-size:9px;font-weight:800;letter-spacing:1.5px;
+      text-transform:uppercase;color:#666;margin-bottom:6px;
+    }
+    label span.req{color:#8B0000;}
+    input[type=text],input[type=tel],input[type=email]{
+      width:100%;padding:11px 14px;
+      border:2px solid #e0e0e0;border-radius:7px;
+      font-family:'Montserrat',sans-serif;font-size:13px;font-weight:600;
+      color:#1a1a1a;background:#fff;
+      transition:border-color 0.15s;outline:none;
+    }
+    input[type=text]:focus,input[type=tel]:focus,input[type=email]:focus{
+      border-color:#8B0000;
+    }
+    input.readonly-field{
+      background:#f7f7f7;color:#666;cursor:default;
+    }
+
+    /* ── SUBMIT ── */
+    .submit-btn{
+      display:block;width:100%;padding:16px;
+      background:#8B0000;color:#fff;border:none;border-radius:8px;
+      font-family:'Montserrat',sans-serif;font-size:12px;font-weight:900;
+      letter-spacing:2px;text-transform:uppercase;cursor:pointer;
+      transition:background 0.15s;margin-top:4px;
+    }
+    .submit-btn:hover{background:#6d0000;}
+    .submit-btn:disabled{background:#aaa;cursor:not-allowed;}
+
+    /* ── ERROR ── */
+    #form-error{
+      display:none;
+      background:#fdecea;border:1px solid #f5c6cb;border-radius:7px;
+      padding:12px 16px;margin-top:12px;
+      font-size:11px;font-weight:700;color:#721c24;
+    }
+
+    /* ── SUCCESS STATE ── */
+    #success-state{
+      display:none;
+      background:#fff;border-radius:10px;border:2px solid #e8e8e8;
+      padding:48px 32px;text-align:center;
+    }
+    .success-check{
+      width:72px;height:72px;border-radius:50%;
+      background:#1a7a1a;display:flex;align-items:center;justify-content:center;
+      margin:0 auto 20px;font-size:36px;
+    }
+    #success-state h2{font-size:22px;font-weight:900;color:#1a1a1a;margin-bottom:8px;}
+    #success-state p{font-size:13px;color:#666;margin-bottom:6px;line-height:1.6;}
+    #success-state .back-link{
+      display:inline-block;margin-top:24px;
+      padding:12px 28px;background:#1a1a1a;color:#fff;
+      border-radius:7px;font-size:11px;font-weight:800;
+      letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;
+    }
+    #success-state .back-link:hover{background:#333;}
+
+    /* ── FORM WRAP ── */
+    #form-wrap{display:none;}
+  </style>
+</head>
+<body>
+
+<!-- Page Header -->
+<div class="page-header">
+  <div class="eyebrow">Parts Quote Request</div>
+  <h1>Get a Quote</h1>
+  <div class="sub">Part pricing + professional installation — we'll get back to you fast.</div>
+</div>
+
+<div class="page-wrap">
+
+  <!-- No Product State -->
+  <div id="no-product">
+    <div class="np-icon">🔍</div>
+    <h2>No Product Selected</h2>
+    <p>It looks like you arrived here without selecting a product. Head back to the catalog to find the right cover for your truck.</p>
+    <a href="parts-catalog.html">Browse Tonneau Covers</a>
+  </div>
+
+  <!-- Form Wrap -->
+  <div id="form-wrap">
+
+    <!-- Product Card -->
+    <div class="info-card" id="product-card">
+      <div class="card-eyebrow">Selected Product</div>
+      <div class="card-title" id="display-product">—</div>
+      <div class="card-part" id="display-partnum">—</div>
+    </div>
+
+    <!-- Vehicle Card -->
+    <div class="info-card amber" id="vehicle-card-saved" style="display:none">
+      <div class="card-eyebrow">Your Vehicle</div>
+      <div class="card-title" id="display-vehicle">—</div>
+    </div>
+    <div class="no-vehicle-note" id="vehicle-card-none" style="display:none">
+      ⚠ No vehicle saved — fitment not confirmed. <a href="my-garage.html" style="color:#8B0000;font-weight:800;">Save your truck →</a>
+    </div>
+
+    <!-- Quote Includes Banner -->
+    <div class="quote-includes">
+      <div class="qi-icon">✓</div>
+      <div class="qi-text">
+        <strong>What's included in your quote</strong>
+        Part pricing + professional installation pricing — both included in every quote we send.
+      </div>
+    </div>
+
+    <!-- Form Card -->
+    <div class="form-card">
+      <div class="form-section-title">Your Contact Info</div>
+      <form id="quote-form" novalidate>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="f-name">Full Name <span class="req">*</span></label>
+            <input type="text" id="f-name" placeholder="John Smith" required/>
+          </div>
+          <div class="form-group">
+            <label for="f-phone">Phone <span class="req">*</span></label>
+            <input type="tel" id="f-phone" placeholder="(562) 555-0100" required/>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="f-email">Email <span class="req">*</span></label>
+          <input type="email" id="f-email" placeholder="you@email.com" required/>
+        </div>
+
+        <button type="submit" class="submit-btn" id="submit-btn">Request Quote</button>
+        <div id="form-error">Something went wrong. Please try again or call us at (562) 424-6744.</div>
+
+      </form>
+    </div>
+
+  </div><!-- /form-wrap -->
+
+  <!-- Success State -->
+  <div id="success-state">
+    <div class="success-check">✓</div>
+    <h2>Quote Request Received!</h2>
+    <p>We'll be in touch within 1 business day with pricing for your part and installation.</p>
+    <p>Questions? Call us at <strong>(562) 424-6744</strong>.</p>
+    <a href="parts-catalog.html" class="back-link">Back to Catalog</a>
+  </div>
+
+</div><!-- /page-wrap -->
+
+<script>
+var SHEETS_URL = 'https://script.google.com/macros/s/AKfycbyn_Lhl96O0vAujT3ddSavZmcbFqts5miqCditRFYYknMwutEJAvKe5YFAjUNLb98-hTw/exec';
+
+// ── Read URL params ──
+var params  = new URLSearchParams(window.location.search);
+var product = params.get('product') || '';
+var partNum = params.get('partNum') || '';
+
+// ── Read garage ──
+var garage = null;
+try { garage = JSON.parse(localStorage.getItem('garage_vehicle')); } catch(e){}
+
+// ── Init page ──
+if(!product){
+  document.getElementById('no-product').style.display = 'block';
+} else {
+  document.getElementById('form-wrap').style.display = 'block';
+
+  // Product
+  document.getElementById('display-product').textContent = product;
+  document.getElementById('display-partnum').textContent = partNum ? 'Part #' + partNum : '';
+
+  // Vehicle
+  if(garage && garage.year){
+    var vLabel = garage.year + ' ' + garage.make + ' ' + garage.model;
+    if(garage.trim) vLabel += ' ' + garage.trim;
+    if(garage.bedSize) vLabel += ' · ' + garage.bedSize + ' Bed';
+    document.getElementById('display-vehicle').textContent = vLabel;
+    document.getElementById('vehicle-card-saved').style.display = 'block';
+  } else {
+    document.getElementById('vehicle-card-none').style.display = 'block';
+  }
+}
+
+// ── Submit ──
+document.getElementById('quote-form').addEventListener('submit', function(e){
+  e.preventDefault();
+
+  var name  = document.getElementById('f-name').value.trim();
+  var phone = document.getElementById('f-phone').value.trim();
+  var email = document.getElementById('f-email').value.trim();
+
+  if(!name || !phone || !email){
+    document.getElementById('form-error').style.display = 'block';
+    document.getElementById('form-error').textContent = 'Please fill in all required fields.';
+    return;
+  }
+
+  var vehicleStr = '';
+  if(garage && garage.year){
+    vehicleStr = garage.year + ' ' + garage.make + ' ' + garage.model;
+    if(garage.trim) vehicleStr += ' ' + garage.trim;
+    if(garage.bedSize) vehicleStr += ' · ' + garage.bedSize + ' Bed';
+    if(garage.vin) vehicleStr += ' (VIN: ' + garage.vin + ')';
+  }
+
+  var btn = document.getElementById('submit-btn');
+  btn.disabled = true;
+  btn.textContent = 'Sending...';
+  document.getElementById('form-error').style.display = 'none';
+
+  var now = new Date();
+  var dateStr = (now.getMonth()+1) + '/' + now.getDate() + '/' + now.getFullYear();
+
+  var record = {
+    date:      dateStr,
+    name:      name,
+    phone:     phone,
+    email:     email,
+    vehicle:   vehicleStr || 'Not saved',
+    product:   product,
+    partNum:   partNum,
+    quoteType: 'Part + Installation'
+  };
+
+  fetch(SHEETS_URL, {
+    method: 'POST',
+    body: JSON.stringify({ formType: 'parts-quote', action: 'append', records: [record] })
+  }).then(function(res){ return res.json(); })
+    .then(function(data){
+      if(data.ok || data.status === 'ok'){
+        document.getElementById('form-wrap').style.display = 'none';
+        document.getElementById('success-state').style.display = 'block';
+      } else {
+        throw new Error(data.error || 'Unknown error');
+      }
+    }).catch(function(){
+      btn.disabled = false;
+      btn.textContent = 'Request Quote';
+      document.getElementById('form-error').style.display = 'block';
+      document.getElementById('form-error').textContent = 'Something went wrong. Please try again or call us at (562) 424-6744.';
+    });
+});
+</script>
+
+<script src="https://rlsh1855.github.io/3Js-and-RLSH-Website/site-nav.js"></script>
+</body>
+</html>

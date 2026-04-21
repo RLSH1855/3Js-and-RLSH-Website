@@ -185,13 +185,17 @@
     .card-bed{font-size:9px;font-weight:600;color:#888;margin-bottom:6px;}
     .card-part{font-size:9px;font-weight:600;color:#aaa;margin-bottom:8px;}
     .card-price{font-size:15px;font-weight:900;color:#1a1a1a;margin-bottom:10px;}
+    .card-btns{display:grid;grid-template-columns:1fr 1fr;gap:6px;}
     .card-btn{
-      display:block;width:100%;padding:8px;
+      display:block;width:100%;padding:8px 4px;
       background:#8B0000;color:#fff;border:none;border-radius:6px;
-      font-family:'Montserrat',sans-serif;font-size:9px;font-weight:800;
-      letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;text-align:center;
+      font-family:'Montserrat',sans-serif;font-size:8px;font-weight:800;
+      letter-spacing:1px;text-transform:uppercase;cursor:pointer;text-align:center;
+      text-decoration:none;line-height:1;
     }
     .card-btn:hover{background:#6d0000;}
+    .card-btn.call{background:#1a1a1a;}
+    .card-btn.call:hover{background:#333;}
 
     /* ── FIT NOTE TOOLTIP ── */
     .fit-note{
@@ -642,7 +646,10 @@ function renderProducts(){
         '<div class="card-part">Part #'+r[F.partNum]+'</div>'+
         '<div class="card-price">'+price+'</div>'+
         (fitNote ? '<div class="fit-note">⚠ '+fitNote+'</div>' : '')+
-        '<button class="card-btn" onclick="getQuote(\''+r[F.product]+'\',\''+r[F.partNum]+'\')">Get a Quote</button>'+
+        '<div class="card-btns">'+
+          '<a href="tel:5624246744" class="card-btn call">📞 Call to Order</a>'+
+          '<button class="card-btn" onclick="getQuote(\''+r[F.product]+'\',\''+r[F.partNum]+'\')">Get a Quote</button>'+
+        '</div>'+
       '</div>';
 
     grid.appendChild(card);
@@ -658,7 +665,10 @@ function renderProducts(){
 }
 
 function getQuote(product, partNum){
-  window.location.href = 'https://rlsh1855.github.io/3Js-and-RLSH-Website/rhino-liner.html';
+  var url = 'https://rlsh1855.github.io/3Js-and-RLSH-Website/parts-quote.html'
+    + '?product=' + encodeURIComponent(product)
+    + '&partNum=' + encodeURIComponent(partNum);
+  window.location.href = url;
 }
 
 // ── Mobile filter overlay ──
