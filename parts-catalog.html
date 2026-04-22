@@ -249,36 +249,39 @@
     }
 
     /* ── COMPARISON SECTION ── */
-    .comparison-section{background:#1a1a1a;padding:28px;border-bottom:3px solid #8B0000;}
-    .comparison-heading{font-size:clamp(13px,2.2vw,17px);font-weight:900;color:#fff;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px;}
-    .comparison-sub{font-size:11px;font-weight:600;color:rgba(255,255,255,0.45);margin-bottom:18px;}
-    .comparison-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+    .comparison-section{background:#111;padding:28px 28px 32px;border-bottom:4px solid #8B0000;}
+    .comparison-header{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:20px;}
+    .comparison-heading{font-size:clamp(13px,2vw,16px);font-weight:900;color:#fff;text-transform:uppercase;letter-spacing:1.5px;}
+    .comparison-sub{font-size:10px;font-weight:600;color:rgba(255,255,255,0.4);letter-spacing:0.5px;}
+    .comparison-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
     @media(max-width:480px){.comparison-cards{grid-template-columns:1fr;}}
-    .comp-card{background:#fff;border-radius:10px;overflow:hidden;cursor:pointer;transition:transform 0.18s,box-shadow 0.18s;}
-    .comp-card:hover{transform:translateY(-3px);box-shadow:0 8px 28px rgba(0,0,0,0.35);}
-    .comp-card-img{height:130px;overflow:hidden;position:relative;}
-    .comp-card-img img{width:100%;height:100%;object-fit:cover;}
-    .comp-tier-badge{position:absolute;top:8px;left:8px;padding:3px 9px;border-radius:20px;font-size:8px;font-weight:900;letter-spacing:2px;text-transform:uppercase;}
-    .tier-good{background:rgba(0,0,0,0.75);color:#fff;}
+    .comp-card{background:#1e1e1e;border-radius:8px;overflow:hidden;cursor:pointer;transition:transform 0.18s,box-shadow 0.18s;border:1px solid rgba(255,255,255,0.06);}
+    .comp-card:hover{transform:translateY(-4px);box-shadow:0 12px 36px rgba(0,0,0,0.6);}
+    .comp-card-img{height:170px;overflow:hidden;position:relative;}
+    .comp-card-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.35s;}
+    .comp-card:hover .comp-card-img img{transform:scale(1.04);}
+    .comp-card-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,transparent 35%,rgba(0,0,0,0.82) 100%);}
+    .comp-img-overlay{position:absolute;bottom:0;left:0;right:0;padding:12px 14px;z-index:1;}
+    .comp-tier-badge{display:inline-block;padding:3px 9px;border-radius:20px;font-size:8px;font-weight:900;letter-spacing:2px;text-transform:uppercase;margin-bottom:5px;}
+    .tier-good{background:rgba(255,255,255,0.15);color:#fff;border:1px solid rgba(255,255,255,0.3);}
     .tier-better{background:#8B0000;color:#fff;}
     .tier-best{background:#e6a817;color:#1a1a1a;}
+    .comp-img-name{font-size:15px;font-weight:900;color:#fff;line-height:1.1;letter-spacing:-0.3px;}
     .comp-card-body{padding:12px 14px 14px;}
-    .comp-brand{font-size:8px;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:#8B0000;margin-bottom:3px;}
-    .comp-name{font-size:13px;font-weight:900;color:#1a1a1a;margin-bottom:4px;line-height:1.2;}
-    .comp-desc{font-size:9px;font-weight:600;color:#666;line-height:1.5;margin-bottom:10px;}
-    .comp-btn{display:block;width:100%;padding:8px;background:#8B0000;color:#fff;border:none;border-radius:6px;font-family:'Montserrat',sans-serif;font-size:9px;font-weight:900;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;text-align:center;text-decoration:none;transition:background 0.15s;}
+    .comp-desc{font-size:10px;font-weight:600;color:rgba(255,255,255,0.55);line-height:1.55;margin-bottom:12px;}
+    .comp-btn{display:block;width:100%;padding:9px;background:#8B0000;color:#fff;border:none;border-radius:6px;font-family:'Montserrat',sans-serif;font-size:9px;font-weight:900;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;text-align:center;text-decoration:none;transition:background 0.15s;}
     .comp-btn:hover{background:#6d0000;}
 
     /* ── YMM SELECTOR BAR ── */
-    .ymm-bar{background:#fff;border-bottom:3px solid #e8e8e8;padding:14px 28px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+    .ymm-bar{background:#fff;border-bottom:3px solid #1a1a1a;padding:14px 28px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
     .ymm-label{font-size:9px;font-weight:900;letter-spacing:2.5px;text-transform:uppercase;color:#8B0000;white-space:nowrap;flex-shrink:0;}
     .ymm-selects{display:flex;gap:8px;flex:1;flex-wrap:wrap;}
-    .ymm-select{flex:1;min-width:90px;padding:9px 10px;border:2px solid #e0e0e0;border-radius:7px;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:600;color:#1a1a1a;background:#fff;appearance:none;-webkit-appearance:none;cursor:pointer;transition:border-color 0.15s;outline:none;}
+    .ymm-select{flex:1;min-width:90px;padding:9px 10px;border:2px solid #e0e0e0;border-radius:6px;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:600;color:#1a1a1a;background:#fff;appearance:none;-webkit-appearance:none;cursor:pointer;transition:border-color 0.15s;outline:none;}
     .ymm-select:focus{border-color:#8B0000;}
-    .ymm-select:disabled{background:#f5f5f5;color:#aaa;cursor:not-allowed;}
-    .ymm-btn{padding:9px 20px;background:#1a1a1a;color:#fff;border:none;border-radius:7px;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:900;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;white-space:nowrap;transition:background 0.15s;flex-shrink:0;}
-    .ymm-btn:hover{background:#333;}
-    .ymm-btn:disabled{background:#bbb;cursor:not-allowed;}
+    .ymm-select:disabled{background:#f5f5f5;color:#bbb;cursor:not-allowed;}
+    .ymm-btn{padding:10px 22px;background:#8B0000;color:#fff;border:none;border-radius:6px;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:900;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;white-space:nowrap;transition:background 0.15s;flex-shrink:0;}
+    .ymm-btn:hover{background:#6d0000;}
+    .ymm-btn:disabled{background:#ccc;cursor:not-allowed;}
     @media(max-width:600px){.ymm-bar{padding:12px 16px;gap:8px;}.ymm-label{display:none;}}
   </style>
 </head>
@@ -287,7 +290,6 @@
 <!-- Garage Bar -->
 <div id="garage-bar">
   <div class="gb-left">
-    <span class="gb-icon">🚗</span>
     <span class="gb-vehicle" id="gb-vehicle">No Vehicle Saved</span>
     <span class="gb-badge no-garage" id="gb-badge">Add Your Truck</span>
   </div>
@@ -299,7 +301,7 @@
 
 <!-- No Garage Banner -->
 <div id="no-garage-banner">
-  <p>🚗 Save your truck to see which covers fit — we'll confirm fitment on every product.</p>
+  <p>Save your truck to see which covers fit — we'll confirm fitment on every product.</p>
   <a href="my-garage.html">Add My Truck</a>
 </div>
 
@@ -317,18 +319,21 @@
 
 <!-- Comparison Cards -->
 <div class="comparison-section">
-  <div class="comparison-heading">Find a Hard Folding Cover That Fits Your Needs</div>
-  <div class="comparison-sub">Three tiers of BAKFlip — built tough, backed by us.</div>
+  <div class="comparison-header">
+    <div class="comparison-heading">Find a Hard Folding Cover That Fits Your Needs</div>
+    <div class="comparison-sub">Three tiers of BAKFlip &mdash; built tough, backed by us.</div>
+  </div>
   <div class="comparison-cards">
 
     <div class="comp-card" onclick="filterByProduct('BAKFlip G2')">
       <div class="comp-card-img">
-        <img src="BK_BAKFlipMX4.jpg" alt="BAKFlip G2" style="filter:grayscale(0.5)brightness(0.92)"/>
-        <div class="comp-tier-badge tier-good">Good</div>
+        <img src="BK_BAKFlipMX4.jpg" alt="BAKFlip G2" style="filter:grayscale(0.45)brightness(0.88)"/>
+        <div class="comp-img-overlay">
+          <div class="comp-tier-badge tier-good">Good</div>
+          <div class="comp-img-name">BAKFlip G2</div>
+        </div>
       </div>
       <div class="comp-card-body">
-        <div class="comp-brand">BAK Industries</div>
-        <div class="comp-name">BAKFlip G2</div>
         <div class="comp-desc">Fiberglass-reinforced panels. Flush, low-profile design. Proven value with all-weather protection.</div>
         <button class="comp-btn">Shop BAKFlip G2</button>
       </div>
@@ -337,11 +342,12 @@
     <div class="comp-card" onclick="filterByProduct('BAKFlip MX4')">
       <div class="comp-card-img">
         <img src="images_MX4_closeup_600x6004_w900_q85.jpg" alt="BAKFlip MX4"/>
-        <div class="comp-tier-badge tier-better">Better</div>
+        <div class="comp-img-overlay">
+          <div class="comp-tier-badge tier-better">Better</div>
+          <div class="comp-img-name">BAKFlip MX4</div>
+        </div>
       </div>
       <div class="comp-card-body">
-        <div class="comp-brand">BAK Industries</div>
-        <div class="comp-name">BAKFlip MX4</div>
         <div class="comp-desc">Premium matte aluminum panels. Superior finish, weather seal, and durability. Our most popular cover.</div>
         <button class="comp-btn">Shop BAKFlip MX4</button>
       </div>
@@ -349,13 +355,14 @@
 
     <div class="comp-card" onclick="filterByProduct('BAKFlip MX4 TS')">
       <div class="comp-card-img">
-        <img src="BK_BAKFlipMX4.jpg" alt="BAKFlip MX4 TS" style="filter:sepia(0.12)saturate(1.15)"/>
-        <div class="comp-tier-badge tier-best">Best</div>
+        <img src="BK_BAKFlipMX4.jpg" alt="BAKFlip MX4 TS" style="filter:brightness(0.95)"/>
+        <div class="comp-img-overlay">
+          <div class="comp-tier-badge tier-best">Best</div>
+          <div class="comp-img-name">BAKFlip MX4 TS</div>
+        </div>
       </div>
       <div class="comp-card-body">
-        <div class="comp-brand">BAK Industries</div>
-        <div class="comp-name">BAKFlip MX4 TS</div>
-        <div class="comp-desc">Toolbox compatible. All MX4 benefits plus full access to under-bed storage — no compromise.</div>
+        <div class="comp-desc">Toolbox compatible. All MX4 benefits plus full access to under-bed storage &mdash; no compromise.</div>
         <button class="comp-btn">Shop BAKFlip MX4 TS</button>
       </div>
     </div>
