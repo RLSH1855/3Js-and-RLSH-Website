@@ -166,6 +166,7 @@
       flex-direction:column;
     }
     .product-card:hover{box-shadow:0 0 0 2px #8B0000,0 4px 16px rgba(0,0,0,0.12);}
+    .card-img-link{display:block;text-decoration:none;}
 
     .card-img{
       height:150px;
@@ -330,7 +331,7 @@
   </div>
   <div class="comparison-cards">
 
-    <div class="comp-card" onclick="filterByProduct('BAKFlip G2')">
+    <div class="comp-card" onclick="window.location.href='product-detail.html?product=BAKFlip+G2&brand=BAK'">
       <div class="comp-card-img">
         <img src="BK_BAKFlipMX4.jpg" alt="BAKFlip G2" style="filter:grayscale(0.45)brightness(0.88)"/>
         <div class="comp-img-overlay">
@@ -340,11 +341,11 @@
       </div>
       <div class="comp-card-body">
         <div class="comp-desc">Fiberglass-reinforced panels. Flush, low-profile design. Proven value with all-weather protection.</div>
-        <button class="comp-btn">Shop BAKFlip G2</button>
+        <a class="comp-btn" href="product-detail.html?product=BAKFlip+G2&brand=BAK">View BAKFlip G2</a>
       </div>
     </div>
 
-    <div class="comp-card" onclick="filterByProduct('BAKFlip MX4')">
+    <div class="comp-card" onclick="window.location.href='product-detail.html?product=BAKFlip+MX4&brand=BAK'">
       <div class="comp-card-img">
         <img src="images_MX4_closeup_600x6004_w900_q85.jpg" alt="BAKFlip MX4"/>
         <div class="comp-img-overlay">
@@ -354,11 +355,11 @@
       </div>
       <div class="comp-card-body">
         <div class="comp-desc">Premium matte aluminum panels. Superior finish, weather seal, and durability. Our most popular cover.</div>
-        <button class="comp-btn">Shop BAKFlip MX4</button>
+        <a class="comp-btn" href="product-detail.html?product=BAKFlip+MX4&brand=BAK">View BAKFlip MX4</a>
       </div>
     </div>
 
-    <div class="comp-card" onclick="filterByProduct('BAKFlip MX4 TS')">
+    <div class="comp-card" onclick="window.location.href='product-detail.html?product=BAKFlip+MX4+TS&brand=BAK'">
       <div class="comp-card-img">
         <img src="BK_BAKFlipMX4.jpg" alt="BAKFlip MX4 TS" style="filter:brightness(0.95)"/>
         <div class="comp-img-overlay">
@@ -368,7 +369,7 @@
       </div>
       <div class="comp-card-body">
         <div class="comp-desc">Toolbox compatible. All MX4 benefits plus full access to under-bed storage &mdash; no compromise.</div>
-        <button class="comp-btn">Shop BAKFlip MX4 TS</button>
+        <a class="comp-btn" href="product-detail.html?product=BAKFlip+MX4+TS&brand=BAK">View BAKFlip MX4 TS</a>
       </div>
     </div>
 
@@ -651,71 +652,73 @@ function toggleType(t){
   renderProducts();
 }
 
-// ── Get filtered + sorted data ──
-function getFiltered(){
+// ── Build product-level map (one entry per unique brand+product) ──
+function getProducts(){
   var activeBrands = Object.keys(filterBrands).filter(function(b){ return filterBrands[b]; });
   var activeTypes  = Object.keys(filterTypes).filter(function(t){ return filterTypes[t]; });
 
-  return CATALOG.filter(function(r){
-    if(filterProduct && r[F.product] !== filterProduct) return false;
-    if(filterFitOnly && !matchesTruck(r)) return false;
-    if(activeBrands.length && activeBrands.indexOf(r[F.brand])===-1) return false;
+  var productMap = {};
+  CATALOG.forEach(function(r){
+    if(filterProduct && r[F.product] !== filterProduct) return;
+    if(activeBrands.length && activeBrands.indexOf(r[F.brand]) === -1) return;
     if(activeTypes.length){
-      var t = PRODUCT_TYPES[r[F.product]]||'Other';
-      if(activeTypes.indexOf(t)===-1) return false;
+      var t = PRODUCT_TYPES[r[F.product]] || 'Other';
+      if(activeTypes.indexOf(t) === -1) return;
     }
-    return true;
+    var key = r[F.brand]+'|'+r[F.product];
+    if(!productMap[key]){
+      productMap[key] = {
+        brand: r[F.brand], product: r[F.product],
+        repr: r, minPrice: null, vehicleCount: 0,
+        hasfit: false, fitCount: 0
+      };
+    }
+    var pm = productMap[key];
+    if(r[F.map] && (pm.minPrice === null || r[F.map] < pm.minPrice)) pm.minPrice = r[F.map];
+    pm.vehicleCount++;
+    if(matchesTruck(r)){ pm.hasfit = true; pm.fitCount++; }
   });
-}
 
-// ── Deduplicate to unique product+model combos for display ──
-function dedupe(rows){
-  var seen = {};
-  var out  = [];
-  rows.forEach(function(r){
-    var key = r[F.product]+'|'+r[F.make]+'|'+r[F.model]+(garage && r[F.bedIn]?'|'+r[F.bedIn]:'');
-    if(!seen[key]){ seen[key]=true; out.push(r); }
-  });
-  return out;
+  var products = Object.keys(productMap).map(function(k){ return productMap[k]; });
+  // Smart filter: when fitment is on, only show products with at least one matching row
+  if(filterFitOnly && garage){
+    products = products.filter(function(p){ return p.hasfit; });
+  }
+  return products;
 }
 
 function getSort(){ return document.getElementById('sort-select').value; }
 
-function applySort(rows){
+function applySort(products){
   var s = getSort();
-  rows = rows.slice();
-  if(s==='price-asc') rows.sort(function(a,b){ return (a[F.map]||9999)-(b[F.map]||9999); });
-  else if(s==='price-desc') rows.sort(function(a,b){ return (b[F.map]||0)-(a[F.map]||0); });
-  else if(s==='brand') rows.sort(function(a,b){ return a[F.brand].localeCompare(b[F.brand]); });
+  products = products.slice();
+  if(s==='price-asc') products.sort(function(a,b){ return (a.minPrice||9999)-(b.minPrice||9999); });
+  else if(s==='price-desc') products.sort(function(a,b){ return (b.minPrice||0)-(a.minPrice||0); });
+  else if(s==='brand') products.sort(function(a,b){ return a.brand.localeCompare(b.brand); });
   else {
-    // Best fit: matching rows first
-    rows.sort(function(a,b){
-      var af=matchesTruck(a)?0:1, bf=matchesTruck(b)?0:1;
-      return af-bf;
-    });
+    // Best fit first
+    products.sort(function(a,b){ return (b.hasfit?1:0)-(a.hasfit?1:0); });
   }
-  return rows;
+  return products;
 }
 
 // ── Render ──
 function renderProducts(){
-  var filtered = getFiltered();
-  var deduped  = dedupe(filtered);
-  var sorted   = applySort(deduped);
+  var products = getProducts();
+  var sorted   = applySort(products);
 
   var grid = document.getElementById('product-grid');
   grid.innerHTML = '';
   document.getElementById('empty-state').style.display = sorted.length ? 'none' : 'block';
 
-  var fitCount = garage ? sorted.filter(function(r){ return matchesTruck(r); }).length : 0;
+  var fitCount = sorted.filter(function(p){ return p.hasfit; }).length;
   var label = garage
-    ? '<span>'+fitCount+'</span> covers fit your '+garage.year+' '+garage.make+' '+garage.model+(sorted.length!==fitCount ? ' <span style="color:#aaa;font-weight:600">(+'+( sorted.length-fitCount)+' others shown)</span>' : '')
+    ? '<span>'+fitCount+'</span> covers fit your '+garage.year+' '+garage.make+' '+garage.model
     : 'Showing <span>'+sorted.length+'</span> covers';
   document.getElementById('result-count').innerHTML = label;
 
   // Active filters bar
   var af = document.getElementById('active-filters');
-  // remove existing brand/type/product tags
   af.querySelectorAll('.filter-tag:not(#tag-fitment)').forEach(function(t){ t.remove(); });
   if(filterProduct){
     var ptag=document.createElement('div');
@@ -740,38 +743,44 @@ function renderProducts(){
     }
   });
 
-  sorted.forEach(function(r){
-    var fits = garage ? matchesTruck(r) : null;
+  sorted.forEach(function(p){
+    var r = p.repr;
     var card = document.createElement('div');
     card.className = 'product-card';
 
-    var price = r[F.map] ? '$'+r[F.map].toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}) : 'Call for Price';
-    var bedDisplay = r[F.bedSize] ? r[F.bedSize] : (r[F.bedIn] ? r[F.bedIn]+'"' : '');
-    var fitNote = r[F.fitNote] && r[F.fitNote].length > 2 ? r[F.fitNote] : null;
+    var price = p.minPrice
+      ? 'From $'+p.minPrice.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})
+      : 'Call for Price';
 
     var imgHtml = r[F.img]
-      ? '<img src="'+r[F.img]+'" alt="'+r[F.product]+'" loading="lazy" onerror="this.parentNode.innerHTML=\'<span class=\\\'placeholder-text\\\'>'+r[F.product]+'</span>\'">'
-      : '<span class="placeholder-text">'+r[F.product]+'</span>';
+      ? '<img src="'+r[F.img]+'" alt="'+p.product+'" loading="lazy" onerror="this.parentNode.innerHTML=\'<span class=\\\'placeholder-text\\\'>'+p.product+'</span>\'">'
+      : '<span class="placeholder-text">'+p.product+'</span>';
 
-    var fitBadge = fits===null ? ''
-      : fits
-        ? '<div class="fits-badge fits">✓ Fits Your Truck</div>'
-        : '<div class="fits-badge no-fit">⚠ Verify Fitment</div>';
+    var fitBadge = !garage ? ''
+      : p.hasfit
+        ? '<div class="fits-badge fits">&#10003; Fits Your Truck</div>'
+        : '<div class="fits-badge no-fit">Verify Fitment</div>';
+
+    var detailUrl = 'product-detail.html?product='+encodeURIComponent(p.product)+'&brand='+encodeURIComponent(p.brand);
 
     card.innerHTML =
-      '<div class="card-img">'+fitBadge+imgHtml+'</div>'+
+      '<a href="'+detailUrl+'" class="card-img-link">'+
+        '<div class="card-img">'+fitBadge+imgHtml+'</div>'+
+      '</a>'+
       '<div class="card-body">'+
-        '<div class="card-brand">'+r[F.brand]+'</div>'+
-        '<div class="card-name">'+r[F.product]+'</div>'+
-        (bedDisplay ? '<div class="card-bed">'+bedDisplay+' Bed · '+r[F.make]+' '+r[F.model]+'</div>' : '')+
-        '<div class="card-part">Part #'+r[F.partNum]+'</div>'+
+        '<div class="card-brand">'+p.brand+'</div>'+
+        '<div class="card-name">'+p.product+'</div>'+
         '<div class="card-price">'+price+'</div>'+
-        (fitNote ? '<div class="fit-note">⚠ '+fitNote+'</div>' : '')+
         '<div class="card-btns">'+
-          '<a href="tel:5624246744" class="card-btn call">📞 Call to Order</a>'+
-          '<button class="card-btn" onclick="getQuote(\''+r[F.product]+'\',\''+r[F.partNum]+'\')">Get a Quote</button>'+
+          '<a href="'+detailUrl+'" class="card-btn view">View Details</a>'+
+          '<button class="card-btn" onclick="event.stopPropagation();getQuote(\''+r[F.product]+'\',\''+r[F.partNum]+'\')">Get a Quote</button>'+
         '</div>'+
       '</div>';
+
+    card.onclick = function(e){
+      if(e.target.closest('.card-btn')) return;
+      window.location.href = detailUrl;
+    };
 
     grid.appendChild(card);
   });
