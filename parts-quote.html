@@ -115,6 +115,25 @@
       background:#f7f7f7;color:#666;cursor:default;
     }
 
+    /* ── ADDON CHECKBOX ── */
+    .addon-box{
+      background:#f7f7f7;border:2px solid #e8e8e8;border-radius:8px;
+      padding:14px 16px;margin-bottom:14px;
+      display:flex;align-items:flex-start;gap:12px;cursor:pointer;
+      transition:border-color 0.15s;
+    }
+    .addon-box:hover{border-color:#8B0000;}
+    .addon-box.checked{border-color:#8B0000;background:#fff8f8;}
+    .addon-checkbox{
+      width:18px;height:18px;border:2px solid #ccc;border-radius:4px;
+      flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center;
+      transition:background 0.15s,border-color 0.15s;
+    }
+    .addon-box.checked .addon-checkbox{background:#8B0000;border-color:#8B0000;color:#fff;font-size:12px;font-weight:900;}
+    .addon-text{flex:1;}
+    .addon-title{font-size:12px;font-weight:800;color:#1a1a1a;margin-bottom:2px;}
+    .addon-sub{font-size:10px;font-weight:600;color:#666;line-height:1.5;}
+
     /* ── SUBMIT ── */
     .submit-btn{
       display:block;width:100%;padding:16px;
@@ -233,6 +252,15 @@
           </div>
         </div>
 
+        <!-- Bedliner Add-On -->
+        <div class="addon-box" id="bedliner-addon" onclick="toggleBedliner()">
+          <div class="addon-checkbox" id="bedliner-check"></div>
+          <div class="addon-text">
+            <div class="addon-title">Also quote me on a Spray-In Bedliner</div>
+            <div class="addon-sub">We'll include bedliner pricing alongside your tonneau cover quote — no extra form needed.</div>
+          </div>
+        </div>
+
         <button type="submit" class="submit-btn" id="submit-btn">Request Quote</button>
         <div id="form-error">Something went wrong. Please try again or call us at (562) 424-6744.</div>
 
@@ -286,6 +314,16 @@ if(!product){
   }
 }
 
+// ── Bedliner add-on toggle ──
+var addBedliner = false;
+function toggleBedliner(){
+  addBedliner = !addBedliner;
+  var box = document.getElementById('bedliner-addon');
+  var chk = document.getElementById('bedliner-check');
+  box.classList.toggle('checked', addBedliner);
+  chk.textContent = addBedliner ? '✓' : '';
+}
+
 // ── Submit ──
 document.getElementById('quote-form').addEventListener('submit', function(e){
   e.preventDefault();
@@ -331,9 +369,10 @@ document.getElementById('quote-form').addEventListener('submit', function(e){
     garageTrim:    (garage && garage.trim)    ? garage.trim    : '',
     garageBedSize: (garage && garage.bedSize) ? garage.bedSize : '',
     garageVin:     (garage && garage.vin)     ? garage.vin     : '',
-    product:   product,
-    partNum:   partNum,
-    quoteType: 'Part + Installation'
+    product:    product,
+    partNum:    partNum,
+    quoteType:  'Part + Installation',
+    addBedliner: addBedliner ? 'Yes' : 'No'
   };
 
   fetch(SHEETS_URL, {

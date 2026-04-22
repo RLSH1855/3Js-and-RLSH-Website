@@ -247,6 +247,39 @@
       font-family:'Montserrat',sans-serif;font-size:12px;font-weight:800;
       letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;text-align:center;
     }
+
+    /* ── COMPARISON SECTION ── */
+    .comparison-section{background:#1a1a1a;padding:28px;border-bottom:3px solid #8B0000;}
+    .comparison-heading{font-size:clamp(13px,2.2vw,17px);font-weight:900;color:#fff;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px;}
+    .comparison-sub{font-size:11px;font-weight:600;color:rgba(255,255,255,0.45);margin-bottom:18px;}
+    .comparison-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+    @media(max-width:480px){.comparison-cards{grid-template-columns:1fr;}}
+    .comp-card{background:#fff;border-radius:10px;overflow:hidden;cursor:pointer;transition:transform 0.18s,box-shadow 0.18s;}
+    .comp-card:hover{transform:translateY(-3px);box-shadow:0 8px 28px rgba(0,0,0,0.35);}
+    .comp-card-img{height:130px;overflow:hidden;position:relative;}
+    .comp-card-img img{width:100%;height:100%;object-fit:cover;}
+    .comp-tier-badge{position:absolute;top:8px;left:8px;padding:3px 9px;border-radius:20px;font-size:8px;font-weight:900;letter-spacing:2px;text-transform:uppercase;}
+    .tier-good{background:rgba(0,0,0,0.75);color:#fff;}
+    .tier-better{background:#8B0000;color:#fff;}
+    .tier-best{background:#e6a817;color:#1a1a1a;}
+    .comp-card-body{padding:12px 14px 14px;}
+    .comp-brand{font-size:8px;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:#8B0000;margin-bottom:3px;}
+    .comp-name{font-size:13px;font-weight:900;color:#1a1a1a;margin-bottom:4px;line-height:1.2;}
+    .comp-desc{font-size:9px;font-weight:600;color:#666;line-height:1.5;margin-bottom:10px;}
+    .comp-btn{display:block;width:100%;padding:8px;background:#8B0000;color:#fff;border:none;border-radius:6px;font-family:'Montserrat',sans-serif;font-size:9px;font-weight:900;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;text-align:center;text-decoration:none;transition:background 0.15s;}
+    .comp-btn:hover{background:#6d0000;}
+
+    /* ── YMM SELECTOR BAR ── */
+    .ymm-bar{background:#fff;border-bottom:3px solid #e8e8e8;padding:14px 28px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+    .ymm-label{font-size:9px;font-weight:900;letter-spacing:2.5px;text-transform:uppercase;color:#8B0000;white-space:nowrap;flex-shrink:0;}
+    .ymm-selects{display:flex;gap:8px;flex:1;flex-wrap:wrap;}
+    .ymm-select{flex:1;min-width:90px;padding:9px 10px;border:2px solid #e0e0e0;border-radius:7px;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:600;color:#1a1a1a;background:#fff;appearance:none;-webkit-appearance:none;cursor:pointer;transition:border-color 0.15s;outline:none;}
+    .ymm-select:focus{border-color:#8B0000;}
+    .ymm-select:disabled{background:#f5f5f5;color:#aaa;cursor:not-allowed;}
+    .ymm-btn{padding:9px 20px;background:#1a1a1a;color:#fff;border:none;border-radius:7px;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:900;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;white-space:nowrap;transition:background 0.15s;flex-shrink:0;}
+    .ymm-btn:hover{background:#333;}
+    .ymm-btn:disabled{background:#bbb;cursor:not-allowed;}
+    @media(max-width:600px){.ymm-bar{padding:12px 16px;gap:8px;}.ymm-label{display:none;}}
   </style>
 </head>
 <body>
@@ -280,6 +313,74 @@
     <span class="dot"></span>
     <span id="fitment-chip-text">No vehicle saved</span>
   </div>
+</div>
+
+<!-- Comparison Cards -->
+<div class="comparison-section">
+  <div class="comparison-heading">Find a Hard Folding Cover That Fits Your Needs</div>
+  <div class="comparison-sub">Three tiers of BAKFlip — built tough, backed by us.</div>
+  <div class="comparison-cards">
+
+    <div class="comp-card" onclick="filterByProduct('BAKFlip G2')">
+      <div class="comp-card-img">
+        <img src="BK_BAKFlipMX4.jpg" alt="BAKFlip G2" style="filter:grayscale(0.5)brightness(0.92)"/>
+        <div class="comp-tier-badge tier-good">Good</div>
+      </div>
+      <div class="comp-card-body">
+        <div class="comp-brand">BAK Industries</div>
+        <div class="comp-name">BAKFlip G2</div>
+        <div class="comp-desc">Fiberglass-reinforced panels. Flush, low-profile design. Proven value with all-weather protection.</div>
+        <button class="comp-btn">Shop BAKFlip G2</button>
+      </div>
+    </div>
+
+    <div class="comp-card" onclick="filterByProduct('BAKFlip MX4')">
+      <div class="comp-card-img">
+        <img src="images_MX4_closeup_600x6004_w900_q85.jpg" alt="BAKFlip MX4"/>
+        <div class="comp-tier-badge tier-better">Better</div>
+      </div>
+      <div class="comp-card-body">
+        <div class="comp-brand">BAK Industries</div>
+        <div class="comp-name">BAKFlip MX4</div>
+        <div class="comp-desc">Premium matte aluminum panels. Superior finish, weather seal, and durability. Our most popular cover.</div>
+        <button class="comp-btn">Shop BAKFlip MX4</button>
+      </div>
+    </div>
+
+    <div class="comp-card" onclick="filterByProduct('BAKFlip MX4 TS')">
+      <div class="comp-card-img">
+        <img src="BK_BAKFlipMX4.jpg" alt="BAKFlip MX4 TS" style="filter:sepia(0.12)saturate(1.15)"/>
+        <div class="comp-tier-badge tier-best">Best</div>
+      </div>
+      <div class="comp-card-body">
+        <div class="comp-brand">BAK Industries</div>
+        <div class="comp-name">BAKFlip MX4 TS</div>
+        <div class="comp-desc">Toolbox compatible. All MX4 benefits plus full access to under-bed storage — no compromise.</div>
+        <button class="comp-btn">Shop BAKFlip MX4 TS</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- YMM Selector Bar -->
+<div class="ymm-bar">
+  <div class="ymm-label">Select Your Vehicle</div>
+  <div class="ymm-selects">
+    <select class="ymm-select" id="ymm-year" onchange="ymmYearChange()">
+      <option value="">Year</option>
+    </select>
+    <select class="ymm-select" id="ymm-make" onchange="ymmMakeChange()" disabled>
+      <option value="">Make</option>
+    </select>
+    <select class="ymm-select" id="ymm-model" onchange="ymmModelChange()" disabled>
+      <option value="">Model</option>
+    </select>
+    <select class="ymm-select" id="ymm-bed" onchange="ymmBedChange()" disabled>
+      <option value="">Bed Size</option>
+    </select>
+  </div>
+  <button class="ymm-btn" id="ymm-btn" onclick="ymmShopNow()" disabled>Shop Now</button>
 </div>
 
 <!-- Mobile filter overlay -->
@@ -412,6 +513,7 @@ var garage = null;
 var filterFitOnly = true;
 var filterBrands  = {};
 var filterTypes   = {};
+var filterProduct = '';
 
 // ── Load garage ──
 (function(){
@@ -543,6 +645,7 @@ function getFiltered(){
   var activeTypes  = Object.keys(filterTypes).filter(function(t){ return filterTypes[t]; });
 
   return CATALOG.filter(function(r){
+    if(filterProduct && r[F.product] !== filterProduct) return false;
     if(filterFitOnly && !matchesTruck(r)) return false;
     if(activeBrands.length && activeBrands.indexOf(r[F.brand])===-1) return false;
     if(activeTypes.length){
@@ -600,8 +703,14 @@ function renderProducts(){
 
   // Active filters bar
   var af = document.getElementById('active-filters');
-  // remove existing brand/type tags
+  // remove existing brand/type/product tags
   af.querySelectorAll('.filter-tag:not(#tag-fitment)').forEach(function(t){ t.remove(); });
+  if(filterProduct){
+    var ptag=document.createElement('div');
+    ptag.className='filter-tag';ptag.textContent=filterProduct+' x';
+    ptag.onclick=function(){ filterProduct=''; renderProducts(); };
+    af.appendChild(ptag);
+  }
   Object.keys(filterBrands).forEach(function(b){
     if(filterBrands[b]){
       var tag=document.createElement('div');
@@ -714,6 +823,124 @@ function reportHeight(){
 }
 window.addEventListener('load', function(){ reportHeight(); setTimeout(reportHeight,400); });
 window.addEventListener('resize', reportHeight);
+
+// ── Comparison card filter ──
+function filterByProduct(productName){
+  filterProduct = productName;
+  filterFitOnly = false;
+  document.getElementById('cb-fit').classList.remove('checked');
+  document.getElementById('cb-all').classList.add('checked');
+  document.getElementById('tag-fitment').style.display = 'none';
+  Object.keys(filterBrands).forEach(function(b){ filterBrands[b]=false; });
+  Object.keys(filterTypes).forEach(function(t){ filterTypes[t]=false; });
+  document.querySelectorAll('.cb[id^="cb-brand-"]').forEach(function(el){ el.classList.remove('checked'); });
+  document.querySelectorAll('.cb[id^="cb-type-"]').forEach(function(el){ el.classList.remove('checked'); });
+  renderProducts();
+  document.querySelector('.catalog-wrap').scrollIntoView({behavior:'smooth'});
+}
+
+// ── YMM Selector ──
+(function initYMM(){
+  var years={};
+  CATALOG.forEach(function(r){
+    for(var y=r[F.startYear]; y<=r[F.endYear]; y++) years[y]=true;
+  });
+  var sel=document.getElementById('ymm-year');
+  Object.keys(years).sort(function(a,b){return b-a;}).forEach(function(y){
+    var o=document.createElement('option'); o.value=y; o.textContent=y; sel.appendChild(o);
+  });
+})();
+
+function ymmYearChange(){
+  var year=parseInt(document.getElementById('ymm-year').value);
+  var makeEl=document.getElementById('ymm-make');
+  var modelEl=document.getElementById('ymm-model');
+  var bedEl=document.getElementById('ymm-bed');
+  makeEl.innerHTML='<option value="">Make</option>';
+  modelEl.innerHTML='<option value="">Model</option>';
+  bedEl.innerHTML='<option value="">Bed Size</option>';
+  modelEl.disabled=true; bedEl.disabled=true;
+  document.getElementById('ymm-btn').disabled=true;
+  if(!year){ makeEl.disabled=true; return; }
+  var makes={};
+  CATALOG.forEach(function(r){
+    if(year>=r[F.startYear]&&year<=r[F.endYear]) makes[r[F.make]]=true;
+  });
+  makeEl.disabled=false;
+  Object.keys(makes).sort().forEach(function(m){
+    var o=document.createElement('option'); o.value=m; o.textContent=m; makeEl.appendChild(o);
+  });
+}
+
+function ymmMakeChange(){
+  var year=parseInt(document.getElementById('ymm-year').value);
+  var make=document.getElementById('ymm-make').value;
+  var modelEl=document.getElementById('ymm-model');
+  var bedEl=document.getElementById('ymm-bed');
+  modelEl.innerHTML='<option value="">Model</option>';
+  bedEl.innerHTML='<option value="">Bed Size</option>';
+  bedEl.disabled=true;
+  document.getElementById('ymm-btn').disabled=true;
+  if(!make){ modelEl.disabled=true; return; }
+  var models={};
+  CATALOG.forEach(function(r){
+    if(year>=r[F.startYear]&&year<=r[F.endYear]&&r[F.make]===make) models[r[F.model]]=true;
+  });
+  modelEl.disabled=false;
+  Object.keys(models).sort().forEach(function(m){
+    var o=document.createElement('option'); o.value=m; o.textContent=m; modelEl.appendChild(o);
+  });
+}
+
+function ymmModelChange(){
+  var year=parseInt(document.getElementById('ymm-year').value);
+  var make=document.getElementById('ymm-make').value;
+  var model=document.getElementById('ymm-model').value;
+  var bedEl=document.getElementById('ymm-bed');
+  bedEl.innerHTML='<option value="">Bed Size</option>';
+  document.getElementById('ymm-btn').disabled=true;
+  if(!model){ bedEl.disabled=true; return; }
+  var beds={};
+  CATALOG.forEach(function(r){
+    if(year>=r[F.startYear]&&year<=r[F.endYear]&&r[F.make]===make&&r[F.model]===model&&r[F.bedSize]){
+      beds[r[F.bedSize]+'|'+(r[F.bedIn]||'')] = true;
+    }
+  });
+  bedEl.disabled=false;
+  Object.keys(beds).sort().forEach(function(b){
+    var parts=b.split('|');
+    var o=document.createElement('option');
+    o.value=b; o.textContent=parts[0]+(parts[1]?' ('+parts[1]+'"'+')':'');
+    bedEl.appendChild(o);
+  });
+  document.getElementById('ymm-btn').disabled=false;
+}
+
+function ymmBedChange(){
+  document.getElementById('ymm-btn').disabled=false;
+}
+
+function ymmShopNow(){
+  var year=document.getElementById('ymm-year').value;
+  var make=document.getElementById('ymm-make').value;
+  var model=document.getElementById('ymm-model').value;
+  var bedVal=document.getElementById('ymm-bed').value;
+  if(!year||!make||!model) return;
+  var bedParts=bedVal?bedVal.split('|'):[];
+  var vehicle={
+    year:year, make:make, model:model, trim:'',
+    bedSize:bedParts[0]||'', bedIn:bedParts[1]?parseFloat(bedParts[1]):null, vin:''
+  };
+  localStorage.setItem('garage_vehicle',JSON.stringify(vehicle));
+  garage=vehicle;
+  filterFitOnly=true;
+  filterProduct='';
+  initGarageBar();
+  document.getElementById('cb-fit').classList.add('checked');
+  document.getElementById('cb-all').classList.remove('checked');
+  renderProducts();
+  document.querySelector('.catalog-wrap').scrollIntoView({behavior:'smooth'});
+}
 </script>
 </body>
 </html>
