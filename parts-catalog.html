@@ -3,292 +3,371 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Tonneau Covers — RLSH Truck & Jeep Outfitters</title>
+  <title>Tonneau Covers — RLSH Truck &amp; Jeep Outfitters</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
   <script src="catalog-data.js"></script>
+  <script src="product-content.js"></script>
   <style>
+    /* ── RESET / BASE (mobile-first) ── */
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    body{font-family:'Montserrat',sans-serif;background:#f0f0f0;color:#1a1a1a;}
+    body{font-family:'Montserrat',sans-serif;background:#f2f2f2;color:#1a1a1a;font-size:16px;}
+    a{text-decoration:none;color:inherit;}
+    img{max-width:100%;display:block;}
+    button,select,input{font-family:'Montserrat',sans-serif;}
 
     /* ── GARAGE BAR ── */
     #garage-bar{
-      background:#1a1a1a;padding:10px 24px;
-      display:flex;align-items:center;justify-content:space-between;
-      flex-wrap:wrap;gap:8px;
+      background:#1a1a1a;padding:9px 16px;
+      display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;
     }
     .gb-left{display:flex;align-items:center;gap:10px;}
-    .gb-icon{font-size:16px;}
-    .gb-vehicle{font-size:13px;font-weight:800;color:#fff;}
-    .gb-badge{
-      background:#1a7a1a;color:#fff;
-      font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;
-      padding:3px 10px;border-radius:20px;
-    }
+    .gb-vehicle{font-size:12px;font-weight:800;color:#fff;}
+    .gb-badge{background:#1a7a1a;color:#fff;font-size:9px;font-weight:900;letter-spacing:1.5px;text-transform:uppercase;padding:3px 10px;border-radius:20px;}
     .gb-badge.no-garage{background:#555;}
     .gb-right{display:flex;gap:12px;}
     .gb-link{font-size:11px;font-weight:700;color:#999;text-decoration:underline;cursor:pointer;background:none;border:none;}
     .gb-link:hover{color:#fff;}
 
-    /* ── PAGE HEADER ── */
-    .page-header{
-      background:#8B0000;padding:20px 28px;
-      display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;
-    }
-    .page-header-title{font-size:20px;font-weight:900;color:#fff;letter-spacing:-0.5px;text-transform:uppercase;}
-    .page-header-sub{font-size:13px;color:rgba(255,255,255,0.8);font-weight:500;margin-top:2px;}
-    .fitment-chip{
+    /* ── CATEGORY HERO (mobile: stacked, desktop: side-by-side) ── */
+    .category-hero{display:flex;flex-direction:column;background:#111;overflow:hidden;}
+    .hero-img-wrap{width:100%;height:190px;overflow:hidden;order:-1;}
+    .hero-img{width:100%;height:100%;object-fit:cover;object-position:center 40%;}
+    .hero-content{padding:20px 16px 22px;display:flex;flex-direction:column;justify-content:center;}
+    .hero-breadcrumb{font-size:9px;color:rgba(255,255,255,0.4);letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;}
+    .hero-title{font-size:24px;font-weight:900;color:#fff;text-transform:uppercase;line-height:1.1;letter-spacing:-0.5px;margin-bottom:8px;}
+    .hero-title span{color:#c0392b;}
+    .hero-sub{font-size:11px;color:rgba(255,255,255,0.5);font-weight:600;letter-spacing:0.5px;margin-bottom:14px;}
+    .hero-chip{
       display:inline-flex;align-items:center;gap:6px;
-      background:rgba(255,255,255,0.15);
-      border:1px solid rgba(255,255,255,0.3);
-      border-radius:20px;padding:6px 14px;
-      font-size:12px;font-weight:700;color:#fff;
+      background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);
+      border-radius:20px;padding:5px 12px;font-size:10px;font-weight:700;color:#fff;
+      width:fit-content;
     }
-    .fitment-chip .dot{width:8px;height:8px;border-radius:50%;background:#4caf50;}
-    .fitment-chip.inactive .dot{background:#aaa;}
+    .hero-chip .dot{width:7px;height:7px;border-radius:50%;background:#4caf50;}
+    .hero-chip.inactive .dot{background:#888;}
 
     /* ── NO GARAGE BANNER ── */
     #no-garage-banner{
       background:#fff3cd;border-bottom:3px solid #ffc107;
-      padding:14px 28px;
-      display:flex;align-items:center;justify-content:space-between;
-      flex-wrap:wrap;gap:10px;
+      padding:12px 16px;
+      display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;
     }
     #no-garage-banner p{font-size:12px;font-weight:600;color:#856404;}
     #no-garage-banner a{
-      padding:8px 18px;background:#1a1a1a;color:#fff;
-      border-radius:6px;font-size:11px;font-weight:800;
-      letter-spacing:1px;text-transform:uppercase;text-decoration:none;
+      padding:8px 16px;background:#1a1a1a;color:#fff;border-radius:6px;
+      font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;
     }
 
-    /* ── LAYOUT ── */
-    .catalog-wrap{
-      display:grid;
-      grid-template-columns:240px 1fr;
-      gap:0;
-      min-height:calc(100vh - 120px);
+    /* ── COMPARISON SECTION ── */
+    .comparison-section{background:#fff;padding:24px 16px 28px;border-bottom:3px solid #f0f0f0;}
+    .comparison-heading-row{margin-bottom:18px;}
+    .comparison-heading{font-size:14px;font-weight:900;color:#1a1a1a;text-transform:uppercase;letter-spacing:0.5px;}
+    .comparison-heading span{color:#c0392b;}
+    .comparison-cards{display:grid;grid-template-columns:1fr;gap:14px;}
+    .comp-card{
+      border-radius:8px;overflow:hidden;cursor:pointer;
+      border:1px solid #e8e8e8;background:#fff;
+      transition:box-shadow 0.2s,transform 0.2s;
     }
-    @media(max-width:768px){.catalog-wrap{grid-template-columns:1fr;}}
+    .comp-card:hover{box-shadow:0 6px 24px rgba(0,0,0,0.1);transform:translateY(-2px);}
+    .comp-img{width:100%;height:170px;object-fit:cover;display:block;}
+    .comp-body{padding:10px 14px 14px;}
+    .comp-tier{display:inline-block;padding:2px 8px;border-radius:3px;font-size:8px;font-weight:900;letter-spacing:2px;text-transform:uppercase;margin-bottom:5px;}
+    .tier-good{background:#e8e8e8;color:#555;}
+    .tier-better{background:#8B0000;color:#fff;}
+    .tier-best{background:#e6a817;color:#1a1a1a;}
+    .comp-name{font-size:13px;font-weight:900;color:#1a1a1a;margin-bottom:3px;}
+    .comp-tagline{font-size:10px;font-weight:600;color:#666;margin-bottom:10px;}
+    .comp-action{
+      display:block;width:100%;padding:9px;text-align:center;
+      background:#1a1a1a;color:#fff;border-radius:5px;
+      font-size:9px;font-weight:900;letter-spacing:1.5px;text-transform:uppercase;
+    }
+    .comp-action:hover{background:#8B0000;}
+
+    /* ── YMM SELECTOR BAR ── */
+    .ymm-bar{
+      background:#fff;border-bottom:3px solid #1a1a1a;
+      padding:14px 16px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+    }
+    .ymm-label{
+      font-size:9px;font-weight:900;letter-spacing:2.5px;text-transform:uppercase;
+      color:#8B0000;white-space:nowrap;flex-shrink:0;
+    }
+    .ymm-selects{display:flex;gap:8px;flex:1;flex-wrap:wrap;}
+    .ymm-select{
+      flex:1;min-width:80px;padding:9px 10px;
+      border:2px solid #e0e0e0;border-radius:6px;
+      font-size:12px;font-weight:600;color:#1a1a1a;
+      background:#fff;appearance:none;-webkit-appearance:none;cursor:pointer;outline:none;
+    }
+    .ymm-select:focus{border-color:#8B0000;}
+    .ymm-select:disabled{background:#f5f5f5;color:#bbb;cursor:not-allowed;}
+    .ymm-btn{
+      padding:10px 20px;background:#8B0000;color:#fff;border:none;border-radius:6px;
+      font-size:11px;font-weight:900;letter-spacing:1.5px;text-transform:uppercase;
+      cursor:pointer;white-space:nowrap;flex-shrink:0;
+    }
+    .ymm-btn:hover{background:#6d0000;}
+    .ymm-btn:disabled{background:#ccc;cursor:not-allowed;}
+
+    /* ── SECTION HEADING ── */
+    .section-heading-bar{
+      background:#fff;padding:18px 16px 14px;border-bottom:1px solid #e8e8e8;
+    }
+    .section-main-heading{
+      font-size:18px;font-weight:900;text-transform:uppercase;
+      color:#1a1a1a;letter-spacing:-0.5px;
+    }
+
+    /* ── MOBILE FILTER OVERLAY ── */
+    #mob-filter{display:none;position:fixed;inset:0;z-index:300;background:#fff;overflow-y:auto;}
+    #mob-filter.open{display:block;}
+    .mob-filter-header{
+      padding:14px 16px;display:flex;align-items:center;justify-content:space-between;
+      border-bottom:2px solid #e8e8e8;position:sticky;top:0;background:#fff;z-index:1;
+    }
+    .mob-filter-title{font-size:14px;font-weight:900;}
+    .mob-filter-close{font-size:22px;cursor:pointer;background:none;border:none;color:#1a1a1a;font-weight:300;line-height:1;}
+    .mob-filter-section{padding:14px 16px;border-bottom:1px solid #f0f0f0;}
+    .mob-filter-section-title{font-size:9px;font-weight:900;letter-spacing:2.5px;text-transform:uppercase;color:#8B0000;margin-bottom:10px;}
+    .mob-chips{display:flex;flex-wrap:wrap;gap:8px;}
+    .mob-chip{
+      padding:6px 14px;border-radius:20px;font-size:11px;font-weight:700;
+      border:2px solid #e8e8e8;background:#fff;color:#444;cursor:pointer;
+    }
+    .mob-chip.active{background:#1a1a1a;color:#fff;border-color:#1a1a1a;}
+    .mob-apply{
+      margin:16px;display:block;width:calc(100% - 32px);
+      padding:14px;background:#8B0000;color:#fff;border:none;border-radius:8px;
+      font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;
+    }
+
+    /* ── CATALOG LAYOUT ── */
+    .catalog-wrap{display:grid;grid-template-columns:1fr;gap:0;min-height:calc(100vh - 260px);}
 
     /* ── SIDEBAR ── */
-    .sidebar{
-      background:#fff;
-      border-right:2px solid #e8e8e8;
-      padding:20px 16px;
-      position:sticky;
-      top:0;
-      height:fit-content;
-      max-height:calc(100vh - 80px);
-      overflow-y:auto;
-    }
-    @media(max-width:768px){.sidebar{display:none;}}
-    .sidebar-section{margin-bottom:22px;}
+    .sidebar{display:none;}/* Hidden on mobile */
+    .sidebar-section{margin-bottom:20px;}
     .sidebar-title{
-      font-size:10px;font-weight:900;letter-spacing:2.5px;text-transform:uppercase;
+      font-size:9px;font-weight:900;letter-spacing:2.5px;text-transform:uppercase;
       color:#8B0000;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid #e8e8e8;
     }
-    .filter-item{
-      display:flex;align-items:center;gap:8px;
-      padding:5px 0;cursor:pointer;user-select:none;
-    }
-    .cb{
-      width:14px;height:14px;border:2px solid #ccc;border-radius:3px;flex-shrink:0;
-      transition:background 0.15s,border-color 0.15s;
-    }
+    .filter-item{display:flex;align-items:center;gap:8px;padding:5px 0;cursor:pointer;user-select:none;}
+    .cb{width:15px;height:15px;border:2px solid #ccc;border-radius:3px;flex-shrink:0;transition:background 0.15s,border-color 0.15s;}
     .cb.checked{background:#8B0000;border-color:#8B0000;}
     .filter-label{font-size:12px;font-weight:600;color:#333;}
-    .filter-count{font-size:11px;font-weight:600;color:#666;margin-left:auto;}
+    .filter-count{font-size:10px;font-weight:600;color:#999;margin-left:auto;}
 
     /* ── MAIN CONTENT ── */
-    .main{background:#f0f0f0;}
+    .main{background:#f2f2f2;}
 
+    /* Toolbar */
     .toolbar{
-      background:#fff;
-      padding:14px 20px;
-      border-bottom:2px solid #e8e8e8;
-      display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+      background:#fff;padding:12px 16px;border-bottom:2px solid #e8e8e8;
+      display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;
       position:sticky;top:0;z-index:10;
     }
     .result-count{font-size:12px;font-weight:700;color:#444;}
-    .result-count span{color:#1a1a1a;font-weight:900;}
-    .sort-wrap{display:flex;align-items:center;gap:8px;}
+    .result-count span{color:#8B0000;font-weight:900;}
+    .toolbar-right{display:flex;align-items:center;gap:10px;}
     .sort-label{font-size:11px;font-weight:700;color:#555;}
     .sort-select{
-      padding:6px 28px 6px 10px;
-      border:2px solid #e8e8e8;border-radius:6px;
-      font-family:'Montserrat',sans-serif;font-size:12px;font-weight:600;
-      background:#fff;appearance:none;cursor:pointer;
+      padding:6px 10px;border:2px solid #e8e8e8;border-radius:6px;
+      font-size:11px;font-weight:600;background:#fff;appearance:none;cursor:pointer;
     }
     .mobile-filter-btn{
-      display:none;
-      align-items:center;gap:6px;
-      padding:7px 14px;border:2px solid #1a1a1a;border-radius:6px;
-      font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;
-      letter-spacing:1px;text-transform:uppercase;background:#fff;cursor:pointer;
+      display:flex;align-items:center;gap:5px;
+      padding:7px 12px;border:2px solid #1a1a1a;border-radius:6px;
+      font-size:10px;font-weight:900;letter-spacing:1px;text-transform:uppercase;
+      background:#fff;cursor:pointer;
     }
-    @media(max-width:768px){.mobile-filter-btn{display:flex;}}
     .filter-badge{
       background:#8B0000;color:#fff;font-size:8px;font-weight:900;
-      width:16px;height:16px;border-radius:50%;
-      display:flex;align-items:center;justify-content:center;
+      width:16px;height:16px;border-radius:50%;display:flex;align-items:center;justify-content:center;
     }
 
+    /* Active filters */
     .active-filters{
-      background:#fafafa;padding:8px 20px;border-bottom:1px solid #e8e8e8;
-      display:flex;align-items:center;gap:8px;flex-wrap:wrap;min-height:36px;
+      background:#fafafa;padding:8px 16px;border-bottom:1px solid #e8e8e8;
+      display:flex;align-items:center;gap:8px;flex-wrap:wrap;min-height:34px;
     }
-    .active-label{font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#555;}
+    .active-label{font-size:9px;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:#888;}
     .filter-tag{
-      display:flex;align-items:center;gap:5px;
-      padding:4px 10px;background:#1a1a1a;color:#fff;
-      border-radius:20px;font-size:11px;font-weight:700;cursor:pointer;
+      display:flex;align-items:center;gap:4px;padding:3px 10px;
+      background:#1a1a1a;color:#fff;border-radius:20px;
+      font-size:10px;font-weight:700;cursor:pointer;
     }
     .filter-tag:hover{background:#333;}
 
     /* ── PRODUCT GRID ── */
     .product-grid{
       display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:14px;
-      padding:16px;
+      grid-template-columns:repeat(2,1fr);
+      gap:10px;padding:12px;
     }
-    @media(max-width:1100px){.product-grid{grid-template-columns:repeat(2,1fr);}}
-    @media(max-width:768px){.product-grid{grid-template-columns:repeat(2,1fr);}}
 
+    /* ── PRODUCT CARD ── */
     .product-card{
-      background:#fff;
-      cursor:pointer;
+      background:#fff;border-radius:6px;overflow:hidden;
+      box-shadow:0 1px 3px rgba(0,0,0,0.08);
+      cursor:pointer;position:relative;
+      display:flex;flex-direction:column;
       transition:box-shadow 0.2s;
-      position:relative;
-      border-radius:8px;
-      overflow:hidden;
-      box-shadow:0 1px 4px rgba(0,0,0,0.07);
-      display:flex;
-      flex-direction:column;
     }
-    .product-card:hover{box-shadow:0 0 0 2px #8B0000,0 4px 16px rgba(0,0,0,0.12);}
+    .product-card:hover{box-shadow:0 4px 18px rgba(0,0,0,0.13);}
     .card-img-link{display:block;text-decoration:none;}
-
     .card-img{
-      height:150px;
-      background:linear-gradient(135deg,#f0f0f0,#e0e0e0);
+      width:100%;
+      aspect-ratio:4/3;
+      background:linear-gradient(135deg,#f5f5f5,#e8e8e8);
       display:flex;align-items:center;justify-content:center;
-      position:relative;overflow:hidden;
+      overflow:hidden;position:relative;
     }
     .card-img img{width:100%;height:100%;object-fit:cover;}
-    .card-img .placeholder-text{font-size:11px;font-weight:700;color:#888;letter-spacing:1px;text-transform:uppercase;}
-
+    .card-placeholder{font-size:9px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:#bbb;text-align:center;padding:8px;}
     .fits-badge{
       position:absolute;top:8px;left:8px;
-      font-size:8px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;
-      padding:3px 8px;border-radius:20px;
+      font-size:8px;font-weight:900;letter-spacing:1px;text-transform:uppercase;
+      padding:3px 8px;border-radius:3px;
     }
     .fits-badge.fits{background:#1a7a1a;color:#fff;}
-    .fits-badge.no-fit{background:#888;color:#fff;}
-
-    .card-body{padding:12px 14px;flex:1;display:flex;flex-direction:column;}
-    .card-btns{margin-top:auto;}
-    .card-brand{font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#8B0000;margin-bottom:3px;}
-    .card-name{font-size:13px;font-weight:800;color:#1a1a1a;margin-bottom:4px;line-height:1.3;}
-    .card-bed{font-size:11px;font-weight:600;color:#555;margin-bottom:6px;}
-    .card-part{font-size:10px;font-weight:600;color:#777;margin-bottom:8px;}
-    .card-price{font-size:16px;font-weight:900;color:#1a1a1a;margin-bottom:10px;}
-    .card-btns{display:grid;grid-template-columns:1fr 1fr;gap:6px;}
+    .fits-badge.no-fit{background:#e65c00;color:#fff;}
+    .card-body{padding:10px 12px 12px;flex:1;display:flex;flex-direction:column;}
+    .card-brand{font-size:8px;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:#8B0000;margin-bottom:3px;}
+    .card-name{font-size:12px;font-weight:800;color:#1a1a1a;margin-bottom:8px;line-height:1.3;flex:1;}
+    .card-price{font-size:15px;font-weight:900;color:#8B0000;margin-bottom:10px;}
+    .card-price-label{font-size:8px;font-weight:700;color:#888;display:block;margin-bottom:1px;}
+    .card-btns{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:auto;}
     .card-btn{
-      display:block;width:100%;padding:8px 4px;
-      background:#8B0000;color:#fff;border:none;border-radius:6px;
-      font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;
-      letter-spacing:1px;text-transform:uppercase;cursor:pointer;text-align:center;
-      text-decoration:none;line-height:1;
+      display:block;padding:8px 4px;border:none;border-radius:5px;
+      font-size:9px;font-weight:900;letter-spacing:0.5px;text-transform:uppercase;
+      cursor:pointer;text-align:center;text-decoration:none;
     }
-    .card-btn:hover{background:#6d0000;}
-    .card-btn.call{background:#1a1a1a;}
-    .card-btn.call:hover{background:#333;}
-
-    /* ── FIT NOTE ── */
-    .fit-note{
-      font-size:9px;font-weight:800;letter-spacing:0.5px;text-transform:uppercase;
-      color:#fff;background:#444;border-radius:3px;
-      padding:3px 7px;margin-top:8px;
-      display:inline-block;
-    }
+    .card-btn-view{background:#1a1a1a;color:#fff;}
+    .card-btn-view:hover{background:#333;}
+    .card-btn-quote{background:#8B0000;color:#fff;}
+    .card-btn-quote:hover{background:#6d0000;}
 
     /* ── EMPTY STATE ── */
-    #empty-state{
-      display:none;padding:60px 24px;text-align:center;background:#fff;
-    }
-    #empty-state .empty-icon{font-size:48px;margin-bottom:12px;}
+    #empty-state{display:none;padding:48px 24px;text-align:center;background:#fff;}
+    #empty-state .empty-icon{font-size:40px;margin-bottom:10px;}
     #empty-state p{font-size:14px;font-weight:700;color:#444;margin-bottom:8px;}
     #empty-state small{font-size:12px;color:#666;}
 
-    /* ── MOBILE FILTER OVERLAY ── */
-    #mob-filter{
-      display:none;
-      position:fixed;inset:0;z-index:200;
-      background:#fff;overflow-y:auto;
+    /* ── RECOMMENDED SECTION ── */
+    .recommended-section{background:#fff;padding:28px 0 8px;border-top:4px solid #f0f0f0;margin-top:8px;}
+    .recommended-title{
+      font-size:16px;font-weight:900;color:#1a1a1a;
+      padding:0 16px;margin-bottom:16px;
     }
-    #mob-filter.open{display:block;}
-    .mob-filter-header{
-      padding:16px 20px;
-      display:flex;align-items:center;justify-content:space-between;
-      border-bottom:2px solid #e8e8e8;
-      position:sticky;top:0;background:#fff;z-index:1;
+    .recommended-scroll{
+      display:flex;gap:10px;overflow-x:auto;padding:0 16px 20px;
+      -webkit-overflow-scrolling:touch;
     }
-    .mob-filter-title{font-size:14px;font-weight:900;}
-    .mob-filter-close{
-      font-size:20px;cursor:pointer;background:none;border:none;
-      color:#1a1a1a;font-weight:300;line-height:1;
+    .recommended-scroll::-webkit-scrollbar{height:3px;}
+    .recommended-scroll::-webkit-scrollbar-thumb{background:#e0e0e0;border-radius:3px;}
+    .rec-card{
+      flex-shrink:0;width:150px;background:#fff;
+      border:1px solid #e8e8e8;border-radius:6px;overflow:hidden;cursor:pointer;
     }
-    .mob-filter-section{padding:16px 20px;border-bottom:1px solid #f0f0f0;}
-    .mob-filter-section-title{font-size:10px;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:#8B0000;margin-bottom:10px;}
-    .mob-chips{display:flex;flex-wrap:wrap;gap:8px;}
-    .mob-chip{
-      padding:6px 14px;border-radius:20px;
-      font-size:11px;font-weight:700;
-      border:2px solid #e8e8e8;background:#fff;color:#444;cursor:pointer;
-    }
-    .mob-chip.active{background:#1a1a1a;color:#fff;border-color:#1a1a1a;}
-    .mob-apply{
-      margin:16px 20px;display:block;width:calc(100% - 40px);
-      padding:14px;background:#8B0000;color:#fff;border:none;border-radius:8px;
-      font-family:'Montserrat',sans-serif;font-size:12px;font-weight:800;
-      letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;text-align:center;
+    .rec-card:hover{border-color:#8B0000;}
+    .rec-img{width:100%;height:100px;background:linear-gradient(135deg,#f5f5f5,#e8e8e8);display:flex;align-items:center;justify-content:center;overflow:hidden;}
+    .rec-img img{width:100%;height:100%;object-fit:cover;}
+    .rec-ph{font-size:8px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:#bbb;text-align:center;padding:8px;}
+    .rec-body{padding:8px 10px 10px;}
+    .rec-brand{font-size:7px;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:#8B0000;margin-bottom:2px;}
+    .rec-name{font-size:10px;font-weight:800;color:#1a1a1a;margin-bottom:4px;line-height:1.3;}
+    .rec-price{font-size:11px;font-weight:900;color:#8B0000;margin-bottom:8px;}
+    .rec-btn{
+      display:block;width:100%;padding:7px;text-align:center;
+      background:#8B0000;color:#fff;border-radius:4px;
+      font-size:8px;font-weight:900;letter-spacing:1px;text-transform:uppercase;text-decoration:none;
     }
 
-    /* ── COMPARISON SECTION ── */
-    .comparison-section{background:#111;padding:28px 28px 32px;border-bottom:4px solid #8B0000;}
-    .comparison-header{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:20px;}
-    .comparison-heading{font-size:clamp(13px,2vw,16px);font-weight:900;color:#fff;text-transform:uppercase;letter-spacing:1.5px;}
-    .comparison-sub{font-size:10px;font-weight:600;color:rgba(255,255,255,0.4);letter-spacing:0.5px;}
-    .comparison-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
-    @media(max-width:480px){.comparison-cards{grid-template-columns:1fr;}}
-    .comp-card{background:#1e1e1e;border-radius:8px;overflow:hidden;cursor:pointer;transition:transform 0.18s,box-shadow 0.18s;border:1px solid rgba(255,255,255,0.06);}
-    .comp-card:hover{transform:translateY(-4px);box-shadow:0 12px 36px rgba(0,0,0,0.6);}
-    .comp-card-img{height:170px;overflow:hidden;position:relative;}
-    .comp-card-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.35s;}
-    .comp-card:hover .comp-card-img img{transform:scale(1.04);}
-    .comp-card-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,transparent 35%,rgba(0,0,0,0.82) 100%);}
-    .comp-img-overlay{position:absolute;bottom:0;left:0;right:0;padding:12px 14px;z-index:1;}
-    .comp-tier-badge{display:inline-block;padding:3px 9px;border-radius:20px;font-size:8px;font-weight:900;letter-spacing:2px;text-transform:uppercase;margin-bottom:5px;}
-    .tier-good{background:rgba(255,255,255,0.15);color:#fff;border:1px solid rgba(255,255,255,0.3);}
-    .tier-better{background:#8B0000;color:#fff;}
-    .tier-best{background:#e6a817;color:#1a1a1a;}
-    .comp-img-name{font-size:15px;font-weight:900;color:#fff;line-height:1.1;letter-spacing:-0.3px;}
-    .comp-card-body{padding:12px 14px 14px;}
-    .comp-desc{font-size:10px;font-weight:600;color:rgba(255,255,255,0.55);line-height:1.55;margin-bottom:12px;}
-    .comp-btn{display:block;width:100%;padding:9px;background:#8B0000;color:#fff;border:none;border-radius:6px;font-family:'Montserrat',sans-serif;font-size:9px;font-weight:900;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;text-align:center;text-decoration:none;transition:background 0.15s;}
-    .comp-btn:hover{background:#6d0000;}
+    /* ── FAQ SECTION ── */
+    .faq-section{background:#f8f8f8;padding:28px 16px;border-top:3px solid #e8e8e8;}
+    .faq-title{font-size:16px;font-weight:900;color:#1a1a1a;margin-bottom:16px;text-transform:uppercase;}
+    .faq-item{background:#fff;border-radius:6px;margin-bottom:8px;overflow:hidden;}
+    .faq-q{
+      padding:14px 16px;font-size:13px;font-weight:700;color:#1a1a1a;
+      cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:10px;
+      user-select:none;
+    }
+    .faq-q:hover{color:#8B0000;}
+    .faq-toggle{
+      flex-shrink:0;width:22px;height:22px;border-radius:50%;background:#f0f0f0;
+      display:flex;align-items:center;justify-content:center;
+      font-size:14px;font-weight:900;color:#555;transition:background 0.2s,transform 0.2s;
+    }
+    .faq-item.open .faq-toggle{background:#8B0000;color:#fff;transform:rotate(45deg);}
+    .faq-a{
+      display:none;padding:0 16px 16px;
+      font-size:12px;font-weight:500;line-height:1.7;color:#444;
+    }
+    .faq-item.open .faq-a{display:block;}
 
-    /* ── YMM SELECTOR BAR ── */
-    .ymm-bar{background:#fff;border-bottom:3px solid #1a1a1a;padding:14px 28px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
-    .ymm-label{font-size:9px;font-weight:900;letter-spacing:2.5px;text-transform:uppercase;color:#8B0000;white-space:nowrap;flex-shrink:0;}
-    .ymm-selects{display:flex;gap:8px;flex:1;flex-wrap:wrap;}
-    .ymm-select{flex:1;min-width:90px;padding:9px 10px;border:2px solid #e0e0e0;border-radius:6px;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:600;color:#1a1a1a;background:#fff;appearance:none;-webkit-appearance:none;cursor:pointer;transition:border-color 0.15s;outline:none;}
-    .ymm-select:focus{border-color:#8B0000;}
-    .ymm-select:disabled{background:#f5f5f5;color:#bbb;cursor:not-allowed;}
-    .ymm-btn{padding:10px 22px;background:#8B0000;color:#fff;border:none;border-radius:6px;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:900;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;white-space:nowrap;transition:background 0.15s;flex-shrink:0;}
-    .ymm-btn:hover{background:#6d0000;}
-    .ymm-btn:disabled{background:#ccc;cursor:not-allowed;}
-    @media(max-width:600px){.ymm-bar{padding:12px 16px;gap:8px;}.ymm-label{display:none;}}
+    /* ── CATEGORY DESCRIPTION ── */
+    .category-desc{background:#fff;padding:28px 16px;border-top:3px solid #f0f0f0;}
+    .category-desc p{font-size:13px;font-weight:500;line-height:1.75;color:#444;margin-bottom:14px;}
+    .category-desc p:last-child{margin-bottom:0;}
+    .category-desc strong{color:#1a1a1a;font-weight:800;}
+
+    /* ── TABLET (768px+) ── */
+    @media(min-width:768px){
+      /* Hero */
+      .category-hero{flex-direction:row;min-height:210px;}
+      .hero-img-wrap{flex:0 0 54%;height:auto;order:2;}
+      .hero-content{flex:0 0 46%;order:1;padding:28px 28px;}
+      .hero-title{font-size:28px;}
+
+      /* Comparison */
+      .comparison-section{padding:28px 24px 32px;}
+      .comparison-cards{grid-template-columns:repeat(3,1fr);}
+      .comp-img{height:200px;}
+
+      /* YMM */
+      .ymm-bar{padding:14px 24px;}
+
+      /* Section heading */
+      .section-heading-bar{padding:20px 24px 16px;}
+      .section-main-heading{font-size:22px;}
+
+      /* Catalog layout: sidebar + main */
+      .catalog-wrap{grid-template-columns:220px 1fr;}
+      .sidebar{
+        display:block;background:#fff;border-right:2px solid #e8e8e8;
+        padding:18px 14px;position:sticky;top:0;
+        height:fit-content;max-height:calc(100vh - 80px);overflow-y:auto;
+      }
+      .mobile-filter-btn{display:none;}
+
+      /* Grid */
+      .product-grid{grid-template-columns:repeat(3,1fr);gap:12px;padding:16px;}
+
+      /* Cards */
+      .card-img{aspect-ratio:16/9;}
+      .card-name{font-size:13px;}
+
+      /* Recommended */
+      .recommended-title{padding:0 24px;}
+      .recommended-scroll{padding:0 24px 20px;}
+      .rec-card{width:180px;}
+
+      /* FAQ */
+      .faq-section{padding:32px 24px;}
+
+      /* Description */
+      .category-desc{padding:32px 24px;}
+    }
+
+    /* ── DESKTOP (1024px+) ── */
+    @media(min-width:1024px){
+      .catalog-wrap{grid-template-columns:240px 1fr;}
+      .hero-title{font-size:32px;}
+      .product-grid{grid-template-columns:repeat(3,1fr);}
+      .section-main-heading{font-size:24px;}
+    }
   </style>
 </head>
 <body>
@@ -300,76 +379,68 @@
     <span class="gb-badge no-garage" id="gb-badge">Add Your Truck</span>
   </div>
   <div class="gb-right">
-    <a href="my-garage.html" class="gb-link" id="gb-action">Save Your Truck →</a>
+    <a href="my-garage.html" class="gb-link" id="gb-action">Save Your Truck &rarr;</a>
     <button class="gb-link" id="gb-change" style="display:none" onclick="clearGarage()">Change Vehicle</button>
+  </div>
+</div>
+
+<!-- Category Hero -->
+<!-- CONFIG: Change hero-title, hero-sub, and hero-img src per category page -->
+<div class="category-hero">
+  <div class="hero-img-wrap">
+    <img class="hero-img" src="BK_BAKFlipMX4.jpg" alt="Tonneau Covers" onerror="this.style.display='none'"/>
+  </div>
+  <div class="hero-content">
+    <div class="hero-breadcrumb">Shop &rsaquo; Bed Covers</div>
+    <h1 class="hero-title">Bed Covers &amp;<br><span>Tonneau Covers</span></h1>
+    <div class="hero-sub">BAK &middot; Extang &middot; Retrax &middot; Roll N Lock &middot; TruXedo &middot; UnderCover</div>
+    <div class="hero-chip inactive" id="fitment-chip">
+      <span class="dot"></span>
+      <span id="fitment-chip-text">Add your truck to filter by fit</span>
+    </div>
   </div>
 </div>
 
 <!-- No Garage Banner -->
 <div id="no-garage-banner">
-  <p>Save your truck to see which covers fit — we'll confirm fitment on every product.</p>
+  <p>Save your truck to see which covers fit — we confirm fitment on every product.</p>
   <a href="my-garage.html">Add My Truck</a>
-</div>
-
-<!-- Page Header -->
-<div class="page-header">
-  <div>
-    <div class="page-header-title">Tonneau Covers</div>
-    <div class="page-header-sub">BAK · Extang · Retrax · Roll N Lock · TruXedo · UnderCover</div>
-  </div>
-  <div class="fitment-chip inactive" id="fitment-chip">
-    <span class="dot"></span>
-    <span id="fitment-chip-text">No vehicle saved</span>
-  </div>
 </div>
 
 <!-- Comparison Cards -->
 <div class="comparison-section">
-  <div class="comparison-header">
-    <div class="comparison-heading">Find a Hard Folding Cover That Fits Your Needs</div>
-    <div class="comparison-sub">Three tiers of BAKFlip &mdash; built tough, backed by us.</div>
+  <div class="comparison-heading-row">
+    <div class="comparison-heading">Find a Hard Folding Cover <span>That Fits Your Needs</span></div>
   </div>
   <div class="comparison-cards">
 
     <div class="comp-card" onclick="window.location.href='product-detail.html?product=BAKFlip+G2&brand=BAK'">
-      <div class="comp-card-img">
-        <img src="BK_BAKFlipMX4.jpg" alt="BAKFlip G2" style="filter:grayscale(0.45)brightness(0.88)"/>
-        <div class="comp-img-overlay">
-          <div class="comp-tier-badge tier-good">Good</div>
-          <div class="comp-img-name">BAKFlip G2</div>
-        </div>
-      </div>
-      <div class="comp-card-body">
-        <div class="comp-desc">Fiberglass-reinforced panels. Flush, low-profile design. Proven value with all-weather protection.</div>
-        <a class="comp-btn" href="product-detail.html?product=BAKFlip+G2&brand=BAK">View BAKFlip G2</a>
+      <img class="comp-img" src="BK_BAKFlipMX4.jpg" alt="BAKFlip G2" style="filter:grayscale(0.5)brightness(0.85)"/>
+      <div class="comp-body">
+        <div class="comp-tier tier-good">Good</div>
+        <div class="comp-name">BAKFlip G2</div>
+        <div class="comp-tagline">The original hard-fold that set the standard</div>
+        <a class="comp-action" href="product-detail.html?product=BAKFlip+G2&brand=BAK">View BAKFlip G2</a>
       </div>
     </div>
 
     <div class="comp-card" onclick="window.location.href='product-detail.html?product=BAKFlip+MX4&brand=BAK'">
-      <div class="comp-card-img">
-        <img src="images_MX4_closeup_600x6004_w900_q85.jpg" alt="BAKFlip MX4"/>
-        <div class="comp-img-overlay">
-          <div class="comp-tier-badge tier-better">Better</div>
-          <div class="comp-img-name">BAKFlip MX4</div>
-        </div>
-      </div>
-      <div class="comp-card-body">
-        <div class="comp-desc">Premium matte aluminum panels. Superior finish, weather seal, and durability. Our most popular cover.</div>
-        <a class="comp-btn" href="product-detail.html?product=BAKFlip+MX4&brand=BAK">View BAKFlip MX4</a>
+      <img class="comp-img" src="images_MX4_closeup_600x6004_w900_q85.jpg" alt="BAKFlip MX4"/>
+      <div class="comp-body">
+        <div class="comp-tier tier-better">Better</div>
+        <div class="comp-name">BAKFlip MX4</div>
+        <div class="comp-tagline">The best-selling truck bed cover in the world</div>
+        <a class="comp-action" href="product-detail.html?product=BAKFlip+MX4&brand=BAK">View BAKFlip MX4</a>
       </div>
     </div>
 
     <div class="comp-card" onclick="window.location.href='product-detail.html?product=BAKFlip+MX4+TS&brand=BAK'">
-      <div class="comp-card-img">
-        <img src="BK_BAKFlipMX4.jpg" alt="BAKFlip MX4 TS" style="filter:brightness(0.95)"/>
-        <div class="comp-img-overlay">
-          <div class="comp-tier-badge tier-best">Best</div>
-          <div class="comp-img-name">BAKFlip MX4 TS</div>
-        </div>
-      </div>
-      <div class="comp-card-body">
-        <div class="comp-desc">Toolbox compatible. All MX4 benefits plus full access to under-bed storage &mdash; no compromise.</div>
-        <a class="comp-btn" href="product-detail.html?product=BAKFlip+MX4+TS&brand=BAK">View BAKFlip MX4 TS</a>
+      <img class="comp-img" src="BK_BAKFlipMX4.jpg" alt="BAKFlip MX4 TS" style="filter:brightness(0.9)saturate(0.8)"/>
+      <div class="comp-body">
+        <div class="comp-tier tier-best">Best</div>
+        <div class="comp-name">BAKFlip MX4 TS</div>
+        <div class="comp-tagline">The best-selling cover, now rack ready</div>
+        <a class="comp-action" href="product-detail.html?product=BAKFlip+MX4+TS&brand=BAK">View BAKFlip MX4 TS</a>
       </div>
     </div>
 
@@ -380,32 +451,30 @@
 <div class="ymm-bar">
   <div class="ymm-label">Select Your Vehicle</div>
   <div class="ymm-selects">
-    <select class="ymm-select" id="ymm-year" onchange="ymmYearChange()">
-      <option value="">Year</option>
-    </select>
-    <select class="ymm-select" id="ymm-make" onchange="ymmMakeChange()" disabled>
-      <option value="">Make</option>
-    </select>
-    <select class="ymm-select" id="ymm-model" onchange="ymmModelChange()" disabled>
-      <option value="">Model</option>
-    </select>
-    <select class="ymm-select" id="ymm-bed" onchange="ymmBedChange()" disabled>
-      <option value="">Bed Size</option>
-    </select>
+    <select class="ymm-select" id="ymm-year" onchange="ymmYearChange()"><option value="">Year</option></select>
+    <select class="ymm-select" id="ymm-make" onchange="ymmMakeChange()" disabled><option value="">Make</option></select>
+    <select class="ymm-select" id="ymm-model" onchange="ymmModelChange()" disabled><option value="">Model</option></select>
+    <select class="ymm-select" id="ymm-bed" onchange="ymmBedChange()" disabled><option value="">Bed Size</option></select>
   </div>
   <button class="ymm-btn" id="ymm-btn" onclick="ymmShopNow()" disabled>Shop Now</button>
 </div>
 
-<!-- Mobile filter overlay -->
+<!-- Section Heading -->
+<!-- CONFIG: Change this heading per category page -->
+<div class="section-heading-bar">
+  <div class="section-main-heading">Truck Bed &amp; Tonneau Covers</div>
+</div>
+
+<!-- Mobile Filter Overlay -->
 <div id="mob-filter">
   <div class="mob-filter-header">
     <span class="mob-filter-title">Filter Products</span>
-    <button class="mob-filter-close" onclick="closeMobFilter()">✕</button>
+    <button class="mob-filter-close" onclick="closeMobFilter()">&times;</button>
   </div>
   <div class="mob-filter-section">
     <div class="mob-filter-section-title">Fitment</div>
     <div class="mob-chips" id="mob-chips-fitment">
-      <div class="mob-chip active" data-filter="fitment" data-val="fit" onclick="mobChipToggle(this)">✓ Fits My Truck</div>
+      <div class="mob-chip active" data-filter="fitment" data-val="fit" onclick="mobChipToggle(this)">&#10003; Fits My Truck</div>
       <div class="mob-chip" data-filter="fitment" data-val="all" onclick="mobChipToggle(this)">Show All</div>
     </div>
   </div>
@@ -425,12 +494,10 @@
   <button class="mob-apply" onclick="applyMobFilter()">Show Results</button>
 </div>
 
-<!-- Main catalog layout -->
+<!-- Catalog: Sidebar + Main -->
 <div class="catalog-wrap">
 
-  <!-- Sidebar -->
   <div class="sidebar">
-
     <div class="sidebar-section">
       <div class="sidebar-title">Fitment</div>
       <div class="filter-item" onclick="toggleFitment(true)">
@@ -442,63 +509,123 @@
         <span class="filter-label">Show All</span>
       </div>
     </div>
-
     <div class="sidebar-section">
       <div class="sidebar-title">Brand</div>
       <div id="brand-filters"></div>
     </div>
-
     <div class="sidebar-section">
       <div class="sidebar-title">Cover Type</div>
       <div id="type-filters"></div>
     </div>
-
   </div>
 
-  <!-- Main -->
   <div class="main">
-
     <div class="toolbar">
       <div class="result-count" id="result-count">Loading...</div>
-      <div style="display:flex;align-items:center;gap:10px;">
+      <div class="toolbar-right">
         <button class="mobile-filter-btn" onclick="openMobFilter()">
-          ⚡ Filter
+          Filter
           <div class="filter-badge" id="mob-filter-badge" style="display:none">0</div>
         </button>
-        <div class="sort-wrap">
-          <span class="sort-label">Sort:</span>
-          <select class="sort-select" id="sort-select" onchange="renderProducts()">
-            <option value="fit">Best Fit</option>
-            <option value="price-asc">Price: Low to High</option>
-            <option value="price-desc">Price: High to Low</option>
-            <option value="brand">Brand A–Z</option>
-          </select>
-        </div>
+        <span class="sort-label">Sort:</span>
+        <select class="sort-select" id="sort-select" onchange="renderProducts()">
+          <option value="fit">Best Fit</option>
+          <option value="price-asc">Price: Low to High</option>
+          <option value="price-desc">Price: High to Low</option>
+          <option value="brand">Brand A&ndash;Z</option>
+        </select>
       </div>
     </div>
 
     <div class="active-filters" id="active-filters">
       <span class="active-label">Active:</span>
-      <div class="filter-tag" id="tag-fitment" onclick="toggleFitment(false)" style="display:none">Fits My Truck ×</div>
+      <div class="filter-tag" id="tag-fitment" onclick="toggleFitment(false)" style="display:none">Fits My Truck &times;</div>
     </div>
 
     <div class="product-grid" id="product-grid"></div>
     <div id="empty-state">
-      <div class="empty-icon">🔍</div>
-      <p>No covers match your current filters.</p>
+      <div class="empty-icon">&#128269;</div>
+      <p>No covers match your filters.</p>
       <small>Try removing a filter or showing all vehicles.</small>
     </div>
-
   </div>
+
+</div>
+
+<!-- Recommended For You -->
+<div class="recommended-section">
+  <div class="recommended-title">Recommended For You</div>
+  <div class="recommended-scroll" id="recommended-scroll"></div>
+</div>
+
+<!-- FAQ Section -->
+<!-- CONFIG: Update FAQ questions per category page -->
+<div class="faq-section">
+  <div class="faq-title">FAQs</div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">
+      Which truck bed cover should I choose?
+      <span class="faq-toggle">+</span>
+    </div>
+    <div class="faq-a">Consider how often you need full bed access, your local weather, and your security needs. Hard folding covers offer the best balance of security and access. Roll-up covers are the easiest to use daily. Retractable covers offer the most premium look and function. Not sure? Call us — our team installs every brand we sell and can guide you to the right choice.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">
+      Will a bed cover work with my existing truck accessories?
+      <span class="faq-toggle">+</span>
+    </div>
+    <div class="faq-a">It depends on the specific accessory. Most bed covers are compatible with standard drop-in or spray-in bed liners. Covers marked "TS" (Toolbox Specific) are designed to work alongside under-bed toolboxes. Contact us before ordering and we'll confirm compatibility for your exact setup.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">
+      Can I install a truck bed cover myself?
+      <span class="faq-toggle">+</span>
+    </div>
+    <div class="faq-a">Yes — most tonneau covers install in under 30 minutes using a simple clamp system with no drilling required. All hardware is included. We also offer professional installation at our Signal Hill location if you'd prefer to have it done right the first time.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">
+      Can I drive with the bed cover open?
+      <span class="faq-toggle">+</span>
+    </div>
+    <div class="faq-a">Yes. Most hard folding covers can be driven in the fully open (folded against the cab) or partially folded position. Roll-up covers can be driven rolled up. Always ensure the cover is secured before driving at highway speeds.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">
+      Are tonneau covers waterproof?
+      <span class="faq-toggle">+</span>
+    </div>
+    <div class="faq-a">Tonneau covers are weather-resistant. Quality covers with EPDM rubber seals (like BAKFlip and Extang) provide excellent water management and keep the vast majority of rain out. They are not 100% watertight, so avoid submerging them. For maximum protection, look for covers with dual-action seals.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">
+      Do tonneau covers improve gas mileage?
+      <span class="faq-toggle">+</span>
+    </div>
+    <div class="faq-a">Yes — studies show tonneau covers can improve fuel economy by 1.8% to 5.7% by improving aerodynamics over the open truck bed. The improvement varies based on driving speed, driving style, and the specific cover. At highway speeds the improvement is most noticeable.</div>
+  </div>
+
+</div>
+
+<!-- Category Description -->
+<!-- CONFIG: Update description text per category page -->
+<div class="category-desc">
+  <p>Tonneau covers protect your truck bed from weather, theft, and road debris while improving your truck's aerodynamics and fuel economy. At <strong>RLSH Truck &amp; Jeep Outfitters</strong> in Signal Hill, CA, we carry the top brands including BAK Industries, Extang, Retrax, Roll N Lock, TruXedo, and UnderCover — every cover we sell, we install.</p>
+  <p>Having trouble choosing? Our team installs these covers daily and can walk you through every option in person or over the phone. Browse our full selection of hard folding, soft folding, roll-up, and retractable tonneau covers above, or call us at <strong>(562) 424-6744</strong> to talk to an expert.</p>
 </div>
 
 <script>
-// ── Catalog field indexes ──
-// [brand, product, partNum, bedIn, bedSize, startYear, endYear, make, model, desc, fitNote, map, img]
-var F = { brand:0, product:1, partNum:2, bedIn:3, bedSize:4, startYear:5, endYear:6, make:7, model:8, desc:9, fitNote:10, map:11, img:12 };
+// ── Field indexes ──
+var F={brand:0,product:1,partNum:2,bedIn:3,bedSize:4,startYear:5,endYear:6,make:7,model:8,desc:9,fitNote:10,map:11,img:12};
 
-// ── Cover type classification ──
-var PRODUCT_TYPES = {
+// ── Cover type map ──
+var PRODUCT_TYPES={
   'BAKFlip F1':'Hard Folding','BAKFlip FiberMax':'Hard Folding','BAKFlip G2':'Hard Folding',
   'BAKFlip MX4':'Hard Folding','BAKFlip MX4 TS':'Hard Folding',
   'ArmorFlex':'Hard Folding','Solid Fold 2.0 Toolbox':'Hard Folding','Solid Fold ALX':'Hard Folding',
@@ -509,459 +636,299 @@ var PRODUCT_TYPES = {
   'A-Series':'Soft Folding','A-Series XT':'Soft Folding',
   'Elite':'Soft Folding','Elite LX':'Soft Folding','Elite Smooth':'Soft Folding',
   'SE':'Soft Folding','SE Smooth':'Soft Folding',
-  'Lo Pro':'Roll-Up','TruXport':'Roll-Up','Lux':'Roll-Up',
-  'Flex':'Roll-Up','Fusion':'Roll-Up','Select':'Roll-Up',
-  'RetraxONE MX':'Retractable','RetraxONE XR':'Retractable',
-  'RetraxPRO MX':'Retractable','RetraxPRO XR':'Retractable',
-  'PowertraxPRO MX':'Retractable','PowertraxPRO XR':'Retractable',
-  'Retrax EQ':'Retractable','Retrax IX':'Retractable',
+  'Lo Pro':'Roll-Up','TruXport':'Roll-Up','Lux':'Roll-Up','Flex':'Roll-Up','Fusion':'Roll-Up','Select':'Roll-Up',
+  'RetraxONE MX':'Retractable','RetraxONE XR':'Retractable','RetraxPRO MX':'Retractable','RetraxPRO XR':'Retractable',
+  'PowertraxPRO MX':'Retractable','PowertraxPRO XR':'Retractable','Retrax EQ':'Retractable','Retrax IX':'Retractable',
   'Revolver X2':'Roll-Up','Revolver X4s':'Roll-Up','Revolver X4ts':'Roll-Up',
   'Pro X15':'Retractable','Pro X15 TS':'Retractable',
-  'Sentry':'Hard Folding','Sentry CT':'Hard Folding',
-  'Ultra Flex':'Hard Folding',
+  'Sentry':'Hard Folding','Sentry CT':'Hard Folding','Ultra Flex':'Hard Folding'
 };
 
 // ── State ──
-var garage = null;
-var filterFitOnly = true;
-var filterBrands  = {};
-var filterTypes   = {};
-var filterProduct = '';
+var garage=null,filterFitOnly=true,filterBrands={},filterTypes={},filterProduct='';
 
-// ── Load garage ──
+// ── Init ──
 (function(){
-  var s = localStorage.getItem('garage_vehicle');
-  if(s){ try{ garage = JSON.parse(s); }catch(e){} }
+  var s=localStorage.getItem('garage_vehicle');
+  if(s){try{garage=JSON.parse(s);}catch(e){}}
   initGarageBar();
   buildFilters();
   renderProducts();
+  buildRecommended();
+  initYMM();
 })();
 
 function initGarageBar(){
   if(garage){
-    var label = garage.year+' '+garage.make+' '+garage.model+(garage.trim?' '+garage.trim:'')+(garage.bedSize?' · '+garage.bedSize:'');
-    document.getElementById('gb-vehicle').textContent = label;
-    document.getElementById('gb-badge').textContent   = '✓ Fitment Active';
+    var label=garage.year+' '+garage.make+' '+garage.model+(garage.trim?' '+garage.trim:'')+(garage.bedSize?' · '+garage.bedSize:'');
+    document.getElementById('gb-vehicle').textContent=label;
+    document.getElementById('gb-badge').textContent='✓ Fitment Active';
     document.getElementById('gb-badge').classList.remove('no-garage');
-    document.getElementById('gb-action').style.display  = 'none';
-    document.getElementById('gb-change').style.display  = 'inline';
+    document.getElementById('gb-action').style.display='none';
+    document.getElementById('gb-change').style.display='inline';
     document.getElementById('fitment-chip').classList.remove('inactive');
-    document.getElementById('fitment-chip-text').textContent = 'Fitment: '+label;
-    document.getElementById('no-garage-banner').style.display = 'none';
-    document.getElementById('tag-fitment').style.display = 'flex';
+    document.getElementById('fitment-chip-text').textContent='Fitment: '+label;
+    document.getElementById('no-garage-banner').style.display='none';
+    document.getElementById('tag-fitment').style.display='flex';
   } else {
-    filterFitOnly = false;
-    document.getElementById('no-garage-banner').style.display = 'flex';
+    filterFitOnly=false;
+    document.getElementById('no-garage-banner').style.display='flex';
     document.getElementById('cb-fit').classList.remove('checked');
   }
 }
 
-function clearGarage(){
-  localStorage.removeItem('garage_vehicle');
-  garage = null;
-  location.reload();
-}
+function clearGarage(){localStorage.removeItem('garage_vehicle');garage=null;location.reload();}
 
-// ── Fitment matching ──
+// ── Fitment match ──
 function matchesTruck(row){
-  if(!garage) return false;
-  var year  = parseInt(garage.year);
-  var bedIn = garage.bedIn || null;
-  if(year < row[F.startYear] || year > row[F.endYear]) return false;
-  // make match (normalize)
-  var catalogMake = row[F.make];
-  var gMake = garage.make;
-  var makeOk = catalogMake === gMake ||
-    (gMake==='Chevrolet' && (catalogMake==='GMC'||catalogMake==='Chevrolet')) ||
-    (gMake==='GMC'       && (catalogMake==='GMC'||catalogMake==='Chevrolet'));
-  if(!makeOk) return false;
-  // model match
-  var catalogModel = row[F.model];
-  var gModel = garage.model;
-  var modelOk = catalogModel === gModel ||
-    (catalogModel.indexOf(gModel) !== -1) ||
-    (gModel.indexOf(catalogModel) !== -1) ||
-    // Silverado/Sierra combos
-    (catalogModel==='Silverado/Sierra 1500' && (gModel==='Silverado 1500'||gModel==='Sierra 1500')) ||
-    (catalogModel==='Silverado/Sierra 2500HD/3500HD' && (gModel==='Silverado 2500HD/3500HD'||gModel==='Sierra 2500HD/3500HD')) ||
-    (catalogModel==='Canyon/Colorado' && (gModel==='Canyon'||gModel==='Colorado')) ||
-    // RAM combos
-    (catalogModel==='1500/2500/3500' && (gModel==='1500 W/O Ram Box'||gModel==='1500 With Ram Box'||gModel==='1500/2500/3500'));
-  if(!modelOk) return false;
-  // bed size match (within 2 inches tolerance)
-  if(bedIn && row[F.bedIn]){
-    if(Math.abs(row[F.bedIn] - bedIn) > 2) return false;
-  }
+  if(!garage)return false;
+  var year=parseInt(garage.year),bedIn=garage.bedIn||null;
+  if(year<row[F.startYear]||year>row[F.endYear])return false;
+  var cm=row[F.make],gm=garage.make;
+  var mkOk=cm===gm||(gm==='Chevrolet'&&(cm==='GMC'||cm==='Chevrolet'))||(gm==='GMC'&&(cm==='GMC'||cm==='Chevrolet'));
+  if(!mkOk)return false;
+  var cmo=row[F.model],gmo=garage.model;
+  var moOk=cmo===gmo||cmo.indexOf(gmo)!==-1||gmo.indexOf(cmo)!==-1||
+    (cmo==='Silverado/Sierra 1500'&&(gmo==='Silverado 1500'||gmo==='Sierra 1500'))||
+    (cmo==='Silverado/Sierra 2500HD/3500HD'&&(gmo==='Silverado 2500HD/3500HD'||gmo==='Sierra 2500HD/3500HD'))||
+    (cmo==='Canyon/Colorado'&&(gmo==='Canyon'||gmo==='Colorado'))||
+    (cmo==='1500/2500/3500'&&(gmo==='1500 W/O Ram Box'||gmo==='1500 With Ram Box'||gmo==='1500/2500/3500'));
+  if(!moOk)return false;
+  if(bedIn&&row[F.bedIn]&&Math.abs(row[F.bedIn]-bedIn)>2)return false;
   return true;
 }
 
 // ── Build sidebar filters ──
 function buildFilters(){
-  var brands = {};
-  var types  = {};
+  var brands={},types={};
   CATALOG.forEach(function(r){
-    brands[r[F.brand]] = (brands[r[F.brand]]||0)+1;
-    var t = PRODUCT_TYPES[r[F.product]] || 'Other';
-    types[t] = (types[t]||0)+1;
+    brands[r[F.brand]]=(brands[r[F.brand]]||0)+1;
+    var t=PRODUCT_TYPES[r[F.product]]||'Other';
+    types[t]=(types[t]||0)+1;
   });
-
-  var bf = document.getElementById('brand-filters');
+  var bf=document.getElementById('brand-filters');
   Object.keys(brands).sort().forEach(function(b){
-    filterBrands[b] = false;
-    var div = document.createElement('div');
-    div.className='filter-item';
-    div.innerHTML='<div class="cb" id="cb-brand-'+b.replace(/\s/g,'-')+'"></div><span class="filter-label">'+b+'</span><span class="filter-count">'+brands[b]+'</span>';
-    div.onclick=function(){ toggleBrand(b); };
-    bf.appendChild(div);
-    // mobile brand chips
-    var chip=document.createElement('div');
-    chip.className='mob-chip';chip.dataset.filter='brand';chip.dataset.val=b;
-    chip.textContent=b;chip.onclick=function(){ mobChipToggle(this); };
+    filterBrands[b]=false;
+    var d=document.createElement('div');d.className='filter-item';
+    d.innerHTML='<div class="cb" id="cb-brand-'+b.replace(/\s/g,'-')+'"></div><span class="filter-label">'+b+'</span>';
+    d.onclick=function(){toggleBrand(b);};bf.appendChild(d);
+    var chip=document.createElement('div');chip.className='mob-chip';chip.dataset.filter='brand';chip.dataset.val=b;
+    chip.textContent=b;chip.onclick=function(){mobChipToggle(this);};
     document.getElementById('mob-chips-brand').appendChild(chip);
   });
-
-  var tf = document.getElementById('type-filters');
+  var tf=document.getElementById('type-filters');
   Object.keys(types).sort().forEach(function(t){
-    filterTypes[t] = false;
-    var div=document.createElement('div');
-    div.className='filter-item';
-    div.innerHTML='<div class="cb" id="cb-type-'+t.replace(/\s/g,'-')+'"></div><span class="filter-label">'+t+'</span><span class="filter-count">'+types[t]+'</span>';
-    div.onclick=function(){ toggleType(t); };
-    tf.appendChild(div);
+    filterTypes[t]=false;
+    var d=document.createElement('div');d.className='filter-item';
+    d.innerHTML='<div class="cb" id="cb-type-'+t.replace(/\s/g,'-')+'"></div><span class="filter-label">'+t+'</span>';
+    d.onclick=function(){toggleType(t);};tf.appendChild(d);
   });
 }
 
-// ── Filter toggles ──
+// ── Toggles ──
 function toggleFitment(fitOnly){
-  filterFitOnly = fitOnly && !!garage;
-  document.getElementById('cb-fit').classList.toggle('checked', filterFitOnly);
-  document.getElementById('cb-all').classList.toggle('checked', !filterFitOnly);
-  document.getElementById('tag-fitment').style.display = filterFitOnly ? 'flex' : 'none';
+  filterFitOnly=fitOnly&&!!garage;
+  document.getElementById('cb-fit').classList.toggle('checked',filterFitOnly);
+  document.getElementById('cb-all').classList.toggle('checked',!filterFitOnly);
+  document.getElementById('tag-fitment').style.display=filterFitOnly?'flex':'none';
   renderProducts();
 }
+function toggleBrand(b){filterBrands[b]=!filterBrands[b];document.getElementById('cb-brand-'+b.replace(/\s/g,'-')).classList.toggle('checked',filterBrands[b]);renderProducts();}
+function toggleType(t){filterTypes[t]=!filterTypes[t];document.getElementById('cb-type-'+t.replace(/\s/g,'-')).classList.toggle('checked',filterTypes[t]);renderProducts();}
 
-function toggleBrand(b){
-  filterBrands[b] = !filterBrands[b];
-  document.getElementById('cb-brand-'+b.replace(/\s/g,'-')).classList.toggle('checked', filterBrands[b]);
-  renderProducts();
-}
-
-function toggleType(t){
-  filterTypes[t] = !filterTypes[t];
-  document.getElementById('cb-type-'+t.replace(/\s/g,'-')).classList.toggle('checked', filterTypes[t]);
-  renderProducts();
-}
-
-// ── Build product-level map (one entry per unique brand+product) ──
+// ── Smart product-level filtering ──
 function getProducts(){
-  var activeBrands = Object.keys(filterBrands).filter(function(b){ return filterBrands[b]; });
-  var activeTypes  = Object.keys(filterTypes).filter(function(t){ return filterTypes[t]; });
-
-  var productMap = {};
+  var activeBrands=Object.keys(filterBrands).filter(function(b){return filterBrands[b];});
+  var activeTypes=Object.keys(filterTypes).filter(function(t){return filterTypes[t];});
+  var pm={};
   CATALOG.forEach(function(r){
-    if(filterProduct && r[F.product] !== filterProduct) return;
-    if(activeBrands.length && activeBrands.indexOf(r[F.brand]) === -1) return;
-    if(activeTypes.length){
-      var t = PRODUCT_TYPES[r[F.product]] || 'Other';
-      if(activeTypes.indexOf(t) === -1) return;
-    }
-    var key = r[F.brand]+'|'+r[F.product];
-    if(!productMap[key]){
-      productMap[key] = {
-        brand: r[F.brand], product: r[F.product],
-        repr: r, minPrice: null, vehicleCount: 0,
-        hasfit: false, fitCount: 0
-      };
-    }
-    var pm = productMap[key];
-    if(r[F.map] && (pm.minPrice === null || r[F.map] < pm.minPrice)) pm.minPrice = r[F.map];
-    pm.vehicleCount++;
-    if(matchesTruck(r)){ pm.hasfit = true; pm.fitCount++; }
+    if(filterProduct&&r[F.product]!==filterProduct)return;
+    if(activeBrands.length&&activeBrands.indexOf(r[F.brand])===-1)return;
+    if(activeTypes.length){var t=PRODUCT_TYPES[r[F.product]]||'Other';if(activeTypes.indexOf(t)===-1)return;}
+    var k=r[F.brand]+'|'+r[F.product];
+    if(!pm[k])pm[k]={brand:r[F.brand],product:r[F.product],repr:r,minPrice:null,hasfit:false};
+    var p=pm[k];
+    if(r[F.map]&&(p.minPrice===null||r[F.map]<p.minPrice))p.minPrice=r[F.map];
+    if(matchesTruck(r))p.hasfit=true;
   });
-
-  var products = Object.keys(productMap).map(function(k){ return productMap[k]; });
-  // Smart filter: when fitment is on, only show products with at least one matching row
-  if(filterFitOnly && garage){
-    products = products.filter(function(p){ return p.hasfit; });
-  }
+  var products=Object.keys(pm).map(function(k){return pm[k];});
+  if(filterFitOnly&&garage)products=products.filter(function(p){return p.hasfit;});
   return products;
 }
 
-function getSort(){ return document.getElementById('sort-select').value; }
-
+function getSort(){return document.getElementById('sort-select').value;}
 function applySort(products){
-  var s = getSort();
-  products = products.slice();
-  if(s==='price-asc') products.sort(function(a,b){ return (a.minPrice||9999)-(b.minPrice||9999); });
-  else if(s==='price-desc') products.sort(function(a,b){ return (b.minPrice||0)-(a.minPrice||0); });
-  else if(s==='brand') products.sort(function(a,b){ return a.brand.localeCompare(b.brand); });
-  else {
-    // Best fit first
-    products.sort(function(a,b){ return (b.hasfit?1:0)-(a.hasfit?1:0); });
-  }
+  var s=getSort();products=products.slice();
+  if(s==='price-asc')products.sort(function(a,b){return(a.minPrice||9999)-(b.minPrice||9999);});
+  else if(s==='price-desc')products.sort(function(a,b){return(b.minPrice||0)-(a.minPrice||0);});
+  else if(s==='brand')products.sort(function(a,b){return a.brand.localeCompare(b.brand);});
+  else products.sort(function(a,b){return(b.hasfit?1:0)-(a.hasfit?1:0);});
   return products;
 }
 
-// ── Render ──
+// ── Render product grid ──
 function renderProducts(){
-  var products = getProducts();
-  var sorted   = applySort(products);
+  var products=getProducts(),sorted=applySort(products);
+  var grid=document.getElementById('product-grid');
+  grid.innerHTML='';
+  document.getElementById('empty-state').style.display=sorted.length?'none':'block';
+  var fitCount=sorted.filter(function(p){return p.hasfit;}).length;
+  var label=garage
+    ?'<span>'+fitCount+'</span> covers fit your '+garage.year+' '+garage.make+' '+garage.model
+    :'Showing <span>'+sorted.length+'</span> covers';
+  document.getElementById('result-count').innerHTML=label;
 
-  var grid = document.getElementById('product-grid');
-  grid.innerHTML = '';
-  document.getElementById('empty-state').style.display = sorted.length ? 'none' : 'block';
-
-  var fitCount = sorted.filter(function(p){ return p.hasfit; }).length;
-  var label = garage
-    ? '<span>'+fitCount+'</span> covers fit your '+garage.year+' '+garage.make+' '+garage.model
-    : 'Showing <span>'+sorted.length+'</span> covers';
-  document.getElementById('result-count').innerHTML = label;
-
-  // Active filters bar
-  var af = document.getElementById('active-filters');
-  af.querySelectorAll('.filter-tag:not(#tag-fitment)').forEach(function(t){ t.remove(); });
+  // Active filters
+  var af=document.getElementById('active-filters');
+  af.querySelectorAll('.filter-tag:not(#tag-fitment)').forEach(function(t){t.remove();});
   if(filterProduct){
-    var ptag=document.createElement('div');
-    ptag.className='filter-tag';ptag.textContent=filterProduct+' x';
-    ptag.onclick=function(){ filterProduct=''; renderProducts(); };
-    af.appendChild(ptag);
+    var ptag=document.createElement('div');ptag.className='filter-tag';ptag.textContent=filterProduct+' ×';
+    ptag.onclick=function(){filterProduct='';renderProducts();};af.appendChild(ptag);
   }
   Object.keys(filterBrands).forEach(function(b){
-    if(filterBrands[b]){
-      var tag=document.createElement('div');
-      tag.className='filter-tag';tag.textContent=b+' ×';
-      tag.onclick=function(){ toggleBrand(b); };
-      af.appendChild(tag);
-    }
+    if(filterBrands[b]){var tag=document.createElement('div');tag.className='filter-tag';tag.textContent=b+' ×';tag.onclick=function(){toggleBrand(b);};af.appendChild(tag);}
   });
   Object.keys(filterTypes).forEach(function(t){
-    if(filterTypes[t]){
-      var tag=document.createElement('div');
-      tag.className='filter-tag';tag.textContent=t+' ×';
-      tag.onclick=function(){ toggleType(t); };
-      af.appendChild(tag);
-    }
+    if(filterTypes[t]){var tag=document.createElement('div');tag.className='filter-tag';tag.textContent=t+' ×';tag.onclick=function(){toggleType(t);};af.appendChild(tag);}
   });
 
   sorted.forEach(function(p){
-    var r = p.repr;
-    var card = document.createElement('div');
-    card.className = 'product-card';
-
-    var price = p.minPrice
-      ? 'From $'+p.minPrice.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})
-      : 'Call for Price';
-
-    var imgHtml = r[F.img]
-      ? '<img src="'+r[F.img]+'" alt="'+p.product+'" loading="lazy" onerror="this.parentNode.innerHTML=\'<span class=\\\'placeholder-text\\\'>'+p.product+'</span>\'">'
-      : '<span class="placeholder-text">'+p.product+'</span>';
-
-    var fitBadge = !garage ? ''
-      : p.hasfit
-        ? '<div class="fits-badge fits">&#10003; Fits Your Truck</div>'
-        : '<div class="fits-badge no-fit">Verify Fitment</div>';
-
-    var detailUrl = 'product-detail.html?product='+encodeURIComponent(p.product)+'&brand='+encodeURIComponent(p.brand);
-
-    card.innerHTML =
+    var r=p.repr;
+    var card=document.createElement('div');card.className='product-card';
+    var price=p.minPrice?'From $'+p.minPrice.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}):'Call for Price';
+    var pcImg=(typeof PRODUCT_CONTENT!=='undefined'&&PRODUCT_CONTENT[p.product]&&PRODUCT_CONTENT[p.product].img)?PRODUCT_CONTENT[p.product].img:(r[F.img]||null);
+    var imgHtml=pcImg
+      ?'<img src="'+pcImg+'" alt="'+p.product+'" loading="lazy" onerror="this.parentNode.innerHTML=\'<div class=\\\'card-placeholder\\\'>'+p.product+'</div>\'">'
+      :'<div class="card-placeholder">'+p.product+'</div>';
+    var fitBadge=!garage?''
+      :p.hasfit?'<div class="fits-badge fits">✓ Fits Your Truck</div>'
+      :'<div class="fits-badge no-fit">Verify Fitment</div>';
+    var detailUrl='product-detail.html?product='+encodeURIComponent(p.product)+'&brand='+encodeURIComponent(p.brand);
+    card.innerHTML=
       '<a href="'+detailUrl+'" class="card-img-link">'+
         '<div class="card-img">'+fitBadge+imgHtml+'</div>'+
       '</a>'+
       '<div class="card-body">'+
         '<div class="card-brand">'+p.brand+'</div>'+
         '<div class="card-name">'+p.product+'</div>'+
-        '<div class="card-price">'+price+'</div>'+
+        '<div class="card-price"><span class="card-price-label">Starting at</span>'+price+'</div>'+
         '<div class="card-btns">'+
-          '<a href="'+detailUrl+'" class="card-btn view">View Details</a>'+
-          '<button class="card-btn" onclick="event.stopPropagation();getQuote(\''+r[F.product]+'\',\''+r[F.partNum]+'\')">Get a Quote</button>'+
+          '<a href="'+detailUrl+'" class="card-btn card-btn-view">View Details</a>'+
+          '<button class="card-btn card-btn-quote" onclick="event.stopPropagation();getQuote(\''+r[F.product]+'\',\''+r[F.partNum]+'\')">Get a Quote</button>'+
         '</div>'+
       '</div>';
-
-    card.onclick = function(e){
-      if(e.target.closest('.card-btn')) return;
-      window.location.href = detailUrl;
-    };
-
+    card.onclick=function(e){if(e.target.closest('.card-btn'))return;window.location.href=detailUrl;};
     grid.appendChild(card);
   });
 
-  // mobile filter badge
-  var activeCount = (filterFitOnly?1:0) + Object.values(filterBrands).filter(Boolean).length + Object.values(filterTypes).filter(Boolean).length;
-  var badge = document.getElementById('mob-filter-badge');
-  badge.textContent = activeCount;
-  badge.style.display = activeCount > 0 ? 'flex' : 'none';
-
+  var activeCount=(filterFitOnly?1:0)+Object.values(filterBrands).filter(Boolean).length+Object.values(filterTypes).filter(Boolean).length;
+  var badge=document.getElementById('mob-filter-badge');badge.textContent=activeCount;badge.style.display=activeCount>0?'flex':'none';
   reportHeight();
 }
 
-function getQuote(product, partNum){
-  var url = 'https://rlsh1855.github.io/3Js-and-RLSH-Website/parts-quote.html'
-    + '?product=' + encodeURIComponent(product)
-    + '&partNum=' + encodeURIComponent(partNum);
-  window.location.href = url;
+// ── Get a Quote ──
+function getQuote(product,partNum){
+  window.location.href='parts-quote.html?product='+encodeURIComponent(product)+'&partNum='+encodeURIComponent(partNum);
+}
+
+// ── Build Recommended section ──
+var RECOMMENDED=['BAKFlip MX4','BAKFlip MX4 TS','BAKFlip G2','BAKFlip F1','Revolver X4s','BAKFlip FiberMax'];
+function buildRecommended(){
+  var scr=document.getElementById('recommended-scroll');if(!scr)return;
+  RECOMMENDED.forEach(function(name){
+    var rows=CATALOG.filter(function(r){return r[F.product]===name;});if(!rows.length)return;
+    var brand=rows[0][F.brand];
+    var minP=null;rows.forEach(function(r){if(r[F.map]&&(minP===null||r[F.map]<minP))minP=r[F.map];});
+    var pcImg=(typeof PRODUCT_CONTENT!=='undefined'&&PRODUCT_CONTENT[name]&&PRODUCT_CONTENT[name].img)?PRODUCT_CONTENT[name].img:null;
+    var price=minP?'From $'+minP.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}):'Call for Price';
+    var href='product-detail.html?product='+encodeURIComponent(name)+'&brand='+encodeURIComponent(brand);
+    var imgHtml=pcImg
+      ?'<img src="'+pcImg+'" alt="'+name+'" loading="lazy" onerror="this.parentNode.innerHTML=\'<div class=\\\'rec-ph\\\'>'+name+'</div>\'">'
+      :'<div class="rec-ph">'+name+'</div>';
+    var card=document.createElement('div');card.className='rec-card';
+    card.innerHTML='<div class="rec-img">'+imgHtml+'</div>'+
+      '<div class="rec-body">'+
+        '<div class="rec-brand">'+brand+'</div>'+
+        '<div class="rec-name">'+name+'</div>'+
+        '<div class="rec-price">'+price+'</div>'+
+        '<a href="'+href+'" class="rec-btn">View Details</a>'+
+      '</div>';
+    card.onclick=function(){window.location.href=href;};
+    scr.appendChild(card);
+  });
 }
 
 // ── Mobile filter overlay ──
-function openMobFilter(){ document.getElementById('mob-filter').classList.add('open'); }
-function closeMobFilter(){ document.getElementById('mob-filter').classList.remove('open'); }
-
+function openMobFilter(){document.getElementById('mob-filter').classList.add('open');}
+function closeMobFilter(){document.getElementById('mob-filter').classList.remove('open');}
 function mobChipToggle(chip){
-  var filter = chip.dataset.filter;
-  var val    = chip.dataset.val;
-  if(filter === 'fitment'){
-    document.querySelectorAll('[data-filter="fitment"]').forEach(function(c){ c.classList.remove('active'); });
-    chip.classList.add('active');
-  } else {
-    chip.classList.toggle('active');
-  }
+  var filter=chip.dataset.filter,val=chip.dataset.val;
+  if(filter==='fitment'){document.querySelectorAll('[data-filter="fitment"]').forEach(function(c){c.classList.remove('active');});chip.classList.add('active');}
+  else{chip.classList.toggle('active');}
 }
-
 function applyMobFilter(){
-  var fitChip = document.querySelector('[data-filter="fitment"].active');
-  toggleFitment(fitChip && fitChip.dataset.val === 'fit');
-
-  Object.keys(filterBrands).forEach(function(b){ filterBrands[b] = false; });
-  document.querySelectorAll('[data-filter="brand"].active').forEach(function(c){
-    filterBrands[c.dataset.val] = true;
-  });
-  Object.keys(filterBrands).forEach(function(b){
-    var el = document.getElementById('cb-brand-'+b.replace(/\s/g,'-'));
-    if(el) el.classList.toggle('checked', filterBrands[b]);
-  });
-
-  Object.keys(filterTypes).forEach(function(t){ filterTypes[t] = false; });
-  document.querySelectorAll('[data-filter="type"].active').forEach(function(c){
-    filterTypes[c.dataset.val] = true;
-  });
-
-  renderProducts();
-  closeMobFilter();
+  var fitChip=document.querySelector('[data-filter="fitment"].active');
+  toggleFitment(fitChip&&fitChip.dataset.val==='fit');
+  Object.keys(filterBrands).forEach(function(b){filterBrands[b]=false;});
+  document.querySelectorAll('[data-filter="brand"].active').forEach(function(c){filterBrands[c.dataset.val]=true;});
+  Object.keys(filterBrands).forEach(function(b){var el=document.getElementById('cb-brand-'+b.replace(/\s/g,'-'));if(el)el.classList.toggle('checked',filterBrands[b]);});
+  Object.keys(filterTypes).forEach(function(t){filterTypes[t]=false;});
+  document.querySelectorAll('[data-filter="type"].active').forEach(function(c){filterTypes[c.dataset.val]=true;});
+  renderProducts();closeMobFilter();
 }
 
-function reportHeight(){
-  var h = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
-  window.parent.postMessage(JSON.stringify({height:h}),'*');
-}
-window.addEventListener('load', function(){ reportHeight(); setTimeout(reportHeight,400); });
-window.addEventListener('resize', reportHeight);
-
-// ── Comparison card filter ──
-function filterByProduct(productName){
-  filterProduct = productName;
-  filterFitOnly = false;
-  document.getElementById('cb-fit').classList.remove('checked');
-  document.getElementById('cb-all').classList.add('checked');
-  document.getElementById('tag-fitment').style.display = 'none';
-  Object.keys(filterBrands).forEach(function(b){ filterBrands[b]=false; });
-  Object.keys(filterTypes).forEach(function(t){ filterTypes[t]=false; });
-  document.querySelectorAll('.cb[id^="cb-brand-"]').forEach(function(el){ el.classList.remove('checked'); });
-  document.querySelectorAll('.cb[id^="cb-type-"]').forEach(function(el){ el.classList.remove('checked'); });
-  renderProducts();
-  document.querySelector('.catalog-wrap').scrollIntoView({behavior:'smooth'});
-}
+// ── FAQ accordion ──
+function toggleFaq(qEl){qEl.closest('.faq-item').classList.toggle('open');reportHeight();}
 
 // ── YMM Selector ──
-(function initYMM(){
-  var years={};
-  CATALOG.forEach(function(r){
-    for(var y=r[F.startYear]; y<=r[F.endYear]; y++) years[y]=true;
-  });
+function initYMM(){
+  var years={};CATALOG.forEach(function(r){for(var y=r[F.startYear];y<=r[F.endYear];y++)years[y]=true;});
   var sel=document.getElementById('ymm-year');
-  Object.keys(years).sort(function(a,b){return b-a;}).forEach(function(y){
-    var o=document.createElement('option'); o.value=y; o.textContent=y; sel.appendChild(o);
-  });
-})();
-
+  Object.keys(years).sort(function(a,b){return b-a;}).forEach(function(y){var o=document.createElement('option');o.value=y;o.textContent=y;sel.appendChild(o);});
+}
 function ymmYearChange(){
   var year=parseInt(document.getElementById('ymm-year').value);
-  var makeEl=document.getElementById('ymm-make');
-  var modelEl=document.getElementById('ymm-model');
-  var bedEl=document.getElementById('ymm-bed');
-  makeEl.innerHTML='<option value="">Make</option>';
-  modelEl.innerHTML='<option value="">Model</option>';
-  bedEl.innerHTML='<option value="">Bed Size</option>';
-  modelEl.disabled=true; bedEl.disabled=true;
-  document.getElementById('ymm-btn').disabled=true;
-  if(!year){ makeEl.disabled=true; return; }
-  var makes={};
-  CATALOG.forEach(function(r){
-    if(year>=r[F.startYear]&&year<=r[F.endYear]) makes[r[F.make]]=true;
-  });
-  makeEl.disabled=false;
-  Object.keys(makes).sort().forEach(function(m){
-    var o=document.createElement('option'); o.value=m; o.textContent=m; makeEl.appendChild(o);
-  });
+  var makeEl=document.getElementById('ymm-make'),modelEl=document.getElementById('ymm-model'),bedEl=document.getElementById('ymm-bed');
+  makeEl.innerHTML='<option value="">Make</option>';modelEl.innerHTML='<option value="">Model</option>';bedEl.innerHTML='<option value="">Bed Size</option>';
+  modelEl.disabled=true;bedEl.disabled=true;document.getElementById('ymm-btn').disabled=true;
+  if(!year){makeEl.disabled=true;return;}
+  var makes={};CATALOG.forEach(function(r){if(year>=r[F.startYear]&&year<=r[F.endYear])makes[r[F.make]]=true;});
+  makeEl.disabled=false;Object.keys(makes).sort().forEach(function(m){var o=document.createElement('option');o.value=m;o.textContent=m;makeEl.appendChild(o);});
 }
-
 function ymmMakeChange(){
-  var year=parseInt(document.getElementById('ymm-year').value);
-  var make=document.getElementById('ymm-make').value;
-  var modelEl=document.getElementById('ymm-model');
-  var bedEl=document.getElementById('ymm-bed');
-  modelEl.innerHTML='<option value="">Model</option>';
-  bedEl.innerHTML='<option value="">Bed Size</option>';
-  bedEl.disabled=true;
-  document.getElementById('ymm-btn').disabled=true;
-  if(!make){ modelEl.disabled=true; return; }
-  var models={};
-  CATALOG.forEach(function(r){
-    if(year>=r[F.startYear]&&year<=r[F.endYear]&&r[F.make]===make) models[r[F.model]]=true;
-  });
-  modelEl.disabled=false;
-  Object.keys(models).sort().forEach(function(m){
-    var o=document.createElement('option'); o.value=m; o.textContent=m; modelEl.appendChild(o);
-  });
+  var year=parseInt(document.getElementById('ymm-year').value),make=document.getElementById('ymm-make').value;
+  var modelEl=document.getElementById('ymm-model'),bedEl=document.getElementById('ymm-bed');
+  modelEl.innerHTML='<option value="">Model</option>';bedEl.innerHTML='<option value="">Bed Size</option>';bedEl.disabled=true;document.getElementById('ymm-btn').disabled=true;
+  if(!make){modelEl.disabled=true;return;}
+  var models={};CATALOG.forEach(function(r){if(year>=r[F.startYear]&&year<=r[F.endYear]&&r[F.make]===make)models[r[F.model]]=true;});
+  modelEl.disabled=false;Object.keys(models).sort().forEach(function(m){var o=document.createElement('option');o.value=m;o.textContent=m;modelEl.appendChild(o);});
 }
-
 function ymmModelChange(){
-  var year=parseInt(document.getElementById('ymm-year').value);
-  var make=document.getElementById('ymm-make').value;
-  var model=document.getElementById('ymm-model').value;
-  var bedEl=document.getElementById('ymm-bed');
-  bedEl.innerHTML='<option value="">Bed Size</option>';
-  document.getElementById('ymm-btn').disabled=true;
-  if(!model){ bedEl.disabled=true; return; }
-  var beds={};
-  CATALOG.forEach(function(r){
-    if(year>=r[F.startYear]&&year<=r[F.endYear]&&r[F.make]===make&&r[F.model]===model&&r[F.bedSize]){
-      beds[r[F.bedSize]+'|'+(r[F.bedIn]||'')] = true;
-    }
-  });
-  bedEl.disabled=false;
-  Object.keys(beds).sort().forEach(function(b){
-    var parts=b.split('|');
-    var o=document.createElement('option');
-    o.value=b; o.textContent=parts[0]+(parts[1]?' ('+parts[1]+'"'+')':'');
-    bedEl.appendChild(o);
-  });
+  var year=parseInt(document.getElementById('ymm-year').value),make=document.getElementById('ymm-make').value,model=document.getElementById('ymm-model').value;
+  var bedEl=document.getElementById('ymm-bed');bedEl.innerHTML='<option value="">Bed Size</option>';document.getElementById('ymm-btn').disabled=true;
+  if(!model){bedEl.disabled=true;return;}
+  var beds={};CATALOG.forEach(function(r){if(year>=r[F.startYear]&&year<=r[F.endYear]&&r[F.make]===make&&r[F.model]===model&&r[F.bedSize])beds[r[F.bedSize]+'|'+(r[F.bedIn]||'')]=true;});
+  bedEl.disabled=false;Object.keys(beds).sort().forEach(function(b){var pts=b.split('|');var o=document.createElement('option');o.value=b;o.textContent=pts[0]+(pts[1]?' ('+pts[1]+'"'+')':'');bedEl.appendChild(o);});
   document.getElementById('ymm-btn').disabled=false;
 }
-
-function ymmBedChange(){
-  document.getElementById('ymm-btn').disabled=false;
-}
-
+function ymmBedChange(){document.getElementById('ymm-btn').disabled=false;}
 function ymmShopNow(){
-  var year=document.getElementById('ymm-year').value;
-  var make=document.getElementById('ymm-make').value;
-  var model=document.getElementById('ymm-model').value;
-  var bedVal=document.getElementById('ymm-bed').value;
-  if(!year||!make||!model) return;
+  var year=document.getElementById('ymm-year').value,make=document.getElementById('ymm-make').value,model=document.getElementById('ymm-model').value,bedVal=document.getElementById('ymm-bed').value;
+  if(!year||!make||!model)return;
   var bedParts=bedVal?bedVal.split('|'):[];
-  var vehicle={
-    year:year, make:make, model:model, trim:'',
-    bedSize:bedParts[0]||'', bedIn:bedParts[1]?parseFloat(bedParts[1]):null, vin:''
-  };
+  var vehicle={year:year,make:make,model:model,trim:'',bedSize:bedParts[0]||'',bedIn:bedParts[1]?parseFloat(bedParts[1]):null,vin:''};
   localStorage.setItem('garage_vehicle',JSON.stringify(vehicle));
-  garage=vehicle;
-  filterFitOnly=true;
-  filterProduct='';
+  garage=vehicle;filterFitOnly=true;filterProduct='';
   initGarageBar();
-  document.getElementById('cb-fit').classList.add('checked');
-  document.getElementById('cb-all').classList.remove('checked');
+  document.getElementById('cb-fit').classList.add('checked');document.getElementById('cb-all').classList.remove('checked');
   renderProducts();
   document.querySelector('.catalog-wrap').scrollIntoView({behavior:'smooth'});
 }
+
+// ── Height reporting for Wix iframe ──
+function reportHeight(){var h=Math.max(document.body.scrollHeight,document.documentElement.scrollHeight);window.parent.postMessage(JSON.stringify({height:h}),'*');}
+window.addEventListener('load',function(){reportHeight();setTimeout(reportHeight,400);});
+window.addEventListener('resize',reportHeight);
 </script>
 </body>
 </html>
