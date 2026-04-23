@@ -10,616 +10,809 @@
   <style>
     /* ── RESET / BASE (mobile-first) ── */
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    body{font-family:'Montserrat',sans-serif;background:#f0f0f0;color:#1a1a1a;font-size:16px;}
+    body{font-family:'Montserrat',sans-serif;background:#fff;color:#1a1a1a;font-size:16px;}
     a{text-decoration:none;color:inherit;}
     img{max-width:100%;display:block;}
+    button,select,input{font-family:'Montserrat',sans-serif;}
 
     /* ── BACK BAR ── */
     .back-bar{
-      background:#1a1a1a;
+      background:#1a1a1a;height:44px;
+      display:flex;align-items:center;gap:0;
       padding:0 16px;
-      height:50px;
-      display:flex;align-items:center;gap:12px;
-      position:sticky;top:0;z-index:100;
     }
     .back-btn{
       display:flex;align-items:center;gap:6px;
-      color:#ccc;font-size:12px;font-weight:700;letter-spacing:0.5px;
+      color:#999;font-size:11px;font-weight:700;letter-spacing:0.5px;
       text-transform:uppercase;white-space:nowrap;
     }
     .back-btn:hover{color:#fff;}
-    .back-arrow{font-size:16px;line-height:1;}
-    .back-bar-name{
-      font-size:12px;font-weight:800;color:#fff;
-      white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
-      border-left:1px solid #444;padding-left:12px;
+    .back-sep{color:#444;margin:0 10px;font-size:14px;}
+    .back-cur{font-size:11px;font-weight:700;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+
+    /* ── PRODUCT HEADER ── */
+    .product-header{
+      background:#fff;
+      padding:16px 16px 12px;
+      border-bottom:1px solid #e8e8e8;
     }
+    .product-title{
+      font-size:22px;font-weight:900;text-transform:uppercase;
+      letter-spacing:-0.5px;line-height:1.1;color:#1a1a1a;
+      margin-bottom:4px;
+    }
+    .product-subtitle{
+      font-size:12px;font-weight:600;color:#666;margin-bottom:10px;
+    }
+    .header-meta{
+      display:flex;flex-wrap:wrap;align-items:center;gap:8px;
+      font-size:11px;font-weight:700;color:#555;margin-bottom:10px;
+    }
+    .meta-sep{color:#ccc;}
+    .meta-brand{color:#8B0000;}
+    /* Page tab anchors — hidden mobile, visible desktop */
+    .page-tabs{display:none;}
 
-    /* ── MAIN WRAPPER ── */
-    .page-wrap{max-width:1280px;margin:0 auto;}
+    /* Header price — mobile shows below title */
+    .header-price-mobile{
+      display:flex;align-items:baseline;gap:6px;margin-bottom:10px;
+    }
+    .price-starting-label{font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#777;}
+    .price-starting-val{font-size:26px;font-weight:900;color:#1a1a1a;}
 
-    /* ── PRODUCT HERO ── */
-    .product-hero{background:#fff;}
+    /* Fits badge + fitment notes link */
+    .fitment-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+    .fits-badge{
+      display:inline-flex;align-items:center;gap:5px;
+      padding:5px 12px;border-radius:4px;
+      font-size:11px;font-weight:900;letter-spacing:0.5px;text-transform:uppercase;
+    }
+    .fits-badge.fits{background:#1a7a1a;color:#fff;}
+    .fits-badge.no-fit{background:#e65c00;color:#fff;}
+    .fits-badge.no-garage{background:#e8e8e8;color:#555;}
+    .fits-check{font-size:10px;}
+    .fitment-note-link{font-size:11px;font-weight:700;color:#8B0000;text-decoration:underline;cursor:pointer;}
 
-    /* Image section — full width on mobile */
-    .img-section{
+    /* ── PRODUCT MAIN (image + panel) ── */
+    /* Mobile: stacked. Desktop: side-by-side */
+    .product-main{display:flex;flex-direction:column;background:#fff;}
+
+    /* Image side */
+    .product-left{flex:0 0 auto;}
+    .img-main-wrap{
       width:100%;
-      background:#f5f5f5;
+      background:linear-gradient(135deg,#f5f5f5,#eaeaea);
+      overflow:hidden;
       position:relative;
     }
-    .img-main{
-      width:100%;
-      aspect-ratio:4/3;
-      display:flex;align-items:center;justify-content:center;
-      overflow:hidden;
-      background:linear-gradient(135deg,#f0f0f0,#e0e0e0);
-    }
-    .img-main img{width:100%;height:100%;object-fit:cover;}
+    .img-main-wrap img{width:100%;display:block;object-fit:cover;}
     .img-placeholder{
+      aspect-ratio:4/3;
       display:flex;flex-direction:column;align-items:center;justify-content:center;
-      gap:10px;padding:24px;text-align:center;width:100%;height:100%;
+      gap:8px;padding:32px;text-align:center;
     }
-    .img-placeholder-brand{
-      font-size:10px;font-weight:900;letter-spacing:3px;text-transform:uppercase;
-      color:#8B0000;
-    }
-    .img-placeholder-name{
-      font-size:20px;font-weight:900;color:#1a1a1a;line-height:1.2;
-    }
-    .img-placeholder-note{
-      font-size:11px;font-weight:600;color:#aaa;letter-spacing:0.5px;
-      margin-top:4px;
-    }
+    .img-ph-brand{font-size:9px;font-weight:900;letter-spacing:3px;text-transform:uppercase;color:#8B0000;}
+    .img-ph-name{font-size:18px;font-weight:900;color:#1a1a1a;line-height:1.2;}
+    .img-ph-note{font-size:10px;font-weight:600;color:#bbb;margin-top:4px;}
 
-    /* Thumbnail strip */
-    .img-thumbs{
-      display:flex;gap:6px;padding:8px 12px;overflow-x:auto;
-      -webkit-overflow-scrolling:touch;background:#fff;border-top:1px solid #e8e8e8;
+    /* Thumbnail row */
+    .img-thumbs-row{
+      display:flex;align-items:center;gap:6px;
+      padding:8px 12px;background:#f8f8f8;
+      border-top:1px solid #e8e8e8;border-bottom:1px solid #e8e8e8;
+      overflow-x:auto;-webkit-overflow-scrolling:touch;
     }
+    .img-thumbs-row::-webkit-scrollbar{display:none;}
     .img-thumb{
-      flex-shrink:0;width:60px;height:60px;border-radius:4px;overflow:hidden;
-      border:2px solid transparent;cursor:pointer;
+      flex-shrink:0;width:60px;height:44px;border-radius:3px;overflow:hidden;
+      border:2px solid #e0e0e0;cursor:pointer;background:#f0f0f0;
     }
     .img-thumb.active{border-color:#8B0000;}
     .img-thumb img{width:100%;height:100%;object-fit:cover;}
 
-    /* Info section — below image on mobile */
-    .info-section{padding:20px 16px 24px;}
-
-    .info-brand{
-      font-size:10px;font-weight:900;letter-spacing:2.5px;text-transform:uppercase;
-      color:#8B0000;margin-bottom:6px;
+    /* Quote panel side */
+    .product-right{flex:0 0 auto;}
+    .quote-panel{
+      padding:20px 16px 24px;
+      border-top:2px solid #e8e8e8;
     }
-    .info-name{
-      font-size:24px;font-weight:900;color:#1a1a1a;line-height:1.15;
-      letter-spacing:-0.5px;margin-bottom:10px;
+    .panel-section-title{
+      font-size:9px;font-weight:900;letter-spacing:2.5px;text-transform:uppercase;
+      color:#8B0000;margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid #e8e8e8;
     }
 
-    /* Quick-spec badges */
-    .spec-badges{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px;}
-    .spec-badge{
-      padding:4px 10px;border-radius:4px;
-      background:#f0f0f0;border:1px solid #e0e0e0;
-      font-size:10px;font-weight:800;letter-spacing:0.5px;color:#444;
+    /* Bed size selector */
+    .bed-select-label{font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#444;margin-bottom:6px;}
+    .bed-select{
+      width:100%;padding:11px 12px;
+      border:2px solid #e0e0e0;border-radius:6px;
+      font-size:13px;font-weight:600;color:#1a1a1a;
+      background:#fff;appearance:none;-webkit-appearance:none;
+      cursor:pointer;outline:none;
     }
-    .spec-badge strong{color:#1a1a1a;}
+    .bed-select:focus{border-color:#8B0000;}
 
-    /* Price */
-    .price-row{display:flex;align-items:baseline;gap:8px;margin-bottom:4px;}
-    .info-price{font-size:30px;font-weight:900;color:#1a1a1a;}
-    .price-label{font-size:12px;font-weight:600;color:#777;}
-    .price-note{font-size:11px;color:#555;font-weight:500;margin-bottom:16px;}
-
-    /* Fitment widget */
-    .fitment-widget{
-      border-radius:8px;padding:12px 14px;
-      margin-bottom:18px;font-size:13px;font-weight:700;
+    /* Part number display */
+    .part-display{
+      background:#f8f8f8;border-radius:6px;padding:10px 14px;
+      margin:10px 0;display:none;
     }
-    .fitment-widget.fits{background:#e8f5e9;border:1.5px solid #2e7d32;color:#1b5e20;}
-    .fitment-widget.no-fit{background:#fff8e1;border:1.5px solid #f9a825;color:#6d4c00;}
-    .fitment-widget.no-garage{background:#f5f5f5;border:1.5px solid #ddd;color:#555;}
-    .fitment-widget a{color:#8B0000;font-weight:800;text-decoration:underline;}
-    .fitment-label{font-size:11px;font-weight:900;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;}
+    .part-display.visible{display:block;}
+    .part-display-label{font-size:9px;font-weight:900;letter-spacing:1.5px;text-transform:uppercase;color:#777;margin-bottom:3px;}
+    .part-display-val{font-size:13px;font-weight:800;color:#1a1a1a;}
 
-    /* CTA buttons — stacked on mobile, side-by-side at 480px+ */
-    .cta-group{display:flex;flex-direction:column;gap:10px;}
+    /* Panel price */
+    .panel-price-row{margin:14px 0 6px;}
+    .panel-price-label{font-size:9px;font-weight:900;letter-spacing:1.5px;text-transform:uppercase;color:#777;margin-bottom:2px;}
+    .panel-price-val{font-size:30px;font-weight:900;color:#1a1a1a;line-height:1;}
+    .panel-price-note{font-size:10px;font-weight:600;color:#888;margin-top:3px;}
+
+    /* CTA buttons */
     .btn-quote{
-      display:block;width:100%;padding:16px;
-      background:#8B0000;color:#fff;border:none;border-radius:8px;
-      font-family:'Montserrat',sans-serif;font-size:14px;font-weight:900;
-      letter-spacing:1px;text-transform:uppercase;cursor:pointer;text-align:center;
+      display:block;width:100%;padding:15px;margin-bottom:10px;
+      background:#8B0000;color:#fff;border:none;border-radius:6px;
+      font-size:13px;font-weight:900;letter-spacing:1.5px;text-transform:uppercase;
+      cursor:pointer;text-align:center;
     }
     .btn-quote:hover{background:#6d0000;}
+    .btn-quote:disabled{background:#ccc;cursor:not-allowed;}
     .btn-call{
       display:flex;align-items:center;justify-content:center;gap:6px;
-      width:100%;padding:14px;
-      background:#fff;color:#1a1a1a;border:2px solid #1a1a1a;border-radius:8px;
-      font-family:'Montserrat',sans-serif;font-size:14px;font-weight:900;
-      letter-spacing:1px;text-transform:uppercase;cursor:pointer;text-decoration:none;
+      width:100%;padding:13px;
+      background:#1a1a1a;color:#fff;border:none;border-radius:6px;
+      font-size:13px;font-weight:900;letter-spacing:1.5px;text-transform:uppercase;
+      cursor:pointer;text-decoration:none;
     }
-    .btn-call:hover{background:#1a1a1a;color:#fff;}
+    .btn-call:hover{background:#333;}
+    .price-match{
+      text-align:center;margin-top:12px;
+      font-size:10px;font-weight:700;color:#8B0000;text-decoration:underline;cursor:pointer;
+    }
 
-    /* ── TABS ── */
-    .tabs-wrap{background:#fff;margin-top:1px;}
-    .tab-nav{
-      display:flex;
-      overflow-x:auto;-webkit-overflow-scrolling:touch;
-      border-bottom:2px solid #e8e8e8;
-      position:sticky;top:50px;z-index:90;background:#fff;
+    /* ── TRUST BAR ── */
+    .trust-bar{
+      background:#1a1a1a;
+      padding:20px 16px;
+      display:flex;flex-direction:column;gap:14px;
     }
-    .tab-nav::-webkit-scrollbar{display:none;}
-    .tab-btn{
-      flex-shrink:0;
-      padding:14px 18px;
-      font-family:'Montserrat',sans-serif;font-size:12px;font-weight:800;
-      letter-spacing:0.5px;text-transform:uppercase;
-      background:none;border:none;cursor:pointer;
-      color:#777;border-bottom:3px solid transparent;margin-bottom:-2px;
-      white-space:nowrap;
-    }
-    .tab-btn.active{color:#8B0000;border-bottom-color:#8B0000;}
-
-    .tab-pane{display:none;padding:20px 16px;}
-    .tab-pane.active{display:block;}
-
-    /* Overview tab */
-    .product-desc{
-      font-size:14px;line-height:1.7;color:#333;font-weight:500;
-      margin-bottom:24px;
-    }
-    .features-title{
-      font-size:11px;font-weight:900;letter-spacing:2px;text-transform:uppercase;
-      color:#8B0000;margin-bottom:12px;
-    }
-    .features-list{list-style:none;}
-    .features-list li{
-      display:flex;align-items:flex-start;gap:10px;
-      padding:10px 0;border-bottom:1px solid #f0f0f0;
-      font-size:13px;font-weight:600;color:#333;line-height:1.4;
-    }
-    .features-list li:last-child{border-bottom:none;}
-    .feat-check{
-      flex-shrink:0;width:18px;height:18px;border-radius:50%;
-      background:#8B0000;color:#fff;
+    .trust-item{display:flex;align-items:center;gap:14px;}
+    .trust-icon{
+      flex-shrink:0;width:40px;height:40px;border-radius:50%;
+      border:2px solid #8B0000;
       display:flex;align-items:center;justify-content:center;
-      font-size:9px;font-weight:900;margin-top:1px;
+      font-size:10px;font-weight:900;color:#8B0000;letter-spacing:1px;text-transform:uppercase;
     }
+    .trust-text-title{font-size:11px;font-weight:900;color:#fff;letter-spacing:0.5px;text-transform:uppercase;}
+    .trust-text-sub{font-size:10px;font-weight:600;color:#888;margin-top:2px;}
 
-    /* Specs tab */
-    .specs-table{width:100%;border-collapse:collapse;}
-    .specs-table tr:nth-child(even) td{background:#f8f8f8;}
-    .specs-table td{
-      padding:11px 14px;font-size:13px;border-bottom:1px solid #ececec;
-      vertical-align:top;
+    /* ── FEATURES SECTION ── */
+    .features-section{padding:32px 16px;border-top:1px solid #e8e8e8;}
+    .section-heading{
+      font-size:26px;font-weight:900;text-transform:uppercase;
+      letter-spacing:-0.5px;color:#1a1a1a;margin-bottom:22px;
     }
-    .specs-table td:first-child{
-      font-weight:800;color:#1a1a1a;width:45%;
-    }
-    .specs-table td:last-child{
-      font-weight:600;color:#333;
-    }
+    .features-layout{display:flex;flex-direction:column;gap:24px;}
 
-    /* Fitment list tab */
-    .fit-search-wrap{margin-bottom:14px;}
+    /* Description paragraphs */
+    .features-desc{font-size:13px;line-height:1.75;color:#333;font-weight:500;margin-bottom:20px;}
+    .features-desc strong{color:#1a1a1a;font-weight:800;}
+
+    /* Two-column bullet list */
+    .features-bullets{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:10px;
+      margin-top:20px;
+    }
+    .feature-bullet{
+      display:flex;align-items:flex-start;gap:8px;
+      font-size:12px;font-weight:600;color:#333;line-height:1.5;
+    }
+    .bullet-dot{
+      flex-shrink:0;width:6px;height:6px;border-radius:50%;
+      background:#8B0000;margin-top:5px;
+    }
+    .feature-bullet strong{color:#1a1a1a;font-weight:800;}
+
+    /* Fitment notes sidebar box */
+    .fitment-notes-box{
+      border:2px solid #8B0000;border-radius:8px;
+      padding:16px;background:#fff;
+    }
+    .fn-header{
+      display:flex;align-items:center;gap:8px;margin-bottom:12px;
+      font-size:11px;font-weight:900;letter-spacing:1.5px;text-transform:uppercase;color:#1a1a1a;
+    }
+    .fn-icon{
+      width:22px;height:22px;border-radius:50%;background:#8B0000;
+      display:flex;align-items:center;justify-content:center;
+      font-size:10px;font-weight:900;color:#fff;flex-shrink:0;
+    }
+    .fn-list{list-style:none;}
+    .fn-list li{
+      font-size:11px;font-weight:600;color:#333;line-height:1.5;
+      padding:4px 0;border-bottom:1px solid #f0f0f0;
+      display:flex;gap:6px;align-items:flex-start;
+    }
+    .fn-list li:last-child{border-bottom:none;}
+    .fn-list li::before{content:'•';color:#8B0000;font-weight:900;flex-shrink:0;}
+    .fn-generic{font-size:11px;font-weight:600;color:#555;line-height:1.6;}
+
+    /* ── NEED HELP BAR ── */
+    .need-help-bar{
+      background:#1a1a1a;
+      padding:20px 16px;
+    }
+    .need-help-inner{display:flex;flex-direction:column;gap:12px;}
+    .need-help-text{
+      font-size:13px;font-weight:900;color:#fff;text-transform:uppercase;letter-spacing:0.5px;
+    }
+    .need-help-text span{color:#8B0000;}
+    .need-help-links{display:flex;flex-wrap:wrap;gap:0;}
+    .need-help-link{
+      display:flex;align-items:center;gap:6px;padding:10px 16px;
+      background:#fff;color:#1a1a1a;
+      font-size:11px;font-weight:800;letter-spacing:0.5px;text-transform:uppercase;
+      border-right:1px solid #e0e0e0;
+    }
+    .need-help-link:first-child{border-radius:6px 0 0 6px;}
+    .need-help-link:last-child{border-right:none;border-radius:0 6px 6px 0;}
+    .need-help-link:hover{background:#f0f0f0;}
+
+    /* ── FITMENT SECTION ── */
+    .fitment-section{padding:32px 16px;border-top:1px solid #e8e8e8;}
+    .sub-heading{
+      font-size:11px;font-weight:900;letter-spacing:2.5px;text-transform:uppercase;
+      color:#777;margin-bottom:14px;
+    }
     .fit-search{
-      width:100%;padding:12px 14px;
-      border:2px solid #e0e0e0;border-radius:8px;
-      font-family:'Montserrat',sans-serif;font-size:13px;font-weight:600;
-      outline:none;
+      width:100%;padding:11px 14px;margin-bottom:14px;
+      border:2px solid #e0e0e0;border-radius:6px;
+      font-size:13px;font-weight:600;outline:none;
     }
     .fit-search:focus{border-color:#8B0000;}
     .fit-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;}
-    .fit-table{width:100%;border-collapse:collapse;font-size:12px;min-width:480px;}
+    .fit-table{width:100%;border-collapse:collapse;min-width:360px;}
     .fit-table th{
-      background:#1a1a1a;color:#fff;
-      padding:10px 12px;text-align:left;
-      font-size:10px;font-weight:900;letter-spacing:1.5px;text-transform:uppercase;
+      background:#1a1a1a;color:#fff;text-align:left;
+      padding:10px 16px;
+      font-size:9px;font-weight:900;letter-spacing:2px;text-transform:uppercase;
     }
     .fit-table td{
-      padding:9px 12px;border-bottom:1px solid #ececec;font-weight:600;color:#333;
+      padding:12px 16px;
+      border-bottom:1px solid #f0f0f0;
+      font-size:12px;font-weight:600;color:#333;
     }
-    .fit-table tr:nth-child(even) td{background:#f8f8f8;}
-    .fit-table tr.truck-match td{background:#e8f5e9;color:#1b5e20;}
-    .fit-count{
-      font-size:11px;font-weight:700;color:#666;margin-bottom:10px;
+    .fit-table tr:nth-child(even) td{background:#fafafa;}
+    .fit-table tr.my-truck td{background:#e8f5e9;color:#1b5e20;font-weight:700;}
+    .fit-table-partnum{color:#8B0000;}
+    .fit-note-row{
+      margin-top:14px;padding-top:12px;border-top:1px solid #e8e8e8;
+      font-size:11px;font-weight:600;color:#666;
+      display:flex;align-items:flex-start;gap:6px;
     }
+    .fit-note-dot{color:#8B0000;font-size:14px;flex-shrink:0;}
 
     /* ── YOU MAY ALSO LIKE ── */
-    .also-section{background:#fff;margin-top:8px;padding:20px 0 4px;}
+    .also-section{padding:28px 0 8px;border-top:4px solid #f0f0f0;}
     .also-title{
-      font-size:12px;font-weight:900;letter-spacing:2.5px;text-transform:uppercase;
+      font-size:13px;font-weight:900;letter-spacing:2px;text-transform:uppercase;
       color:#1a1a1a;padding:0 16px;margin-bottom:14px;
     }
     .also-scroll{
       display:flex;gap:10px;overflow-x:auto;
-      padding:0 16px 16px;-webkit-overflow-scrolling:touch;
+      padding:0 16px 20px;-webkit-overflow-scrolling:touch;
     }
-    .also-scroll::-webkit-scrollbar{height:4px;}
-    .also-scroll::-webkit-scrollbar-thumb{background:#ddd;border-radius:4px;}
+    .also-scroll::-webkit-scrollbar{height:3px;}
+    .also-scroll::-webkit-scrollbar-thumb{background:#e0e0e0;border-radius:4px;}
     .also-card{
-      flex-shrink:0;width:150px;
-      background:#fff;border-radius:8px;overflow:hidden;
-      border:1px solid #e8e8e8;box-shadow:0 1px 4px rgba(0,0,0,0.06);
+      flex-shrink:0;width:155px;background:#fff;
+      border:1px solid #e8e8e8;border-radius:6px;overflow:hidden;cursor:pointer;
     }
-    .also-img{
-      height:100px;background:linear-gradient(135deg,#f0f0f0,#e0e0e0);
-      display:flex;align-items:center;justify-content:center;overflow:hidden;
-    }
+    .also-card:hover{border-color:#8B0000;}
+    .also-img{height:105px;background:linear-gradient(135deg,#f5f5f5,#e8e8e8);display:flex;align-items:center;justify-content:center;overflow:hidden;}
     .also-img img{width:100%;height:100%;object-fit:cover;}
-    .also-img-placeholder{font-size:9px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:#aaa;text-align:center;padding:8px;}
+    .also-ph{font-size:9px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:#bbb;text-align:center;padding:8px;}
     .also-body{padding:10px 10px 12px;}
-    .also-name{font-size:11px;font-weight:800;color:#1a1a1a;margin-bottom:4px;line-height:1.3;}
-    .also-price{font-size:11px;font-weight:700;color:#555;margin-bottom:8px;}
+    .also-name{font-size:11px;font-weight:800;color:#1a1a1a;margin-bottom:3px;line-height:1.3;}
+    .also-price{font-size:11px;font-weight:700;color:#666;margin-bottom:8px;}
     .also-btn{
-      display:block;width:100%;padding:7px;
-      background:#8B0000;color:#fff;border:none;border-radius:5px;
-      font-family:'Montserrat',sans-serif;font-size:9px;font-weight:900;
-      letter-spacing:1px;text-transform:uppercase;cursor:pointer;text-align:center;
+      display:block;width:100%;padding:7px;text-align:center;
+      background:#8B0000;color:#fff;border-radius:4px;
+      font-size:9px;font-weight:900;letter-spacing:1px;text-transform:uppercase;
       text-decoration:none;
     }
-    .also-btn:hover{background:#6d0000;}
 
     /* ── NOT FOUND ── */
-    .not-found{
-      padding:60px 24px;text-align:center;
-    }
+    .not-found{padding:60px 24px;text-align:center;}
     .not-found h2{font-size:18px;font-weight:900;margin-bottom:10px;}
     .not-found p{font-size:13px;color:#666;margin-bottom:20px;}
-    .not-found a{
-      display:inline-block;padding:12px 24px;
-      background:#8B0000;color:#fff;border-radius:8px;
-      font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase;
-    }
+    .not-found a{display:inline-block;padding:12px 24px;background:#8B0000;color:#fff;border-radius:6px;font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase;}
 
     /* ── TABLET (768px+) ── */
     @media(min-width:768px){
-      .product-hero{display:grid;grid-template-columns:52% 48%;}
-      .img-section{border-right:1px solid #e8e8e8;}
-      .img-main{aspect-ratio:unset;height:440px;}
-      .info-section{padding:28px 28px 32px;}
-      .info-name{font-size:28px;}
-      .info-price{font-size:34px;}
-      .cta-group{flex-direction:row;}
-      .btn-quote{flex:1;}
-      .btn-call{flex:1;}
-      .tab-pane{padding:28px 28px;}
+      /* Header */
+      .product-header{
+        display:flex;align-items:flex-start;justify-content:space-between;gap:20px;
+        padding:20px 24px 16px;
+      }
+      .header-left{flex:1;}
+      .header-right{
+        flex-shrink:0;
+        display:flex;flex-direction:column;align-items:flex-end;gap:10px;
+      }
+      .header-price-mobile{display:none;}
+      .header-right-price{display:block;text-align:right;}
+      .page-tabs{
+        display:flex;gap:0;flex-wrap:wrap;justify-content:flex-end;
+      }
+      .page-tab{
+        padding:7px 14px;
+        font-size:9px;font-weight:900;letter-spacing:1px;text-transform:uppercase;
+        border:1px solid #ccc;color:#555;background:#fff;cursor:pointer;
+        border-right:none;
+      }
+      .page-tab:first-child{border-radius:4px 0 0 4px;}
+      .page-tab:last-child{border-right:1px solid #ccc;border-radius:0 4px 4px 0;}
+      .page-tab:hover{background:#f5f5f5;color:#1a1a1a;}
+      .price-starting-label-desktop{font-size:9px;font-weight:900;letter-spacing:1.5px;text-transform:uppercase;color:#777;text-align:right;margin-bottom:2px;}
+      .price-starting-val-desktop{font-size:28px;font-weight:900;color:#1a1a1a;text-align:right;}
+
+      /* Main two-column layout */
+      .product-main{flex-direction:row;align-items:flex-start;}
+      .product-left{flex:0 0 58%;border-right:1px solid #e8e8e8;}
+      .product-right{flex:1;}
+      .quote-panel{padding:24px;border-top:none;}
+      .img-main-wrap img{aspect-ratio:unset;}
+
+      /* Trust bar */
+      .trust-bar{flex-direction:row;justify-content:center;gap:60px;padding:22px 24px;}
+
+      /* Features */
+      .features-section{padding:36px 24px;}
+      .features-layout{flex-direction:row;gap:40px;align-items:flex-start;}
+      .features-body{flex:1;}
+      .fitment-notes-box{flex:0 0 280px;}
+      .features-bullets{grid-template-columns:1fr 1fr;gap:10px;}
+
+      /* Need help */
+      .need-help-inner{flex-direction:row;align-items:center;justify-content:space-between;}
+
+      /* Fitment */
+      .fitment-section{padding:36px 24px;}
+
+      /* Also like */
+      .also-title{padding:0 24px;}
       .also-scroll{padding:0 24px 20px;}
       .also-card{width:180px;}
-      .also-img{height:120px;}
     }
 
     /* ── DESKTOP (1024px+) ── */
     @media(min-width:1024px){
-      .product-hero{grid-template-columns:55% 45%;}
-      .img-main{height:500px;}
-      .info-name{font-size:30px;}
+      .product-title{font-size:28px;}
+      .product-left{flex:0 0 62%;}
+      .section-heading{font-size:30px;}
       .also-card{width:200px;}
     }
   </style>
 </head>
 <body>
 
-<!-- Back bar -->
 <div class="back-bar">
-  <a href="parts-catalog.html" class="back-btn">
-    <span class="back-arrow">&#8592;</span>
-    All Covers
-  </a>
-  <span class="back-bar-name" id="back-bar-name"></span>
+  <a href="parts-catalog.html" class="back-btn">&#8592; All Covers</a>
+  <span class="back-sep">/</span>
+  <span class="back-cur" id="back-cur"></span>
 </div>
 
-<div class="page-wrap" id="page-wrap">
-  <div id="page-content"></div>
-</div>
+<div id="page-root"></div>
 
 <script>
-var F = { brand:0,product:1,partNum:2,bedIn:3,bedSize:4,startYear:5,endYear:6,make:7,model:8,desc:9,fitNote:10,map:11,img:12 };
+var F={brand:0,product:1,partNum:2,bedIn:3,bedSize:4,startYear:5,endYear:6,make:7,model:8,desc:9,fitNote:10,map:11,img:12};
 
-// ── Read URL params ──
-var params = {};
-location.search.slice(1).split('&').forEach(function(p){
-  var kv = p.split('='); if(kv[0]) params[decodeURIComponent(kv[0])] = decodeURIComponent(kv[1]||'');
-});
-var PRODUCT_NAME = params.product || '';
-var BRAND_NAME   = params.brand   || '';
+// ── URL params ──
+var params={};
+location.search.slice(1).split('&').forEach(function(p){var kv=p.split('=');if(kv[0])params[decodeURIComponent(kv[0])]=decodeURIComponent(kv[1]||'');});
+var PRODUCT_NAME=params.product||'';
+var BRAND_NAME=params.brand||'';
 
-// ── Load garage ──
-var garage = null;
-try{ var gs = localStorage.getItem('garage_vehicle'); if(gs) garage = JSON.parse(gs); }catch(e){}
+// ── Garage ──
+var garage=null;
+try{var gs=localStorage.getItem('garage_vehicle');if(gs)garage=JSON.parse(gs);}catch(e){}
 
-// ── Fitment match check ──
+// ── Fitment match ──
 function matchesTruck(row){
-  if(!garage) return false;
-  var year = parseInt(garage.year);
-  var bedIn = garage.bedIn || null;
-  if(year < row[F.startYear] || year > row[F.endYear]) return false;
-  var catalogMake = row[F.make], gMake = garage.make;
-  var makeOk = catalogMake === gMake ||
-    (gMake==='Chevrolet'&&(catalogMake==='GMC'||catalogMake==='Chevrolet'))||
-    (gMake==='GMC'&&(catalogMake==='GMC'||catalogMake==='Chevrolet'));
-  if(!makeOk) return false;
-  var catalogModel = row[F.model], gModel = garage.model;
-  var modelOk = catalogModel===gModel ||
-    catalogModel.indexOf(gModel)!==-1 || gModel.indexOf(catalogModel)!==-1 ||
-    (catalogModel==='Silverado/Sierra 1500'&&(gModel==='Silverado 1500'||gModel==='Sierra 1500'))||
-    (catalogModel==='Silverado/Sierra 2500HD/3500HD'&&(gModel==='Silverado 2500HD/3500HD'||gModel==='Sierra 2500HD/3500HD'))||
-    (catalogModel==='Canyon/Colorado'&&(gModel==='Canyon'||gModel==='Colorado'))||
-    (catalogModel==='1500/2500/3500'&&(gModel==='1500 W/O Ram Box'||gModel==='1500 With Ram Box'||gModel==='1500/2500/3500'));
-  if(!modelOk) return false;
-  if(bedIn && row[F.bedIn] && Math.abs(row[F.bedIn]-bedIn)>2) return false;
+  if(!garage)return false;
+  var year=parseInt(garage.year),bedIn=garage.bedIn||null;
+  if(year<row[F.startYear]||year>row[F.endYear])return false;
+  var cm=row[F.make],gm=garage.make;
+  var mkOk=cm===gm||(gm==='Chevrolet'&&(cm==='GMC'||cm==='Chevrolet'))||(gm==='GMC'&&(cm==='GMC'||cm==='Chevrolet'));
+  if(!mkOk)return false;
+  var cmo=row[F.model],gmo=garage.model;
+  var moOk=cmo===gmo||cmo.indexOf(gmo)!==-1||gmo.indexOf(cmo)!==-1||
+    (cmo==='Silverado/Sierra 1500'&&(gmo==='Silverado 1500'||gmo==='Sierra 1500'))||
+    (cmo==='Silverado/Sierra 2500HD/3500HD'&&(gmo==='Silverado 2500HD/3500HD'||gmo==='Sierra 2500HD/3500HD'))||
+    (cmo==='Canyon/Colorado'&&(gmo==='Canyon'||gmo==='Colorado'))||
+    (cmo==='1500/2500/3500'&&(gmo==='1500 W/O Ram Box'||gmo==='1500 With Ram Box'||gmo==='1500/2500/3500'));
+  if(!moOk)return false;
+  if(bedIn&&row[F.bedIn]&&Math.abs(row[F.bedIn]-bedIn)>2)return false;
   return true;
 }
 
-// ── Get all rows for this product ──
-var productRows = CATALOG.filter(function(r){
-  return r[F.product] === PRODUCT_NAME && r[F.brand] === BRAND_NAME;
-});
-
-if(!productRows.length && PRODUCT_NAME){
-  // try brand-agnostic
-  productRows = CATALOG.filter(function(r){ return r[F.product] === PRODUCT_NAME; });
-  if(productRows.length) BRAND_NAME = productRows[0][F.brand];
+// ── Product data ──
+var productRows=CATALOG.filter(function(r){return r[F.product]===PRODUCT_NAME&&r[F.brand]===BRAND_NAME;});
+if(!productRows.length&&PRODUCT_NAME){
+  productRows=CATALOG.filter(function(r){return r[F.product]===PRODUCT_NAME;});
+  if(productRows.length)BRAND_NAME=productRows[0][F.brand];
 }
+var content=(typeof PRODUCT_CONTENT!=='undefined'&&PRODUCT_CONTENT[PRODUCT_NAME])?PRODUCT_CONTENT[PRODUCT_NAME]:null;
 
-// ── Render page ──
-var content = PRODUCT_CONTENT && PRODUCT_CONTENT[PRODUCT_NAME] ? PRODUCT_CONTENT[PRODUCT_NAME] : null;
-
-document.getElementById('back-bar-name').textContent = PRODUCT_NAME;
-document.title = PRODUCT_NAME + ' — RLSH Truck & Jeep Outfitters';
+document.getElementById('back-cur').textContent=PRODUCT_NAME;
+document.title=PRODUCT_NAME+' — RLSH Truck & Jeep Outfitters';
 
 if(!productRows.length){
-  document.getElementById('page-content').innerHTML =
-    '<div class="not-found">'+
-      '<h2>Product Not Found</h2>'+
-      '<p>We couldn\'t find that product. Browse all available covers below.</p>'+
-      '<a href="parts-catalog.html">View All Covers</a>'+
+  document.getElementById('page-root').innerHTML='<div class="not-found"><h2>Product Not Found</h2><p>Browse all available covers.</p><a href="parts-catalog.html">View All Covers</a></div>';
+  reportHeight();
+} else {
+  buildPage();
+}
+
+function buildPage(){
+  // ── Compute prices ──
+  var minPrice=null,maxPrice=null;
+  productRows.forEach(function(r){if(r[F.map]){if(minPrice===null||r[F.map]<minPrice)minPrice=r[F.map];if(maxPrice===null||r[F.map]>maxPrice)maxPrice=r[F.map];}});
+  var startingPrice=minPrice?'$'+minPrice.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}):'Call for Price';
+
+  // ── Fitment ──
+  var fitRows=productRows.filter(matchesTruck);
+  var productFits=garage?(fitRows.length>0):null;
+  var garageLabel=garage?(garage.year+' '+garage.make+' '+garage.model+(garage.bedSize?' &bull; '+garage.bedSize:'')):'';
+  var fitsBadgeHtml;
+  if(!garage){
+    fitsBadgeHtml='<a href="my-garage.html" class="fits-badge no-garage"><span class="fits-check">+</span> Add Your Truck</a>';
+  } else if(productFits){
+    fitsBadgeHtml='<div class="fits-badge fits"><span class="fits-check">&#10003;</span> Fits Your Vehicle</div>';
+  } else {
+    fitsBadgeHtml='<div class="fits-badge no-fit">&#9888; Verify Fitment</div>';
+  }
+
+  // ── Images ──
+  var imgs=(content&&content.imgs)?content.imgs:(content&&content.img?[content.img]:[]);
+  var imgMainHtml,thumbRowHtml='';
+  if(imgs.length){
+    imgMainHtml='<img id="main-product-img" src="'+imgs[0]+'" alt="'+PRODUCT_NAME+'" style="width:100%;display:block;" onerror="this.outerHTML=placeholderMarkup()"/>';
+    if(imgs.length>1){
+      thumbRowHtml='<div class="img-thumbs-row">';
+      imgs.forEach(function(src,i){
+        thumbRowHtml+='<div class="img-thumb'+(i===0?' active':'')+'" onclick="switchImg(this,\''+src+'\')" ><img src="'+src+'" alt=""/></div>';
+      });
+      thumbRowHtml+='</div>';
+    }
+  } else {
+    imgMainHtml='<div class="img-placeholder">'+
+      '<div class="img-ph-brand">'+(content?content.brandFull:BRAND_NAME)+'</div>'+
+      '<div class="img-ph-name">'+PRODUCT_NAME+'</div>'+
+      '<div class="img-ph-note">Product image coming soon</div>'+
     '</div>';
-  reportHeight(); return;
-}
-
-// ── Compute data ──
-var minPrice = null, maxPrice = null;
-productRows.forEach(function(r){
-  if(r[F.map]){
-    if(minPrice===null||r[F.map]<minPrice) minPrice=r[F.map];
-    if(maxPrice===null||r[F.map]>maxPrice) maxPrice=r[F.map];
   }
-});
-var priceStr = minPrice
-  ? (minPrice===maxPrice ? '$'+minPrice.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}) : 'From $'+minPrice.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}))
-  : 'Call for Price';
 
-var fitRows = productRows.filter(matchesTruck);
-var productFits = garage ? fitRows.length > 0 : null;
-
-// Representative part number (lowest price row)
-var reprRow = productRows[0];
-if(minPrice) reprRow = productRows.find(function(r){ return r[F.map]===minPrice; })||productRows[0];
-
-// ── Build image HTML ──
-var imgs = (content && content.imgs) ? content.imgs : (content && content.img ? [content.img] : []);
-var imgMainHtml, thumbHtml = '';
-if(imgs.length){
-  imgMainHtml = '<img id="main-img" src="'+imgs[0]+'" alt="'+PRODUCT_NAME+'" onerror="this.parentNode.innerHTML=placeholderHtml()">';
-  if(imgs.length>1){
-    thumbHtml = '<div class="img-thumbs">';
-    imgs.forEach(function(src,i){
-      thumbHtml += '<div class="img-thumb'+(i===0?' active':'')+'" onclick="switchImg(this,\''+src+'\')"><img src="'+src+'" alt=""></div>';
+  // ── Bed size options (for quote panel) ──
+  var bedOptions={};
+  productRows.forEach(function(r){
+    if(!r[F.bedSize])return;
+    var key=r[F.bedSize]+'|'+(r[F.bedIn]||'');
+    if(!bedOptions[key]){bedOptions[key]={bedSize:r[F.bedSize],bedIn:r[F.bedIn],minPrice:null,partNum:r[F.partNum]};}
+    var bo=bedOptions[key];
+    if(r[F.map]&&(bo.minPrice===null||r[F.map]<bo.minPrice)){bo.minPrice=r[F.map];bo.partNum=r[F.partNum];}
+  });
+  var bedKeys=Object.keys(bedOptions);
+  var bedSelectHtml='';
+  if(bedKeys.length>1){
+    bedSelectHtml=
+      '<div class="bed-select-label">Bed Size</div>'+
+      '<select class="bed-select" id="bed-select" onchange="onBedChange()">'+
+        '<option value="">Select an option</option>';
+    // Pre-select if truck in garage
+    bedKeys.forEach(function(k){
+      var bo=bedOptions[k];
+      var garFit=garage&&fitRows.some(function(r){return (r[F.bedSize]===bo.bedSize||(!r[F.bedSize]&&!bo.bedSize));});
+      var pLabel=bo.minPrice?(' — $'+bo.minPrice.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})):'';
+      bedSelectHtml+='<option value="'+k+'"'+(garFit?' selected':'')+'>'+bo.bedSize+pLabel+'</option>';
     });
-    thumbHtml += '</div>';
+    bedSelectHtml+='</select>';
   }
-} else {
-  imgMainHtml = '<div class="img-placeholder">'+
-    '<div class="img-placeholder-brand">'+(content ? content.brandFull : BRAND_NAME)+'</div>'+
-    '<div class="img-placeholder-name">'+PRODUCT_NAME+'</div>'+
-    '<div class="img-placeholder-note">Product image coming soon</div>'+
-  '</div>';
-}
 
-// ── Fitment widget HTML ──
-var garageLabel = garage ? garage.year+' '+garage.make+' '+garage.model+(garage.bedSize?' &bull; '+garage.bedSize:'') : '';
-var fitmentHtml;
-if(!garage){
-  fitmentHtml = '<div class="fitment-widget no-garage">'+
-    '<div class="fitment-label">Fitment</div>'+
-    '<a href="my-garage.html">Add your truck</a> to confirm this cover fits your vehicle.'+
-  '</div>';
-} else if(productFits){
-  fitmentHtml = '<div class="fitment-widget fits">'+
-    '<div class="fitment-label">Confirmed Fitment</div>'+
-    '&#10003; This cover fits your <strong>'+garageLabel+'</strong>'+
-  '</div>';
-} else {
-  fitmentHtml = '<div class="fitment-widget no-fit">'+
-    '<div class="fitment-label">Verify Fitment</div>'+
-    'We don\'t have a confirmed fitment for your <strong>'+garageLabel+'</strong>. Call us to verify.'+
-  '</div>';
-}
+  // Initial panel price
+  var panelPrice=startingPrice;
+  var panelPartNum=productRows[0][F.partNum];
+  if(bedKeys.length===1){var bo=bedOptions[bedKeys[0]];panelPrice=bo.minPrice?'$'+bo.minPrice.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}):'Call for Price';panelPartNum=bo.partNum;}
+  if(garage&&fitRows.length){var fr=fitRows[0];panelPrice=fr[F.map]?'$'+fr[F.map].toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}):'Call for Price';panelPartNum=fr[F.partNum];}
 
-// ── Quick spec badges ──
-var badgeHtml = '';
-if(content && content.specs){
-  var badgeKeys = ['Style','Material','Full Bed Access','Works w/Toolbox'];
-  badgeKeys.forEach(function(k){
-    if(content.specs[k]) badgeHtml += '<div class="spec-badge"><strong>'+k+':</strong> '+content.specs[k]+'</div>';
-  });
-}
-
-// ── Features HTML ──
-var featuresHtml = '';
-if(content && content.features && content.features.length){
-  featuresHtml = '<div class="features-title">Key Features</div><ul class="features-list">';
-  content.features.forEach(function(f){
-    featuresHtml += '<li><span class="feat-check">&#10003;</span>'+f+'</li>';
-  });
-  featuresHtml += '</ul>';
-} else {
-  featuresHtml = '<p style="font-size:13px;color:#666;">Contact us for full feature details on this product.</p>';
-}
-
-// ── Specs table HTML ──
-var specsHtml = '';
-if(content && content.specs){
-  specsHtml = '<table class="specs-table">';
-  Object.keys(content.specs).forEach(function(k){
-    specsHtml += '<tr><td>'+k+'</td><td>'+content.specs[k]+'</td></tr>';
-  });
-  specsHtml += '</table>';
-} else {
-  specsHtml = '<p style="font-size:13px;color:#666;">Detailed specifications coming soon. Call us for full specs.</p>';
-}
-
-// ── Application list HTML ──
-var uniqueApps = [], seen = {};
-productRows.forEach(function(r){
-  var key = r[F.startYear]+'-'+r[F.endYear]+'|'+r[F.make]+'|'+r[F.model]+'|'+(r[F.bedSize]||'')+'|'+r[F.partNum];
-  if(!seen[key]){ seen[key]=true; uniqueApps.push(r); }
-});
-var appTableHtml =
-  '<div class="fit-count" id="fit-count">'+uniqueApps.length+' fitment entries</div>'+
-  '<div class="fit-search-wrap"><input class="fit-search" id="fit-search" type="text" placeholder="Search by make, model, or year..." oninput="filterAppList()"/></div>'+
-  '<div class="fit-table-wrap">'+
-  '<table class="fit-table" id="fit-table">'+
-    '<thead><tr><th>Years</th><th>Make</th><th>Model</th><th>Bed Size</th><th>Part #</th></tr></thead>'+
-    '<tbody id="fit-tbody"></tbody>'+
-  '</table></div>';
-
-// ── You May Also Like ──
-var alsoProducts = [];
-var alsoSeen = {};
-CATALOG.forEach(function(r){
-  if(r[F.brand]!==BRAND_NAME||r[F.product]===PRODUCT_NAME) return;
-  var key = r[F.brand]+'|'+r[F.product];
-  if(!alsoSeen[key]){
-    alsoSeen[key]=true;
-    var alsoMinP = null;
-    CATALOG.forEach(function(row){ if(row[F.brand]===r[F.brand]&&row[F.product]===r[F.product]&&row[F.map]){ if(!alsoMinP||row[F.map]<alsoMinP) alsoMinP=row[F.map]; }});
-    var alsoContent = PRODUCT_CONTENT && PRODUCT_CONTENT[r[F.product]];
-    alsoProducts.push({brand:r[F.brand],product:r[F.product],minPrice:alsoMinP,img:alsoContent&&alsoContent.img?alsoContent.img:null});
+  // ── Features ──
+  var featuresBullets='';
+  if(content&&content.features&&content.features.length){
+    content.features.forEach(function(f){
+      var idx=f.indexOf(':');
+      var ft=idx>-1?'<strong>'+f.slice(0,idx+1)+'</strong>'+f.slice(idx+1):f;
+      featuresBullets+='<div class="feature-bullet"><span class="bullet-dot"></span><span>'+ft+'</span></div>';
+    });
   }
-});
-var alsoHtml = '';
-alsoProducts.slice(0,6).forEach(function(p){
-  var pPrice = p.minPrice ? 'From $'+p.minPrice.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}) : 'Call for Price';
-  var pImg = p.img
-    ? '<img src="'+p.img+'" alt="'+p.product+'" loading="lazy" onerror="this.parentNode.innerHTML=\'<div class=\\\'also-img-placeholder\\\'>'+p.product+'</div>\'">'
-    : '<div class="also-img-placeholder">'+p.product+'</div>';
-  var href = 'product-detail.html?product='+encodeURIComponent(p.product)+'&brand='+encodeURIComponent(p.brand);
-  alsoHtml += '<div class="also-card" onclick="window.location.href=\''+href+'\'">'+
-    '<div class="also-img">'+pImg+'</div>'+
-    '<div class="also-body">'+
-      '<div class="also-name">'+p.product+'</div>'+
-      '<div class="also-price">'+pPrice+'</div>'+
-      '<a href="'+href+'" class="also-btn">View Details</a>'+
-    '</div>'+
-  '</div>';
-});
 
-// ── Inject full page ──
-document.getElementById('page-content').innerHTML =
-  '<div class="product-hero">'+
-    '<div class="img-section">'+
-      '<div class="img-main">'+imgMainHtml+'</div>'+
-      thumbHtml+
+  // ── Description ──
+  var descHtml='';
+  if(content&&content.desc){
+    descHtml='<div class="features-desc">'+content.desc+'</div>';
+  }
+
+  // ── Fitment notes box ──
+  var fitNotes=[];
+  productRows.forEach(function(r){if(r[F.fitNote]&&r[F.fitNote].length>2&&fitNotes.indexOf(r[F.fitNote])===-1)fitNotes.push(r[F.fitNote]);});
+  var fnBoxHtml=
+    '<div class="fitment-notes-box">'+
+      '<div class="fn-header"><div class="fn-icon">i</div>FITMENT NOTES</div>'+
+      '<ul class="fn-list">';
+  if(fitNotes.length){
+    fitNotes.slice(0,6).forEach(function(n){fnBoxHtml+='<li>'+n+'</li>';});
+  } else {
+    fnBoxHtml+='<li>Always measure your bed from bulkhead to inside of tailgate before ordering.</li>'+
+      '<li>When in doubt, contact us — we verify fitment for every order.</li>';
+  }
+  fnBoxHtml+='</ul></div>';
+
+  // ── Application list ──
+  var uniqueApps=[],appSeen={};
+  productRows.forEach(function(r){
+    var k=r[F.startYear]+'-'+r[F.endYear]+'|'+r[F.make]+'|'+r[F.model]+'|'+(r[F.bedSize]||'')+'|'+r[F.partNum];
+    if(!appSeen[k]){appSeen[k]=true;uniqueApps.push(r);}
+  });
+
+  // ── You May Also Like ──
+  var alsoProducts=[],alsoSeen={};
+  CATALOG.forEach(function(r){
+    if(r[F.brand]!==BRAND_NAME||r[F.product]===PRODUCT_NAME)return;
+    var k=r[F.brand]+'|'+r[F.product];
+    if(!alsoSeen[k]){
+      alsoSeen[k]=true;
+      var ap=null;
+      CATALOG.forEach(function(x){if(x[F.brand]===r[F.brand]&&x[F.product]===r[F.product]&&x[F.map]){if(!ap||x[F.map]<ap)ap=x[F.map];}});
+      var ac=(typeof PRODUCT_CONTENT!=='undefined'&&PRODUCT_CONTENT[r[F.product]])?PRODUCT_CONTENT[r[F.product]]:null;
+      alsoProducts.push({brand:r[F.brand],product:r[F.product],minPrice:ap,img:ac&&ac.img?ac.img:null});
+    }
+  });
+  var alsoHtml='';
+  alsoProducts.slice(0,6).forEach(function(p){
+    var pp=p.minPrice?'From $'+p.minPrice.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}):'Call for Price';
+    var href='product-detail.html?product='+encodeURIComponent(p.product)+'&brand='+encodeURIComponent(p.brand);
+    var pImg=p.img
+      ?'<img src="'+p.img+'" alt="'+p.product+'" loading="lazy" onerror="this.parentNode.innerHTML=\'<div class=\\\'also-ph\\\'>'+p.product+'</div>\'">'
+      :'<div class="also-ph">'+p.product+'</div>';
+    alsoHtml+='<div class="also-card" onclick="window.location.href=\''+href+'\'">'+
+      '<div class="also-img">'+pImg+'</div>'+
+      '<div class="also-body">'+
+        '<div class="also-name">'+p.product+'</div>'+
+        '<div class="also-price">'+pp+'</div>'+
+        '<a href="'+href+'" class="also-btn">View Details</a>'+
+      '</div></div>';
+  });
+
+  // ── Assemble page ──
+  document.getElementById('page-root').innerHTML=
+
+  // Product header
+  '<div class="product-header">'+
+    '<div class="header-left">'+
+      '<div class="product-title">'+PRODUCT_NAME+'</div>'+
+      '<div class="product-subtitle">'+(content?content.brandFull:BRAND_NAME)+(content&&content.coverType?' &bull; '+content.coverType:'')+'</div>'+
+      '<div class="header-meta">'+
+        '<span>SKU: <span id="header-sku">'+panelPartNum+'</span></span>'+
+        '<span class="meta-sep">|</span>'+
+        '<span class="meta-brand">'+(content?content.brandFull:BRAND_NAME)+'</span>'+
+      '</div>'+
+      // Mobile price
+      '<div class="header-price-mobile">'+
+        '<div>'+
+          '<div class="price-starting-label">Starting Price</div>'+
+          '<div class="price-starting-val">'+startingPrice+'</div>'+
+        '</div>'+
+      '</div>'+
+      '<div class="fitment-row">'+
+        fitsBadgeHtml+
+        '<a href="#fitment" class="fitment-note-link">Fitment Notes</a>'+
+      '</div>'+
     '</div>'+
-    '<div class="info-section">'+
-      '<div class="info-brand">'+(content ? content.brandFull : BRAND_NAME)+'</div>'+
-      '<div class="info-name">'+PRODUCT_NAME+'</div>'+
-      (badgeHtml ? '<div class="spec-badges">'+badgeHtml+'</div>' : '')+
-      '<div class="price-row"><div class="info-price">'+priceStr+'</div><div class="price-label">MAP price</div></div>'+
-      '<div class="price-note">Prices may vary. Contact us for the best deal.</div>'+
-      fitmentHtml+
-      '<div class="cta-group">'+
-        '<button class="btn-quote" onclick="goQuote()">Get a Quote</button>'+
-        '<a href="tel:5624246744" class="btn-call">Call to Order</a>'+
+    '<div class="header-right">'+
+      '<div class="page-tabs">'+
+        '<a href="#features" class="page-tab">Features + Notes</a>'+
+        '<a href="#fitment" class="page-tab">Fitment</a>'+
+      '</div>'+
+      '<div class="header-right-price" style="display:none" id="desktop-price">'+
+        '<div class="price-starting-label-desktop">Starting Price</div>'+
+        '<div class="price-starting-val-desktop">'+startingPrice+'</div>'+
       '</div>'+
     '</div>'+
   '</div>'+
-  '<div class="tabs-wrap">'+
-    '<div class="tab-nav">'+
-      '<button class="tab-btn active" onclick="switchTab(this,\'overview\')">Product Overview</button>'+
-      '<button class="tab-btn" onclick="switchTab(this,\'specs\')">Specifications</button>'+
-      '<button class="tab-btn" onclick="switchTab(this,\'fitment\')">Vehicle Fitment</button>'+
+
+  // Main: image + quote panel
+  '<div class="product-main">'+
+    '<div class="product-left">'+
+      '<div class="img-main-wrap">'+imgMainHtml+'</div>'+
+      thumbRowHtml+
     '</div>'+
-    '<div class="tab-pane active" id="tab-overview">'+
-      (content && content.desc ? '<p class="product-desc">'+content.desc+'</p>' : '')+
-      featuresHtml+
+    '<div class="product-right">'+
+      '<div class="quote-panel">'+
+        '<div class="panel-section-title">Get Your Quote</div>'+
+        bedSelectHtml+
+        '<div class="part-display'+(bedKeys.length<=1?' visible':'')+'" id="part-display">'+
+          '<div class="part-display-label">Part Number</div>'+
+          '<div class="part-display-val" id="panel-partnum">'+panelPartNum+'</div>'+
+        '</div>'+
+        '<div class="panel-price-row">'+
+          '<div class="panel-price-label">Starting Price</div>'+
+          '<div class="panel-price-val" id="panel-price">'+panelPrice+'</div>'+
+          '<div class="panel-price-note">Contact us for the best deal on installation.</div>'+
+        '</div>'+
+        '<button class="btn-quote" id="btn-quote" onclick="goQuote()">Get a Quote</button>'+
+        '<a href="tel:5624246744" class="btn-call">Call to Order</a>'+
+        '<div class="price-match">Price Match Guarantee</div>'+
+      '</div>'+
     '</div>'+
-    '<div class="tab-pane" id="tab-specs">'+specsHtml+'</div>'+
-    '<div class="tab-pane" id="tab-fitment">'+appTableHtml+'</div>'+
   '</div>'+
-  (alsoHtml ? '<div class="also-section"><div class="also-title">You May Also Like</div><div class="also-scroll">'+alsoHtml+'</div></div>' : '');
 
-// ── Populate fitment table ──
-populateFitTable(uniqueApps);
-reportHeight();
+  // Trust bar
+  '<div class="trust-bar">'+
+    '<div class="trust-item"><div class="trust-icon">&#10003;</div><div><div class="trust-text-title">Expert Installation</div><div class="trust-text-sub">Professional install available in-store</div></div></div>'+
+    '<div class="trust-item"><div class="trust-icon">FIT</div><div><div class="trust-text-title">Fit Guaranteed</div><div class="trust-text-sub">We verify fitment on every order</div></div></div>'+
+    '<div class="trust-item"><div class="trust-icon">$</div><div><div class="trust-text-title">Same-Day Quotes</div><div class="trust-text-sub">Get a price fast — call or submit online</div></div></div>'+
+  '</div>'+
 
-// ── Functions ──
-function placeholderHtml(){
-  return '<div class="img-placeholder">'+
-    '<div class="img-placeholder-brand">'+(content?content.brandFull:BRAND_NAME)+'</div>'+
-    '<div class="img-placeholder-name">'+PRODUCT_NAME+'</div>'+
-    '<div class="img-placeholder-note">Image coming soon</div>'+
-  '</div>';
+  // Features section
+  '<div class="features-section" id="features">'+
+    '<div class="section-heading">Features</div>'+
+    '<div class="features-layout">'+
+      '<div class="features-body">'+
+        descHtml+
+        (featuresBullets?'<div class="features-bullets">'+featuresBullets+'</div>':'<p style="font-size:13px;color:#666;">Contact us for full feature details on this product.</p>')+
+      '</div>'+
+      fnBoxHtml+
+    '</div>'+
+  '</div>'+
+
+  // Need Help bar
+  '<div class="need-help-bar">'+
+    '<div class="need-help-inner">'+
+      '<div class="need-help-text"><span>Need Help?</span> Talk to an Expert</div>'+
+      '<div class="need-help-links">'+
+        '<a href="tel:5624246744" class="need-help-link">Call Us</a>'+
+        '<a href="mailto:rhinolinings.sh@gmail.com" class="need-help-link">Email Us</a>'+
+        '<a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/contact.html" class="need-help-link">Contact</a>'+
+      '</div>'+
+    '</div>'+
+  '</div>'+
+
+  // Fitment section
+  '<div class="fitment-section" id="fitment">'+
+    '<div class="section-heading">Fitment</div>'+
+    '<div class="sub-heading">Vehicles</div>'+
+    '<input class="fit-search" type="text" placeholder="Search by year, make, or model..." oninput="filterFitTable(this.value)" id="fit-search"/>'+
+    '<div class="fit-table-wrap">'+
+    '<table class="fit-table" id="fit-table">'+
+      '<thead><tr><th>Year</th><th>Make</th><th>Model</th><th>Bed Size</th><th>Part #</th></tr></thead>'+
+      '<tbody id="fit-tbody"></tbody>'+
+    '</table>'+
+    '</div>'+
+    '<div class="fit-note-row"><span class="fit-note-dot">&#9679;</span>Always read all product page details for more important fitment information. When in doubt, contact us to confirm fitment for your specific vehicle.</div>'+
+  '</div>'+
+
+  // You May Also Like
+  (alsoHtml?'<div class="also-section"><div class="also-title">You May Also Like</div><div class="also-scroll">'+alsoHtml+'</div></div>':'');
+
+  // Show desktop price at 768px+
+  if(window.innerWidth>=768)document.getElementById('desktop-price').style.display='block';
+  window.addEventListener('resize',function(){
+    var dp=document.getElementById('desktop-price');
+    if(dp)dp.style.display=window.innerWidth>=768?'block':'none';
+  });
+
+  // Populate fit table
+  populateFitTable(uniqueApps);
+  reportHeight();
+
+  // Store for quote
+  window._reprRow=productRows[0];
+  if(garage&&fitRows.length)window._reprRow=fitRows[0];
 }
 
-function switchImg(thumb, src){
-  document.getElementById('main-img').src = src;
-  document.querySelectorAll('.img-thumb').forEach(function(t){ t.classList.remove('active'); });
-  thumb.classList.add('active');
-}
+// ── Bed size change ──
+var bedOptions_global={};
+(function(){
+  // rebuild bedOptions for JS use
+  (productRows||[]).forEach(function(r){
+    if(!r[F.bedSize])return;
+    var key=r[F.bedSize]+'|'+(r[F.bedIn]||'');
+    if(!bedOptions_global[key])bedOptions_global[key]={bedSize:r[F.bedSize],bedIn:r[F.bedIn],minPrice:null,partNum:r[F.partNum]};
+    var bo=bedOptions_global[key];
+    if(r[F.map]&&(bo.minPrice===null||r[F.map]<bo.minPrice)){bo.minPrice=r[F.map];bo.partNum=r[F.partNum];}
+  });
+})();
 
-function switchTab(btn, id){
-  document.querySelectorAll('.tab-btn').forEach(function(b){ b.classList.remove('active'); });
-  document.querySelectorAll('.tab-pane').forEach(function(p){ p.classList.remove('active'); });
-  btn.classList.add('active');
-  document.getElementById('tab-'+id).classList.add('active');
+function onBedChange(){
+  var sel=document.getElementById('bed-select');
+  if(!sel)return;
+  var val=sel.value;
+  var pd=document.getElementById('part-display');
+  var pp=document.getElementById('panel-price');
+  var pn=document.getElementById('panel-partnum');
+  var hs=document.getElementById('header-sku');
+  if(!val){
+    if(pd)pd.classList.remove('visible');
+    if(pp)pp.textContent='Select a bed size';
+    return;
+  }
+  var bo=bedOptions_global[val];
+  if(!bo)return;
+  if(pd)pd.classList.add('visible');
+  if(pn)pn.textContent=bo.partNum;
+  if(hs)hs.textContent=bo.partNum;
+  if(pp)pp.textContent=bo.minPrice?'$'+bo.minPrice.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}):'Call for Price';
+  window._reprRow=productRows.find(function(r){return r[F.partNum]===bo.partNum;})||productRows[0];
   reportHeight();
 }
 
-function goQuote(){
-  window.location.href = 'parts-quote.html'
-    + '?product=' + encodeURIComponent(PRODUCT_NAME)
-    + '&partNum=' + encodeURIComponent(reprRow[F.partNum]);
+// ── Switch main image ──
+function switchImg(thumb,src){
+  var mi=document.getElementById('main-product-img');
+  if(mi)mi.src=src;
+  document.querySelectorAll('.img-thumb').forEach(function(t){t.classList.remove('active');});
+  thumb.classList.add('active');
 }
 
+function placeholderMarkup(){
+  return '<div class="img-placeholder">'+
+    '<div class="img-ph-brand">'+(content?content.brandFull:BRAND_NAME)+'</div>'+
+    '<div class="img-ph-name">'+PRODUCT_NAME+'</div>'+
+    '<div class="img-ph-note">Image coming soon</div>'+
+  '</div>';
+}
+
+// ── Get quote ──
+function goQuote(){
+  var r=window._reprRow||productRows[0];
+  if(!r)return;
+  window.location.href='parts-quote.html?product='+encodeURIComponent(r[F.product])+'&partNum='+encodeURIComponent(r[F.partNum]);
+}
+
+// ── Fit table ──
+var uniqueApps_global=[];
 function populateFitTable(apps){
-  var tbody = document.getElementById('fit-tbody');
-  if(!tbody) return;
-  tbody.innerHTML = '';
+  uniqueApps_global=apps;
+  var tbody=document.getElementById('fit-tbody');
+  if(!tbody)return;
+  tbody.innerHTML='';
   apps.forEach(function(r){
-    var isFit = matchesTruck(r);
-    var tr = document.createElement('tr');
-    if(isFit) tr.className = 'truck-match';
-    var yearStr = r[F.startYear]===r[F.endYear] ? r[F.startYear] : r[F.startYear]+'-'+r[F.endYear];
-    tr.innerHTML =
-      '<td>'+yearStr+'</td>'+
-      '<td>'+r[F.make]+'</td>'+
-      '<td>'+r[F.model]+'</td>'+
-      '<td>'+(r[F.bedSize]||'-')+'</td>'+
-      '<td>'+r[F.partNum]+'</td>';
+    var isMy=matchesTruck(r);
+    var tr=document.createElement('tr');
+    if(isMy)tr.className='my-truck';
+    var yr=r[F.startYear]===r[F.endYear]?r[F.startYear]:r[F.startYear]+'&ndash;'+r[F.endYear];
+    tr.innerHTML='<td>'+yr+'</td><td>'+r[F.make]+'</td><td>'+r[F.model]+'</td><td>'+(r[F.bedSize]||'&mdash;')+'</td><td class="fit-table-partnum">'+r[F.partNum]+'</td>';
     tbody.appendChild(tr);
   });
 }
 
-function filterAppList(){
-  var q = (document.getElementById('fit-search').value||'').toLowerCase().trim();
-  var apps = q
-    ? uniqueApps.filter(function(r){
-        return (r[F.make]+' '+r[F.model]+' '+r[F.startYear]+' '+r[F.endYear]+' '+r[F.partNum]).toLowerCase().indexOf(q)!==-1;
-      })
-    : uniqueApps;
-  document.getElementById('fit-count').textContent = apps.length+' fitment entries'+(q?' matching "'+q+'"':'');
-  populateFitTable(apps);
+function filterFitTable(q){
+  q=(q||'').toLowerCase().trim();
+  var filtered=q?uniqueApps_global.filter(function(r){
+    return (r[F.make]+' '+r[F.model]+' '+r[F.startYear]+' '+r[F.endYear]).toLowerCase().indexOf(q)!==-1;
+  }):uniqueApps_global;
+  populateFitTable(filtered);
   reportHeight();
 }
 
+// ── Height reporting for Wix iframe ──
 function reportHeight(){
-  var h = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
+  var h=Math.max(document.body.scrollHeight,document.documentElement.scrollHeight);
   window.parent.postMessage(JSON.stringify({height:h}),'*');
 }
-window.addEventListener('load', function(){ reportHeight(); setTimeout(reportHeight,600); });
-window.addEventListener('resize', reportHeight);
+window.addEventListener('load',function(){reportHeight();setTimeout(reportHeight,600);});
+window.addEventListener('resize',reportHeight);
 </script>
 </body>
 </html>
