@@ -60,6 +60,7 @@
 
     /* ── COMPARISON SECTION ── */
     .comparison-section{background:#fff;padding:24px 16px 28px;border-bottom:3px solid #f0f0f0;}
+    .comparison-inner{max-width:960px;margin:0 auto;}
     .comparison-heading-row{margin-bottom:18px;}
     .comparison-heading{font-size:14px;font-weight:900;color:#1a1a1a;text-transform:uppercase;letter-spacing:0.5px;}
     .comparison-heading span{color:#c0392b;}
@@ -86,10 +87,8 @@
     .comp-action:hover{background:#8B0000;}
 
     /* ── YMM SELECTOR BAR ── */
-    .ymm-bar{
-      background:#fff;border-bottom:3px solid #1a1a1a;
-      padding:14px 16px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;
-    }
+    .ymm-bar{background:#fff;border-bottom:3px solid #1a1a1a;padding:14px 16px;}
+    .ymm-inner{max-width:960px;margin:0 auto;display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
     .ymm-label{
       font-size:9px;font-weight:900;letter-spacing:2.5px;text-transform:uppercase;
       color:#8B0000;white-space:nowrap;flex-shrink:0;
@@ -328,6 +327,7 @@
 
       /* YMM */
       .ymm-bar{padding:14px 24px;}
+      .ymm-inner{max-width:960px;}
 
       /* Section heading */
       .section-heading-bar{padding:20px 24px 16px;}
@@ -409,6 +409,7 @@
 
 <!-- Comparison Cards -->
 <div class="comparison-section">
+  <div class="comparison-inner">
   <div class="comparison-heading-row">
     <div class="comparison-heading">The Cover You Need, <span>Found in Seconds</span></div>
   </div>
@@ -445,18 +446,21 @@
     </div>
 
   </div>
+  </div>
 </div>
 
 <!-- YMM Selector Bar -->
 <div class="ymm-bar">
-  <div class="ymm-label">Select Your Vehicle</div>
-  <div class="ymm-selects">
-    <select class="ymm-select" id="ymm-year" onchange="ymmYearChange()"><option value="">Year</option></select>
-    <select class="ymm-select" id="ymm-make" onchange="ymmMakeChange()" disabled><option value="">Make</option></select>
-    <select class="ymm-select" id="ymm-model" onchange="ymmModelChange()" disabled><option value="">Model</option></select>
-    <select class="ymm-select" id="ymm-bed" onchange="ymmBedChange()" disabled><option value="">Bed Size</option></select>
+  <div class="ymm-inner">
+    <div class="ymm-label">Select Your Vehicle</div>
+    <div class="ymm-selects">
+      <select class="ymm-select" id="ymm-year" onchange="ymmYearChange()"><option value="">Year</option></select>
+      <select class="ymm-select" id="ymm-make" onchange="ymmMakeChange()" disabled><option value="">Make</option></select>
+      <select class="ymm-select" id="ymm-model" onchange="ymmModelChange()" disabled><option value="">Model</option></select>
+      <select class="ymm-select" id="ymm-bed" onchange="ymmBedChange()" disabled><option value="">Bed Size</option></select>
+    </div>
+    <button class="ymm-btn" id="ymm-btn" onclick="ymmShopNow()" disabled>Shop Now</button>
   </div>
-  <button class="ymm-btn" id="ymm-btn" onclick="ymmShopNow()" disabled>Shop Now</button>
 </div>
 
 <!-- Section Heading -->
