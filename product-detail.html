@@ -411,7 +411,7 @@ var F={brand:0,product:1,partNum:2,bedIn:3,bedSize:4,startYear:5,endYear:6,make:
 
 // ── URL params ──
 var params={};
-location.search.slice(1).split('&').forEach(function(p){var kv=p.split('=');if(kv[0])params[decodeURIComponent(kv[0])]=decodeURIComponent(kv[1]||'');});
+new URLSearchParams(location.search).forEach(function(v,k){params[k]=v;});
 var PRODUCT_NAME=params.product||'';
 var BRAND_NAME=params.brand||'';
 
