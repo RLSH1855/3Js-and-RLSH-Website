@@ -414,6 +414,7 @@ var params={};
 new URLSearchParams(location.search).forEach(function(v,k){params[k]=v;});
 var PRODUCT_NAME=params.product||'';
 var BRAND_NAME=params.brand||'';
+if(!PRODUCT_NAME){window.location.replace('parts-catalog.html');}
 
 // ── Garage ──
 var garage=null;
