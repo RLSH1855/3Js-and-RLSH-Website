@@ -309,11 +309,20 @@
 
 <script>
   function reportHeight(){
-    var footer = document.querySelector('footer');
-    if(!footer) return;
-    // Use getBoundingClientRect for accurate rendered height
-    var h = Math.ceil(footer.getBoundingClientRect().height);
-    var msg = JSON.stringify({height:h});
+    var h = Math.max(
+      document.body.scrollHeight,
+      document.body.offsetHeight,
+      document.documentElement.scrollHeight,
+      document.documentElement.offsetHeight
+    );
+    window.parent.postMessage(JSON.stringify({height:h}),'*');
+  }
+  document.addEventListener('DOMContentLoaded', reportHeight);
+  window.addEventListener('load', function(){
+    [0,200,500,1000,2000,3500].forEach(function(t){ setTimeout(reportHeight,t); });
+  });
+  window.addEventListener('resize', reportHeight);
+  if(window.ResizeObserver){ new ResizeObserver(reportHeight).observe(document.body); });
     try{ window.parent.postMessage(msg,'*'); }catch(e){}
     try{ window.parent.parent.postMessage(msg,'*'); }catch(e){}
   }

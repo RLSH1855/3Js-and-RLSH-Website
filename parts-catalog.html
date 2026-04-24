@@ -1175,7 +1175,21 @@ function ymmShopNow(){
 }
 
 // ── Height reporting for Wix iframe ──
-function reportHeight(){var h=Math.max(document.body.scrollHeight,document.documentElement.scrollHeight);window.parent.postMessage(JSON.stringify({height:h}),'*');}
+function reportHeight(){
+    var h = Math.max(
+      document.body.scrollHeight,
+      document.body.offsetHeight,
+      document.documentElement.scrollHeight,
+      document.documentElement.offsetHeight
+    );
+    window.parent.postMessage(JSON.stringify({height:h}),'*');
+  }
+  document.addEventListener('DOMContentLoaded', reportHeight);
+  window.addEventListener('load', function(){
+    [0,200,500,1000,2000,3500].forEach(function(t){ setTimeout(reportHeight,t); });
+  });
+  window.addEventListener('resize', reportHeight);
+  if(window.ResizeObserver){ new ResizeObserver(reportHeight).observe(document.body); }),'*');}
 window.addEventListener('load',function(){reportHeight();setTimeout(reportHeight,400);});
 window.addEventListener('resize',reportHeight);
 </script>

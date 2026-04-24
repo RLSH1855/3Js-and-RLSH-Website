@@ -582,7 +582,14 @@
       document.documentElement.scrollHeight,
       document.documentElement.offsetHeight
     );
-    var msg = JSON.stringify({height:h});
+    window.parent.postMessage(JSON.stringify({height:h}),'*');
+  }
+  document.addEventListener('DOMContentLoaded', reportHeight);
+  window.addEventListener('load', function(){
+    [0,200,500,1000,2000,3500].forEach(function(t){ setTimeout(reportHeight,t); });
+  });
+  window.addEventListener('resize', reportHeight);
+  if(window.ResizeObserver){ new ResizeObserver(reportHeight).observe(document.body); });
     window.parent.postMessage(msg,'*');
     try{ window.parent.parent.postMessage(msg,'*'); }catch(e){}
   }
