@@ -64,11 +64,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
 
   <style>
-    
     /* ── RESET / BASE (mobile-first) ── */
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
     html{scroll-behavior:smooth;}
-    body{font-family:'Montserrat',sans-serif;background:#fff;color:#1a1a1a;}
+    body{font-family:'Montserrat',sans-serif;overflow-x:hidden;background:#fff;color:#1a1a1a;}
     a{text-decoration:none;color:inherit;}
     img{max-width:100%;display:block;}
 
@@ -95,49 +94,58 @@
     }
 
     /* ═══════════════════════════════════════
-       SECTION 1 — HERO (SPLIT: text left, photo right)
+       SECTION 1 — HERO (DARK)
     ═══════════════════════════════════════ */
-    .hub-hero{
-      display:flex;flex-direction:column;
-      background:#111;overflow:hidden;
+    .hero{
+      position:relative;
+      min-height:520px;
+      display:flex;align-items:center;justify-content:center;
+      overflow:hidden;background:#0a0a0a;
     }
-    .hub-hero-img-wrap{
-      width:100%;height:260px;overflow:hidden;order:-1;flex-shrink:0;
+    .hero-bg{
+      position:absolute;inset:0;
+      background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/Chevy-Silverado-1500-Red-Chevy-Trucks-.jpg');
+      background-size:cover;background-position:center 45%;
+      transform:scale(1.05);
+      transition:transform 9s ease;
     }
-    .hub-hero-img{
-      width:100%;height:100%;object-fit:cover;object-position:center 50%;
+    .hero.loaded .hero-bg{transform:scale(1);}
+    .hero-overlay{
+      position:absolute;inset:0;
+      background:linear-gradient(155deg,rgba(0,0,0,0.85) 0%,rgba(0,0,0,0.60) 50%,rgba(0,0,0,0.80) 100%);
     }
-    .hub-hero-content{
-      padding:40px 24px 44px;
-      display:flex;flex-direction:column;justify-content:center;
+    .hero::after{
+      content:'';position:absolute;bottom:-1px;left:0;right:0;height:4px;
+      background:linear-gradient(to right,transparent,#8B0000 30%,#8B0000 70%,transparent);
     }
-    .hub-hero-eyebrow{
-      display:block;font-size:10px;font-weight:800;
-      letter-spacing:3px;text-transform:uppercase;
-      color:rgba(255,255,255,0.42);margin-bottom:16px;
+    .hero-content{
+      position:relative;z-index:2;
+      text-align:center;padding:80px 24px 100px;
+      max-width:740px;margin:0 auto;
     }
-    .hub-hero h1{
-      font-size:clamp(36px,9vw,82px);
-      font-weight:900;letter-spacing:-2px;line-height:0.94;
-      text-transform:uppercase;color:#fff;margin-bottom:20px;
+    .hero-content h1{
+      font-size:clamp(40px,10vw,90px);
+      font-weight:900;letter-spacing:-3px;line-height:0.92;
+      text-transform:uppercase;color:#fff;
+      margin-bottom:22px;
     }
-    .hub-hero h1 em{font-style:normal;color:#8B0000;}
-    .hub-hero-sub{
-      font-size:13px;font-weight:500;
-      color:rgba(255,255,255,0.65);
-      line-height:1.78;margin-bottom:32px;
+    .hero-content h1 em{font-style:normal;color:#8B0000;}
+    .hero-sub{
+      font-size:14px;font-weight:500;
+      color:rgba(255,255,255,0.78);
+      line-height:1.85;margin-bottom:38px;
     }
-    .hub-hero-cta{
+    .hero-cta{
       display:inline-flex;align-items:center;gap:10px;
-      padding:15px 34px;width:fit-content;
+      padding:15px 36px;
       background:#8B0000;color:#fff;
       font-size:11px;font-weight:800;letter-spacing:1.8px;text-transform:uppercase;
-      border:2px solid rgba(255,255,255,0.10);
+      border:2px solid rgba(255,255,255,0.12);
       border-radius:6px;
       transition:background 0.2s,transform 0.15s;
     }
-    .hub-hero-cta:hover{background:#a50000;transform:translateY(-2px);}
-    .hub-hero-cta svg{width:14px;height:14px;flex-shrink:0;}
+    .hero-cta:hover{background:#a50000;transform:translateY(-2px);}
+    .hero-cta svg{width:16px;height:16px;flex-shrink:0;}
 
     /* ═══════════════════════════════════════
        SECTION 2 — MY GARAGE (LIGHT)
@@ -230,14 +238,14 @@
     .ymm-save-btn:disabled{background:#ccc;cursor:not-allowed;}
     .ymm-note{
       margin-top:16px;font-size:11px;font-weight:500;
-      color:#333;text-align:center;line-height:1.6;
+      color:#888;text-align:center;line-height:1.6;
     }
 
     /* ═══════════════════════════════════════
-       SECTION 3 — CATEGORY CARDS (LIGHT)
+       SECTION 3 — CATEGORY CARDS (DARK)
     ═══════════════════════════════════════ */
     .categories-section{
-      background:#fff;
+      background:#0a0a0a;
       padding:72px 24px 80px;
     }
     .categories-inner{max-width:1080px;margin:0 auto;}
@@ -245,7 +253,7 @@
     .categories-header h2{
       font-size:clamp(24px,5.5vw,52px);font-weight:900;
       letter-spacing:-1.5px;line-height:1.02;
-      text-transform:uppercase;color:#1a1a1a;
+      text-transform:uppercase;color:#fff;
     }
     .categories-header h2 em{font-style:normal;color:#8B0000;}
 
@@ -279,18 +287,18 @@
       padding:22px 24px;
     }
     .cat-card-label{
-      font-size:11px;font-weight:900;letter-spacing:2.5px;
-      text-transform:uppercase;color:rgba(255,255,255,0.72);
+      font-size:9px;font-weight:900;letter-spacing:2.5px;
+      text-transform:uppercase;color:rgba(255,255,255,0.52);
       margin-bottom:5px;
     }
     .cat-card-name{
-      font-size:30px;font-weight:900;color:#fff;
+      font-size:26px;font-weight:900;color:#fff;
       letter-spacing:-0.5px;line-height:1.0;
       text-transform:uppercase;margin-bottom:8px;
     }
     .cat-card-tagline{
-      font-size:13px;font-weight:600;
-      color:rgba(255,255,255,0.88);
+      font-size:11px;font-weight:600;
+      color:rgba(255,255,255,0.78);
       line-height:1.55;margin-bottom:18px;
     }
     .cat-card-cta{
@@ -341,42 +349,53 @@
     .brand-name-tag:hover{opacity:1;border-color:#8B0000;color:#8B0000;}
 
     /* ═══════════════════════════════════════
-       SECTION 5 — WHY 3J'S (LIGHT)
+       SECTION 5 — WHY 3J'S (DARK)
     ═══════════════════════════════════════ */
     .why-section{
-      background:#f2f2f2;
+      background:#0a0a0a;
       padding:72px 24px 80px;
       position:relative;overflow:hidden;
+    }
+    .why-section::before{
+      content:'';position:absolute;inset:0;
+      background-image:radial-gradient(circle,rgba(255,255,255,0.03) 1px,transparent 1px);
+      background-size:28px 28px;pointer-events:none;
     }
     .why-inner{max-width:960px;margin:0 auto;position:relative;z-index:1;}
     .why-header{text-align:center;margin-bottom:52px;}
     .why-header h2{
       font-size:clamp(24px,5vw,46px);font-weight:900;
       letter-spacing:-1.5px;line-height:1.05;
-      text-transform:uppercase;color:#1a1a1a;
+      text-transform:uppercase;color:#fff;
     }
     .why-header h2 em{font-style:normal;color:#8B0000;}
     .why-header p{
       font-size:13px;font-weight:500;
-      color:#555;
+      color:rgba(255,255,255,0.60);
       margin-top:14px;max-width:440px;
       margin-left:auto;margin-right:auto;line-height:1.8;
     }
 
     .why-grid{
       display:grid;grid-template-columns:1fr;
-      gap:1px;background:#ddd;
-      border:1px solid #ddd;border-radius:8px;overflow:hidden;
+      gap:1px;background:#1a1a1a;
+      border:1px solid #1a1a1a;border-radius:8px;overflow:hidden;
       margin-bottom:48px;
     }
-    .why-item{background:#fff;padding:36px 28px;}
+    .why-item{background:#111;padding:36px 28px;}
+    .why-icon{
+      width:44px;height:44px;border-radius:8px;
+      background:#8B0000;margin-bottom:16px;
+      display:flex;align-items:center;justify-content:center;
+    }
+    .why-icon svg{width:22px;height:22px;stroke:#fff;stroke-width:1.8;fill:none;}
     .why-item-title{
-      font-size:15px;font-weight:900;color:#1a1a1a;
+      font-size:15px;font-weight:900;color:#fff;
       letter-spacing:-0.3px;line-height:1.2;margin-bottom:10px;
     }
     .why-item-body{
       font-size:12px;font-weight:500;
-      color:#555;line-height:1.78;
+      color:rgba(255,255,255,0.65);line-height:1.78;
     }
 
     .why-cta-wrap{text-align:center;}
@@ -393,7 +412,7 @@
     .why-address{
       margin-top:16px;
       font-size:11px;font-weight:500;
-      color:#888;
+      color:rgba(255,255,255,0.38);
       letter-spacing:0.5px;
     }
 
@@ -408,22 +427,19 @@
 
     /* ── TABLET 768px+ ── */
     @media(min-width:768px){
-      .hub-hero{flex-direction:row;min-height:460px;}
-      .hub-hero-img-wrap{flex:0 0 54%;height:auto;order:2;}
-      .hub-hero-content{flex:0 0 46%;order:1;padding:52px 44px;}
+      .hero{min-height:620px;}
       .cat-grid{grid-template-columns:1fr 1fr;gap:20px;}
       .cat-card{height:380px;}
-      .cat-card-name{font-size:34px;}
+      .cat-card-name{font-size:30px;}
       .why-grid{grid-template-columns:1fr 1fr 1fr;}
-      .cat-card:last-child{grid-column:1/-1;height:320px;}
     }
 
     /* ── DESKTOP 1024px+ ── */
     @media(min-width:1024px){
-      .hub-hero{min-height:560px;}
-      .hub-hero-content{padding:68px 64px;}
+      .hero{min-height:720px;}
+      .hero-content h1{letter-spacing:-4px;}
       .cat-card{height:440px;}
-      .cat-card-name{font-size:38px;}
+      .cat-card-name{font-size:34px;}
       .brand-logos{gap:24px 44px;}
       .brand-logo-item{height:40px;}
     }
@@ -432,21 +448,20 @@
 <body>
 
 <!-- ═══════════════════════════════════════
-     SECTION 1: HERO (split layout)
+     SECTION 1: HERO
 ═══════════════════════════════════════ -->
-<section class="hub-hero" id="hero">
-  <div class="hub-hero-img-wrap">
-    <img class="hub-hero-img" src="https://rlsh1855.github.io/3Js-and-RLSH-Website/slide-1.jpg" alt="Truck Accessories — 3J's Auto Body Signal Hill CA">
-  </div>
-  <div class="hub-hero-content" data-anim="fade-up">
-    <span class="hub-hero-eyebrow">3J's Auto Body &nbsp;·&nbsp; Est. 1991 &nbsp;·&nbsp; Signal Hill, CA</span>
+<section class="hero" id="hero">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="hero-overlay" aria-hidden="true"></div>
+  <div class="hero-content" data-anim="fade-up">
+    <span class="eyebrow-light">3J's Auto Body &nbsp;·&nbsp; Est. 1991 &nbsp;·&nbsp; Signal Hill, CA</span>
     <h1>Truck <em>Accessories</em></h1>
-    <p class="hub-hero-sub">Professionally sourced. Expert installation.<br>The right fit for your truck — done right the first time.</p>
-    <a href="#find-your-truck" class="hub-hero-cta">
-      Find Your Fit
+    <p class="hero-sub">Professionally sourced. Expert installation.<br>The right fit for your truck — done right the first time.</p>
+    <a href="#find-your-truck" class="hero-cta">
       <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
       </svg>
+      Find Your Fit
     </a>
   </div>
 </section>
@@ -458,7 +473,7 @@
   <div class="garage-inner">
 
     <div class="garage-text" data-anim="fade-up">
-      <span class="eyebrow">Find Your Fit</span>
+      <span class="eyebrow">My Garage</span>
       <h2>Find Accessories That Fit <em>Your</em> Truck</h2>
       <p>Save your vehicle once — every category automatically shows exactly what fits your year, make, and model.</p>
     </div>
@@ -511,7 +526,7 @@
   <div class="categories-inner">
 
     <div class="categories-header" data-anim="fade-up">
-      <span class="eyebrow">Shop By Category</span>
+      <span class="eyebrow-light">Shop By Category</span>
       <h2>What Are You <em>Looking For?</em></h2>
     </div>
 
@@ -555,28 +570,9 @@
         </div>
       </a>
 
-      <!-- HEADACHE RACKS -->
-      <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/headache-racks.html"
-         class="cat-card" data-anim="fade-up" data-delay="300">
-        <div class="cat-card-img"
-             style="background-image:url('https://www.catalograck.com/ImgVDHR/BAC/BRKbrk_SRX-Rack_Lifestyle_17F250_CrewCab_06.jpg');background-position:center 50%;"></div>
-        <div class="cat-card-overlay"></div>
-        <div class="cat-card-body">
-          <div class="cat-card-label">Headache Racks</div>
-          <div class="cat-card-name">Headache Racks</div>
-          <div class="cat-card-tagline">BackRack &mdash; Original, Louvered, Safety &amp; SRX Series<br>673 fitments &mdash; 1967&ndash;2026 trucks &amp; SUVs</div>
-          <div class="cat-card-cta">
-            Shop Now
-            <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
-            </svg>
-          </div>
-        </div>
-      </a>
-
       <!-- TOWING -->
       <a href="https://www.3jsautobody.com/rhino-lining-quote"
-         class="cat-card" data-anim="fade-up" data-delay="400">
+         class="cat-card" data-anim="fade-up" data-delay="300">
         <div class="cat-card-img"
              style="background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/CURT%20Reb%20Hitch%20Email.jpg');background-position:center 50%;"></div>
         <div class="cat-card-overlay"></div>
@@ -597,7 +593,7 @@
       <a href="https://www.3jsautobody.com/rhino-lining-quote"
          class="cat-card" data-anim="fade-up" data-delay="400">
         <div class="cat-card-img"
-             style="background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/RIGID_SAE_Image_3.jpg');background-position:center 50%;"></div>
+             style="background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/trail-bg.png');background-position:center 40%;"></div>
         <div class="cat-card-overlay"></div>
         <div class="cat-card-body">
           <div class="cat-card-label">Lighting</div>
@@ -659,7 +655,7 @@
   <div class="why-inner">
 
     <div class="why-header" data-anim="fade-up">
-      <span class="eyebrow">The 3J's Difference</span>
+      <span class="eyebrow-light">The 3J's Difference</span>
       <h2>Professional Installation<br>Since <em>1991</em></h2>
       <p>We don't just sell accessories — we install them right. That's been our standard for over 30 years.</p>
     </div>
@@ -667,16 +663,31 @@
     <div class="why-grid" data-anim="fade-up" data-delay="100">
 
       <div class="why-item">
+        <div class="why-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+          </svg>
+        </div>
         <div class="why-item-title">Certified Installation</div>
         <div class="why-item-body">Every accessory is installed by our trained technicians using manufacturer specs and proper hardware. No shortcuts — ever.</div>
       </div>
 
       <div class="why-item">
+        <div class="why-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>
+          </svg>
+        </div>
         <div class="why-item-title">We'll Know Your Name</div>
         <div class="why-item-body">Before we touch your truck, we know who you are. Personal, face-to-face service — no ticket numbers, no strangers. Since 1991.</div>
       </div>
 
       <div class="why-item">
+        <div class="why-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/>
+          </svg>
+        </div>
         <div class="why-item-title">2x Readers' Choice Award</div>
         <div class="why-item-body">Signal Hill's Readers' Choice Award winner — 2021 &amp; 2025. We earn it by doing right by every customer, every single time.</div>
       </div>
@@ -807,23 +818,18 @@
 })();
 
 /* ═══════════════════════════════════════
+   HERO PARALLAX ENTRANCE
+═══════════════════════════════════════ */
+window.addEventListener('load', function(){
+  document.getElementById('hero').classList.add('loaded');
+});
+
+/* ═══════════════════════════════════════
    WIX IFRAME HEIGHT REPORTING
 ═══════════════════════════════════════ */
 function reportHeight(){
-    var h = Math.max(
-      document.body.scrollHeight,
-      document.body.offsetHeight,
-      document.documentElement.scrollHeight,
-      document.documentElement.offsetHeight
-    );
-    window.parent.postMessage(JSON.stringify({height:h}),'*');
-  }
-  document.addEventListener('DOMContentLoaded', reportHeight);
-  window.addEventListener('load', function(){
-    [0,200,500,1000,2000,3500].forEach(function(t){ setTimeout(reportHeight,t); });
-  });
-  window.addEventListener('resize', reportHeight);
-  if(window.ResizeObserver){ new ResizeObserver(reportHeight).observe(document.body); }
+  var h = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
+  window.parent.postMessage(JSON.stringify({height:h}),'*');
 }
 window.addEventListener('load', function(){ reportHeight(); setTimeout(reportHeight,500); setTimeout(reportHeight,1500); });
 window.addEventListener('resize', reportHeight);
