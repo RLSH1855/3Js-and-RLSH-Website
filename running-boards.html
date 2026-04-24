@@ -421,6 +421,9 @@ var ALL_PRODUCTS = [...new Set(CATALOG.map(e=>e[1]))].sort();
 var ALL_CABS = [...new Set(CATALOG.map(e=>e[3]).filter(Boolean))].sort();
 var ALL_MAKES = [...new Set(CATALOG.map(e=>e[6]))].sort();
 
+var FITMENT_COUNT = {};
+CATALOG.forEach(function(e){ FITMENT_COUNT[e[2]] = (FITMENT_COUNT[e[2]]||0)+1; });
+
 /* ── Models per make ── */
 function getModels(make){
   return [...new Set(CATALOG.filter(e=>e[6]===make).map(e=>e[7]))].sort();
@@ -447,7 +450,7 @@ function checkFits(entry){
 
 /* ── Get filtered + sorted entries ── */
 function getFiltered(){
-  return CATALOG.filter(function(e){
+  var rows = CATALOG.filter(function(e){
     if(state.filterProducts.length && !state.filterProducts.includes(e[1])) return false;
     if(state.filterCabs.length && e[3] && !state.filterCabs.includes(e[3])) return false;
     if(state.fitActive){
@@ -455,7 +458,12 @@ function getFiltered(){
       if(fits === false) return false;
     }
     return true;
-  }).sort(function(a,b){
+  });
+  if(!state.fitActive){
+    var seen = Object.create(null);
+    rows = rows.filter(function(e){ var k=e[2]; if(seen[k]) return false; seen[k]=true; return true; });
+  }
+  return rows.sort(function(a,b){
     if(state.sort === 'price-asc')  return (a[9]||0)-(b[9]||0);
     if(state.sort === 'price-desc') return (b[9]||0)-(a[9]||0);
     if(state.sort === 'name-asc')   return a[1].localeCompare(b[1]);
@@ -488,7 +496,9 @@ function renderGrid(){
     var img = e[10]
       ? '<img src="' + e[10] + '" alt="' + esc(e[1]) + '" loading="lazy">'
       : '<div class="card-placeholder">' + esc(e[1]) + '</div>';
-    var cabLabel = e[3] ? '<div class="card-cab">' + esc(e[3]) + '</div>' : '';
+    var cabLabel = state.fitActive
+      ? (e[3] ? '<div class="card-cab">' + esc(e[3]) + '</div>' : '')
+      : '<div class="card-cab">Fits ' + (FITMENT_COUNT[e[2]]||1) + ' truck' + (FITMENT_COUNT[e[2]]===1?'':'s') + '</div>';
     var price = e[9] ? '<span class="card-price-label">MAP Price</span><div class="card-price">$' + e[9].toFixed(2) + '</div>' : '';
     return [
       '<div class="product-card">',

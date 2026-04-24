@@ -382,6 +382,9 @@ var state = {
 var ALL_PRODUCTS = [...new Set(CATALOG.map(e=>e[1]))].sort();
 var ALL_MAKES    = [...new Set(CATALOG.map(e=>e[5]))].sort();
 
+var FITMENT_COUNT = {};
+CATALOG.forEach(function(e){ FITMENT_COUNT[e[2]] = (FITMENT_COUNT[e[2]]||0)+1; });
+
 function getModels(make){
   return [...new Set(CATALOG.filter(e=>e[5]===make).map(e=>e[6]))].sort();
 }
@@ -396,11 +399,16 @@ function checkFits(e){
 }
 
 function getFiltered(){
-  return CATALOG.filter(function(e){
+  var rows = CATALOG.filter(function(e){
     if(state.filterProducts.length && !state.filterProducts.includes(e[1])) return false;
     if(state.fitActive && checkFits(e)===false) return false;
     return true;
-  }).sort(function(a,b){
+  });
+  if(!state.fitActive){
+    var seen = Object.create(null);
+    rows = rows.filter(function(e){ var k=e[2]; if(seen[k]) return false; seen[k]=true; return true; });
+  }
+  return rows.sort(function(a,b){
     if(state.sort==='price-asc')  return (a[8]||0)-(b[8]||0);
     if(state.sort==='price-desc') return (b[8]||0)-(a[8]||0);
     if(state.sort==='name-asc')   return a[1].localeCompare(b[1]);
@@ -423,12 +431,15 @@ function renderGrid(){
     var badge  = state.fitActive && fits!==null ? '<span class="fits-badge '+(fits?'fits':'no-fit')+'">'+(fits?'Fits Your Truck':'Does Not Fit')+'</span>' : '';
     var img    = e[9] ? '<img src="'+e[9]+'" alt="'+esc(e[1])+'" loading="lazy" onerror="this.style.display=\'none\'">' : '<div class="card-placeholder">'+esc(e[1])+'</div>';
     var price  = e[8] ? '<span class="card-price-label">MAP Price</span><div class="card-price">$'+e[8].toFixed(2)+'</div>' : '';
+    var fitLine = state.fitActive
+      ? esc(e[5])+' '+esc(e[6])+' &nbsp;·&nbsp; '+e[3]+'–'+e[4]
+      : 'Fits '+(FITMENT_COUNT[e[2]]||1)+' truck'+(FITMENT_COUNT[e[2]]===1?'':'s');
     return '<div class="product-card">'
       +'<div class="card-img">'+img+badge+'</div>'
       +'<div class="card-body">'
       +'<div class="card-brand">BackRack</div>'
       +'<div class="card-name">'+esc(e[1])+'</div>'
-      +'<div class="card-years">'+esc(e[5])+' '+esc(e[6])+' &nbsp;·&nbsp; '+e[3]+'–'+e[4]+'</div>'
+      +'<div class="card-years">'+fitLine+'</div>'
       +price
       +'<div class="card-btns">'
       +'<div class="card-btn card-btn-part">'+esc(e[2])+'</div>'
