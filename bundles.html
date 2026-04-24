@@ -64,8 +64,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    html{overflow-x:hidden;}
-    body{font-family:'Montserrat',sans-serif;overflow-x:hidden;background:#fff;color:#111;}
+    html{overflow-x:hidden;overflow-y:auto;}
+    body{font-family:'Montserrat',sans-serif;overflow-x:hidden;overflow-y:visible;background:#fff;color:#111;}
 
     /* ── HERO ── */
     .hero{
@@ -838,12 +838,20 @@
 
 <script>
   function reportHeight(){
-    var h = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
+    var h = Math.max(
+      document.body.scrollHeight,
+      document.body.offsetHeight,
+      document.documentElement.scrollHeight,
+      document.documentElement.offsetHeight
+    );
     window.parent.postMessage(JSON.stringify({height:h}),'*');
   }
-  window.addEventListener('load', function(){ reportHeight(); setTimeout(reportHeight,500); setTimeout(reportHeight,1500); });
+  window.addEventListener('load', function(){
+    [0,200,500,1000,2000,3500].forEach(function(t){ setTimeout(reportHeight,t); });
+  });
   window.addEventListener('resize', reportHeight);
   if(window.ResizeObserver){ new ResizeObserver(reportHeight).observe(document.body); }
+  document.addEventListener('DOMContentLoaded', reportHeight);
 </script>
 
 </body>
