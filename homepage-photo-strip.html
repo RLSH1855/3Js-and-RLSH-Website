@@ -208,7 +208,7 @@
     [0,200,500,1000,2000,3500].forEach(function(t){ setTimeout(reportHeight,t); });
   });
   window.addEventListener('resize', reportHeight);
-  if(window.ResizeObserver){ new ResizeObserver(reportHeight).observe(document.body); }),'*');
+  if(window.ResizeObserver){ new ResizeObserver(reportHeight).observe(document.body); }
     if(window.parent !== window.parent.parent){
       window.parent.parent.postMessage(JSON.stringify({height:h}),'*');
     }
