@@ -91,7 +91,7 @@
       white-space:nowrap;
       transition:color 0.2s;
     }
-    .sn-nav > a:hover{color:#c0392b;}
+    .sn-nav > a:hover{color:#8B0000;}
 
     /* ── Dropdown (simple list) ── */
     .sn-dd{
@@ -111,7 +111,7 @@
       transition:color 0.2s;
       background:none;border:none;
     }
-    .sn-dd-trigger:hover,.sn-dd:hover .sn-dd-trigger{color:#c0392b;}
+    .sn-dd-trigger:hover,.sn-dd:hover .sn-dd-trigger{color:#8B0000;}
     .sn-caret{
       font-size:8px;
       transition:transform 0.2s;
@@ -165,7 +165,7 @@
       transition:color 0.2s;
       background:none;border:none;
     }
-    .sn-mega-trigger:hover,.sn-mega:hover .sn-mega-trigger{color:#c0392b;}
+    .sn-mega-trigger:hover,.sn-mega:hover .sn-mega-trigger{color:#8B0000;}
     .sn-mega:hover .sn-caret{transform:rotate(180deg);}
     .sn-mega-panel{
       display:none;
@@ -341,8 +341,8 @@
       background:none;border:none;width:100%;text-align:left;
       border-bottom:1px solid #1a1a1a;
     }
-    .sn-mobile-menu > a:hover,.sn-mob-top:hover{color:#c0392b;}
-    .sn-mobile-menu > a.sn-mob-red{color:#c0392b;}
+    .sn-mobile-menu > a:hover,.sn-mob-top:hover{color:#8B0000;}
+    .sn-mobile-menu > a.sn-mob-red{color:#8B0000;}
     .sn-mob-item > .sn-mob-top{
       color:#fff;
     }
@@ -441,7 +441,7 @@
       display:inline-block;margin-bottom:14px;
       transition:color 0.2s;
     }
-    .sn-footer-phone:hover{color:#c0392b;}
+    .sn-footer-phone:hover{color:#8B0000;}
     .sn-footer-hours{
       font-size:11px;font-weight:400;
       color:rgba(255,255,255,0.50);
