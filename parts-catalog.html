@@ -146,17 +146,48 @@
     .catalog-wrap{display:grid;grid-template-columns:1fr;gap:0;min-height:calc(100vh - 260px);}
 
     /* ── SIDEBAR ── */
-    .sidebar{display:none;}/* Hidden on mobile */
-    .sidebar-section{margin-bottom:20px;}
+    .sidebar{display:none;}
+    .sidebar-section{border-bottom:1px solid #eee;}
     .sidebar-title{
-      font-size:9px;font-weight:900;letter-spacing:2.5px;text-transform:uppercase;
-      color:#8B0000;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid #e8e8e8;
+      display:flex;align-items:center;justify-content:space-between;
+      padding:13px 16px;
+      background:#8B0000;color:#fff;
+      font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;
+      cursor:pointer;user-select:none;
     }
-    .filter-item{display:flex;align-items:center;gap:8px;padding:5px 0;cursor:pointer;user-select:none;}
-    .cb{width:15px;height:15px;border:2px solid #ccc;border-radius:3px;flex-shrink:0;transition:background 0.15s,border-color 0.15s;}
+    .sidebar-toggle{font-size:18px;font-weight:300;line-height:1;opacity:0.75;}
+    .sidebar-items.collapsed{display:none;}
+    .filter-item{
+      display:flex;align-items:center;gap:10px;
+      padding:11px 16px;
+      cursor:pointer;user-select:none;
+      border-bottom:1px solid #f5f5f5;
+      transition:background 0.15s;
+    }
+    .filter-item:last-child{border-bottom:none;}
+    .filter-item:hover{background:#fafafa;}
+    .filter-item.is-active{background:#fdf5f5;}
+    .cb{
+      width:17px;height:17px;border:2px solid #ccc;border-radius:3px;
+      flex-shrink:0;position:relative;
+      transition:background 0.15s,border-color 0.15s;
+    }
     .cb.checked{background:#8B0000;border-color:#8B0000;}
-    .filter-label{font-size:12px;font-weight:600;color:#333;}
-    .filter-count{font-size:10px;font-weight:600;color:#999;margin-left:auto;}
+    .cb.checked::after{
+      content:'';position:absolute;top:2px;left:5px;
+      width:5px;height:8px;
+      border:2px solid #fff;border-top:none;border-left:none;
+      transform:rotate(45deg);
+    }
+    @keyframes cb-glow{
+      0%{box-shadow:0 0 0 0 rgba(139,0,0,0.55);}
+      40%{box-shadow:0 0 0 6px rgba(139,0,0,0.18);}
+      100%{box-shadow:0 0 0 0 rgba(139,0,0,0);}
+    }
+    .cb.glow{animation:cb-glow 0.35s ease-out;}
+    .filter-label{font-size:13px;font-weight:500;color:#333;flex:1;line-height:1.2;}
+    .filter-label.fit-label{color:#1a7a1a;font-weight:700;}
+    .filter-count{font-size:11px;font-weight:600;color:#bbb;flex-shrink:0;}
 
     /* ── MAIN CONTENT ── */
     .main{background:#f2f2f2;}
@@ -208,45 +239,96 @@
 
     /* ── PRODUCT CARD ── */
     .product-card{
-      background:#fff;border-radius:6px;overflow:hidden;
-      box-shadow:0 1px 3px rgba(0,0,0,0.08);
-      cursor:pointer;position:relative;
+      background:#fff;border-radius:8px;overflow:hidden;
+      border:1px solid #e8e8e8;
       display:flex;flex-direction:column;
-      transition:box-shadow 0.2s;
+      transition:box-shadow 0.2s,border-color 0.2s;
     }
-    .product-card:hover{box-shadow:0 4px 18px rgba(0,0,0,0.13);}
+    .product-card:hover{box-shadow:0 6px 24px rgba(0,0,0,0.10);border-color:#bbb;}
+
+    /* Image */
     .card-img-link{display:block;text-decoration:none;}
-    .card-img{
-      width:100%;
-      aspect-ratio:4/3;
-      background:linear-gradient(135deg,#f5f5f5,#e8e8e8);
+    .card-img-wrap{
+      position:relative;overflow:hidden;
+      background:linear-gradient(135deg,#f0f0f0,#e4e4e4);
+    }
+    .card-img-main{
+      width:100%;aspect-ratio:4/3;object-fit:cover;display:block;
+      transition:transform 0.4s ease;
+    }
+    .card-img-wrap:hover .card-img-main{transform:scale(1.04);}
+    .card-placeholder{
+      width:100%;aspect-ratio:4/3;
+      display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;
+    }
+    .card-ph-brand{font-size:8px;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:#ccc;}
+    .card-ph-name{font-size:11px;font-weight:700;color:#aaa;text-align:center;padding:0 12px;line-height:1.3;}
+
+    /* Header (name + subtitle) */
+    .card-header{padding:13px 13px 8px;}
+    .card-name{font-size:14px;font-weight:900;color:#1a1a1a;line-height:1.2;margin-bottom:3px;}
+    .card-subtitle{font-size:11px;font-weight:500;color:#777;font-style:italic;}
+
+    /* Guaranteed Fit */
+    .card-fit{display:flex;align-items:flex-start;gap:8px;padding:0 13px 10px;}
+    .card-fit-icon{
+      width:20px;height:20px;border-radius:50%;
+      background:#1a7a1a;color:#fff;
       display:flex;align-items:center;justify-content:center;
-      overflow:hidden;position:relative;
+      font-size:11px;font-weight:900;flex-shrink:0;margin-top:1px;
     }
-    .card-img img{width:100%;height:100%;object-fit:cover;}
-    .card-placeholder{font-size:9px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:#bbb;text-align:center;padding:8px;}
-    .fits-badge{
-      position:absolute;top:8px;left:8px;
+    .card-fit-label{font-size:10px;font-weight:800;color:#1a7a1a;letter-spacing:0.3px;}
+    .card-fit-vehicle{font-size:11px;font-weight:600;color:#333;margin-top:2px;line-height:1.3;}
+    .card-fit-change{
+      font-size:10px;font-weight:600;color:#0066bb;text-decoration:underline;
+      display:inline-block;margin-top:3px;background:none;border:none;padding:0;cursor:pointer;
+    }
+    .card-nofit{padding:0 13px 10px;font-size:10px;font-weight:800;color:#c0392b;}
+
+    /* Bottom: price + buttons */
+    .card-bottom{
+      display:flex;align-items:center;justify-content:space-between;gap:8px;
+      padding:11px 13px 12px;border-top:1px solid #f0f0f0;margin-top:auto;
+    }
+    .card-price-block{}
+    .card-from-label{display:block;font-size:8px;font-weight:700;color:#999;text-transform:uppercase;letter-spacing:1px;margin-bottom:1px;}
+    .card-price-amount{font-size:20px;font-weight:900;color:#8B0000;line-height:1;}
+
+    .card-actions{display:flex;flex-direction:column;gap:5px;flex-shrink:0;}
+    .card-btn-view{
+      display:block;padding:8px 11px;background:#1a1a1a;color:#fff;
+      border:none;border-radius:4px;
       font-size:8px;font-weight:900;letter-spacing:1px;text-transform:uppercase;
-      padding:3px 8px;border-radius:3px;
+      cursor:pointer;text-align:center;text-decoration:none;white-space:nowrap;
     }
-    .fits-badge.fits{background:#1a7a1a;color:#fff;}
-    .fits-badge.no-fit{background:#e65c00;color:#fff;}
-    .card-body{padding:10px 12px 12px;flex:1;display:flex;flex-direction:column;}
-    .card-brand{font-size:8px;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:#8B0000;margin-bottom:3px;}
-    .card-name{font-size:12px;font-weight:800;color:#1a1a1a;margin-bottom:8px;line-height:1.3;flex:1;}
-    .card-price{font-size:15px;font-weight:900;color:#8B0000;margin-bottom:10px;}
-    .card-price-label{font-size:8px;font-weight:700;color:#888;display:block;margin-bottom:1px;}
-    .card-btns{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:auto;}
-    .card-btn{
-      display:block;padding:8px 4px;border:none;border-radius:5px;
-      font-size:9px;font-weight:900;letter-spacing:0.5px;text-transform:uppercase;
-      cursor:pointer;text-align:center;text-decoration:none;
-    }
-    .card-btn-view{background:#1a1a1a;color:#fff;}
     .card-btn-view:hover{background:#333;}
-    .card-btn-quote{background:#8B0000;color:#fff;}
+    .card-btn-quote{
+      display:block;padding:8px 11px;background:#8B0000;color:#fff;
+      border:none;border-radius:4px;
+      font-size:8px;font-weight:900;letter-spacing:1px;text-transform:uppercase;
+      cursor:pointer;text-align:center;text-decoration:none;white-space:nowrap;
+    }
     .card-btn-quote:hover{background:#6d0000;}
+
+    /* Compare row */
+    .card-compare-row{
+      display:flex;align-items:center;gap:7px;
+      padding:8px 13px;border-top:1px solid #f5f5f5;
+    }
+    .card-compare-cb{
+      width:15px;height:15px;border:2px solid #ccc;border-radius:3px;
+      flex-shrink:0;position:relative;cursor:pointer;
+      transition:background 0.15s,border-color 0.15s;
+    }
+    .card-compare-cb.checked{background:#8B0000;border-color:#8B0000;}
+    .card-compare-cb.checked::after{
+      content:'';position:absolute;top:1px;left:4px;
+      width:4px;height:7px;
+      border:2px solid #fff;border-top:none;border-left:none;
+      transform:rotate(45deg);
+    }
+    .card-compare-cb.glow{animation:cb-glow 0.35s ease-out;}
+    .card-compare-label{font-size:11px;font-weight:600;color:#666;cursor:pointer;}
 
     /* ── EMPTY STATE ── */
     #empty-state{display:none;padding:48px 24px;text-align:center;background:#fff;}
@@ -334,11 +416,11 @@
       .section-main-heading{font-size:22px;}
 
       /* Catalog layout: sidebar + main */
-      .catalog-wrap{grid-template-columns:220px 1fr;}
+      .catalog-wrap{grid-template-columns:240px 1fr;}
       .sidebar{
-        display:block;background:#fff;border-right:2px solid #e8e8e8;
-        padding:18px 14px;position:sticky;top:0;
-        height:fit-content;max-height:calc(100vh - 80px);overflow-y:auto;
+        display:block;background:#fff;border-right:2px solid #eee;
+        position:sticky;top:0;
+        height:fit-content;max-height:calc(100vh - 60px);overflow-y:auto;
       }
       .mobile-filter-btn{display:none;}
 
@@ -503,23 +585,34 @@
 
   <div class="sidebar">
     <div class="sidebar-section">
-      <div class="sidebar-title">Fitment</div>
-      <div class="filter-item" onclick="toggleFitment(true)">
-        <div class="cb checked" id="cb-fit"></div>
-        <span class="filter-label" style="color:#1a7a1a;font-weight:800;">Fits My Truck Only</span>
+      <div class="sidebar-title" onclick="toggleSection(this)">
+        <span>Fitment</span>
+        <span class="sidebar-toggle">&#8722;</span>
       </div>
-      <div class="filter-item" onclick="toggleFitment(false)">
-        <div class="cb" id="cb-all"></div>
-        <span class="filter-label">Show All</span>
+      <div class="sidebar-items">
+        <div class="filter-item" onclick="toggleFitment(true)">
+          <div class="cb checked" id="cb-fit"></div>
+          <span class="filter-label fit-label">Fits My Truck Only</span>
+        </div>
+        <div class="filter-item" onclick="toggleFitment(false)">
+          <div class="cb" id="cb-all"></div>
+          <span class="filter-label">Show All</span>
+        </div>
       </div>
     </div>
     <div class="sidebar-section">
-      <div class="sidebar-title">Brand</div>
-      <div id="brand-filters"></div>
+      <div class="sidebar-title" onclick="toggleSection(this)">
+        <span>Brand</span>
+        <span class="sidebar-toggle">&#8722;</span>
+      </div>
+      <div class="sidebar-items" id="brand-filters"></div>
     </div>
     <div class="sidebar-section">
-      <div class="sidebar-title">Cover Type</div>
-      <div id="type-filters"></div>
+      <div class="sidebar-title" onclick="toggleSection(this)">
+        <span>Cover Type</span>
+        <span class="sidebar-toggle">&#8722;</span>
+      </div>
+      <div class="sidebar-items" id="type-filters"></div>
     </div>
   </div>
 
@@ -628,6 +721,30 @@
 // ── Field indexes ──
 var F={brand:0,product:1,partNum:2,bedIn:3,bedSize:4,startYear:5,endYear:6,make:7,model:8,desc:9,fitNote:10,map:11,img:12};
 
+function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+
+function glowCb(elOrId){
+  var el=typeof elOrId==='string'?document.getElementById(elOrId):elOrId;
+  if(!el)return;
+  el.classList.remove('glow');
+  void el.offsetWidth;
+  el.classList.add('glow');
+}
+
+function toggleSection(titleEl){
+  var items=titleEl.nextElementSibling;
+  var toggle=titleEl.querySelector('.sidebar-toggle');
+  var collapsed=items.classList.toggle('collapsed');
+  toggle.innerHTML=collapsed?'&#43;':'&#8722;';
+}
+
+var compareSet={};
+function toggleCompare(cbEl,product){
+  compareSet[product]=!compareSet[product];
+  cbEl.classList.toggle('checked',!!compareSet[product]);
+  glowCb(cbEl);
+}
+
 // ── Cover type map ──
 var PRODUCT_TYPES={
   'BAKFlip F1':'Hard Folding','BAKFlip FiberMax':'Hard Folding','BAKFlip G2':'Hard Folding',
@@ -704,27 +821,33 @@ function matchesTruck(row){
 
 // ── Build sidebar filters ──
 function buildFilters(){
-  var brands={},types={};
+  var brandCnts={},typeCnts={},seen={};
   CATALOG.forEach(function(r){
-    brands[r[F.brand]]=(brands[r[F.brand]]||0)+1;
-    var t=PRODUCT_TYPES[r[F.product]]||'Other';
-    types[t]=(types[t]||0)+1;
+    var k=r[F.brand]+'|'+r[F.product];
+    if(!seen[k]){
+      seen[k]=true;
+      brandCnts[r[F.brand]]=(brandCnts[r[F.brand]]||0)+1;
+      var t=PRODUCT_TYPES[r[F.product]]||'Other';
+      typeCnts[t]=(typeCnts[t]||0)+1;
+    }
   });
   var bf=document.getElementById('brand-filters');
-  Object.keys(brands).sort().forEach(function(b){
+  Object.keys(brandCnts).sort().forEach(function(b){
     filterBrands[b]=false;
+    var cbId='cb-brand-'+b.replace(/\s/g,'-');
     var d=document.createElement('div');d.className='filter-item';
-    d.innerHTML='<div class="cb" id="cb-brand-'+b.replace(/\s/g,'-')+'"></div><span class="filter-label">'+b+'</span>';
+    d.innerHTML='<div class="cb" id="'+cbId+'"></div><span class="filter-label">'+esc(b)+'</span><span class="filter-count">'+brandCnts[b]+'</span>';
     d.onclick=function(){toggleBrand(b);};bf.appendChild(d);
     var chip=document.createElement('div');chip.className='mob-chip';chip.dataset.filter='brand';chip.dataset.val=b;
     chip.textContent=b;chip.onclick=function(){mobChipToggle(this);};
     document.getElementById('mob-chips-brand').appendChild(chip);
   });
   var tf=document.getElementById('type-filters');
-  Object.keys(types).sort().forEach(function(t){
+  Object.keys(typeCnts).sort().forEach(function(t){
     filterTypes[t]=false;
+    var cbId='cb-type-'+t.replace(/\s/g,'-').replace(/\//g,'-');
     var d=document.createElement('div');d.className='filter-item';
-    d.innerHTML='<div class="cb" id="cb-type-'+t.replace(/\s/g,'-')+'"></div><span class="filter-label">'+t+'</span>';
+    d.innerHTML='<div class="cb" id="'+cbId+'"></div><span class="filter-label">'+esc(t)+'</span><span class="filter-count">'+typeCnts[t]+'</span>';
     d.onclick=function(){toggleType(t);};tf.appendChild(d);
   });
 }
@@ -734,11 +857,22 @@ function toggleFitment(fitOnly){
   filterFitOnly=fitOnly&&!!garage;
   document.getElementById('cb-fit').classList.toggle('checked',filterFitOnly);
   document.getElementById('cb-all').classList.toggle('checked',!filterFitOnly);
+  glowCb(fitOnly?'cb-fit':'cb-all');
   document.getElementById('tag-fitment').style.display=filterFitOnly?'flex':'none';
   renderProducts();
 }
-function toggleBrand(b){filterBrands[b]=!filterBrands[b];document.getElementById('cb-brand-'+b.replace(/\s/g,'-')).classList.toggle('checked',filterBrands[b]);renderProducts();}
-function toggleType(t){filterTypes[t]=!filterTypes[t];document.getElementById('cb-type-'+t.replace(/\s/g,'-')).classList.toggle('checked',filterTypes[t]);renderProducts();}
+function toggleBrand(b){
+  filterBrands[b]=!filterBrands[b];
+  var el=document.getElementById('cb-brand-'+b.replace(/\s/g,'-'));
+  if(el){el.classList.toggle('checked',filterBrands[b]);glowCb(el);}
+  renderProducts();
+}
+function toggleType(t){
+  filterTypes[t]=!filterTypes[t];
+  var el=document.getElementById('cb-type-'+t.replace(/\s/g,'-').replace(/\//g,'-'));
+  if(el){el.classList.toggle('checked',filterTypes[t]);glowCb(el);}
+  renderProducts();
+}
 
 // ── Smart product-level filtering ──
 function getProducts(){
@@ -798,30 +932,63 @@ function renderProducts(){
 
   sorted.forEach(function(p){
     var r=p.repr;
-    var card=document.createElement('div');card.className='product-card';
-    var price=p.minPrice?'From $'+p.minPrice.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}):'Call for Price';
-    var pcImg=(typeof PRODUCT_CONTENT!=='undefined'&&PRODUCT_CONTENT[p.product]&&PRODUCT_CONTENT[p.product].img)?PRODUCT_CONTENT[p.product].img:(r[F.img]||null);
+    var pcImg=(typeof PRODUCT_CONTENT!=='undefined'&&PRODUCT_CONTENT[p.product]&&PRODUCT_CONTENT[p.product].img)
+      ?PRODUCT_CONTENT[p.product].img:(r[F.img]||null);
+
     var imgHtml=pcImg
-      ?'<img src="'+pcImg+'" alt="'+p.product+'" loading="lazy" onerror="this.parentNode.innerHTML=\'<div class=\\\'card-placeholder\\\'>'+p.product+'</div>\'">'
-      :'<div class="card-placeholder">'+p.product+'</div>';
-    var fitBadge=!garage?''
-      :p.hasfit?'<div class="fits-badge fits">✓ Fits Your Truck</div>'
-      :'<div class="fits-badge no-fit">Verify Fitment</div>';
+      ?'<img class="card-img-main" src="'+pcImg+'" alt="'+esc(p.product)+'" loading="lazy">'
+      :'<div class="card-placeholder"><div class="card-ph-brand">'+esc(p.brand)+'</div><div class="card-ph-name">'+esc(p.product)+'</div></div>';
+
+    var coverType=PRODUCT_TYPES[p.product]||'Tonneau';
+    var subtitle=coverType+' Cover';
+
+    var fitHtml='';
+    if(garage){
+      if(p.hasfit){
+        var bedStr=garage.bedSize?', '+garage.bedSize+' Bed':'';
+        fitHtml='<div class="card-fit">'+
+          '<div class="card-fit-icon">&#10003;</div>'+
+          '<div>'+
+            '<div class="card-fit-label">Guaranteed Fit</div>'+
+            '<div class="card-fit-vehicle">'+esc(garage.year+' '+garage.make+' '+garage.model+bedStr)+'</div>'+
+            '<button class="card-fit-change" onclick="event.stopPropagation();clearGarage()">Change vehicle</button>'+
+          '</div>'+
+        '</div>';
+      } else {
+        fitHtml='<div class="card-nofit">&#x2715; Verify Fitment</div>';
+      }
+    }
+
+    var priceHtml=p.minPrice
+      ?'<span class="card-from-label">FROM:</span><div class="card-price-amount">$'+p.minPrice.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})+'</div>'
+      :'<span class="card-from-label">PRICE</span><div class="card-price-amount" style="font-size:14px;color:#555;">Call Us</div>';
+
     var detailUrl='product-detail.html?product='+encodeURIComponent(p.product)+'&brand='+encodeURIComponent(p.brand);
+    var quoteUrl='https://www.3jsautobody.com/rhino-lining-quote';
+    var safeId='cmp-'+(p.brand+'-'+p.product).replace(/[^a-zA-Z0-9]/g,'-');
+    var safeProduct=p.product.replace(/\\/g,'\\\\').replace(/'/g,"\\'");
+
+    var card=document.createElement('div');card.className='product-card';
     card.innerHTML=
       '<a href="'+detailUrl+'" class="card-img-link">'+
-        '<div class="card-img">'+fitBadge+imgHtml+'</div>'+
+        '<div class="card-img-wrap">'+imgHtml+'</div>'+
       '</a>'+
-      '<div class="card-body">'+
-        '<div class="card-brand">'+p.brand+'</div>'+
-        '<div class="card-name">'+p.product+'</div>'+
-        '<div class="card-price"><span class="card-price-label">Starting at</span>'+price+'</div>'+
-        '<div class="card-btns">'+
-          '<a href="'+detailUrl+'" class="card-btn card-btn-view">View Details</a>'+
-          '<button class="card-btn card-btn-quote" onclick="event.stopPropagation();getQuote(\''+r[F.product]+'\',\''+r[F.partNum]+'\')">Get a Quote</button>'+
+      '<div class="card-header">'+
+        '<div class="card-name">'+esc(p.product)+'</div>'+
+        '<div class="card-subtitle">'+esc(subtitle)+'</div>'+
+      '</div>'+
+      fitHtml+
+      '<div class="card-bottom">'+
+        '<div class="card-price-block">'+priceHtml+'</div>'+
+        '<div class="card-actions">'+
+          '<a href="'+detailUrl+'" class="card-btn-view">View Details</a>'+
+          '<a href="'+quoteUrl+'" target="_top" class="card-btn-quote">Get a Quote</a>'+
         '</div>'+
+      '</div>'+
+      '<div class="card-compare-row">'+
+        '<div class="card-compare-cb" id="'+safeId+'" onclick="event.stopPropagation();toggleCompare(this,\''+safeProduct+'\')"></div>'+
+        '<span class="card-compare-label" onclick="document.getElementById(\''+safeId+'\').click()">Compare</span>'+
       '</div>';
-    card.onclick=function(e){if(e.target.closest('.card-btn'))return;window.location.href=detailUrl;};
     grid.appendChild(card);
   });
 
