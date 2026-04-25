@@ -196,35 +196,31 @@
     .badge-dot{width:8px;height:8px;border-radius:50%;background:#8B0000;flex-shrink:0;}
     .badge span{font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#888;}
 
-    /* ─── SERVICE CARDS ─── */
-    .service-grid{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:16px;
-      margin-top:48px;
+    /* ─── VISUAL PHOTO BOX ─── */
+    .visual-box{border-radius:16px;overflow:hidden;position:relative;background:#111;}
+    .visual-box img{width:100%;height:100%;object-fit:cover;display:block;}
+    .visual-box-inner{aspect-ratio:4/3;}
+
+    /* ─── SECTION DIVIDER ─── */
+    .section-divider{height:1px;background:#e8e8e8;margin:0;}
+
+    /* ─── DARK WORKMANSHIP SECTION ─── */
+    .work-section{background:#0a0a0a;padding:80px 24px;}
+    .work-section .section-inner{max-width:1100px;margin:0 auto;}
+    .work-header{text-align:center;margin-bottom:48px;}
+    .work-header .eyebrow{color:rgba(255,255,255,0.45);}
+    .work-header h2{font-size:clamp(24px,3.5vw,40px);font-weight:900;letter-spacing:-0.5px;line-height:1.1;color:#fff;}
+    .work-header h2 em{font-style:normal;color:#8B0000;}
+    .work-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+    .work-photo{border-radius:12px;overflow:hidden;aspect-ratio:4/3;}
+    .work-photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.4s ease;}
+    .work-photo:hover img{transform:scale(1.04);}
+
+    @media(max-width:900px){.work-grid{grid-template-columns:1fr 1fr;}}
+    @media(max-width:600px){
+      .work-grid{grid-template-columns:1fr 1fr;}
+      .work-section{padding:40px 16px;}
     }
-    .service-card{
-      background:#111;
-      border:1px solid #1e1e1e;
-      border-radius:12px;
-      padding:28px 24px;
-      transition:border-color 0.25s,transform 0.25s;
-    }
-    .service-card:hover{border-color:#8B0000;transform:translateY(-4px);}
-    .service-icon{
-      width:60px;height:60px;border-radius:16px;
-      display:flex;align-items:center;justify-content:center;
-      margin-bottom:16px;box-shadow:0 6px 20px rgba(0,0,0,0.22);
-    }
-    .service-icon svg{width:26px;height:26px;stroke:#fff;stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round;}
-    .ic-blue{background:#1565C0;}
-    .ic-red{background:#8B0000;}
-    .ic-green{background:#2E7D32;}
-    .ic-orange{background:#E65100;}
-    .ic-purple{background:#6A1B9A;}
-    .ic-teal{background:#00838F;}
-    .service-title{font-size:13px;font-weight:800;color:#fff;margin-bottom:8px;letter-spacing:0.3px;}
-    .service-desc{font-size:11.5px;font-weight:500;color:#555;line-height:1.7;}
 
     /* ─── RED BAND ─── */
     .red-band{
@@ -441,76 +437,131 @@
   </div>
 </section>
 
-<!-- ═══ WHAT MAKES US DIFFERENT ═══ -->
-<section class="section" style="padding-top:0;">
+<!-- ═══ LIFETIME WARRANTY ═══ -->
+<div class="section-divider"></div>
+<section class="section">
   <div class="section-inner">
-    <div style="text-align:center;margin-bottom:0;">
-      <p class="eyebrow">Why Choose 3J's</p>
-      <h2 class="section-title" style="max-width:600px;margin:0 auto 8px;">Everything You Need. <em>Nothing You Don't.</em></h2>
-    </div>
-    <div class="service-grid">
-
-      <div class="service-card">
-        <div class="service-icon ic-red">
-          <svg fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    <div class="two-col">
+      <div class="col-visual">
+        <div class="visual-box" style="display:flex;align-items:center;justify-content:center;background:#f8f8f8;padding:40px;">
+          <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/warranty-stamp.png" alt="Limited Lifetime Warranty" style="max-width:260px;width:100%;">
         </div>
-        <div class="service-title">I-CAR Gold Class Certified</div>
-        <div class="service-desc">The highest training recognition in the collision repair industry. Every tech knows how to perform repairs from the smallest scratch to major structural damage — taught by factory representatives.</div>
       </div>
-
-      <div class="service-card">
-        <div class="service-icon ic-green">
-          <svg fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 12l2.5 2.5L16 9"/></svg>
+      <div class="col-text">
+        <p class="eyebrow">Our Promise</p>
+        <h2 class="section-title">Lifetime <em>Warranty</em></h2>
+        <div class="section-body">
+          <p>We stand behind our work on every vehicle with a written limited lifetime warranty. We get the job done right and get you back on the road safely. Guaranteed.</p>
+          <p>While we're confident the repairs are done right, we're also available to help if something goes wrong. We'll correct the problem free of charge as long as you own your vehicle.</p>
         </div>
-        <div class="service-title">Direct Repair · Out of Pocket · Lease Turn-In</div>
-        <div class="service-desc">We work directly with insurance companies and with customers paying out of pocket. Lease turn-in coming up? We'll get your vehicle back to factory condition fast — no surprises.</div>
       </div>
-
-      <div class="service-card">
-        <div class="service-icon ic-orange">
-          <svg fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
-        </div>
-        <div class="service-title">State-of-the-Art Equipment</div>
-        <div class="service-desc">You need the right tool for the right job. We've invested in top-of-the-line equipment and materials to handle any make and model — and the best materials to make sure your repairs last for years to come.</div>
-      </div>
-
-      <div class="service-card">
-        <div class="service-icon ic-blue">
-          <svg fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
-        </div>
-        <div class="service-title">Family Atmosphere</div>
-        <div class="service-desc">From the moment you walk through our door, you're treated like family. Professional service doesn't have to feel cold. We keep you informed, we're transparent about everything, and we never cut corners.</div>
-      </div>
-
-      <div class="service-card">
-        <div class="service-icon ic-teal">
-          <svg fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v4h-7V8zM5.5 21a1.5 1.5 0 100-3 1.5 1.5 0 000 3zm13 0a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"/></svg>
-        </div>
-        <div class="service-title">Fast Turnaround</div>
-        <div class="service-desc">We understand that your vehicle is essential to your daily life. Getting you back on the road as fast as possible — without sacrificing quality — is always the goal. Mon–Fri 8AM–5PM.</div>
-      </div>
-
-      <div class="service-card">
-        <div class="service-icon ic-purple">
-          <svg fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-        </div>
-        <div class="service-title">Certified Rhino Liner Installer</div>
-        <div class="service-desc">We are a certified Rhino Liner installer — not the drop-in kind. Permanent bond, textured finish, same-day service, and a lifetime warranty. From bedliners to undercarriage to wheel wells.</div>
-      </div>
-
     </div>
   </div>
 </section>
 
-<!-- ═══ WARRANTY BAND ═══ -->
-<section class="section" style="padding-top:0;padding-bottom:0;">
+<!-- ═══ DIRECT REPAIR ═══ -->
+<div class="section-divider"></div>
+<section class="section">
   <div class="section-inner">
-    <div class="warranty-wrap">
-      <div class="warranty-icon">
-        <svg fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    <div class="two-col reverse">
+      <div class="col-text">
+        <p class="eyebrow">Insurance · Cash · Lease</p>
+        <h2 class="section-title">Direct Repair · Out of Pocket · <em>Lease Turn-In</em></h2>
+        <div class="section-body">
+          <p>We work directly with all major insurance companies to help streamline the repair process and reduce stress after an accident. Whether your repair is insurance-covered or being paid out of pocket, our team provides clear communication, honest estimates, and guidance every step of the way.</p>
+          <p>Have a lease turn-in coming up? We can help get your vehicle restored to proper factory condition quickly and efficiently, addressing wear-and-tear, damage, and cosmetic issues so you can return it with confidence and avoid unexpected charges.</p>
+        </div>
       </div>
-      <h3>Lifetime Warranty on <em>Our Workmanship</em></h3>
-      <p>Every repair we perform is backed by a lifetime warranty on our workmanship. We stand behind our work for as long as you own your vehicle. That's not a sales pitch — it's just how we've always done business.</p>
+      <div class="col-visual">
+        <div class="visual-box visual-box-inner">
+          <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/collision-before-after.png" alt="Collision repair before and after">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ STATE-OF-THE-ART EQUIPMENT ═══ -->
+<div class="section-divider"></div>
+<section class="section">
+  <div class="section-inner">
+    <div class="two-col">
+      <div class="col-visual">
+        <div class="visual-box visual-box-inner">
+          <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/frame-straightening.png" alt="Frame straightening equipment">
+        </div>
+      </div>
+      <div class="col-text">
+        <p class="eyebrow">Built to Perform</p>
+        <h2 class="section-title">State-of-the-Art <em>Equipment</em></h2>
+        <div class="section-body">
+          <p>Proper repairs require the right tools, and we've invested heavily in advanced, industry-leading equipment to ensure precision and quality on every job. From frame straightening systems to computerized measuring, paint-matching technology, and modern refinishing tools, our shop is equipped to handle virtually any make and model.</p>
+          <p>We also use high-quality materials designed for durability and long-lasting results, ensuring your repairs not only look great — but hold up over time.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FAMILY ATMOSPHERE ═══ -->
+<div class="section-divider"></div>
+<section class="section">
+  <div class="section-inner">
+    <div class="two-col reverse">
+      <div class="col-text">
+        <p class="eyebrow">People First</p>
+        <h2 class="section-title">Family <em>Atmosphere</em></h2>
+        <div class="section-body">
+          <p>From the moment you walk through our doors, you're treated like family. We believe professional service should still feel personal, approachable, and respectful.</p>
+          <p>Our team keeps you informed throughout the entire repair process, explains everything clearly, and provides honest updates so you always know where things stand. We value transparency, communication, and trust — and we never recommend or perform unnecessary work.</p>
+          <p>At our shop, you're not just another repair order — you're part of our community.</p>
+        </div>
+      </div>
+      <div class="col-visual">
+        <div class="visual-box visual-box-inner">
+          <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/IMG_3260.jpg" alt="3J's Auto Body team">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ RHINO LINER ═══ -->
+<div class="section-divider"></div>
+<section class="section">
+  <div class="section-inner">
+    <div class="two-col">
+      <div class="col-visual">
+        <div class="visual-box visual-box-inner">
+          <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/bedliner.jpg" alt="Certified Rhino Liner installation">
+        </div>
+      </div>
+      <div class="col-text">
+        <p class="eyebrow">Certified Installer</p>
+        <h2 class="section-title">Certified Rhino <em>Liner Installer</em></h2>
+        <div class="section-body">
+          <p>We are a certified Rhino Liner installer, offering professional-grade spray-on protection — not drop-in liners. Our application creates a permanent bond that helps protect your truck bed from impact, rust, and wear.</p>
+          <p>The finish is durable, textured, and built to last, with same-day service available in many cases. Backed by a lifetime warranty, our Rhino Liner installations are also available for wheel wells and undercarriage applications for full vehicle durability and protection.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ OUR WORKMANSHIP ═══ -->
+<section class="work-section">
+  <div class="section-inner">
+    <div class="work-header">
+      <p class="eyebrow">The Finished Product</p>
+      <h2>Our <em>Workmanship</em></h2>
+    </div>
+    <div class="work-grid">
+      <div class="work-photo"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/IMG_2947.JPG" alt="3J's Auto Body repair work" loading="lazy"></div>
+      <div class="work-photo"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/IMG_2948.JPG" alt="3J's Auto Body repair work" loading="lazy"></div>
+      <div class="work-photo"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/IMG_3260.jpg" alt="3J's Auto Body shop" loading="lazy"></div>
+      <div class="work-photo"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/IMG_3961.PNG" alt="3J's Auto Body work" loading="lazy"></div>
+      <div class="work-photo"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/frame-straightening2.png" alt="Frame repair" loading="lazy"></div>
+      <div class="work-photo"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/paintless-dent-repair.jpg" alt="Paintless dent repair" loading="lazy"></div>
     </div>
   </div>
 </section>
@@ -589,25 +640,13 @@
     [0,200,500,1000,2000,3500].forEach(function(t){ setTimeout(reportHeight,t); });
   });
   window.addEventListener('resize', reportHeight);
-  if(window.ResizeObserver){ new ResizeObserver(reportHeight).observe(document.body); });
-    window.parent.postMessage(msg,'*');
-    try{ window.parent.parent.postMessage(msg,'*'); }catch(e){}
-  }
-  window.addEventListener('load', function(){
-    reportHeight();
-    setTimeout(reportHeight,300);
-    setTimeout(reportHeight,800);
-    setTimeout(reportHeight,2000);
-    setTimeout(reportHeight,4000);
-  });
-  window.addEventListener('resize', reportHeight);
+  if(window.ResizeObserver){ new ResizeObserver(reportHeight).observe(document.body); }
   document.querySelectorAll('.faq-q').forEach(function(btn){
     btn.addEventListener('click', function(){ setTimeout(reportHeight, 450); });
   });
   document.querySelectorAll('img').forEach(function(img){
     img.addEventListener('load', reportHeight);
   });
-  if(window.ResizeObserver){ new ResizeObserver(reportHeight).observe(document.body); }
 </script>
 <script src="https://rlsh1855.github.io/3Js-and-RLSH-Website/site-nav.js"></script>
 </body>
