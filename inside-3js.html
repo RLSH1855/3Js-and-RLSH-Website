@@ -151,7 +151,7 @@
     .two-col{
       display:grid;
       grid-template-columns:1fr 1fr;
-      gap:64px;
+      gap:48px;
       align-items:center;
     }
     .two-col.reverse .col-text{order:2;}
@@ -278,11 +278,13 @@
 
     /* ─── RESPONSIVE ─── */
     @media(max-width:900px){
-      .two-col{grid-template-columns:1fr;gap:40px;}
-      .two-col.reverse .col-text{order:1;}
-      .two-col.reverse .col-visual{order:2;}
       .service-grid{grid-template-columns:1fr 1fr;}
       .stat{min-width:120px;}
+    }
+    @media(max-width:640px){
+      .two-col{grid-template-columns:1fr;gap:28px;}
+      .two-col.reverse .col-text{order:1;}
+      .two-col.reverse .col-visual{order:2;}
     }
     @media(max-width:600px){
       .service-grid{grid-template-columns:1fr 1fr;}
