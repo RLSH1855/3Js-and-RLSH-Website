@@ -79,9 +79,10 @@
       display:flex;align-items:flex-start;justify-content:space-between;
       padding:20px 0;cursor:pointer;
       font-family:'Montserrat',sans-serif;
-      font-size:13px;font-weight:800;color:#1a1a1a;
-      text-align:left;gap:16px;
-      transition:color 0.2s;
+      font-size:11px;font-weight:700;color:#1a1a1a;
+      text-transform:uppercase;text-decoration:none;letter-spacing:2px;
+      text-align:left;gap:8px;
+      transition:all 0.3s ease;
       line-height:1.5;
     }
     .faq-q:hover{color:#8B0000;}
@@ -110,10 +111,10 @@
       display:inline-flex;align-items:center;justify-content:center;gap:8px;
       background:#8B0000;color:#fff;
       font-family:'Montserrat',sans-serif;
-      font-size:12px;font-weight:800;letter-spacing:0.5px;
-      text-decoration:none;padding:14px 28px;border-radius:8px;
-      transition:background 0.2s;
-      white-space:nowrap;
+      font-size:11px;font-weight:700;letter-spacing:2px;
+      text-decoration:none;height:48px;padding:0 32px;border-radius:0;border:none;
+      transition:all 0.3s ease;cursor:pointer;
+      text-transform:uppercase;
     }
     .btn-primary:hover{background:#A00000;}
     .btn-primary svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;}
@@ -121,11 +122,11 @@
       display:inline-flex;align-items:center;justify-content:center;gap:8px;
       background:transparent;color:#8B0000;
       font-family:'Montserrat',sans-serif;
-      font-size:12px;font-weight:800;letter-spacing:0.5px;
-      text-decoration:none;padding:14px 28px;border-radius:8px;
+      font-size:11px;font-weight:700;letter-spacing:2px;
+      text-decoration:none;height:48px;padding:0 32px;border-radius:0;
       border:2px solid #8B0000;
-      transition:background 0.2s,color 0.2s;
-      white-space:nowrap;
+      transition:all 0.3s ease;cursor:pointer;
+      text-transform:uppercase;
     }
     .btn-secondary:hover{background:#8B0000;color:#fff;}
     .btn-secondary svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;}
@@ -133,7 +134,7 @@
     /* ─── RESPONSIVE ─── */
     @media(max-width:600px){
       .faq-section{padding:56px 20px;}
-      .faq-q{font-size:12px;padding:18px 0;}
+      .faq-q{font-size:11px;padding:18px 0;}
       .faq-a{font-size:12px;}
       .faq-cta{flex-direction:column;align-items:stretch;}
       .btn-primary,.btn-secondary{width:100%;text-align:center;}

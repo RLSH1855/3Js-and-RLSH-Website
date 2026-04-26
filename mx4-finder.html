@@ -48,12 +48,14 @@
     /* Custom year picker */
     .year-picker{position:relative;}
     .year-picker-btn{
-      width:100%;padding:12px 16px;
-      border:2px solid #e8e8e8;border-radius:8px;
-      font-family:'Montserrat',sans-serif;font-size:14px;font-weight:600;color:#1a1a1a;
+      width:100%;
+      border:2px solid #e8e8e8;border-radius:0;
+      font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;color:#1a1a1a;
+      letter-spacing:2px;text-transform:uppercase;text-decoration:none;
       background:#fff;cursor:pointer;text-align:left;
-      display:flex;align-items:center;justify-content:space-between;
-      transition:border-color 0.2s;
+      display:flex;align-items:center;justify-content:space-between;gap:8px;
+      min-height:44px;padding:0 20px;
+      transition:all 0.3s ease;
     }
     .year-picker-btn:hover{border-color:#ccc;}
     .year-picker-btn.open{border-color:#8B0000;}
@@ -170,20 +172,21 @@
     }
 
     .btn-quote{
-      display:block;width:100%;
-      padding:16px;
+      display:inline-flex;align-items:center;justify-content:center;gap:8px;
+      width:100%;
+      min-height:44px;padding:0 24px;
       background:#8B0000;
       color:#fff;
       font-family:'Montserrat',sans-serif;
-      font-size:13px;font-weight:800;letter-spacing:1.5px;
+      font-size:11px;font-weight:700;letter-spacing:2px;
       text-transform:uppercase;
       text-align:center;
       text-decoration:none;
-      border:none;border-radius:8px;
+      border:none;border-radius:0;
       cursor:pointer;
-      transition:background 0.2s,transform 0.1s;
+      transition:all 0.3s ease;
     }
-    .btn-quote:hover{background:#6d0000;transform:translateY(-1px);}
+    .btn-quote:hover{background:#6d0000;}
 
     .no-match{
       display:none;
@@ -197,22 +200,24 @@
     .no-match.visible{display:block;}
     .no-match p{font-size:13px;color:#666;font-weight:500;margin-bottom:12px;}
     .no-match a{
-      display:inline-block;
-      padding:10px 24px;
+      display:inline-flex;align-items:center;justify-content:center;gap:8px;
+      min-height:44px;padding:0 20px;
       background:#8B0000;color:#fff;
-      border-radius:6px;font-size:12px;font-weight:700;
-      text-decoration:none;letter-spacing:1px;text-transform:uppercase;
+      border:none;border-radius:0;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;
+      text-decoration:none;letter-spacing:2px;text-transform:uppercase;cursor:pointer;
+      transition:all 0.3s ease;
     }
 
     .reset-btn{
-      display:block;
+      display:inline-flex;align-items:center;justify-content:center;gap:8px;
       margin-top:14px;
       text-align:center;
-      font-size:11px;font-weight:700;
-      color:#999;letter-spacing:1px;text-transform:uppercase;
+      font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;
+      color:#999;letter-spacing:2px;text-transform:uppercase;text-decoration:none;
       cursor:pointer;
       background:none;border:none;
-      text-decoration:underline;
+      min-height:44px;padding:0 20px;
+      transition:all 0.3s ease;
     }
     .reset-btn:hover{color:#8B0000;}
   </style>

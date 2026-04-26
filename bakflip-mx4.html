@@ -240,9 +240,9 @@
       font-family:'Montserrat',sans-serif;
       font-size:11px;font-weight:800;letter-spacing:2.5px;
       text-transform:uppercase;text-decoration:none;
-      padding:16px 36px;
+      height:48px;padding:0 36px;
       background:#8B0000;color:#fff;
-      border:none;
+      border:none;border-radius:0;
       transition:background 0.25s, letter-spacing 0.25s;
       align-self:flex-start;
     }
@@ -440,8 +440,9 @@
       font-family:'Montserrat',sans-serif;
       font-size:11px;font-weight:800;letter-spacing:2.5px;
       text-transform:uppercase;text-decoration:none;
-      padding:14px 28px;margin-top:28px;
+      height:48px;padding:0 28px;margin-top:28px;
       background:#8B0000;color:#fff;
+      border-radius:0;
       transition:background 0.25s;
     }
     .c-cta:hover{background:#6e0000;}
@@ -486,8 +487,9 @@
       font-family:'Montserrat',sans-serif;
       font-size:11px;font-weight:800;letter-spacing:2.5px;
       text-transform:uppercase;text-decoration:none;
-      padding:14px 28px;margin-top:28px;
+      height:48px;padding:0 28px;margin-top:28px;
       background:#8B0000;color:#fff;
+      border-radius:0;
       align-self:flex-start;
       transition:background 0.25s;
     }
@@ -667,9 +669,10 @@
     }
     .faq-item:first-child{border-top:1px solid #ebebeb;}
     .faq-q{
-      font-size:13px;font-weight:800;
+      font-family:'Montserrat',sans-serif;
+      font-size:11px;font-weight:700;
       color:#111;margin-bottom:8px;
-      letter-spacing:0.2px;
+      letter-spacing:2px;text-transform:uppercase;
     }
     .faq-a{
       font-size:13px;font-weight:500;
@@ -681,7 +684,7 @@
       .faq-wrap{padding:36px 20px;}
       .faq-wrap h2{margin-bottom:28px;}
       .faq-item{padding:20px 0;}
-      .faq-q{font-size:13px;}
+      .faq-q{font-size:11px;}
       .faq-a{font-size:13px;}
     }
 
@@ -715,14 +718,15 @@
       max-width:480px;line-height:1.85;
     }
     .cta-band-btn{
-      display:inline-flex;align-items:center;gap:10px;
+      display:inline-flex;align-items:center;justify-content:center;gap:8px;
       font-family:'Montserrat',sans-serif;
-      font-size:11px;font-weight:800;letter-spacing:2.5px;
+      font-size:11px;font-weight:700;letter-spacing:2px;
       text-transform:uppercase;text-decoration:none;
-      padding:18px 40px;white-space:nowrap;
+      height:48px;padding:0 32px;white-space:nowrap;
       background:#8B0000;color:#fff;
-      flex-shrink:0;
-      transition:background 0.25s;
+      border-radius:0;border:none;
+      flex-shrink:0;cursor:pointer;
+      transition:all 0.3s ease;
     }
     .cta-band-btn:hover{background:#6e0000;}
     .cta-band-btn svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2.2;flex-shrink:0;}
@@ -773,7 +777,7 @@
       .hero-feats{gap:7px;margin-bottom:24px;}
       .hero-feats li{font-size:11px;}
       .hero-img{height:260px;}
-      .hero-cta{width:100%;justify-content:center;padding:16px 24px;align-self:stretch;}
+      .hero-cta{width:100%;justify-content:center;padding:0 24px;align-self:stretch;}
 
       /* — Stats — tight row, no wasted height — */
       .stats-band{grid-template-columns:1fr 1fr;}
@@ -816,7 +820,7 @@
       .s-list{margin-top:14px;gap:7px;}
       .s-list li{font-size:10.5px;}
       .s-img{min-height:220px;}
-      .s-cta{width:100%;justify-content:center;padding:15px 24px;margin-top:20px;align-self:stretch;}
+      .s-cta{width:100%;justify-content:center;padding:0 24px;margin-top:20px;align-self:stretch;}
 
       /* — Photo full — */
       .photo-full{height:180px;}
@@ -836,7 +840,7 @@
       .cta-band{padding:40px 20px;text-align:center;gap:20px;}
       .cta-band-text h2{margin-bottom:10px;}
       .cta-band-text p{max-width:100%;font-size:13px;}
-      .cta-band-btn{width:100%;justify-content:center;padding:17px 24px;}
+      .cta-band-btn{width:100%;justify-content:center;padding:0 24px;}
     }
 
     /* ════════════════════════════════
