@@ -712,12 +712,20 @@
     });
   });
   document.querySelectorAll('.faq-q').forEach(function(btn){
-    btn.addEventListener('click',function(){
-      var item=btn.closest('.faq-item');
-      var wasOpen=item.classList.contains('open');
+    var tapped = false;
+    function toggleFaq(e){
+      e.preventDefault();
+      if(tapped) return;
+      tapped = true;
+      setTimeout(function(){ tapped = false; }, 300);
+      var item = btn.closest('.faq-item');
+      var wasOpen = item.classList.contains('open');
       document.querySelectorAll('.faq-item.open').forEach(function(i){i.classList.remove('open');});
       if(!wasOpen) item.classList.add('open');
-    });
+      setTimeout(reportHeight, 450);
+    }
+    btn.addEventListener('touchend', toggleFaq);
+    btn.addEventListener('click', toggleFaq);
   });
   function initGallery(){
     if(window.innerWidth > 600) return;
