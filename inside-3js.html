@@ -741,7 +741,11 @@
   // Lightbox
   var lightbox = document.getElementById('lightbox');
   var lightboxImg = document.getElementById('lightboxImg');
-  function openLightbox(src){ lightboxImg.src = src; lightbox.classList.add('active'); }
+  function openLightbox(src){
+    lightboxImg.src = src;
+    lightbox.classList.add('active');
+    window.scrollTo(0, 0);
+  }
   function closeLightbox(){ lightbox.classList.remove('active'); lightboxImg.src=''; }
 
   document.querySelectorAll('.work-photo').forEach(function(photo){
