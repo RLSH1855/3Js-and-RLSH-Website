@@ -136,6 +136,9 @@
       .eyebrow{font-size:9px;}
       .work-section{padding:32px 16px;}
       .work-grid{grid-template-columns:repeat(3,1fr);gap:6px;}
+      .work-photo.gallery-hidden{display:none;}
+      .gallery-more-wrap{text-align:center;margin-top:16px;}
+      .gallery-more-btn{display:inline-flex;align-items:center;gap:8px;background:#8B0000;color:#fff;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:900;letter-spacing:1.5px;text-transform:uppercase;border:none;cursor:pointer;height:48px;padding:0 28px;}
       .faq-section{padding:28px 16px;}
       .red-band{padding:28px 16px;}
       .red-band-btn{width:100%;justify-content:center;}
@@ -568,6 +571,12 @@
       <div class="work-photo"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/insta/IMG_6477.PNG" alt="3J's Auto Body work" loading="lazy"></div>
       <div class="work-photo"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/insta/IMG_6479.PNG" alt="3J's Auto Body work" loading="lazy"></div>
     </div>
+    <div class="gallery-more-wrap" id="galleryMoreWrap" style="display:none;">
+      <button class="gallery-more-btn" id="galleryMoreBtn">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        See More
+      </button>
+    </div>
   </div>
 </section>
 
@@ -710,11 +719,32 @@
       if(!wasOpen) item.classList.add('open');
     });
   });
+  function initGallery(){
+    if(window.innerWidth > 600) return;
+    var photos = document.querySelectorAll('.work-grid .work-photo');
+    var wrap = document.getElementById('galleryMoreWrap');
+    var btn = document.getElementById('galleryMoreBtn');
+    if(photos.length <= 6) return;
+    photos.forEach(function(p, i){ if(i >= 6) p.classList.add('gallery-hidden'); });
+    wrap.style.display = 'block';
+    var expanded = false;
+    btn.addEventListener('click', function(){
+      expanded = !expanded;
+      photos.forEach(function(p, i){
+        if(i >= 6) p.classList.toggle('gallery-hidden', !expanded);
+      });
+      btn.innerHTML = expanded
+        ? '<svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/></svg> See Less'
+        : '<svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> See More';
+      setTimeout(reportHeight, 300);
+    });
+  }
+
   function reportHeight(){
     var h=Math.max(document.body.scrollHeight,document.body.offsetHeight,document.documentElement.scrollHeight,document.documentElement.offsetHeight);
     window.parent.postMessage(JSON.stringify({height:h}),'*');
   }
-  document.addEventListener('DOMContentLoaded',reportHeight);
+  document.addEventListener('DOMContentLoaded', function(){ initGallery(); reportHeight(); });
   window.addEventListener('load',function(){[0,200,500,1000,2000,3500].forEach(function(t){setTimeout(reportHeight,t);});});
   window.addEventListener('resize',reportHeight);
   if(window.ResizeObserver){new ResizeObserver(reportHeight).observe(document.body);}
