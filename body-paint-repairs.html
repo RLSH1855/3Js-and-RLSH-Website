@@ -295,20 +295,13 @@
     .cert-item span{font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#fff;}
 
     /* ─── CTA ─── */
-    .cta-band{background:#0A0A0A;padding:72px 24px;text-align:center;position:relative;overflow:hidden;}
-    .cta-band::before{
-      content:'';position:absolute;inset:0;
-      background:radial-gradient(ellipse at center,rgba(139,0,0,0.10) 0%,transparent 65%);
-    }
-    .cta-band::after{
-      content:'';position:absolute;inset:0;
-      background-image:radial-gradient(circle,rgba(255,255,255,0.03) 1px,transparent 1px);
-      background-size:24px 24px;
-    }
+    .cta-band{background:#fff;padding:72px 24px;text-align:center;position:relative;overflow:hidden;border-top:1px solid #e8e8e8;}
+    .cta-band::before{display:none;}
+    .cta-band::after{display:none;}
     .cta-content{position:relative;z-index:1;}
-    .cta-band h2{font-size:clamp(22px,3.5vw,40px);font-weight:900;color:#fff;margin-bottom:10px;letter-spacing:-0.5px;}
+    .cta-band h2{font-size:clamp(22px,3.5vw,40px);font-weight:900;color:#1a1a1a;margin-bottom:10px;letter-spacing:-0.5px;}
     .cta-band h2 em{font-style:normal;color:#8B0000;}
-    .cta-band p{font-size:14px;font-weight:500;color:rgba(255,255,255,0.45);max-width:480px;margin:0 auto 32px;line-height:1.7;}
+    .cta-band p{font-size:14px;font-weight:500;color:#888;max-width:480px;margin:0 auto 32px;line-height:1.7;}
     .cta-buttons{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;}
     .btn-primary{
       display:inline-flex;align-items:center;justify-content:center;gap:8px;
