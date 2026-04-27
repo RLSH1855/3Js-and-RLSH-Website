@@ -222,37 +222,23 @@
 </section>
 
 <script>
-  /* FAQ accordion */
   document.querySelectorAll('.faq-q').forEach(function(btn){
     btn.addEventListener('click', function(){
       var item = btn.closest('.faq-item');
       var wasOpen = item.classList.contains('open');
       document.querySelectorAll('.faq-item.open').forEach(function(i){ i.classList.remove('open'); });
       if(!wasOpen) item.classList.add('open');
+      setTimeout(reportHeight, 450);
     });
   });
 
   function reportHeight(){
-    var h = Math.max(
-      document.body.scrollHeight,
-      document.body.offsetHeight,
-      document.documentElement.scrollHeight,
-      document.documentElement.offsetHeight
-    );
+    var h = Math.max(document.body.scrollHeight, document.body.offsetHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight);
     window.parent.postMessage(JSON.stringify({height:h}),'*');
   }
   document.addEventListener('DOMContentLoaded', reportHeight);
-  window.addEventListener('load', function(){
-    [0,200,500,1000,2000,3500].forEach(function(t){ setTimeout(reportHeight,t); });
-  });
+  window.addEventListener('load', function(){ [0,200,500,1000,2000,3500].forEach(function(t){ setTimeout(reportHeight,t); }); });
   window.addEventListener('resize', reportHeight);
-  if(window.ResizeObserver){ new ResizeObserver(reportHeight).observe(document.body); }
-  }
-  window.addEventListener('load', function(){ reportHeight(); setTimeout(reportHeight,500); setTimeout(reportHeight,1500); });
-  window.addEventListener('resize', reportHeight);
-  document.querySelectorAll('.faq-q').forEach(function(btn){
-    btn.addEventListener('click', function(){ setTimeout(reportHeight, 450); });
-  });
   if(window.ResizeObserver){ new ResizeObserver(reportHeight).observe(document.body); }
 </script>
 </body>
