@@ -374,6 +374,17 @@
     }
     .faq-item.open .faq-a{max-height:400px;padding-bottom:20px;}
 
+    /* ─── BEFORE/AFTER SLIDER ─── */
+    .ba-slider{position:relative;width:100%;overflow:hidden;cursor:ew-resize;user-select:none;border-radius:0;aspect-ratio:4/3;}
+    .ba-img{position:absolute;inset:0;width:100%;height:100%;}
+    .ba-img img{width:100%;height:100%;object-fit:cover;display:block;border-radius:0;}
+    .ba-img.after{clip-path:inset(0 50% 0 0);}
+    .ba-handle{position:absolute;top:0;bottom:0;left:50%;width:3px;background:#fff;transform:translateX(-50%);z-index:10;pointer-events:none;}
+    .ba-handle-knob{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:44px;height:44px;background:#fff;border:3px solid #8B0000;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 12px rgba(0,0,0,0.35);}
+    .ba-badge{position:absolute;bottom:14px;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:900;letter-spacing:1.5px;text-transform:uppercase;padding:7px 14px;z-index:5;pointer-events:none;box-shadow:0 2px 8px rgba(0,0,0,0.45);}
+    .ba-badge.before{left:14px;background:#fff;color:#1a1a1a;}
+    .ba-badge.after{right:14px;background:#8B0000;color:#fff;}
+
     /* ─── RESPONSIVE ─── */
     @media(max-width:900px){
       .two-col{grid-template-columns:1fr;gap:28px;padding:56px 28px;}
@@ -552,8 +563,23 @@
     </div>
     <div class="col-visual">
       <span class="num-badge">01</span>
-      <div class="visual-box">
-        <img src="IMG_2587.jpg" alt="Collision repair in progress at 3J's Auto Body">
+      <div class="ba-slider" data-slider>
+        <div class="ba-img before">
+          <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/ba-subaru-before.jpg" alt="Collision damage before repair">
+        </div>
+        <div class="ba-img after">
+          <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/ba-subaru-after.jpg" alt="Collision repair completed">
+        </div>
+        <div class="ba-handle" data-handle>
+          <div class="ba-handle-knob">
+            <svg width="20" height="20" fill="none" stroke="#8B0000" stroke-width="2.5" viewBox="0 0 24 24">
+              <polyline points="15 18 9 12 15 6"/>
+              <polyline points="9 6 3 12 9 18"/>
+            </svg>
+          </div>
+        </div>
+        <span class="ba-badge before">Before</span>
+        <span class="ba-badge after">After</span>
       </div>
     </div>
   </div>
@@ -772,6 +798,25 @@
 
 
 <script>
+  /* Before/After Slider */
+  document.querySelectorAll('[data-slider]').forEach(function(slider){
+    var handle = slider.querySelector('[data-handle]');
+    var afterImg = slider.querySelector('.ba-img.after');
+    var isDragging = false;
+    function setPosition(x){
+      var rect = slider.getBoundingClientRect();
+      var pct = Math.min(Math.max((x - rect.left) / rect.width * 100, 2), 98);
+      afterImg.style.clipPath = 'inset(0 ' + (100 - pct) + '% 0 0)';
+      handle.style.left = pct + '%';
+    }
+    slider.addEventListener('mousedown', function(e){ isDragging=true; setPosition(e.clientX); e.preventDefault(); });
+    window.addEventListener('mousemove', function(e){ if(isDragging) setPosition(e.clientX); });
+    window.addEventListener('mouseup', function(){ isDragging=false; });
+    slider.addEventListener('touchstart', function(e){ isDragging=true; setPosition(e.touches[0].clientX); },{passive:true});
+    window.addEventListener('touchmove', function(e){ if(isDragging) setPosition(e.touches[0].clientX); },{passive:true});
+    window.addEventListener('touchend', function(){ isDragging=false; });
+  });
+
   /* FAQ accordion */
   document.querySelectorAll('.faq-q').forEach(function(btn){
     btn.addEventListener('click', function(){
