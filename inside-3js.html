@@ -126,18 +126,21 @@
       .two-col{grid-template-columns:1fr;gap:24px;}
     }
     @media(max-width:600px){
-      .section{padding:28px 16px;}
-      .stat-bar{padding:16px 12px;}
-      .stat{min-width:80px;padding:8px 10px;}
-      .stat-number{font-size:24px;}
-      .page-header{height:150px;padding-top:16px;}
+      .section{padding:20px 16px;}
+      .stat-bar{padding:12px 8px;}
+      .stat{min-width:72px;padding:6px 8px;}
+      .stat-number{font-size:22px;}
+      .page-header{height:110px;padding-top:12px;}
       .section-title{font-size:20px !important;}
       .section-body{font-size:15px;}
       .eyebrow{font-size:9px;}
-      .work-section{padding:40px 16px;}
-      .faq-section{padding:40px 16px;}
-      .red-band{padding:36px 16px;}
+      .work-section{padding:32px 16px;}
+      .work-grid{grid-template-columns:repeat(3,1fr);gap:6px;}
+      .faq-section{padding:28px 16px;}
+      .red-band{padding:28px 16px;}
       .red-band-btn{width:100%;justify-content:center;}
+      .hide-mobile{display:none;}
+      .journey-section{padding:32px 16px;}
     }
   </style>
 </head>
@@ -308,7 +311,7 @@
           <p>Whatever brings you in, we'll make sure you feel <strong>informed, comfortable, and taken care of.</strong></p>
         </div>
       </div>
-      <div class="col-visual">
+      <div class="col-visual hide-mobile">
         <div style="background:#0A0A0A;border:1px solid #1e1e1e;color:#fff;position:relative;overflow:hidden;">
           <div style="position:absolute;inset:0;background-image:repeating-linear-gradient(45deg,rgba(139,0,0,0.03) 0px,rgba(139,0,0,0.03) 1px,transparent 1px,transparent 8px);pointer-events:none;"></div>
           <div style="position:relative;z-index:1;padding:28px 28px 0;">
@@ -471,7 +474,7 @@
           <p>It's all part of what we mean when we say we're <span class="hl">"meeting great people by accident."</span> Even in an unexpected situation, our goal is to turn your experience into a positive one by taking care of you the right way. <strong>No confusing lingo. No runaround.</strong> Just real people who genuinely care about <strong>doing right by you.</strong></p>
         </div>
       </div>
-      <div class="col-visual">
+      <div class="col-visual hide-mobile">
         <div style="background:#0A0A0A;border:1px solid #1e1e1e;color:#fff;position:relative;overflow:hidden;">
           <div style="position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(139,0,0,0.12) 0%,transparent 65%);pointer-events:none;"></div>
           <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,0.025) 1px,transparent 1px);background-size:24px 24px;pointer-events:none;"></div>
