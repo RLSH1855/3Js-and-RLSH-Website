@@ -385,7 +385,7 @@
     .ba-section-header h2{font-size:clamp(24px,3.5vw,38px);font-weight:900;letter-spacing:-0.5px;color:#fff;}
     .ba-section-header h2 em{font-style:normal;color:#8B0000;}
     .ba-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:1100px;margin:0 auto;}
-    .ba-slider{position:relative;width:100%;overflow:hidden;cursor:ew-resize;user-select:none;aspect-ratio:4/3;}
+    .ba-slider{position:relative;width:100%;overflow:hidden;cursor:ew-resize;user-select:none;aspect-ratio:4/3;touch-action:none;}
     .ba-img{position:absolute;inset:0;width:100%;height:100%;}
     .ba-img img{width:100%;height:100%;object-fit:cover;display:block;}
     .ba-img.after{clip-path:inset(0 0 0 50%);}
@@ -884,6 +884,7 @@
     var handle=slider.querySelector('[data-handle]');
     var afterImg=slider.querySelector('.ba-img.after');
     var isDragging=false;
+    var startX=0;
     function setPos(x){
       var rect=slider.getBoundingClientRect();
       var pct=Math.min(Math.max((x-rect.left)/rect.width*100,2),98);
@@ -893,8 +894,12 @@
     slider.addEventListener('mousedown',function(e){isDragging=true;setPos(e.clientX);e.preventDefault();});
     window.addEventListener('mousemove',function(e){if(isDragging)setPos(e.clientX);});
     window.addEventListener('mouseup',function(){isDragging=false;});
-    slider.addEventListener('touchstart',function(e){isDragging=true;setPos(e.touches[0].clientX);},{passive:true});
-    window.addEventListener('touchmove',function(e){if(isDragging)setPos(e.touches[0].clientX);},{passive:true});
+    slider.addEventListener('touchstart',function(e){startX=e.touches[0].clientX;isDragging=true;setPos(e.touches[0].clientX);},{passive:true});
+    slider.addEventListener('touchmove',function(e){
+      if(!isDragging)return;
+      e.preventDefault();
+      setPos(e.touches[0].clientX);
+    },{passive:false});
     window.addEventListener('touchend',function(){isDragging=false;});
   });
 
@@ -928,6 +933,6 @@
   });
 </script>
 <script src="https://rlsh1855.github.io/3Js-and-RLSH-Website/site-nav.js"></script>
-<script>document.querySelectorAll('a[href^="tel:"]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();window.location.href=a.getAttribute('href');});});</script>
+
 </body>
 </html>
