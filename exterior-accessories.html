@@ -160,7 +160,7 @@
     .brands-inner{max-width:1200px;margin:0 auto;text-align:center;}
     .brands-title{font-size:clamp(20px,3vw,32px);font-weight:900;letter-spacing:-0.5px;color:#1a1a1a;margin-bottom:40px;text-wrap:balance;}
     .brands-title span{color:#8B0000;}
-    .brand-logos{display:flex;flex-wrap:nowrap;align-items:center;justify-content:center;gap:32px;overflow-x:auto;padding-bottom:4px;}
+    .brand-logos{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:32px;overflow:hidden;}
     .brand-logo-item{height:68px;display:flex;align-items:center;flex-shrink:0;opacity:1;filter:none;}
     .brand-logo-item img{height:100%;width:auto;object-fit:contain;max-width:140px;}
 
@@ -501,6 +501,6 @@ if(window.ResizeObserver){ new ResizeObserver(reportHeight).observe(document.bod
 </script>
 
 <script src="https://rlsh1855.github.io/3Js-and-RLSH-Website/site-nav.js"></script>
-<script>document.querySelectorAll('a[href^="tel:"]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();window.location.href=a.getAttribute('href');});});</script>
+
 </body>
 </html>
