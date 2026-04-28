@@ -97,7 +97,7 @@
     .stat-num span{color:#8B0000;}
     .stat-label{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.45);font-family:'Montserrat',sans-serif;}
 
-    /* ── INTERACTIVE TRUCK DIAGRAM ── */
+    /* ── INTERACTIVE TRUCK DIAGRAM V2 ── */
     .diagram-section{background:#0a0a0a;padding:80px 0 88px;position:relative;overflow:hidden;}
     .diagram-section::before{content:'';position:absolute;inset:0;background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/AUTO%20GEARS%20BACKGROUND%20BLACK%20WITH%20WHITE.jpg');background-size:cover;background-position:center;opacity:0.08;pointer-events:none;z-index:0;}
     .diagram-section > *{position:relative;z-index:1;}
@@ -108,23 +108,38 @@
     .diagram-label .hint{font-size:12px;font-weight:400;color:rgba(255,255,255,0.40);margin-top:8px;}
     .truck-wrap{position:relative;width:100%;max-width:1200px;margin:0 auto;}
     .truck-img{width:100%;height:auto;display:block;}
+    .truck-darken{position:absolute;inset:0;background:rgba(0,0,0,0.30);pointer-events:none;}
     .lines-svg{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;overflow:visible;}
-    .anim-line{stroke:#8B0000;stroke-width:1.2;fill:none;stroke-dasharray:1000;stroke-dashoffset:1000;transition:stroke-dashoffset 2.0s cubic-bezier(0.4,0,0.2,1);}
+    .anim-line{fill:none;stroke-dasharray:1000;stroke-dashoffset:1000;transition:stroke-dashoffset 1.8s cubic-bezier(0.4,0,0.2,1);}
     .truck-wrap.animated .anim-line{stroke-dashoffset:0;}
-    .hs{position:absolute;transform:translate(-50%,-50%);z-index:20;cursor:pointer;}
+    .style-blueprint .anim-line{stroke:#fff;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+    .style-blueprint .end-cap{fill:#fff;stroke:#8B0000;stroke-width:3;opacity:0;transition:opacity 0.35s;}
+    .truck-wrap.style-blueprint.animated .end-cap{opacity:1;}
+    .style-blueprint .hs-label{background:#8B0000;}
+    .style-blueprint .center-dot{background:#fff;box-shadow:0 0 0 5px #8B0000,0 0 0 7px rgba(139,0,0,0.35);}
+    .style-blueprint .center-dot::after{border-color:#8B0000;}
+    .spotlight-overlay{position:absolute;inset:0;pointer-events:none;z-index:16;background:radial-gradient(circle var(--sr,180px) at var(--sx,50%) var(--sy,50%),transparent 0%,rgba(0,0,0,0) 30%,rgba(0,0,0,0.82) 100%);opacity:0;transition:opacity 0.45s ease;}
+    .truck-wrap.spotlit .spotlight-overlay{opacity:1;}
+    .truck-wrap.spotlit .anim-line,.truck-wrap.spotlit .end-cap{opacity:0.10 !important;transition:opacity 0.35s ease !important;}
+    .truck-wrap.spotlit .hs-label{opacity:0.12 !important;transition:opacity 0.35s ease !important;}
+    .truck-wrap.spotlit .hs{opacity:0.25;transition:opacity 0.3s;}
+    .truck-wrap.spotlit .hs.hs-spotlight{opacity:1;}
+    .truck-wrap.spotlit .anim-line.spotlight-active,.truck-wrap.spotlit .end-cap.spotlight-active{opacity:1 !important;}
+    .truck-wrap.spotlit .hs-label.spotlight-active{opacity:1 !important;}
+    .hs{position:absolute;transform:translate(-50%,-50%);z-index:20;cursor:pointer;-webkit-tap-highlight-color:transparent;}
     .hs-icon{position:relative;width:44px;height:44px;transition:transform 0.2s;}
-    .center-dot{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:14px;height:14px;border-radius:50%;background:#8B0000;transition:background 0.25s,transform 0.2s;box-shadow:0 0 0 3px rgba(139,0,0,0.45),0 0 10px rgba(139,0,0,0.6);}
+    .center-dot{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:14px;height:14px;border-radius:50%;background:#8B0000;transition:background 0.25s,transform 0.2s,box-shadow 0.25s;box-shadow:0 0 0 3px rgba(139,0,0,0.45),0 0 10px rgba(139,0,0,0.6);}
     .center-dot::after{content:'';position:absolute;inset:-5px;border-radius:50%;border:2.5px solid rgba(200,0,0,0.75);animation:pulse 1.8s ease-out infinite;}
     @keyframes pulse{0%{transform:scale(1);opacity:0.9;}100%{transform:scale(3);opacity:0;}}
-    .hs:hover{z-index:200;}
-    .hs:hover .hs-icon{transform:scale(1.12);}
-    .hs:hover .center-dot{background:#111;box-shadow:0 0 0 3px rgba(0,0,0,0.3);}
-    .hs:hover .center-dot::after{animation:none;opacity:0;}
-    .hs-label{position:absolute;white-space:nowrap;font-size:11px;font-weight:800;letter-spacing:1.6px;text-transform:uppercase;color:#fff;background:#8B0000;border:1px solid rgba(255,255,255,0.25);padding:3px 8px;pointer-events:none;opacity:0;transition:opacity 0.5s ease;transform:translateY(-50%);font-family:'Montserrat',sans-serif;}
+    .hs:hover,.hs.active{z-index:200;}
+    .hs:hover .hs-icon,.hs.active .hs-icon{transform:scale(1.15);}
+    .hs:hover .center-dot,.hs.active .center-dot{background:#8B0000;box-shadow:0 0 0 3px rgba(255,255,255,0.85),0 0 14px rgba(255,255,255,0.4);}
+    .hs:hover .center-dot::after,.hs.active .center-dot::after{animation:none;opacity:0;}
+    .hs-label{position:absolute;white-space:nowrap;font-size:11px;font-weight:800;letter-spacing:1.6px;text-transform:uppercase;color:#fff;background:#8B0000;border:1px solid rgba(255,255,255,0.25);padding:3px 8px;pointer-events:none;opacity:0;transition:opacity 0.5s ease;font-family:'Montserrat',sans-serif;}
     .truck-wrap.animated .hs-label{opacity:1;}
-    .popup{position:absolute;background:#fff;padding:14px 16px 14px 16px;width:210px;box-shadow:0 10px 40px rgba(0,0,0,0.55);opacity:0;pointer-events:none;transition:opacity 0.2s,transform 0.2s;z-index:100;}
-    .hs:hover .popup{opacity:1;pointer-events:auto;}
-    .popup-close{position:absolute;top:6px;right:8px;width:28px;height:28px;background:none;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#999;font-size:18px;line-height:1;touch-action:manipulation;-webkit-tap-highlight-color:transparent;}
+    .popup{position:absolute;background:#fff;padding:14px 16px;width:230px;box-shadow:0 10px 40px rgba(0,0,0,0.55);opacity:0;pointer-events:none;transition:opacity 0.2s,transform 0.2s;z-index:100;}
+    .hs:hover .popup,.hs.active .popup{opacity:1;pointer-events:auto;}
+    .popup-close{position:absolute;top:6px;right:8px;width:28px;height:28px;background:none;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#999;font-size:18px;line-height:1;-webkit-tap-highlight-color:transparent;}
     .popup-tag{font-size:9px;font-weight:700;letter-spacing:1.3px;text-transform:uppercase;color:#8B0000;margin-bottom:4px;font-family:'Montserrat',sans-serif;}
     .popup-title{font-size:13px;font-weight:800;color:#1B2A3B;margin-bottom:5px;line-height:1.3;font-family:'Montserrat',sans-serif;}
     .popup-desc{font-size:11.5px;font-weight:400;color:#4A5568;line-height:1.65;}
@@ -137,20 +152,6 @@
     .p-right::after{left:-4px;top:50%;margin-top:-4px;}
     .p-left{right:calc(100% + 12px);top:50%;transform:translateY(-50%);}
     .p-left::after{right:-4px;top:50%;margin-top:-4px;}
-    .p-above-right{bottom:calc(100% + 12px);left:0;}
-    .p-above-right::after{bottom:-4px;left:16px;}
-    .p-above-left{bottom:calc(100% + 12px);right:0;}
-    .p-above-left::after{bottom:-4px;right:16px;}
-    .l1{transition-delay:0.00s;}.l2{transition-delay:0.25s;}.l3{transition-delay:0.50s;}
-    .l4{transition-delay:0.75s;}.l5{transition-delay:1.00s;}.l6{transition-delay:1.25s;}
-    .l7{transition-delay:1.50s;}.l8{transition-delay:1.75s;}.l9{transition-delay:2.00s;}
-    .l10{transition-delay:2.25s;}.l11{transition-delay:2.50s;}.l12{transition-delay:2.75s;}
-    .l13{transition-delay:3.00s;}
-    .lb1{transition-delay:2.00s;}.lb2{transition-delay:2.25s;}.lb3{transition-delay:2.50s;}
-    .lb4{transition-delay:2.75s;}.lb5{transition-delay:3.00s;}.lb6{transition-delay:3.25s;}
-    .lb7{transition-delay:3.50s;}.lb8{transition-delay:3.75s;}.lb9{transition-delay:4.00s;}
-    .lb10{transition-delay:4.25s;}.lb11{transition-delay:4.50s;}.lb12{transition-delay:4.75s;}
-    .lb13{transition-delay:5.00s;}
 
     /* ── INTRO (SPRAY-ON PROTECTION) ── */
     .intro-section{background:#fff;padding:88px 40px;position:relative;overflow:hidden;}
@@ -362,30 +363,31 @@
   </div>
 </section>
 
-<!-- ══ INTERACTIVE TRUCK DIAGRAM ══ -->
+<!-- ══ INTERACTIVE TRUCK DIAGRAM V2 ══ -->
 <section class="diagram-section">
   <div class="diagram-label">
     <p>Interactive Service Guide</p>
     <h2>Everything We Do — <em>Built Into One Truck</em></h2>
-    <p class="hint">Hover any marker to explore our services</p>
+    <p class="hint">Hover or tap any marker to explore our services</p>
   </div>
-  <div class="truck-wrap" id="diagram">
+  <div class="truck-wrap style-blueprint" id="diagram">
     <img class="truck-img" id="truckImg" src="https://static.wixstatic.com/media/b95bd9_a209cfd665d74fef8b78efdeec254533~mv2.png" alt="Ford Raptor — Interactive Service Diagram" />
-    <div style="position:absolute;inset:0;background:rgba(0,0,0,0.30);pointer-events:none;"></div>
+    <div class="truck-darken"></div>
+    <div class="spotlight-overlay" id="spotlightOverlay"></div>
     <svg class="lines-svg" id="linesSvg"></svg>
-    <div class="hs" id="hs1" data-x="0.202" data-y="0.354" data-lx="0.02" data-ly="0.16" data-lclass="lb1" data-ltext="BEDLINER" data-line="l1"><div class="hs-icon"><div class="center-dot"></div></div><div class="popup p-right"><button class="popup-close">&times;</button><div class="popup-tag">Truck Bed Protection</div><div class="popup-title">Spray-In Bedliners</div><div class="popup-desc">Certified Rhino Liner installer. Permanent bond, textured finish, same-day service, and a lifetime warranty.</div></div></div>
-    <div class="hs" id="hs2" data-x="0.14" data-y="0.55" data-lx="0.02" data-ly="0.52" data-lclass="lb2" data-ltext="REAR BUMPER" data-line="l2"><div class="hs-icon"><div class="center-dot"></div></div><div class="popup p-right"><button class="popup-close">&times;</button><div class="popup-tag">Rear End</div><div class="popup-title">Rear Bumpers</div><div class="popup-desc">Collision damage, rust, or just an upgrade — we repair, replace, and color-match rear bumpers on any truck, SUV, or Jeep.</div></div></div>
-    <div class="hs" id="hs3" data-x="0.25" data-y="0.60" data-lx="0.02" data-ly="0.64" data-lclass="lb3" data-ltext="ROCK GUARDS" data-line="l3"><div class="hs-icon"><div class="center-dot"></div></div><div class="popup p-right"><button class="popup-close">&times;</button><div class="popup-tag">Fender Protection</div><div class="popup-title">Rock Guard Protection</div><div class="popup-desc">Protect the lower body with Rhino Linings material to stop chips, rocks, and road debris. Color match available.</div></div></div>
-    <div class="hs" id="hs4" data-x="0.355" data-y="0.692" data-lx="0.03" data-ly="0.80" data-lclass="lb4" data-ltext="RUNNING BOARDS" data-line="l4"><div class="hs-icon"><div class="center-dot"></div></div><div class="popup p-right"><button class="popup-close">&times;</button><div class="popup-tag">Side Steps</div><div class="popup-title">Running Boards</div><div class="popup-desc">Fixed boards, nerf bars, and power retractable steps for all trucks and SUVs. All major brands available.</div></div></div>
-    <div class="hs" id="hs5" data-x="0.33" data-y="0.47" data-lx="0.02" data-ly="0.38" data-lclass="lb5" data-ltext="FULL EXTERIOR PAINT" data-line="l5"><div class="hs-icon"><div class="center-dot"></div></div><div class="popup p-right"><button class="popup-close">&times;</button><div class="popup-tag">Custom Paint</div><div class="popup-title">Full Exterior Paint Jobs</div><div class="popup-desc">Computer-matched paint for a perfect finish — single panels or full repaints in any color.</div></div></div>
-    <div class="hs" id="hs6" data-x="0.343" data-y="0.285" data-lx="0.16" data-ly="0.06" data-lclass="lb6" data-ltext="EXTERIOR / BLACK TRIM" data-line="l6"><div class="hs-icon"><div class="center-dot"></div></div><div class="popup p-below"><button class="popup-close">&times;</button><div class="popup-tag">Exterior Parts</div><div class="popup-title">Faded Black Trim</div><div class="popup-desc">We restore or replace black textured parts — pillars, cladding, moldings — or spray Rhino Linings so it lasts for years.</div></div></div>
-    <div class="hs" id="hs7" data-x="0.530" data-y="0.156" data-lx="0.56" data-ly="0.06" data-lclass="lb7" data-ltext="ROOF" data-line="l7"><div class="hs-icon"><div class="center-dot"></div></div><div class="popup p-below"><button class="popup-close">&times;</button><div class="popup-tag">Roof Panel</div><div class="popup-title">Roof Rust Repair</div><div class="popup-desc">We treat rust at the source, repair the panel, and apply Rhino Linings to prolong the life of your vehicle.</div></div></div>
-    <div class="hs" id="hs8" data-x="0.722" data-y="0.343" data-lx="0.82" data-ly="0.20" data-lclass="lb8" data-ltext="HOODS" data-line="l8"><div class="hs-icon"><div class="center-dot"></div></div><div class="popup p-left"><button class="popup-close">&times;</button><div class="popup-tag">Fleet &amp; Police</div><div class="popup-title">Hood Painting</div><div class="popup-desc">Custom hood painting, decals, and lettering for police departments, city fleet vehicles, and commercial trucks.</div></div></div>
-    <div class="hs" id="hs9" data-x="0.81" data-y="0.40" data-lx="0.86" data-ly="0.47" data-lclass="lb9" data-ltext="GRILLE" data-line="l9"><div class="hs-icon"><div class="center-dot"></div></div><div class="popup p-left"><button class="popup-close">&times;</button><div class="popup-tag">Front Face</div><div class="popup-title">Grilles</div><div class="popup-desc">Aftermarket grille installation with factory color match or custom contrast finish. All makes and models.</div></div></div>
-    <div class="hs" id="hs10" data-x="0.866" data-y="0.638" data-lx="0.87" data-ly="0.80" data-lclass="lb10" data-ltext="FRONT BUMPER" data-line="l10"><div class="hs-icon"><div class="center-dot"></div></div><div class="popup p-left"><button class="popup-close">&times;</button><div class="popup-tag">Front End</div><div class="popup-title">Front Bumpers</div><div class="popup-desc">Collision repair, aftermarket upgrades, and color-matched painting. Steel, aluminum, or factory plastic.</div></div></div>
-    <div class="hs" id="hs11" data-x="0.425" data-y="0.482" data-lx="0.38" data-ly="0.87" data-lclass="lb11" data-ltext="WHEEL WELLS" data-line="l11"><div class="hs-icon"><div class="center-dot"></div></div><div class="popup p-above"><button class="popup-close">&times;</button><div class="popup-tag">Wheel Wells</div><div class="popup-title">Wheel Well Coating</div><div class="popup-desc">Spray-in liner coating stops rust, deadens road noise, and protects against rocks. Looks great too.</div></div></div>
-    <div class="hs" id="hs12" data-x="0.587" data-y="0.734" data-lx="0.56" data-ly="0.87" data-lclass="lb12" data-ltext="UNDERCARRIAGE" data-line="l12"><div class="hs-icon"><div class="center-dot"></div></div><div class="popup p-above"><button class="popup-close">&times;</button><div class="popup-tag">Underside</div><div class="popup-title">Undercarriage Coating</div><div class="popup-desc">Full undercarriage spray seals out moisture, road salt, and corrosion. Essential for off-road and coastal trucks.</div></div></div>
-    <div class="hs" id="hs13" data-x="0.73" data-y="0.71" data-lx="0.72" data-ly="0.87" data-lclass="lb13" data-ltext="SKID PLATES" data-line="l13"><div class="hs-icon"><div class="center-dot"></div></div><div class="popup p-left"><button class="popup-close">&times;</button><div class="popup-tag">Front Underside</div><div class="popup-title">Skid Plates</div><div class="popup-desc">Heavy-duty skid plate installation to protect your engine, transmission, and transfer case. Ask us to Rhino Line it too.</div></div></div>
+    <div class="hs" data-x="0.202" data-y="0.354" data-lx="0.02" data-ly="0.20" data-ltext="BEDLINER" data-lpos="right"><div class="hs-icon"><div class="center-dot"></div></div><div class="popup p-right"><button class="popup-close">&times;</button><div class="popup-tag">Truck Bed Protection</div><div class="popup-title">Spray-In Bedliners</div><div class="popup-desc">Certified Rhino Liner installer. Permanent bond, textured finish, same-day service, and a lifetime warranty.</div></div></div>
+    <div class="hs" data-x="0.14" data-y="0.55" data-lx="0.02" data-ly="0.60" data-ltext="REAR BUMPER" data-lpos="right"><div class="hs-icon"><div class="center-dot"></div></div><div class="popup p-right"><button class="popup-close">&times;</button><div class="popup-tag">Rear End</div><div class="popup-title">Rear Bumpers</div><div class="popup-desc">Collision damage, rust, or just an upgrade — we repair, replace, and color-match rear bumpers on any truck, SUV, or Jeep.</div></div></div>
+    <div class="hs" data-x="0.25" data-y="0.60" data-lx="0.18" data-ly="0.97" data-ltext="ROCK GUARDS" data-lpos="above"><div class="hs-icon"><div class="center-dot"></div></div><div class="popup p-right"><button class="popup-close">&times;</button><div class="popup-tag">Fender Protection</div><div class="popup-title">Rock Guard Protection</div><div class="popup-desc">Protect the lower body with Rhino Linings material to stop chips, rocks, and road debris. Color match available.</div></div></div>
+    <div class="hs" data-x="0.355" data-y="0.692" data-lx="0.34" data-ly="0.97" data-ltext="RUNNING BOARDS" data-lpos="above"><div class="hs-icon"><div class="center-dot"></div></div><div class="popup p-right"><button class="popup-close">&times;</button><div class="popup-tag">Side Steps</div><div class="popup-title">Running Boards</div><div class="popup-desc">Fixed boards, nerf bars, and power retractable steps for all trucks and SUVs. All major brands available.</div></div></div>
+    <div class="hs" data-x="0.33" data-y="0.47" data-lx="0.02" data-ly="0.40" data-ltext="FULL EXTERIOR PAINT" data-lpos="right"><div class="hs-icon"><div class="center-dot"></div></div><div class="popup p-right"><button class="popup-close">&times;</button><div class="popup-tag">Custom Paint</div><div class="popup-title">Full Exterior Paint Jobs</div><div class="popup-desc">Computer-matched paint for a perfect finish — single panels or full repaints in any color.</div></div></div>
+    <div class="hs" data-x="0.343" data-y="0.285" data-lx="0.22" data-ly="0.04" data-ltext="EXTERIOR / BLACK TRIM" data-lpos="below"><div class="hs-icon"><div class="center-dot"></div></div><div class="popup p-below"><button class="popup-close">&times;</button><div class="popup-tag">Exterior Parts</div><div class="popup-title">Faded Black Trim</div><div class="popup-desc">We restore or replace black textured parts — pillars, cladding, moldings — or spray Rhino Linings so it lasts for years.</div></div></div>
+    <div class="hs" data-x="0.530" data-y="0.156" data-lx="0.50" data-ly="0.04" data-ltext="ROOF" data-lpos="below"><div class="hs-icon"><div class="center-dot"></div></div><div class="popup p-below"><button class="popup-close">&times;</button><div class="popup-tag">Roof Panel</div><div class="popup-title">Roof Rust Repair</div><div class="popup-desc">We treat rust at the source, repair the panel, and apply Rhino Linings to prolong the life of your vehicle.</div></div></div>
+    <div class="hs" data-x="0.722" data-y="0.343" data-lx="0.77" data-ly="0.04" data-ltext="HOODS" data-lpos="below"><div class="hs-icon"><div class="center-dot"></div></div><div class="popup p-left"><button class="popup-close">&times;</button><div class="popup-tag">Fleet &amp; Police</div><div class="popup-title">Hood Painting</div><div class="popup-desc">Custom hood painting, decals, and lettering for police departments, city fleet vehicles, and commercial trucks.</div></div></div>
+    <div class="hs" data-x="0.81" data-y="0.40" data-lx="0.98" data-ly="0.38" data-ltext="GRILLE" data-lpos="left"><div class="hs-icon"><div class="center-dot"></div></div><div class="popup p-left"><button class="popup-close">&times;</button><div class="popup-tag">Front Face</div><div class="popup-title">Grilles</div><div class="popup-desc">Aftermarket grille installation with factory color match or custom contrast finish. All makes and models.</div></div></div>
+    <div class="hs" data-x="0.866" data-y="0.638" data-lx="0.98" data-ly="0.60" data-ltext="FRONT BUMPER" data-lpos="left"><div class="hs-icon"><div class="center-dot"></div></div><div class="popup p-left"><button class="popup-close">&times;</button><div class="popup-tag">Front End</div><div class="popup-title">Front Bumpers</div><div class="popup-desc">Collision repair, aftermarket upgrades, and color-matched painting. Steel, aluminum, or factory plastic.</div></div></div>
+    <div class="hs" data-x="0.425" data-y="0.482" data-lx="0.49" data-ly="0.97" data-ltext="WHEEL WELLS" data-lpos="above"><div class="hs-icon"><div class="center-dot"></div></div><div class="popup p-above"><button class="popup-close">&times;</button><div class="popup-tag">Wheel Wells</div><div class="popup-title">Wheel Well Coating</div><div class="popup-desc">Spray-in liner coating stops rust, deadens road noise, and protects against rocks. Looks great too.</div></div></div>
+    <div class="hs" data-x="0.587" data-y="0.734" data-lx="0.64" data-ly="0.97" data-ltext="UNDERCARRIAGE" data-lpos="above"><div class="hs-icon"><div class="center-dot"></div></div><div class="popup p-above"><button class="popup-close">&times;</button><div class="popup-tag">Underside</div><div class="popup-title">Undercarriage Coating</div><div class="popup-desc">Full undercarriage spray seals out moisture, road salt, and corrosion. Essential for off-road and coastal trucks.</div></div></div>
+    <div class="hs" data-x="0.73" data-y="0.71" data-lx="0.80" data-ly="0.97" data-ltext="SKID PLATES" data-lpos="above"><div class="hs-icon"><div class="center-dot"></div></div><div class="popup p-left"><button class="popup-close">&times;</button><div class="popup-tag">Front Underside</div><div class="popup-title">Skid Plates</div><div class="popup-desc">Heavy-duty skid plate installation to protect your engine, transmission, and transfer case. Ask us to Rhino Line it too.</div></div></div>
   </div>
 </section>
 
@@ -587,69 +589,105 @@
 </section>
 
 <script>
-  var isMobile = 'ontouchstart' in window;
-  if(isMobile){var hint=document.querySelector('.hint');if(hint)hint.textContent='Tap any marker to explore our services';}
+  if('ontouchstart' in window){var hint=document.querySelector('.hint');if(hint)hint.textContent='Tap any marker to explore our services';}
 
-  // Mobile tap-to-open, X to close popups
-  if(isMobile){
-    document.querySelectorAll('.hs').forEach(function(hs){
-      hs.addEventListener('click', function(e){
-        if(e.target.closest('.popup-close')){
-          hs.classList.remove('active');
-          return;
-        }
-        var wasActive = hs.classList.contains('active');
-        document.querySelectorAll('.hs.active').forEach(function(h){ h.classList.remove('active'); });
-        if(!wasActive) hs.classList.add('active');
-        e.stopPropagation();
+  (function(){
+    var wrap=document.getElementById('diagram');
+    var svg=document.getElementById('linesSvg');
+    var img=document.getElementById('truckImg');
+    var hotspots=Array.from(wrap.querySelectorAll('.hs'));
+
+    function buildLines(){
+      svg.innerHTML='';
+      wrap.querySelectorAll('.hs-label').forEach(function(l){l.remove();});
+      var W=wrap.clientWidth,H=wrap.clientHeight;
+      if(!W||!H)return;
+      svg.setAttribute('viewBox','0 0 '+W+' '+H);
+      svg.setAttribute('width',W);svg.setAttribute('height',H);
+      hotspots.forEach(function(hs){
+        var label=document.createElement('div');
+        label.className='hs-label';
+        label.textContent=hs.dataset.ltext;
+        label.style.cssText='position:absolute;left:-9999px;top:-9999px;transform:none;';
+        wrap.appendChild(label);
+        hs._label=label;
       });
-    });
-    document.addEventListener('click', function(){ document.querySelectorAll('.hs.active').forEach(function(h){ h.classList.remove('active'); }); });
-    document.querySelectorAll('.popup-close').forEach(function(btn){
-      btn.addEventListener('click', function(e){
-        e.stopPropagation();
-        btn.closest('.hs').classList.remove('active');
+      hotspots.forEach(function(hs,i){
+        var x=parseFloat(hs.dataset.x)*W,y=parseFloat(hs.dataset.y)*H;
+        var lx=parseFloat(hs.dataset.lx)*W,ly=parseFloat(hs.dataset.ly)*H;
+        var lpos=hs.dataset.lpos||'right';
+        hs.style.left=x+'px';hs.style.top=y+'px';
+        var label=hs._label,lw=label.offsetWidth,lh=label.offsetHeight,GAP=10;
+        var labelLeft,labelTop;
+        if(lpos==='right'){labelLeft=lx+GAP;labelTop=ly-lh/2;}
+        else if(lpos==='left'){labelLeft=lx-lw-GAP;labelTop=ly-lh/2;}
+        else if(lpos==='below'){labelLeft=lx-lw/2;labelTop=ly+GAP;}
+        else{labelLeft=lx-lw/2;labelTop=ly-lh-GAP;}
+        labelLeft=Math.max(2,Math.min(W-lw-2,labelLeft));
+        labelTop=Math.max(2,Math.min(H-lh-2,labelTop));
+        label.style.left=labelLeft+'px';label.style.top=labelTop+'px';
+        label.setAttribute('data-hs-index',i);
+        label.style.transitionDelay=(i*0.16+1.5)+'s';
+        var cornerX=(lpos==='right'||lpos==='left')?lx:x;
+        var cornerY=(lpos==='right'||lpos==='left')?y:ly;
+        var path=document.createElementNS('http://www.w3.org/2000/svg','path');
+        path.setAttribute('d','M '+x+' '+y+' L '+cornerX+' '+cornerY+' L '+lx+' '+ly);
+        path.setAttribute('class','anim-line');
+        path.setAttribute('data-hs-index',i);
+        path.style.transitionDelay=(i*0.16)+'s';
+        svg.appendChild(path);
+        var cap=document.createElementNS('http://www.w3.org/2000/svg','circle');
+        cap.setAttribute('cx',lx);cap.setAttribute('cy',ly);cap.setAttribute('r','5.5');
+        cap.setAttribute('class','end-cap');
+        cap.setAttribute('data-hs-index',i);
+        cap.style.transitionDelay=(i*0.16+1.2)+'s';
+        svg.appendChild(cap);
       });
-    });
-  }
+    }
 
-  var img=document.getElementById('truckImg');
-  var wrap=document.getElementById('diagram');
-  var svg=document.getElementById('linesSvg');
-  var hotspots=Array.from(document.querySelectorAll('.hs'));
+    function trigger(){requestAnimationFrame(function(){wrap.classList.add('animated');});}
+    function init(){buildLines();setTimeout(trigger,200);}
+    if(img.complete&&img.naturalWidth>0){init();}
+    else{img.addEventListener('load',init);img.addEventListener('error',init);}
+    window.addEventListener('resize',function(){buildLines();});
 
-  function positionAll(){
-    var iw=img.offsetWidth,ih=img.offsetHeight;
-    if(!iw||!ih)return;
-    wrap.style.height=ih+'px';
-    svg.innerHTML='';
-    wrap.querySelectorAll('.hs-label').forEach(function(el){el.parentNode.removeChild(el);});
     hotspots.forEach(function(hs){
-      var dx=parseFloat(hs.dataset.x)*iw,dy=parseFloat(hs.dataset.y)*ih;
-      hs.style.left=dx+'px';hs.style.top=dy+'px';
-      var lx=parseFloat(hs.dataset.lx)*iw,ly=parseFloat(hs.dataset.ly)*ih;
-      var lxFrac=parseFloat(hs.dataset.lx),lyFrac=parseFloat(hs.dataset.ly);
-      var lxEnd=lx,lyEnd=ly;
-      if(lxFrac<0.15||lxFrac>0.85){lxEnd=lx+10;}else if(lyFrac>0.8||lyFrac<0.15){lyEnd=ly+10;}
-      var lineEl=document.createElementNS('http://www.w3.org/2000/svg','line');
-      lineEl.setAttribute('x1',dx);lineEl.setAttribute('y1',dy);
-      lineEl.setAttribute('x2',lxEnd);lineEl.setAttribute('y2',lyEnd);
-      lineEl.setAttribute('class','anim-line '+hs.dataset.line);
-      svg.appendChild(lineEl);
-      var lbl=document.createElement('div');
-      lbl.className='hs-label '+hs.dataset.lclass;
-      lbl.textContent=hs.dataset.ltext;
-      lbl.style.left=lx+'px';lbl.style.top=ly+'px';
-      lbl.style.transform=(lxFrac<0.15||lxFrac>0.85)?'translateY(-50%)':'translateX(-50%) translateY(0)';
-      wrap.appendChild(lbl);
+      hs.querySelector('.hs-icon').addEventListener('click',function(e){
+        e.stopPropagation();
+        var wasActive=hs.classList.contains('active');
+        hotspots.forEach(function(h){h.classList.remove('active');});
+        if(!wasActive)hs.classList.add('active');
+      });
+      var close=hs.querySelector('.popup-close');
+      if(close){close.addEventListener('click',function(e){e.stopPropagation();hs.classList.remove('active');});}
     });
-  }
+    document.addEventListener('click',function(){hotspots.forEach(function(h){h.classList.remove('active');});});
 
-  if(img.complete&&img.naturalWidth){positionAll();}else{img.addEventListener('load',positionAll);}
-  var resizeTimer;
-  window.addEventListener('resize',function(){clearTimeout(resizeTimer);resizeTimer=setTimeout(positionAll,60);});
-  var observer=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting){wrap.classList.add('animated');observer.unobserve(wrap);}});},{threshold:0.2});
-  observer.observe(wrap);
+    var spotlightTimeout;
+    function activateSpotlight(hs,idx){
+      var W=wrap.clientWidth,H=wrap.clientHeight;
+      wrap.style.setProperty('--sx',parseFloat(hs.dataset.x)*W+'px');
+      wrap.style.setProperty('--sy',parseFloat(hs.dataset.y)*H+'px');
+      wrap.classList.add('spotlit');
+      hotspots.forEach(function(h){h.classList.remove('hs-spotlight');});
+      hs.classList.add('hs-spotlight');
+      svg.querySelectorAll('[data-hs-index]').forEach(function(el){el.classList.toggle('spotlight-active',el.getAttribute('data-hs-index')==idx);});
+      wrap.querySelectorAll('.hs-label[data-hs-index]').forEach(function(el){el.classList.toggle('spotlight-active',el.getAttribute('data-hs-index')==idx);});
+    }
+    function deactivateSpotlight(){
+      spotlightTimeout=setTimeout(function(){
+        wrap.classList.remove('spotlit');
+        hotspots.forEach(function(h){h.classList.remove('hs-spotlight');});
+        svg.querySelectorAll('.spotlight-active').forEach(function(el){el.classList.remove('spotlight-active');});
+        wrap.querySelectorAll('.spotlight-active').forEach(function(el){el.classList.remove('spotlight-active');});
+      },120);
+    }
+    hotspots.forEach(function(hs,i){
+      hs.addEventListener('mouseenter',function(){clearTimeout(spotlightTimeout);activateSpotlight(hs,i);});
+      hs.addEventListener('mouseleave',deactivateSpotlight);
+    });
+    wrap.addEventListener('mouseleave',deactivateSpotlight);
+  })();
 
   document.querySelectorAll('.faq-q').forEach(function(btn){
     function toggle(e){

@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>RLSH — Interactive Service Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html,body{overflow-x:hidden;}
+  body{font-family:'Inter',sans-serif;background:#0a0a0a;color:#fff;}
+
+  /* ── INTERACTIVE TRUCK DIAGRAM (matches original site) ── */
+  .diagram-section{background:#0a0a0a;padding:80px 0 88px;position:relative;overflow:hidden;min-height:100vh;}
+  .diagram-section::before{
+    content:'';position:absolute;inset:0;
+    background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/AUTO%20GEARS%20BACKGROUND%20BLACK%20WITH%20WHITE.jpg');
+    background-size:cover;background-position:center;opacity:0.08;pointer-events:none;z-index:0;
+  }
+  .diagram-section > *{position:relative;z-index:1;}
+  .diagram-label{text-align:center;margin-bottom:36px;padding:0 20px;}
+  .diagram-label p.eyebrow{font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:#8B0000;margin-bottom:10px;font-family:'Montserrat',sans-serif;}
+  .diagram-label h2{font-size:clamp(22px,3.5vw,40px);font-weight:900;letter-spacing:-1px;color:#fff;font-family:'Montserrat',sans-serif;}
+  .diagram-label h2 em{font-style:normal;color:#8B0000;}
+  .diagram-label .hint{font-size:12px;font-weight:400;color:rgba(255,255,255,0.40);margin-top:8px;}
+
+  .truck-wrap{position:relative;width:100%;max-width:1200px;margin:0 auto;}
+  .truck-img{width:100%;height:auto;display:block;}
+  .truck-darken{position:absolute;inset:0;background:rgba(0,0,0,0.30);pointer-events:none;}
+  .lines-svg{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;overflow:visible;}
+
+  /* shared line base */
+  .anim-line{
+    fill:none;
+    stroke-dasharray:1000;
+    stroke-dashoffset:1000;
+    transition:stroke-dashoffset 1.8s cubic-bezier(0.4,0,0.2,1);
+  }
+  .truck-wrap.animated .anim-line{stroke-dashoffset:0;}
+
+  /* ── STYLE A: Solid line + filled circle cap ── */
+  .style-blueprint{ --rc:#fff; --rg:rgba(255,255,255,0.45); }
+  .style-blueprint .anim-line{
+    stroke:#fff;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;
+  }
+  .style-blueprint .end-cap{
+    fill:#fff;stroke:#8B0000;stroke-width:3;opacity:0;transition:opacity 0.35s;
+  }
+  .truck-wrap.style-blueprint.animated .end-cap{opacity:1;}
+  .style-blueprint .hs-label{background:#8B0000;}
+  .style-blueprint .center-dot{
+    background:#fff;
+    box-shadow:0 0 0 5px #8B0000, 0 0 0 7px rgba(139,0,0,0.35);
+  }
+  .style-blueprint .center-dot::after{border-color:#8B0000;}
+
+  /* ── STYLE B: Solid line + diamond cap ── */
+  .style-glow .anim-line{
+    stroke:#8B0000;stroke-width:1.5;stroke-linecap:square;stroke-linejoin:miter;
+  }
+  .style-glow .end-cap{
+    fill:#8B0000;stroke:#fff;stroke-width:1;
+    opacity:0;transition:opacity 0.35s;
+  }
+  .truck-wrap.style-glow.animated .end-cap{opacity:1;}
+  .style-glow .hs-label{background:#8B0000;border-color:rgba(255,255,255,0.4);}
+  .style-glow .center-dot{background:#8B0000;border-radius:0;width:12px;height:12px;box-shadow:0 0 0 2px rgba(139,0,0,0.5);}
+  .style-glow .center-dot::after{border-radius:0;border-color:rgba(139,0,0,0.7);}
+  .style-glow .hs:hover .center-dot,.style-glow .hs.active .center-dot{background:#fff;border-radius:0;}
+
+  /* ── STYLE C: Dashed line + open circle cap ── */
+  .style-dashed .anim-line{
+    stroke:#8B0000;stroke-width:1.4;
+    stroke-dasharray:6 3;
+    stroke-dashoffset:0;
+    opacity:0;transition:opacity 0.5s ease;
+    animation:none;
+  }
+  .truck-wrap.style-dashed.animated .anim-line{
+    opacity:1;animation:dashFlow 20s linear infinite;
+  }
+  @keyframes dashFlow{to{stroke-dashoffset:-360;}}
+  .style-dashed .end-cap{
+    fill:rgba(10,10,10,0.85);stroke:#8B0000;stroke-width:1.8;
+    opacity:0;transition:opacity 0.35s;
+  }
+  .truck-wrap.style-dashed.animated .end-cap{opacity:1;}
+  .style-dashed .hs-label{
+    background:rgba(10,10,10,0.85);border:1.5px solid #8B0000;color:#fff;
+  }
+  .style-dashed .center-dot{
+    border-radius:0;background:rgba(10,10,10,0.9);border:2px solid #8B0000;
+    width:12px;height:12px;box-shadow:none;
+  }
+  .style-dashed .center-dot::after{border-radius:0;border-color:#8B0000;}
+  .style-dashed .hs:hover .center-dot,.style-dashed .hs.active .center-dot{background:#8B0000;}
+
+  /* hotspots */
+  .hs{position:absolute;transform:translate(-50%,-50%);z-index:20;cursor:pointer;-webkit-tap-highlight-color:transparent;}
+  .hs-icon{position:relative;width:44px;height:44px;transition:transform 0.2s;}
+  .center-dot{
+    position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+    width:14px;height:14px;border-radius:50%;background:#8B0000;
+    transition:background 0.25s,transform 0.2s,box-shadow 0.25s;
+    box-shadow:0 0 0 3px rgba(139,0,0,0.45),0 0 10px rgba(139,0,0,0.6);
+  }
+  .center-dot::after{
+    content:'';position:absolute;inset:-5px;border-radius:50%;
+    border:2.5px solid rgba(200,0,0,0.75);
+    animation:pulse 1.8s ease-out infinite;
+  }
+  @keyframes pulse{
+    0%{transform:scale(1);opacity:0.9;}
+    100%{transform:scale(3);opacity:0;}
+  }
+  .hs:hover, .hs.active{z-index:200;}
+  .hs:hover .hs-icon, .hs.active .hs-icon{transform:scale(1.15);}
+  .hs:hover .center-dot, .hs.active .center-dot{background:#8B0000;box-shadow:0 0 0 3px rgba(255,255,255,0.85),0 0 14px rgba(255,255,255,0.4);}
+  .hs:hover .center-dot::after, .hs.active .center-dot::after{animation:none;opacity:0;}
+
+  /* style-glow hover overrides already handled above */
+
+
+  /* ── SPOTLIGHT + LINE FADE on hover ── */
+  .spotlight-overlay{
+    position:absolute;inset:0;pointer-events:none;z-index:16;
+    background:radial-gradient(
+      circle var(--sr, 180px) at var(--sx, 50%) var(--sy, 50%),
+      transparent 0%,
+      rgba(0,0,0,0) 30%,
+      rgba(0,0,0,0.82) 100%
+    );
+    opacity:0;
+    transition:opacity 0.45s ease, --sx 0.1s, --sy 0.1s;
+  }
+  .truck-wrap.spotlit .spotlight-overlay{ opacity:1; }
+
+  /* Fade all lines/caps/labels when spotlit */
+  .truck-wrap.spotlit .anim-line,
+  .truck-wrap.spotlit .end-cap{
+    opacity:0.10 !important;
+    transition:opacity 0.35s ease !important;
+  }
+  .truck-wrap.spotlit .hs-label{
+    opacity:0.12 !important;
+    transition:opacity 0.35s ease !important;
+  }
+  .truck-wrap.spotlit .hs{ opacity:0.25; transition:opacity 0.3s; }
+  .truck-wrap.spotlit .hs.hs-spotlight{ opacity:1; }
+
+  /* Active line/cap/label stays full brightness */
+  .truck-wrap.spotlit .anim-line.spotlight-active,
+  .truck-wrap.spotlit .end-cap.spotlight-active{ opacity:1 !important; }
+  .truck-wrap.spotlit .hs-label.spotlight-active{ opacity:1 !important; }
+
+  /* hotspot labels */
+  .hs-label{
+    position:absolute;white-space:nowrap;
+    font-size:11px;font-weight:800;letter-spacing:1.6px;text-transform:uppercase;color:#fff;
+    background:#8B0000;border:1px solid rgba(255,255,255,0.25);padding:3px 8px;
+    pointer-events:none;opacity:0;transition:opacity 0.5s ease;font-family:'Montserrat',sans-serif;
+  }
+  .truck-wrap.animated .hs-label{opacity:1;}
+  .style-glow .hs-label{
+    background:#8B0000;
+    box-shadow:0 0 12px rgba(255,30,30,0.7);
+  }
+  .style-dashed .hs-label{
+    background:transparent;
+    color:#fff;
+    border:1px dashed rgba(255,255,255,0.6);
+    padding:4px 9px;
+  }
+
+  /* popups */
+  .popup{
+    position:absolute;background:#fff;padding:14px 16px;width:230px;
+    box-shadow:0 10px 40px rgba(0,0,0,0.55);
+    opacity:0;pointer-events:none;
+    transition:opacity 0.2s,transform 0.2s;
+    z-index:100;
+  }
+  .hs:hover .popup, .hs.active .popup{opacity:1;pointer-events:auto;}
+  .popup-close{
+    position:absolute;top:6px;right:8px;width:28px;height:28px;
+    background:none;border:none;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;
+    color:#999;font-size:18px;line-height:1;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .popup-tag{font-size:9px;font-weight:700;letter-spacing:1.3px;text-transform:uppercase;color:#8B0000;margin-bottom:4px;font-family:'Montserrat',sans-serif;}
+  .popup-title{font-size:13px;font-weight:800;color:#1B2A3B;margin-bottom:5px;line-height:1.3;font-family:'Montserrat',sans-serif;}
+  .popup-desc{font-size:11.5px;font-weight:400;color:#4A5568;line-height:1.65;}
+  .popup::after{content:'';position:absolute;width:9px;height:9px;background:#fff;transform:rotate(45deg);}
+  .p-above{bottom:calc(100% + 12px);left:50%;transform:translateX(-50%);}
+  .p-above::after{bottom:-4px;left:50%;margin-left:-4px;}
+  .p-below{top:calc(100% + 12px);left:50%;transform:translateX(-50%);}
+  .p-below::after{top:-4px;left:50%;margin-left:-4px;}
+  .p-right{left:calc(100% + 12px);top:50%;transform:translateY(-50%);}
+  .p-right::after{left:-4px;top:50%;margin-top:-4px;}
+  .p-left{right:calc(100% + 12px);top:50%;transform:translateY(-50%);}
+  .p-left::after{right:-4px;top:50%;margin-top:-4px;}
+
+  /* style switcher (visible all the time, simple & on-brand) */
+  .style-switcher{
+    max-width:1100px;margin:48px auto 0;padding:0 20px;
+    display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;
+  }
+  .style-switcher .label{
+    font-size:9px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;
+    color:rgba(255,255,255,0.5);font-family:'Montserrat',sans-serif;margin-right:8px;
+  }
+  .style-btn{
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.15);
+    color:#fff;
+    font-family:'Montserrat',sans-serif;
+    font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
+    padding:10px 18px;cursor:pointer;
+    transition:all 0.2s;
+  }
+  .style-btn:hover{border-color:rgba(139,0,0,0.6);background:rgba(139,0,0,0.1);}
+  .style-btn.active{background:#8B0000;border-color:#8B0000;color:#fff;box-shadow:0 0 14px rgba(139,0,0,0.5);}
+
+  @media(max-width:900px){
+    .hs-label{font-size:8px;letter-spacing:1px;}
+    .hs-icon{width:38px;height:38px;}
+    .center-dot{width:12px;height:12px;}
+  }
+  @media(max-width:640px){
+    .hs-label{display:none;}
+    .lines-svg{display:none;}
+    .hs-icon{width:32px;height:32px;}
+    .center-dot{width:10px;height:10px;}
+    .diagram-section{padding:32px 0 40px;}
+    .diagram-label{margin-bottom:16px;}
+    .diagram-label h2{font-size:20px;}
+    .popup{
+      position:fixed !important;top:50% !important;left:50% !important;
+      transform:translate(-50%,-50%) !important;
+      bottom:auto !important;right:auto !important;
+      width:88vw !important;max-width:320px !important;
+      z-index:9999 !important;
+      box-shadow:0 20px 60px rgba(0,0,0,0.85) !important;
+    }
+    .popup::after{display:none !important;}
+    .hs:not(.active) .popup{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<section class="diagram-section">
+  <div class="diagram-label">
+    <p class="eyebrow">Interactive Service Guide</p>
+    <h2>Everything We Do — <em>Built Into One Truck</em></h2>
+    <p class="hint">Hover or tap any marker to explore our services</p>
+  </div>
+
+  <div class="truck-wrap style-blueprint" id="diagram">
+    <img class="truck-img" id="truckImg" src="https://static.wixstatic.com/media/b95bd9_a209cfd665d74fef8b78efdeec254533~mv2.png" alt="Ford Raptor — Interactive Service Diagram" crossorigin="anonymous" />
+    <div class="truck-darken"></div>
+    <div class="spotlight-overlay" id="spotlightOverlay"></div>
+    <svg class="lines-svg" id="linesSvg"></svg>
+
+    <!-- 13 hotspots — same coords as the original -->
+    <div class="hs" data-x="0.202" data-y="0.354" data-lx="0.02" data-ly="0.20" data-ltext="BEDLINER" data-lpos="right" >
+      <div class="hs-icon"><div class="center-dot"></div></div>
+      <div class="popup p-right"><button class="popup-close">&times;</button><div class="popup-tag">Truck Bed Protection</div><div class="popup-title">Spray-In Bedliners</div><div class="popup-desc">Certified Rhino Liner installer. Permanent bond, textured finish, same-day service, and a lifetime warranty.</div></div>
+    </div>
+    <div class="hs" data-x="0.14" data-y="0.55" data-lx="0.02" data-ly="0.60" data-ltext="REAR BUMPER" data-lpos="right" >
+      <div class="hs-icon"><div class="center-dot"></div></div>
+      <div class="popup p-right"><button class="popup-close">&times;</button><div class="popup-tag">Rear End</div><div class="popup-title">Rear Bumpers</div><div class="popup-desc">Collision damage, rust, or just an upgrade — we repair, replace, and color-match rear bumpers on any truck, SUV, or Jeep.</div></div>
+    </div>
+    <div class="hs" data-x="0.25" data-y="0.60" data-lx="0.18" data-ly="0.97" data-ltext="ROCK GUARDS" data-lpos="above" >
+      <div class="hs-icon"><div class="center-dot"></div></div>
+      <div class="popup p-right"><button class="popup-close">&times;</button><div class="popup-tag">Fender Protection</div><div class="popup-title">Rock Guard Protection</div><div class="popup-desc">Protect the lower body with Rhino Linings material to stop chips, rocks, and road debris. Color match available.</div></div>
+    </div>
+    <div class="hs" data-x="0.355" data-y="0.692" data-lx="0.34" data-ly="0.97" data-ltext="RUNNING BOARDS" data-lpos="above" >
+      <div class="hs-icon"><div class="center-dot"></div></div>
+      <div class="popup p-right"><button class="popup-close">&times;</button><div class="popup-tag">Side Steps</div><div class="popup-title">Running Boards</div><div class="popup-desc">Fixed boards, nerf bars, and power retractable steps for all trucks and SUVs. All major brands available.</div></div>
+    </div>
+    <div class="hs" data-x="0.33" data-y="0.47" data-lx="0.02" data-ly="0.40" data-ltext="FULL EXTERIOR PAINT" data-lpos="right" >
+      <div class="hs-icon"><div class="center-dot"></div></div>
+      <div class="popup p-right"><button class="popup-close">&times;</button><div class="popup-tag">Custom Paint</div><div class="popup-title">Full Exterior Paint Jobs</div><div class="popup-desc">Computer-matched paint for a perfect finish — single panels or full repaints in any color.</div></div>
+    </div>
+    <div class="hs" data-x="0.343" data-y="0.285" data-lx="0.22" data-ly="0.04" data-ltext="EXTERIOR / BLACK TRIM" data-lpos="below" >
+      <div class="hs-icon"><div class="center-dot"></div></div>
+      <div class="popup p-below"><button class="popup-close">&times;</button><div class="popup-tag">Exterior Parts</div><div class="popup-title">Faded Black Trim</div><div class="popup-desc">We restore or replace black textured parts — pillars, cladding, moldings — or spray Rhino Linings so it lasts for years.</div></div>
+    </div>
+    <div class="hs" data-x="0.530" data-y="0.156" data-lx="0.50" data-ly="0.04" data-ltext="ROOF" data-lpos="below" >
+      <div class="hs-icon"><div class="center-dot"></div></div>
+      <div class="popup p-below"><button class="popup-close">&times;</button><div class="popup-tag">Roof Panel</div><div class="popup-title">Roof Rust Repair</div><div class="popup-desc">We treat rust at the source, repair the panel, and apply Rhino Linings to prolong the life of your vehicle.</div></div>
+    </div>
+    <div class="hs" data-x="0.722" data-y="0.343" data-lx="0.77" data-ly="0.04" data-ltext="HOODS" data-lpos="below" >
+      <div class="hs-icon"><div class="center-dot"></div></div>
+      <div class="popup p-left"><button class="popup-close">&times;</button><div class="popup-tag">Fleet &amp; Police</div><div class="popup-title">Hood Painting</div><div class="popup-desc">Custom hood painting, decals, and lettering for police departments, city fleet vehicles, and commercial trucks.</div></div>
+    </div>
+    <div class="hs" data-x="0.81" data-y="0.40" data-lx="0.98" data-ly="0.38" data-ltext="GRILLE" data-lpos="left" >
+      <div class="hs-icon"><div class="center-dot"></div></div>
+      <div class="popup p-left"><button class="popup-close">&times;</button><div class="popup-tag">Front Face</div><div class="popup-title">Grilles</div><div class="popup-desc">Aftermarket grille installation with factory color match or custom contrast finish. All makes and models.</div></div>
+    </div>
+    <div class="hs" data-x="0.866" data-y="0.638" data-lx="0.98" data-ly="0.60" data-ltext="FRONT BUMPER" data-lpos="left" >
+      <div class="hs-icon"><div class="center-dot"></div></div>
+      <div class="popup p-left"><button class="popup-close">&times;</button><div class="popup-tag">Front End</div><div class="popup-title">Front Bumpers</div><div class="popup-desc">Collision repair, aftermarket upgrades, and color-matched painting. Steel, aluminum, or factory plastic.</div></div>
+    </div>
+    <div class="hs" data-x="0.425" data-y="0.482" data-lx="0.49" data-ly="0.97" data-ltext="WHEEL WELLS" data-lpos="above" >
+      <div class="hs-icon"><div class="center-dot"></div></div>
+      <div class="popup p-above"><button class="popup-close">&times;</button><div class="popup-tag">Wheel Wells</div><div class="popup-title">Wheel Well Coating</div><div class="popup-desc">Spray-in liner coating stops rust, deadens road noise, and protects against rocks. Looks great too.</div></div>
+    </div>
+    <div class="hs" data-x="0.587" data-y="0.734" data-lx="0.64" data-ly="0.97" data-ltext="UNDERCARRIAGE" data-lpos="above" >
+      <div class="hs-icon"><div class="center-dot"></div></div>
+      <div class="popup p-above"><button class="popup-close">&times;</button><div class="popup-tag">Underside</div><div class="popup-title">Undercarriage Coating</div><div class="popup-desc">Full undercarriage spray seals out moisture, road salt, and corrosion. Essential for off-road and coastal trucks.</div></div>
+    </div>
+    <div class="hs" data-x="0.73" data-y="0.71" data-lx="0.80" data-ly="0.97" data-ltext="SKID PLATES" data-lpos="above" >
+      <div class="hs-icon"><div class="center-dot"></div></div>
+      <div class="popup p-left"><button class="popup-close">&times;</button><div class="popup-tag">Front Underside</div><div class="popup-title">Skid Plates</div><div class="popup-desc">Heavy-duty skid plate installation to protect your engine, transmission, and transfer case. Ask us to Rhino Line it too.</div></div>
+    </div>
+  </div>
+
+  <!-- Visible style switcher (in-page) -->
+  <div class="style-switcher">
+    <span class="label">Line Style</span>
+    <button class="style-btn active" data-style="blueprint">Solid + Circle</button>
+    <button class="style-btn" data-style="glow">Solid + Diamond</button>
+    <button class="style-btn" data-style="dashed">Dashed + Open</button>
+  </div>
+</section>
+
+<script>
+(function(){
+  const wrap = document.getElementById('diagram');
+  const svg  = document.getElementById('linesSvg');
+  const img  = document.getElementById('truckImg');
+  const hotspots = Array.from(wrap.querySelectorAll('.hs'));
+
+  // Build SVG lines + position hotspots + labels.
+  function buildLines(){
+    svg.innerHTML = '';
+    // remove old labels
+    wrap.querySelectorAll('.hs-label').forEach(l => l.remove());
+    hotspots.forEach(hs => { hs._label = null; });
+
+    const W = wrap.clientWidth;
+    const H = wrap.clientHeight;
+    if (!W || !H) return;
+
+    svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+    svg.setAttribute('width',  W);
+    svg.setAttribute('height', H);
+
+    // Phase 1 — create labels off-screen so we can measure them
+    hotspots.forEach(hs => {
+      const label = document.createElement('div');
+      label.className = 'hs-label';
+      label.textContent = hs.dataset.ltext;
+      label.style.position = 'absolute';
+      label.style.left = '-9999px';
+      label.style.top  = '-9999px';
+      label.style.transform = 'none';
+      wrap.appendChild(label);
+      hs._label = label;
+    });
+
+    // Phase 2 — measure, position, draw lines
+    hotspots.forEach((hs, i) => {
+      const x  = parseFloat(hs.dataset.x)  * W;
+      const y  = parseFloat(hs.dataset.y)  * H;
+      const lx = parseFloat(hs.dataset.lx) * W;
+      const ly = parseFloat(hs.dataset.ly) * H;
+      const lpos = hs.dataset.lpos || 'right';
+
+      // Position hotspot dot
+      hs.style.left = x + 'px';
+      hs.style.top  = y + 'px';
+
+      const label = hs._label;
+      const lw = label.offsetWidth;
+      const lh = label.offsetHeight;
+      const GAP = 10;
+
+      // Line terminus (cap dot) and label box position
+      let termX = lx, termY = ly;
+      let labelLeft, labelTop;
+
+      if (lpos === 'right') {
+        labelLeft = lx + GAP;
+        labelTop  = ly - lh / 2;
+      } else if (lpos === 'left') {
+        labelLeft = lx - lw - GAP;
+        labelTop  = ly - lh / 2;
+      } else if (lpos === 'below') {
+        labelLeft = lx - lw / 2;
+        labelTop  = ly + GAP;
+      } else { // 'above'
+        labelLeft = lx - lw / 2;
+        labelTop  = ly - lh - GAP;
+      }
+
+      // Clamp inside image bounds
+      labelLeft = Math.max(2, Math.min(W - lw - 2, labelLeft));
+      labelTop  = Math.max(2, Math.min(H - lh - 2, labelTop));
+
+      label.style.left = labelLeft + 'px';
+      label.style.top  = labelTop  + 'px';
+      label.setAttribute('data-hs-index', i);
+      label.style.transitionDelay = (i * 0.16 + 1.5) + 's';
+
+      // L-shaped line: left/right labels → horizontal-first corner
+      //                top/bottom labels → vertical-first corner
+      let cornerX, cornerY;
+      if (lpos === 'right' || lpos === 'left') {
+        cornerX = termX; cornerY = y;
+      } else {
+        cornerX = x; cornerY = termY;
+      }
+
+      const path = document.createElementNS('http://www.w3.org/2000/svg','path');
+      path.setAttribute('d', 'M ' + x + ' ' + y + ' L ' + cornerX + ' ' + cornerY + ' L ' + termX + ' ' + termY);
+      path.setAttribute('class', 'anim-line');
+      path.setAttribute('data-hs-index', i);
+      path.style.transitionDelay = (i * 0.16) + 's';
+      svg.appendChild(path);
+
+      // End-cap — circle for blueprint, diamond for glow, open-circle for dashed
+      const currentStyle = [...wrap.classList].find(c => c.startsWith('style-')) || 'style-blueprint';
+      let cap;
+      if (currentStyle === 'style-glow') {
+        // Diamond: rotated square
+        const s = 5.5;
+        cap = document.createElementNS('http://www.w3.org/2000/svg','polygon');
+        cap.setAttribute('points',
+          (termX)     + ',' + (termY - s) + ' ' +
+          (termX + s) + ',' + (termY)     + ' ' +
+          (termX)     + ',' + (termY + s) + ' ' +
+          (termX - s) + ',' + (termY)
+        );
+      } else {
+        cap = document.createElementNS('http://www.w3.org/2000/svg','circle');
+        cap.setAttribute('cx', termX);
+        cap.setAttribute('cy', termY);
+        cap.setAttribute('r', currentStyle === 'style-dashed' ? '5' : '5.5');
+      }
+      cap.setAttribute('class','end-cap');
+      cap.setAttribute('data-hs-index', i);
+      cap.style.transitionDelay = (i * 0.16 + 1.2) + 's';
+      svg.appendChild(cap);
+    });
+  }
+
+  function trigger(){
+    requestAnimationFrame(()=>{
+      wrap.classList.add('animated');
+    });
+  }
+
+  function init(){
+    buildLines();
+    setTimeout(trigger, 200);
+  }
+
+  if (img.complete && img.naturalWidth > 0){
+    init();
+  } else {
+    img.addEventListener('load', init);
+    img.addEventListener('error', init);
+  }
+  window.addEventListener('resize', () => {
+    // rebuild geometry but keep the animated class so lines stay drawn
+    buildLines();
+  });
+
+  // Click/tap to toggle popups (mobile + accessibility)
+  hotspots.forEach(hs => {
+    const dot = hs.querySelector('.hs-icon');
+    dot.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const wasActive = hs.classList.contains('active');
+      hotspots.forEach(h => h.classList.remove('active'));
+      if (!wasActive) hs.classList.add('active');
+    });
+    const close = hs.querySelector('.popup-close');
+    if (close){
+      close.addEventListener('click', (e) => {
+        e.stopPropagation();
+        hs.classList.remove('active');
+      });
+    }
+  });
+  document.addEventListener('click', () => {
+    hotspots.forEach(h => h.classList.remove('active'));
+  });
+
+
+  // ── SPOTLIGHT + LINE FADE ──
+  let spotlightTimeout;
+  function activateSpotlight(hs, idx){
+    const W = wrap.clientWidth;
+    const H = wrap.clientHeight;
+    const x = parseFloat(hs.dataset.x) * W;
+    const y = parseFloat(hs.dataset.y) * H;
+    wrap.style.setProperty('--sx', x + 'px');
+    wrap.style.setProperty('--sy', y + 'px');
+    wrap.classList.add('spotlit');
+    // highlight this hs
+    hotspots.forEach(h => h.classList.remove('hs-spotlight'));
+    hs.classList.add('hs-spotlight');
+    // highlight matching lines/caps/labels
+    svg.querySelectorAll('[data-hs-index]').forEach(el => {
+      el.classList.toggle('spotlight-active', el.dataset.hsIndex == idx);
+    });
+    wrap.querySelectorAll('.hs-label[data-hs-index]').forEach(el => {
+      el.classList.toggle('spotlight-active', el.dataset.hsIndex == idx);
+    });
+  }
+  function deactivateSpotlight(){
+    spotlightTimeout = setTimeout(() => {
+      wrap.classList.remove('spotlit');
+      hotspots.forEach(h => h.classList.remove('hs-spotlight'));
+      svg.querySelectorAll('.spotlight-active').forEach(el => el.classList.remove('spotlight-active'));
+      wrap.querySelectorAll('.spotlight-active').forEach(el => el.classList.remove('spotlight-active'));
+    }, 120);
+  }
+  hotspots.forEach((hs, i) => {
+    hs.addEventListener('mouseenter', () => { clearTimeout(spotlightTimeout); activateSpotlight(hs, i); });
+    hs.addEventListener('mouseleave', deactivateSpotlight);
+  });
+  wrap.addEventListener('mouseleave', deactivateSpotlight);
+
+  // Style switcher
+  const STYLES = ['blueprint', 'glow', 'dashed'];
+  const buttons = document.querySelectorAll('.style-btn');
+  function setStyle(name){
+    STYLES.forEach(s => wrap.classList.remove('style-' + s));
+    wrap.classList.add('style-' + name);
+    buttons.forEach(b => b.classList.toggle('active', b.dataset.style === name));
+    // Re-run the draw-in animation so the user sees the new style appear
+    wrap.classList.remove('animated');
+    void wrap.offsetWidth; // force reflow
+    requestAnimationFrame(() => wrap.classList.add('animated'));
+  }
+  buttons.forEach(b => {
+    b.addEventListener('click', () => setStyle(b.dataset.style));
+  });
+})();
+</script>
+
+<!-- Tweaks panel (host-driven; shows when user toggles Tweaks) -->
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel">
+const { useEffect } = React;
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "lineStyle": "blueprint",
+  "lineColor": "#E50914"
+}/*EDITMODE-END*/;
+
+function TweaksApp(){
+  const [tweaks, setTweak] = useTweaks(TWEAK_DEFAULTS);
+
+  // Apply tweak → page state on mount + change
+  useEffect(() => {
+    const wrap = document.getElementById('diagram');
+    if (!wrap) return;
+    ['blueprint','glow','dashed'].forEach(s => wrap.classList.remove('style-' + s));
+    wrap.classList.add('style-' + tweaks.lineStyle);
+    document.querySelectorAll('.style-btn').forEach(b => {
+      b.classList.toggle('active', b.dataset.style === tweaks.lineStyle);
+    });
+    wrap.classList.remove('animated');
+    void wrap.offsetWidth;
+    requestAnimationFrame(() => wrap.classList.add('animated'));
+  }, [tweaks.lineStyle]);
+
+  // Apply line color (blueprint style)
+  useEffect(() => {
+    const wrap = document.getElementById('diagram');
+    if (!wrap) return;
+    // hex → rgba glow
+    const hex = tweaks.lineColor.replace('#','');
+    const r = parseInt(hex.slice(0,2),16);
+    const g = parseInt(hex.slice(2,4),16);
+    const b = parseInt(hex.slice(4,6),16);
+    wrap.style.setProperty('--line-color', tweaks.lineColor);
+    wrap.style.setProperty('--line-glow', `rgba(${r},${g},${b},0.55)`);
+  }, [tweaks.lineColor]);
+
+  return (
+    <TweaksPanel title="Tweaks">
+      <TweakSection title="Line Style">
+        <TweakRadio
+          value={tweaks.lineStyle}
+          onChange={(v) => setTweak('lineStyle', v)}
+          options={[
+            { value: 'blueprint', label: 'Blueprint' },
+            { value: 'glow',      label: 'Neon Glow' },
+            { value: 'dashed',    label: 'Dashed' },
+          ]}
+        />
+      </TweakSection>
+      <TweakSection title="Line Color (Blueprint)">
+        <TweakColor
+          value={tweaks.lineColor}
+          onChange={(v) => setTweak('lineColor', v)}
+        />
+      </TweakSection>
+    </TweaksPanel>
+  );
+}
+
+const tweaksMount = document.createElement('div');
+document.body.appendChild(tweaksMount);
+ReactDOM.createRoot(tweaksMount).render(<TweaksApp />);
+</script>
+
+</body>
+</html>
