@@ -547,7 +547,7 @@
 <section class="light">
   <div class="two-col">
     <div class="col-text">
-      <p class="eyebrow">Service 01</p>
+      
       <h2 class="section-title">Collision<br><em>Repair</em></h2>
       <div class="section-body">
         <p>From minor fender benders to major structural damage — we repair it all. Our I-CAR Gold Class certified technicians are trained to factory standards, meaning every repair is done the right way, not the fast way.</p>
@@ -596,7 +596,7 @@
 <section class="dark">
   <div class="two-col flip">
     <div class="col-text">
-      <p class="eyebrow">Service 02</p>
+      
       <h2 class="section-title">Paint &amp;<br><em>Refinishing</em></h2>
       <div class="section-body">
         <p>A repair is only as good as the paint job on top of it. We use advanced computer color-matching technology to ensure repaired panels are completely indistinguishable from the rest of your vehicle.</p>
@@ -627,7 +627,7 @@
 <section class="light">
   <div class="two-col">
     <div class="col-text">
-      <p class="eyebrow">Service 03</p>
+      
       <h2 class="section-title">Dent &amp; Scratch<br><em>Repair</em></h2>
       <div class="section-body">
         <p>Parking lot dings, key scratches, road rash — we handle it all. Small damage doesn't have to cost a fortune or take forever. We assess every job individually and recommend the most cost-effective repair method for your specific situation.</p>
@@ -657,7 +657,7 @@
 <section class="dark">
   <div class="two-col flip">
     <div class="col-text">
-      <p class="eyebrow">Service 04</p>
+      
       <h2 class="section-title">Frame &amp;<br><em>Structural Repair</em></h2>
       <div class="section-body">
         <p>Frame damage after a collision isn't just a cosmetic issue — it's a safety issue. We use computerized measuring and alignment systems to diagnose and correct structural damage back to factory specifications before any bodywork begins.</p>
@@ -687,7 +687,7 @@
 <section class="light lease-section">
   <div class="two-col">
     <div class="col-text">
-      <p class="eyebrow">Service 05</p>
+      
       <h2 class="section-title">Lease Turn-In &amp;<br><em>Out-of-Pocket Repairs</em></h2>
       <div class="section-body">
         <p>Lease ending soon? Don't get hit with dealer fees for damage you could have repaired for less. We specialize in getting lease vehicles back to factory condition quickly and affordably before turn-in.</p>
@@ -877,7 +877,7 @@
     function setPos(x){
       var rect=slider.getBoundingClientRect();
       var pct=Math.min(Math.max((x-rect.left)/rect.width*100,2),98);
-      afterImg.style.clipPath='inset(0 0 0 '+pct+'%)';
+      afterImg.style.clipPath='inset(0 0 0 '+(100-pct)+'%)';
       handle.style.left=pct+'%';
     }
     slider.addEventListener('mousedown',function(e){isDragging=true;setPos(e.clientX);e.preventDefault();});
