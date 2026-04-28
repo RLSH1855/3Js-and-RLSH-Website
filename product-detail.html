@@ -826,6 +826,6 @@ function reportHeight(){
 window.addEventListener('load',function(){reportHeight();setTimeout(reportHeight,600);});
 window.addEventListener('resize',reportHeight);
 </script>
-<script>document.querySelectorAll('a[href^="tel:"]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();try{window.top.location.href=a.getAttribute('href');}catch(x){window.location.href=a.getAttribute('href');}});});</script>
+<script>document.querySelectorAll('a[href^="tel:"]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();window.location.href=a.getAttribute('href');});});</script>
 </body>
 </html>
