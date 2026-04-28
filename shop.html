@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shop Truck Accessories — Professionally Installed | 3J's Auto Body Signal Hill CA</title>
+  <meta name="description" content="Shop truck accessories at 3J's Auto Body in Signal Hill, CA. Tonneau covers, running boards, bull bars, fender flares, floor liners, lighting and more. Expert installation since 1991.">
+  <meta name="robots" content="index, follow">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html,body{overflow-x:hidden;}
+    body{font-family:'Inter',sans-serif;background:#fff;color:#1a1a1a;}
+
+    /* ── PAGE HEADER ── */
+    .page-header{
+      background:#0A0A0A;height:160px;
+      display:flex;align-items:center;justify-content:center;
+      text-align:center;padding:0 24px;
+      position:relative;overflow:hidden;flex-direction:column;
+    }
+    .page-header::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(139,0,0,0.18) 0%,transparent 65%);pointer-events:none;}
+    .page-header::after{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,0.035) 1px,transparent 1px);background-size:26px 26px;pointer-events:none;}
+    .page-header-content{position:relative;z-index:1;}
+    .page-header .eyebrow{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:#8B0000;margin-bottom:8px;display:block;}
+    .page-header h1{font-family:'Montserrat',sans-serif;font-size:clamp(28px,5vw,48px);font-weight:900;letter-spacing:-1.5px;line-height:1.0;text-transform:uppercase;color:#fff;}
+    .page-header h1 em{font-style:normal;color:#8B0000;}
+    .page-header-bar{position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(to right,transparent,#8B0000 25%,#8B0000 75%,transparent);}
+
+    /* ── SHOP NAV STRIP ── */
+    .shop-nav{background:#fff;border-bottom:2px solid #e8e8e8;padding:0 24px;overflow-x:auto;white-space:nowrap;scrollbar-width:none;}
+    .shop-nav::-webkit-scrollbar{display:none;}
+    .shop-nav-inner{display:inline-flex;gap:0;max-width:1100px;margin:0 auto;}
+    .shop-nav-link{display:inline-flex;align-items:center;padding:14px 18px;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;color:#666;border-bottom:2px solid transparent;margin-bottom:-2px;transition:color 0.2s,border-color 0.2s;white-space:nowrap;flex-shrink:0;}
+    .shop-nav-link:hover{color:#8B0000;}
+    .shop-nav-link.active{color:#8B0000;border-bottom-color:#8B0000;}
+
+    /* ── INTRO ── */
+    .shop-intro{padding:48px 24px 0;text-align:center;}
+    .shop-intro h2{font-family:'Montserrat',sans-serif;font-size:clamp(20px,3vw,32px);font-weight:900;letter-spacing:-0.5px;color:#1a1a1a;margin-bottom:10px;}
+    .shop-intro h2 em{font-style:normal;color:#8B0000;}
+    .shop-intro p{font-size:15px;color:#666;line-height:1.65;max-width:480px;margin:0 auto;}
+
+    /* ── CATEGORY GRID ── */
+    .shop-grid-wrap{padding:40px 24px 72px;}
+    .shop-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1100px;margin:0 auto;}
+
+    /* ── CATEGORY CARD ── */
+    .cat-card{display:block;position:relative;height:300px;overflow:hidden;text-decoration:none;border:2px solid transparent;transition:border-color 0.25s;}
+    .cat-card:hover{border-color:#8B0000;}
+    .cat-bg{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform 0.5s ease;}
+    .cat-card:hover .cat-bg{transform:scale(1.04);}
+    .cat-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.90) 0%,rgba(0,0,0,0.45) 55%,rgba(0,0,0,0.12) 100%);transition:background 0.3s;}
+    .cat-card:hover .cat-overlay{background:linear-gradient(to top,rgba(139,0,0,0.85) 0%,rgba(0,0,0,0.55) 55%,rgba(0,0,0,0.15) 100%);}
+    .cat-body{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:20px 22px;}
+    .cat-tag{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,0.50);margin-bottom:6px;}
+    .cat-name{font-family:'Montserrat',sans-serif;font-size:22px;font-weight:900;color:#fff;letter-spacing:-0.3px;line-height:1.05;text-transform:uppercase;margin-bottom:6px;}
+    .cat-brands{font-size:11px;font-weight:400;color:rgba(255,255,255,0.65);line-height:1.5;margin-bottom:14px;}
+    .cat-btn{display:inline-flex;align-items:center;gap:6px;height:36px;padding:0 16px;background:#8B0000;color:#fff;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;border:none;transition:background 0.2s;}
+    .cat-card:hover .cat-btn{background:#fff;color:#8B0000;}
+    .cat-btn svg{width:12px;height:12px;flex-shrink:0;}
+
+    /* ── CTA BAND ── */
+    .cta-band{background:#0A0A0A;padding:56px 24px;text-align:center;position:relative;overflow:hidden;}
+    .cta-band::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(139,0,0,0.12) 0%,transparent 65%);pointer-events:none;}
+    .cta-band-inner{position:relative;z-index:1;max-width:600px;margin:0 auto;}
+    .cta-band h2{font-family:'Montserrat',sans-serif;font-size:clamp(22px,3.5vw,36px);font-weight:900;letter-spacing:-0.5px;color:#fff;margin-bottom:10px;}
+    .cta-band h2 em{font-style:normal;color:#8B0000;}
+    .cta-band p{font-size:15px;color:rgba(255,255,255,0.60);line-height:1.65;margin-bottom:28px;}
+    .cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+    .btn-red{display:inline-flex;align-items:center;gap:8px;height:48px;padding:0 32px;background:#8B0000;color:#fff;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border:none;transition:background 0.2s;touch-action:manipulation;}
+    .btn-red:hover{background:#a50000;}
+    .btn-ghost{display:inline-flex;align-items:center;gap:8px;height:48px;padding:0 32px;background:transparent;color:#fff;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border:1.5px solid rgba(255,255,255,0.28);transition:all 0.2s;touch-action:manipulation;}
+    .btn-ghost:hover{border-color:#fff;}
+    .btn-red svg,.btn-ghost svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2.2;}
+
+    /* ── RESPONSIVE ── */
+    @media(max-width:900px){
+      .shop-grid{grid-template-columns:repeat(2,1fr);}
+      .cat-card{height:260px;}
+    }
+    @media(max-width:600px){
+      .page-header{height:120px;}
+      .shop-grid{grid-template-columns:1fr 1fr;gap:12px;}
+      .shop-grid-wrap{padding:28px 16px 56px;}
+      .shop-intro{padding:32px 16px 0;}
+      .cat-card{height:200px;}
+      .cat-name{font-size:16px;}
+      .cat-brands{display:none;}
+      .cat-btn{height:32px;font-size:9px;padding:0 12px;}
+      .cta-band{padding:40px 16px;}
+      .cta-btns{flex-direction:column;align-items:center;}
+      .btn-red,.btn-ghost{width:100%;max-width:320px;justify-content:center;}
+      .shop-nav-link{padding:12px 14px;font-size:9px;}
+    }
+  </style>
+</head>
+<body>
+
+<!-- PAGE HEADER -->
+<header class="page-header">
+  <div class="page-header-content">
+    <span class="eyebrow">3J's Auto Body · Signal Hill, CA</span>
+    <h1>Shop <em>Accessories</em></h1>
+  </div>
+  <div class="page-header-bar"></div>
+</header>
+
+<!-- SHOP NAV STRIP -->
+<nav class="shop-nav">
+  <div class="shop-nav-inner">
+    <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/shop.html" class="shop-nav-link active" target="_top">All</a>
+    <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/tonneau-covers.html" class="shop-nav-link" target="_top">Tonneau Covers</a>
+    <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/steps-running-boards.html" class="shop-nav-link" target="_top">Running Boards</a>
+    <a href="https://www.3jsautobody.com/request-a-quote" class="shop-nav-link" target="_top">Bull Bars</a>
+    <a href="https://www.3jsautobody.com/request-a-quote" class="shop-nav-link" target="_top">Fender Flares</a>
+    <a href="https://www.3jsautobody.com/request-a-quote" class="shop-nav-link" target="_top">Bed Accessories</a>
+    <a href="https://www.3jsautobody.com/request-a-quote" class="shop-nav-link" target="_top">Vent Visors</a>
+    <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/floor-liners.html" class="shop-nav-link" target="_top">Floor Liners</a>
+    <a href="https://www.3jsautobody.com/request-a-quote" class="shop-nav-link" target="_top">Roof Racks</a>
+    <a href="https://www.3jsautobody.com/request-a-quote" class="shop-nav-link" target="_top">Lighting</a>
+  </div>
+</nav>
+
+<!-- INTRO -->
+<div class="shop-intro">
+  <h2>What Are You <em>Looking For?</em></h2>
+  <p>Professionally sourced. Expert installation. The right fit for your truck — done right the first time.</p>
+</div>
+
+<!-- CATEGORY GRID -->
+<div class="shop-grid-wrap">
+  <div class="shop-grid">
+
+    <!-- TONNEAU COVERS -->
+    <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/tonneau-covers.html" class="cat-card" target="_top">
+      <div class="cat-bg" style="background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/TRUCK%20BED%20COVERS%20IMAGE.jpg');background-position:center 55%;"></div>
+      <div class="cat-overlay"></div>
+      <div class="cat-body">
+        <div class="cat-tag">Bed Protection</div>
+        <div class="cat-name">Tonneau Covers</div>
+        <div class="cat-brands">BAK · Extang · Retrax · TruXedo · UnderCover · Roll N Lock</div>
+        <div class="cat-btn">Shop Now <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
+      </div>
+    </a>
+
+    <!-- RUNNING BOARDS -->
+    <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/steps-running-boards.html" class="cat-card" target="_top">
+      <div class="cat-bg" style="background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/IMG_3961.PNG');background-position:center 50%;"></div>
+      <div class="cat-overlay"></div>
+      <div class="cat-body">
+        <div class="cat-tag">Side Steps</div>
+        <div class="cat-name">Running Boards</div>
+        <div class="cat-brands">AMP Research · Go Rhino · Aries · N-Fab · Westin</div>
+        <div class="cat-btn">Shop Now <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
+      </div>
+    </a>
+
+    <!-- BULL BARS -->
+    <a href="https://www.3jsautobody.com/request-a-quote" class="cat-card" target="_top">
+      <div class="cat-bg" style="background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/aftermarket%20upgrades.png');background-position:center 40%;"></div>
+      <div class="cat-overlay"></div>
+      <div class="cat-body">
+        <div class="cat-tag">Front Protection</div>
+        <div class="cat-name">Bull Bars &amp; Grille Guards</div>
+        <div class="cat-brands">Go Rhino · Aries · Westin</div>
+        <div class="cat-btn">Get a Quote <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
+      </div>
+    </a>
+
+    <!-- FENDER FLARES -->
+    <a href="https://www.3jsautobody.com/request-a-quote" class="cat-card" target="_top">
+      <div class="cat-bg" style="background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/Bedliner-Jeep_exterior.PNG');background-position:center 50%;"></div>
+      <div class="cat-overlay"></div>
+      <div class="cat-body">
+        <div class="cat-tag">Exterior Styling</div>
+        <div class="cat-name">Fender Flares</div>
+        <div class="cat-brands">Bushwacker · Lund · AVS</div>
+        <div class="cat-btn">Get a Quote <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
+      </div>
+    </a>
+
+    <!-- BED ACCESSORIES -->
+    <a href="https://www.3jsautobody.com/request-a-quote" class="cat-card" target="_top">
+      <div class="cat-bg" style="background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/bedliner.jpg');background-position:center 60%;"></div>
+      <div class="cat-overlay"></div>
+      <div class="cat-body">
+        <div class="cat-tag">Truck Bed</div>
+        <div class="cat-name">Bed Accessories</div>
+        <div class="cat-brands">AMP Research BedStep · BedExtender · Bed Rail Caps · BedRug</div>
+        <div class="cat-btn">Get a Quote <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
+      </div>
+    </a>
+
+    <!-- VENT VISORS -->
+    <a href="https://www.3jsautobody.com/request-a-quote" class="cat-card" target="_top">
+      <div class="cat-bg" style="background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/bak-bakflip-mx4-2016-ford-f150-blue-beach-lifestyle-05.jpg');background-position:center 30%;"></div>
+      <div class="cat-overlay"></div>
+      <div class="cat-body">
+        <div class="cat-tag">Wind &amp; Weather</div>
+        <div class="cat-name">Vent Visors</div>
+        <div class="cat-brands">AVS VentVisor · Aeroskin Hood Deflectors · Lund</div>
+        <div class="cat-btn">Get a Quote <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
+      </div>
+    </a>
+
+    <!-- FLOOR LINERS -->
+    <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/floor-liners.html" class="cat-card" target="_top">
+      <div class="cat-bg" style="background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/FLOOR%20LINERS%20IMAGE.jpeg');background-position:center 50%;"></div>
+      <div class="cat-overlay"></div>
+      <div class="cat-body">
+        <div class="cat-tag">Interior Protection</div>
+        <div class="cat-name">Floor Liners</div>
+        <div class="cat-brands">Husky Liners · WeatherTech</div>
+        <div class="cat-btn">Shop Now <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
+      </div>
+    </a>
+
+    <!-- ROOF RACKS -->
+    <a href="https://www.3jsautobody.com/request-a-quote" class="cat-card" target="_top">
+      <div class="cat-bg" style="background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/RLSH-ford-truck.jpg');background-position:center 30%;"></div>
+      <div class="cat-overlay"></div>
+      <div class="cat-body">
+        <div class="cat-tag">Cargo &amp; Storage</div>
+        <div class="cat-name">Roof Racks</div>
+        <div class="cat-brands">Go Rhino SRM 300/400/500 · Ceros Low Profile</div>
+        <div class="cat-btn">Get a Quote <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
+      </div>
+    </a>
+
+    <!-- LIGHTING -->
+    <a href="https://www.3jsautobody.com/request-a-quote" class="cat-card" target="_top">
+      <div class="cat-bg" style="background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/offroad-lighting-hero.png');background-position:center 50%;"></div>
+      <div class="cat-overlay"></div>
+      <div class="cat-body">
+        <div class="cat-tag">Off-Road &amp; Work</div>
+        <div class="cat-name">Lighting</div>
+        <div class="cat-brands">Rigid Industries · Baja Designs · Spider Auto</div>
+        <div class="cat-btn">Get a Quote <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- CTA BAND -->
+<div class="cta-band">
+  <div class="cta-band-inner">
+    <h2>Not Sure What <em>You Need?</em></h2>
+    <p>Call us and we'll help you find the right fit for your truck. Free advice, no pressure.</p>
+    <div class="cta-btns">
+      <a href="tel:+15624246744" class="btn-red">
+        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.7 10.82 19.79 19.79 0 01.67 2.18 2 2 0 012.66 0h3a2 2 0 012 1.72c.13 1 .36 1.97.7 2.91a2 2 0 01-.45 2.11L6.91 7.74a16 16 0 006.29 6.29l1-.99a2 2 0 012.11-.45c.94.34 1.91.57 2.91.7A2 2 0 0122 16.92z"/></svg>
+        Call 562-424-6744
+      </a>
+      <a href="https://www.3jsautobody.com/request-a-quote" class="btn-ghost" target="_top">
+        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        Get a Free Quote
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+  function reportHeight(){
+    var h=Math.max(document.body.scrollHeight,document.body.offsetHeight,document.documentElement.scrollHeight,document.documentElement.offsetHeight);
+    window.parent.postMessage(JSON.stringify({height:h}),'*');
+  }
+  document.addEventListener('DOMContentLoaded',reportHeight);
+  window.addEventListener('load',function(){[0,200,500,1000,2000].forEach(function(t){setTimeout(reportHeight,t);});});
+  window.addEventListener('resize',reportHeight);
+  if(window.ResizeObserver){new ResizeObserver(reportHeight).observe(document.body);}
+  document.querySelectorAll('img').forEach(function(img){img.addEventListener('load',reportHeight);});
+</script>
+<script src="https://rlsh1855.github.io/3Js-and-RLSH-Website/site-nav.js"></script>
+</body>
+</html>
