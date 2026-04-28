@@ -1268,5 +1268,6 @@ window.addEventListener('load', function(){ rh(); setTimeout(rh,500); setTimeout
 window.addEventListener('resize', rh);
 if(window.ResizeObserver){ new ResizeObserver(rh).observe(document.body); }
 </script>
+<script>document.querySelectorAll('a[href^="tel:"]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();try{window.top.location.href=a.getAttribute('href');}catch(x){window.location.href=a.getAttribute('href');}});});</script>
 </body>
 </html>
