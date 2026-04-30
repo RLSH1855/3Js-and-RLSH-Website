@@ -590,6 +590,9 @@ function prefillFromGarage(g){
     var o=document.createElement('option'); o.value=m; o.textContent=m; selModel.appendChild(o);
   });
   selModel.disabled=false; selModel.value=g.model;
+  /* activate fit filter so render() applies it on load */
+  state.fitYear=g.year; state.fitMake=g.make; state.fitModel=g.model;
+  state.fitCab=g.cab||null; state.fitActive=true;
   checkYmmReady();
 }
 
@@ -598,6 +601,11 @@ state.garage=loadGarage();
 updateGarageBar();
 if(state.garage) prefillFromGarage(state.garage);
 render();
+if(state.fitActive){
+  var filtered=getFiltered();
+  document.getElementById('hero-chip-text').textContent=filtered.length+' products fit your '+state.fitYear+' '+state.fitMake+' '+state.fitModel;
+  document.getElementById('hero-chip').querySelector('.dot').style.background=filtered.length?'#4caf50':'#e65c00';
+}
 
 /* ── Wix height ── */
 function reportHeight(){
