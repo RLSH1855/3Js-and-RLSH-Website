@@ -753,10 +753,8 @@
   }
 
   document.querySelectorAll('.work-photo').forEach(function(photo){
-    photo.addEventListener('click', function(){ openLightbox(photo.querySelector('img').src); });
+    photo.addEventListener('click', function(){ window.open(photo.querySelector('img').src, '_blank'); });
   });
-  document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
-  lightbox.addEventListener('click', function(e){ if(e.target === lightbox || e.target === lightboxImg) closeLightbox(); });
 
   function initGallery(){
     if(window.innerWidth > 600) return;
