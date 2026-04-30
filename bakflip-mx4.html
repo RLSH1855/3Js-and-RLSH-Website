@@ -145,12 +145,12 @@
   }
   </script>
 
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
     
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    html{-webkit-font-smoothing:antialiased;}
-    body{font-family:'Montserrat',sans-serif;background:#fff;color:#111;margin:0;padding:0;}
+    html{-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+    body{font-family:'Montserrat',sans-serif;background:#fff;color:#111;margin:0;padding:0;overflow-x:hidden;}
 
     /* ════════════════════════════════
        ANIMATIONS
@@ -243,10 +243,10 @@
       height:48px;padding:0 36px;
       background:#8B0000;color:#fff;
       border:none;border-radius:0;
-      transition:background 0.25s, letter-spacing 0.25s;
+      transition:background 0.25s;
       align-self:flex-start;
     }
-    .hero-cta:hover{background:#6e0000;letter-spacing:3px;}
+    .hero-cta:hover{background:#6e0000;}
     .hero-cta svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2.2;flex-shrink:0;}
     .hero-img{
       position:relative;overflow:hidden;
@@ -333,7 +333,7 @@
     }
     .feat-strip-content .label{color:#fff;opacity:0.75;margin-bottom:14px;}
     .feat-strip-content h2{
-      font-size:clamp(30px,5vw,60px);
+      font-size:clamp(26px,3.5vw,44px);
       font-weight:900;letter-spacing:-2px;
       line-height:1.0;color:#fff;
       text-transform:uppercase;
@@ -420,7 +420,7 @@
     .content-section.flip .c-card{margin-left:auto;}
     .c-card .label{margin-bottom:14px;}
     .c-card h2{
-      font-size:clamp(24px,3vw,38px);
+      font-size:clamp(26px,3.5vw,44px);
       font-weight:900;letter-spacing:-1.5px;
       line-height:1.0;color:#111;
       text-transform:uppercase;margin-bottom:18px;
@@ -467,7 +467,7 @@
     }
     .s-text .label{margin-bottom:14px;}
     .s-text h2{
-      font-size:clamp(24px,3vw,40px);
+      font-size:clamp(26px,3.5vw,44px);
       font-weight:900;letter-spacing:-1.5px;
       line-height:1.0;color:#111;
       text-transform:uppercase;margin-bottom:18px;
@@ -532,7 +532,7 @@
     .video-section > *{position:relative;z-index:1;}
     .video-section .label{color:#ffffff;margin-bottom:14px;display:block;}
     .video-section h2{
-      font-size:clamp(26px,4vw,48px);
+      font-size:clamp(26px,3.5vw,44px);
       font-weight:900;letter-spacing:4px;word-spacing:-4px;
       line-height:1.0;color:#fff;
       text-transform:uppercase;
@@ -569,7 +569,7 @@
       padding:64px 56px;
     }
     .water-h{
-      font-size:clamp(26px,3.5vw,52px);
+      font-size:clamp(26px,3.5vw,44px);
       font-weight:900;
       letter-spacing:-1.5px;
       line-height:0.95;
@@ -611,30 +611,34 @@
     }
 
     /* ════════════════════════════════
-       SPECS
+       SPECS + FAQ SIDE BY SIDE
     ════════════════════════════════ */
+    .specs-faq-row{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      border-top:1px solid #ebebeb;
+    }
     .specs-wrap{
-      padding:96px 64px;
-      max-width:900px;
-      margin:0 auto;
+      padding:80px 56px 80px 64px;
+      border-right:1px solid #ebebeb;
     }
     .specs-wrap .label{margin-bottom:14px;}
     .specs-wrap h2{
-      font-size:clamp(28px,4vw,48px);
-      font-weight:900;letter-spacing:-2px;
+      font-size:clamp(26px,3.5vw,44px);
+      font-weight:900;letter-spacing:-1.5px;
       line-height:1.0;color:#111;
       text-transform:uppercase;
-      margin-bottom:48px;
+      margin-bottom:40px;
     }
     .specs-wrap h2 em{color:#8B0000;font-style:normal;}
     .specs-table{width:100%;border-collapse:collapse;}
     .specs-table tr{border-bottom:1px solid #ebebeb;}
     .specs-table tr:first-child{border-top:1px solid #ebebeb;}
-    .specs-table td{padding:16px 0;font-size:13px;vertical-align:middle;}
+    .specs-table td{padding:14px 0;font-size:13px;vertical-align:middle;}
     .specs-table td:first-child{
       font-size:9px;font-weight:700;
       letter-spacing:2.5px;text-transform:uppercase;
-      color:#666;width:36%;
+      color:#666;width:38%;
     }
     .specs-table td:last-child{font-weight:600;color:#111;}
     .badge-usa{
@@ -648,23 +652,20 @@
        FAQ
     ════════════════════════════════ */
     .faq-wrap{
-      padding:96px 64px;
-      max-width:900px;
-      margin:0 auto;
-      border-top:1px solid #ebebeb;
+      padding:80px 64px 80px 56px;
     }
     .faq-wrap .label{margin-bottom:14px;}
     .faq-wrap h2{
-      font-size:clamp(28px,4vw,48px);
-      font-weight:900;letter-spacing:-2px;
+      font-size:clamp(26px,3.5vw,44px);
+      font-weight:900;letter-spacing:-1.5px;
       line-height:1.0;color:#111;
       text-transform:uppercase;
-      margin-bottom:48px;
+      margin-bottom:40px;
     }
     .faq-wrap h2 em{color:#8B0000;font-style:normal;}
     .faq-list{display:flex;flex-direction:column;}
     .faq-item{
-      padding:24px 0;
+      padding:20px 0;
       border-bottom:1px solid #ebebeb;
     }
     .faq-item:first-child{border-top:1px solid #ebebeb;}
@@ -678,58 +679,48 @@
       font-size:13px;font-weight:500;
       color:#444;line-height:1.85;
     }
-    @media(max-width:960px){.faq-wrap{padding:48px 28px;}}
-    @media(max-width:600px){.faq-wrap{padding:28px 18px;}.faq-wrap h2{font-size:22px;margin-bottom:20px;}.specs-wrap{padding:28px 18px;}.specs-wrap h2{font-size:22px;margin-bottom:20px;}}
+    @media(max-width:960px){
+      .specs-faq-row{grid-template-columns:1fr;}
+      .specs-wrap{padding:56px 36px;border-right:none;border-bottom:1px solid #ebebeb;}
+      .faq-wrap{padding:56px 36px;}
+    }
     @media(max-width:600px){
+      .specs-wrap{padding:36px 20px;}
+      .specs-wrap h2{margin-bottom:28px;}
+      .specs-table td{padding:11px 0;}
+      .specs-table td:first-child{font-size:9px;letter-spacing:1.5px;width:40%;}
+      .specs-table td:last-child{font-size:13px;}
       .faq-wrap{padding:36px 20px;}
       .faq-wrap h2{margin-bottom:28px;}
-      .faq-item{padding:20px 0;}
+      .faq-item{padding:18px 0;}
       .faq-q{font-size:11px;}
       .faq-a{font-size:13px;}
     }
 
     /* ════════════════════════════════
-       CTA BAND
+       CTA BAND — 3J'S DIFFERENCE
     ════════════════════════════════ */
-    .cta-band{
-      background:#111;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-      background-size:28px 28px;
-      padding:100px 64px;
-      display:grid;
-      grid-template-columns:1fr auto;
-      align-items:center;
-      gap:48px;
-      border-top:1px solid #222;
-    }
-    .cta-band-text h2{
-      font-size:clamp(26px,4vw,48px);
-      font-weight:900;letter-spacing:-2px;
-      line-height:1.0;color:#fff;
-      text-transform:uppercase;
-      margin-bottom:12px;
-    }
-    .cta-band-text h2 em{color:#8B0000;font-style:normal;}
-    .cta-band-text p{
-      font-size:13px;font-weight:500;
-      color:rgba(255,255,255,0.85);
-      max-width:480px;line-height:1.85;
-    }
-    .cta-band-btn{
-      display:inline-flex;align-items:center;justify-content:center;gap:8px;
-      font-family:'Montserrat',sans-serif;
-      font-size:11px;font-weight:700;letter-spacing:2px;
-      text-transform:uppercase;text-decoration:none;
-      height:48px;padding:0 32px;white-space:nowrap;
-      background:#8B0000;color:#fff;
-      border-radius:0;border:none;
-      flex-shrink:0;cursor:pointer;
-      transition:all 0.3s ease;
-    }
-    .cta-band-btn:hover{background:#6e0000;}
-    .cta-band-btn svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2.2;flex-shrink:0;}
+    .cta-band{background:#0a0a0a;padding:72px 24px 80px;position:relative;overflow:hidden;}
+    .cta-band::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,0.03) 1px,transparent 1px);background-size:28px 28px;pointer-events:none;}
+    .cta-gears{position:absolute;bottom:0;right:0;width:50%;height:auto;opacity:0.12;pointer-events:none;mix-blend-mode:screen;z-index:0;}
+    .cta-inner{max-width:960px;margin:0 auto;position:relative;z-index:1;}
+    .cta-header{text-align:center;margin-bottom:52px;}
+    .cta-header .label{color:rgba(255,255,255,0.55);margin-bottom:14px;}
+    .cta-header h2{font-size:clamp(26px,3.5vw,44px);font-weight:900;letter-spacing:-1.5px;line-height:1.05;text-transform:uppercase;color:#fff;text-wrap:balance;}
+    .cta-header h2 em{font-style:normal;color:#8B0000;}
+    .cta-header p{font-family:'Inter',sans-serif;font-size:15px;font-weight:400;color:rgba(255,255,255,0.60);margin-top:14px;max-width:440px;margin-left:auto;margin-right:auto;line-height:1.7;text-wrap:pretty;}
+    .cta-grid{display:grid;grid-template-columns:1fr;gap:16px;margin-bottom:48px;}
+    .cta-item{background:#111;padding:36px 28px;border:1px solid rgba(255,255,255,0.08);}
+    .cta-item-title{font-family:'Montserrat',sans-serif;font-size:15px;font-weight:900;color:#fff;letter-spacing:-0.3px;line-height:1.2;margin-bottom:10px;}
+    .cta-item-body{font-family:'Inter',sans-serif;font-size:14px;font-weight:400;color:rgba(255,255,255,0.72);line-height:1.75;text-wrap:pretty;}
+    .cta-btn-wrap{text-align:center;}
+    .cta-phone{display:inline-flex;align-items:center;gap:10px;padding:0 40px;height:48px;background:#8B0000;color:#fff;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;letter-spacing:0.5px;border-radius:0;text-decoration:none;transition:background 0.2s;}
+    .cta-phone:hover{background:#a50000;}
+    .cta-phone svg{width:18px;height:18px;stroke:#fff;stroke-width:2;fill:none;}
+    .btn-glass{background:transparent!important;border:2px solid rgba(255,255,255,0.15)!important;border-radius:0!important;transition:border-color 0.2s!important;}
+    .btn-glass:hover{border-color:#8B0000!important;}
+    .cta-address{font-family:'Inter',sans-serif;margin-top:16px;font-size:12px;font-weight:500;color:rgba(255,255,255,0.6);letter-spacing:0.5px;text-align:center;}
+    @media(min-width:768px){.cta-grid{grid-template-columns:1fr 1fr 1fr;}}
 
     /* ════════════════════════════════
        RESPONSIVE
@@ -759,7 +750,7 @@
       .features-tiles{padding:0 36px 64px;}
       .feat-strip-content{padding:56px 36px;}
       .photo-full{height:340px;}
-      .cta-band{grid-template-columns:1fr;padding:64px 36px;gap:32px;}
+      .cta-band{padding:56px 24px 64px;}
       .specs-wrap{padding:64px 36px;}
       .video-section{padding:64px 36px;}
     }
@@ -829,18 +820,8 @@
       .video-section{padding:40px 20px;}
       .video-section h2{margin-bottom:24px;}
 
-      /* — Specs — */
-      .specs-wrap{padding:36px 20px;}
-      .specs-wrap h2{margin-bottom:28px;}
-      .specs-table td{padding:11px 0;}
-      .specs-table td:first-child{font-size:9px;letter-spacing:1.5px;width:40%;}
-      .specs-table td:last-child{font-size:13px;}
-
       /* — CTA band — */
-      .cta-band{padding:40px 20px;text-align:center;gap:20px;}
-      .cta-band-text h2{margin-bottom:10px;}
-      .cta-band-text p{max-width:100%;font-size:13px;}
-      .cta-band-btn{width:100%;justify-content:center;padding:0 24px;}
+      .cta-band{padding:40px 20px;}
     }
 
     /* ════════════════════════════════
@@ -858,6 +839,25 @@
       .specs-wrap{padding:30px 18px;}
       .cta-band{padding:36px 18px;}
     }
+
+    /* ════════════════════════════════
+       TYPOGRAPHY SYSTEM
+    ════════════════════════════════ */
+    h1,h2,h3{text-wrap:balance;}
+    .hero-tagline,
+    .feat-body,
+    .c-card p,
+    .s-text p,
+    .water-body,
+    .cta-band-text p,
+    .faq-a{
+      font-family:'Inter',sans-serif;
+      font-weight:400;
+      text-wrap:pretty;
+    }
+    .specs-table td:last-child{font-family:'Inter',sans-serif;}
+    .emph{font-family:'Inter',sans-serif;font-weight:600;color:#1F2937;font-style:normal;}
+    .hi{font-family:'Inter',sans-serif;font-weight:600;color:#8B0000;font-style:normal;}
   </style>
 </head>
 <body>
@@ -869,7 +869,7 @@
   <div class="hero-text">
     <span class="label" data-a="up">Tonneau Covers · Professional Installation</span>
     <h1 class="hero-h1" data-a="up" data-d="1">Bakflip<br><em>MX4</em></h1>
-    <p class="hero-tagline" data-a="up" data-d="2">The best-selling hard folding tonneau cover in the world — now engineered 22% stronger, weather-tighter, and easier to install than ever.</p>
+    <p class="hero-tagline" data-a="up" data-d="2">The best-selling hard folding tonneau cover in the world — now engineered <em class="hi">22% stronger</em>, weather-tighter, and easier to install than ever.</p>
     <ul class="hero-feats" data-a="up" data-d="3">
       <li><span></span>22% Stronger — Gen 3 Build</li>
       <li><span></span>Re-engineered Auto-Latch Security</li>
@@ -1007,8 +1007,8 @@
     <span class="label" data-a="up">Security</span>
     <h2 data-a="up" data-d="1">Smarter Lock.<br><em>Stronger Hold.</em></h2>
     <div data-a="up" data-d="2">
-      <p>The Gen 3 MX4 features a completely re-engineered patented auto-latch system. Every panel locks and unlocks automatically — no fumbling, no missed latches.</p>
-      <p>Enhanced components deliver improved forced-entry resistance. Your gear stays secure parked downtown or on a job site.</p>
+      <p>The Gen 3 MX4 features a completely re-engineered <em class="emph">patented auto-latch system</em>. Every panel <em class="emph">locks and unlocks automatically</em> — no fumbling, no missed latches.</p>
+      <p>Enhanced components deliver <em class="emph">improved forced-entry resistance</em>. Your gear stays secure parked downtown or on a job site.</p>
       <ul class="s-list">
         <li><span></span>Patented auto-latch system</li>
         <li><span></span>Improved forced-entry resistance</li>
@@ -1030,7 +1030,7 @@
   <div class="c-card" data-a="up">
     <span class="label">Construction</span>
     <h2>Built <em>22% Stronger</em><br>Than the Original.</h2>
-    <p>High-density polymer-reinforced aluminum panels raise the bar on what a hard folding cover can withstand. Tested from –40°F to 180°F and 0–95% humidity — proven in extremes from Alaska to Florida.</p>
+    <p><em class="emph">Polymer-reinforced aluminum panels</em> raise the bar on what a hard folding cover can withstand. Tested from <em class="hi">–40°F to 180°F</em> and 0–95% humidity — proven in extremes from Alaska to Florida.</p>
     <ul class="c-list">
       <li><span></span>Polymer-reinforced aluminum</li>
       <li><span></span>400 lb evenly distributed capacity</li>
@@ -1049,8 +1049,8 @@
     <span class="label" data-a="up">Weather Protection</span>
     <h2 data-a="up" data-d="1">Fits Tighter.<br><em>Keeps Water Out.</em></h2>
     <div data-a="up" data-d="2">
-      <p>Re-engineered perimeter seals and tight-fit clamps deliver superior weather protection — keeping cargo dry through rain, car washes, and everything in between.</p>
-      <p>An extra-long dual-action tailgate seal adds another layer of protection exactly where it matters most.</p>
+      <p>Re-engineered perimeter seals and tight-fit clamps deliver <em class="emph">superior weather protection</em> — keeping cargo dry through rain, car washes, and everything in between.</p>
+      <p>An <em class="emph">extra-long dual-action tailgate seal</em> adds another layer of protection exactly where it matters most.</p>
       <ul class="s-list">
         <li><span></span>Re-engineered perimeter seals</li>
         <li><span></span>Tight-fit clamp mounting system</li>
@@ -1087,7 +1087,7 @@
     <span class="label" data-a="up">Installation</span>
     <h2 data-a="up" data-d="1">One Person.<br><em>30 Minutes.</em></h2>
     <div data-a="up" data-d="2">
-      <p>The Gen 3 MX4 installs 12% faster with an all-new click-in design. No drilling, no cutting, no trimming required on most applications. At 3J's, we handle the whole thing.</p>
+      <p>The Gen 3 MX4 installs <em class="hi">12% faster</em> with an all-new click-in design. <em class="emph">No drilling, no cutting, no trimming</em> required on most applications. At 3J's, we handle the whole thing.</p>
       <ul class="s-list">
         <li><span></span>No drilling or cutting required</li>
         <li><span></span>All hardware included in the box</li>
@@ -1124,7 +1124,7 @@
 <!-- ════════════════════════════════
      SPECS
 ════════════════════════════════ -->
-<div class="divider-h"></div>
+<div class="specs-faq-row">
 <div class="specs-wrap">
   <span class="label" data-a="up">Specifications</span>
   <h2 data-a="up" data-d="1">MX4 <em>Quick Specs</em></h2>
@@ -1151,15 +1151,15 @@
   <div class="faq-list">
     <div class="faq-item" data-a="up">
       <div class="faq-q">How long does installation take?</div>
-      <div class="faq-a">30 minutes or less. No drilling or cutting required. At 3J's, we handle the entire install professionally — you just drop off the truck.</div>
+      <div class="faq-a"><em class="emph">30 minutes or less. No drilling or cutting required.</em> At 3J's, we handle the entire install professionally — you just drop off the truck.</div>
     </div>
     <div class="faq-item" data-a="up" data-d="1">
       <div class="faq-q">Is the MX4 waterproof?</div>
-      <div class="faq-a">Yes. Re-engineered perimeter seals and an extra-long dual-action tailgate seal keep your cargo dry through rain, car washes, and everything in between.</div>
+      <div class="faq-a">Yes. Re-engineered perimeter seals and an <em class="emph">extra-long dual-action tailgate seal</em> keep your cargo <em class="emph">dry through rain, car washes, and everything in between</em>.</div>
     </div>
     <div class="faq-item" data-a="up" data-d="2">
       <div class="faq-q">How much weight can it hold?</div>
-      <div class="faq-a">Up to 400 lbs of evenly distributed weight on the polymer-reinforced aluminum panels.</div>
+      <div class="faq-a">Up to <em class="hi">400 lbs</em> of evenly distributed weight on the polymer-reinforced aluminum panels.</div>
     </div>
     <div class="faq-item" data-a="up" data-d="3">
       <div class="faq-q">Where can I get one installed near Signal Hill or Long Beach?</div>
@@ -1171,24 +1171,55 @@
     </div>
     <div class="faq-item" data-a="up" data-d="5">
       <div class="faq-q">How much stronger is Gen 3 vs Gen 2?</div>
-      <div class="faq-a">22% stronger. Polymer-reinforced aircraft-grade aluminum tested from –40°F to 180°F and 0–95% humidity. Proven from Alaska to Florida.</div>
+      <div class="faq-a"><em class="hi">22% stronger.</em> Polymer-reinforced aircraft-grade aluminum tested from –40°F to 180°F and 0–95% humidity. Proven from Alaska to Florida.</div>
     </div>
   </div>
 </div>
+</div><!-- end specs-faq-row -->
 
 <!-- ════════════════════════════════
      CTA BAND
 ════════════════════════════════ -->
 <div class="cta-band">
-  <div class="cta-band-text" data-a="up">
-    <h2>Ready to Upgrade<br><em>Your Truck?</em></h2>
-    <p>Get a free quote from 3J's Auto Body. We source and professionally install the MX4 — Mon–Fri, 8AM–5PM in Signal Hill, CA.</p>
-    <a href="tel:+15624246744" style="display:inline-block;margin-top:12px;font-size:11px;font-weight:700;letter-spacing:2px;color:rgba(255,255,255,0.6);text-decoration:none;text-transform:uppercase;">(562) 424-6744</a>
+  <img class="cta-gears" src="https://rlsh1855.github.io/3Js-and-RLSH-Website/gears%20and%20motherboard%20lines%20overy%20for%20background.png" alt="" aria-hidden="true">
+  <div class="cta-inner">
+
+    <div class="cta-header" data-a="up">
+      <span class="label">The 3J's Difference</span>
+      <h2>Professional Installation<br>Since <em>1991</em></h2>
+      <p>We don't just sell the MX4 — we install it right. That's been our standard for over 30 years.</p>
+    </div>
+
+    <div class="cta-grid">
+      <div class="cta-item" data-a="up">
+        <div class="cta-item-title">Expert Installation</div>
+        <div class="cta-item-body">Every cover is installed by our trained technicians using manufacturer specs and proper hardware. <strong style="color:#fff;font-weight:600;">No shortcuts — ever.</strong></div>
+      </div>
+      <div class="cta-item" data-a="up" data-d="1">
+        <div class="cta-item-title">We'll Know Your Name</div>
+        <div class="cta-item-body">Before we touch your truck, we know who you are. <strong style="color:#fff;font-weight:600;">Personal, face-to-face service</strong> — no ticket numbers, no strangers. Since 1991.</div>
+      </div>
+      <div class="cta-item" data-a="up" data-d="2">
+        <div class="cta-item-title">2x Readers' Choice Award</div>
+        <div class="cta-item-body">Signal Hill's <strong style="color:#fff;font-weight:600;">Readers' Choice Award winner — 2021 &amp; 2025.</strong> We earn it by doing right by every customer, every single time.</div>
+      </div>
+    </div>
+
+    <div class="cta-btn-wrap" data-a="up">
+      <div style="display:flex;flex-wrap:wrap;gap:14px;justify-content:center;align-items:center;">
+        <a href="tel:+15624246744" class="cta-phone">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+          Call Us: (562) 424-6744
+        </a>
+        <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/my-garage.html" target="_top" class="cta-phone btn-glass">
+          <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+          My Garage
+        </a>
+      </div>
+      <div class="cta-address">Mon &ndash; Fri 8AM &ndash; 5PM &nbsp;·&nbsp; 1855 E 29th St, Signal Hill, CA 90755</div>
+    </div>
+
   </div>
-  <a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="cta-band-btn" data-a="up" data-d="2">
-    <svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
-    Get a Free Quote
-  </a>
 </div>
 
 <script src="https://rlsh1855.github.io/3Js-and-RLSH-Website/site-nav.js"></script>
@@ -1268,6 +1299,6 @@ window.addEventListener('load', function(){ rh(); setTimeout(rh,500); setTimeout
 window.addEventListener('resize', rh);
 if(window.ResizeObserver){ new ResizeObserver(rh).observe(document.body); }
 </script>
-<script>document.querySelectorAll('a[href^="tel:"]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();window.location.href=a.getAttribute('href');});});</script>
+
 </body>
 </html>
