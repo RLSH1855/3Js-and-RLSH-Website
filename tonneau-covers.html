@@ -72,10 +72,10 @@
   }
   </script>
 
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Inter:wght@400;600&display=swap" rel="stylesheet" />
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    body{font-family:'Montserrat',sans-serif;overflow-x:hidden;background:#fff;color:#1a1a1a;}
+    body{font-family:'Inter',sans-serif;overflow-x:hidden;background:#fff;color:#424954;}
 
     /* ─── SCROLL ANIMATIONS ─── */
     [data-anim]{
@@ -111,16 +111,17 @@
       background:linear-gradient(to right,transparent,#8B0000 25%,#8B0000 75%,transparent);
     }
     .hero h1{
+      font-family:'Montserrat',sans-serif;
       font-size:clamp(32px,6vw,64px);font-weight:900;
       letter-spacing:-2px;line-height:1.0;
       text-transform:uppercase;color:#1a1a1a;
-      margin-bottom:16px;
+      margin-bottom:16px;text-wrap:balance;
     }
     .hero h1 em{font-style:normal;color:#8B0000;}
     .hero-sub{
-      font-size:14px;font-weight:500;
-      color:#555;max-width:540px;
-      margin:0 auto 32px;line-height:1.85;
+      font-family:'Inter',sans-serif;font-size:16px;font-weight:400;
+      color:#424954;max-width:540px;
+      margin:0 auto 32px;line-height:1.65;text-wrap:pretty;
     }
     .hero-ctas{
       display:flex;justify-content:center;gap:14px;flex-wrap:wrap;
@@ -130,23 +131,23 @@
       font-family:'Montserrat',sans-serif;
       font-size:12px;font-weight:800;letter-spacing:1.5px;
       text-transform:uppercase;text-decoration:none;
-      padding:14px 30px;border-radius:6px;
+      padding:14px 30px;border-radius:0;
       background:#8B0000;color:#fff;
       border:2px solid #8B0000;
-      transition:background 0.2s, transform 0.15s;
+      transition:background 0.2s;
     }
-    .btn-primary:hover{background:#a00000;border-color:#a00000;transform:translateY(-1px);}
+    .btn-primary:hover{background:#a00000;border-color:#a00000;}
     .btn-secondary{
       display:inline-flex;align-items:center;gap:8px;
       font-family:'Montserrat',sans-serif;
       font-size:12px;font-weight:800;letter-spacing:1.5px;
       text-transform:uppercase;text-decoration:none;
-      padding:14px 30px;border-radius:6px;
+      padding:14px 30px;border-radius:0;
       background:transparent;color:#8B0000;
       border:2px solid #8B0000;
-      transition:background 0.2s, color 0.2s, transform 0.15s;
+      transition:background 0.2s, color 0.2s;
     }
-    .btn-secondary:hover{background:#8B0000;color:#fff;transform:translateY(-1px);}
+    .btn-secondary:hover{background:#8B0000;color:#fff;}
     .btn-primary svg,.btn-secondary svg{width:14px;height:14px;flex-shrink:0;fill:none;stroke:currentColor;stroke-width:2.2;}
 
     /* ─── INTRO STRIP ─── */
@@ -183,15 +184,16 @@
       padding:60px 40px 40px;
     }
     .section-head h2{
+      font-family:'Montserrat',sans-serif;
       font-size:clamp(22px,4vw,38px);font-weight:900;
       letter-spacing:-1px;color:#1a1a1a;line-height:1.05;
-      margin-bottom:10px;
+      margin-bottom:10px;text-wrap:balance;
     }
     .section-head h2 em{color:#8B0000;font-style:normal;}
     .section-head p{
-      font-size:13px;font-weight:500;
-      color:#666;max-width:480px;
-      margin:0 auto;line-height:1.8;
+      font-family:'Inter',sans-serif;font-size:16px;font-weight:400;
+      color:#424954;max-width:480px;
+      margin:0 auto;line-height:1.65;text-wrap:pretty;
     }
 
     /* ─── PRODUCT CARDS GRID ─── */
@@ -210,15 +212,13 @@
     .product-card{
       background:#fff;
       border:1px solid #e8e8e8;
-      border-radius:12px;
+      border-radius:0;
       overflow:hidden;
       display:flex;flex-direction:column;
-      box-shadow:0 2px 12px rgba(0,0,0,0.06);
-      transition:transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+      transition:border-color 0.25s,box-shadow 0.25s;
     }
     .product-card:hover{
-      transform:translateY(-5px);
-      box-shadow:0 14px 44px rgba(0,0,0,0.11);
+      box-shadow:0 8px 28px rgba(0,0,0,0.09);
       border-color:#bbb;
     }
     .card-img{
@@ -252,8 +252,9 @@
     .card-badge{
       position:absolute;top:12px;left:12px;z-index:2;
       background:#8B0000;color:#fff;
+      font-family:'Montserrat',sans-serif;
       font-size:9px;font-weight:800;letter-spacing:2px;
-      text-transform:uppercase;padding:4px 10px;border-radius:4px;
+      text-transform:uppercase;padding:4px 10px;border-radius:0;
     }
     .card-body{
       padding:26px;
@@ -264,21 +265,23 @@
       text-transform:uppercase;color:#8B0000;margin-bottom:4px;
     }
     .card-name{
+      font-family:'Montserrat',sans-serif;
       font-size:22px;font-weight:900;color:#1a1a1a;
-      letter-spacing:-0.5px;line-height:1.05;margin-bottom:10px;
+      letter-spacing:-0.5px;line-height:1.05;margin-bottom:10px;text-wrap:balance;
     }
     .card-tagline{
-      font-size:12px;font-weight:500;
-      color:#666;line-height:1.65;margin-bottom:18px;
+      font-family:'Inter',sans-serif;font-size:14px;font-weight:400;
+      color:#424954;line-height:1.65;margin-bottom:18px;text-wrap:pretty;
     }
     .card-chips{
       display:flex;flex-wrap:wrap;gap:6px;
       margin-bottom:22px;
     }
     .card-chip{
+      font-family:'Montserrat',sans-serif;
       font-size:9px;font-weight:800;letter-spacing:1px;
       text-transform:uppercase;
-      padding:4px 9px;border-radius:12px;
+      padding:4px 9px;border-radius:0;
       border:1.5px solid #ddd;color:#555;
       background:#fafafa;
     }
@@ -288,7 +291,7 @@
       display:inline-flex;align-items:center;justify-content:center;gap:6px;
       font-family:'Montserrat',sans-serif;
       font-size:10px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;
-      text-decoration:none;padding:12px 14px;border-radius:6px;
+      text-decoration:none;padding:12px 14px;border-radius:0;
       background:transparent;color:#444;
       border:1.5px solid #ccc;
       transition:border-color 0.2s, color 0.2s;
@@ -299,12 +302,12 @@
       display:inline-flex;align-items:center;justify-content:center;gap:6px;
       font-family:'Montserrat',sans-serif;
       font-size:10px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;
-      text-decoration:none;padding:12px 14px;border-radius:6px;
+      text-decoration:none;padding:12px 14px;border-radius:0;
       background:#8B0000;color:#fff;
       border:1.5px solid transparent;
-      transition:background 0.2s, transform 0.15s;
+      transition:background 0.2s;
     }
-    .btn-quote:hover{background:#a00000;transform:translateY(-1px);}
+    .btn-quote:hover{background:#a00000;}
 
     /* ─── WHY 3J'S STRIP ─── */
     .why-strip{
@@ -320,13 +323,14 @@
       text-align:center;margin-bottom:44px;
     }
     .why-header h2{
+      font-family:'Montserrat',sans-serif;
       font-size:clamp(22px,3.5vw,36px);font-weight:900;
-      letter-spacing:-1px;color:#1a1a1a;margin-bottom:8px;
+      letter-spacing:-1px;color:#1a1a1a;margin-bottom:8px;text-wrap:balance;
     }
     .why-header h2 em{color:#8B0000;font-style:normal;}
     .why-header p{
-      font-size:13px;font-weight:500;
-      color:#666;max-width:440px;margin:0 auto;line-height:1.8;
+      font-family:'Inter',sans-serif;font-size:16px;font-weight:400;
+      color:#424954;max-width:440px;margin:0 auto;line-height:1.65;text-wrap:pretty;
     }
     .why-grid{
       display:grid;grid-template-columns:repeat(3,1fr);
@@ -335,27 +339,15 @@
     .why-card{
       background:#fff;
       border:1px solid #e8e8e8;
-      border-radius:10px;padding:24px 20px;
-      transition:box-shadow 0.25s, transform 0.25s, border-color 0.25s;
+      border-radius:0;padding:28px 24px;
+      transition:box-shadow 0.25s,border-color 0.25s;
     }
     .why-card:hover{
       box-shadow:0 8px 28px rgba(0,0,0,0.08);
-      transform:translateY(-3px);
       border-color:#ccc;
     }
-    .why-icon{
-      width:40px;height:40px;border-radius:50%;
-      background:rgba(139,0,0,0.08);
-      display:flex;align-items:center;justify-content:center;
-      margin-bottom:14px;
-    }
-    .why-icon svg{
-      width:18px;height:18px;
-      stroke:#8B0000;stroke-width:2;
-      fill:none;stroke-linecap:round;stroke-linejoin:round;
-    }
-    .why-title{font-size:13px;font-weight:800;color:#1a1a1a;margin-bottom:6px;}
-    .why-body{font-size:12px;font-weight:500;color:#666;line-height:1.65;}
+    .why-title{font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;color:#1a1a1a;margin-bottom:8px;text-transform:uppercase;letter-spacing:1px;}
+    .why-body{font-family:'Inter',sans-serif;font-size:14px;font-weight:400;color:#424954;line-height:1.7;text-wrap:pretty;}
 
     /* ─── FAQ ─── */
     .faq-section{
@@ -364,14 +356,13 @@
     }
     .faq-section .eyebrow{text-align:center;margin-bottom:6px;}
     .faq-section h2{
+      font-family:'Montserrat',sans-serif;
       font-size:clamp(22px,3.5vw,34px);font-weight:900;
       letter-spacing:-1px;color:#1a1a1a;
-      text-align:center;margin-bottom:40px;
+      text-align:center;margin-bottom:40px;text-wrap:balance;
     }
     .faq-section h2 em{color:#8B0000;font-style:normal;}
-    .faq-item{
-      border-bottom:1px solid #ececec;
-    }
+    .faq-item{border-bottom:1px solid #ececec;}
     .faq-item:first-of-type{border-top:1px solid #ececec;}
     .faq-q{
       width:100%;background:none;border:none;
@@ -391,16 +382,13 @@
     }
     .faq-item.open .faq-q svg{transform:rotate(45deg);}
     .faq-a{
-      font-size:13px;font-weight:500;
-      color:#555;line-height:1.8;
+      font-family:'Inter',sans-serif;font-size:14px;font-weight:400;
+      color:#424954;line-height:1.75;text-wrap:pretty;
       max-height:0;overflow:hidden;
       transition:max-height 0.4s ease, padding 0.3s ease;
       padding:0;
     }
-    .faq-item.open .faq-a{
-      max-height:200px;
-      padding-bottom:18px;
-    }
+    .faq-item.open .faq-a{max-height:200px;padding-bottom:18px;}
 
     /* ─── CTA BAND ─── */
     .cta-band{
@@ -415,23 +403,24 @@
     }
     .cta-band-inner{position:relative;z-index:1;}
     .cta-band h2{
+      font-family:'Montserrat',sans-serif;
       font-size:clamp(22px,3.5vw,36px);font-weight:900;
-      letter-spacing:-0.5px;margin-bottom:10px;
+      letter-spacing:-0.5px;margin-bottom:10px;text-wrap:balance;
     }
     .cta-band p{
-      font-size:13px;font-weight:500;
+      font-family:'Inter',sans-serif;font-size:16px;font-weight:400;
       color:rgba(255,255,255,0.78);
-      max-width:420px;margin:0 auto 28px;line-height:1.75;
+      max-width:420px;margin:0 auto 28px;line-height:1.65;text-wrap:pretty;
     }
     .cta-band-btn{
       display:inline-flex;align-items:center;gap:8px;
       background:#fff;color:#8B0000;
       font-family:'Montserrat',sans-serif;
       font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase;
-      text-decoration:none;padding:15px 38px;border-radius:8px;
-      transition:background 0.2s, transform 0.15s;
+      text-decoration:none;padding:15px 38px;border-radius:0;
+      transition:background 0.2s;
     }
-    .cta-band-btn:hover{background:#f0f0f0;transform:translateY(-1px);}
+    .cta-band-btn:hover{background:#f0f0f0;}
     .cta-band-btn svg{
       width:14px;height:14px;flex-shrink:0;
       fill:none;stroke:currentColor;stroke-width:2.2;
@@ -767,23 +756,14 @@
     </div>
     <div class="why-grid">
       <div class="why-card" data-anim="fade-up">
-        <div class="why-icon">
-          <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
-        </div>
         <div class="why-title">Professional Installation</div>
         <div class="why-body">Every cover is installed by our experienced technicians. No guesswork, no shortcuts — done right the first time.</div>
       </div>
       <div class="why-card" data-anim="fade-up" data-delay="100">
-        <div class="why-icon">
-          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        </div>
         <div class="why-title">Top Brands Only</div>
         <div class="why-body">We carry BakFlip and other trusted brands known for quality, durability, and real warranty support.</div>
       </div>
       <div class="why-card" data-anim="fade-up" data-delay="200">
-        <div class="why-icon">
-          <svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
-        </div>
         <div class="why-title">Free Quotes</div>
         <div class="why-body">Submit a quote request online or call us. We'll help you pick the right cover for your truck, budget, and use case.</div>
       </div>
