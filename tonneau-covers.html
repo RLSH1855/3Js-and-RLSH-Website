@@ -865,8 +865,13 @@
 </div>
 
 <script>
-/* ── Brand marquee — duplicate for seamless loop ── */
-(function(){ var t = document.getElementById('tnMarquee'); if(t){ t.innerHTML += t.innerHTML; } })();
+/* ── Brand marquee — clone 4x so no blank gap on any screen width ── */
+(function(){
+  var t = document.getElementById('tnMarquee');
+  if(!t) return;
+  var orig = t.innerHTML;
+  t.innerHTML = orig + orig + orig + orig;
+})();
 
 /* ── Scroll animations ── */
 (function(){
