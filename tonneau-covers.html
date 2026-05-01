@@ -444,6 +444,43 @@
       margin:0 40px;
     }
 
+    /* ─── BRAND MARQUEE ─── */
+    .brand-marquee-section{
+      background:#f7f7f7;
+      border-top:1px solid #ebebeb;
+      border-bottom:1px solid #ebebeb;
+      padding:28px 0;
+      overflow:hidden;
+    }
+    .marquee-wrapper{
+      width:100%;overflow:hidden;position:relative;
+      -webkit-mask-image:linear-gradient(to right,transparent 0%,black 8%,black 92%,transparent 100%);
+      mask-image:linear-gradient(to right,transparent 0%,black 8%,black 92%,transparent 100%);
+    }
+    .marquee-track{
+      display:flex;align-items:center;gap:12px;width:max-content;
+      animation:marqueeLeft 28s linear infinite;
+    }
+    .marquee-wrapper:hover .marquee-track{animation-play-state:paused;}
+    @keyframes marqueeLeft{
+      0%{transform:translateX(0);}
+      100%{transform:translateX(-50%);}
+    }
+    .brand-logo-card{
+      display:inline-flex;align-items:center;justify-content:center;
+      height:64px;width:150px;padding:10px 18px;
+      background:#fff;border:1.5px solid #e8e8e8;
+      flex-shrink:0;
+      transition:border-color 0.25s,box-shadow 0.25s;
+    }
+    .brand-logo-card:hover{border-color:#bbb;box-shadow:0 4px 16px rgba(0,0,0,0.08);}
+    .brand-logo-card img{
+      width:110px;height:36px;object-fit:contain;
+      filter:grayscale(1) opacity(0.5);
+      transition:filter 0.3s;
+    }
+    .brand-logo-card:hover img{filter:grayscale(0) opacity(1);}
+
     /* ─── MANUFACTURER CARDS ─── */
     .mfr-section{padding:64px 24px 72px;}
     .mfr-header{text-align:center;margin-bottom:40px;}
@@ -531,6 +568,22 @@
     </a>
   </div>
 </header>
+
+<!-- ══════════════════════════════
+     BRAND LOGO MARQUEE
+══════════════════════════════ -->
+<div class="brand-marquee-section">
+  <div class="marquee-wrapper">
+    <div class="marquee-track" id="tnMarquee">
+      <div class="brand-logo-card"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/brand-logo%20(12).jpeg" alt="BAKFlip"></div>
+      <div class="brand-logo-card"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/brand-logo%20(6).png" alt="Extang"></div>
+      <div class="brand-logo-card"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/brand-logo%20(15).jpeg" alt="Retrax"></div>
+      <div class="brand-logo-card"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/brand-logo%20(4).jpeg" alt="TruXedo"></div>
+      <div class="brand-logo-card"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/brand-logo%20(2).png" alt="UnderCover"></div>
+      <div class="brand-logo-card"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/roll-n-lock-logo.png" alt="Roll N Lock"></div>
+    </div>
+  </div>
+</div>
 
 <!-- ══════════════════════════════
      INTRO STAT STRIP
@@ -812,6 +865,9 @@
 </div>
 
 <script>
+/* ── Brand marquee — duplicate for seamless loop ── */
+(function(){ var t = document.getElementById('tnMarquee'); if(t){ t.innerHTML += t.innerHTML; } })();
+
 /* ── Scroll animations ── */
 (function(){
   var els = document.querySelectorAll('[data-anim]');
