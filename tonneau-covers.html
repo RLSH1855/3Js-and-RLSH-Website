@@ -150,32 +150,34 @@
     .btn-secondary:hover{background:#8B0000;color:#fff;}
     .btn-primary svg,.btn-secondary svg{width:14px;height:14px;flex-shrink:0;fill:none;stroke:currentColor;stroke-width:2.2;}
 
-    /* ─── INTRO STRIP ─── */
+    /* ─── BENEFITS STRIP ─── */
     .intro-strip{
       background:#8B0000;
-      border-bottom:none;
-      padding:48px 40px;
+      padding:44px 24px;
       display:flex;
       align-items:center;
       justify-content:center;
-      gap:64px;
+      gap:0;
       flex-wrap:wrap;
       text-align:center;
     }
     .intro-stat{
       display:flex;flex-direction:column;
-      align-items:center;gap:4px;
+      align-items:center;gap:12px;
+      flex:1;min-width:160px;padding:0 24px;
     }
-    .intro-stat-num{
-      font-size:28px;font-weight:900;
-      color:#fff;letter-spacing:-1px;
+    .intro-stat img{
+      width:64px;height:64px;object-fit:contain;
+      filter:brightness(0) invert(1);
     }
     .intro-stat-label{
-      font-size:9px;font-weight:700;
-      letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.65);
+      font-family:'Montserrat',sans-serif;
+      font-size:10px;font-weight:800;
+      letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.9);
     }
     .intro-stat-divider{
-      width:1px;height:40px;background:rgba(255,255,255,0.3);
+      width:1px;height:60px;background:rgba(255,255,255,0.25);
+      flex-shrink:0;
     }
 
     /* ─── SECTION HEADING ─── */
@@ -501,8 +503,9 @@
     @media(max-width:760px){
       .hero{padding:48px 24px 44px;}
       .hero-ctas{gap:10px;}
-      .intro-strip{padding:36px 24px;gap:0;justify-content:space-around;}
+      .intro-strip{padding:36px 16px;gap:0;}
       .intro-stat-divider{display:none;}
+      .intro-stat img{width:52px;height:52px;}
       .section-head{padding:44px 24px 32px;}
       .cards-section{padding:0 18px 56px;}
       .cards-grid{grid-template-columns:1fr;gap:16px;}
@@ -569,23 +572,18 @@
 ══════════════════════════════ -->
 <div class="intro-strip">
   <div class="intro-stat" data-anim="fade-up">
-    <div class="intro-stat-num">5-yr</div>
-    <div class="intro-stat-label">Warranty</div>
+    <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/inc.%20dur-Photoroom.png" alt="Increased Durability">
+    <div class="intro-stat-label">Increased Durability</div>
   </div>
   <div class="intro-stat-divider"></div>
   <div class="intro-stat" data-anim="fade-up" data-delay="100">
-    <div class="intro-stat-num">30 min</div>
-    <div class="intro-stat-label">Professional Install</div>
+    <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/prem%20look-Photoroom.png" alt="Premium Look">
+    <div class="intro-stat-label">Premium Look</div>
   </div>
   <div class="intro-stat-divider"></div>
   <div class="intro-stat" data-anim="fade-up" data-delay="200">
-    <div class="intro-stat-num">400 lb</div>
-    <div class="intro-stat-label">Load Capacity</div>
-  </div>
-  <div class="intro-stat-divider"></div>
-  <div class="intro-stat" data-anim="fade-up" data-delay="300">
-    <div class="intro-stat-num">Made in USA</div>
-    <div class="intro-stat-label">BakFlip Origin</div>
+    <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/sup_pro-Photoroom.png" alt="Superior Protection">
+    <div class="intro-stat-label">Superior Protection</div>
   </div>
 </div>
 
