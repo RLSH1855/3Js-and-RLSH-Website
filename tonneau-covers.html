@@ -74,9 +74,8 @@
 
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
-    
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    body{font-family:'Montserrat',sans-serif;background:#fff;color:#1a1a1a;}
+    body{font-family:'Montserrat',sans-serif;overflow-x:hidden;background:#fff;color:#1a1a1a;}
 
     /* ─── SCROLL ANIMATIONS ─── */
     [data-anim]{
@@ -103,9 +102,8 @@
     .hero{
       background:#fff;
       border-bottom:1px solid #ececec;
-      min-height:260px;
-      display:flex;flex-direction:column;align-items:center;justify-content:center;
-      text-align:center;padding:24px 40px 0;
+      padding:64px 40px 56px;
+      text-align:center;
       position:relative;
     }
     .hero::after{
@@ -128,27 +126,27 @@
       display:flex;justify-content:center;gap:14px;flex-wrap:wrap;
     }
     .btn-primary{
-      display:inline-flex;align-items:center;justify-content:center;gap:8px;
+      display:inline-flex;align-items:center;gap:8px;
       font-family:'Montserrat',sans-serif;
-      font-size:11px;font-weight:700;letter-spacing:2px;
+      font-size:12px;font-weight:800;letter-spacing:1.5px;
       text-transform:uppercase;text-decoration:none;
-      height:48px;padding:0 32px;border-radius:0;
+      padding:14px 30px;border-radius:6px;
       background:#8B0000;color:#fff;
       border:2px solid #8B0000;
-      transition:all 0.3s ease;cursor:pointer;
+      transition:background 0.2s, transform 0.15s;
     }
-    .btn-primary:hover{background:#a00000;border-color:#a00000;}
+    .btn-primary:hover{background:#a00000;border-color:#a00000;transform:translateY(-1px);}
     .btn-secondary{
-      display:inline-flex;align-items:center;justify-content:center;gap:8px;
+      display:inline-flex;align-items:center;gap:8px;
       font-family:'Montserrat',sans-serif;
-      font-size:11px;font-weight:700;letter-spacing:2px;
+      font-size:12px;font-weight:800;letter-spacing:1.5px;
       text-transform:uppercase;text-decoration:none;
-      height:48px;padding:0 32px;border-radius:0;
+      padding:14px 30px;border-radius:6px;
       background:transparent;color:#8B0000;
       border:2px solid #8B0000;
-      transition:all 0.3s ease;cursor:pointer;
+      transition:background 0.2s, color 0.2s, transform 0.15s;
     }
-    .btn-secondary:hover{background:#8B0000;color:#fff;}
+    .btn-secondary:hover{background:#8B0000;color:#fff;transform:translateY(-1px);}
     .btn-primary svg,.btn-secondary svg{width:14px;height:14px;flex-shrink:0;fill:none;stroke:currentColor;stroke-width:2.2;}
 
     /* ─── INTRO STRIP ─── */
@@ -279,31 +277,34 @@
     }
     .card-chip{
       font-size:9px;font-weight:800;letter-spacing:1px;
-      text-transform:uppercase;color:#555;
+      text-transform:uppercase;
+      padding:4px 9px;border-radius:12px;
+      border:1.5px solid #ddd;color:#555;
+      background:#fafafa;
     }
     .card-actions{display:flex;gap:10px;margin-top:auto;}
     .btn-view{
       flex:1;
-      display:inline-flex;align-items:center;justify-content:center;gap:8px;
+      display:inline-flex;align-items:center;justify-content:center;gap:6px;
       font-family:'Montserrat',sans-serif;
-      font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
-      text-decoration:none;min-height:44px;padding:0 20px;border-radius:0;
+      font-size:10px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;
+      text-decoration:none;padding:12px 14px;border-radius:6px;
       background:transparent;color:#444;
       border:1.5px solid #ccc;
-      transition:all 0.3s ease;cursor:pointer;
+      transition:border-color 0.2s, color 0.2s;
     }
     .btn-view:hover{border-color:#8B0000;color:#8B0000;}
     .btn-quote{
       flex:1;
-      display:inline-flex;align-items:center;justify-content:center;gap:8px;
+      display:inline-flex;align-items:center;justify-content:center;gap:6px;
       font-family:'Montserrat',sans-serif;
-      font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
-      text-decoration:none;min-height:44px;padding:0 20px;border-radius:0;
+      font-size:10px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;
+      text-decoration:none;padding:12px 14px;border-radius:6px;
       background:#8B0000;color:#fff;
       border:1.5px solid transparent;
-      transition:all 0.3s ease;cursor:pointer;
+      transition:background 0.2s, transform 0.15s;
     }
-    .btn-quote:hover{background:#a00000;}
+    .btn-quote:hover{background:#a00000;transform:translateY(-1px);}
 
     /* ─── WHY 3J'S STRIP ─── */
     .why-strip{
@@ -342,12 +343,17 @@
       transform:translateY(-3px);
       border-color:#ccc;
     }
-    .ic-blue{background:#1565C0;}
-    .ic-red{background:#8B0000;}
-    .ic-green{background:#2E7D32;}
-    .ic-orange{background:#E65100;}
-    .ic-purple{background:#6A1B9A;}
-    .ic-teal{background:#00838F;}
+    .why-icon{
+      width:40px;height:40px;border-radius:50%;
+      background:rgba(139,0,0,0.08);
+      display:flex;align-items:center;justify-content:center;
+      margin-bottom:14px;
+    }
+    .why-icon svg{
+      width:18px;height:18px;
+      stroke:#8B0000;stroke-width:2;
+      fill:none;stroke-linecap:round;stroke-linejoin:round;
+    }
     .why-title{font-size:13px;font-weight:800;color:#1a1a1a;margin-bottom:6px;}
     .why-body{font-size:12px;font-weight:500;color:#666;line-height:1.65;}
 
@@ -372,10 +378,9 @@
       display:flex;align-items:center;justify-content:space-between;
       padding:18px 0;cursor:pointer;
       font-family:'Montserrat',sans-serif;
-      font-size:11px;font-weight:700;color:#1a1a1a;
-      text-transform:uppercase;text-decoration:none;letter-spacing:2px;
-      text-align:left;gap:8px;
-      transition:all 0.3s ease;
+      font-size:13px;font-weight:700;color:#1a1a1a;
+      text-align:left;gap:16px;
+      transition:color 0.2s;
     }
     .faq-q:hover{color:#8B0000;}
     .faq-q svg{
@@ -389,7 +394,7 @@
       font-size:13px;font-weight:500;
       color:#555;line-height:1.8;
       max-height:0;overflow:hidden;
-      transition:max-height 0.6s ease-in-out,padding 0.45s ease-in-out;
+      transition:max-height 0.4s ease, padding 0.3s ease;
       padding:0;
     }
     .faq-item.open .faq-a{
@@ -419,14 +424,14 @@
       max-width:420px;margin:0 auto 28px;line-height:1.75;
     }
     .cta-band-btn{
-      display:inline-flex;align-items:center;justify-content:center;gap:8px;
+      display:inline-flex;align-items:center;gap:8px;
       background:#fff;color:#8B0000;
       font-family:'Montserrat',sans-serif;
-      font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
-      text-decoration:none;height:48px;padding:0 32px;border-radius:0;border:none;
-      transition:all 0.3s ease;cursor:pointer;
+      font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase;
+      text-decoration:none;padding:15px 38px;border-radius:8px;
+      transition:background 0.2s, transform 0.15s;
     }
-    .cta-band-btn:hover{background:#f0f0f0;}
+    .cta-band-btn:hover{background:#f0f0f0;transform:translateY(-1px);}
     .cta-band-btn svg{
       width:14px;height:14px;flex-shrink:0;
       fill:none;stroke:currentColor;stroke-width:2.2;
@@ -441,7 +446,7 @@
 
     /* ─── RESPONSIVE ─── */
     @media(max-width:760px){
-      .hero{min-height:150px;padding:16px 24px 0;}
+      .hero{padding:48px 24px 44px;}
       .hero-ctas{gap:10px;}
       .intro-strip{padding:36px 24px;gap:0;justify-content:space-around;}
       .intro-stat-divider{display:none;}
@@ -454,21 +459,12 @@
       .divider{margin:0 24px;}
     }
     @media(max-width:480px){
-      .hero{padding:28px 16px 24px;}
-      .hero h1{letter-spacing:-1.5px;font-size:clamp(26px,8vw,38px);}
-      .hero p{font-size:13px;}
-      .section-head{padding:28px 16px 18px;}
-      .section-head h2{font-size:22px;}
-      .cards-section{padding:0 12px 24px;}
-      .cards-grid{gap:12px;}
-      .card-body{padding:16px;}
-      .card-name{font-size:17px;}
-      .btn-view,.btn-quote{font-size:11px;padding:0 12px;}
-      .intro-strip{gap:12px;padding:24px 16px;}
-      .why-strip{padding:24px 16px;}
-      .why-grid{gap:10px;}
-      .faq-section{padding:24px 16px;}
-      .cta-band{padding:28px 16px;}
+      .hero h1{letter-spacing:-1.5px;}
+      .card-body{padding:18px;}
+      .card-name{font-size:18px;}
+      .btn-view,.btn-quote{font-size:10px;padding:11px 10px;}
+      .intro-strip{gap:16px;}
+      .cta-band{padding:52px 20px;}
     }
   </style>
 </head>
@@ -482,11 +478,11 @@
   <h1 data-anim="fade-up" data-delay="100">Tonneau <em>Covers</em></h1>
   <p class="hero-sub" data-anim="fade-up" data-delay="200">Protect your cargo. Improve your fuel economy. Upgrade your truck's look. We source and professionally install the top tonneau cover brands — right here in Signal Hill.</p>
   <div class="hero-ctas" data-anim="fade-up" data-delay="300">
-    <a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-primary">
+    <a href="https://www.3jsautobody.com/rhino-lining-quote" target="_top" class="btn-primary">
       <svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
       Request a Quote
     </a>
-    <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/exterior-accessories.html" target="_top" class="btn-secondary">
+    <a href="/exterior-accessories" target="_top" class="btn-secondary">
       <svg viewBox="0 0 24 24"><path d="M1 9h22M5 9l2-5h10l2 5M3 9l1 7h16l1-7M8 16v2m8-2v2"/></svg>
       View All Covers
     </a>
@@ -538,7 +534,11 @@
           Replace placeholder with: <img src="YOUR_URL" alt="BakFlip MX4">
         -->
         <div class="card-img-inner">
-          <img src="bak-bakflip-mx4-2016-ford-f150-blue-beach-lifestyle-01.jpg" alt="BakFlip MX4 tonneau cover on Ford F-150">
+          <!-- img goes here -->
+        </div>
+        <div class="card-img-placeholder">
+          <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M1 9h22M5 9l2-5h10l2 5M3 9l1 7h16l1-7M8 16v2m8-2v2"/></svg>
+          <span>BakFlip MX4</span>
         </div>
         <div class="card-badge">Best Seller</div>
       </div>
@@ -553,8 +553,8 @@
           <span class="card-chip">5-yr Warranty</span>
         </div>
         <div class="card-actions">
-          <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/bakflip-mx4.html" target="_top" class="btn-view">View Details</a>
-          <a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote">Get a Quote</a>
+          <a href="/bakflip-mx4" target="_top" class="btn-view">View Details</a>
+          <a href="https://www.3jsautobody.com/rhino-lining-quote" target="_top" class="btn-quote">Get a Quote</a>
         </div>
       </div>
     </div>
@@ -568,7 +568,11 @@
           UPDATE href below once Wix page slug is renamed to /bakflip-x4s
         -->
         <div class="card-img-inner">
-          <img src="bak-bakflip-mx4-2017-chevrolet-silverado-2500-hd-silver-studio-12.jpg" alt="BakFlip X4S tonneau cover on Chevrolet Silverado">
+          <!-- img goes here -->
+        </div>
+        <div class="card-img-placeholder">
+          <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M1 9h22M5 9l2-5h10l2 5M3 9l1 7h16l1-7M8 16v2m8-2v2"/></svg>
+          <span>BakFlip X4S</span>
         </div>
         <div class="card-badge">New Model</div>
       </div>
@@ -582,8 +586,8 @@
           <span class="card-chip">Dual-Action Seal</span>
         </div>
         <div class="card-actions">
-          <a href="https://www.3jsautobody.com/copy-of-bakflip-mx4" target="_top" class="btn-view">View Details</a>
-          <a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote">Get a Quote</a>
+          <a href="/copy-of-bakflip-mx4" target="_top" class="btn-view">View Details</a>
+          <a href="https://www.3jsautobody.com/rhino-lining-quote" target="_top" class="btn-quote">Get a Quote</a>
         </div>
       </div>
     </div>
@@ -603,14 +607,23 @@
     </div>
     <div class="why-grid">
       <div class="why-card" data-anim="fade-up">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+        </div>
         <div class="why-title">Professional Installation</div>
         <div class="why-body">Every cover is installed by our experienced technicians. No guesswork, no shortcuts — done right the first time.</div>
       </div>
       <div class="why-card" data-anim="fade-up" data-delay="100">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
         <div class="why-title">Top Brands Only</div>
         <div class="why-body">We carry BakFlip and other trusted brands known for quality, durability, and real warranty support.</div>
       </div>
       <div class="why-card" data-anim="fade-up" data-delay="200">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+        </div>
         <div class="why-title">Free Quotes</div>
         <div class="why-body">Submit a quote request online or call us. We'll help you pick the right cover for your truck, budget, and use case.</div>
       </div>
@@ -674,7 +687,7 @@
   <div class="cta-band-inner" data-anim="fade-up">
     <h2>Ready to Protect Your Truck Bed?</h2>
     <p>Get a free quote from 3J's Auto Body. We source and professionally install the top tonneau cover brands — Mon–Fri, 8AM–5PM in Signal Hill.</p>
-    <a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="cta-band-btn">
+    <a href="https://www.3jsautobody.com/rhino-lining-quote" target="_top" class="cta-band-btn">
       <svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
       Get a Free Quote
     </a>
@@ -706,20 +719,8 @@ document.querySelectorAll('.faq-q').forEach(function(btn){
 
 /* ── Wix iframe height reporting ── */
 function reportHeight(){
-    var h = Math.max(
-      document.body.scrollHeight,
-      document.body.offsetHeight,
-      document.documentElement.scrollHeight,
-      document.documentElement.offsetHeight
-    );
-    window.parent.postMessage(JSON.stringify({height:h}),'*');
-  }
-  document.addEventListener('DOMContentLoaded', reportHeight);
-  window.addEventListener('load', function(){
-    [0,200,500,1000,2000,3500].forEach(function(t){ setTimeout(reportHeight,t); });
-  });
-  window.addEventListener('resize', reportHeight);
-  if(window.ResizeObserver){ new ResizeObserver(reportHeight).observe(document.body); }
+  var h = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
+  window.parent.postMessage(JSON.stringify({height:h}),'*');
 }
 window.addEventListener('load', function(){ reportHeight(); setTimeout(reportHeight,500); setTimeout(reportHeight,1500); });
 window.addEventListener('resize', reportHeight);
