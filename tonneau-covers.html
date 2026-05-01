@@ -444,6 +444,43 @@
       margin:0 40px;
     }
 
+    /* ─── MANUFACTURER CARDS ─── */
+    .mfr-section{padding:64px 24px 72px;}
+    .mfr-header{text-align:center;margin-bottom:40px;}
+    .mfr-header .eyebrow{margin-bottom:10px;}
+    .mfr-header h2{font-size:clamp(26px,3.5vw,40px);font-weight:900;letter-spacing:-1.5px;color:#1a1a1a;text-transform:uppercase;margin-bottom:10px;}
+    .mfr-header h2 em{color:#8B0000;font-style:normal;}
+    .mfr-header p{font-family:'Inter',sans-serif;font-size:14px;color:#666;max-width:480px;margin:0 auto;line-height:1.8;}
+    .mfr-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;max-width:1200px;margin:0 auto;}
+    .mfr-card{
+      position:relative;overflow:hidden;
+      aspect-ratio:4/3;
+    }
+    .mfr-card img{
+      width:100%;height:100%;object-fit:cover;display:block;
+      transition:transform 0.6s ease;
+    }
+    .mfr-card:hover img{transform:scale(1.05);}
+    .mfr-overlay{
+      position:absolute;inset:0;
+      background:linear-gradient(to top,rgba(0,0,0,0.78) 0%,rgba(0,0,0,0.18) 50%,transparent 100%);
+      transition:background 0.35s;
+    }
+    .mfr-card:hover .mfr-overlay{background:linear-gradient(to top,rgba(100,0,0,0.85) 0%,rgba(0,0,0,0.3) 55%,transparent 100%);}
+    .mfr-info{
+      position:absolute;bottom:0;left:0;right:0;
+      padding:22px 22px 24px;
+    }
+    .mfr-type{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.65);margin-bottom:5px;}
+    .mfr-name{font-family:'Montserrat',sans-serif;font-size:clamp(18px,2vw,24px);font-weight:900;color:#fff;letter-spacing:-0.5px;line-height:1;}
+    .mfr-bar{
+      position:absolute;bottom:0;left:0;right:0;height:3px;
+      background:#8B0000;
+      transform:scaleX(0);transform-origin:left;
+      transition:transform 0.35s ease;
+    }
+    .mfr-card:hover .mfr-bar{transform:scaleX(1);}
+
     /* ─── RESPONSIVE ─── */
     @media(max-width:760px){
       .hero{padding:48px 24px 44px;}
@@ -458,6 +495,9 @@
       .faq-section{padding:48px 24px;}
       .divider{margin:0 24px;}
     }
+    @media(max-width:760px){
+      .mfr-grid{grid-template-columns:repeat(2,1fr);}
+    }
     @media(max-width:480px){
       .hero h1{letter-spacing:-1.5px;}
       .card-body{padding:18px;}
@@ -465,6 +505,9 @@
       .btn-view,.btn-quote{font-size:10px;padding:11px 10px;}
       .intro-strip{gap:16px;}
       .cta-band{padding:52px 20px;}
+      .mfr-section{padding:44px 16px 56px;}
+      .mfr-grid{grid-template-columns:1fr;}
+      .mfr-header{margin-bottom:28px;}
     }
   </style>
 </head>
@@ -513,6 +556,80 @@
     <div class="intro-stat-label">BakFlip Origin</div>
   </div>
 </div>
+
+<!-- ══════════════════════════════
+     MANUFACTURER CARDS
+══════════════════════════════ -->
+<section class="mfr-section">
+  <div class="mfr-header" data-anim="fade-up">
+    <span class="eyebrow">Brands We Carry &amp; Install</span>
+    <h2>Every Style.<br><em>Every Truck.</em></h2>
+    <p>Hard fold, soft roll, or retractable — we source and professionally install the top brands right here in Signal Hill.</p>
+  </div>
+  <div class="mfr-grid">
+
+    <div class="mfr-card" data-anim="fade-in">
+      <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/bak-bakflip-mx4-2017-ford-f150-silver-surfer-lifestyle-02.jpg" alt="BAKFlip tonneau cover on Ford F-150" loading="lazy">
+      <div class="mfr-overlay"></div>
+      <div class="mfr-info">
+        <div class="mfr-type">Hard Fold · Aluminum</div>
+        <div class="mfr-name">BAKFlip</div>
+      </div>
+      <div class="mfr-bar"></div>
+    </div>
+
+    <div class="mfr-card" data-anim="fade-in" data-delay="100">
+      <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/Extang-solidfold-alx-2021-ford-f150-red-lifestyle-05.jpg" alt="Extang tonneau cover on Ford F-150" loading="lazy">
+      <div class="mfr-overlay"></div>
+      <div class="mfr-info">
+        <div class="mfr-type">Hard Fold · Soft Fold</div>
+        <div class="mfr-name">Extang</div>
+      </div>
+      <div class="mfr-bar"></div>
+    </div>
+
+    <div class="mfr-card" data-anim="fade-in" data-delay="200">
+      <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/realtruck-retrax-pro-2024-mitsubishi-triton-lifestyle-7182.jpg" alt="Retrax retractable tonneau cover" loading="lazy">
+      <div class="mfr-overlay"></div>
+      <div class="mfr-info">
+        <div class="mfr-type">Retractable · Aluminum</div>
+        <div class="mfr-name">Retrax</div>
+      </div>
+      <div class="mfr-bar"></div>
+    </div>
+
+    <div class="mfr-card" data-anim="fade-in">
+      <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/truxedo-sentry-ct-2018-ford-f250-white-moab-lifestyle04.png" alt="TruXedo tonneau cover on Ford F-250" loading="lazy">
+      <div class="mfr-overlay"></div>
+      <div class="mfr-info">
+        <div class="mfr-type">Soft Roll-Up · Hard Roll-Up</div>
+        <div class="mfr-name">TruXedo</div>
+      </div>
+      <div class="mfr-bar"></div>
+    </div>
+
+    <div class="mfr-card" data-anim="fade-in" data-delay="100">
+      <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/undercover-armor-flex-2017-ford-f150-raptor-red-construction-lifestyle-01.png" alt="UnderCover tonneau cover on Ford F-150 Raptor" loading="lazy">
+      <div class="mfr-overlay"></div>
+      <div class="mfr-info">
+        <div class="mfr-type">Hard Fold · One-Piece</div>
+        <div class="mfr-name">UnderCover</div>
+      </div>
+      <div class="mfr-bar"></div>
+    </div>
+
+    <div class="mfr-card" data-anim="fade-in" data-delay="200">
+      <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/roll-n-lock-e-series-2017-ford-f150-black-beach-lifestyle-10.jpg" alt="Roll N Lock retractable tonneau cover" loading="lazy">
+      <div class="mfr-overlay"></div>
+      <div class="mfr-info">
+        <div class="mfr-type">Retractable · Locking</div>
+        <div class="mfr-name">Roll N Lock</div>
+      </div>
+      <div class="mfr-bar"></div>
+    </div>
+
+  </div>
+</section>
 
 <!-- ══════════════════════════════
      HARD FOLDING COVERS
