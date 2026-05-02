@@ -127,25 +127,25 @@
       display:flex;justify-content:center;gap:14px;flex-wrap:wrap;
     }
     .btn-primary{
-      display:inline-flex;align-items:center;gap:8px;
+      display:inline-flex;align-items:center;justify-content:center;gap:8px;
       font-family:'Montserrat',sans-serif;
-      font-size:12px;font-weight:800;letter-spacing:1.5px;
+      font-size:11px;font-weight:800;letter-spacing:2px;
       text-transform:uppercase;text-decoration:none;
-      padding:14px 30px;border-radius:0;
+      height:48px;padding:0 32px;border-radius:0;
       background:#8B0000;color:#fff;
       border:2px solid #8B0000;
-      transition:background 0.2s;
+      transition:background 0.25s,border-color 0.25s;
     }
     .btn-primary:hover{background:#a00000;border-color:#a00000;}
     .btn-secondary{
-      display:inline-flex;align-items:center;gap:8px;
+      display:inline-flex;align-items:center;justify-content:center;gap:8px;
       font-family:'Montserrat',sans-serif;
-      font-size:12px;font-weight:800;letter-spacing:1.5px;
+      font-size:11px;font-weight:800;letter-spacing:2px;
       text-transform:uppercase;text-decoration:none;
-      padding:14px 30px;border-radius:0;
+      height:48px;padding:0 32px;border-radius:0;
       background:transparent;color:#8B0000;
       border:2px solid #8B0000;
-      transition:background 0.2s, color 0.2s;
+      transition:background 0.25s,color 0.25s,border-color 0.25s;
     }
     .btn-secondary:hover{background:#8B0000;color:#fff;}
     .btn-primary svg,.btn-secondary svg{width:14px;height:14px;flex-shrink:0;fill:none;stroke:currentColor;stroke-width:2.2;}
@@ -153,7 +153,7 @@
     /* ─── BENEFITS STRIP ─── */
     .intro-strip{
       background:#8B0000;
-      padding:44px 24px;
+      padding:28px 24px;
       display:flex;
       align-items:center;
       justify-content:center;
@@ -387,10 +387,10 @@
       font-family:'Inter',sans-serif;font-size:14px;font-weight:400;
       color:#424954;line-height:1.75;text-wrap:pretty;
       max-height:0;overflow:hidden;
-      transition:max-height 0.4s ease, padding 0.3s ease;
-      padding:0;
+      transition:max-height 0.5s cubic-bezier(0.4,0,0.2,1), padding 0.4s cubic-bezier(0.4,0,0.2,1), opacity 0.35s ease;
+      padding:0;opacity:0;
     }
-    .faq-item.open .faq-a{max-height:200px;padding-bottom:18px;}
+    .faq-item.open .faq-a{max-height:300px;padding-bottom:20px;opacity:1;}
 
     /* ─── CTA BAND ─── */
     .cta-band{
@@ -411,18 +411,22 @@
     }
     .cta-band p{
       font-family:'Inter',sans-serif;font-size:16px;font-weight:400;
-      color:rgba(255,255,255,0.78);
+      color:rgba(255,255,255,0.82);
       max-width:420px;margin:0 auto 28px;line-height:1.65;text-wrap:pretty;
     }
     .cta-band-btn{
-      display:inline-flex;align-items:center;gap:8px;
-      background:#fff;color:#8B0000;
+      display:inline-flex;align-items:center;justify-content:center;gap:8px;
+      height:48px;padding:0 38px;border-radius:0;
+      background:rgba(255,255,255,0.15);
+      backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+      color:#fff;
       font-family:'Montserrat',sans-serif;
-      font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase;
-      text-decoration:none;padding:15px 38px;border-radius:0;
-      transition:background 0.2s;
+      font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;
+      text-decoration:none;
+      border:1.5px solid rgba(255,255,255,0.55);
+      transition:background 0.2s,border-color 0.2s;
     }
-    .cta-band-btn:hover{background:#f0f0f0;}
+    .cta-band-btn:hover{background:rgba(255,255,255,0.25);border-color:rgba(255,255,255,0.8);}
     .cta-band-btn svg{
       width:14px;height:14px;flex-shrink:0;
       fill:none;stroke:currentColor;stroke-width:2.2;
@@ -499,34 +503,61 @@
     }
     .mfr-card:hover .mfr-bar{transform:scaleX(1);}
 
-    /* ─── RESPONSIVE ─── */
-    @media(max-width:760px){
-      .hero{padding:48px 24px 44px;}
-      .hero-ctas{gap:10px;}
-      .intro-strip{padding:36px 16px;gap:0;}
-      .intro-stat-divider{display:none;}
-      .intro-stat img{width:52px;height:52px;}
-      .section-head{padding:44px 24px 32px;}
-      .cards-section{padding:0 18px 56px;}
-      .cards-grid{grid-template-columns:1fr;gap:16px;}
-      .why-strip{padding:48px 24px;}
-      .why-grid{grid-template-columns:1fr;gap:14px;}
-      .faq-section{padding:48px 24px;}
-      .divider{margin:0 24px;}
-    }
-    @media(max-width:760px){
+    /* ─── RESPONSIVE (mobile-first) ─── */
+    /* Base = mobile */
+    .hero{padding:48px 24px 44px;}
+    .hero-ctas{gap:10px;}
+    .intro-strip{padding:20px 16px;gap:16px;}
+    .intro-stat-divider{display:none;}
+    .intro-stat img{width:52px;height:52px;}
+    .section-head{padding:44px 24px 32px;}
+    .cards-section{padding:0 18px 56px;}
+    .cards-grid{grid-template-columns:1fr;gap:16px;}
+    .why-strip{padding:48px 24px;}
+    .why-grid{grid-template-columns:1fr;gap:14px;}
+    .faq-section{padding:48px 24px;}
+    .divider{margin:0 24px;}
+    .card-body{padding:18px;}
+    .card-name{font-size:18px;}
+    .btn-view,.btn-quote{font-size:10px;padding:11px 10px;}
+    .cta-band{padding:52px 20px;}
+    .mfr-section{padding:44px 16px 56px;}
+    .mfr-grid{grid-template-columns:1fr;}
+    .mfr-header{margin-bottom:28px;}
+    .hero h1{letter-spacing:-1.5px;}
+
+    @media(min-width:480px){
+      .hero h1{letter-spacing:-2px;}
+      .card-body{padding:22px;}
+      .card-name{font-size:20px;}
+      .btn-view,.btn-quote{font-size:10px;padding:12px 14px;}
+      .intro-strip{gap:0;padding:20px 16px;}
+      .cta-band{padding:52px 24px;}
+      .mfr-section{padding:44px 24px 56px;}
       .mfr-grid{grid-template-columns:repeat(2,1fr);}
+      .mfr-header{margin-bottom:36px;}
     }
-    @media(max-width:480px){
-      .hero h1{letter-spacing:-1.5px;}
-      .card-body{padding:18px;}
-      .card-name{font-size:18px;}
-      .btn-view,.btn-quote{font-size:10px;padding:11px 10px;}
-      .intro-strip{gap:16px;}
-      .cta-band{padding:52px 20px;}
-      .mfr-section{padding:44px 16px 56px;}
-      .mfr-grid{grid-template-columns:1fr;}
-      .mfr-header{margin-bottom:28px;}
+
+    @media(min-width:760px){
+      .hero{padding:64px 40px 56px;}
+      .hero-ctas{gap:14px;}
+      .intro-strip{padding:28px 24px;gap:0;}
+      .intro-stat-divider{display:block;}
+      .intro-stat img{width:64px;height:64px;}
+      .section-head{padding:60px 40px 40px;}
+      .cards-section{padding:0 40px 72px;}
+      .cards-grid{grid-template-columns:repeat(2,1fr);gap:24px;}
+      .why-strip{padding:64px 40px;}
+      .why-grid{grid-template-columns:repeat(3,1fr);gap:20px;}
+      .faq-section{padding:64px 40px;}
+      .divider{margin:0 40px;}
+      .card-body{padding:26px;}
+      .card-name{font-size:22px;}
+      .btn-view,.btn-quote{font-size:10px;padding:12px 14px;}
+      .mfr-grid{grid-template-columns:repeat(3,1fr);}
+      .mfr-section{padding:64px 24px 72px;}
+      .mfr-header{margin-bottom:40px;}
+      .hero h1{letter-spacing:-2px;}
     }
   </style>
 </head>
@@ -537,10 +568,10 @@
 ══════════════════════════════ -->
 <header class="hero">
   <span class="eyebrow" data-anim="fade-up">3J's Auto Body · Signal Hill, CA</span>
-  <h1 data-anim="fade-up" data-delay="100">Tonneau <em>Covers</em></h1>
+  <h1 data-anim="fade-up" data-delay="100">Tonneau <em style="color:#8B0000;font-style:normal;">Covers</em></h1>
   <p class="hero-sub" data-anim="fade-up" data-delay="200">Protect your cargo. Improve your fuel economy. Upgrade your truck's look. We source and professionally install the top tonneau cover brands — right here in Signal Hill.</p>
   <div class="hero-ctas" data-anim="fade-up" data-delay="300">
-    <a href="https://www.3jsautobody.com/rhino-lining-quote" target="_top" class="btn-primary">
+    <a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-primary">
       <svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
       Request a Quote
     </a>
@@ -701,7 +732,7 @@
         </div>
         <div class="card-actions">
           <a href="/bakflip-mx4" target="_top" class="btn-view">View Details</a>
-          <a href="https://www.3jsautobody.com/rhino-lining-quote" target="_top" class="btn-quote">Get a Quote</a>
+          <a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote">Get a Quote</a>
         </div>
       </div>
     </div>
@@ -734,7 +765,7 @@
         </div>
         <div class="card-actions">
           <a href="/copy-of-bakflip-mx4" target="_top" class="btn-view">View Details</a>
-          <a href="https://www.3jsautobody.com/rhino-lining-quote" target="_top" class="btn-quote">Get a Quote</a>
+          <a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote">Get a Quote</a>
         </div>
       </div>
     </div>
@@ -825,7 +856,7 @@
   <div class="cta-band-inner" data-anim="fade-up">
     <h2>Ready to Protect Your Truck Bed?</h2>
     <p>Get a free quote from 3J's Auto Body. We source and professionally install the top tonneau cover brands — Mon–Fri, 8AM–5PM in Signal Hill.</p>
-    <a href="https://www.3jsautobody.com/rhino-lining-quote" target="_top" class="cta-band-btn">
+    <a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="cta-band-btn">
       <svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
       Get a Free Quote
     </a>
@@ -857,15 +888,18 @@ document.querySelectorAll('.faq-q').forEach(function(btn){
 
 /* ── Wix iframe height reporting ── */
 function reportHeight(){
-  var h = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
+  var h = Math.max(document.body.scrollHeight,document.body.offsetHeight,document.documentElement.scrollHeight,document.documentElement.offsetHeight);
   window.parent.postMessage(JSON.stringify({height:h}),'*');
 }
-window.addEventListener('load', function(){ reportHeight(); setTimeout(reportHeight,500); setTimeout(reportHeight,1500); });
-window.addEventListener('resize', reportHeight);
-document.querySelectorAll('.faq-q').forEach(function(btn){
-  btn.addEventListener('click', function(){ setTimeout(reportHeight, 450); });
+document.addEventListener('DOMContentLoaded',reportHeight);
+window.addEventListener('load',function(){
+  [0,200,500,1000,2000,3500].forEach(function(t){setTimeout(reportHeight,t);});
 });
-if(window.ResizeObserver){ new ResizeObserver(reportHeight).observe(document.body); }
+window.addEventListener('resize',reportHeight);
+document.querySelectorAll('.faq-q').forEach(function(btn){
+  btn.addEventListener('click', function(){ setTimeout(reportHeight, 550); });
+});
+if(window.ResizeObserver){new ResizeObserver(reportHeight).observe(document.body);}
 </script>
 <script src="https://rlsh1855.github.io/3Js-and-RLSH-Website/site-nav.js"></script>
 </body>
