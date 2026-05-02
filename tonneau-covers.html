@@ -391,15 +391,18 @@
     .faq-item{border-bottom:1px solid #ececec;}
     .faq-item:first-of-type{border-top:1px solid #ececec;}
     .faq-q{
-      width:100%;background:none;border:none;
+      width:100%;background:transparent;border:none;
       display:flex;align-items:center;justify-content:space-between;
       padding:18px 0;cursor:pointer;
       font-family:'Montserrat',sans-serif;
       font-size:13px;font-weight:700;color:#1a1a1a;
       text-align:left;gap:16px;
       transition:color 0.2s;
+      -webkit-tap-highlight-color:transparent;
+      outline:none;
     }
     .faq-q:hover{color:#8B0000;}
+    .faq-q:focus{outline:none;}
     .faq-q svg{
       width:18px;height:18px;flex-shrink:0;
       stroke:#8B0000;stroke-width:2.5;fill:none;
