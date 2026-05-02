@@ -191,8 +191,11 @@
       align-items:center;gap:12px;
       flex:1;min-width:160px;padding:0 24px;
     }
-    .intro-stat img{
-      width:64px;height:64px;object-fit:contain;
+    .intro-stat svg{
+      width:56px;height:56px;
+      fill:none;stroke:#fff;stroke-width:1.5;
+      stroke-linecap:round;stroke-linejoin:round;
+      flex-shrink:0;
     }
     .intro-stat-label{
       font-family:'Montserrat',sans-serif;
@@ -534,7 +537,7 @@
     .hero-ctas{gap:10px;}
     .intro-strip{padding:20px 16px;gap:16px;}
     .intro-stat-divider{display:none;}
-    .intro-stat img{width:52px;height:52px;}
+    .intro-stat svg{width:48px;height:48px;}
     .section-head{padding:44px 24px 32px;}
     .cards-section{padding:0 18px 56px;}
     .cards-grid{grid-template-columns:1fr;gap:16px;}
@@ -552,7 +555,7 @@
     .mfr-header{margin-bottom:28px;}
 
     @media(min-width:480px){
-      .intro-stat img{width:60px;height:60px;}
+      .intro-stat svg{width:52px;height:52px;}
       .mfr-grid{grid-template-columns:repeat(2,1fr);}
       .cta-band{padding:52px 24px;}
     }
@@ -562,7 +565,7 @@
       .hero-ctas{gap:14px;}
       .intro-strip{padding:28px 24px;gap:0;}
       .intro-stat-divider{display:block;}
-      .intro-stat img{width:64px;height:64px;}
+      .intro-stat svg{width:56px;height:56px;}
       .section-head{padding:60px 40px 40px;}
       .cards-section{padding:0 40px 72px;}
       .cards-grid{grid-template-columns:repeat(2,1fr);gap:24px;}
@@ -611,17 +614,20 @@
 ══════════════════════════════ -->
 <div class="intro-strip">
   <div class="intro-stat" data-anim="fade-up">
-    <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/inc.%20dur.png" alt="Increased Durability">
+    <!-- Increased Durability — shield -->
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2L3 6v6c0 5.25 3.75 10.15 9 11.25C17.25 22.15 21 17.25 21 12V6L12 2z"/></svg>
     <div class="intro-stat-label">Increased Durability</div>
   </div>
   <div class="intro-stat-divider"></div>
   <div class="intro-stat" data-anim="fade-up" data-delay="100">
-    <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/prem%20look.png" alt="Premium Look">
+    <!-- Premium Look — diamond -->
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.25 9l2.25-4.5h15L21.75 9M2.25 9l9.75 12L21.75 9M2.25 9h19.5M8.25 4.5L6 9l6 12 6-12-2.25-4.5M15.75 4.5L12 9 8.25 4.5"/></svg>
     <div class="intro-stat-label">Premium Look</div>
   </div>
   <div class="intro-stat-divider"></div>
   <div class="intro-stat" data-anim="fade-up" data-delay="200">
-    <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/sup_pro.png" alt="Superior Protection">
+    <!-- Superior Protection — shield with checkmark -->
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2L3 6v6c0 5.25 3.75 10.15 9 11.25C17.25 22.15 21 17.25 21 12V6L12 2z"/><polyline points="9 12 11 14 15 10"/></svg>
     <div class="intro-stat-label">Superior Protection</div>
   </div>
 </div>
