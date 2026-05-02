@@ -100,27 +100,38 @@
 
     /* ─── HERO ─── */
     .hero{
-      background:#fff;
-      border-bottom:1px solid #ececec;
-      padding:64px 40px 56px;
+      background:#111;
+      padding:100px 40px 88px;
       text-align:center;
       position:relative;
+      overflow:hidden;
+    }
+    .hero-bg{
+      position:absolute;inset:0;
+      background:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/Tonneau-covers-page-hero-image.jpg') center center/cover no-repeat;
+      transform:scale(1.04);
+    }
+    .hero-overlay{
+      position:absolute;inset:0;
+      background:linear-gradient(to bottom,rgba(0,0,0,0.55) 0%,rgba(0,0,0,0.45) 60%,rgba(0,0,0,0.65) 100%);
     }
     .hero::after{
       content:'';position:absolute;bottom:0;left:0;right:0;height:3px;
       background:linear-gradient(to right,transparent,#8B0000 25%,#8B0000 75%,transparent);
+      z-index:2;
     }
+    .hero-content{position:relative;z-index:1;}
     .hero h1{
       font-family:'Montserrat',sans-serif;
       font-size:clamp(32px,6vw,64px);font-weight:900;
       letter-spacing:-2px;line-height:1.0;
-      text-transform:uppercase;color:#1a1a1a;
+      text-transform:uppercase;color:#fff;
       margin-bottom:16px;text-wrap:balance;
     }
-    .hero h1 em{font-style:normal;color:#8B0000;}
+    .hero h1 em{font-style:normal;color:#ff6b6b;}
     .hero-sub{
       font-family:'Inter',sans-serif;font-size:16px;font-weight:400;
-      color:#424954;max-width:540px;
+      color:rgba(255,255,255,0.85);max-width:540px;
       margin:0 auto 32px;line-height:1.65;text-wrap:pretty;
     }
     .hero-ctas{
@@ -148,7 +159,19 @@
       transition:background 0.2s, color 0.2s;
     }
     .btn-secondary:hover{background:#8B0000;color:#fff;}
-    .btn-primary svg,.btn-secondary svg{width:14px;height:14px;flex-shrink:0;fill:none;stroke:currentColor;stroke-width:2.2;}
+    .btn-glass{
+      display:inline-flex;align-items:center;gap:8px;
+      font-family:'Montserrat',sans-serif;
+      font-size:12px;font-weight:800;letter-spacing:1.5px;
+      text-transform:uppercase;text-decoration:none;
+      padding:14px 30px;border-radius:0;
+      background:rgba(255,255,255,0.15);color:#fff;
+      border:1.5px solid rgba(255,255,255,0.55);
+      backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+      transition:background 0.2s,border-color 0.2s;
+    }
+    .btn-glass:hover{background:rgba(255,255,255,0.25);border-color:rgba(255,255,255,0.8);}
+    .btn-primary svg,.btn-secondary svg,.btn-glass svg{width:14px;height:14px;flex-shrink:0;fill:none;stroke:currentColor;stroke-width:2.2;}
 
     /* ─── BENEFITS STRIP ─── */
     .intro-strip{
@@ -167,7 +190,7 @@
       flex:1;min-width:160px;padding:0 24px;
     }
     .intro-stat img{
-      width:64px;height:64px;object-fit:contain;
+      width:120px;height:120px;object-fit:contain;
       filter:brightness(0) invert(1);
     }
     .intro-stat-label{
@@ -438,8 +461,7 @@
     /* ─── BRAND LOGO STRIP ─── */
     .brand-marquee-section{
       background:#f7f7f7;
-      border-top:1px solid #ebebeb;
-      border-bottom:1px solid #ebebeb;
+      border:1px solid #ebebeb;
       padding:28px 24px;
     }
     .marquee-wrapper{width:100%;}
@@ -501,11 +523,11 @@
 
     /* ─── RESPONSIVE ─── */
     @media(max-width:760px){
-      .hero{padding:48px 24px 44px;}
+      .hero{padding:72px 24px 64px;}
       .hero-ctas{gap:10px;}
       .intro-strip{padding:36px 16px;gap:0;}
       .intro-stat-divider{display:none;}
-      .intro-stat img{width:52px;height:52px;}
+      .intro-stat img{width:88px;height:88px;}
       .section-head{padding:44px 24px 32px;}
       .cards-section{padding:0 18px 56px;}
       .cards-grid{grid-template-columns:1fr;gap:16px;}
@@ -536,36 +558,24 @@
      HERO
 ══════════════════════════════ -->
 <header class="hero">
-  <span class="eyebrow" data-anim="fade-up">3J's Auto Body · Signal Hill, CA</span>
-  <h1 data-anim="fade-up" data-delay="100">Tonneau <em>Covers</em></h1>
-  <p class="hero-sub" data-anim="fade-up" data-delay="200">Protect your cargo. Improve your fuel economy. Upgrade your truck's look. We source and professionally install the top tonneau cover brands — right here in Signal Hill.</p>
-  <div class="hero-ctas" data-anim="fade-up" data-delay="300">
-    <a href="https://www.3jsautobody.com/rhino-lining-quote" target="_top" class="btn-primary">
-      <svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
-      Request a Quote
-    </a>
-    <a href="/exterior-accessories" target="_top" class="btn-secondary">
-      <svg viewBox="0 0 24 24"><path d="M1 9h22M5 9l2-5h10l2 5M3 9l1 7h16l1-7M8 16v2m8-2v2"/></svg>
-      View All Covers
-    </a>
-  </div>
-</header>
-
-<!-- ══════════════════════════════
-     BRAND LOGO MARQUEE
-══════════════════════════════ -->
-<div class="brand-marquee-section">
-  <div class="marquee-wrapper">
-    <div class="marquee-track" id="tnMarquee">
-      <div class="brand-logo-card"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/brand-logo%20(12).jpeg" alt="BAKFlip"></div>
-      <div class="brand-logo-card"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/brand-logo%20(6).png" alt="Extang"></div>
-      <div class="brand-logo-card"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/brand-logo%20(15).jpeg" alt="Retrax"></div>
-      <div class="brand-logo-card"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/brand-logo%20(4).jpeg" alt="TruXedo"></div>
-      <div class="brand-logo-card"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/brand-logo%20(2).png" alt="UnderCover"></div>
-      <div class="brand-logo-card"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/roll-n-lock-logo.png" alt="Roll N Lock"></div>
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="eyebrow" data-anim="fade-up" style="color:rgba(255,255,255,0.75);">3J's Auto Body · Signal Hill, CA</span>
+    <h1 data-anim="fade-up" data-delay="100">Tonneau <em>Covers</em></h1>
+    <p class="hero-sub" data-anim="fade-up" data-delay="200">Protect your cargo. Improve your fuel economy. Upgrade your truck's look. We source and professionally install the top tonneau cover brands — right here in Signal Hill.</p>
+    <div class="hero-ctas" data-anim="fade-up" data-delay="300">
+      <a href="https://www.3jsautobody.com/rhino-lining-quote" target="_top" class="btn-primary">
+        <svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+        Request a Quote
+      </a>
+      <a href="/exterior-accessories" target="_top" class="btn-glass">
+        <svg viewBox="0 0 24 24"><path d="M1 9h22M5 9l2-5h10l2 5M3 9l1 7h16l1-7M8 16v2m8-2v2"/></svg>
+        View All Covers
+      </a>
     </div>
   </div>
-</div>
+</header>
 
 <!-- ══════════════════════════════
      INTRO STAT STRIP
@@ -596,6 +606,21 @@
     <h2>Every Style.<br><em>Every Truck.</em></h2>
     <p>Hard fold, soft roll, or retractable — we source and professionally install the top brands right here in Signal Hill.</p>
   </div>
+
+  <!-- Brand logo strip -->
+  <div class="brand-marquee-section" style="margin-bottom:32px;">
+    <div class="marquee-wrapper">
+      <div class="marquee-track" id="tnMarquee">
+        <div class="brand-logo-card"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/brand-logo%20(12).jpeg" alt="BAKFlip"></div>
+        <div class="brand-logo-card"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/brand-logo%20(6).png" alt="Extang"></div>
+        <div class="brand-logo-card"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/brand-logo%20(15).jpeg" alt="Retrax"></div>
+        <div class="brand-logo-card"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/brand-logo%20(4).jpeg" alt="TruXedo"></div>
+        <div class="brand-logo-card"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/brand-logo%20(2).png" alt="UnderCover"></div>
+        <div class="brand-logo-card"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/roll-n-lock-logo.png" alt="Roll N Lock"></div>
+      </div>
+    </div>
+  </div>
+
   <div class="mfr-grid">
 
     <div class="mfr-card" data-anim="fade-in">
