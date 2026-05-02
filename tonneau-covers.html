@@ -903,6 +903,11 @@ document.querySelectorAll('.faq-q').forEach(function(btn){
     var wasOpen = item.classList.contains('open');
     document.querySelectorAll('.faq-item.open').forEach(function(i){ i.classList.remove('open'); });
     if(!wasOpen) item.classList.add('open');
+    var ticks = 0;
+    var interval = setInterval(function(){
+      reportHeight();
+      if(++ticks >= 12) clearInterval(interval);
+    }, 50);
   });
 });
 
