@@ -13,6 +13,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{overflow-y:hidden;}
     body{font-family:'Inter',sans-serif;background:#fff;}
 
     .carriers-section{background:#fff;padding:56px 24px 64px;text-align:center;}
@@ -97,9 +98,12 @@
 
 </section>
 
+<div id="height-sentinel" style="height:1px;width:1px;visibility:hidden;pointer-events:none;"></div>
+
 <script>
   function reportHeight(){
-    var h = Math.max(document.body.scrollHeight,document.body.offsetHeight,document.documentElement.scrollHeight,document.documentElement.offsetHeight);
+    var sentinel=document.getElementById('height-sentinel');
+    var h=sentinel?(sentinel.offsetTop+sentinel.offsetHeight):Math.max(document.body.scrollHeight,document.body.offsetHeight,document.documentElement.scrollHeight,document.documentElement.offsetHeight);
     window.parent.postMessage(JSON.stringify({height:h}),'*');
   }
   document.addEventListener('DOMContentLoaded', reportHeight);

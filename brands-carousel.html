@@ -14,6 +14,7 @@
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
     html,body{}
+    html{overflow-y:hidden;}
     body{font-family:'Montserrat',sans-serif;background:#fff;min-height:460px;}
 
     .brands-section{
@@ -152,12 +153,8 @@
   r2.innerHTML += r2.innerHTML;
 
   function reportHeight(){
-    var h = Math.max(
-      document.body.scrollHeight,
-      document.body.offsetHeight,
-      document.documentElement.scrollHeight,
-      document.documentElement.offsetHeight
-    );
+    var sentinel=document.getElementById('height-sentinel');
+    var h=sentinel?(sentinel.offsetTop+sentinel.offsetHeight):Math.max(document.body.scrollHeight,document.body.offsetHeight,document.documentElement.scrollHeight,document.documentElement.offsetHeight);
     window.parent.postMessage(JSON.stringify({height:h}),'*');
   }
   document.addEventListener('DOMContentLoaded', reportHeight);
@@ -166,10 +163,9 @@
   });
   window.addEventListener('resize', reportHeight);
   if(window.ResizeObserver){ new ResizeObserver(reportHeight).observe(document.body); }
-  }
-  window.addEventListener('load', function(){ reportHeight(); setTimeout(reportHeight,500); setTimeout(reportHeight,1500); });
-  window.addEventListener('resize',reportHeight);
-  if(window.ResizeObserver){ new ResizeObserver(reportHeight).observe(document.querySelector('.brands-section')); }
 </script>
+
+<div id="height-sentinel" style="height:1px;width:1px;visibility:hidden;pointer-events:none;"></div>
+
 </body>
 </html>

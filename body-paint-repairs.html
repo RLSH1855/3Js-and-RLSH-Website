@@ -5,10 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Body & Paint Repairs — PREVIEW</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    body{font-family:'Inter',sans-serif;font-size:16px;color:#424954;max-width:100%;}
+    html{overflow-y:hidden;}
+    body{font-family:'Inter',sans-serif;font-size:15px;color:#424954;max-width:100%;}
 
     h1,h2,h3,.eyebrow,.section-title,.faq-q,.btn-primary,.btn-secondary,.cta-link,.process-header h2,.why-header h2{font-family:'Montserrat',sans-serif;}
 
@@ -42,7 +43,7 @@
     .eyebrow{font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;margin-bottom:12px;}
     .section-title{font-size:clamp(24px,4vw,42px);font-weight:800;letter-spacing:-1px;line-height:1.1;margin-bottom:18px;text-wrap:balance;}
     .section-title em{font-style:normal;}
-    .section-body{font-family:'Inter',sans-serif;font-size:16px;font-weight:400;line-height:1.65;max-width:520px;text-wrap:pretty;}
+    .section-body{font-family:'Inter',sans-serif;font-size:15px;font-weight:400;line-height:1.65;max-width:520px;text-wrap:pretty;}
     .section-body p+p{margin-top:14px;}
 
     .feature-list{list-style:none;margin-top:24px;display:flex;flex-direction:column;gap:10px;}
@@ -171,8 +172,8 @@
     .step-btn:hover .step-title-text{color:#8B0000;}
     .step-icon-svg{width:18px;height:18px;flex-shrink:0;stroke:#8B0000;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;transition:transform 0.3s ease;}
     .step-item.open .step-icon-svg{transform:rotate(45deg);}
-    .step-body-text{font-family:'Inter',sans-serif;font-size:14px;font-weight:400;color:#555;line-height:1.7;max-height:0;overflow:hidden;transition:max-height 0.7s cubic-bezier(0.65,0,0.35,1),padding 0.6s cubic-bezier(0.65,0,0.35,1);padding:0 0 0 44px;text-wrap:pretty;}
-    .step-item.open .step-body-text{max-height:300px;padding:0 0 18px 44px;}
+    .step-body-text{font-family:'Inter',sans-serif;font-size:14px;font-weight:400;color:#555;line-height:1.7;display:none;padding:0 0 18px 44px;text-wrap:pretty;}
+    .step-item.open .step-body-text{display:block;}
 
     /* CTA */
     .cta-band{background:#0A0A0A;padding:72px 24px;text-align:center;position:relative;overflow:hidden;}
@@ -183,12 +184,12 @@
     .cta-band h2 em{font-style:normal;color:#8B0000;}
     .cta-band p{font-family:'Inter',sans-serif;font-size:15px;font-weight:400;color:rgba(255,255,255,0.65);max-width:480px;margin:0 auto 32px;line-height:1.65;text-wrap:pretty;}
     .cta-buttons{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;}
-    .btn-primary{display:inline-flex;align-items:center;gap:8px;background:#8B0000;color:#fff;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;text-decoration:none;padding:0 30px;height:48px;border-radius:0;transition:background 0.2s;letter-spacing:0.5px;}
+    .btn-primary{display:inline-flex;align-items:center;gap:8px;background:#8B0000;color:#fff;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;text-decoration:none;padding:0 30px;height:48px;border-radius:0;transition:background 0.2s;letter-spacing:2px;}
     .btn-primary:hover{background:#A00000;}
     .btn-primary:active{background:#6B0000;}
-    .btn-secondary{display:inline-flex;align-items:center;gap:8px;background:transparent;color:#fff;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;text-decoration:none;padding:0 30px;height:48px;border-radius:0;border:2px solid #8B0000;transition:background 0.2s,border-color 0.2s,color 0.2s;letter-spacing:0.5px;}
-    .btn-secondary:hover{background:#8B0000;color:#fff;border-color:#8B0000;}
-    .btn-secondary:active{background:#6B0000;border-color:#6B0000;}
+    .btn-secondary{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.15);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);color:#fff;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;text-decoration:none;padding:0 30px;height:48px;border-radius:0;border:1.5px solid rgba(255,255,255,0.55);transition:background 0.2s,border-color 0.2s;letter-spacing:2px;}
+    .btn-secondary:hover{background:rgba(255,255,255,0.28);border-color:rgba(255,255,255,0.9);}
+    .btn-secondary:active{background:rgba(255,255,255,0.38);}
 
     /* FAQ */
     .faq-section{background:#fff;width:100%;padding:80px 24px;border-top:1px solid #e8e8e8;border-bottom:1px solid #e8e8e8;}
@@ -202,8 +203,8 @@
     .faq-q:hover{color:#8B0000;}
     .faq-q svg{width:18px;height:18px;flex-shrink:0;margin-top:2px;stroke:#8B0000;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;transition:transform 0.3s ease;}
     .faq-item.open .faq-q svg{transform:rotate(45deg);}
-    .faq-a{font-family:'Inter',sans-serif;font-size:15px;font-weight:400;color:#424954;line-height:1.65;max-height:0;overflow:hidden;transition:max-height 0.7s cubic-bezier(0.65,0,0.35,1),padding 0.6s cubic-bezier(0.65,0,0.35,1);padding:0;text-wrap:pretty;}
-    .faq-item.open .faq-a{max-height:400px;padding-bottom:20px;}
+    .faq-a{font-family:'Inter',sans-serif;font-size:15px;font-weight:400;color:#424954;line-height:1.65;display:none;padding-bottom:20px;text-wrap:pretty;}
+    .faq-item.open .faq-a{display:block;}
 
     /* RESPONSIVE */
     @media(max-width:900px){
@@ -236,12 +237,11 @@
       .faq-q{font-size:12px;padding:12px 0;}
       .cta-buttons{flex-direction:column;align-items:stretch;}
       .btn-primary,.btn-secondary{width:100%;justify-content:center;}
-      .section-body{font-size:15px;}
+      .section-body{font-size:15px;font-family:'Inter',sans-serif;}
       .section-title{font-size:22px !important;}
       .eyebrow{font-size:9px;}
       .stripe-break{height:2px;}
       .journey-section{padding:40px 16px;}
-      .step-body-text{padding:0 0 0 36px;}
       .step-item.open .step-body-text{padding:0 0 16px 36px;}
     }
   </style>
@@ -592,7 +592,8 @@
       var wasOpen=item.classList.contains('open');
       document.querySelectorAll('.step-item.open').forEach(function(i){i.classList.remove('open');});
       if(!wasOpen) item.classList.add('open');
-      setTimeout(reportHeight,500);
+      reportHeight();
+      setTimeout(reportHeight,50);
     });
   });
   document.querySelectorAll('.faq-q').forEach(function(btn){
@@ -601,11 +602,13 @@
       var wasOpen=item.classList.contains('open');
       document.querySelectorAll('.faq-item.open').forEach(function(i){i.classList.remove('open');});
       if(!wasOpen) item.classList.add('open');
-      setTimeout(reportHeight,500);
+      reportHeight();
+      setTimeout(reportHeight,50);
     });
   });
   function reportHeight(){
-    var h=Math.max(document.body.scrollHeight,document.body.offsetHeight,document.documentElement.scrollHeight,document.documentElement.offsetHeight);
+    var sentinel=document.getElementById('height-sentinel');
+    var h=sentinel?(sentinel.offsetTop+sentinel.offsetHeight):Math.max(document.body.scrollHeight,document.body.offsetHeight,document.documentElement.scrollHeight,document.documentElement.offsetHeight);
     window.parent.postMessage(JSON.stringify({height:h}),'*');
   }
   document.addEventListener('DOMContentLoaded',reportHeight);
@@ -614,5 +617,8 @@
   if(window.ResizeObserver){new ResizeObserver(reportHeight).observe(document.body);}
   document.querySelectorAll('img').forEach(function(img){img.addEventListener('load',reportHeight);});
 </script>
+
+<div id="height-sentinel" style="height:1px;width:1px;visibility:hidden;pointer-events:none;"></div>
+
 </body>
 </html>

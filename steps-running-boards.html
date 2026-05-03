@@ -78,8 +78,9 @@
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
     
     html{overflow-x:hidden;overflow-y:hidden;}
-    body{font-family:'Montserrat',sans-serif;max-width:100%;overflow-x:hidden;overflow-y:hidden;background:#0a0a0a;}
-    p{letter-spacing:0.3px;}
+    body{font-family:'Inter',sans-serif;font-size:15px;max-width:100%;overflow-x:hidden;overflow-y:hidden;background:#0a0a0a;}
+    h1,h2,h3{font-family:'Montserrat',sans-serif;text-wrap:balance;}
+    p{font-family:'Inter',sans-serif;text-wrap:pretty;letter-spacing:0.3px;}
     li{letter-spacing:0.3px;}
 
     .eyebrow{font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;margin-bottom:12px;}
@@ -117,7 +118,7 @@
     .hero-accent{position:absolute;left:0;top:0;bottom:0;width:5px;background:#8B0000;z-index:3;}
     .hero-content{
       position:relative;z-index:3;
-      padding:100px 72px 100px 80px;
+      padding:64px 20px 64px 20px;
       max-width:680px;
       color:#fff;
     }
@@ -134,12 +135,14 @@
     .hero h1 span{color:#8B0000;}
     .hero-rule{width:52px;height:4px;background:#8B0000;border-radius:2px;margin:26px 0;}
     .hero-body{
-      font-size:clamp(13px,1.5vw,16px);
-      font-weight:500;
+      font-family:'Inter',sans-serif;
+      font-size:15px;
+      font-weight:400;
       color:rgba(255,255,255,0.82);
       line-height:1.85;
       max-width:480px;
       margin-bottom:34px;
+      text-wrap:pretty;
     }
     .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;}
     .btn-red{
@@ -211,14 +214,15 @@
     ══════════════════════════════════════════════ */
     .nfab-section{
       background:#fff;
-      padding:88px 40px;
+      padding:48px 20px 56px;
     }
     .nfab-inner{max-width:1100px;margin:0 auto;}
     .nfab-header{margin-bottom:52px;}
     .nfab-header .eyebrow{color:#8B0000;}
     .nfab-header .section-title{color:#111;}
     .nfab-header p{
-      font-size:14px;font-weight:500;color:#555;
+      font-family:'Inter',sans-serif;
+      font-size:15px;font-weight:400;color:#555;
       line-height:1.85;max-width:640px;margin-top:14px;
     }
 
@@ -367,7 +371,8 @@
     .amp-text .eyebrow{color:#8B0000;}
     .amp-text .section-title{color:#fff;margin-bottom:14px;}
     .amp-text p{
-      font-size:13px;font-weight:500;
+      font-family:'Inter',sans-serif;
+      font-size:15px;font-weight:400;
       color:rgba(255,255,255,0.65);
       line-height:1.85;margin-bottom:14px;
     }
@@ -431,7 +436,8 @@
       letter-spacing:0.3px;color:#111;margin-bottom:10px;
     }
     .why-card p{
-      font-size:12px;font-weight:500;color:#555;line-height:1.75;
+      font-family:'Inter',sans-serif;
+      font-size:15px;font-weight:400;color:#555;line-height:1.75;
     }
 
     /* ══════════════════════════════════════════════
@@ -489,7 +495,7 @@
     ══════════════════════════════════════════════ */
     .faq-section{
       background:#fff;
-      padding:88px 40px;
+      padding:48px 20px 56px;
       position:relative;overflow:hidden;
     }
     .faq-section > *{position:relative;z-index:1;}
@@ -517,8 +523,9 @@
     .faq-a{display:none;padding-bottom:20px;}
     .faq-item.open .faq-a{display:block;}
     .faq-a p{
-      font-size:13px;font-weight:500;
-      color:#555;line-height:1.85;
+      font-family:'Inter',sans-serif;
+      font-size:15px;font-weight:400;
+      color:#555;line-height:1.65;
     }
 
     /* ══════════════════════════════════════════════
@@ -1231,6 +1238,16 @@
     }
   })();
 
+  function reportHeight(){
+    var sentinel=document.getElementById('height-sentinel');
+    var h=sentinel?(sentinel.offsetTop+sentinel.offsetHeight):Math.max(document.body.scrollHeight,document.body.offsetHeight,document.documentElement.scrollHeight,document.documentElement.offsetHeight);
+    window.parent.postMessage(JSON.stringify({height:h}),'*');
+  }
+  document.addEventListener('DOMContentLoaded',reportHeight);
+  window.addEventListener('load',function(){[0,200,500,1000,2000,3500].forEach(function(t){setTimeout(reportHeight,t);});});
+  window.addEventListener('resize',reportHeight);
+  if(window.ResizeObserver){new ResizeObserver(reportHeight).observe(document.body);}
+
   document.querySelectorAll('.faq-q').forEach(function(btn){
     btn.addEventListener('click', function(){
       var item = btn.closest('.faq-item');
@@ -1243,6 +1260,8 @@
   });
 </script>
 <script src="https://rlsh1855.github.io/3Js-and-RLSH-Website/site-nav.js"></script>
+
+<div id="height-sentinel" style="height:1px;width:1px;visibility:hidden;pointer-events:none;"></div>
 
 </body>
 </html>

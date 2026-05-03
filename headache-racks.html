@@ -12,10 +12,12 @@
   <style>
     html,body{max-width:100%;overflow-x:hidden;overflow-y:hidden;}
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    body{font-family:'Montserrat',sans-serif;background:#f2f2f2;color:#1a1a1a;}
+    body{font-family:'Inter',sans-serif;font-size:15px;background:#f2f2f2;color:#1a1a1a;}
+    h1,h2,h3{font-family:'Montserrat',sans-serif;text-wrap:balance;}
+    p{font-family:'Inter',sans-serif;text-wrap:pretty;}
     a{text-decoration:none;color:inherit;}
     img{max-width:100%;display:block;}
-    button,select{font-family:'Montserrat',sans-serif;}
+    button,select,input{font-family:'Montserrat',sans-serif;}
 
     /* ── GARAGE BAR ── */
     #garage-bar{background:#1a1a1a;padding:9px 16px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
@@ -152,7 +154,7 @@
     .faq-q:hover{color:#8B0000;}
     .faq-toggle{flex-shrink:0;width:22px;height:22px;border-radius:50%;background:#f0f0f0;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:900;color:#555;transition:background 0.2s,transform 0.2s;}
     .faq-item.open .faq-toggle{background:#8B0000;color:#fff;transform:rotate(45deg);}
-    .faq-a{display:none;padding:0 16px 16px;font-size:12px;font-weight:500;line-height:1.7;color:#444;}
+    .faq-a{display:none;padding:0 16px 16px;font-family:'Inter',sans-serif;font-size:15px;font-weight:400;line-height:1.65;color:#444;}
     .faq-item.open .faq-a{display:block;}
 
     /* ── TABLET 768px+ ── */
@@ -618,25 +620,19 @@ if(state.fitActive){
 
 /* ── Wix height ── */
 function reportHeight(){
-    var h = Math.max(
-      document.body.scrollHeight,
-      document.body.offsetHeight,
-      document.documentElement.scrollHeight,
-      document.documentElement.offsetHeight
-    );
-    window.parent.postMessage(JSON.stringify({height:h}),'*');
-  }
-  document.addEventListener('DOMContentLoaded', reportHeight);
-  window.addEventListener('load', function(){
-    [0,200,500,1000,2000,3500].forEach(function(t){ setTimeout(reportHeight,t); });
-  });
-  window.addEventListener('resize', reportHeight);
-  if(window.ResizeObserver){ new ResizeObserver(reportHeight).observe(document.body); } }
-window.addEventListener('load',function(){ reportHeight(); setTimeout(reportHeight,500); setTimeout(reportHeight,1500); });
+  var sentinel=document.getElementById('height-sentinel');
+  var h=sentinel?(sentinel.offsetTop+sentinel.offsetHeight):Math.max(document.body.scrollHeight,document.body.offsetHeight,document.documentElement.scrollHeight,document.documentElement.offsetHeight);
+  window.parent.postMessage(JSON.stringify({height:h}),'*');
+}
+document.addEventListener('DOMContentLoaded',reportHeight);
+window.addEventListener('load',function(){[0,200,500,1000,2000,3500].forEach(function(t){setTimeout(reportHeight,t);});});
 window.addEventListener('resize',reportHeight);
-if(window.ResizeObserver){ new ResizeObserver(reportHeight).observe(document.body); }
+if(window.ResizeObserver){new ResizeObserver(reportHeight).observe(document.body);}
 </script>
 
 <script src="https://rlsh1855.github.io/3Js-and-RLSH-Website/site-nav.js"></script>
+
+<div id="height-sentinel" style="height:1px;width:1px;visibility:hidden;pointer-events:none;"></div>
+
 </body>
 </html>

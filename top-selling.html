@@ -9,6 +9,7 @@
   <style>
 
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{overflow-y:hidden;}
 
     /* ─── BASE: Inter for all body text ─── */
     body{font-family:'Inter',sans-serif;font-size:16px;color:#424954;}
@@ -146,40 +147,6 @@
     .light .visual-title{color:#1a1a1a;}
     .light .num-badge{color:#1a1a1a;}
 
-    /* PAGE HEADER */
-    .page-header{
-      background:#0A0A0A;color:#fff;
-      height:260px;
-      display:flex;align-items:center;justify-content:center;
-      text-align:center;padding:24px 24px 0;
-      position:relative;overflow:hidden;flex-direction:column;
-    }
-    .page-header::before{
-      content:'';position:absolute;inset:0;
-      background:radial-gradient(ellipse at center,rgba(139,0,0,0.16) 0%,transparent 65%);
-      pointer-events:none;
-    }
-    .page-header::after{
-      content:'';position:absolute;inset:0;
-      background-image:radial-gradient(circle,rgba(255,255,255,0.035) 1px,transparent 1px);
-      background-size:26px 26px;pointer-events:none;
-    }
-    .page-header-content{position:relative;z-index:1;}
-    .page-header .eyebrow{color:#8B0000;margin-bottom:12px;}
-    .page-header h1{
-      font-family:'Montserrat',sans-serif;
-      font-size:clamp(32px,6vw,56px);font-weight:900;
-      letter-spacing:-2px;line-height:1.0;text-transform:uppercase;
-    }
-    .page-header h1 em{font-style:normal;color:#8B0000;}
-    .page-header-bar{position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(to right,transparent,#8B0000 25%,#8B0000 75%,transparent);}
-
-    /* DIAGONAL DIVIDERS */
-    .divider-down-dark{height:60px;background:#0A0A0A;clip-path:polygon(0 0,100% 0,100% 100%,0 0);margin-bottom:-1px;}
-    .divider-down-light{height:60px;background:#F2F2F2;clip-path:polygon(0 0,100% 0,100% 100%,0 0);margin-bottom:-1px;}
-    .divider-up-dark{height:60px;background:#0A0A0A;clip-path:polygon(0 0,100% 100%,0 100%);margin-top:-1px;}
-    .divider-up-light{height:60px;background:#F2F2F2;clip-path:polygon(0 0,100% 100%,0 100%);margin-top:-1px;}
-
     /* TEXTURE */
     .texture-dark{position:relative;}
     .texture-dark::before{
@@ -231,7 +198,6 @@
       .num-badge{font-size:80px;top:-10px;right:0;}
     }
     @media(max-width:600px){
-      .page-header{height:150px;padding-top:16px;}
       .two-col{padding:26px 16px;gap:16px;}
       .visual-box{aspect-ratio:16/9;}
       .num-badge{display:none;}
@@ -246,16 +212,6 @@
   </style>
 </head>
 <body>
-
-<header class="page-header">
-  <div class="page-header-content">
-    <p class="eyebrow">3J's Auto Body · Signal Hill, CA</p>
-    <h1>Our Top <em>Services</em></h1>
-  </div>
-  <div class="page-header-bar"></div>
-</header>
-
-<div class="divider-down-dark" style="background:#0A0A0A;"></div>
 
 <section class="light texture-light">
   <div class="two-col">
@@ -442,7 +398,8 @@
 
 <script>
   function reportHeight(){
-    var h=Math.max(document.body.scrollHeight,document.body.offsetHeight,document.documentElement.scrollHeight,document.documentElement.offsetHeight);
+    var sentinel=document.getElementById('height-sentinel');
+    var h=sentinel?(sentinel.offsetTop+sentinel.offsetHeight):Math.max(document.body.scrollHeight,document.body.offsetHeight,document.documentElement.scrollHeight,document.documentElement.offsetHeight);
     window.parent.postMessage(JSON.stringify({height:h}),'*');
   }
   document.addEventListener('DOMContentLoaded',reportHeight);
@@ -450,6 +407,8 @@
   window.addEventListener('resize',reportHeight);
   if(window.ResizeObserver){new ResizeObserver(reportHeight).observe(document.body);}
 </script>
+
+<div id="height-sentinel" style="height:1px;width:1px;visibility:hidden;pointer-events:none;"></div>
 
 </body>
 </html>

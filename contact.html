@@ -124,19 +124,21 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    
-    body{font-family:'Montserrat',sans-serif;max-width:100%;background:#fff;}
+    html{overflow-y:hidden;}
+    body{font-family:'Inter',sans-serif;font-size:15px;max-width:100%;background:#fff;}
 
     /* ─── SHARED ─── */
+    h1,h2,h3{font-family:'Montserrat',sans-serif;text-wrap:balance;}
+    p{text-wrap:pretty;}
     .eyebrow{font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;margin-bottom:12px;}
-    .section-title{font-size:clamp(26px,4vw,48px);font-weight:900;letter-spacing:-1px;line-height:1.05;margin-bottom:18px;}
+    .section-title{font-family:'Montserrat',sans-serif;font-size:clamp(22px,4vw,48px);font-weight:900;letter-spacing:-1px;line-height:1.05;margin-bottom:18px;}
 
     /* ══════════════════════════════════════════════
        PAGE HERO
     ══════════════════════════════════════════════ */
     .page-hero{
       background:#0a0a0a;
-      padding:100px 40px 72px;
+      padding:64px 20px 64px;
       position:relative;
       overflow:hidden;
     }
@@ -162,11 +164,13 @@
     }
     .page-hero h1 span{color:#8B0000;}
     .page-hero p{
+      font-family:'Inter',sans-serif;
       font-size:15px;
-      font-weight:500;
+      font-weight:400;
       color:rgba(255,255,255,0.80);
       line-height:1.85;
       max-width:560px;
+      text-wrap:pretty;
     }
     .hero-cta-row{
       display:flex;gap:14px;flex-wrap:wrap;
@@ -202,15 +206,17 @@
     ══════════════════════════════════════════════ */
     .intent-section{
       background:#f5f5f5;
-      padding:72px 40px;
+      padding:48px 20px 56px;
     }
     .intent-section .eyebrow{color:#8B0000;text-align:center;}
     .intent-section .section-title{text-align:center;color:#111;margin-bottom:8px;}
     .intent-section .section-title span{color:#8B0000;}
     .intent-sub{
-      text-align:center;font-size:13px;font-weight:500;
+      font-family:'Inter',sans-serif;
+      text-align:center;font-size:15px;font-weight:400;
       color:#666;line-height:1.7;max-width:500px;
       margin:0 auto 48px;
+      text-wrap:pretty;
     }
     .intent-grid{
       display:grid;
@@ -303,7 +309,7 @@
     ══════════════════════════════════════════════ */
     .contact-section{
       background:#111;
-      padding:80px 40px;
+      padding:48px 20px 56px;
     }
     .contact-inner{
       max-width:1100px;
@@ -318,7 +324,7 @@
     .contact-form-wrap .eyebrow{color:#8B0000;}
     .contact-form-wrap .section-title{color:#fff;margin-bottom:6px;}
     .contact-form-wrap .section-title span{color:#8B0000;}
-    .form-sub{font-size:13px;font-weight:500;color:rgba(255,255,255,0.60);line-height:1.7;margin-bottom:32px;}
+    .form-sub{font-family:'Inter',sans-serif;font-size:15px;font-weight:400;color:rgba(255,255,255,0.60);line-height:1.7;margin-bottom:32px;text-wrap:pretty;}
 
     .contact-form{display:flex;flex-direction:column;gap:16px;}
     .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
@@ -371,7 +377,7 @@
       font-family:'Montserrat',sans-serif;
       font-size:11px;font-weight:700;letter-spacing:2px;
       text-transform:uppercase;text-decoration:none;
-      min-height:44px;padding:0 24px;border-radius:0;
+      height:48px;padding:0 24px;border-radius:0;
       border:none;cursor:pointer;
       box-shadow:0 4px 24px rgba(139,0,0,0.40);
       transition:all 0.3s ease;
@@ -492,15 +498,16 @@
       .contact-inner{grid-template-columns:1fr;gap:56px;}
     }
     @media(max-width:640px){
-      .page-hero{padding:80px 24px 56px;}
-      .intent-section{padding:56px 20px;}
+      .page-hero{padding:64px 20px 64px;}
+      .intent-section{padding:48px 20px 56px;}
       .intent-grid{grid-template-columns:repeat(2,1fr);gap:14px;}
       .intent-card{height:220px;}
       .intent-card h3{font-size:15px;}
-      .contact-section{padding:60px 24px;}
+      .contact-section{padding:48px 20px 56px;}
       .form-row{grid-template-columns:1fr;}
-      .map-section-header{padding:40px 24px 28px;}
+      .map-section-header{padding:40px 20px 28px;}
       .map-embed{height:320px;}
+      .btn-red,.btn-ghost{width:100%;justify-content:center;}
     }
     @media(max-width:400px){
       .intent-grid{grid-template-columns:1fr;}
@@ -792,6 +799,17 @@
 </section>
 
 <script>
+  /* ── Height reporting ── */
+  function reportHeight(){
+    var sentinel=document.getElementById('height-sentinel');
+    var h=sentinel?(sentinel.offsetTop+sentinel.offsetHeight):Math.max(document.body.scrollHeight,document.body.offsetHeight,document.documentElement.scrollHeight,document.documentElement.offsetHeight);
+    window.parent.postMessage(JSON.stringify({height:h}),'*');
+  }
+  document.addEventListener('DOMContentLoaded',reportHeight);
+  window.addEventListener('load',function(){[0,200,500,1000,2000,3500].forEach(function(t){setTimeout(reportHeight,t);});});
+  window.addEventListener('resize',reportHeight);
+  if(window.ResizeObserver){new ResizeObserver(reportHeight).observe(document.body);}
+
   /* ── Enter key advances fields ── */
   document.addEventListener('keydown', function(e){
     if(e.key !== 'Enter') return;
@@ -845,6 +863,8 @@
 </script>
 
 <script src="https://rlsh1855.github.io/3Js-and-RLSH-Website/site-nav.js"></script>
+
+<div id="height-sentinel" style="height:1px;width:1px;visibility:hidden;pointer-events:none;"></div>
 
 </body>
 </html>

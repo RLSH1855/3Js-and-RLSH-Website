@@ -145,12 +145,12 @@
   }
   </script>
 
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
     
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
     html{-webkit-font-smoothing:antialiased;overflow:hidden;}
-    body{font-family:'Montserrat',sans-serif;background:#fff;color:#111;margin:0;padding:0;overflow:hidden;}
+    body{font-family:'Inter',sans-serif;font-size:15px;background:#fff;color:#111;margin:0;padding:0;overflow:hidden;}
 
     /* ════════════════════════════════
        ANIMATIONS
@@ -199,7 +199,7 @@
     .hero-text{
       display:flex;flex-direction:column;
       justify-content:center;
-      padding:52px 56px 52px 48px;
+      padding:64px 56px 64px 48px;
       border-right:1px solid #ebebeb;
     }
     .hero-text .label{margin-bottom:28px;}
@@ -843,7 +843,7 @@
     /* ════════════════════════════════
        TYPOGRAPHY SYSTEM
     ════════════════════════════════ */
-    h1,h2,h3{text-wrap:balance;}
+    h1,h2,h3{font-family:'Montserrat',sans-serif;text-wrap:balance;}
     .hero-tagline,
     .feat-body,
     .c-card p,
@@ -1283,22 +1283,19 @@
   }
 })();
 
-/* ── Wix iframe height — measures actual visual bottom, not scrollHeight ── */
-function rh(){
-  var h = 0;
-  var els = document.body.children;
-  for(var i = 0; i < els.length; i++){
-    var rect = els[i].getBoundingClientRect();
-    var bottom = window.pageYOffset + rect.bottom;
-    if(bottom > h) h = bottom;
-  }
-  if(!h) h = document.body.scrollHeight;
-  window.parent.postMessage(JSON.stringify({height: h}), '*');
+/* ── Wix iframe height ── */
+function reportHeight(){
+  var sentinel=document.getElementById('height-sentinel');
+  var h=sentinel?(sentinel.offsetTop+sentinel.offsetHeight):Math.max(document.body.scrollHeight,document.body.offsetHeight,document.documentElement.scrollHeight,document.documentElement.offsetHeight);
+  window.parent.postMessage(JSON.stringify({height:h}),'*');
 }
-window.addEventListener('load', function(){ rh(); setTimeout(rh,500); setTimeout(rh,1500); setTimeout(rh,3000); });
-window.addEventListener('resize', rh);
-if(window.ResizeObserver){ new ResizeObserver(rh).observe(document.body); }
+document.addEventListener('DOMContentLoaded',reportHeight);
+window.addEventListener('load',function(){[0,200,500,1000,2000,3500].forEach(function(t){setTimeout(reportHeight,t);});});
+window.addEventListener('resize',reportHeight);
+if(window.ResizeObserver){new ResizeObserver(reportHeight).observe(document.body);}
 </script>
+
+<div id="height-sentinel" style="height:1px;width:1px;visibility:hidden;pointer-events:none;"></div>
 
 </body>
 </html>

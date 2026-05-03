@@ -78,10 +78,12 @@
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
     
     html{overflow-x:hidden;overflow-y:hidden;}
-    body{font-family:'Montserrat',sans-serif;max-width:100%;overflow-x:hidden;overflow-y:hidden;background:#0a0a0a;}
+    body{font-family:'Inter',sans-serif;font-size:15px;max-width:100%;overflow-x:hidden;overflow-y:hidden;background:#0a0a0a;}
 
+    h1,h2,h3{font-family:'Montserrat',sans-serif;text-wrap:balance;}
+    p{text-wrap:pretty;}
     .eyebrow{font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;margin-bottom:12px;}
-    .section-title{font-size:clamp(26px,4vw,52px);font-weight:900;letter-spacing:-1.5px;line-height:1.02;margin-bottom:18px;}
+    .section-title{font-family:'Montserrat',sans-serif;font-size:clamp(22px,4vw,52px);font-weight:900;letter-spacing:-1.5px;line-height:1.02;margin-bottom:18px;}
     .red{color:#8B0000;}
 
     /* ══════════════════════════════════════════════
@@ -110,7 +112,7 @@
     .hero-accent{position:absolute;left:0;top:0;bottom:0;width:5px;background:#8B0000;z-index:3;}
     .hero-content{
       position:relative;z-index:3;
-      padding:100px 72px 100px 80px;
+      padding:64px 20px 64px 20px;
       max-width:660px;color:#fff;
     }
     .hero-content .eyebrow{color:#8B0000;}
@@ -122,9 +124,11 @@
     .hero h1 span{color:#8B0000;}
     .hero-rule{width:52px;height:4px;background:#8B0000;border-radius:2px;margin:26px 0;}
     .hero-body{
-      font-size:clamp(13px,1.5vw,16px);font-weight:500;
+      font-family:'Inter',sans-serif;
+      font-size:15px;font-weight:400;
       color:rgba(255,255,255,0.82);line-height:1.85;
       max-width:480px;margin-bottom:34px;
+      text-wrap:pretty;
     }
     .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;}
     .btn-red{
@@ -183,7 +187,7 @@
        PRODUCT LINES
     ══════════════════════════════════════════════ */
     .products-section{
-      background:#fff;padding:88px 40px;
+      background:#fff;padding:48px 20px 56px;
     }
     .products-inner{max-width:1100px;margin:0 auto;}
     .products-header{margin-bottom:56px;}
@@ -226,7 +230,8 @@
       letter-spacing:-0.5px;margin-bottom:10px;line-height:1.1;
     }
     .product-desc{
-      font-size:12px;font-weight:500;color:#555;
+      font-family:'Inter',sans-serif;
+      font-size:15px;font-weight:400;color:#555;
       line-height:1.75;margin-bottom:18px;
     }
     .product-price{
@@ -278,7 +283,7 @@
        WHY FLOOR LINERS
     ══════════════════════════════════════════════ */
     .why-section{
-      background:#f5f5f5;padding:80px 40px;
+      background:#f5f5f5;padding:48px 20px 56px;
     }
     .why-inner{max-width:1100px;margin:0 auto;}
     .why-section .eyebrow{color:#8B0000;text-align:center;}
@@ -300,14 +305,15 @@
       letter-spacing:0.3px;color:#111;margin-bottom:9px;
     }
     .why-card p{
-      font-size:11px;font-weight:500;color:#555;line-height:1.75;
+      font-family:'Inter',sans-serif;
+      font-size:15px;font-weight:400;color:#555;line-height:1.75;
     }
 
     /* ══════════════════════════════════════════════
        MORE FROM HUSKY — TEASER
     ══════════════════════════════════════════════ */
     .more-section{
-      background:#0d0d0d;padding:80px 40px;
+      background:#0d0d0d;padding:48px 20px 56px;
       position:relative;overflow:hidden;
     }
     .more-section::before{
@@ -321,7 +327,8 @@
     .more-section .eyebrow{color:#8B0000;}
     .more-section .section-title{color:#fff;margin-bottom:8px;}
     .more-sub{
-      font-size:13px;font-weight:500;
+      font-family:'Inter',sans-serif;
+      font-size:15px;font-weight:400;
       color:rgba(255,255,255,0.55);
       max-width:540px;line-height:1.75;margin-bottom:44px;
     }
@@ -402,7 +409,7 @@
     /* ══════════════════════════════════════════════
        FAQ
     ══════════════════════════════════════════════ */
-    .faq-section{background:#fff;padding:88px 40px;position:relative;overflow:hidden;}
+    .faq-section{background:#fff;padding:48px 20px 56px;position:relative;overflow:hidden;}
     .faq-section::before{
       content:'';position:absolute;inset:0;
       background-image:url('AUTO%20GEARS%20BACKGROUND%20BLACK%20WITH%20WHITE.jpg');
@@ -412,23 +419,24 @@
     .faq-section > *{position:relative;z-index:1;}
     .faq-inner{max-width:800px;margin:0 auto;}
     .faq-section .eyebrow{color:#8B0000;text-align:center;}
-    .faq-section .section-title{color:#fff;text-align:center;margin-bottom:48px;}
-    .faq-item{border-bottom:1px solid rgba(255,255,255,0.08);}
+    .faq-section .section-title{color:#1a1a1a;text-align:center;margin-bottom:48px;}
+    .faq-item{border-bottom:1px solid #e8e8e8;}
+    .faq-item:first-of-type{border-top:1px solid #e8e8e8;}
     .faq-q{
       width:100%;background:none;border:none;cursor:pointer;
       display:flex;justify-content:space-between;align-items:center;
       padding:20px 0;gap:8px;
       font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;
       letter-spacing:2px;text-transform:uppercase;text-decoration:none;
-      color:rgba(255,255,255,0.90);text-align:left;transition:all 0.3s ease;
+      color:#1a1a1a;text-align:left;transition:all 0.3s ease;
     }
-    .faq-q:hover{color:#fff;}
-    .faq-q svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2.5;flex-shrink:0;color:rgba(255,255,255,0.35);transition:transform 0.3s,color 0.2s;}
-    .faq-item.open .faq-q{color:#fff;}
+    .faq-q:hover{color:#8B0000;}
+    .faq-q svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2.5;flex-shrink:0;color:#bbb;transition:transform 0.3s,color 0.2s;}
+    .faq-item.open .faq-q{color:#1a1a1a;}
     .faq-item.open .faq-q svg{transform:rotate(180deg);color:#8B0000;}
     .faq-a{display:none;padding-bottom:20px;}
     .faq-item.open .faq-a{display:block;}
-    .faq-a p{font-size:13px;font-weight:500;color:rgba(255,255,255,0.65);line-height:1.85;}
+    .faq-a p{font-family:'Inter',sans-serif;font-size:15px;font-weight:400;color:#424954;line-height:1.65;}
 
     /* ══════════════════════════════════════════════
        RESPONSIVE
@@ -753,6 +761,16 @@
 </section>
 
 <script>
+  function reportHeight(){
+    var sentinel=document.getElementById('height-sentinel');
+    var h=sentinel?(sentinel.offsetTop+sentinel.offsetHeight):Math.max(document.body.scrollHeight,document.body.offsetHeight,document.documentElement.scrollHeight,document.documentElement.offsetHeight);
+    window.parent.postMessage(JSON.stringify({height:h}),'*');
+  }
+  document.addEventListener('DOMContentLoaded',reportHeight);
+  window.addEventListener('load',function(){[0,200,500,1000,2000,3500].forEach(function(t){setTimeout(reportHeight,t);});});
+  window.addEventListener('resize',reportHeight);
+  if(window.ResizeObserver){new ResizeObserver(reportHeight).observe(document.body);}
+
   document.querySelectorAll('.faq-q').forEach(function(btn){
     btn.addEventListener('click', function(){
       var item = btn.closest('.faq-item');
@@ -765,6 +783,8 @@
   });
 </script>
 <script src="https://rlsh1855.github.io/3Js-and-RLSH-Website/site-nav.js"></script>
+
+<div id="height-sentinel" style="height:1px;width:1px;visibility:hidden;pointer-events:none;"></div>
 
 </body>
 </html>
