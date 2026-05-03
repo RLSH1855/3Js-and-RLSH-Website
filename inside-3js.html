@@ -150,7 +150,28 @@
       .red-band-btn{width:100%;justify-content:center;}
       .hide-mobile{display:none;}
       .journey-section{padding:32px 16px;}
+      .svc-grid{grid-template-columns:1fr;}
+      .svc-card{height:200px;}
+      .svc-name{font-size:18px;}
     }
+
+    /* ── TOP SERVICES GRID ── */
+    .services-section{background:#f5f5f5;padding:64px 24px;border-top:1px solid #e8e8e8;border-bottom:1px solid #e8e8e8;}
+    .services-header{text-align:center;margin-bottom:40px;}
+    .services-header .eyebrow{color:#8B0000;margin-bottom:10px;}
+    .services-header h2{font-family:'Montserrat',sans-serif;font-size:clamp(22px,3.5vw,36px);font-weight:800;letter-spacing:-0.5px;color:#1a1a1a;text-wrap:balance;}
+    .services-header h2 em{font-style:normal;color:#8B0000;}
+    .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:1100px;margin:0 auto;}
+    .svc-card{position:relative;height:240px;overflow:hidden;text-decoration:none;display:block;}
+    .svc-bg{position:absolute;inset:0;background-size:cover;background-position:center;}
+    .svc-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.88) 0%,rgba(0,0,0,0.35) 55%,rgba(0,0,0,0.10) 100%);}
+    .svc-body{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:18px 20px;}
+    .svc-name{font-family:'Montserrat',sans-serif;font-size:17px;font-weight:900;color:#fff;letter-spacing:-0.3px;line-height:1.1;text-transform:uppercase;margin-bottom:6px;}
+    .svc-desc{font-family:'Inter',sans-serif;font-size:12px;font-weight:400;color:rgba(255,255,255,0.75);line-height:1.5;margin-bottom:12px;}
+    .svc-cta{display:inline-flex;align-items:center;gap:6px;font-family:'Montserrat',sans-serif;font-size:9px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#fff;background:#8B0000;padding:6px 14px;border:none;}
+    .svc-cta svg{width:10px;height:10px;stroke:currentColor;fill:none;stroke-width:2.5;}
+    @media(max-width:768px){.svc-grid{grid-template-columns:repeat(2,1fr);gap:12px;}.svc-card{height:200px;}}
+    @media(max-width:600px){.svc-grid{grid-template-columns:1fr;}.svc-card{height:200px;}.svc-name{font-size:18px;}}
   </style>
 </head>
 <body>
@@ -214,6 +235,77 @@
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- TOP SERVICES -->
+<section class="services-section">
+  <div class="services-header">
+    <p class="eyebrow">What We Do</p>
+    <h2>Our Top <em>Services</em></h2>
+  </div>
+  <div class="svc-grid">
+
+    <a href="https://www.3jsautobody.com/rhino-liner" class="svc-card" target="_top">
+      <div class="svc-bg" style="background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/BED%20LINER%20W-LOGO.png');background-position:center;"></div>
+      <div class="svc-overlay"></div>
+      <div class="svc-body">
+        <div class="svc-name">Spray-In Rhino Liner</div>
+        <div class="svc-desc">Permanently bonded. Lifetime warranty. Same-day available.</div>
+        <span class="svc-cta">Get a Quote <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></span>
+      </div>
+    </a>
+
+    <a href="https://www.3jsautobody.com/exterior-accessories/tonneau-covers" class="svc-card" target="_top">
+      <div class="svc-bg" style="background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/TRUCK%20BED%20COVERS%20IMAGE.jpg');background-position:center 55%;"></div>
+      <div class="svc-overlay"></div>
+      <div class="svc-body">
+        <div class="svc-name">Tonneau Covers</div>
+        <div class="svc-desc">Hard fold, retractable, soft roll-up — all major brands installed.</div>
+        <span class="svc-cta">Shop Covers <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></span>
+      </div>
+    </a>
+
+    <a href="https://www.3jsautobody.com/exterior-accessories/running-boards-side-steps" class="svc-card" target="_top">
+      <div class="svc-bg" style="background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/IMG_3961.PNG');background-position:center;"></div>
+      <div class="svc-overlay"></div>
+      <div class="svc-body">
+        <div class="svc-name">Running Boards</div>
+        <div class="svc-desc">Fixed, nerf bar, and electric retractable — all trucks &amp; SUVs.</div>
+        <span class="svc-cta">View Options <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></span>
+      </div>
+    </a>
+
+    <a href="https://www.3jsautobody.com/body-paint-repairs" class="svc-card" target="_top">
+      <div class="svc-bg" style="background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/autobody-repairs-red-bmw.png');background-position:center;"></div>
+      <div class="svc-overlay"></div>
+      <div class="svc-body">
+        <div class="svc-name">Full Exterior Paint</div>
+        <div class="svc-desc">Computer color-matched. Single panels or full repaints.</div>
+        <span class="svc-cta">Learn More <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></span>
+      </div>
+    </a>
+
+    <a href="https://www.3jsautobody.com/request-a-quote" class="svc-card" target="_top">
+      <div class="svc-bg" style="background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/Bedliner-Jeep_exterior.PNG');background-position:center;"></div>
+      <div class="svc-overlay"></div>
+      <div class="svc-body">
+        <div class="svc-name">Rock Guard Protection</div>
+        <div class="svc-desc">Rhino Linings on lower body. Stops chips, rocks &amp; road debris.</div>
+        <span class="svc-cta">Get a Quote <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></span>
+      </div>
+    </a>
+
+    <a href="https://www.3jsautobody.com/request-a-quote" class="svc-card" target="_top">
+      <div class="svc-bg" style="background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/Bedliner-Color-Undercarriage.PNG');background-position:center top;"></div>
+      <div class="svc-overlay"></div>
+      <div class="svc-body">
+        <div class="svc-name">Undercarriage Coating</div>
+        <div class="svc-desc">Seals out rust, moisture &amp; road salt. Essential for coastal trucks.</div>
+        <span class="svc-cta">Get a Quote <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></span>
+      </div>
+    </a>
+
   </div>
 </section>
 
