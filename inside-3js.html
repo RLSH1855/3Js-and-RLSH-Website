@@ -729,40 +729,6 @@
       setTimeout(reportHeight,50);
     });
   });
-  // Lightbox
-  var lightbox = document.getElementById('lightbox');
-  var lightboxImg = document.getElementById('lightboxImg');
-  var photoExpand = document.getElementById('photoExpand');
-  var photoExpandImg = document.getElementById('photoExpandImg');
-  var activeThumb = null;
-  function openExpand(src, thumb){
-    if(activeThumb) activeThumb.classList.remove('active-thumb');
-    activeThumb = thumb;
-    thumb.classList.add('active-thumb');
-    photoExpandImg.src = src;
-    photoExpand.classList.add('active');
-    photoExpand.scrollIntoView({behavior:'smooth', block:'nearest'});
-    setTimeout(reportHeight, 300);
-  }
-  function closeExpand(){
-    photoExpand.classList.remove('active');
-    photoExpandImg.src = '';
-    if(activeThumb) activeThumb.classList.remove('active-thumb');
-    activeThumb = null;
-    setTimeout(reportHeight, 300);
-  }
-
-  document.querySelectorAll('.work-photo').forEach(function(photo){
-    photo.addEventListener('click', function(){
-      var src = photo.querySelector('img').src;
-      if(activeThumb === photo && photoExpand.classList.contains('active')){
-        closeExpand();
-      } else {
-        openExpand(src, photo);
-      }
-    });
-  });
-  document.getElementById('photoExpandClose').addEventListener('click', closeExpand);
 
   function initGallery(){
     if(window.innerWidth > 600) return;
