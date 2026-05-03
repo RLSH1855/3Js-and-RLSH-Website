@@ -467,6 +467,19 @@
     var saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
     if(saved && saved.year && saved.make && saved.model){ showSaved(saved); }
   }catch(e){}
+
+  // Sync from Wix parent (cross-origin localStorage workaround)
+  window.addEventListener('message',function(e){
+    if(e.data&&e.data.type==='garageSync'&&e.data.vehicle){
+      var v=e.data.vehicle;
+      if(v.year&&v.make&&v.model){
+        try{localStorage.setItem(STORAGE_KEY,JSON.stringify(v));}catch(ex){}
+        showSaved(v);
+      }
+    }
+  });
+  // Request vehicle from parent on load
+  setTimeout(function(){window.parent.postMessage({type:'garageRequest'},'*');},500);
 })();
 
 (function(){

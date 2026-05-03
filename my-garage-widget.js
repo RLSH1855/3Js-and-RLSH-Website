@@ -183,6 +183,7 @@
     var v={year:gcPending.year,make:gcPending.make,model:gcPending.model,trim:trim||gcPending.trim||'',bedIn:bedIn,bedSize:bedLabel,color:gcColor.name,colorHex:gcColor.hex,vin:gcPending.vin||''};
     localStorage.setItem('garage_vehicle',JSON.stringify(v));
     gcShowSaved(v);
+    gcBroadcast();
     try{window.dispatchEvent(new CustomEvent('garageUpdated',{detail:v}));}catch(e){}
   }
 
@@ -213,7 +214,17 @@
 
   // Expose globally + listen for postMessage from Wix HTML embeds
   window.gcOpen = gcOpen;
-  window.addEventListener('message',function(e){if(e.data==='openGarage')gcOpen();});
+  window.addEventListener('message',function(e){
+    if(e.data==='openGarage') gcOpen();
+    if(e.data&&e.data.type==='garageRequest') gcBroadcast();
+  });
+
+  function gcBroadcast(){
+    var saved=localStorage.getItem('garage_vehicle');
+    if(!saved) return;
+    var frames=document.querySelectorAll('iframe');
+    frames.forEach(function(f){try{f.contentWindow.postMessage({type:'garageSync',vehicle:JSON.parse(saved)},'*');}catch(e){} });
+  }
 
   // Wire all events via addEventListener — no inline handlers
   document.getElementById('gc-close').addEventListener('click',gcClose);
@@ -233,9 +244,11 @@
     if(yb&&yp&&!yb.contains(e.target)&&!yp.contains(e.target))gcCloseYear();
   });
 
-  // Restore saved vehicle on load
+  // Restore saved vehicle on load + broadcast to iframes
   (function(){
     var saved=localStorage.getItem('garage_vehicle');
     if(saved){try{gcShowSaved(JSON.parse(saved));}catch(e){}}
+    setTimeout(gcBroadcast, 1000);
+    setTimeout(gcBroadcast, 3000);
   })();
 })();
