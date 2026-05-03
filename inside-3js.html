@@ -311,98 +311,71 @@
   </div>
 </section>
 
-<!-- SERVICE DETAIL ACCORDION -->
-<section style="background:#fff;padding:48px 24px 56px;border-bottom:1px solid #e8e8e8;">
-  <div style="max-width:740px;margin:0 auto;">
-    <p class="eyebrow" style="text-align:center;color:#8B0000;margin-bottom:8px;">More Detail</p>
-    <h2 class="section-title" style="text-align:center;margin-bottom:32px;font-size:clamp(20px,3vw,30px);">Tap Any Service to <em>Learn More</em></h2>
+<!-- DUAL ACCORDION — SIDE BY SIDE -->
+<style>
+  .dual-acc-wrap{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;}
+  .acc-col-label{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:#8B0000;margin-bottom:8px;display:block;}
+  .acc-col-title{font-family:'Montserrat',sans-serif;font-size:clamp(18px,2vw,24px);font-weight:800;letter-spacing:-0.5px;color:#1a1a1a;margin-bottom:20px;line-height:1.15;}
+  .acc-col-title em{font-style:normal;color:#8B0000;}
+  .acc-list{border-top:1px solid #e8e8e8;}
+  .acc-item{border-bottom:1px solid #e8e8e8;}
+  .acc-btn{width:100%;background:none;border:none;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 0;cursor:pointer;text-align:left;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#1a1a1a;transition:color 0.2s;touch-action:manipulation;-webkit-tap-highlight-color:transparent;}
+  .acc-btn:hover{color:#8B0000;}
+  .acc-icon{width:18px;height:18px;flex-shrink:0;position:relative;}
+  .acc-icon .i-h,.acc-icon .i-v{position:absolute;background:#8B0000;border-radius:0;transition:transform 0.35s cubic-bezier(0.4,0,0.2,1),opacity 0.3s ease;}
+  .acc-icon .i-h{width:12px;height:2px;top:8px;left:3px;}
+  .acc-icon .i-v{width:2px;height:12px;top:3px;left:8px;transform-origin:center;}
+  .acc-item.open .acc-icon .i-v{transform:rotate(90deg);opacity:0;}
+  .acc-body{font-family:'Inter',sans-serif;font-size:14px;font-weight:400;color:#555;line-height:1.75;max-height:0;overflow:hidden;transition:max-height 0.55s cubic-bezier(0.4,0,0.2,1),opacity 0.45s ease,padding 0.45s ease;opacity:0;padding:0;}
+  .acc-item.open .acc-body{max-height:400px;opacity:1;padding-bottom:18px;}
+  @media(max-width:768px){.dual-acc-wrap{grid-template-columns:1fr;gap:40px;}}
+</style>
 
-    <div class="step-item">
-      <button class="step-btn">
-        <span class="step-num">01</span>
-        <span class="step-title">Spray-In Rhino Liner</span>
-        <svg class="step-icon" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-      </button>
-      <div class="step-body">We are a certified Rhino Liner installer — not the drop-in kind. The spray-in liner bonds permanently to your truck bed, creating a textured, waterproof, impact-resistant surface that lasts the life of your truck. Same-day installation available. Lifetime warranty included. Available in multiple colors beyond standard black.<br><br>
-        <strong style="color:#1a1a1a;">Highlights:</strong> Certified installer · Same-day service · Lifetime warranty · Color match options available
+<section style="background:#fff;padding:56px 24px 64px;border-bottom:1px solid #e8e8e8;">
+  <div class="dual-acc-wrap">
+
+    <!-- LEFT: SERVICES -->
+    <div>
+      <span class="acc-col-label">What We Do</span>
+      <h2 class="acc-col-title">Our <em>Services</em></h2>
+      <div class="acc-list" id="svc-acc">
+
+        <div class="acc-item"><button class="acc-btn"><span>Spray-In Rhino Liner</span><span class="acc-icon"><span class="i-h"></span><span class="i-v"></span></span></button><div class="acc-body">Certified Rhino Liner installer — permanently bonded, textured, waterproof. Not the drop-in kind. Same-day installation available. Lifetime warranty included. Multiple color options.<br><br><strong style="color:#1a1a1a;">Highlights:</strong> Certified installer · Same-day service · Lifetime warranty · Color match options</div></div>
+
+        <div class="acc-item"><button class="acc-btn"><span>Tonneau Covers</span><span class="acc-icon"><span class="i-h"></span><span class="i-v"></span></span></button><div class="acc-body">Protect your cargo and improve fuel economy. Soft roll-up, hard folding, and retractable options from all major brands. We'll help you find the right fit for your truck and budget.<br><br><strong style="color:#1a1a1a;">Highlights:</strong> All styles · All major brands · Professional install</div></div>
+
+        <div class="acc-item"><button class="acc-btn"><span>Running Boards &amp; Steps</span><span class="acc-icon"><span class="i-h"></span><span class="i-v"></span></span></button><div class="acc-body">Fixed boards, nerf bars, and power electric retractable steps for all trucks and SUVs — including lifted vehicles. All major brands available.<br><br><strong style="color:#1a1a1a;">Highlights:</strong> Fixed, nerf &amp; electric options · Lifted vehicle friendly · All makes &amp; models</div></div>
+
+        <div class="acc-item"><button class="acc-btn"><span>Full Exterior Paint</span><span class="acc-icon"><span class="i-h"></span><span class="i-v"></span></span></button><div class="acc-body">Computer-matched paint for a perfect finish — single panels or full repaints. Any factory color or fully custom. From daily drivers to show trucks, every job gets the same care.<br><br><strong style="color:#1a1a1a;">Highlights:</strong> Computer color match · Single panel or full repaint · Custom colors</div></div>
+
+        <div class="acc-item"><button class="acc-btn"><span>Rock Guard Protection</span><span class="acc-icon"><span class="i-h"></span><span class="i-v"></span></span></button><div class="acc-body">Rhino Linings material applied to the lower body — stops chips, rocks, and road debris on and off road. Color match available so it blends seamlessly.<br><br><strong style="color:#1a1a1a;">Highlights:</strong> Rhino Linings material · Color match · On &amp; off-road protection</div></div>
+
+        <div class="acc-item"><button class="acc-btn"><span>Undercarriage Coating</span><span class="acc-icon"><span class="i-h"></span><span class="i-v"></span></span></button><div class="acc-body">Full spray coating seals out moisture, road salt, and corrosion. Essential for off-road trucks, coastal drivers, and anyone who wants their investment to last.<br><br><strong style="color:#1a1a1a;">Highlights:</strong> Full coverage · Seals moisture &amp; salt · Rust &amp; corrosion protection</div></div>
+
       </div>
     </div>
 
-    <div class="step-item">
-      <button class="step-btn">
-        <span class="step-num">02</span>
-        <span class="step-title">Tonneau Covers</span>
-        <svg class="step-icon" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-      </button>
-      <div class="step-body">Protect your cargo, improve your fuel economy, and give your truck a cleaner look. We carry and install the top brands with options for every style and budget — soft roll-up, hard folding, and retractable. We'll help you find the right fit.<br><br>
-        <strong style="color:#1a1a1a;">Highlights:</strong> Soft roll-up &amp; hard folding options · Retractable installs · All major brands · Professional installation
+    <!-- RIGHT: FAQ -->
+    <div>
+      <span class="acc-col-label">Common Questions</span>
+      <h2 class="acc-col-title">About <em>3J's Auto Body</em></h2>
+      <div class="acc-list" id="faq-acc">
+
+        <div class="acc-item"><button class="acc-btn"><span>Is 3J's Auto Body family owned?</span><span class="acc-icon"><span class="i-h"></span><span class="i-v"></span></span></button><div class="acc-body">Yes — founded in 1991 by Jim Sferrazza, the shop has been passed down through three generations of the Sferrazza family right here in Signal Hill, CA.</div></div>
+
+        <div class="acc-item"><button class="acc-btn"><span>Is 3J's Auto Body certified?</span><span class="acc-icon"><span class="i-h"></span><span class="i-v"></span></span></button><div class="acc-body">Yes — I-CAR Gold Class certified, ASE certified, and a certified Rhino Liner installer. I-CAR Gold Class is the highest training recognition in the collision repair industry.</div></div>
+
+        <div class="acc-item"><button class="acc-btn"><span>How long have you been in business?</span><span class="acc-icon"><span class="i-h"></span><span class="i-v"></span></span></button><div class="acc-body">Over 30 years — same location at 1855 E 29th Street, Signal Hill, CA since 1991. Same family, same address, same commitment to quality.</div></div>
+
+        <div class="acc-item"><button class="acc-btn"><span>Do you work with insurance companies?</span><span class="acc-icon"><span class="i-h"></span><span class="i-v"></span></span></button><div class="acc-body">Yes — we work directly with all major carriers including State Farm, Geico, Progressive, Allstate, Farmers, AAA, and more. We handle the paperwork so you don't have to.</div></div>
+
+        <div class="acc-item"><button class="acc-btn"><span>Do you offer a warranty?</span><span class="acc-icon"><span class="i-h"></span><span class="i-v"></span></span></button><div class="acc-body">Yes — every repair is backed by a written limited lifetime warranty on our workmanship for as long as you own the vehicle.</div></div>
+
+        <div class="acc-item"><button class="acc-btn"><span>Do you offer free estimates?</span><span class="acc-icon"><span class="i-h"></span><span class="i-v"></span></span></button><div class="acc-body">Always. Walk in Mon–Fri 8AM–5PM or submit an online photo estimate. No appointment needed for estimates.</div></div>
+
       </div>
     </div>
 
-    <div class="step-item">
-      <button class="step-btn">
-        <span class="step-num">03</span>
-        <span class="step-title">Running Boards &amp; Side Steps</span>
-        <svg class="step-icon" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-      </button>
-      <div class="step-body">Fixed boards, nerf bars, and power electric retractable steps for all trucks and SUVs — including lifted vehicles. All major brands available. We handle the sourcing, installation, and any custom finish work.<br><br>
-        <strong style="color:#1a1a1a;">Highlights:</strong> Fixed &amp; nerf bar options · Power retractable steps · Lifted vehicle friendly · All makes &amp; models
-      </div>
-    </div>
-
-    <div class="step-item">
-      <button class="step-btn">
-        <span class="step-num">04</span>
-        <span class="step-title">Full Exterior Paint Jobs</span>
-        <svg class="step-icon" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-      </button>
-      <div class="step-body">We can match any factory color or go fully custom. Computer-matched paint for a perfect finish — single panels or full repaints. We've even matched colors from home improvement store paint chips. From daily drivers to show trucks, every paint job gets the same level of care.<br><br>
-        <strong style="color:#1a1a1a;">Highlights:</strong> Computer color matching · Single panel or full repaint · Custom colors available · Factory finish quality
-      </div>
-    </div>
-
-    <div class="step-item">
-      <button class="step-btn">
-        <span class="step-num">05</span>
-        <span class="step-title">Rock Guard Protection</span>
-        <svg class="step-icon" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-      </button>
-      <div class="step-body">Rock guard protection is an off-road and outdoors must-have. We protect the lower section of your vehicle's body with Rhino Linings materials to stop chips, rocks, and road debris on and off road. We can color match so it blends in seamlessly — or contrast it for a custom look.<br><br>
-        <strong style="color:#1a1a1a;">Highlights:</strong> Rhino Linings material · Color match available · On &amp; off-road protection · Stops chips, rocks &amp; debris
-      </div>
-    </div>
-
-    <div class="step-item">
-      <button class="step-btn">
-        <span class="step-num">06</span>
-        <span class="step-title">Undercarriage Coating</span>
-        <svg class="step-icon" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-      </button>
-      <div class="step-body">Full undercarriage spray coating seals out moisture, road salt, and corrosion. Especially important for trucks used off-road, near the coast, or in wet conditions. One of the best long-term investments you can make in your truck.<br><br>
-        <strong style="color:#1a1a1a;">Highlights:</strong> Full undercarriage coverage · Seals out moisture &amp; salt · Rust &amp; corrosion protection · Coast &amp; off-road recommended
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- FAQ -->
-<section class="faq-section">
-  <div class="faq-inner">
-    <span class="eyebrow">Common Questions</span>
-    <h2>About <em>3J's Auto Body</em></h2>
-    <div class="faq-item">
-      <button class="faq-q">Is 3J's Auto Body family owned?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
-      <div class="faq-a">Yes — 3J's Auto Body is family owned and operated. Founded in 1991 by Jim Sferrazza, the shop has been passed down through three generations of the Sferrazza family right here in Signal Hill, CA.</div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-q">Is 3J's Auto Body certified?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
-      <div class="faq-a">Yes — 3J's Auto Body is I-CAR Gold Class certified, ASE certified, and a certified Rhino Liner installer. I-CAR Gold Class is the highest training recognition in the collision repair industry.</div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-q">How long has 3J's Auto Body been in business?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
-      <div class="faq-a">3J's Auto Body has been serving Signal Hill and the greater Long Beach area since 1991 — over 30 years at the same location at 1855 E 29th Street, Signal Hill, CA. Same family, same address, same commitment to quality.</div>
-    </div>
   </div>
 </section>
 
@@ -878,21 +851,27 @@
 </div>
 
 <script>
+  // Dual accordion (services + FAQ side by side)
+  ['svc-acc','faq-acc'].forEach(function(id){
+    var list=document.getElementById(id);
+    if(!list)return;
+    list.querySelectorAll('.acc-btn').forEach(function(btn){
+      btn.addEventListener('click',function(){
+        var item=btn.closest('.acc-item');
+        var wasOpen=item.classList.contains('open');
+        list.querySelectorAll('.acc-item.open').forEach(function(i){i.classList.remove('open');});
+        if(!wasOpen) item.classList.add('open');
+        setTimeout(reportHeight,550);
+      });
+    });
+  });
+
+  // Repair Journey accordion
   document.querySelectorAll('.step-btn').forEach(function(btn){
     btn.addEventListener('click',function(){
       var item=btn.closest('.step-item');
       var wasOpen=item.classList.contains('open');
       document.querySelectorAll('.step-item.open').forEach(function(i){i.classList.remove('open');});
-      if(!wasOpen) item.classList.add('open');
-      reportHeight();
-      setTimeout(reportHeight,50);
-    });
-  });
-  document.querySelectorAll('.faq-q').forEach(function(btn){
-    btn.addEventListener('click',function(){
-      var item=btn.closest('.faq-item');
-      var wasOpen=item.classList.contains('open');
-      document.querySelectorAll('.faq-item.open').forEach(function(i){i.classList.remove('open');});
       if(!wasOpen) item.classList.add('open');
       reportHeight();
       setTimeout(reportHeight,50);
