@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    html,body{overflow-x:hidden;}
+    html{overflow-x:hidden;overflow-y:hidden;}
     body{font-family:'Inter',sans-serif;background:#fff;color:#1a1a1a;}
 
     /* ── PAGE HEADER ── */
@@ -120,6 +120,10 @@
     <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/floor-liners.html" class="shop-nav-link" target="_top">Floor Liners</a>
     <a href="https://www.3jsautobody.com/request-a-quote" class="shop-nav-link" target="_top">Roof Racks</a>
     <a href="https://www.3jsautobody.com/request-a-quote" class="shop-nav-link" target="_top">Lighting</a>
+    <a href="https://www.3jsautobody.com/request-a-quote" class="shop-nav-link" target="_top">Elevate Rack</a>
+    <a href="https://www.3jsautobody.com/request-a-quote" class="shop-nav-link" target="_top">Towing</a>
+    <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/headache-racks.html" class="shop-nav-link" target="_top">Headache Racks</a>
+    <a href="https://www.3jsautobody.com/request-a-quote" class="shop-nav-link" target="_top">Tool Boxes</a>
   </div>
 </nav>
 
@@ -241,6 +245,54 @@
       </div>
     </a>
 
+    <!-- ELEVATE RACK SYSTEM -->
+    <a href="https://www.3jsautobody.com/request-a-quote" class="cat-card" target="_top">
+      <div class="cat-bg" style="background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/elevate-rack.png');background-position:center 40%;"></div>
+      <div class="cat-overlay"></div>
+      <div class="cat-body">
+        <div class="cat-tag">Bed Rack System</div>
+        <div class="cat-name">Elevate Rack System</div>
+        <div class="cat-brands">RealTruck Elevate · Bike &amp; Kayak Carriers · Cargo Baskets</div>
+        <div class="cat-btn">Get a Quote <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
+      </div>
+    </a>
+
+    <!-- TOWING -->
+    <a href="https://www.3jsautobody.com/request-a-quote" class="cat-card" target="_top">
+      <div class="cat-bg" style="background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/B%26W%20Hitches%201.png');background-position:center 50%;"></div>
+      <div class="cat-overlay"></div>
+      <div class="cat-body">
+        <div class="cat-tag">Towing</div>
+        <div class="cat-name">Towing Equipment</div>
+        <div class="cat-brands">CURT · B&amp;W Trailer Hitches · Draw-Tite</div>
+        <div class="cat-btn">Get a Quote <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
+      </div>
+    </a>
+
+    <!-- HEADACHE RACKS -->
+    <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/headache-racks.html" class="cat-card" target="_top">
+      <div class="cat-bg" style="background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/aftermarket%20upgrades.png');background-position:center 30%;"></div>
+      <div class="cat-overlay"></div>
+      <div class="cat-body">
+        <div class="cat-tag">Cab Protection</div>
+        <div class="cat-name">Headache Racks</div>
+        <div class="cat-brands">BackRack · Go Rhino · Aries</div>
+        <div class="cat-btn">Shop Now <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
+      </div>
+    </a>
+
+    <!-- TOOL BOXES -->
+    <a href="https://www.3jsautobody.com/request-a-quote" class="cat-card" target="_top">
+      <div class="cat-bg" style="background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/bedliner.jpg');background-position:center 50%;"></div>
+      <div class="cat-overlay"></div>
+      <div class="cat-body">
+        <div class="cat-tag">Bed Storage</div>
+        <div class="cat-name">Tool Boxes</div>
+        <div class="cat-brands">Dee Zee · Delta · UWS · Lund</div>
+        <div class="cat-btn">Get a Quote <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
+      </div>
+    </a>
+
   </div>
 </div>
 
@@ -264,15 +316,17 @@
 
 <script>
   function reportHeight(){
-    var h=Math.max(document.body.scrollHeight,document.body.offsetHeight,document.documentElement.scrollHeight,document.documentElement.offsetHeight);
+    var sentinel=document.getElementById('height-sentinel');
+    var h=sentinel?(sentinel.offsetTop+sentinel.offsetHeight):Math.max(document.body.scrollHeight,document.body.offsetHeight,document.documentElement.scrollHeight,document.documentElement.offsetHeight);
     window.parent.postMessage(JSON.stringify({height:h}),'*');
   }
   document.addEventListener('DOMContentLoaded',reportHeight);
-  window.addEventListener('load',function(){[0,200,500,1000,2000].forEach(function(t){setTimeout(reportHeight,t);});});
+  window.addEventListener('load',function(){[0,200,500,1000,2000,3500].forEach(function(t){setTimeout(reportHeight,t);});});
   window.addEventListener('resize',reportHeight);
   if(window.ResizeObserver){new ResizeObserver(reportHeight).observe(document.body);}
   document.querySelectorAll('img').forEach(function(img){img.addEventListener('load',reportHeight);});
 </script>
+<div id="height-sentinel" style="height:1px;width:1px;visibility:hidden;pointer-events:none;"></div>
 <script src="https://rlsh1855.github.io/3Js-and-RLSH-Website/site-nav.js"></script>
 </body>
 </html>
