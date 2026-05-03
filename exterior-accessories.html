@@ -208,8 +208,17 @@
       .cat-card-name{font-size:34px;}
     }
 
-    @media(max-width:767px){
-      .brand-logos{justify-content:flex-start;}
+    @media(max-width:600px){
+      .brands-section{padding:32px 16px 40px;}
+      .brands-title{font-size:20px;margin-bottom:24px;}
+      .brand-logos{
+        display:grid;
+        grid-template-columns:repeat(3,1fr);
+        gap:20px 12px;
+        justify-items:center;
+      }
+      .brand-logo-item{height:auto;width:100%;display:flex;align-items:center;justify-content:center;}
+      .brand-logo-item img{height:32px;width:100%;max-width:100%;object-fit:contain;}
     }
   </style>
 </head>
