@@ -418,13 +418,11 @@
     }
     .faq-item.open .faq-q svg{transform:rotate(45deg);}
     .faq-a{
-      font-family:'Inter',sans-serif;font-size:14px;font-weight:400;
+      font-family:'Inter',sans-serif;font-size:15px;font-weight:400;
       color:#424954;line-height:1.75;text-wrap:pretty;
-      max-height:0;overflow:hidden;
-      transition:max-height 0.5s cubic-bezier(0.4,0,0.2,1),padding 0.4s cubic-bezier(0.4,0,0.2,1),opacity 0.35s ease;
-      padding:0;opacity:0;
+      display:none;padding-bottom:20px;
     }
-    .faq-item.open .faq-a{max-height:300px;padding-bottom:20px;opacity:1;}
+    .faq-item.open .faq-a{display:block;}
 
     /* ─── CTA BAND ─── */
     .cta-band{
@@ -537,26 +535,37 @@
     .mfr-card:hover .mfr-bar{transform:scaleX(1);}
 
     /* ─── RESPONSIVE (mobile-first) ─── */
-    .hero{padding:72px 24px 64px;}
+    .hero{padding:64px 20px 64px;}
     .hero-ctas{gap:10px;}
-    .intro-strip{padding:20px 16px;gap:16px;}
+    .hero-sub{font-size:15px;}
+
+    /* 3 icons — one row, compact */
+    .intro-strip{padding:20px 16px;gap:0;flex-wrap:nowrap;}
+    .intro-stat{flex:1;min-width:0;padding:0 8px;gap:8px;}
     .intro-stat-divider{display:none;}
-    .intro-stat svg{width:48px;height:48px;}
-    .section-head{padding:44px 24px 32px;}
-    .cards-section{padding:0 18px 56px;}
+    .intro-stat svg{width:30px;height:30px;}
+    .intro-stat-label{font-size:8px;letter-spacing:1.5px;}
+
+    .section-head{padding:48px 20px 32px;}
+    .section-head p{font-size:15px;}
+    .cards-section{padding:0 20px 56px;}
     .cards-grid{grid-template-columns:1fr;gap:16px;}
-    .why-strip{padding:48px 24px;}
+    .why-strip{padding:48px 20px 56px;}
     .why-grid{grid-template-columns:1fr;gap:14px;}
-    .faq-section{padding:48px 24px;}
-    .divider{margin:0 24px;}
+    .why-header p{font-size:15px;}
+    .faq-section{padding:48px 20px 56px;}
+    .divider{margin:0 20px;}
     .hero h1{letter-spacing:-1.5px;}
     .card-body{padding:18px;}
     .card-name{font-size:18px;}
+    .card-tagline{font-size:14px;}
     .btn-view,.btn-quote{font-size:10px;padding:11px 10px;}
-    .cta-band{padding:52px 20px;}
-    .mfr-section{padding:44px 16px 56px;}
+    .cta-band{padding:48px 20px 56px;}
+    .cta-band p{font-size:15px;}
+    .mfr-section{padding:48px 20px 56px;}
     .mfr-grid{grid-template-columns:1fr;}
     .mfr-header{margin-bottom:28px;}
+    .mfr-header p{font-size:14px;}
 
     @media(min-width:480px){
       .intro-stat svg{width:52px;height:52px;}
@@ -1003,11 +1012,8 @@ document.querySelectorAll('.faq-q').forEach(function(btn){
     var wasOpen = item.classList.contains('open');
     document.querySelectorAll('.faq-item.open').forEach(function(i){ i.classList.remove('open'); });
     if(!wasOpen) item.classList.add('open');
-    var ticks = 0;
-    var interval = setInterval(function(){
-      reportHeight();
-      if(++ticks >= 12) clearInterval(interval);
-    }, 50);
+    reportHeight();
+    setTimeout(reportHeight, 50);
   });
 });
 
@@ -1021,9 +1027,6 @@ window.addEventListener('load',function(){
   [0,200,500,1000,2000,3500].forEach(function(t){setTimeout(reportHeight,t);});
 });
 window.addEventListener('resize',reportHeight);
-document.querySelectorAll('.faq-q').forEach(function(btn){
-  btn.addEventListener('click',function(){setTimeout(reportHeight,550);});
-});
 if(window.ResizeObserver){new ResizeObserver(reportHeight).observe(document.body);}
 </script>
 <script src="https://rlsh1855.github.io/3Js-and-RLSH-Website/site-nav.js"></script>
