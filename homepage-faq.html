@@ -91,11 +91,10 @@
       font-family:'Inter',sans-serif;
       font-size:15px;font-weight:400;
       color:#555;line-height:1.85;
-      max-height:0;overflow:hidden;
-      transition:max-height 0.6s ease-in-out,padding 0.45s ease-in-out;
-      padding:0;
+      display:none;
+      padding-bottom:20px;
     }
-    .faq-item.open .faq-a{max-height:400px;padding-bottom:20px;}
+    .faq-item.open .faq-a{display:block;}
 
     /* ─── CTA ROW ─── */
     .faq-cta{
@@ -222,7 +221,9 @@
       var wasOpen = item.classList.contains('open');
       document.querySelectorAll('.faq-item.open').forEach(function(i){ i.classList.remove('open'); });
       if(!wasOpen) item.classList.add('open');
-      [50,150,250,400,550,700,900].forEach(function(t){ setTimeout(reportHeight,t); });
+      reportHeight();
+      setTimeout(reportHeight, 50);
+      setTimeout(reportHeight, 200);
     });
   });
 
