@@ -222,7 +222,7 @@
       var wasOpen = item.classList.contains('open');
       document.querySelectorAll('.faq-item.open').forEach(function(i){ i.classList.remove('open'); });
       if(!wasOpen) item.classList.add('open');
-      setTimeout(reportHeight, 450);
+      [50,150,250,400,550,700,900].forEach(function(t){ setTimeout(reportHeight,t); });
     });
   });
 
