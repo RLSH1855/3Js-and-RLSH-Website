@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Footer | 3J's Auto Body</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
     
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
@@ -41,7 +41,8 @@
       display:block;
     }
     .footer-tagline{
-      font-size:12px;font-weight:500;
+      font-family:'Inter',sans-serif;
+      font-size:13px;font-weight:400;
       color:rgba(255,255,255,0.55);
       line-height:1.7;
       max-width:220px;
@@ -75,14 +76,18 @@
 
     /* Columns */
     .footer-col-title{
-      font-size:9px;font-weight:800;letter-spacing:2.5px;
-      text-transform:uppercase;color:#8B0000;
+      font-size:10px;font-weight:800;letter-spacing:2.5px;
+      text-transform:uppercase;color:rgba(255,255,255,0.9);
       margin-bottom:16px;
+      display:inline-block;
+      padding-bottom:5px;
+      border-bottom:2px solid #8B0000;
     }
     .footer-links{list-style:none;}
     .footer-links li{margin-bottom:10px;}
     .footer-links a{
-      font-size:12px;font-weight:500;
+      font-family:'Inter',sans-serif;
+      font-size:14px;font-weight:400;
       color:rgba(255,255,255,0.65);
       text-decoration:none;
       transition:color 0.2s;
@@ -92,7 +97,8 @@
     /* Hours */
     .hours-row{
       display:flex;gap:10px;
-      font-size:12px;font-weight:500;
+      font-family:'Inter',sans-serif;
+      font-size:13px;font-weight:400;
       color:rgba(255,255,255,0.65);
       margin-bottom:8px;
     }
@@ -119,7 +125,8 @@
     }
     .contact-item svg{width:14px;height:14px;fill:#8B0000;flex-shrink:0;margin-top:2px;}
     .contact-item p{
-      font-size:12px;font-weight:500;
+      font-family:'Inter',sans-serif;
+      font-size:13px;font-weight:400;
       color:rgba(255,255,255,0.65);
       line-height:1.6;
     }
@@ -323,16 +330,6 @@
     [0,200,500,1000,2000,3500].forEach(function(t){ setTimeout(reportHeight,t); });
   });
   window.addEventListener('resize', reportHeight);
-  if(window.ResizeObserver){ new ResizeObserver(reportHeight).observe(document.body); });
-    try{ window.parent.postMessage(msg,'*'); }catch(e){}
-    try{ window.parent.parent.postMessage(msg,'*'); }catch(e){}
-  }
-  window.addEventListener('load',function(){
-    reportHeight();
-    setTimeout(reportHeight,300);
-    setTimeout(reportHeight,800);
-  });
-  window.addEventListener('resize',reportHeight);
   if(window.ResizeObserver){ new ResizeObserver(reportHeight).observe(document.querySelector('footer')); }
 </script>
 
