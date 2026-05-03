@@ -211,8 +211,9 @@
     if(fabLabel) fabLabel.textContent='My Garage';
   }
 
-  // Expose globally so Wix HTML embeds can trigger the modal
+  // Expose globally + listen for postMessage from Wix HTML embeds
   window.gcOpen = gcOpen;
+  window.addEventListener('message',function(e){if(e.data==='openGarage')gcOpen();});
 
   // Wire all events via addEventListener — no inline handlers
   document.getElementById('gc-close').addEventListener('click',gcClose);
