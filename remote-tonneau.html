@@ -72,11 +72,10 @@
   }
   </script>
 
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Inter:wght@400;600&display=swap" rel="stylesheet" />
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    html{overflow-x:hidden;overflow-y:hidden;}
-    body{font-family:'Inter',sans-serif;overflow-x:hidden;overflow-y:hidden;background:#fff;color:#424954;}
+    body{font-family:'Inter',sans-serif;overflow-x:hidden;background:#fff;color:#424954;}
 
     /* ─── SCROLL ANIMATIONS ─── */
     [data-anim]{
@@ -124,12 +123,12 @@
     .hero-content{position:relative;z-index:1;}
     .hero h1{
       font-family:'Montserrat',sans-serif;
-      font-size:clamp(32px,6vw,64px);font-weight:800;
+      font-size:clamp(32px,6vw,64px);font-weight:900;
       letter-spacing:-2px;line-height:1.0;
       text-transform:uppercase;color:#fff;
       margin-bottom:16px;text-wrap:balance;
     }
-    .hero h1 em{font-style:normal;color:#8B0000;}
+    .hero h1 em{font-style:normal;color:#fff;}
     .hero-sub{
       font-family:'Inter',sans-serif;font-size:16px;font-weight:400;
       color:rgba(255,255,255,0.85);max-width:540px;
@@ -139,21 +138,20 @@
       display:flex;justify-content:center;gap:14px;flex-wrap:wrap;
     }
     .btn-primary{
-      display:inline-flex;align-items:center;justify-content:center;gap:8px;
-      height:48px;padding:0 32px;
+      display:inline-flex;align-items:center;gap:8px;
       font-family:'Montserrat',sans-serif;
-      font-size:11px;font-weight:800;letter-spacing:2px;
+      font-size:12px;font-weight:800;letter-spacing:1.5px;
       text-transform:uppercase;text-decoration:none;
-      border-radius:0;
+      padding:14px 30px;border-radius:0;
       background:#8B0000;color:#fff;
       border:2px solid #8B0000;
-      transition:background 0.25s,border-color 0.25s;
+      transition:background 0.2s;
     }
     .btn-primary:hover{background:#a00000;border-color:#a00000;}
     .btn-secondary{
       display:inline-flex;align-items:center;gap:8px;
       font-family:'Montserrat',sans-serif;
-      font-size:11px;font-weight:800;letter-spacing:2px;
+      font-size:12px;font-weight:800;letter-spacing:1.5px;
       text-transform:uppercase;text-decoration:none;
       padding:14px 30px;border-radius:0;
       background:transparent;color:#8B0000;
@@ -179,7 +177,7 @@
     /* ─── BENEFITS STRIP ─── */
     .intro-strip{
       background:#8B0000;
-      padding:28px 24px;
+      padding:44px 24px;
       display:flex;
       align-items:center;
       justify-content:center;
@@ -192,14 +190,8 @@
       align-items:center;gap:12px;
       flex:1;min-width:160px;padding:0 24px;
     }
-    .intro-stat svg{
-      width:56px;height:56px;
-      fill:none;stroke:#fff;stroke-width:1.5;
-      stroke-linecap:round;stroke-linejoin:round;
-      flex-shrink:0;
-    }
-    .intro-stat .icon-filled{
-      fill:#fff;stroke:none;
+    .intro-stat img{
+      width:64px;height:64px;object-fit:contain;
     }
     .intro-stat-label{
       font-family:'Montserrat',sans-serif;
@@ -218,7 +210,7 @@
     }
     .section-head h2{
       font-family:'Montserrat',sans-serif;
-      font-size:clamp(22px,4vw,38px);font-weight:800;
+      font-size:clamp(22px,4vw,38px);font-weight:900;
       letter-spacing:-1px;color:#1a1a1a;line-height:1.05;
       margin-bottom:10px;text-wrap:balance;
     }
@@ -299,7 +291,7 @@
     }
     .card-name{
       font-family:'Montserrat',sans-serif;
-      font-size:22px;font-weight:800;color:#1a1a1a;
+      font-size:22px;font-weight:900;color:#1a1a1a;
       letter-spacing:-0.5px;line-height:1.05;margin-bottom:10px;text-wrap:balance;
     }
     .card-tagline{
@@ -357,7 +349,7 @@
     }
     .why-header h2{
       font-family:'Montserrat',sans-serif;
-      font-size:clamp(22px,3.5vw,36px);font-weight:800;
+      font-size:clamp(22px,3.5vw,36px);font-weight:900;
       letter-spacing:-1px;color:#1a1a1a;margin-bottom:8px;text-wrap:balance;
     }
     .why-header h2 em{color:#8B0000;font-style:normal;}
@@ -390,7 +382,7 @@
     .faq-section .eyebrow{text-align:center;margin-bottom:6px;}
     .faq-section h2{
       font-family:'Montserrat',sans-serif;
-      font-size:clamp(22px,3.5vw,34px);font-weight:800;
+      font-size:clamp(22px,3.5vw,34px);font-weight:900;
       letter-spacing:-1px;color:#1a1a1a;
       text-align:center;margin-bottom:40px;text-wrap:balance;
     }
@@ -398,18 +390,15 @@
     .faq-item{border-bottom:1px solid #ececec;}
     .faq-item:first-of-type{border-top:1px solid #ececec;}
     .faq-q{
-      width:100%;background:transparent;border:none;
+      width:100%;background:none;border:none;
       display:flex;align-items:center;justify-content:space-between;
       padding:18px 0;cursor:pointer;
       font-family:'Montserrat',sans-serif;
       font-size:13px;font-weight:700;color:#1a1a1a;
       text-align:left;gap:16px;
       transition:color 0.2s;
-      -webkit-tap-highlight-color:transparent;
-      outline:none;
     }
     .faq-q:hover{color:#8B0000;}
-    .faq-q:focus{outline:none;}
     .faq-q svg{
       width:18px;height:18px;flex-shrink:0;
       stroke:#8B0000;stroke-width:2.5;fill:none;
@@ -418,11 +407,13 @@
     }
     .faq-item.open .faq-q svg{transform:rotate(45deg);}
     .faq-a{
-      font-family:'Inter',sans-serif;font-size:15px;font-weight:400;
+      font-family:'Inter',sans-serif;font-size:14px;font-weight:400;
       color:#424954;line-height:1.75;text-wrap:pretty;
-      display:none;padding-bottom:20px;
+      max-height:0;overflow:hidden;
+      transition:max-height 0.4s ease, padding 0.3s ease;
+      padding:0;
     }
-    .faq-item.open .faq-a{display:block;}
+    .faq-item.open .faq-a{max-height:200px;padding-bottom:18px;}
 
     /* ─── CTA BAND ─── */
     .cta-band{
@@ -438,27 +429,23 @@
     .cta-band-inner{position:relative;z-index:1;}
     .cta-band h2{
       font-family:'Montserrat',sans-serif;
-      font-size:clamp(22px,3.5vw,36px);font-weight:800;
+      font-size:clamp(22px,3.5vw,36px);font-weight:900;
       letter-spacing:-0.5px;margin-bottom:10px;text-wrap:balance;
     }
     .cta-band p{
       font-family:'Inter',sans-serif;font-size:16px;font-weight:400;
-      color:rgba(255,255,255,0.82);
+      color:rgba(255,255,255,0.78);
       max-width:420px;margin:0 auto 28px;line-height:1.65;text-wrap:pretty;
     }
     .cta-band-btn{
-      display:inline-flex;align-items:center;justify-content:center;gap:8px;
-      height:48px;padding:0 38px;border-radius:0;
-      background:rgba(255,255,255,0.15);
-      backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
-      color:#fff;
+      display:inline-flex;align-items:center;gap:8px;
+      background:#fff;color:#8B0000;
       font-family:'Montserrat',sans-serif;
-      font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;
-      text-decoration:none;
-      border:1.5px solid rgba(255,255,255,0.55);
-      transition:background 0.2s,border-color 0.2s;
+      font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase;
+      text-decoration:none;padding:15px 38px;border-radius:0;
+      transition:background 0.2s;
     }
-    .cta-band-btn:hover{background:rgba(255,255,255,0.25);border-color:rgba(255,255,255,0.8);}
+    .cta-band-btn:hover{background:#f0f0f0;}
     .cta-band-btn svg{
       width:14px;height:14px;flex-shrink:0;
       fill:none;stroke:currentColor;stroke-width:2.2;
@@ -501,7 +488,7 @@
     .mfr-section{padding:64px 24px 72px;}
     .mfr-header{text-align:center;margin-bottom:40px;}
     .mfr-header .eyebrow{margin-bottom:10px;}
-    .mfr-header h2{font-size:clamp(26px,3.5vw,40px);font-weight:800;letter-spacing:-1.5px;color:#1a1a1a;text-transform:uppercase;margin-bottom:10px;}
+    .mfr-header h2{font-size:clamp(26px,3.5vw,40px);font-weight:900;letter-spacing:-1.5px;color:#1a1a1a;text-transform:uppercase;margin-bottom:10px;}
     .mfr-header h2 em{color:#8B0000;font-style:normal;}
     .mfr-header p{font-family:'Inter',sans-serif;font-size:14px;color:#666;max-width:480px;margin:0 auto;line-height:1.8;}
     .mfr-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;max-width:1200px;margin:0 auto;}
@@ -525,7 +512,7 @@
       padding:22px 22px 24px;
     }
     .mfr-type{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.65);margin-bottom:5px;}
-    .mfr-name{font-family:'Montserrat',sans-serif;font-size:clamp(18px,2vw,24px);font-weight:800;color:#fff;letter-spacing:-0.5px;line-height:1;}
+    .mfr-name{font-family:'Montserrat',sans-serif;font-size:clamp(18px,2vw,24px);font-weight:900;color:#fff;letter-spacing:-0.5px;line-height:1;}
     .mfr-bar{
       position:absolute;bottom:0;left:0;right:0;height:3px;
       background:#8B0000;
@@ -534,66 +521,34 @@
     }
     .mfr-card:hover .mfr-bar{transform:scaleX(1);}
 
-    /* ─── RESPONSIVE (mobile-first) ─── */
-    .hero{padding:64px 20px 64px;}
-    .hero-ctas{gap:10px;}
-    .hero-sub{font-size:15px;}
-
-    /* 3 icons — one row, compact */
-    .intro-strip{padding:20px 16px;gap:0;flex-wrap:nowrap;}
-    .intro-stat{flex:1;min-width:0;padding:0 8px;gap:8px;}
-    .intro-stat-divider{display:none;}
-    .intro-stat svg{width:30px;height:30px;}
-    .intro-stat-label{font-size:8px;letter-spacing:1.5px;}
-
-    .section-head{padding:48px 20px 32px;}
-    .section-head p{font-size:15px;}
-    .cards-section{padding:0 20px 56px;}
-    .cards-grid{grid-template-columns:1fr;gap:16px;}
-    .why-strip{padding:48px 20px 56px;}
-    .why-grid{grid-template-columns:1fr;gap:14px;}
-    .why-header p{font-size:15px;}
-    .faq-section{padding:48px 20px 56px;}
-    .divider{margin:0 20px;}
-    .hero h1{letter-spacing:-1.5px;}
-    .card-body{padding:18px;}
-    .card-name{font-size:18px;}
-    .card-tagline{font-size:14px;}
-    .btn-view,.btn-quote{font-size:10px;padding:11px 10px;}
-    .cta-band{padding:48px 20px 56px;}
-    .cta-band p{font-size:15px;}
-    .mfr-section{padding:48px 20px 56px;}
-    .mfr-grid{grid-template-columns:1fr;}
-    .mfr-header{margin-bottom:28px;}
-    .mfr-header p{font-size:14px;}
-
-    @media(min-width:480px){
-      .intro-stat svg{width:52px;height:52px;}
-      .mfr-grid{grid-template-columns:repeat(2,1fr);}
-      .cta-band{padding:52px 24px;}
+    /* ─── RESPONSIVE ─── */
+    @media(max-width:760px){
+      .hero{padding:72px 24px 64px;}
+      .hero-ctas{gap:10px;}
+      .intro-strip{padding:36px 16px;gap:0;}
+      .intro-stat-divider{display:none;}
+      .intro-stat img{width:64px;height:64px;}
+      .section-head{padding:44px 24px 32px;}
+      .cards-section{padding:0 18px 56px;}
+      .cards-grid{grid-template-columns:1fr;gap:16px;}
+      .why-strip{padding:48px 24px;}
+      .why-grid{grid-template-columns:1fr;gap:14px;}
+      .faq-section{padding:48px 24px;}
+      .divider{margin:0 24px;}
     }
-
-    @media(min-width:760px){
-      .hero{padding:100px 40px 88px;}
-      .hero-ctas{gap:14px;}
-      .intro-strip{padding:28px 24px;gap:0;}
-      .intro-stat-divider{display:block;}
-      .intro-stat svg{width:56px;height:56px;}
-      .section-head{padding:60px 40px 40px;}
-      .cards-section{padding:0 40px 72px;}
-      .cards-grid{grid-template-columns:repeat(2,1fr);gap:24px;}
-      .why-strip{padding:64px 40px;}
-      .why-grid{grid-template-columns:repeat(3,1fr);gap:20px;}
-      .faq-section{padding:64px 40px;}
-      .divider{margin:0 40px;}
-      .hero h1{letter-spacing:-2px;}
-      .card-body{padding:26px;}
-      .card-name{font-size:22px;}
-      .btn-view,.btn-quote{padding:12px 14px;}
-      .cta-band{padding:72px 24px;}
-      .mfr-section{padding:64px 24px 72px;}
-      .mfr-grid{grid-template-columns:repeat(3,1fr);}
-      .mfr-header{margin-bottom:40px;}
+    @media(max-width:760px){
+      .mfr-grid{grid-template-columns:repeat(2,1fr);}
+    }
+    @media(max-width:480px){
+      .hero h1{letter-spacing:-1.5px;}
+      .card-body{padding:18px;}
+      .card-name{font-size:18px;}
+      .btn-view,.btn-quote{font-size:10px;padding:11px 10px;}
+      .intro-strip{gap:16px;}
+      .cta-band{padding:52px 20px;}
+      .mfr-section{padding:44px 16px 56px;}
+      .mfr-grid{grid-template-columns:1fr;}
+      .mfr-header{margin-bottom:28px;}
     }
   </style>
 </head>
@@ -610,7 +565,7 @@
     <h1 data-anim="fade-up" data-delay="100">Tonneau <em>Covers</em></h1>
     <p class="hero-sub" data-anim="fade-up" data-delay="200">Protect your cargo. Improve your fuel economy. Upgrade your truck's look. We source and professionally install the top tonneau cover brands — right here in Signal Hill.</p>
     <div class="hero-ctas" data-anim="fade-up" data-delay="300">
-      <a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-primary">
+      <a href="https://www.3jsautobody.com/rhino-lining-quote" target="_top" class="btn-primary">
         <svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
         Request a Quote
       </a>
@@ -627,20 +582,17 @@
 ══════════════════════════════ -->
 <div class="intro-strip">
   <div class="intro-stat" data-anim="fade-up">
-    <!-- Increased Durability — durable icon -->
-    <svg class="icon-filled" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 112.06 122.88" aria-hidden="true"><path fill-rule="evenodd" d="M56.73.29a127.8,127.8,0,0,0,28.76,14c8.82,2.85,17.07,4,24.68,3.26a1.52,1.52,0,0,1,1.64,1.36V19c1.36,27.42-2.89,49.42-11.89,66.39-9.52,17.94-24.32,30.25-43.36,37.41a1.49,1.49,0,0,1-1,0c-17.93-6.55-32.2-17.87-41.8-35S-.7,47.84.08,18.15a1.51,1.51,0,0,1,1.54-1.47h0a81.65,81.65,0,0,0,28.18-3.15A77.16,77.16,0,0,0,54.91.32a1.5,1.5,0,0,1,1.82,0Zm24.46,23.9A115.66,115.66,0,0,1,56,12,70.74,70.74,0,0,1,32.54,23.92,74.66,74.66,0,0,1,9.28,26.58c0,23.64,4.22,42,12.12,55.78a62.92,62.92,0,0,0,28.26,26.05L43.74,91c-.87-2.06-1.52-4-2.32-6a40.6,40.6,0,0,0-5.8-9.41A23.65,23.65,0,0,1,32.8,64.27h0c1.42,1.08,3,2.37,4.52,3.57,2.87,2.25,5.89,5,8.89,1,.57-.81,1.15-1.59,1.74-2.32a41.18,41.18,0,0,1,7.69-7.38c-3,3-4.17,8.92-2.74,16.31,1-12,3.91-21.28,18.2-19.4L69.37,52l-5.84,2.2C59,55.87,53.87,49.83,56.15,47c7.78-4.46,18.16-12.84,23.19-3.75l4.12,7.51c5.46,9.75,1.86,13.27-4.9,22.72a65.54,65.54,0,0,1-8.47,9.76c-1.59,1.49-1.33,1-.12,3l7.1,12.63A63.22,63.22,0,0,0,91.12,81.71C98.88,68,102.77,50,102.58,27.33a59.34,59.34,0,0,1-21.39-3.14ZM32.79,51.42a2.44,2.44,0,0,1,1.48-.74,2.52,2.52,0,0,1,.89.1,3.93,3.93,0,0,1,1.72,1.12,88.07,88.07,0,0,1,8.84,8.94c1.48,1.37,1.82,2.78.65,4.15l-2.12,2.37c-1.07,1.08-2.44,1-3.93-.06-6.72-5.64-14.65-8.55-7.53-15.88ZM64,26a2.74,2.74,0,0,1,.9.24c1.52.67,3.28,3.74,4,5.15.48.9,1.86,3.34,3,5.39l-9.6,3.87c-1.54-2.48-2.93-5-4.33-7.07a3.07,3.07,0,0,1-.51-3.27,7.45,7.45,0,0,1,3-2.87C61.34,27,63.15,26,64,26ZM52.64,32.41a2.83,2.83,0,0,1,.92.18,4,4,0,0,1,1.68,1.32,22.43,22.43,0,0,1,2.67,3.57c.47.74,1.5,2.34,2.57,4-3.31,1.49-7.77,2.29-7.93,6.54-1.95-2.67-3.7-5.52-5.42-7.71a3.08,3.08,0,0,1-.71-3.24c.69-1.87,4.36-4.73,6.22-4.7ZM42.4,41a2.8,2.8,0,0,1,.89.1A3.84,3.84,0,0,1,45,42.21a21.75,21.75,0,0,1,2.84,3.19C49,47,53.61,52.83,54.27,54.17A2.42,2.42,0,0,1,53.93,57l-2.72,2.64c-1.08,1.08-2.45,1-3.94-.06C43.79,56.24,40.6,52,37.8,49a2.94,2.94,0,0,1-.95-3c.46-1.72,3.81-4.89,5.55-5Z"/></svg>
+    <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/inc.%20dur.png" alt="Increased Durability">
     <div class="intro-stat-label">Increased Durability</div>
   </div>
   <div class="intro-stat-divider"></div>
   <div class="intro-stat" data-anim="fade-up" data-delay="100">
-    <!-- Premium Look — diamond -->
-    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.25 9l2.25-4.5h15L21.75 9M2.25 9l9.75 12L21.75 9M2.25 9h19.5M8.25 4.5L6 9l6 12 6-12-2.25-4.5M15.75 4.5L12 9 8.25 4.5"/></svg>
+    <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/prem%20look.png" alt="Premium Look">
     <div class="intro-stat-label">Premium Look</div>
   </div>
   <div class="intro-stat-divider"></div>
   <div class="intro-stat" data-anim="fade-up" data-delay="200">
-    <!-- Superior Protection — shield with checkmark -->
-    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2L3 6v6c0 5.25 3.75 10.15 9 11.25C17.25 22.15 21 17.25 21 12V6L12 2z"/><polyline points="9 12 11 14 15 10"/></svg>
+    <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/sup_pro.png" alt="Superior Protection">
     <div class="intro-stat-label">Superior Protection</div>
   </div>
 </div>
@@ -735,12 +687,12 @@
 </section>
 
 <!-- ══════════════════════════════
-     FEATURED COVERS
+     HARD FOLDING COVERS
 ══════════════════════════════ -->
 <div class="section-head" data-anim="fade-up">
-  <span class="eyebrow">Featured Models</span>
-  <h2>Top Covers. <em>Every Style.</em></h2>
-  <p>Hard fold, retractable, or roll-up — we carry and professionally install the best models from the best brands.</p>
+  <span class="eyebrow">Hard Folding Covers</span>
+  <h2>Maximum Security. <em>Sleek Profile.</em></h2>
+  <p>Hard panels, auto-latch security, and a low-profile look that blends seamlessly with your truck.</p>
 </div>
 
 <div class="cards-section">
@@ -749,8 +701,16 @@
     <!-- BakFlip MX4 -->
     <div class="product-card" data-anim="fade-up" data-delay="100">
       <div class="card-img">
+        <!--
+          MX4 IMAGE: Upload to Wix Media Manager → right-click → Copy image address
+          Replace placeholder with: <img src="YOUR_URL" alt="BakFlip MX4">
+        -->
         <div class="card-img-inner">
-          <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/bak-bakflip-mx4-2016-ford-f150-blue-beach-lifestyle-05.jpg" alt="BakFlip MX4 on Ford F-150">
+          <!-- img goes here -->
+        </div>
+        <div class="card-img-placeholder">
+          <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M1 9h22M5 9l2-5h10l2 5M3 9l1 7h16l1-7M8 16v2m8-2v2"/></svg>
+          <span>BakFlip MX4</span>
         </div>
         <div class="card-badge">Best Seller</div>
       </div>
@@ -759,13 +719,14 @@
         <div class="card-name">MX4</div>
         <p class="card-tagline">The world's best-selling hard folding tonneau cover. Aircraft-grade aluminum, matte black finish, re-engineered Gen 3 security.</p>
         <div class="card-chips">
-          <span class="card-chip">Hard Fold</span>
+          <span class="card-chip">Gen 3</span>
+          <span class="card-chip">22% Stronger</span>
           <span class="card-chip">Made in USA</span>
           <span class="card-chip">5-yr Warranty</span>
         </div>
         <div class="card-actions">
           <a href="/bakflip-mx4" target="_top" class="btn-view">View Details</a>
-          <a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote">Get a Quote</a>
+          <a href="https://www.3jsautobody.com/rhino-lining-quote" target="_top" class="btn-quote">Get a Quote</a>
         </div>
       </div>
     </div>
@@ -773,8 +734,17 @@
     <!-- BakFlip X4S -->
     <div class="product-card" data-anim="fade-up" data-delay="200">
       <div class="card-img">
+        <!--
+          X4S IMAGE: Upload to Wix Media Manager → right-click → Copy image address
+          Replace placeholder with: <img src="YOUR_URL" alt="BakFlip X4S">
+          UPDATE href below once Wix page slug is renamed to /bakflip-x4s
+        -->
         <div class="card-img-inner">
-          <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/bak-revolver-x4s-2022-ram-1500-trx-blue.jpg" alt="BAK Revolver X4S on 2022 Ram 1500 TRX Blue">
+          <!-- img goes here -->
+        </div>
+        <div class="card-img-placeholder">
+          <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M1 9h22M5 9l2-5h10l2 5M3 9l1 7h16l1-7M8 16v2m8-2v2"/></svg>
+          <span>BakFlip X4S</span>
         </div>
         <div class="card-badge">New Model</div>
       </div>
@@ -784,122 +754,17 @@
         <p class="card-tagline">Diamond plate aluminum texture meets ultimate security. Sleek, low-profile, and built for the truck owner who doesn't compromise.</p>
         <div class="card-chips">
           <span class="card-chip">Diamond Plate</span>
-          <span class="card-chip">Hard Fold</span>
+          <span class="card-chip">Flush Mount</span>
           <span class="card-chip">Dual-Action Seal</span>
         </div>
         <div class="card-actions">
           <a href="/copy-of-bakflip-mx4" target="_top" class="btn-view">View Details</a>
-          <a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote">Get a Quote</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Extang Solid Fold ALX -->
-    <div class="product-card" data-anim="fade-up" data-delay="100">
-      <div class="card-img">
-        <div class="card-img-inner">
-          <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/extang-solid-fold-alx-2024-toyota-tacoma-88832-ov-037-2.jpg" alt="Extang Solid Fold ALX on Toyota Tacoma" loading="lazy">
-        </div>
-        <div class="card-badge">Fan Favorite</div>
-      </div>
-      <div class="card-body">
-        <div class="card-brand">Extang</div>
-        <div class="card-name">Solid Fold ALX</div>
-        <p class="card-tagline">Premium aluminum hard folding cover with a sleek matte finish, tool-free installation, and maximum bed security.</p>
-        <div class="card-chips">
-          <span class="card-chip">Hard Fold</span>
-          <span class="card-chip">Tool-Free Install</span>
-          <span class="card-chip">Lifetime Warranty</span>
-        </div>
-        <div class="card-actions">
-          <a href="https://www.3jsautobody.com/exterior-accessories" target="_top" class="btn-view">View Details</a>
-          <a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote">Get a Quote</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Retrax PRO MX -->
-    <div class="product-card" data-anim="fade-up" data-delay="200">
-      <div class="card-img">
-        <div class="card-img-inner">
-          <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/retrax-one-mx-2015-toyota-tacoma-red-studio-09.jpg" alt="Retrax ONE MX on Toyota Tacoma" loading="lazy">
-        </div>
-        <div class="card-badge">Premium</div>
-      </div>
-      <div class="card-body">
-        <div class="card-brand">Retrax</div>
-        <div class="card-name">PRO MX</div>
-        <p class="card-tagline">Polycarbonate retractable cover with a built-in T-slot rail system, smooth one-hand operation, and a low-profile design.</p>
-        <div class="card-chips">
-          <span class="card-chip">Retractable</span>
-          <span class="card-chip">T-Slot Rail</span>
-          <span class="card-chip">Locking</span>
-        </div>
-        <div class="card-actions">
-          <a href="https://www.3jsautobody.com/exterior-accessories" target="_top" class="btn-view">View Details</a>
-          <a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote">Get a Quote</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- UnderCover Armor Flex -->
-    <div class="product-card" data-anim="fade-up" data-delay="100">
-      <div class="card-img">
-        <div class="card-img-inner">
-          <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/undercover-armor-flex-2017-ford-f150-raptor-red-construction-lifestyle-01%20(1).png" alt="UnderCover Armor Flex on Ford F-150 Raptor" loading="lazy">
-        </div>
-        <div class="card-badge">Heavy Duty</div>
-      </div>
-      <div class="card-body">
-        <div class="card-brand">UnderCover</div>
-        <div class="card-name">Armor Flex</div>
-        <p class="card-tagline">Military-grade aluminum panels with a rugged matte finish built to handle the toughest jobs and harshest conditions.</p>
-        <div class="card-chips">
-          <span class="card-chip">Hard Fold</span>
-          <span class="card-chip">Military Grade</span>
-          <span class="card-chip">WeatherSeal</span>
-        </div>
-        <div class="card-actions">
-          <a href="https://www.3jsautobody.com/exterior-accessories" target="_top" class="btn-view">View Details</a>
-          <a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote">Get a Quote</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Roll N Lock E-Series -->
-    <div class="product-card" data-anim="fade-up" data-delay="200">
-      <div class="card-img">
-        <div class="card-img-inner">
-          <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/roll-n-lock-e-series-2017-ford-f150-black-beach-lifestyle-10.png" alt="Roll N Lock E-Series on Ford F-150" loading="lazy">
-        </div>
-        <div class="card-badge">Electric</div>
-      </div>
-      <div class="card-body">
-        <div class="card-brand">Roll N Lock</div>
-        <div class="card-name">E-Series</div>
-        <p class="card-tagline">One-touch electric retractable cover with automatic locking and full bed access at the press of a button.</p>
-        <div class="card-chips">
-          <span class="card-chip">Electric</span>
-          <span class="card-chip">Retractable</span>
-          <span class="card-chip">Auto-Lock</span>
-        </div>
-        <div class="card-actions">
-          <a href="https://www.3jsautobody.com/exterior-accessories" target="_top" class="btn-view">View Details</a>
-          <a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote">Get a Quote</a>
+          <a href="https://www.3jsautobody.com/rhino-lining-quote" target="_top" class="btn-quote">Get a Quote</a>
         </div>
       </div>
     </div>
 
   </div>
-
-  <!-- View All CTA -->
-  <div style="text-align:center;margin-top:40px;" data-anim="fade-up">
-    <a href="https://www.3jsautobody.com/exterior-accessories" target="_top" class="btn-primary">
-      <svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2.2;"><path d="M4 6h16M4 12h16M4 18h7"/></svg>
-      View All Tonneau Covers
-    </a>
-  </div>
-
 </div>
 
 <!-- ══════════════════════════════
@@ -985,7 +850,7 @@
   <div class="cta-band-inner" data-anim="fade-up">
     <h2>Ready to Protect Your Truck Bed?</h2>
     <p>Get a free quote from 3J's Auto Body. We source and professionally install the top tonneau cover brands — Mon–Fri, 8AM–5PM in Signal Hill.</p>
-    <a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="cta-band-btn">
+    <a href="https://www.3jsautobody.com/rhino-lining-quote" target="_top" class="cta-band-btn">
       <svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
       Get a Free Quote
     </a>
@@ -1012,22 +877,20 @@ document.querySelectorAll('.faq-q').forEach(function(btn){
     var wasOpen = item.classList.contains('open');
     document.querySelectorAll('.faq-item.open').forEach(function(i){ i.classList.remove('open'); });
     if(!wasOpen) item.classList.add('open');
-    reportHeight();
-    setTimeout(reportHeight, 50);
   });
 });
 
 /* ── Wix iframe height reporting ── */
 function reportHeight(){
-  var h = Math.max(document.body.scrollHeight,document.body.offsetHeight,document.documentElement.scrollHeight,document.documentElement.offsetHeight);
+  var h = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
   window.parent.postMessage(JSON.stringify({height:h}),'*');
 }
-document.addEventListener('DOMContentLoaded',reportHeight);
-window.addEventListener('load',function(){
-  [0,200,500,1000,2000,3500].forEach(function(t){setTimeout(reportHeight,t);});
+window.addEventListener('load', function(){ reportHeight(); setTimeout(reportHeight,500); setTimeout(reportHeight,1500); });
+window.addEventListener('resize', reportHeight);
+document.querySelectorAll('.faq-q').forEach(function(btn){
+  btn.addEventListener('click', function(){ setTimeout(reportHeight, 450); });
 });
-window.addEventListener('resize',reportHeight);
-if(window.ResizeObserver){new ResizeObserver(reportHeight).observe(document.body);}
+if(window.ResizeObserver){ new ResizeObserver(reportHeight).observe(document.body); }
 </script>
 <script src="https://rlsh1855.github.io/3Js-and-RLSH-Website/site-nav.js"></script>
 </body>

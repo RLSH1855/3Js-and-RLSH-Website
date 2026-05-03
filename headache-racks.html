@@ -7,7 +7,7 @@
   <meta name="description" content="BackRack headache racks and cab protectors professionally installed at 3J's Auto Body, Signal Hill CA. 673 fitment-specific products from 1967–2026. (562) 424-6744.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://rlsh1855.github.io/3Js-and-RLSH-Website/headache-racks.html">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <script src="https://rlsh1855.github.io/3Js-and-RLSH-Website/headache-racks-data.js"></script>
   <style>
     html,body{max-width:100%;overflow-x:hidden;overflow-y:hidden;}
@@ -145,7 +145,7 @@
     #empty-state small{font-size:12px;color:#666;}
 
     /* ── FAQ ── */
-    .faq-section{background:#f8f8f8;padding:28px 16px;border-top:3px solid #e8e8e8;}
+    .faq-section{background:#fff;padding:28px 16px;border-top:3px solid #e8e8e8;}
     .faq-title{font-size:16px;font-weight:900;color:#1a1a1a;margin-bottom:16px;text-transform:uppercase;}
     .faq-item{background:#fff;border-radius:6px;margin-bottom:8px;overflow:hidden;}
     .faq-q{padding:14px 16px;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none;color:#1a1a1a;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:8px;user-select:none;background:none;border:none;width:100%;transition:all 0.3s ease;}
@@ -504,7 +504,16 @@ document.getElementById('sort-select').addEventListener('change',function(){ sta
 document.getElementById('mob-filter-open').addEventListener('click',function(){ document.getElementById('mob-filter').classList.add('open'); renderMobileChips(); });
 document.getElementById('mob-filter-close').addEventListener('click',function(){ document.getElementById('mob-filter').classList.remove('open'); });
 document.getElementById('mob-apply').addEventListener('click',function(){ document.getElementById('mob-filter').classList.remove('open'); render(); });
-document.querySelectorAll('.faq-q').forEach(function(q){ q.addEventListener('click',function(){ q.closest('.faq-item').classList.toggle('open'); }); });
+document.querySelectorAll('.faq-q').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    var item = btn.closest('.faq-item');
+    var wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(function(i){ i.classList.remove('open'); });
+    if(!wasOpen) item.classList.add('open');
+    reportHeight();
+    setTimeout(reportHeight, 50);
+  });
+});
 
 /* ── Garage bar ── */
 function loadGarage(){ try{ return JSON.parse(localStorage.getItem(STORAGE_KEY)); }catch(e){ return null; } }

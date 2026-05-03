@@ -73,7 +73,7 @@
   }
   </script>
 
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
     
@@ -402,7 +402,7 @@
     /* ══════════════════════════════════════════════
        FAQ
     ══════════════════════════════════════════════ */
-    .faq-section{background:#0d0d0d;padding:88px 40px;position:relative;overflow:hidden;}
+    .faq-section{background:#fff;padding:88px 40px;position:relative;overflow:hidden;}
     .faq-section::before{
       content:'';position:absolute;inset:0;
       background-image:url('AUTO%20GEARS%20BACKGROUND%20BLACK%20WITH%20WHITE.jpg');
@@ -426,8 +426,8 @@
     .faq-q svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2.5;flex-shrink:0;color:rgba(255,255,255,0.35);transition:transform 0.3s,color 0.2s;}
     .faq-item.open .faq-q{color:#fff;}
     .faq-item.open .faq-q svg{transform:rotate(180deg);color:#8B0000;}
-    .faq-a{max-height:0;overflow:hidden;transition:max-height 0.5s ease-in-out,padding 0.4s ease-in-out;}
-    .faq-item.open .faq-a{max-height:300px;padding-bottom:20px;}
+    .faq-a{display:none;padding-bottom:20px;}
+    .faq-item.open .faq-a{display:block;}
     .faq-a p{font-size:13px;font-weight:500;color:rgba(255,255,255,0.65);line-height:1.85;}
 
     /* ══════════════════════════════════════════════
@@ -754,11 +754,13 @@
 
 <script>
   document.querySelectorAll('.faq-q').forEach(function(btn){
-    btn.addEventListener('click',function(){
-      var item=btn.closest('.faq-item');
-      var wasOpen=item.classList.contains('open');
-      document.querySelectorAll('.faq-item.open').forEach(function(i){i.classList.remove('open');});
+    btn.addEventListener('click', function(){
+      var item = btn.closest('.faq-item');
+      var wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(function(i){ i.classList.remove('open'); });
       if(!wasOpen) item.classList.add('open');
+      reportHeight();
+      setTimeout(reportHeight, 50);
     });
   });
 </script>
