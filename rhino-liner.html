@@ -655,12 +655,12 @@
     else{img.addEventListener('load',init);img.addEventListener('error',init);}
     window.addEventListener('resize',function(){buildLines();});
 
-    // Mobile popup overlay — injected into body so position:fixed always works
+    // Mobile popup overlay — injected into truck-wrap so it stays within the image
     var mobOv=document.createElement('div');
     mobOv.id='mob-popup-ov';
-    mobOv.style.cssText='display:none;position:fixed;inset:0;z-index:9999999;background:rgba(0,0,0,0.72);align-items:center;justify-content:center;padding:20px;';
-    mobOv.innerHTML='<div style="background:#fff;width:100%;max-width:300px;position:relative;box-shadow:0 24px 64px rgba(0,0,0,0.9);"><button id="mob-popup-close" style="position:absolute;top:0;right:0;width:36px;height:36px;background:#1a1a1a;border:none;color:#fff;font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;z-index:1;">&#x2715;</button><div id="mob-popup-content" style="padding:20px 48px 20px 20px;"></div></div>';
-    document.body.appendChild(mobOv);
+    mobOv.style.cssText='display:none;position:absolute;inset:0;z-index:9999;background:rgba(0,0,0,0.72);align-items:center;justify-content:center;padding:16px;';
+    mobOv.innerHTML='<div style="background:#fff;width:100%;max-width:290px;position:relative;box-shadow:0 24px 64px rgba(0,0,0,0.9);"><button id="mob-popup-close" style="position:absolute;top:0;right:0;width:36px;height:36px;background:#1a1a1a;border:none;color:#fff;font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;z-index:1;">&#x2715;</button><div id="mob-popup-content" style="padding:18px 48px 18px 18px;"></div></div>';
+    wrap.appendChild(mobOv);
     document.getElementById('mob-popup-close').addEventListener('click',function(){mobOv.style.display='none';});
     mobOv.addEventListener('click',function(e){if(e.target===mobOv)mobOv.style.display='none';});
 
