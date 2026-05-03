@@ -142,23 +142,11 @@
       .lines-svg{display:none;}
       .hs-icon,.hs-icon img{width:32px;height:32px;}
       .center-dot{width:10px;height:10px;}
+      .center-dot::after{animation:none;opacity:0;}
+      .hs .popup{display:none !important;}
       .diagram-section{padding:30px 0 36px;}
       .diagram-label{margin-bottom:24px;}
       .diagram-label .hint{font-size:11px;}
-      .popup{
-        position:fixed !important;
-        top:50% !important;left:50% !important;
-        transform:translate(-50%,-50%) !important;
-        bottom:auto !important;right:auto !important;
-        width:88vw !important;max-width:320px !important;
-        z-index:9999 !important;
-        box-shadow:0 20px 60px rgba(0,0,0,0.85) !important;
-      }
-      .popup::after{display:none !important;}
-      .hs:hover::before{
-        content:'';position:fixed;inset:0;
-        background:rgba(0,0,0,0.55);z-index:9998;
-      }
       .hero-eyebrow{font-size:9px;letter-spacing:2px;}
       .cta{padding:36px 20px;}
       .cta p{font-size:12px;}
@@ -487,6 +475,29 @@
     });
   }, { threshold: 0.2 });
   observer.observe(wrap);
+
+  // ── Mobile tap overlay — injected into wrap so it centers within the image
+  var mobOv = document.createElement('div');
+  mobOv.style.cssText = 'display:none;position:absolute;inset:0;z-index:9999;background:rgba(0,0,0,0.72);align-items:center;justify-content:center;padding:16px;';
+  mobOv.innerHTML = '<div style="background:#fff;width:100%;max-width:290px;position:relative;box-shadow:0 24px 64px rgba(0,0,0,0.9);"><button id="itd-close" style="position:absolute;top:0;right:0;width:36px;height:36px;background:#1a1a1a;border:none;color:#fff;font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;">&#x2715;</button><div id="itd-content" style="padding:18px 48px 18px 18px;"></div></div>';
+  wrap.appendChild(mobOv);
+  document.getElementById('itd-close').addEventListener('click', function(){ mobOv.style.display='none'; });
+  mobOv.addEventListener('click', function(e){ if(e.target===mobOv) mobOv.style.display='none'; });
+
+  hotspots.forEach(function(hs){
+    hs.addEventListener('click', function(e){
+      if(window.innerWidth > 650) return;
+      e.stopPropagation();
+      var tag   = hs.querySelector('.popup-tag');
+      var title = hs.querySelector('.popup-title');
+      var desc  = hs.querySelector('.popup-desc');
+      document.getElementById('itd-content').innerHTML =
+        (tag   ? '<div style="font-size:9px;font-weight:700;letter-spacing:1.3px;text-transform:uppercase;color:#8B0000;margin-bottom:6px;font-family:\'Montserrat\',sans-serif;">'+ tag.textContent +'</div>' : '') +
+        (title ? '<div style="font-size:14px;font-weight:800;color:#1B2A3B;margin-bottom:8px;line-height:1.3;font-family:\'Montserrat\',sans-serif;">'+ title.innerHTML +'</div>' : '') +
+        (desc  ? '<div style="font-size:12px;font-weight:400;color:#4A5568;line-height:1.65;">'+ desc.textContent +'</div>' : '');
+      mobOv.style.display = 'flex';
+    });
+  });
 </script>
 
 
@@ -504,10 +515,6 @@
   window.addEventListener('load', function(){
     [0,200,500,1000,2000,3500].forEach(function(t){ setTimeout(reportHeight,t); });
   });
-  window.addEventListener('resize', reportHeight);
-  if(window.ResizeObserver){ new ResizeObserver(reportHeight).observe(document.body); }
-  }
-  window.addEventListener('load', function(){ reportHeight(); setTimeout(reportHeight,500); setTimeout(reportHeight,1500); });
   window.addEventListener('resize', reportHeight);
   if(window.ResizeObserver){ new ResizeObserver(reportHeight).observe(document.body); }
 </script>
