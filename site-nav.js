@@ -404,13 +404,13 @@
       display:inline-flex;align-items:center;gap:6px;
       padding:18px 16px;
       font-family:'Montserrat',Arial,sans-serif;
-      font-size:10.5px;font-weight:700;
+      font-size:10.5px;font-weight:500;
       letter-spacing:1.5px;text-transform:uppercase;
-      color:#8B0000;white-space:nowrap;cursor:pointer;
+      color:#fff;white-space:nowrap;cursor:pointer;
       background:none;border:none;
       transition:color 0.2s;
     }
-    .sn-garage-btn:hover{color:#fff;}
+    .sn-garage-btn:hover{color:#8B0000;}
     .sn-garage-btn svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;}
     .sn-mob-garage-btn{
       display:flex;align-items:center;gap:10px;
