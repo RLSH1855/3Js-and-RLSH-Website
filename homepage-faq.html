@@ -23,7 +23,7 @@
   }
   </script>
 
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
     
@@ -31,20 +31,11 @@
 
     /* ─── SECTION ─── */
     .faq-section{
-      background:#F2F2F2;
+      background:#fff;
       padding:80px 24px;
       position:relative;overflow:hidden;
     }
-    .faq-section::before{
-      content:'';position:absolute;inset:0;
-      background-image:radial-gradient(circle,rgba(0,0,0,0.04) 1px,transparent 1px);
-      background-size:26px 26px;pointer-events:none;
-    }
-    .faq-section::after{
-      content:'';position:absolute;inset:0;
-      background:radial-gradient(ellipse at center,rgba(139,0,0,0.04) 0%,transparent 65%);
-      pointer-events:none;
-    }
+    .faq-section::before,.faq-section::after{display:none;}
     .faq-inner{
       position:relative;z-index:1;
       max-width:740px;margin:0 auto;
@@ -61,14 +52,17 @@
       letter-spacing:-1px;line-height:1.05;
       text-align:center;margin-bottom:8px;
       text-transform:uppercase;color:#1a1a1a;
+      text-wrap:balance;
     }
     .faq-title em{font-style:normal;color:#8B0000;}
     .faq-sub{
-      font-size:13px;font-weight:500;
+      font-family:'Inter',sans-serif;
+      font-size:13px;font-weight:400;
       color:#888;
       text-align:center;margin-bottom:48px;
       line-height:1.7;
       padding:0 8px;
+      text-wrap:pretty;
     }
 
     /* ─── ACCORDION ─── */
@@ -94,7 +88,8 @@
     }
     .faq-item.open .faq-q svg{transform:rotate(45deg);}
     .faq-a{
-      font-size:13px;font-weight:500;
+      font-family:'Inter',sans-serif;
+      font-size:15px;font-weight:400;
       color:#555;line-height:1.85;
       max-height:0;overflow:hidden;
       transition:max-height 0.6s ease-in-out,padding 0.45s ease-in-out;
@@ -133,14 +128,13 @@
 
     /* ─── RESPONSIVE ─── */
     @media(max-width:600px){
-      .faq-section{padding:56px 20px;}
+      .faq-section{padding:48px 20px 56px;}
       .faq-q{font-size:11px;padding:18px 0;}
-      .faq-a{font-size:12px;}
       .faq-cta{flex-direction:column;align-items:stretch;}
       .btn-primary,.btn-secondary{width:100%;text-align:center;}
     }
     @media(max-width:400px){
-      .faq-section{padding:48px 16px;}
+      .faq-section{padding:48px 16px 56px;}
       .faq-title{letter-spacing:-0.5px;}
     }
   </style>

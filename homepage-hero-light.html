@@ -10,7 +10,7 @@
   <meta property="og:title" content="3J's Auto Body & Paint — Signal Hill CA | Family Owned Since 1991">
   <meta property="og:description" content="30+ years. One location. One family. Collision repair, Rhino Liner, truck accessories. Signal Hill, CA. (562) 424-6744.">
   <meta property="og:site_name" content="3J's Auto Body &amp; Paint">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
     
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
@@ -107,6 +107,7 @@
       text-transform:uppercase;
       margin-bottom:0;
       color:#fff;
+      text-wrap:balance;
     }
     .hero-headline .line-red{color:#8B0000;}
 
@@ -119,11 +120,13 @@
 
     /* Body copy */
     .hero-body{
-      font-size:clamp(14px,1.6vw,17px);
-      font-weight:500;
+      font-family:'Inter',sans-serif;
+      font-size:clamp(15px,1.6vw,17px);
+      font-weight:400;
       color:rgba(255,255,255,0.82);
       line-height:1.85;
       max-width:520px;
+      text-wrap:pretty;
     }
     .hero-body .promise{
       display:block;
@@ -169,18 +172,18 @@
     .btn-primary:hover{background:#a00000;}
     .btn-secondary{
       display:inline-flex;align-items:center;justify-content:center;gap:8px;
-      background:rgba(255,255,255,0.08);
+      background:rgba(255,255,255,0.15);
       color:#fff;
       font-family:'Montserrat',sans-serif;
       font-size:11px;font-weight:700;
       text-decoration:none;
       height:48px;padding:0 32px;border-radius:0;
-      border:1.5px solid rgba(255,255,255,0.28);
+      border:1.5px solid rgba(255,255,255,0.55);
       letter-spacing:2px;text-transform:uppercase;
       transition:all 0.3s ease;cursor:pointer;
-      backdrop-filter:blur(4px);
+      backdrop-filter:blur(12px);
     }
-    .btn-secondary:hover{background:rgba(255,255,255,0.15);border-color:rgba(255,255,255,0.5);}
+    .btn-secondary:hover{background:rgba(255,255,255,0.28);border-color:rgba(255,255,255,0.9);}
 
     /* Stats row */
     .hero-stats{

@@ -10,7 +10,7 @@
   <meta property="og:title" content="Awards &amp; Insurance — 2× Best Body Shop | 3J's Auto Body">
   <meta property="og:description" content="Voted Best Body Shop twice by the Press-Telegram community. We work with all major insurance carriers in Signal Hill, CA.">
   <meta property="og:site_name" content="3J's Auto Body &amp; Paint">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
     
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
@@ -44,12 +44,15 @@
     .awards-heading{
       font-size:clamp(22px,3.5vw,38px);font-weight:900;
       letter-spacing:-0.5px;margin-bottom:8px;color:#1a1a1a;
+      text-wrap:balance;
     }
     .awards-heading em{font-style:normal;color:#8B0000;}
     .awards-sub{
-      font-size:13px;font-weight:500;
-      color:#777;
+      font-family:'Inter',sans-serif;
+      font-size:13px;font-weight:400;
+      color:#888;
       margin-bottom:52px;letter-spacing:0.3px;
+      text-wrap:pretty;
     }
 
     /* Award cards */
@@ -134,7 +137,7 @@
       .awards-grid{flex-direction:column;align-items:center;}
       .award-card{min-width:0;width:100%;max-width:100%;}
       .winner-callout{flex-direction:column;text-align:center;gap:10px;}
-      .awards-section{padding:56px 20px;}
+      .awards-section{padding:48px 20px 56px;}
     }
   </style>
 </head>

@@ -10,7 +10,7 @@
   <meta property="og:title" content="3J's Auto Body & Paint — Signal Hill CA | Family Owned Since 1991">
   <meta property="og:description" content="30+ years. One location. One family. I-CAR Gold Class certified. Collision repair, Rhino Liner, truck accessories. Signal Hill, CA. (562) 424-6744.">
   <meta property="og:site_name" content="3J's Auto Body &amp; Paint">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
     body{font-family:'Montserrat',sans-serif;background:#0A0A0A;color:#fff;overflow-x:hidden;}
@@ -81,6 +81,7 @@
       line-height:0.95;
       text-transform:uppercase;
       margin-bottom:10px;
+      text-wrap:balance;
     }
     .hero-headline .line-red{color:#8B0000;}
     .hero-headline .line-dim{color:rgba(255,255,255,0.85);}
@@ -95,12 +96,14 @@
 
     /* Body copy */
     .hero-body{
-      font-size:clamp(14px,1.8vw,18px);
-      font-weight:500;
+      font-family:'Inter',sans-serif;
+      font-size:clamp(15px,1.8vw,18px);
+      font-weight:400;
       color:rgba(255,255,255,0.7);
       line-height:1.85;
       max-width:640px;
       margin:0 auto 36px;
+      text-wrap:pretty;
     }
     .hero-body strong{
       color:#fff;
@@ -131,29 +134,32 @@
       margin-top:40px;
     }
     .btn-primary{
-      display:inline-flex;align-items:center;gap:8px;
+      display:inline-flex;align-items:center;justify-content:center;gap:8px;
       background:#8B0000;color:#fff;
       font-family:'Montserrat',sans-serif;
-      font-size:13px;font-weight:800;
+      font-size:11px;font-weight:800;
       text-decoration:none;
-      padding:15px 32px;border-radius:0;
-      border:2px solid transparent;
-      transition:background 0.2s,border-color 0.2s;
-      letter-spacing:0.5px;text-transform:uppercase;
+      height:48px;padding:0 32px;border-radius:0;border:none;
+      transition:background 0.2s;
+      letter-spacing:2px;text-transform:uppercase;
+      touch-action:manipulation;-webkit-tap-highlight-color:transparent;
     }
-    .btn-primary:hover{background:#A00000;border-color:#BF3030;}
+    .btn-primary:hover{background:#A00000;}
     .btn-secondary{
-      display:inline-flex;align-items:center;gap:8px;
-      background:transparent;color:#fff;
+      display:inline-flex;align-items:center;justify-content:center;gap:8px;
+      background:rgba(255,255,255,0.15);
+      backdrop-filter:blur(12px);
+      color:#fff;
       font-family:'Montserrat',sans-serif;
-      font-size:13px;font-weight:800;
+      font-size:11px;font-weight:800;
       text-decoration:none;
-      padding:15px 32px;border-radius:0;
-      border:2px solid rgba(255,255,255,0.15);
-      transition:border-color 0.2s;
-      letter-spacing:0.5px;text-transform:uppercase;
+      height:48px;padding:0 32px;border-radius:0;
+      border:1.5px solid rgba(255,255,255,0.55);
+      transition:background 0.2s,border-color 0.2s;
+      letter-spacing:2px;text-transform:uppercase;
+      touch-action:manipulation;-webkit-tap-highlight-color:transparent;
     }
-    .btn-secondary:hover{border-color:#8B0000;}
+    .btn-secondary:hover{background:rgba(255,255,255,0.28);border-color:rgba(255,255,255,0.9);}
 
     /* Bottom red bar */
     .hero-bottom-bar{
@@ -174,9 +180,9 @@
 
     /* ─── RESPONSIVE ─── */
     @media(max-width:600px){
-      .hero{min-height:auto;padding:72px 20px 80px;}
-      .hero-ctas{flex-direction:column;align-items:center;}
-      .btn-primary,.btn-secondary{width:100%;max-width:280px;justify-content:center;}
+      .hero{min-height:auto;padding:64px 20px 64px;}
+      .hero-ctas{flex-direction:column;align-items:stretch;}
+      .btn-primary,.btn-secondary{width:100%;}
     }
   </style>
 </head>
