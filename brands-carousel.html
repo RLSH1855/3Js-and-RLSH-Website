@@ -55,18 +55,12 @@
     .marquee-track{
       display:flex;align-items:center;gap:16px;width:max-content;
     }
-    .marquee-track.row-1{animation:scrollLeft 32s linear infinite;}
-    .marquee-track.row-2{animation:scrollRight 40s linear infinite;}
+    .marquee-track{animation-timing-function:linear;animation-iteration-count:infinite;}
+    .marquee-track.row-1{animation-name:scrollLeft;animation-duration:32s;}
+    .marquee-track.row-2{animation-name:scrollRight;animation-duration:40s;}
     .marquee-wrapper:hover .marquee-track{animation-play-state:paused;}
-
-    @keyframes scrollLeft{
-      0%{transform:translateX(0);}
-      100%{transform:translateX(-50%);}
-    }
-    @keyframes scrollRight{
-      0%{transform:translateX(-50%);}
-      100%{transform:translateX(0);}
-    }
+    @keyframes scrollLeft{0%{transform:translateX(0);}100%{transform:translateX(var(--w1,0px));}}
+    @keyframes scrollRight{0%{transform:translateX(var(--w2-neg,0px));}100%{transform:translateX(0);}}
 
     /* Logo card */
     .logo-card{
@@ -148,8 +142,20 @@
 <script>
   var r1 = document.getElementById('row1');
   var r2 = document.getElementById('row2');
-  r1.innerHTML += r1.innerHTML;
-  r2.innerHTML += r2.innerHTML;
+
+  // Duplicate until track fills at least 2x viewport so no gaps
+  var vw = window.innerWidth || 1200;
+  while(r1.scrollWidth < vw * 2.2) r1.innerHTML += r1.innerHTML;
+  while(r2.scrollWidth < vw * 2.2) r2.innerHTML += r2.innerHTML;
+
+  // Set exact pixel scroll distance via CSS variables — guarantees seamless loop
+  var w1 = r1.scrollWidth / 2;
+  var w2 = r2.scrollWidth / 2;
+  r1.style.setProperty('--w1', '-' + w1 + 'px');
+  r2.style.setProperty('--w2-neg', '-' + w2 + 'px');
+  // CSS vars need to be on the track element — move to :root for keyframe access
+  document.documentElement.style.setProperty('--w1', '-' + w1 + 'px');
+  document.documentElement.style.setProperty('--w2-neg', '-' + w2 + 'px');
 
   function reportHeight(){
     var sentinel=document.getElementById('height-sentinel');
