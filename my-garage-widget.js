@@ -3,7 +3,6 @@
   var st=document.createElement('style');st.textContent=css;document.head.appendChild(st);
 
   document.body.insertAdjacentHTML('beforeend',
-    '<button class="gc-fab" id="gc-fab"><svg viewBox="0 0 24 24"><path d="M1 3h15l3 5H1z"/><path d="M1 8v8a1 1 0 001 1h1m14 0h1a1 1 0 001-1V8"/><circle cx="4.5" cy="17.5" r="1.5"/><circle cx="14.5" cy="17.5" r="1.5"/></svg><span id="gc-fab-label">My Garage</span></button>'+
     '<div class="gc-ov" id="gc-ov"><div class="gc-modal" id="gc-modal">'+
     '<div class="gc-hdr"><div class="gc-hdr-bg"></div><div class="gc-hdr-ov"></div><div class="gc-hdr-txt"><span class="gc-eyebrow">3J\'s Auto Body</span><h2 class="gc-title">My <em>Garage</em></h2></div><button class="gc-close" id="gc-close">&#x2715;</button></div>'+
     '<div class="gc-body" id="gc-body">'+
@@ -206,8 +205,10 @@
     if(fabLabel) fabLabel.textContent='My Garage';
   }
 
+  // Expose globally so Wix HTML embeds can trigger the modal
+  window.gcOpen = gcOpen;
+
   // Wire all events via addEventListener — no inline handlers
-  document.getElementById('gc-fab').addEventListener('click',gcOpen);
   document.getElementById('gc-close').addEventListener('click',gcClose);
   document.getElementById('gc-tab-ymm').addEventListener('click',function(){gcTab('ymm');});
   document.getElementById('gc-tab-vin').addEventListener('click',function(){gcTab('vin');});
