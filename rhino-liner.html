@@ -326,9 +326,10 @@
       .step-num{width:44px;height:44px;font-size:16px;margin-bottom:12px;}
       .intro-inner{gap:24px;}
       .intro-img img{height:220px;}
-      .popup{position:absolute !important;left:50% !important;transform:translateX(-50%) !important;width:88vw !important;max-width:280px !important;z-index:9999 !important;box-shadow:0 20px 60px rgba(0,0,0,0.85) !important;opacity:0;pointer-events:none;}
+      .popup{position:fixed !important;top:50% !important;left:50% !important;transform:translate(-50%,-50%) !important;width:88vw !important;max-width:300px !important;z-index:999999 !important;box-shadow:0 24px 64px rgba(0,0,0,0.90) !important;opacity:0;pointer-events:none;}
       .hs.active .popup{opacity:1 !important;pointer-events:auto !important;}
       .popup::after{display:none !important;}
+      .popup-close{width:36px !important;height:36px !important;background:#1a1a1a !important;color:#fff !important;font-size:20px !important;top:0 !important;right:0 !important;}
       .section-title{font-size:26px !important;letter-spacing:-1px !important;}
     }
   </style>
@@ -660,21 +661,6 @@
         hotspots.forEach(function(h){h.classList.remove('active');});
         if(!wasActive){
           hs.classList.add('active');
-          // On mobile: position popup so it stays within the truck image bounds
-          var isMobile = window.innerWidth <= 640;
-          if(isMobile){
-            var popup = hs.querySelector('.popup');
-            var wrapRect = wrap.getBoundingClientRect();
-            var hsRect = hs.getBoundingClientRect();
-            var dotY = hsRect.top - wrapRect.top + hs.offsetHeight/2;
-            var popupH = 160; // estimated height
-            var topPos = dotY - popupH - 16;
-            if(topPos < 8) topPos = dotY + 20;
-            // clamp to wrap bounds
-            topPos = Math.max(8, Math.min(wrap.clientHeight - popupH - 8, topPos));
-            popup.style.top = topPos + 'px';
-            popup.style.bottom = 'auto';
-          }
         }
       });
       var close=hs.querySelector('.popup-close');
