@@ -8,8 +8,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    html,body{margin:0;padding:0;width:100%;}
-    body{font-family:'Inter',sans-serif;font-size:16px;color:#424954;background:#fff;max-width:100%;overflow-y:hidden;}
+    html,body{margin:0;padding:0;width:100%;overflow-x:hidden;}
+    html{overflow-y:scroll;scrollbar-width:none;}
+    html::-webkit-scrollbar{display:none;}
+    body{font-family:'Inter',sans-serif;font-size:16px;color:#424954;background:#fff;overflow-y:hidden;}
 
     h1,h2,h3,.eyebrow,.section-title,.faq-q,.red-band-btn{font-family:'Montserrat',sans-serif;}
 
