@@ -1,0 +1,38 @@
+// Westin Automotive — Steps & Running Boards
+// [brand,product,partNum,cabType,startYear,endYear,make,model,desc,price,img]
+// 33 entries
+var WESTIN_CATALOG=[
+["Westin","AT6 Running Boards","24-64015",null,2015,2026,"Chevrolet","Colorado Crew Cab Pickup","2015-2026 Chevrolet Colorado Crew Cab Pickup",null,null],
+["Westin","AT6 Running Boards","24-64765",null,2019,2026,"Chevrolet","Silverado 1500 Crew Cab Pickup","2019-2026 Chevrolet Silverado 1500 Crew Cab Pickup",null,null],
+["Westin","AT6 Running Boards","24-64765",null,2020,2026,"Chevrolet","Silverado 2500 HD Crew Cab Pickup","2020-2026 Chevrolet Silverado 2500 HD Crew Cab Pickup",null,null],
+["Westin","AT6 Running Boards","24-64765",null,2020,2026,"Chevrolet","Silverado 3500 HD Crew Cab Pickup","2020-2026 Chevrolet Silverado 3500 HD Crew Cab Pickup",null,null],
+["Westin","AT6 Running Boards","24-64195",null,2021,2026,"Ford","Bronco 4dr","2021-2026 Ford Bronco 4dr",null,null],
+["Westin","AT6 Running Boards","24-63935",null,2015,2026,"Ford","F-150 SuperCab Pickup","2015-2026 Ford F-150 SuperCab Pickup",null,null],
+["Westin","AT6 Running Boards","24-63945",null,2015,2026,"Ford","F-150 SuperCrew Cab Pickup","2015-2026 Ford F-150 SuperCrew Cab Pickup",null,null],
+["Westin","AT6 Running Boards","24-63945",null,2017,2026,"Ford","F-250 Super Duty Crew Cab Pickup","2017-2026 Ford F-250 Super Duty Crew Cab Pickup",null,null],
+["Westin","AT6 Running Boards","24-63935",null,2017,2026,"Ford","F-250 Super Duty SuperCab Pickup","2017-2026 Ford F-250 Super Duty SuperCab Pickup",null,null],
+["Westin","AT6 Running Boards","24-63945",null,2017,2026,"Ford","F-350 Super Duty Crew Cab Pickup","2017-2026 Ford F-350 Super Duty Crew Cab Pickup",null,null],
+["Westin","AT6 Running Boards","24-63935",null,2017,2026,"Ford","F-350 Super Duty SuperCab Pickup","2017-2026 Ford F-350 Super Duty SuperCab Pickup",null,null],
+["Westin","AT6 Running Boards","24-64015",null,2015,2026,"GMC","Canyon Crew Cab Pickup","2015-2026 GMC Canyon Crew Cab Pickup",null,null],
+["Westin","AT6 Running Boards","24-64765",null,2019,2026,"GMC","Sierra 1500 Crew Cab Pickup","2019-2026 GMC Sierra 1500 Crew Cab Pickup",null,null],
+["Westin","AT6 Running Boards","24-64765",null,2020,2026,"GMC","Sierra 2500 HD Crew Cab Pickup","2020-2026 GMC Sierra 2500 HD Crew Cab Pickup",null,null],
+["Westin","AT6 Running Boards","24-64765",null,2020,2026,"GMC","Sierra 3500 HD Crew Cab Pickup","2020-2026 GMC Sierra 3500 HD Crew Cab Pickup",null,null],
+["Westin","AT6 Running Boards","24-64165",null,2020,2026,"Jeep","Gladiator","2020-2026 Jeep Gladiator",null,null],
+["Westin","AT6 Running Boards","24-63565",null,2011,2018,"RAM","1500 Crew Cab Pickup","2011-2018 RAM 1500 Crew Cab Pickup",null,null],
+["Westin","AT6 Running Boards","24-64085",null,2019,2026,"RAM","1500 Crew Cab Pickup","2019-2026 RAM 1500 Crew Cab Pickup",null,null],
+["Westin","AT6 Running Boards","24-63565",null,2011,2024,"RAM","2500 Crew Cab Pickup","2011-2024 RAM 2500 Crew Cab Pickup",null,null],
+["Westin","AT6 Running Boards","24-63565",null,2011,2024,"RAM","3500 Crew Cab Pickup","2011-2024 RAM 3500 Crew Cab Pickup",null,null],
+["Westin","AT6 Running Boards","24-63565",null,2009,2010,"RAM","Ram 1500 Crew Cab Pickup","2009-2010 RAM Ram 1500 Crew Cab Pickup",null,null],
+["Westin","AT6 Running Boards","24-63565",null,2010,2010,"RAM","Ram 2500 Crew Cab Pickup","2010-2010 RAM Ram 2500 Crew Cab Pickup",null,null],
+["Westin","AT6 Running Boards","24-63565",null,2010,2010,"RAM","Ram 3500 Crew Cab Pickup","2010-2010 RAM Ram 3500 Crew Cab Pickup",null,null],
+["Westin","AT6 Running Boards","24-63835",null,2014,2023,"Toyota","4Runner SR5","2014-2023 Toyota 4Runner SR5",null,null],
+["Westin","AT6 Running Boards","24-63835",null,2018,2023,"Toyota","4Runner SR5 Premium","2018-2023 Toyota 4Runner SR5 Premium",null,null],
+["Westin","AT6 Running Boards","24-63835",null,2017,2023,"Toyota","4Runner TRD Off-Road","2017-2023 Toyota 4Runner TRD Off-Road",null,null],
+["Westin","AT6 Running Boards","24-63835",null,2018,2023,"Toyota","4Runner TRD Off-Road Premium","2018-2023 Toyota 4Runner TRD Off-Road Premium",null,null],
+["Westin","AT6 Running Boards","24-63835",null,2015,2023,"Toyota","4Runner TRD Pro","2015-2023 Toyota 4Runner TRD Pro",null,null],
+["Westin","AT6 Running Boards","24-63835",null,2022,2023,"Toyota","4Runner TRD Sport","2022-2023 Toyota 4Runner TRD Sport",null,null],
+["Westin","AT6 Running Boards","24-63835",null,2010,2016,"Toyota","4Runner Trail","2010-2016 Toyota 4Runner Trail",null,null],
+["Westin","AT6 Running Boards","24-62775",null,2005,2023,"Toyota","Tacoma Double Cab Pickup","2005-2023 Toyota Tacoma Double Cab Pickup",null,null],
+["Westin","AT6 Running Boards","24-62785",null,2024,2026,"Toyota","Tacoma Double Cab Pickup","2024-2026 Toyota Tacoma Double Cab Pickup",null,null],
+["Westin","AT6 Running Boards","24-63245",null,2007,2021,"Toyota","Tundra","2007-2021 Toyota Tundra",null,null]
+];
