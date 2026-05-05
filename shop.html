@@ -149,16 +149,20 @@
     .mob-apply{display:block;margin:16px;height:48px;background:#8B0000;color:#fff;border:none;border-radius:0;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;cursor:pointer;width:calc(100% - 32px);transition:background 0.2s;}
     .mob-apply:hover{background:#a00000;}
 
+    /* ── PRICE RANGE FILTER ── */
+    .price-buckets{display:flex;flex-direction:column;gap:2px;}
+
     /* ── RESPONSIVE ── */
     @media(min-width:768px){
-      .catalog-wrap{grid-template-columns:220px 1fr;}
-      .sidebar{display:block;}
+      .catalog-wrap{grid-template-columns:260px 1fr;}
+      .sidebar{display:block;padding:20px 16px 20px 28px;}
       .mob-filter-btn{display:none;}
-      .product-grid{grid-template-columns:repeat(3,1fr);}
+      .product-grid{grid-template-columns:repeat(2,1fr);}
     }
     @media(min-width:1024px){
-      .catalog-wrap{grid-template-columns:240px 1fr;}
-      .product-grid{grid-template-columns:repeat(4,1fr);}
+      .catalog-wrap{grid-template-columns:280px 1fr;}
+      .sidebar{padding:24px 16px 24px 32px;}
+      .product-grid{grid-template-columns:repeat(3,1fr);}
     }
     @media(max-width:480px){
       .card-name{font-size:12px;}
@@ -223,12 +227,24 @@
     <div class="mob-chips" id="mob-chips-cat"></div>
   </div>
   <div class="mob-filter-section">
+    <div class="mob-filter-section-title">Price Range</div>
+    <div class="mob-chips" id="mob-chips-price"></div>
+  </div>
+  <div class="mob-filter-section">
     <div class="mob-filter-section-title">Brand</div>
     <div class="mob-chips" id="mob-chips-brand"></div>
   </div>
   <div class="mob-filter-section">
     <div class="mob-filter-section-title">Type</div>
     <div class="mob-chips" id="mob-chips-type"></div>
+  </div>
+  <div class="mob-filter-section">
+    <div class="mob-filter-section-title">Cab Type</div>
+    <div class="mob-chips" id="mob-chips-cab"></div>
+  </div>
+  <div class="mob-filter-section">
+    <div class="mob-filter-section-title">Finish</div>
+    <div class="mob-chips" id="mob-chips-finish"></div>
   </div>
   <button class="mob-apply" id="mob-apply-btn">Apply Filters</button>
 </div>
@@ -238,6 +254,10 @@
 
   <!-- SIDEBAR -->
   <div class="sidebar" id="sidebar">
+    <div class="sidebar-section" id="sb-price-section">
+      <div class="sidebar-section-title">Price Range</div>
+      <div class="price-buckets" id="sb-prices"></div>
+    </div>
     <div class="sidebar-section" id="sb-brand-section">
       <div class="sidebar-section-title">Brand</div>
       <div id="sb-brands"></div>
@@ -245,6 +265,14 @@
     <div class="sidebar-section" id="sb-type-section">
       <div class="sidebar-section-title">Type</div>
       <div id="sb-types"></div>
+    </div>
+    <div class="sidebar-section" id="sb-cab-section" style="display:none;">
+      <div class="sidebar-section-title">Cab Type</div>
+      <div id="sb-cabs"></div>
+    </div>
+    <div class="sidebar-section" id="sb-finish-section">
+      <div class="sidebar-section-title">Finish</div>
+      <div id="sb-finishes"></div>
     </div>
     <div class="sidebar-section" id="sb-bed-section" style="display:none;">
       <div class="sidebar-section-title">Bed Size</div>
@@ -391,15 +419,37 @@ if (typeof HR_CATALOG !== 'undefined') {
   });
 }
 
+/* ── Price buckets ── */
+var PRICE_BUCKETS = [
+  {label:'Under $300',      min:0,    max:300},
+  {label:'$300 – $600',     min:300,  max:600},
+  {label:'$600 – $1,000',   min:600,  max:1000},
+  {label:'$1,000 – $1,500', min:1000, max:1500},
+  {label:'$1,500+',         min:1500, max:Infinity},
+];
+
+/* ── Finish detection from product name ── */
+function getFinish(product) {
+  var p = (product||'').toLowerCase();
+  if (p.includes('chrome')) return 'Chrome';
+  if (p.includes('stainless') || / ss$/.test(p) || p.includes('- ss') || p.includes('— ss')) return 'Stainless Steel';
+  if (p.includes('textured black') || p.includes('- black') || p.includes('— black') || p.includes('black steel') || p.includes('black aluminum') || / black$/.test(p) || p.includes('matte black')) return 'Textured Black';
+  if (p.includes('polished') || p.includes('polished stainless')) return 'Polished';
+  return null;
+}
+
 /* ════════════════════════════════════════════════
    STATE
 ════════════════════════════════════════════════ */
 var state = {
   garage: null,
   fitActive: false,
-  activeCat: 'all',      // 'all'|'tonneau'|'steps'|'racks'
+  activeCat: 'all',
   activeBrands: {},
   activeTypes: {},
+  activePrices: {},
+  activeCabTypes: {},
+  activeFinishes: {},
   activeBeds: {},
   sort: 'fit'
 };
@@ -477,39 +527,47 @@ function entryFits(e) {
    one card per unique product
 ════════════════════════════════════════════════ */
 function getGroupedProducts() {
-  var activeBrands = Object.keys(state.activeBrands).filter(function(b){return state.activeBrands[b];});
-  var activeTypes  = Object.keys(state.activeTypes).filter(function(t){return state.activeTypes[t];});
-  var activeBeds   = Object.keys(state.activeBeds).filter(function(b){return state.activeBeds[b];});
+  var activeBrands   = Object.keys(state.activeBrands).filter(function(b){return state.activeBrands[b];});
+  var activeTypes    = Object.keys(state.activeTypes).filter(function(t){return state.activeTypes[t];});
+  var activePrices   = PRICE_BUCKETS.filter(function(b){return state.activePrices[b.label];});
+  var activeCabTypes = Object.keys(state.activeCabTypes).filter(function(c){return state.activeCabTypes[c];});
+  var activeFinishes = Object.keys(state.activeFinishes).filter(function(f){return state.activeFinishes[f];});
+  var activeBeds     = Object.keys(state.activeBeds).filter(function(b){return state.activeBeds[b];});
 
   var pm = Object.create(null);
 
   ALL_ENTRIES.forEach(function(e) {
-    // Category filter
     if (state.activeCat !== 'all' && e.cat !== state.activeCat) return;
-    // Brand filter
     if (activeBrands.length && !activeBrands.includes(e.brand)) return;
-    // Type filter
     if (activeTypes.length && !activeTypes.includes(getProductType(e))) return;
-    // Bed filter (tonneau only)
     if (activeBeds.length && e.cat === 'tonneau' && !activeBeds.includes(e.bedSize)) return;
+    if (activeCabTypes.length && e.cabType && !activeCabTypes.includes(e.cabType)) return;
+    if (activeFinishes.length) {
+      var fin = getFinish(e.product);
+      if (!fin || !activeFinishes.includes(fin)) return;
+    }
 
     var key = e.brand + '|' + e.product;
     if (!pm[key]) {
-      pm[key] = {
-        brand: e.brand, product: e.product, cat: e.cat,
-        repr: e, minPrice: null, fitCount: 0, hasfit: false
-      };
+      pm[key] = { brand:e.brand, product:e.product, cat:e.cat,
+        repr:e, minPrice:null, fitCount:0, hasfit:false };
     }
     var p = pm[key];
     if (e.price && (p.minPrice === null || e.price < p.minPrice)) p.minPrice = e.price;
     if (entryFits(e)) { p.hasfit = true; p.fitCount++; }
-    // Prefer entry with image
     if (!p.repr.img && e.img) p.repr = e;
   });
 
   var products = Object.keys(pm).map(function(k){ return pm[k]; });
 
-  // If fit filter active, only show products that fit
+  // Price filter (applied at product level after grouping)
+  if (activePrices.length) {
+    products = products.filter(function(p){
+      if (p.minPrice === null) return false;
+      return activePrices.some(function(b){ return p.minPrice >= b.min && p.minPrice < b.max; });
+    });
+  }
+
   if (state.fitActive && state.garage) {
     products = products.filter(function(p){ return p.hasfit; });
   }
@@ -614,8 +672,11 @@ function viewProduct(brand, product) {
    SIDEBAR BUILDER
 ════════════════════════════════════════════════ */
 function buildSidebar() {
+  buildPriceFilter();
   buildBrandFilter();
   buildTypeFilter();
+  buildCabTypeFilter();
+  buildFinishFilter();
   buildBedFilter();
 }
 
@@ -688,6 +749,85 @@ function buildTypeFilter() {
   }).join('');
 }
 
+function buildPriceFilter() {
+  var el = document.getElementById('sb-prices');
+  var mob = document.getElementById('mob-chips-price');
+  el.innerHTML = PRICE_BUCKETS.map(function(b) {
+    var id = 'cb-price-' + b.label.replace(/[^a-z0-9]/gi,'-');
+    return '<div class="filter-item" onclick="togglePrice(\'' + b.label.replace(/'/g,"\\'") + '\')">'
+      + '<div class="cb' + (state.activePrices[b.label]?' checked':'') + '" id="' + id + '"></div>'
+      + '<span class="filter-label">' + esc(b.label) + '</span>'
+      + '</div>';
+  }).join('');
+  mob.innerHTML = PRICE_BUCKETS.map(function(b){
+    return '<div class="mob-chip' + (state.activePrices[b.label]?' active':'') + '" data-filter="price" data-val="' + esc(b.label) + '" onclick="mobChipToggle(this)">' + esc(b.label) + '</div>';
+  }).join('');
+}
+
+function buildCabTypeFilter() {
+  var show = (state.activeCat === 'steps' || state.activeCat === 'all');
+  document.getElementById('sb-cab-section').style.display = show ? 'block' : 'none';
+  if (!show) return;
+  var visible = ALL_ENTRIES.filter(function(e){ return (state.activeCat==='all'||e.cat==='steps') && e.cabType; });
+  var counts = Object.create(null);
+  var seen = Object.create(null);
+  visible.forEach(function(e){
+    var k = e.brand+'|'+e.product+'|'+e.cabType;
+    if (!seen[k]) { seen[k]=true; counts[e.cabType]=(counts[e.cabType]||0)+1; }
+  });
+  var cabs = Object.keys(counts).sort();
+  var newCabs = Object.create(null);
+  cabs.forEach(function(c){ newCabs[c] = state.activeCabTypes[c]||false; });
+  state.activeCabTypes = newCabs;
+  var el = document.getElementById('sb-cabs');
+  el.innerHTML = cabs.map(function(c){
+    var id = 'cb-cab-' + c.replace(/[^a-z0-9]/gi,'-');
+    return '<div class="filter-item" onclick="toggleCabType(\'' + c.replace(/'/g,"\\'") + '\')">'
+      + '<div class="cb' + (state.activeCabTypes[c]?' checked':'') + '" id="' + id + '"></div>'
+      + '<span class="filter-label">' + esc(c) + '</span>'
+      + '<span class="filter-count">' + counts[c] + '</span>'
+      + '</div>';
+  }).join('');
+  var mob = document.getElementById('mob-chips-cab');
+  mob.innerHTML = cabs.map(function(c){
+    return '<div class="mob-chip' + (state.activeCabTypes[c]?' active':'') + '" data-filter="cab" data-val="' + esc(c) + '" onclick="mobChipToggle(this)">' + esc(c) + '</div>';
+  }).join('');
+}
+
+function buildFinishFilter() {
+  var visible = getVisibleEntries();
+  var counts = Object.create(null);
+  var seen = Object.create(null);
+  visible.forEach(function(e){
+    var fin = getFinish(e.product);
+    if (!fin) return;
+    var k = e.brand+'|'+e.product;
+    if (!seen[k]) { seen[k]=true; counts[fin]=(counts[fin]||0)+1; }
+  });
+  var finishes = Object.keys(counts).sort();
+  var newFin = Object.create(null);
+  finishes.forEach(function(f){ newFin[f]=state.activeFinishes[f]||false; });
+  state.activeFinishes = newFin;
+  var el = document.getElementById('sb-finishes');
+  var mob = document.getElementById('mob-chips-finish');
+  if (!finishes.length) {
+    el.innerHTML = '<span style="font-family:Inter,sans-serif;font-size:12px;color:#aaa;">Multiple finishes available</span>';
+    mob.innerHTML = '';
+    return;
+  }
+  el.innerHTML = finishes.map(function(f){
+    var id = 'cb-fin-' + f.replace(/[^a-z0-9]/gi,'-');
+    return '<div class="filter-item" onclick="toggleFinish(\'' + f.replace(/'/g,"\\'") + '\')">'
+      + '<div class="cb' + (state.activeFinishes[f]?' checked':'') + '" id="' + id + '"></div>'
+      + '<span class="filter-label">' + esc(f) + '</span>'
+      + '<span class="filter-count">' + counts[f] + '</span>'
+      + '</div>';
+  }).join('');
+  mob.innerHTML = finishes.map(function(f){
+    return '<div class="mob-chip' + (state.activeFinishes[f]?' active':'') + '" data-filter="finish" data-val="' + esc(f) + '" onclick="mobChipToggle(this)">' + esc(f) + '</div>';
+  }).join('');
+}
+
 function buildBedFilter() {
   var show = (state.activeCat === 'tonneau' || state.activeCat === 'all');
   document.getElementById('sb-bed-section').style.display = show ? 'block' : 'none';
@@ -734,11 +874,32 @@ function toggleBed(b) {
   if (el) el.classList.toggle('checked', state.activeBeds[b]);
   render();
 }
+function togglePrice(label) {
+  state.activePrices[label] = !state.activePrices[label];
+  var el = document.getElementById('cb-price-' + label.replace(/[^a-z0-9]/gi,'-'));
+  if (el) el.classList.toggle('checked', state.activePrices[label]);
+  render();
+}
+function toggleCabType(c) {
+  state.activeCabTypes[c] = !state.activeCabTypes[c];
+  var el = document.getElementById('cb-cab-' + c.replace(/[^a-z0-9]/gi,'-'));
+  if (el) el.classList.toggle('checked', state.activeCabTypes[c]);
+  render();
+}
+function toggleFinish(f) {
+  state.activeFinishes[f] = !state.activeFinishes[f];
+  var el = document.getElementById('cb-fin-' + f.replace(/[^a-z0-9]/gi,'-'));
+  if (el) el.classList.toggle('checked', state.activeFinishes[f]);
+  render();
+}
 
 function setCat(cat) {
   state.activeCat = cat;
   state.activeBrands = {};
   state.activeTypes = {};
+  state.activePrices = {};
+  state.activeCabTypes = {};
+  state.activeFinishes = {};
   state.activeBeds = {};
   updateHeader();
   updateCatPills();
@@ -777,12 +938,39 @@ function renderActiveTags() {
     tag.onclick = function(){ toggleType(t); };
     strip.appendChild(tag);
   });
+  PRICE_BUCKETS.forEach(function(b){
+    if (!state.activePrices[b.label]) return;
+    var tag = document.createElement('span');
+    tag.className = 'filter-tag';
+    tag.innerHTML = esc(b.label) + ' &times;';
+    tag.onclick = function(){ togglePrice(b.label); };
+    strip.appendChild(tag);
+  });
+  Object.keys(state.activeCabTypes).forEach(function(c){
+    if (!state.activeCabTypes[c]) return;
+    var tag = document.createElement('span');
+    tag.className = 'filter-tag';
+    tag.innerHTML = esc(c) + ' &times;';
+    tag.onclick = function(){ toggleCabType(c); };
+    strip.appendChild(tag);
+  });
+  Object.keys(state.activeFinishes).forEach(function(f){
+    if (!state.activeFinishes[f]) return;
+    var tag = document.createElement('span');
+    tag.className = 'filter-tag';
+    tag.innerHTML = esc(f) + ' &times;';
+    tag.onclick = function(){ toggleFinish(f); };
+    strip.appendChild(tag);
+  });
 }
 
 function updateFilterBadge() {
   var count = (state.fitActive?1:0)
     + Object.values(state.activeBrands).filter(Boolean).length
     + Object.values(state.activeTypes).filter(Boolean).length
+    + Object.values(state.activePrices).filter(Boolean).length
+    + Object.values(state.activeCabTypes).filter(Boolean).length
+    + Object.values(state.activeFinishes).filter(Boolean).length
     + Object.values(state.activeBeds).filter(Boolean).length;
   var badge = document.getElementById('filter-badge');
   badge.textContent = count;
@@ -927,14 +1115,19 @@ document.getElementById('mob-apply-btn').addEventListener('click', function(){
   if (catChip) setCat(catChip.dataset.val);
   // Apply brands
   Object.keys(state.activeBrands).forEach(function(b){ state.activeBrands[b]=false; });
-  document.querySelectorAll('#mob-chips-brand .mob-chip.active').forEach(function(c){
-    state.activeBrands[c.dataset.val] = true;
-  });
+  document.querySelectorAll('#mob-chips-brand .mob-chip.active').forEach(function(c){ state.activeBrands[c.dataset.val]=true; });
   // Apply types
   Object.keys(state.activeTypes).forEach(function(t){ state.activeTypes[t]=false; });
-  document.querySelectorAll('#mob-chips-type .mob-chip.active').forEach(function(c){
-    state.activeTypes[c.dataset.val] = true;
-  });
+  document.querySelectorAll('#mob-chips-type .mob-chip.active').forEach(function(c){ state.activeTypes[c.dataset.val]=true; });
+  // Apply prices
+  Object.keys(state.activePrices).forEach(function(p){ state.activePrices[p]=false; });
+  document.querySelectorAll('#mob-chips-price .mob-chip.active').forEach(function(c){ state.activePrices[c.dataset.val]=true; });
+  // Apply cab types
+  Object.keys(state.activeCabTypes).forEach(function(c){ state.activeCabTypes[c]=false; });
+  document.querySelectorAll('#mob-chips-cab .mob-chip.active').forEach(function(c){ state.activeCabTypes[c.dataset.val]=true; });
+  // Apply finishes
+  Object.keys(state.activeFinishes).forEach(function(f){ state.activeFinishes[f]=false; });
+  document.querySelectorAll('#mob-chips-finish .mob-chip.active').forEach(function(c){ state.activeFinishes[c.dataset.val]=true; });
   document.getElementById('mob-filter').classList.remove('open');
   buildSidebar(); render();
 });
@@ -948,6 +1141,7 @@ function mobChipToggle(chip) {
     chip.classList.toggle('active');
   }
 }
+
 
 // Build mobile cat chips
 (function(){
