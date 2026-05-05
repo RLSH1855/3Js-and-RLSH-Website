@@ -724,6 +724,51 @@
     .gr-product-cta:hover{background:#a50000;}
     .gr-product-cta svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2.5;}
 
+    /* ══════════════════════════════════════════════
+       BRANDS GRID SHOWCASE
+    ══════════════════════════════════════════════ */
+    .brands-showcase{background:#0d0d0d;padding:56px 20px;border-top:1px solid #1e1e1e;}
+    .brands-showcase-inner{max-width:1100px;margin:0 auto;}
+    .brands-showcase-header{text-align:center;margin-bottom:36px;}
+    .brands-showcase-header .eyebrow{color:#8B0000;display:block;margin-bottom:8px;}
+    .brands-showcase-header h2{font-family:'Montserrat',sans-serif;font-size:clamp(22px,3vw,34px);font-weight:800;color:#fff;letter-spacing:-0.5px;margin-bottom:8px;text-wrap:balance;}
+    .brands-showcase-header p{font-family:'Inter',sans-serif;font-size:14px;color:rgba(255,255,255,0.50);max-width:440px;margin:0 auto;line-height:1.65;}
+    .brands-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;}
+    .brand-card{background:#1a1a1a;border:1px solid #2a2a2a;padding:22px 18px 20px;display:flex;flex-direction:column;gap:10px;transition:border-color 0.2s;}
+    .brand-card:hover{border-color:#8B0000;}
+    .brand-card-name{font-family:'Montserrat',sans-serif;font-size:18px;font-weight:800;color:#fff;letter-spacing:-0.3px;}
+    .brand-card-tag{font-family:'Montserrat',sans-serif;font-size:8px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#8B0000;}
+    .brand-card-products{list-style:none;display:flex;flex-direction:column;gap:3px;flex:1;}
+    .brand-card-products li{font-family:'Inter',sans-serif;font-size:12px;color:rgba(255,255,255,0.50);padding-left:14px;position:relative;line-height:1.5;}
+    .brand-card-products li::before{content:'—';position:absolute;left:0;color:#8B0000;font-size:10px;}
+    .brand-card-count{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:700;color:rgba(255,255,255,0.25);letter-spacing:1px;text-transform:uppercase;padding-top:4px;border-top:1px solid #2a2a2a;}
+    .brand-card-btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:38px;padding:0 16px;background:transparent;color:rgba(255,255,255,0.60);border:1px solid #3a3a3a;font-family:'Montserrat',sans-serif;font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;transition:all 0.2s;margin-top:4px;}
+    .brand-card-btn:hover{background:#8B0000;color:#fff;border-color:#8B0000;}
+    @media(min-width:640px){.brands-grid{grid-template-columns:repeat(3,1fr);}}
+    @media(min-width:960px){.brands-grid{grid-template-columns:repeat(5,1fr);gap:12px;}}
+
+    /* ══════════════════════════════════════════════
+       WESTIN & LUND SECTIONS
+    ══════════════════════════════════════════════ */
+    .westin-section{background:#f5f5f5;padding:72px 20px;}
+    .lund-section{background:#fff;padding:72px 20px;}
+    .westin-section .section-inner,.lund-section .section-inner{max-width:1100px;margin:0 auto;}
+    .brand-section-header{margin-bottom:36px;}
+    .brand-section-header .eyebrow{color:#8B0000;}
+    .brand-section-header .section-title{color:#111;margin-bottom:10px;}
+    .brand-section-header p{font-family:'Inter',sans-serif;font-size:15px;color:#555;max-width:640px;line-height:1.85;margin-top:10px;}
+    .brand-products-grid{display:grid;grid-template-columns:1fr;gap:10px;margin-bottom:28px;}
+    .brand-product-row{display:flex;align-items:center;gap:16px;background:#fff;border:1px solid #e8e8e8;padding:16px 18px;transition:border-color 0.2s,box-shadow 0.2s;}
+    .westin-section .brand-product-row{background:#fff;}
+    .lund-section .brand-product-row{background:#f7f7f7;}
+    .brand-product-row:hover{border-color:#ccc;box-shadow:0 3px 12px rgba(0,0,0,0.07);}
+    .brand-product-dot{width:6px;height:6px;background:#8B0000;flex-shrink:0;}
+    .brand-product-info{flex:1;}
+    .brand-product-name{font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;color:#111;margin-bottom:2px;}
+    .brand-product-desc{font-family:'Inter',sans-serif;font-size:12px;color:#666;line-height:1.5;}
+    .brand-product-badge{font-family:'Montserrat',sans-serif;font-size:8px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:3px 8px;background:#f0f0f0;color:#555;white-space:nowrap;flex-shrink:0;}
+    @media(min-width:640px){.brand-products-grid{grid-template-columns:repeat(2,1fr);}}
+
     .gorhino-gallery{
       display:grid;grid-template-columns:repeat(3,1fr);
       gap:12px;
@@ -924,6 +969,7 @@
       <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/amp.png" alt="AMP Research" class="brand-logo-img">
       <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/westin.png" alt="Westin" class="brand-logo-img">
       <span class="brand-logo-text">Go Rhino</span>
+      <span class="brand-logo-text">Lund</span>
     </div>
   </div>
 </div>
@@ -961,7 +1007,7 @@
       <!-- Power Steps -->
       <div class="step-type-card">
         <div class="step-type-img">
-          <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/SID%20STEPS%20IMAGE.PNG" alt="AMP Research Power Steps" loading="lazy">
+          <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/292345a77541bf9e4944104c1d7ab2a7.png" alt="AMP Research PowerStep on Ford F-150" loading="lazy">
           <span class="step-type-badge">Electric</span>
         </div>
         <div class="step-type-body">
@@ -995,7 +1041,7 @@
       <!-- Wheel-to-Wheel -->
       <div class="step-type-card">
         <div class="step-type-img">
-          <img src="https://www.catalograck.com/ImgVDHR/NFA/NFBcab_length_4_step_4_door.jpg" alt="N-FAB Wheel to Wheel Nerf Bars" loading="lazy" style="object-position:center 60%;">
+          <img src="https://www.catalograck.com/ImgVDHR/NFA/NFBnfab-nerf-step-texture-2017-chevrolet-silverado-white-studio-01.jpg" alt="N-FAB Wheel to Wheel Nerf Bars" loading="lazy">
           <span class="step-type-badge">Max Coverage</span>
         </div>
         <div class="step-type-body">
@@ -1041,6 +1087,88 @@
             Get a Quote
           </a>
         </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════
+     ALL BRANDS SHOWCASE
+══════════════════════════════════════════════ -->
+<section class="brands-showcase">
+  <div class="brands-showcase-inner">
+    <div class="brands-showcase-header">
+      <span class="eyebrow">5 Brands. Every Style.</span>
+      <h2>We Carry. We Install.</h2>
+      <p>Over 5,800 fitment-specific step and running board products across 5 brands — all professionally installed in Signal Hill.</p>
+    </div>
+    <div class="brands-grid">
+
+      <div class="brand-card">
+        <div class="brand-card-name">N-FAB</div>
+        <div class="brand-card-tag">Nerf Bars · Running Boards</div>
+        <ul class="brand-card-products">
+          <li>Cab Length Nerf Step RS Bar</li>
+          <li>Wheel-to-Wheel Nerf Bars</li>
+          <li>Predator Pro Steps</li>
+          <li>Podium Steps · RKR · EPYX</li>
+        </ul>
+        <div class="brand-card-count">843 fitment entries</div>
+        <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/running-boards.html" target="_top" class="brand-card-btn">Browse Catalog</a>
+      </div>
+
+      <div class="brand-card">
+        <div class="brand-card-name">AMP Research</div>
+        <div class="brand-card-tag">Power Steps · BedStep</div>
+        <ul class="brand-card-products">
+          <li>PowerStep — Auto Deploy</li>
+          <li>PowerStep XL</li>
+          <li>PowerStep VISION LED</li>
+          <li>BedStep · BedStep2</li>
+        </ul>
+        <div class="brand-card-count">524 fitment entries</div>
+        <a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="brand-card-btn">Get a Quote</a>
+      </div>
+
+      <div class="brand-card">
+        <div class="brand-card-name">Go Rhino</div>
+        <div class="brand-card-tag">Side Steps · Running Boards</div>
+        <ul class="brand-card-products">
+          <li>OE Xtreme SideSteps (4"–6")</li>
+          <li>RB10 / RB20 / RB30 Boards</li>
+          <li>Dominator Xtreme Steps</li>
+          <li>V-Series V3</li>
+        </ul>
+        <div class="brand-card-count">2,750 fitment entries</div>
+        <a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="brand-card-btn">Get a Quote</a>
+      </div>
+
+      <div class="brand-card">
+        <div class="brand-card-name">Westin</div>
+        <div class="brand-card-tag">Nerf Bars · Running Boards · Power</div>
+        <ul class="brand-card-products">
+          <li>HDX Drop Nerf Bars</li>
+          <li>Pro Traxx 5 Oval Nerf Bars</li>
+          <li>AT6 &amp; Outlaw Running Boards</li>
+          <li>Pro-E Power Running Boards</li>
+        </ul>
+        <div class="brand-card-count">1,189 fitment entries</div>
+        <a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="brand-card-btn">Get a Quote</a>
+      </div>
+
+      <div class="brand-card">
+        <div class="brand-card-name">Lund</div>
+        <div class="brand-card-tag">Nerf Bars · Running Boards</div>
+        <ul class="brand-card-products">
+          <li>3"–6" Oval Nerf Bars</li>
+          <li>Crossroads Running Boards</li>
+          <li>Summit Ridge 2.0</li>
+          <li>Terrain HX · TrailRunner</li>
+        </ul>
+        <div class="brand-card-count">1,514 fitment entries</div>
+        <a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="brand-card-btn">Get a Quote</a>
       </div>
 
     </div>
@@ -1382,6 +1510,110 @@
       </div>
     </div>
 
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════
+     WESTIN
+══════════════════════════════════════════════ -->
+<section class="westin-section">
+  <div class="section-inner">
+    <div class="brand-section-header">
+      <p class="eyebrow">Westin Automotive</p>
+      <h2 class="section-title">HDX. Outlaw. <span class="red">Pro Traxx.</span></h2>
+      <p>Westin builds truck steps and running boards for drivers who want style without sacrificing toughness. From the heavy-duty HDX Drop Nerf Bar to the smooth Pro-E Power Running Boards — Westin covers every style from workman to premium. We carry and install the full lineup.</p>
+    </div>
+    <div class="brand-products-grid">
+      <div class="brand-product-row">
+        <div class="brand-product-dot"></div>
+        <div class="brand-product-info">
+          <div class="brand-product-name">HDX Drop Nerf Bars</div>
+          <div class="brand-product-desc">Heavy-duty drop-style nerf bars with a large step pad. Available in Textured Black or Stainless Steel — cab length and wheel-to-wheel.</div>
+        </div>
+        <span class="brand-product-badge">Nerf Bars</span>
+      </div>
+      <div class="brand-product-row">
+        <div class="brand-product-dot"></div>
+        <div class="brand-product-info">
+          <div class="brand-product-name">Pro Traxx 5 Oval Nerf Bars</div>
+          <div class="brand-product-desc">5" oval tube with a premium grip tread pad. One of Westin's most popular styles — clean, aggressive, bolt-on installation.</div>
+        </div>
+        <span class="brand-product-badge">Nerf Bars</span>
+      </div>
+      <div class="brand-product-row">
+        <div class="brand-product-dot"></div>
+        <div class="brand-product-info">
+          <div class="brand-product-name">AT6 &amp; Outlaw Running Boards</div>
+          <div class="brand-product-desc">Wide, flat platform running boards for maximum step coverage. The AT6 offers a slim profile; the Outlaw a more aggressive drop design.</div>
+        </div>
+        <span class="brand-product-badge">Running Boards</span>
+      </div>
+      <div class="brand-product-row">
+        <div class="brand-product-dot"></div>
+        <div class="brand-product-info">
+          <div class="brand-product-name">Pro-E Power Running Boards</div>
+          <div class="brand-product-desc">Electric power boards that auto-extend when you open the door. Premium Westin electronics with full in-shop wiring by our technicians.</div>
+        </div>
+        <span class="brand-product-badge">Power Steps</span>
+      </div>
+    </div>
+    <a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-dark">
+      <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+      Get a Westin Quote
+    </a>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════
+     LUND
+══════════════════════════════════════════════ -->
+<section class="lund-section">
+  <div class="section-inner">
+    <div class="brand-section-header">
+      <p class="eyebrow">Lund International</p>
+      <h2 class="section-title">Oval Nerf Bars &amp; <span class="red">Running Boards.</span></h2>
+      <p>Lund has been building truck accessories for over 50 years. Their nerf bars come in 3", 4", 5", and 6" oval designs in Stainless Steel, Chrome, and Textured Black — with running boards like the Crossroads, Summit Ridge, and TrailRunner. No-drill bolt-on installation, fits most full-size trucks and mid-size pickups.</p>
+    </div>
+    <div class="brand-products-grid">
+      <div class="brand-product-row">
+        <div class="brand-product-dot"></div>
+        <div class="brand-product-info">
+          <div class="brand-product-name">Oval Nerf Bars (3"–6")</div>
+          <div class="brand-product-desc">Four diameter options in straight, curved, and wheel-to-wheel lengths. Stainless, Chrome, or Textured Black finish.</div>
+        </div>
+        <span class="brand-product-badge">Nerf Bars</span>
+      </div>
+      <div class="brand-product-row">
+        <div class="brand-product-dot"></div>
+        <div class="brand-product-info">
+          <div class="brand-product-name">Crossroads Running Boards</div>
+          <div class="brand-product-desc">Wide extruded aluminum platform with a serrated step surface. Comes in 70", 80", and 87" lengths with vehicle-specific bracket kits.</div>
+        </div>
+        <span class="brand-product-badge">Running Boards</span>
+      </div>
+      <div class="brand-product-row">
+        <div class="brand-product-dot"></div>
+        <div class="brand-product-info">
+          <div class="brand-product-name">Summit Ridge 2.0</div>
+          <div class="brand-product-desc">Premium extruded aluminum running board with a low-profile design. Available in Stainless Steel and Black — lifetime warranty.</div>
+        </div>
+        <span class="brand-product-badge">Running Boards</span>
+      </div>
+      <div class="brand-product-row">
+        <div class="brand-product-dot"></div>
+        <div class="brand-product-info">
+          <div class="brand-product-name">Terrain HX &amp; TrailRunner</div>
+          <div class="brand-product-desc">Terrain HX offers an aggressive step design; the TrailRunner is an extruded multi-fit board for maximum fitment compatibility across truck models.</div>
+        </div>
+        <span class="brand-product-badge">Steps</span>
+      </div>
+    </div>
+    <a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-dark">
+      <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+      Get a Lund Quote
+    </a>
   </div>
 </section>
 
