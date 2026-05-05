@@ -11,10 +11,12 @@
 
   <!-- Data files -->
   <script src="https://rlsh1855.github.io/3Js-and-RLSH-Website/catalog-data.js"></script>
+  <script src="https://rlsh1855.github.io/3Js-and-RLSH-Website/extra-tonneau-data.js"></script>
   <script src="https://rlsh1855.github.io/3Js-and-RLSH-Website/running-boards-data.js"></script>
   <script src="https://rlsh1855.github.io/3Js-and-RLSH-Website/gorhino-data.js"></script>
   <script src="https://rlsh1855.github.io/3Js-and-RLSH-Website/amp-data.js"></script>
   <script src="https://rlsh1855.github.io/3Js-and-RLSH-Website/westin-data.js"></script>
+  <script src="https://rlsh1855.github.io/3Js-and-RLSH-Website/lund-data.js"></script>
   <script src="https://rlsh1855.github.io/3Js-and-RLSH-Website/headache-racks-data.js"></script>
   <script src="https://rlsh1855.github.io/3Js-and-RLSH-Website/product-content.js"></script>
 
@@ -360,10 +362,19 @@ if (typeof RB_CATALOG !== 'undefined') {
       desc:e[8], price:e[9], img:e[10], bedIn:null, bedSize:null, fitNote:null });
   });
 }
-// Go Rhino / AMP / Westin: [brand,product,partNum,cabType,startYear,endYear,make,model,desc,price,img]
+// Extra tonneaus: [brand,product,partNum,bedIn,bedSize,startYear,endYear,make,model,desc,fitNote,map,img]
+if (typeof EXTRA_TONNEAU !== 'undefined') {
+  EXTRA_TONNEAU.forEach(function(e) {
+    ALL_ENTRIES.push({ cat:'tonneau', brand:e[0], product:e[1], partNum:e[2],
+      bedIn:e[3], bedSize:e[4], startYear:e[5], endYear:e[6], make:e[7], model:e[8],
+      desc:e[9], fitNote:e[10], price:e[11], img:e[12], cabType:null });
+  });
+}
+// Go Rhino / AMP / Westin / Lund steps: [brand,product,partNum,cabType,startYear,endYear,make,model,desc,price,img]
 [typeof GR_CATALOG!=='undefined'?GR_CATALOG:[],
  typeof AMP_CATALOG!=='undefined'?AMP_CATALOG:[],
- typeof WESTIN_CATALOG!=='undefined'?WESTIN_CATALOG:[]
+ typeof WESTIN_CATALOG!=='undefined'?WESTIN_CATALOG:[],
+ typeof LUND_CATALOG!=='undefined'?LUND_CATALOG:[]
 ].forEach(function(src) {
   src.forEach(function(e) {
     ALL_ENTRIES.push({ cat:'steps', brand:e[0], product:e[1], partNum:e[2],
