@@ -134,7 +134,7 @@
       margin-bottom:0;
     }
     .hero h1 span{color:#8B0000;}
-    .hero-rule{width:52px;height:4px;background:#8B0000;border-radius:2px;margin:26px 0;}
+    .hero-rule{width:52px;height:4px;background:#8B0000;border-radius:0;margin:26px 0;}
     .hero-body{
       font-family:'Inter',sans-serif;
       font-size:15px;
@@ -173,7 +173,7 @@
       font-size:9px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;
       color:rgba(255,255,255,0.70);
       border:1px solid rgba(255,255,255,0.18);
-      border-radius:30px;padding:5px 13px;
+      border-radius:0;padding:5px 13px;
       backdrop-filter:blur(4px);
     }
 
@@ -211,6 +211,34 @@
     .brand-logo-text:hover{color:rgba(255,255,255,0.90);}
 
     /* ══════════════════════════════════════════════
+       STEP TYPES GRID
+    ══════════════════════════════════════════════ */
+    .step-types-section{background:#fff;padding:56px 20px 64px;}
+    .step-types-inner{max-width:1100px;margin:0 auto;}
+    .step-types-header{text-align:center;margin-bottom:40px;}
+    .step-types-header .eyebrow{color:#8B0000;display:block;margin-bottom:8px;}
+    .step-types-header h2{font-family:'Montserrat',sans-serif;font-size:clamp(22px,3.5vw,36px);font-weight:800;color:#1a1a1a;letter-spacing:-1px;margin-bottom:10px;text-wrap:balance;}
+    .step-types-header h2 em{color:#8B0000;font-style:normal;}
+    .step-types-header p{font-family:'Inter',sans-serif;font-size:15px;color:#555;max-width:500px;margin:0 auto;line-height:1.65;text-wrap:pretty;}
+    .step-types-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+    .step-type-card{border:1px solid #e8e8e8;border-radius:0;overflow:hidden;display:flex;flex-direction:column;transition:border-color 0.2s,box-shadow 0.2s;}
+    .step-type-card:hover{border-color:#bbb;box-shadow:0 4px 20px rgba(0,0,0,0.09);}
+    .step-type-img{width:100%;aspect-ratio:16/9;overflow:hidden;position:relative;background:#f2f2f2;}
+    .step-type-img img{width:100%;height:100%;object-fit:cover;object-position:center 30%;}
+    .step-type-badge{position:absolute;top:10px;left:10px;background:#8B0000;color:#fff;font-family:'Montserrat',sans-serif;font-size:8px;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:3px 9px;border-radius:0;}
+    .step-type-body{padding:18px 18px 20px;display:flex;flex-direction:column;flex:1;}
+    .step-type-brand{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#8B0000;margin-bottom:4px;}
+    .step-type-name{font-family:'Montserrat',sans-serif;font-size:16px;font-weight:800;color:#1a1a1a;letter-spacing:-0.3px;margin-bottom:6px;text-wrap:balance;}
+    .step-type-desc{font-family:'Inter',sans-serif;font-size:13px;font-weight:400;color:#555;line-height:1.65;margin-bottom:16px;flex:1;text-wrap:pretty;}
+    .step-type-cta{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:44px;padding:0 20px;background:#8B0000;color:#fff;border:none;border-radius:0;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;transition:background 0.2s;width:100%;}
+    .step-type-cta:hover{background:#a00000;}
+    .step-type-cta-ghost{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:44px;padding:0 20px;background:transparent;color:#1a1a1a;border:2px solid #1a1a1a;border-radius:0;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;transition:background 0.2s,color 0.2s;width:100%;margin-top:8px;}
+    .step-type-cta-ghost:hover{background:#1a1a1a;color:#fff;}
+    .step-type-cta svg,.step-type-cta-ghost svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2.2;flex-shrink:0;}
+    @media(min-width:640px){.step-types-grid{grid-template-columns:repeat(3,1fr);}}
+    @media(min-width:960px){.step-types-grid{grid-template-columns:repeat(3,1fr);gap:18px;}.step-type-name{font-size:18px;}}
+
+    /* ══════════════════════════════════════════════
        N-FAB FEATURE SECTION
     ══════════════════════════════════════════════ */
     .nfab-section{
@@ -237,13 +265,13 @@
     }
     .mosaic-main{
       grid-row:span 2;
-      border-radius:10px;overflow:hidden;
+      border-radius:0;overflow:hidden;
       position:relative;
     }
     .mosaic-main img{width:100%;height:100%;min-height:420px;object-fit:cover;display:block;transition:transform 0.5s ease;}
     .mosaic-main:hover img{transform:scale(1.03);}
     .mosaic-side{
-      border-radius:10px;overflow:hidden;position:relative;
+      border-radius:0;overflow:hidden;position:relative;
     }
     .mosaic-side img{width:100%;height:220px;object-fit:cover;display:block;transition:transform 0.5s ease;}
     .mosaic-side:hover img{transform:scale(1.04);}
@@ -261,13 +289,13 @@
       gap:14px;margin-bottom:36px;
     }
     .spec-card{
-      background:#f7f7f7;border-radius:8px;
+      background:#f7f7f7;border-radius:0;
       padding:20px 18px;
       display:flex;gap:14px;align-items:flex-start;
     }
     .spec-icon{
       width:38px;height:38px;flex-shrink:0;
-      background:#8B0000;border-radius:8px;
+      background:#8B0000;border-radius:0;
       display:flex;align-items:center;justify-content:center;
     }
     .spec-icon svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:2;}
@@ -280,7 +308,7 @@
     }
 
     .nfab-badge{
-      background:#111;border-radius:10px;
+      background:#111;border-radius:0;
       padding:24px 28px;
       display:flex;align-items:center;gap:28px;flex-wrap:wrap;
     }
@@ -327,7 +355,7 @@
       gap:12px;
     }
     .fitment-card{
-      background:#fff;border-radius:8px;
+      background:#fff;border-radius:0;
       padding:20px 18px;
       border:1.5px solid #e8e8e8;
       transition:border-color 0.2s,box-shadow 0.2s;
@@ -391,7 +419,7 @@
       border-radius:50%;background:#8B0000;flex-shrink:0;
     }
     .amp-visual{
-      position:relative;border-radius:12px;overflow:hidden;
+      position:relative;border-radius:0;overflow:hidden;
       background:#111;
     }
     .amp-visual img{
@@ -401,7 +429,7 @@
       position:absolute;top:16px;left:16px;
       background:rgba(0,0,0,0.80);
       border:1px solid rgba(139,0,0,0.40);
-      border-radius:6px;padding:8px 12px;
+      border-radius:0;padding:8px 12px;
       backdrop-filter:blur(8px);
     }
     .amp-visual-badge p{
@@ -427,7 +455,7 @@
       gap:24px;
     }
     .why-card{
-      background:#f7f7f7;border-radius:10px;
+      background:#f7f7f7;border-radius:0;
       padding:30px 24px;
       transition:box-shadow 0.2s,transform 0.2s;
     }
@@ -536,7 +564,7 @@
       display:none;
       background:#fff;
       border:2px solid #e8e8e8;
-      border-radius:10px;
+      border-radius:0;
       padding:16px 20px;
       margin-bottom:32px;
       align-items:center;
@@ -547,7 +575,7 @@
     .garage-fitment-bar.visible{display:flex;}
     .gfb-left{display:flex;align-items:center;gap:12px;}
     .gfb-icon{
-      width:36px;height:36px;background:#111;border-radius:8px;
+      width:36px;height:36px;background:#111;border-radius:0;
       display:flex;align-items:center;justify-content:center;flex-shrink:0;
     }
     .gfb-icon svg{width:16px;height:16px;stroke:#fff;fill:none;stroke-width:2;}
@@ -569,7 +597,7 @@
       display:none;
       background:#f9f9f9;
       border:2px dashed #ddd;
-      border-radius:10px;
+      border-radius:0;
       padding:16px 20px;
       margin-bottom:32px;
       align-items:center;
@@ -593,7 +621,7 @@
       display:inline-block;
       background:#8B0000;color:#fff;
       font-size:8px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;
-      padding:3px 8px;border-radius:4px;margin-top:6px;
+      padding:3px 8px;border-radius:0;margin-top:6px;
     }
 
     /* ══════════════════════════════════════════════
@@ -617,7 +645,7 @@
       gap:20px;margin-bottom:24px;
     }
     .gr-product-card{
-      background:#fff;border-radius:12px;overflow:hidden;
+      background:#fff;border-radius:0;overflow:hidden;
       box-shadow:0 2px 16px rgba(0,0,0,0.07);
       transition:box-shadow 0.25s,transform 0.25s;
     }
@@ -634,7 +662,7 @@
       position:absolute;top:14px;left:14px;
       background:#8B0000;color:#fff;
       font-size:8px;font-weight:800;letter-spacing:2px;text-transform:uppercase;
-      padding:5px 10px;border-radius:4px;
+      padding:5px 10px;border-radius:0;
     }
     .gr-product-body{padding:24px 22px 26px;}
     .gr-product-eyebrow{
@@ -661,7 +689,7 @@
       background:#8B0000;color:#fff;
       font-family:'Montserrat',sans-serif;
       font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase;
-      text-decoration:none;padding:12px 22px;border-radius:6px;
+      text-decoration:none;padding:12px 22px;border-radius:0;
       transition:background 0.2s;
     }
     .gr-product-cta:hover{background:#a50000;}
@@ -672,7 +700,7 @@
       gap:12px;
     }
     .gr-gallery-item{
-      border-radius:10px;overflow:hidden;position:relative;
+      border-radius:0;overflow:hidden;position:relative;
       height:200px;
     }
     .gr-gallery-item img{
@@ -781,6 +809,125 @@
 
 
 <!-- ══════════════════════════════════════════════
+     SHOP BY STEP TYPE
+══════════════════════════════════════════════ -->
+<section class="step-types-section">
+  <div class="step-types-inner">
+    <div class="step-types-header">
+      <span class="eyebrow">Shop by Style</span>
+      <h2>Every Type of Step. <em>Every Truck.</em></h2>
+      <p>From classic nerf bars to electric power steps — we carry, supply, and professionally install them all right here in Signal Hill.</p>
+    </div>
+    <div class="step-types-grid">
+
+      <!-- Nerf Step Bars -->
+      <div class="step-type-card">
+        <div class="step-type-img">
+          <img src="https://www.catalograck.com/ImgVDHR/NFA/NFBcab_length_4_step_4_door.jpg" alt="N-FAB Nerf Step Bar" loading="lazy">
+          <span class="step-type-badge">Most Popular</span>
+        </div>
+        <div class="step-type-body">
+          <div class="step-type-brand">N-FAB</div>
+          <div class="step-type-name">Nerf Step Bars</div>
+          <p class="step-type-desc">Hoop-style tube steps that run cab-length or wheel-to-wheel. .084 wall steel, powder-coated Textured Black, no drilling required.</p>
+          <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/running-boards.html" target="_top" class="step-type-cta">
+            <svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h7"/></svg>
+            Browse N-FAB Catalog
+          </a>
+        </div>
+      </div>
+
+      <!-- Power Steps -->
+      <div class="step-type-card">
+        <div class="step-type-img">
+          <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/SID%20STEPS%20IMAGE.PNG" alt="AMP Research Power Steps" loading="lazy">
+          <span class="step-type-badge">Electric</span>
+        </div>
+        <div class="step-type-body">
+          <div class="step-type-brand">AMP Research</div>
+          <div class="step-type-name">Power Steps</div>
+          <p class="step-type-desc">Auto-deploy when your door opens, retract when you close it. Flush, clean look while driving. Full electrical install done in-house.</p>
+          <a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="step-type-cta">
+            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            Get a Quote
+          </a>
+        </div>
+      </div>
+
+      <!-- Running Boards -->
+      <div class="step-type-card">
+        <div class="step-type-img">
+          <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/go-rhino/rb-running-board-red-truck.png" alt="Go Rhino RB Running Boards" loading="lazy">
+          <span class="step-type-badge">Full Platform</span>
+        </div>
+        <div class="step-type-body">
+          <div class="step-type-brand">Go Rhino</div>
+          <div class="step-type-name">Running Boards</div>
+          <p class="step-type-desc">Wide, flat platform boards that run the full length of the cab. Perforated aluminum, non-slip surface, low-profile stance. Bolt-on, no drilling.</p>
+          <a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="step-type-cta">
+            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            Get a Quote
+          </a>
+        </div>
+      </div>
+
+      <!-- Wheel-to-Wheel -->
+      <div class="step-type-card">
+        <div class="step-type-img">
+          <img src="https://www.catalograck.com/ImgVDHR/NFA/NFBcab_length_4_step_4_door.jpg" alt="N-FAB Wheel to Wheel Nerf Bars" loading="lazy" style="object-position:center 60%;">
+          <span class="step-type-badge">Max Coverage</span>
+        </div>
+        <div class="step-type-body">
+          <div class="step-type-brand">N-FAB</div>
+          <div class="step-type-name">Wheel-to-Wheel Bars</div>
+          <p class="step-type-desc">Full-length coverage from the front wheel arch to the rear. Maximum rocker panel protection and more entry points — ideal for work trucks.</p>
+          <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/running-boards.html" target="_top" class="step-type-cta">
+            <svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h7"/></svg>
+            Browse Catalog
+          </a>
+        </div>
+      </div>
+
+      <!-- Predator Pro -->
+      <div class="step-type-card">
+        <div class="step-type-img">
+          <img src="https://www.catalograck.com/ImgVDHR/NFA/NFBPredProLS.jpg" alt="N-FAB Predator Pro Steps" loading="lazy">
+          <span class="step-type-badge">Premium</span>
+        </div>
+        <div class="step-type-body">
+          <div class="step-type-brand">N-FAB</div>
+          <div class="step-type-name">Predator Pro Steps</div>
+          <p class="step-type-desc">Top-tier aggressive styling with maximum step surface area. The most premium N-FAB step — built for the serious truck owner who doesn't compromise.</p>
+          <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/running-boards.html" target="_top" class="step-type-cta">
+            <svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h7"/></svg>
+            Browse Catalog
+          </a>
+        </div>
+      </div>
+
+      <!-- Tube Steps -->
+      <div class="step-type-card">
+        <div class="step-type-img">
+          <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/go-rhino/oe-xtreme-silver-truck.png" alt="Go Rhino OE Xtreme Tube Steps" loading="lazy">
+          <span class="step-type-badge">Tube Steps</span>
+        </div>
+        <div class="step-type-body">
+          <div class="step-type-brand">Go Rhino</div>
+          <div class="step-type-name">OE Xtreme Side Steps</div>
+          <p class="step-type-desc">Round tube nerf bar with an aggressive tread pad. Available in 4", 5", and 6" diameters in Textured Black. Clean look, strong grip, no drilling.</p>
+          <a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="step-type-cta">
+            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            Get a Quote
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════
      N-FAB NERF STEPS — FEATURED
 ══════════════════════════════════════════════ -->
 <section class="nfab-section">
@@ -795,8 +942,8 @@
     <div class="nfab-mosaic">
       <div class="mosaic-main">
         <img src="https://www.catalograck.com/ImgVDHR/NFA/NFABnfabcablength-nerfbars-textured-2024-gmcsierra1500-NFB-C1980CC-T.jpg"
-             alt="N-FAB Nerf Step RS Bars on 2024 GMC Sierra 1500 Textured Black" loading="lazy">
-        <div class="mosaic-label">N-FAB Nerf Step RS · 2024 GMC Sierra 1500 · Textured Black</div>
+             alt="N-FAB Nerf Step RS Bars — Textured Black" loading="lazy">
+        <div class="mosaic-label">N-FAB Nerf Step RS Bar · Textured Black</div>
       </div>
       <div class="mosaic-side">
         <img src="https://www.catalograck.com/ImgVDHR/NFA/NFBNFB_Nerf-RS_Toyota-Tundra_01.jpg"
@@ -870,8 +1017,12 @@
           <div class="badge-fact-label">Drilling Required</div>
         </div>
       </div>
-      <div class="nfab-badge-cta">
-        <a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-dark">
+      <div class="nfab-badge-cta" style="display:flex;flex-direction:column;gap:8px;">
+        <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/running-boards.html" target="_top" class="btn-dark">
+          <svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h7"/></svg>
+          Browse Full Catalog
+        </a>
+        <a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-dark" style="background:transparent;border:1.5px solid rgba(255,255,255,0.35);">
           <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
           Get a Quote
         </a>
