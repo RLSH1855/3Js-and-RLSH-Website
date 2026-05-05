@@ -180,6 +180,32 @@
     /* ══════════════════════════════════════════════
        BRANDS BAR
     ══════════════════════════════════════════════ */
+    /* ══════════════════════════════════════════════
+       YMM FINDER BAR
+    ══════════════════════════════════════════════ */
+    .ymm-finder{background:#0d0d0d;border-top:3px solid #8B0000;border-bottom:1px solid rgba(255,255,255,0.08);padding:32px 20px;}
+    .ymm-finder-inner{max-width:1100px;margin:0 auto;}
+    .ymm-finder-label{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:#8B0000;display:block;margin-bottom:8px;}
+    .ymm-finder-title{font-family:'Montserrat',sans-serif;font-size:22px;font-weight:800;color:#fff;letter-spacing:-0.5px;margin-bottom:20px;text-wrap:balance;}
+    .ymm-finder-title em{color:#8B0000;font-style:normal;}
+    .ymm-finder-row{display:flex;align-items:stretch;gap:8px;flex-wrap:wrap;}
+    .ymm-finder-selects{display:flex;gap:8px;flex:1;flex-wrap:wrap;min-width:0;}
+    .ymm-sel{flex:1;min-width:100px;padding:12px 12px;border:2px solid rgba(255,255,255,0.12);border-radius:0;background:#1a1a1a;color:#fff;font-family:'Inter',sans-serif;font-size:13px;font-weight:500;appearance:none;-webkit-appearance:none;cursor:pointer;outline:none;transition:border-color 0.2s;}
+    .ymm-sel:focus{border-color:#8B0000;}
+    .ymm-sel:disabled{opacity:0.35;cursor:not-allowed;}
+    .ymm-sel option{background:#1a1a1a;color:#fff;}
+    .ymm-find-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:48px;padding:0 28px;background:#8B0000;color:#fff;border:none;border-radius:0;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;cursor:pointer;white-space:nowrap;flex-shrink:0;transition:background 0.2s;}
+    .ymm-find-btn:hover{background:#a00000;}
+    .ymm-find-btn:disabled{background:#444;cursor:not-allowed;}
+    .ymm-find-btn svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2.2;}
+    .ymm-finder-note{font-family:'Inter',sans-serif;font-size:12px;color:rgba(255,255,255,0.35);margin-top:12px;}
+    @media(max-width:640px){
+      .ymm-finder-row{flex-direction:column;}
+      .ymm-find-btn{width:100%;height:52px;}
+      .ymm-finder-selects{flex-direction:column;}
+      .ymm-sel{width:100%;}
+    }
+
     .brands-bar{
       background:#111;
       border-top:1px solid rgba(255,255,255,0.06);
@@ -789,6 +815,29 @@
     </div>
   </div>
 </section>
+
+
+<!-- ══════════════════════════════════════════════
+     YMM FINDER
+══════════════════════════════════════════════ -->
+<div class="ymm-finder">
+  <div class="ymm-finder-inner">
+    <span class="ymm-finder-label">Find Your Fit</span>
+    <div class="ymm-finder-title">Select Your Truck — <em>See What Fits.</em></div>
+    <div class="ymm-finder-row">
+      <div class="ymm-finder-selects">
+        <select class="ymm-sel" id="lp-year"><option value="">Year</option></select>
+        <select class="ymm-sel" id="lp-make" disabled><option value="">Make</option></select>
+        <select class="ymm-sel" id="lp-model" disabled><option value="">Model</option></select>
+      </div>
+      <button class="ymm-find-btn" id="lp-shop-btn" disabled>
+        <svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h7"/></svg>
+        Shop My Truck
+      </button>
+    </div>
+    <div class="ymm-finder-note">Selecting your truck filters the catalog to show only parts that fit your exact vehicle.</div>
+  </div>
+</div>
 
 
 <!-- ══════════════════════════════════════════════
@@ -1410,6 +1459,78 @@
       setTimeout(reportHeight, 50);
     });
   });
+</script>
+<script src="https://rlsh1855.github.io/3Js-and-RLSH-Website/running-boards-data.js"></script>
+<script>
+(function(){
+  var CATALOG = typeof RB_CATALOG !== 'undefined' ? RB_CATALOG : [];
+  var STORAGE_KEY = 'garage_vehicle';
+  var CATALOG_URL = 'https://rlsh1855.github.io/3Js-and-RLSH-Website/running-boards.html';
+
+  var selYear  = document.getElementById('lp-year');
+  var selMake  = document.getElementById('lp-make');
+  var selModel = document.getElementById('lp-model');
+  var shopBtn  = document.getElementById('lp-shop-btn');
+
+  var ALL_MAKES = [...new Set(CATALOG.map(e=>e[6]))].sort();
+
+  /* Populate year */
+  var thisYear = new Date().getFullYear();
+  for(var y = thisYear+1; y >= 1993; y--){
+    var o = document.createElement('option'); o.value=y; o.textContent=y; selYear.appendChild(o);
+  }
+
+  /* Populate make */
+  ALL_MAKES.forEach(function(m){
+    var o = document.createElement('option'); o.value=m; o.textContent=m; selMake.appendChild(o);
+  });
+
+  function getModels(make){
+    return [...new Set(CATALOG.filter(e=>e[6]===make).map(e=>e[7]))].sort();
+  }
+
+  function checkReady(){
+    shopBtn.disabled = !(selYear.value && selMake.value && selModel.value);
+  }
+
+  selYear.addEventListener('change', function(){
+    selMake.disabled = !this.value;
+    selModel.disabled = true; selModel.innerHTML = '<option value="">Model</option>';
+    checkReady();
+  });
+  selMake.addEventListener('change', function(){
+    selModel.innerHTML = '<option value="">Model</option>';
+    if(!this.value){ selModel.disabled=true; checkReady(); return; }
+    selModel.disabled = false;
+    getModels(this.value).forEach(function(m){
+      var o = document.createElement('option'); o.value=m; o.textContent=m; selModel.appendChild(o);
+    });
+    checkReady();
+  });
+  selModel.addEventListener('change', checkReady);
+
+  shopBtn.addEventListener('click', function(){
+    var g = {year: selYear.value, make: selMake.value, model: selModel.value};
+    try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(g)); }catch(e){}
+    window.location.href = CATALOG_URL;
+  });
+
+  /* Pre-fill from saved garage */
+  try{
+    var saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
+    if(saved && saved.year && saved.make && saved.model){
+      selYear.value = saved.year;
+      selMake.disabled = false;
+      selMake.value = saved.make;
+      selModel.disabled = false;
+      getModels(saved.make).forEach(function(m){
+        var o = document.createElement('option'); o.value=m; o.textContent=m; selModel.appendChild(o);
+      });
+      selModel.value = saved.model;
+      checkReady();
+    }
+  }catch(e){}
+})();
 </script>
 <script src="https://rlsh1855.github.io/3Js-and-RLSH-Website/site-nav.js"></script>
 
