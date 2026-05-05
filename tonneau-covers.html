@@ -912,6 +912,190 @@
 </div>
 
 <!-- ══════════════════════════════
+     ELEVATE RACK SYSTEM
+══════════════════════════════ -->
+<style>
+  .elevate-section{background:#0A0A0A;padding:80px 24px;position:relative;overflow:hidden;}
+  .elevate-section::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,0.02) 1px,transparent 1px);background-size:28px 28px;pointer-events:none;}
+  .elevate-section::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right,transparent,#8B0000 25%,#8B0000 75%,transparent);}
+  .elevate-inner{max-width:1000px;margin:0 auto;position:relative;z-index:1;}
+  .elevate-header{text-align:center;margin-bottom:48px;}
+  .elevate-header .eyebrow{color:#8B0000;margin-bottom:10px;}
+  .elevate-header h2{font-family:'Montserrat',sans-serif;font-size:clamp(24px,4vw,40px);font-weight:800;letter-spacing:-1px;color:#fff;margin-bottom:14px;text-wrap:balance;}
+  .elevate-header h2 em{color:#8B0000;font-style:normal;}
+  .elevate-header p{font-family:'Inter',sans-serif;font-size:15px;color:rgba(255,255,255,0.60);max-width:540px;margin:0 auto;line-height:1.75;}
+
+  .elevate-hero-img{width:100%;aspect-ratio:21/7;object-fit:cover;object-position:center;display:block;margin-bottom:48px;border:1px solid #1e1e1e;}
+
+  .elevate-cat{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:#8B0000;border-bottom:1px solid #1e1e1e;padding-bottom:12px;margin:48px 0 24px;}
+
+  .elevate-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+
+  .elevate-card{display:flex;flex-direction:column;}
+  .elevate-card-img{width:100%;aspect-ratio:4/3;background:#111;border:1px solid #1e1e1e;overflow:hidden;position:relative;margin-bottom:16px;}
+  .elevate-card-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s ease;}
+  .elevate-card:hover .elevate-card-img img{transform:scale(1.04);}
+  .elevate-card-img-ph{position:absolute;inset:0;background:linear-gradient(135deg,#0f0f0f,#181818);display:flex;align-items:center;justify-content:center;}
+  .elevate-card-img-ph svg{width:48px;height:48px;stroke:rgba(139,0,0,0.25);fill:none;stroke-width:1.2;}
+  .elevate-card-name{font-family:'Montserrat',sans-serif;font-size:17px;font-weight:800;color:#fff;letter-spacing:-0.3px;margin-bottom:6px;line-height:1.1;}
+  .elevate-card-desc{font-family:'Inter',sans-serif;font-size:13px;color:rgba(255,255,255,0.50);line-height:1.65;margin-bottom:14px;flex:1;}
+  .elevate-card-link{display:inline-flex;align-items:center;gap:6px;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#8B0000;text-decoration:none;transition:gap 0.2s,color 0.2s;}
+  .elevate-card-link:hover{color:#c00;gap:10px;}
+  .elevate-card-link svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2.5;}
+
+  .elevate-acc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
+  .elevate-acc-tile{background:#111;border:1px solid #1e1e1e;overflow:hidden;transition:border-color 0.25s;}
+  .elevate-acc-tile:hover{border-color:#8B0000;}
+  .elevate-acc-img{width:100%;aspect-ratio:1/1;overflow:hidden;position:relative;}
+  .elevate-acc-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.4s ease;}
+  .elevate-acc-tile:hover .elevate-acc-img img{transform:scale(1.06);}
+  .elevate-acc-img-ph{position:absolute;inset:0;background:linear-gradient(135deg,#0f0f0f,#1a1a1a);}
+  .elevate-acc-name{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:0.5px;text-transform:uppercase;color:rgba(255,255,255,0.65);padding:10px 10px 12px;text-align:center;line-height:1.3;}
+
+  .elevate-cta{margin-top:48px;text-align:center;padding-top:40px;border-top:1px solid #1e1e1e;}
+  .elevate-cta p{font-family:'Inter',sans-serif;font-size:14px;color:rgba(255,255,255,0.40);margin-bottom:20px;line-height:1.6;}
+  .btn-elevate{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:48px;padding:0 36px;background:#8B0000;color:#fff;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border-radius:0;transition:background 0.2s;}
+  .btn-elevate:hover{background:#a00000;}
+  .btn-elevate svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2.2;}
+
+  @media(max-width:900px){
+    .elevate-section{padding:56px 20px;}
+    .elevate-header{margin-bottom:36px;}
+    .elevate-cat{margin:40px 0 20px;}
+  }
+  @media(max-width:600px){
+    .elevate-section{padding:40px 16px;}
+    .elevate-grid{grid-template-columns:1fr;gap:36px;}
+    .elevate-acc-grid{grid-template-columns:repeat(2,1fr);}
+    .elevate-cat{margin:32px 0 16px;}
+    .elevate-hero-img{aspect-ratio:16/7;margin-bottom:32px;}
+  }
+</style>
+
+<section class="elevate-section">
+  <div class="elevate-inner">
+
+    <div class="elevate-header" data-anim="fade-up">
+      <span class="eyebrow">Pairs With Your Tonneau Cover</span>
+      <h2>Elevate <em>Rack System</em></h2>
+      <p>Transform your truck bed into a full cargo platform. The Elevate Rack System mounts directly to your tonneau cover — adding baskets, carriers, and gear to every build.</p>
+    </div>
+
+    <img class="elevate-hero-img" src="https://rlsh1855.github.io/3Js-and-RLSH-Website/elevate-rack.png" alt="Elevate Rack System on truck bed" loading="lazy" data-anim="fade-up">
+
+    <!-- ─── RACKS ─── -->
+    <div class="elevate-grid" data-anim="fade-up">
+
+      <div class="elevate-card">
+        <div class="elevate-card-img">
+          <div class="elevate-card-img-ph">
+            <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="3"/><rect x="4" y="10" width="2" height="7"/><rect x="18" y="10" width="2" height="7"/><rect x="2" y="17" width="20" height="2"/></svg>
+          </div>
+        </div>
+        <div class="elevate-card-name">Elevate Base Truck Rack</div>
+        <div class="elevate-card-desc">Low-profile platform designed to sit flush with your tonneau cover. The foundation for all Elevate and T-Slot accessories.</div>
+        <a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="elevate-card-link">Get a Quote <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></a>
+      </div>
+
+      <div class="elevate-card">
+        <div class="elevate-card-img">
+          <div class="elevate-card-img-ph">
+            <svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="3"/><rect x="4" y="8" width="2" height="9"/><rect x="18" y="8" width="2" height="9"/><rect x="2" y="17" width="20" height="2"/><line x1="8" y1="5" x2="8" y2="2"/><line x1="16" y1="5" x2="16" y2="2"/></svg>
+          </div>
+        </div>
+        <div class="elevate-card-name">Elevate Truck Rack</div>
+        <div class="elevate-card-desc">Telescoping rack for extended reach and elevated clearance. Accepts all Elevate and T-Slot accessories — including the full carrier lineup.</div>
+        <a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="elevate-card-link">Get a Quote <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></a>
+      </div>
+
+    </div>
+
+    <!-- ─── BASKETS & CARRIERS ─── -->
+    <div class="elevate-cat" data-anim="fade-up">Baskets &amp; Carriers</div>
+
+    <div class="elevate-grid" data-anim="fade-up">
+
+      <div class="elevate-card">
+        <div class="elevate-card-img">
+          <div class="elevate-card-img-ph">
+            <svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="12" rx="1"/><path d="M3 7l3-4h12l3 4"/><line x1="3" y1="12" x2="21" y2="12"/></svg>
+          </div>
+        </div>
+        <div class="elevate-card-name">Cargo Basket</div>
+        <div class="elevate-card-desc">Large deep-cradle basket designed for maximum cargo capacity. Rugged construction handles gear, luggage, and off-road equipment.</div>
+        <a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="elevate-card-link">Get a Quote <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></a>
+      </div>
+
+      <div class="elevate-card">
+        <div class="elevate-card-img">
+          <div class="elevate-card-img-ph">
+            <svg viewBox="0 0 24 24"><rect x="5" y="7" width="14" height="12" rx="1"/><path d="M5 7l2-4h10l2 4"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </div>
+        </div>
+        <div class="elevate-card-name">Narrow Cargo Basket</div>
+        <div class="elevate-card-desc">Slim profile creates space for additional accessories alongside it. Perfect for side-by-side cargo organization builds.</div>
+        <a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="elevate-card-link">Get a Quote <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></a>
+      </div>
+
+      <div class="elevate-card">
+        <div class="elevate-card-img">
+          <div class="elevate-card-img-ph">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="4" x2="12" y2="2"/></svg>
+          </div>
+        </div>
+        <div class="elevate-card-name">Bike Carrier</div>
+        <div class="elevate-card-desc">Transport any bike without frame contact. Secure mounting system protects both your bike and your truck during transit.</div>
+        <a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="elevate-card-link">Get a Quote <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></a>
+      </div>
+
+      <div class="elevate-card">
+        <div class="elevate-card-img">
+          <div class="elevate-card-img-ph">
+            <svg viewBox="0 0 24 24"><path d="M3 17c0-2 2-4 5-4s5 2 5 2 2-2 5-2 5 2 5 4"/><path d="M5 13V7a2 2 0 012-2h10a2 2 0 012 2v6"/></svg>
+          </div>
+        </div>
+        <div class="elevate-card-name">Kayak Carrier</div>
+        <div class="elevate-card-desc">Load kayaks easily and keep watercraft secure during any trip. Padded supports prevent hull damage on long hauls.</div>
+        <a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="elevate-card-link">Get a Quote <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></a>
+      </div>
+
+    </div>
+
+    <!-- ─── ACCESSORIES ─── -->
+    <div class="elevate-cat" data-anim="fade-up">Accessories</div>
+
+    <div class="elevate-acc-grid" data-anim="fade-up">
+      <div class="elevate-acc-tile">
+        <div class="elevate-acc-img"><div class="elevate-acc-img-ph"></div></div>
+        <div class="elevate-acc-name">Side Bars</div>
+      </div>
+      <div class="elevate-acc-tile">
+        <div class="elevate-acc-img"><div class="elevate-acc-img-ph"></div></div>
+        <div class="elevate-acc-name">Channel Guard</div>
+      </div>
+      <div class="elevate-acc-tile">
+        <div class="elevate-acc-img"><div class="elevate-acc-img-ph"></div></div>
+        <div class="elevate-acc-name">Load Stops</div>
+      </div>
+      <div class="elevate-acc-tile">
+        <div class="elevate-acc-img"><div class="elevate-acc-img-ph"></div></div>
+        <div class="elevate-acc-name">Tie Down Kit</div>
+      </div>
+    </div>
+
+    <!-- ─── CTA ─── -->
+    <div class="elevate-cta" data-anim="fade-up">
+      <p>Ask us about pairing the Elevate Rack System with your tonneau cover installation.</p>
+      <a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-elevate">
+        <svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+        Request a Quote
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════
      WHY 3J'S
 ══════════════════════════════ -->
 <section class="why-strip">
