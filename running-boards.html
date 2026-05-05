@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8"/>
@@ -193,9 +193,52 @@
       .product-grid{grid-template-columns:repeat(4,1fr);}
       .hero-title{font-size:38px;letter-spacing:-2px;}
     }
-  </style>
+        /* ── SHOP NAV STRIP ── */
+    .shop-nav{background:#0a0a0a;padding:0;overflow-x:auto;white-space:nowrap;scrollbar-width:none;border-bottom:2px solid #1e1e1e;}
+    .shop-nav::-webkit-scrollbar{display:none;}
+    .shop-nav-inner{display:inline-flex;gap:0;min-width:100%;}
+    .shop-nav-link{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;padding:14px 18px;min-width:72px;font-family:'Montserrat',sans-serif;font-size:8px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;color:rgba(255,255,255,0.55);border-bottom:2px solid transparent;transition:color 0.2s,border-color 0.2s;white-space:nowrap;flex-shrink:0;}
+    .shop-nav-link svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;}
+    .shop-nav-link:hover{color:rgba(255,255,255,0.9);}
+    .shop-nav-link.active{color:#8B0000;border-bottom-color:#8B0000;}
+    @media(max-width:600px){.shop-nav-link{padding:12px 14px;font-size:9px;}}  </style>
 </head>
 <body>
+<!-- ── SHOP NAV STRIP ── -->
+<nav class="shop-nav">
+  <div class="shop-nav-inner">
+    <a href="https://www.3jsautobody.com/exterior-accessories" class="shop-nav-link" target="_top">
+      <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>All
+    </a>
+    <a href="https://www.3jsautobody.com/exterior-accessories/tonneau-covers" class="shop-nav-link " target="_top">
+      <svg viewBox="0 0 24 24"><rect x="2" y="9" width="20" height="5" rx="0"/><path d="M4 9V7h16v2"/><path d="M2 14h20"/><path d="M5 14v3m14-3v3"/></svg>Tonneau
+    </a>
+    <a href="https://www.3jsautobody.com/exterior-accessories/running-boards-side-steps" class="shop-nav-link active" target="_top">
+      <svg viewBox="0 0 24 24"><path d="M3 18h4v-4h4v-4h4v-4h4"/><path d="M3 18H21"/></svg>Steps
+    </a>
+    <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/floor-liners.html" class="shop-nav-link " target="_top">
+      <svg viewBox="0 0 24 24"><rect x="3" y="14" width="18" height="6" rx="0"/><path d="M6 14V8a2 2 0 012-2h8a2 2 0 012 2v6"/><path d="M6 17h12"/></svg>Floor Liners
+    </a>
+    <a href="https://www.3jsautobody.com/exterior-accessories/premium-led-offroad-lighting" class="shop-nav-link" target="_top">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v3m0 14v3M2 12h3m14 0h3"/><path d="M5.6 5.6l2.1 2.1m8.6 8.6l2.1 2.1M5.6 18.4l2.1-2.1m8.6-8.6l2.1-2.1"/></svg>Lighting
+    </a>
+    <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/headache-racks.html" class="shop-nav-link " target="_top">
+      <svg viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="10" rx="0"/><path d="M3 12h18"/><path d="M8 8V6m8 2V6"/><path d="M6 18v2m12-2v2"/></svg>Headache Rack
+    </a>
+    <a href="https://www.3jsautobody.com/request-a-quote" class="shop-nav-link" target="_top">
+      <svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="3"/><path d="M5 9v9m14-9v9"/><path d="M8 12h8"/><path d="M8 15h8"/></svg>Elevate Rack
+    </a>
+    <a href="https://www.3jsautobody.com/request-a-quote" class="shop-nav-link" target="_top">
+      <svg viewBox="0 0 24 24"><path d="M4 17l2-8h12l2 8H4z"/><path d="M9 17v2m6-2v2"/><circle cx="8" cy="17" r="2"/><circle cx="16" cy="17" r="2"/></svg>Towing
+    </a>
+    <a href="https://www.3jsautobody.com/request-a-quote" class="shop-nav-link" target="_top">
+      <svg viewBox="0 0 24 24"><path d="M12 3L4 7v4c0 5 3.5 9.7 8 11 4.5-1.3 8-6 8-11V7l-8-4z"/></svg>Bull Bars
+    </a>
+    <a href="https://www.3jsautobody.com/request-a-quote" class="shop-nav-link" target="_top">
+      <svg viewBox="0 0 24 24"><rect x="3" y="10" width="18" height="11" rx="0"/><path d="M3 13h18"/><path d="M7 10V7a2 2 0 014 0v3"/><path d="M8 16v2m4-2v2m4-2v2"/></svg>Tool Boxes
+    </a>
+  </div>
+</nav>
 
 <!-- ═══ GARAGE BAR ═══ -->
 <div id="garage-bar">
@@ -827,3 +870,4 @@ if(window.ResizeObserver){new ResizeObserver(reportHeight).observe(document.body
 
 </body>
 </html>
+
