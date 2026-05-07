@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LED Lighting Catalog — Trucks, SUVs & Jeeps | 3J's Auto Body Signal Hill CA</title>
+  <meta name="description" content="Shop LED headlights, tail lights, off-road lights, fog lights and DRL upgrades for trucks, SUVs and Jeeps. Morimoto, Baja Designs, Rigid Industries, Spyder Auto. Signal Hill, CA.">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Inter:wght@400;500;600&family=Oswald:wght@600;700&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{overflow-y:scroll;scrollbar-width:none;overscroll-behavior:none;}
+    html::-webkit-scrollbar{display:none;}
+    body{font-family:'Inter',sans-serif;overflow-x:hidden;overflow-y:hidden;background:#fff;color:#111;}
+
+    .label{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:#8B0000;display:block;}
+    .rule{width:40px;height:2px;background:#8B0000;display:block;margin:12px 0 18px;}
+
+    /* ── CATEGORY NAV ── */
+    .cat-nav{background:#0a0a0a;border-bottom:2px solid #1e1e1e;}
+    .shop-nav-hint{display:flex;align-items:center;gap:12px;padding:12px 20px 0;font-family:'Inter',sans-serif;font-size:11px;font-weight:500;color:rgba(255,255,255,0.60);letter-spacing:0.3px;}
+    .shop-nav-hint::before{content:'';display:block;width:3px;height:14px;background:#8B0000;flex-shrink:0;}
+    .shop-nav-tabs{display:flex;overflow-x:auto;white-space:nowrap;scrollbar-width:none;padding:0 8px;}
+    .shop-nav-tabs::-webkit-scrollbar{display:none;}
+    .shop-nav-link{display:inline-flex;align-items:center;justify-content:center;padding:14px 18px;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;color:rgba(255,255,255,0.45);border-bottom:3px solid transparent;border-right:1px solid rgba(255,255,255,0.10);transition:color .2s,border-color .2s;white-space:nowrap;flex-shrink:0;min-height:48px;}
+    .shop-nav-link:last-child{border-right:none;}
+    .shop-nav-link:hover{color:rgba(255,255,255,0.85);}
+    .shop-nav-link.active{color:#fff;border-bottom-color:#8B0000;letter-spacing:2.5px;}
+    @media(min-width:768px){.shop-nav-tabs{justify-content:center;}.shop-nav-hint{justify-content:center;}}
+    @media(max-width:480px){.shop-nav-link{font-size:10px;padding:12px 14px;}.shop-nav-hint{font-size:10px;}}
+
+    /* ── HERO ── */
+    .hero{background:#111;padding:48px 20px 40px;border-bottom:1px solid #1a1a1a;}
+    .back-link{display:inline-flex;align-items:center;gap:6px;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.40);text-decoration:none;margin-bottom:20px;transition:color .2s;}
+    .back-link:hover{color:#fff;}
+    .back-link svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2.5;}
+    .hero h1{font-family:'Montserrat',sans-serif;font-size:24px;font-weight:900;letter-spacing:-1px;color:#fff;text-transform:uppercase;text-wrap:balance;}
+    .hero h1 em{font-style:normal;color:#8B0000;}
+    .hero-sub{font-family:'Inter',sans-serif;font-size:14px;color:rgba(255,255,255,0.55);margin-top:10px;line-height:1.65;text-wrap:pretty;}
+
+    /* ── TYPE TABS ── */
+    .type-tabs-wrap{background:#fff;border-bottom:2px solid #ebebeb;position:sticky;top:0;z-index:100;}
+    .type-tabs{display:flex;overflow-x:auto;scrollbar-width:none;}
+    .type-tabs::-webkit-scrollbar{display:none;}
+    .type-tab{display:inline-flex;align-items:center;justify-content:center;padding:14px 20px;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#aaa;background:none;border:none;border-bottom:2px solid transparent;cursor:pointer;white-space:nowrap;flex-shrink:0;min-height:48px;transition:color .2s,border-color .2s;}
+    .type-tab:hover{color:#424954;}
+    .type-tab.active{color:#8B0000;border-bottom-color:#8B0000;}
+    @media(min-width:768px){.type-tabs{justify-content:center;}}
+
+    /* ── PANELS ── */
+    .panel{display:none;background:#fff;}
+    .panel.active{display:block;animation:panelIn .25s cubic-bezier(.16,1,.3,1);}
+    @keyframes panelIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:none;}}
+
+    /* ── PANEL HEADER ── */
+    .panel-header{padding:48px 20px 40px;border-bottom:1px solid #ebebeb;}
+    .panel-header .label{margin-bottom:0;}
+    .panel-header .rule{margin:12px 0 14px;}
+    .panel-title{font-family:'Montserrat',sans-serif;font-size:22px;font-weight:900;letter-spacing:-0.5px;color:#111;margin-bottom:12px;text-wrap:balance;}
+    .panel-title em{font-style:normal;color:#8B0000;}
+    .panel-tagline{border-left:2px solid #8B0000;padding-left:16px;font-family:'Inter',sans-serif;font-size:14px;font-weight:500;color:#444;line-height:1.75;max-width:520px;text-wrap:pretty;}
+
+    /* ── TYPE DIVIDER ── */
+    .type-section{padding:40px 20px 0;}
+    .type-label{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:#8B0000;display:flex;align-items:center;gap:14px;margin-bottom:20px;}
+    .type-label::after{content:'';flex:1;height:1px;background:#ebebeb;}
+
+    /* ── BORDER GRID ── */
+    .border-grid{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid #ebebeb;border-left:1px solid #ebebeb;}
+    .bc{border-right:1px solid #ebebeb;border-bottom:1px solid #ebebeb;display:flex;flex-direction:column;transition:background .2s;}
+    .bc:hover{background:#fafafa;}
+    .bc-img{position:relative;aspect-ratio:4/3;overflow:hidden;background:#f0f0f0;flex-shrink:0;}
+    .bc-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .55s cubic-bezier(.16,1,.3,1);}
+    .bc:hover .bc-img img{transform:scale(1.04);}
+    .bc-img-ph{position:absolute;inset:0;background:linear-gradient(135deg,#f0f0f0,#e4e4e4);display:flex;align-items:center;justify-content:center;}
+    .bc-img-ph svg{width:28px;height:28px;stroke:#ccc;fill:none;stroke-width:1.2;}
+    .bc-badge{position:absolute;top:0;left:0;background:#8B0000;color:#fff;font-family:'Montserrat',sans-serif;font-size:7px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:5px 9px;}
+    .bc-body{padding:16px 14px 18px;display:flex;flex-direction:column;flex:1;}
+    .bc-brand{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#8B0000;margin-bottom:3px;}
+    .bc-name{font-family:'Oswald',sans-serif;font-size:16px;font-weight:700;color:#111;line-height:1.1;margin-bottom:6px;}
+    .bc-fit{font-family:'Inter',sans-serif;font-size:12px;color:#6b7280;line-height:1.6;margin-bottom:12px;flex:1;}
+    .bc-feats{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:14px;}
+    .bc-chip{font-family:'Inter',sans-serif;font-size:11px;font-weight:600;color:#555;background:#f5f5f5;border:1px solid #e4e4e4;padding:3px 8px;}
+    .bc-actions{margin-top:auto;}
+    .btn-quote-full{display:flex;align-items:center;justify-content:center;height:44px;background:#8B0000;color:#fff;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border-radius:0;transition:background .2s;}
+    .btn-quote-full:hover{background:#6e0000;}
+
+    /* ── BEAM PATTERN GUIDE (Rigid) ── */
+    .beam-guide{background:#0a0a0a;padding:48px 20px;margin-bottom:0;}
+    .beam-guide .label{color:#8B0000;margin-bottom:0;}
+    .beam-guide .rule{margin:12px 0 14px;}
+    .beam-guide-title{font-family:'Montserrat',sans-serif;font-size:20px;font-weight:900;letter-spacing:-0.5px;color:#fff;margin-bottom:8px;text-wrap:balance;}
+    .beam-guide-title em{font-style:normal;color:#8B0000;}
+    .beam-guide-sub{font-family:'Inter',sans-serif;font-size:14px;color:rgba(255,255,255,0.55);line-height:1.65;margin-bottom:32px;max-width:520px;text-wrap:pretty;}
+    .beam-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;}
+    .beam-card{background:#111;border:1px solid #1e1e1e;padding:0;overflow:hidden;transition:border-color .2s;}
+    .beam-card:hover{border-color:#8B0000;}
+    .beam-card-img{width:100%;aspect-ratio:4/3;object-fit:contain;background:#0a0a0a;display:block;padding:12px;}
+    .beam-card-body{padding:14px 14px 16px;}
+    .beam-card-angle{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#8B0000;margin-bottom:4px;}
+    .beam-card-name{font-family:'Oswald',sans-serif;font-size:16px;font-weight:700;color:#fff;margin-bottom:6px;}
+    .beam-card-desc{font-family:'Inter',sans-serif;font-size:12px;color:rgba(255,255,255,0.50);line-height:1.6;}
+    .beam-guide-cta{margin-top:24px;font-family:'Inter',sans-serif;font-size:13px;color:rgba(255,255,255,0.40);text-align:center;padding:20px;border-top:1px solid #1e1e1e;}
+    .beam-guide-cta strong{color:rgba(255,255,255,0.70);}
+
+    /* ── PANEL BOTTOM ── */
+    .panel-bottom{height:56px;}
+
+    /* ── CTA BAND ── */
+    .cta-band{background:#111;padding:56px 20px;text-align:center;border-top:3px solid #8B0000;}
+    .cta-band .label{color:#8B0000;text-align:center;margin:0 auto;}
+    .cta-band .rule{margin:12px auto 18px;}
+    .cta-band h2{font-family:'Montserrat',sans-serif;font-size:22px;font-weight:900;letter-spacing:-0.5px;color:#fff;margin-bottom:12px;text-wrap:balance;}
+    .cta-tagline{border-left:2px solid #8B0000;padding-left:14px;font-family:'Inter',sans-serif;font-size:14px;font-weight:500;color:rgba(255,255,255,0.65);line-height:1.75;max-width:380px;margin:0 auto 28px;text-align:left;text-wrap:pretty;}
+    .btn-cta{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:48px;padding:0 40px;background:#8B0000;color:#fff;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border-radius:0;transition:background .2s;}
+    .btn-cta:hover{background:#6e0000;}
+    .btn-cta svg{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:2.2;flex-shrink:0;}
+
+    /* ── TABLET ── */
+    @media(min-width:600px){
+      .type-tabs{justify-content:center;}
+      .border-grid{grid-template-columns:repeat(3,1fr);}
+      .beam-grid{grid-template-columns:repeat(3,1fr);}
+      .panel-header{padding:56px 40px 44px;}
+      .type-section{padding:48px 40px 0;}
+      .beam-guide{padding:56px 40px;}
+      .cta-band{padding:64px 40px;}
+    }
+    @media(min-width:960px){
+      .border-grid{grid-template-columns:repeat(4,1fr);}
+      .beam-grid{grid-template-columns:repeat(4,1fr);}
+      .panel-header{padding:64px 56px 48px;}
+      .type-section{padding:56px 56px 0;}
+      .beam-guide{padding:64px 56px;}
+      .hero{padding:56px 56px 48px;}
+      .cta-band{padding:72px 56px;}
+      .cta-band h2{font-size:30px;}
+    }
+    @media(max-width:380px){
+      .border-grid{grid-template-columns:1fr;}
+      .beam-grid{grid-template-columns:1fr;}
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── CATEGORY NAV ── -->
+<nav class="cat-nav">
+  <p class="shop-nav-hint">Select a category to view products</p>
+  <div class="shop-nav-tabs">
+    <a href="https://www.3jsautobody.com/exterior-accessories" class="shop-nav-link" target="_top"><svg style="width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;flex-shrink:0;margin-right:6px;" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>All</a>
+    <a href="https://www.3jsautobody.com/exterior-accessories/tonneau-covers" class="shop-nav-link" target="_top">Tonneau Covers</a>
+    <a href="https://www.3jsautobody.com/exterior-accessories/running-boards-side-steps" class="shop-nav-link" target="_top">Steps &amp; Running Boards</a>
+    <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/floor-liners.html" class="shop-nav-link" target="_top">Floor Liners</a>
+    <a href="https://www.3jsautobody.com/exterior-accessories/premium-led-offroad-lighting" class="shop-nav-link active" target="_top">Lighting</a>
+    <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/headache-racks.html" class="shop-nav-link" target="_top">Headache Racks</a>
+    <a href="https://www.3jsautobody.com/request-a-quote" class="shop-nav-link" target="_top">Elevate Rack</a>
+    <a href="https://www.3jsautobody.com/request-a-quote" class="shop-nav-link" target="_top">Towing &amp; Hitches</a>
+    <a href="https://www.3jsautobody.com/request-a-quote" class="shop-nav-link" target="_top">Bull Bars</a>
+    <a href="https://www.3jsautobody.com/request-a-quote" class="shop-nav-link" target="_top">Tool Boxes</a>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<div class="hero">
+  <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/lighting.html" target="_top" class="back-link">
+    <svg viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7"/></svg>
+    Back to Lighting
+  </a>
+  <h1>LED Lighting <em>Catalog</em></h1>
+  <p class="hero-sub">Browse headlights, tail lights, off-road lighting, fog lights and DRL upgrades — all filtered for trucks, SUVs and Jeeps.</p>
+</div>
+
+<!-- ── TYPE TABS ── -->
+<div class="type-tabs-wrap">
+  <div class="type-tabs">
+    <button class="type-tab active" onclick="switchPanel(this,'headlights')">Headlights</button>
+    <button class="type-tab" onclick="switchPanel(this,'taillights')">Tail Lights</button>
+    <button class="type-tab" onclick="switchPanel(this,'offroad')">Off-Road Lights</button>
+    <button class="type-tab" onclick="switchPanel(this,'foglights')">Fog Lights</button>
+    <button class="type-tab" onclick="switchPanel(this,'drl')">DRL &amp; Signals</button>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════
+     HEADLIGHTS PANEL
+══════════════════════════════ -->
+<div class="panel active" id="panel-headlights">
+  <div class="panel-header">
+    <span class="label">Headlight Upgrades</span>
+    <span class="rule"></span>
+    <div class="panel-title">Truck &amp; SUV <em>Headlights</em></div>
+    <p class="panel-tagline">OEM-fit LED and projector headlights for the most popular truck and SUV platforms. Plug-and-play installation — no modifications required.</p>
+  </div>
+
+  <div class="type-section">
+    <div class="type-label">Ford</div>
+    <div class="border-grid">
+
+      <div class="bc">
+        <div class="bc-img"><img src="https://5129608.app.netsuite.com/images/Item%20Images/105134.010.jpg" alt="Morimoto XB LED Headlights F-150 21-23" loading="lazy"><div class="bc-badge">Best Seller</div></div>
+        <div class="bc-body">
+          <div class="bc-brand">Morimoto</div>
+          <div class="bc-name">XB LED Headlights</div>
+          <p class="bc-fit">Ford F-150 · 2021–2023 · Bi-LED Projector</p>
+          <div class="bc-feats"><span class="bc-chip">Amber DRL</span><span class="bc-chip">Plug &amp; Play</span><span class="bc-chip">5-yr Warranty</span></div>
+          <div class="bc-actions"><a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote-full">Get a Quote</a></div>
+        </div>
+      </div>
+
+      <div class="bc">
+        <div class="bc-img"><img src="https://5129608.app.netsuite.com/images/Item%20Images/108777.010.jpg" alt="Morimoto XB LED Headlights Bronco 21+" loading="lazy"><div class="bc-badge">Bronco</div></div>
+        <div class="bc-body">
+          <div class="bc-brand">Morimoto</div>
+          <div class="bc-name">XB LED Headlights</div>
+          <p class="bc-fit">Ford Bronco · 2021+ · Bi-LED Projector</p>
+          <div class="bc-feats"><span class="bc-chip">Amber DRL</span><span class="bc-chip">Plug &amp; Play</span></div>
+          <div class="bc-actions"><a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote-full">Get a Quote</a></div>
+        </div>
+      </div>
+
+      <div class="bc">
+        <div class="bc-img">
+          <div class="bc-img-ph"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v3m0 14v3M2 12h3m14 0h3"/></svg></div>
+          <div class="bc-badge">F-150</div>
+        </div>
+        <div class="bc-body">
+          <div class="bc-brand">Morimoto</div>
+          <div class="bc-name">XB Hybrid LED Headlights</div>
+          <p class="bc-fit">Ford F-150 · 2015–2020 · Hybrid LED</p>
+          <div class="bc-feats"><span class="bc-chip">Plug &amp; Play</span><span class="bc-chip">5-yr Warranty</span></div>
+          <div class="bc-actions"><a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote-full">Get a Quote</a></div>
+        </div>
+      </div>
+
+      <div class="bc">
+        <div class="bc-img">
+          <div class="bc-img-ph"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v3m0 14v3M2 12h3m14 0h3"/></svg></div>
+        </div>
+        <div class="bc-body">
+          <div class="bc-brand">AlphaRex</div>
+          <div class="bc-name">NOVA-Series Headlights</div>
+          <p class="bc-fit">Ford F-150 · 2021–2023 · LED Projector</p>
+          <div class="bc-feats"><span class="bc-chip">Sequential DRL</span><span class="bc-chip">Plug &amp; Play</span></div>
+          <div class="bc-actions"><a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote-full">Get a Quote</a></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="type-section">
+    <div class="type-label">Toyota</div>
+    <div class="border-grid">
+
+      <div class="bc">
+        <div class="bc-img"><img src="https://5129608.app.netsuite.com/images/Item%20Images/106603.14_20_Toyota_4Runner_AlphaRex_Nova_G2_Headlights_Alpha_Black.010.jpg" alt="AlphaRex NOVA 4Runner" loading="lazy"><div class="bc-badge">Fan Favorite</div></div>
+        <div class="bc-body">
+          <div class="bc-brand">AlphaRex</div>
+          <div class="bc-name">NOVA-Series Headlights</div>
+          <p class="bc-fit">Toyota 4Runner · 2014–2020 · LED Projector</p>
+          <div class="bc-feats"><span class="bc-chip">LED DRL</span><span class="bc-chip">Activation Sequence</span></div>
+          <div class="bc-actions"><a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote-full">Get a Quote</a></div>
+        </div>
+      </div>
+
+      <div class="bc">
+        <div class="bc-img">
+          <div class="bc-img-ph"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v3m0 14v3M2 12h3m14 0h3"/></svg></div>
+        </div>
+        <div class="bc-body">
+          <div class="bc-brand">Morimoto</div>
+          <div class="bc-name">XB Hybrid LED Headlights</div>
+          <p class="bc-fit">Toyota 4Runner · 2010–2013 · Hybrid LED</p>
+          <div class="bc-feats"><span class="bc-chip">Plug &amp; Play</span><span class="bc-chip">5-yr Warranty</span></div>
+          <div class="bc-actions"><a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote-full">Get a Quote</a></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="type-section">
+    <div class="type-label">Jeep</div>
+    <div class="border-grid">
+
+      <div class="bc">
+        <div class="bc-img">
+          <div class="bc-img-ph"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v3m0 14v3M2 12h3m14 0h3"/></svg></div>
+          <div class="bc-badge">JL/JT</div>
+        </div>
+        <div class="bc-body">
+          <div class="bc-brand">Morimoto</div>
+          <div class="bc-name">Super7 Headlights</div>
+          <p class="bc-fit">Jeep Wrangler JL / Gladiator JT · 2018+ · 7" Round</p>
+          <div class="bc-feats"><span class="bc-chip">7" Round</span><span class="bc-chip">Bi-LED</span><span class="bc-chip">Plug &amp; Play</span></div>
+          <div class="bc-actions"><a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote-full">Get a Quote</a></div>
+        </div>
+      </div>
+
+      <div class="bc">
+        <div class="bc-img">
+          <div class="bc-img-ph"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v3m0 14v3M2 12h3m14 0h3"/></svg></div>
+          <div class="bc-badge">JK</div>
+        </div>
+        <div class="bc-body">
+          <div class="bc-brand">Morimoto</div>
+          <div class="bc-name">Super7 Headlights</div>
+          <p class="bc-fit">Jeep Wrangler JK · 2007–2018 · 7" Round</p>
+          <div class="bc-feats"><span class="bc-chip">7" Round</span><span class="bc-chip">Bi-LED</span></div>
+          <div class="bc-actions"><a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote-full">Get a Quote</a></div>
+        </div>
+      </div>
+
+      <div class="bc">
+        <div class="bc-img">
+          <div class="bc-img-ph"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v3m0 14v3M2 12h3m14 0h3"/></svg></div>
+          <div class="bc-badge">Grand Cherokee</div>
+        </div>
+        <div class="bc-body">
+          <div class="bc-brand">Morimoto</div>
+          <div class="bc-name">XB LED Headlights</div>
+          <p class="bc-fit">Jeep Grand Cherokee · 2014–2022 · Gen II</p>
+          <div class="bc-feats"><span class="bc-chip">Bi-LED</span><span class="bc-chip">Plug &amp; Play</span></div>
+          <div class="bc-actions"><a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote-full">Get a Quote</a></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="type-section">
+    <div class="type-label">GM · Ram · Nissan</div>
+    <div class="border-grid">
+
+      <div class="bc">
+        <div class="bc-img">
+          <div class="bc-img-ph"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v3m0 14v3M2 12h3m14 0h3"/></svg></div>
+        </div>
+        <div class="bc-body">
+          <div class="bc-brand">Morimoto</div>
+          <div class="bc-name">XB Hybrid LED Headlights</div>
+          <p class="bc-fit">GMC Yukon · 2007–2014 · Hybrid LED</p>
+          <div class="bc-feats"><span class="bc-chip">Plug &amp; Play</span></div>
+          <div class="bc-actions"><a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote-full">Get a Quote</a></div>
+        </div>
+      </div>
+
+      <div class="bc">
+        <div class="bc-img">
+          <div class="bc-img-ph"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v3m0 14v3M2 12h3m14 0h3"/></svg></div>
+        </div>
+        <div class="bc-body">
+          <div class="bc-brand">AlphaRex</div>
+          <div class="bc-name">NOVA-Series Headlights</div>
+          <p class="bc-fit">Ram 1500 · 2019–2024 · LED Projector</p>
+          <div class="bc-feats"><span class="bc-chip">Sequential DRL</span><span class="bc-chip">Plug &amp; Play</span></div>
+          <div class="bc-actions"><a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote-full">Get a Quote</a></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="panel-bottom"></div>
+</div>
+
+
+<!-- ══════════════════════════════
+     TAIL LIGHTS PANEL
+══════════════════════════════ -->
+<div class="panel" id="panel-taillights">
+  <div class="panel-header">
+    <span class="label">Tail Light Upgrades</span>
+    <span class="rule"></span>
+    <div class="panel-title">Custom <em>Tail Lights</em></div>
+    <p class="panel-tagline">OEM-fit LED tail lights with smoked or red lens options. Sequential turn signals, brake boost, and reverse light upgrades available.</p>
+  </div>
+
+  <div class="type-section">
+    <div class="type-label">Ford</div>
+    <div class="border-grid">
+
+      <div class="bc">
+        <div class="bc-img"><img src="https://5129608.app.netsuite.com/images/Item%20Images/107121.Arex_21_23_Ford_f150_Luxx_Tails_Alpha_Black.010.jpg" alt="AlphaRex LUXX F-150 21-23" loading="lazy"><div class="bc-badge">Sequential</div></div>
+        <div class="bc-body">
+          <div class="bc-brand">AlphaRex</div>
+          <div class="bc-name">LUXX-Series Tail Lights</div>
+          <p class="bc-fit">Ford F-150 · 2021–2023 · Alpha Black</p>
+          <div class="bc-feats"><span class="bc-chip">Sequential Turn</span><span class="bc-chip">LED</span></div>
+          <div class="bc-actions"><a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote-full">Get a Quote</a></div>
+        </div>
+      </div>
+
+      <div class="bc">
+        <div class="bc-img">
+          <div class="bc-img-ph"><svg viewBox="0 0 24 24"><rect x="2" y="8" width="20" height="10"/><path d="M2 12h20"/></svg></div>
+          <div class="bc-badge">Smoked</div>
+        </div>
+        <div class="bc-body">
+          <div class="bc-brand">Morimoto</div>
+          <div class="bc-name">XB LED Tail Lights</div>
+          <p class="bc-fit">Ford F-150 · 2015–2020 · Smoked Lens</p>
+          <div class="bc-feats"><span class="bc-chip">Smoked Lens</span><span class="bc-chip">DOT/SAE</span></div>
+          <div class="bc-actions"><a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote-full">Get a Quote</a></div>
+        </div>
+      </div>
+
+      <div class="bc">
+        <div class="bc-img"><img src="https://5129608.app.netsuite.com/images/Item%20Images/108260.010.jpg" alt="Morimoto XB LED Tail Lights Ford Bronco" loading="lazy"><div class="bc-badge">Bronco</div></div>
+        <div class="bc-body">
+          <div class="bc-brand">Morimoto</div>
+          <div class="bc-name">XB LED Tail Lights</div>
+          <p class="bc-fit">Ford Bronco · 2021+ · Smoked Lens</p>
+          <div class="bc-feats"><span class="bc-chip">3D Optics</span><span class="bc-chip">DOT/SAE</span></div>
+          <div class="bc-actions"><a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote-full">Get a Quote</a></div>
+        </div>
+      </div>
+
+      <div class="bc">
+        <div class="bc-img">
+          <div class="bc-img-ph"><svg viewBox="0 0 24 24"><rect x="2" y="8" width="20" height="10"/><path d="M2 12h20"/></svg></div>
+        </div>
+        <div class="bc-body">
+          <div class="bc-brand">Morimoto</div>
+          <div class="bc-name">XB LED Tail Lights</div>
+          <p class="bc-fit">Ford Super Duty · 2017–2022 · Smoked Lens</p>
+          <div class="bc-feats"><span class="bc-chip">Smoked Lens</span><span class="bc-chip">DOT/SAE</span></div>
+          <div class="bc-actions"><a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote-full">Get a Quote</a></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="type-section">
+    <div class="type-label">Toyota</div>
+    <div class="border-grid">
+
+      <div class="bc">
+        <div class="bc-img">
+          <div class="bc-img-ph"><svg viewBox="0 0 24 24"><rect x="2" y="8" width="20" height="10"/><path d="M2 12h20"/></svg></div>
+          <div class="bc-badge">Tacoma</div>
+        </div>
+        <div class="bc-body">
+          <div class="bc-brand">Morimoto</div>
+          <div class="bc-name">XB LED Tail Lights</div>
+          <p class="bc-fit">Toyota Tacoma · 2016–2023 · Clear Lens</p>
+          <div class="bc-feats"><span class="bc-chip">Clear Lens</span><span class="bc-chip">DOT/SAE</span></div>
+          <div class="bc-actions"><a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote-full">Get a Quote</a></div>
+        </div>
+      </div>
+
+      <div class="bc">
+        <div class="bc-img">
+          <div class="bc-img-ph"><svg viewBox="0 0 24 24"><rect x="2" y="8" width="20" height="10"/><path d="M2 12h20"/></svg></div>
+          <div class="bc-badge">4Runner</div>
+        </div>
+        <div class="bc-body">
+          <div class="bc-brand">Morimoto</div>
+          <div class="bc-name">XB LED Tail Lights</div>
+          <p class="bc-fit">Toyota 4Runner · 2010–2024 · Red Lens</p>
+          <div class="bc-feats"><span class="bc-chip">Red Lens</span><span class="bc-chip">DOT/SAE</span></div>
+          <div class="bc-actions"><a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote-full">Get a Quote</a></div>
+        </div>
+      </div>
+
+      <div class="bc">
+        <div class="bc-img">
+          <div class="bc-img-ph"><svg viewBox="0 0 24 24"><rect x="2" y="8" width="20" height="10"/><path d="M2 12h20"/></svg></div>
+          <div class="bc-badge">Tundra</div>
+        </div>
+        <div class="bc-body">
+          <div class="bc-brand">Morimoto</div>
+          <div class="bc-name">XB LED Tail Lights</div>
+          <p class="bc-fit">Toyota Tundra · 2014–2021 · Clear Lens</p>
+          <div class="bc-feats"><span class="bc-chip">Clear Lens</span><span class="bc-chip">DOT/SAE</span></div>
+          <div class="bc-actions"><a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote-full">Get a Quote</a></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="type-section">
+    <div class="type-label">Jeep · GM · Ram</div>
+    <div class="border-grid">
+
+      <div class="bc">
+        <div class="bc-img"><img src="https://5129608.app.netsuite.com/images/Item%20Images/108265.010.jpg" alt="Morimoto XB LED Tail Lights Jeep Wrangler JL" loading="lazy"><div class="bc-badge">Wrangler JL</div></div>
+        <div class="bc-body">
+          <div class="bc-brand">Morimoto</div>
+          <div class="bc-name">XB LED Tail Lights</div>
+          <p class="bc-fit">Jeep Wrangler JL · 2018+ · Smoked Lens</p>
+          <div class="bc-feats"><span class="bc-chip">C-Shape Design</span><span class="bc-chip">DOT/SAE</span></div>
+          <div class="bc-actions"><a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote-full">Get a Quote</a></div>
+        </div>
+      </div>
+
+      <div class="bc">
+        <div class="bc-img"><img src="https://5129608.app.netsuite.com/images/Item%20Images/101977.14_18_Chevy_Silverado_Alpharex_Luxx_Tails_Black.010.jpg" alt="AlphaRex LUXX Silverado 14-18" loading="lazy"><div class="bc-badge">Silverado</div></div>
+        <div class="bc-body">
+          <div class="bc-brand">AlphaRex</div>
+          <div class="bc-name">LUXX-Series Tail Lights</div>
+          <p class="bc-fit">Chevrolet Silverado · 2014–2018 · Black</p>
+          <div class="bc-feats"><span class="bc-chip">Sequential Turn</span><span class="bc-chip">LED</span></div>
+          <div class="bc-actions"><a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote-full">Get a Quote</a></div>
+        </div>
+      </div>
+
+      <div class="bc">
+        <div class="bc-img">
+          <div class="bc-img-ph"><svg viewBox="0 0 24 24"><rect x="2" y="8" width="20" height="10"/><path d="M2 12h20"/></svg></div>
+          <div class="bc-badge">Ram HD</div>
+        </div>
+        <div class="bc-body">
+          <div class="bc-brand">Morimoto</div>
+          <div class="bc-name">XB LED Tail Lights</div>
+          <p class="bc-fit">Ram HD 2500/3500 · 2019+ · Smoked Lens</p>
+          <div class="bc-feats"><span class="bc-chip">Smoked Lens</span><span class="bc-chip">DOT/SAE</span></div>
+          <div class="bc-actions"><a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote-full">Get a Quote</a></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="panel-bottom"></div>
+</div>
+
+
+<!-- ══════════════════════════════
+     OFF-ROAD LIGHTS PANEL
+══════════════════════════════ -->
+<div class="panel" id="panel-offroad">
+
+  <!-- BEAM PATTERN GUIDE -->
+  <div class="beam-guide">
+    <span class="label">Rigid Industries</span>
+    <span class="rule"></span>
+    <div class="beam-guide-title">Choose Your <em>Beam Pattern</em></div>
+    <p class="beam-guide-sub">Not all off-road lights are the same. The beam pattern determines where and how far your light reaches. Pick the right one for how you drive.</p>
+
+    <div class="beam-grid">
+
+      <div class="beam-card">
+        <img class="beam-card-img" src="https://www.rigidindustries.com/media/wysiwyg/rigid/1_Rigid-spot-Beam-Pattern-DARK-BACKGROUND.png" alt="Spot Beam Pattern" loading="lazy">
+        <div class="beam-card-body">
+          <div class="beam-card-angle">Narrow · ~10°</div>
+          <div class="beam-card-name">Spot</div>
+          <p class="beam-card-desc">Maximum distance, minimal spread. Pinpoints hazards far ahead. Best for high-speed trails and open desert.</p>
+        </div>
+      </div>
+
+      <div class="beam-card">
+        <img class="beam-card-img" src="https://www.rigidindustries.com/media/wysiwyg/rigid/1_Rigid-Hyperspot-Beam-Pattern-DARK-BACKGROUND-no-border.png" alt="Hyperspot Beam Pattern" loading="lazy">
+        <div class="beam-card-body">
+          <div class="beam-card-angle">Ultra Narrow · ~8°</div>
+          <div class="beam-card-name">Hyperspot</div>
+          <p class="beam-card-desc">Pinpoint distance — perfect for high-speed desert runs where you need to see furthest down the trail.</p>
+        </div>
+      </div>
+
+      <div class="beam-card">
+        <img class="beam-card-img" src="https://www.rigidindustries.com/media/wysiwyg/rigid/1_Rigid-drive-Beam-Pattern-DARK-BACKGROUND-no-border.png" alt="Driving Beam Pattern" loading="lazy">
+        <div class="beam-card-body">
+          <div class="beam-card-angle">Moderate · ~20°</div>
+          <div class="beam-card-name">Driving</div>
+          <p class="beam-card-desc">360-Series dependable forward-facing lighting. Great balance of distance and spread for general trail driving.</p>
+        </div>
+      </div>
+
+      <div class="beam-card">
+        <img class="beam-card-img" src="https://www.rigidindustries.com/media/wysiwyg/rigid/1_Rigid-flood-Beam-Pattern-DARK-BACKGROUND-no-border.png" alt="Flood Beam Pattern" loading="lazy">
+        <div class="beam-card-body">
+          <div class="beam-card-angle">Medium · ~45°</div>
+          <div class="beam-card-name">Flood</div>
+          <p class="beam-card-desc">Wide spread near the vehicle. Great for tight trails, rock crawling and seeing obstacles to the sides.</p>
+        </div>
+      </div>
+
+      <div class="beam-card">
+        <img class="beam-card-img" src="https://www.rigidindustries.com/media/wysiwyg/rigid/1_Rigid-Spot_Flood_combo-Beam-Pattern-DARK-BACKGROUND-no-border.png" alt="Combo Beam Pattern" loading="lazy">
+        <div class="beam-card-body">
+          <div class="beam-card-angle">Mixed Spread</div>
+          <div class="beam-card-name">Combo</div>
+          <p class="beam-card-desc">Blends distance and spread in one light. Most versatile option for mixed terrain and all-around use.</p>
+        </div>
+      </div>
+
+      <div class="beam-card">
+        <img class="beam-card-img" src="https://www.rigidindustries.com/media/wysiwyg/rigid/1_Rigid-Scene-Beam-Pattern-DARK-BACKGROUND-no-border.png" alt="Scene Beam Pattern" loading="lazy">
+        <div class="beam-card-body">
+          <div class="beam-card-angle">Very Wide · ~115°+</div>
+          <div class="beam-card-name">Scene</div>
+          <p class="beam-card-desc">Floods a wide area with light. Perfect for campsites, work areas, or illuminating the trail around your rig when stationary.</p>
+        </div>
+      </div>
+
+      <div class="beam-card">
+        <img class="beam-card-img" src="https://www.rigidindustries.com/media/wysiwyg/rigid/1_Rigid-diffused-Beam-Pattern-DARK-BACKGROUND-no-border.png" alt="Diffused Beam Pattern" loading="lazy">
+        <div class="beam-card-body">
+          <div class="beam-card-angle">Very Wide · ~120°+</div>
+          <div class="beam-card-name">Diffused</div>
+          <p class="beam-card-desc">Frosted lens scatters light evenly — no harsh shadows or glare. Ideal for backup lights and close-range work areas.</p>
+        </div>
+      </div>
+
+    </div>
+    <p class="beam-guide-cta"><strong>Not sure which to pick?</strong> Tell us how you use your truck and we'll recommend the right beam for your build.</p>
+  </div>
+
+  <div class="panel-header" style="border-top:1px solid #ebebeb;">
+    <span class="label">Off-Road Lighting</span>
+    <span class="rule"></span>
+    <div class="panel-title">Light Pods &amp; <em>Light Bars</em></div>
+    <p class="panel-tagline">Rigid Industries, Baja Designs and Morimoto — the top names in off-road lighting. All available for professional installation at 3J's.</p>
+  </div>
+
+  <div class="type-section">
+    <div class="type-label">Rigid Industries</div>
+    <div class="border-grid">
+
+      <div class="bc">
+        <div class="bc-img">
+          <div class="bc-img-ph"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+          <div class="bc-badge">Best Seller</div>
+        </div>
+        <div class="bc-body">
+          <div class="bc-brand">Rigid Industries</div>
+          <div class="bc-name">D-Series PRO</div>
+          <p class="bc-fit">Universal · Spot, Flood, Driving, Combo · Pair</p>
+          <div class="bc-feats"><span class="bc-chip">Multiple Beams</span><span class="bc-chip">IP68</span><span class="bc-chip">Lifetime Warranty</span></div>
+          <div class="bc-actions"><a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote-full">Get a Quote</a></div>
+        </div>
+      </div>
+
+      <div class="bc">
+        <div class="bc-img">
+          <div class="bc-img-ph"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+          <div class="bc-badge">Ignite</div>
+        </div>
+        <div class="bc-body">
+          <div class="bc-brand">Rigid Industries</div>
+          <div class="bc-name">Ignite Pod</div>
+          <p class="bc-fit">Universal · Spot, Flood, or Diffused · Each</p>
+          <div class="bc-feats"><span class="bc-chip">Compact</span><span class="bc-chip">IP68</span><span class="bc-chip">Multiple Mounts</span></div>
+          <div class="bc-actions"><a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote-full">Get a Quote</a></div>
+        </div>
+      </div>
+
+      <div class="bc">
+        <div class="bc-img">
+          <div class="bc-img-ph"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+          <div class="bc-badge">Backup Kit</div>
+        </div>
+        <div class="bc-body">
+          <div class="bc-brand">Rigid Industries</div>
+          <div class="bc-name">Ignite Backup Kit</div>
+          <p class="bc-fit">Universal · Flood + Diffused Flush Mount · Pair</p>
+          <div class="bc-feats"><span class="bc-chip">Flush Mount</span><span class="bc-chip">Backup Lights</span></div>
+          <div class="bc-actions"><a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote-full">Get a Quote</a></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="type-section">
+    <div class="type-label">Baja Designs</div>
+    <div class="border-grid">
+
+      <div class="bc">
+        <div class="bc-img">
+          <div class="bc-img-ph"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+          <div class="bc-badge">Top Pick</div>
+        </div>
+        <div class="bc-body">
+          <div class="bc-brand">Baja Designs</div>
+          <div class="bc-name">S2 Pro Pod</div>
+          <p class="bc-fit">Universal · Multiple Beams Available · Each or Pair</p>
+          <div class="bc-feats"><span class="bc-chip">SAE Compliant</span><span class="bc-chip">Dual Beam</span><span class="bc-chip">IP69K</span></div>
+          <div class="bc-actions"><a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote-full">Get a Quote</a></div>
+        </div>
+      </div>
+
+      <div class="bc">
+        <div class="bc-img">
+          <div class="bc-img-ph"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+          <div class="bc-badge">Squadron</div>
+        </div>
+        <div class="bc-body">
+          <div class="bc-brand">Baja Designs</div>
+          <div class="bc-name">Squadron Pro Pod</div>
+          <p class="bc-fit">Universal · Spot, Flood, Driving, Wide Cornering</p>
+          <div class="bc-feats"><span class="bc-chip">SAE Compliant</span><span class="bc-chip">IP69K</span></div>
+          <div class="bc-actions"><a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote-full">Get a Quote</a></div>
+        </div>
+      </div>
+
+      <div class="bc">
+        <div class="bc-img">
+          <div class="bc-img-ph"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+          <div class="bc-badge">LP Series</div>
+        </div>
+        <div class="bc-body">
+          <div class="bc-brand">Baja Designs</div>
+          <div class="bc-name">LP6 Pro Pod</div>
+          <p class="bc-fit">Universal · Compact Pod · Spot or Driving</p>
+          <div class="bc-feats"><span class="bc-chip">Compact</span><span class="bc-chip">IP69K</span></div>
+          <div class="bc-actions"><a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote-full">Get a Quote</a></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="type-section">
+    <div class="type-label">Morimoto Off-Road</div>
+    <div class="border-grid">
+
+      <div class="bc">
+        <div class="bc-img">
+          <div class="bc-img-ph"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+          <div class="bc-badge">4Banger</div>
+        </div>
+        <div class="bc-body">
+          <div class="bc-brand">Morimoto</div>
+          <div class="bc-name">4Banger LED Pod</div>
+          <p class="bc-fit">Universal · HXB or NCS · Spot, Wide, Amber</p>
+          <div class="bc-feats"><span class="bc-chip">Linkable</span><span class="bc-chip">IP67</span><span class="bc-chip">5-yr Warranty</span></div>
+          <div class="bc-actions"><a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote-full">Get a Quote</a></div>
+        </div>
+      </div>
+
+      <div class="bc">
+        <div class="bc-img">
+          <div class="bc-img-ph"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+          <div class="bc-badge">Ditch Kit</div>
+        </div>
+        <div class="bc-body">
+          <div class="bc-brand">Morimoto</div>
+          <div class="bc-name">2Banger Ditch Light Kit</div>
+          <p class="bc-fit">Jeep Gladiator JT · 2020+ · HXB or NCS</p>
+          <div class="bc-feats"><span class="bc-chip">Bolt-On</span><span class="bc-chip">IP67</span></div>
+          <div class="bc-actions"><a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote-full">Get a Quote</a></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="panel-bottom"></div>
+</div>
+
+
+<!-- ══════════════════════════════
+     FOG LIGHTS PANEL
+══════════════════════════════ -->
+<div class="panel" id="panel-foglights">
+  <div class="panel-header">
+    <span class="label">Fog Light Upgrades</span>
+    <span class="rule"></span>
+    <div class="panel-title">LED &amp; <em>Fog Lights</em></div>
+    <p class="panel-tagline">Direct-fit LED fog light upgrades for trucks, SUVs and Jeeps. White, yellow or dual-color switchable options available.</p>
+  </div>
+
+  <div class="type-section">
+    <div class="type-label">Ford</div>
+    <div class="border-grid">
+
+      <div class="bc">
+        <div class="bc-img"><img src="https://5129608.app.netsuite.com/images/Item%20Images/132261.010.jpg" alt="Morimoto XB Evo+ Fog Lights F-150" loading="lazy"><div class="bc-badge">Dual Color</div></div>
+        <div class="bc-body">
+          <div class="bc-brand">Morimoto</div>
+          <div class="bc-name">XB Evo+ Fog Lights</div>
+          <p class="bc-fit">Ford F-150 · 2015–2020 · White + Yellow Switchable</p>
+          <div class="bc-feats"><span class="bc-chip">Switchable Color</span><span class="bc-chip">SAE Fog</span><span class="bc-chip">106° Beam</span></div>
+          <div class="bc-actions"><a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote-full">Get a Quote</a></div>
+        </div>
+      </div>
+
+      <div class="bc">
+        <div class="bc-img">
+          <div class="bc-img-ph"><svg viewBox="0 0 24 24"><path d="M3 12h18M3 8l4 4-4 4M17 8l4 4-4 4"/></svg></div>
+          <div class="bc-badge">Super Duty</div>
+        </div>
+        <div class="bc-body">
+          <div class="bc-brand">Spyder Auto</div>
+          <div class="bc-name">LED Fog Light Assembly</div>
+          <p class="bc-fit">Ford Super Duty · Multiple Years · OEM Replacement</p>
+          <div class="bc-feats"><span class="bc-chip">OEM Fit</span><span class="bc-chip">DOT</span></div>
+          <div class="bc-actions"><a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote-full">Get a Quote</a></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="type-section">
+    <div class="type-label">Ram · Jeep · Toyota</div>
+    <div class="border-grid">
+
+      <div class="bc">
+        <div class="bc-img">
+          <div class="bc-img-ph"><svg viewBox="0 0 24 24"><path d="M3 12h18M3 8l4 4-4 4M17 8l4 4-4 4"/></svg></div>
+        </div>
+        <div class="bc-body">
+          <div class="bc-brand">Spyder Auto</div>
+          <div class="bc-name">LED Fog Light Assembly</div>
+          <p class="bc-fit">Ram 1500 · Multiple Years · OEM Replacement</p>
+          <div class="bc-feats"><span class="bc-chip">OEM Fit</span><span class="bc-chip">DOT</span></div>
+          <div class="bc-actions"><a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote-full">Get a Quote</a></div>
+        </div>
+      </div>
+
+      <div class="bc">
+        <div class="bc-img">
+          <div class="bc-img-ph"><svg viewBox="0 0 24 24"><path d="M3 12h18M3 8l4 4-4 4M17 8l4 4-4 4"/></svg></div>
+        </div>
+        <div class="bc-body">
+          <div class="bc-brand">Spyder Auto</div>
+          <div class="bc-name">LED Fog Light Assembly</div>
+          <p class="bc-fit">Jeep Wrangler · Multiple Years · OEM Replacement</p>
+          <div class="bc-feats"><span class="bc-chip">OEM Fit</span><span class="bc-chip">DOT</span></div>
+          <div class="bc-actions"><a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote-full">Get a Quote</a></div>
+        </div>
+      </div>
+
+      <div class="bc">
+        <div class="bc-img">
+          <div class="bc-img-ph"><svg viewBox="0 0 24 24"><path d="M3 12h18M3 8l4 4-4 4M17 8l4 4-4 4"/></svg></div>
+        </div>
+        <div class="bc-body">
+          <div class="bc-brand">Spyder Auto</div>
+          <div class="bc-name">LED Fog Light Assembly</div>
+          <p class="bc-fit">Toyota Tacoma / Tundra · Multiple Years · OEM Replacement</p>
+          <div class="bc-feats"><span class="bc-chip">OEM Fit</span><span class="bc-chip">DOT</span></div>
+          <div class="bc-actions"><a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote-full">Get a Quote</a></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="panel-bottom"></div>
+</div>
+
+
+<!-- ══════════════════════════════
+     DRL & SIGNALS PANEL
+══════════════════════════════ -->
+<div class="panel" id="panel-drl">
+  <div class="panel-header">
+    <span class="label">DRL &amp; Signal Upgrades</span>
+    <span class="rule"></span>
+    <div class="panel-title">DRL, Signals &amp; <em>Accent Lighting</em></div>
+    <p class="panel-tagline">License plate lights, puddle lights, side markers, bed lights and third brake lights — plug-and-play upgrades for trucks, SUVs and Jeeps.</p>
+  </div>
+
+  <div class="type-section">
+    <div class="type-label">Third Brake Lights</div>
+    <div class="border-grid">
+
+      <div class="bc">
+        <div class="bc-img"><img src="https://5129608.app.netsuite.com/images/Item%20Images/103400.010.jpg" alt="Morimoto X3B Third Brake Light" loading="lazy"><div class="bc-badge">Universal</div></div>
+        <div class="bc-body">
+          <div class="bc-brand">Morimoto</div>
+          <div class="bc-name">X3B Rapid-Flash Module</div>
+          <p class="bc-fit">Universal — F-150, Tacoma, Tundra, Silverado &amp; more</p>
+          <div class="bc-feats"><span class="bc-chip">Plug &amp; Play</span><span class="bc-chip">3x Flash</span></div>
+          <div class="bc-actions"><a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote-full">Get a Quote</a></div>
+        </div>
+      </div>
+
+      <div class="bc">
+        <div class="bc-img">
+          <div class="bc-img-ph"><svg viewBox="0 0 24 24"><rect x="2" y="10" width="20" height="6"/><path d="M2 13h20"/></svg></div>
+          <div class="bc-badge">Tacoma</div>
+        </div>
+        <div class="bc-body">
+          <div class="bc-brand">Morimoto</div>
+          <div class="bc-name">X3B LED Third Brake Light</div>
+          <p class="bc-fit">Toyota Tacoma · 2016–2023 · Direct Fit</p>
+          <div class="bc-feats"><span class="bc-chip">Direct Fit</span><span class="bc-chip">Plug &amp; Play</span></div>
+          <div class="bc-actions"><a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote-full">Get a Quote</a></div>
+        </div>
+      </div>
+
+      <div class="bc">
+        <div class="bc-img">
+          <div class="bc-img-ph"><svg viewBox="0 0 24 24"><rect x="2" y="10" width="20" height="6"/><path d="M2 13h20"/></svg></div>
+          <div class="bc-badge">F-150</div>
+        </div>
+        <div class="bc-body">
+          <div class="bc-brand">Morimoto</div>
+          <div class="bc-name">X3B LED Third Brake Light</div>
+          <p class="bc-fit">Ford F-150 · 2015+ · Direct Fit</p>
+          <div class="bc-feats"><span class="bc-chip">Direct Fit</span><span class="bc-chip">Plug &amp; Play</span></div>
+          <div class="bc-actions"><a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote-full">Get a Quote</a></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="type-section">
+    <div class="type-label">License Plate &amp; Puddle Lights</div>
+    <div class="border-grid">
+
+      <div class="bc">
+        <div class="bc-img">
+          <div class="bc-img-ph"><svg viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="10"/><path d="M3 12h18"/></svg></div>
+          <div class="bc-badge">F-150</div>
+        </div>
+        <div class="bc-body">
+          <div class="bc-brand">Morimoto</div>
+          <div class="bc-name">XB LED License Plate Lights</div>
+          <p class="bc-fit">Ford F-150 · 2015–2023 · Set</p>
+          <div class="bc-feats"><span class="bc-chip">Plug &amp; Play</span><span class="bc-chip">2-yr Warranty</span></div>
+          <div class="bc-actions"><a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote-full">Get a Quote</a></div>
+        </div>
+      </div>
+
+      <div class="bc">
+        <div class="bc-img">
+          <div class="bc-img-ph"><svg viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="10"/><path d="M3 12h18"/></svg></div>
+          <div class="bc-badge">Silverado</div>
+        </div>
+        <div class="bc-body">
+          <div class="bc-brand">Morimoto</div>
+          <div class="bc-name">XB LED License Plate Lights</div>
+          <p class="bc-fit">Chevrolet Silverado · 1999–2018 · Set</p>
+          <div class="bc-feats"><span class="bc-chip">Plug &amp; Play</span><span class="bc-chip">2-yr Warranty</span></div>
+          <div class="bc-actions"><a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote-full">Get a Quote</a></div>
+        </div>
+      </div>
+
+      <div class="bc">
+        <div class="bc-img">
+          <div class="bc-img-ph"><svg viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="10"/><path d="M3 12h18"/></svg></div>
+          <div class="bc-badge">Tacoma / Tundra</div>
+        </div>
+        <div class="bc-body">
+          <div class="bc-brand">Morimoto</div>
+          <div class="bc-name">XB LED License Plate Lights</div>
+          <p class="bc-fit">Toyota Tacoma / Tundra · Multiple Years · Set</p>
+          <div class="bc-feats"><span class="bc-chip">Plug &amp; Play</span><span class="bc-chip">2-yr Warranty</span></div>
+          <div class="bc-actions"><a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote-full">Get a Quote</a></div>
+        </div>
+      </div>
+
+      <div class="bc">
+        <div class="bc-img"><img src="https://5129608.app.netsuite.com/images/Item%20Images/109304.010.jpg" alt="Morimoto XB LED Side Markers Jeep JL JT" loading="lazy"><div class="bc-badge">Jeep JL/JT</div></div>
+        <div class="bc-body">
+          <div class="bc-brand">Morimoto</div>
+          <div class="bc-name">XB LED Side Markers</div>
+          <p class="bc-fit">Jeep Wrangler JL / Gladiator JT · 2018+ · Set</p>
+          <div class="bc-feats"><span class="bc-chip">Amber</span><span class="bc-chip">2-yr Warranty</span></div>
+          <div class="bc-actions"><a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote-full">Get a Quote</a></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="panel-bottom"></div>
+</div>
+
+
+<!-- ── CTA BAND ── -->
+<div class="cta-band">
+  <span class="label">We'll Help You Choose</span>
+  <span class="rule"></span>
+  <h2>Ready to Upgrade Your Lighting?</h2>
+  <p class="cta-tagline">Our team will confirm fitment for your specific truck, source the parts, and install everything professionally right here in Signal Hill.</p>
+  <a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-cta">
+    <svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+    Request a Free Quote
+  </a>
+</div>
+
+<div id="sentinel" style="height:1px;"></div>
+<script>
+  function switchPanel(btn, id) {
+    document.querySelectorAll('.type-tab').forEach(function(b){b.classList.remove('active');});
+    document.querySelectorAll('.panel').forEach(function(p){p.classList.remove('active');});
+    btn.classList.add('active');
+    document.getElementById('panel-'+id).classList.add('active');
+    reportHeight();
+  }
+
+  // Handle hash navigation from hub page
+  window.addEventListener('load', function(){
+    var hash = window.location.hash.replace('#','');
+    if(hash){
+      var btn = document.querySelector('.type-tab[onclick*="'+hash+'"]');
+      if(btn) switchPanel(btn, hash);
+    }
+  });
+
+  function reportHeight(){
+    var h=Math.max(document.body.scrollHeight,document.body.offsetHeight,document.documentElement.scrollHeight,document.documentElement.offsetHeight);
+    window.parent.postMessage(JSON.stringify({height:h}),'*');
+  }
+  document.addEventListener('DOMContentLoaded',reportHeight);
+  window.addEventListener('load',function(){[0,200,500,1000,2000,3500].forEach(function(t){setTimeout(reportHeight,t);});});
+  window.addEventListener('resize',reportHeight);
+  if(window.ResizeObserver){new ResizeObserver(reportHeight).observe(document.body);}
+</script>
+</body>
+</html>

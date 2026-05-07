@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Premium LED Lighting — Trucks, SUVs & Jeeps | 3J's Auto Body Signal Hill CA</title>
+  <meta name="description" content="Premium LED headlights, tail lights, off-road lighting and fog lights for trucks, SUVs and Jeeps. Morimoto, Baja Designs, Rigid Industries, Spyder Auto. Professionally installed in Signal Hill, CA.">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Inter:wght@400;500;600&family=Oswald:wght@600;700&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{overflow-y:scroll;scrollbar-width:none;overscroll-behavior:none;}
+    html::-webkit-scrollbar{display:none;}
+    body{font-family:'Inter',sans-serif;overflow-x:hidden;overflow-y:hidden;background:#fff;color:#111;}
+
+    /* ── UTILITIES ── */
+    .label{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:#8B0000;display:block;}
+    .rule{width:40px;height:2px;background:#8B0000;display:block;margin:12px 0 18px;}
+
+    /* ── CATEGORY NAV ── */
+    .cat-nav{background:#0a0a0a;border-bottom:2px solid #1e1e1e;}
+    .shop-nav-hint{display:flex;align-items:center;gap:12px;padding:12px 20px 0;font-family:'Inter',sans-serif;font-size:11px;font-weight:500;color:rgba(255,255,255,0.60);letter-spacing:0.3px;}
+    .shop-nav-hint::before{content:'';display:block;width:3px;height:14px;background:#8B0000;flex-shrink:0;}
+    .shop-nav-tabs{display:flex;overflow-x:auto;white-space:nowrap;scrollbar-width:none;padding:0 8px;}
+    .shop-nav-tabs::-webkit-scrollbar{display:none;}
+    .shop-nav-link{display:inline-flex;align-items:center;justify-content:center;padding:14px 18px;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;color:rgba(255,255,255,0.45);border-bottom:3px solid transparent;border-right:1px solid rgba(255,255,255,0.10);transition:color .2s,border-color .2s;white-space:nowrap;flex-shrink:0;min-height:48px;}
+    .shop-nav-link:last-child{border-right:none;}
+    .shop-nav-link:hover{color:rgba(255,255,255,0.85);}
+    .shop-nav-link.active{color:#fff;border-bottom-color:#8B0000;letter-spacing:2.5px;}
+    @media(min-width:768px){.shop-nav-tabs{justify-content:center;}.shop-nav-hint{justify-content:center;}}
+    @media(max-width:480px){.shop-nav-link{font-size:10px;padding:12px 14px;}.shop-nav-hint{font-size:10px;}}
+
+    /* ── HERO ── */
+    .hero{position:relative;overflow:hidden;min-height:420px;display:flex;align-items:flex-end;border-bottom:1px solid #1a1a1a;}
+    .hero-bg{position:absolute;inset:0;background:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/offroad-lighting-hero.png') center/cover no-repeat;transform:scale(1.04);}
+    .hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.96) 0%,rgba(0,0,0,0.55) 50%,rgba(0,0,0,0.2) 100%);}
+    .hero-overlay-side{position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,0.65) 0%,transparent 65%);}
+    .hero-content{position:relative;z-index:1;padding:56px 20px 48px;width:100%;}
+    .hero-content .label{color:rgba(255,255,255,0.60);margin-bottom:0;}
+    .hero h1{font-family:'Montserrat',sans-serif;font-size:28px;font-weight:900;letter-spacing:-1.5px;line-height:1.0;text-transform:uppercase;color:#fff;margin-bottom:0;text-wrap:balance;}
+    .hero h1 em{font-style:normal;color:#8B0000;}
+    .hero-tagline{border-left:2px solid #8B0000;padding-left:16px;font-family:'Inter',sans-serif;font-size:15px;font-weight:500;color:rgba(255,255,255,0.75);line-height:1.8;margin-bottom:28px;max-width:400px;text-wrap:pretty;}
+    .hero-ctas{display:flex;gap:12px;flex-wrap:wrap;}
+    .btn-primary{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:48px;padding:0 32px;background:#8B0000;color:#fff;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border-radius:0;transition:background .2s;}
+    .btn-primary:hover{background:#6e0000;}
+    .btn-glass{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:48px;padding:0 28px;background:rgba(255,255,255,0.12);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);color:#fff;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border:1.5px solid rgba(255,255,255,0.45);border-radius:0;transition:background .2s;}
+    .btn-glass:hover{background:rgba(255,255,255,0.22);}
+    .btn-primary svg,.btn-glass svg{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:2.2;flex-shrink:0;}
+
+    /* ── BRAND STRIP ── */
+    .brand-strip{background:#0a0a0a;padding:28px 20px;border-bottom:1px solid #1e1e1e;}
+    .brand-strip-inner{display:flex;align-items:center;justify-content:center;gap:32px;flex-wrap:wrap;max-width:800px;margin:0 auto;}
+    .brand-strip-label{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.30);white-space:nowrap;}
+    .brand-strip-divider{width:1px;height:20px;background:rgba(255,255,255,0.10);}
+    .brand-item{font-family:'Montserrat',sans-serif;font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.40);}
+
+    /* ── SECTION HEADER ── */
+    .section-header{padding:48px 20px 36px;}
+    .section-header .label{margin-bottom:0;}
+    .section-header .rule{margin:12px 0 14px;}
+    .section-header h2{font-family:'Montserrat',sans-serif;font-size:22px;font-weight:900;letter-spacing:-0.5px;color:#111;margin-bottom:12px;text-wrap:balance;}
+    .section-header h2 em{font-style:normal;color:#8B0000;}
+    .section-header p{font-family:'Inter',sans-serif;font-size:15px;color:#424954;line-height:1.65;max-width:520px;text-wrap:pretty;}
+
+    /* ── BEST SELLERS GRID ── */
+    .products-wrap{padding:0 20px 56px;}
+    .border-grid{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid #ebebeb;border-left:1px solid #ebebeb;}
+    .bc{border-right:1px solid #ebebeb;border-bottom:1px solid #ebebeb;display:flex;flex-direction:column;transition:background .2s;}
+    .bc:hover{background:#fafafa;}
+    .bc-img{position:relative;aspect-ratio:4/3;overflow:hidden;background:#f0f0f0;flex-shrink:0;}
+    .bc-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .55s cubic-bezier(.16,1,.3,1);}
+    .bc:hover .bc-img img{transform:scale(1.04);}
+    .bc-img-ph{position:absolute;inset:0;background:linear-gradient(135deg,#0a0a0a,#1a1a1a);display:flex;align-items:center;justify-content:center;}
+    .bc-img-ph svg{width:32px;height:32px;stroke:rgba(139,0,0,.2);fill:none;stroke-width:1.2;}
+    .bc-badge{position:absolute;top:0;left:0;background:#8B0000;color:#fff;font-family:'Montserrat',sans-serif;font-size:7px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:5px 9px;}
+    .bc-body{padding:16px 14px 18px;display:flex;flex-direction:column;flex:1;}
+    .bc-brand{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#8B0000;margin-bottom:3px;}
+    .bc-name{font-family:'Oswald',sans-serif;font-size:16px;font-weight:700;color:#111;line-height:1.1;margin-bottom:5px;}
+    .bc-fit{font-family:'Inter',sans-serif;font-size:12px;color:#6b7280;margin-bottom:12px;flex:1;}
+    .bc-actions{display:flex;flex-direction:column;gap:7px;margin-top:auto;}
+    .btn-quote-sm{display:flex;align-items:center;justify-content:center;height:42px;background:#8B0000;color:#fff;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;border-radius:0;transition:background .2s;}
+    .btn-quote-sm:hover{background:#6e0000;}
+    .btn-view-sm{display:flex;align-items:center;justify-content:center;gap:5px;height:38px;background:#fff;color:#424954;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;text-decoration:none;border:1px solid #ddd;border-radius:0;transition:border-color .2s,color .2s;}
+    .btn-view-sm:hover{border-color:#8B0000;color:#8B0000;}
+    .btn-view-sm svg{width:11px;height:11px;fill:none;stroke:currentColor;stroke-width:2.5;flex-shrink:0;}
+
+    /* ── CATEGORY CARDS ── */
+    .cat-section{background:#0a0a0a;padding:56px 20px;border-top:3px solid #8B0000;}
+    .cat-section .label{color:#8B0000;margin-bottom:0;}
+    .cat-section .rule{background:#8B0000;margin:12px 0 14px;}
+    .cat-section h2{font-family:'Montserrat',sans-serif;font-size:22px;font-weight:900;letter-spacing:-0.5px;color:#fff;margin-bottom:8px;text-wrap:balance;}
+    .cat-section h2 em{font-style:normal;color:#8B0000;}
+    .cat-section p{font-family:'Inter',sans-serif;font-size:15px;color:rgba(255,255,255,0.60);line-height:1.65;margin-bottom:32px;text-wrap:pretty;}
+    .cat-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;}
+    .cat-card{position:relative;overflow:hidden;aspect-ratio:4/3;text-decoration:none;display:block;}
+    .cat-card-bg{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform .6s cubic-bezier(.16,1,.3,1);}
+    .cat-card:hover .cat-card-bg{transform:scale(1.06);}
+    .cat-card-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.90) 0%,rgba(0,0,0,0.35) 60%,rgba(0,0,0,0.10) 100%);transition:background .3s;}
+    .cat-card:hover .cat-card-overlay{background:linear-gradient(to top,rgba(139,0,0,0.80) 0%,rgba(0,0,0,0.45) 60%,rgba(0,0,0,0.15) 100%);}
+    .cat-card-body{position:absolute;bottom:0;left:0;right:0;padding:16px;}
+    .cat-card-tag{font-family:'Montserrat',sans-serif;font-size:8px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,0.50);margin-bottom:4px;display:block;}
+    .cat-card-name{font-family:'Montserrat',sans-serif;font-size:14px;font-weight:900;color:#fff;letter-spacing:-0.3px;text-transform:uppercase;margin-bottom:6px;line-height:1.1;}
+    .cat-card-btn{display:inline-flex;align-items:center;gap:5px;height:32px;padding:0 12px;background:#8B0000;color:#fff;font-family:'Montserrat',sans-serif;font-size:9px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;border-radius:0;}
+    .cat-card-btn svg{width:10px;height:10px;stroke:currentColor;fill:none;stroke-width:2.5;}
+    /* wide card spans full width */
+    .cat-card.wide{grid-column:1/-1;aspect-ratio:21/8;}
+
+    /* ── CTA BAND ── */
+    .cta-band{background:#8B0000;padding:56px 20px;text-align:center;}
+    .cta-band .label{color:rgba(255,255,255,0.75);text-align:center;margin:0 auto;}
+    .cta-band .rule{background:rgba(255,255,255,0.40);margin:12px auto 18px;}
+    .cta-band h2{font-family:'Montserrat',sans-serif;font-size:22px;font-weight:900;letter-spacing:-0.5px;color:#fff;margin-bottom:12px;text-wrap:balance;}
+    .cta-band-tagline{border-left:2px solid rgba(255,255,255,0.40);padding-left:14px;font-family:'Inter',sans-serif;font-size:14px;font-weight:500;color:rgba(255,255,255,0.80);line-height:1.75;max-width:380px;margin:0 auto 28px;text-align:left;text-wrap:pretty;}
+    .btn-white{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:48px;padding:0 40px;background:#fff;color:#8B0000;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border-radius:0;transition:background .2s,color .2s;}
+    .btn-white:hover{background:transparent;color:#fff;outline:2px solid #fff;}
+    .btn-white svg{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:2.2;flex-shrink:0;}
+
+    /* ── TABLET ── */
+    @media(min-width:600px){
+      .hero{min-height:480px;}
+      .hero-content{padding:72px 40px 56px;max-width:640px;}
+      .hero h1{font-size:40px;}
+      .section-header{padding:56px 40px 40px;}
+      .section-header h2{font-size:30px;letter-spacing:-1px;}
+      .products-wrap{padding:0 40px 64px;}
+      .border-grid{grid-template-columns:repeat(3,1fr);}
+      .cat-section{padding:64px 40px;}
+      .cat-section h2{font-size:30px;letter-spacing:-1px;}
+      .cat-grid{grid-template-columns:repeat(3,1fr);}
+      .cat-card{aspect-ratio:3/2;}
+      .cat-card.wide{grid-column:1/-1;aspect-ratio:21/7;}
+      .cta-band{padding:64px 40px;}
+      .cta-band h2{font-size:30px;letter-spacing:-1px;}
+    }
+    /* ── DESKTOP ── */
+    @media(min-width:960px){
+      .hero{min-height:560px;}
+      .hero-content{padding:80px 56px 64px;max-width:760px;}
+      .hero h1{font-size:clamp(40px,6vw,68px);letter-spacing:-2px;}
+      .section-header{padding:64px 56px 44px;}
+      .products-wrap{padding:0 56px 80px;}
+      .border-grid{grid-template-columns:repeat(3,1fr);}
+      .cat-section{padding:80px 56px;}
+      .cat-grid{grid-template-columns:repeat(3,1fr);}
+      .cta-band{padding:80px 56px;}
+    }
+    @media(max-width:380px){
+      .border-grid{grid-template-columns:1fr;}
+      .cat-grid{grid-template-columns:1fr;}
+      .cat-card.wide{grid-column:1;}
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── CATEGORY NAV ── -->
+<nav class="cat-nav">
+  <p class="shop-nav-hint">Select a category to view products</p>
+  <div class="shop-nav-tabs">
+    <a href="https://www.3jsautobody.com/exterior-accessories" class="shop-nav-link" target="_top"><svg style="width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;flex-shrink:0;margin-right:6px;" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>All</a>
+    <a href="https://www.3jsautobody.com/exterior-accessories/tonneau-covers" class="shop-nav-link" target="_top">Tonneau Covers</a>
+    <a href="https://www.3jsautobody.com/exterior-accessories/running-boards-side-steps" class="shop-nav-link" target="_top">Steps &amp; Running Boards</a>
+    <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/floor-liners.html" class="shop-nav-link" target="_top">Floor Liners</a>
+    <a href="https://www.3jsautobody.com/exterior-accessories/premium-led-offroad-lighting" class="shop-nav-link active" target="_top">Lighting</a>
+    <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/headache-racks.html" class="shop-nav-link" target="_top">Headache Racks</a>
+    <a href="https://www.3jsautobody.com/request-a-quote" class="shop-nav-link" target="_top">Elevate Rack</a>
+    <a href="https://www.3jsautobody.com/request-a-quote" class="shop-nav-link" target="_top">Towing &amp; Hitches</a>
+    <a href="https://www.3jsautobody.com/request-a-quote" class="shop-nav-link" target="_top">Bull Bars</a>
+    <a href="https://www.3jsautobody.com/request-a-quote" class="shop-nav-link" target="_top">Tool Boxes</a>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<header class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-overlay-side"></div>
+  <div class="hero-content">
+    <span class="label" style="color:rgba(255,255,255,0.55);">3J's Auto Body · Signal Hill, CA</span>
+    <span class="rule"></span>
+    <h1>Premium LED<br><em>Lighting</em></h1>
+    <p class="hero-tagline">Headlights, tail lights, off-road pods and fog lights for trucks, SUVs and Jeeps — sourced from the top brands, installed right here in Signal Hill.</p>
+    <div class="hero-ctas">
+      <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/lighting-catalog.html" target="_top" class="btn-primary">
+        <svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h7"/></svg>
+        Browse All Products
+      </a>
+      <a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-glass">
+        <svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+        Get a Quote
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- ── BRAND STRIP ── -->
+<div class="brand-strip">
+  <div class="brand-strip-inner">
+    <span class="brand-strip-label">Brands We Carry</span>
+    <div class="brand-strip-divider"></div>
+    <span class="brand-item">Morimoto</span>
+    <div class="brand-strip-divider"></div>
+    <span class="brand-item">Baja Designs</span>
+    <div class="brand-strip-divider"></div>
+    <span class="brand-item">Rigid Industries</span>
+    <div class="brand-strip-divider"></div>
+    <span class="brand-item">Spyder Auto</span>
+    <div class="brand-strip-divider"></div>
+    <span class="brand-item">AlphaRex</span>
+  </div>
+</div>
+
+<!-- ── BEST SELLERS ── -->
+<div class="section-header">
+  <span class="label">Top Picks</span>
+  <span class="rule"></span>
+  <h2>Best Selling <em>Lighting Upgrades</em></h2>
+  <p>The most popular headlights, tail lights and off-road lighting for trucks, SUVs and Jeeps — professionally installed at 3J's.</p>
+</div>
+
+<div class="products-wrap">
+  <div class="border-grid">
+
+    <!-- Morimoto XB LED Headlights F-150 21-23 -->
+    <div class="bc">
+      <div class="bc-img">
+        <img src="https://5129608.app.netsuite.com/images/Item%20Images/105134.010.jpg" alt="Morimoto XB LED Headlights Ford F-150 2021-2023" loading="lazy">
+        <div class="bc-badge">Best Seller</div>
+      </div>
+      <div class="bc-body">
+        <div class="bc-brand">Morimoto</div>
+        <div class="bc-name">XB LED Headlights</div>
+        <p class="bc-fit">Ford F-150 · 2021–2023 · Bi-LED Projector · Amber DRL</p>
+        <div class="bc-actions">
+          <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/lighting-catalog.html#headlights" target="_top" class="btn-view-sm">View Options <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></a>
+          <a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote-sm">Get a Quote</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Morimoto XB LED Headlights Bronco -->
+    <div class="bc">
+      <div class="bc-img">
+        <img src="https://5129608.app.netsuite.com/images/Item%20Images/108777.010.jpg" alt="Morimoto XB LED Headlights Ford Bronco 2021+" loading="lazy">
+        <div class="bc-badge">Popular</div>
+      </div>
+      <div class="bc-body">
+        <div class="bc-brand">Morimoto</div>
+        <div class="bc-name">XB LED Headlights</div>
+        <p class="bc-fit">Ford Bronco · 2021+ · Bi-LED Projector · Amber DRL</p>
+        <div class="bc-actions">
+          <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/lighting-catalog.html#headlights" target="_top" class="btn-view-sm">View Options <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></a>
+          <a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote-sm">Get a Quote</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- AlphaRex NOVA 4Runner -->
+    <div class="bc">
+      <div class="bc-img">
+        <img src="https://5129608.app.netsuite.com/images/Item%20Images/106603.14_20_Toyota_4Runner_AlphaRex_Nova_G2_Headlights_Alpha_Black.010.jpg" alt="AlphaRex NOVA Headlights Toyota 4Runner 2014-2020" loading="lazy">
+        <div class="bc-badge">Fan Favorite</div>
+      </div>
+      <div class="bc-body">
+        <div class="bc-brand">AlphaRex</div>
+        <div class="bc-name">NOVA-Series Headlights</div>
+        <p class="bc-fit">Toyota 4Runner · 2014–2020 · LED Projector · DRL Sequence</p>
+        <div class="bc-actions">
+          <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/lighting-catalog.html#headlights" target="_top" class="btn-view-sm">View Options <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></a>
+          <a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote-sm">Get a Quote</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Morimoto XB LED Tail Lights Jeep Wrangler JL -->
+    <div class="bc">
+      <div class="bc-img">
+        <img src="https://5129608.app.netsuite.com/images/Item%20Images/108265.010.jpg" alt="Morimoto XB LED Tail Lights Jeep Wrangler JL" loading="lazy">
+        <div class="bc-badge">Jeep</div>
+      </div>
+      <div class="bc-body">
+        <div class="bc-brand">Morimoto</div>
+        <div class="bc-name">XB LED Tail Lights</div>
+        <p class="bc-fit">Jeep Wrangler JL · 2018+ · Smoked Lens · DOT/SAE</p>
+        <div class="bc-actions">
+          <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/lighting-catalog.html#taillights" target="_top" class="btn-view-sm">View Options <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></a>
+          <a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote-sm">Get a Quote</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- AlphaRex LUXX Tail Lights F-150 -->
+    <div class="bc">
+      <div class="bc-img">
+        <img src="https://5129608.app.netsuite.com/images/Item%20Images/107121.Arex_21_23_Ford_f150_Luxx_Tails_Alpha_Black.010.jpg" alt="AlphaRex LUXX Tail Lights Ford F-150 2021-2023" loading="lazy">
+        <div class="bc-badge">New Style</div>
+      </div>
+      <div class="bc-body">
+        <div class="bc-brand">AlphaRex</div>
+        <div class="bc-name">LUXX-Series Tail Lights</div>
+        <p class="bc-fit">Ford F-150 · 2021–2023 · Sequential Turn · Alpha Black</p>
+        <div class="bc-actions">
+          <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/lighting-catalog.html#taillights" target="_top" class="btn-view-sm">View Options <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></a>
+          <a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote-sm">Get a Quote</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Morimoto XB Evo+ Fog Lights -->
+    <div class="bc">
+      <div class="bc-img">
+        <img src="https://5129608.app.netsuite.com/images/Item%20Images/132261.010.jpg" alt="Morimoto XB Evo+ Fog Lights Ford F-150" loading="lazy">
+        <div class="bc-badge">Dual Color</div>
+      </div>
+      <div class="bc-body">
+        <div class="bc-brand">Morimoto</div>
+        <div class="bc-name">XB Evo+ Fog Lights</div>
+        <p class="bc-fit">Ford F-150 · 2015–2020 · White + Yellow Switchable · SAE</p>
+        <div class="bc-actions">
+          <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/lighting-catalog.html#foglights" target="_top" class="btn-view-sm">View Options <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></a>
+          <a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote-sm">Get a Quote</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── BROWSE BY CATEGORY ── -->
+<div class="cat-section">
+  <span class="label">Browse By Type</span>
+  <span class="rule"></span>
+  <h2>What Are You<br><em>Looking For?</em></h2>
+  <p>Select a lighting category below to see all available products, brands and fitments for your truck, SUV or Jeep.</p>
+
+  <div class="cat-grid">
+
+    <!-- Headlights -->
+    <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/lighting-catalog.html#headlights" target="_top" class="cat-card">
+      <div class="cat-card-bg" style="background-image:url('https://5129608.app.netsuite.com/images/Item%20Images/105134.010.jpg');"></div>
+      <div class="cat-card-overlay"></div>
+      <div class="cat-card-body">
+        <span class="cat-card-tag">Morimoto · AlphaRex · Spyder</span>
+        <div class="cat-card-name">Headlights</div>
+        <span class="cat-card-btn">Shop Now <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></span>
+      </div>
+    </a>
+
+    <!-- Tail Lights -->
+    <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/lighting-catalog.html#taillights" target="_top" class="cat-card">
+      <div class="cat-card-bg" style="background-image:url('https://5129608.app.netsuite.com/images/Item%20Images/108265.010.jpg');"></div>
+      <div class="cat-card-overlay"></div>
+      <div class="cat-card-body">
+        <span class="cat-card-tag">Morimoto · AlphaRex · Spyder</span>
+        <div class="cat-card-name">Tail Lights</div>
+        <span class="cat-card-btn">Shop Now <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></span>
+      </div>
+    </a>
+
+    <!-- Off-Road Lights — wide -->
+    <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/lighting-catalog.html#offroad" target="_top" class="cat-card wide">
+      <div class="cat-card-bg" style="background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/offroad-lighting-hero.png');background-position:center 60%;"></div>
+      <div class="cat-card-overlay"></div>
+      <div class="cat-card-body">
+        <span class="cat-card-tag">Rigid Industries · Baja Designs · Morimoto</span>
+        <div class="cat-card-name">Off-Road Lights</div>
+        <span class="cat-card-btn">Shop Now <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></span>
+      </div>
+    </a>
+
+    <!-- Fog Lights -->
+    <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/lighting-catalog.html#foglights" target="_top" class="cat-card">
+      <div class="cat-card-bg" style="background-image:url('https://5129608.app.netsuite.com/images/Item%20Images/132261.010.jpg');"></div>
+      <div class="cat-card-overlay"></div>
+      <div class="cat-card-body">
+        <span class="cat-card-tag">Morimoto · Spyder</span>
+        <div class="cat-card-name">Fog Lights</div>
+        <span class="cat-card-btn">Shop Now <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></span>
+      </div>
+    </a>
+
+    <!-- DRL & Signals -->
+    <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/lighting-catalog.html#drl" target="_top" class="cat-card">
+      <div class="cat-card-bg" style="background-image:url('https://5129608.app.netsuite.com/images/Item%20Images/109304.010.jpg');"></div>
+      <div class="cat-card-overlay"></div>
+      <div class="cat-card-body">
+        <span class="cat-card-tag">Morimoto · GTR Lighting</span>
+        <div class="cat-card-name">DRL &amp; Signals</div>
+        <span class="cat-card-btn">Shop Now <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- ── CTA BAND ── -->
+<div class="cta-band">
+  <span class="label">We'll Help You Choose</span>
+  <span class="rule"></span>
+  <h2>Not Sure What You Need?</h2>
+  <p class="cta-band-tagline">Our team will find the right lighting upgrade for your specific truck — and install it professionally right here in Signal Hill.</p>
+  <a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-white">
+    <svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+    Request a Free Quote
+  </a>
+</div>
+
+<div id="sentinel" style="height:1px;"></div>
+<script>
+  function reportHeight(){
+    var h=Math.max(document.body.scrollHeight,document.body.offsetHeight,document.documentElement.scrollHeight,document.documentElement.offsetHeight);
+    window.parent.postMessage(JSON.stringify({height:h}),'*');
+  }
+  document.addEventListener('DOMContentLoaded',reportHeight);
+  window.addEventListener('load',function(){[0,200,500,1000,2000,3500].forEach(function(t){setTimeout(reportHeight,t);});});
+  window.addEventListener('resize',reportHeight);
+  if(window.ResizeObserver){new ResizeObserver(reportHeight).observe(document.body);}
+</script>
+</body>
+</html>
