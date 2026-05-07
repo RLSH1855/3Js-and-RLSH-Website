@@ -1283,12 +1283,6 @@ document.addEventListener('DOMContentLoaded',reportHeight);
 window.addEventListener('load',function(){[0,200,500,1000,2000,3500].forEach(function(t){setTimeout(reportHeight,t);});});
 window.addEventListener('resize',reportHeight);
 if(window.ResizeObserver){new ResizeObserver(reportHeight).observe(document.body);}
-
-// enable scrolling when viewed directly (not embedded in Wix)
-if(window.self === window.top){
-  document.documentElement.style.overflow = 'auto';
-  document.body.style.overflowY = 'auto';
-}
 </script>
 
 <div id="height-sentinel" style="height:1px;width:1px;visibility:hidden;pointer-events:none;"></div>
