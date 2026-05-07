@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BAKFlip Tonneau Covers — MX4, G2, F1, Revolver | 3J's Auto Body Signal Hill CA</title>
+  <meta name="description" content="BAKFlip tonneau covers professionally installed at 3J's Auto Body in Signal Hill, CA. MX4, G2, F1, Revolver X4s and more. Free quote. (562) 424-6744.">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{overflow-x:hidden;overflow-y:scroll;scrollbar-width:none;}
+    html::-webkit-scrollbar{display:none;}
+    body{font-family:'Inter',sans-serif;overflow-x:hidden;overflow-y:hidden;background:#fff;color:#424954;}
+
+    [data-anim]{opacity:0;transition:opacity 0.65s ease,transform 0.65s ease;}
+    [data-anim="fade-up"]{transform:translateY(28px);}
+    [data-anim="fade-in"]{transform:none;}
+    [data-anim].visible{opacity:1;transform:none;}
+    [data-delay="100"]{transition-delay:.10s;}
+    [data-delay="200"]{transition-delay:.20s;}
+    [data-delay="300"]{transition-delay:.30s;}
+    [data-delay="400"]{transition-delay:.40s;}
+
+    .eyebrow{font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:#8B0000;display:block;margin-bottom:10px;}
+
+    /* ── CATEGORY NAV ── */
+    .cat-nav{background:#0a0a0a;overflow-x:auto;white-space:nowrap;scrollbar-width:none;border-bottom:2px solid #1e1e1e;}
+    .cat-nav::-webkit-scrollbar{display:none;}
+    .cat-nav-inner{display:flex;min-width:max-content;}
+    .cat-nav-link{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;padding:12px 14px;min-width:64px;font-family:'Montserrat',sans-serif;font-size:9px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;color:rgba(255,255,255,0.75);border-bottom:2px solid transparent;transition:color .2s,border-color .2s;white-space:nowrap;flex-shrink:0;}
+    .cat-nav-link:hover{color:#fff;}
+    .cat-nav-link.active{color:#e02020;border-bottom-color:#e02020;}
+    .cat-nav-link .nav-img{width:44px;height:32px;object-fit:cover;border-radius:0;opacity:.65;transition:opacity .2s;}
+    .cat-nav-link:hover .nav-img,.cat-nav-link.active .nav-img{opacity:1;}
+    .cat-nav-link.active .nav-img{outline:2px solid #e02020;outline-offset:2px;}
+    .cat-nav-link .nav-icon{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+
+    /* ── BRAND NAV ── */
+    .brand-nav{background:#111;border-bottom:1px solid #222;overflow-x:auto;scrollbar-width:none;}
+    .brand-nav::-webkit-scrollbar{display:none;}
+    .brand-nav-inner{display:flex;min-width:max-content;padding:0 4px;}
+    .brand-nav-link{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;padding:12px 18px;min-width:80px;text-decoration:none;border-bottom:2px solid transparent;transition:border-color .2s;flex-shrink:0;}
+    .brand-nav-link img{height:24px;width:auto;max-width:72px;object-fit:contain;filter:brightness(0) invert(1);opacity:.35;transition:opacity .2s;}
+    .brand-nav-link:hover img{opacity:.65;}
+    .brand-nav-link.active img{opacity:1;}
+    .brand-nav-link.active{border-bottom-color:#8B0000;}
+    .brand-nav-label{font-family:'Montserrat',sans-serif;font-size:8px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.40);transition:color .2s;}
+    .brand-nav-link:hover .brand-nav-label{color:rgba(255,255,255,.75);}
+    .brand-nav-link.active .brand-nav-label{color:#fff;}
+
+    /* ── HERO ── */
+    .hero{background:#111;padding:72px 20px 60px;text-align:center;position:relative;overflow:hidden;}
+    .hero-bg{position:absolute;inset:0;background:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/bak-bakflip-mx4-2016-ford-f150-blue-beach-lifestyle-05.jpg') center 40%/cover no-repeat;transform:scale(1.04);}
+    .hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.62) 0%,rgba(0,0,0,.48) 55%,rgba(0,0,0,.72) 100%);}
+    .hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(to right,transparent,#8B0000 25%,#8B0000 75%,transparent);z-index:2;}
+    .hero-content{position:relative;z-index:1;}
+    .hero-eyebrow{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.65);display:block;margin-bottom:14px;}
+    .hero h1{font-family:'Montserrat',sans-serif;font-size:clamp(30px,7vw,64px);font-weight:800;letter-spacing:-1.5px;line-height:1.0;text-transform:uppercase;color:#fff;margin-bottom:12px;text-wrap:balance;}
+    .hero h1 em{font-style:normal;color:#8B0000;}
+    .hero-sub{font-family:'Inter',sans-serif;font-size:15px;color:rgba(255,255,255,.78);max-width:480px;margin:0 auto 28px;line-height:1.65;}
+    .hero-ctas{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;}
+
+    /* ── BUTTONS ── */
+    .btn-primary{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:48px;padding:0 32px;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border-radius:0;background:#8B0000;color:#fff;border:2px solid #8B0000;transition:background .25s,border-color .25s;}
+    .btn-primary:hover{background:#a00000;border-color:#a00000;}
+    .btn-glass{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:48px;padding:0 28px;background:rgba(255,255,255,.13);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);color:#fff;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border:1.5px solid rgba(255,255,255,.50);border-radius:0;transition:background .2s,border-color .2s;}
+    .btn-glass:hover{background:rgba(255,255,255,.22);border-color:rgba(255,255,255,.8);}
+    .btn-primary svg,.btn-glass svg{width:14px;height:14px;flex-shrink:0;fill:none;stroke:currentColor;stroke-width:2.2;}
+
+    /* ── TYPE FILTER BAR ── */
+    .type-filter{background:#f5f5f5;border-bottom:1px solid #e4e4e4;display:flex;overflow-x:auto;scrollbar-width:none;}
+    .type-filter::-webkit-scrollbar{display:none;}
+    .type-btn{display:inline-flex;align-items:center;height:48px;padding:0 22px;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#999;background:none;border:none;border-bottom:2px solid transparent;cursor:pointer;white-space:nowrap;transition:color .2s,border-color .2s;flex-shrink:0;}
+    .type-btn:hover{color:#424954;}
+    .type-btn.active{color:#8B0000;border-bottom-color:#8B0000;}
+
+    /* ── PRODUCTS SECTION ── */
+    .products-section{padding:36px 20px 64px;}
+
+    /* ── TYPE LABEL ── */
+    .type-label{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:#8B0000;border-top:1px solid #ebebeb;padding-top:36px;margin-top:44px;margin-bottom:20px;}
+    .type-label:first-child{border-top:none;padding-top:0;margin-top:0;}
+
+    /* ── CARDS GRID ── */
+    .cards-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+
+    /* ── PRODUCT CARD ── */
+    .product-card{background:#fff;border:1px solid #e4e4e4;display:flex;flex-direction:column;transition:box-shadow .25s,border-color .25s;}
+    .product-card:hover{border-color:#ccc;box-shadow:0 4px 20px rgba(0,0,0,.08);}
+    .card-img{position:relative;aspect-ratio:4/3;overflow:hidden;background:#111;}
+    .card-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease;}
+    .product-card:hover .card-img img{transform:scale(1.04);}
+    .card-img-ph{position:absolute;inset:0;background:linear-gradient(135deg,#0a0a0a,#1c1c1c);display:flex;align-items:center;justify-content:center;}
+    .card-img-ph svg{width:36px;height:36px;stroke:rgba(139,0,0,.25);fill:none;stroke-width:1.2;}
+    .card-badge{position:absolute;top:10px;left:10px;background:#8B0000;color:#fff;font-family:'Montserrat',sans-serif;font-size:8px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:4px 8px;}
+    .card-body{padding:13px;display:flex;flex-direction:column;flex:1;}
+    .card-brand{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#8B0000;margin-bottom:2px;}
+    .card-name{font-family:'Montserrat',sans-serif;font-size:14px;font-weight:800;letter-spacing:-.3px;color:#111;margin-bottom:6px;line-height:1.2;}
+    .card-tagline{font-size:12px;color:#6b7280;line-height:1.55;margin-bottom:10px;flex:1;}
+    .card-chips{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:12px;}
+    .card-chip{font-family:'Montserrat',sans-serif;font-size:8px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:#555;background:#f3f3f3;border:1px solid #e0e0e0;padding:3px 7px;}
+    .card-actions{display:flex;flex-direction:column;gap:7px;}
+    .btn-quote{display:flex;align-items:center;justify-content:center;height:44px;background:#8B0000;color:#fff;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;border-radius:0;transition:background .2s;}
+    .btn-quote:hover{background:#a00000;}
+    .btn-view{display:flex;align-items:center;justify-content:center;height:40px;background:#fff;color:#555;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;text-decoration:none;border:1.5px solid #d8d8d8;border-radius:0;transition:border-color .2s,color .2s;}
+    .btn-view:hover{border-color:#8B0000;color:#8B0000;}
+
+    /* ── CTA BAND ── */
+    .cta-band{background:#8B0000;padding:56px 24px;text-align:center;}
+    .cta-band h2{font-family:'Montserrat',sans-serif;font-size:clamp(22px,5vw,36px);font-weight:800;letter-spacing:-.5px;color:#fff;margin-bottom:10px;text-wrap:balance;}
+    .cta-band p{font-size:14px;color:rgba(255,255,255,.80);margin-bottom:28px;max-width:420px;margin-left:auto;margin-right:auto;line-height:1.65;}
+    .btn-white{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:48px;padding:0 36px;background:#fff;color:#8B0000;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border-radius:0;border:2px solid #fff;transition:background .2s,color .2s;}
+    .btn-white:hover{background:transparent;color:#fff;}
+    .btn-white svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2.2;}
+
+    /* ── DESKTOP ── */
+    @media(min-width:540px){
+      .cat-nav-inner{justify-content:center;}
+      .brand-nav-inner{justify-content:center;padding:0;}
+      .cards-grid{grid-template-columns:repeat(3,1fr);gap:18px;}
+      .products-section{padding:48px 32px 72px;}
+    }
+    @media(min-width:900px){
+      .cards-grid{grid-template-columns:repeat(4,1fr);gap:20px;}
+      .products-section{padding:56px 40px 80px;}
+      .hero{padding:100px 40px 88px;}
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── CATEGORY NAV ── -->
+<nav class="cat-nav">
+  <div class="cat-nav-inner">
+    <a href="https://www.3jsautobody.com/exterior-accessories" class="cat-nav-link" target="_top">
+      <svg class="nav-icon" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+      All
+    </a>
+    <a href="https://www.3jsautobody.com/exterior-accessories/tonneau-covers" class="cat-nav-link active" target="_top">
+      <img class="nav-img" src="https://rlsh1855.github.io/3Js-and-RLSH-Website/bak-bakflip-mx4-2016-ford-f150-blue-beach-lifestyle-05.jpg" alt="Tonneau Covers" loading="lazy">
+      Tonneau
+    </a>
+    <a href="https://www.3jsautobody.com/exterior-accessories/running-boards-side-steps" class="cat-nav-link" target="_top">
+      <img class="nav-img" src="https://rlsh1855.github.io/3Js-and-RLSH-Website/5d56c609b11c3b0319357d221d9b1677.png" alt="Steps" loading="lazy">
+      Steps
+    </a>
+    <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/floor-liners.html" class="cat-nav-link" target="_top">
+      <img class="nav-img" src="https://rlsh1855.github.io/3Js-and-RLSH-Website/FLOOR%20LINERS%20IMAGE.jpeg" alt="Floor Liners" loading="lazy">
+      Floor Liners
+    </a>
+    <a href="https://www.3jsautobody.com/exterior-accessories/premium-led-offroad-lighting" class="cat-nav-link" target="_top">
+      <img class="nav-img" src="https://rlsh1855.github.io/3Js-and-RLSH-Website/offroad-lighting-hero.png" alt="Lighting" loading="lazy">
+      Lighting
+    </a>
+    <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/headache-racks.html" class="cat-nav-link" target="_top">
+      <img class="nav-img" src="https://www.catalograck.com/ImgVDHR/BAC/BRK_Safety_Frm_closeup_v2.jpg" alt="Headache Racks" loading="lazy">
+      Headache Rack
+    </a>
+    <a href="https://www.3jsautobody.com/request-a-quote" class="cat-nav-link" target="_top">
+      <img class="nav-img" src="https://rlsh1855.github.io/3Js-and-RLSH-Website/Elevate%20Base%20Truck%20Rack.jpg" alt="Elevate Rack" loading="lazy">
+      Elevate Rack
+    </a>
+    <a href="https://www.3jsautobody.com/request-a-quote" class="cat-nav-link" target="_top">
+      <img class="nav-img" src="https://rlsh1855.github.io/3Js-and-RLSH-Website/B%26W%20Hitches%201.png" alt="Towing" loading="lazy">
+      Towing
+    </a>
+  </div>
+</nav>
+
+<!-- ── BRAND NAV ── -->
+<nav class="brand-nav">
+  <div class="brand-nav-inner">
+    <a href="bakflip-tonneau.html" class="brand-nav-link active" target="_top">
+      <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/brand-logo%20(12).jpeg" alt="BAKFlip">
+      <span class="brand-nav-label">BAKFlip</span>
+    </a>
+    <a href="undercover-tonneau.html" class="brand-nav-link" target="_top">
+      <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/brand-logo%20(2).png" alt="UnderCover">
+      <span class="brand-nav-label">UnderCover</span>
+    </a>
+    <a href="extang-tonneau.html" class="brand-nav-link" target="_top">
+      <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/brand-logo%20(6).png" alt="Extang">
+      <span class="brand-nav-label">Extang</span>
+    </a>
+    <a href="truxedo-tonneau.html" class="brand-nav-link" target="_top">
+      <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/brand-logo%20(4).jpeg" alt="TruXedo">
+      <span class="brand-nav-label">TruXedo</span>
+    </a>
+    <a href="retrax-tonneau.html" class="brand-nav-link" target="_top">
+      <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/brand-logo%20(15).jpeg" alt="Retrax">
+      <span class="brand-nav-label">Retrax</span>
+    </a>
+    <a href="rollnlock-tonneau.html" class="brand-nav-link" target="_top">
+      <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/roll-n-lock-logo.png" alt="Roll-N-Lock">
+      <span class="brand-nav-label">Roll-N-Lock</span>
+    </a>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<header class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-eyebrow" data-anim="fade-up">Tonneau Covers · Signal Hill, CA</span>
+    <h1 data-anim="fade-up" data-delay="100">BAKFlip <em>Covers</em></h1>
+    <p class="hero-sub" data-anim="fade-up" data-delay="200">The world's best-selling hard folding tonneau cover — engineered in the USA, professionally installed right here in Signal Hill.</p>
+    <div class="hero-ctas" data-anim="fade-up" data-delay="300">
+      <a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-primary">
+        <svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+        Get a Quote
+      </a>
+      <a href="tel:5624246744" class="btn-glass">
+        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.95 10.5 19.79 19.79 0 01.88 1.87 2 2 0 012.86 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0121.22 14l.7 2.92z"/></svg>
+        (562) 424-6744
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- ── TYPE FILTER ── -->
+<div class="type-filter">
+  <button class="type-btn active" onclick="filterType(this,'all')">All Models</button>
+  <button class="type-btn" onclick="filterType(this,'hard-fold')">Hard Folding</button>
+  <button class="type-btn" onclick="filterType(this,'roll-up')">Hard Roll-Up</button>
+</div>
+
+<!-- ── PRODUCTS ── -->
+<section class="products-section">
+
+  <div class="type-label" id="label-hard-fold">Hard Folding Covers</div>
+  <div class="cards-grid" id="grid-hard-fold">
+
+    <div class="product-card" data-anim="fade-up">
+      <div class="card-img">
+        <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/bak-bakflip-mx4-2016-ford-f150-blue-beach-lifestyle-05.jpg" alt="BAKFlip MX4 GEN 3" loading="lazy">
+        <div class="card-badge">Best Seller</div>
+      </div>
+      <div class="card-body">
+        <div class="card-brand">BAKFlip</div>
+        <div class="card-name">MX4 (GEN 3)</div>
+        <p class="card-tagline">Aircraft-grade aluminum with matte black finish. Re-engineered Gen 3 security system and best-in-class weather sealing.</p>
+        <div class="card-chips">
+          <span class="card-chip">Hard Fold</span>
+          <span class="card-chip">Made in USA</span>
+          <span class="card-chip">5-yr Warranty</span>
+        </div>
+        <div class="card-actions">
+          <a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote">Get a Quote</a>
+          <a href="https://www.3jsautobody.com/bakflip-mx4" target="_top" class="btn-view">View Details</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card" data-anim="fade-up" data-delay="100">
+      <div class="card-img">
+        <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/bak-bakflip-mx4-2017-ford-f150-silver-surfer-lifestyle-02.png" alt="BAKFlip MX4 TS GEN 3" loading="lazy">
+        <div class="card-badge">T-Slot</div>
+      </div>
+      <div class="card-body">
+        <div class="card-brand">BAKFlip</div>
+        <div class="card-name">MX4 TS (GEN 3)</div>
+        <p class="card-tagline">All the security of the MX4 with integrated T-Slot rails — ready for racks, lights, and cargo accessories.</p>
+        <div class="card-chips">
+          <span class="card-chip">Hard Fold</span>
+          <span class="card-chip">T-Slot Rails</span>
+          <span class="card-chip">Rack Ready</span>
+        </div>
+        <div class="card-actions">
+          <a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote">Get a Quote</a>
+          <a href="https://www.3jsautobody.com/exterior-accessories" target="_top" class="btn-view">View Details</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card" data-anim="fade-up" data-delay="200">
+      <div class="card-img">
+        <div class="card-img-ph">
+          <svg viewBox="0 0 24 24"><rect x="2" y="8" width="20" height="10"/><path d="M2 12h20M6 8V6m12 2V6"/></svg>
+        </div>
+        <div class="card-badge">Classic</div>
+      </div>
+      <div class="card-body">
+        <div class="card-brand">BAKFlip</div>
+        <div class="card-name">G2</div>
+        <p class="card-tagline">Proven aluminum hard folding cover with a gloss black finish. Clean, simple, and reliable for everyday use.</p>
+        <div class="card-chips">
+          <span class="card-chip">Hard Fold</span>
+          <span class="card-chip">Gloss Finish</span>
+          <span class="card-chip">No Drill</span>
+        </div>
+        <div class="card-actions">
+          <a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote">Get a Quote</a>
+          <a href="https://www.3jsautobody.com/exterior-accessories" target="_top" class="btn-view">View Details</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card" data-anim="fade-up" data-delay="300">
+      <div class="card-img">
+        <div class="card-img-ph">
+          <svg viewBox="0 0 24 24"><rect x="2" y="8" width="20" height="10"/><path d="M2 12h20M6 8V6m12 2V6"/></svg>
+        </div>
+        <div class="card-badge">Lightweight</div>
+      </div>
+      <div class="card-body">
+        <div class="card-brand">BAKFlip</div>
+        <div class="card-name">F1</div>
+        <p class="card-tagline">Ultra-lightweight fiberglass hard folding cover. Hard cover rigidity and weather protection at a more accessible price point.</p>
+        <div class="card-chips">
+          <span class="card-chip">Hard Fold</span>
+          <span class="card-chip">Fiberglass</span>
+          <span class="card-chip">Lightweight</span>
+        </div>
+        <div class="card-actions">
+          <a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote">Get a Quote</a>
+          <a href="https://www.3jsautobody.com/exterior-accessories" target="_top" class="btn-view">View Details</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="type-label" id="label-roll-up">Hard Roll-Up Covers</div>
+  <div class="cards-grid" id="grid-roll-up">
+
+    <div class="product-card" data-anim="fade-up">
+      <div class="card-img">
+        <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/bak-revolver-x4s-2022-ram-1500-trx-blue.jpg" alt="BAK Revolver X4s" loading="lazy">
+        <div class="card-badge">Diamond Plate</div>
+      </div>
+      <div class="card-body">
+        <div class="card-brand">BAKFlip</div>
+        <div class="card-name">Revolver X4s</div>
+        <p class="card-tagline">Bold diamond plate aluminum texture with a flush low-profile design. Hard roll-up security with a rugged industrial look.</p>
+        <div class="card-chips">
+          <span class="card-chip">Hard Roll-Up</span>
+          <span class="card-chip">Diamond Plate</span>
+          <span class="card-chip">Low Profile</span>
+        </div>
+        <div class="card-actions">
+          <a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote">Get a Quote</a>
+          <a href="https://www.3jsautobody.com/copy-of-bakflip-mx4" target="_top" class="btn-view">View Details</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card" data-anim="fade-up" data-delay="100">
+      <div class="card-img">
+        <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/bak-revolver-x4s-2022-ram-1500-trx-blue.jpg" alt="BAK Revolver X4 TS" loading="lazy">
+        <div class="card-badge">T-Slot</div>
+      </div>
+      <div class="card-body">
+        <div class="card-brand">BAKFlip</div>
+        <div class="card-name">Revolver X4 TS</div>
+        <p class="card-tagline">Hard roll-up cover with integrated T-Slot rails — full bed access plus rack and cargo system compatibility in one package.</p>
+        <div class="card-chips">
+          <span class="card-chip">Hard Roll-Up</span>
+          <span class="card-chip">T-Slot Rails</span>
+          <span class="card-chip">Rack Ready</span>
+        </div>
+        <div class="card-actions">
+          <a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote">Get a Quote</a>
+          <a href="https://www.3jsautobody.com/exterior-accessories" target="_top" class="btn-view">View Details</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card" data-anim="fade-up" data-delay="200">
+      <div class="card-img">
+        <div class="card-img-ph">
+          <svg viewBox="0 0 24 24"><path d="M3 12h18M3 12V8h18v4M3 12v4h18v-4"/><circle cx="7" cy="16" r="1.5"/><circle cx="17" cy="16" r="1.5"/></svg>
+        </div>
+        <div class="card-badge">Value Pick</div>
+      </div>
+      <div class="card-body">
+        <div class="card-brand">BAKFlip</div>
+        <div class="card-name">Revolver X2</div>
+        <p class="card-tagline">Entry-level hard roll-up with smooth aluminum surface. All the security and weather protection of the Revolver line at a lower price.</p>
+        <div class="card-chips">
+          <span class="card-chip">Hard Roll-Up</span>
+          <span class="card-chip">Aluminum</span>
+          <span class="card-chip">No Drill</span>
+        </div>
+        <div class="card-actions">
+          <a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote">Get a Quote</a>
+          <a href="https://www.3jsautobody.com/exterior-accessories" target="_top" class="btn-view">View Details</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- ── CTA BAND ── -->
+<div class="cta-band">
+  <h2>Not Sure Which<br>BAKFlip Is Right?</h2>
+  <p>Our team will help you find the perfect cover for your truck and budget — and install it same-day right here in Signal Hill.</p>
+  <a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-white">
+    <svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+    Request a Free Quote
+  </a>
+</div>
+
+<div id="sentinel" style="height:1px;"></div>
+
+<script>
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});
+  },{threshold:0.08});
+  document.querySelectorAll('[data-anim]').forEach(el => obs.observe(el));
+
+  function filterType(btn, type) {
+    document.querySelectorAll('.type-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const hardLabel = document.getElementById('label-hard-fold');
+    const rollLabel = document.getElementById('label-roll-up');
+    const hardGrid  = document.getElementById('grid-hard-fold');
+    const rollGrid  = document.getElementById('grid-roll-up');
+    const show = (el) => el.style.display = '';
+    const hide = (el) => el.style.display = 'none';
+    if(type === 'all')       { show(hardLabel);show(hardGrid);show(rollLabel);show(rollGrid); }
+    else if(type==='hard-fold') { show(hardLabel);show(hardGrid);hide(rollLabel);hide(rollGrid); }
+    else                     { hide(hardLabel);hide(hardGrid);show(rollLabel);show(rollGrid); }
+    reportHeight();
+  }
+
+  function reportHeight() {
+    const s = document.getElementById('sentinel');
+    const h = s ? s.offsetTop + s.offsetHeight : document.body.scrollHeight;
+    window.parent.postMessage({type:'setHeight',height:h},'*');
+  }
+  window.addEventListener('load', reportHeight);
+  window.addEventListener('resize', reportHeight);
+</script>
+</body>
+</html>
