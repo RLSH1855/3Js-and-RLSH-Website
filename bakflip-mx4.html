@@ -366,15 +366,6 @@
       transition:background 0.3s;
     }
     .feat:hover{background:#fafafa;}
-    .feat-icon{
-      display:flex;align-items:center;justify-content:center;
-      margin-bottom:20px;
-      flex-shrink:0;
-    }
-    .feat-icon svg{
-      width:64px;height:64px;
-      filter:drop-shadow(0 4px 9px rgba(0,0,0,0.22));
-    }
     .feat-title{
       font-size:13px;font-weight:800;
       letter-spacing:0.5px;color:#111;
@@ -383,6 +374,38 @@
     .feat-body{
       font-size:12px;font-weight:600;
       color:#444;line-height:1.75;
+    }
+    .feat-usa{
+      padding:0;overflow:hidden;position:relative;
+      min-height:200px;cursor:default;
+    }
+    .feat-usa:hover{background:transparent;}
+    .feat-usa-bg{
+      position:absolute;inset:0;
+      background:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/MADE_IN_AMERICA_CARD_BG.webp') center/cover no-repeat;
+      transition:transform 8s ease;
+    }
+    .feat-usa:hover .feat-usa-bg{transform:scale(1.04);}
+    .feat-usa-overlay{
+      position:absolute;inset:0;
+      background:rgba(0,0,0,0.42);
+    }
+    .feat-usa-content{
+      position:relative;z-index:1;
+      display:flex;flex-direction:column;align-items:center;justify-content:center;
+      height:100%;min-height:200px;padding:32px 20px;text-align:center;
+    }
+    .feat-usa-title{
+      font-family:'Montserrat',sans-serif;
+      font-size:22px;font-weight:900;letter-spacing:3px;
+      text-transform:uppercase;color:#fff;
+      text-wrap:balance;
+    }
+    .feat-usa-sub{
+      font-family:'Inter',sans-serif;
+      font-size:11px;font-weight:600;letter-spacing:2px;
+      text-transform:uppercase;color:rgba(255,255,255,0.70);
+      margin-top:8px;
     }
 
     /* ════════════════════════════════
@@ -789,8 +812,6 @@
       .features-tiles{padding:0 20px 32px;}
       .features-grid{grid-template-columns:1fr;}
       .feat{padding:20px 18px;}
-      .feat-icon{margin-bottom:12px;}
-      .feat-icon svg{width:48px;height:48px;}
       .feat-title{font-size:13px;margin-bottom:6px;}
       .feat-body{font-size:12.5px;line-height:1.65;}
 
@@ -932,69 +953,32 @@
 <div class="features-tiles">
   <div class="features-grid">
     <div class="feat" data-a="up">
-      <div class="feat-icon">
-        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <defs><linearGradient id="g1" x1="0" y1="0" x2="64" y2="0" gradientUnits="userSpaceOnUse"><stop offset="50%" stop-color="#c41a1a"/><stop offset="50%" stop-color="#6e0000"/></linearGradient></defs>
-          <path d="M32 5L54 15V33C54 46 32 58 32 58C32 58 10 46 10 33V15L32 5Z" fill="url(#g1)"/>
-          <path d="M32 5V58" stroke="white" stroke-width="0.8" opacity="0.25"/>
-          <path d="M20 32L28 40L44 23" stroke="white" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </div>
       <div class="feat-title">Enhanced Security</div>
       <div class="feat-body">Re-engineered auto-latch panels and improved forced-entry resistance over Gen 2. Locks automatically as you close.</div>
     </div>
     <div class="feat" data-a="up" data-d="1">
-      <div class="feat-icon">
-        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <defs><linearGradient id="g2" x1="0" y1="0" x2="64" y2="0" gradientUnits="userSpaceOnUse"><stop offset="50%" stop-color="#c41a1a"/><stop offset="50%" stop-color="#6e0000"/></linearGradient></defs>
-          <path d="M32 6L56 32H42V58H22V32H8L32 6Z" fill="url(#g2)"/>
-        </svg>
-      </div>
       <div class="feat-title">22% Stronger</div>
       <div class="feat-body">Polymer-reinforced aluminum tested from –40°F to 180°F and 0–95% humidity. Proven from Alaska to Florida.</div>
     </div>
     <div class="feat" data-a="up" data-d="2">
-      <div class="feat-icon">
-        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <defs><linearGradient id="g3" x1="0" y1="0" x2="64" y2="0" gradientUnits="userSpaceOnUse"><stop offset="50%" stop-color="#c41a1a"/><stop offset="50%" stop-color="#6e0000"/></linearGradient></defs>
-          <path d="M32 7C32 7 11 30 11 41C11 52 20.5 57.5 32 57.5C43.5 57.5 53 52 53 41C53 30 32 7 32 7Z" fill="url(#g3)"/>
-          <ellipse cx="22" cy="36" rx="4" ry="6.5" fill="white" opacity="0.22"/>
-        </svg>
-      </div>
       <div class="feat-title">Weather-Tight Seals</div>
       <div class="feat-body">Re-engineered perimeter seals and tight-fit clamps. Extra-long dual-action tailgate seal keeps rain out.</div>
     </div>
     <div class="feat" data-a="up" data-d="1">
-      <div class="feat-icon">
-        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <defs><linearGradient id="g4" x1="0" y1="0" x2="64" y2="0" gradientUnits="userSpaceOnUse"><stop offset="50%" stop-color="#c41a1a"/><stop offset="50%" stop-color="#6e0000"/></linearGradient></defs>
-          <rect x="10" y="38" width="44" height="16" fill="url(#g4)"/>
-          <path d="M32 9L18 27H25V36H39V27H46L32 9Z" fill="url(#g4)"/>
-          <path d="M32 9V58" stroke="white" stroke-width="0.8" opacity="0.2"/>
-        </svg>
-      </div>
       <div class="feat-title">100% Bed Access</div>
       <div class="feat-body">Folds flush against the cab. Premium rubber bumpers protect your paint. Factory tailgate works in any position.</div>
     </div>
     <div class="feat" data-a="up" data-d="2">
-      <div class="feat-icon">
-        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <defs><linearGradient id="g5" x1="0" y1="0" x2="64" y2="0" gradientUnits="userSpaceOnUse"><stop offset="50%" stop-color="#c41a1a"/><stop offset="50%" stop-color="#6e0000"/></linearGradient></defs>
-          <path d="M38 4L13 35H27L20 60L51 29H37L38 4Z" fill="url(#g5)"/>
-        </svg>
-      </div>
       <div class="feat-title">30-Minute Install</div>
       <div class="feat-body">12% faster with the all-new click-in design. One person can do it. No drilling, no cutting required.</div>
     </div>
-    <div class="feat" data-a="up" data-d="3">
-      <div class="feat-icon">
-        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <defs><linearGradient id="g6" x1="0" y1="0" x2="64" y2="0" gradientUnits="userSpaceOnUse"><stop offset="50%" stop-color="#c41a1a"/><stop offset="50%" stop-color="#6e0000"/></linearGradient></defs>
-          <path d="M32 5L38.5 22.5H57L43 33.5L48.5 51L32 40L15.5 51L21 33.5L7 22.5H25.5L32 5Z" fill="url(#g6)"/>
-        </svg>
+    <div class="feat feat-usa" data-a="up" data-d="3">
+      <div class="feat-usa-bg"></div>
+      <div class="feat-usa-overlay"></div>
+      <div class="feat-usa-content">
+        <div class="feat-usa-title">Made in America</div>
+        <div class="feat-usa-sub">Assembled in Missouri, USA</div>
       </div>
-      <div class="feat-title">Made in America</div>
-      <div class="feat-body">Assembled in Missouri. Backed by a 5-year hassle-free limited warranty from the original purchase date.</div>
     </div>
   </div>
 </div>
