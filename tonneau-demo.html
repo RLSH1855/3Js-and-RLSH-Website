@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tonneau Covers — Flow Demo | 3J's Auto Body</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{overflow-x:hidden;overflow-y:scroll;scrollbar-width:none;}
+    html::-webkit-scrollbar{display:none;}
+    body{font-family:'Inter',sans-serif;overflow-x:hidden;overflow-y:hidden;background:#fff;color:#424954;}
+
+    /* ── CATEGORY NAV ── */
+    .cat-nav{background:#0a0a0a;overflow-x:auto;white-space:nowrap;scrollbar-width:none;border-bottom:2px solid #1e1e1e;}
+    .cat-nav::-webkit-scrollbar{display:none;}
+    .cat-nav-inner{display:flex;min-width:max-content;}
+    .cat-nav-link{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;padding:12px 14px;min-width:64px;font-family:'Montserrat',sans-serif;font-size:9px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;color:rgba(255,255,255,0.75);border-bottom:2px solid transparent;transition:color .2s,border-color .2s;white-space:nowrap;flex-shrink:0;}
+    .cat-nav-link:hover{color:#fff;}
+    .cat-nav-link.active{color:#e02020;border-bottom-color:#e02020;}
+    .cat-nav-link .nav-img{width:44px;height:32px;object-fit:cover;border-radius:0;opacity:.65;transition:opacity .2s;}
+    .cat-nav-link:hover .nav-img,.cat-nav-link.active .nav-img{opacity:1;}
+    .cat-nav-link.active .nav-img{outline:2px solid #e02020;outline-offset:2px;}
+    .cat-nav-link .nav-icon{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+
+    /* ── HERO ── */
+    .hero{background:#111;padding:64px 20px 56px;text-align:center;position:relative;overflow:hidden;}
+    .hero-bg{position:absolute;inset:0;background:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/Tonneau-covers-page-hero-image.jpg') center 40%/cover no-repeat;transform:scale(1.04);}
+    .hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.62) 0%,rgba(0,0,0,.48) 55%,rgba(0,0,0,.72) 100%);}
+    .hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(to right,transparent,#8B0000 25%,#8B0000 75%,transparent);z-index:2;}
+    .hero-content{position:relative;z-index:1;}
+    .hero-eyebrow{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.65);display:block;margin-bottom:12px;}
+    .hero h1{font-family:'Montserrat',sans-serif;font-size:clamp(30px,7vw,60px);font-weight:800;letter-spacing:-1.5px;line-height:1.0;text-transform:uppercase;color:#fff;margin-bottom:12px;}
+    .hero h1 em{font-style:normal;color:#8B0000;}
+    .hero-sub{font-family:'Inter',sans-serif;font-size:15px;color:rgba(255,255,255,.75);max-width:460px;margin:0 auto;line-height:1.65;}
+
+    /* ── BRAND TABS ── */
+    .brand-tabs-wrap{background:#fff;border-bottom:2px solid #ebebeb;position:sticky;top:0;z-index:100;}
+    .brand-tabs{display:flex;overflow-x:auto;scrollbar-width:none;padding:0 16px;}
+    .brand-tabs::-webkit-scrollbar{display:none;}
+    .brand-tab{display:inline-flex;flex-direction:column;align-items:center;gap:8px;padding:16px 20px;min-width:90px;cursor:pointer;border:none;background:none;border-bottom:3px solid transparent;transition:border-color .2s;flex-shrink:0;margin-bottom:-2px;}
+    .brand-tab img{height:26px;width:auto;max-width:76px;object-fit:contain;opacity:.35;filter:grayscale(1);transition:opacity .2s,filter .2s;}
+    .brand-tab:hover img{opacity:.6;filter:grayscale(0.5);}
+    .brand-tab.active img{opacity:1;filter:grayscale(0);}
+    .brand-tab.active{border-bottom-color:#8B0000;}
+    .brand-tab-label{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#bbb;transition:color .2s;}
+    .brand-tab:hover .brand-tab-label{color:#777;}
+    .brand-tab.active .brand-tab-label{color:#8B0000;}
+
+    /* ── BRAND PANELS ── */
+    .brand-panel{display:none;padding:36px 20px 64px;animation:panelIn .25s ease;}
+    .brand-panel.active{display:block;}
+    @keyframes panelIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+
+    .panel-header{margin-bottom:28px;}
+    .panel-eyebrow{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:#8B0000;display:block;margin-bottom:8px;}
+    .panel-title{font-family:'Montserrat',sans-serif;font-size:clamp(20px,4vw,30px);font-weight:800;letter-spacing:-.5px;color:#111;margin-bottom:8px;}
+    .panel-title em{font-style:normal;color:#8B0000;}
+    .panel-desc{font-size:14px;color:#6b7280;line-height:1.65;max-width:560px;}
+
+    /* ── CARDS ── */
+    .cards-grid{display:grid;grid-template-columns:1fr;gap:0;border-top:1px solid #ebebeb;border-left:1px solid #ebebeb;}
+
+    .product-card{display:flex;flex-direction:row;border-right:1px solid #ebebeb;border-bottom:1px solid #ebebeb;background:#fff;transition:background .2s;}
+    .product-card:hover{background:#fafafa;}
+
+    .card-img{flex-shrink:0;width:130px;position:relative;overflow:hidden;background:#111;}
+    .card-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease;}
+    .product-card:hover .card-img img{transform:scale(1.05);}
+    .card-img-ph{position:absolute;inset:0;background:linear-gradient(135deg,#0a0a0a,#1c1c1c);display:flex;align-items:center;justify-content:center;}
+    .card-img-ph svg{width:32px;height:32px;stroke:rgba(139,0,0,.2);fill:none;stroke-width:1.2;}
+    .card-badge{position:absolute;top:8px;left:0;background:#8B0000;color:#fff;font-family:'Montserrat',sans-serif;font-size:7px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:3px 7px;}
+
+    .card-body{flex:1;padding:16px;display:flex;flex-direction:column;justify-content:space-between;min-height:140px;}
+    .card-top{}
+    .card-type{font-family:'Montserrat',sans-serif;font-size:8px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#8B0000;margin-bottom:3px;}
+    .card-name{font-family:'Montserrat',sans-serif;font-size:16px;font-weight:800;letter-spacing:-.3px;color:#111;line-height:1.1;margin-bottom:6px;}
+    .card-desc{font-size:12px;color:#6b7280;line-height:1.55;}
+    .card-chips{display:flex;flex-wrap:wrap;gap:4px;margin-top:8px;}
+    .card-chip{font-family:'Montserrat',sans-serif;font-size:7px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:#666;background:#f3f3f3;border:1px solid #e4e4e4;padding:3px 6px;}
+
+    .card-actions{display:flex;gap:8px;align-items:center;margin-top:14px;flex-wrap:wrap;}
+    .btn-quote{display:inline-flex;align-items:center;justify-content:center;height:40px;padding:0 20px;background:#8B0000;color:#fff;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;border-radius:0;transition:background .2s;white-space:nowrap;}
+    .btn-quote:hover{background:#a00000;}
+    .btn-view{display:inline-flex;align-items:center;gap:5px;height:40px;padding:0 16px;background:#fff;color:#424954;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;text-decoration:none;border:1.5px solid #d8d8d8;border-radius:0;transition:border-color .2s,color .2s;white-space:nowrap;}
+    .btn-view:hover{border-color:#8B0000;color:#8B0000;}
+    .btn-view svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2.5;}
+
+    /* ── TYPE DIVIDER ── */
+    .type-divider{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:#8B0000;background:#fafafa;border-top:1px solid #ebebeb;border-right:1px solid #ebebeb;border-bottom:1px solid #ebebeb;border-left:1px solid #ebebeb;padding:10px 16px;margin-top:32px;margin-bottom:0;}
+    .type-divider:first-child{margin-top:0;}
+
+    /* ── COMING SOON PANEL ── */
+    .coming-soon{padding:64px 20px;text-align:center;}
+    .coming-soon-icon{width:56px;height:56px;stroke:#ddd;fill:none;stroke-width:1.2;margin:0 auto 20px;display:block;}
+    .coming-soon h3{font-family:'Montserrat',sans-serif;font-size:18px;font-weight:800;color:#ccc;margin-bottom:8px;}
+    .coming-soon p{font-size:13px;color:#bbb;}
+
+    /* ── CTA BAND ── */
+    .cta-band{background:#8B0000;padding:48px 24px;text-align:center;}
+    .cta-band h2{font-family:'Montserrat',sans-serif;font-size:clamp(20px,4vw,32px);font-weight:800;color:#fff;margin-bottom:8px;letter-spacing:-.5px;}
+    .cta-band p{font-size:14px;color:rgba(255,255,255,.80);margin-bottom:24px;line-height:1.6;}
+    .btn-white{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:48px;padding:0 36px;background:#fff;color:#8B0000;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border-radius:0;border:2px solid #fff;transition:background .2s,color .2s;}
+    .btn-white:hover{background:transparent;color:#fff;}
+    .btn-white svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2.2;}
+
+    @media(min-width:540px){
+      .cat-nav-inner{justify-content:center;}
+      .brand-tabs{justify-content:center;padding:0;}
+      .cards-grid{grid-template-columns:1fr 1fr;}
+      .brand-panel{padding:48px 32px 72px;}
+    }
+    @media(min-width:900px){
+      .cards-grid{grid-template-columns:1fr 1fr 1fr;}
+      .brand-panel{padding:56px 40px 80px;}
+      .card-img{width:160px;}
+      .hero{padding:100px 40px 88px;}
+    }
+    @media(max-width:400px){
+      .card-img{width:110px;}
+      .card-name{font-size:14px;}
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── CATEGORY NAV ── -->
+<nav class="cat-nav">
+  <div class="cat-nav-inner">
+    <a href="https://www.3jsautobody.com/exterior-accessories" class="cat-nav-link" target="_top">
+      <svg class="nav-icon" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+      All
+    </a>
+    <a href="#" class="cat-nav-link active" target="_top">
+      <img class="nav-img" src="https://rlsh1855.github.io/3Js-and-RLSH-Website/bak-bakflip-mx4-2016-ford-f150-blue-beach-lifestyle-05.jpg" alt="Tonneau Covers" loading="lazy">
+      Tonneau
+    </a>
+    <a href="https://www.3jsautobody.com/exterior-accessories/running-boards-side-steps" class="cat-nav-link" target="_top">
+      <img class="nav-img" src="https://rlsh1855.github.io/3Js-and-RLSH-Website/5d56c609b11c3b0319357d221d9b1677.png" alt="Steps" loading="lazy">
+      Steps
+    </a>
+    <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/floor-liners.html" class="cat-nav-link" target="_top">
+      <img class="nav-img" src="https://rlsh1855.github.io/3Js-and-RLSH-Website/FLOOR%20LINERS%20IMAGE.jpeg" alt="Floor Liners" loading="lazy">
+      Floor Liners
+    </a>
+    <a href="https://www.3jsautobody.com/exterior-accessories/premium-led-offroad-lighting" class="cat-nav-link" target="_top">
+      <img class="nav-img" src="https://rlsh1855.github.io/3Js-and-RLSH-Website/offroad-lighting-hero.png" alt="Lighting" loading="lazy">
+      Lighting
+    </a>
+    <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/headache-racks.html" class="cat-nav-link" target="_top">
+      <img class="nav-img" src="https://www.catalograck.com/ImgVDHR/BAC/BRK_Safety_Frm_closeup_v2.jpg" alt="Headache Racks" loading="lazy">
+      Headache Rack
+    </a>
+    <a href="https://www.3jsautobody.com/request-a-quote" class="cat-nav-link" target="_top">
+      <img class="nav-img" src="https://rlsh1855.github.io/3Js-and-RLSH-Website/Elevate%20Base%20Truck%20Rack.jpg" alt="Elevate Rack" loading="lazy">
+      Elevate Rack
+    </a>
+    <a href="https://www.3jsautobody.com/request-a-quote" class="cat-nav-link" target="_top">
+      <img class="nav-img" src="https://rlsh1855.github.io/3Js-and-RLSH-Website/B%26W%20Hitches%201.png" alt="Towing" loading="lazy">
+      Towing
+    </a>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<header class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-eyebrow">3J's Auto Body · Signal Hill, CA</span>
+    <h1>Tonneau <em>Covers</em></h1>
+    <p class="hero-sub">Hard fold, soft roll, or retractable — we source and professionally install the top tonneau cover brands right here in Signal Hill.</p>
+  </div>
+</header>
+
+<!-- ── BRAND TABS ── -->
+<div class="brand-tabs-wrap">
+  <div class="brand-tabs" id="brandTabs">
+    <button class="brand-tab active" onclick="switchBrand(this,'bakflip')">
+      <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/brand-logo%20(12).jpeg" alt="BAKFlip">
+      <span class="brand-tab-label">BAKFlip</span>
+    </button>
+    <button class="brand-tab" onclick="switchBrand(this,'undercover')">
+      <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/brand-logo%20(2).png" alt="UnderCover">
+      <span class="brand-tab-label">UnderCover</span>
+    </button>
+    <button class="brand-tab" onclick="switchBrand(this,'extang')">
+      <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/brand-logo%20(6).png" alt="Extang">
+      <span class="brand-tab-label">Extang</span>
+    </button>
+    <button class="brand-tab" onclick="switchBrand(this,'truxedo')">
+      <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/brand-logo%20(4).jpeg" alt="TruXedo">
+      <span class="brand-tab-label">TruXedo</span>
+    </button>
+    <button class="brand-tab" onclick="switchBrand(this,'retrax')">
+      <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/brand-logo%20(15).jpeg" alt="Retrax">
+      <span class="brand-tab-label">Retrax</span>
+    </button>
+    <button class="brand-tab" onclick="switchBrand(this,'rollnlock')">
+      <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/roll-n-lock-logo.png" alt="Roll-N-Lock">
+      <span class="brand-tab-label">Roll-N-Lock</span>
+    </button>
+  </div>
+</div>
+
+<!-- ══════════════════════
+     BAKFLIP PANEL
+══════════════════════ -->
+<div class="brand-panel active" id="panel-bakflip">
+  <div class="panel-header">
+    <span class="panel-eyebrow">Hard Fold · Hard Roll-Up</span>
+    <div class="panel-title">BAKFlip <em>Covers</em></div>
+    <p class="panel-desc">The world's best-selling hard folding tonneau cover — made in the USA, professionally installed right here in Signal Hill.</p>
+  </div>
+
+  <div class="type-divider">Hard Folding</div>
+  <div class="cards-grid">
+
+    <div class="product-card">
+      <div class="card-img">
+        <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/bak-bakflip-mx4-2016-ford-f150-blue-beach-lifestyle-05.jpg" alt="BAKFlip MX4" loading="lazy">
+        <div class="card-badge">Best Seller</div>
+      </div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-type">Hard Fold · Aluminum</div>
+          <div class="card-name">MX4 (GEN 3)</div>
+          <div class="card-desc">Aircraft-grade aluminum with matte black finish. Gen 3 security system and best-in-class weather sealing.</div>
+          <div class="card-chips">
+            <span class="card-chip">Made in USA</span>
+            <span class="card-chip">5-yr Warranty</span>
+            <span class="card-chip">No Drill</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a href="https://www.3jsautobody.com/bakflip-mx4" target="_top" class="btn-view">
+            View Details
+            <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
+          </a>
+          <a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote">Get a Quote</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="card-img">
+        <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/bak-bakflip-mx4-2017-ford-f150-silver-surfer-lifestyle-02.png" alt="BAKFlip MX4 TS" loading="lazy">
+        <div class="card-badge">T-Slot</div>
+      </div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-type">Hard Fold · T-Slot Rails</div>
+          <div class="card-name">MX4 TS (GEN 3)</div>
+          <div class="card-desc">All the security of the MX4 with integrated T-Slot rails for racks, lights, and cargo accessories.</div>
+          <div class="card-chips">
+            <span class="card-chip">Rack Ready</span>
+            <span class="card-chip">5-yr Warranty</span>
+            <span class="card-chip">No Drill</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote">Get a Quote</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="card-img">
+        <div class="card-img-ph">
+          <svg viewBox="0 0 24 24"><rect x="2" y="8" width="20" height="10"/><path d="M2 12h20M6 8V6m12 2V6"/></svg>
+        </div>
+        <div class="card-badge">Classic</div>
+      </div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-type">Hard Fold · Aluminum</div>
+          <div class="card-name">G2</div>
+          <div class="card-desc">Proven aluminum hard folding cover with gloss finish. Clean, dependable, and built to last.</div>
+          <div class="card-chips">
+            <span class="card-chip">Gloss Finish</span>
+            <span class="card-chip">No Drill</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote">Get a Quote</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="card-img">
+        <div class="card-img-ph">
+          <svg viewBox="0 0 24 24"><rect x="2" y="8" width="20" height="10"/><path d="M2 12h20M6 8V6m12 2V6"/></svg>
+        </div>
+        <div class="card-badge">Lightweight</div>
+      </div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-type">Hard Fold · Fiberglass</div>
+          <div class="card-name">F1</div>
+          <div class="card-desc">Ultra-lightweight fiberglass construction. Hard cover protection at a more accessible price point.</div>
+          <div class="card-chips">
+            <span class="card-chip">Fiberglass</span>
+            <span class="card-chip">No Drill</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote">Get a Quote</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="type-divider" style="margin-top:32px;">Hard Roll-Up</div>
+  <div class="cards-grid">
+
+    <div class="product-card">
+      <div class="card-img">
+        <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/bak-revolver-x4s-2022-ram-1500-trx-blue.jpg" alt="BAK Revolver X4s" loading="lazy">
+        <div class="card-badge">Diamond Plate</div>
+      </div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-type">Hard Roll-Up · Aluminum</div>
+          <div class="card-name">Revolver X4s</div>
+          <div class="card-desc">Bold diamond plate texture with a flush low-profile design. Security and style in one package.</div>
+          <div class="card-chips">
+            <span class="card-chip">Low Profile</span>
+            <span class="card-chip">No Drill</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a href="https://www.3jsautobody.com/copy-of-bakflip-mx4" target="_top" class="btn-view">
+            View Details
+            <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
+          </a>
+          <a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote">Get a Quote</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="card-img">
+        <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/bak-revolver-x4s-2022-ram-1500-trx-blue.jpg" alt="BAK Revolver X4 TS" loading="lazy">
+        <div class="card-badge">T-Slot</div>
+      </div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-type">Hard Roll-Up · T-Slot Rails</div>
+          <div class="card-name">Revolver X4 TS</div>
+          <div class="card-desc">Full bed access plus T-Slot rail compatibility — carry racks and gear without sacrificing convenience.</div>
+          <div class="card-chips">
+            <span class="card-chip">Rack Ready</span>
+            <span class="card-chip">No Drill</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote">Get a Quote</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="card-img">
+        <div class="card-img-ph">
+          <svg viewBox="0 0 24 24"><path d="M3 12h18M3 12V8h18v4M3 12v4h18v-4"/></svg>
+        </div>
+        <div class="card-badge">Value Pick</div>
+      </div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-type">Hard Roll-Up · Aluminum</div>
+          <div class="card-name">Revolver X2</div>
+          <div class="card-desc">Entry-level hard roll-up with smooth aluminum surface. Security and weather protection at a lower price.</div>
+          <div class="card-chips">
+            <span class="card-chip">Aluminum</span>
+            <span class="card-chip">No Drill</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote">Get a Quote</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════
+     UNDERCOVER PANEL
+══════════════════════ -->
+<div class="brand-panel" id="panel-undercover">
+  <div class="panel-header">
+    <span class="panel-eyebrow">Hard Fold · One-Piece</span>
+    <div class="panel-title">UnderCover <em>Covers</em></div>
+    <p class="panel-desc">Military-grade aluminum and innovative one-piece designs — built for the truck owner who demands the toughest protection.</p>
+  </div>
+  <div class="type-divider">Hard Folding</div>
+  <div class="cards-grid">
+    <div class="product-card">
+      <div class="card-img">
+        <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/undercover-armor-flex-2017-ford-f150-raptor-red-construction-lifestyle-01%20(1).png" alt="UnderCover ArmorFlex" loading="lazy">
+        <div class="card-badge">Heavy Duty</div>
+      </div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-type">Hard Fold · Military Grade</div>
+          <div class="card-name">ArmorFlex</div>
+          <div class="card-desc">Military-grade aluminum panels with a rugged matte finish — built for the toughest jobs and harshest conditions.</div>
+          <div class="card-chips"><span class="card-chip">Military Grade</span><span class="card-chip">WeatherSeal</span></div>
+        </div>
+        <div class="card-actions">
+          <a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote">Get a Quote</a>
+        </div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="card-img"><div class="card-img-ph"><svg viewBox="0 0 24 24"><rect x="2" y="8" width="20" height="10"/><path d="M2 12h20"/></svg></div><div class="card-badge">Popular</div></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-type">Hard Fold · Aluminum</div>
+          <div class="card-name">Ultra Flex (GEN 3)</div>
+          <div class="card-desc">Premium aluminum folding cover with a sleek low-profile look and improved Gen 3 sealing system.</div>
+          <div class="card-chips"><span class="card-chip">Low Profile</span><span class="card-chip">No Drill</span></div>
+        </div>
+        <div class="card-actions"><a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote">Get a Quote</a></div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="card-img"><div class="card-img-ph"><svg viewBox="0 0 24 24"><rect x="2" y="8" width="20" height="10"/><path d="M2 12h20"/></svg></div><div class="card-badge">Entry</div></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-type">Hard Fold · Aluminum</div>
+          <div class="card-name">Select</div>
+          <div class="card-desc">Dependable hard folding cover at an accessible price. Clean look with reliable weather protection.</div>
+          <div class="card-chips"><span class="card-chip">No Drill</span></div>
+        </div>
+        <div class="card-actions"><a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote">Get a Quote</a></div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="card-img"><div class="card-img-ph"><svg viewBox="0 0 24 24"><rect x="2" y="8" width="20" height="10"/><path d="M2 12h20"/></svg></div><div class="card-badge">Flex</div></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-type">Hard Fold · Aluminum</div>
+          <div class="card-name">Flex</div>
+          <div class="card-desc">Flexible aluminum tri-fold design with solid security and easy one-hand operation for daily use.</div>
+          <div class="card-chips"><span class="card-chip">Tri-Fold</span><span class="card-chip">No Drill</span></div>
+        </div>
+        <div class="card-actions"><a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote">Get a Quote</a></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════
+     EXTANG PANEL
+══════════════════════ -->
+<div class="brand-panel" id="panel-extang">
+  <div class="panel-header">
+    <span class="panel-eyebrow">Hard Fold · Soft Fold</span>
+    <div class="panel-title">Extang <em>Covers</em></div>
+    <p class="panel-desc">From premium aluminum hard folds to budget-friendly soft tri-folds — Extang covers every price point and truck type.</p>
+  </div>
+  <div class="type-divider">Hard Folding</div>
+  <div class="cards-grid">
+    <div class="product-card">
+      <div class="card-img"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/extang-solid-fold-alx-2024-toyota-tacoma-88832-ov-037-2.jpg" alt="Extang Solid Fold ALX" loading="lazy"><div class="card-badge">Fan Favorite</div></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-type">Hard Fold · Aluminum</div>
+          <div class="card-name">Solid Fold ALX</div>
+          <div class="card-desc">Premium aluminum hard folding cover with a sleek matte finish and tool-free installation.</div>
+          <div class="card-chips"><span class="card-chip">Lifetime Warranty</span><span class="card-chip">No Drill</span></div>
+        </div>
+        <div class="card-actions"><a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote">Get a Quote</a></div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="card-img"><div class="card-img-ph"><svg viewBox="0 0 24 24"><rect x="2" y="8" width="20" height="10"/><path d="M2 12h20"/></svg></div><div class="card-badge">Durable</div></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-type">Hard Fold · Aluminum</div>
+          <div class="card-name">Endure ALX</div>
+          <div class="card-desc">Heavy-duty aluminum folding cover built to withstand extreme weather and heavy workloads.</div>
+          <div class="card-chips"><span class="card-chip">Heavy Duty</span><span class="card-chip">No Drill</span></div>
+        </div>
+        <div class="card-actions"><a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote">Get a Quote</a></div>
+      </div>
+    </div>
+  </div>
+  <div class="type-divider" style="margin-top:32px;">Soft Tri-Fold</div>
+  <div class="cards-grid">
+    <div class="product-card">
+      <div class="card-img"><div class="card-img-ph"><svg viewBox="0 0 24 24"><rect x="2" y="8" width="20" height="10"/><path d="M2 12h20"/></svg></div><div class="card-badge">Best Value</div></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-type">Soft Tri-Fold</div>
+          <div class="card-name">Trifecta 2.0</div>
+          <div class="card-desc">Lightweight soft tri-fold with a leather-like finish. Fast installation and easy bed access.</div>
+          <div class="card-chips"><span class="card-chip">Lightweight</span><span class="card-chip">No Drill</span></div>
+        </div>
+        <div class="card-actions"><a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote">Get a Quote</a></div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="card-img"><div class="card-img-ph"><svg viewBox="0 0 24 24"><rect x="2" y="8" width="20" height="10"/><path d="M2 12h20"/></svg></div><div class="card-badge">Popular</div></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-type">Soft Tri-Fold</div>
+          <div class="card-name">Trifecta ALX</div>
+          <div class="card-desc">Premium soft tri-fold with aluminum frame for added rigidity and a cleaner look on the road.</div>
+          <div class="card-chips"><span class="card-chip">Aluminum Frame</span><span class="card-chip">No Drill</span></div>
+        </div>
+        <div class="card-actions"><a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote">Get a Quote</a></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════
+     TRUXEDO PANEL
+══════════════════════ -->
+<div class="brand-panel" id="panel-truxedo">
+  <div class="panel-header">
+    <span class="panel-eyebrow">Soft Roll-Up · Hard Roll-Up</span>
+    <div class="panel-title">TruXedo <em>Covers</em></div>
+    <p class="panel-desc">America's #1 soft roll-up tonneau cover brand — low-profile, sleek, and built for the truck owner who wants clean lines.</p>
+  </div>
+  <div class="type-divider">Hard Roll-Up</div>
+  <div class="cards-grid">
+    <div class="product-card">
+      <div class="card-img"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/truxedo-sentry-ct-2018-ford-f250-white-moab-lifestyle04%20(1).png" alt="TruXedo Sentry CT" loading="lazy"><div class="card-badge">Premium</div></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-type">Hard Roll-Up · Aluminum</div>
+          <div class="card-name">Sentry CT</div>
+          <div class="card-desc">Hard roll-up with a sleek one-piece aluminum surface. Flush with the bed rails for a factory-installed look.</div>
+          <div class="card-chips"><span class="card-chip">Low Profile</span><span class="card-chip">No Drill</span></div>
+        </div>
+        <div class="card-actions"><a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote">Get a Quote</a></div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="card-img"><div class="card-img-ph"><svg viewBox="0 0 24 24"><rect x="2" y="8" width="20" height="10"/><path d="M2 12h20"/></svg></div><div class="card-badge">Hard Roll</div></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-type">Hard Roll-Up · Aluminum</div>
+          <div class="card-name">Sentry</div>
+          <div class="card-desc">Sleek aluminum hard roll-up at a more accessible price point. Clean look with solid weather protection.</div>
+          <div class="card-chips"><span class="card-chip">Aluminum</span><span class="card-chip">No Drill</span></div>
+        </div>
+        <div class="card-actions"><a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote">Get a Quote</a></div>
+      </div>
+    </div>
+  </div>
+  <div class="type-divider" style="margin-top:32px;">Soft Roll-Up</div>
+  <div class="cards-grid">
+    <div class="product-card">
+      <div class="card-img"><div class="card-img-ph"><svg viewBox="0 0 24 24"><rect x="2" y="8" width="20" height="10"/><path d="M2 12h20"/></svg></div><div class="card-badge">T-Slot</div></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-type">Soft Roll-Up · T-Slot Rails</div>
+          <div class="card-name">Pro X15-TS</div>
+          <div class="card-desc">Soft roll-up with built-in T-Slot rails. The sleekest way to run a rack system with a soft cover.</div>
+          <div class="card-chips"><span class="card-chip">Rack Ready</span><span class="card-chip">No Drill</span></div>
+        </div>
+        <div class="card-actions"><a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote">Get a Quote</a></div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="card-img"><div class="card-img-ph"><svg viewBox="0 0 24 24"><rect x="2" y="8" width="20" height="10"/><path d="M2 12h20"/></svg></div><div class="card-badge">Best Seller</div></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-type">Soft Roll-Up</div>
+          <div class="card-name">Lo Pro</div>
+          <div class="card-desc">Ultra-low profile soft roll-up that sits flush with the bed rails. TruXedo's most popular everyday cover.</div>
+          <div class="card-chips"><span class="card-chip">Ultra Low Profile</span><span class="card-chip">No Drill</span></div>
+        </div>
+        <div class="card-actions"><a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote">Get a Quote</a></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════
+     RETRAX PANEL
+══════════════════════ -->
+<div class="brand-panel" id="panel-retrax">
+  <div class="panel-header">
+    <span class="panel-eyebrow">Retractable · Manual &amp; Electric</span>
+    <div class="panel-title">Retrax <em>Covers</em></div>
+    <p class="panel-desc">Premium retractable tonneau covers with smooth one-hand operation — available in manual and electric, with or without T-Slot rails.</p>
+  </div>
+  <div class="type-divider">Manual Retractable</div>
+  <div class="cards-grid">
+    <div class="product-card">
+      <div class="card-img"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/retrax-one-mx-2015-toyota-tacoma-red-studio-09.jpg" alt="RetraxONE MX" loading="lazy"><div class="card-badge">Popular</div></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-type">Manual Retractable · Polycarbonate</div>
+          <div class="card-name">RetraxONE MX</div>
+          <div class="card-desc">Polycarbonate retractable cover with smooth one-hand operation and a sleek low-profile design.</div>
+          <div class="card-chips"><span class="card-chip">Locking</span><span class="card-chip">No Drill</span></div>
+        </div>
+        <div class="card-actions"><a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote">Get a Quote</a></div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="card-img"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/realtruck-retrax-pro-2024-mitsubishi-triton-lifestyle-7182.png" alt="RetraxPRO MX" loading="lazy"><div class="card-badge">T-Slot</div></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-type">Manual Retractable · T-Slot Rails</div>
+          <div class="card-name">RetraxPRO MX</div>
+          <div class="card-desc">Polycarbonate retractable with built-in T-Slot rail system for full rack compatibility.</div>
+          <div class="card-chips"><span class="card-chip">Rack Ready</span><span class="card-chip">Locking</span></div>
+        </div>
+        <div class="card-actions"><a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote">Get a Quote</a></div>
+      </div>
+    </div>
+  </div>
+  <div class="type-divider" style="margin-top:32px;">Electric Retractable</div>
+  <div class="cards-grid">
+    <div class="product-card">
+      <div class="card-img"><div class="card-img-ph"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div><div class="card-badge">Electric</div></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-type">Electric Retractable · Polycarbonate</div>
+          <div class="card-name">PowertraxPRO MX</div>
+          <div class="card-desc">One-touch electric retractable with automatic locking and full bed access at the press of a button.</div>
+          <div class="card-chips"><span class="card-chip">Electric</span><span class="card-chip">Auto-Lock</span></div>
+        </div>
+        <div class="card-actions"><a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote">Get a Quote</a></div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="card-img"><div class="card-img-ph"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div><div class="card-badge">T-Slot</div></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-type">Electric Retractable · T-Slot Rails</div>
+          <div class="card-name">PowertraxPRO XR</div>
+          <div class="card-desc">Electric retractable with T-Slot rails — the ultimate combination of convenience and cargo versatility.</div>
+          <div class="card-chips"><span class="card-chip">Electric</span><span class="card-chip">Rack Ready</span></div>
+        </div>
+        <div class="card-actions"><a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote">Get a Quote</a></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════
+     ROLL-N-LOCK PANEL
+══════════════════════ -->
+<div class="brand-panel" id="panel-rollnlock">
+  <div class="panel-header">
+    <span class="panel-eyebrow">Retractable · Locking</span>
+    <div class="panel-title">Roll-N-Lock <em>Covers</em></div>
+    <p class="panel-desc">Premium retractable truck bed covers engineered for maximum security, smooth operation, and a clean factory-installed look.</p>
+  </div>
+  <div class="type-divider">Retractable</div>
+  <div class="cards-grid">
+    <div class="product-card">
+      <div class="card-img"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/roll-n-lock-e-series-2017-ford-f150-black-beach-lifestyle-10.png" alt="Roll-N-Lock M-Series XT" loading="lazy"><div class="card-badge">Manual</div></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-type">Manual Retractable · T-Slot Rails</div>
+          <div class="card-name">M-Series XT</div>
+          <div class="card-desc">Manual retractable with T-Slot rail system for rack and cargo accessory compatibility.</div>
+          <div class="card-chips"><span class="card-chip">Rack Ready</span><span class="card-chip">Locking</span></div>
+        </div>
+        <div class="card-actions"><a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote">Get a Quote</a></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── CTA BAND ── -->
+<div class="cta-band">
+  <h2>Not Sure Which Cover Is Right?</h2>
+  <p>Our team will match you to the right brand and model for your truck — and install it same-day right here in Signal Hill.</p>
+  <a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-white">
+    <svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+    Request a Free Quote
+  </a>
+</div>
+
+<div id="sentinel" style="height:1px;"></div>
+
+<script>
+  function switchBrand(btn, brand) {
+    document.querySelectorAll('.brand-tab').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.brand-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('panel-' + brand).classList.add('active');
+    reportHeight();
+  }
+
+  function reportHeight() {
+    const s = document.getElementById('sentinel');
+    const h = s ? s.offsetTop + s.offsetHeight : document.body.scrollHeight;
+    window.parent.postMessage({type:'setHeight', height:h}, '*');
+  }
+  window.addEventListener('load', reportHeight);
+  window.addEventListener('resize', reportHeight);
+</script>
+</body>
+</html>
