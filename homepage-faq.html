@@ -91,10 +91,19 @@
       font-family:'Inter',sans-serif;
       font-size:15px;font-weight:400;
       color:#555;line-height:1.85;
-      display:none;
+      overflow:hidden;
+      max-height:0;
+      opacity:0;
+      padding-bottom:0;
+      transition:max-height 0.38s cubic-bezier(0,0,0.2,1),
+                 opacity 0.28s ease,
+                 padding-bottom 0.38s cubic-bezier(0,0,0.2,1);
+    }
+    .faq-item.open .faq-a{
+      max-height:400px;
+      opacity:1;
       padding-bottom:20px;
     }
-    .faq-item.open .faq-a{display:block;}
 
     /* ─── CTA ROW ─── */
     .faq-cta{
@@ -224,10 +233,10 @@
       document.querySelectorAll('.faq-item.open').forEach(function(i){ i.classList.remove('open'); });
       if(!wasOpen) item.classList.add('open');
       reportHeight();
-      setTimeout(reportHeight, 50);
-      setTimeout(reportHeight, 150);
-      setTimeout(reportHeight, 350);
-      setTimeout(reportHeight, 700);
+      setTimeout(reportHeight, 100);
+      setTimeout(reportHeight, 280);
+      setTimeout(reportHeight, 450);
+      setTimeout(reportHeight, 800);
     });
   });
 
