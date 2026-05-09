@@ -91,7 +91,7 @@
     .rule{width:40px;height:2px;background:var(--crimson);display:block;margin:14px 0 20px;}
 
     /* ── HERO ── */
-    .hero{position:relative;overflow:hidden;min-height:300px;display:flex;align-items:flex-end;border-bottom:1px solid #1a1a1a;}
+    .hero{position:relative;overflow:hidden;min-height:clamp(380px,55vh,520px);display:flex;align-items:flex-end;border-bottom:1px solid #1a1a1a;}
     .hero-bg{position:absolute;inset:0;background:url('step-up-hero.webp') center center/cover no-repeat;}
     .hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.95) 0%,rgba(0,0,0,.55) 55%,rgba(0,0,0,.2) 100%);}
     .hero-overlay-side{position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,.65) 0%,transparent 65%);}
@@ -166,7 +166,7 @@
     .panel-header .rule{margin:12px 0 14px;}
     .panel-title{font-family:'Montserrat',sans-serif;font-size:clamp(24px,4vw,40px);font-weight:900;letter-spacing:-1.5px;line-height:.95;text-transform:uppercase;color:#111;margin-bottom:14px;}
     .panel-title em{font-style:normal;color:var(--crimson);}
-    .panel-tagline{border-left:2px solid var(--crimson);padding-left:16px;font-family:'Inter',sans-serif;font-size:14px;font-weight:500;color:#444;line-height:1.8;max-width:520px;margin-bottom:18px;}
+    .panel-tagline{font-family:'Inter',sans-serif;font-size:15px;font-weight:400;color:#444;line-height:1.9;max-width:520px;margin-bottom:18px;}
     .panel-feats{list-style:none;display:flex;flex-direction:column;gap:7px;}
     .panel-feats li{display:flex;align-items:center;gap:10px;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#333;}
     .panel-feats li span{display:inline-block;width:16px;height:1px;background:var(--crimson);flex-shrink:0;}
@@ -280,7 +280,7 @@
 </section>
 
 <!-- ══ YMM FINDER ══ -->
-<div class="ymm-bar">
+<div class="ymm-bar" id="ymm-bar">
   <div class="ymm-bar-inner">
     <span class="ymm-label">Find Your Fit</span>
     <p class="ymm-title">Select your truck to see <em>what fits</em></p>
@@ -1444,6 +1444,9 @@ document.querySelectorAll('.faq-q').forEach(function(btn){
     if(!wasOpen){item.classList.add('open');btn.setAttribute('aria-expanded','true');}
   });
 });
+
+// ── INIT: clear stale fitment badges on load ──
+applyFitment();
 
 // ── SCROLL ANIMATIONS ──
 (function(){
