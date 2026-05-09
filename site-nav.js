@@ -316,8 +316,12 @@
     }
     .sn-hamburger span{
       display:block;width:24px;height:2px;background:#fff;
-      transition:all 0.3s;
+      transition:transform 0.3s ease, opacity 0.3s ease;
+      transform-origin:center;
     }
+    .sn-hamburger.sn-open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+    .sn-hamburger.sn-open span:nth-child(2){opacity:0;transform:scaleX(0);}
+    .sn-hamburger.sn-open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
 
     /* ── Mobile menu ── */
     .sn-mobile-menu{
@@ -715,7 +719,9 @@
   var mobileMenu = document.getElementById('sn-mobile-menu');
   if(hamburger && mobileMenu){
     hamburger.addEventListener('click', function(){
-      mobileMenu.classList.toggle('sn-open');
+      var isOpen = mobileMenu.classList.toggle('sn-open');
+      hamburger.classList.toggle('sn-open', isOpen);
+      hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     });
   }
 
