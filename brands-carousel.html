@@ -51,7 +51,7 @@
       mask-image:linear-gradient(to right,transparent 0%,black 6%,black 94%,transparent 100%);
     }
     .marquee-track{
-      display:flex;align-items:center;gap:16px;width:max-content;
+      display:flex;align-items:center;gap:16px;width:max-content;will-change:transform;
     }
     .marquee-track{animation-timing-function:linear;animation-iteration-count:infinite;}
     .marquee-track.row-1{animation-name:scrollLeft;animation-duration:32s;}

@@ -89,7 +89,7 @@
     .hs-icon{position:relative;width:44px;height:44px;transition:transform 0.2s;}
     .hs-icon img{width:44px;height:44px;object-fit:contain;display:none;transition:filter 0.25s;}
     .center-dot{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:14px;height:14px;border-radius:50%;background:#8B0000;transition:background 0.25s,transform 0.2s;box-shadow:0 0 0 3px rgba(139,0,0,0.45),0 0 10px rgba(139,0,0,0.6);}
-    .center-dot::after{content:'';position:absolute;inset:-5px;border-radius:50%;border:2.5px solid rgba(200,0,0,0.75);animation:pulse 1.8s ease-out infinite;}
+    .center-dot::after{content:'';position:absolute;inset:-5px;border-radius:50%;border:2.5px solid rgba(200,0,0,0.75);animation:pulse 1.8s ease-out infinite;animation-delay:var(--pulse-delay,0s);will-change:transform;}
     @keyframes pulse{0%{transform:scale(1);opacity:0.9;}100%{transform:scale(3);opacity:0;}}
 
     .hs:hover{z-index:200;}
@@ -230,7 +230,7 @@
     <!-- JS positions these; data-x / data-y = fraction of IMAGE (0–1) -->
 
     <!-- 1. BEDLINER -->
-    <div class="hs" id="hs1" data-x="0.202" data-y="0.354"
+    <div class="hs" id="hs1" style="--pulse-delay:0s" data-x="0.202" data-y="0.354"
          data-lx="0.02" data-ly="0.16" data-lclass="lb1" data-ltext="BEDLINER" data-line="l1">
       <div class="hs-icon"><img src="icon 1.png" alt="" /><div class="center-dot"></div></div>
       <div class="popup p-right">
@@ -242,7 +242,7 @@
     </div>
 
     <!-- 2. REAR BUMPER -->
-    <div class="hs" id="hs2" data-x="0.14" data-y="0.55"
+    <div class="hs" id="hs2" style="--pulse-delay:0.2s" data-x="0.14" data-y="0.55"
          data-lx="0.02" data-ly="0.52" data-lclass="lb2" data-ltext="REAR BUMPER" data-line="l2">
       <div class="hs-icon"><img src="icon 1.png" alt="" /><div class="center-dot"></div></div>
       <div class="popup p-right">
@@ -253,7 +253,7 @@
     </div>
 
     <!-- 3. ROCK GUARDS -->
-    <div class="hs" id="hs3" data-x="0.25" data-y="0.60"
+    <div class="hs" id="hs3" style="--pulse-delay:0.4s" data-x="0.25" data-y="0.60"
          data-lx="0.02" data-ly="0.64" data-lclass="lb3" data-ltext="ROCK GUARDS" data-line="l3">
       <div class="hs-icon"><img src="icon 1.png" alt="" /><div class="center-dot"></div></div>
       <div class="popup p-right">
@@ -264,7 +264,7 @@
     </div>
 
     <!-- 4. RUNNING BOARDS -->
-    <div class="hs" id="hs4" data-x="0.355" data-y="0.692"
+    <div class="hs" id="hs4" style="--pulse-delay:0.6s" data-x="0.355" data-y="0.692"
          data-lx="0.03" data-ly="0.80" data-lclass="lb4" data-ltext="RUNNING BOARDS" data-line="l4">
       <div class="hs-icon"><img src="icon 1.png" alt="" /><div class="center-dot"></div></div>
       <div class="popup p-right">
@@ -276,7 +276,7 @@
     </div>
 
     <!-- 5. FULL EXTERIOR PAINT -->
-    <div class="hs" id="hs5" data-x="0.33" data-y="0.47"
+    <div class="hs" id="hs5" style="--pulse-delay:0.8s" data-x="0.33" data-y="0.47"
          data-lx="0.02" data-ly="0.38" data-lclass="lb5" data-ltext="FULL EXTERIOR PAINT" data-line="l5">
       <div class="hs-icon"><img src="icon 1.png" alt="" /><div class="center-dot"></div></div>
       <div class="popup p-right">
@@ -288,7 +288,7 @@
     </div>
 
     <!-- 6. EXTERIOR / BLACK TRIM -->
-    <div class="hs" id="hs6" data-x="0.343" data-y="0.285"
+    <div class="hs" id="hs6" style="--pulse-delay:1.0s" data-x="0.343" data-y="0.285"
          data-lx="0.16" data-ly="0.06" data-lclass="lb6" data-ltext="EXTERIOR / BLACK TRIM" data-line="l6">
       <div class="hs-icon"><img src="icon 1.png" alt="" /><div class="center-dot"></div></div>
       <div class="popup p-below">
@@ -299,7 +299,7 @@
     </div>
 
     <!-- 7. ROOF RUST -->
-    <div class="hs" id="hs7" data-x="0.530" data-y="0.156"
+    <div class="hs" id="hs7" style="--pulse-delay:1.2s" data-x="0.530" data-y="0.156"
          data-lx="0.56" data-ly="0.06" data-lclass="lb7" data-ltext="ROOF" data-line="l7">
       <div class="hs-icon"><img src="icon 1.png" alt="" /><div class="center-dot"></div></div>
       <div class="popup p-below">
@@ -310,7 +310,7 @@
     </div>
 
     <!-- 8. HOODS -->
-    <div class="hs" id="hs8" data-x="0.722" data-y="0.343"
+    <div class="hs" id="hs8" style="--pulse-delay:1.4s" data-x="0.722" data-y="0.343"
          data-lx="0.82" data-ly="0.20" data-lclass="lb8" data-ltext="HOODS" data-line="l8">
       <div class="hs-icon"><img src="icon 1.png" alt="" /><div class="center-dot"></div></div>
       <div class="popup p-left">
@@ -321,7 +321,7 @@
     </div>
 
     <!-- 9. GRILLE -->
-    <div class="hs" id="hs9" data-x="0.81" data-y="0.40"
+    <div class="hs" id="hs9" style="--pulse-delay:1.6s" data-x="0.81" data-y="0.40"
          data-lx="0.86" data-ly="0.47" data-lclass="lb9" data-ltext="GRILLE" data-line="l9">
       <div class="hs-icon"><img src="icon 1.png" alt="" /><div class="center-dot"></div></div>
       <div class="popup p-left">
@@ -332,7 +332,7 @@
     </div>
 
     <!-- 10. FRONT BUMPER -->
-    <div class="hs" id="hs10" data-x="0.866" data-y="0.638"
+    <div class="hs" id="hs10" style="--pulse-delay:1.8s" data-x="0.866" data-y="0.638"
          data-lx="0.87" data-ly="0.80" data-lclass="lb10" data-ltext="FRONT BUMPER" data-line="l10">
       <div class="hs-icon"><img src="icon 1.png" alt="" /><div class="center-dot"></div></div>
       <div class="popup p-left">
@@ -343,7 +343,7 @@
     </div>
 
     <!-- 11. WHEEL WELLS -->
-    <div class="hs" id="hs11" data-x="0.425" data-y="0.482"
+    <div class="hs" id="hs11" style="--pulse-delay:2.0s" data-x="0.425" data-y="0.482"
          data-lx="0.38" data-ly="0.87" data-lclass="lb11" data-ltext="WHEEL WELLS" data-line="l11">
       <div class="hs-icon"><img src="icon 1.png" alt="" /><div class="center-dot"></div></div>
       <div class="popup p-above">
@@ -354,7 +354,7 @@
     </div>
 
     <!-- 12. UNDERCARRIAGE -->
-    <div class="hs" id="hs12" data-x="0.587" data-y="0.734"
+    <div class="hs" id="hs12" style="--pulse-delay:2.2s" data-x="0.587" data-y="0.734"
          data-lx="0.56" data-ly="0.87" data-lclass="lb12" data-ltext="UNDERCARRIAGE" data-line="l12">
       <div class="hs-icon"><img src="icon 1.png" alt="" /><div class="center-dot"></div></div>
       <div class="popup p-above">
@@ -365,7 +365,7 @@
     </div>
 
     <!-- 13. SKID PLATES -->
-    <div class="hs" id="hs13" data-x="0.73" data-y="0.71"
+    <div class="hs" id="hs13" style="--pulse-delay:2.4s" data-x="0.73" data-y="0.71"
          data-lx="0.72" data-ly="0.87" data-lclass="lb13" data-ltext="SKID PLATES" data-line="l13">
       <div class="hs-icon"><img src="icon 1.png" alt="" /><div class="center-dot"></div></div>
       <div class="popup p-left">
