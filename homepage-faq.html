@@ -160,7 +160,7 @@
     <div class="faq-list">
 
       <div class="faq-item">
-        <button class="faq-q">
+        <button class="faq-q" aria-expanded="false">
           Do you work with insurance companies?
           <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
         </button>
@@ -168,7 +168,7 @@
       </div>
 
       <div class="faq-item">
-        <button class="faq-q">
+        <button class="faq-q" aria-expanded="false">
           How long does auto body repair take?
           <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
         </button>
@@ -176,7 +176,7 @@
       </div>
 
       <div class="faq-item">
-        <button class="faq-q">
+        <button class="faq-q" aria-expanded="false">
           Do you offer free estimates?
           <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
         </button>
@@ -184,7 +184,7 @@
       </div>
 
       <div class="faq-item">
-        <button class="faq-q">
+        <button class="faq-q" aria-expanded="false">
           Is there a warranty on repairs?
           <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
         </button>
@@ -192,7 +192,7 @@
       </div>
 
       <div class="faq-item">
-        <button class="faq-q">
+        <button class="faq-q" aria-expanded="false">
           Do you offer towing?
           <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
         </button>
@@ -200,7 +200,7 @@
       </div>
 
       <div class="faq-item">
-        <button class="faq-q">
+        <button class="faq-q" aria-expanded="false">
           What areas do you serve?
           <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
         </button>
@@ -230,8 +230,14 @@
     btn.addEventListener('click', function(){
       var item = btn.closest('.faq-item');
       var wasOpen = item.classList.contains('open');
-      document.querySelectorAll('.faq-item.open').forEach(function(i){ i.classList.remove('open'); });
-      if(!wasOpen) item.classList.add('open');
+      document.querySelectorAll('.faq-item.open').forEach(function(i){
+        i.classList.remove('open');
+        i.querySelector('.faq-q').setAttribute('aria-expanded','false');
+      });
+      if(!wasOpen){
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded','true');
+      }
       reportHeight();
       setTimeout(reportHeight, 100);
       setTimeout(reportHeight, 280);

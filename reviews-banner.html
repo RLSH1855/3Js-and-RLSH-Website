@@ -105,7 +105,9 @@
       -webkit-box-orient:vertical;
       overflow:hidden;
     }
-
+    @media(prefers-reduced-motion:reduce){
+      .marquee-track{animation-play-state:paused;}
+    }
   </style>
 </head>
 <body>

@@ -338,6 +338,9 @@
       .hs .popup{display:none !important;}
       .section-title{font-size:26px !important;letter-spacing:-1px !important;}
     }
+    @media(prefers-reduced-motion:reduce){
+      .center-dot::after{animation:none;}
+    }
   </style>
 </head>
 <body>
@@ -571,27 +574,27 @@
     <p class="eyebrow">Common Questions</p>
     <h2 class="section-title">Got <span class="red">Questions?</span></h2>
     <div class="faq-item">
-      <button class="faq-q">How long does a Rhino Liner installation take?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+      <button class="faq-q" aria-expanded="false">How long does a Rhino Liner installation take?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
       <div class="faq-a"><p>Most truck bedliner installations take about 2–3 hours. Larger jobs like full Jeep exteriors or custom applications may take a full day. We'll give you a time estimate when you call or come in.</p></div>
     </div>
     <div class="faq-item">
-      <button class="faq-q">How much does a Rhino Liner cost?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+      <button class="faq-q" aria-expanded="false">How much does a Rhino Liner cost?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
       <div class="faq-a"><p>Pricing depends on the application — truck beds, Jeep exteriors, and custom jobs are all different. Call us at (562) 424-6744 or get a free quote online and we'll give you an accurate number based on your specific vehicle.</p></div>
     </div>
     <div class="faq-item">
-      <button class="faq-q">Does Rhino Liner come in different colors?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+      <button class="faq-q" aria-expanded="false">Does Rhino Liner come in different colors?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
       <div class="faq-a"><p>Yes — Rhino Linings is available in a range of colors beyond standard black. We can match your vehicle or go completely custom. Ask us about available colors when you call or come in for a quote.</p></div>
     </div>
     <div class="faq-item">
-      <button class="faq-q">Can you coat a full Jeep exterior?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+      <button class="faq-q" aria-expanded="false">Can you coat a full Jeep exterior?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
       <div class="faq-a"><p>Absolutely — full Jeep exterior coatings are one of our most popular applications. It protects against trail scratches, rock chips, UV fade, and gives your Jeep that aggressive matte look. We've done dozens of full Jeep builds right here in Signal Hill.</p></div>
     </div>
     <div class="faq-item">
-      <button class="faq-q">Is Rhino Liner permanent?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+      <button class="faq-q" aria-expanded="false">Is Rhino Liner permanent?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
       <div class="faq-a"><p>Yes — Rhino Linings is a permanent, bonded coating. It doesn't peel, crack, or bubble. It comes with a lifetime warranty and is designed to last the life of your vehicle.</p></div>
     </div>
     <div class="faq-item">
-      <button class="faq-q">Do I need an appointment?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+      <button class="faq-q" aria-expanded="false">Do I need an appointment?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
       <div class="faq-a"><p>We recommend calling ahead at (562) 424-6744 so we can schedule your installation time. Walk-ins are always welcome for quotes and consultations.</p></div>
     </div>
   </div>
@@ -723,8 +726,14 @@
     btn.addEventListener('click',function(){
       var item=btn.closest('.faq-item');
       var wasOpen=item.classList.contains('open');
-      document.querySelectorAll('.faq-item.open').forEach(function(i){i.classList.remove('open');});
-      if(!wasOpen)item.classList.add('open');
+      document.querySelectorAll('.faq-item.open').forEach(function(i){
+        i.classList.remove('open');
+        i.querySelector('.faq-q').setAttribute('aria-expanded','false');
+      });
+      if(!wasOpen){
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded','true');
+      }
       reportHeight();
       setTimeout(reportHeight,50);
     });

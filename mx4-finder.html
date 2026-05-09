@@ -220,6 +220,8 @@
       transition:all 0.3s ease;
     }
     .reset-btn:hover{color:#8B0000;}
+    *:focus{outline:none;}
+    *:focus-visible{outline:2px solid #8B0000;outline-offset:3px;}
   </style>
 </head>
 <body>
@@ -269,7 +271,7 @@
     </div>
 
     <div class="bed-tip" id="bed-tip">
-      <a class="bed-tip-toggle" id="bed-tip-toggle" onclick="toggleBedTip()">📏 How to Measure Your Truck Bed</a>
+      <button class="bed-tip-toggle" id="bed-tip-toggle" onclick="toggleBedTip()" type="button">📏 How to Measure Your Truck Bed</button>
       <div class="bed-tip-content" id="bed-tip-content">
         <div class="bed-tip-content-inner">
           <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/TRUCK%20BED%20MEASURE%20GUIDE.png" alt="How to measure truck bed size — bulkhead to tailgate"/>

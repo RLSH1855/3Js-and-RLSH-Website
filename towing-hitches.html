@@ -924,27 +924,27 @@
     <h2 class="section-title">Got <span class="red">Questions?</span></h2>
 
     <div class="faq-item">
-      <button class="faq-q">How long does hitch installation take? <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <button class="faq-q" aria-expanded="false">How long does hitch installation take? <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
       <div class="faq-a"><p>Most trailer hitch installs take 1–2 hours at 3J's Auto Body. We can do the hitch and wiring harness in the same visit so you leave fully ready to tow.</p></div>
     </div>
     <div class="faq-item">
-      <button class="faq-q">Do I need to drill holes to install a hitch? <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <button class="faq-q" aria-expanded="false">Do I need to drill holes to install a hitch? <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
       <div class="faq-a"><p>CURT hitches are vehicle-specific and bolt on using your existing factory holes. No drilling required on most applications. We'll confirm fitment for your exact vehicle before we start.</p></div>
     </div>
     <div class="faq-item">
-      <button class="faq-q">What hitch class do I need? <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <button class="faq-q" aria-expanded="false">What hitch class do I need? <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
       <div class="faq-a"><p>Class I–II for lighter loads like bike racks and small trailers. Class III–V for boats, campers, and heavy equipment. Call us at (562) 424-6744 and we'll spec the right setup based on your vehicle's tow rating and what you're hauling.</p></div>
     </div>
     <div class="faq-item">
-      <button class="faq-q">Do you install wiring harnesses? <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <button class="faq-q" aria-expanded="false">Do you install wiring harnesses? <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
       <div class="faq-a"><p>Yes — we install the full towing package. Hitch, ball mount, and wiring harness in one visit. We carry plug-and-play T-One connectors for most trucks and SUVs.</p></div>
     </div>
     <div class="faq-item">
-      <button class="faq-q">What's the difference between CURT and B&W Hitches? <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <button class="faq-q" aria-expanded="false">What's the difference between CURT and B&W Hitches? <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
       <div class="faq-a"><p>CURT is ideal for standard receiver hitches, ball mounts, wiring, and everyday towing at excellent value. B&W is the premium choice for heavy-duty gooseneck, fifth wheel, and turnoverball applications. We carry both and will recommend the right one for your needs.</p></div>
     </div>
     <div class="faq-item">
-      <button class="faq-q">Can you install a trailer brake controller? <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <button class="faq-q" aria-expanded="false">Can you install a trailer brake controller? <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
       <div class="faq-a"><p>Yes — we install trailer brake controllers for trailers with electric brakes. Most states require a brake controller when towing trailers over a certain weight. We wire it correctly and make sure your setup is legal and safe before you leave.</p></div>
     </div>
 
@@ -966,8 +966,14 @@
     btn.addEventListener('click', function(){
       var item = btn.closest('.faq-item');
       var wasOpen = item.classList.contains('open');
-      document.querySelectorAll('.faq-item.open').forEach(function(i){ i.classList.remove('open'); });
-      if(!wasOpen) item.classList.add('open');
+      document.querySelectorAll('.faq-item.open').forEach(function(i){
+        i.classList.remove('open');
+        i.querySelector('.faq-q').setAttribute('aria-expanded','false');
+      });
+      if(!wasOpen){
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded','true');
+      }
       reportHeight();
       setTimeout(reportHeight, 50);
     });

@@ -205,7 +205,10 @@
     .shop-nav-link:hover{color:rgba(255,255,255,0.85);}
     .shop-nav-link.active{color:#fff;border-bottom-color:#8B0000;letter-spacing:2.5px;}
     @media(min-width:768px){.shop-nav-tabs{justify-content:center;}.shop-nav-hint{justify-content:center;}}
-    @media(max-width:480px){.shop-nav-link{font-size:10px;padding:12px 14px;}.shop-nav-hint{font-size:10px;}}  </style>
+    @media(max-width:480px){.shop-nav-link{font-size:10px;padding:12px 14px;}.shop-nav-hint{font-size:10px;}}
+    *:focus{outline:none;}
+    *:focus-visible{outline:2px solid #8B0000;outline-offset:3px;}
+  </style>
 </head>
 <body>
 <!-- ── SHOP NAV STRIP ── -->
@@ -408,27 +411,27 @@
   <div class="faq-title">Common <em style="font-style:normal;color:#8B0000;">Questions</em></div>
 
   <div class="faq-item">
-    <div class="faq-q">What's the difference between Cab Length and Wheel to Wheel?<span class="faq-toggle">+</span></div>
+    <div class="faq-q" role="button" aria-expanded="false">What's the difference between Cab Length and Wheel to Wheel?<span class="faq-toggle">+</span></div>
     <div class="faq-a"><strong>Cab Length</strong> steps run from the front door to the rear door of the cab — ideal for most trucks and cleaner in appearance. <strong>Wheel to Wheel</strong> steps extend all the way to the rear wheel arch, covering the full rocker panel. They're a longer step and better for trucks used for work, camping, or hauling where you climb in and out from different spots.</div>
   </div>
 
   <div class="faq-item">
-    <div class="faq-q">Why does cab type matter for running boards?<span class="faq-toggle">+</span></div>
+    <div class="faq-q" role="button" aria-expanded="false">Why does cab type matter for running boards?<span class="faq-toggle">+</span></div>
     <div class="faq-a">Running board length is built specifically for your cab configuration. A Crew Cab step is longer than an Extended Cab step, which is longer than a Standard Cab step. Using the wrong length looks off and may not mount correctly — that's why we filter by cab type to give you the exact fit.</div>
   </div>
 
   <div class="faq-item">
-    <div class="faq-q">Do you install running boards at the shop?<span class="faq-toggle">+</span></div>
+    <div class="faq-q" role="button" aria-expanded="false">Do you install running boards at the shop?<span class="faq-toggle">+</span></div>
     <div class="faq-a">Yes — all running boards are professionally installed by our techs at 3J's Auto Body in Signal Hill. We source, supply, and install. You don't need to show up with a box from Amazon. Get a quote and we'll handle everything.</div>
   </div>
 
   <div class="faq-item">
-    <div class="faq-q">What's the warranty on N-Fab steps?<span class="faq-toggle">+</span></div>
+    <div class="faq-q" role="button" aria-expanded="false">What's the warranty on N-Fab steps?<span class="faq-toggle">+</span></div>
     <div class="faq-a">N-Fab offers a <strong>5-year finish warranty</strong> and a <strong>lifetime workmanship warranty</strong> on their nerf steps. Our installation is also covered by 3J's workmanship guarantee.</div>
   </div>
 
   <div class="faq-item">
-    <div class="faq-q">Will running boards affect ground clearance?<span class="faq-toggle">+</span></div>
+    <div class="faq-q" role="button" aria-expanded="false">Will running boards affect ground clearance?<span class="faq-toggle">+</span></div>
     <div class="faq-a">Standard N-Fab nerf steps mount above the rocker panel and add minimal height below the door. For lifted trucks, we recommend verifying clearance at the time of install — our techs will let you know if there are any fitment concerns before we start.</div>
   </div>
 </div>
@@ -669,8 +672,14 @@ document.querySelectorAll('.faq-q').forEach(function(btn){
   btn.addEventListener('click', function(){
     var item = btn.closest('.faq-item');
     var wasOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item.open').forEach(function(i){ i.classList.remove('open'); });
-    if(!wasOpen) item.classList.add('open');
+    document.querySelectorAll('.faq-item.open').forEach(function(i){
+      i.classList.remove('open');
+      i.querySelector('.faq-q').setAttribute('aria-expanded','false');
+    });
+    if(!wasOpen){
+      item.classList.add('open');
+      btn.setAttribute('aria-expanded','true');
+    }
     reportHeight();
     setTimeout(reportHeight, 50);
   });

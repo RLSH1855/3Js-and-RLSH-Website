@@ -178,6 +178,11 @@
     .cta p{font-size:13px;color:#666;font-weight:500;margin-bottom:24px;}
     .cta-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:#8B0000;color:#fff;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;text-decoration:none;height:48px;padding:0 32px;border-radius:0;border:2px solid transparent;transition:all 0.3s ease;cursor:pointer;letter-spacing:2px;text-transform:uppercase;}
     .cta-btn:hover{background:#A00000;border-color:#BF3030;}
+    @media(prefers-reduced-motion:reduce){
+      .center-dot::after{animation:none;}
+      .arrow{animation:none;opacity:0.5;}
+      .tap-nudge{animation:none;opacity:0.8;}
+    }
   </style>
 </head>
 <body>
@@ -213,7 +218,7 @@
 
     <!-- Real image — visible, drives layout height -->
     <img class="truck-img" id="truckImg" src="https://static.wixstatic.com/media/b95bd9_a209cfd665d74fef8b78efdeec254533~mv2.png"
-         alt="Ford Raptor — Interactive Service Diagram"
+         alt="Interactive service guide — Ford Raptor truck with clickable service hotspots"
          style="visibility:visible;" />
 
     <div class="truck-overlay" style="position:absolute;inset:0;background:rgba(0,0,0,0.30);pointer-events:none;"></div>
@@ -232,6 +237,7 @@
         <div class="popup-tag">Truck Bed Protection</div>
         <div class="popup-title">Spray-In Bedliners</div>
         <div class="popup-desc">We are a certified Rhino Liner installer. Permanent bond, textured finish, same-day service, and a lifetime warranty. Not the drop-in kind — the real thing.</div>
+        <a href="https://www.3jsautobody.com/rhino-liner" style="font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#8B0000;text-decoration:none;display:inline-block;margin-top:8px;">See Products →</a>
       </div>
     </div>
 
@@ -265,6 +271,7 @@
         <div class="popup-tag">Side Steps</div>
         <div class="popup-title">Running Boards</div>
         <div class="popup-desc">Fixed boards, nerf bars, and power electric retractable steps for all trucks and SUVs — including lifted vehicles. All major brands available.</div>
+        <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/steps-running-boards.html" target="_blank" style="font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#8B0000;text-decoration:none;display:inline-block;margin-top:8px;">See Products →</a>
       </div>
     </div>
 
@@ -276,6 +283,7 @@
         <div class="popup-tag">Custom Paint</div>
         <div class="popup-title">Full Exterior Paint Jobs</div>
         <div class="popup-desc">We can match any factory color or go fully custom. Computer-matched paint for a perfect finish — single panels or full repaints. Shhh... we've even matched colors from home improvement store paint chips.</div>
+        <a href="https://www.3jsautobody.com/body-paint-repairs" style="font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#8B0000;text-decoration:none;display:inline-block;margin-top:8px;">Learn More →</a>
       </div>
     </div>
 

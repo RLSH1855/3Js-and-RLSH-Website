@@ -767,23 +767,23 @@
     <h2 class="section-title">Got <span class="red">Questions?</span></h2>
 
     <div class="faq-item">
-      <button class="faq-q">What's the difference between WeatherBeater and X-Act Contour? <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <button class="faq-q" aria-expanded="false">What's the difference between WeatherBeater and X-Act Contour? <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
       <div class="faq-a"><p>The WeatherBeater is Husky's most popular liner — digitally fitted, raised outer edges, and a non-skid bottom. The X-Act Contour is their premium option with a tighter custom contour fit and deeper channels for a more precise, OEM-style finish. Both are laser-measured for your exact vehicle.</p></div>
     </div>
     <div class="faq-item">
-      <button class="faq-q">Are Husky floor liners custom fit to my exact vehicle? <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <button class="faq-q" aria-expanded="false">Are Husky floor liners custom fit to my exact vehicle? <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
       <div class="faq-a"><p>Yes — every Husky liner is digitally scanned and designed for your exact year, make, and model. They drop right in with no trimming, no cutting, and no guesswork.</p></div>
     </div>
     <div class="faq-item">
-      <button class="faq-q">Do floor liners fit over the factory carpet? <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <button class="faq-q" aria-expanded="false">Do floor liners fit over the factory carpet? <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
       <div class="faq-a"><p>Yes — Husky floor liners lay directly over your factory carpet. The non-skid bottom keeps them locked in place so they don't slide around.</p></div>
     </div>
     <div class="faq-item">
-      <button class="faq-q">Can I get liners for all three rows? <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <button class="faq-q" aria-expanded="false">Can I get liners for all three rows? <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
       <div class="faq-a"><p>Yes — Husky makes front, second row, and third row liners for most trucks and SUVs. We can fit all rows in one visit. Call us with your year, make, and model and we'll confirm availability.</p></div>
     </div>
     <div class="faq-item">
-      <button class="faq-q">How do I clean Husky floor liners? <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <button class="faq-q" aria-expanded="false">How do I clean Husky floor liners? <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
       <div class="faq-a"><p>Pull them out, hose them off, put them back in. That's it. They're fully waterproof, and the raised edges keep everything contained so your carpet stays clean underneath.</p></div>
     </div>
 
@@ -805,8 +805,14 @@
     btn.addEventListener('click', function(){
       var item = btn.closest('.faq-item');
       var wasOpen = item.classList.contains('open');
-      document.querySelectorAll('.faq-item.open').forEach(function(i){ i.classList.remove('open'); });
-      if(!wasOpen) item.classList.add('open');
+      document.querySelectorAll('.faq-item.open').forEach(function(i){
+        i.classList.remove('open');
+        i.querySelector('.faq-q').setAttribute('aria-expanded','false');
+      });
+      if(!wasOpen){
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded','true');
+      }
       reportHeight();
       setTimeout(reportHeight, 50);
     });
