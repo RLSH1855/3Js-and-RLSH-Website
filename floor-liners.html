@@ -425,7 +425,7 @@
     /* ══════════════════════════════════════════════
        FAQ
     ══════════════════════════════════════════════ */
-    .faq-section{background:#fff;padding:48px 20px 56px;position:relative;overflow:hidden;}
+    .faq-section{background:#fff;padding:48px 20px clamp(80px,10vw,120px);position:relative;overflow:hidden;}
     .faq-section::before{
       content:'';position:absolute;inset:0;
       background-image:url('AUTO%20GEARS%20BACKGROUND%20BLACK%20WITH%20WHITE.jpg');
@@ -470,7 +470,7 @@
       .hero h1{letter-spacing:-2px;}
       .hero-ctas{flex-direction:column;}
       .btn-red,.btn-ghost{width:100%;justify-content:center;}
-      .products-section,.why-section,.more-section,.faq-section{padding:60px 24px;}
+      .products-section,.why-section,.more-section{padding:60px 24px;}.faq-section{padding:60px 24px clamp(80px,10vw,120px);}
       .product-cards{grid-template-columns:1fr;}
       .why-grid{grid-template-columns:1fr 1fr;}
       .more-grid{grid-template-columns:1fr;}

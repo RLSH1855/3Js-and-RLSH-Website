@@ -696,7 +696,7 @@
        FAQ
     ════════════════════════════════ */
     .faq-wrap{
-      padding:80px 64px 80px 56px;
+      padding:80px 64px clamp(80px,10vw,120px) 56px;
     }
     .faq-wrap .label{margin-bottom:14px;}
     .faq-wrap h2{
@@ -726,7 +726,7 @@
     @media(max-width:960px){
       .specs-faq-row{grid-template-columns:1fr;}
       .specs-wrap{padding:56px 36px;border-right:none;border-bottom:1px solid #ebebeb;}
-      .faq-wrap{padding:56px 36px;}
+      .faq-wrap{padding:56px 36px clamp(80px,10vw,120px);}
     }
     @media(max-width:600px){
       .specs-wrap{padding:36px 20px;}
@@ -734,7 +734,7 @@
       .specs-table td{padding:11px 0;}
       .specs-table td:first-child{font-size:9px;letter-spacing:1.5px;width:40%;}
       .specs-table td:last-child{font-size:13px;}
-      .faq-wrap{padding:36px 20px;}
+      .faq-wrap{padding:36px 20px clamp(80px,10vw,120px);}
       .faq-wrap h2{margin-bottom:28px;}
       .faq-item{padding:18px 0;}
       .faq-q{font-size:11px;}
