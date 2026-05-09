@@ -29,7 +29,7 @@
     .ba-badge{position:absolute;bottom:12px;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:900;letter-spacing:1.5px;text-transform:uppercase;padding:7px 14px;z-index:5;pointer-events:none;box-shadow:0 2px 8px rgba(0,0,0,0.45);}
     .ba-badge.before{left:12px;background:#fff;color:#1a1a1a;}
     .ba-badge.after{right:12px;background:#8B0000;color:#fff;}
-    .ba-section{background:#0A0A0A;padding:80px 40px;}
+    .ba-section{background:#0A0A0A;padding:clamp(48px,7vw,80px) clamp(16px,4vw,40px);}
     .ba-section-header{text-align:center;margin-bottom:48px;}
     .ba-section-header .eyebrow{color:#8B0000;text-align:center;margin-bottom:8px;}
     .ba-section-header h2{font-size:clamp(24px,3.5vw,38px);font-weight:900;letter-spacing:-0.5px;color:#fff;}
@@ -54,7 +54,7 @@
     .cta-link{display:inline-flex;align-items:center;gap:8px;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;margin-top:28px;padding:0 24px;height:48px;border-radius:0;transition:background 0.2s,color 0.2s,border-color 0.2s;}
     .cta-link svg{width:14px;height:14px;}
 
-    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;max-width:1100px;margin:0 auto;padding:100px 40px;}
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;max-width:1100px;margin:0 auto;padding:clamp(56px,8vw,100px) clamp(20px,4vw,40px);}
     .two-col.flip .col-text{order:2;}
     .two-col.flip .col-visual{order:1;}
 
@@ -124,7 +124,7 @@
     .stat-label{font-family:'Inter',sans-serif;font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#999;margin-top:6px;}
 
     /* PROCESS STEPS */
-    .process-section{background:#fff;padding:80px 40px;}
+    .process-section{background:#fff;padding:clamp(48px,7vw,80px) clamp(20px,4vw,40px);}
     .process-inner{max-width:1100px;margin:0 auto;}
     .process-header{text-align:center;margin-bottom:56px;}
     .process-header .eyebrow{color:#8B0000;}
@@ -143,7 +143,7 @@
     .stripe-break{height:4px;background:linear-gradient(to right,transparent,#8B0000 20%,#8B0000 80%,transparent);}
 
     /* INSURANCE BAND */
-    .insurance-band{background:#F9F9F9;padding:48px 24px;text-align:center;border-top:1px solid #e8e8e8;border-bottom:1px solid #e8e8e8;}
+    .insurance-band{background:#F9F9F9;padding:clamp(32px,4vw,48px) clamp(16px,4vw,24px);text-align:center;border-top:1px solid #e8e8e8;border-bottom:1px solid #e8e8e8;}
     .ins-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;max-width:1000px;margin:28px auto 0;}
     .insurance-band .eyebrow{color:#8B0000;margin-bottom:14px;}
     .insurance-band h2{font-family:'Montserrat',sans-serif;font-size:clamp(22px,3vw,34px);font-weight:900;color:#1a1a1a;margin-bottom:10px;letter-spacing:-0.5px;text-wrap:balance;}
@@ -158,7 +158,7 @@
     @media(max-width:600px){.ins-logo-tile{height:40px;min-width:72px;padding:6px 10px;}.ins-logo-tile img{height:20px;max-width:70px;}.ins-grid{gap:8px;}}
 
     /* REPAIR JOURNEY */
-    .journey-section{background:#F2F2F2;padding:90px 24px;}
+    .journey-section{background:#F2F2F2;padding:clamp(56px,8vw,90px) clamp(16px,4vw,24px);}
     .journey-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:320px 1fr;gap:64px;align-items:start;}
     .journey-sidebar{position:sticky;top:32px;}
     .journey-sidebar .section-title{font-size:clamp(22px,2.8vw,34px);margin-bottom:16px;}
@@ -177,7 +177,7 @@
     .step-item.open .step-body-text{display:block;}
 
     /* CTA */
-    .cta-band{background:#0A0A0A;padding:72px 24px;text-align:center;position:relative;overflow:hidden;}
+    .cta-band{background:#0A0A0A;padding:clamp(48px,6vw,72px) clamp(16px,4vw,24px);text-align:center;position:relative;overflow:hidden;}
     .cta-band::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(139,0,0,0.10) 0%,transparent 65%);}
     .cta-band::after{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,0.03) 1px,transparent 1px);background-size:24px 24px;}
     .cta-content{position:relative;z-index:1;}
@@ -193,7 +193,7 @@
     .btn-secondary:active{background:rgba(255,255,255,0.38);}
 
     /* FAQ */
-    .faq-section{background:#fff;width:100%;padding:80px 24px;border-top:1px solid #e8e8e8;border-bottom:1px solid #e8e8e8;}
+    .faq-section{background:#fff;width:100%;padding:clamp(48px,7vw,80px) clamp(16px,4vw,24px);border-top:1px solid #e8e8e8;border-bottom:1px solid #e8e8e8;}
     .faq-inner{max-width:740px;margin:0 auto;width:100%;}
     .faq-section .eyebrow{color:#8B0000;text-align:center;margin-bottom:6px;}
     .faq-section h2{font-family:'Montserrat',sans-serif;font-size:clamp(22px,5vw,34px);font-weight:900;letter-spacing:-1px;color:#1a1a1a;text-align:center;margin-bottom:40px;line-height:1.1;text-wrap:balance;}
@@ -217,11 +217,7 @@
       .stat{min-width:120px;}
       .journey-inner{grid-template-columns:1fr;}
       .journey-sidebar{position:static;}
-      .process-section{padding:48px 20px;}
       .process-header{margin-bottom:36px;}
-      .journey-section{padding:56px 20px;}
-      .cta-band{padding:48px 20px;}
-      .faq-section{padding:48px 20px;}
       .owner-inner{padding:56px 24px;}
     }
     @media(max-width:600px){
@@ -238,9 +234,6 @@
       .stat-number{font-size:22px;}
       .cert-strip{gap:8px;padding:10px 16px;}
       .cert-item span{font-size:10px;}
-      .insurance-band{padding:32px 16px;}
-      .cta-band{padding:28px 16px;}
-      .faq-section{padding:24px 16px;}
       .faq-q{font-size:12px;padding:12px 0;}
       .cta-buttons{flex-direction:column;align-items:stretch;}
       .btn-primary,.btn-secondary{width:100%;justify-content:center;}

@@ -16,9 +16,9 @@
     html{overflow-y:hidden;}
     body{font-family:'Inter',sans-serif;background:#fff;}
 
-    .carriers-section{background:#fff;padding:56px 24px 64px;text-align:center;}
+    .carriers-section{background:#fff;padding:clamp(40px,6vw,64px) clamp(16px,4vw,24px);text-align:center;}
 
-    .carriers-header{margin-bottom:40px;}
+    .carriers-header{margin-bottom:clamp(24px,4vw,40px);}
     .carriers-eyebrow{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:#8B0000;margin-bottom:10px;}
     .carriers-heading{font-family:'Montserrat',sans-serif;font-size:clamp(22px,3.5vw,38px);font-weight:900;color:#1a1a1a;letter-spacing:-0.5px;margin-bottom:12px;text-wrap:balance;}
     .carriers-heading em{font-style:normal;color:#8B0000;}
@@ -50,8 +50,6 @@
     .carriers-note a:hover{text-decoration:underline;}
 
     @media(max-width:600px){
-      .carriers-section{padding:36px 16px 48px;}
-      .carriers-header{margin-bottom:24px;}
       .logo-grid{
         display:grid;
         grid-template-columns:repeat(4,1fr);

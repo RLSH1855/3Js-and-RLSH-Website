@@ -70,7 +70,7 @@
       display:grid;grid-template-columns:1fr 1fr;
       gap:80px;align-items:center;
       max-width:1100px;margin:0 auto;
-      padding:100px 40px;
+      padding:clamp(56px,8vw,100px) clamp(20px,4vw,40px);
     }
     .two-col.flip .col-text{order:2;}
     .two-col.flip .col-visual{order:1;}
@@ -162,7 +162,7 @@
 
     /* CTA BAND */
     .cta-band{
-      background:#8B0000;padding:64px 24px;text-align:center;
+      background:#8B0000;padding:clamp(40px,5vw,64px) clamp(16px,4vw,24px);text-align:center;
       position:relative;overflow:hidden;
     }
     .cta-band::before{
@@ -193,13 +193,13 @@
 
     /* RESPONSIVE */
     @media(max-width:900px){
-      .two-col{grid-template-columns:1fr;gap:28px;padding:56px 24px;}
+      .two-col{grid-template-columns:1fr;gap:28px;}
       .two-col.flip .col-text{order:1;}
       .two-col.flip .col-visual{order:2;}
       .num-badge{font-size:80px;top:-10px;right:0;}
     }
     @media(max-width:600px){
-      .two-col{padding:26px 16px;gap:16px;}
+      .two-col{gap:16px;}
       .visual-box{aspect-ratio:16/9;}
       .num-badge{display:none;}
       .section-title{font-size:22px !important;}
@@ -208,7 +208,6 @@
       .eyebrow{font-size:9px;}
       .cta-link{margin-top:18px;width:100%;justify-content:center;}
       .stripe-break{height:2px;}
-      .cta-band{padding:32px 16px;}
     }
   </style>
 </head>

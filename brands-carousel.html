@@ -18,11 +18,11 @@
 
     .brands-section{
       background:#fff;
-      padding:56px 0 72px;
+      padding:clamp(40px,6vw,72px) 0;
       text-align:center;
     }
 
-    .brands-header{padding:0 24px;margin-bottom:40px;}
+    .brands-header{padding:0 clamp(16px,4vw,24px);margin-bottom:clamp(24px,4vw,40px);}
     .brands-eyebrow{
       font-size:10px;font-weight:800;letter-spacing:3px;
       text-transform:uppercase;color:#8B0000;margin-bottom:10px;
@@ -36,13 +36,7 @@
       font-size:13px;font-weight:500;color:#888;letter-spacing:0.3px;
     }
 
-    @media(max-width:900px){
-      .brands-section{padding:36px 0 44px;}
-      .brands-header{margin-bottom:28px;}
-    }
     @media(max-width:640px){
-      .brands-section{padding:24px 0 24px;}
-      .brands-header{margin-bottom:20px;}
       .marquee-wrapper:last-child{margin-bottom:0;}
       .logo-card{width:130px;height:60px;padding:10px 14px;}
       .logo-card img{width:100px;height:34px;}

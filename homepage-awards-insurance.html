@@ -22,7 +22,7 @@
     ═══════════════════════════ */
     .awards-section{
       background:#F2F2F2;
-      padding:72px 24px;
+      padding:clamp(48px,7vw,72px) clamp(16px,4vw,24px);
       text-align:center;
       position:relative;overflow:hidden;
     }
@@ -155,14 +155,12 @@
 
     /* ─── RESPONSIVE ─── */
     @media(max-width:900px){
-      .awards-section{padding:56px 20px;}
       .award-card{padding:28px 24px;}
     }
     @media(max-width:768px){
       .awards-grid{flex-direction:column;align-items:center;}
       .award-card{min-width:0;width:100%;max-width:100%;}
       .winner-callout{flex-direction:column;text-align:center;gap:10px;}
-      .awards-section{padding:48px 20px 56px;}
     }
   </style>
 </head>

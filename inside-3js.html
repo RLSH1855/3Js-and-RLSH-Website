@@ -37,7 +37,7 @@
     .stat-label{font-family:'Inter',sans-serif;font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#999;margin-top:6px;}
 
     /* SECTION BASE */
-    .section{padding:80px 24px;}
+    .section{padding:clamp(48px,7vw,80px) clamp(16px,4vw,24px);}
     .section-inner{max-width:1100px;margin:0 auto;}
     .eyebrow{font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:#8B0000;margin-bottom:12px;}
     .section-title{font-size:clamp(22px,3.5vw,38px);font-weight:800;letter-spacing:-0.5px;line-height:1.1;margin-bottom:20px;color:#1a1a1a;text-wrap:balance;}
@@ -57,7 +57,7 @@
     .section-divider{height:1px;background:#e8e8e8;margin:0;}
 
     /* WORKMANSHIP */
-    .work-section{background:#0a0a0a;padding:80px 24px;overflow:hidden;}
+    .work-section{background:#0a0a0a;padding:clamp(48px,7vw,80px) clamp(16px,4vw,24px);overflow:hidden;}
     .work-section .section-inner{max-width:1100px;margin:0 auto;overflow:hidden;}
     .work-header{text-align:center;margin-bottom:48px;}
     .work-header .eyebrow{color:#fff;}
@@ -76,7 +76,7 @@
     .work-photo.active-thumb{outline:3px solid #8B0000;}
 
     /* REPAIR JOURNEY */
-    .journey-section{background:#fff;padding:90px 24px;}
+    .journey-section{background:#fff;padding:clamp(56px,8vw,90px) clamp(16px,4vw,24px);}
     .journey-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:320px 1fr;gap:64px;align-items:start;}
     .journey-sidebar{position:sticky;top:32px;}
     .journey-sidebar .section-title{font-size:clamp(22px,2.8vw,34px);margin-bottom:16px;}
@@ -104,14 +104,14 @@
     }
 
     /* RED CTA BAND */
-    .red-band{background:#8B0000;padding:56px 24px;text-align:center;}
+    .red-band{background:#8B0000;padding:clamp(40px,5vw,56px) clamp(16px,4vw,24px);text-align:center;}
     .red-band h2{font-family:'Montserrat',sans-serif;font-size:clamp(20px,3vw,32px);font-weight:900;letter-spacing:-0.5px;margin-bottom:10px;color:#fff;}
     .red-band p{font-family:'Inter',sans-serif;font-size:15px;font-weight:400;color:rgba(255,255,255,0.80);max-width:540px;margin:0 auto 28px;line-height:1.65;}
     .red-band-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:#fff;color:#8B0000;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;text-decoration:none;height:48px;padding:0 32px;border-radius:0;border:none;cursor:pointer;transition:all 0.3s ease;letter-spacing:2px;text-transform:uppercase;touch-action:manipulation;-webkit-tap-highlight-color:transparent;}
     .red-band-btn:hover{background:#f0f0f0;}
 
     /* FAQ */
-    .faq-section{width:100%;padding:80px 24px;background:#fff;border-top:1px solid #e8e8e8;}
+    .faq-section{width:100%;padding:clamp(48px,7vw,80px) clamp(16px,4vw,24px);background:#fff;border-top:1px solid #e8e8e8;}
     .faq-inner{max-width:740px;margin:0 auto;width:100%;}
     .faq-section .eyebrow{text-align:center;margin-bottom:6px;}
     .faq-section h2{font-family:'Montserrat',sans-serif;font-size:clamp(22px,5vw,34px);font-weight:900;letter-spacing:-1px;color:#1a1a1a;text-align:center;margin-bottom:40px;line-height:1.1;}
@@ -129,14 +129,7 @@
     @media(max-width:900px){
       .work-grid{grid-template-columns:1fr 1fr;}
       .stat{min-width:120px;}
-      .section{padding:56px 20px;}
       .two-col{gap:32px;}
-      .work-section{padding:48px 20px;}
-      .journey-section{padding:56px 20px;}
-      .services-section{padding:48px 20px;}
-      .faq-section{padding:48px 20px;}
-      .red-band{padding:40px 20px;}
-      .mission-pad{padding:64px 24px;}
     }
     @media(max-width:640px){
       .two-col{grid-template-columns:1fr;gap:24px;}
@@ -150,23 +143,22 @@
       .section-title{font-size:20px !important;}
       .section-body{font-size:15px;}
       .eyebrow{font-size:9px;}
-      .work-section{padding:32px 16px;}
       .work-grid{grid-template-columns:repeat(3,1fr);gap:6px;}
       .work-photo.gallery-hidden{display:none;}
       .gallery-more-wrap{text-align:center;margin-top:16px;}
       .gallery-more-btn{display:inline-flex;align-items:center;gap:8px;background:#8B0000;color:#fff;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:900;letter-spacing:1.5px;text-transform:uppercase;border:none;cursor:pointer;height:48px;padding:0 28px;}
-      .faq-section{padding:28px 16px;}
-      .red-band{padding:28px 16px;}
       .red-band-btn{width:100%;justify-content:center;}
       .hide-mobile{display:none;}
-      .journey-section{padding:32px 16px;}
       .svc-grid{grid-template-columns:1fr;}
       .svc-card{height:200px;}
       .svc-name{font-size:18px;}
     }
 
+    .acc-section{background:#fff;padding:clamp(40px,5vw,64px) clamp(16px,4vw,24px);border-bottom:1px solid #e8e8e8;}
+    .mission-pad{background:#0A0A0A;padding:clamp(56px,8vw,90px) clamp(16px,4vw,24px);text-align:center;position:relative;overflow:hidden;}
+
     /* ── TOP SERVICES GRID ── */
-    .services-section{background:#f5f5f5;padding:64px 24px;border-top:1px solid #e8e8e8;border-bottom:1px solid #e8e8e8;}
+    .services-section{background:#f5f5f5;padding:clamp(40px,5vw,64px) clamp(16px,4vw,24px);border-top:1px solid #e8e8e8;border-bottom:1px solid #e8e8e8;}
     .services-header{text-align:center;margin-bottom:40px;}
     .services-header .eyebrow{color:#8B0000;margin-bottom:10px;}
     .services-header h2{font-family:'Montserrat',sans-serif;font-size:clamp(22px,3.5vw,36px);font-weight:800;letter-spacing:-0.5px;color:#1a1a1a;text-wrap:balance;}
@@ -340,7 +332,7 @@
   @media(max-width:768px){.dual-acc-wrap{grid-template-columns:1fr;gap:40px;}}
 </style>
 
-<section style="background:#fff;padding:56px 24px 64px;border-bottom:1px solid #e8e8e8;">
+<section class="acc-section">
   <div class="dual-acc-wrap">
 
     <!-- LEFT: SERVICES -->
@@ -678,7 +670,7 @@
 </section>
 
 <!-- 10. OUR MISSION — FULL WIDTH DARK STATEMENT -->
-<section class="mission-pad" style="background:#0A0A0A;padding:90px 24px;text-align:center;position:relative;overflow:hidden;">
+<section class="mission-pad">
   <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,0.025) 1px,transparent 1px);background-size:28px 28px;pointer-events:none;"></div>
   <div style="position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(139,0,0,0.12) 0%,transparent 60%);pointer-events:none;"></div>
   <div style="max-width:780px;margin:0 auto;position:relative;z-index:1;">

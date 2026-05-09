@@ -18,11 +18,10 @@
 
     .ig-section{
       background:#fff;
-      padding:56px 0 64px;
+      padding:clamp(40px,6vw,64px) 0;
       text-align:center;
-      border-top:3px solid #8B0000;
     }
-    .ig-header{padding:0 24px;}
+    .ig-header{padding:0 clamp(16px,4vw,24px);}
 
     /* Header */
     .ig-eyebrow{
@@ -43,14 +42,14 @@
     .ig-profile{
       display:inline-flex;align-items:center;gap:14px;
       background:#f5f5f5;border:1px solid #e0e0e0;
-      border-radius:50px;padding:10px 22px 10px 10px;
+      border-radius:0;padding:10px 22px 10px 10px;
       margin-bottom:36px;text-decoration:none;
       transition:border-color 0.2s,background 0.2s;
     }
     .ig-profile:hover{background:#ebebeb;border-color:#8B0000;}
     .ig-avatar{
-      width:42px;height:42px;border-radius:50%;
-      background:linear-gradient(135deg,#8B0000,#C0392B,#E74C3C);
+      width:42px;height:42px;border-radius:0;
+      background:#8B0000;
       display:flex;align-items:center;justify-content:center;
       flex-shrink:0;
     }
@@ -168,8 +167,6 @@
     /* Responsive */
     @media(max-width:600px){
       .ig-tile{flex:0 0 140px;}
-      .ig-section{padding:40px 0 48px;}
-      .ig-header{padding:0 16px;}
     }
   </style>
 </head>
@@ -289,10 +286,6 @@
   window.addEventListener('load', function(){
     [0,200,500,1000,2000,3500].forEach(function(t){ setTimeout(reportHeight,t); });
   });
-  window.addEventListener('resize', reportHeight);
-  if(window.ResizeObserver){ new ResizeObserver(reportHeight).observe(document.body); }
-  }
-  window.addEventListener('load', function(){ reportHeight(); setTimeout(reportHeight,500); setTimeout(reportHeight,1500); });
   window.addEventListener('resize', reportHeight);
   if(window.ResizeObserver){ new ResizeObserver(reportHeight).observe(document.body); }
 </script>
