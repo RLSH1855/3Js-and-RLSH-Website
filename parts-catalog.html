@@ -139,6 +139,14 @@
     .ymm-btn:hover{background:#6d0000;}
     .ymm-btn:disabled{background:#ccc;cursor:not-allowed;}
 
+    /* ── AUTO-FILTER BANNER ── */
+    #auto-filter-banner{display:none;background:#1a1a1a;padding:10px 16px;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;border-bottom:2px solid #8B0000;}
+    #auto-filter-banner.show{display:flex;}
+    #auto-filter-banner p{font-size:11px;font-weight:700;color:#fff;letter-spacing:1px;text-transform:uppercase;}
+    #auto-filter-banner p span{color:#ff6b6b;}
+    #show-all-btn{flex-shrink:0;padding:7px 16px;background:#8B0000;color:#fff;border:none;border-radius:4px;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:900;letter-spacing:1px;text-transform:uppercase;cursor:pointer;white-space:nowrap;}
+    #show-all-btn:hover{background:#a00000;}
+
     /* ── SECTION HEADING ── */
     .section-heading-bar{
       background:#fff;padding:18px 16px 14px;border-bottom:1px solid #e8e8e8;
@@ -512,6 +520,12 @@
   </div>
 </div>
 
+<!-- Auto-Filter Banner (set by URL params from landing pages) -->
+<div id="auto-filter-banner">
+  <p>Showing: <span id="auto-filter-label"></span></p>
+  <button id="show-all-btn" onclick="clearAutoFilter()">Show All Parts That Fit My Truck</button>
+</div>
+
 <!-- No Garage Banner -->
 <div id="no-garage-banner">
   <p>Save your truck to see which covers fit — we confirm fitment on every product.</p>
@@ -828,13 +842,66 @@ var PRODUCT_TYPES={
 // ── State ──
 var garage=null,filterFitOnly=true,filterBrands={},filterTypes={},filterProduct='';
 
+// ── URL param → catalog brand/category auto-filter ──
+var BRAND_MAP={
+  'go-rhino':'Go Rhino','amp-research':'AMP Research','nfab':'N-FAB',
+  'westin':'Westin','bak':'BAK','extang':'Extang','retrax':'Retrax',
+  'truxedo':'TruXedo','roll-n-lock':'Roll N Lock','undercover':'UnderCover',
+  'husky':'Husky','curt':'CURT','backrack':'BackRack'
+};
+var CAT_LABEL={
+  'running-boards':'Running Boards & Steps','tonneau-covers':'Tonneau Covers',
+  'floor-liners':'Floor Liners','towing-hitches':'Towing & Hitches',
+  'headache-racks':'Headache Racks'
+};
+var urlParams=new URLSearchParams(window.location.search);
+var autoFilterBrand=BRAND_MAP[urlParams.get('brand')]||null;
+var autoFilterCat=urlParams.get('cat')||null;
+
+function applyAutoFilter(){
+  if(!autoFilterBrand&&!autoFilterCat)return;
+  // Reset all brand filters then enable only the target brand
+  Object.keys(filterBrands).forEach(function(b){filterBrands[b]=false;});
+  if(autoFilterBrand&&filterBrands.hasOwnProperty(autoFilterBrand)){
+    filterBrands[autoFilterBrand]=true;
+    updateBrandCheckboxes();
+  }
+  // Build banner label
+  var parts=[];
+  if(autoFilterBrand)parts.push(autoFilterBrand);
+  if(autoFilterCat&&CAT_LABEL[autoFilterCat])parts.push(CAT_LABEL[autoFilterCat]);
+  document.getElementById('auto-filter-label').textContent=parts.join(' — ');
+  document.getElementById('auto-filter-banner').classList.add('show');
+  renderProducts();
+}
+
+function updateBrandCheckboxes(){
+  Object.keys(filterBrands).forEach(function(b){
+    var cbId='cb-brand-'+b.replace(/\s/g,'-');
+    var el=document.getElementById(cbId);
+    if(el)el.classList.toggle('checked',!!filterBrands[b]);
+    // mobile chips
+    var chips=document.querySelectorAll('[data-filter="brand"][data-val="'+b+'"]');
+    chips.forEach(function(c){c.classList.toggle('active',!!filterBrands[b]);});
+  });
+}
+
+function clearAutoFilter(){
+  autoFilterBrand=null;autoFilterCat=null;
+  Object.keys(filterBrands).forEach(function(b){filterBrands[b]=false;});
+  updateBrandCheckboxes();
+  document.getElementById('auto-filter-banner').classList.remove('show');
+  renderProducts();
+}
+
 // ── Init ──
 (function(){
   var s=localStorage.getItem('garage_vehicle');
   if(s){try{garage=JSON.parse(s);}catch(e){}}
   initGarageBar();
   buildFilters();
-  renderProducts();
+  applyAutoFilter();
+  if(!autoFilterBrand&&!autoFilterCat)renderProducts();
   buildRecommended();
   initYMM();
 })();
