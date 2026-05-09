@@ -420,9 +420,10 @@
     .faq-a{
       font-family:'Inter',sans-serif;font-size:15px;font-weight:400;
       color:#424954;line-height:1.75;text-wrap:pretty;
-      display:none;padding-bottom:20px;
+      overflow:hidden;max-height:0;opacity:0;padding-bottom:0;
+      transition:max-height 0.4s ease-in-out,opacity 0.3s ease,padding-bottom 0.4s ease-in-out;
     }
-    .faq-item.open .faq-a{display:block;}
+    .faq-item.open .faq-a{max-height:400px;opacity:1;padding-bottom:20px;}
 
     /* ─── CTA BAND ─── */
     .cta-band{

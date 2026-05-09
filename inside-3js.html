@@ -122,8 +122,8 @@
     .faq-q:hover{color:#8B0000;}
     .faq-q svg{width:18px;height:18px;flex-shrink:0;margin-top:2px;stroke:#8B0000;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;transition:transform 0.3s ease;}
     .faq-item.open .faq-q svg{transform:rotate(45deg);}
-    .faq-a{font-family:'Inter',sans-serif;font-size:15px;font-weight:400;color:#424954;line-height:1.65;display:none;padding-bottom:20px;}
-    .faq-item.open .faq-a{display:block;}
+    .faq-a{font-family:'Inter',sans-serif;font-size:15px;font-weight:400;color:#424954;line-height:1.65;overflow:hidden;max-height:0;opacity:0;padding-bottom:0;transition:max-height 0.4s ease-in-out,opacity 0.3s ease,padding-bottom 0.4s ease-in-out;}
+    .faq-item.open .faq-a{max-height:400px;opacity:1;padding-bottom:20px;}
 
     /* RESPONSIVE */
     @media(max-width:900px){
