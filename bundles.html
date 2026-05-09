@@ -88,12 +88,7 @@
       position:relative;
       overflow:hidden;
     }
-    .hero::after{
-      content:'';
-      position:absolute;
-      bottom:0;left:0;right:0;height:4px;
-      background:linear-gradient(to right,#8B0000,rgba(139,0,0,0.15));
-    }
+
     .hero-eyebrow{
       font-size:10px;font-weight:800;letter-spacing:4px;
       text-transform:uppercase;color:#8B0000;
@@ -607,6 +602,14 @@
       .hard-hat-tag{width:80px;top:-24px;right:-5px;filter:none;transition:none;}
       .card-405:hover .sign-tag{filter:none;transform:none;}
       .bundle-card:hover .hard-hat-tag{filter:none;transform:none;}
+    }
+    /* @property not supported in all browsers — fallback for Firefox */
+    @supports not (background: conic-gradient(from 0deg, red, blue)) {
+      .card-405:hover{
+        border-color:#8B0000;
+        box-shadow:0 16px 52px rgba(139,0,0,0.20);
+      }
+      .card-405::before{display:none;}
     }
   </style>
 </head>
