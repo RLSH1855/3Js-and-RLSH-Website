@@ -272,8 +272,8 @@
     /* ── PRODUCT GRID ── */
     .product-grid{
       display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:10px;padding:12px;
+      grid-template-columns:1fr;
+      gap:12px;padding:12px;
     }
 
     /* ── PRODUCT CARD ── */
@@ -304,8 +304,8 @@
     .card-ph-name{font-size:11px;font-weight:700;color:#aaa;text-align:center;padding:0 12px;line-height:1.3;}
 
     /* Header (name + subtitle) */
-    .card-header{padding:13px 13px 8px;}
-    .card-name{font-size:17px;font-weight:900;color:#1a1a1a;line-height:1.2;margin-bottom:3px;}
+    .card-header{padding:14px 14px 8px;}
+    .card-name{font-size:15px;font-weight:900;color:#1a1a1a;line-height:1.2;margin-bottom:3px;}
     .card-subtitle{font-size:11px;font-weight:500;color:#777;font-style:italic;}
 
     /* Guaranteed Fit */
@@ -326,28 +326,28 @@
 
     /* Bottom: price + buttons */
     .card-bottom{
-      display:flex;align-items:center;justify-content:space-between;gap:8px;
-      padding:11px 13px 12px;border-top:1px solid #f0f0f0;margin-top:auto;
+      display:flex;flex-direction:column;gap:10px;
+      padding:12px 14px 14px;border-top:1px solid #f0f0f0;margin-top:auto;
     }
     .card-price-block{}
-    .card-from-label{display:block;font-size:8px;font-weight:400;color:#1a1a1a;text-transform:uppercase;letter-spacing:1px;margin-bottom:1px;}
-    .card-price-amount{font-size:20px;font-weight:900;color:#8B0000;line-height:1;}
+    .card-from-label{display:block;font-size:8px;font-weight:400;color:#1a1a1a;text-transform:uppercase;letter-spacing:1px;margin-bottom:2px;}
+    .card-price-amount{font-size:22px;font-weight:900;color:#8B0000;line-height:1;}
 
-    .card-actions{display:flex;flex-direction:column;gap:5px;flex-shrink:0;}
+    .card-actions{display:flex;flex-direction:row;gap:8px;}
     .card-btn-view{
-      display:inline-flex;align-items:center;justify-content:center;gap:8px;
-      min-height:44px;padding:0 20px;background:#1a1a1a;color:#fff;
+      display:inline-flex;align-items:center;justify-content:center;
+      flex:1;min-height:44px;padding:0 12px;background:#1a1a1a;color:#fff;
       border:none;border-radius:0;
-      font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
-      cursor:pointer;text-align:center;text-decoration:none;white-space:nowrap;transition:all 0.3s ease;
+      font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
+      cursor:pointer;text-align:center;text-decoration:none;transition:background 0.2s;
     }
     .card-btn-view:hover{background:#333;}
     .card-btn-quote{
-      display:inline-flex;align-items:center;justify-content:center;gap:8px;
-      min-height:44px;padding:0 20px;background:#8B0000;color:#fff;
+      display:inline-flex;align-items:center;justify-content:center;
+      flex:1;min-height:44px;padding:0 12px;background:#8B0000;color:#fff;
       border:none;border-radius:0;
-      font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
-      cursor:pointer;text-align:center;text-decoration:none;white-space:nowrap;transition:all 0.3s ease;
+      font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
+      cursor:pointer;text-align:center;text-decoration:none;transition:background 0.2s;
     }
     .card-btn-quote:hover{background:#6d0000;}
 
@@ -431,6 +431,16 @@
     .category-desc p:last-child{margin-bottom:0;}
     .category-desc strong{color:#1a1a1a;font-weight:800;}
 
+    /* ── SMALL TABLET / LARGE PHONE (480px+) ── */
+    @media(min-width:480px){
+      .product-grid{grid-template-columns:repeat(2,1fr);gap:10px;}
+      .card-name{font-size:13px;}
+      .card-price-amount{font-size:18px;}
+      .card-bottom{flex-direction:row;align-items:center;justify-content:space-between;gap:8px;}
+      .card-actions{flex-direction:column;gap:5px;flex-shrink:0;}
+      .card-btn-view,.card-btn-quote{flex:none;padding:0 14px;font-size:10px;letter-spacing:1px;}
+    }
+
     /* ── TABLET (768px+) ── */
     @media(min-width:768px){
       /* Hero */
@@ -466,7 +476,11 @@
 
       /* Cards */
       .card-img{aspect-ratio:16/9;}
-      .card-name{font-size:13px;}
+      .card-name{font-size:15px;}
+      .card-price-amount{font-size:20px;}
+      .card-bottom{flex-direction:row;align-items:center;justify-content:space-between;gap:8px;padding:11px 13px 12px;}
+      .card-actions{flex-direction:column;gap:5px;flex-shrink:0;}
+      .card-btn-view,.card-btn-quote{flex:none;padding:0 20px;font-size:11px;letter-spacing:2px;}
 
       /* Recommended */
       .recommended-title{padding:0 24px;}
@@ -900,6 +914,14 @@ function clearAutoFilter(){
 (function(){
   var s=localStorage.getItem('garage_vehicle');
   if(s){try{garage=JSON.parse(s);}catch(e){}}
+  // Fallback: read from landing page YMM sessionStorage if no garage saved
+  if(!garage){
+    var sy=sessionStorage.getItem('rlsh_year'),sm=sessionStorage.getItem('rlsh_make'),smo=sessionStorage.getItem('rlsh_model');
+    if(sy&&sm&&smo){
+      garage={year:sy,make:sm,model:smo,trim:'',bedSize:'',bedIn:null,vin:''};
+      localStorage.setItem('garage_vehicle',JSON.stringify(garage));
+    }
+  }
   initGarageBar();
   buildFilters();
   applyAutoFilter();
