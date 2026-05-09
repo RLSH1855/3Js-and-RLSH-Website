@@ -503,9 +503,133 @@
     }
     *:focus{outline:none;}
     *:focus-visible{outline:2px solid #8B0000;outline-offset:3px;}
+
+    /* ── WHAT FITS MY RIDE POPUP ── */
+    .wfmr-overlay{
+      position:fixed;inset:0;z-index:9999;
+      background:rgba(0,0,0,0.72);
+      display:flex;align-items:center;justify-content:center;
+      padding:16px;
+      opacity:0;transition:opacity .35s ease;
+      pointer-events:none;
+    }
+    .wfmr-overlay.show{opacity:1;pointer-events:all;}
+    .wfmr-panel{
+      display:flex;width:100%;max-width:860px;max-height:90vh;
+      overflow:hidden;background:#fff;
+      box-shadow:0 24px 80px rgba(0,0,0,0.45);
+    }
+    .wfmr-left{
+      flex:0 0 42%;
+      background-image:url('RLSH-ford-truck.webp');
+      background-size:cover;background-position:center;
+      position:relative;
+    }
+    .wfmr-left::after{
+      content:'';position:absolute;inset:0;
+      background:linear-gradient(to right,rgba(0,0,0,0.15),rgba(0,0,0,0.35));
+    }
+    .wfmr-right{
+      flex:1;padding:40px 36px 32px;
+      display:flex;flex-direction:column;align-items:center;
+      position:relative;overflow-y:auto;background:#fff;
+    }
+    .wfmr-close{
+      position:absolute;top:14px;right:16px;
+      background:none;border:none;cursor:pointer;
+      font-size:22px;line-height:1;color:#aaa;padding:4px;
+    }
+    .wfmr-close:hover{color:#1a1a1a;}
+    .wfmr-logo{height:64px;width:auto;object-fit:contain;margin-bottom:20px;}
+    .wfmr-title{
+      font-family:'Montserrat',sans-serif;font-size:clamp(20px,3vw,26px);
+      font-weight:900;text-transform:uppercase;letter-spacing:-0.5px;
+      color:#1a1a1a;text-align:center;margin-bottom:8px;line-height:1.1;
+    }
+    .wfmr-sub{
+      font-family:'Inter',sans-serif;font-size:13px;font-weight:400;
+      color:#666;text-align:center;line-height:1.6;
+      margin-bottom:28px;max-width:320px;
+    }
+    .wfmr-fields{width:100%;display:flex;flex-direction:column;gap:14px;margin-bottom:20px;}
+    .wfmr-field label{
+      display:block;font-family:'Montserrat',sans-serif;
+      font-size:10px;font-weight:700;letter-spacing:1.5px;
+      text-transform:uppercase;color:#888;margin-bottom:5px;
+    }
+    .wfmr-field select{
+      width:100%;height:48px;padding:0 36px 0 14px;
+      border:1.5px solid #ddd;border-radius:0;
+      font-family:'Montserrat',sans-serif;font-size:13px;font-weight:600;color:#1a1a1a;
+      background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2.5'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E") no-repeat right 12px center;
+      appearance:none;-webkit-appearance:none;cursor:pointer;transition:border-color .2s;
+    }
+    .wfmr-field select:focus{border-color:#8B0000;outline:none;}
+    .wfmr-field select:disabled{background-color:#f8f8f8;color:#bbb;cursor:not-allowed;}
+    .wfmr-submit{
+      width:100%;height:50px;background:#8B0000;color:#fff;
+      border:none;border-radius:0;cursor:pointer;
+      font-family:'Montserrat',sans-serif;font-size:12px;font-weight:800;
+      letter-spacing:2px;text-transform:uppercase;
+      transition:background .2s;margin-bottom:12px;
+    }
+    .wfmr-submit:hover{background:#a00000;}
+    .wfmr-submit:disabled{background:#ccc;cursor:not-allowed;}
+    .wfmr-skip{
+      background:none;border:none;cursor:pointer;
+      font-family:'Montserrat',sans-serif;font-size:10px;font-weight:600;
+      color:#aaa;letter-spacing:1px;text-transform:uppercase;text-decoration:underline;
+      padding:4px;transition:color .2s;
+    }
+    .wfmr-skip:hover{color:#555;}
+    .wfmr-watermark{
+      position:absolute;bottom:-10px;right:-10px;
+      width:160px;opacity:0.07;pointer-events:none;
+    }
+    @media(max-width:600px){
+      .wfmr-left{display:none;}
+      .wfmr-right{padding:32px 24px 28px;}
+      .wfmr-logo{height:52px;}
+    }
   </style>
 </head>
 <body>
+
+<!-- ── WHAT FITS MY RIDE? POPUP ── -->
+<div class="wfmr-overlay" id="wfmr-overlay">
+  <div class="wfmr-panel">
+    <div class="wfmr-left"></div>
+    <div class="wfmr-right">
+      <button class="wfmr-close" onclick="wfmrClose()" aria-label="Close">&#10005;</button>
+      <img src="RLSH_METAL_LOGO-Photoroom.webp" alt="RLSH Logo" class="wfmr-logo">
+      <h2 class="wfmr-title">What Fits My Ride?</h2>
+      <p class="wfmr-sub">Enter your Year, Make, and Model to see which parts fit your vehicle.</p>
+      <div class="wfmr-fields">
+        <div class="wfmr-field">
+          <label>Year</label>
+          <select id="wfmr-year" onchange="wfmrYearChange()">
+            <option value="">Select vehicle year</option>
+          </select>
+        </div>
+        <div class="wfmr-field">
+          <label>Make</label>
+          <select id="wfmr-make" disabled onchange="wfmrMakeChange()">
+            <option value="">Select vehicle make</option>
+          </select>
+        </div>
+        <div class="wfmr-field">
+          <label>Model</label>
+          <select id="wfmr-model" disabled>
+            <option value="">Select vehicle model</option>
+          </select>
+        </div>
+      </div>
+      <button class="wfmr-submit" id="wfmr-submit" onclick="wfmrSubmit()" disabled>Find My Fit</button>
+      <button class="wfmr-skip" onclick="wfmrClose()">Skip — Browse All Products</button>
+      <img src="rlsh-watermark-logo---white--red.webp" alt="" class="wfmr-watermark" aria-hidden="true">
+    </div>
+  </div>
+</div>
 
 <!-- Garage Bar -->
 <div id="garage-bar">
@@ -1249,6 +1373,87 @@ function ymmShopNow(){
   renderProducts();
   document.querySelector('.catalog-wrap').scrollIntoView({behavior:'smooth'});
 }
+
+// ── What Fits My Ride? Popup ──
+(function(){
+  // Build year/make/model data from CATALOG
+  var WFMR_DATA={};
+  (CATALOG||[]).forEach(function(r){
+    for(var y=r[F.startYear];y<=r[F.endYear];y++){
+      var yr=String(y),mk=r[F.make],mo=r[F.model];
+      if(!WFMR_DATA[yr])WFMR_DATA[yr]={};
+      if(!WFMR_DATA[yr][mk])WFMR_DATA[yr][mk]=[];
+      if(WFMR_DATA[yr][mk].indexOf(mo)===-1)WFMR_DATA[yr][mk].push(mo);
+    }
+  });
+
+  // Populate year dropdown
+  var yearSel=document.getElementById('wfmr-year');
+  var years=Object.keys(WFMR_DATA).map(Number).sort(function(a,b){return b-a;});
+  years.forEach(function(y){
+    var o=document.createElement('option');o.value=y;o.textContent=y;yearSel.appendChild(o);
+  });
+
+  window.wfmrYearChange=function(){
+    var yr=yearSel.value;
+    var makeSel=document.getElementById('wfmr-make');
+    var modelSel=document.getElementById('wfmr-model');
+    makeSel.innerHTML='<option value="">Select vehicle make</option>';
+    modelSel.innerHTML='<option value="">Select vehicle model</option>';
+    modelSel.disabled=true;
+    document.getElementById('wfmr-submit').disabled=true;
+    if(!yr){makeSel.disabled=true;return;}
+    makeSel.disabled=false;
+    var makes=Object.keys(WFMR_DATA[yr]||{}).sort();
+    makes.forEach(function(m){var o=document.createElement('option');o.value=m;o.textContent=m;makeSel.appendChild(o);});
+  };
+
+  window.wfmrMakeChange=function(){
+    var yr=yearSel.value,mk=document.getElementById('wfmr-make').value;
+    var modelSel=document.getElementById('wfmr-model');
+    modelSel.innerHTML='<option value="">Select vehicle model</option>';
+    document.getElementById('wfmr-submit').disabled=true;
+    if(!mk){modelSel.disabled=true;return;}
+    modelSel.disabled=false;
+    var models=(WFMR_DATA[yr]&&WFMR_DATA[yr][mk])||[];
+    models.sort().forEach(function(m){var o=document.createElement('option');o.value=m;o.textContent=m;modelSel.appendChild(o);});
+    modelSel.addEventListener('change',function(){
+      document.getElementById('wfmr-submit').disabled=!modelSel.value;
+    },{once:false});
+  };
+
+  document.getElementById('wfmr-model').addEventListener('change',function(){
+    document.getElementById('wfmr-submit').disabled=!this.value;
+  });
+
+  window.wfmrSubmit=function(){
+    var yr=yearSel.value,mk=document.getElementById('wfmr-make').value,mo=document.getElementById('wfmr-model').value;
+    if(!yr||!mk||!mo)return;
+    var vehicle={year:yr,make:mk,model:mo,trim:'',bedSize:'',bedIn:null,vin:''};
+    localStorage.setItem('garage_vehicle',JSON.stringify(vehicle));
+    garage=vehicle;filterFitOnly=true;
+    initGarageBar();
+    document.getElementById('cb-fit').classList.add('checked');
+    document.getElementById('cb-all').classList.remove('checked');
+    renderProducts();
+    wfmrClose();
+  };
+
+  window.wfmrClose=function(){
+    var el=document.getElementById('wfmr-overlay');
+    el.style.opacity='0';
+    setTimeout(function(){el.style.display='none';reportHeight();},350);
+  };
+
+  // Show popup if no garage saved
+  if(!garage){
+    setTimeout(function(){
+      var el=document.getElementById('wfmr-overlay');
+      el.style.display='flex';
+      requestAnimationFrame(function(){el.classList.add('show');});
+    },400);
+  }
+})();
 
 // ── Height reporting for Wix iframe ──
 function reportHeight(){
