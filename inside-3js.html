@@ -131,7 +131,7 @@
     .faq-section h2 em{color:var(--crimson);font-style:normal;}
     .faq-item{border-bottom:1px solid var(--divider);}
     .faq-item:first-of-type{border-top:1px solid var(--divider);}
-    --ease-smooth:cubic-bezier(0.22,1,0.36,1);--dur-accordion:720ms;--dur-ui:220ms;
+    :root{--ease-smooth:cubic-bezier(0.22,1,0.36,1);--dur-accordion:720ms;--dur-ui:220ms;}
     .faq-q{width:100%;background:none;border:none;display:flex;align-items:flex-start;justify-content:space-between;padding:20px 0;cursor:pointer;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--neutral-dark);text-align:left;gap:16px;transition:color var(--dur-ui) ease;touch-action:manipulation;-webkit-tap-highlight-color:transparent;line-height:1.5;}
     .faq-q:hover{color:#8B0000;}
     .faq-q:focus-visible{outline:2px solid #8B0000;outline-offset:4px;}
@@ -940,3 +940,4 @@
 <script>document.querySelectorAll('a[href^="tel:"]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();window.location.href=a.getAttribute('href');});});</script>
 </body>
 </html>
+

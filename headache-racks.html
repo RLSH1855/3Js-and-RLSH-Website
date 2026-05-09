@@ -165,7 +165,7 @@
     /* ── FAQ ── */
     .faq-section{background:#fff;padding:28px 16px clamp(80px,10vw,120px);border-top:3px solid var(--divider);}
     .faq-title{font-size:16px;font-weight:900;color:var(--neutral-dark);margin-bottom:16px;text-transform:uppercase;}
-    --ease-smooth:cubic-bezier(0.22,1,0.36,1);--dur-accordion:720ms;--dur-ui:220ms;
+    :root{--ease-smooth:cubic-bezier(0.22,1,0.36,1);--dur-accordion:720ms;--dur-ui:220ms;}
     .faq-item{border-bottom:1px solid #ececec;}
     .faq-item:first-of-type{border-top:1px solid #ececec;}
     .faq-q{width:100%;background:none;border:none;display:flex;align-items:flex-start;justify-content:space-between;padding:20px 0;cursor:pointer;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--neutral-dark);text-align:left;gap:16px;transition:color var(--dur-ui) ease;touch-action:manipulation;-webkit-tap-highlight-color:transparent;line-height:1.5;}
@@ -683,5 +683,6 @@ if(window.ResizeObserver){new ResizeObserver(reportHeight).observe(document.body
 
 </body>
 </html>
+
 
 
