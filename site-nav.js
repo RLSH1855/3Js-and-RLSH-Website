@@ -557,6 +557,18 @@
                 <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/MEGA%20MENU%20IMAGES/FLOOR%20MATS.png" alt="Floor Liners">
                 <span>Floor Liners</span>
               </a>
+              <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/lighting.html" class="sn-mega-item">
+                <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/MEGA%20MENU%20IMAGES/TOWING.png" alt="Lighting">
+                <span>Lighting</span>
+              </a>
+              <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/towing-hitches.html" class="sn-mega-item">
+                <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/MEGA%20MENU%20IMAGES/TOWING.png" alt="Towing &amp; Hitches">
+                <span>Towing &amp; Hitches</span>
+              </a>
+              <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/headache-racks.html" class="sn-mega-item">
+                <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/MEGA%20MENU%20IMAGES/RUNNING%20BOARDS%20-%20SIDE%20STEPS.png" alt="Headache Racks">
+                <span>Headache Racks</span>
+              </a>
             </div>
           </div>
         </div>
@@ -612,6 +624,8 @@
             <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/bakflip-mx4.html">BakFlip MX4</a>
             <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/steps-running-boards.html">Steps &amp; Running Boards</a>
             <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/towing-hitches.html">Towing &amp; Hitches</a>
+            <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/lighting.html">Lighting</a>
+            <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/headache-racks.html">Headache Racks</a>
           </div>
         </div>
 
