@@ -129,9 +129,9 @@
       position:absolute;inset:0;
       width:100%;height:100%;
       object-fit:cover;object-position:center;
-      transition:transform .7s cubic-bezier(0,0,0.2,1);
+      transition:opacity .25s ease;
     }
-    .brand-row:hover .br-visual img{transform:scale(1.04);}
+    .br-visual img.fading{opacity:0;}
     .br-content{
       display:flex;flex-direction:column;justify-content:center;
       padding:clamp(48px,6vw,80px) clamp(32px,5vw,72px);
@@ -165,8 +165,8 @@
       text-decoration:none;
       transition:border-color .2s,color .2s,background .2s;
     }
-    .br-tier:hover,.br-tier.featured{border-color:var(--crimson);color:var(--crimson);}
-    .br-tier.featured{background:rgba(139,0,0,.05);}
+    .br-tier:hover,.br-tier.featured{border-color:#4a4a4a;color:#4a4a4a;}
+    .br-tier.featured{background:rgba(0,0,0,.04);}
     .br-desc{
       font-family:'Inter',sans-serif;font-size:15px;
       color:var(--body-text);line-height:1.8;
@@ -210,14 +210,16 @@
     .faq-header h2 em{font-style:normal;color:var(--crimson);}
     .faq-item{border-bottom:1px solid var(--divider);}
     .faq-item:first-of-type{border-top:1px solid var(--divider);}
-    .faq-q{width:100%;background:none;border:none;display:flex;align-items:flex-start;justify-content:space-between;padding:20px 0;cursor:pointer;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;color:var(--neutral-dark);text-transform:uppercase;letter-spacing:1.8px;text-align:left;gap:8px;transition:color .2s;line-height:1.5;touch-action:manipulation;}
-    .faq-q:hover{color:var(--crimson);}
-    .faq-q:focus-visible{outline:2px solid var(--crimson);outline-offset:2px;}
-    .faq-q svg{width:18px;height:18px;flex-shrink:0;margin-top:2px;stroke:var(--crimson);stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;transition:transform .3s ease;}
+    --ease-smooth:cubic-bezier(0.22,1,0.36,1);--dur-accordion:720ms;--dur-ui:220ms;
+    .faq-q{width:100%;background:none;border:none;display:flex;align-items:flex-start;justify-content:space-between;padding:20px 0;cursor:pointer;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;color:var(--neutral-dark);text-transform:uppercase;letter-spacing:2px;text-align:left;gap:16px;transition:color var(--dur-ui) ease;line-height:1.5;touch-action:manipulation;-webkit-tap-highlight-color:transparent;}
+    .faq-q:hover{color:#8B0000;}
+    .faq-q:focus-visible{outline:2px solid #8B0000;outline-offset:4px;}
+    .faq-item.open .faq-q{color:#8B0000;font-weight:800;}
+    .faq-q svg{width:18px;height:18px;flex-shrink:0;margin-top:2px;stroke:#8B0000;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;transition:transform var(--dur-accordion) var(--ease-smooth);transform-origin:center;}
     .faq-item.open .faq-q svg{transform:rotate(45deg);}
-    .faq-a{overflow:hidden;max-height:0;opacity:0;padding-bottom:0;transition:max-height .4s ease-in-out,opacity .3s ease,padding-bottom .4s ease-in-out;}
-    .faq-item.open .faq-a{max-height:400px;opacity:1;padding-bottom:20px;}
-    .faq-a p{font-family:'Inter',sans-serif;font-size:15px;color:var(--body-text);line-height:1.85;}
+    .faq-a{height:0;overflow:hidden;transition:height var(--dur-accordion) var(--ease-smooth);}
+    .faq-a-inner{font-family:'Inter',sans-serif;font-size:15px;font-weight:400;color:#555;line-height:1.85;padding-bottom:20px;}
+    @media(prefers-reduced-motion:reduce){.faq-q svg,.faq-a{transition:none!important;}}
 
     /* ── CTA BAND ── */
     .cta-band{background:var(--crimson);padding:clamp(48px,6vw,72px) clamp(16px,4vw,40px);text-align:center;position:relative;overflow:hidden;}
@@ -246,7 +248,6 @@
     /* ── REDUCED MOTION ── */
     @media(prefers-reduced-motion:reduce){
       [data-a]{opacity:1;transform:none;transition:none;}
-      .brand-row:hover .br-visual img{transform:none;}
     }
   </style>
 </head>
@@ -327,9 +328,9 @@
       <div class="br-brand">N-FAB</div>
       <div class="br-product">Nerf Step RS Bar</div>
       <div class="br-tiers">
-        <a class="br-tier featured" href="#">RS Bar</a>
-        <a class="br-tier" href="#">2-Step</a>
-        <a class="br-tier" href="#">Cab Length</a>
+        <a class="br-tier featured" href="#" data-img="https://www.catalograck.com/ImgVDHR/NFA/NFABnfabcablength-nerfbars-textured-2024-gmcsierra1500-NFB-C1980CC-T.jpg" data-alt="N-FAB Nerf Step RS Bar on GMC Sierra" data-product="Nerf Step RS Bar" data-desc="Patented hoop step design. .084&quot; wall tubular steel — thicker than anything else in its class. 5-year finish warranty, lifetime workmanship warranty. Vehicle-specific bolt-on brackets. No drilling on most applications.">RS Bar</a>
+        <a class="br-tier" href="#" data-img="https://www.catalograck.com/ImgVDHR/NFA/NFABnfabcablength-nerfbars-textured-2024-gmcsierra1500-NFB-C1980CC-T.jpg" data-alt="N-FAB Nerf Step 2-Step nerf bars" data-product="Nerf Step 2-Step" data-desc="Drop steps built into the nerf bar at both cab entry points. Same heavy-duty .084&quot; wall tubular steel — adds grip and footing exactly where you need it.">2-Step</a>
+        <a class="br-tier" href="#" data-img="https://www.catalograck.com/ImgVDHR/NFA/NFABnfabcablength-nerfbars-textured-2024-gmcsierra1500-NFB-C1980CC-T.jpg" data-alt="N-FAB Cab Length nerf bars" data-product="Nerf Step Cab Length" data-desc="Full cab-length tube step for maximum coverage on extended and crew cab trucks. Same patented hoop step design and .084&quot; wall steel — just more of it.">Cab Length</a>
       </div>
       <p class="br-desc">Patented hoop step design. .084" wall tubular steel — thicker than anything else in its class. 5-year finish warranty, lifetime workmanship warranty. Vehicle-specific bolt-on brackets. No drilling on most applications.</p>
       <div class="br-actions">
@@ -342,17 +343,17 @@
   <!-- AMP Research -->
   <div class="brand-row flip" data-a="up">
     <div class="br-visual">
-      <img src="https://www.catalograck.com/ImgVDHR/AMP/AMPresearchpowerstep-2019-fordF150-76151-01A.jpg"
-           alt="AMP Research PowerStep on Ford F-150">
+      <img src="step_gif_1080x720__1_.gif"
+           alt="AMP Research PowerStep auto-deploying running board">
     </div>
     <div class="br-content">
       <span class="br-eyebrow">Electric Power Steps</span>
       <div class="br-brand">AMP<br><em>Research</em></div>
       <div class="br-product">PowerStep</div>
       <div class="br-tiers">
-        <a class="br-tier featured" href="#">PowerStep</a>
-        <a class="br-tier" href="#">PowerStep XL</a>
-        <a class="br-tier" href="#">BedStep 2</a>
+        <a class="br-tier featured" href="#" data-img="step_gif_1080x720__1_.gif" data-alt="AMP Research PowerStep auto-deploying running board" data-product="PowerStep" data-desc="The original power running board. Auto-deploys when you open your door, retracts when you close it. We handle the complete in-shop electrical installation — you drive home with a fully working system.">PowerStep</a>
+        <a class="br-tier" href="#" data-img="AMP-POWERSTEP-VISION.webp" data-alt="AMP Research PowerStep Vision with RGB lighting and app control" data-product="PowerStep Vision" data-desc="Everything the PowerStep does — plus fully customizable RGB LED underglow controlled from the AMP Research app. Set your color, pattern, and brightness right from your phone.">PowerStep Vision</a>
+        <a class="br-tier" href="#" data-img="bedstep2.webp" data-alt="AMP Research BedStep 2 hitch-mounted bed step" data-product="BedStep 2" data-desc="A fold-down step that mounts to your rear bumper and drops when you need it. Gives you a solid step up into the bed without drilling or permanent modifications. Supports up to 300 lbs.">BedStep 2</a>
       </div>
       <p class="br-desc">The original power running board. Auto-deploys when you open your door, retracts when you close it. We handle the complete in-shop electrical installation — you drive home with a fully working system.</p>
       <div class="br-actions">
@@ -373,9 +374,9 @@
       <div class="br-brand">Go <em>Rhino</em></div>
       <div class="br-product">RB20 Running Boards</div>
       <div class="br-tiers">
-        <a class="br-tier" href="#">OE Xtreme</a>
-        <a class="br-tier" href="#">Dominator Xtreme</a>
-        <a class="br-tier featured" href="#">RB20 Series</a>
+        <a class="br-tier" href="#" data-img="go-rhino/Go%20Rhino%20RB20%20Running%20Boards.webp" data-alt="Go Rhino OE Xtreme tube steps on truck" data-product="OE Xtreme Step" data-desc="A 4&quot; round tube step designed to match OEM styling. The most factory-looking aftermarket step on the market. Direct bolt-on fit, no drilling on most applications.">OE Xtreme</a>
+        <a class="br-tier" href="#" data-img="go-rhino/Go%20Rhino%20RB20%20Running%20Boards.webp" data-alt="Go Rhino Dominator Xtreme step bars" data-product="Dominator Xtreme" data-desc="A wider, more aggressive step bar with a larger pad surface for extra grip. Built for trucks that work as hard as you do. Available in Textured Black powder coat.">Dominator Xtreme</a>
+        <a class="br-tier featured" href="#" data-img="go-rhino/Go%20Rhino%20RB20%20Running%20Boards.webp" data-alt="Go Rhino RB20 Running Boards on truck" data-product="RB20 Running Boards" data-desc="The most complete lineup in the category. From 4&quot; OE Xtreme tube steps to the full-cab RB20 running board, Go Rhino covers every truck and every style. Textured Black powder coat, factory bolt-on system.">RB20 Series</a>
       </div>
       <p class="br-desc">The most complete lineup in the category. From 4" OE Xtreme tube steps to the full-cab RB20 running board, Go Rhino covers every truck and every style. Textured Black powder coat, factory bolt-on system.</p>
       <div class="br-actions">
@@ -396,9 +397,9 @@
       <div class="br-brand">Westin</div>
       <div class="br-product">HDX Drop Nerf Bars</div>
       <div class="br-tiers">
-        <a class="br-tier featured" href="#">HDX Drop</a>
-        <a class="br-tier" href="#">Pro Traxx 5</a>
-        <a class="br-tier" href="#">Pro-E Power</a>
+        <a class="br-tier featured" href="#" data-img="go-rhino/RB20_Text_Lifestyle_4.webp" data-alt="Westin HDX Drop Nerf Bars on truck" data-product="HDX Drop Nerf Bars" data-desc="From heavy-duty drop nerf bars to full electric power boards, Westin covers every budget and every build. Available in Textured Black and Stainless Steel on most styles. We install the full lineup.">HDX Drop</a>
+        <a class="br-tier" href="#" data-img="go-rhino/RB20_Text_Lifestyle_4.webp" data-alt="Westin Pro Traxx 5 oval step bars" data-product='Pro Traxx 5" Oval Step Bar' data-desc='A 5" oval tube step with a wide flat top surface for maximum grip. Available in polished stainless and textured black. A clean, low-profile look at a budget-friendly price point.'>Pro Traxx 5</a>
+        <a class="br-tier" href="#" data-img="go-rhino/RB20_Text_Lifestyle_4.webp" data-alt="Westin Pro-E Power Running Boards" data-product="Pro-E Power Running Board" data-desc="Westin's electric power running board. Auto-deploys when you open the door, retracts when you close it. Full in-shop electrical installation included — you drive home ready to go.">Pro-E Power</a>
       </div>
       <p class="br-desc">From heavy-duty drop nerf bars to full electric power boards, Westin covers every budget and every build. Available in Textured Black and Stainless Steel on most styles. We install the full lineup.</p>
       <div class="br-actions">
@@ -442,19 +443,19 @@
     <div class="faq-list">
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">What's the difference between nerf bars and running boards?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
-        <div class="faq-a"><p>Nerf bars are round or oval tubes that provide a step point and side protection. Running boards are wide flat platforms running the full cab length for easier entry and exit. Both are available in fixed and electric retractable styles.</p></div>
+        <div class="faq-a"><div class="faq-a-inner">Nerf bars are round or oval tubes that provide a step point and side protection. Running boards are wide flat platforms running the full cab length for easier entry and exit. Both are available in fixed and electric retractable styles.</div></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">How long does installation take?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
-        <div class="faq-a"><p>Most nerf bar and running board installs take 1–2 hours. AMP Research PowerSteps take 2–3 hours due to the electrical wiring. We'll give you an exact time estimate when you call.</p></div>
+        <button class="faq-q" aria-expanded="false">How long does installation take?<svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+        <div class="faq-a"><div class="faq-a-inner">Most nerf bar and running board installs take 1–2 hours. AMP Research PowerSteps take 2–3 hours due to the electrical wiring. We'll give you an exact time estimate when you call.</div></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">Will these fit my lifted truck?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
-        <div class="faq-a"><p>Yes — we have options for lifted trucks. Call us at (562) 424-6744 and we'll confirm fitment and clearance for your specific lift height and tire setup.</p></div>
+        <button class="faq-q" aria-expanded="false">Will these fit my lifted truck?<svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+        <div class="faq-a"><div class="faq-a-inner">Yes — we have options for lifted trucks. Call us at (562) 424-6744 and we'll confirm fitment and clearance for your specific lift height and tire setup.</div></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">Do you install AMP Research PowerSteps?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
-        <div class="faq-a"><p>Yes. We handle the full electrical installation in-house. AMP PowerSteps auto-deploy when you open your door and retract when you close it — we wire everything correctly the first time so you drive home with a fully working system.</p></div>
+        <button class="faq-q" aria-expanded="false">Do you install AMP Research PowerSteps?<svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+        <div class="faq-a"><div class="faq-a-inner">Yes. We handle the full electrical installation in-house. AMP PowerSteps auto-deploy when you open your door and retract when you close it — we wire everything correctly the first time so you drive home with a fully working system.</div></div>
       </div>
     </div>
   </div>
@@ -571,15 +572,39 @@ document.getElementById('ymm-clear').addEventListener('click',function(){
   document.getElementById('ymm-btn').disabled=true;
 });
 
-// FAQ
-document.querySelectorAll('.faq-q').forEach(function(btn){
-  btn.addEventListener('click',function(){
-    var item=btn.closest('.faq-item');
-    var wasOpen=item.classList.contains('open');
-    document.querySelectorAll('.faq-item.open').forEach(function(i){i.classList.remove('open');i.querySelector('.faq-q').setAttribute('aria-expanded','false');});
-    if(!wasOpen){item.classList.add('open');btn.setAttribute('aria-expanded','true');}
+// Tier pill swap
+document.querySelectorAll('.br-tier').forEach(function(pill){
+  pill.addEventListener('click',function(e){
+    e.preventDefault();
+    var row=pill.closest('.brand-row');
+    var img=row.querySelector('.br-visual img');
+    var product=row.querySelector('.br-product');
+    var desc=row.querySelector('.br-desc');
+    row.querySelectorAll('.br-tier').forEach(function(p){p.classList.remove('featured');});
+    pill.classList.add('featured');
+    var newImg=pill.dataset.img;
+    var newAlt=pill.dataset.alt;
+    var newProduct=pill.dataset.product;
+    var newDesc=pill.dataset.desc;
+    if(newImg&&newImg!==img.src.split('/').pop()){
+      img.classList.add('fading');
+      setTimeout(function(){
+        img.src=newImg;
+        img.alt=newAlt||'';
+        img.onload=function(){img.classList.remove('fading');};
+        img.onerror=function(){img.classList.remove('fading');};
+      },250);
+    }
+    if(newProduct)product.textContent=newProduct;
+    if(newDesc)desc.textContent=newDesc;
   });
 });
+
+// FAQ
+function faqClose(item){var p=item.querySelector('.faq-a');p.style.height=p.scrollHeight+'px';void p.offsetHeight;p.style.height='0px';item.classList.remove('open');item.querySelector('.faq-q').setAttribute('aria-expanded','false');}
+function faqOpen(item){var p=item.querySelector('.faq-a');item.classList.add('open');item.querySelector('.faq-q').setAttribute('aria-expanded','true');p.style.height=p.querySelector('.faq-a-inner').offsetHeight+'px';}
+document.querySelectorAll('.faq-a').forEach(function(p){p.addEventListener('transitionend',function(e){if(e.propertyName!=='height')return;if(p.closest('.faq-item').classList.contains('open'))p.style.height='auto';});});
+document.querySelectorAll('.faq-q').forEach(function(btn){btn.addEventListener('click',function(){var item=btn.closest('.faq-item');var wasOpen=item.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(faqClose);if(!wasOpen)faqOpen(item);});});
 
 // Scroll animations
 (function(){

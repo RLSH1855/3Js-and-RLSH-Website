@@ -165,13 +165,18 @@
     /* ── FAQ ── */
     .faq-section{background:#fff;padding:28px 16px clamp(80px,10vw,120px);border-top:3px solid var(--divider);}
     .faq-title{font-size:16px;font-weight:900;color:var(--neutral-dark);margin-bottom:16px;text-transform:uppercase;}
-    .faq-item{background:#fff;border-radius:6px;margin-bottom:8px;overflow:hidden;}
-    .faq-q{padding:14px 16px;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none;color:var(--neutral-dark);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:8px;user-select:none;background:none;border:none;width:100%;transition:all 0.3s ease;}
-    .faq-q:hover{color:var(--crimson);}
-    .faq-toggle{flex-shrink:0;width:22px;height:22px;border-radius:50%;background:#f0f0f0;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:900;color:#555;transition:background 0.2s,transform 0.2s;}
-    .faq-item.open .faq-toggle{background:var(--crimson);color:#fff;transform:rotate(45deg);}
-    .faq-a{font-family:'Inter',sans-serif;font-size:15px;font-weight:400;line-height:1.65;color:#444;overflow:hidden;max-height:0;opacity:0;padding:0 16px 0;transition:max-height 0.4s ease-in-out,opacity 0.3s ease,padding-bottom 0.4s ease-in-out;}
-    .faq-item.open .faq-a{max-height:400px;opacity:1;padding:0 16px 16px;}
+    --ease-smooth:cubic-bezier(0.22,1,0.36,1);--dur-accordion:720ms;--dur-ui:220ms;
+    .faq-item{border-bottom:1px solid #ececec;}
+    .faq-item:first-of-type{border-top:1px solid #ececec;}
+    .faq-q{width:100%;background:none;border:none;display:flex;align-items:flex-start;justify-content:space-between;padding:20px 0;cursor:pointer;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--neutral-dark);text-align:left;gap:16px;transition:color var(--dur-ui) ease;touch-action:manipulation;-webkit-tap-highlight-color:transparent;line-height:1.5;}
+    .faq-q:hover{color:#8B0000;}
+    .faq-q:focus-visible{outline:2px solid #8B0000;outline-offset:4px;}
+    .faq-item.open .faq-q{color:#8B0000;font-weight:800;}
+    .faq-q svg{width:18px;height:18px;flex-shrink:0;margin-top:2px;stroke:#8B0000;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;transition:transform var(--dur-accordion) var(--ease-smooth);transform-origin:center;}
+    .faq-item.open .faq-q svg{transform:rotate(45deg);}
+    .faq-a{height:0;overflow:hidden;transition:height var(--dur-accordion) var(--ease-smooth);}
+    .faq-a-inner{font-family:'Inter',sans-serif;font-size:15px;font-weight:400;color:#555;line-height:1.85;padding-bottom:20px;}
+    @media(prefers-reduced-motion:reduce){.faq-q svg,.faq-a{transition:none!important;}}
 
     /* ── TABLET 768px+ ── */
     @media(min-width:768px){
@@ -387,28 +392,28 @@
   <div class="faq-title">Headache Racks — Common Questions</div>
 
   <div class="faq-item">
-    <div class="faq-q">What is a headache rack and why do I need one?<span class="faq-toggle">+</span></div>
-    <div class="faq-a">A headache rack (also called a cab protector) mounts at the front of your truck bed between the cab and the cargo area. It protects your rear cab window and passengers from shifting cargo — whether you're hauling lumber, tools, or equipment. It also gives you a solid mounting point for work lights, backup cameras, and more.</div>
+    <button class="faq-q" aria-expanded="false">What is a headache rack and why do I need one?<svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+    <div class="faq-a"><div class="faq-a-inner">A headache rack (also called a cab protector) mounts at the front of your truck bed between the cab and the cargo area. It protects your rear cab window and passengers from shifting cargo — whether you're hauling lumber, tools, or equipment. It also gives you a solid mounting point for work lights, backup cameras, and more.</div></div>
   </div>
 
   <div class="faq-item">
-    <div class="faq-q">What's the difference between the Open, Safety, and Louvered styles?<span class="faq-toggle">+</span></div>
-    <div class="faq-a"><strong>Open Rack</strong> — a tubular frame with no infill panel. Great visibility, maximum airflow, and a rugged look. Best for light mounting.<br><br><strong>Safety Rack</strong> — has a perforated steel center panel. Provides full cab window protection from small debris and cargo shift. Most popular in work truck applications.<br><br><strong>Louvered Rack</strong> — angled horizontal louvers give it the signature BackRack look. Maximum cab protection, strong and heavy duty.</div>
+    <button class="faq-q" aria-expanded="false">What's the difference between the Open, Safety, and Louvered styles?<svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+    <div class="faq-a"><div class="faq-a-inner"><strong>Open Rack</strong> — a tubular frame with no infill panel. Great visibility, maximum airflow, and a rugged look. Best for light mounting.<br><br><strong>Safety Rack</strong> — has a perforated steel center panel. Provides full cab window protection from small debris and cargo shift. Most popular in work truck applications.<br><br><strong>Louvered Rack</strong> — angled horizontal louvers give it the signature BackRack look. Maximum cab protection, strong and heavy duty.</div></div>
   </div>
 
   <div class="faq-item">
-    <div class="faq-q">Will a headache rack work with my tonneau cover?<span class="faq-toggle">+</span></div>
-    <div class="faq-a">Yes — BackRack makes specific tonneau cover hardware kits and headache rack adapters designed to work with most major tonneau cover brands including BAK, Extang, Retrax, and TruXedo. When you come in, our techs will confirm compatibility before installation.</div>
+    <button class="faq-q" aria-expanded="false">Will a headache rack work with my tonneau cover?<svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+    <div class="faq-a"><div class="faq-a-inner">Yes — BackRack makes specific tonneau cover hardware kits and headache rack adapters designed to work with most major tonneau cover brands including BAK, Extang, Retrax, and TruXedo. When you come in, our techs will confirm compatibility before installation.</div></div>
   </div>
 
   <div class="faq-item">
-    <div class="faq-q">Can I mount lights on a headache rack?<span class="faq-toggle">+</span></div>
-    <div class="faq-a">Yes — BackRack frames are pre-drilled with mounting holes to accept standard round and rectangular lights. If you're adding Rigid Industries or Baja Designs lighting, we can install the whole setup at once so everything is wired cleanly and looks factory.</div>
+    <button class="faq-q" aria-expanded="false">Can I mount lights on a headache rack?<svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+    <div class="faq-a"><div class="faq-a-inner">Yes — BackRack frames are pre-drilled with mounting holes to accept standard round and rectangular lights. If you're adding Rigid Industries or Baja Designs lighting, we can install the whole setup at once so everything is wired cleanly and looks factory.</div></div>
   </div>
 
   <div class="faq-item">
-    <div class="faq-q">Do you install headache racks at the shop?<span class="faq-toggle">+</span></div>
-    <div class="faq-a">Yes — we source, supply, and install. Bring your truck in and our techs handle everything. Get a quote and we'll confirm fitment, pricing, and schedule your install. No measuring tape required on your end.</div>
+    <button class="faq-q" aria-expanded="false">Do you install headache racks at the shop?<svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+    <div class="faq-a"><div class="faq-a-inner">Yes — we source, supply, and install. Bring your truck in and our techs handle everything. Get a quote and we'll confirm fitment, pricing, and schedule your install. No measuring tape required on your end.</div></div>
   </div>
 </div>
 
@@ -554,16 +559,10 @@ document.getElementById('sort-select').addEventListener('change',function(){ sta
 document.getElementById('mob-filter-open').addEventListener('click',function(){ document.getElementById('mob-filter').classList.add('open'); renderMobileChips(); });
 document.getElementById('mob-filter-close').addEventListener('click',function(){ document.getElementById('mob-filter').classList.remove('open'); });
 document.getElementById('mob-apply').addEventListener('click',function(){ document.getElementById('mob-filter').classList.remove('open'); render(); });
-document.querySelectorAll('.faq-q').forEach(function(btn){
-  btn.addEventListener('click', function(){
-    var item = btn.closest('.faq-item');
-    var wasOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item.open').forEach(function(i){ i.classList.remove('open'); });
-    if(!wasOpen) item.classList.add('open');
-    reportHeight();
-    setTimeout(reportHeight, 50);
-  });
-});
+function faqClose(item){var p=item.querySelector('.faq-a');p.style.height=p.scrollHeight+'px';void p.offsetHeight;p.style.height='0px';item.classList.remove('open');item.querySelector('.faq-q').setAttribute('aria-expanded','false');}
+function faqOpen(item){var p=item.querySelector('.faq-a');item.classList.add('open');item.querySelector('.faq-q').setAttribute('aria-expanded','true');p.style.height=p.querySelector('.faq-a-inner').offsetHeight+'px';}
+document.querySelectorAll('.faq-a').forEach(function(p){p.addEventListener('transitionend',function(e){if(e.propertyName!=='height')return;if(p.closest('.faq-item').classList.contains('open')){p.style.height='auto';[0,100,280,450,600,800].forEach(function(t){setTimeout(reportHeight,t);});}});});
+document.querySelectorAll('.faq-q').forEach(function(btn){btn.addEventListener('click',function(){var item=btn.closest('.faq-item');var wasOpen=item.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(faqClose);if(!wasOpen){faqOpen(item);[0,100,280,450,600,800].forEach(function(t){setTimeout(reportHeight,t);});}});});
 
 /* ── Garage bar ── */
 function loadGarage(){ try{ return JSON.parse(localStorage.getItem(STORAGE_KEY)); }catch(e){ return null; } }

@@ -287,13 +287,16 @@
     .faq-section .section-title{color:var(--neutral-dark);text-align:center;margin-bottom:48px;}
     .faq-item{border-bottom:1px solid var(--divider);}
     .faq-item:first-of-type{border-top:1px solid var(--divider);}
-    .faq-q{width:100%;background:none;border:none;cursor:pointer;display:flex;justify-content:space-between;align-items:flex-start;padding:20px 0;gap:16px;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--neutral-dark);text-align:left;transition:color 0.2s;touch-action:manipulation;-webkit-tap-highlight-color:transparent;line-height:1.5;}
-    .faq-q:hover{color:var(--crimson);}
-    .faq-q svg{width:18px;height:18px;stroke:var(--crimson);fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;margin-top:2px;transition:transform 0.3s ease;}
+    --ease-smooth:cubic-bezier(0.22,1,0.36,1);--dur-accordion:720ms;--dur-ui:220ms;
+    .faq-q{width:100%;background:none;border:none;cursor:pointer;display:flex;justify-content:space-between;align-items:flex-start;padding:20px 0;gap:16px;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--neutral-dark);text-align:left;transition:color var(--dur-ui) ease;touch-action:manipulation;-webkit-tap-highlight-color:transparent;line-height:1.5;}
+    .faq-q:hover{color:#8B0000;}
+    .faq-q:focus-visible{outline:2px solid #8B0000;outline-offset:4px;}
+    .faq-item.open .faq-q{color:#8B0000;font-weight:800;}
+    .faq-q svg{width:18px;height:18px;stroke:#8B0000;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;margin-top:2px;transition:transform var(--dur-accordion) var(--ease-smooth);transform-origin:center;}
     .faq-item.open .faq-q svg{transform:rotate(45deg);}
-    .faq-a{overflow:hidden;max-height:0;opacity:0;padding-bottom:0;transition:max-height 0.4s ease-in-out,opacity 0.3s ease,padding-bottom 0.4s ease-in-out;}
-    .faq-item.open .faq-a{max-height:400px;opacity:1;padding-bottom:20px;}
-    .faq-a p{font-size:14px;font-weight:400;color:#555;line-height:1.85;}
+    .faq-a{height:0;overflow:hidden;transition:height var(--dur-accordion) var(--ease-smooth);}
+    .faq-a-inner{font-family:'Inter',sans-serif;font-size:15px;font-weight:400;color:#555;line-height:1.85;padding-bottom:20px;}
+    @media(prefers-reduced-motion:reduce){.faq-q svg,.faq-a{transition:none!important;}}
 
     /* ── RESPONSIVE ── */
     @media(max-width:900px){
@@ -511,7 +514,7 @@
       <div class="why-card"><h3>You're Not a Ticket</h3><p>No corporate chain. No call centers. You talk to James and the crew directly — people who actually care how your vehicle turns out.</p></div>
       <div class="why-card"><h3>5-Star Rated</h3><p>Our Yelp reviews speak for themselves. Customers come back for accessories, collision work, and more — because they trust us after the first job.</p></div>
       <div class="why-card"><h3>We Sell &amp; Install</h3><p>One shop for everything. Rhino Linings, tonneau covers, running boards, grilles — we sell it and install it ourselves. No middleman.</p></div>
-      <div class="why-card"><h3>Signal Hill Local</h3><p>We're not a franchise. We're a Signal Hill institution — same location, same family, same commitment since 1991. We're not going anywhere.</p></div>
+      <div class="why-card"><h3>Signal Hill Local</h3><p>We're not a franchise. We're a Signal Hill institution — same location, same family, same commitment since 1991. We're not going anywhere.</div></div>
     </div>
   </div>
 </section>
@@ -593,27 +596,27 @@
     <h2 class="section-title">Got <span class="red">Questions?</span></h2>
     <div class="faq-item">
       <button class="faq-q" aria-expanded="false">How long does a Rhino Liner installation take?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
-      <div class="faq-a"><p>Most truck bedliner installations take about 2–3 hours. Larger jobs like full Jeep exteriors or custom applications may take a full day. We'll give you a time estimate when you call or come in.</p></div>
+      <div class="faq-a"><div class="faq-a-inner">Most truck bedliner installations take about 2–3 hours. Larger jobs like full Jeep exteriors or custom applications may take a full day. We'll give you a time estimate when you call or come in.</div></div>
     </div>
     <div class="faq-item">
       <button class="faq-q" aria-expanded="false">How much does a Rhino Liner cost?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
-      <div class="faq-a"><p>Pricing depends on the application — truck beds, Jeep exteriors, and custom jobs are all different. Call us at (562) 424-6744 or get a free quote online and we'll give you an accurate number based on your specific vehicle.</p></div>
+      <div class="faq-a"><div class="faq-a-inner">Pricing depends on the application — truck beds, Jeep exteriors, and custom jobs are all different. Call us at (562) 424-6744 or get a free quote online and we'll give you an accurate number based on your specific vehicle.</div></div>
     </div>
     <div class="faq-item">
       <button class="faq-q" aria-expanded="false">Does Rhino Liner come in different colors?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
-      <div class="faq-a"><p>Yes — Rhino Linings is available in a range of colors beyond standard black. We can match your vehicle or go completely custom. Ask us about available colors when you call or come in for a quote.</p></div>
+      <div class="faq-a"><div class="faq-a-inner">Yes — Rhino Linings is available in a range of colors beyond standard black. We can match your vehicle or go completely custom. Ask us about available colors when you call or come in for a quote.</div></div>
     </div>
     <div class="faq-item">
       <button class="faq-q" aria-expanded="false">Can you coat a full Jeep exterior?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
-      <div class="faq-a"><p>Absolutely — full Jeep exterior coatings are one of our most popular applications. It protects against trail scratches, rock chips, UV fade, and gives your Jeep that aggressive matte look. We've done dozens of full Jeep builds right here in Signal Hill.</p></div>
+      <div class="faq-a"><div class="faq-a-inner">Absolutely — full Jeep exterior coatings are one of our most popular applications. It protects against trail scratches, rock chips, UV fade, and gives your Jeep that aggressive matte look. We've done dozens of full Jeep builds right here in Signal Hill.</div></div>
     </div>
     <div class="faq-item">
       <button class="faq-q" aria-expanded="false">Is Rhino Liner permanent?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
-      <div class="faq-a"><p>Yes — Rhino Linings is a permanent, bonded coating. It doesn't peel, crack, or bubble. It comes with a lifetime warranty and is designed to last the life of your vehicle.</p></div>
+      <div class="faq-a"><div class="faq-a-inner">Yes — Rhino Linings is a permanent, bonded coating. It doesn't peel, crack, or bubble. It comes with a lifetime warranty and is designed to last the life of your vehicle.</div></div>
     </div>
     <div class="faq-item">
       <button class="faq-q" aria-expanded="false">Do I need an appointment?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
-      <div class="faq-a"><p>We recommend calling ahead at (562) 424-6744 so we can schedule your installation time. Walk-ins are always welcome for quotes and consultations.</p></div>
+      <div class="faq-a"><div class="faq-a-inner">We recommend calling ahead at (562) 424-6744 so we can schedule your installation time. Walk-ins are always welcome for quotes and consultations.</div></div>
     </div>
   </div>
 </section>
@@ -740,22 +743,10 @@
     wrap.addEventListener('mouseleave',deactivateSpotlight);
   })();
 
-  document.querySelectorAll('.faq-q').forEach(function(btn){
-    btn.addEventListener('click',function(){
-      var item=btn.closest('.faq-item');
-      var wasOpen=item.classList.contains('open');
-      document.querySelectorAll('.faq-item.open').forEach(function(i){
-        i.classList.remove('open');
-        i.querySelector('.faq-q').setAttribute('aria-expanded','false');
-      });
-      if(!wasOpen){
-        item.classList.add('open');
-        btn.setAttribute('aria-expanded','true');
-      }
-      reportHeight();
-      setTimeout(reportHeight,50);
-    });
-  });
+  function faqClose(item){var p=item.querySelector('.faq-a');p.style.height=p.scrollHeight+'px';void p.offsetHeight;p.style.height='0px';item.classList.remove('open');item.querySelector('.faq-q').setAttribute('aria-expanded','false');}
+  function faqOpen(item){var p=item.querySelector('.faq-a');item.classList.add('open');item.querySelector('.faq-q').setAttribute('aria-expanded','true');p.style.height=p.querySelector('.faq-a-inner').offsetHeight+'px';}
+  document.querySelectorAll('.faq-a').forEach(function(p){p.addEventListener('transitionend',function(e){if(e.propertyName!=='height')return;if(p.closest('.faq-item').classList.contains('open')){p.style.height='auto';[0,100,280,450,600,800].forEach(function(t){setTimeout(reportHeight,t);});}});});
+  document.querySelectorAll('.faq-q').forEach(function(btn){btn.addEventListener('click',function(){var item=btn.closest('.faq-item');var wasOpen=item.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(faqClose);if(!wasOpen){faqOpen(item);[0,100,280,450,600,800].forEach(function(t){setTimeout(reportHeight,t);});}});});
 
   function reportHeight(){
     var sentinel=document.getElementById('height-sentinel');

@@ -215,12 +215,16 @@
     .faq-section h2 em{color:var(--crimson);font-style:normal;}
     .faq-item{border-bottom:1px solid var(--divider);}
     .faq-item:first-of-type{border-top:1px solid var(--divider);}
-    .faq-q{width:100%;background:none;border:none;display:flex;align-items:flex-start;justify-content:space-between;padding:20px 0;cursor:pointer;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;color:var(--neutral-dark);text-align:left;gap:16px;transition:color 0.2s;line-height:1.5;}
-    .faq-q:hover{color:var(--crimson);}
-    .faq-q svg{width:18px;height:18px;flex-shrink:0;margin-top:2px;stroke:var(--crimson);stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;transition:transform 0.3s ease;}
+    --ease-smooth:cubic-bezier(0.22,1,0.36,1);--dur-accordion:720ms;--dur-ui:220ms;
+    .faq-q{width:100%;background:none;border:none;display:flex;align-items:flex-start;justify-content:space-between;padding:20px 0;cursor:pointer;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--neutral-dark);text-align:left;gap:16px;transition:color var(--dur-ui) ease;touch-action:manipulation;-webkit-tap-highlight-color:transparent;line-height:1.5;}
+    .faq-q:hover{color:#8B0000;}
+    .faq-q:focus-visible{outline:2px solid #8B0000;outline-offset:4px;}
+    .faq-item.open .faq-q{color:#8B0000;font-weight:800;}
+    .faq-q svg{width:18px;height:18px;flex-shrink:0;margin-top:2px;stroke:#8B0000;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;transition:transform var(--dur-accordion) var(--ease-smooth);transform-origin:center;}
     .faq-item.open .faq-q svg{transform:rotate(45deg);}
-    .faq-a{font-family:'Inter',sans-serif;font-size:15px;font-weight:400;color:var(--body-text);line-height:1.65;text-wrap:pretty;overflow:hidden;max-height:0;opacity:0;padding-bottom:0;transition:max-height 0.4s ease-in-out,opacity 0.3s ease,padding-bottom 0.4s ease-in-out;}
-    .faq-item.open .faq-a{max-height:400px;opacity:1;padding-bottom:20px;}
+    .faq-a{height:0;overflow:hidden;transition:height var(--dur-accordion) var(--ease-smooth);}
+    .faq-a-inner{font-family:'Inter',sans-serif;font-size:15px;font-weight:400;color:#555;line-height:1.85;padding-bottom:20px;}
+    @media(prefers-reduced-motion:reduce){.faq-q svg,.faq-a{transition:none!important;}}
 
     /* RESPONSIVE */
     @media(max-width:900px){
@@ -572,10 +576,10 @@
   <div class="faq-inner">
     <span class="eyebrow">Common Questions</span>
     <h2>Body &amp; Paint <em>FAQ</em></h2>
-    <div class="faq-item"><button class="faq-q" aria-expanded="false">Do you work with insurance companies?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a">Yes — 3J's Auto Body works directly with all major insurance carriers including State Farm, Geico, Progressive, Allstate, Farmers, AAA, and more. We handle the paperwork so you don't have to.</div></div>
-    <div class="faq-item"><button class="faq-q" aria-expanded="false">How long does collision repair take?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a">Repair time depends on the extent of the damage. Minor repairs can be done same-day or next day. Major collision repairs typically take several days. We keep you informed throughout the process and aim for the fastest turnaround without sacrificing quality.</div></div>
-    <div class="faq-item"><button class="faq-q" aria-expanded="false">Can you match my car's original paint color?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a">Yes — we use computerized color-matching systems to ensure a perfect match to your factory paint. We can also do custom colors or match colors from other sources.</div></div>
-    <div class="faq-item"><button class="faq-q" aria-expanded="false">Is frame damage safe to drive on?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a">No — frame damage after a collision is a safety issue. We use computerized measuring and alignment systems to diagnose and repair frame damage back to factory specifications before any bodywork begins.</div></div>
+    <div class="faq-item"><button class="faq-q" aria-expanded="false">Do you work with insurance companies?<svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><div class="faq-a-inner">Yes — 3J's Auto Body works directly with all major insurance carriers including State Farm, Geico, Progressive, Allstate, Farmers, AAA, and more. We handle the paperwork so you don't have to.</div></div></div>
+    <div class="faq-item"><button class="faq-q" aria-expanded="false">How long does collision repair take?<svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><div class="faq-a-inner">Repair time depends on the extent of the damage. Minor repairs can be done same-day or next day. Major collision repairs typically take several days. We keep you informed throughout the process and aim for the fastest turnaround without sacrificing quality.</div></div></div>
+    <div class="faq-item"><button class="faq-q" aria-expanded="false">Can you match my car's original paint color?<svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><div class="faq-a-inner">Yes — we use computerized color-matching systems to ensure a perfect match to your factory paint. We can also do custom colors or match colors from other sources.</div></div></div>
+    <div class="faq-item"><button class="faq-q" aria-expanded="false">Is frame damage safe to drive on?<svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><div class="faq-a-inner">No — frame damage after a collision is a safety issue. We use computerized measuring and alignment systems to diagnose and repair frame damage back to factory specifications before any bodywork begins.</div></div></div>
   </div>
 </section>
 
@@ -614,22 +618,10 @@
       setTimeout(reportHeight,50);
     });
   });
-  document.querySelectorAll('.faq-q').forEach(function(btn){
-    btn.addEventListener('click',function(){
-      var item=btn.closest('.faq-item');
-      var wasOpen=item.classList.contains('open');
-      document.querySelectorAll('.faq-item.open').forEach(function(i){
-        i.classList.remove('open');
-        i.querySelector('.faq-q').setAttribute('aria-expanded','false');
-      });
-      if(!wasOpen){
-        item.classList.add('open');
-        btn.setAttribute('aria-expanded','true');
-      }
-      reportHeight();
-      setTimeout(reportHeight,50);
-    });
-  });
+  function faqClose(item){var p=item.querySelector('.faq-a');p.style.height=p.scrollHeight+'px';void p.offsetHeight;p.style.height='0px';item.classList.remove('open');item.querySelector('.faq-q').setAttribute('aria-expanded','false');}
+  function faqOpen(item){var p=item.querySelector('.faq-a');item.classList.add('open');item.querySelector('.faq-q').setAttribute('aria-expanded','true');p.style.height=p.querySelector('.faq-a-inner').offsetHeight+'px';}
+  document.querySelectorAll('.faq-a').forEach(function(p){p.addEventListener('transitionend',function(e){if(e.propertyName!=='height')return;if(p.closest('.faq-item').classList.contains('open')){p.style.height='auto';[0,100,280,450,600,800].forEach(function(t){setTimeout(reportHeight,t);});}});});
+  document.querySelectorAll('.faq-q').forEach(function(btn){btn.addEventListener('click',function(){var item=btn.closest('.faq-item');var wasOpen=item.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(faqClose);if(!wasOpen){faqOpen(item);[0,100,280,450,600,800].forEach(function(t){setTimeout(reportHeight,t);});}});});
   function reportHeight(){
     var sentinel=document.getElementById('height-sentinel');
     var h=sentinel?(sentinel.offsetTop+sentinel.offsetHeight):Math.max(document.body.scrollHeight,document.body.offsetHeight,document.documentElement.scrollHeight,document.documentElement.offsetHeight);

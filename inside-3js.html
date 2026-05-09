@@ -131,12 +131,16 @@
     .faq-section h2 em{color:var(--crimson);font-style:normal;}
     .faq-item{border-bottom:1px solid var(--divider);}
     .faq-item:first-of-type{border-top:1px solid var(--divider);}
-    .faq-q{width:100%;background:none;border:none;display:flex;align-items:flex-start;justify-content:space-between;padding:20px 0;cursor:pointer;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;color:var(--neutral-dark);text-transform:uppercase;text-decoration:none;letter-spacing:2px;text-align:left;gap:8px;transition:all 0.3s ease;line-height:1.5;touch-action:manipulation;-webkit-tap-highlight-color:transparent;}
-    .faq-q:hover{color:var(--crimson);}
-    .faq-q svg{width:18px;height:18px;flex-shrink:0;margin-top:2px;stroke:var(--crimson);stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;transition:transform 0.3s ease;}
+    --ease-smooth:cubic-bezier(0.22,1,0.36,1);--dur-accordion:720ms;--dur-ui:220ms;
+    .faq-q{width:100%;background:none;border:none;display:flex;align-items:flex-start;justify-content:space-between;padding:20px 0;cursor:pointer;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--neutral-dark);text-align:left;gap:16px;transition:color var(--dur-ui) ease;touch-action:manipulation;-webkit-tap-highlight-color:transparent;line-height:1.5;}
+    .faq-q:hover{color:#8B0000;}
+    .faq-q:focus-visible{outline:2px solid #8B0000;outline-offset:4px;}
+    .faq-item.open .faq-q{color:#8B0000;font-weight:800;}
+    .faq-q svg{width:18px;height:18px;flex-shrink:0;margin-top:2px;stroke:#8B0000;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;transition:transform var(--dur-accordion) var(--ease-smooth);transform-origin:center;}
     .faq-item.open .faq-q svg{transform:rotate(45deg);}
-    .faq-a{font-family:'Inter',sans-serif;font-size:15px;font-weight:400;color:var(--body-text);line-height:1.65;overflow:hidden;max-height:0;opacity:0;padding-bottom:0;transition:max-height 0.4s ease-in-out,opacity 0.3s ease,padding-bottom 0.4s ease-in-out;}
-    .faq-item.open .faq-a{max-height:400px;opacity:1;padding-bottom:20px;}
+    .faq-a{height:0;overflow:hidden;transition:height var(--dur-accordion) var(--ease-smooth);}
+    .faq-a-inner{font-family:'Inter',sans-serif;font-size:15px;font-weight:400;color:#555;line-height:1.85;padding-bottom:20px;}
+    @media(prefers-reduced-motion:reduce){.faq-q svg,.faq-a{transition:none!important;}}
 
     /* RESPONSIVE */
     @media(max-width:900px){
@@ -340,8 +344,8 @@
   .acc-icon .i-h{width:12px;height:2px;top:8px;left:3px;}
   .acc-icon .i-v{width:2px;height:12px;top:3px;left:8px;transform-origin:center;}
   .acc-item.open .acc-icon .i-v{transform:rotate(90deg);opacity:0;}
-  .acc-body{font-family:'Inter',sans-serif;font-size:14px;font-weight:400;color:#555;line-height:1.75;max-height:0;overflow:hidden;transition:max-height 0.55s cubic-bezier(0.4,0,0.2,1),opacity 0.45s ease,padding 0.45s ease;opacity:0;padding:0;}
-  .acc-item.open .acc-body{max-height:400px;opacity:1;padding-bottom:18px;}
+  .acc-body{font-family:'Inter',sans-serif;font-size:14px;font-weight:400;color:#555;line-height:1.75;height:0;overflow:hidden;transition:height 720ms cubic-bezier(0.22,1,0.36,1);}
+  .acc-body-inner{padding-bottom:18px;}
   @media(max-width:768px){.dual-acc-wrap{grid-template-columns:1fr;gap:40px;}}
 </style>
 
@@ -375,17 +379,17 @@
       <h2 class="acc-col-title">About <em>3J's Auto Body</em></h2>
       <div class="acc-list" id="faq-acc">
 
-        <div class="acc-item"><button class="acc-btn" aria-expanded="false"><span>Is 3J's Auto Body family owned?</span><span class="acc-icon"><span class="i-h"></span><span class="i-v"></span></span></button><div class="acc-body">Yes — founded in 1991 by Jim Sferrazza, the shop has been passed down through three generations of the Sferrazza family right here in Signal Hill, CA.</div></div>
+        <div class="acc-item"><button class="acc-btn" aria-expanded="false"><span>Is 3J's Auto Body family owned?</span><span class="acc-icon"><span class="i-h"></span><span class="i-v"></span></span></button><div class="acc-body"><div class="acc-body-inner">Yes — founded in 1991 by Jim Sferrazza, the shop has been passed down through three generations of the Sferrazza family right here in Signal Hill, CA.</div></div></div>
 
-        <div class="acc-item"><button class="acc-btn" aria-expanded="false"><span>Is 3J's Auto Body certified?</span><span class="acc-icon"><span class="i-h"></span><span class="i-v"></span></span></button><div class="acc-body">Yes — I-CAR Gold Class certified, ASE certified, and a certified Rhino Liner installer. I-CAR Gold Class is the highest training recognition in the collision repair industry.</div></div>
+        <div class="acc-item"><button class="acc-btn" aria-expanded="false"><span>Is 3J's Auto Body certified?</span><span class="acc-icon"><span class="i-h"></span><span class="i-v"></span></span></button><div class="acc-body"><div class="acc-body-inner">Yes — I-CAR Gold Class certified, ASE certified, and a certified Rhino Liner installer. I-CAR Gold Class is the highest training recognition in the collision repair industry.</div></div></div>
 
-        <div class="acc-item"><button class="acc-btn" aria-expanded="false"><span>How long have you been in business?</span><span class="acc-icon"><span class="i-h"></span><span class="i-v"></span></span></button><div class="acc-body">Over 30 years — same location at 1855 E 29th Street, Signal Hill, CA since 1991. Same family, same address, same commitment to quality.</div></div>
+        <div class="acc-item"><button class="acc-btn" aria-expanded="false"><span>How long have you been in business?</span><span class="acc-icon"><span class="i-h"></span><span class="i-v"></span></span></button><div class="acc-body"><div class="acc-body-inner">Over 30 years — same location at 1855 E 29th Street, Signal Hill, CA since 1991. Same family, same address, same commitment to quality.</div></div></div>
 
-        <div class="acc-item"><button class="acc-btn" aria-expanded="false"><span>Do you work with insurance companies?</span><span class="acc-icon"><span class="i-h"></span><span class="i-v"></span></span></button><div class="acc-body">Yes — we work directly with all major carriers including State Farm, Geico, Progressive, Allstate, Farmers, AAA, and more. We handle the paperwork so you don't have to.</div></div>
+        <div class="acc-item"><button class="acc-btn" aria-expanded="false"><span>Do you work with insurance companies?</span><span class="acc-icon"><span class="i-h"></span><span class="i-v"></span></span></button><div class="acc-body"><div class="acc-body-inner">Yes — we work directly with all major carriers including State Farm, Geico, Progressive, Allstate, Farmers, AAA, and more. We handle the paperwork so you don't have to.</div></div></div>
 
-        <div class="acc-item"><button class="acc-btn" aria-expanded="false"><span>Do you offer a warranty?</span><span class="acc-icon"><span class="i-h"></span><span class="i-v"></span></span></button><div class="acc-body">Yes — every repair is backed by a written limited lifetime warranty on our workmanship for as long as you own the vehicle.</div></div>
+        <div class="acc-item"><button class="acc-btn" aria-expanded="false"><span>Do you offer a warranty?</span><span class="acc-icon"><span class="i-h"></span><span class="i-v"></span></span></button><div class="acc-body"><div class="acc-body-inner">Yes — every repair is backed by a written limited lifetime warranty on our workmanship for as long as you own the vehicle.</div></div></div>
 
-        <div class="acc-item"><button class="acc-btn" aria-expanded="false"><span>Do you offer free estimates?</span><span class="acc-icon"><span class="i-h"></span><span class="i-v"></span></span></button><div class="acc-body">Always. Walk in Mon–Fri 8AM–5PM or submit an online photo estimate. No appointment needed for estimates.</div></div>
+        <div class="acc-item"><button class="acc-btn" aria-expanded="false"><span>Do you offer free estimates?</span><span class="acc-icon"><span class="i-h"></span><span class="i-v"></span></span></button><div class="acc-body"><div class="acc-body-inner">Always. Walk in Mon–Fri 8AM–5PM or submit an online photo estimate. No appointment needed for estimates.</div></div></div>
 
       </div>
     </div>
@@ -866,6 +870,9 @@
 
 <script>
   // Dual accordion (services + FAQ side by side)
+  function accClose(item){var p=item.querySelector('.acc-body');p.style.height=p.scrollHeight+'px';void p.offsetHeight;p.style.height='0px';item.classList.remove('open');item.querySelector('.acc-btn').setAttribute('aria-expanded','false');}
+  function accOpen(item){var p=item.querySelector('.acc-body');item.classList.add('open');item.querySelector('.acc-btn').setAttribute('aria-expanded','true');p.style.height=p.querySelector('.acc-body-inner').offsetHeight+'px';}
+  document.querySelectorAll('.acc-body').forEach(function(p){p.addEventListener('transitionend',function(e){if(e.propertyName!=='height')return;if(p.closest('.acc-item').classList.contains('open')){p.style.height='auto';setTimeout(reportHeight,50);}});});
   ['svc-acc','faq-acc'].forEach(function(id){
     var list=document.getElementById(id);
     if(!list)return;
@@ -873,15 +880,11 @@
       btn.addEventListener('click',function(){
         var item=btn.closest('.acc-item');
         var wasOpen=item.classList.contains('open');
-        list.querySelectorAll('.acc-item.open').forEach(function(i){
-          i.classList.remove('open');
-          i.querySelector('.acc-btn').setAttribute('aria-expanded','false');
-        });
+        list.querySelectorAll('.acc-item.open').forEach(accClose);
         if(!wasOpen){
-          item.classList.add('open');
-          btn.setAttribute('aria-expanded','true');
+          accOpen(item);
+          setTimeout(reportHeight,550);
         }
-        setTimeout(reportHeight,550);
       });
     });
   });
