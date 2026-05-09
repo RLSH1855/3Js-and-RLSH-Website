@@ -100,12 +100,32 @@
       display:inline-flex;align-items:center;gap:6px;
       background:rgba(139,0,0,0.08);
       border:1px solid rgba(139,0,0,0.25);
-      border-radius:50px;
+      border-radius:0;
       padding:5px 12px;
       margin-top:14px;
       font-size:9px;font-weight:800;
       letter-spacing:2px;text-transform:uppercase;
       color:#8B0000;
+    }
+
+    /* 2025 featured card */
+    .award-card.featured{
+      border-color:#8B0000;
+      box-shadow:0 8px 32px rgba(139,0,0,0.14);
+    }
+    .award-card.featured .award-year{color:#8B0000;}
+    .award-card.featured::after{
+      content:'MOST RECENT';
+      position:absolute;top:12px;right:12px;
+      font-size:8px;font-weight:800;letter-spacing:2px;
+      text-transform:uppercase;color:rgba(139,0,0,0.7);
+    }
+    /* 2021 track-record label */
+    .award-card.legacy::after{
+      content:'EST. EXCELLENCE';
+      position:absolute;top:12px;right:12px;
+      font-size:8px;font-weight:800;letter-spacing:2px;
+      text-transform:uppercase;color:#bbb;
     }
 
     /* 2x Winner callout */
@@ -117,7 +137,7 @@
       box-shadow:0 8px 32px rgba(139,0,0,0.25);
     }
     .winner-icon{
-      width:44px;height:44px;border-radius:50%;
+      width:44px;height:44px;border-radius:0;
       background:rgba(255,255,255,0.15);
       display:flex;align-items:center;justify-content:center;
       flex-shrink:0;
@@ -158,23 +178,23 @@
 
     <div class="awards-grid">
 
-      <div class="award-card">
+      <div class="award-card legacy">
         <div class="award-year">2021</div>
         <div class="award-title">Best Body Shop</div>
         <div class="award-source">Press-Telegram &amp; Grunion Gazette<br>Readers' Choice Awards</div>
         <div class="award-badge">
           <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-          Winner
+          First Win
         </div>
       </div>
 
-      <div class="award-card">
+      <div class="award-card featured">
         <div class="award-year">2025</div>
         <div class="award-title">Best Body Shop</div>
         <div class="award-source">Press-Telegram &amp; Grunion Gazette<br>Readers' Choice Awards</div>
         <div class="award-badge">
           <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-          Winner
+          Still the Best
         </div>
       </div>
 

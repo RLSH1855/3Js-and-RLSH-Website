@@ -90,8 +90,8 @@
       gap:12px;margin-bottom:14px;
     }
     .card-avatar{
-      width:42px;height:42px;border-radius:50%;
-      background:linear-gradient(135deg,#8B0000,#C0392B);
+      width:42px;height:42px;border-radius:0;
+      background:#8B0000;
       display:flex;align-items:center;justify-content:center;
       font-size:16px;font-weight:900;color:#fff;
       flex-shrink:0;
@@ -110,15 +110,6 @@
       overflow:hidden;
     }
 
-    /* Red accent bar on left */
-    .review-card::before{
-      content:'';
-      display:block;
-      width:32px;height:3px;
-      background:#8B0000;
-      border-radius:0;
-      margin-bottom:16px;
-    }
   </style>
 </head>
 <body>
@@ -326,6 +317,22 @@
   var track = document.getElementById('track');
   track.innerHTML += track.innerHTML;
 
+  // Touch-pause: tap to pause/resume on mobile
+  var wrapper = document.querySelector('.marquee-wrapper');
+  var paused = false;
+  var pauseLabel = document.createElement('div');
+  pauseLabel.id = 'pause-label';
+  pauseLabel.style.cssText = 'display:none;position:absolute;bottom:10px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.65);color:#fff;font-family:Montserrat,sans-serif;font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:5px 14px;pointer-events:none;z-index:10;';
+  pauseLabel.textContent = 'PAUSED — TAP TO RESUME';
+  wrapper.style.position = 'relative';
+  wrapper.appendChild(pauseLabel);
+
+  wrapper.addEventListener('touchstart', function(e){
+    paused = !paused;
+    track.style.animationPlayState = paused ? 'paused' : 'running';
+    pauseLabel.style.display = paused ? 'block' : 'none';
+  }, {passive:true});
+
   // Auto-resize for Wix iFrame
   function reportHeight(){
     var h = Math.max(
@@ -340,10 +347,6 @@
   window.addEventListener('load', function(){
     [0,200,500,1000,2000,3500].forEach(function(t){ setTimeout(reportHeight,t); });
   });
-  window.addEventListener('resize', reportHeight);
-  if(window.ResizeObserver){ new ResizeObserver(reportHeight).observe(document.body); }
-  }
-  window.addEventListener('load', function(){ reportHeight(); setTimeout(reportHeight,500); setTimeout(reportHeight,1500); });
   window.addEventListener('resize', reportHeight);
   if(window.ResizeObserver){ new ResizeObserver(reportHeight).observe(document.body); }
 </script>
