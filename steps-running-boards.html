@@ -175,24 +175,25 @@
     .br-actions{display:flex;align-items:center;gap:20px;flex-wrap:wrap;}
     .br-btn{
       display:inline-flex;align-items:center;justify-content:center;
-      height:48px;padding:0 28px;
+      height:48px;padding:0 32px;
       background:var(--crimson);color:#fff;
-      font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;
+      font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;
       letter-spacing:2px;text-transform:uppercase;
-      text-decoration:none;border:none;cursor:pointer;
-      transition:background .2s;
+      text-decoration:none;border:2px solid var(--crimson);border-radius:0;cursor:pointer;
+      transition:background .25s,border-color .25s;
     }
-    .br-btn:hover{background:var(--crimson-hover);}
-    .br-btn:focus-visible{outline:2px solid var(--crimson);outline-offset:3px;}
+    .br-btn:hover{background:var(--crimson-hover);border-color:var(--crimson-hover);}
     .br-link{
-      font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;
-      letter-spacing:1.5px;text-transform:uppercase;
-      color:var(--neutral-dark);text-decoration:none;
-      display:inline-flex;align-items:center;gap:6px;
-      transition:color .2s;
+      display:inline-flex;align-items:center;justify-content:center;
+      height:48px;padding:0 32px;
+      background:transparent;color:var(--crimson);
+      font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;
+      letter-spacing:2px;text-transform:uppercase;
+      text-decoration:none;border:2px solid var(--crimson);border-radius:0;
+      transition:background .25s,color .25s;
     }
-    .br-link:hover{color:var(--crimson);}
-    .br-link svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2.5;}
+    .br-link:hover{background:var(--crimson);color:#fff;}
+    .br-link svg{display:none;}
 
     /* ── STAT STRIP ── */
     .stat-strip{background:var(--black-2);border-top:3px solid var(--crimson);border-bottom:1px solid rgba(255,255,255,.06);}
