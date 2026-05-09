@@ -147,11 +147,26 @@
 
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
-    
+    :root{
+      --crimson:#8B0000;
+      --crimson-hover:#A00000;
+      --crimson-active:#6B0000;
+      --black-1:#0A0A0A;
+      --black-2:#111111;
+      --white:#ffffff;
+      --off-white:#F2F2F2;
+      --warm-gray:#F9F9F9;
+      --body-text:#424954;
+      --emphasis-text:#1F2937;
+      --neutral-dark:#1a1a1a;
+      --divider:#E8E8E8;
+      --divider-dark:rgba(255,255,255,0.08);
+    }
+
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
     html{-webkit-font-smoothing:antialiased;overflow-y:scroll;scrollbar-width:none;overscroll-behavior:none;}
     html::-webkit-scrollbar{display:none;}
-    body{font-family:'Inter',sans-serif;font-size:15px;background:#fff;color:#111;margin:0;padding:0;overflow-x:hidden;overflow-y:hidden;}
+    body{font-family:'Inter',sans-serif;font-size:15px;background:var(--white);color:var(--black-2);margin:0;padding:0;overflow-x:hidden;overflow-y:hidden;}
 
     /* ════════════════════════════════
        ANIMATIONS
@@ -178,11 +193,11 @@
     ════════════════════════════════ */
     .label{
       font-size:10px;font-weight:700;letter-spacing:4px;
-      text-transform:uppercase;color:#8B0000;
+      text-transform:uppercase;color:var(--crimson);
       display:block;
     }
     .rule{
-      width:40px;height:2px;background:#8B0000;
+      width:40px;height:2px;background:var(--crimson);
       display:block;margin:16px 0 24px;
     }
     .divider-h{
@@ -209,18 +224,18 @@
       font-weight:900;
       letter-spacing:-4px;
       line-height:0.92;
-      color:#111;
+      color:var(--black-2);
       margin-bottom:28px;
       text-transform:uppercase;
     }
-    .hero-h1 em{font-style:normal;color:#8B0000;}
+    .hero-h1 em{font-style:normal;color:var(--crimson);}
     .hero-tagline{
       font-family:'Inter',sans-serif;
       font-size:15px;font-weight:500;
       color:#333;line-height:1.9;
       max-width:400px;
       margin-bottom:36px;
-      border-left:2px solid #8B0000;
+      border-left:2px solid var(--crimson);
       padding-left:18px;
       text-wrap:pretty;
     }
@@ -233,11 +248,11 @@
       display:flex;align-items:center;gap:12px;
       font-family:'Montserrat',sans-serif;
       font-size:12px;font-weight:700;
-      letter-spacing:1.5px;text-transform:uppercase;color:#424954;
+      letter-spacing:1.5px;text-transform:uppercase;color:var(--body-text);
     }
     .hero-feats li span{
       display:inline-block;width:20px;height:1px;
-      background:#8B0000;flex-shrink:0;
+      background:var(--crimson);flex-shrink:0;
     }
     .hero-cta{
       display:inline-flex;align-items:center;gap:10px;
@@ -245,7 +260,7 @@
       font-size:11px;font-weight:800;letter-spacing:2.5px;
       text-transform:uppercase;text-decoration:none;
       height:48px;padding:0 36px;
-      background:#8B0000;color:#fff;
+      background:var(--crimson);color:var(--white);
       border:none;border-radius:0;
       transition:background 0.25s;
       align-self:flex-start;
@@ -286,10 +301,10 @@
     .stat-num{
       font-size:clamp(28px,3vw,42px);
       font-weight:900;letter-spacing:-2px;
-      color:#111;line-height:1;
+      color:var(--black-2);line-height:1;
       margin-bottom:6px;
     }
-    .stat-num em{color:#8B0000;font-style:normal;}
+    .stat-num em{color:var(--crimson);font-style:normal;}
     .stat-lbl{
       font-size:9px;font-weight:700;
       letter-spacing:2.5px;text-transform:uppercase;
@@ -335,15 +350,15 @@
       position:relative;z-index:1;
       padding:72px 48px;
     }
-    .feat-strip-content .label{color:#fff;opacity:0.75;margin-bottom:14px;}
+    .feat-strip-content .label{color:var(--white);opacity:0.75;margin-bottom:14px;}
     .feat-strip-content h2{
       font-size:clamp(26px,3.5vw,44px);
       font-weight:900;letter-spacing:-2px;
-      line-height:1.0;color:#fff;
+      line-height:1.0;color:var(--white);
       text-transform:uppercase;
       margin-bottom:16px;
     }
-    .feat-strip-content h2 em{color:#8B0000;font-style:normal;}
+    .feat-strip-content h2 em{color:var(--crimson);font-style:normal;}
     .feat-strip-content p{
       font-size:14px;font-weight:400;
       color:rgba(255,255,255,0.82);
@@ -373,13 +388,13 @@
     .feat-title{
       font-family:'Montserrat',sans-serif;
       font-size:13px;font-weight:800;
-      letter-spacing:0.3px;color:#111;
+      letter-spacing:0.3px;color:var(--black-2);
       margin-bottom:10px;
     }
     .feat-body{
       font-family:'Inter',sans-serif;
       font-size:13px;font-weight:400;
-      color:#424954;line-height:1.65;
+      color:var(--body-text);line-height:1.65;
       text-wrap:pretty;
     }
     .feat-usa{
@@ -405,7 +420,7 @@
     .feat-usa-title{
       font-family:'Montserrat',sans-serif;
       font-size:22px;font-weight:900;letter-spacing:3px;
-      text-transform:uppercase;color:#fff;
+      text-transform:uppercase;color:var(--white);
       text-wrap:balance;
     }
     .feat-usa-sub{
@@ -442,7 +457,7 @@
     }
     .c-card{
       position:relative;z-index:1;
-      background:#fff;
+      background:var(--white);
       padding:52px 48px;
       max-width:460px;
       margin:56px 72px;
@@ -452,10 +467,10 @@
     .c-card h2{
       font-size:clamp(26px,3.5vw,44px);
       font-weight:900;letter-spacing:-1.5px;
-      line-height:1.0;color:#111;
+      line-height:1.0;color:var(--black-2);
       text-transform:uppercase;margin-bottom:18px;
     }
-    .c-card h2 em{color:#8B0000;font-style:normal;}
+    .c-card h2 em{color:var(--crimson);font-style:normal;}
     .c-card p{font-size:13px;font-weight:500;color:#333;line-height:1.85;}
     .c-card p+p{margin-top:10px;}
     .c-list{list-style:none;margin-top:20px;display:flex;flex-direction:column;gap:9px;}
@@ -464,14 +479,14 @@
       font-size:10px;font-weight:700;
       letter-spacing:1.5px;text-transform:uppercase;color:#222;
     }
-    .c-list li span{display:inline-block;width:16px;height:1px;background:#8B0000;flex-shrink:0;}
+    .c-list li span{display:inline-block;width:16px;height:1px;background:var(--crimson);flex-shrink:0;}
     .c-cta{
       display:inline-flex;align-items:center;gap:10px;
       font-family:'Montserrat',sans-serif;
       font-size:11px;font-weight:800;letter-spacing:2.5px;
       text-transform:uppercase;text-decoration:none;
       height:48px;padding:0 28px;margin-top:28px;
-      background:#8B0000;color:#fff;
+      background:var(--crimson);color:var(--white);
       border-radius:0;
       transition:background 0.25s;
     }
@@ -499,10 +514,10 @@
     .s-text h2{
       font-size:clamp(26px,3.5vw,44px);
       font-weight:900;letter-spacing:-1.5px;
-      line-height:1.0;color:#111;
+      line-height:1.0;color:var(--black-2);
       text-transform:uppercase;margin-bottom:18px;
     }
-    .s-text h2 em{color:#8B0000;font-style:normal;}
+    .s-text h2 em{color:var(--crimson);font-style:normal;}
     .s-text p{font-size:13px;font-weight:500;color:#333;line-height:1.85;max-width:420px;}
     .s-text p+p{margin-top:10px;}
     .s-list{list-style:none;margin-top:20px;display:flex;flex-direction:column;gap:9px;}
@@ -511,14 +526,14 @@
       font-size:10px;font-weight:700;
       letter-spacing:1.5px;text-transform:uppercase;color:#222;
     }
-    .s-list li span{display:inline-block;width:16px;height:1px;background:#8B0000;flex-shrink:0;}
+    .s-list li span{display:inline-block;width:16px;height:1px;background:var(--crimson);flex-shrink:0;}
     .s-cta{
       display:inline-flex;align-items:center;gap:10px;
       font-family:'Montserrat',sans-serif;
       font-size:11px;font-weight:800;letter-spacing:2.5px;
       text-transform:uppercase;text-decoration:none;
       height:48px;padding:0 28px;margin-top:28px;
-      background:#8B0000;color:#fff;
+      background:var(--crimson);color:var(--white);
       border-radius:0;
       align-self:flex-start;
       transition:background 0.25s;
@@ -537,7 +552,7 @@
        VIDEO SECTION
     ════════════════════════════════ */
     .video-section{
-      background:#111;
+      background:var(--black-2);
       padding:88px 64px;
       text-align:center;
       border-top:1px solid #222;
@@ -560,15 +575,15 @@
       z-index:0;
     }
     .video-section > *{position:relative;z-index:1;}
-    .video-section .label{color:#ffffff;margin-bottom:14px;display:block;}
+    .video-section .label{color:var(--white);margin-bottom:14px;display:block;}
     .video-section h2{
       font-size:clamp(26px,3.5vw,44px);
       font-weight:900;letter-spacing:4px;word-spacing:-4px;
-      line-height:1.0;color:#fff;
+      line-height:1.0;color:var(--white);
       text-transform:uppercase;
       margin-bottom:48px;
     }
-    .video-section h2 em{color:#8B0000;font-style:normal;}
+    .video-section h2 em{color:var(--crimson);font-style:normal;}
     .video-wrap{
       position:relative;
       max-width:960px;
@@ -911,7 +926,7 @@
     </a>
   </div>
   <div class="hero-img" data-a="scale">
-    <img src="https://static.wixstatic.com/media/b95bd9_50e837846d3844ceaec819a3cbd83f67~mv2.jpg" alt="BakFlip MX4">
+    <img src="https://static.wixstatic.com/media/b95bd9_50e837846d3844ceaec819a3cbd83f67~mv2.webp" alt="BakFlip MX4">
     <div class="hero-badge">Best Seller · Gen 3</div>
   </div>
 </section>
@@ -948,7 +963,7 @@
 ════════════════════════════════ -->
 <section class="feat-strip">
   <div class="feat-strip-bg">
-    <img src="https://static.wixstatic.com/media/b95bd9_6e29df82b6fb41b6bb0bd696046977f9~mv2.jpg" alt="BakFlip MX4" loading="lazy">
+    <img src="https://static.wixstatic.com/media/b95bd9_6e29df82b6fb41b6bb0bd696046977f9~mv2.webp" alt="BakFlip MX4" loading="lazy">
   </div>
   <div class="feat-strip-content" data-a="up">
     <span class="label">Why the MX4</span>
@@ -1009,7 +1024,7 @@
     </div>
   </div>
   <div class="s-img" data-a="left" data-d="1">
-    <img src="https://static.wixstatic.com/media/b95bd9_024d18451ceb4e4ca59dc0c7c77d9e78~mv2.jpg" alt="BakFlip MX4 locking system" loading="lazy">
+    <img src="https://static.wixstatic.com/media/b95bd9_024d18451ceb4e4ca59dc0c7c77d9e78~mv2.webp" alt="BakFlip MX4 locking system" loading="lazy">
   </div>
 </section>
 
@@ -1017,7 +1032,7 @@
      DURABILITY
 ════════════════════════════════ -->
 <section class="content-section flip">
-  <div class="c-bg"><img src="https://static.wixstatic.com/media/b95bd9_068cf04589584711901ca9b3475f318b~mv2.jpg" alt="BakFlip MX4 construction" loading="lazy"></div>
+  <div class="c-bg"><img src="https://static.wixstatic.com/media/b95bd9_068cf04589584711901ca9b3475f318b~mv2.webp" alt="BakFlip MX4 construction" loading="lazy"></div>
   <div class="c-card" data-a="up">
     <span class="label">Construction</span>
     <h2>Built <em>22% Stronger</em><br>Than the Original.</h2>
@@ -1051,7 +1066,7 @@
     </div>
   </div>
   <div class="s-img" data-a="left" data-d="1">
-    <img src="https://static.wixstatic.com/media/b95bd9_c1625e221c224360aaf421f298b87538~mv2.jpg" alt="BakFlip MX4 weather sealing" loading="lazy">
+    <img src="https://static.wixstatic.com/media/b95bd9_c1625e221c224360aaf421f298b87538~mv2.webp" alt="BakFlip MX4 weather sealing" loading="lazy">
   </div>
 </section>
 
@@ -1092,7 +1107,7 @@
     </a>
   </div>
   <div class="s-img" data-a="right" data-d="1">
-    <img src="https://static.wixstatic.com/media/b95bd9_3852568dd71f4021a708f528afeaba6a~mv2.jpg" alt="BakFlip MX4 installation" loading="lazy">
+    <img src="https://static.wixstatic.com/media/b95bd9_3852568dd71f4021a708f528afeaba6a~mv2.webp" alt="BakFlip MX4 installation" loading="lazy">
   </div>
 </section>
 
@@ -1172,7 +1187,7 @@
      CTA BAND
 ════════════════════════════════ -->
 <div class="cta-band">
-  <img class="cta-gears" src="https://rlsh1855.github.io/3Js-and-RLSH-Website/gears%20and%20motherboard%20lines%20overy%20for%20background.png" alt="" aria-hidden="true" loading="lazy">
+  <img class="cta-gears" src="https://rlsh1855.github.io/3Js-and-RLSH-Website/gears%20and%20motherboard%20lines%20overy%20for%20background.webp" alt="" aria-hidden="true" loading="lazy">
   <div class="cta-inner">
 
     <div class="cta-header" data-a="up">
@@ -1203,7 +1218,7 @@
           Call Us: (562) 424-6744
         </a>
         <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/my-garage.html" target="_top" class="cta-phone btn-glass">
-          <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/car-garage-flat-icon.png" alt="" aria-hidden="true" style="width:16px;height:16px;object-fit:contain;filter:brightness(0) invert(1);flex-shrink:0;">
+          <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/car-garage-flat-icon.webp" alt="" aria-hidden="true" style="width:16px;height:16px;object-fit:contain;filter:brightness(0) invert(1);flex-shrink:0;">
           My Garage
         </a>
       </div>

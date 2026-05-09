@@ -1,4 +1,4 @@
-(function(){
+﻿(function(){
   /* Skip nav injection if embedded in Wix (iframe OR ?embed=1 param) */
   var _inFrame = (function(){try{return window.self!==window.top;}catch(e){return true;}})();
   var _hasParam = window.location.search.indexOf('embed=1')!==-1;
@@ -538,35 +538,35 @@
             <div class="sn-mega-grid-header">Truck Accessories &amp; Upgrades</div>
             <div class="sn-mega-grid">
               <a href="https://www.3jsautobody.com/rhino-liner" class="sn-mega-item">
-                <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/PROTECTION%20-%20RHINO%20LININGS.png" alt="Rhino Liner">
+                <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/PROTECTION%20-%20RHINO%20LININGS.webp" alt="Rhino Liner">
                 <span>Rhino Liner</span>
               </a>
               <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/tonneau-covers.html" class="sn-mega-item">
-                <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/MEGA%20MENU%20IMAGES/TONNEAU%20COVER.png" alt="Tonneau Covers">
+                <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/MEGA%20MENU%20IMAGES/TONNEAU%20COVER.webp" alt="Tonneau Covers">
                 <span>Tonneau Covers</span>
               </a>
               <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/steps-running-boards.html" class="sn-mega-item">
-                <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/MEGA%20MENU%20IMAGES/RUNNING%20BOARDS%20-%20SIDE%20STEPS.png" alt="Steps &amp; Running Boards">
+                <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/MEGA%20MENU%20IMAGES/RUNNING%20BOARDS%20-%20SIDE%20STEPS.webp" alt="Steps &amp; Running Boards">
                 <span>Steps &amp; Running Boards</span>
               </a>
               <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/towing-hitches.html" class="sn-mega-item">
-                <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/MEGA%20MENU%20IMAGES/TOWING.png" alt="Towing &amp; Hitches">
+                <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/MEGA%20MENU%20IMAGES/TOWING.webp" alt="Towing &amp; Hitches">
                 <span>Towing &amp; Hitches</span>
               </a>
               <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/floor-liners.html" class="sn-mega-item">
-                <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/MEGA%20MENU%20IMAGES/FLOOR%20MATS.png" alt="Floor Liners">
+                <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/MEGA%20MENU%20IMAGES/FLOOR%20MATS.webp" alt="Floor Liners">
                 <span>Floor Liners</span>
               </a>
               <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/lighting.html" class="sn-mega-item">
-                <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/MEGA%20MENU%20IMAGES/TOWING.png" alt="Lighting">
+                <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/MEGA%20MENU%20IMAGES/TOWING.webp" alt="Lighting">
                 <span>Lighting</span>
               </a>
               <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/towing-hitches.html" class="sn-mega-item">
-                <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/MEGA%20MENU%20IMAGES/TOWING.png" alt="Towing &amp; Hitches">
+                <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/MEGA%20MENU%20IMAGES/TOWING.webp" alt="Towing &amp; Hitches">
                 <span>Towing &amp; Hitches</span>
               </a>
               <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/headache-racks.html" class="sn-mega-item">
-                <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/MEGA%20MENU%20IMAGES/RUNNING%20BOARDS%20-%20SIDE%20STEPS.png" alt="Headache Racks">
+                <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/MEGA%20MENU%20IMAGES/RUNNING%20BOARDS%20-%20SIDE%20STEPS.webp" alt="Headache Racks">
                 <span>Headache Racks</span>
               </a>
             </div>

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -7,13 +7,28 @@
 
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
+    :root{
+      --crimson:#8B0000;
+      --crimson-hover:#A00000;
+      --crimson-active:#6B0000;
+      --black-1:#0A0A0A;
+      --black-2:#111111;
+      --white:#ffffff;
+      --off-white:#F2F2F2;
+      --warm-gray:#F9F9F9;
+      --body-text:#424954;
+      --emphasis-text:#1F2937;
+      --neutral-dark:#1a1a1a;
+      --divider:#E8E8E8;
+      --divider-dark:rgba(255,255,255,0.08);
+    }
 
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
     html{overflow-y:scroll;scrollbar-width:none;}
     html::-webkit-scrollbar{display:none;}
 
     /* ─── BASE: Inter for all body text ─── */
-    body{font-family:'Inter',sans-serif;font-size:16px;color:#424954;}
+    body{font-family:'Inter',sans-serif;font-size:16px;color:var(--body-text);}
 
     /* ─── Montserrat reserved for headings & labels ─── */
     h1,h2,h3,.eyebrow,.section-title,.cta-link,.cta-band-btn,.cta-band h2{
@@ -34,7 +49,7 @@
     .section-body{
       font-family:'Inter',sans-serif;
       font-size:16px;font-weight:400;
-      color:#424954;line-height:1.6;
+      color:var(--body-text);line-height:1.6;
       max-width:520px;
     }
     .section-body p+p{margin-top:12px;}
@@ -51,7 +66,7 @@
     }
     .feature-list li::before{
       content:'';width:6px;height:6px;
-      border-radius:50%;background:#8B0000;flex-shrink:0;
+      border-radius:50%;background:var(--crimson);flex-shrink:0;
     }
 
     .cta-link{
@@ -118,35 +133,35 @@
       font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;opacity:0.5;
     }
     .ic-blue{background:#1565C0;}
-    .ic-red{background:#8B0000;}
+    .ic-red{background:var(--crimson);}
     .ic-green{background:#2E7D32;}
     .ic-orange{background:#E65100;}
     .ic-purple{background:#6A1B9A;}
     .ic-teal{background:#00838F;}
 
     /* DARK SECTIONS */
-    .dark{background:#0A0A0A;color:#fff;}
-    .dark .eyebrow{color:#8B0000;}
-    .dark .section-title em{color:#8B0000;}
+    .dark{background:var(--black-1);color:var(--white);}
+    .dark .eyebrow{color:var(--crimson);}
+    .dark .section-title em{color:var(--crimson);}
     .dark .section-body{color:rgba(255,255,255,0.82);}
     .dark .feature-list li{color:rgba(255,255,255,0.90);}
-    .dark .cta-link{background:#8B0000;color:#fff;border:2px solid transparent;}
-    .dark .cta-link:hover{background:#A00000;}
-    .dark .visual-box{background:#111;border:1px solid #1e1e1e;}
-    .dark .visual-title{color:#fff;}
-    .dark .num-badge{color:#fff;}
+    .dark .cta-link{background:var(--crimson);color:var(--white);border:2px solid transparent;}
+    .dark .cta-link:hover{background:var(--crimson-hover);}
+    .dark .visual-box{background:var(--black-2);border:1px solid #1e1e1e;}
+    .dark .visual-title{color:var(--white);}
+    .dark .num-badge{color:var(--white);}
 
     /* LIGHT SECTIONS */
-    .light{background:#F2F2F2;color:#1a1a1a;}
-    .light .eyebrow{color:#8B0000;}
-    .light .section-title em{color:#8B0000;}
-    .light .section-body{color:#424954;}
+    .light{background:var(--off-white);color:var(--neutral-dark);}
+    .light .eyebrow{color:var(--crimson);}
+    .light .section-title em{color:var(--crimson);}
+    .light .section-body{color:var(--body-text);}
     .light .feature-list li{color:#333;}
-    .light .cta-link{background:transparent;color:#8B0000;border:2px solid #8B0000;}
-    .light .cta-link:hover{background:#8B0000;color:#fff;}
-    .light .visual-box{background:#fff;border:1px solid #e0e0e0;box-shadow:0 4px 30px rgba(0,0,0,0.08);}
-    .light .visual-title{color:#1a1a1a;}
-    .light .num-badge{color:#1a1a1a;}
+    .light .cta-link{background:transparent;color:var(--crimson);border:2px solid var(--crimson);}
+    .light .cta-link:hover{background:var(--crimson);color:var(--white);}
+    .light .visual-box{background:var(--white);border:1px solid #e0e0e0;box-shadow:0 4px 30px rgba(0,0,0,0.08);}
+    .light .visual-title{color:var(--neutral-dark);}
+    .light .num-badge{color:var(--neutral-dark);}
 
     /* TEXTURE */
     .texture-dark{position:relative;}
@@ -158,11 +173,11 @@
     .texture-dark .two-col{position:relative;z-index:1;}
     .texture-light .two-col{position:relative;z-index:1;}
 
-    .stripe-break{height:4px;background:linear-gradient(to right,transparent,#8B0000 20%,#8B0000 80%,transparent);}
+    .stripe-break{height:4px;background:linear-gradient(to right,transparent,var(--crimson) 20%,var(--crimson) 80%,transparent);}
 
     /* CTA BAND */
     .cta-band{
-      background:#8B0000;padding:clamp(40px,5vw,64px) clamp(16px,4vw,24px);text-align:center;
+      background:var(--crimson);padding:clamp(40px,5vw,64px) clamp(16px,4vw,24px);text-align:center;
       position:relative;overflow:hidden;
     }
     .cta-band::before{
@@ -173,7 +188,7 @@
     .cta-band-content{position:relative;z-index:1;}
     .cta-band h2{
       font-family:'Montserrat',sans-serif;
-      font-size:clamp(22px,3.5vw,38px);font-weight:900;margin-bottom:10px;color:#fff;
+      font-size:clamp(22px,3.5vw,38px);font-weight:900;margin-bottom:10px;color:var(--white);
     }
     .cta-band p{
       font-family:'Inter',sans-serif;
@@ -183,7 +198,7 @@
     }
     .cta-band-btn{
       display:inline-flex;align-items:center;gap:8px;
-      background:#fff;color:#8B0000;
+      background:var(--white);color:var(--crimson);
       font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;
       text-decoration:none;padding:0 32px;height:48px;
       border-radius:0;
@@ -235,7 +250,7 @@
     <div class="col-visual">
       <span class="num-badge">01</span>
       <div class="visual-box">
-        <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/BEDLINER%20WITH%20LOGO.png" alt="Spray-In Rhino Liner Bedliner">
+        <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/BEDLINER%20WITH%20LOGO.webp" alt="Spray-In Rhino Liner Bedliner">
       </div>
     </div>
   </div>
@@ -265,7 +280,7 @@
     <div class="col-visual">
       <span class="num-badge">02</span>
       <div class="visual-box">
-        <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/bak-bakflip-mx4-2016-ford-f150-blue-beach-lifestyle-05.jpg" alt="BAKFlip Tonneau Cover">
+        <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/bak-bakflip-mx4-2016-ford-f150-blue-beach-lifestyle-05.webp" alt="BAKFlip Tonneau Cover">
       </div>
     </div>
   </div>
@@ -322,7 +337,7 @@
     <div class="col-visual">
       <span class="num-badge">04</span>
       <div class="visual-box">
-        <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/72%20land%20cruiser%20full%20exterior%20paint%20job.png" alt="Full Exterior Paint Job - Land Cruiser">
+        <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/72%20land%20cruiser%20full%20exterior%20paint%20job.webp" alt="Full Exterior Paint Job - Land Cruiser">
       </div>
     </div>
   </div>
@@ -352,7 +367,7 @@
     <div class="col-visual">
       <span class="num-badge">05</span>
       <div class="visual-box">
-        <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/Bedliner-Jeep_exterior.PNG" alt="Jeep Rock Guard">
+        <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/Bedliner-Jeep_exterior.webp" alt="Jeep Rock Guard">
       </div>
     </div>
   </div>
@@ -379,7 +394,7 @@
     <div class="col-visual">
       <span class="num-badge">06</span>
       <div class="visual-box">
-        <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/Bedliner-Color-Undercarriage.PNG" alt="Undercarriage Coating">
+        <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/Bedliner-Color-Undercarriage.webp" alt="Undercarriage Coating">
       </div>
     </div>
   </div>

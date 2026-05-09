@@ -7,42 +7,57 @@
 
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
+    :root{
+      --crimson:#8B0000;
+      --crimson-hover:#A00000;
+      --crimson-active:#6B0000;
+      --black-1:#0A0A0A;
+      --black-2:#111111;
+      --white:#ffffff;
+      --off-white:#F2F2F2;
+      --warm-gray:#F9F9F9;
+      --body-text:#424954;
+      --emphasis-text:#1F2937;
+      --neutral-dark:#1a1a1a;
+      --divider:#E8E8E8;
+      --divider-dark:rgba(255,255,255,0.08);
+    }
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
     html,body{margin:0;padding:0;width:100%;overflow-x:hidden;}
     html{overflow-y:scroll;scrollbar-width:none;}
     html::-webkit-scrollbar{display:none;}
-    body{font-family:'Inter',sans-serif;font-size:16px;color:#424954;background:#fff;overflow-y:hidden;}
+    body{font-family:'Inter',sans-serif;font-size:16px;color:var(--body-text);background:var(--white);overflow-y:hidden;}
 
     h1,h2,h3,.eyebrow,.section-title,.faq-q,.red-band-btn{font-family:'Montserrat',sans-serif;}
 
     /* inline text emphasis */
-    .section-body strong{font-weight:600;color:#1F2937;}
-    .section-body .hl{font-weight:600;color:#8B0000;}
+    .section-body strong{font-weight:600;color:var(--emphasis-text);}
+    .section-body .hl{font-weight:600;color:var(--crimson);}
 
     /* PAGE HEADER */
-    .page-header{background:#0A0A0A;color:#fff;height:260px;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px 24px 0;position:relative;overflow:hidden;flex-direction:column;}
+    .page-header{background:var(--black-1);color:var(--white);height:260px;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px 24px 0;position:relative;overflow:hidden;flex-direction:column;}
     .page-header::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(139,0,0,0.16) 0%,transparent 65%);pointer-events:none;}
     .page-header::after{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,0.035) 1px,transparent 1px);background-size:26px 26px;pointer-events:none;}
     .page-header-content{position:relative;z-index:1;}
-    .page-header .eyebrow{color:#8B0000;margin-bottom:12px;}
+    .page-header .eyebrow{color:var(--crimson);margin-bottom:12px;}
     .page-header h1{font-family:'Montserrat',sans-serif;font-size:clamp(32px,6vw,56px);font-weight:900;letter-spacing:-2px;line-height:1.0;text-transform:uppercase;}
-    .page-header h1 em{font-style:normal;color:#8B0000;}
-    .page-header-bar{position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(to right,transparent,#8B0000 25%,#8B0000 75%,transparent);}
+    .page-header h1 em{font-style:normal;color:var(--crimson);}
+    .page-header-bar{position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(to right,transparent,var(--crimson) 25%,var(--crimson) 75%,transparent);}
 
     /* STAT BAR */
-    .stat-bar{background:#fff;border-top:1px solid #e8e8e8;border-bottom:1px solid #e8e8e8;padding:28px 24px;display:flex;justify-content:center;gap:0;flex-wrap:wrap;}
+    .stat-bar{background:var(--white);border-top:1px solid var(--divider);border-bottom:1px solid var(--divider);padding:28px 24px;display:flex;justify-content:center;gap:0;flex-wrap:wrap;}
     .stat{flex:1;min-width:140px;max-width:200px;text-align:center;padding:12px 20px;border-right:1px solid #e0e0e0;}
     .stat:last-child{border-right:none;}
-    .stat-number{font-family:'Montserrat',sans-serif;font-size:clamp(28px,4vw,42px);font-weight:900;color:#8B0000;letter-spacing:-1px;line-height:1;}
+    .stat-number{font-family:'Montserrat',sans-serif;font-size:clamp(28px,4vw,42px);font-weight:900;color:var(--crimson);letter-spacing:-1px;line-height:1;}
     .stat-label{font-family:'Inter',sans-serif;font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#999;margin-top:6px;}
 
     /* SECTION BASE */
     .section{padding:clamp(48px,7vw,80px) clamp(16px,4vw,24px);}
     .section-inner{max-width:1100px;margin:0 auto;}
-    .eyebrow{font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:#8B0000;margin-bottom:12px;}
-    .section-title{font-size:clamp(22px,3.5vw,38px);font-weight:800;letter-spacing:-0.5px;line-height:1.1;margin-bottom:20px;color:#1a1a1a;text-wrap:balance;}
-    .section-title em{font-style:normal;color:#8B0000;}
-    .section-body{font-family:'Inter',sans-serif;font-size:16px;font-weight:400;color:#424954;line-height:1.65;max-width:560px;text-wrap:pretty;}
+    .eyebrow{font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--crimson);margin-bottom:12px;}
+    .section-title{font-size:clamp(22px,3.5vw,38px);font-weight:800;letter-spacing:-0.5px;line-height:1.1;margin-bottom:20px;color:var(--neutral-dark);text-wrap:balance;}
+    .section-title em{font-style:normal;color:var(--crimson);}
+    .section-body{font-family:'Inter',sans-serif;font-size:16px;font-weight:400;color:var(--body-text);line-height:1.65;max-width:560px;text-wrap:pretty;}
     .section-body p+p{margin-top:14px;}
 
     /* TWO-COL */
@@ -54,15 +69,15 @@
     .visual-box-inner{aspect-ratio:4/3;}
 
     /* SECTION DIVIDER */
-    .section-divider{height:1px;background:#e8e8e8;margin:0;}
+    .section-divider{height:1px;background:var(--divider);margin:0;}
 
     /* WORKMANSHIP */
     .work-section{background:#0a0a0a;padding:clamp(48px,7vw,80px) clamp(16px,4vw,24px);overflow:hidden;}
     .work-section .section-inner{max-width:1100px;margin:0 auto;overflow:hidden;}
     .work-header{text-align:center;margin-bottom:48px;}
-    .work-header .eyebrow{color:#fff;}
-    .work-header h2{font-family:'Montserrat',sans-serif;font-size:clamp(24px,3.5vw,40px);font-weight:900;letter-spacing:-0.5px;line-height:1.1;color:#fff;}
-    .work-header h2 em{font-style:normal;color:#8B0000;}
+    .work-header .eyebrow{color:var(--white);}
+    .work-header h2{font-family:'Montserrat',sans-serif;font-size:clamp(24px,3.5vw,40px);font-weight:900;letter-spacing:-0.5px;line-height:1.1;color:var(--white);}
+    .work-header h2 em{font-style:normal;color:var(--crimson);}
     .work-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;width:100%;}
     .work-photo{border-radius:0;overflow:hidden;aspect-ratio:4/3;min-width:0;cursor:pointer;user-select:none;-webkit-user-select:none;}
     .work-photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.4s ease;max-width:100%;}
@@ -72,24 +87,24 @@
     .photo-expand{display:none;grid-column:1/-1;position:relative;background:#000;margin-top:4px;}
     .photo-expand.active{display:block;}
     .photo-expand img{width:100%;max-height:600px;object-fit:contain;display:block;margin:0 auto;}
-    .photo-expand-close{position:absolute;top:10px;right:10px;background:rgba(0,0,0,0.6);border:none;color:#fff;font-size:24px;cursor:pointer;width:44px;height:44px;display:flex;align-items:center;justify-content:center;z-index:10;border-radius:0;}
-    .work-photo.active-thumb{outline:3px solid #8B0000;}
+    .photo-expand-close{position:absolute;top:10px;right:10px;background:rgba(0,0,0,0.6);border:none;color:var(--white);font-size:24px;cursor:pointer;width:44px;height:44px;display:flex;align-items:center;justify-content:center;z-index:10;border-radius:0;}
+    .work-photo.active-thumb{outline:3px solid var(--crimson);}
 
     /* REPAIR JOURNEY */
-    .journey-section{background:#fff;padding:clamp(56px,8vw,90px) clamp(16px,4vw,24px);}
+    .journey-section{background:var(--white);padding:clamp(56px,8vw,90px) clamp(16px,4vw,24px);}
     .journey-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:320px 1fr;gap:64px;align-items:start;}
     .journey-sidebar{position:sticky;top:32px;}
     .journey-sidebar .section-title{font-size:clamp(22px,2.8vw,34px);margin-bottom:16px;}
-    .journey-sidebar p.journey-sub{font-family:'Inter',sans-serif;font-size:15px;font-weight:400;color:#424954;line-height:1.65;text-wrap:pretty;}
-    .journey-divider{width:40px;height:3px;background:#8B0000;margin:20px 0;}
+    .journey-sidebar p.journey-sub{font-family:'Inter',sans-serif;font-size:15px;font-weight:400;color:var(--body-text);line-height:1.65;text-wrap:pretty;}
+    .journey-divider{width:40px;height:3px;background:var(--crimson);margin:20px 0;}
     .journey-steps{}
     .step-item{border-bottom:1px solid #d8d8d8;}
     .step-item:first-of-type{border-top:1px solid #d8d8d8;}
     .step-btn{width:100%;background:none;border:none;display:flex;align-items:center;gap:8px;padding:18px 0;cursor:pointer;text-align:left;transition:all 0.3s ease;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none;touch-action:manipulation;-webkit-tap-highlight-color:transparent;}
-    .step-btn:hover .step-title{color:#8B0000;}
-    .step-num{font-family:'Montserrat',sans-serif;font-size:11px;font-weight:900;color:#8B0000;letter-spacing:2px;flex-shrink:0;min-width:28px;}
-    .step-title{font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;color:#1a1a1a;line-height:1.4;flex:1;transition:color 0.2s;text-align:left;}
-    .step-icon{width:18px;height:18px;flex-shrink:0;stroke:#8B0000;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;transition:transform 0.3s ease;}
+    .step-btn:hover .step-title{color:var(--crimson);}
+    .step-num{font-family:'Montserrat',sans-serif;font-size:11px;font-weight:900;color:var(--crimson);letter-spacing:2px;flex-shrink:0;min-width:28px;}
+    .step-title{font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;color:var(--neutral-dark);line-height:1.4;flex:1;transition:color 0.2s;text-align:left;}
+    .step-icon{width:18px;height:18px;flex-shrink:0;stroke:var(--crimson);stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;transition:transform 0.3s ease;}
     .step-item.open .step-icon{transform:rotate(45deg);}
     .step-body{font-family:'Inter',sans-serif;font-size:14px;font-weight:400;color:#555;line-height:1.7;display:none;padding:0 0 18px 44px;text-wrap:pretty;}
     .step-item.open .step-body{display:block;}
@@ -104,25 +119,25 @@
     }
 
     /* RED CTA BAND */
-    .red-band{background:#8B0000;padding:clamp(40px,5vw,56px) clamp(16px,4vw,24px);text-align:center;}
-    .red-band h2{font-family:'Montserrat',sans-serif;font-size:clamp(20px,3vw,32px);font-weight:900;letter-spacing:-0.5px;margin-bottom:10px;color:#fff;}
+    .red-band{background:var(--crimson);padding:clamp(40px,5vw,56px) clamp(16px,4vw,24px);text-align:center;}
+    .red-band h2{font-family:'Montserrat',sans-serif;font-size:clamp(20px,3vw,32px);font-weight:900;letter-spacing:-0.5px;margin-bottom:10px;color:var(--white);}
     .red-band p{font-family:'Inter',sans-serif;font-size:15px;font-weight:400;color:rgba(255,255,255,0.80);max-width:540px;margin:0 auto 28px;line-height:1.65;}
-    .red-band-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:#fff;color:#8B0000;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;text-decoration:none;height:48px;padding:0 32px;border-radius:0;border:none;cursor:pointer;transition:all 0.3s ease;letter-spacing:2px;text-transform:uppercase;touch-action:manipulation;-webkit-tap-highlight-color:transparent;}
+    .red-band-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--white);color:var(--crimson);font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;text-decoration:none;height:48px;padding:0 32px;border-radius:0;border:none;cursor:pointer;transition:all 0.3s ease;letter-spacing:2px;text-transform:uppercase;touch-action:manipulation;-webkit-tap-highlight-color:transparent;}
     .red-band-btn:hover{background:#f0f0f0;}
 
     /* FAQ */
-    .faq-section{width:100%;padding:clamp(48px,7vw,80px) clamp(16px,4vw,24px);background:#fff;border-top:1px solid #e8e8e8;}
+    .faq-section{width:100%;padding:clamp(48px,7vw,80px) clamp(16px,4vw,24px);background:var(--white);border-top:1px solid var(--divider);}
     .faq-inner{max-width:740px;margin:0 auto;width:100%;}
     .faq-section .eyebrow{text-align:center;margin-bottom:6px;}
-    .faq-section h2{font-family:'Montserrat',sans-serif;font-size:clamp(22px,5vw,34px);font-weight:900;letter-spacing:-1px;color:#1a1a1a;text-align:center;margin-bottom:40px;line-height:1.1;}
-    .faq-section h2 em{color:#8B0000;font-style:normal;}
-    .faq-item{border-bottom:1px solid #e8e8e8;}
-    .faq-item:first-of-type{border-top:1px solid #e8e8e8;}
-    .faq-q{width:100%;background:none;border:none;display:flex;align-items:flex-start;justify-content:space-between;padding:20px 0;cursor:pointer;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;color:#1a1a1a;text-transform:uppercase;text-decoration:none;letter-spacing:2px;text-align:left;gap:8px;transition:all 0.3s ease;line-height:1.5;touch-action:manipulation;-webkit-tap-highlight-color:transparent;}
-    .faq-q:hover{color:#8B0000;}
-    .faq-q svg{width:18px;height:18px;flex-shrink:0;margin-top:2px;stroke:#8B0000;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;transition:transform 0.3s ease;}
+    .faq-section h2{font-family:'Montserrat',sans-serif;font-size:clamp(22px,5vw,34px);font-weight:900;letter-spacing:-1px;color:var(--neutral-dark);text-align:center;margin-bottom:40px;line-height:1.1;}
+    .faq-section h2 em{color:var(--crimson);font-style:normal;}
+    .faq-item{border-bottom:1px solid var(--divider);}
+    .faq-item:first-of-type{border-top:1px solid var(--divider);}
+    .faq-q{width:100%;background:none;border:none;display:flex;align-items:flex-start;justify-content:space-between;padding:20px 0;cursor:pointer;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;color:var(--neutral-dark);text-transform:uppercase;text-decoration:none;letter-spacing:2px;text-align:left;gap:8px;transition:all 0.3s ease;line-height:1.5;touch-action:manipulation;-webkit-tap-highlight-color:transparent;}
+    .faq-q:hover{color:var(--crimson);}
+    .faq-q svg{width:18px;height:18px;flex-shrink:0;margin-top:2px;stroke:var(--crimson);stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;transition:transform 0.3s ease;}
     .faq-item.open .faq-q svg{transform:rotate(45deg);}
-    .faq-a{font-family:'Inter',sans-serif;font-size:15px;font-weight:400;color:#424954;line-height:1.65;overflow:hidden;max-height:0;opacity:0;padding-bottom:0;transition:max-height 0.4s ease-in-out,opacity 0.3s ease,padding-bottom 0.4s ease-in-out;}
+    .faq-a{font-family:'Inter',sans-serif;font-size:15px;font-weight:400;color:var(--body-text);line-height:1.65;overflow:hidden;max-height:0;opacity:0;padding-bottom:0;transition:max-height 0.4s ease-in-out,opacity 0.3s ease,padding-bottom 0.4s ease-in-out;}
     .faq-item.open .faq-a{max-height:400px;opacity:1;padding-bottom:20px;}
 
     /* RESPONSIVE */
@@ -146,7 +161,7 @@
       .work-grid{grid-template-columns:repeat(3,1fr);gap:6px;}
       .work-photo.gallery-hidden{display:none;}
       .gallery-more-wrap{text-align:center;margin-top:16px;}
-      .gallery-more-btn{display:inline-flex;align-items:center;gap:8px;background:#8B0000;color:#fff;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:900;letter-spacing:1.5px;text-transform:uppercase;border:none;cursor:pointer;height:48px;padding:0 28px;}
+      .gallery-more-btn{display:inline-flex;align-items:center;gap:8px;background:var(--crimson);color:var(--white);font-family:'Montserrat',sans-serif;font-size:11px;font-weight:900;letter-spacing:1.5px;text-transform:uppercase;border:none;cursor:pointer;height:48px;padding:0 28px;}
       .red-band-btn{width:100%;justify-content:center;}
       .hide-mobile{display:none;}
       .svc-grid{grid-template-columns:1fr;}
@@ -154,24 +169,24 @@
       .svc-name{font-size:18px;}
     }
 
-    .acc-section{background:#fff;padding:clamp(40px,5vw,64px) clamp(16px,4vw,24px);border-bottom:1px solid #e8e8e8;}
-    .mission-pad{background:#0A0A0A;padding:clamp(56px,8vw,90px) clamp(16px,4vw,24px);text-align:center;position:relative;overflow:hidden;}
+    .acc-section{background:var(--white);padding:clamp(40px,5vw,64px) clamp(16px,4vw,24px);border-bottom:1px solid var(--divider);}
+    .mission-pad{background:var(--black-1);padding:clamp(56px,8vw,90px) clamp(16px,4vw,24px);text-align:center;position:relative;overflow:hidden;}
 
     /* ── TOP SERVICES GRID ── */
-    .services-section{background:#f5f5f5;padding:clamp(40px,5vw,64px) clamp(16px,4vw,24px);border-top:1px solid #e8e8e8;border-bottom:1px solid #e8e8e8;}
+    .services-section{background:#f5f5f5;padding:clamp(40px,5vw,64px) clamp(16px,4vw,24px);border-top:1px solid var(--divider);border-bottom:1px solid var(--divider);}
     .services-header{text-align:center;margin-bottom:40px;}
-    .services-header .eyebrow{color:#8B0000;margin-bottom:10px;}
-    .services-header h2{font-family:'Montserrat',sans-serif;font-size:clamp(22px,3.5vw,36px);font-weight:800;letter-spacing:-0.5px;color:#1a1a1a;text-wrap:balance;}
-    .services-header h2 em{font-style:normal;color:#8B0000;}
+    .services-header .eyebrow{color:var(--crimson);margin-bottom:10px;}
+    .services-header h2{font-family:'Montserrat',sans-serif;font-size:clamp(22px,3.5vw,36px);font-weight:800;letter-spacing:-0.5px;color:var(--neutral-dark);text-wrap:balance;}
+    .services-header h2 em{font-style:normal;color:var(--crimson);}
     .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:1100px;margin:0 auto;}
     .svc-card{position:relative;height:240px;overflow:hidden;text-decoration:none;display:block;}
     .svc-bg{position:absolute;inset:0;background-size:cover;background-position:center;}
     .svc-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.96) 0%,rgba(0,0,0,0.70) 45%,rgba(0,0,0,0.15) 100%);}
     .svc-body{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:18px 20px;}
-    .svc-name{font-family:'Montserrat',sans-serif;font-size:17px;font-weight:900;color:#fff;letter-spacing:-0.3px;line-height:1.1;text-transform:uppercase;margin-bottom:6px;}
+    .svc-name{font-family:'Montserrat',sans-serif;font-size:17px;font-weight:900;color:var(--white);letter-spacing:-0.3px;line-height:1.1;text-transform:uppercase;margin-bottom:6px;}
     .svc-desc{font-family:'Inter',sans-serif;font-size:12px;font-weight:500;color:rgba(255,255,255,0.90);line-height:1.55;margin-bottom:12px;}
-    .svc-cta{display:inline-flex;align-items:center;gap:8px;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#fff;background:#8B0000;height:40px;padding:0 20px;border:none;transition:background 0.2s;cursor:pointer;}
-    .svc-cta:hover{background:#a00000;}
+    .svc-cta{display:inline-flex;align-items:center;gap:8px;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--white);background:var(--crimson);height:40px;padding:0 20px;border:none;transition:background 0.2s;cursor:pointer;}
+    .svc-cta:hover{background:var(--crimson-hover);}
     .svc-cta svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2.5;}
     @media(max-width:768px){.svc-grid{grid-template-columns:repeat(2,1fr);gap:12px;}.svc-card{height:200px;}}
     @media(max-width:600px){.svc-grid{grid-template-columns:1fr;}.svc-card{height:200px;}.svc-name{font-size:18px;}}
@@ -250,7 +265,7 @@
   <div class="svc-grid">
 
     <a href="https://www.3jsautobody.com/request-a-quote" class="svc-card" target="_top">
-      <div class="svc-bg" style="background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/BED%20LINER%20W-LOGO.png');background-position:center;"></div>
+      <div class="svc-bg" style="background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/BED%20LINER%20W-LOGO.webp');background-position:center;"></div>
       <div class="svc-overlay"></div>
       <div class="svc-body">
         <div class="svc-name">Spray-In Bedliner</div>
@@ -260,7 +275,7 @@
     </a>
 
     <a href="https://www.3jsautobody.com/exterior-accessories/tonneau-covers" class="svc-card" target="_top">
-      <div class="svc-bg" style="background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/TRUCK%20BED%20COVERS%20IMAGE.jpg');background-position:center 55%;"></div>
+      <div class="svc-bg" style="background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/TRUCK%20BED%20COVERS%20IMAGE.webp');background-position:center 55%;"></div>
       <div class="svc-overlay"></div>
       <div class="svc-body">
         <div class="svc-name">Tonneau Covers</div>
@@ -270,7 +285,7 @@
     </a>
 
     <a href="https://www.3jsautobody.com/exterior-accessories/running-boards-side-steps" class="svc-card" target="_top">
-      <div class="svc-bg" style="background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/IMG_3961.PNG');background-position:center;"></div>
+      <div class="svc-bg" style="background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/IMG_3961.webp');background-position:center;"></div>
       <div class="svc-overlay"></div>
       <div class="svc-body">
         <div class="svc-name">Running Boards</div>
@@ -280,7 +295,7 @@
     </a>
 
     <a href="https://www.3jsautobody.com/body-paint-repairs" class="svc-card" target="_top">
-      <div class="svc-bg" style="background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/72%20land%20cruiser%20full%20exterior%20paint%20job.png');background-position:center;"></div>
+      <div class="svc-bg" style="background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/72%20land%20cruiser%20full%20exterior%20paint%20job.webp');background-position:center;"></div>
       <div class="svc-overlay"></div>
       <div class="svc-body">
         <div class="svc-name">Collision Repairs &amp; Paint</div>
@@ -290,7 +305,7 @@
     </a>
 
     <a href="https://www.3jsautobody.com/request-a-quote" class="svc-card" target="_top">
-      <div class="svc-bg" style="background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/Bedliner-Jeep_exterior.PNG');background-position:center;"></div>
+      <div class="svc-bg" style="background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/Bedliner-Jeep_exterior.webp');background-position:center;"></div>
       <div class="svc-overlay"></div>
       <div class="svc-body">
         <div class="svc-name">Rock Guard Protection</div>
@@ -300,7 +315,7 @@
     </a>
 
     <a href="https://www.3jsautobody.com/request-a-quote" class="svc-card" target="_top">
-      <div class="svc-bg" style="background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/Bedliner-Color-Undercarriage.PNG');background-position:center top;"></div>
+      <div class="svc-bg" style="background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/Bedliner-Color-Undercarriage.webp');background-position:center top;"></div>
       <div class="svc-overlay"></div>
       <div class="svc-body">
         <div class="svc-name">Undercarriage Coating</div>
@@ -315,15 +330,15 @@
 <!-- DUAL ACCORDION — SIDE BY SIDE -->
 <style>
   .dual-acc-wrap{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;}
-  .acc-col-label{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:#8B0000;margin-bottom:8px;display:block;}
-  .acc-col-title{font-family:'Montserrat',sans-serif;font-size:clamp(18px,2vw,24px);font-weight:800;letter-spacing:-0.5px;color:#1a1a1a;margin-bottom:20px;line-height:1.15;}
-  .acc-col-title em{font-style:normal;color:#8B0000;}
-  .acc-list{border-top:1px solid #e8e8e8;}
-  .acc-item{border-bottom:1px solid #e8e8e8;}
-  .acc-btn{width:100%;background:none;border:none;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 0;cursor:pointer;text-align:left;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#1a1a1a;transition:color 0.2s;touch-action:manipulation;-webkit-tap-highlight-color:transparent;}
-  .acc-btn:hover{color:#8B0000;}
+  .acc-col-label{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--crimson);margin-bottom:8px;display:block;}
+  .acc-col-title{font-family:'Montserrat',sans-serif;font-size:clamp(18px,2vw,24px);font-weight:800;letter-spacing:-0.5px;color:var(--neutral-dark);margin-bottom:20px;line-height:1.15;}
+  .acc-col-title em{font-style:normal;color:var(--crimson);}
+  .acc-list{border-top:1px solid var(--divider);}
+  .acc-item{border-bottom:1px solid var(--divider);}
+  .acc-btn{width:100%;background:none;border:none;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 0;cursor:pointer;text-align:left;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--neutral-dark);transition:color 0.2s;touch-action:manipulation;-webkit-tap-highlight-color:transparent;}
+  .acc-btn:hover{color:var(--crimson);}
   .acc-icon{width:18px;height:18px;flex-shrink:0;position:relative;}
-  .acc-icon .i-h,.acc-icon .i-v{position:absolute;background:#8B0000;border-radius:0;transition:transform 0.35s cubic-bezier(0.4,0,0.2,1),opacity 0.3s ease;}
+  .acc-icon .i-h,.acc-icon .i-v{position:absolute;background:var(--crimson);border-radius:0;transition:transform 0.35s cubic-bezier(0.4,0,0.2,1),opacity 0.3s ease;}
   .acc-icon .i-h{width:12px;height:2px;top:8px;left:3px;}
   .acc-icon .i-v{width:2px;height:12px;top:3px;left:8px;transform-origin:center;}
   .acc-item.open .acc-icon .i-v{transform:rotate(90deg);opacity:0;}
@@ -387,7 +402,7 @@
     <div class="two-col">
       <div class="col-visual">
         <div class="visual-box" style="display:flex;align-items:center;justify-content:center;background:#fff;padding:40px;aspect-ratio:4/3;border:1px solid #e8e8e8;">
-          <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/warranty-stamp.png" alt="Limited Lifetime Warranty" loading="lazy" style="max-width:260px;width:100%;height:auto;object-fit:contain;">
+          <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/warranty-stamp.webp" alt="Limited Lifetime Warranty" loading="lazy" style="max-width:260px;width:100%;height:auto;object-fit:contain;">
         </div>
       </div>
       <div class="col-text">
@@ -420,7 +435,7 @@
       </div>
       <div class="col-visual">
         <div class="visual-box visual-box-inner">
-          <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/trust-transparency.png" alt="Ethics, Honesty, Integrity" loading="lazy">
+          <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/trust-transparency.webp" alt="Ethics, Honesty, Integrity" loading="lazy">
         </div>
       </div>
     </div>
@@ -434,7 +449,7 @@
     <div class="two-col">
       <div class="col-visual">
         <div class="visual-box visual-box-inner">
-          <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/autobody-repairs-red-bmw.png" alt="Collision repair at 3J's Auto Body" loading="lazy">
+          <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/autobody-repairs-red-bmw.webp" alt="Collision repair at 3J's Auto Body" loading="lazy">
         </div>
       </div>
       <div class="col-text">
@@ -508,7 +523,7 @@
     <div class="two-col">
       <div class="col-visual">
         <div class="visual-box" style="display:flex;align-items:center;justify-content:center;background:#fff;padding:48px;aspect-ratio:4/3;border:1px solid #e8e8e8;">
-          <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/gold-class.png" alt="I-CAR Gold Class Certified" loading="lazy" style="max-width:300px;width:100%;height:auto;object-fit:contain;">
+          <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/gold-class.webp" alt="I-CAR Gold Class Certified" loading="lazy" style="max-width:300px;width:100%;height:auto;object-fit:contain;">
         </div>
       </div>
       <div class="col-text">
@@ -539,7 +554,7 @@
       </div>
       <div class="col-visual">
         <div class="visual-box visual-box-inner">
-          <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/Paint-booth-inside-view.png" alt="State-of-the-art paint booth at 3J's Auto Body" loading="lazy">
+          <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/Paint-booth-inside-view.webp" alt="State-of-the-art paint booth at 3J's Auto Body" loading="lazy">
         </div>
       </div>
     </div>
@@ -553,7 +568,7 @@
     <div class="two-col">
       <div class="col-visual">
         <div class="visual-box visual-box-inner">
-          <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/paintless-dent-repair.jpg" alt="Paintless dent repair" loading="lazy">
+          <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/paintless-dent-repair.webp" alt="Paintless dent repair" loading="lazy">
         </div>
       </div>
       <div class="col-text">
@@ -583,7 +598,7 @@
       </div>
       <div class="col-visual">
         <div class="visual-box visual-box-inner">
-          <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/glass-replacement.jpg" alt="Glass repair and replacement" loading="lazy">
+          <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/glass-replacement.webp" alt="Glass repair and replacement" loading="lazy">
         </div>
       </div>
     </div>
@@ -597,7 +612,7 @@
     <div class="two-col">
       <div class="col-visual">
         <div class="visual-box visual-box-inner">
-          <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/bedliner.jpg" alt="Certified Rhino Liner installation" loading="lazy">
+          <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/bedliner.webp" alt="Certified Rhino Liner installation" loading="lazy">
         </div>
       </div>
       <div class="col-text">
@@ -696,30 +711,30 @@
       <h2>Our <em>Workmanship</em></h2>
     </div>
     <div class="work-grid">
-      <div class="work-photo"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/insta/134737633_1052405251946662_6653608292784247660_n.jpg" alt="3J's Auto Body work" loading="lazy"></div>
-      <div class="work-photo"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/insta/158717444_1097144020806118_2678145659097931442_n.jpg" alt="3J's Auto Body work" loading="lazy"></div>
-      <div class="work-photo"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/insta/200997542_1157482521438934_4183692939348341783_n.jpg" alt="3J's Auto Body work" loading="lazy"></div>
-      <div class="work-photo"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/insta/469088158_1988928138294364_5532705233943716371_n.jpg" alt="3J's Auto Body work" loading="lazy"></div>
-      <div class="work-photo"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/insta/469255458_1988928158294362_3212858026514061679_n.jpg" alt="3J's Auto Body work" loading="lazy"></div>
-      <div class="work-photo"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/insta/69276029_669708753549649_2105052197204000768_n.jpg" alt="3J's Auto Body work" loading="lazy"></div>
-      <div class="work-photo"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/insta/75210657_726039807916543_8767547686011273216_n.jpg" alt="3J's Auto Body work" loading="lazy"></div>
-      <div class="work-photo"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/insta/75237567_726039754583215_1580327091939835904_n.jpg" alt="3J's Auto Body work" loading="lazy"></div>
-      <div class="work-photo"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/insta/87019021_813953489125174_607309629784850432_n.jpg" alt="3J's Auto Body work" loading="lazy"></div>
-      <div class="work-photo"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/insta/87362189_813961759124347_5024460640752762880_n.jpg" alt="3J's Auto Body work" loading="lazy"></div>
-      <div class="work-photo"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/insta/Bedliner-Color-Undercarriage.PNG" alt="3J's Auto Body work" loading="lazy"></div>
-      <div class="work-photo"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/insta/Bedliner-Exterior_paint-Job.PNG" alt="3J's Auto Body work" loading="lazy"></div>
-      <div class="work-photo"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/insta/Bedliner-Jeep_exterior.PNG" alt="3J's Auto Body work" loading="lazy"></div>
-      <div class="work-photo"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/insta/CHEVY%20BOAT%20LAUNCH%20RAMP.png" alt="3J's Auto Body work" loading="lazy"></div>
-      <div class="work-photo"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/insta/IMG_6467.jpg" alt="3J's Auto Body work" loading="lazy"></div>
-      <div class="work-photo"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/insta/IMG_6468.PNG" alt="3J's Auto Body work" loading="lazy"></div>
-      <div class="work-photo"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/insta/IMG_6470.PNG" alt="3J's Auto Body work" loading="lazy"></div>
-      <div class="work-photo"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/insta/IMG_6471.PNG" alt="3J's Auto Body work" loading="lazy"></div>
-      <div class="work-photo"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/insta/IMG_6472.PNG" alt="3J's Auto Body work" loading="lazy"></div>
-      <div class="work-photo"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/insta/IMG_6474.PNG" alt="3J's Auto Body work" loading="lazy"></div>
-      <div class="work-photo"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/insta/IMG_6475.PNG" alt="3J's Auto Body work" loading="lazy"></div>
-      <div class="work-photo"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/insta/IMG_6476.PNG" alt="3J's Auto Body work" loading="lazy"></div>
-      <div class="work-photo"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/insta/IMG_6477.PNG" alt="3J's Auto Body work" loading="lazy"></div>
-      <div class="work-photo"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/insta/IMG_6479.PNG" alt="3J's Auto Body work" loading="lazy"></div>
+      <div class="work-photo"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/insta/134737633_1052405251946662_6653608292784247660_n.webp" alt="3J's Auto Body work" loading="lazy"></div>
+      <div class="work-photo"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/insta/158717444_1097144020806118_2678145659097931442_n.webp" alt="3J's Auto Body work" loading="lazy"></div>
+      <div class="work-photo"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/insta/200997542_1157482521438934_4183692939348341783_n.webp" alt="3J's Auto Body work" loading="lazy"></div>
+      <div class="work-photo"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/insta/469088158_1988928138294364_5532705233943716371_n.webp" alt="3J's Auto Body work" loading="lazy"></div>
+      <div class="work-photo"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/insta/469255458_1988928158294362_3212858026514061679_n.webp" alt="3J's Auto Body work" loading="lazy"></div>
+      <div class="work-photo"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/insta/69276029_669708753549649_2105052197204000768_n.webp" alt="3J's Auto Body work" loading="lazy"></div>
+      <div class="work-photo"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/insta/75210657_726039807916543_8767547686011273216_n.webp" alt="3J's Auto Body work" loading="lazy"></div>
+      <div class="work-photo"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/insta/75237567_726039754583215_1580327091939835904_n.webp" alt="3J's Auto Body work" loading="lazy"></div>
+      <div class="work-photo"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/insta/87019021_813953489125174_607309629784850432_n.webp" alt="3J's Auto Body work" loading="lazy"></div>
+      <div class="work-photo"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/insta/87362189_813961759124347_5024460640752762880_n.webp" alt="3J's Auto Body work" loading="lazy"></div>
+      <div class="work-photo"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/insta/Bedliner-Color-Undercarriage.webp" alt="3J's Auto Body work" loading="lazy"></div>
+      <div class="work-photo"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/insta/Bedliner-Exterior_paint-Job.webp" alt="3J's Auto Body work" loading="lazy"></div>
+      <div class="work-photo"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/insta/Bedliner-Jeep_exterior.webp" alt="3J's Auto Body work" loading="lazy"></div>
+      <div class="work-photo"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/insta/CHEVY%20BOAT%20LAUNCH%20RAMP.webp" alt="3J's Auto Body work" loading="lazy"></div>
+      <div class="work-photo"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/insta/IMG_6467.webp" alt="3J's Auto Body work" loading="lazy"></div>
+      <div class="work-photo"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/insta/IMG_6468.webp" alt="3J's Auto Body work" loading="lazy"></div>
+      <div class="work-photo"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/insta/IMG_6470.webp" alt="3J's Auto Body work" loading="lazy"></div>
+      <div class="work-photo"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/insta/IMG_6471.webp" alt="3J's Auto Body work" loading="lazy"></div>
+      <div class="work-photo"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/insta/IMG_6472.webp" alt="3J's Auto Body work" loading="lazy"></div>
+      <div class="work-photo"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/insta/IMG_6474.webp" alt="3J's Auto Body work" loading="lazy"></div>
+      <div class="work-photo"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/insta/IMG_6475.webp" alt="3J's Auto Body work" loading="lazy"></div>
+      <div class="work-photo"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/insta/IMG_6476.webp" alt="3J's Auto Body work" loading="lazy"></div>
+      <div class="work-photo"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/insta/IMG_6477.webp" alt="3J's Auto Body work" loading="lazy"></div>
+      <div class="work-photo"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/insta/IMG_6479.webp" alt="3J's Auto Body work" loading="lazy"></div>
     </div>
     <div class="gallery-more-wrap" id="galleryMoreWrap" style="display:none;">
       <button class="gallery-more-btn" id="galleryMoreBtn">
