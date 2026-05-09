@@ -76,7 +76,8 @@
 }
 
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    html{}
+    html{overflow-y:hidden;scrollbar-width:none;}
+    html::-webkit-scrollbar{display:none;}
     body{font-family:'Montserrat',sans-serif;background:#fff;color:#111;}
 
     /* ── HERO ── */
@@ -633,10 +634,6 @@
       .card-405::before{display:none;}
     }
 
-    /* ── LENIS SMOOTH SCROLL ── */
-    html.lenis{height:auto;}
-    .lenis.lenis-smooth{scroll-behavior:auto;}
-    .lenis.lenis-smooth [data-lenis-prevent]{overscroll-behavior:contain;}
 
     /* ── REVEAL SYSTEM ── */
     .reveal{
@@ -914,15 +911,9 @@
 
 <div id="height-sentinel" style="height:1px;width:1px;visibility:hidden;pointer-events:none;"></div>
 
-<!-- Lenis smooth scroll -->
-<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+
 <script>
 (function(){
-  // Skip if user prefers reduced motion
-  var mq = window.matchMedia('(prefers-reduced-motion: reduce)');
-  if (!mq || !mq.matches) {
-    var lenis = new Lenis({ lerp: 0.08, smoothWheel: true });
-    function raf(time){ lenis.raf(time); requestAnimationFrame(raf); }
     requestAnimationFrame(raf);
   }
 
