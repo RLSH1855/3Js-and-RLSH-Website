@@ -92,7 +92,9 @@
 
     /* ── HERO ── */
     .hero{position:relative;overflow:hidden;min-height:clamp(380px,55vh,520px);display:flex;align-items:flex-end;border-bottom:1px solid #1a1a1a;}
-    .hero-bg{position:absolute;inset:0;background:url('step-up-hero.webp') center center/cover no-repeat;}
+    .hero-bg{position:absolute;inset:0;background:url('steps-hero-bg.webp') center 40%/cover no-repeat;}
+    .hero-wordmark{display:block;width:clamp(260px,65vw,560px);mix-blend-mode:multiply;margin-bottom:16px;}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0;}
     .hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.95) 0%,rgba(0,0,0,.55) 55%,rgba(0,0,0,.2) 100%);}
     .hero-overlay-side{position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,.65) 0%,transparent 65%);}
     .hero-content{position:relative;z-index:1;padding:clamp(40px,6vw,64px) clamp(16px,4vw,40px) clamp(32px,4vw,48px);width:100%;max-width:700px;}
@@ -272,10 +274,10 @@
   <div class="hero-overlay"></div>
   <div class="hero-overlay-side"></div>
   <div class="hero-content">
+    <h1 class="sr-only">Steps &amp; Running Boards — N-FAB, AMP Research, Go Rhino, Westin | Signal Hill CA</h1>
     <span class="label" data-a="in">Steps &amp; Running Boards</span>
-    <h1 data-a="up">Step Up.<br><em>Every Truck.</em></h1>
-    <div class="hero-rule" data-a="in" data-d="1"></div>
-    <p class="hero-sub" data-a="up" data-d="2">N-FAB, AMP Research, Go Rhino, and Westin — professionally installed in Signal Hill. Select your truck below to find what fits.</p>
+    <img class="hero-wordmark" src="step-up-wordmark.webp" alt="Step Up" data-a="up">
+    <p class="hero-sub" data-a="up" data-d="1">N-FAB, AMP Research, Go Rhino, and Westin — professionally installed in Signal Hill. Select your truck below to find what fits.</p>
   </div>
 </section>
 
