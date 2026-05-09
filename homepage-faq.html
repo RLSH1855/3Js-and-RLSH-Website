@@ -32,8 +32,8 @@
     /* ─── SECTION ─── */
     .faq-section{
       background:#fff;
-      padding:80px 24px;
-      position:relative;overflow:hidden;
+      padding:80px 24px 96px;
+      position:relative;
     }
     .faq-section::before,.faq-section::after{display:none;}
     .faq-inner{
@@ -127,13 +127,13 @@
 
     /* ─── RESPONSIVE ─── */
     @media(max-width:600px){
-      .faq-section{padding:48px 20px 56px;}
+      .faq-section{padding:48px 20px 72px;}
       .faq-q{font-size:11px;padding:18px 0;}
       .faq-cta{flex-direction:column;align-items:stretch;}
       .btn-primary,.btn-secondary{width:100%;text-align:center;}
     }
     @media(max-width:400px){
-      .faq-section{padding:48px 16px 56px;}
+      .faq-section{padding:48px 16px 72px;}
       .faq-title{letter-spacing:-0.5px;}
     }
   </style>
@@ -225,7 +225,9 @@
       if(!wasOpen) item.classList.add('open');
       reportHeight();
       setTimeout(reportHeight, 50);
-      setTimeout(reportHeight, 200);
+      setTimeout(reportHeight, 150);
+      setTimeout(reportHeight, 350);
+      setTimeout(reportHeight, 700);
     });
   });
 
