@@ -63,6 +63,18 @@
 
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
+:root{
+  --crimson:#8B0000;
+  --crimson-hover:#A00000;
+  --black-1:#0A0A0A;
+  --black-2:#111111;
+  --white:#ffffff;
+  --off-white:#F2F2F2;
+  --body-text:#424954;
+  --neutral-dark:#1a1a1a;
+  --divider:#E8E8E8;
+}
+
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
     html{}
     body{font-family:'Montserrat',sans-serif;background:#fff;color:#111;}
@@ -108,7 +120,7 @@
       font-size:9px;font-weight:800;letter-spacing:2px;
       text-transform:uppercase;color:#8B0000;
       background:#fff0f0;border:1px solid rgba(139,0,0,0.20);
-      border-radius:4px;padding:5px 12px;
+      border-radius:0;padding:5px 12px;
     }
 
     /* ── INTRO STRIP ── */
@@ -158,7 +170,7 @@
     .bundle-card{
       background:#fff;
       border:1.5px solid #ebebeb;
-      border-radius:14px;
+      border-radius:0;
       overflow:visible;
       box-shadow:0 4px 24px rgba(0,0,0,0.06);
       transition:box-shadow 0.3s,transform 0.3s,border-color 0.3s;
@@ -182,15 +194,15 @@
       content:'';
       position:absolute;
       inset:-2px;
-      border-radius:16px;
+      border-radius:0;
       padding:2px;
       background:conic-gradient(
         from var(--snake-angle),
         transparent 0deg,
         transparent 260deg,
-        #003087 275deg,
+        var(--crimson) 275deg,
         #8B0000 310deg,
-        #003087 335deg,
+        var(--crimson) 335deg,
         transparent 360deg
       );
       -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
@@ -208,7 +220,7 @@
     }
     .card-405:hover{
       border-color:transparent;
-      box-shadow:0 16px 52px rgba(0,48,135,0.20);
+      box-shadow:0 16px 52px rgba(139,0,0,0.20);
       transform:translateY(-5px);
     }
     @keyframes snakeRun{
@@ -221,7 +233,7 @@
       padding-top:44px;
       position:relative;
       overflow:visible;
-      border-radius:14px 14px 0 0;
+      border-radius:0 14px 0 0;
     }
 
     /* ── GHOST ELEMENTS ── */
@@ -266,7 +278,7 @@
     }
     .card-405:hover .sign-tag{
       transform:scale(1.06) rotate(-3deg) translateY(-4px);
-      filter:drop-shadow(0 0 18px rgba(0,48,135,0.90)) drop-shadow(0 0 32px rgba(139,0,0,0.60)) drop-shadow(0 8px 20px rgba(0,0,0,0.80));
+      filter:drop-shadow(0 0 18px rgba(139,0,0,0.80)) drop-shadow(0 0 32px rgba(139,0,0,0.60)) drop-shadow(0 8px 20px rgba(0,0,0,0.80));
     }
 
     /* ── HARD HAT CORNER (Working Man) ── */
@@ -282,43 +294,6 @@
     .bundle-card:hover .hard-hat-tag{
       transform:rotate(8deg) scale(1.07) translateY(-4px);
       filter:drop-shadow(0 0 14px rgba(255,200,0,0.50)) drop-shadow(0 8px 20px rgba(0,0,0,0.75));
-    }
-    /* Hi-vis jacket hanging off corner */
-    .hiviz{
-      position:absolute;
-      bottom:-2px;left:-2px;
-      width:44px;height:52px;
-      z-index:4;
-      pointer-events:none;
-    }
-    .hiviz-body{
-      position:absolute;
-      bottom:0;left:0;
-      width:44px;height:40px;
-      background:#f5a800;
-      border-radius:0 8px 0 0;
-      clip-path:polygon(0 100%,100% 100%,100% 20%,50% 0%,0 20%);
-    }
-    .hiviz-stripe{
-      position:absolute;
-      bottom:12px;left:0;right:0;
-      height:6px;
-      background:rgba(200,200,200,0.85);
-    }
-    .hiviz-stripe2{
-      position:absolute;
-      bottom:20px;left:0;right:0;
-      height:6px;
-      background:rgba(200,200,200,0.85);
-    }
-    .hiviz-hanger{
-      position:absolute;
-      top:0;left:50%;
-      transform:translateX(-50%);
-      width:10px;height:14px;
-      border:2.5px solid rgba(255,255,255,0.5);
-      border-bottom:none;
-      border-radius:5px 5px 0 0;
     }
 
     /* ── 3J BADGE (3 Wise Men) ── */
@@ -345,7 +320,7 @@
       font-size:9px;font-weight:800;letter-spacing:2px;
       text-transform:uppercase;
       background:#8B0000;color:#fff;
-      border-radius:4px;padding:4px 10px;
+      border-radius:0;padding:4px 10px;
       margin-bottom:14px;
     }
     .card-name{
@@ -444,7 +419,7 @@
     .wise-card{
       background:#fff;
       border:1.5px solid #ebebeb;
-      border-radius:14px;overflow:hidden;
+      border-radius:0;overflow:hidden;
       box-shadow:0 4px 20px rgba(0,0,0,0.05);
       transition:box-shadow 0.3s,transform 0.3s,border-color 0.3s;
       display:flex;flex-direction:column;
@@ -486,7 +461,7 @@
       display:inline-flex;align-items:center;gap:6px;
       font-size:9px;font-weight:800;letter-spacing:2px;
       text-transform:uppercase;
-      border-radius:4px;padding:4px 10px;
+      border-radius:0;padding:4px 10px;
       margin-bottom:12px;
     }
     .wise-card.standard .wise-tier{background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.8);}
@@ -510,37 +485,63 @@
     .wise-card .includes-list{margin-bottom:20px;}
     .wise-card .btn-call{margin-top:auto;}
 
-    /* ── WHY BUNDLE ── */
+    /* ── WHY BUNDLE STAT STRIP ── */
     .why-section{
-      background:#fff;
-      padding:64px 40px;
-      text-align:center;
+      background:#F2F2F2;
+      padding:clamp(48px,6vw,72px) clamp(16px,4vw,40px);
+      border-top:1px solid #e0e0e0;
+      border-bottom:1px solid #e0e0e0;
     }
     .why-section .eyebrow{
       font-size:10px;font-weight:800;letter-spacing:4px;
-      text-transform:uppercase;color:#8B0000;margin-bottom:12px;
+      text-transform:uppercase;color:#8B0000;
+      text-align:center;margin-bottom:10px;
     }
-    .why-section h2{
-      font-size:clamp(24px,3vw,36px);
+    .why-section .why-heading{
+      font-size:clamp(22px,3vw,34px);
       font-weight:900;letter-spacing:-1px;
-      color:#111;margin-bottom:48px;
+      color:#1a1a1a;text-align:center;
+      margin-bottom:clamp(36px,5vw,56px);
+      text-wrap:balance;
     }
-    .why-grid{
-      display:grid;grid-template-columns:repeat(3,1fr);
-      gap:32px;max-width:900px;margin:0 auto;
+    .why-stat-row{
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      max-width:960px;
+      margin:0 auto;
+      border-top:1px solid #d4d4d4;
+      border-bottom:1px solid #d4d4d4;
     }
-    .why-card{
-      display:flex;flex-direction:column;align-items:center;
-      gap:14px;
+    .why-stat{
+      flex:1;min-width:180px;max-width:320px;
+      text-align:center;
+      padding:clamp(24px,3vw,36px) 24px;
+      border-right:1px solid #d4d4d4;
     }
-    .why-card h3{
-      font-size:13px;font-weight:900;
-      text-transform:uppercase;letter-spacing:0.5px;
-      color:#111;
+    .why-stat:last-child{border-right:none;}
+    .why-stat-number{
+      font-family:'Montserrat',sans-serif;
+      font-size:clamp(36px,5vw,56px);
+      font-weight:900;color:#8B0000;
+      letter-spacing:-2px;line-height:1;
+      margin-bottom:8px;
     }
-    .why-card p{
-      font-size:12px;font-weight:500;
-      color:#777;line-height:1.7;
+    .why-stat-label{
+      font-family:'Montserrat',sans-serif;
+      font-size:10px;font-weight:800;
+      letter-spacing:2px;text-transform:uppercase;
+      color:#1a1a1a;margin-bottom:6px;
+    }
+    .why-stat-sub{
+      font-family:'Inter',sans-serif;
+      font-size:12px;font-weight:400;
+      color:#666;line-height:1.6;
+    }
+    @media(max-width:640px){
+      .why-stat-row{flex-direction:column;}
+      .why-stat{border-right:none;border-bottom:1px solid #d4d4d4;}
+      .why-stat:last-child{border-bottom:none;}
     }
 
     /* ── BOTTOM CTA ── */
@@ -590,7 +591,6 @@
     @media(max-width:860px){
       .bundle-grid{grid-template-columns:1fr;padding:0 24px 52px;}
       .wise-grid{grid-template-columns:1fr;}
-      .why-grid{grid-template-columns:1fr;gap:28px;}
       .section-label{padding:52px 24px 32px;}
       .wise-section{padding:52px 24px;}
       .why-section{padding:52px 24px;}
@@ -659,18 +659,18 @@
       <p class="card-tagline">The SoCal daily driver combo — just like the freeway, built for the long haul.</p>
     </div>
     <div class="card-body">
-      <p class="includes-label" style="color:#808080;">What's Included</p>
+      <p class="includes-label">What's Included</p>
       <ul class="includes-list">
-        <li style="color:#808080;">
+        <li>
           Spray-In Rhino Bedliner
-          <span style="color:#808080;">Permanently bonded. Lifetime warranty. The real thing — not a drop-in.</span>
+          <span>Permanently bonded. Lifetime warranty. The real thing — not a drop-in.</span>
         </li>
-        <li style="color:#808080;">
+        <li>
           Tonneau Cover
-          <span style="color:#808080;">Keep your bed protected, clean, and covered. Multiple styles available.</span>
+          <span>Keep your bed protected, clean, and covered. Multiple styles available.</span>
         </li>
       </ul>
-      <p class="card-target" style="color:#808080;">Built for: <strong>The SoCal Truck Owner</strong> · Ages 25–55 · Daily Driver</p>
+      <p class="card-target">Built for: <strong>The SoCal Truck Owner</strong> · Ages 25–55 · Daily Driver</p>
       <a href="https://www.3jsautobody.com/the-405-essentials" target="_top" class="btn-call">
         <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         View This Bundle
@@ -804,19 +804,22 @@
 ══════════════════════════════════════════════ -->
 <section class="why-section">
   <p class="eyebrow">Why Bundle</p>
-  <h2>One Call. One Shop. Done Right.</h2>
-  <div class="why-grid">
-    <div class="why-card">
-      <h3>Trusted Installer</h3>
-      <p>30+ years in Signal Hill. Certified Rhino Linings dealer. We've done thousands of installs — we know what works and what doesn't.</p>
+  <h2 class="why-heading">One Call. One Shop. Done Right.</h2>
+  <div class="why-stat-row">
+    <div class="why-stat">
+      <div class="why-stat-number">30+</div>
+      <div class="why-stat-label">Years in Signal Hill</div>
+      <div class="why-stat-sub">Certified Rhino Linings dealer. Thousands of installs. We know what works.</div>
     </div>
-    <div class="why-card">
-      <h3>Save Time</h3>
-      <p>Everything done in one visit, at one shop. No running around town. Drop it off, pick it up done. We'll let you know upfront how long it takes.</p>
+    <div class="why-stat">
+      <div class="why-stat-number">1</div>
+      <div class="why-stat-label">Visit. Everything Done.</div>
+      <div class="why-stat-sub">Drop it off, pick it up complete. No running around town. No second trips.</div>
     </div>
-    <div class="why-card">
-      <h3>Better Value</h3>
-      <p>Bundling services with us means you're not paying retail markup from three different vendors. Honest pricing, one bill, no surprises.</p>
+    <div class="why-stat">
+      <div class="why-stat-number">$0</div>
+      <div class="why-stat-label">Surprises</div>
+      <div class="why-stat-sub">Honest pricing. One bill. We tell you exactly what it costs before we start.</div>
     </div>
   </div>
 </section>
