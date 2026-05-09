@@ -110,10 +110,17 @@
     .ymm-title em{color:var(--crimson);font-style:normal;}
     .ymm-row{display:flex;align-items:stretch;gap:8px;flex-wrap:wrap;}
     .ymm-selects{display:flex;gap:8px;flex:1;flex-wrap:wrap;min-width:0;}
-    .ymm-sel{flex:1;min-width:110px;padding:13px 12px;border:2px solid #e0e0e0;border-radius:0;background:#fff;color:#111;font-family:'Inter',sans-serif;font-size:14px;font-weight:500;appearance:none;-webkit-appearance:none;cursor:pointer;outline:none;transition:border-color .2s;}
-    .ymm-sel:focus{border-color:var(--crimson);}
-    .ymm-sel:disabled{opacity:0.35;cursor:not-allowed;}
-    .ymm-sel option{background:#fff;color:#111;}
+    .ymm-dd{position:relative;flex:1;min-width:110px;}
+    .ymm-dd-trigger{width:100%;padding:13px 36px 13px 12px;border:2px solid #e0e0e0;background:#fff;color:#888;font-family:'Inter',sans-serif;font-size:14px;font-weight:600;text-align:left;cursor:pointer;outline:none;transition:border-color .2s;display:flex;align-items:center;justify-content:space-between;}
+    .ymm-dd-trigger.has-value{color:#111;}
+    .ymm-dd.open .ymm-dd-trigger,.ymm-dd-trigger:focus-visible{border-color:var(--crimson);}
+    .ymm-dd-trigger:disabled{opacity:0.35;cursor:not-allowed;}
+    .ymm-dd-arrow{width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-top:5px solid #aaa;flex-shrink:0;transition:transform .2s;}
+    .ymm-dd.open .ymm-dd-arrow{transform:rotate(180deg);border-top-color:var(--crimson);}
+    .ymm-dd-list{position:absolute;top:100%;left:0;right:0;background:#fff;border:2px solid var(--crimson);border-top:none;max-height:220px;overflow-y:auto;z-index:9999;display:none;box-shadow:0 8px 24px rgba(0,0,0,.12);}
+    .ymm-dd.open .ymm-dd-list{display:block;}
+    .ymm-dd-option{padding:10px 12px;font-family:'Inter',sans-serif;font-size:14px;font-weight:600;cursor:pointer;color:#111;}
+    .ymm-dd-option:hover{background:#f5f5f5;color:var(--crimson);}
     .ymm-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:50px;padding:0 28px;background:var(--crimson);color:#fff;border:none;border-radius:0;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;cursor:pointer;white-space:nowrap;flex-shrink:0;transition:background .2s;}
     .ymm-btn:hover{background:var(--crimson-hover);}
     .ymm-btn:disabled{background:#ccc;cursor:not-allowed;}
@@ -128,7 +135,7 @@
       .ymm-row{flex-direction:column;}
       .ymm-btn{width:100%;height:52px;}
       .ymm-selects{flex-direction:column;}
-      .ymm-sel{width:100%;}
+      .ymm-dd{width:100%;}
     }
 
     /* ── BRAND TABS ── */
@@ -230,7 +237,7 @@
     .faq-item.open .faq-q svg{transform:rotate(45deg);}
     .faq-q[aria-expanded="true"] svg{transform:rotate(45deg);}
     .faq-a{overflow:hidden;max-height:0;opacity:0;padding-bottom:0;transition:max-height .4s ease-in-out,opacity .3s ease,padding-bottom .4s ease-in-out;}
-    .faq-item.open .faq-a{max-height:400px;opacity:1;padding-bottom:20px;}
+    .faq-item.open .faq-a{max-height:600px;opacity:1;padding-bottom:20px;}
     .faq-a p{font-family:'Inter',sans-serif;font-size:14px;color:#555;line-height:1.85;}
 
     /* ── CTA BAND ── */
@@ -279,15 +286,27 @@
     <p class="ymm-title">Select your truck to see <em>what fits</em></p>
     <div class="ymm-row">
       <div class="ymm-selects">
-        <select class="ymm-sel" id="ymm-year">
-          <option value="">Year</option>
-        </select>
-        <select class="ymm-sel" id="ymm-make" disabled>
-          <option value="">Make</option>
-        </select>
-        <select class="ymm-sel" id="ymm-model" disabled>
-          <option value="">Model</option>
-        </select>
+        <div class="ymm-dd" id="dd-year">
+          <button class="ymm-dd-trigger" id="ymm-year" type="button">
+            <span id="ymm-year-lbl">Year</span>
+            <span class="ymm-dd-arrow"></span>
+          </button>
+          <div class="ymm-dd-list" id="ymm-year-list"></div>
+        </div>
+        <div class="ymm-dd" id="dd-make">
+          <button class="ymm-dd-trigger" id="ymm-make" type="button" disabled>
+            <span id="ymm-make-lbl">Make</span>
+            <span class="ymm-dd-arrow"></span>
+          </button>
+          <div class="ymm-dd-list" id="ymm-make-list"></div>
+        </div>
+        <div class="ymm-dd" id="dd-model">
+          <button class="ymm-dd-trigger" id="ymm-model" type="button" disabled>
+            <span id="ymm-model-lbl">Model</span>
+            <span class="ymm-dd-arrow"></span>
+          </button>
+          <div class="ymm-dd-list" id="ymm-model-list"></div>
+        </div>
       </div>
       <button class="ymm-btn" id="ymm-btn" disabled>
         <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
@@ -619,7 +638,7 @@
          data-makes="ford,chevrolet,gmc,ram,toyota,jeep,nissan"
          data-minyear="2007" data-maxyear="2025">
       <div class="bc-img">
-        <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/go-rhino/oe-xtreme-silver-truck.png"
+        <img src="go-rhino/oe-xtreme-silver-truck.webp"
              alt="Go Rhino OE Xtreme SideStep on silver truck" loading="lazy">
         <span class="bc-badge">Tube Steps</span>
       </div>
@@ -656,7 +675,7 @@
          data-makes="ford,chevrolet,gmc,ram,toyota"
          data-minyear="2009" data-maxyear="2025">
       <div class="bc-img">
-        <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/go-rhino/rb-running-board-red-truck.png"
+        <img src="go-rhino/rb-running-board-red-truck.webp"
              alt="Go Rhino RB Running Board on red truck" loading="lazy">
         <span class="bc-badge">Running Board</span>
       </div>
@@ -693,7 +712,7 @@
          data-makes="toyota"
          data-minyear="2005" data-maxyear="2025">
       <div class="bc-img">
-        <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/go-rhino/tacoma-hero.png"
+        <img src="go-rhino/tacoma-hero.webp"
              alt="Go Rhino OE Xtreme SideStep on Toyota Tacoma TRD" loading="lazy">
         <span class="bc-badge">Toyota Fitment</span>
       </div>
@@ -715,6 +734,302 @@
           </div>
         </div>
         <div class="bc-fitment-check" id="check-gr-tacoma">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <span>May not fit — call to confirm fitment for your truck.</span>
+        </div>
+        <p class="bc-price-note">Price varies by year, make, model, cab style &amp; installation. Call for your exact price.</p>
+        <div class="bc-actions">
+          <a href="https://www.3jsautobody.com/rhino-lining-quote" target="_top" class="btn-quote">Get a Quote</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Go Rhino Dominator Xtreme D1 -->
+    <div class="border-card"
+         data-makes="ford,chevrolet,gmc,ram,toyota,nissan"
+         data-minyear="2007" data-maxyear="2025">
+      <div class="bc-img">
+        <img src="go-rhino/Go%20Rhino%20Dominator%20Xtreme%20D1%20Side%20Steps%20in%20a%20textured%20black%20finish.webp"
+             alt="Go Rhino Dominator Xtreme D1 Side Steps" loading="lazy">
+        <span class="bc-badge">Side Step</span>
+      </div>
+      <div class="bc-body">
+        <div class="bc-type">Side Step</div>
+        <div class="bc-name">Dominator Xtreme D1</div>
+        <p class="bc-desc">Wide, flat perforated step bar with an aggressive triangular profile. Sits tight to the rocker for a clean stance. Textured Black powder coat, bolt-on install — no drilling.</p>
+        <ul class="bc-feats">
+          <li><span></span>Flat perforated step surface</li>
+          <li><span></span>Triangular low-profile design</li>
+          <li><span></span>Factory bracket bolt-on</li>
+        </ul>
+        <div class="bc-fitment fits" id="fit-gr-d1">
+          <div class="bc-fitment-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <div class="bc-fitment-text">
+            <strong>This Fits Your Vehicle</strong>
+            <span id="fit-gr-d1-truck"></span>
+            <a href="#ymm-bar">Change vehicle</a>
+          </div>
+        </div>
+        <div class="bc-fitment-check" id="check-gr-d1">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <span>May not fit — call to confirm fitment for your truck.</span>
+        </div>
+        <p class="bc-price-note">Price varies by year, make, model, cab style &amp; installation. Call for your exact price.</p>
+        <div class="bc-actions">
+          <a href="https://www.3jsautobody.com/rhino-lining-quote" target="_top" class="btn-quote">Get a Quote</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Go Rhino Dominator Xtreme D6 -->
+    <div class="border-card"
+         data-makes="ford,chevrolet,gmc,ram,toyota,nissan"
+         data-minyear="2007" data-maxyear="2025">
+      <div class="bc-img">
+        <img src="go-rhino/Go%20Rhino%20Dominator%20Xtreme%20D6%20side%20step%20bars%20in%20a%20textured%20black%20finish.webp"
+             alt="Go Rhino Dominator Xtreme D6 Side Step Bars" loading="lazy">
+        <span class="bc-badge">Side Step</span>
+      </div>
+      <div class="bc-body">
+        <div class="bc-type">Side Step</div>
+        <div class="bc-name">Dominator Xtreme D6</div>
+        <p class="bc-desc">6-inch wide step bar with oval perforations and a precision angular profile. Wider stepping surface than the D1 for added entry comfort. Factory bolt-on, Textured Black finish.</p>
+        <ul class="bc-feats">
+          <li><span></span>6" wide step surface</li>
+          <li><span></span>Oval perforated non-slip tread</li>
+          <li><span></span>Factory bracket bolt-on</li>
+        </ul>
+        <div class="bc-fitment fits" id="fit-gr-d6">
+          <div class="bc-fitment-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <div class="bc-fitment-text">
+            <strong>This Fits Your Vehicle</strong>
+            <span id="fit-gr-d6-truck"></span>
+            <a href="#ymm-bar">Change vehicle</a>
+          </div>
+        </div>
+        <div class="bc-fitment-check" id="check-gr-d6">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <span>May not fit — call to confirm fitment for your truck.</span>
+        </div>
+        <p class="bc-price-note">Price varies by year, make, model, cab style &amp; installation. Call for your exact price.</p>
+        <div class="bc-actions">
+          <a href="https://www.3jsautobody.com/rhino-lining-quote" target="_top" class="btn-quote">Get a Quote</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Go Rhino Dominator Xtreme DSS Slider -->
+    <div class="border-card"
+         data-makes="ford,chevrolet,gmc,ram,toyota,nissan"
+         data-minyear="2007" data-maxyear="2025">
+      <div class="bc-img">
+        <img src="go-rhino/Go%20Rhino%20Dominator%20Xtreme%20DSS%20Slider%20Side%20Step%20Bars.webp"
+             alt="Go Rhino Dominator Xtreme DSS Slider Side Step Bars" loading="lazy">
+        <span class="bc-badge">Slider Steps</span>
+      </div>
+      <div class="bc-body">
+        <div class="bc-type">Slider Step</div>
+        <div class="bc-name">Dominator Xtreme DSS Slider</div>
+        <p class="bc-desc">Two-rail slider design that sits flush against the rocker when not in use — extend it for a step point when you need it. Built for trucks that go off-road where ground clearance matters.</p>
+        <ul class="bc-feats">
+          <li><span></span>Slider rail — tucks for clearance</li>
+          <li><span></span>Two-rail steel construction</li>
+          <li><span></span>Textured Black powder coat</li>
+        </ul>
+        <div class="bc-fitment fits" id="fit-gr-dss">
+          <div class="bc-fitment-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <div class="bc-fitment-text">
+            <strong>This Fits Your Vehicle</strong>
+            <span id="fit-gr-dss-truck"></span>
+            <a href="#ymm-bar">Change vehicle</a>
+          </div>
+        </div>
+        <div class="bc-fitment-check" id="check-gr-dss">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <span>May not fit — call to confirm fitment for your truck.</span>
+        </div>
+        <p class="bc-price-note">Price varies by year, make, model, cab style &amp; installation. Call for your exact price.</p>
+        <div class="bc-actions">
+          <a href="https://www.3jsautobody.com/rhino-lining-quote" target="_top" class="btn-quote">Get a Quote</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Go Rhino Dominator Xtreme DT -->
+    <div class="border-card"
+         data-makes="ford,chevrolet,gmc,ram,toyota,nissan"
+         data-minyear="2007" data-maxyear="2025">
+      <div class="bc-img">
+        <img src="go-rhino/These%20are%20Go%20Rhino%20Dominator%20Xtreme%20DT%20Side%20Steps%20featuring%20a%20textured%20black%20powder%20coat%20finish.webp"
+             alt="Go Rhino Dominator Xtreme DT Side Steps" loading="lazy">
+        <span class="bc-badge">Side Step</span>
+      </div>
+      <div class="bc-body">
+        <div class="bc-type">Side Step</div>
+        <div class="bc-name">Dominator Xtreme DT</div>
+        <p class="bc-desc">Narrow, low-profile tube-style side step with a clean minimal look. Less bulk than the D1 or D6 — right for trucks where you want the bodywork to lead. Textured Black, bolt-on install.</p>
+        <ul class="bc-feats">
+          <li><span></span>Narrow low-profile tube design</li>
+          <li><span></span>Perforated non-slip step pad</li>
+          <li><span></span>Factory bracket bolt-on</li>
+        </ul>
+        <div class="bc-fitment fits" id="fit-gr-dt">
+          <div class="bc-fitment-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <div class="bc-fitment-text">
+            <strong>This Fits Your Vehicle</strong>
+            <span id="fit-gr-dt-truck"></span>
+            <a href="#ymm-bar">Change vehicle</a>
+          </div>
+        </div>
+        <div class="bc-fitment-check" id="check-gr-dt">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <span>May not fit — call to confirm fitment for your truck.</span>
+        </div>
+        <p class="bc-price-note">Price varies by year, make, model, cab style &amp; installation. Call for your exact price.</p>
+        <div class="bc-actions">
+          <a href="https://www.3jsautobody.com/rhino-lining-quote" target="_top" class="btn-quote">Get a Quote</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Go Rhino RB10 Running Boards -->
+    <div class="border-card"
+         data-makes="ford,chevrolet,gmc,ram,toyota"
+         data-minyear="2007" data-maxyear="2025">
+      <div class="bc-img">
+        <img src="go-rhino/Go%20Rhino%20RB10%20running%20boards.webp"
+             alt="Go Rhino RB10 Running Boards on truck" loading="lazy">
+        <span class="bc-badge">Running Board</span>
+      </div>
+      <div class="bc-body">
+        <div class="bc-type">Running Board</div>
+        <div class="bc-name">RB10 Running Boards</div>
+        <p class="bc-desc">Full cab-length running board with a raised step section that lifts above the board surface for a secure grip point. Powder-coated Textured Black steel. No drilling required.</p>
+        <ul class="bc-feats">
+          <li><span></span>Raised step section — secure grip</li>
+          <li><span></span>Full cab-length coverage</li>
+          <li><span></span>Textured Black powder coat</li>
+        </ul>
+        <div class="bc-fitment fits" id="fit-gr-rb10">
+          <div class="bc-fitment-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <div class="bc-fitment-text">
+            <strong>This Fits Your Vehicle</strong>
+            <span id="fit-gr-rb10-truck"></span>
+            <a href="#ymm-bar">Change vehicle</a>
+          </div>
+        </div>
+        <div class="bc-fitment-check" id="check-gr-rb10">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <span>May not fit — call to confirm fitment for your truck.</span>
+        </div>
+        <p class="bc-price-note">Price varies by year, make, model, cab style &amp; installation. Call for your exact price.</p>
+        <div class="bc-actions">
+          <a href="https://www.3jsautobody.com/rhino-lining-quote" target="_top" class="btn-quote">Get a Quote</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Go Rhino RB20 Running Boards -->
+    <div class="border-card"
+         data-makes="ford,chevrolet,gmc,ram,toyota"
+         data-minyear="2009" data-maxyear="2025">
+      <div class="bc-img">
+        <img src="go-rhino/Go%20Rhino%20RB20%20Running%20Boards.webp"
+             alt="Go Rhino RB20 Running Boards on gray truck" loading="lazy">
+        <span class="bc-badge">Most Popular</span>
+      </div>
+      <div class="bc-body">
+        <div class="bc-type">Running Board</div>
+        <div class="bc-name">RB20 Running Boards</div>
+        <p class="bc-desc">Go Rhino's most popular running board. Flat, wide aluminum surface with perforated anti-slip tread and a low-profile stance that hugs the rocker. Clean blacked-out look, factory bolt-on.</p>
+        <ul class="bc-feats">
+          <li><span></span>Wide flat anti-slip step surface</li>
+          <li><span></span>Low-profile rocker mount</li>
+          <li><span></span>Textured Black aluminum</li>
+        </ul>
+        <div class="bc-fitment fits" id="fit-gr-rb20">
+          <div class="bc-fitment-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <div class="bc-fitment-text">
+            <strong>This Fits Your Vehicle</strong>
+            <span id="fit-gr-rb20-truck"></span>
+            <a href="#ymm-bar">Change vehicle</a>
+          </div>
+        </div>
+        <div class="bc-fitment-check" id="check-gr-rb20">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <span>May not fit — call to confirm fitment for your truck.</span>
+        </div>
+        <p class="bc-price-note">Price varies by year, make, model, cab style &amp; installation. Call for your exact price.</p>
+        <div class="bc-actions">
+          <a href="https://www.3jsautobody.com/rhino-lining-quote" target="_top" class="btn-quote">Get a Quote</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Go Rhino RB20 Slim Running Boards -->
+    <div class="border-card"
+         data-makes="ford,chevrolet,gmc,ram,toyota"
+         data-minyear="2009" data-maxyear="2025">
+      <div class="bc-img">
+        <img src="go-rhino/Go%20Rhino%20RB20%20Slim%20Running%20Boards.webp"
+             alt="Go Rhino RB20 Slim Running Boards close-up" loading="lazy">
+        <span class="bc-badge">Slim Profile</span>
+      </div>
+      <div class="bc-body">
+        <div class="bc-type">Running Board</div>
+        <div class="bc-name">RB20 Slim Running Boards</div>
+        <p class="bc-desc">A narrower, razor-profile version of the RB20. Less visual bulk, same durable perforated step surface. Right for builds where you want the wheels and stance to lead — not the boards.</p>
+        <ul class="bc-feats">
+          <li><span></span>Slim low-profile stance</li>
+          <li><span></span>Perforated non-slip surface</li>
+          <li><span></span>Textured Black powder coat</li>
+        </ul>
+        <div class="bc-fitment fits" id="fit-gr-rb20slim">
+          <div class="bc-fitment-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <div class="bc-fitment-text">
+            <strong>This Fits Your Vehicle</strong>
+            <span id="fit-gr-rb20slim-truck"></span>
+            <a href="#ymm-bar">Change vehicle</a>
+          </div>
+        </div>
+        <div class="bc-fitment-check" id="check-gr-rb20slim">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <span>May not fit — call to confirm fitment for your truck.</span>
+        </div>
+        <p class="bc-price-note">Price varies by year, make, model, cab style &amp; installation. Call for your exact price.</p>
+        <div class="bc-actions">
+          <a href="https://www.3jsautobody.com/rhino-lining-quote" target="_top" class="btn-quote">Get a Quote</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Go Rhino RB20 Drop Step Running Boards -->
+    <div class="border-card"
+         data-makes="ford,chevrolet,gmc,ram,toyota"
+         data-minyear="2009" data-maxyear="2025">
+      <div class="bc-img">
+        <img src="go-rhino/Go%20Rhino%20RB20%20Drop%20Step%20running%20boards.webp"
+             alt="Go Rhino RB20 Drop Step Running Boards on truck" loading="lazy">
+        <span class="bc-badge">Drop Step</span>
+      </div>
+      <div class="bc-body">
+        <div class="bc-type">Running Board</div>
+        <div class="bc-name">RB20 Drop Step</div>
+        <p class="bc-desc">RB20 with an added drop step bracket — designed for leveled or lifted trucks where standard boards sit too high. Easier entry without losing the RB20's flat-board aesthetics.</p>
+        <ul class="bc-feats">
+          <li><span></span>Built-in drop step for lifted trucks</li>
+          <li><span></span>Flat perforated RB20 surface</li>
+          <li><span></span>Textured Black powder coat</li>
+        </ul>
+        <div class="bc-fitment fits" id="fit-gr-rb20drop">
+          <div class="bc-fitment-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <div class="bc-fitment-text">
+            <strong>This Fits Your Vehicle</strong>
+            <span id="fit-gr-rb20drop-truck"></span>
+            <a href="#ymm-bar">Change vehicle</a>
+          </div>
+        </div>
+        <div class="bc-fitment-check" id="check-gr-rb20drop">
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
           <span>May not fit — call to confirm fitment for your truck.</span>
         </div>
@@ -903,11 +1218,11 @@
           <p>Nerf bars are round or oval tubes that provide a step point and side protection. Running boards are wide flat platforms that run the full cab length for easier entry and exit. Both are available in fixed and electric retractable styles.</p>
           <div class="faq-type-compare">
             <div class="faq-type-item">
-              <img src="Nerf-Steps-Transparent_BG.png" alt="Truck with round tube nerf bar step bars">
+              <img src="Nerf-Steps-Transparent_BG.webp" alt="Truck with round tube nerf bar step bars">
               <span>Nerf Bar — Round Tube</span>
             </div>
             <div class="faq-type-item">
-              <img src="go-rhino/RB20_Text_Lifestyle_4.png" alt="Go Rhino RB20 flat platform running board on Toyota Tundra">
+              <img src="go-rhino/RB20_Text_Lifestyle_4.webp" alt="Go Rhino RB20 flat platform running board on Toyota Tundra">
               <span>Running Board — Flat Platform</span>
             </div>
           </div>
@@ -966,44 +1281,68 @@ var YMM = {
   }
 };
 
+// ── CUSTOM DROPDOWN HELPERS ──
+var ymm={year:'',make:'',model:''};
+
+function setDdVal(btnId,lblId,ddId,val,label,enabled){
+  var btn=document.getElementById(btnId);
+  var lbl=document.getElementById(lblId);
+  lbl.textContent=label;
+  val?btn.classList.add('has-value'):btn.classList.remove('has-value');
+  btn.disabled=!enabled;
+  document.getElementById(ddId).classList.remove('open');
+}
+function buildList(listId,items,onSelect){
+  var list=document.getElementById(listId);
+  list.innerHTML='';
+  items.forEach(function(item){
+    var d=document.createElement('div');
+    d.className='ymm-dd-option';
+    d.textContent=item;
+    d.addEventListener('click',function(){onSelect(item);});
+    list.appendChild(d);
+  });
+}
+function openDd(ddEl){
+  document.querySelectorAll('.ymm-dd.open').forEach(function(el){if(el!==ddEl)el.classList.remove('open');});
+  ddEl.classList.toggle('open');
+}
+document.addEventListener('click',function(e){
+  if(!e.target.closest('.ymm-dd'))document.querySelectorAll('.ymm-dd.open').forEach(function(el){el.classList.remove('open');});
+});
+
+// Trigger click handlers
+['ymm-year','ymm-make','ymm-model'].forEach(function(id){
+  document.getElementById(id).addEventListener('click',function(e){
+    if(this.disabled)return;
+    e.stopPropagation();
+    openDd(this.closest('.ymm-dd'));
+  });
+});
+
 // ── POPULATE YEAR ──
 (function(){
-  var ysel = document.getElementById('ymm-year');
-  for(var y=2025;y>=2005;y--){
-    var o=document.createElement('option');
-    o.value=y;o.textContent=y;
-    ysel.appendChild(o);
-  }
+  var years=[];
+  for(var y=2025;y>=2005;y--)years.push(String(y));
+  buildList('ymm-year-list',years,function(val){
+    ymm.year=val;ymm.make='';ymm.model='';
+    setDdVal('ymm-year','ymm-year-lbl','dd-year',val,val,true);
+    setDdVal('ymm-make','ymm-make-lbl','dd-make','','Make',true);
+    setDdVal('ymm-model','ymm-model-lbl','dd-model','','Model',false);
+    document.getElementById('ymm-btn').disabled=true;
+    buildList('ymm-make-list',Object.keys(YMM.makes),function(mval){
+      ymm.make=mval;ymm.model='';
+      setDdVal('ymm-make','ymm-make-lbl','dd-make',mval,mval,true);
+      setDdVal('ymm-model','ymm-model-lbl','dd-model','','Model',true);
+      document.getElementById('ymm-btn').disabled=true;
+      buildList('ymm-model-list',YMM.makes[mval]||[],function(mdval){
+        ymm.model=mdval;
+        setDdVal('ymm-model','ymm-model-lbl','dd-model',mdval,mdval,true);
+        document.getElementById('ymm-btn').disabled=false;
+      });
+    });
+  });
 })();
-
-// ── YMM CASCADES ──
-document.getElementById('ymm-year').addEventListener('change',function(){
-  var msel=document.getElementById('ymm-make');
-  msel.innerHTML='<option value="">Make</option>';
-  document.getElementById('ymm-model').innerHTML='<option value="">Model</option>';
-  document.getElementById('ymm-model').disabled=true;
-  document.getElementById('ymm-btn').disabled=true;
-  if(!this.value){msel.disabled=true;return;}
-  msel.disabled=false;
-  Object.keys(YMM.makes).forEach(function(m){
-    var o=document.createElement('option');o.value=m;o.textContent=m;msel.appendChild(o);
-  });
-});
-
-document.getElementById('ymm-make').addEventListener('change',function(){
-  var msel=document.getElementById('ymm-model');
-  msel.innerHTML='<option value="">Model</option>';
-  document.getElementById('ymm-btn').disabled=true;
-  if(!this.value){msel.disabled=true;return;}
-  msel.disabled=false;
-  (YMM.makes[this.value]||[]).forEach(function(m){
-    var o=document.createElement('option');o.value=m;o.textContent=m;msel.appendChild(o);
-  });
-});
-
-document.getElementById('ymm-model').addEventListener('change',function(){
-  document.getElementById('ymm-btn').disabled=!this.value;
-});
 
 // ── FITMENT CHECK ──
 var selectedVehicle=null;
@@ -1043,6 +1382,14 @@ function applyFitment(){
     {makes:'ford,chevrolet,gmc,ram,toyota,jeep,nissan',min:2007,max:2025,fits:'fit-gr-oe',check:'check-gr-oe',truck:'fit-gr-oe-truck'},
     {makes:'ford,chevrolet,gmc,ram,toyota',min:2009,max:2025,fits:'fit-gr-rb',check:'check-gr-rb',truck:'fit-gr-rb-truck'},
     {makes:'toyota',min:2005,max:2025,fits:'fit-gr-tacoma',check:'check-gr-tacoma',truck:'fit-gr-tacoma-truck'},
+    {makes:'ford,chevrolet,gmc,ram,toyota,nissan',min:2007,max:2025,fits:'fit-gr-d1',check:'check-gr-d1',truck:'fit-gr-d1-truck'},
+    {makes:'ford,chevrolet,gmc,ram,toyota,nissan',min:2007,max:2025,fits:'fit-gr-d6',check:'check-gr-d6',truck:'fit-gr-d6-truck'},
+    {makes:'ford,chevrolet,gmc,ram,toyota,nissan',min:2007,max:2025,fits:'fit-gr-dss',check:'check-gr-dss',truck:'fit-gr-dss-truck'},
+    {makes:'ford,chevrolet,gmc,ram,toyota,nissan',min:2007,max:2025,fits:'fit-gr-dt',check:'check-gr-dt',truck:'fit-gr-dt-truck'},
+    {makes:'ford,chevrolet,gmc,ram,toyota',min:2007,max:2025,fits:'fit-gr-rb10',check:'check-gr-rb10',truck:'fit-gr-rb10-truck'},
+    {makes:'ford,chevrolet,gmc,ram,toyota',min:2009,max:2025,fits:'fit-gr-rb20',check:'check-gr-rb20',truck:'fit-gr-rb20-truck'},
+    {makes:'ford,chevrolet,gmc,ram,toyota',min:2009,max:2025,fits:'fit-gr-rb20slim',check:'check-gr-rb20slim',truck:'fit-gr-rb20slim-truck'},
+    {makes:'ford,chevrolet,gmc,ram,toyota',min:2009,max:2025,fits:'fit-gr-rb20drop',check:'check-gr-rb20drop',truck:'fit-gr-rb20drop-truck'},
     {makes:'ford,chevrolet,gmc,ram,toyota,jeep,nissan',min:2007,max:2025,fits:'fit-wes-hdx',check:'check-wes-hdx',truck:'fit-wes-hdx-truck'},
     {makes:'ford,chevrolet,gmc,ram,toyota,jeep,nissan',min:2007,max:2025,fits:'fit-wes-traxx',check:'check-wes-traxx',truck:'fit-wes-traxx-truck'},
     {makes:'ford,chevrolet,gmc,ram',min:2015,max:2025,fits:'fit-wes-proe',check:'check-wes-proe',truck:'fit-wes-proe-truck'}
@@ -1053,26 +1400,23 @@ function applyFitment(){
 }
 
 document.getElementById('ymm-btn').addEventListener('click',function(){
-  var year=document.getElementById('ymm-year').value;
-  var make=document.getElementById('ymm-make').value;
-  var model=document.getElementById('ymm-model').value;
-  if(!year||!make||!model)return;
-  selectedVehicle={year:year,make:make,model:model};
-  document.getElementById('ymm-active-text').textContent=year+' '+make+' '+model;
+  if(!ymm.year||!ymm.make||!ymm.model)return;
+  selectedVehicle={year:ymm.year,make:ymm.make,model:ymm.model};
+  document.getElementById('ymm-active-text').textContent=ymm.year+' '+ymm.make+' '+ymm.model;
   document.getElementById('ymm-active').classList.add('show');
   applyFitment();
-  // Scroll to brand tabs
   document.querySelector('.brand-tabs-wrap').scrollIntoView({behavior:'smooth',block:'start'});
 });
 
 document.getElementById('ymm-clear').addEventListener('click',function(){
   selectedVehicle=null;
+  ymm={year:'',make:'',model:''};
   document.getElementById('ymm-active').classList.remove('show');
-  document.getElementById('ymm-year').value='';
-  document.getElementById('ymm-make').innerHTML='<option value="">Make</option>';
-  document.getElementById('ymm-make').disabled=true;
-  document.getElementById('ymm-model').innerHTML='<option value="">Model</option>';
-  document.getElementById('ymm-model').disabled=true;
+  setDdVal('ymm-year','ymm-year-lbl','dd-year','','Year',true);
+  setDdVal('ymm-make','ymm-make-lbl','dd-make','','Make',false);
+  setDdVal('ymm-model','ymm-model-lbl','dd-model','','Model',false);
+  buildList('ymm-make-list',[],function(){});
+  buildList('ymm-model-list',[],function(){});
   document.getElementById('ymm-btn').disabled=true;
   applyFitment();
 });
