@@ -123,6 +123,22 @@
 
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
+:root{
+  --crimson:#8B0000;
+  --crimson-hover:#A00000;
+  --crimson-active:#6B0000;
+  --black-1:#0A0A0A;
+  --black-2:#111111;
+  --white:#ffffff;
+  --off-white:#F2F2F2;
+  --warm-gray:#F9F9F9;
+  --body-text:#424954;
+  --emphasis-text:#1F2937;
+  --neutral-dark:#1a1a1a;
+  --divider:#E8E8E8;
+  --divider-dark:rgba(255,255,255,0.08);
+}
+
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
     html{overflow-y:hidden;}
     body{font-family:'Inter',sans-serif;font-size:15px;max-width:100%;background:#fff;}
@@ -137,7 +153,7 @@
        PAGE HERO
     ══════════════════════════════════════════════ */
     .page-hero{
-      background:#0a0a0a;
+      background:var(--black-1);
       padding:64px 20px 64px;
       position:relative;
       overflow:hidden;
@@ -146,13 +162,13 @@
       content:'';
       position:absolute;
       left:0;top:0;bottom:0;width:4px;
-      background:#8B0000;
+      background:var(--crimson);
     }
     .page-hero-inner{
       max-width:1100px;
       margin:0 auto;
     }
-    .page-hero .eyebrow{color:#8B0000;}
+    .page-hero .eyebrow{color:var(--crimson);}
     .page-hero h1{
       font-size:clamp(36px,6vw,76px);
       font-weight:900;
@@ -162,7 +178,7 @@
       text-transform:uppercase;
       margin-bottom:20px;
     }
-    .page-hero h1 span{color:#8B0000;}
+    .page-hero h1 span{color:var(--crimson);}
     .page-hero p{
       font-family:'Inter',sans-serif;
       font-size:15px;
@@ -178,7 +194,7 @@
     }
     .btn-red{
       display:inline-flex;align-items:center;justify-content:center;gap:8px;
-      background:#8B0000;color:#fff;
+      background:var(--crimson);color:#fff;
       font-family:'Montserrat',sans-serif;
       font-size:11px;font-weight:700;letter-spacing:2px;
       text-transform:uppercase;text-decoration:none;
@@ -186,7 +202,7 @@
       box-shadow:0 4px 20px rgba(139,0,0,0.40);
       transition:all 0.3s ease;cursor:pointer;
     }
-    .btn-red:hover{background:#a00000;}
+    .btn-red:hover{background:var(--crimson-hover);}
     .btn-ghost{
       display:inline-flex;align-items:center;justify-content:center;gap:8px;
       background:rgba(255,255,255,0.15);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);color:#fff;
@@ -208,9 +224,9 @@
       background:#f5f5f5;
       padding:48px 20px 56px;
     }
-    .intent-section .eyebrow{color:#8B0000;text-align:center;}
-    .intent-section .section-title{text-align:center;color:#111;margin-bottom:8px;}
-    .intent-section .section-title span{color:#8B0000;}
+    .intent-section .eyebrow{color:var(--crimson);text-align:center;}
+    .intent-section .section-title{text-align:center;color:var(--black-2);margin-bottom:8px;}
+    .intent-section .section-title span{color:var(--crimson);}
     .intent-sub{
       font-family:'Inter',sans-serif;
       text-align:center;font-size:15px;font-weight:400;
@@ -257,7 +273,7 @@
     }
     .intent-card-icon{
       width:36px;height:36px;
-      background:#8B0000;
+      background:var(--crimson);
       border-radius:50%;
       display:flex;align-items:center;justify-content:center;
       margin-bottom:12px;
@@ -280,7 +296,7 @@
       font-size:10px;font-weight:800;letter-spacing:1.5px;
       text-transform:uppercase;color:#fff;
       margin-top:12px;
-      border-bottom:2px solid #8B0000;padding-bottom:2px;
+      border-bottom:2px solid var(--crimson);padding-bottom:2px;
       width:fit-content;
       transition:color 0.2s,border-color 0.2s;
     }
@@ -308,7 +324,7 @@
        CONTACT SECTION — form + info
     ══════════════════════════════════════════════ */
     .contact-section{
-      background:#111;
+      background:var(--black-2);
       padding:48px 20px 56px;
     }
     .contact-inner{
@@ -321,9 +337,9 @@
     }
 
     /* Form side */
-    .contact-form-wrap .eyebrow{color:#8B0000;}
+    .contact-form-wrap .eyebrow{color:var(--crimson);}
     .contact-form-wrap .section-title{color:#fff;margin-bottom:6px;}
-    .contact-form-wrap .section-title span{color:#8B0000;}
+    .contact-form-wrap .section-title span{color:var(--crimson);}
     .form-sub{font-family:'Inter',sans-serif;font-size:15px;font-weight:400;color:rgba(255,255,255,0.60);line-height:1.7;margin-bottom:32px;text-wrap:pretty;}
 
     .contact-form{display:flex;flex-direction:column;gap:16px;}
@@ -352,7 +368,7 @@
     .field-group input:focus,
     .field-group select:focus,
     .field-group textarea:focus{
-      border-color:#8B0000;
+      border-color:var(--crimson);
       background:rgba(139,0,0,0.08);
       box-shadow:0 0 0 3px rgba(139,0,0,0.18);
     }
@@ -364,7 +380,7 @@
       padding-right:40px;
       cursor:pointer;
     }
-    .field-group select option{background:#1a1a1a;color:#fff;}
+    .field-group select option{background:var(--neutral-dark);color:#fff;}
     .field-group textarea{resize:vertical;min-height:120px;}
     .form-note{
       font-size:10px;font-weight:600;
@@ -373,7 +389,7 @@
     }
     .btn-submit{
       display:inline-flex;align-items:center;justify-content:center;gap:8px;
-      background:#8B0000;color:#fff;
+      background:var(--crimson);color:#fff;
       font-family:'Montserrat',sans-serif;
       font-size:11px;font-weight:700;letter-spacing:2px;
       text-transform:uppercase;text-decoration:none;
@@ -383,7 +399,7 @@
       transition:all 0.3s ease;
       width:100%;margin-top:4px;
     }
-    .btn-submit:hover{background:#a00000;box-shadow:0 6px 32px rgba(139,0,0,0.55);}
+    .btn-submit:hover{background:var(--crimson-hover);box-shadow:0 6px 32px rgba(139,0,0,0.55);}
     .btn-submit svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2.2;}
 
     /* Form success/error messages */
@@ -397,13 +413,13 @@
 
     /* Info side */
     .contact-info-wrap{padding-top:8px;}
-    .contact-info-wrap .eyebrow{color:#8B0000;}
+    .contact-info-wrap .eyebrow{color:var(--crimson);}
     .info-block-title{
       font-size:22px;font-weight:900;color:#fff;
       letter-spacing:-0.5px;text-transform:uppercase;
       margin-bottom:28px;line-height:1.1;
     }
-    .info-block-title span{color:#8B0000;}
+    .info-block-title span{color:var(--crimson);}
 
     .info-list{display:flex;flex-direction:column;gap:20px;margin-bottom:36px;}
     .info-item{display:flex;align-items:flex-start;gap:14px;}
@@ -414,7 +430,7 @@
       border-radius:8px;
       display:flex;align-items:center;justify-content:center;
     }
-    .info-icon svg{width:18px;height:18px;stroke:#8B0000;fill:none;stroke-width:2;}
+    .info-icon svg{width:18px;height:18px;stroke:var(--crimson);fill:none;stroke-width:2;}
     .info-item-text{flex:1;}
     .info-item-label{
       font-size:9px;font-weight:800;letter-spacing:2px;
@@ -439,7 +455,7 @@
     }
     .hours-block-title{
       font-size:9px;font-weight:800;letter-spacing:2px;
-      text-transform:uppercase;color:#8B0000;
+      text-transform:uppercase;color:var(--crimson);
       margin-bottom:14px;
     }
     .hours-row{
@@ -452,7 +468,7 @@
     .hours-row:last-child{border-bottom:none;}
     .hours-row.today{color:#fff;}
     .hours-row.today .day-name{color:#fff;font-weight:800;}
-    .hours-closed-text{color:#8B0000 !important;}
+    .hours-closed-text{color:var(--crimson) !important;}
 
     /* Walk-in badge */
     .walkin-badge{
@@ -462,7 +478,7 @@
       border-radius:8px;
       padding:14px 16px;
     }
-    .walkin-badge svg{width:18px;height:18px;stroke:#8B0000;fill:none;stroke-width:2;flex-shrink:0;}
+    .walkin-badge svg{width:18px;height:18px;stroke:var(--crimson);fill:none;stroke-width:2;flex-shrink:0;}
     .walkin-badge p{font-size:11px;font-weight:700;color:rgba(255,255,255,0.85);line-height:1.5;}
     .walkin-badge p span{color:#fff;font-weight:900;}
 
@@ -490,7 +506,7 @@
       .intent-card{height:200px;}
     }
     *:focus{outline:none;}
-    *:focus-visible{outline:2px solid #8B0000;outline-offset:3px;}
+    *:focus-visible{outline:2px solid var(--crimson);outline-offset:3px;}
   </style>
 </head>
 <body>

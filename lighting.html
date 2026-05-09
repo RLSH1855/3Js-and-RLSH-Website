@@ -7,47 +7,63 @@
   <meta name="description" content="Premium LED headlights, tail lights, off-road lighting and fog lights for trucks, SUVs and Jeeps. Morimoto, Baja Designs, Rigid Industries, Spyder Auto. Professionally installed in Signal Hill, CA.">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Inter:wght@400;500;600&family=Oswald:wght@600;700&display=swap" rel="stylesheet"/>
   <style>
+:root{
+  --crimson:#8B0000;
+  --crimson-hover:#A00000;
+  --crimson-active:#6B0000;
+  --black-1:#0A0A0A;
+  --black-2:#111111;
+  --white:#ffffff;
+  --off-white:#F2F2F2;
+  --warm-gray:#F9F9F9;
+  --body-text:#424954;
+  --emphasis-text:#1F2937;
+  --neutral-dark:#1a1a1a;
+  --divider:#E8E8E8;
+  --divider-dark:rgba(255,255,255,0.08);
+}
+
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
     html{overflow-y:scroll;scrollbar-width:none;overscroll-behavior:none;}
     html::-webkit-scrollbar{display:none;}
-    body{font-family:'Inter',sans-serif;overflow-x:hidden;overflow-y:hidden;background:#fff;color:#111;}
+    body{font-family:'Inter',sans-serif;overflow-x:hidden;overflow-y:hidden;background:#fff;color:var(--black-2);}
 
     /* ── UTILITIES ── */
-    .label{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:#8B0000;display:block;}
-    .rule{width:40px;height:2px;background:#8B0000;display:block;margin:12px 0 18px;}
+    .label{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--crimson);display:block;}
+    .rule{width:40px;height:2px;background:var(--crimson);display:block;margin:12px 0 18px;}
 
     /* ── CATEGORY NAV ── */
-    .cat-nav{background:#0a0a0a;border-bottom:2px solid #1e1e1e;}
+    .cat-nav{background:var(--black-1);border-bottom:2px solid #1e1e1e;}
     .shop-nav-hint{display:flex;align-items:center;gap:12px;padding:12px 20px 0;font-family:'Inter',sans-serif;font-size:11px;font-weight:500;color:rgba(255,255,255,0.60);letter-spacing:0.3px;}
-    .shop-nav-hint::before{content:'';display:block;width:3px;height:14px;background:#8B0000;flex-shrink:0;}
+    .shop-nav-hint::before{content:'';display:block;width:3px;height:14px;background:var(--crimson);flex-shrink:0;}
     .shop-nav-tabs{display:flex;overflow-x:auto;white-space:nowrap;scrollbar-width:none;padding:0 8px;}
     .shop-nav-tabs::-webkit-scrollbar{display:none;}
     .shop-nav-link{display:inline-flex;align-items:center;justify-content:center;padding:14px 18px;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;color:rgba(255,255,255,0.45);border-bottom:3px solid transparent;border-right:1px solid rgba(255,255,255,0.10);transition:color .2s,border-color .2s;white-space:nowrap;flex-shrink:0;min-height:48px;}
     .shop-nav-link:last-child{border-right:none;}
     .shop-nav-link:hover{color:rgba(255,255,255,0.85);}
-    .shop-nav-link.active{color:#fff;border-bottom-color:#8B0000;letter-spacing:2.5px;}
+    .shop-nav-link.active{color:#fff;border-bottom-color:var(--crimson);letter-spacing:2.5px;}
     @media(min-width:768px){.shop-nav-tabs{justify-content:center;}.shop-nav-hint{justify-content:center;}}
     @media(max-width:480px){.shop-nav-link{font-size:10px;padding:12px 14px;}.shop-nav-hint{font-size:10px;}}
 
     /* ── HERO ── */
-    .hero{position:relative;overflow:hidden;min-height:420px;display:flex;align-items:flex-end;border-bottom:1px solid #1a1a1a;}
+    .hero{position:relative;overflow:hidden;min-height:420px;display:flex;align-items:flex-end;border-bottom:1px solid var(--neutral-dark);}
     .hero-bg{position:absolute;inset:0;background:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/offroad-lighting-hero.png') center/cover no-repeat;transform:scale(1.04);}
     .hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.96) 0%,rgba(0,0,0,0.55) 50%,rgba(0,0,0,0.2) 100%);}
     .hero-overlay-side{position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,0.65) 0%,transparent 65%);}
     .hero-content{position:relative;z-index:1;padding:56px 20px 48px;width:100%;}
     .hero-content .label{color:rgba(255,255,255,0.60);margin-bottom:0;}
     .hero h1{font-family:'Montserrat',sans-serif;font-size:28px;font-weight:900;letter-spacing:-1.5px;line-height:1.0;text-transform:uppercase;color:#fff;margin-bottom:0;text-wrap:balance;}
-    .hero h1 em{font-style:normal;color:#8B0000;}
-    .hero-tagline{border-left:2px solid #8B0000;padding-left:16px;font-family:'Inter',sans-serif;font-size:15px;font-weight:500;color:rgba(255,255,255,0.75);line-height:1.8;margin-bottom:28px;max-width:400px;text-wrap:pretty;}
+    .hero h1 em{font-style:normal;color:var(--crimson);}
+    .hero-tagline{border-left:2px solid var(--crimson);padding-left:16px;font-family:'Inter',sans-serif;font-size:15px;font-weight:500;color:rgba(255,255,255,0.75);line-height:1.8;margin-bottom:28px;max-width:400px;text-wrap:pretty;}
     .hero-ctas{display:flex;gap:12px;flex-wrap:wrap;}
-    .btn-primary{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:48px;padding:0 32px;background:#8B0000;color:#fff;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border-radius:0;transition:background .2s;}
+    .btn-primary{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:48px;padding:0 32px;background:var(--crimson);color:#fff;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border-radius:0;transition:background .2s;}
     .btn-primary:hover{background:#6e0000;}
     .btn-glass{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:48px;padding:0 28px;background:rgba(255,255,255,0.12);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);color:#fff;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border:1.5px solid rgba(255,255,255,0.45);border-radius:0;transition:background .2s;}
     .btn-glass:hover{background:rgba(255,255,255,0.22);}
     .btn-primary svg,.btn-glass svg{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:2.2;flex-shrink:0;}
 
     /* ── BRAND STRIP ── */
-    .brand-strip{background:#0a0a0a;padding:28px 20px;border-bottom:1px solid #1e1e1e;}
+    .brand-strip{background:var(--black-1);padding:28px 20px;border-bottom:1px solid #1e1e1e;}
     .brand-strip-inner{display:flex;align-items:center;justify-content:center;gap:32px;flex-wrap:wrap;max-width:800px;margin:0 auto;}
     .brand-strip-label{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.30);white-space:nowrap;}
     .brand-strip-divider{width:1px;height:20px;background:rgba(255,255,255,0.10);}
@@ -57,9 +73,9 @@
     .section-header{padding:48px 20px 36px;}
     .section-header .label{margin-bottom:0;}
     .section-header .rule{margin:12px 0 14px;}
-    .section-header h2{font-family:'Montserrat',sans-serif;font-size:22px;font-weight:900;letter-spacing:-0.5px;color:#111;margin-bottom:12px;text-wrap:balance;}
-    .section-header h2 em{font-style:normal;color:#8B0000;}
-    .section-header p{font-family:'Inter',sans-serif;font-size:15px;color:#424954;line-height:1.65;max-width:520px;text-wrap:pretty;}
+    .section-header h2{font-family:'Montserrat',sans-serif;font-size:22px;font-weight:900;letter-spacing:-0.5px;color:var(--black-2);margin-bottom:12px;text-wrap:balance;}
+    .section-header h2 em{font-style:normal;color:var(--crimson);}
+    .section-header p{font-family:'Inter',sans-serif;font-size:15px;color:var(--body-text);line-height:1.65;max-width:520px;text-wrap:pretty;}
 
     /* ── BEST SELLERS GRID ── */
     .products-wrap{padding:0 20px 56px;}
@@ -71,24 +87,24 @@
 
     .bc-img-ph{position:absolute;inset:0;background:linear-gradient(135deg,#0a0a0a,#1a1a1a);display:flex;align-items:center;justify-content:center;}
     .bc-img-ph svg{width:32px;height:32px;stroke:rgba(139,0,0,.2);fill:none;stroke-width:1.2;}
-    .bc-badge{position:absolute;top:0;left:0;background:#8B0000;color:#fff;font-family:'Montserrat',sans-serif;font-size:7px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:5px 9px;}
+    .bc-badge{position:absolute;top:0;left:0;background:var(--crimson);color:#fff;font-family:'Montserrat',sans-serif;font-size:7px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:5px 9px;}
     .bc-body{padding:16px 14px 18px;display:flex;flex-direction:column;flex:1;}
-    .bc-brand{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#8B0000;margin-bottom:3px;}
-    .bc-name{font-family:'Oswald',sans-serif;font-size:16px;font-weight:700;color:#111;line-height:1.1;margin-bottom:5px;}
+    .bc-brand{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--crimson);margin-bottom:3px;}
+    .bc-name{font-family:'Oswald',sans-serif;font-size:16px;font-weight:700;color:var(--black-2);line-height:1.1;margin-bottom:5px;}
     .bc-fit{font-family:'Inter',sans-serif;font-size:12px;color:#6b7280;margin-bottom:12px;flex:1;}
     .bc-actions{display:flex;flex-direction:column;gap:7px;margin-top:auto;}
-    .btn-quote-sm{display:flex;align-items:center;justify-content:center;height:42px;background:#8B0000;color:#fff;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;border-radius:0;transition:background .2s;}
+    .btn-quote-sm{display:flex;align-items:center;justify-content:center;height:42px;background:var(--crimson);color:#fff;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;border-radius:0;transition:background .2s;}
     .btn-quote-sm:hover{background:#6e0000;}
-    .btn-view-sm{display:flex;align-items:center;justify-content:center;gap:5px;height:38px;background:#fff;color:#424954;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;text-decoration:none;border:1px solid #ddd;border-radius:0;transition:border-color .2s,color .2s;}
-    .btn-view-sm:hover{border-color:#8B0000;color:#8B0000;}
+    .btn-view-sm{display:flex;align-items:center;justify-content:center;gap:5px;height:38px;background:#fff;color:var(--body-text);font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;text-decoration:none;border:1px solid #ddd;border-radius:0;transition:border-color .2s,color .2s;}
+    .btn-view-sm:hover{border-color:var(--crimson);color:var(--crimson);}
     .btn-view-sm svg{width:11px;height:11px;fill:none;stroke:currentColor;stroke-width:2.5;flex-shrink:0;}
 
     /* ── CATEGORY CARDS ── */
-    .cat-section{background:#0a0a0a;padding:56px 20px;border-top:3px solid #8B0000;}
-    .cat-section .label{color:#8B0000;margin-bottom:0;}
-    .cat-section .rule{background:#8B0000;margin:12px 0 14px;}
+    .cat-section{background:var(--black-1);padding:56px 20px;border-top:3px solid var(--crimson);}
+    .cat-section .label{color:var(--crimson);margin-bottom:0;}
+    .cat-section .rule{background:var(--crimson);margin:12px 0 14px;}
     .cat-section h2{font-family:'Montserrat',sans-serif;font-size:22px;font-weight:900;letter-spacing:-0.5px;color:#fff;margin-bottom:8px;text-wrap:balance;}
-    .cat-section h2 em{font-style:normal;color:#8B0000;}
+    .cat-section h2 em{font-style:normal;color:var(--crimson);}
     .cat-section p{font-family:'Inter',sans-serif;font-size:15px;color:rgba(255,255,255,0.60);line-height:1.65;margin-bottom:32px;text-wrap:pretty;}
     .cat-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;}
     .cat-card{position:relative;overflow:hidden;aspect-ratio:4/3;text-decoration:none;display:block;}
@@ -99,18 +115,18 @@
     .cat-card-body{position:absolute;bottom:0;left:0;right:0;padding:16px;}
     .cat-card-tag{font-family:'Montserrat',sans-serif;font-size:8px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,0.50);margin-bottom:4px;display:block;}
     .cat-card-name{font-family:'Montserrat',sans-serif;font-size:14px;font-weight:900;color:#fff;letter-spacing:-0.3px;text-transform:uppercase;margin-bottom:6px;line-height:1.1;}
-    .cat-card-btn{display:inline-flex;align-items:center;gap:5px;height:32px;padding:0 12px;background:#8B0000;color:#fff;font-family:'Montserrat',sans-serif;font-size:9px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;border-radius:0;}
+    .cat-card-btn{display:inline-flex;align-items:center;gap:5px;height:32px;padding:0 12px;background:var(--crimson);color:#fff;font-family:'Montserrat',sans-serif;font-size:9px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;border-radius:0;}
     .cat-card-btn svg{width:10px;height:10px;stroke:currentColor;fill:none;stroke-width:2.5;}
     /* wide card spans full width */
     .cat-card.wide{grid-column:1/-1;aspect-ratio:21/8;}
 
     /* ── CTA BAND ── */
-    .cta-band{background:#8B0000;padding:56px 20px;text-align:center;}
+    .cta-band{background:var(--crimson);padding:56px 20px;text-align:center;}
     .cta-band .label{color:rgba(255,255,255,0.75);text-align:center;margin:0 auto;}
     .cta-band .rule{background:rgba(255,255,255,0.40);margin:12px auto 18px;}
     .cta-band h2{font-family:'Montserrat',sans-serif;font-size:22px;font-weight:900;letter-spacing:-0.5px;color:#fff;margin-bottom:12px;text-wrap:balance;}
     .cta-band-tagline{border-left:2px solid rgba(255,255,255,0.40);padding-left:14px;font-family:'Inter',sans-serif;font-size:14px;font-weight:500;color:rgba(255,255,255,0.80);line-height:1.75;max-width:380px;margin:0 auto 28px;text-align:left;text-wrap:pretty;}
-    .btn-white{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:48px;padding:0 40px;background:#fff;color:#8B0000;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border-radius:0;transition:background .2s,color .2s;}
+    .btn-white{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:48px;padding:0 40px;background:#fff;color:var(--crimson);font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border-radius:0;transition:background .2s,color .2s;}
     .btn-white:hover{background:transparent;color:#fff;outline:2px solid #fff;}
     .btn-white svg{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:2.2;flex-shrink:0;}
 
