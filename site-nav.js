@@ -325,12 +325,26 @@
 
     /* ── Mobile menu ── */
     .sn-mobile-menu{
-      display:none;
-      background:#0a0a0a;
+      display:flex;
       flex-direction:column;
+      background:#0a0a0a;
       border-top:1px solid #1a1a1a;
+      max-height:0;
+      overflow:hidden;
+      opacity:0;
+      transform:translateY(-12px);
+      transition:max-height 0.42s cubic-bezier(0.22,1,0.36,1),
+                 opacity 0.32s ease,
+                 transform 0.38s cubic-bezier(0.22,1,0.36,1);
+      pointer-events:none;
     }
-    .sn-mobile-menu.sn-open{display:flex;}
+    .sn-mobile-menu.sn-open{
+      max-height:85vh;
+      overflow-y:auto;
+      opacity:1;
+      transform:translateY(0);
+      pointer-events:all;
+    }
     .sn-mobile-menu > a,
     .sn-mob-item > .sn-mob-top{
       display:flex;align-items:center;justify-content:space-between;
