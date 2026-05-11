@@ -597,10 +597,8 @@ function HeroBanner({ garage, onSwapVehicle }) {
           <h1 style={{color:'rgb(132,132,132)'}}>Bed Covers <span className="amp">/</span> Tonneaus</h1>
           <p>Locked-in fitment for your truck. We show you covers that bolt on — nothing else.</p>
           <div className="hero-cta">
-            <a href="tel:5624246744" className="btn-primary" style={{fontFamily:'Montserrat',fontSize:'11px',display:'inline-flex',alignItems:'center',gap:6}}>
-              {Icon.phone}&nbsp;Call for a quote
-            </a>
-            <button className="btn-ghost" onClick={onSwapVehicle} style={{color:'#fff',borderColor:'rgba(255,255,255,.25)'}}>
+            <a href="tel:5624246744" className="btn-primary" style={{fontFamily:'Montserrat',fontSize:'11px'}}>Call for a quote</a>
+            <button className="btn-ghost" onClick={onSwapVehicle} style={{fontFamily:'Montserrat',fontSize:'11px',color:'#fff',borderColor:'rgba(255,255,255,.25)'}}>
               {garage ? 'Change vehicle' : 'Set my truck'}
             </button>
           </div>
