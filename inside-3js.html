@@ -64,7 +64,7 @@
     .two-col{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
 
     /* VISUAL PHOTO BOX */
-    .visual-box{border-radius:0;overflow:hidden;position:relative;background:#f5f5f5;}
+    .visual-box{border-radius:0;overflow:hidden;position:relative;background:var(--off-white);}
     .visual-box img{width:100%;height:100%;object-fit:cover;display:block;}
     .visual-box-inner{aspect-ratio:4/3;}
 
@@ -98,24 +98,25 @@
     .journey-sidebar p.journey-sub{font-family:'Inter',sans-serif;font-size:15px;font-weight:400;color:var(--body-text);line-height:1.65;text-wrap:pretty;}
     .journey-divider{width:40px;height:3px;background:var(--crimson);margin:20px 0;}
     .journey-steps{}
-    .step-item{border-bottom:1px solid #d8d8d8;}
-    .step-item:first-of-type{border-top:1px solid #d8d8d8;}
+    .step-item{border-bottom:1px solid var(--divider);}
+    .step-item:first-of-type{border-top:1px solid var(--divider);}
     .step-btn{width:100%;background:none;border:none;display:flex;align-items:center;gap:8px;padding:18px 0;cursor:pointer;text-align:left;transition:all 0.3s ease;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none;touch-action:manipulation;-webkit-tap-highlight-color:transparent;}
     .step-btn:hover .step-title{color:var(--crimson);}
     .step-num{font-family:'Montserrat',sans-serif;font-size:11px;font-weight:900;color:var(--crimson);letter-spacing:2px;flex-shrink:0;min-width:28px;}
     .step-title{font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;color:var(--neutral-dark);line-height:1.4;flex:1;transition:color 0.2s;text-align:left;}
     .step-icon{width:18px;height:18px;flex-shrink:0;stroke:var(--crimson);stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;transition:transform 0.3s ease;}
     .step-item.open .step-icon{transform:rotate(45deg);}
-    .step-body{font-family:'Inter',sans-serif;font-size:14px;font-weight:400;color:#555;line-height:1.7;display:none;padding:0 0 18px 44px;text-wrap:pretty;}
+    .step-body{font-family:'Inter',sans-serif;font-size:14px;font-weight:400;color:var(--body-text);line-height:1.7;display:none;padding:0 0 18px 44px;text-wrap:pretty;}
     .step-item.open .step-body{display:block;}
-    @media(max-width:900px){
-      .journey-inner{grid-template-columns:1fr;}
-      .journey-sidebar{position:static;}
+    .journey-section{padding:40px 16px;}
+    .step-body{padding:0 0 16px 36px;}
+    @media(min-width:601px){
+      .journey-section{padding:clamp(56px,8vw,90px) clamp(16px,4vw,24px);}
+      .step-body{padding:0 0 18px 44px;}
     }
-    @media(max-width:600px){
-      .journey-section{padding:40px 16px;}
-      .step-body{padding:0 0 0 36px;}
-      .step-item.open .step-body{padding:0 0 16px 36px;}
+    @media(min-width:901px){
+      .journey-inner{grid-template-columns:320px 1fr;gap:64px;}
+      .journey-sidebar{position:sticky;top:32px;}
     }
 
     /* RED CTA BAND */
@@ -123,7 +124,7 @@
     .red-band h2{font-family:'Montserrat',sans-serif;font-size:clamp(20px,3vw,32px);font-weight:900;letter-spacing:-0.5px;margin-bottom:10px;color:var(--white);}
     .red-band p{font-family:'Inter',sans-serif;font-size:15px;font-weight:400;color:rgba(255,255,255,0.80);max-width:540px;margin:0 auto 28px;line-height:1.65;}
     .red-band-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--white);color:var(--crimson);font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;text-decoration:none;height:48px;padding:0 32px;border-radius:0;border:none;cursor:pointer;transition:all 0.3s ease;letter-spacing:2px;text-transform:uppercase;touch-action:manipulation;-webkit-tap-highlight-color:transparent;}
-    .red-band-btn:hover{background:#f0f0f0;}
+    .red-band-btn:hover{background:var(--off-white);}
 
     /* FAQ */
     .faq-section{width:100%;padding:clamp(48px,7vw,80px) clamp(16px,4vw,24px);background:var(--white);border-top:1px solid var(--divider);}
@@ -141,7 +142,7 @@
     .faq-q svg{width:18px;height:18px;flex-shrink:0;margin-top:2px;stroke:#8B0000;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;transition:transform var(--dur-accordion) var(--ease-smooth);transform-origin:center;}
     .faq-item.open .faq-q svg{transform:rotate(45deg);}
     .faq-a{height:0;overflow:hidden;transition:height var(--dur-accordion) var(--ease-smooth);}
-    .faq-a-inner{font-family:'Inter',sans-serif;font-size:15px;font-weight:400;color:#555;line-height:1.85;padding-bottom:20px;}
+    .faq-a-inner{font-family:'Inter',sans-serif;font-size:15px;font-weight:400;color:var(--body-text);line-height:1.85;padding-bottom:20px;}
     @media(prefers-reduced-motion:reduce){.faq-q svg,.faq-a{transition:none!important;}}
 
     /* RESPONSIVE — mobile-first */
@@ -152,7 +153,7 @@
     .page-header{height:110px;padding-top:12px;}
     .section-title{font-size:clamp(20px,3.5vw,38px);}
     .section-body{font-size:15px;}
-    .eyebrow{font-size:9px;}
+    .eyebrow{font-size:10px;}
     .two-col{grid-template-columns:1fr;gap:24px;}
     .work-grid{grid-template-columns:repeat(3,1fr);gap:6px;}
     .work-photo.gallery-hidden{display:none;}
@@ -193,7 +194,7 @@
     .mission-pad{background:var(--black-1);padding:clamp(56px,8vw,90px) clamp(16px,4vw,24px);text-align:center;position:relative;overflow:hidden;}
 
     /* ── TOP SERVICES GRID ── */
-    .services-section{background:#f5f5f5;padding:clamp(40px,5vw,64px) clamp(16px,4vw,24px);border-top:1px solid var(--divider);border-bottom:1px solid var(--divider);}
+    .services-section{background:var(--off-white);padding:clamp(40px,5vw,64px) clamp(16px,4vw,24px);border-top:1px solid var(--divider);border-bottom:1px solid var(--divider);}
     .services-header{text-align:center;margin-bottom:40px;}
     .services-header .eyebrow{color:var(--crimson);margin-bottom:10px;}
     .services-header h2{font-family:'Montserrat',sans-serif;font-size:clamp(22px,3.5vw,36px);font-weight:800;letter-spacing:-0.5px;color:var(--neutral-dark);text-wrap:balance;}
@@ -247,10 +248,10 @@
           <p>We're not here just to fix your truck. We're here to <strong>take care of you through the whole process</strong> — from the first phone call to the day you drive out.</p>
         </div>
         <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:32px;">
-          <div style="display:inline-flex;align-items:center;gap:8px;background:#f5f5f5;border:1px solid #e0e0e0;border-radius:0;padding:8px 16px;"><div style="width:8px;height:8px;border-radius:50%;background:#8B0000;flex-shrink:0;"></div><span style="font-family:'Inter',sans-serif;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#555;">I-CAR Gold Class Certified</span></div>
-          <div style="display:inline-flex;align-items:center;gap:8px;background:#f5f5f5;border:1px solid #e0e0e0;border-radius:0;padding:8px 16px;"><div style="width:8px;height:8px;border-radius:50%;background:#8B0000;flex-shrink:0;"></div><span style="font-family:'Inter',sans-serif;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#555;">ASE Certified</span></div>
-          <div style="display:inline-flex;align-items:center;gap:8px;background:#f5f5f5;border:1px solid #e0e0e0;border-radius:0;padding:8px 16px;"><div style="width:8px;height:8px;border-radius:50%;background:#8B0000;flex-shrink:0;"></div><span style="font-family:'Inter',sans-serif;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#555;">Rhino Liner Certified</span></div>
-          <div style="display:inline-flex;align-items:center;gap:8px;background:#f5f5f5;border:1px solid #e0e0e0;border-radius:0;padding:8px 16px;"><div style="width:8px;height:8px;border-radius:50%;background:#8B0000;flex-shrink:0;"></div><span style="font-family:'Inter',sans-serif;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#555;">Est. 1991</span></div>
+          <div style="display:inline-flex;align-items:center;gap:8px;background:var(--off-white);border:1px solid #e0e0e0;border-radius:0;padding:8px 16px;"><div style="width:8px;height:8px;border-radius:50%;background:#8B0000;flex-shrink:0;"></div><span style="font-family:'Inter',sans-serif;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--body-text);">I-CAR Gold Class Certified</span></div>
+          <div style="display:inline-flex;align-items:center;gap:8px;background:var(--off-white);border:1px solid #e0e0e0;border-radius:0;padding:8px 16px;"><div style="width:8px;height:8px;border-radius:50%;background:#8B0000;flex-shrink:0;"></div><span style="font-family:'Inter',sans-serif;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--body-text);">ASE Certified</span></div>
+          <div style="display:inline-flex;align-items:center;gap:8px;background:var(--off-white);border:1px solid #e0e0e0;border-radius:0;padding:8px 16px;"><div style="width:8px;height:8px;border-radius:50%;background:#8B0000;flex-shrink:0;"></div><span style="font-family:'Inter',sans-serif;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--body-text);">Rhino Liner Certified</span></div>
+          <div style="display:inline-flex;align-items:center;gap:8px;background:var(--off-white);border:1px solid #e0e0e0;border-radius:0;padding:8px 16px;"><div style="width:8px;height:8px;border-radius:50%;background:#8B0000;flex-shrink:0;"></div><span style="font-family:'Inter',sans-serif;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--body-text);">Est. 1991</span></div>
         </div>
       </div>
       <div class="col-visual">
@@ -364,7 +365,7 @@
   .acc-icon .i-h{width:12px;height:2px;top:8px;left:3px;}
   .acc-icon .i-v{width:2px;height:12px;top:3px;left:8px;transform-origin:center;}
   .acc-item.open .acc-icon .i-v{transform:rotate(90deg);opacity:0;}
-  .acc-body{font-family:'Inter',sans-serif;font-size:14px;font-weight:400;color:#555;line-height:1.75;height:0;overflow:hidden;transition:height 720ms cubic-bezier(0.22,1,0.36,1);}
+  .acc-body{font-family:'Inter',sans-serif;font-size:14px;font-weight:400;color:var(--body-text);line-height:1.75;height:0;overflow:hidden;transition:height 720ms cubic-bezier(0.22,1,0.36,1);}
   .acc-body-inner{padding-bottom:18px;}
   @media(max-width:768px){.dual-acc-wrap{grid-template-columns:1fr;gap:40px;}}
 </style>
@@ -779,7 +780,7 @@
     <div class="journey-steps">
 
       <div class="step-item">
-        <button class="step-btn">
+        <button class="step-btn" aria-expanded="false">
           <span class="step-num">01</span>
           <span class="step-title">The Accident Happens</span>
           <svg class="step-icon" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
@@ -788,7 +789,7 @@
       </div>
 
       <div class="step-item">
-        <button class="step-btn">
+        <button class="step-btn" aria-expanded="false">
           <span class="step-num">02</span>
           <span class="step-title">Your Estimate &amp; Getting Started</span>
           <svg class="step-icon" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
@@ -797,7 +798,7 @@
       </div>
 
       <div class="step-item">
-        <button class="step-btn">
+        <button class="step-btn" aria-expanded="false">
           <span class="step-num">03</span>
           <span class="step-title">Vehicle Disassembly &amp; Inspection</span>
           <svg class="step-icon" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
@@ -806,7 +807,7 @@
       </div>
 
       <div class="step-item">
-        <button class="step-btn">
+        <button class="step-btn" aria-expanded="false">
           <span class="step-num">04</span>
           <span class="step-title">Repairs Begin</span>
           <svg class="step-icon" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
@@ -815,7 +816,7 @@
       </div>
 
       <div class="step-item">
-        <button class="step-btn">
+        <button class="step-btn" aria-expanded="false">
           <span class="step-num">05</span>
           <span class="step-title">Structural &amp; Body Repairs</span>
           <svg class="step-icon" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
@@ -824,7 +825,7 @@
       </div>
 
       <div class="step-item">
-        <button class="step-btn">
+        <button class="step-btn" aria-expanded="false">
           <span class="step-num">06</span>
           <span class="step-title">Paint &amp; Refinishing</span>
           <svg class="step-icon" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
@@ -833,7 +834,7 @@
       </div>
 
       <div class="step-item">
-        <button class="step-btn">
+        <button class="step-btn" aria-expanded="false">
           <span class="step-num">07</span>
           <span class="step-title">Reassembly</span>
           <svg class="step-icon" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
@@ -842,7 +843,7 @@
       </div>
 
       <div class="step-item">
-        <button class="step-btn">
+        <button class="step-btn" aria-expanded="false">
           <span class="step-num">08</span>
           <span class="step-title">Final Quality Assurance</span>
           <svg class="step-icon" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
@@ -851,7 +852,7 @@
       </div>
 
       <div class="step-item">
-        <button class="step-btn">
+        <button class="step-btn" aria-expanded="false">
           <span class="step-num">09</span>
           <span class="step-title">Vehicle Ready for Pickup</span>
           <svg class="step-icon" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
@@ -860,7 +861,7 @@
       </div>
 
       <div class="step-item">
-        <button class="step-btn">
+        <button class="step-btn" aria-expanded="false">
           <span class="step-num">10</span>
           <span class="step-title">Lifetime Warranty</span>
           <svg class="step-icon" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
@@ -914,8 +915,14 @@
     btn.addEventListener('click',function(){
       var item=btn.closest('.step-item');
       var wasOpen=item.classList.contains('open');
-      document.querySelectorAll('.step-item.open').forEach(function(i){i.classList.remove('open');});
-      if(!wasOpen) item.classList.add('open');
+      document.querySelectorAll('.step-item.open').forEach(function(i){
+        i.classList.remove('open');
+        i.querySelector('.step-btn').setAttribute('aria-expanded','false');
+      });
+      if(!wasOpen){
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded','true');
+      }
       reportHeight();
       setTimeout(reportHeight,50);
     });
