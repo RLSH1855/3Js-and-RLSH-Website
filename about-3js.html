@@ -14,14 +14,23 @@
     .section{
       position:relative;
       background:#8B0000;
-      padding:clamp(48px,7vw,88px) clamp(20px,4vw,24px) 0;
+      overflow:hidden;
     }
     .spray-img{
-      display:block;width:100%;height:auto;
-      margin-top:clamp(40px,5vw,64px);
+      position:absolute;
+      bottom:0;left:0;
+      width:100%;height:auto;
+      display:block;
+      z-index:0;
+      pointer-events:none;
     }
-
-    .inner{max-width:1100px;margin:0 auto;}
+    .inner{
+      position:relative;
+      z-index:1;
+      max-width:1100px;
+      margin:0 auto;
+      padding:clamp(48px,7vw,88px) clamp(20px,4vw,24px) clamp(100px,22vw,360px);
+    }
 
     /* ── HEADER ── */
     .eyebrow{
@@ -128,6 +137,11 @@
 <a href="#main-content" style="position:absolute;top:-100%;left:16px;z-index:9999;background:#fff;color:#8B0000;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:800;padding:8px 20px;text-decoration:none;" onfocus="this.style.top='16px'" onblur="this.style.top='-100%'">Skip to content</a>
 <main id="main-content">
 <section class="section">
+  <img
+    src="https://rlsh1855.github.io/3Js-and-RLSH-Website/crimson-spray-divider.webp"
+    alt=""
+    aria-hidden="true"
+    class="spray-img">
   <div class="inner">
 
     <span class="eyebrow">Signal Hill, CA · Est. 1991</span>
@@ -170,11 +184,8 @@
 
     </div>
   </div>
-  <img
-    src="https://rlsh1855.github.io/3Js-and-RLSH-Website/crimson-spray-divider.webp"
-    alt=""
-    aria-hidden="true"
-    class="spray-img">
+  <!-- height anchor so iframe sizes past the spray image -->
+  <div style="height:clamp(100px,22vw,360px);width:1px;visibility:hidden;" aria-hidden="true"></div>
 </section>
 </main>
 
