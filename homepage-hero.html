@@ -15,6 +15,8 @@
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
     html{overflow-y:hidden;}
     body{font-family:'Montserrat',sans-serif;background:#0A0A0A;color:#fff;overflow-x:hidden;}
+    .skip-link{position:absolute;top:-100%;left:16px;z-index:9999;background:#8B0000;color:#fff;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:8px 20px;text-decoration:none;}
+    .skip-link:focus{top:16px;}
 
     /* ─── HERO — mobile base ─── */
     .hero{
@@ -114,6 +116,8 @@
   </style>
 </head>
 <body>
+<a href="#main-content" class="skip-link">Skip to content</a>
+<main id="main-content">
 
 <section class="hero">
   <div class="hero-stripe"></div>
@@ -166,6 +170,7 @@
 
 </section>
 
+</main>
 <div id="height-sentinel" style="height:1px;width:1px;visibility:hidden;pointer-events:none;"></div>
 
 <script>

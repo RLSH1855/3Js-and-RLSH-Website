@@ -13,6 +13,8 @@
     html{overflow-x:hidden;overflow-y:scroll;scrollbar-width:none;}
     html::-webkit-scrollbar{display:none;}
     body{font-family:'Inter',sans-serif;background:#fff;color:#1a1a1a;}
+    .skip-link{position:absolute;top:-100%;left:16px;z-index:9999;background:#8B0000;color:#fff;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:8px 20px;text-decoration:none;}
+    .skip-link:focus{top:16px;}
 
     /* ── SHOP NAV STRIP ── */
     .shop-nav{background:#0a0a0a;border-bottom:2px solid #1e1e1e;}
@@ -89,11 +91,13 @@
   </style>
 </head>
 <body>
+<a href="#main-content" class="skip-link">Skip to content</a>
+<main id="main-content">
 <!-- ── SHOP NAV STRIP ── -->
 <nav class="shop-nav">
   <p class="shop-nav-hint">Select a category to view products</p>
   <div class="shop-nav-tabs">
-    <a href="https://www.3jsautobody.com/exterior-accessories" class="shop-nav-link active" target="_top"><svg style="width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;flex-shrink:0;margin-right:6px;" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>All</a>
+    <a href="https://www.3jsautobody.com/exterior-accessories" class="shop-nav-link active" target="_top"><svg aria-hidden="true" style="width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;flex-shrink:0;margin-right:6px;" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>All</a>
     <a href="https://www.3jsautobody.com/exterior-accessories/tonneau-covers" class="shop-nav-link" target="_top">Tonneau Covers</a>
     <a href="https://www.3jsautobody.com/exterior-accessories/running-boards-side-steps" class="shop-nav-link" target="_top">Steps &amp; Running Boards</a>
     <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/floor-liners.html" class="shop-nav-link" target="_top">Floor Liners</a>
@@ -137,7 +141,7 @@
         <div class="cat-tag">Bed Protection</div>
         <div class="cat-name">Tonneau Covers</div>
         <div class="cat-brands">BAK · Extang · Retrax · TruXedo · UnderCover · Roll N Lock</div>
-        <div class="cat-btn">Shop Now <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
+        <div class="cat-btn">Shop Now <svg aria-hidden="true" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
       </div>
     </a>
 
@@ -149,7 +153,7 @@
         <div class="cat-tag">Side Steps</div>
         <div class="cat-name">Running Boards</div>
         <div class="cat-brands">AMP Research · Go Rhino · Aries · N-Fab · Westin</div>
-        <div class="cat-btn">Shop Now <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
+        <div class="cat-btn">Shop Now <svg aria-hidden="true" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
       </div>
     </a>
 
@@ -161,7 +165,7 @@
         <div class="cat-tag">Front Protection</div>
         <div class="cat-name">Bull Bars &amp; Grille Guards</div>
         <div class="cat-brands">Go Rhino · Aries · Westin</div>
-        <div class="cat-btn">Get a Quote <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
+        <div class="cat-btn">Get a Quote <svg aria-hidden="true" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
       </div>
     </a>
 
@@ -173,7 +177,7 @@
         <div class="cat-tag">Exterior Styling</div>
         <div class="cat-name">Fender Flares</div>
         <div class="cat-brands">Bushwacker · Lund · AVS</div>
-        <div class="cat-btn">Get a Quote <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
+        <div class="cat-btn">Get a Quote <svg aria-hidden="true" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
       </div>
     </a>
 
@@ -185,7 +189,7 @@
         <div class="cat-tag">Truck Bed</div>
         <div class="cat-name">Bed Accessories</div>
         <div class="cat-brands">AMP Research BedStep · BedExtender · Bed Rail Caps · BedRug</div>
-        <div class="cat-btn">Get a Quote <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
+        <div class="cat-btn">Get a Quote <svg aria-hidden="true" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
       </div>
     </a>
 
@@ -197,7 +201,7 @@
         <div class="cat-tag">Wind &amp; Weather</div>
         <div class="cat-name">Vent Visors</div>
         <div class="cat-brands">AVS VentVisor · Aeroskin Hood Deflectors · Lund</div>
-        <div class="cat-btn">Get a Quote <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
+        <div class="cat-btn">Get a Quote <svg aria-hidden="true" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
       </div>
     </a>
 
@@ -209,7 +213,7 @@
         <div class="cat-tag">Interior Protection</div>
         <div class="cat-name">Floor Liners</div>
         <div class="cat-brands">Husky Liners · WeatherTech</div>
-        <div class="cat-btn">Shop Now <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
+        <div class="cat-btn">Shop Now <svg aria-hidden="true" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
       </div>
     </a>
 
@@ -221,7 +225,7 @@
         <div class="cat-tag">Cargo &amp; Storage</div>
         <div class="cat-name">Roof Racks</div>
         <div class="cat-brands">Go Rhino SRM 300/400/500 · Ceros Low Profile</div>
-        <div class="cat-btn">Get a Quote <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
+        <div class="cat-btn">Get a Quote <svg aria-hidden="true" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
       </div>
     </a>
 
@@ -233,7 +237,7 @@
         <div class="cat-tag">Off-Road &amp; Work</div>
         <div class="cat-name">Lighting</div>
         <div class="cat-brands">Rigid Industries · Baja Designs · Spider Auto</div>
-        <div class="cat-btn">Get a Quote <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
+        <div class="cat-btn">Get a Quote <svg aria-hidden="true" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
       </div>
     </a>
 
@@ -245,7 +249,7 @@
         <div class="cat-tag">Bed Rack System</div>
         <div class="cat-name">Elevate Rack System</div>
         <div class="cat-brands">RealTruck Elevate · Bike &amp; Kayak Carriers · Cargo Baskets</div>
-        <div class="cat-btn">Get a Quote <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
+        <div class="cat-btn">Get a Quote <svg aria-hidden="true" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
       </div>
     </a>
 
@@ -257,7 +261,7 @@
         <div class="cat-tag">Towing</div>
         <div class="cat-name">Towing Equipment</div>
         <div class="cat-brands">CURT · B&amp;W Trailer Hitches · Draw-Tite</div>
-        <div class="cat-btn">Get a Quote <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
+        <div class="cat-btn">Get a Quote <svg aria-hidden="true" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
       </div>
     </a>
 
@@ -269,7 +273,7 @@
         <div class="cat-tag">Cab Protection</div>
         <div class="cat-name">Headache Racks</div>
         <div class="cat-brands">BackRack · Go Rhino · Aries</div>
-        <div class="cat-btn">Shop Now <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
+        <div class="cat-btn">Shop Now <svg aria-hidden="true" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
       </div>
     </a>
 
@@ -281,7 +285,7 @@
         <div class="cat-tag">Bed Storage</div>
         <div class="cat-name">Tool Boxes</div>
         <div class="cat-brands">Dee Zee · Delta · UWS · Lund</div>
-        <div class="cat-btn">Get a Quote <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
+        <div class="cat-btn">Get a Quote <svg aria-hidden="true" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
       </div>
     </a>
 
@@ -318,6 +322,7 @@
   if(window.ResizeObserver){new ResizeObserver(reportHeight).observe(document.body);}
   document.querySelectorAll('img').forEach(function(img){img.addEventListener('load',reportHeight);});
 </script>
+</main>
 <script src="https://rlsh1855.github.io/3Js-and-RLSH-Website/site-nav.js"></script>
 <div id="height-sentinel" style="height:1px;width:1px;visibility:hidden;pointer-events:none;"></div>
 </body>

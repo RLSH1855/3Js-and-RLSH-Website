@@ -25,6 +25,8 @@
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
     html,body{margin:0;padding:0;width:100%;overflow-x:hidden;}
     body{font-family:'Inter',sans-serif;font-size:16px;color:var(--body-text);background:var(--white);}
+    .skip-link{position:absolute;top:-100%;left:16px;z-index:9999;background:#8B0000;color:#fff;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:8px 20px;text-decoration:none;}
+    .skip-link:focus{top:16px;}
 
     h1,h2,h3,.eyebrow,.section-title,.faq-q,.red-band-btn{font-family:'Montserrat',sans-serif;}
 
@@ -211,6 +213,8 @@
   </style>
 </head>
 <body>
+<a href="#main-content" class="skip-link">Skip to content</a>
+<main id="main-content">
 
 <!-- LIGHTBOX -->
 <!-- PAGE HEADER -->
@@ -952,6 +956,7 @@
   }
   document.querySelectorAll('img').forEach(function(img){img.addEventListener('load',reportHeight);});
 </script>
+</main>
 <div id="height-sentinel" style="height:1px;width:1px;visibility:hidden;pointer-events:none;"></div>
 <script>document.querySelectorAll('a[href^="tel:"]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();window.location.href=a.getAttribute('href');});});</script>
 </body>

@@ -30,6 +30,8 @@
     /* ─── BASE: Inter for all body text ─── */
     html,body{margin:0;padding:0;background:#0A0A0A;}
     body{font-family:'Inter',sans-serif;font-size:16px;color:var(--body-text);}
+    .skip-link{position:absolute;top:-100%;left:16px;z-index:9999;background:#8B0000;color:#fff;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:8px 20px;text-decoration:none;}
+    .skip-link:focus{top:16px;}
 
     /* ─── Montserrat reserved for headings & labels ─── */
     h1,h2,h3,.eyebrow,.section-title,.cta-link,.cta-band-btn,.cta-band h2{
@@ -231,6 +233,8 @@
   </style>
 </head>
 <body>
+<a href="#main-content" class="skip-link">Skip to content</a>
+<main id="main-content">
 
 <div class="page-intro">
   <div class="page-intro-inner">
@@ -263,7 +267,7 @@
     <div class="col-visual">
       <span class="num-badge">01</span>
       <div class="visual-box">
-        <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/BEDLINER%20WITH%20LOGO.webp" alt="Spray-In Rhino Liner Bedliner">
+        <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/BEDLINER%20WITH%20LOGO.webp" alt="Spray-In Rhino Liner Bedliner" loading="lazy">
       </div>
     </div>
   </div>
@@ -293,7 +297,7 @@
     <div class="col-visual">
       <span class="num-badge">02</span>
       <div class="visual-box">
-        <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/bak-bakflip-mx4-2016-ford-f150-blue-beach-lifestyle-05.webp" alt="BAKFlip Tonneau Cover">
+        <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/bak-bakflip-mx4-2016-ford-f150-blue-beach-lifestyle-05.webp" alt="BAKFlip Tonneau Cover" loading="lazy">
       </div>
     </div>
   </div>
@@ -320,7 +324,7 @@
     <div class="col-visual">
       <span class="num-badge">03</span>
       <div class="visual-box">
-        <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/step_gif_1080x720__1_.gif" alt="Running Boards GIF">
+        <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/step_gif_1080x720__1_.gif" alt="Running boards extending on a truck" loading="lazy">
       </div>
     </div>
   </div>
@@ -350,7 +354,7 @@
     <div class="col-visual">
       <span class="num-badge">04</span>
       <div class="visual-box">
-        <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/72%20land%20cruiser%20full%20exterior%20paint%20job.webp" alt="Full Exterior Paint Job - Land Cruiser">
+        <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/72%20land%20cruiser%20full%20exterior%20paint%20job.webp" alt="Full exterior paint job on a 1972 Land Cruiser" loading="lazy">
       </div>
     </div>
   </div>
@@ -380,7 +384,7 @@
     <div class="col-visual">
       <span class="num-badge">05</span>
       <div class="visual-box">
-        <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/Bedliner-Jeep_exterior.webp" alt="Jeep Rock Guard">
+        <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/Bedliner-Jeep_exterior.webp" alt="Jeep with rock guard protection" loading="lazy">
       </div>
     </div>
   </div>
@@ -407,7 +411,7 @@
     <div class="col-visual">
       <span class="num-badge">06</span>
       <div class="visual-box">
-        <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/Bedliner-Color-Undercarriage.webp" alt="Undercarriage Coating">
+        <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/Bedliner-Color-Undercarriage.webp" alt="Undercarriage spray coating" loading="lazy">
       </div>
     </div>
   </div>
@@ -424,6 +428,7 @@
   </div>
 </div>
 
+</main>
 <script>
   function reportHeight(){
     var sentinel=document.getElementById('height-sentinel');
