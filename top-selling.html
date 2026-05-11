@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Top Services — PREVIEW (New Typography)</title>
+  <title>Top Services — 3J's Auto Body &amp; Paint | Signal Hill CA</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
@@ -206,6 +206,44 @@
     }
     .cta-band-btn:hover{background:#f0f0f0;}
 
+    /* PAGE INTRO HEADER */
+    .page-intro{
+      background:#0A0A0A;
+      padding:clamp(40px,6vw,64px) clamp(16px,4vw,24px) clamp(36px,5vw,56px);
+      text-align:center;
+      position:relative;overflow:hidden;
+    }
+    .page-intro::before{
+      content:'';position:absolute;inset:0;
+      background-image:radial-gradient(circle,rgba(255,255,255,0.03) 1px,transparent 1px);
+      background-size:28px 28px;pointer-events:none;
+    }
+    .page-intro::after{
+      content:'';position:absolute;inset:0;
+      background:radial-gradient(ellipse at center,rgba(139,0,0,0.14) 0%,transparent 65%);
+      pointer-events:none;
+    }
+    .page-intro-inner{position:relative;z-index:1;}
+    .page-intro .eyebrow{color:rgba(255,255,255,0.5);margin-bottom:12px;}
+    .page-intro h2{
+      font-family:'Montserrat',sans-serif;
+      font-size:clamp(26px,4vw,42px);font-weight:900;
+      letter-spacing:-1px;line-height:1.1;
+      color:#fff;text-wrap:balance;
+    }
+    .page-intro h2 em{font-style:normal;color:#8B0000;}
+    .page-intro p{
+      font-family:'Inter',sans-serif;
+      font-size:15px;font-weight:400;
+      color:rgba(255,255,255,0.60);
+      max-width:480px;margin:12px auto 0;
+      line-height:1.65;text-wrap:pretty;
+    }
+    .page-intro-bar{
+      position:absolute;bottom:0;left:0;right:0;height:3px;
+      background:linear-gradient(to right,transparent,#8B0000 25%,#8B0000 75%,transparent);
+    }
+
     /* RESPONSIVE */
     @media(max-width:900px){
       .two-col{grid-template-columns:1fr;gap:28px;}
@@ -227,6 +265,15 @@
   </style>
 </head>
 <body>
+
+<div class="page-intro">
+  <div class="page-intro-inner">
+    <span class="eyebrow">What We Do</span>
+    <h2>Our Top <em>Services</em></h2>
+    <p>Collision repair, truck accessories, and protective coatings — professionally done at our Signal Hill shop since 1991.</p>
+  </div>
+  <div class="page-intro-bar"></div>
+</div>
 
 <section class="light texture-light">
   <div class="two-col">
