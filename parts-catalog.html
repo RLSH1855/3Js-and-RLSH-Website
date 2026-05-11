@@ -92,6 +92,9 @@
   .crumb-sep { color: var(--fg-dim); }
   .crumb-now { color: var(--fg); }
 
+  /* ── Mobile garage btn ── */
+  .garage-mob-btn { display: none; }
+
   /* ── Mobile sticky bar ── */
   .mobile-bar { display: none; }
 
@@ -283,11 +286,11 @@
 
   /* ── Responsive ── */
   @media (max-width: 900px) {
+    .hdr-promo { display: none; }
     .hdr-main { grid-template-columns: auto 1fr auto; gap: 12px; padding: 12px 16px; }
     .search { display: none; }
-    .garage-pill-txt { display: none; }
-    .garage-pill { padding: 8px; }
-    .garage-pill-swap { display:none; }
+    .garage-pill { display: none; }
+    .garage-mob-btn { display:inline-flex; align-items:center; background:var(--accent); color:#fff; border:0; padding:9px 14px; font-family:var(--display); font-weight:700; font-size:12px; letter-spacing:.08em; text-transform:uppercase; cursor:pointer; white-space:nowrap; }
     .hero-grid { grid-template-columns: 1fr; }
     .hero-copy { padding: 32px 20px; }
     .hero-art { display: none; }
@@ -296,15 +299,15 @@
     .layout-sidebar { grid-template-columns: 1fr; padding: 0 16px; }
     .sidebar { display: none; }
     .catalog { padding-bottom: 48px; }
-    .mobile-bar { display:flex; position: sticky; top: 56px; z-index: 30; background: rgba(10,10,12,.97); backdrop-filter: blur(12px); padding: 10px 16px; gap: 8px; border-bottom: 1px solid var(--border); align-items: center; }
-    .mb-filters { flex: 1; display:flex; align-items: center; gap: 8px; background: var(--surface2); border: 1px solid var(--border-strong); color: var(--fg); padding: 10px 14px; font-family: var(--display); font-weight: 600; letter-spacing: .08em; text-transform: uppercase; font-size: 13px; cursor: pointer; }
-    .mb-filters svg { width: 16px; height: 16px; }
-    .mb-count { background: var(--accent); color: #fff; padding: 2px 6px; font-family: var(--mono); font-size: 11px; font-weight: 700; margin-left: auto; }
-    .mb-sort { background: var(--surface); color: var(--fg); border: 1px solid var(--border); padding: 10px 8px; font-size: 12px; outline: none; max-width: 130px; min-width: 0; }
-    .mb-view { display:flex; border: 1px solid var(--border); }
-    .mb-view button { background:transparent; border:0; color: var(--fg-muted); padding: 9px 10px; cursor: pointer; }
+    .mobile-bar { display:flex; position: sticky; top: 56px; z-index: 30; background: rgba(10,10,12,.97); backdrop-filter: blur(12px); padding: 10px 16px; gap: 0; border-bottom: 1px solid var(--border); align-items: center; justify-content: space-between; }
+    .mb-filters { flex: 1; display:flex; align-items: center; justify-content:center; gap: 6px; background: var(--surface2); border: 1px solid var(--border-strong); color: var(--fg); padding: 10px 10px; font-family: var(--display); font-weight: 600; letter-spacing: .08em; text-transform: uppercase; font-size: 12px; cursor: pointer; margin-right: 8px; }
+    .mb-filters svg { width: 15px; height: 15px; }
+    .mb-count { background: var(--accent); color: #fff; padding: 2px 6px; font-family: var(--mono); font-size: 11px; font-weight: 700; }
+    .mb-sort { flex: 1; background: var(--surface); color: var(--fg); border: 1px solid var(--border); padding: 10px 6px; font-size: 12px; outline: none; min-width: 0; margin-right: 8px; text-align:center; }
+    .mb-view { display:flex; border: 1px solid var(--border); flex-shrink:0; }
+    .mb-view button { background:transparent; border:0; color: var(--fg-muted); padding: 9px 12px; cursor: pointer; }
     .mb-view button.on { color: var(--accent); background: var(--surface2); }
-    .mb-view svg { width: 16px; height: 16px; }
+    .mb-view svg { width: 15px; height: 15px; }
     .toolbar { display: none; }
     .hdr-nav { padding: 0 8px; }
     .grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
@@ -569,6 +572,7 @@ function App() {
 // ── Header ──
 function Header({ garage, onSwapVehicle }) {
   const vehicleLabel = garage ? `${garage.year} ${garage.make} ${garage.model}` : 'Set your truck';
+  const mobBtnLabel = garage ? `${garage.year} ${garage.model}` : 'My Truck';
   return (
     <header className="hdr">
       <div className="hdr-promo">
@@ -579,7 +583,8 @@ function Header({ garage, onSwapVehicle }) {
       </div>
       <div className="hdr-main">
         <a href="https://www.3jsautobody.com/" className="logo">
-          <img src="https://static.wixstatic.com/media/b95bd9_86c7cf1e525d4b9e961a2738ed9af502~mv2.png" alt="3J's Auto Body & Paint Signal Hill CA" />
+          <img src="https://static.wixstatic.com/media/b95bd9_86c7cf1e525d4b9e961a2738ed9af502~mv2.png" alt="3J's Auto Body" />
+          <img src="https://static.wixstatic.com/media/b95bd9_8e3e4f256c85462d960aaa1e3ef740c8~mv2.png" alt="Rhino Linings Signal Hill" style={{height:52,marginLeft:8}} />
         </a>
         <div className="search">
           <span className="search-ico">{Icon.search}</span>
@@ -594,6 +599,7 @@ function Header({ garage, onSwapVehicle }) {
             </span>
             <span className="garage-pill-swap">{Icon.swap}</span>
           </button>
+          <button className="garage-mob-btn" onClick={onSwapVehicle}>{mobBtnLabel}</button>
         </div>
       </div>
       <nav className="hdr-nav">
