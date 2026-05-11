@@ -204,6 +204,12 @@
   .row-side { display:flex; flex-direction: column; align-items: flex-end; gap: 6px; justify-content: center; }
   .row-cta { margin-top: 8px; }
 
+  /* ── Show More ── */
+  .show-more-wrap { display:flex; justify-content: center; padding: 32px 0 8px; }
+  .show-more-btn { background: transparent; border: 1px solid var(--border-strong); color: var(--fg); padding: 14px 32px; font-family: var(--display); font-weight: 700; letter-spacing: .08em; text-transform: uppercase; font-size: 13px; cursor: pointer; transition: border-color .15s, background .15s; }
+  .show-more-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .show-more-count { font-family: var(--mono); font-size: 11px; font-weight: 400; letter-spacing: .05em; text-transform: none; color: var(--fg-dim); }
+
   /* ── Empty ── */
   .empty { display:flex; flex-direction: column; align-items: center; gap: 8px; padding: 80px 20px; text-align: center; }
   .empty h3 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 0; text-transform: uppercase; }
@@ -430,6 +436,10 @@ function App() {
   const [view, setView] = useState(() => localStorage.getItem('catalog_view') || 'grid');
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [garageOpen, setGarageOpen] = useState(false);
+  const [showCount, setShowCount] = useState(8);
+
+  // Reset showCount whenever filters or sort change
+  useEffect(() => { setShowCount(8); }, [filters, sort, garage]);
 
   // Persist view
   useEffect(() => { localStorage.setItem('catalog_view', view); }, [view]);
@@ -527,9 +537,19 @@ function App() {
             <Toolbar count={filtered.length} sort={sort} setSort={setSort} view={view} setView={setView} garage={garage} />
             {filtered.length === 0
               ? <div className="empty"><h3>No covers match those filters</h3><p>Try removing a filter or expanding the price range.</p><button className="btn-primary" onClick={clearAll}>Clear all filters</button></div>
-              : view === 'grid'
-                ? <div className="grid">{filtered.map((p,i) => <ProductCard key={p.id} p={p} />)}</div>
-                : <div className="list">{filtered.map((p,i) => <ProductRow key={p.id} p={p} garage={garage} />)}</div>
+              : <>
+                  {view === 'grid'
+                    ? <div className="grid">{filtered.slice(0, showCount).map((p) => <ProductCard key={p.id} p={p} />)}</div>
+                    : <div className="list">{filtered.slice(0, showCount).map((p) => <ProductRow key={p.id} p={p} garage={garage} />)}</div>
+                  }
+                  {filtered.length > showCount && (
+                    <div className="show-more-wrap">
+                      <button className="show-more-btn" onClick={() => setShowCount(c => c + 8)}>
+                        Show more <span className="show-more-count">({filtered.length - showCount} remaining)</span>
+                      </button>
+                    </div>
+                  )}
+                </>
             }
           </section>
         </div>
