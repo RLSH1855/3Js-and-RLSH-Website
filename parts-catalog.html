@@ -1,968 +1,537 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Tonneau Covers — RLSH Truck &amp; Jeep Outfitters</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
-  <script src="catalog-data.js"></script>
-  <script src="product-content.js"></script>
-  <style>
-    html,body{max-width:100%;overflow-x:hidden;}
-    html{overflow-y:hidden;scrollbar-width:none;}
-    html::-webkit-scrollbar{display:none;}
-    /* ── RESET / BASE (mobile-first) ── */
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    body{font-family:'Montserrat',sans-serif;background:#f2f2f2;color:#1a1a1a;font-size:16px;}
-    a{text-decoration:none;color:inherit;}
-    img{max-width:100%;display:block;}
-    button,select,input{font-family:'Montserrat',sans-serif;}
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Tonneau Covers — RLSH Truck &amp; Jeep Outfitters · Signal Hill, CA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="catalog-data.js"></script>
+<style>
+:root{
+  --bg:#ffffff;--surface:#ffffff;--surface2:#f4f4f1;
+  --border:rgba(20,18,14,.08);--border-strong:rgba(20,18,14,.18);
+  --fg:#1a1815;--fg-muted:rgba(26,24,21,.62);--fg-dim:rgba(26,24,21,.42);
+  --accent:#8B0000;--gap:18px;--pad:18px;--cols:3;
+  --display:'Barlow Condensed',Impact,sans-serif;
+  --body:'Inter',system-ui,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,monospace;
+}
+*,*::before,*::after{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{font-family:var(--body);background:var(--bg);color:var(--fg);-webkit-font-smoothing:antialiased;}
+a{color:inherit;text-decoration:none;}
+button{font-family:inherit;}
+svg{display:inline-block;vertical-align:middle;}
+::selection{background:var(--accent);color:#fff;}
+img{max-width:100%;display:block;}
+.app{min-height:100vh;background:var(--bg);color:var(--fg);}
 
-    /* ── GARAGE BAR ── */
-    #garage-bar{
-      background:#1a1a1a;padding:9px 16px;
-      display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;
-    }
-    .gb-left{display:flex;align-items:center;gap:10px;}
-    .gb-vehicle{font-size:12px;font-weight:800;color:#fff;}
-    .gb-badge{background:#1a7a1a;color:#fff;font-size:9px;font-weight:900;letter-spacing:1.5px;text-transform:uppercase;padding:3px 10px;border-radius:20px;}
-    .gb-badge.no-garage{background:#555;}
-    .gb-right{display:flex;gap:12px;}
-    .gb-link{font-size:11px;font-weight:700;color:#999;text-decoration:underline;cursor:pointer;background:none;border:none;}
-    .gb-link:hover{color:#fff;}
+/* ── Buttons ── */
+.btn-primary{background:var(--accent);color:#fff;border:0;padding:12px 18px;font-family:var(--display);font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:14px;cursor:pointer;transition:filter .15s,transform .1s;border-radius:0;}
+.btn-primary:hover{filter:brightness(1.1);}
+.btn-primary:active{transform:translateY(1px);}
+.btn-ghost{background:transparent;color:var(--fg);border:1px solid var(--border-strong);padding:12px 18px;font-family:var(--display);font-weight:600;letter-spacing:.08em;text-transform:uppercase;font-size:13px;cursor:pointer;border-radius:0;}
+.btn-ghost:hover{background:rgba(0,0,0,.04);}
+.icon-btn{background:transparent;border:0;color:rgba(255,255,255,.8);width:40px;height:40px;cursor:pointer;position:relative;display:inline-flex;align-items:center;justify-content:center;}
+.icon-btn:hover{color:#fff;}
+.icon-btn svg{width:20px;height:20px;}
 
-    /* ── CATEGORY HERO (mobile: stacked, desktop: side-by-side) ── */
-    .category-hero{display:flex;flex-direction:column;background:#111;overflow:hidden;}
-    .hero-img-wrap{width:100%;height:190px;overflow:hidden;order:-1;}
-    .hero-img{width:100%;height:100%;object-fit:cover;object-position:center 40%;}
-    .hero-content{padding:20px 16px 22px;display:flex;flex-direction:column;justify-content:center;}
-    .hero-breadcrumb{font-size:9px;color:rgba(255,255,255,0.4);letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;}
-    .hero-title{font-size:24px;font-weight:900;color:#fff;text-transform:uppercase;line-height:1.1;letter-spacing:-0.5px;margin-bottom:8px;}
-    .hero-title span{color:#8B0000;}
-    .hero-sub{font-size:11px;color:rgba(255,255,255,0.5);font-weight:600;letter-spacing:0.5px;margin-bottom:14px;}
-    .hero-chip{
-      display:inline-flex;align-items:center;gap:6px;
-      background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);
-      border-radius:20px;padding:5px 12px;font-size:10px;font-weight:700;color:#fff;
-      width:fit-content;
-    }
-    .hero-chip .dot{width:7px;height:7px;border-radius:50%;background:#4caf50;}
-    .hero-chip.inactive .dot{background:#888;}
+/* ── Header ── */
+.hdr{position:sticky;top:0;z-index:50;background:rgba(10,10,12,.97);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.07);}
+.hdr-promo{background:#8B0000;color:#fff;font-family:var(--mono);font-size:11px;letter-spacing:.08em;padding:7px 16px;display:flex;align-items:center;justify-content:center;gap:16px;text-transform:uppercase;}
+.hdr-promo a{color:#fff;text-decoration:underline;text-underline-offset:3px;}
+.hdr-main{display:grid;grid-template-columns:auto 1fr auto;gap:20px;align-items:center;padding:10px 24px;}
+.logo{display:flex;align-items:center;gap:0;}
+.logo img{height:58px;display:block;}
+.hdr-search{display:flex;align-items:center;gap:8px;max-width:480px;width:100%;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);padding:0 14px;height:40px;}
+.hdr-search:focus-within{border-color:var(--accent);}
+.hdr-search svg{width:16px;height:16px;color:rgba(255,255,255,.4);flex-shrink:0;}
+.hdr-search input{flex:1;background:transparent;border:0;color:#fff;font-size:13px;outline:none;min-width:0;}
+.hdr-search input::placeholder{color:rgba(255,255,255,.35);}
+.hdr-actions{display:flex;align-items:center;gap:6px;}
+.garage-pill{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);color:#fff;padding:6px 10px 6px 12px;cursor:pointer;transition:border-color .15s;}
+.garage-pill:hover{border-color:var(--accent);}
+.garage-pill-ico{color:var(--accent);display:inline-flex;}
+.garage-pill-ico svg{width:20px;height:20px;}
+.garage-pill-txt{display:flex;flex-direction:column;align-items:flex-start;line-height:1.1;}
+.garage-pill-label{font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.45);}
+.garage-pill-vehicle{font-family:var(--display);font-weight:700;font-size:13px;letter-spacing:.02em;color:#fff;}
+.garage-pill-vehicle.empty{color:rgba(255,255,255,.5);font-weight:500;}
+.garage-pill-swap{color:rgba(255,255,255,.4);padding:4px;}
+.garage-pill-swap svg{width:14px;height:14px;}
+.hdr-nav{display:flex;align-items:center;gap:2px;padding:0 16px;border-top:1px solid rgba(255,255,255,.06);overflow-x:auto;scrollbar-width:none;}
+.hdr-nav::-webkit-scrollbar{display:none;}
+.nav-item{font-family:var(--display);font-weight:600;letter-spacing:.07em;text-transform:uppercase;font-size:12px;padding:12px 14px;color:rgba(255,255,255,.55);white-space:nowrap;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:color .15s,border-color .15s;}
+.nav-item:hover{color:#fff;}
+.nav-item.active{color:#fff;border-bottom-color:var(--accent);}
 
-    /* ── NO GARAGE BANNER ── */
-    #no-garage-banner{
-      background:#fff3cd;border-bottom:3px solid #ffc107;
-      padding:12px 16px;
-      display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;
-    }
-    #no-garage-banner p{font-size:12px;font-weight:600;color:#856404;}
-    #no-garage-banner a{
-      padding:8px 16px;background:#1a1a1a;color:#fff;border-radius:6px;
-      font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;
-    }
+/* ── Crumbs ── */
+.crumbs{max-width:1440px;margin:0 auto;padding:14px 24px;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--fg-muted);display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.crumbs a{cursor:pointer;}
+.crumbs a:hover{color:var(--accent);}
+.crumb-sep{color:var(--fg-dim);}
+.crumb-now{color:var(--fg);}
 
-    /* ── COMPARISON SECTION ── */
-    .comparison-section{background:#fff;padding:24px 16px 28px;border-bottom:3px solid #f0f0f0;}
-    .comparison-inner{max-width:960px;margin:0 auto;}
-    .comparison-heading-row{margin-bottom:18px;}
-    .comparison-heading{font-size:14px;font-weight:900;color:#1a1a1a;text-transform:uppercase;letter-spacing:0.5px;}
-    .comparison-heading span{color:#8B0000;}
-    .comparison-cards{display:grid;grid-template-columns:1fr;gap:14px;}
-    .comp-card{
-      border-radius:8px;overflow:hidden;cursor:pointer;
-      border:1px solid #e8e8e8;background:#fff;
-      transition:box-shadow 0.2s,transform 0.2s;
-    }
-    .comp-card:hover{box-shadow:0 6px 24px rgba(0,0,0,0.1);transform:translateY(-2px);}
-    .comp-img{width:100%;height:170px;object-fit:cover;display:block;}
-    .comp-body{padding:10px 14px 14px;}
-    .comp-tier{display:inline-block;padding:2px 8px;border-radius:3px;font-size:8px;font-weight:900;letter-spacing:2px;text-transform:uppercase;margin-bottom:5px;}
-    .tier-good{background:#e8e8e8;color:#555;}
-    .tier-better{background:#8B0000;color:#fff;}
-    .tier-best{background:#e6a817;color:#1a1a1a;}
-    .comp-name{font-size:13px;font-weight:900;color:#1a1a1a;margin-bottom:3px;}
-    .comp-tagline{font-size:10px;font-weight:600;color:#666;margin-bottom:10px;}
-    .comp-action{
-      display:block;width:100%;padding:9px;text-align:center;
-      background:#1a1a1a;color:#fff;border-radius:5px;
-      font-size:9px;font-weight:900;letter-spacing:1.5px;text-transform:uppercase;
-    }
-    .comp-action:hover{background:#8B0000;}
+/* ── Mobile sticky bar ── */
+.mobile-bar{display:none;}
 
-    /* ── YMM SELECTOR BAR ── */
-    .ymm-bar{background:#fff;padding:14px 16px;}
+/* ── Chip rail ── */
+.chip-rail{max-width:1440px;margin:0 auto;padding:0 24px 14px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;}
+.chip-pill{display:inline-flex;align-items:center;gap:8px;background:var(--surface2);border:1px solid var(--border);color:var(--fg);padding:6px 8px 6px 12px;font-size:12px;font-weight:500;cursor:pointer;transition:border-color .15s;}
+.chip-pill:hover{border-color:var(--accent);}
+.chip-pill .chip-x{display:inline-flex;opacity:.5;margin-left:2px;}
+.chip-pill .chip-x svg{width:11px;height:11px;}
+.chip-clear{background:transparent;border:0;color:var(--accent);font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;padding:6px 4px;}
 
-    /* ── TRUST STRIP ── */
-    .trust-strip{
-      background:#0d0d0d;padding:20px 24px;
-      position:relative;overflow:hidden;
-    }
-    .trust-strip::before{
-      content:'';position:absolute;inset:0;
-      background-image:radial-gradient(circle,rgba(255,255,255,0.025) 1px,transparent 1px);
-      background-size:22px 22px;pointer-events:none;
-    }
-    .trust-inner{
-      position:relative;z-index:1;
-      max-width:900px;margin:0 auto;
-      display:flex;flex-direction:column;align-items:center;gap:16px;
-    }
-    .trust-row{display:flex;align-items:center;justify-content:center;gap:48px;width:100%;}
-    .trust-row-inset{padding:0 80px;}
-    .trust-item{display:flex;align-items:center;gap:13px;}
-    .trust-hex{
-      width:46px;height:50px;flex-shrink:0;
-      clip-path:polygon(50% 0%,95% 25%,95% 75%,50% 100%,5% 75%,5% 25%);
-      background:linear-gradient(to bottom,#a30000,#7a0000);
-      display:flex;align-items:center;justify-content:center;
-    }
-    .trust-hex svg{width:22px;height:22px;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;fill:none;}
-    .trust-title{font-size:12px;font-weight:900;color:#fff;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;}
-    .trust-sub{font-size:10px;font-weight:500;color:rgba(255,255,255,0.65);letter-spacing:0.3px;}
-    .ymm-inner{max-width:960px;margin:0 auto;display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
-    .ymm-label{
-      font-size:9px;font-weight:900;letter-spacing:2.5px;text-transform:uppercase;
-      color:#8B0000;white-space:nowrap;flex-shrink:0;
-    }
-    .ymm-selects{display:flex;gap:8px;flex:1;flex-wrap:wrap;}
-    .ymm-select{
-      flex:1;min-width:80px;padding:9px 10px;
-      border:2px solid #e0e0e0;border-radius:6px;
-      font-size:12px;font-weight:600;color:#1a1a1a;
-      background:#fff;appearance:none;-webkit-appearance:none;cursor:pointer;outline:none;
-    }
-    .ymm-select:focus{border-color:#8B0000;}
-    .ymm-select:disabled{background:#f5f5f5;color:#bbb;cursor:not-allowed;}
-    .ymm-btn{
-      padding:10px 20px;background:#8B0000;color:#fff;border:none;border-radius:6px;
-      font-size:11px;font-weight:900;letter-spacing:1.5px;text-transform:uppercase;
-      cursor:pointer;white-space:nowrap;flex-shrink:0;
-    }
-    .ymm-btn:hover{background:#6d0000;}
-    .ymm-btn:disabled{background:#ccc;cursor:not-allowed;}
+/* ── Layout ── */
+.catalog{max-width:1440px;margin:0 auto;padding-bottom:80px;}
+.layout{display:grid;grid-template-columns:260px 1fr;gap:28px;padding:0 24px;}
 
-    /* ── AUTO-FILTER BANNER ── */
-    #auto-filter-banner{display:none;background:#1a1a1a;padding:10px 16px;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;border-bottom:2px solid #8B0000;}
-    #auto-filter-banner.show{display:flex;}
-    #auto-filter-banner p{font-size:11px;font-weight:700;color:#fff;letter-spacing:1px;text-transform:uppercase;}
-    #auto-filter-banner p span{color:#ff6b6b;}
-    #show-all-btn{flex-shrink:0;padding:7px 16px;background:#8B0000;color:#fff;border:none;border-radius:4px;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:900;letter-spacing:1px;text-transform:uppercase;cursor:pointer;white-space:nowrap;}
-    #show-all-btn:hover{background:#a00000;}
+/* ── Sidebar ── */
+.sidebar{position:sticky;top:120px;align-self:start;max-height:calc(100vh - 140px);overflow-y:auto;padding-right:6px;scrollbar-width:thin;scrollbar-color:var(--border-strong) transparent;}
+.sidebar::-webkit-scrollbar{width:4px;}
+.sidebar::-webkit-scrollbar-thumb{background:var(--border-strong);}
+.filter-panel{display:flex;flex-direction:column;}
+.fit-banner{background:var(--surface2);border-left:3px solid var(--accent);padding:14px 16px;margin-bottom:16px;}
+.fit-banner-label{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--fg-dim);text-transform:uppercase;}
+.fit-banner-vehicle{font-family:var(--display);font-weight:700;font-size:17px;letter-spacing:.02em;color:var(--accent);margin-top:3px;text-transform:uppercase;line-height:1.1;}
+.fit-banner-vehicle.none{color:var(--fg-muted);font-size:13px;font-weight:500;text-transform:none;}
+.fit-toggle{display:flex;align-items:center;gap:10px;margin-top:12px;font-size:13px;cursor:pointer;user-select:none;}
+.fit-toggle input{display:none;}
+.fit-toggle-track{position:relative;width:32px;height:18px;background:var(--border-strong);border-radius:999px;transition:background .15s;flex-shrink:0;}
+.fit-toggle-thumb{position:absolute;top:2px;left:2px;width:14px;height:14px;background:#fff;border-radius:50%;transition:transform .15s;}
+.fit-toggle input:checked+.fit-toggle-track{background:var(--accent);}
+.fit-toggle input:checked+.fit-toggle-track .fit-toggle-thumb{transform:translateX(14px);}
+.filter-section{border-bottom:1px solid var(--border);}
+.filter-section-head{display:flex;justify-content:space-between;align-items:center;width:100%;background:transparent;border:0;padding:15px 0;color:var(--fg);font-family:var(--display);font-weight:700;letter-spacing:.06em;text-transform:uppercase;font-size:13px;cursor:pointer;}
+.filter-section-chev{transition:transform .2s;color:var(--fg-muted);display:inline-flex;}
+.filter-section-chev svg{width:12px;height:12px;}
+.filter-section.open>.filter-section-chev,.filter-section.open .filter-section-chev{transform:rotate(180deg);}
+.filter-section-body{padding-bottom:14px;display:flex;flex-direction:column;gap:6px;}
+.filter-section-body.hidden{display:none;}
+.check-row{display:flex;align-items:center;gap:10px;cursor:pointer;font-size:13px;padding:4px 0;}
+.check-row.disabled{opacity:.35;cursor:not-allowed;}
+.check-box{width:16px;height:16px;border:1.5px solid var(--border-strong);flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;transition:background .15s,border-color .15s;}
+.check-box .ck{opacity:0;transition:opacity .1s;display:inline-flex;color:#fff;}
+.check-box .ck svg{width:11px;height:11px;}
+.check-row.on .check-box{background:var(--accent);border-color:var(--accent);}
+.check-row.on .check-box .ck{opacity:1;}
+.check-label{flex:1;color:var(--fg);font-weight:500;}
+.check-count{color:var(--fg-dim);font-family:var(--mono);font-size:11px;}
+.price-range{display:flex;flex-direction:column;gap:12px;}
+.price-inputs{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.price-inputs label{display:flex;align-items:center;gap:6px;background:var(--surface);border:1px solid var(--border);padding:8px 10px;}
+.price-inputs label span{font-family:var(--mono);font-size:10px;color:var(--fg-dim);}
+.price-inputs input{background:transparent;border:0;color:var(--fg);width:100%;min-width:0;font-family:var(--mono);outline:none;font-size:13px;}
+.price-slider{position:relative;height:24px;margin:4px 0;}
+.price-track{position:absolute;left:0;right:0;top:11px;height:2px;background:var(--border-strong);}
+.price-track-fill{position:absolute;top:0;height:100%;background:var(--accent);}
+.price-slider input[type="range"]{-webkit-appearance:none;appearance:none;position:absolute;inset:0;width:100%;background:transparent;pointer-events:none;height:24px;}
+.price-slider input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;border-radius:50%;background:var(--fg);border:2px solid var(--accent);pointer-events:auto;cursor:pointer;}
+.price-slider input[type="range"]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;background:var(--fg);border:2px solid var(--accent);pointer-events:auto;cursor:pointer;}
+.price-legend{display:flex;justify-content:space-between;font-family:var(--mono);font-size:11px;color:var(--fg-muted);}
 
-    /* ── SECTION HEADING ── */
-    .section-heading-bar{
-      background:#fff;padding:18px 16px 14px;border-bottom:1px solid #e8e8e8;
-    }
-    .section-main-heading{
-      font-size:18px;font-weight:900;text-transform:uppercase;
-      color:#1a1a1a;letter-spacing:-0.5px;
-    }
+/* ── Toolbar ── */
+.toolbar{display:flex;justify-content:space-between;align-items:center;padding:8px 0 14px;gap:12px;flex-wrap:wrap;border-bottom:1px solid var(--border);margin-bottom:18px;}
+.toolbar-left{display:flex;align-items:center;gap:12px;}
+.toolbar-right{display:flex;align-items:center;gap:14px;}
+.tb-count{font-size:13px;color:var(--fg-muted);}
+.tb-count strong{color:var(--fg);font-weight:700;}
+.tb-view{display:flex;border:1px solid var(--border);}
+.tb-view button{background:transparent;border:0;color:var(--fg-muted);padding:8px 10px;cursor:pointer;}
+.tb-view button:hover{color:var(--fg);}
+.tb-view button.on{background:var(--surface2);color:var(--accent);}
+.tb-view button svg{width:15px;height:15px;}
+.tb-sort{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--fg-muted);}
+.tb-sort select{background:var(--surface);color:var(--fg);border:1px solid var(--border);padding:8px 10px;font-family:inherit;font-size:13px;cursor:pointer;outline:none;}
 
-    /* ── MOBILE FILTER OVERLAY ── */
-    #mob-filter{display:none;position:fixed;inset:0;z-index:300;background:#fff;overflow-y:auto;}
-    #mob-filter.open{display:block;}
-    .mob-filter-header{
-      padding:14px 16px;display:flex;align-items:center;justify-content:space-between;
-      border-bottom:2px solid #e8e8e8;position:sticky;top:0;background:#fff;z-index:1;
-    }
-    .mob-filter-title{font-size:14px;font-weight:900;}
-    .mob-filter-close{font-size:22px;cursor:pointer;background:none;border:none;color:#1a1a1a;font-weight:300;line-height:1;}
-    .mob-filter-section{padding:14px 16px;border-bottom:1px solid #f0f0f0;}
-    .mob-filter-section-title{font-size:9px;font-weight:900;letter-spacing:2.5px;text-transform:uppercase;color:#8B0000;margin-bottom:10px;}
-    .mob-chips{display:flex;flex-wrap:wrap;gap:8px;}
-    .mob-chip{
-      padding:6px 14px;border-radius:20px;font-size:11px;font-weight:700;
-      border:2px solid #e8e8e8;background:#fff;color:#444;cursor:pointer;
-    }
-    .mob-chip.active{background:#1a1a1a;color:#fff;border-color:#1a1a1a;}
-    .mob-apply{
-      margin:16px;display:block;width:calc(100% - 32px);
-      padding:14px;background:#8B0000;color:#fff;border:none;border-radius:8px;
-      font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;
-    }
+/* ── Grid ── */
+.grid{display:grid;grid-template-columns:repeat(var(--cols),minmax(0,1fr));gap:var(--gap);}
+.card{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--border);transition:border-color .15s;overflow:hidden;cursor:pointer;}
+.card:hover{border-color:var(--accent);}
+.card:hover .card-media-inner{transform:scale(1.02);}
+.card-media{position:relative;aspect-ratio:4/3;overflow:hidden;background:#0d0d0e;}
+.card-media-inner{width:100%;height:100%;transition:transform .3s;display:flex;align-items:center;justify-content:center;}
+.card-media img{width:100%;height:100%;object-fit:cover;display:block;}
+.card-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:6px;}
+.card-placeholder-brand{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.3);}
+.card-placeholder-line{width:48px;height:1px;background:rgba(255,255,255,.1);}
+.card-placeholder-name{font-family:var(--display);font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:rgba(255,255,255,.22);text-align:center;padding:0 12px;line-height:1.2;}
+.card-fit{position:absolute;top:10px;left:10px;display:inline-flex;align-items:center;gap:5px;background:rgba(62,194,124,.14);border:1px solid rgba(62,194,124,.5);color:#6ddf9b;padding:4px 8px;font-family:var(--mono);font-size:10px;letter-spacing:.14em;font-weight:600;}
+.card-fit svg{width:10px;height:10px;}
+.card-body{padding:14px 16px 16px;display:flex;flex-direction:column;gap:4px;flex:1;}
+.card-brand{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--fg-dim);}
+.card-name{font-family:var(--display);font-weight:700;font-size:17px;letter-spacing:.02em;text-transform:uppercase;line-height:1.1;color:var(--fg);}
+.card-type{color:var(--fg-muted);font-size:12px;line-height:1.4;}
+.card-foot{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:12px;gap:8px;flex-wrap:wrap;}
+.card-price{font-family:var(--display);font-weight:800;font-size:22px;letter-spacing:.01em;color:var(--fg);}
+.card-price-label{font-size:12px;font-weight:500;color:var(--fg-dim);font-family:var(--body);}
+.card-cta{background:var(--accent);color:#fff;border:0;padding:9px 16px;font-family:var(--display);font-weight:700;letter-spacing:.07em;text-transform:uppercase;font-size:12px;cursor:pointer;white-space:nowrap;flex-shrink:0;}
+.card-cta:hover{filter:brightness(1.1);}
 
-    /* ── CATALOG LAYOUT ── */
-    .catalog-wrap{display:grid;grid-template-columns:1fr;gap:0;min-height:calc(100vh - 260px);max-width:1440px;margin:0 auto;padding:0 8px;}
+/* ── List view ── */
+.list{display:flex;flex-direction:column;gap:10px;}
+.row{display:grid;grid-template-columns:180px 1fr auto;gap:16px;background:var(--surface);border:1px solid var(--border);padding:14px;transition:border-color .15s;cursor:pointer;}
+.row:hover{border-color:var(--accent);}
+.row-media{aspect-ratio:4/3;overflow:hidden;background:#0d0d0e;display:flex;align-items:center;justify-content:center;}
+.row-body{display:flex;flex-direction:column;gap:5px;padding:4px 0;}
+.row-brand{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--fg-dim);}
+.row-name{font-family:var(--display);font-weight:700;font-size:20px;letter-spacing:.02em;text-transform:uppercase;line-height:1.05;}
+.row-type{color:var(--fg-muted);font-size:13px;}
+.row-fit{display:inline-flex;align-items:center;gap:5px;color:#6ddf9b;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;margin-top:auto;}
+.row-fit svg{width:11px;height:11px;}
+.row-side{display:flex;flex-direction:column;align-items:flex-end;gap:8px;justify-content:center;min-width:130px;}
+.row-price{font-family:var(--display);font-weight:800;font-size:22px;}
+.row-price-label{font-size:11px;color:var(--fg-dim);font-family:var(--body);}
+.row-cta{background:var(--accent);color:#fff;border:0;padding:10px 16px;font-family:var(--display);font-weight:700;letter-spacing:.07em;text-transform:uppercase;font-size:12px;cursor:pointer;width:100%;}
+.row-cta:hover{filter:brightness(1.1);}
 
-    /* ── SIDEBAR ── */
-    .sidebar{display:none;}
-    .sidebar-section{border-bottom:1px solid #eee;}
-    .sidebar-title{
-      display:flex;align-items:center;justify-content:space-between;
-      padding:13px 16px;
-      background:linear-gradient(to bottom,#a30000 0%,#7a0000 100%);color:#fff;
-      font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;
-      cursor:pointer;user-select:none;
-    }
-    .sidebar-toggle{font-size:18px;font-weight:700;line-height:1;opacity:0.90;}
-    .sidebar-items.collapsed{display:none;}
-    .filter-item{
-      display:flex;align-items:center;gap:10px;
-      padding:11px 16px;
-      cursor:pointer;user-select:none;
-      border-bottom:1px solid #f5f5f5;
-      transition:background 0.15s;
-    }
-    .filter-item:last-child{border-bottom:none;}
-    .filter-item:hover{background:#fafafa;}
-    .filter-item.is-active{background:#fdf5f5;}
-    .cb{
-      width:17px;height:17px;border:2px solid #ccc;border-radius:3px;
-      flex-shrink:0;position:relative;
-      transition:background 0.15s,border-color 0.15s;
-    }
-    .cb.checked{background:#8B0000;border-color:#8B0000;}
-    .cb.checked::after{
-      content:'';position:absolute;top:2px;left:5px;
-      width:5px;height:8px;
-      border:2px solid #fff;border-top:none;border-left:none;
-      transform:rotate(45deg);
-    }
-    @keyframes cb-glow{
-      0%{box-shadow:0 0 0 0 rgba(139,0,0,0.55);}
-      40%{box-shadow:0 0 0 6px rgba(139,0,0,0.18);}
-      100%{box-shadow:0 0 0 0 rgba(139,0,0,0);}
-    }
-    .cb.glow{animation:cb-glow 0.35s ease-out;}
-    .filter-label{font-size:13px;font-weight:500;color:#333;flex:1;line-height:1.2;}
-    .filter-label.fit-label{color:#1a7a1a;font-weight:700;}
-    .filter-count{font-size:11px;font-weight:600;color:#bbb;flex-shrink:0;}
+/* ── Empty ── */
+.empty-state{display:flex;flex-direction:column;align-items:center;gap:10px;padding:80px 20px;text-align:center;}
+.empty-state h3{font-family:var(--display);font-weight:700;font-size:22px;margin:0;text-transform:uppercase;}
+.empty-state p{color:var(--fg-muted);margin:0 0 8px;}
 
-    /* ── MAIN CONTENT ── */
-    .main{background:#f2f2f2;}
+/* ── Drawer / Modal ── */
+.drawer-root{position:fixed;inset:0;z-index:100;}
+.drawer-backdrop{position:absolute;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(4px);animation:fadeIn .2s ease-out;}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
+.drawer{position:absolute;bottom:0;left:0;right:0;background:var(--bg);max-height:90vh;display:flex;flex-direction:column;animation:slideUp .25s ease-out;border-top:1px solid var(--border);border-top-left-radius:12px;border-top-right-radius:12px;}
+.drawer::before{content:'';position:absolute;top:8px;left:50%;transform:translateX(-50%);width:40px;height:4px;background:var(--border-strong);border-radius:2px;}
+.drawer-head{display:flex;justify-content:space-between;align-items:center;padding:22px 20px 12px;border-bottom:1px solid var(--border);}
+.drawer-head h3{font-family:var(--display);font-weight:700;font-size:20px;margin:0;letter-spacing:.04em;text-transform:uppercase;}
+.drawer-close{background:transparent;border:0;color:var(--fg);width:36px;height:36px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;border-radius:50%;}
+.drawer-close:hover{background:var(--surface2);}
+.drawer-close svg{width:18px;height:18px;}
+.drawer-body{flex:1;overflow-y:auto;padding:16px 20px;}
+.drawer-footer{display:grid;grid-template-columns:1fr 2fr;gap:12px;padding:16px 0 8px;position:sticky;bottom:0;background:var(--bg);border-top:1px solid var(--border);margin-top:16px;}
 
-    /* Toolbar */
-    .toolbar{
-      background:#fff;padding:12px 16px;border-bottom:2px solid #e8e8e8;
-      display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;
-      position:sticky;top:0;z-index:10;
-    }
-    .result-count{font-size:12px;font-weight:700;color:#444;}
-    .result-count span{color:#8B0000;font-weight:900;}
-    .toolbar-right{display:flex;align-items:center;gap:10px;}
-    .sort-label{font-size:11px;font-weight:700;color:#555;}
-    .sort-select{
-      padding:6px 10px;border:2px solid #e8e8e8;border-radius:6px;
-      font-size:11px;font-weight:600;background:#fff;appearance:none;cursor:pointer;
-    }
-    .mobile-filter-btn{
-      display:flex;align-items:center;gap:5px;
-      padding:7px 12px;border:2px solid #1a1a1a;border-radius:6px;
-      font-size:10px;font-weight:900;letter-spacing:1px;text-transform:uppercase;
-      background:#fff;cursor:pointer;
-    }
-    .filter-badge{
-      background:#8B0000;color:#fff;font-size:8px;font-weight:900;
-      width:16px;height:16px;border-radius:50%;display:flex;align-items:center;justify-content:center;
-    }
+/* Garage modal */
+.garage-modal{position:absolute;bottom:0;left:0;right:0;background:var(--bg);max-height:90vh;display:flex;flex-direction:column;animation:slideUp .25s ease-out;border-top:1px solid var(--border);border-top-left-radius:12px;border-top-right-radius:12px;}
+@media(min-width:640px){
+  .garage-modal{left:50%;right:auto;top:50%;bottom:auto;transform:translate(-50%,-50%);width:520px;max-width:90vw;border-radius:4px;animation:fadeIn .2s ease-out;}
+}
+.garage-body{padding:20px;display:flex;flex-direction:column;gap:16px;}
+.garage-current{display:flex;align-items:center;gap:14px;padding:14px 16px;background:var(--surface2);border-left:3px solid var(--accent);}
+.garage-current-ico{color:var(--accent);flex-shrink:0;}
+.garage-current-ico svg{width:28px;height:28px;}
+.garage-current-info{flex:1;}
+.garage-current-label{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--fg-dim);text-transform:uppercase;}
+.garage-current-vehicle{font-family:var(--display);font-weight:700;font-size:18px;letter-spacing:.02em;text-transform:uppercase;}
+.garage-current-trim{font-size:12px;color:var(--fg-muted);margin-top:2px;}
+.garage-remove{background:transparent;border:1px solid var(--border-strong);color:var(--fg);padding:7px 12px;font-family:var(--display);font-weight:600;font-size:11px;letter-spacing:.07em;text-transform:uppercase;cursor:pointer;white-space:nowrap;}
+.garage-remove:hover{border-color:var(--accent);color:var(--accent);}
+.garage-section-title{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--fg-dim);text-transform:uppercase;}
+.garage-selects{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+@media(min-width:480px){.garage-selects{grid-template-columns:1fr 1fr 1fr;}}
+.garage-selects select{background:var(--surface);color:var(--fg);border:1px solid var(--border-strong);padding:12px 10px;font-family:inherit;font-size:13px;outline:none;cursor:pointer;width:100%;}
+.garage-selects select:focus{border-color:var(--accent);}
+.garage-go{margin-top:4px;}
+#garage-no-vehicle{font-size:13px;color:var(--fg-muted);padding:12px 16px;background:var(--surface2);border-left:3px solid var(--fg-dim);font-style:italic;}
+#garage-no-vehicle.hidden{display:none;}
+#garage-has-vehicle.hidden{display:none;}
 
-    /* Active filters */
-    .active-filters{
-      background:#fafafa;padding:8px 16px;border-bottom:1px solid #e8e8e8;
-      display:flex;align-items:center;gap:8px;flex-wrap:wrap;min-height:34px;
-    }
-    .active-label{font-size:9px;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:#888;}
-    .filter-tag{
-      display:flex;align-items:center;gap:4px;padding:3px 10px;
-      background:#1a1a1a;color:#fff;border-radius:20px;
-      font-size:10px;font-weight:700;cursor:pointer;
-    }
-    .filter-tag:hover{background:#333;}
+/* ── No-garage prompt ── */
+.no-garage-bar{background:#fff8e1;border-bottom:3px solid #ffc107;padding:11px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;max-width:100%;}
+.no-garage-bar p{font-size:13px;font-weight:600;color:#856404;margin:0;}
+.no-garage-bar a{padding:8px 18px;background:var(--accent);color:#fff;font-family:var(--display);font-size:12px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;cursor:pointer;}
+.no-garage-bar.hidden{display:none;}
 
-    /* ── PRODUCT GRID ── */
-    .product-grid{
-      display:grid;
-      grid-template-columns:1fr;
-      gap:12px;padding:12px;
-    }
+/* ── Footer ── */
+.ftr{background:#050506;border-top:1px solid rgba(255,255,255,.06);margin-top:60px;padding:44px 24px 24px;}
+.ftr-inner{max-width:1440px;margin:0 auto;display:grid;grid-template-columns:2fr repeat(3,1fr);gap:36px;padding-bottom:32px;border-bottom:1px solid rgba(255,255,255,.06);}
+.ftr-col{display:flex;flex-direction:column;gap:8px;}
+.ftr-col h5{font-family:var(--display);font-weight:700;font-size:13px;letter-spacing:.1em;text-transform:uppercase;margin:0 0 4px;color:rgba(255,255,255,.9);}
+.ftr-col a{color:rgba(255,255,255,.45);font-size:13px;cursor:pointer;}
+.ftr-col a:hover{color:var(--accent);}
+.ftr-brand p{color:rgba(255,255,255,.4);font-size:13px;line-height:1.5;margin:4px 0 12px;max-width:280px;}
+.ftr-logo img{height:44px;display:block;margin-bottom:10px;opacity:.85;}
+.ftr-bottom{max-width:1440px;margin:22px auto 0;display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:11px;color:rgba(255,255,255,.25);flex-wrap:wrap;gap:8px;}
+.ftr-links{display:flex;gap:16px;}
+.ftr-links a{cursor:pointer;color:rgba(255,255,255,.25);}
+.ftr-links a:hover{color:var(--accent);}
 
-    /* ── PRODUCT CARD ── */
-    .product-card{
-      background:#fff;border-radius:8px;overflow:hidden;
-      border:1px solid #e8e8e8;
-      display:flex;flex-direction:column;
-      transition:box-shadow 0.2s,border-color 0.2s;
-    }
-    .product-card:hover{box-shadow:0 6px 24px rgba(0,0,0,0.10);border-color:#bbb;}
-
-    /* Image */
-    .card-img-link{display:block;text-decoration:none;}
-    .card-img-wrap{
-      position:relative;overflow:hidden;
-      background:linear-gradient(135deg,#f0f0f0,#e4e4e4);
-    }
-    .card-img-main{
-      width:100%;aspect-ratio:16/9;object-fit:cover;display:block;
-      transition:transform 0.4s ease;
-    }
-
-    .card-placeholder{
-      width:100%;aspect-ratio:16/9;
-      display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;
-    }
-    .card-ph-brand{font-size:8px;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:#ccc;}
-    .card-ph-name{font-size:11px;font-weight:700;color:#aaa;text-align:center;padding:0 12px;line-height:1.3;}
-
-    /* Header (name + subtitle) */
-    .card-header{padding:14px 14px 8px;}
-    .card-name{font-size:15px;font-weight:900;color:#1a1a1a;line-height:1.2;margin-bottom:3px;}
-    .card-subtitle{font-size:11px;font-weight:500;color:#777;font-style:italic;}
-
-    /* Guaranteed Fit */
-    .card-fit{display:flex;align-items:flex-start;gap:8px;padding:0 13px 10px;}
-    .card-fit-icon{
-      width:20px;height:20px;border-radius:50%;
-      background:#1a7a1a;color:#fff;
-      display:flex;align-items:center;justify-content:center;
-      font-size:11px;font-weight:900;flex-shrink:0;margin-top:1px;
-    }
-    .card-fit-label{font-size:10px;font-weight:800;color:#1a7a1a;letter-spacing:0.3px;}
-    .card-fit-vehicle{font-size:11px;font-weight:600;color:#333;margin-top:2px;line-height:1.3;}
-    .card-fit-change{
-      font-size:10px;font-weight:600;color:#0066bb;text-decoration:underline;
-      display:inline-block;margin-top:3px;background:none;border:none;padding:0;cursor:pointer;
-    }
-    .card-nofit{padding:0 13px 10px;font-size:10px;font-weight:800;color:#8B0000;}
-
-    /* Bottom: price + buttons */
-    .card-bottom{
-      display:flex;flex-direction:column;gap:10px;
-      padding:12px 14px 14px;border-top:1px solid #f0f0f0;margin-top:auto;
-    }
-    .card-price-block{}
-    .card-from-label{display:block;font-size:8px;font-weight:400;color:#1a1a1a;text-transform:uppercase;letter-spacing:1px;margin-bottom:2px;}
-    .card-price-amount{font-size:22px;font-weight:900;color:#8B0000;line-height:1;}
-
-    .card-actions{display:flex;flex-direction:row;gap:8px;}
-    .card-btn-view{
-      display:inline-flex;align-items:center;justify-content:center;
-      flex:1;min-height:44px;padding:0 12px;background:#1a1a1a;color:#fff;
-      border:none;border-radius:0;
-      font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
-      cursor:pointer;text-align:center;text-decoration:none;transition:background 0.2s;
-    }
-    .card-btn-view:hover{background:#333;}
-    .card-btn-quote{
-      display:inline-flex;align-items:center;justify-content:center;
-      flex:1;min-height:44px;padding:0 12px;background:#8B0000;color:#fff;
-      border:none;border-radius:0;
-      font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
-      cursor:pointer;text-align:center;text-decoration:none;transition:background 0.2s;
-    }
-    .card-btn-quote:hover{background:#6d0000;}
-
-    /* Compare row */
-    .card-compare-row{
-      display:flex;align-items:center;gap:7px;
-      padding:8px 13px;border-top:1px solid #f5f5f5;
-    }
-    .card-compare-cb{
-      width:15px;height:15px;border:2px solid #ccc;border-radius:3px;
-      flex-shrink:0;position:relative;cursor:pointer;
-      transition:background 0.15s,border-color 0.15s;
-    }
-    .card-compare-cb.checked{background:#8B0000;border-color:#8B0000;}
-    .card-compare-cb.checked::after{
-      content:'';position:absolute;top:1px;left:4px;
-      width:4px;height:7px;
-      border:2px solid #fff;border-top:none;border-left:none;
-      transform:rotate(45deg);
-    }
-    .card-compare-cb.glow{animation:cb-glow 0.35s ease-out;}
-    .card-compare-label{font-size:11px;font-weight:600;color:#666;cursor:pointer;}
-
-    /* ── EMPTY STATE ── */
-    #empty-state{display:none;padding:48px 24px;text-align:center;background:#fff;}
-    #empty-state .empty-icon{font-size:40px;margin-bottom:10px;}
-    #empty-state p{font-size:14px;font-weight:700;color:#444;margin-bottom:8px;}
-    #empty-state small{font-size:12px;color:#666;}
-
-    /* ── RECOMMENDED SECTION ── */
-    .recommended-section{background:#fff;padding:28px 0 8px;border-top:4px solid #f0f0f0;margin-top:8px;}
-    .recommended-title{
-      font-size:16px;font-weight:900;color:#1a1a1a;
-      padding:0 16px;margin-bottom:16px;
-    }
-    .recommended-scroll{
-      display:flex;gap:10px;overflow-x:auto;padding:0 16px 20px;
-      -webkit-overflow-scrolling:touch;
-    }
-    .recommended-scroll::-webkit-scrollbar{height:3px;}
-    .recommended-scroll::-webkit-scrollbar-thumb{background:#e0e0e0;border-radius:3px;}
-    .rec-card{
-      flex-shrink:0;width:150px;background:#fff;
-      border:1px solid #e8e8e8;border-radius:6px;overflow:hidden;cursor:pointer;
-    }
-    .rec-card:hover{border-color:#8B0000;}
-    .rec-img{width:100%;height:100px;background:linear-gradient(135deg,#f5f5f5,#e8e8e8);display:flex;align-items:center;justify-content:center;overflow:hidden;}
-    .rec-img img{width:100%;height:100%;object-fit:cover;}
-    .rec-ph{font-size:8px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:#bbb;text-align:center;padding:8px;}
-    .rec-body{padding:8px 10px 10px;}
-    .rec-brand{font-size:7px;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:#8B0000;margin-bottom:2px;}
-    .rec-name{font-size:10px;font-weight:800;color:#1a1a1a;margin-bottom:4px;line-height:1.3;}
-    .rec-price{font-size:11px;font-weight:900;color:#8B0000;margin-bottom:8px;}
-    .rec-btn{
-      display:inline-flex;align-items:center;justify-content:center;gap:8px;
-      width:100%;min-height:44px;padding:0 24px;text-align:center;
-      background:#8B0000;color:#fff;border:none;border-radius:0;
-      font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none;
-      cursor:pointer;transition:all 0.3s ease;
-    }
-
-    /* ── FAQ SECTION ── */
-    .faq-section{background:#f8f8f8;padding:28px 16px;border-top:3px solid #e8e8e8;}
-    .faq-title{font-size:16px;font-weight:900;color:#1a1a1a;margin-bottom:16px;text-transform:uppercase;}
-    :root{--ease-smooth:cubic-bezier(0.22,1,0.36,1);--dur-accordion:720ms;--dur-ui:220ms;}
-    .faq-item{border-bottom:1px solid #ececec;}
-    .faq-item:first-of-type{border-top:1px solid #ececec;}
-    .faq-q{width:100%;background:none;border:none;display:flex;align-items:flex-start;justify-content:space-between;padding:20px 0;cursor:pointer;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#1a1a1a;text-align:left;gap:16px;transition:color var(--dur-ui) ease;touch-action:manipulation;-webkit-tap-highlight-color:transparent;line-height:1.5;}
-    .faq-q:hover{color:#8B0000;}
-    .faq-q:focus-visible{outline:2px solid #8B0000;outline-offset:4px;}
-    .faq-item.open .faq-q{color:#8B0000;font-weight:800;}
-    .faq-q svg{width:18px;height:18px;flex-shrink:0;margin-top:2px;stroke:#8B0000;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;transition:transform var(--dur-accordion) var(--ease-smooth);transform-origin:center;}
-    .faq-item.open .faq-q svg{transform:rotate(45deg);}
-    .faq-a{height:0;overflow:hidden;transition:height var(--dur-accordion) var(--ease-smooth);}
-    .faq-a-inner{font-family:'Inter',sans-serif;font-size:15px;font-weight:400;color:#555;line-height:1.85;padding-bottom:20px;}
-    @media(prefers-reduced-motion:reduce){.faq-q svg,.faq-a{transition:none!important;}}
-
-    /* ── CATEGORY DESCRIPTION ── */
-    .category-desc{background:#fff;padding:28px 16px;border-top:3px solid #f0f0f0;}
-    .category-desc p{font-size:13px;font-weight:500;line-height:1.75;color:#444;margin-bottom:14px;}
-    .category-desc p:last-child{margin-bottom:0;}
-    .category-desc strong{color:#1a1a1a;font-weight:800;}
-
-    /* ── SMALL TABLET / LARGE PHONE (480px+) ── */
-    @media(min-width:480px){
-      .product-grid{grid-template-columns:repeat(2,1fr);gap:10px;}
-      .card-name{font-size:13px;}
-      .card-price-amount{font-size:18px;}
-      .card-bottom{flex-direction:row;align-items:center;justify-content:space-between;gap:8px;}
-      .card-actions{flex-direction:column;gap:5px;flex-shrink:0;}
-      .card-btn-view,.card-btn-quote{flex:none;padding:0 14px;font-size:10px;letter-spacing:1px;}
-    }
-
-    /* ── TABLET (768px+) ── */
-    @media(min-width:768px){
-      /* Hero */
-      .category-hero{flex-direction:row;min-height:210px;}
-      .hero-img-wrap{flex:0 0 54%;height:auto;order:2;}
-      .hero-content{flex:0 0 46%;order:1;padding:28px 28px;}
-      .hero-title{font-size:28px;}
-
-      /* Comparison */
-      .comparison-section{padding:28px 24px 32px;}
-      .comparison-cards{grid-template-columns:repeat(3,1fr);}
-      .comp-img{height:200px;}
-
-      /* YMM */
-      .ymm-bar{padding:14px 24px;}
-      .ymm-inner{max-width:960px;}
-
-      /* Section heading */
-      .section-heading-bar{padding:20px 24px 16px;}
-      .section-main-heading{font-size:22px;}
-
-      /* Catalog layout: sidebar + main */
-      .catalog-wrap{grid-template-columns:240px 1fr;padding:0 14px;}
-      .sidebar{
-        display:block;background:#fff;border-right:2px solid #eee;
-        position:sticky;top:0;
-        height:fit-content;max-height:calc(100vh - 60px);overflow-y:auto;
-      }
-      .mobile-filter-btn{display:none;}
-
-      /* Grid */
-      .product-grid{grid-template-columns:repeat(3,1fr);gap:12px;padding:16px;}
-
-      /* Cards */
-      .card-img{aspect-ratio:16/9;}
-      .card-name{font-size:15px;}
-      .card-price-amount{font-size:20px;}
-      .card-bottom{flex-direction:row;align-items:center;justify-content:space-between;gap:8px;padding:11px 13px 12px;}
-      .card-actions{flex-direction:column;gap:5px;flex-shrink:0;}
-      .card-btn-view,.card-btn-quote{flex:none;padding:0 20px;font-size:11px;letter-spacing:2px;}
-
-      /* Recommended */
-      .recommended-title{padding:0 24px;}
-      .recommended-scroll{padding:0 24px 20px;}
-      .rec-card{width:180px;}
-
-      /* FAQ */
-      .faq-section{padding:32px 24px;}
-
-      /* Description */
-      .category-desc{padding:32px 24px;}
-    }
-
-    /* ── DESKTOP (1024px+) ── */
-    @media(min-width:1024px){
-      .catalog-wrap{grid-template-columns:240px 1fr;}
-      .hero-title{font-size:32px;}
-      .product-grid{grid-template-columns:repeat(3,1fr);}
-      .section-main-heading{font-size:24px;}
-    }
-    *:focus{outline:none;}
-    *:focus-visible{outline:2px solid #8B0000;outline-offset:3px;}
-
-    /* ── WHAT FITS MY RIDE POPUP ── */
-    .wfmr-overlay{
-      position:fixed;inset:0;z-index:9999;
-      background:rgba(0,0,0,0.72);
-      display:flex;align-items:center;justify-content:center;
-      padding:16px;
-      opacity:0;transition:opacity .35s ease;
-      pointer-events:none;
-    }
-    .wfmr-overlay.show{opacity:1;pointer-events:all;}
-    .wfmr-panel{
-      display:flex;width:100%;max-width:860px;max-height:90vh;
-      overflow:hidden;background:#fff;
-      box-shadow:0 24px 80px rgba(0,0,0,0.45);
-    }
-    .wfmr-left{
-      flex:0 0 42%;
-      background-image:url('RLSH-ford-truck.webp');
-      background-size:cover;background-position:center;
-      position:relative;
-    }
-    .wfmr-left::after{
-      content:'';position:absolute;inset:0;
-      background:linear-gradient(to right,rgba(0,0,0,0.15),rgba(0,0,0,0.35));
-    }
-    .wfmr-right{
-      flex:1;padding:40px 36px 32px;
-      display:flex;flex-direction:column;align-items:center;
-      position:relative;overflow-y:auto;background:#fff;
-    }
-    .wfmr-close{
-      position:absolute;top:14px;right:16px;
-      background:none;border:none;cursor:pointer;
-      font-size:22px;line-height:1;color:#aaa;padding:4px;
-    }
-    .wfmr-close:hover{color:#1a1a1a;}
-    .wfmr-logo{height:64px;width:auto;object-fit:contain;margin-bottom:20px;}
-    .wfmr-title{
-      font-family:'Montserrat',sans-serif;font-size:clamp(20px,3vw,26px);
-      font-weight:900;text-transform:uppercase;letter-spacing:-0.5px;
-      color:#1a1a1a;text-align:center;margin-bottom:8px;line-height:1.1;
-    }
-    .wfmr-sub{
-      font-family:'Inter',sans-serif;font-size:13px;font-weight:400;
-      color:#666;text-align:center;line-height:1.6;
-      margin-bottom:28px;max-width:320px;
-    }
-    .wfmr-fields{width:100%;display:flex;flex-direction:column;gap:14px;margin-bottom:20px;}
-    .wfmr-field label{
-      display:block;font-family:'Montserrat',sans-serif;
-      font-size:10px;font-weight:700;letter-spacing:1.5px;
-      text-transform:uppercase;color:#888;margin-bottom:5px;
-    }
-    .wfmr-field select{
-      width:100%;height:48px;padding:0 36px 0 14px;
-      border:1.5px solid #ddd;border-radius:0;
-      font-family:'Montserrat',sans-serif;font-size:13px;font-weight:600;color:#1a1a1a;
-      background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2.5'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E") no-repeat right 12px center;
-      appearance:none;-webkit-appearance:none;cursor:pointer;transition:border-color .2s;
-    }
-    .wfmr-field select:focus{border-color:#8B0000;outline:none;}
-    .wfmr-field select:disabled{background-color:#f8f8f8;color:#bbb;cursor:not-allowed;}
-    .wfmr-submit{
-      width:100%;height:50px;background:#8B0000;color:#fff;
-      border:none;border-radius:0;cursor:pointer;
-      font-family:'Montserrat',sans-serif;font-size:12px;font-weight:800;
-      letter-spacing:2px;text-transform:uppercase;
-      transition:background .2s;margin-bottom:12px;
-    }
-    .wfmr-submit:hover{background:#a00000;}
-    .wfmr-submit:disabled{background:#ccc;cursor:not-allowed;}
-    .wfmr-skip{
-      background:none;border:none;cursor:pointer;
-      font-family:'Montserrat',sans-serif;font-size:10px;font-weight:600;
-      color:#aaa;letter-spacing:1px;text-transform:uppercase;text-decoration:underline;
-      padding:4px;transition:color .2s;
-    }
-    .wfmr-skip:hover{color:#555;}
-    .wfmr-watermark{
-      position:absolute;bottom:-10px;right:-10px;
-      width:160px;opacity:0.07;pointer-events:none;
-    }
-    @media(max-width:600px){
-      .wfmr-left{display:none;}
-      .wfmr-right{padding:32px 24px 28px;}
-      .wfmr-logo{height:52px;}
-    }
-  </style>
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .hdr-main{grid-template-columns:auto 1fr auto;gap:12px;padding:10px 16px;}
+  .hdr-search{display:none;}
+  .garage-pill-txt{display:none;}
+  .garage-pill{padding:8px;}
+  .garage-pill-swap{display:none;}
+  .crumbs{padding:12px 16px;font-size:10px;}
+  .chip-rail{padding:0 16px 10px;}
+  .layout{grid-template-columns:1fr;padding:0 16px;}
+  .sidebar{display:none;}
+  .mobile-bar{display:flex;position:sticky;top:56px;z-index:30;background:rgba(10,10,12,.97);backdrop-filter:blur(12px);padding:10px 16px;gap:8px;border-bottom:1px solid rgba(255,255,255,.07);align-items:center;}
+  .mb-filters{flex:1;display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);color:#fff;padding:10px 14px;font-family:var(--display);font-weight:600;letter-spacing:.08em;text-transform:uppercase;font-size:13px;cursor:pointer;}
+  .mb-filters svg{width:15px;height:15px;}
+  .mb-count{background:var(--accent);color:#fff;padding:2px 7px;font-family:var(--mono);font-size:11px;font-weight:700;margin-left:auto;}
+  .mb-sort{background:rgba(255,255,255,.07);color:#fff;border:1px solid rgba(255,255,255,.14);padding:10px 8px;font-size:12px;outline:none;max-width:130px;min-width:0;}
+  .mb-sort option{background:#1a1a1a;color:#fff;}
+  .mb-view{display:flex;border:1px solid rgba(255,255,255,.14);}
+  .mb-view button{background:transparent;border:0;color:rgba(255,255,255,.45);padding:9px 10px;cursor:pointer;}
+  .mb-view button.on{color:var(--accent);background:rgba(255,255,255,.06);}
+  .mb-view svg{width:15px;height:15px;}
+  .toolbar{display:none;}
+  .hdr-nav{padding:0 8px;}
+  .grid{grid-template-columns:repeat(2,1fr);gap:12px;}
+  .row{grid-template-columns:120px 1fr;}
+  .row-side{grid-column:2;flex-direction:row;align-items:center;justify-content:space-between;flex-wrap:wrap;min-width:0;}
+  .row-name{font-size:16px;}
+  .row-cta{width:auto;padding:9px 14px;}
+  .ftr-inner{grid-template-columns:1fr 1fr;gap:24px;}
+}
+@media(max-width:560px){
+  .hdr-promo{font-size:10px;padding:6px 12px;}
+  .hdr-main{padding:8px 14px;}
+  .logo img{height:44px;}
+  .nav-item{padding:11px 10px;font-size:11px;}
+  .grid{grid-template-columns:1fr;gap:12px;}
+  .row{grid-template-columns:90px 1fr;padding:10px;gap:10px;}
+  .row-name{font-size:14px;}
+  .card-foot{gap:6px;}
+  .ftr-inner{grid-template-columns:1fr;gap:24px;}
+  .ftr{padding:32px 16px 20px;}
+}
+</style>
 </head>
 <body>
+<div class="app">
 
-<!-- ── WHAT FITS MY RIDE? POPUP ── -->
-<div class="wfmr-overlay" id="wfmr-overlay">
-  <div class="wfmr-panel">
-    <div class="wfmr-left"></div>
-    <div class="wfmr-right">
-      <button class="wfmr-close" onclick="wfmrClose()" aria-label="Close">&#10005;</button>
-      <img src="RLSH_METAL_LOGO-Photoroom.webp" alt="RLSH Logo" class="wfmr-logo">
-      <h2 class="wfmr-title">What Fits My Ride?</h2>
-      <p class="wfmr-sub">Enter your Year, Make, and Model to see which parts fit your vehicle.</p>
-      <div class="wfmr-fields">
-        <div class="wfmr-field">
-          <label>Year</label>
-          <select id="wfmr-year" onchange="wfmrYearChange()">
-            <option value="">Select vehicle year</option>
-          </select>
-        </div>
-        <div class="wfmr-field">
-          <label>Make</label>
-          <select id="wfmr-make" disabled onchange="wfmrMakeChange()">
-            <option value="">Select vehicle make</option>
-          </select>
-        </div>
-        <div class="wfmr-field">
-          <label>Model</label>
-          <select id="wfmr-model" disabled>
-            <option value="">Select vehicle model</option>
-          </select>
-        </div>
-      </div>
-      <button class="wfmr-submit" id="wfmr-submit" onclick="wfmrSubmit()" disabled>Find My Fit</button>
-      <button class="wfmr-skip" onclick="wfmrClose()">Skip — Browse All Products</button>
-      <img src="rlsh-watermark-logo---white--red.webp" alt="" class="wfmr-watermark" aria-hidden="true">
+<!-- HEADER -->
+<header class="hdr">
+  <div class="hdr-promo">
+    <span>Free local estimates</span>
+    <span style="opacity:.4">·</span>
+    <span>Professional installation · Signal Hill, CA</span>
+    <span style="opacity:.4">·</span>
+    <a href="tel:5624246744">(562) 424-6744</a>
+  </div>
+  <div class="hdr-main">
+    <a href="https://www.3jsautobody.com/" class="logo">
+      <img src="https://static.wixstatic.com/media/b95bd9_86c7cf1e525d4b9e961a2738ed9af502~mv2.png" alt="3J's Auto Body & Paint Signal Hill CA">
+    </a>
+    <div class="hdr-search">
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="9" r="6"/><path d="m14 14 4 4"/></svg>
+      <input id="search-input" placeholder="Search tonneau covers…" oninput="onSearchInput()" autocomplete="off"/>
     </div>
+    <div class="hdr-actions">
+      <button class="garage-pill" onclick="openGarageModal()" aria-label="My Garage">
+        <span class="garage-pill-ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 6h13v9H1z"/><path d="M14 9h5l3 3v3h-8z"/><circle cx="6" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg>
+        </span>
+        <span class="garage-pill-txt">
+          <span class="garage-pill-label">My Garage</span>
+          <span class="garage-pill-vehicle empty" id="hdr-vehicle-label">Set your truck</span>
+        </span>
+        <span class="garage-pill-swap">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m4 5 2-2 2 2M6 3v6M12 11l-2 2-2-2M10 13V7"/></svg>
+        </span>
+      </button>
+    </div>
+  </div>
+  <nav class="hdr-nav">
+    <a class="nav-item active">Tonneau Covers</a>
+    <a class="nav-item" href="exterior-accessories.html">Accessories</a>
+    <a class="nav-item" href="body-paint-repairs.html">Body &amp; Paint</a>
+    <a class="nav-item" href="inside-3js.html">About 3J's</a>
+  </nav>
+</header>
+
+<!-- NO GARAGE PROMPT -->
+<div class="no-garage-bar hidden" id="no-garage-bar">
+  <p>Set your truck to see only covers that fit your exact vehicle.</p>
+  <a onclick="openGarageModal()" style="cursor:pointer;">Set My Truck</a>
+</div>
+
+<!-- BREADCRUMBS -->
+<nav class="crumbs">
+  <a href="https://www.3jsautobody.com/">Home</a>
+  <span class="crumb-sep">/</span>
+  <a>Parts &amp; Accessories</a>
+  <span class="crumb-sep">/</span>
+  <span class="crumb-now">Tonneau Covers</span>
+</nav>
+
+<!-- ACTIVE FILTER CHIPS -->
+<div class="chip-rail" id="chip-rail" style="display:none;"></div>
+
+<!-- MOBILE BAR -->
+<div class="mobile-bar">
+  <button class="mb-filters" onclick="openDrawer()">
+    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 5h14M5 10h10M8 15h4"/></svg>
+    <span>Filters</span>
+    <span class="mb-count" id="mb-count">0</span>
+  </button>
+  <select class="mb-sort" id="mob-sort-select" onchange="onSortChange()">
+    <option value="featured">Featured</option>
+    <option value="price-asc">Price: Low → High</option>
+    <option value="price-desc">Price: High → Low</option>
+    <option value="brand">Brand A–Z</option>
+  </select>
+  <div class="mb-view">
+    <button id="mob-btn-grid" class="on" onclick="setView('grid')" aria-label="Grid">
+      <svg viewBox="0 0 20 20" fill="currentColor"><rect x="3" y="3" width="6" height="6"/><rect x="11" y="3" width="6" height="6"/><rect x="3" y="11" width="6" height="6"/><rect x="11" y="11" width="6" height="6"/></svg>
+    </button>
+    <button id="mob-btn-list" onclick="setView('list')" aria-label="List">
+      <svg viewBox="0 0 20 20" fill="currentColor"><rect x="3" y="4" width="14" height="3"/><rect x="3" y="9" width="14" height="3"/><rect x="3" y="14" width="14" height="3"/></svg>
+    </button>
   </div>
 </div>
 
-<!-- Garage Bar -->
-<div id="garage-bar">
-  <div class="gb-left">
-    <span class="gb-vehicle" id="gb-vehicle">No Vehicle Saved</span>
-    <span class="gb-badge no-garage" id="gb-badge">Add Your Truck</span>
-  </div>
-  <div class="gb-right">
-    <a href="my-garage.html" class="gb-link" id="gb-action">Save Your Truck &rarr;</a>
-    <button class="gb-link" id="gb-change" style="display:none" onclick="clearGarage()">Change Vehicle</button>
-  </div>
-</div>
+<!-- MAIN -->
+<main class="catalog">
+  <div class="layout" id="main-layout">
 
-<!-- Category Hero -->
-<!-- CONFIG: Change hero-title, hero-sub, and hero-img src per category page -->
-<div class="category-hero">
-  <div class="hero-img-wrap">
-    <img class="hero-img" src="BK_BAKFlipMX4.webp" alt="Tonneau Covers" onerror="this.style.display='none'"/>
-  </div>
-  <div class="hero-content">
-    <div class="hero-breadcrumb">Shop &rsaquo; Bed Covers</div>
-    <h1 class="hero-title">Bed Covers &amp;<br><span>Tonneau Covers</span></h1>
-    <div class="hero-sub">BAK &middot; Extang &middot; Retrax &middot; Roll N Lock &middot; TruXedo &middot; UnderCover</div>
-    <div class="hero-chip inactive" id="fitment-chip">
-      <span class="dot"></span>
-      <span id="fitment-chip-text">Add your truck to filter by fit</span>
-    </div>
-  </div>
-</div>
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+      <div class="filter-panel" id="filter-panel-desktop"></div>
+    </aside>
 
-<!-- Auto-Filter Banner (set by URL params from landing pages) -->
-<div id="auto-filter-banner">
-  <p>Showing: <span id="auto-filter-label"></span></p>
-  <button id="show-all-btn" onclick="clearAutoFilter()">Show All Parts That Fit My Truck</button>
-</div>
-
-<!-- No Garage Banner -->
-<div id="no-garage-banner">
-  <p>Save your truck to see which covers fit — we confirm fitment on every product.</p>
-  <a href="my-garage.html">Add My Truck</a>
-</div>
-
-<!-- Comparison Cards -->
-<div class="comparison-section">
-  <div class="comparison-inner">
-  <div class="comparison-heading-row">
-    <div class="comparison-heading">The Cover You Need, <span>Found in Seconds</span></div>
-  </div>
-  <div class="comparison-cards">
-
-    <div class="comp-card" onclick="window.location.href='product-detail.html?product=BAKFlip+G2&brand=BAK'">
-      <img class="comp-img" src="BK_BAKFlipMX4.webp" alt="BAKFlip G2" style="filter:grayscale(0.5)brightness(0.85)"/>
-      <div class="comp-body">
-        <div class="comp-tier tier-good">Good</div>
-        <div class="comp-name">BAKFlip G2</div>
-        <div class="comp-tagline">The original hard-fold that set the standard</div>
-        <a class="comp-action" href="product-detail.html?product=BAKFlip+G2&brand=BAK">View BAKFlip G2</a>
-      </div>
-    </div>
-
-    <div class="comp-card" onclick="window.location.href='product-detail.html?product=BAKFlip+MX4&brand=BAK'">
-      <img class="comp-img" src="images_MX4_closeup_600x6004_w900_q85.webp" alt="BAKFlip MX4"/>
-      <div class="comp-body">
-        <div class="comp-tier tier-better">Better</div>
-        <div class="comp-name">BAKFlip MX4</div>
-        <div class="comp-tagline">The best-selling truck bed cover in the world</div>
-        <a class="comp-action" href="product-detail.html?product=BAKFlip+MX4&brand=BAK">View BAKFlip MX4</a>
-      </div>
-    </div>
-
-    <div class="comp-card" onclick="window.location.href='product-detail.html?product=BAKFlip+MX4+TS&brand=BAK'">
-      <img class="comp-img" src="BK_BAKFlipMX4.webp" alt="BAKFlip MX4 TS" style="filter:brightness(0.9)saturate(0.8)"/>
-      <div class="comp-body">
-        <div class="comp-tier tier-best">Best</div>
-        <div class="comp-name">BAKFlip MX4 TS</div>
-        <div class="comp-tagline">The best-selling cover, now rack ready</div>
-        <a class="comp-action" href="product-detail.html?product=BAKFlip+MX4+TS&brand=BAK">View BAKFlip MX4 TS</a>
-      </div>
-    </div>
-
-  </div>
-  </div>
-</div>
-
-<!-- YMM Selector Bar -->
-<div class="ymm-bar">
-  <div class="ymm-inner">
-    <div class="ymm-label">Select Your Vehicle</div>
-    <div class="ymm-selects">
-      <select class="ymm-select" id="ymm-year" onchange="ymmYearChange()"><option value="">Year</option></select>
-      <select class="ymm-select" id="ymm-make" onchange="ymmMakeChange()" disabled><option value="">Make</option></select>
-      <select class="ymm-select" id="ymm-model" onchange="ymmModelChange()" disabled><option value="">Model</option></select>
-      <select class="ymm-select" id="ymm-bed" onchange="ymmBedChange()" disabled><option value="">Bed Size</option></select>
-    </div>
-    <button class="ymm-btn" id="ymm-btn" onclick="ymmShopNow()" disabled>Shop Now</button>
-  </div>
-</div>
-
-<!-- Trust Strip -->
-<div class="trust-strip">
-  <div class="trust-inner">
-
-    <div class="trust-row">
-      <div class="trust-item">
-        <div class="trust-hex">
-          <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+    <!-- RESULTS -->
+    <section class="results">
+      <div class="toolbar">
+        <div class="toolbar-left">
+          <span class="tb-count" id="tb-count"><strong>—</strong> products</span>
         </div>
-        <div class="trust-text">
-          <div class="trust-title">Professional Installation</div>
-          <div class="trust-sub">We source it &amp; install it right</div>
+        <div class="toolbar-right">
+          <div class="tb-view">
+            <button id="desk-btn-grid" class="on" onclick="setView('grid')" aria-label="Grid">
+              <svg viewBox="0 0 20 20" fill="currentColor"><rect x="3" y="3" width="6" height="6"/><rect x="11" y="3" width="6" height="6"/><rect x="3" y="11" width="6" height="6"/><rect x="11" y="11" width="6" height="6"/></svg>
+            </button>
+            <button id="desk-btn-list" onclick="setView('list')" aria-label="List">
+              <svg viewBox="0 0 20 20" fill="currentColor"><rect x="3" y="4" width="14" height="3"/><rect x="3" y="9" width="14" height="3"/><rect x="3" y="14" width="14" height="3"/></svg>
+            </button>
+          </div>
+          <div class="tb-sort">
+            <span>Sort:</span>
+            <select id="desk-sort-select" onchange="onSortChange()">
+              <option value="featured">Featured</option>
+              <option value="price-asc">Price: Low → High</option>
+              <option value="price-desc">Price: High → Low</option>
+              <option value="brand">Brand A–Z</option>
+            </select>
+          </div>
         </div>
       </div>
-      <div class="trust-item">
-        <div class="trust-hex">
-          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
-        </div>
-        <div class="trust-text">
-          <div class="trust-title">Guaranteed Fit</div>
-          <div class="trust-sub">Fitment verified for your exact truck</div>
-        </div>
-      </div>
-    </div>
 
-    <div class="trust-row trust-row-inset">
-      <div class="trust-item">
-        <div class="trust-hex">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
-        </div>
-        <div class="trust-text">
-          <div class="trust-title">Family Owned Since 1991</div>
-          <div class="trust-sub">Signal Hill, CA &nbsp;·&nbsp; (562) 424-6744</div>
-        </div>
+      <div id="product-grid" class="grid"></div>
+
+      <div class="empty-state" id="empty-state" style="display:none;">
+        <h3>No covers match those filters</h3>
+        <p>Try removing a filter or expanding the price range.</p>
+        <button class="btn-primary" onclick="clearAllFilters()">Clear all filters</button>
       </div>
-      <div class="trust-item">
-        <div class="trust-hex">
-          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        </div>
-        <div class="trust-text">
-          <div class="trust-title">Free Installation</div>
-          <div class="trust-sub">With a standard Rhino Linings purchase</div>
-        </div>
-      </div>
-    </div>
+    </section>
 
   </div>
-</div>
+</main>
 
-<!-- Section Heading -->
-<!-- CONFIG: Change this heading per category page -->
-<div class="section-heading-bar">
-  <div class="section-main-heading">Truck Bed &amp; Tonneau Covers</div>
-</div>
-
-<!-- Mobile Filter Overlay -->
-<div id="mob-filter">
-  <div class="mob-filter-header">
-    <span class="mob-filter-title">Filter Products</span>
-    <button class="mob-filter-close" onclick="closeMobFilter()">&times;</button>
-  </div>
-  <div class="mob-filter-section">
-    <div class="mob-filter-section-title">Fitment</div>
-    <div class="mob-chips" id="mob-chips-fitment">
-      <div class="mob-chip active" data-filter="fitment" data-val="fit" onclick="mobChipToggle(this)">&#10003; Fits My Truck</div>
-      <div class="mob-chip" data-filter="fitment" data-val="all" onclick="mobChipToggle(this)">Show All</div>
+<!-- FOOTER -->
+<footer class="ftr">
+  <div class="ftr-inner">
+    <div class="ftr-col">
+      <div class="ftr-logo"><img src="https://static.wixstatic.com/media/b95bd9_86c7cf1e525d4b9e961a2738ed9af502~mv2.png" alt="3J's Auto Body"></div>
+      <p>Truck accessories sold, installed, and backed by the team at 3J's Auto Body &amp; Rhino Linings — Signal Hill, CA.</p>
+    </div>
+    <div class="ftr-col">
+      <h5>Shop</h5>
+      <a href="parts-catalog.html">Tonneau Covers</a>
+      <a href="exterior-accessories.html">Accessories</a>
+      <a href="https://www.3jsautobody.com/rhino-lining-quote">Rhino Liner Quote</a>
+    </div>
+    <div class="ftr-col">
+      <h5>Service</h5>
+      <a href="body-paint-repairs.html">Body &amp; Paint</a>
+      <a href="inside-3js.html">About Us</a>
+      <a href="tel:5624246744">(562) 424-6744</a>
+    </div>
+    <div class="ftr-col">
+      <h5>Hours</h5>
+      <a>Mon–Fri: 8am–5pm</a>
+      <a>Sat: 9am–3pm</a>
+      <a>2820 Cherry Ave, Signal Hill CA 90755</a>
     </div>
   </div>
-  <div class="mob-filter-section">
-    <div class="mob-filter-section-title">Brand</div>
-    <div class="mob-chips" id="mob-chips-brand"></div>
+  <div class="ftr-bottom">
+    <span>© 2026 3J's Auto Body &amp; Rhino Linings · Signal Hill, CA</span>
+    <span class="ftr-links">
+      <a href="https://www.3jsautobody.com/privacy-policy">Privacy</a>
+    </span>
   </div>
-  <div class="mob-filter-section">
-    <div class="mob-filter-section-title">Cover Type</div>
-    <div class="mob-chips" id="mob-chips-type">
-      <div class="mob-chip" data-filter="type" data-val="Hard Folding" onclick="mobChipToggle(this)">Hard Folding</div>
-      <div class="mob-chip" data-filter="type" data-val="Soft Folding" onclick="mobChipToggle(this)">Soft Folding</div>
-      <div class="mob-chip" data-filter="type" data-val="Retractable" onclick="mobChipToggle(this)">Retractable</div>
-      <div class="mob-chip" data-filter="type" data-val="Roll-Up" onclick="mobChipToggle(this)">Roll-Up</div>
-    </div>
-  </div>
-  <button class="mob-apply" onclick="applyMobFilter()">Show Results</button>
-</div>
+</footer>
 
-<!-- Catalog: Sidebar + Main -->
-<div class="catalog-wrap">
+</div><!-- .app -->
 
-  <div class="sidebar">
-    <div class="sidebar-section">
-      <div class="sidebar-title" onclick="toggleSection(this)">
-        <span>Fitment</span>
-        <span class="sidebar-toggle">&#8722;</span>
-      </div>
-      <div class="sidebar-items">
-        <div class="filter-item" onclick="toggleFitment(true)">
-          <div class="cb checked" id="cb-fit"></div>
-          <span class="filter-label fit-label">Fits My Truck Only</span>
-        </div>
-        <div class="filter-item" onclick="toggleFitment(false)">
-          <div class="cb" id="cb-all"></div>
-          <span class="filter-label">Show All</span>
-        </div>
-      </div>
-    </div>
-    <div class="sidebar-section">
-      <div class="sidebar-title" onclick="toggleSection(this)">
-        <span>Brand</span>
-        <span class="sidebar-toggle">&#8722;</span>
-      </div>
-      <div class="sidebar-items" id="brand-filters"></div>
-    </div>
-    <div class="sidebar-section">
-      <div class="sidebar-title" onclick="toggleSection(this)">
-        <span>Cover Type</span>
-        <span class="sidebar-toggle">&#8722;</span>
-      </div>
-      <div class="sidebar-items" id="type-filters"></div>
-    </div>
-  </div>
-
-  <div class="main">
-    <div class="toolbar">
-      <div class="result-count" id="result-count">Loading...</div>
-      <div class="toolbar-right">
-        <button class="mobile-filter-btn" onclick="openMobFilter()">
-          Filter
-          <div class="filter-badge" id="mob-filter-badge" style="display:none">0</div>
+<!-- MOBILE FILTER DRAWER -->
+<div id="filter-drawer" style="display:none;">
+  <div class="drawer-root">
+    <div class="drawer-backdrop" onclick="closeDrawer()"></div>
+    <div class="drawer">
+      <div class="drawer-head">
+        <h3>Filters</h3>
+        <button class="drawer-close" onclick="closeDrawer()" aria-label="Close">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m4 4 8 8M12 4l-8 8"/></svg>
         </button>
-        <span class="sort-label">Sort:</span>
-        <select class="sort-select" id="sort-select" onchange="renderProducts()">
-          <option value="fit">Best Fit</option>
-          <option value="price-asc">Price: Low to High</option>
-          <option value="price-desc">Price: High to Low</option>
-          <option value="brand">Brand A&ndash;Z</option>
-        </select>
+      </div>
+      <div class="drawer-body">
+        <div id="filter-panel-mobile"></div>
+      </div>
+      <div class="drawer-footer">
+        <button class="btn-ghost" onclick="clearAllFilters()">Clear</button>
+        <button class="btn-primary" onclick="closeDrawer()">Show results</button>
       </div>
     </div>
+  </div>
+</div>
 
-    <div class="active-filters" id="active-filters">
-      <span class="active-label">Active:</span>
-      <div class="filter-tag" id="tag-fitment" onclick="toggleFitment(false)" style="display:none">Fits My Truck &times;</div>
+<!-- GARAGE MODAL -->
+<div id="garage-modal" style="display:none;">
+  <div class="drawer-root">
+    <div class="drawer-backdrop" onclick="closeGarageModal()"></div>
+    <div class="garage-modal">
+      <div class="drawer-head">
+        <h3>My Garage</h3>
+        <button class="drawer-close" onclick="closeGarageModal()" aria-label="Close">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m4 4 8 8M12 4l-8 8"/></svg>
+        </button>
+      </div>
+      <div class="garage-body">
+        <div id="garage-has-vehicle" class="hidden">
+          <div class="garage-current">
+            <div class="garage-current-ico">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 6h13v9H1z"/><path d="M14 9h5l3 3v3h-8z"/><circle cx="6" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg>
+            </div>
+            <div class="garage-current-info">
+              <div class="garage-current-label">Current vehicle</div>
+              <div class="garage-current-vehicle" id="modal-vehicle-display">—</div>
+            </div>
+            <button class="garage-remove" onclick="removeGarage()">Remove</button>
+          </div>
+        </div>
+        <div id="garage-no-vehicle">No vehicle saved yet.</div>
+        <div class="garage-section-title">Select your truck</div>
+        <div class="garage-selects">
+          <select id="sel-year" onchange="onYearChange()"><option value="">Year</option></select>
+          <select id="sel-make" onchange="onMakeChange()" disabled><option value="">Make</option></select>
+          <select id="sel-model" disabled><option value="">Model</option></select>
+        </div>
+        <button class="btn-primary garage-go" onclick="saveGarage()">Apply Vehicle</button>
+      </div>
     </div>
-
-    <div class="product-grid" id="product-grid"></div>
-    <div id="empty-state">
-      <div class="empty-icon">&#128269;</div>
-      <p>No covers match your filters.</p>
-      <small>Try removing a filter or showing all vehicles.</small>
-    </div>
   </div>
-
-</div>
-
-<!-- Recommended For You -->
-<div class="recommended-section">
-  <div class="recommended-title">Recommended For You</div>
-  <div class="recommended-scroll" id="recommended-scroll"></div>
-</div>
-
-<!-- FAQ Section -->
-<!-- CONFIG: Update FAQ questions per category page -->
-<div class="faq-section">
-  <div class="faq-title">FAQs</div>
-
-  <div class="faq-item">
-    <button class="faq-q" aria-expanded="false">Which truck bed cover should I choose?<svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
-    <div class="faq-a"><div class="faq-a-inner">Consider how often you need full bed access, your local weather, and your security needs. Hard folding covers offer the best balance of security and access. Roll-up covers are the easiest to use daily. Retractable covers offer the most premium look and function. Not sure? Call us — our team installs every brand we sell and can guide you to the right choice.</div></div>
-  </div>
-
-  <div class="faq-item">
-    <button class="faq-q" aria-expanded="false">Will a bed cover work with my existing truck accessories?<svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
-    <div class="faq-a"><div class="faq-a-inner">It depends on the specific accessory. Most bed covers are compatible with standard drop-in or spray-in bed liners. Covers marked "TS" (Toolbox Specific) are designed to work alongside under-bed toolboxes. Contact us before ordering and we'll confirm compatibility for your exact setup.</div></div>
-  </div>
-
-  <div class="faq-item">
-    <button class="faq-q" aria-expanded="false">Can I install a truck bed cover myself?<svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
-    <div class="faq-a"><div class="faq-a-inner">Yes — most tonneau covers install in under 30 minutes using a simple clamp system with no drilling required. All hardware is included. We also offer professional installation at our Signal Hill location if you'd prefer to have it done right the first time.</div></div>
-  </div>
-
-  <div class="faq-item">
-    <button class="faq-q" aria-expanded="false">Can I drive with the bed cover open?<svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
-    <div class="faq-a"><div class="faq-a-inner">Yes. Most hard folding covers can be driven in the fully open (folded against the cab) or partially folded position. Roll-up covers can be driven rolled up. Always ensure the cover is secured before driving at highway speeds.</div></div>
-  </div>
-
-  <div class="faq-item">
-    <button class="faq-q" aria-expanded="false">Are tonneau covers waterproof?<svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
-    <div class="faq-a"><div class="faq-a-inner">Tonneau covers are weather-resistant. Quality covers with EPDM rubber seals (like BAKFlip and Extang) provide excellent water management and keep the vast majority of rain out. They are not 100% watertight, so avoid submerging them. For maximum protection, look for covers with dual-action seals.</div></div>
-  </div>
-
-  <div class="faq-item">
-    <button class="faq-q" aria-expanded="false">Do tonneau covers improve gas mileage?<svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
-    <div class="faq-a"><div class="faq-a-inner">Yes — studies show tonneau covers can improve fuel economy by 1.8% to 5.7% by improving aerodynamics over the open truck bed. The improvement varies based on driving speed, driving style, and the specific cover. At highway speeds the improvement is most noticeable.</div></div>
-  </div>
-
-</div>
-
-<!-- Category Description -->
-<!-- CONFIG: Update description text per category page -->
-<div class="category-desc">
-  <p>Tonneau covers protect your truck bed from weather, theft, and road debris while improving your truck's aerodynamics and fuel economy. At <strong>RLSH Truck &amp; Jeep Outfitters</strong> in Signal Hill, CA, we carry the top brands including BAK Industries, Extang, Retrax, Roll N Lock, TruXedo, and UnderCover — every cover we sell, we install.</p>
-  <p>Having trouble choosing? Our team installs these covers daily and can walk you through every option in person or over the phone. Browse our full selection of hard folding, soft folding, roll-up, and retractable tonneau covers above, or call us at <strong>(562) 424-6744</strong> to talk to an expert.</p>
 </div>
 
 <script>
 // ── Field indexes ──
 var F={brand:0,product:1,partNum:2,bedIn:3,bedSize:4,startYear:5,endYear:6,make:7,model:8,desc:9,fitNote:10,map:11,img:12};
 
-function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
-
-function glowCb(elOrId){
-  var el=typeof elOrId==='string'?document.getElementById(elOrId):elOrId;
-  if(!el)return;
-  el.classList.remove('glow');
-  void el.offsetWidth;
-  el.classList.add('glow');
-}
-
-function toggleSection(titleEl){
-  var items=titleEl.nextElementSibling;
-  var toggle=titleEl.querySelector('.sidebar-toggle');
-  var collapsed=items.classList.toggle('collapsed');
-  toggle.innerHTML=collapsed?'&#43;':'&#8722;';
-}
-
-var compareSet={};
-function toggleCompare(cbEl,product){
-  compareSet[product]=!compareSet[product];
-  cbEl.classList.toggle('checked',!!compareSet[product]);
-  glowCb(cbEl);
-}
-
-// ── Cover type map ──
+// ── Cover type map (from existing catalog) ──
 var PRODUCT_TYPES={
   'BAKFlip F1':'Hard Folding','BAKFlip FiberMax':'Hard Folding','BAKFlip G2':'Hard Folding',
-  'BAKFlip MX4':'Hard Folding','BAKFlip MX4 TS':'Hard Folding',
+  'BAKFlip MX4':'Hard Folding','BAKFlip MX4 TS':'Hard Folding','BAKFlip X4S':'Hard Folding',
   'ArmorFlex':'Hard Folding','Solid Fold 2.0 Toolbox':'Hard Folding','Solid Fold ALX':'Hard Folding',
   'Endure ALX':'Hard Folding','Deuce':'Hard Folding',
   'Trifecta 2.0':'Soft Folding','Trifecta ALX':'Soft Folding','Trifecta Signature 2.0':'Soft Folding',
@@ -976,104 +545,51 @@ var PRODUCT_TYPES={
   'PowertraxPRO MX':'Retractable','PowertraxPRO XR':'Retractable','Retrax EQ':'Retractable','Retrax IX':'Retractable',
   'Revolver X2':'Roll-Up','Revolver X4s':'Roll-Up','Revolver X4ts':'Roll-Up',
   'Pro X15':'Retractable','Pro X15 TS':'Retractable',
-  'Sentry':'Hard Folding','Sentry CT':'Hard Folding','Ultra Flex':'Hard Folding'
+  'Roll-X':'Roll-Up',
+  'Sentry':'Hard Folding','Sentry CT':'Hard Folding','Ultra Flex':'Hard Folding',
+  'Titanium':'Roll-Up','Element':'Roll-Up','Edge':'Roll-Up',
+  'M-Series':'Soft Folding','M-Series XT':'Soft Folding',
+  'Roll-Lock':'Retractable'
+};
+
+// ── Brand placeholder bg colors ──
+var BRAND_COLORS={
+  'BAK':'#1a1a2e','Extang':'#16213e','Retrax':'#1a2a1a',
+  'Roll N Lock':'#2a1a1a','TruXedo':'#1a1a2a','UnderCover':'#201a10'
 };
 
 // ── State ──
-var garage=null,filterFitOnly=true,filterBrands={},filterTypes={},filterProduct='';
-
-// ── URL param → catalog brand/category auto-filter ──
-var BRAND_MAP={
-  'go-rhino':'Go Rhino','amp-research':'AMP Research','nfab':'N-FAB',
-  'westin':'Westin','bak':'BAK','extang':'Extang','retrax':'Retrax',
-  'truxedo':'TruXedo','roll-n-lock':'Roll N Lock','undercover':'UnderCover',
-  'husky':'Husky','curt':'CURT','backrack':'BackRack'
-};
-var CAT_LABEL={
-  'running-boards':'Running Boards & Steps','tonneau-covers':'Tonneau Covers',
-  'floor-liners':'Floor Liners','towing-hitches':'Towing & Hitches',
-  'headache-racks':'Headache Racks'
-};
-var urlParams=new URLSearchParams(window.location.search);
-var autoFilterBrand=BRAND_MAP[urlParams.get('brand')]||null;
-var autoFilterCat=urlParams.get('cat')||null;
-
-function applyAutoFilter(){
-  if(!autoFilterBrand&&!autoFilterCat)return;
-  // Reset all brand filters then enable only the target brand
-  Object.keys(filterBrands).forEach(function(b){filterBrands[b]=false;});
-  if(autoFilterBrand&&filterBrands.hasOwnProperty(autoFilterBrand)){
-    filterBrands[autoFilterBrand]=true;
-    updateBrandCheckboxes();
-  }
-  // Build banner label
-  var parts=[];
-  if(autoFilterBrand)parts.push(autoFilterBrand);
-  if(autoFilterCat&&CAT_LABEL[autoFilterCat])parts.push(CAT_LABEL[autoFilterCat]);
-  document.getElementById('auto-filter-label').textContent=parts.join(' — ');
-  document.getElementById('auto-filter-banner').classList.add('show');
-  renderProducts();
-}
-
-function updateBrandCheckboxes(){
-  Object.keys(filterBrands).forEach(function(b){
-    var cbId='cb-brand-'+b.replace(/\s/g,'-');
-    var el=document.getElementById(cbId);
-    if(el)el.classList.toggle('checked',!!filterBrands[b]);
-    // mobile chips
-    var chips=document.querySelectorAll('[data-filter="brand"][data-val="'+b+'"]');
-    chips.forEach(function(c){c.classList.toggle('active',!!filterBrands[b]);});
-  });
-}
-
-function clearAutoFilter(){
-  autoFilterBrand=null;autoFilterCat=null;
-  Object.keys(filterBrands).forEach(function(b){filterBrands[b]=false;});
-  updateBrandCheckboxes();
-  document.getElementById('auto-filter-banner').classList.remove('show');
-  renderProducts();
-}
+var garage=null;
+var filterFitOnly=false;
+var filterBrands={};
+var filterTypes={};
+var filterPriceMin=0;
+var filterPriceMax=2500;
+var sortBy='featured';
+var viewMode='grid';
+var searchQ='';
 
 // ── Init ──
 (function(){
   var s=localStorage.getItem('garage_vehicle');
   if(s){try{garage=JSON.parse(s);}catch(e){}}
-  // Fallback: read from landing page YMM sessionStorage if no garage saved
   if(!garage){
     var sy=sessionStorage.getItem('rlsh_year'),sm=sessionStorage.getItem('rlsh_make'),smo=sessionStorage.getItem('rlsh_model');
-    if(sy&&sm&&smo){
-      garage={year:sy,make:sm,model:smo,trim:'',bedSize:'',bedIn:null,vin:''};
-      localStorage.setItem('garage_vehicle',JSON.stringify(garage));
-    }
+    if(sy&&sm&&smo){garage={year:sy,make:sm,model:smo,trim:'',bedSize:'',bedIn:null,vin:''};localStorage.setItem('garage_vehicle',JSON.stringify(garage));}
   }
-  initGarageBar();
-  buildFilters();
-  applyAutoFilter();
-  if(!autoFilterBrand&&!autoFilterCat)renderProducts();
-  buildRecommended();
-  initYMM();
+  filterFitOnly=!!garage;
+  viewMode=localStorage.getItem('catalog_view')||'grid';
+  var urlParams=new URLSearchParams(window.location.search);
+  var autoBrand=urlParams.get('brand');
+  if(autoBrand){
+    var BMAP={'bak':'BAK','extang':'Extang','retrax':'Retrax','roll-n-lock':'Roll N Lock','truxedo':'TruXedo','undercover':'UnderCover'};
+    if(BMAP[autoBrand])filterBrands[BMAP[autoBrand]]=true;
+  }
+  buildFilterPanels();
+  updateHeader();
+  renderProducts();
+  initGarageSelects();
 })();
-
-function initGarageBar(){
-  if(garage){
-    var label=garage.year+' '+garage.make+' '+garage.model+(garage.trim?' '+garage.trim:'')+(garage.bedSize?' · '+garage.bedSize:'');
-    document.getElementById('gb-vehicle').textContent=label;
-    document.getElementById('gb-badge').textContent='✓ Fitment Active';
-    document.getElementById('gb-badge').classList.remove('no-garage');
-    document.getElementById('gb-action').style.display='none';
-    document.getElementById('gb-change').style.display='inline';
-    document.getElementById('fitment-chip').classList.remove('inactive');
-    document.getElementById('fitment-chip-text').textContent='Fitment: '+label;
-    document.getElementById('no-garage-banner').style.display='none';
-    document.getElementById('tag-fitment').style.display='flex';
-  } else {
-    filterFitOnly=false;
-    document.getElementById('no-garage-banner').style.display='flex';
-    document.getElementById('cb-fit').classList.remove('checked');
-  }
-}
-
-function clearGarage(){localStorage.removeItem('garage_vehicle');garage=null;location.reload();}
 
 // ── Fitment match ──
 function matchesTruck(row){
@@ -1088,390 +604,452 @@ function matchesTruck(row){
     (cmo==='Silverado/Sierra 1500'&&(gmo==='Silverado 1500'||gmo==='Sierra 1500'))||
     (cmo==='Silverado/Sierra 2500HD/3500HD'&&(gmo==='Silverado 2500HD/3500HD'||gmo==='Sierra 2500HD/3500HD'))||
     (cmo==='Canyon/Colorado'&&(gmo==='Canyon'||gmo==='Colorado'))||
-    (cmo==='1500/2500/3500'&&(gmo==='1500 W/O Ram Box'||gmo==='1500 With Ram Box'||gmo==='1500/2500/3500'));
+    (cmo==='Silverado/Sierra'&&(gmo.indexOf('Silverado')!==-1||gmo.indexOf('Sierra')!==-1))||
+    (cmo==='1500/2500/3500'&&(gmo.indexOf('Ram')!==-1||gmo.indexOf('1500')!==-1||gmo.indexOf('2500')!==-1));
   if(!moOk)return false;
   if(bedIn&&row[F.bedIn]&&Math.abs(row[F.bedIn]-bedIn)>2)return false;
   return true;
 }
 
-// ── Build sidebar filters ──
-function buildFilters(){
-  var brandCnts={},typeCnts={},seen={};
-  CATALOG.forEach(function(r){
-    var k=r[F.brand]+'|'+r[F.product];
-    if(!seen[k]){
-      seen[k]=true;
-      brandCnts[r[F.brand]]=(brandCnts[r[F.brand]]||0)+1;
-      var t=PRODUCT_TYPES[r[F.product]]||'Other';
-      typeCnts[t]=(typeCnts[t]||0)+1;
-    }
-  });
-  var bf=document.getElementById('brand-filters');
-  Object.keys(brandCnts).sort().forEach(function(b){
-    filterBrands[b]=false;
-    var cbId='cb-brand-'+b.replace(/\s/g,'-');
-    var d=document.createElement('div');d.className='filter-item';
-    d.innerHTML='<div class="cb" id="'+cbId+'"></div><span class="filter-label">'+esc(b)+'</span><span class="filter-count">'+brandCnts[b]+'</span>';
-    d.onclick=function(){toggleBrand(b);};bf.appendChild(d);
-    var chip=document.createElement('div');chip.className='mob-chip';chip.dataset.filter='brand';chip.dataset.val=b;
-    chip.textContent=b;chip.onclick=function(){mobChipToggle(this);};
-    document.getElementById('mob-chips-brand').appendChild(chip);
-  });
-  var tf=document.getElementById('type-filters');
-  Object.keys(typeCnts).sort().forEach(function(t){
-    filterTypes[t]=false;
-    var cbId='cb-type-'+t.replace(/\s/g,'-').replace(/\//g,'-');
-    var d=document.createElement('div');d.className='filter-item';
-    d.innerHTML='<div class="cb" id="'+cbId+'"></div><span class="filter-label">'+esc(t)+'</span><span class="filter-count">'+typeCnts[t]+'</span>';
-    d.onclick=function(){toggleType(t);};tf.appendChild(d);
-  });
-}
-
-// ── Toggles ──
-function toggleFitment(fitOnly){
-  filterFitOnly=fitOnly&&!!garage;
-  document.getElementById('cb-fit').classList.toggle('checked',filterFitOnly);
-  document.getElementById('cb-all').classList.toggle('checked',!filterFitOnly);
-  glowCb(fitOnly?'cb-fit':'cb-all');
-  document.getElementById('tag-fitment').style.display=filterFitOnly?'flex':'none';
-  renderProducts();
-}
-function toggleBrand(b){
-  filterBrands[b]=!filterBrands[b];
-  var el=document.getElementById('cb-brand-'+b.replace(/\s/g,'-'));
-  if(el){el.classList.toggle('checked',filterBrands[b]);glowCb(el);}
-  renderProducts();
-}
-function toggleType(t){
-  filterTypes[t]=!filterTypes[t];
-  var el=document.getElementById('cb-type-'+t.replace(/\s/g,'-').replace(/\//g,'-'));
-  if(el){el.classList.toggle('checked',filterTypes[t]);glowCb(el);}
-  renderProducts();
-}
-
-// ── Smart product-level filtering ──
+// ── Build product list ──
 function getProducts(){
   var activeBrands=Object.keys(filterBrands).filter(function(b){return filterBrands[b];});
   var activeTypes=Object.keys(filterTypes).filter(function(t){return filterTypes[t];});
   var pm={};
   CATALOG.forEach(function(r){
-    if(filterProduct&&r[F.product]!==filterProduct)return;
     if(activeBrands.length&&activeBrands.indexOf(r[F.brand])===-1)return;
     if(activeTypes.length){var t=PRODUCT_TYPES[r[F.product]]||'Other';if(activeTypes.indexOf(t)===-1)return;}
+    if(r[F.map]&&(r[F.map]<filterPriceMin||r[F.map]>filterPriceMax))return;
+    if(searchQ){
+      var q=searchQ.toLowerCase();
+      if((r[F.brand]+' '+r[F.product]+' '+r[F.desc]).toLowerCase().indexOf(q)===-1)return;
+    }
     var k=r[F.brand]+'|'+r[F.product];
-    if(!pm[k])pm[k]={brand:r[F.brand],product:r[F.product],repr:r,minPrice:null,hasfit:false};
+    if(!pm[k])pm[k]={brand:r[F.brand],product:r[F.product],type:PRODUCT_TYPES[r[F.product]]||'',minPrice:null,hasfit:false};
     var p=pm[k];
     if(r[F.map]&&(p.minPrice===null||r[F.map]<p.minPrice))p.minPrice=r[F.map];
     if(matchesTruck(r))p.hasfit=true;
   });
-  var products=Object.keys(pm).map(function(k){return pm[k];});
+  var products=Object.values(pm);
   if(filterFitOnly&&garage)products=products.filter(function(p){return p.hasfit;});
-  return products;
-}
-
-function getSort(){return document.getElementById('sort-select').value;}
-function applySort(products){
-  var s=getSort();products=products.slice();
-  if(s==='price-asc')products.sort(function(a,b){return(a.minPrice||9999)-(b.minPrice||9999);});
-  else if(s==='price-desc')products.sort(function(a,b){return(b.minPrice||0)-(a.minPrice||0);});
-  else if(s==='brand')products.sort(function(a,b){return a.brand.localeCompare(b.brand);});
+  if(sortBy==='price-asc')products.sort(function(a,b){return(a.minPrice||9999)-(b.minPrice||9999);});
+  else if(sortBy==='price-desc')products.sort(function(a,b){return(b.minPrice||0)-(a.minPrice||0);});
+  else if(sortBy==='brand')products.sort(function(a,b){return a.brand.localeCompare(b.brand);});
   else products.sort(function(a,b){return(b.hasfit?1:0)-(a.hasfit?1:0);});
   return products;
 }
 
-// ── Render product grid ──
+// ── Render ──
 function renderProducts(){
-  var products=getProducts(),sorted=applySort(products);
-  var grid=document.getElementById('product-grid');
-  grid.innerHTML='';
-  document.getElementById('empty-state').style.display=sorted.length?'none':'block';
-  var fitCount=sorted.filter(function(p){return p.hasfit;}).length;
-  var label=garage
-    ?'<span>'+fitCount+'</span> covers fit your '+garage.year+' '+garage.make+' '+garage.model
-    :'Showing <span>'+sorted.length+'</span> covers';
-  document.getElementById('result-count').innerHTML=label;
+  var products=getProducts();
+  var container=document.getElementById('product-grid');
+  container.className=viewMode==='list'?'list':'grid';
+  container.innerHTML='';
+  document.getElementById('empty-state').style.display=products.length?'none':'block';
+  var fitCount=products.filter(function(p){return p.hasfit;}).length;
+  var countEl=document.getElementById('tb-count');
+  if(garage&&filterFitOnly){
+    countEl.innerHTML='<strong>'+fitCount+'</strong> covers fit your '+esc(garage.year+' '+garage.make+' '+garage.model);
+  } else {
+    countEl.innerHTML='<strong>'+products.length+'</strong> products';
+  }
+  document.getElementById('mb-count').textContent=products.length;
+  products.forEach(function(p){
+    container.appendChild(viewMode==='list'?makeRow(p):makeCard(p));
+  });
+  updateChipRail();
+}
 
-  // Active filters
-  var af=document.getElementById('active-filters');
-  af.querySelectorAll('.filter-tag:not(#tag-fitment)').forEach(function(t){t.remove();});
-  if(filterProduct){
-    var ptag=document.createElement('div');ptag.className='filter-tag';ptag.textContent=filterProduct+' ×';
-    ptag.onclick=function(){filterProduct='';renderProducts();};af.appendChild(ptag);
+function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+
+function makePlaceholder(brand,product){
+  var bg=BRAND_COLORS[brand]||'#181818';
+  return '<div class="card-placeholder" style="background:'+bg+';width:100%;height:100%;">'
+    +'<span class="card-placeholder-brand">'+esc(brand)+'</span>'
+    +'<div class="card-placeholder-line"></div>'
+    +'<span class="card-placeholder-name">'+esc(product)+'</span>'
+    +'</div>';
+}
+
+function makeCard(p){
+  var el=document.createElement('a');
+  el.className='card';
+  el.href='https://www.3jsautobody.com/rhino-lining-quote';
+  el.innerHTML=
+    '<div class="card-media">'
+      +'<div class="card-media-inner">'+makePlaceholder(p.brand,p.product)+'</div>'
+      +(p.hasfit?'<div class="card-fit"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 8 3.5 3.5L13 5"/></svg>FITS</div>':'')
+    +'</div>'
+    +'<div class="card-body">'
+      +'<div class="card-brand">'+esc(p.brand)+'</div>'
+      +'<div class="card-name">'+esc(p.product)+'</div>'
+      +(p.type?'<div class="card-type">'+esc(p.type)+'</div>':'')
+      +'<div class="card-foot">'
+        +'<div><span class="card-price-label">From </span><span class="card-price">$'+(p.minPrice?p.minPrice.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}):'—')+'</span></div>'
+        +'<button class="card-cta" onclick="event.preventDefault();window.location=\'https://www.3jsautobody.com/rhino-lining-quote\'">Get a Quote</button>'
+      +'</div>'
+    +'</div>';
+  return el;
+}
+
+function makeRow(p){
+  var el=document.createElement('a');
+  el.className='row';
+  el.href='https://www.3jsautobody.com/rhino-lining-quote';
+  el.innerHTML=
+    '<div class="row-media">'+makePlaceholder(p.brand,p.product)+'</div>'
+    +'<div class="row-body">'
+      +'<div class="row-brand">'+esc(p.brand)+'</div>'
+      +'<div class="row-name">'+esc(p.product)+'</div>'
+      +(p.type?'<div class="row-type">'+esc(p.type)+'</div>':'')
+      +(p.hasfit&&garage?'<div class="row-fit"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 8 3.5 3.5L13 5"/></svg>Fits your '+esc(garage.year+' '+garage.make+' '+garage.model)+'</div>':'')
+    +'</div>'
+    +'<div class="row-side">'
+      +'<div><span class="row-price-label">From </span><div class="row-price">$'+(p.minPrice?p.minPrice.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}):'—')+'</div></div>'
+      +'<button class="row-cta" onclick="event.preventDefault();window.location=\'https://www.3jsautobody.com/rhino-lining-quote\'">Get a Quote</button>'
+    +'</div>';
+  return el;
+}
+
+// ── Chip rail ──
+function updateChipRail(){
+  var rail=document.getElementById('chip-rail');
+  rail.innerHTML='';
+  var hasChips=false;
+  if(garage&&filterFitOnly){
+    hasChips=true;
+    var chip=document.createElement('button');
+    chip.className='chip-pill';
+    chip.innerHTML='Fits '+esc(garage.year+' '+garage.make+' '+garage.model)+'<span class="chip-x"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m4 4 8 8M12 4l-8 8"/></svg></span>';
+    chip.onclick=function(){filterFitOnly=false;updateFitToggle();renderProducts();};
+    rail.appendChild(chip);
   }
   Object.keys(filterBrands).forEach(function(b){
-    if(filterBrands[b]){var tag=document.createElement('div');tag.className='filter-tag';tag.textContent=b+' ×';tag.onclick=function(){toggleBrand(b);};af.appendChild(tag);}
+    if(!filterBrands[b])return;
+    hasChips=true;
+    var chip=document.createElement('button');chip.className='chip-pill';
+    chip.innerHTML=esc(b)+'<span class="chip-x"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m4 4 8 8M12 4l-8 8"/></svg></span>';
+    chip.onclick=function(){filterBrands[b]=false;syncFilterPanels();renderProducts();};
+    rail.appendChild(chip);
   });
   Object.keys(filterTypes).forEach(function(t){
-    if(filterTypes[t]){var tag=document.createElement('div');tag.className='filter-tag';tag.textContent=t+' ×';tag.onclick=function(){toggleType(t);};af.appendChild(tag);}
+    if(!filterTypes[t])return;
+    hasChips=true;
+    var chip=document.createElement('button');chip.className='chip-pill';
+    chip.innerHTML=esc(t)+'<span class="chip-x"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m4 4 8 8M12 4l-8 8"/></svg></span>';
+    chip.onclick=function(){filterTypes[t]=false;syncFilterPanels();renderProducts();};
+    rail.appendChild(chip);
   });
+  if(filterPriceMin>0||filterPriceMax<2500){
+    hasChips=true;
+    var chip=document.createElement('button');chip.className='chip-pill';
+    chip.innerHTML='$'+filterPriceMin+'–$'+filterPriceMax+'<span class="chip-x"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m4 4 8 8M12 4l-8 8"/></svg></span>';
+    chip.onclick=function(){filterPriceMin=0;filterPriceMax=2500;syncFilterPanels();renderProducts();};
+    rail.appendChild(chip);
+  }
+  if(hasChips){
+    var clr=document.createElement('button');clr.className='chip-clear';clr.textContent='Clear all';
+    clr.onclick=clearAllFilters;
+    rail.appendChild(clr);
+  }
+  rail.style.display=hasChips?'flex':'none';
+}
 
-  sorted.forEach(function(p){
-    var r=p.repr;
-    var pcImg=(typeof PRODUCT_CONTENT!=='undefined'&&PRODUCT_CONTENT[p.product]&&PRODUCT_CONTENT[p.product].img)
-      ?PRODUCT_CONTENT[p.product].img:(r[F.img]||null);
-
-    var imgHtml=pcImg
-      ?'<img class="card-img-main" src="'+pcImg+'" alt="'+esc(p.product)+'" loading="lazy">'
-      :'<div class="card-placeholder"><div class="card-ph-brand">'+esc(p.brand)+'</div><div class="card-ph-name">'+esc(p.product)+'</div></div>';
-
-    var coverType=PRODUCT_TYPES[p.product]||'Tonneau';
-    var subtitle=coverType+' Cover';
-
-    var fitHtml='';
-    if(garage){
-      if(p.hasfit){
-        var bedStr=garage.bedSize?', '+garage.bedSize+' Bed':'';
-        fitHtml='<div class="card-fit">'+
-          '<div class="card-fit-icon">&#10003;</div>'+
-          '<div>'+
-            '<div class="card-fit-label">Guaranteed Fit</div>'+
-            '<div class="card-fit-vehicle">'+esc(garage.year+' '+garage.make+' '+garage.model+bedStr)+'</div>'+
-            '<button class="card-fit-change" onclick="event.stopPropagation();clearGarage()">Change vehicle</button>'+
-          '</div>'+
-        '</div>';
-      } else {
-        fitHtml='<div class="card-nofit">&#x2715; Verify Fitment</div>';
-      }
+// ── Filter panel builder ──
+function buildFilterPanels(){
+  var brandCounts={},typeCounts={},seen={};
+  CATALOG.forEach(function(r){
+    var k=r[F.brand]+'|'+r[F.product];
+    if(!seen[k]){
+      seen[k]=true;
+      brandCounts[r[F.brand]]=(brandCounts[r[F.brand]]||0)+1;
+      var t=PRODUCT_TYPES[r[F.product]]||'Other';
+      typeCounts[t]=(typeCounts[t]||0)+1;
     }
-
-    var priceHtml=p.minPrice
-      ?'<span class="card-from-label">FROM:</span><div class="card-price-amount">$'+p.minPrice.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})+'</div>'
-      :'<span class="card-from-label">PRICE</span><div class="card-price-amount" style="font-size:14px;color:#555;">Call Us</div>';
-
-    var detailUrl='product-detail.html?product='+encodeURIComponent(p.product)+'&brand='+encodeURIComponent(p.brand);
-    var quoteUrl='https://www.3jsautobody.com/request-a-quote';
-    var safeId='cmp-'+(p.brand+'-'+p.product).replace(/[^a-zA-Z0-9]/g,'-');
-    var safeProduct=p.product.replace(/\\/g,'\\\\').replace(/'/g,"\\'");
-
-    var card=document.createElement('div');card.className='product-card';
-    card.innerHTML=
-      '<a href="'+detailUrl+'" class="card-img-link">'+
-        '<div class="card-img-wrap">'+imgHtml+'</div>'+
-      '</a>'+
-      '<div class="card-header">'+
-        '<div class="card-name">'+esc(p.product)+'</div>'+
-        '<div class="card-subtitle">'+esc(subtitle)+'</div>'+
-      '</div>'+
-      fitHtml+
-      '<div class="card-bottom">'+
-        '<div class="card-price-block">'+priceHtml+'</div>'+
-        '<div class="card-actions">'+
-          '<a href="'+detailUrl+'" class="card-btn-view">View Details</a>'+
-          '<a href="'+quoteUrl+'" target="_top" class="card-btn-quote">Get a Quote</a>'+
-        '</div>'+
-      '</div>'+
-      '<div class="card-compare-row">'+
-        '<div class="card-compare-cb" id="'+safeId+'" onclick="event.stopPropagation();toggleCompare(this,\''+safeProduct+'\')"></div>'+
-        '<span class="card-compare-label" onclick="document.getElementById(\''+safeId+'\').click()">Compare</span>'+
-      '</div>';
-    grid.appendChild(card);
   });
-
-  var activeCount=(filterFitOnly?1:0)+Object.values(filterBrands).filter(Boolean).length+Object.values(filterTypes).filter(Boolean).length;
-  var badge=document.getElementById('mob-filter-badge');badge.textContent=activeCount;badge.style.display=activeCount>0?'flex':'none';
-  reportHeight();
-}
-
-// ── Get a Quote ──
-function getQuote(product,partNum){
-  window.location.href='parts-quote.html?product='+encodeURIComponent(product)+'&partNum='+encodeURIComponent(partNum);
-}
-
-// ── Build Recommended section ──
-var RECOMMENDED=['BAKFlip MX4','BAKFlip MX4 TS','BAKFlip G2','BAKFlip F1','Revolver X4s','BAKFlip FiberMax'];
-function buildRecommended(){
-  var scr=document.getElementById('recommended-scroll');if(!scr)return;
-  RECOMMENDED.forEach(function(name){
-    var rows=CATALOG.filter(function(r){return r[F.product]===name;});if(!rows.length)return;
-    var brand=rows[0][F.brand];
-    var minP=null;rows.forEach(function(r){if(r[F.map]&&(minP===null||r[F.map]<minP))minP=r[F.map];});
-    var pcImg=(typeof PRODUCT_CONTENT!=='undefined'&&PRODUCT_CONTENT[name]&&PRODUCT_CONTENT[name].img)?PRODUCT_CONTENT[name].img:null;
-    var price=minP?'From $'+minP.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}):'Call for Price';
-    var href='product-detail.html?product='+encodeURIComponent(name)+'&brand='+encodeURIComponent(brand);
-    var imgHtml=pcImg
-      ?'<img src="'+pcImg+'" alt="'+name+'" loading="lazy" onerror="this.parentNode.innerHTML=\'<div class=\\\'rec-ph\\\'>'+name+'</div>\'">'
-      :'<div class="rec-ph">'+name+'</div>';
-    var card=document.createElement('div');card.className='rec-card';
-    card.innerHTML='<div class="rec-img">'+imgHtml+'</div>'+
-      '<div class="rec-body">'+
-        '<div class="rec-brand">'+brand+'</div>'+
-        '<div class="rec-name">'+name+'</div>'+
-        '<div class="rec-price">'+price+'</div>'+
-        '<a href="'+href+'" class="rec-btn">View Details</a>'+
-      '</div>';
-    card.onclick=function(){window.location.href=href;};
-    scr.appendChild(card);
+  Object.keys(brandCounts).sort().forEach(function(b){
+    if(!filterBrands.hasOwnProperty(b))filterBrands[b]=filterBrands[b]||false;
+  });
+  Object.keys(typeCounts).sort().forEach(function(t){
+    if(!filterTypes.hasOwnProperty(t))filterTypes[t]=false;
+  });
+  var desktopEl=document.getElementById('filter-panel-desktop');
+  var mobileEl=document.getElementById('filter-panel-mobile');
+  desktopEl.innerHTML='';mobileEl.innerHTML='';
+  [desktopEl,mobileEl].forEach(function(panel,idx){
+    var isMob=idx===1;
+    panel.appendChild(makeFitBanner(isMob?'mob':'desk'));
+    panel.appendChild(makeFilterSection('Brand',brandCounts,filterBrands,'brand',isMob?'mob':'desk',true));
+    panel.appendChild(makeFilterSection('Cover Type',typeCounts,filterTypes,'type',isMob?'mob':'desk',true));
+    panel.appendChild(makePriceSection(isMob?'mob':'desk'));
   });
 }
 
-// ── Mobile filter overlay ──
-function openMobFilter(){document.getElementById('mob-filter').classList.add('open');}
-function closeMobFilter(){document.getElementById('mob-filter').classList.remove('open');}
-function mobChipToggle(chip){
-  var filter=chip.dataset.filter,val=chip.dataset.val;
-  if(filter==='fitment'){document.querySelectorAll('[data-filter="fitment"]').forEach(function(c){c.classList.remove('active');});chip.classList.add('active');}
-  else{chip.classList.toggle('active');}
-}
-function applyMobFilter(){
-  var fitChip=document.querySelector('[data-filter="fitment"].active');
-  toggleFitment(fitChip&&fitChip.dataset.val==='fit');
-  Object.keys(filterBrands).forEach(function(b){filterBrands[b]=false;});
-  document.querySelectorAll('[data-filter="brand"].active').forEach(function(c){filterBrands[c.dataset.val]=true;});
-  Object.keys(filterBrands).forEach(function(b){var el=document.getElementById('cb-brand-'+b.replace(/\s/g,'-'));if(el)el.classList.toggle('checked',filterBrands[b]);});
-  Object.keys(filterTypes).forEach(function(t){filterTypes[t]=false;});
-  document.querySelectorAll('[data-filter="type"].active').forEach(function(c){filterTypes[c.dataset.val]=true;});
-  renderProducts();closeMobFilter();
+function makeFitBanner(prefix){
+  var div=document.createElement('div');
+  div.className='fit-banner';
+  var vLabel=garage?(garage.year+' '+garage.make+' '+garage.model):'';
+  div.innerHTML=
+    '<div class="fit-banner-label">Showing parts for</div>'
+    +'<div class="fit-banner-vehicle'+(garage?'':' none')+'" id="'+prefix+'-fit-vehicle">'+(garage?esc(vLabel):'No vehicle saved — <a onclick="openGarageModal()" style="cursor:pointer;text-decoration:underline;color:var(--accent)">set your truck</a>')+'</div>'
+    +'<label class="fit-toggle"><input type="checkbox" id="'+prefix+'-fit-toggle" '+(filterFitOnly&&garage?'checked':'')+(garage?'':' disabled')+' onchange="onFitToggle(this)"><span class="fit-toggle-track"><span class="fit-toggle-thumb"></span></span><span>Only show covers that fit</span></label>';
+  return div;
 }
 
-// ── FAQ accordion ──
-function faqClose(item){var p=item.querySelector('.faq-a');p.style.height=p.scrollHeight+'px';void p.offsetHeight;p.style.height='0px';item.classList.remove('open');item.querySelector('.faq-q').setAttribute('aria-expanded','false');}
-function faqOpen(item){var p=item.querySelector('.faq-a');item.classList.add('open');item.querySelector('.faq-q').setAttribute('aria-expanded','true');p.style.height=p.querySelector('.faq-a-inner').offsetHeight+'px';}
-document.querySelectorAll('.faq-a').forEach(function(p){p.addEventListener('transitionend',function(e){if(e.propertyName!=='height')return;if(p.closest('.faq-item').classList.contains('open')){p.style.height='auto';[0,100,280,450,600,800].forEach(function(t){setTimeout(reportHeight,t);});}});});
-document.querySelectorAll('.faq-q').forEach(function(btn){btn.addEventListener('click',function(){var item=btn.closest('.faq-item');var wasOpen=item.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(faqClose);if(!wasOpen){faqOpen(item);[0,100,280,450,600,800].forEach(function(t){setTimeout(reportHeight,t);});}});});
+function makeFilterSection(title,counts,stateObj,type,prefix,defaultOpen){
+  var section=document.createElement('div');
+  section.className='filter-section'+(defaultOpen?' open':'');
+  section.innerHTML='<button class="filter-section-head" onclick="toggleSection(this)"><span>'+esc(title)+'</span><span class="filter-section-chev"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m3 4.5 3 3 3-3"/></svg></span></button>';
+  var body=document.createElement('div');
+  body.className='filter-section-body'+(defaultOpen?'':' hidden');
+  Object.keys(counts).sort().forEach(function(key){
+    var row=document.createElement('label');
+    row.className='check-row'+(stateObj[key]?' on':'');
+    row.dataset.key=key;row.dataset.ftype=type;row.dataset.prefix=prefix;
+    row.onclick=function(){toggleFilter(type,key);};
+    row.innerHTML='<div class="check-box"><span class="ck"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 8 3.5 3.5L13 5"/></svg></span></div>'
+      +'<span class="check-label">'+esc(key)+'</span>'
+      +'<span class="check-count">'+counts[key]+'</span>';
+    body.appendChild(row);
+  });
+  section.appendChild(body);
+  return section;
+}
 
-// ── YMM Selector ──
-function initYMM(){
-  var years={};CATALOG.forEach(function(r){for(var y=r[F.startYear];y<=r[F.endYear];y++)years[y]=true;});
-  var sel=document.getElementById('ymm-year');
-  Object.keys(years).sort(function(a,b){return b-a;}).forEach(function(y){var o=document.createElement('option');o.value=y;o.textContent=y;sel.appendChild(o);});
+function makePriceSection(prefix){
+  var section=document.createElement('div');
+  section.className='filter-section open';
+  section.innerHTML='<button class="filter-section-head" onclick="toggleSection(this)"><span>Price</span><span class="filter-section-chev"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m3 4.5 3 3 3-3"/></svg></span></button>';
+  var body=document.createElement('div');body.className='filter-section-body';
+  body.innerHTML=
+    '<div class="price-range">'
+      +'<div class="price-inputs">'
+        +'<label><span>Min</span><input type="number" id="'+prefix+'-price-min" value="'+filterPriceMin+'" min="0" max="2500" step="50" oninput="onPriceInput(\''+prefix+'\')"></label>'
+        +'<label><span>Max</span><input type="number" id="'+prefix+'-price-max" value="'+filterPriceMax+'" min="0" max="2500" step="50" oninput="onPriceInput(\''+prefix+'\')"></label>'
+      +'</div>'
+      +'<div class="price-slider">'
+        +'<div class="price-track"><div class="price-track-fill" id="'+prefix+'-price-fill" style="left:'+Math.round(filterPriceMin/2500*100)+'%;right:'+Math.round((1-filterPriceMax/2500)*100)+'%;"></div></div>'
+        +'<input type="range" min="0" max="2500" step="50" value="'+filterPriceMin+'" id="'+prefix+'-range-lo" oninput="onRangeInput(\''+prefix+'\',\'lo\',this.value)">'
+        +'<input type="range" min="0" max="2500" step="50" value="'+filterPriceMax+'" id="'+prefix+'-range-hi" oninput="onRangeInput(\''+prefix+'\',\'hi\',this.value)">'
+      +'</div>'
+      +'<div class="price-legend"><span>$'+filterPriceMin+'</span><span>$'+filterPriceMax+(filterPriceMax>=2500?'+':'')+'</span></div>'
+    +'</div>';
+  section.appendChild(body);
+  return section;
 }
-function ymmYearChange(){
-  var year=parseInt(document.getElementById('ymm-year').value);
-  var makeEl=document.getElementById('ymm-make'),modelEl=document.getElementById('ymm-model'),bedEl=document.getElementById('ymm-bed');
-  makeEl.innerHTML='<option value="">Make</option>';modelEl.innerHTML='<option value="">Model</option>';bedEl.innerHTML='<option value="">Bed Size</option>';
-  modelEl.disabled=true;bedEl.disabled=true;document.getElementById('ymm-btn').disabled=true;
-  if(!year){makeEl.disabled=true;return;}
-  var makes={};CATALOG.forEach(function(r){if(year>=r[F.startYear]&&year<=r[F.endYear])makes[r[F.make]]=true;});
-  makeEl.disabled=false;Object.keys(makes).sort().forEach(function(m){var o=document.createElement('option');o.value=m;o.textContent=m;makeEl.appendChild(o);});
+
+// ── Toggle helpers ──
+function toggleSection(headBtn){
+  var section=headBtn.parentElement;
+  section.classList.toggle('open');
+  var body=section.querySelector('.filter-section-body');
+  body.classList.toggle('hidden');
 }
-function ymmMakeChange(){
-  var year=parseInt(document.getElementById('ymm-year').value),make=document.getElementById('ymm-make').value;
-  var modelEl=document.getElementById('ymm-model'),bedEl=document.getElementById('ymm-bed');
-  modelEl.innerHTML='<option value="">Model</option>';bedEl.innerHTML='<option value="">Bed Size</option>';bedEl.disabled=true;document.getElementById('ymm-btn').disabled=true;
-  if(!make){modelEl.disabled=true;return;}
-  var models={};CATALOG.forEach(function(r){if(year>=r[F.startYear]&&year<=r[F.endYear]&&r[F.make]===make)models[r[F.model]]=true;});
-  modelEl.disabled=false;Object.keys(models).sort().forEach(function(m){var o=document.createElement('option');o.value=m;o.textContent=m;modelEl.appendChild(o);});
-}
-function ymmModelChange(){
-  var year=parseInt(document.getElementById('ymm-year').value),make=document.getElementById('ymm-make').value,model=document.getElementById('ymm-model').value;
-  var bedEl=document.getElementById('ymm-bed');bedEl.innerHTML='<option value="">Bed Size</option>';document.getElementById('ymm-btn').disabled=true;
-  if(!model){bedEl.disabled=true;return;}
-  var beds={};CATALOG.forEach(function(r){if(year>=r[F.startYear]&&year<=r[F.endYear]&&r[F.make]===make&&r[F.model]===model&&r[F.bedSize])beds[r[F.bedSize]+'|'+(r[F.bedIn]||'')]=true;});
-  bedEl.disabled=false;Object.keys(beds).sort().forEach(function(b){var pts=b.split('|');var o=document.createElement('option');o.value=b;o.textContent=pts[0]+(pts[1]?' ('+pts[1]+'"'+')':'');bedEl.appendChild(o);});
-  document.getElementById('ymm-btn').disabled=false;
-}
-function ymmBedChange(){document.getElementById('ymm-btn').disabled=false;}
-function ymmShopNow(){
-  var year=document.getElementById('ymm-year').value,make=document.getElementById('ymm-make').value,model=document.getElementById('ymm-model').value,bedVal=document.getElementById('ymm-bed').value;
-  if(!year||!make||!model)return;
-  var bedParts=bedVal?bedVal.split('|'):[];
-  var vehicle={year:year,make:make,model:model,trim:'',bedSize:bedParts[0]||'',bedIn:bedParts[1]?parseFloat(bedParts[1]):null,vin:''};
-  localStorage.setItem('garage_vehicle',JSON.stringify(vehicle));
-  garage=vehicle;filterFitOnly=true;filterProduct='';
-  initGarageBar();
-  document.getElementById('cb-fit').classList.add('checked');document.getElementById('cb-all').classList.remove('checked');
+
+function toggleFilter(type,key){
+  if(type==='brand')filterBrands[key]=!filterBrands[key];
+  else filterTypes[key]=!filterTypes[key];
+  syncFilterPanels();
   renderProducts();
-  document.querySelector('.catalog-wrap').scrollIntoView({behavior:'smooth'});
 }
 
-// ── What Fits My Ride? Popup ──
-(function(){
-  // Build year/make/model data from CATALOG
-  var WFMR_DATA={};
-  (CATALOG||[]).forEach(function(r){
-    for(var y=r[F.startYear];y<=r[F.endYear];y++){
-      var yr=String(y),mk=r[F.make],mo=r[F.model];
-      if(!WFMR_DATA[yr])WFMR_DATA[yr]={};
-      if(!WFMR_DATA[yr][mk])WFMR_DATA[yr][mk]=[];
-      if(WFMR_DATA[yr][mk].indexOf(mo)===-1)WFMR_DATA[yr][mk].push(mo);
+function onFitToggle(checkbox){
+  filterFitOnly=checkbox.checked&&!!garage;
+  var other=checkbox.id.startsWith('mob')?'desk-fit-toggle':'mob-fit-toggle';
+  var otherEl=document.getElementById(other);
+  if(otherEl)otherEl.checked=filterFitOnly;
+  renderProducts();
+}
+
+function updateFitToggle(){
+  ['desk','mob'].forEach(function(p){
+    var el=document.getElementById(p+'-fit-toggle');
+    if(el)el.checked=filterFitOnly&&!!garage;
+  });
+}
+
+function onPriceInput(prefix){
+  var minEl=document.getElementById(prefix+'-price-min');
+  var maxEl=document.getElementById(prefix+'-price-max');
+  filterPriceMin=parseInt(minEl.value)||0;
+  filterPriceMax=parseInt(maxEl.value)||2500;
+  updatePriceVisuals(prefix);
+  renderProducts();
+}
+
+function onRangeInput(prefix,which,val){
+  val=parseInt(val);
+  if(which==='lo'){filterPriceMin=Math.min(val,filterPriceMax-50);var el=document.getElementById(prefix+'-price-min');if(el)el.value=filterPriceMin;}
+  else{filterPriceMax=Math.max(val,filterPriceMin+50);var el=document.getElementById(prefix+'-price-max');if(el)el.value=filterPriceMax;}
+  updatePriceVisuals(prefix);
+  renderProducts();
+}
+
+function updatePriceVisuals(prefix){
+  var fill=document.getElementById(prefix+'-price-fill');
+  if(fill){fill.style.left=Math.round(filterPriceMin/2500*100)+'%';fill.style.right=Math.round((1-filterPriceMax/2500)*100)+'%';}
+  var lo=document.getElementById(prefix+'-range-lo'),hi=document.getElementById(prefix+'-range-hi');
+  if(lo)lo.value=filterPriceMin;if(hi)hi.value=filterPriceMax;
+  var legend=fill&&fill.closest('.price-range').querySelector('.price-legend');
+  if(legend)legend.innerHTML='<span>$'+filterPriceMin+'</span><span>$'+filterPriceMax+(filterPriceMax>=2500?'+':'')+'</span>';
+}
+
+function syncFilterPanels(){
+  // Sync checkboxes in both panels
+  ['filter-panel-desktop','filter-panel-mobile'].forEach(function(panelId){
+    var panel=document.getElementById(panelId);
+    if(!panel)return;
+    panel.querySelectorAll('.check-row[data-ftype]').forEach(function(row){
+      var type=row.dataset.ftype,key=row.dataset.key;
+      var on=(type==='brand'?filterBrands[key]:filterTypes[key])||false;
+      row.classList.toggle('on',on);
+    });
+  });
+  updateFitToggle();
+}
+
+function clearAllFilters(){
+  Object.keys(filterBrands).forEach(function(b){filterBrands[b]=false;});
+  Object.keys(filterTypes).forEach(function(t){filterTypes[t]=false;});
+  filterPriceMin=0;filterPriceMax=2500;
+  filterFitOnly=false;
+  syncFilterPanels();
+  ['desk','mob'].forEach(function(p){updatePriceVisuals(p);});
+  renderProducts();
+}
+
+function onSortChange(){
+  var d=document.getElementById('desk-sort-select'),m=document.getElementById('mob-sort-select');
+  sortBy=(d&&d===document.activeElement?d:m)&&document.activeElement.value||d.value;
+  if(d)d.value=sortBy;if(m)m.value=sortBy;
+  renderProducts();
+}
+
+function setView(v){
+  viewMode=v;
+  localStorage.setItem('catalog_view',v);
+  ['desk','mob'].forEach(function(p){
+    var g=document.getElementById(p+'-btn-grid'),l=document.getElementById(p+'-btn-list');
+    if(g)g.classList.toggle('on',v==='grid');
+    if(l)l.classList.toggle('on',v==='list');
+  });
+  renderProducts();
+}
+
+function onSearchInput(){
+  searchQ=document.getElementById('search-input').value.trim();
+  renderProducts();
+}
+
+// ── Drawer ──
+function openDrawer(){document.getElementById('filter-drawer').style.display='block';document.body.style.overflow='hidden';}
+function closeDrawer(){document.getElementById('filter-drawer').style.display='none';document.body.style.overflow='';}
+document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeDrawer();closeGarageModal();}});
+
+// ── Header update ──
+function updateHeader(){
+  var lbl=document.getElementById('hdr-vehicle-label');
+  var ngBar=document.getElementById('no-garage-bar');
+  if(garage){
+    lbl.textContent=garage.year+' '+garage.make+' '+garage.model;
+    lbl.classList.remove('empty');
+    ngBar.classList.add('hidden');
+  } else {
+    lbl.textContent='Set your truck';
+    lbl.classList.add('empty');
+    ngBar.classList.remove('hidden');
+  }
+  ['desk','mob'].forEach(function(p){
+    var vEl=document.getElementById(p+'-fit-vehicle');
+    var tog=document.getElementById(p+'-fit-toggle');
+    if(vEl){
+      if(garage){vEl.className='fit-banner-vehicle';vEl.textContent=garage.year+' '+garage.make+' '+garage.model;}
+      else{vEl.className='fit-banner-vehicle none';vEl.innerHTML='No vehicle saved — <a onclick="openGarageModal()" style="cursor:pointer;text-decoration:underline;color:var(--accent)">set your truck</a>';}
     }
+    if(tog){tog.disabled=!garage;tog.checked=filterFitOnly&&!!garage;}
   });
+}
 
-  // Populate year dropdown
-  var yearSel=document.getElementById('wfmr-year');
-  var years=Object.keys(WFMR_DATA).map(Number).sort(function(a,b){return b-a;});
-  years.forEach(function(y){
-    var o=document.createElement('option');o.value=y;o.textContent=y;yearSel.appendChild(o);
-  });
-
-  window.wfmrYearChange=function(){
-    var yr=yearSel.value;
-    var makeSel=document.getElementById('wfmr-make');
-    var modelSel=document.getElementById('wfmr-model');
-    makeSel.innerHTML='<option value="">Select vehicle make</option>';
-    modelSel.innerHTML='<option value="">Select vehicle model</option>';
-    modelSel.disabled=true;
-    document.getElementById('wfmr-submit').disabled=true;
-    if(!yr){makeSel.disabled=true;return;}
-    makeSel.disabled=false;
-    var makes=Object.keys(WFMR_DATA[yr]||{}).sort();
-    makes.forEach(function(m){var o=document.createElement('option');o.value=m;o.textContent=m;makeSel.appendChild(o);});
-  };
-
-  window.wfmrMakeChange=function(){
-    var yr=yearSel.value,mk=document.getElementById('wfmr-make').value;
-    var modelSel=document.getElementById('wfmr-model');
-    modelSel.innerHTML='<option value="">Select vehicle model</option>';
-    document.getElementById('wfmr-submit').disabled=true;
-    if(!mk){modelSel.disabled=true;return;}
-    modelSel.disabled=false;
-    var models=(WFMR_DATA[yr]&&WFMR_DATA[yr][mk])||[];
-    models.sort().forEach(function(m){var o=document.createElement('option');o.value=m;o.textContent=m;modelSel.appendChild(o);});
-    modelSel.addEventListener('change',function(){
-      document.getElementById('wfmr-submit').disabled=!modelSel.value;
-    },{once:false});
-  };
-
-  document.getElementById('wfmr-model').addEventListener('change',function(){
-    document.getElementById('wfmr-submit').disabled=!this.value;
-  });
-
-  window.wfmrSubmit=function(){
-    var yr=yearSel.value,mk=document.getElementById('wfmr-make').value,mo=document.getElementById('wfmr-model').value;
-    if(!yr||!mk||!mo)return;
-    var vehicle={year:yr,make:mk,model:mo,trim:'',bedSize:'',bedIn:null,vin:''};
-    localStorage.setItem('garage_vehicle',JSON.stringify(vehicle));
-    garage=vehicle;filterFitOnly=true;
-    initGarageBar();
-    document.getElementById('cb-fit').classList.add('checked');
-    document.getElementById('cb-all').classList.remove('checked');
-    renderProducts();
-    wfmrClose();
-  };
-
-  window.wfmrClose=function(){
-    var el=document.getElementById('wfmr-overlay');
-    el.style.opacity='0';
-    setTimeout(function(){el.style.display='none';reportHeight();},350);
-  };
-
-  // Show popup if no garage saved
-  if(!garage){
-    setTimeout(function(){
-      var el=document.getElementById('wfmr-overlay');
-      el.style.display='flex';
-      requestAnimationFrame(function(){el.classList.add('show');});
-    },400);
+// ── Garage modal ──
+function openGarageModal(){
+  document.getElementById('garage-modal').style.display='block';
+  document.body.style.overflow='hidden';
+  var hasVeh=document.getElementById('garage-has-vehicle');
+  var noVeh=document.getElementById('garage-no-vehicle');
+  if(garage){
+    hasVeh.classList.remove('hidden');
+    noVeh.classList.add('hidden');
+    document.getElementById('modal-vehicle-display').textContent=garage.year+' '+garage.make+' '+garage.model;
+  } else {
+    hasVeh.classList.add('hidden');
+    noVeh.classList.remove('hidden');
   }
-})();
+}
+function closeGarageModal(){document.getElementById('garage-modal').style.display='none';document.body.style.overflow='';}
 
-// ── Height reporting for Wix iframe ──
-function reportHeight(){
-    var h = Math.max(
-      document.body.scrollHeight,
-      document.body.offsetHeight,
-      document.documentElement.scrollHeight,
-      document.documentElement.offsetHeight
-    );
-    window.parent.postMessage(JSON.stringify({height:h}),'*');
-  }
-  document.addEventListener('DOMContentLoaded', reportHeight);
-  window.addEventListener('load', function(){
-    [0,200,500,1000,2000,3500].forEach(function(t){ setTimeout(reportHeight,t); });
+function removeGarage(){
+  localStorage.removeItem('garage_vehicle');
+  garage=null;filterFitOnly=false;
+  closeGarageModal();
+  updateHeader();
+  buildFilterPanels();
+  renderProducts();
+}
+
+function saveGarage(){
+  var yr=document.getElementById('sel-year').value;
+  var mk=document.getElementById('sel-make').value;
+  var mo=document.getElementById('sel-model').value;
+  if(!yr||!mk||!mo){alert('Please select Year, Make, and Model.');return;}
+  garage={year:yr,make:mk,model:mo,trim:'',bedSize:'',bedIn:null,vin:''};
+  localStorage.setItem('garage_vehicle',JSON.stringify(garage));
+  filterFitOnly=true;
+  closeGarageModal();
+  updateHeader();
+  buildFilterPanels();
+  renderProducts();
+}
+
+// ── YMM selects ──
+var YMM_DATA={};
+function initGarageSelects(){
+  var years={},makes={},models={};
+  CATALOG.forEach(function(r){
+    for(var y=r[F.startYear];y<=r[F.endYear];y++)years[y]=true;
+    makes[r[F.make]]=true;
+    if(!models[r[F.make]])models[r[F.make]]={};
+    models[r[F.make]][r[F.model]]=true;
   });
-  window.addEventListener('resize', reportHeight);
-  if(window.ResizeObserver){ new ResizeObserver(reportHeight).observe(document.body); }
+  YMM_DATA.years=Object.keys(years).map(Number).sort(function(a,b){return b-a;});
+  YMM_DATA.makeModels=models;
+  var yrSel=document.getElementById('sel-year');
+  YMM_DATA.years.forEach(function(y){var o=document.createElement('option');o.value=y;o.textContent=y;yrSel.appendChild(o);});
+}
+
+function onYearChange(){
+  var yr=parseInt(document.getElementById('sel-year').value);
+  var mkSel=document.getElementById('sel-make');
+  mkSel.innerHTML='<option value="">Make</option>';
+  mkSel.disabled=!yr;
+  document.getElementById('sel-model').innerHTML='<option value="">Model</option>';
+  document.getElementById('sel-model').disabled=true;
+  if(!yr)return;
+  var makes={};
+  CATALOG.forEach(function(r){if(yr>=r[F.startYear]&&yr<=r[F.endYear])makes[r[F.make]]=true;});
+  Object.keys(makes).sort().forEach(function(m){var o=document.createElement('option');o.value=m;o.textContent=m;mkSel.appendChild(o);});
+}
+
+function onMakeChange(){
+  var yr=parseInt(document.getElementById('sel-year').value);
+  var mk=document.getElementById('sel-make').value;
+  var moSel=document.getElementById('sel-model');
+  moSel.innerHTML='<option value="">Model</option>';
+  moSel.disabled=!mk;
+  if(!mk)return;
+  var models={};
+  CATALOG.forEach(function(r){if(yr>=r[F.startYear]&&yr<=r[F.endYear]&&r[F.make]===mk)models[r[F.model]]=true;});
+  Object.keys(models).sort().forEach(function(m){var o=document.createElement('option');o.value=m;o.textContent=m;moSel.appendChild(o);});
+}
 </script>
 </body>
 </html>
-
