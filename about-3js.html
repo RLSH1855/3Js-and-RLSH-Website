@@ -7,61 +7,94 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    html,body{margin:0;padding:0;overflow-x:hidden;background:#8B0000;}
+    html,body{margin:0;padding:0;overflow-x:hidden;background:#0A0A0A;}
     body{font-family:'Inter',sans-serif;}
 
     /* ── SKIP LINK ── */
     .skip-link{position:absolute;top:-100%;left:16px;z-index:9999;background:#fff;color:#8B0000;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:8px 20px;text-decoration:none;}
     .skip-link:focus{top:16px;}
 
-    /* ══ SECTION 1 — SERVICES & WARRANTY ══ */
-    .section{
+    /* ── SHARED TYPE ── */
+    .eyebrow{font-family:'Montserrat',sans-serif;font-size:clamp(9px,2.4vw,10px);font-weight:800;letter-spacing:clamp(2px,0.6vw,3px);text-transform:uppercase;color:rgba(255,255,255,0.50);display:inline-flex;align-items:center;gap:10px;margin-bottom:clamp(12px,3vw,18px);}
+    .eyebrow::before{content:'';width:clamp(16px,4vw,24px);height:2px;background:rgba(255,255,255,0.40);flex-shrink:0;}
+    h2{font-family:'Montserrat',sans-serif;font-size:clamp(24px,6.2vw,52px);font-weight:900;letter-spacing:-1px;line-height:1.05;color:#fff;text-wrap:balance;margin-bottom:clamp(14px,3vw,22px);}
+    h2 em{font-style:normal;color:rgba(255,255,255,0.50);}
+    .lead{font-family:'Inter',sans-serif;font-size:clamp(14px,3.6vw,17px);font-weight:400;color:rgba(255,255,255,0.78);line-height:1.65;max-width:600px;text-wrap:pretty;}
+
+    .inner{max-width:1180px;margin:0 auto;}
+
+    /* ══ SECTION 1 — 3J'S AUTO BODY (RED) ══ */
+    .red-section{
       position:relative;
       background:#8B0000;
-      padding:clamp(48px,7vw,88px) clamp(20px,4vw,24px) clamp(120px,18vw,220px);
+      padding:clamp(36px,7vw,72px) clamp(18px,4vw,32px) clamp(72px,13vw,160px);
       background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/crimson-spray-divider.webp');
       background-size:100% auto;
       background-position:bottom center;
       background-repeat:no-repeat;
     }
-    .inner{max-width:1100px;margin:0 auto;}
 
-    .eyebrow{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.50);display:block;margin-bottom:16px;}
-    h2{font-family:'Montserrat',sans-serif;font-size:clamp(26px,4vw,50px);font-weight:900;letter-spacing:-1.5px;line-height:1.05;color:#fff;text-wrap:balance;margin-bottom:20px;}
-    h2 em{font-style:normal;color:rgba(255,255,255,0.50);}
-    .lead{font-family:'Inter',sans-serif;font-size:clamp(15px,1.5vw,17px);font-weight:400;color:rgba(255,255,255,0.80);line-height:1.75;max-width:580px;text-wrap:pretty;margin-bottom:48px;}
-    .rule{width:40px;height:2px;background:rgba(255,255,255,0.30);margin-bottom:48px;}
+    /* Intro block */
+    .intro{display:grid;grid-template-columns:1fr;gap:clamp(24px,5vw,32px);align-items:end;margin-bottom:clamp(28px,4.5vw,48px);padding-bottom:clamp(28px,4.5vw,40px);border-bottom:1px solid rgba(255,255,255,0.14);}
+    @media(min-width:860px){.intro{grid-template-columns:1.4fr 1fr;gap:64px;}}
 
-    /* Grid — mobile base 1-col */
-    .grid{display:grid;grid-template-columns:1fr;gap:36px;}
-    @media(min-width:768px){.grid{grid-template-columns:1fr 1fr;gap:64px;}}
+    .warranty-badge{display:flex;flex-direction:column;align-items:flex-start;}
+    .warranty-badge .num{font-family:'Montserrat',sans-serif;font-size:clamp(44px,11vw,84px);font-weight:900;letter-spacing:-2px;color:#fff;line-height:0.9;margin-bottom:6px;}
+    .warranty-badge .sub{font-family:'Montserrat',sans-serif;font-size:clamp(10px,2.6vw,11px);font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:10px;}
+    .warranty-badge .desc{font-family:'Inter',sans-serif;font-size:clamp(13px,3.4vw,14px);font-weight:400;color:rgba(255,255,255,0.72);line-height:1.55;max-width:340px;text-wrap:pretty;}
 
-    .col-label{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.40);display:block;margin-bottom:22px;}
+    /* Services + CTA block */
+    .body-block{display:grid;grid-template-columns:1fr;gap:clamp(28px,5vw,48px);}
+    @media(min-width:860px){.body-block{grid-template-columns:1.4fr 1fr;gap:64px;}}
 
-    .service-list{list-style:none;display:flex;flex-direction:column;gap:11px;}
-    .service-list li{display:flex;align-items:center;gap:14px;font-family:'Inter',sans-serif;font-size:14px;font-weight:500;color:rgba(255,255,255,0.88);}
-    .service-list li::before{content:'';width:12px;height:2px;background:rgba(255,255,255,0.35);flex-shrink:0;}
+    .col-label{font-family:'Montserrat',sans-serif;font-size:clamp(9px,2.4vw,10px);font-weight:800;letter-spacing:clamp(2px,0.6vw,3px);text-transform:uppercase;color:rgba(255,255,255,0.45);display:block;margin-bottom:clamp(14px,3vw,20px);}
 
-    .warranty-card{background:rgba(0,0,0,0.22);border:1px solid rgba(255,255,255,0.14);padding:clamp(24px,3vw,36px);margin-bottom:24px;}
-    .warranty-num{font-family:'Montserrat',sans-serif;font-size:clamp(36px,4vw,52px);font-weight:900;letter-spacing:-2px;color:#fff;line-height:1;margin-bottom:4px;}
-    .warranty-sub{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,0.45);display:block;margin-bottom:18px;}
-    .warranty-text{font-family:'Inter',sans-serif;font-size:13px;font-weight:400;color:rgba(255,255,255,0.70);line-height:1.75;text-wrap:pretty;}
+    .service-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 clamp(14px,3vw,28px);}
+    .service-grid li{list-style:none;display:flex;align-items:center;gap:10px;font-family:'Inter',sans-serif;font-size:clamp(13px,3.4vw,14px);font-weight:500;color:rgba(255,255,255,0.90);line-height:1.35;padding:clamp(7px,1.8vw,9px) 0;border-top:1px solid rgba(255,255,255,0.22);}
+    .service-grid li:first-child,.service-grid li:nth-child(2){border-top:none;}
+    .service-grid li::before{content:'';width:5px;height:5px;background:rgba(255,255,255,0.55);flex-shrink:0;transform:rotate(45deg);}
 
-    .cta{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;height:48px;padding:0 32px;background:#fff;color:#8B0000;border-radius:0;transition:background 0.2s;touch-action:manipulation;}
-    .cta:hover{background:#f0f0f0;}
-    .cta svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2.2;flex-shrink:0;}
-    @media(min-width:601px){.cta{width:auto;}}
+    .cta-block{display:flex;flex-direction:column;align-items:flex-start;gap:clamp(12px,2.5vw,18px);}
+    .cta-block .pitch{font-family:'Inter',sans-serif;font-size:clamp(13px,3.4vw,14px);font-weight:400;color:rgba(255,255,255,0.75);line-height:1.6;text-wrap:pretty;}
+    .cta-block .pitch strong{color:#fff;font-weight:600;}
 
-    /* ══ SECTION 2 — RED LOCATION BAND ══ */
-    .red-section{background:#8B0000;border-top:1px solid rgba(0,0,0,0.20);padding:clamp(32px,5vw,56px) clamp(20px,4vw,48px);text-align:center;}
-    .red-section h3{font-family:'Montserrat',sans-serif;font-size:clamp(20px,3.5vw,38px);font-weight:900;letter-spacing:-0.5px;line-height:1.1;color:#fff;text-transform:uppercase;text-wrap:balance;margin-bottom:10px;}
-    .red-section h3 em{font-style:normal;color:rgba(255,255,255,0.60);}
-    .red-section h4{font-family:'Montserrat',sans-serif;font-size:clamp(12px,2vw,20px);font-weight:800;letter-spacing:1px;line-height:1.2;color:rgba(255,255,255,0.85);text-transform:uppercase;text-wrap:balance;}
+    .cta{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:'Montserrat',sans-serif;font-size:clamp(10px,2.6vw,11px);font-weight:800;letter-spacing:clamp(1.4px,0.4vw,2px);text-transform:uppercase;text-decoration:none;height:clamp(46px,10vw,52px);padding:0 clamp(20px,4.5vw,28px);background:#fff;color:#8B0000;border-radius:0;transition:background 0.2s,transform 0.2s;touch-action:manipulation;border:none;cursor:pointer;}
+    .cta:hover{background:#f0f0f0;transform:translateY(-1px);}
+    .cta svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2.4;flex-shrink:0;}
+    .cta.ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,0.45);}
+    .cta.ghost:hover{background:rgba(255,255,255,0.08);border-color:#fff;}
 
-    /* ══ SECTION 3 — BLACK BODY ══ */
-    .black-section{background:#0A0A0A;padding:clamp(28px,5vw,56px) clamp(20px,4vw,48px);text-align:center;}
-    .black-section p{font-family:'Inter',sans-serif;font-size:clamp(14px,1.4vw,16px);font-weight:400;color:rgba(255,255,255,0.75);line-height:1.75;max-width:720px;margin:0 auto;text-wrap:pretty;}
-    .black-section p strong{color:#fff;font-weight:600;}
+    /* Very small screens — let CTA fill width for tap target */
+    @media(max-width:480px){.cta{width:100%;}}
+
+    /* ══ SECTION 2 — RLSH (BLACK) ══ */
+    .black-section{
+      position:relative;
+      background:#0A0A0A;
+      padding:clamp(36px,7vw,72px) clamp(18px,4vw,32px) clamp(40px,6vw,72px);
+    }
+
+    .rlsh-head{text-align:left;margin-bottom:clamp(24px,4vw,40px);padding-bottom:clamp(22px,4vw,36px);border-bottom:1px solid rgba(255,255,255,0.10);}
+    .rlsh-head h2 em{color:#8B0000;font-style:normal;}
+    .rlsh-head .lead{margin-top:6px;}
+
+    .stat-row{display:grid;grid-template-columns:1fr;gap:0;margin-bottom:clamp(24px,4vw,40px);border-top:1px solid rgba(255,255,255,0.10);border-bottom:1px solid rgba(255,255,255,0.10);}
+    @media(min-width:680px){.stat-row{grid-template-columns:repeat(3,1fr);}}
+
+    .stat{padding:clamp(18px,4vw,28px) clamp(16px,3.5vw,28px);border-top:1px solid rgba(255,255,255,0.10);}
+    .stat:first-child{border-top:none;}
+    @media(min-width:680px){
+      .stat{border-top:none;border-left:1px solid rgba(255,255,255,0.10);}
+      .stat:first-child{border-left:none;}
+    }
+    .stat .num{font-family:'Montserrat',sans-serif;font-size:clamp(28px,7vw,46px);font-weight:900;letter-spacing:-1.5px;color:#fff;line-height:1;margin-bottom:6px;}
+    .stat .num em{font-style:normal;color:#8B0000;}
+    .stat .lbl{font-family:'Montserrat',sans-serif;font-size:clamp(9px,2.4vw,10px);font-weight:800;letter-spacing:clamp(2px,0.6vw,2.5px);text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:8px;display:block;}
+    .stat .txt{font-family:'Inter',sans-serif;font-size:clamp(12px,3.2vw,13px);font-weight:400;color:rgba(255,255,255,0.70);line-height:1.55;text-wrap:pretty;}
+
+    .rlsh-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:clamp(16px,3vw,24px);}
+    .rlsh-foot p{font-family:'Inter',sans-serif;font-size:clamp(13px,3.4vw,15px);font-weight:400;color:rgba(255,255,255,0.78);line-height:1.6;max-width:560px;text-wrap:pretty;}
+    .rlsh-foot p strong{color:#fff;font-weight:600;}
 
     @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;}}
   </style>
@@ -70,41 +103,47 @@
 <a href="#main-content" class="skip-link">Skip to content</a>
 <main id="main-content">
 
-  <!-- ══ SERVICES & WARRANTY ══ -->
-  <section class="section">
+  <!-- ══ SECTION 1 — 3J'S AUTO BODY ══ -->
+  <section class="red-section">
     <div class="inner">
 
-      <span class="eyebrow">Signal Hill, CA · Est. 1991</span>
-      <h2>Repairs Done Right.<br><em>Every Time. Guaranteed.</em></h2>
-      <p class="lead">We know a damaged vehicle is stressful. At 3J's, our commitment is to make the entire process smooth and hassle-free — from your first call to the day you drive away confident.</p>
+      <!-- Intro: headline (left) + Lifetime warranty (right) -->
+      <div class="intro">
+        <div>
+          <span class="eyebrow">3J's Auto Body · Signal Hill, CA · Est. 1991</span>
+          <h2>Repairs Done RIGHT.<br>Every Time. Guaranteed.</h2>
+          <p class="lead">A damaged vehicle is stressful. Our job is to make the rest of it easy — from your first call to the day you drive away confident.</p>
+        </div>
+        <div class="warranty-badge">
+          <div class="num">LIFETIME</div>
+          <span class="sub">Limited Warranty</span>
+          <p class="desc">Parts, labor, color matching, and gloss retention — covered on every job. One of the premier shops in LA and Orange County.</p>
+        </div>
+      </div>
 
-      <div class="rule"></div>
-
-      <div class="grid">
+      <!-- Services + CTA -->
+      <div class="body-block">
         <div>
           <span class="col-label">What We Offer</span>
-          <ul class="service-list">
+          <ul class="service-grid">
             <li>Auto Detailing</li>
             <li>Interior Cosmetic Repair</li>
             <li>Alloy Wheel Repair</li>
             <li>Paintless Dent Removal</li>
             <li>Window Tinting</li>
             <li>Headlight Restoration</li>
-            <li>7,000+ Off-Road Parts</li>
+            <li>Off-Road Parts</li>
             <li>Jeep &amp; Truck Accessories</li>
-            <li>Suspension Systems, Rims &amp; Tires</li>
-            <li>Bolt-On Parts Installation</li>
+            <li>Suspension, Rims &amp; Tires</li>
+            <li>Bolt-On Installation</li>
           </ul>
         </div>
-        <div>
-          <div class="warranty-card">
-            <div class="warranty-num">Lifetime</div>
-            <span class="warranty-sub">Limited Warranty</span>
-            <p class="warranty-text">On all work performed — parts, labor, color matching, and gloss retention. One of the premier auto body shops in Los Angeles and Orange County. Industry standards. Done right the first time.</p>
-          </div>
+        <div class="cta-block">
+          <span class="col-label" style="font-size:11px;">Get Started</span>
+          <p class="pitch">Tell us about your vehicle and we'll send a <strong>complimentary quote</strong> back — no obligation, no pressure.</p>
           <a href="https://www.3jsautobody.com/request-a-quote" class="cta" target="_top">
             <svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
-            Get a Complimentary Quote
+            Request a Quote
           </a>
         </div>
       </div>
@@ -112,19 +151,82 @@
     </div>
   </section>
 
-  <!-- ══ LOCATION HEADLINE ══ -->
-  <div class="red-section">
-    <h3>We're Southern California's <em>#1</em> Location</h3>
-    <h4>For Custom Truck, Jeep, and Car Accessories!</h4>
-  </div>
+  <!-- ══ SECTION 2 — RLSH ══ -->
+  <section class="black-section">
+    <div class="inner">
 
-  <!-- ══ RLSH BODY ══ -->
-  <div class="black-section">
-    <p>RLSH provides <strong>custom, professional installs</strong> for trucks, jeeps, commercial vans, and more. If you're looking to take your truck to the next level, you're in the right place. RLSH strives to use only <strong>parts made and manufactured in the USA.</strong></p>
-  </div>
+      <div class="rlsh-head">
+        <span class="eyebrow">Rhino Linings of Signal Hill</span>
+        <h2>Southern California's <em>#1</em> spot for custom truck, Jeep &amp; car accessories.</h2>
+        <p class="lead">Custom, professional installs for trucks, Jeeps, commercial vans and more. If you're ready to take your build to the next level, you're in the right place.</p>
+      </div>
+
+      <div class="stat-row">
+        <div class="stat">
+          <div class="num" id="parts-counter" data-target="7000" aria-label="7,000+ off-road parts">0<em style="padding:5px;">+</em></div>
+          <span class="lbl">Off-Road Parts</span>
+          <p class="txt">A massive in-house catalog of suspension, armor, lighting, wheels and tires.</p>
+        </div>
+        <div class="stat">
+          <div class="num">USA<em style="padding:5px;">·</em></div>
+          <span class="lbl">Made &amp; Manufactured</span>
+          <p class="txt">We strive to use only parts made and manufactured in the United States.</p>
+        </div>
+        <div class="stat">
+          <div class="num">1<em style="padding:5px;">:</em>1</div>
+          <span class="lbl">Custom Installs</span>
+          <p class="txt">Every build is dialed in by hand — no cookie-cutter packages, no shortcuts.</p>
+        </div>
+      </div>
+
+      <div class="rlsh-foot">
+        <p>From bed liners to full off-road builds, RLSH crews handle the install start to finish — under the same roof as 3J's Auto Body.</p>
+        <a href="https://www.3jsautobody.com/request-a-quote" class="cta ghost" target="_top">
+          Build Your Rig
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </section>
 
 </main>
 <script>
+/* Animated counter for the parts stat */
+(function(){
+  var el=document.getElementById('parts-counter');
+  if(!el) return;
+  var target=parseInt(el.getAttribute('data-target'),10)||0;
+  var em=el.querySelector('em');
+  var emHTML=em?em.outerHTML:'';
+  var started=false;
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  function format(n){return n.toLocaleString('en-US');}
+  function run(){
+    if(started) return; started=true;
+    if(reduce){el.innerHTML=format(target)+emHTML;return;}
+    var duration=1800,start=null;
+    function tick(ts){
+      if(start===null) start=ts;
+      var p=Math.min((ts-start)/duration,1);
+      var eased=p===1?1:1-Math.pow(2,-10*p); /* easeOutExpo */
+      var v=Math.round(target*eased);
+      el.innerHTML=format(v)+emHTML;
+      if(p<1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){if(e.isIntersecting){run();io.disconnect();}});
+    },{threshold:0.35});
+    io.observe(el);
+  }else{
+    run();
+  }
+})();
+
+/* iframe height auto-resize (parent listens for postMessage) */
 function reportHeight(){
   var h=Math.max(document.body.scrollHeight,document.body.offsetHeight,document.documentElement.scrollHeight,document.documentElement.offsetHeight);
   window.parent.postMessage(JSON.stringify({height:h}),'*');
@@ -134,6 +236,5 @@ window.addEventListener('load',function(){[0,200,500,1000,2000].forEach(function
 window.addEventListener('resize',reportHeight);
 if(window.ResizeObserver){new ResizeObserver(reportHeight).observe(document.body);}
 </script>
-<div id="height-sentinel" style="height:1px;width:1px;visibility:hidden;pointer-events:none;"></div>
 </body>
 </html>
