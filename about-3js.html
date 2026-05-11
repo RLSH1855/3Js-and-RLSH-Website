@@ -3,85 +3,76 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About 3J's Auto Body &amp; Rhino Linings of Signal Hill</title>
+  <title>About RLSH — 3J's Auto Body Signal Hill</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    html,body{margin:0;padding:0;overflow-x:hidden;background:#fff;}
+    html,body{margin:0;padding:0;overflow-x:hidden;background:#0A0A0A;}
     body{font-family:'Inter',sans-serif;}
 
-    .section{
-      position:relative;
-      overflow:hidden;
-    }
-    .section-bg{
-      position:absolute;
-      inset:0;
-      width:100%;height:100%;
-      display:block;
-      object-fit:fill;
-      z-index:0;
-      pointer-events:none;
-    }
-    .content{
-      position:relative;
-      z-index:1;
-      max-width:860px;
-      margin:0 auto;
-      padding:clamp(28px,4vw,48px) clamp(20px,4vw,48px);
+    /* ── RED SECTION ── */
+    .red-section{
+      background:#8B0000;
+      padding:clamp(36px,5vw,56px) clamp(20px,4vw,48px);
       text-align:center;
     }
-    .eyebrow{
+    .red-section h2{
       font-family:'Montserrat',sans-serif;
-      font-size:10px;font-weight:800;letter-spacing:3px;
+      font-size:clamp(20px,3.5vw,38px);
+      font-weight:900;
+      letter-spacing:-0.5px;
+      line-height:1.1;
+      color:#fff;
       text-transform:uppercase;
-      color:rgba(255,255,255,0.55);
-      display:block;margin-bottom:14px;
+      text-wrap:balance;
+      margin-bottom:10px;
     }
-    h2{
+    .red-section h2 em{font-style:normal;color:rgba(255,255,255,0.65);}
+    .red-section h3{
       font-family:'Montserrat',sans-serif;
-      font-size:clamp(22px,3vw,36px);
-      font-weight:900;letter-spacing:-1px;line-height:1.1;
-      color:#fff;text-wrap:balance;
-      margin-bottom:16px;
+      font-size:clamp(13px,2vw,20px);
+      font-weight:800;
+      letter-spacing:1px;
+      line-height:1.2;
+      color:rgba(255,255,255,0.85);
+      text-transform:uppercase;
+      text-wrap:balance;
     }
-    h2 em{font-style:normal;color:rgba(255,255,255,0.55);}
-    p{
+
+    /* ── BLACK SECTION ── */
+    .black-section{
+      background:#0A0A0A;
+      padding:clamp(32px,5vw,56px) clamp(20px,4vw,48px);
+      text-align:center;
+    }
+    .black-section p{
       font-family:'Inter',sans-serif;
-      font-size:clamp(14px,1.4vw,16px);font-weight:400;
-      color:rgba(255,255,255,0.82);
-      line-height:1.75;max-width:720px;
-      margin:0 auto 24px;text-wrap:pretty;
+      font-size:clamp(14px,1.4vw,16px);
+      font-weight:400;
+      color:rgba(255,255,255,0.75);
+      line-height:1.75;
+      max-width:720px;
+      margin:0 auto;
+      text-wrap:pretty;
     }
-    .cta{
-      display:inline-flex;align-items:center;justify-content:center;gap:8px;
-      font-family:'Montserrat',sans-serif;
-      font-size:11px;font-weight:800;letter-spacing:2px;
-      text-transform:uppercase;text-decoration:none;
-      height:48px;padding:0 32px;
-      background:#fff;color:#8B0000;
-      border-radius:0;
-      transition:background 0.2s;
+    .black-section p strong{
+      color:#fff;
+      font-weight:600;
     }
-    .cta:hover{background:#f0f0f0;}
-    @media(max-width:600px){.cta{width:100%;}}
   </style>
 </head>
 <body>
 <main>
-  <section class="section">
-    <img
-      src="https://rlsh1855.github.io/3Js-and-RLSH-Website/crimson-spray-divider.webp"
-      class="section-bg"
-      alt=""
-      aria-hidden="true">
-    <div class="content">
-      <span class="eyebrow">Signal Hill, CA · Est. 1991</span>
-      <h2>Repairs Done Right. <em>Every Time. Guaranteed.</em></h2>
-      <p>At 3J's Auto Body &amp; Rhino Linings of Signal Hill, we know vehicle repairs can be stressful — so we're committed to making the process smooth and hassle-free. We offer auto detailing, interior cosmetic repair, alloy wheel repair, paintless dent removal, window tinting, headlight restoration, access to 7,000+ off-road parts, Jeep and truck accessories, and installation of suspension systems, rims, and tires. We stand behind every job with a limited lifetime warranty on parts, labor, color matching, and gloss retention.</p>
-      <a href="https://www.3jsautobody.com/request-a-quote" class="cta" target="_top">Get a Complimentary Quote</a>
-    </div>
-  </section>
+
+  <div class="red-section">
+    <h2>We're Southern California's <em>#1</em> Location</h2>
+    <h3>For Custom Truck, Jeep, and Car Accessories!</h3>
+  </div>
+
+  <div class="black-section">
+    <p>RLSH provides <strong>custom, professional installs</strong> for trucks, jeeps, commercial vans, and more. If you're looking to take your truck to the next level, you're in the right place. RLSH strives to use only <strong>parts made and manufactured in the USA.</strong></p>
+  </div>
+
 </main>
 <script>
 function reportHeight(){
