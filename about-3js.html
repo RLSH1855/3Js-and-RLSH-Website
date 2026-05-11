@@ -6,14 +6,32 @@
   <title>About RLSH — 3J's Auto Body Signal Hill</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
+    :root{
+      --crimson:#8B0000;
+      --black-1:#0A0A0A;
+      --white:#ffffff;
+      --body-text:rgba(255,255,255,0.75);
+      --body-dim:rgba(255,255,255,0.85);
+    }
+
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    html,body{margin:0;padding:0;overflow-x:hidden;background:#0A0A0A;}
+    html,body{margin:0;padding:0;overflow-x:hidden;background:var(--black-1);}
     body{font-family:'Inter',sans-serif;}
 
-    /* ── RED SECTION ── */
+    /* ── SKIP LINK ── */
+    .skip-link{
+      position:absolute;top:-100%;left:16px;z-index:9999;
+      background:var(--white);color:var(--crimson);
+      font-family:'Montserrat',sans-serif;font-size:12px;font-weight:800;
+      letter-spacing:1px;text-transform:uppercase;
+      padding:8px 20px;text-decoration:none;
+    }
+    .skip-link:focus{top:16px;}
+
+    /* ── RED SECTION — mobile base ── */
     .red-section{
-      background:#8B0000;
-      padding:clamp(36px,5vw,56px) clamp(20px,4vw,48px);
+      background:var(--crimson);
+      padding:clamp(32px,5vw,56px) clamp(20px,4vw,48px);
       text-align:center;
     }
     .red-section h2{
@@ -22,47 +40,50 @@
       font-weight:900;
       letter-spacing:-0.5px;
       line-height:1.1;
-      color:#fff;
+      color:var(--white);
       text-transform:uppercase;
       text-wrap:balance;
       margin-bottom:10px;
     }
-    .red-section h2 em{font-style:normal;color:rgba(255,255,255,0.65);}
+    .red-section h2 em{font-style:normal;color:var(--body-dim);}
     .red-section h3{
       font-family:'Montserrat',sans-serif;
-      font-size:clamp(13px,2vw,20px);
+      font-size:clamp(12px,2vw,20px);
       font-weight:800;
       letter-spacing:1px;
       line-height:1.2;
-      color:rgba(255,255,255,0.85);
+      color:var(--body-dim);
       text-transform:uppercase;
       text-wrap:balance;
     }
 
-    /* ── BLACK SECTION ── */
+    /* ── BLACK SECTION — mobile base ── */
     .black-section{
-      background:#0A0A0A;
-      padding:clamp(32px,5vw,56px) clamp(20px,4vw,48px);
+      background:var(--black-1);
+      padding:clamp(28px,5vw,56px) clamp(20px,4vw,48px);
       text-align:center;
     }
     .black-section p{
       font-family:'Inter',sans-serif;
       font-size:clamp(14px,1.4vw,16px);
       font-weight:400;
-      color:rgba(255,255,255,0.75);
+      color:var(--body-text);
       line-height:1.75;
       max-width:720px;
       margin:0 auto;
       text-wrap:pretty;
     }
     .black-section p strong{
-      color:#fff;
+      color:var(--white);
       font-weight:600;
     }
+
+    @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;}}
   </style>
 </head>
 <body>
-<main>
+<a href="#main-content" class="skip-link">Skip to content</a>
+<main id="main-content">
 
   <div class="red-section">
     <h2>We're Southern California's <em>#1</em> Location</h2>
