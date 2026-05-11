@@ -10,11 +10,9 @@
     html,body{margin:0;padding:0;overflow-x:hidden;background:#0A0A0A;}
     body{font-family:'Inter',sans-serif;}
 
-    /* ── SKIP LINK ── */
     .skip-link{position:absolute;top:-100%;left:16px;z-index:9999;background:#fff;color:#8B0000;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:8px 20px;text-decoration:none;}
     .skip-link:focus{top:16px;}
 
-    /* ── SHARED TYPE ── */
     .eyebrow{font-family:'Montserrat',sans-serif;font-size:clamp(9px,2.4vw,10px);font-weight:800;letter-spacing:clamp(2px,0.6vw,3px);text-transform:uppercase;color:rgba(255,255,255,0.50);display:inline-flex;align-items:center;gap:10px;margin-bottom:clamp(12px,3vw,18px);}
     .eyebrow::before{content:'';width:clamp(16px,4vw,24px);height:2px;background:rgba(255,255,255,0.40);flex-shrink:0;}
     h2{font-family:'Montserrat',sans-serif;font-size:clamp(24px,6.2vw,52px);font-weight:900;letter-spacing:-1px;line-height:1.05;color:#fff;text-wrap:balance;margin-bottom:clamp(14px,3vw,22px);}
@@ -23,7 +21,6 @@
 
     .inner{max-width:1180px;margin:0 auto;}
 
-    /* ══ SECTION 1 — 3J'S AUTO BODY (RED) ══ */
     .red-section{
       position:relative;
       background:#8B0000;
@@ -34,7 +31,6 @@
       background-repeat:no-repeat;
     }
 
-    /* Intro block */
     .intro{display:grid;grid-template-columns:1fr;gap:clamp(24px,5vw,32px);align-items:end;margin-bottom:clamp(28px,4.5vw,48px);padding-bottom:clamp(28px,4.5vw,40px);border-bottom:1px solid rgba(255,255,255,0.14);}
     @media(min-width:860px){.intro{grid-template-columns:1.4fr 1fr;gap:64px;}}
 
@@ -43,7 +39,6 @@
     .warranty-badge .sub{font-family:'Montserrat',sans-serif;font-size:clamp(10px,2.6vw,11px);font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:10px;}
     .warranty-badge .desc{font-family:'Inter',sans-serif;font-size:clamp(13px,3.4vw,14px);font-weight:400;color:rgba(255,255,255,0.72);line-height:1.55;max-width:340px;text-wrap:pretty;}
 
-    /* Services + CTA block */
     .body-block{display:grid;grid-template-columns:1fr;gap:clamp(28px,5vw,48px);}
     @media(min-width:860px){.body-block{grid-template-columns:1.4fr 1fr;gap:64px;}}
 
@@ -64,10 +59,8 @@
     .cta.ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,0.45);}
     .cta.ghost:hover{background:rgba(255,255,255,0.08);border-color:#fff;}
 
-    /* Very small screens — let CTA fill width for tap target */
     @media(max-width:480px){.cta{width:100%;}}
 
-    /* ══ SECTION 2 — RLSH (BLACK) ══ */
     .black-section{
       position:relative;
       background:#0A0A0A;
@@ -103,15 +96,12 @@
 <a href="#main-content" class="skip-link">Skip to content</a>
 <main id="main-content">
 
-  <!-- ══ SECTION 1 — 3J'S AUTO BODY ══ -->
   <section class="red-section">
     <div class="inner">
-
-      <!-- Intro: headline (left) + Lifetime warranty (right) -->
       <div class="intro">
         <div>
           <span class="eyebrow">3J's Auto Body · Signal Hill, CA · Est. 1991</span>
-          <h2>Repairs Done RIGHT.<br>Every Time. Guaranteed.</h2>
+          <h2 style="border-width:0;border-style:solid;line-height:0.95;letter-spacing:-2px;">Repairs Done <span style="border-bottom:4px solid #fff;padding-bottom:3px;">RIGHT</span>.<br>Every Time.<br><span style="color:#fff;">Guaranteed.</span></h2>
           <p class="lead">A damaged vehicle is stressful. Our job is to make the rest of it easy — from your first call to the day you drive away confident.</p>
         </div>
         <div class="warranty-badge">
@@ -121,7 +111,6 @@
         </div>
       </div>
 
-      <!-- Services + CTA -->
       <div class="body-block">
         <div>
           <span class="col-label">What We Offer</span>
@@ -147,17 +136,14 @@
           </a>
         </div>
       </div>
-
     </div>
   </section>
 
-  <!-- ══ SECTION 2 — RLSH ══ -->
   <section class="black-section">
     <div class="inner">
-
       <div class="rlsh-head">
         <span class="eyebrow">Rhino Linings of Signal Hill</span>
-        <h2>Southern California's <em>#1</em> spot for custom truck, Jeep &amp; car accessories.</h2>
+        <h2>Southern California's <em>#1</em> spot for CUSTOM truck, Jeep &amp; car accessories.</h2>
         <p class="lead">Custom, professional installs for trucks, Jeeps, commercial vans and more. If you're ready to take your build to the next level, you're in the right place.</p>
       </div>
 
@@ -168,7 +154,7 @@
           <p class="txt">A massive in-house catalog of suspension, armor, lighting, wheels and tires.</p>
         </div>
         <div class="stat">
-          <div class="num">USA<em style="padding:5px;">·</em></div>
+          <div class="num"><span style="color:#8B0000;">U</span>S<span style="color:#033F7E;">A</span><em style="padding:5px;">·</em></div>
           <span class="lbl">Made &amp; Manufactured</span>
           <p class="txt">We strive to use only parts made and manufactured in the United States.</p>
         </div>
@@ -186,13 +172,11 @@
           <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
       </div>
-
     </div>
   </section>
 
 </main>
 <script>
-/* Animated counter for the parts stat */
 (function(){
   var el=document.getElementById('parts-counter');
   if(!el) return;
@@ -209,7 +193,7 @@
     function tick(ts){
       if(start===null) start=ts;
       var p=Math.min((ts-start)/duration,1);
-      var eased=p===1?1:1-Math.pow(2,-10*p); /* easeOutExpo */
+      var eased=p===1?1:1-Math.pow(2,-10*p);
       var v=Math.round(target*eased);
       el.innerHTML=format(v)+emHTML;
       if(p<1) requestAnimationFrame(tick);
@@ -226,7 +210,6 @@
   }
 })();
 
-/* iframe height auto-resize (parent listens for postMessage) */
 function reportHeight(){
   var h=Math.max(document.body.scrollHeight,document.body.offsetHeight,document.documentElement.scrollHeight,document.documentElement.offsetHeight);
   window.parent.postMessage(JSON.stringify({height:h}),'*');
