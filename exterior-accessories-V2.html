@@ -28,17 +28,17 @@
     @media(max-width:480px){.shop-nav-link{font-size:10px;padding:12px 14px;}.shop-nav-hint{font-size:10px;}}
 
     /* ── INTRO ── */
-    .shop-intro{padding:48px 24px 0;text-align:center;}
+    .shop-intro{padding:32px 16px 0;text-align:center;}
     .shop-intro h2{font-family:'Montserrat',sans-serif;font-size:clamp(20px,3vw,32px);font-weight:900;letter-spacing:-0.5px;color:#1a1a1a;margin-bottom:10px;}
     .shop-intro h2 em{font-style:normal;color:#8B0000;}
     .shop-intro p{font-size:15px;color:#666;line-height:1.65;max-width:480px;margin:0 auto;}
 
-    /* ── CATEGORY GRID ── */
-    .shop-grid-wrap{padding:40px 24px 72px;}
-    .shop-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1100px;margin:0 auto;}
+    /* ── CATEGORY GRID — mobile base (1-col) ── */
+    .shop-grid-wrap{padding:28px 16px 56px;}
+    .shop-grid{display:grid;grid-template-columns:1fr;gap:12px;max-width:1100px;margin:0 auto;}
 
     /* ── CATEGORY CARD ── */
-    .cat-card{display:block;position:relative;height:300px;overflow:hidden;text-decoration:none;border:2px solid transparent;transition:border-color 0.25s;}
+    .cat-card{display:block;position:relative;height:220px;overflow:hidden;text-decoration:none;border:2px solid transparent;transition:border-color 0.25s;}
     .cat-card:hover{border-color:#8B0000;}
     .cat-bg{position:absolute;inset:0;background-size:cover;background-position:center;}
     .cat-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.90) 0%,rgba(0,0,0,0.45) 55%,rgba(0,0,0,0.12) 100%);transition:background 0.3s;}
@@ -52,40 +52,39 @@
     .cat-btn svg{width:12px;height:12px;flex-shrink:0;}
 
     /* ── CTA BAND ── */
-    .cta-band{background:#0A0A0A;padding:56px 24px;text-align:center;position:relative;overflow:hidden;}
+    .cta-band{background:#0A0A0A;padding:40px 16px;text-align:center;position:relative;overflow:hidden;}
     .cta-band::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(139,0,0,0.12) 0%,transparent 65%);pointer-events:none;}
     .cta-band-inner{position:relative;z-index:1;max-width:600px;margin:0 auto;}
     .cta-band h2{font-family:'Montserrat',sans-serif;font-size:clamp(22px,3.5vw,36px);font-weight:900;letter-spacing:-0.5px;color:#fff;margin-bottom:10px;}
     .cta-band h2 em{font-style:normal;color:#8B0000;}
     .cta-band p{font-size:15px;color:rgba(255,255,255,0.60);line-height:1.65;margin-bottom:28px;}
-    .cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
-    .btn-red{display:inline-flex;align-items:center;gap:8px;height:48px;padding:0 32px;background:#8B0000;color:#fff;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border:none;transition:background 0.2s;touch-action:manipulation;}
+    .cta-btns{display:flex;gap:12px;flex-direction:column;align-items:center;flex-wrap:wrap;}
+    .btn-red{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:48px;padding:0 32px;background:#8B0000;color:#fff;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border:none;transition:background 0.2s;touch-action:manipulation;width:100%;max-width:320px;}
     .btn-red:hover{background:#a50000;}
-    .btn-ghost{display:inline-flex;align-items:center;gap:8px;height:48px;padding:0 32px;background:rgba(255,255,255,0.15);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);color:#fff;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border:1.5px solid rgba(255,255,255,0.55);transition:all 0.2s;touch-action:manipulation;}
+    .btn-ghost{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:48px;padding:0 32px;background:rgba(255,255,255,0.15);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);color:#fff;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border:1.5px solid rgba(255,255,255,0.55);transition:all 0.2s;touch-action:manipulation;width:100%;max-width:320px;}
     .btn-ghost:hover{background:rgba(255,255,255,0.28);border-color:rgba(255,255,255,0.9);}.btn-ghost:active{background:rgba(255,255,255,0.38);}
     .btn-red svg,.btn-ghost svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2.2;}
 
-    /* ── RESPONSIVE ── */
-    @media(max-width:900px){
-      .shop-grid{grid-template-columns:repeat(2,1fr);}
-      .cat-card{height:260px;}
-      .shop-grid-wrap{padding:32px 20px 56px;}
-      .shop-intro{padding:40px 20px 0;}
-      .cta-band{padding:48px 20px;}
+    /* ── RESPONSIVE — mobile-first ── */
+    @media(min-width:481px){
+      .shop-nav-link{font-size:11px;padding:14px 18px;}
+      .shop-nav-hint{font-size:11px;}
     }
-    @media(max-width:600px){
-      .shop-grid{grid-template-columns:1fr;gap:12px;}
-      .shop-grid-wrap{padding:28px 16px 56px;}
-      .shop-intro{padding:32px 16px 0;}
-      .cat-card{height:220px;}
-      .cat-tag{font-size:9px;letter-spacing:2px;}
-      .cat-name{font-size:20px;margin-bottom:4px;}
-      .cat-brands{font-size:11px;color:rgba(255,255,255,0.70);margin-bottom:12px;}
-      .cat-btn{height:36px;font-size:10px;padding:0 16px;}
-      .cta-band{padding:40px 16px;}
-      .cta-btns{flex-direction:column;align-items:center;}
-      .btn-red,.btn-ghost{width:100%;max-width:320px;justify-content:center;}
-      .shop-nav-link{padding:12px 14px;font-size:10px;}
+    @media(min-width:601px){
+      .shop-intro{padding:40px 20px 0;}
+      .shop-grid-wrap{padding:32px 20px 56px;}
+      .shop-grid{grid-template-columns:repeat(2,1fr);gap:20px;}
+      .cat-card{height:260px;}
+      .cta-band{padding:48px 20px;}
+      .cta-btns{flex-direction:row;justify-content:center;}
+      .btn-red,.btn-ghost{width:auto;max-width:none;}
+    }
+    @media(min-width:901px){
+      .shop-intro{padding:48px 24px 0;}
+      .shop-grid-wrap{padding:40px 24px 72px;}
+      .shop-grid{grid-template-columns:repeat(3,1fr);}
+      .cat-card{height:300px;}
+      .cta-band{padding:56px 24px;}
     }
   </style>
 </head>

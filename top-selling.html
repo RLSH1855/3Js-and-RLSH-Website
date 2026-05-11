@@ -36,76 +36,42 @@
       font-family:'Montserrat',sans-serif;
     }
 
-    /* ─── SHARED ─── */
-    .eyebrow{
-      font-size:10px;font-weight:800;letter-spacing:3px;
-      text-transform:uppercase;margin-bottom:12px;
-    }
-    .section-title{
-      font-size:clamp(26px,4vw,40px);font-weight:800;
-      letter-spacing:-1px;line-height:1.1;margin-bottom:18px;
-    }
+    /* ─── SHARED — mobile base ─── */
+    .eyebrow{font-size:9px;font-weight:800;letter-spacing:3px;text-transform:uppercase;margin-bottom:12px;}
+    .section-title{font-size:clamp(22px,4vw,40px);font-weight:800;letter-spacing:-1px;line-height:1.1;margin-bottom:18px;}
     .section-title em{font-style:normal;}
-
-    .section-body{
-      font-family:'Inter',sans-serif;
-      font-size:16px;font-weight:400;
-      color:var(--body-text);line-height:1.6;
-      max-width:520px;
-    }
+    .section-body{font-family:'Inter',sans-serif;font-size:15px;font-weight:400;color:var(--body-text);line-height:1.6;max-width:520px;}
     .section-body p+p{margin-top:12px;}
-
-    .feature-list{
-      list-style:none;margin-top:24px;
-      display:flex;flex-direction:column;gap:10px;
-    }
-    .feature-list li{
-      font-family:'Inter',sans-serif;
-      display:flex;align-items:center;gap:10px;
-      font-size:13px;font-weight:600;
-      letter-spacing:0.8px;text-transform:uppercase;
-    }
-    .feature-list li::before{
-      content:'';width:6px;height:6px;
-      border-radius:50%;background:var(--crimson);flex-shrink:0;
-    }
-
+    .feature-list{list-style:none;margin-top:24px;display:flex;flex-direction:column;gap:10px;}
+    .feature-list li{font-family:'Inter',sans-serif;display:flex;align-items:center;gap:10px;font-size:12px;font-weight:600;letter-spacing:0.8px;text-transform:uppercase;}
+    .feature-list li::before{content:'';width:10px;height:2px;background:var(--crimson);flex-shrink:0;}
     .cta-link{
-      display:inline-flex;align-items:center;gap:8px;
-      font-family:'Montserrat',sans-serif;
-      font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;
-      text-decoration:none;margin-top:28px;
-      padding:0 24px;height:48px;
-      border-radius:0;
-      transition:background 0.2s,color 0.2s,border-color 0.2s;
+      display:inline-flex;align-items:center;justify-content:center;gap:8px;
+      font-family:'Montserrat',sans-serif;font-size:12px;font-weight:800;
+      letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;
+      margin-top:18px;padding:0 24px;height:48px;border-radius:0;
+      transition:background 0.2s,color 0.2s,border-color 0.2s;width:100%;
     }
     .cta-link svg{width:14px;height:14px;}
 
-    /* Two-col layout */
+    /* Two-col layout — mobile base (1-col) */
     .two-col{
-      display:grid;grid-template-columns:1fr 1fr;
-      gap:80px;align-items:center;
+      display:grid;grid-template-columns:1fr;
+      gap:16px;align-items:center;
       max-width:1100px;margin:0 auto;
       padding:clamp(56px,8vw,100px) clamp(20px,4vw,40px);
     }
-    .two-col.flip .col-text{order:2;}
-    .two-col.flip .col-visual{order:1;}
+    .two-col.flip .col-text{order:1;}
+    .two-col.flip .col-visual{order:2;}
 
-    /* Number badge */
-    .num-badge{
-      font-family:'Montserrat',sans-serif;
-      font-size:clamp(80px,12vw,140px);font-weight:900;
-      line-height:1;letter-spacing:-4px;
-      opacity:0.06;
-      position:absolute;top:-20px;right:-10px;
-      pointer-events:none;user-select:none;
-    }
+    /* Number badge — hidden mobile */
+    .num-badge{display:none;font-family:'Montserrat',sans-serif;font-size:80px;font-weight:900;line-height:1;letter-spacing:-4px;opacity:0.06;position:absolute;top:-10px;right:0;pointer-events:none;user-select:none;}
     .col-visual{position:relative;}
 
     /* Visual box — square corners */
     .visual-box{
       border-radius:0;overflow:hidden;
-      aspect-ratio:4/3;
+      aspect-ratio:16/9;
       display:flex;align-items:center;justify-content:center;
       position:relative;
     }
@@ -174,7 +140,7 @@
     .texture-dark .two-col{position:relative;z-index:1;}
     .texture-light .two-col{position:relative;z-index:1;}
 
-    .stripe-break{height:4px;background:linear-gradient(to right,transparent,var(--crimson) 20%,var(--crimson) 80%,transparent);}
+    .stripe-break{height:2px;background:linear-gradient(to right,transparent,var(--crimson) 20%,var(--crimson) 80%,transparent);}
 
     /* CTA BAND */
     .cta-band{
@@ -245,23 +211,22 @@
       background:linear-gradient(to right,transparent,#8B0000 25%,#8B0000 75%,transparent);
     }
 
-    /* RESPONSIVE */
-    @media(max-width:900px){
-      .two-col{grid-template-columns:1fr;gap:28px;}
-      .two-col.flip .col-text{order:1;}
-      .two-col.flip .col-visual{order:2;}
-      .num-badge{font-size:80px;top:-10px;right:0;}
+    /* RESPONSIVE — mobile-first */
+    @media(min-width:601px){
+      .eyebrow{font-size:10px;}
+      .section-body{font-size:16px;}
+      .feature-list li{font-size:13px;}
+      .cta-link{margin-top:28px;width:auto;justify-content:flex-start;}
+      .two-col{gap:28px;}
+      .visual-box{aspect-ratio:4/3;}
+      .num-badge{display:block;}
+      .stripe-break{height:4px;}
     }
-    @media(max-width:600px){
-      .two-col{gap:16px;}
-      .visual-box{aspect-ratio:16/9;}
-      .num-badge{display:none;}
-      .section-title{font-size:22px !important;}
-      .section-body{font-size:15px;}
-      .feature-list li{font-size:12px;}
-      .eyebrow{font-size:9px;}
-      .cta-link{margin-top:18px;width:100%;justify-content:center;}
-      .stripe-break{height:2px;}
+    @media(min-width:901px){
+      .two-col{grid-template-columns:1fr 1fr;gap:80px;}
+      .two-col.flip .col-text{order:2;}
+      .two-col.flip .col-visual{order:1;}
+      .num-badge{font-size:clamp(80px,12vw,140px);top:-20px;right:-10px;}
     }
   </style>
 </head>
