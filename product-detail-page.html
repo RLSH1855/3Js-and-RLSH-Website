@@ -318,7 +318,8 @@
 <script type="text/babel">
 const { useState, useEffect, useMemo } = React;
 
-const QUOTE_URL = 'https://www.3jsautobody.com/rhino-lining-quote';
+const _qParams = new URLSearchParams(window.location.search);
+const QUOTE_URL = `parts-quote.html?product=${encodeURIComponent((_qParams.get('brand')||'BAK') + ' ' + (_qParams.get('product')||'BAKFlip F1'))}`;
 const LOGO_URL = 'https://static.wixstatic.com/media/b95bd9_86c7cf1e525d4b9e961a2738ed9af502~mv2.png';
 
 const F = { brand:0, product:1, partNum:2, bedIn:3, bedSize:4, startYear:5, endYear:6, make:7, model:8, desc:9, fitNote:10, map:11, img:12 };
