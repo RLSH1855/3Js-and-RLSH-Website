@@ -874,17 +874,21 @@
 </section>
 
 <script>
+  var _lastHeight=0;
   function reportHeight(){
     var sentinel=document.getElementById('height-sentinel');
     var h=sentinel?(sentinel.offsetTop+sentinel.offsetHeight):Math.max(document.body.scrollHeight,document.body.offsetHeight,document.documentElement.scrollHeight,document.documentElement.offsetHeight);
-    window.parent.postMessage(JSON.stringify({height:h}),'*');
+    if(h!==_lastHeight){_lastHeight=h;window.parent.postMessage(JSON.stringify({height:h}),'*');}
   }
-  window.addEventListener('load', function(){
-    [0,200,500,1000,2000,3500].forEach(function(t){ setTimeout(reportHeight,t); });
+  var _roTimer;
+  var _ro=window.ResizeObserver?new ResizeObserver(function(){clearTimeout(_roTimer);_roTimer=setTimeout(reportHeight,100);}):null;
+  window.addEventListener('load',function(){
+    if(_ro) _ro.observe(document.body);
+    reportHeight();
+    setTimeout(reportHeight,500);
+    setTimeout(function(){reportHeight();if(_ro)_ro.disconnect();},2000);
   });
-  window.addEventListener('resize', reportHeight);
-  if(window.ResizeObserver){ new ResizeObserver(reportHeight).observe(document.body); }
-  document.addEventListener('DOMContentLoaded', reportHeight);
+  document.addEventListener('DOMContentLoaded',reportHeight);
 </script>
 
 <div id="height-sentinel" style="height:1px;width:1px;visibility:hidden;pointer-events:none;"></div>
@@ -892,10 +896,6 @@
 
 <script>
 (function(){
-    requestAnimationFrame(raf);
-  }
-
-  // Scroll-triggered reveals via IntersectionObserver
   var revealObserver = new IntersectionObserver(function(entries){
     entries.forEach(function(entry){
       if(entry.isIntersecting){
