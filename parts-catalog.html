@@ -577,6 +577,22 @@ function App() {
 
   const openGaragePopup = () => setGarageOpen(true);
 
+  // Listen for garage save from iframe
+  useEffect(() => {
+    const onMsg = (e) => {
+      try {
+        const data = typeof e.data === 'string' ? JSON.parse(e.data) : e.data;
+        if(data && data.type === 'garage_saved' && data.vehicle){
+          setGarageState(data.vehicle);
+          setFilters(f => ({...f, fitOnly:true}));
+          setGarageOpen(false);
+        }
+      } catch(err){}
+    };
+    window.addEventListener('message', onMsg);
+    return () => window.removeEventListener('message', onMsg);
+  }, []);
+
   // Build unique product list from CATALOG
   const allProducts = useMemo(() => {
     const pm = {};

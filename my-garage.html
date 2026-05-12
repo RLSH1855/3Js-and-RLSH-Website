@@ -64,6 +64,7 @@
       overflow:hidden;
       padding:0;
     }
+    body.in-iframe .card-header{ display:none; }
     .card-header-bg{
       position:absolute;inset:0;
       background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/My_Garage_Header_image.webp');
@@ -650,6 +651,9 @@ document.addEventListener('click', function(e){
   if(!document.getElementById('year-picker').contains(e.target)) closeYearGrid();
 });
 
+// If loaded inside the catalog popup, hide the hero header
+if(window.self !== window.top){ document.body.classList.add('in-iframe'); }
+
 function ymmYearChange(){
   var makeSel = document.getElementById('ymm-make');
   var modelSel = document.getElementById('ymm-model');
@@ -817,6 +821,8 @@ function saveVehicle(){
   };
   localStorage.setItem('garage_vehicle', JSON.stringify(vehicle));
   showSaved(vehicle);
+  // Notify parent catalog page so it updates without a refresh
+  try { window.parent.postMessage(JSON.stringify({type:'garage_saved',vehicle:vehicle}), '*'); } catch(e){}
 }
 
 function showSaved(v){
