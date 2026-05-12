@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8" />
@@ -77,6 +77,18 @@
   .garage-popup-close { position: absolute; top: 12px; right: 12px; z-index: 10; background: rgba(0,0,0,.55); border: 1px solid rgba(255,255,255,.15); color: #fff; width: 36px; height: 36px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 20px; line-height: 1; transition: background .15s; }
   .garage-popup-close:hover { background: var(--accent); }
   .garage-popup-iframe { width: 100%; height: 720px; border: 0; display: block; }
+  /* ── Product Detail Popup ── */
+  .detail-popup-root { position: fixed; inset: 0; z-index: 500; display: flex; align-items: flex-end; justify-content: center; }
+  .detail-popup-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,.72); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); animation: fadeIn .2s ease-out; }
+  .detail-popup-card { position: relative; z-index: 1; width: 100%; max-height: 94vh; overflow: hidden; animation: slideUp .25s ease-out; background: #fff; border-top-left-radius: 12px; border-top-right-radius: 12px; box-shadow: 0 -8px 48px rgba(0,0,0,.5); }
+  .detail-popup-close { position: absolute; top: 10px; right: 10px; z-index: 10; background: rgba(0,0,0,.6); border: 1px solid rgba(255,255,255,.2); color: #fff; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 18px; line-height: 1; transition: background .15s; }
+  .detail-popup-close:hover { background: #8B0000; }
+  .detail-popup-iframe { width: 100%; height: 90vh; border: 0; display: block; }
+  @media(min-width:768px) {
+    .detail-popup-root { align-items: center; }
+    .detail-popup-card { width: 980px; max-width: 96vw; max-height: 92vh; border-radius: 8px; animation: fadeIn .2s ease-out; }
+    .detail-popup-iframe { height: 88vh; }
+  }
 
   .hdr-nav { display:flex; align-items: center; gap: 4px; padding: 0 18px; border-top: 1px solid rgba(255,255,255,.07); overflow-x: auto; scrollbar-width: none; }
   .hdr-nav::-webkit-scrollbar { display: none; }
@@ -540,7 +552,9 @@ function App() {
   const [view, setView] = useState(() => localStorage.getItem('catalog_view') || 'grid');
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [garageOpen, setGarageOpen] = useState(false);
+  const [detailProduct, setDetailProduct] = useState(null);
   const [showCount, setShowCount] = useState(8);
+  const openDetail = (brand, name) => setDetailProduct({brand, name});
 
   // Reset showCount whenever filters or sort change
   useEffect(() => { setShowCount(8); }, [filters, sort, garage]);
@@ -659,8 +673,8 @@ function App() {
               ? <div className="empty"><h3>No covers match those filters</h3><p>Try removing a filter or expanding the price range.</p><button className="btn-primary" onClick={clearAll}>Clear all filters</button></div>
               : <>
                   {view === 'grid'
-                    ? <div className="grid">{filtered.slice(0, showCount).map((p) => <ProductCard key={p.id} p={p} />)}</div>
-                    : <div className="list">{filtered.slice(0, showCount).map((p) => <ProductRow key={p.id} p={p} garage={garage} />)}</div>
+                    ? <div className="grid">{filtered.slice(0, showCount).map((p) => <ProductCard key={p.id} p={p} onOpenDetail={openDetail} />)}</div>
+                    : <div className="list">{filtered.slice(0, showCount).map((p) => <ProductRow key={p.id} p={p} garage={garage} onOpenDetail={openDetail} />)}</div>
                   }
                   {filtered.length > showCount && (
                     <div className="show-more-wrap">
@@ -681,6 +695,7 @@ function App() {
       </FilterDrawer>
 
       {garageOpen && <GaragePopup onClose={() => setGarageOpen(false)} />}
+      {detailProduct && <ProductDetailPopup brand={detailProduct.brand} name={detailProduct.name} onClose={() => setDetailProduct(null)} />}
     </div>
   );
 }
@@ -702,6 +717,25 @@ function GaragePopup({ onClose }) {
           src="https://rlsh1855.github.io/3Js-and-RLSH-Website/my-garage.html"
           title="My Garage"
         />
+      </div>
+    </div>
+  );
+}
+
+// ── Product Detail Popup ──
+function ProductDetailPopup({ brand, name, onClose }) {
+  React.useEffect(() => {
+    const onKey = (e) => { if (e.key === 'Escape') onClose(); };
+    document.addEventListener('keydown', onKey);
+    return () => document.removeEventListener('keydown', onKey);
+  }, [onClose]);
+  const src = `https://rlsh1855.github.io/3Js-and-RLSH-Website/product-detail.html?product=${encodeURIComponent(name)}&brand=${encodeURIComponent(brand)}`;
+  return (
+    <div className="detail-popup-root">
+      <div className="detail-popup-backdrop" onClick={onClose} />
+      <div className="detail-popup-card">
+        <button className="detail-popup-close" onClick={onClose} aria-label="Close">✕</button>
+        <iframe className="detail-popup-iframe" src={src} title={name} />
       </div>
     </div>
   );
@@ -955,16 +989,16 @@ function Toolbar({ count, sort, setSort, view, setView, garage }) {
 }
 
 // ── Product Card ──
-function ProductCard({ p }) {
+function ProductCard({ p, onOpenDetail }) {
   const imgSrc = PRODUCT_IMAGES[p.name];
   const quoteUrl = `https://rlsh1855.github.io/3Js-and-RLSH-Website/parts-quote.html?product=${encodeURIComponent(p.brand + ' ' + p.name)}`;
   return (
-    <a className="card" href={quoteUrl}>
+    <div className="card" onClick={() => onOpenDetail(p.brand, p.name)} style={{cursor:'pointer'}}>
       <div className="card-media">
         {imgSrc
           ? <img src={imgSrc} alt={p.name} style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}} />
           : <ProductPlaceholder brand={p.brand} name={p.name} />}
-        <button className="card-heart" aria-label="Save" onClick={e=>e.preventDefault()}>{Icon.heart}</button>
+        <button className="card-heart" aria-label="Save" onClick={e=>e.stopPropagation()}>{Icon.heart}</button>
         {p.fits && <div className="card-fit"><span className="card-fit-check">{Icon.check}</span><span>FITS</span></div>}
       </div>
       <div className="card-body">
@@ -973,18 +1007,18 @@ function ProductCard({ p }) {
         <div className="card-sub">{p.type || ' '}</div>
         <div className="card-foot">
           <span className="card-price">{p.minPrice ? `$${p.minPrice.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})}` : '—'}</span>
-          <button className="card-cta" onClick={e=>{e.preventDefault();window.location=quoteUrl;}}>Get a Quote</button>
+          <button className="card-cta" onClick={e=>{e.stopPropagation();window.location=quoteUrl;}}>Get a Quote</button>
         </div>
       </div>
-    </a>
+    </div>
   );
 }
 
 // ── Product Row ──
-function ProductRow({ p, garage }) {
+function ProductRow({ p, garage, onOpenDetail }) {
   const quoteUrl = `https://rlsh1855.github.io/3Js-and-RLSH-Website/parts-quote.html?product=${encodeURIComponent(p.brand + ' ' + p.name)}`;
   return (
-    <a className="row" href={quoteUrl}>
+    <div className="row" onClick={() => onOpenDetail(p.brand, p.name)} style={{cursor:'pointer'}}>
       <div className="row-media">{PRODUCT_IMAGES[p.name] ? <img src={PRODUCT_IMAGES[p.name]} alt={p.name} style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}} /> : <ProductPlaceholder brand={p.brand} name={p.name} />}</div>
       <div className="row-body">
         <div className="card-brand-label">{p.brand}</div>
@@ -994,9 +1028,9 @@ function ProductRow({ p, garage }) {
       </div>
       <div className="row-side">
         <span className="card-price">{p.minPrice ? `$${p.minPrice.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})}` : '—'}</span>
-        <button className="btn-primary row-cta" onClick={e=>{e.preventDefault();window.location=quoteUrl;}}>Get a Quote</button>
+        <button className="btn-primary row-cta" onClick={e=>{e.stopPropagation();window.location=quoteUrl;}}>Get a Quote</button>
       </div>
-    </a>
+    </div>
   );
 }
 
@@ -1174,3 +1208,5 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
 </script>
 </body>
 </html>
+
+
