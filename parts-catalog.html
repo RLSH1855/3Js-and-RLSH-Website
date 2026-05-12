@@ -957,8 +957,9 @@ function Toolbar({ count, sort, setSort, view, setView, garage }) {
 // ── Product Card ──
 function ProductCard({ p }) {
   const imgSrc = PRODUCT_IMAGES[p.name];
+  const quoteUrl = `https://rlsh1855.github.io/3Js-and-RLSH-Website/parts-quote.html?product=${encodeURIComponent(p.brand + ' ' + p.name)}`;
   return (
-    <a className="card" href="https://www.3jsautobody.com/rhino-lining-quote">
+    <a className="card" href={quoteUrl}>
       <div className="card-media">
         {imgSrc
           ? <img src={imgSrc} alt={p.name} style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}} />
@@ -972,7 +973,7 @@ function ProductCard({ p }) {
         <div className="card-sub">{p.type || ' '}</div>
         <div className="card-foot">
           <span className="card-price">{p.minPrice ? `$${p.minPrice.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})}` : '—'}</span>
-          <button className="card-cta" onClick={e=>{e.preventDefault();window.location='https://www.3jsautobody.com/rhino-lining-quote';}}>Get a Quote</button>
+          <button className="card-cta" onClick={e=>{e.preventDefault();window.location=quoteUrl;}}>Get a Quote</button>
         </div>
       </div>
     </a>
@@ -981,8 +982,9 @@ function ProductCard({ p }) {
 
 // ── Product Row ──
 function ProductRow({ p, garage }) {
+  const quoteUrl = `https://rlsh1855.github.io/3Js-and-RLSH-Website/parts-quote.html?product=${encodeURIComponent(p.brand + ' ' + p.name)}`;
   return (
-    <a className="row" href="https://www.3jsautobody.com/rhino-lining-quote">
+    <a className="row" href={quoteUrl}>
       <div className="row-media">{PRODUCT_IMAGES[p.name] ? <img src={PRODUCT_IMAGES[p.name]} alt={p.name} style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}} /> : <ProductPlaceholder brand={p.brand} name={p.name} />}</div>
       <div className="row-body">
         <div className="card-brand-label">{p.brand}</div>
@@ -992,7 +994,7 @@ function ProductRow({ p, garage }) {
       </div>
       <div className="row-side">
         <span className="card-price">{p.minPrice ? `$${p.minPrice.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})}` : '—'}</span>
-        <button className="btn-primary row-cta" onClick={e=>{e.preventDefault();window.location='https://www.3jsautobody.com/rhino-lining-quote';}}>Get a Quote</button>
+        <button className="btn-primary row-cta" onClick={e=>{e.preventDefault();window.location=quoteUrl;}}>Get a Quote</button>
       </div>
     </a>
   );
