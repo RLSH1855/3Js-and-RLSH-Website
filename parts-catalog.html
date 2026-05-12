@@ -44,7 +44,7 @@
   .hdr-promo .bolt { color: var(--accent); display:inline-flex; }
   .hdr-promo .bolt svg { width: 14px; height: 14px; }
   .hdr-ticker { display:flex; white-space:nowrap; animation: ticker-scroll 14s linear infinite; }
-  .hdr-ticker-item { display:inline-flex; align-items:center; gap: 8px; padding: 0 80px; }
+  .hdr-ticker-item { display:inline-flex; align-items:center; justify-content:center; gap: 8px; min-width: 100vw; }
   @keyframes ticker-scroll { 0% { transform:translateX(0); } 100% { transform:translateX(-33.333%); } }
 
   .hdr-main { display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center; padding: 12px 24px; }
