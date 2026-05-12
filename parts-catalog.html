@@ -448,6 +448,42 @@ function loadGarage() {
   try { const s = localStorage.getItem('garage_vehicle'); return s ? JSON.parse(s) : null; } catch(e) { return null; }
 }
 
+// ── My Garage hero images ──
+const GARAGE_HERO = {
+  // Ford
+  'Ford|F-150':                       'MY GARAGE IMAGES/F-150 MY GARAGE.webp',
+  'Ford|F-150 Lightning':             'MY GARAGE IMAGES/FORD LIGHTNING MY GARAGE.webp',
+  'Ford|Super Duty F-250/F-350':      'MY GARAGE IMAGES/F-250 MY GARAGE.webp',
+  'Ford|Ranger':                      'MY GARAGE IMAGES/FORD RANGER MY GARAGE.webp',
+  'Ford|Maverick':                    'MY GARAGE IMAGES/FORD MAVERICK MY GARAGE.webp',
+  // Chevrolet
+  'Chevrolet|Silverado 1500':         'MY GARAGE IMAGES/CHEVY SILVERADO 1500 MY GARAGE.webp',
+  'Chevrolet|Silverado 2500HD/3500HD':'MY GARAGE IMAGES/CHEVY SILVERADO HD MY GARAGE.webp',
+  'Chevrolet|Colorado':               'MY GARAGE IMAGES/CHEVY COLORADO MY GARAGE.webp',
+  // GMC
+  'GMC|Sierra 1500':                  'MY GARAGE IMAGES/GMC SIRERA 1500 MY GARAGE.webp',
+  'GMC|Sierra 2500HD/3500HD':         'MY GARAGE IMAGES/GMC SIRERA 2500 MY GARAGE.webp',
+  'GMC|Sierra EV':                    'MY GARAGE IMAGES/GMC EV MY GARAGE.webp',
+  'GMC|Canyon':                       'MY GARAGE IMAGES/GMC CANYON MY GARAGE.webp',
+  'GMC|Canyon AT4':                   'MY GARAGE IMAGES/GMC CANYON AT4 MY GAGRAGE.webp',
+  // RAM
+  'RAM|1500':                         'MY GARAGE IMAGES/RAM 1500 MY GARAGE.webp',
+  'RAM|1500 TRX':                     'MY GARAGE IMAGES/RAM TRX MY GARAGE.webp',
+  'RAM|1500 RHO':                     'MY GARAGE IMAGES/RAM RHO MY GAGRAGE.webp',
+  'RAM|2500/3500':                    'MY GARAGE IMAGES/RAM 2500 MY GARAGE.webp',
+  // Toyota
+  'Toyota|Tacoma':                    'MY GARAGE IMAGES/TOYOTA TACOMA MY GARAGE.webp',
+  'Toyota|Tundra':                    'MY GARAGE IMAGES/TOYOTA TUNDRA MY GARAGE.webp',
+  'Toyota|Pickup':                    'MY GARAGE IMAGES/TOYOTA PICKUP MY GARAGE.webp',
+  'Toyota|T100':                      'MY GARAGE IMAGES/TOYOTA T100 MY GARAGE.webp',
+  // Nissan
+  'Nissan|Frontier':                  'MY GARAGE IMAGES/NISSAN FRONTIER MY GARAGE.png',
+};
+function getGarageHero(garage) {
+  if (!garage) return null;
+  return GARAGE_HERO[`${garage.make}|${garage.model}`] || null;
+}
+
 // ── SVG Icons ──
 const Icon = {
   search: <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6"><circle cx="9" cy="9" r="6"/><path d="m14 14 4 4"/></svg>,
@@ -833,24 +869,29 @@ function HeroBanner({ garage, onSwapVehicle }) {
           </div>
         </div>
         <div className="hero-art">
-          <svg viewBox="0 0 600 360" preserveAspectRatio="xMidYMid slice" style={{width:'100%',height:'100%',display:'block'}}>
-            <defs>
-              <linearGradient id="hero-g" x1="0" x2="1" y1="0" y2="1">
-                <stop offset="0" stopColor="#1a1a1e"/>
-                <stop offset="1" stopColor="#2a2826"/>
-              </linearGradient>
-              <pattern id="hero-hatch" width="40" height="40" patternUnits="userSpaceOnUse">
-                <path d="M0 40L40 0M-10 10L10 -10M30 50L50 30" stroke="rgba(255,255,255,.04)" strokeWidth="1" fill="none"/>
-              </pattern>
-            </defs>
-            <rect width="600" height="360" fill="url(#hero-g)"/>
-            <rect width="600" height="360" fill="url(#hero-hatch)"/>
-            {[0,1,2,3,4,5].map(i =>
-              <path key={i} d={`M0 ${60+i*50} Q 200 ${30+i*50} 400 ${80+i*50} T 800 ${50+i*50}`} fill="none" stroke="rgba(255,255,255,.05)" strokeWidth="1"/>
-            )}
-            <text x="50%" y="50%" textAnchor="middle" fontFamily="ui-monospace,monospace" fontSize="11" fill="rgba(255,255,255,.4)" letterSpacing="0.2em">[ TRUCK HERO IMAGE ]</text>
-          </svg>
-          <div className="hero-tag" style={{color:'#fff',fontFamily:'Montserrat',fontWeight:'800'}}>FITS YOUR TRUCK</div>
+          {(() => {
+            const heroImg = getGarageHero(garage);
+            return heroImg
+              ? <img src={heroImg} alt={`${garage.year} ${garage.make} ${garage.model}`} style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center',display:'block'}}/>
+              : <svg viewBox="0 0 600 360" preserveAspectRatio="xMidYMid slice" style={{width:'100%',height:'100%',display:'block'}}>
+                  <defs>
+                    <linearGradient id="hero-g" x1="0" x2="1" y1="0" y2="1">
+                      <stop offset="0" stopColor="#1a1a1e"/>
+                      <stop offset="1" stopColor="#2a2826"/>
+                    </linearGradient>
+                    <pattern id="hero-hatch" width="40" height="40" patternUnits="userSpaceOnUse">
+                      <path d="M0 40L40 0M-10 10L10 -10M30 50L50 30" stroke="rgba(255,255,255,.04)" strokeWidth="1" fill="none"/>
+                    </pattern>
+                  </defs>
+                  <rect width="600" height="360" fill="url(#hero-g)"/>
+                  <rect width="600" height="360" fill="url(#hero-hatch)"/>
+                  {[0,1,2,3,4,5].map(i =>
+                    <path key={i} d={`M0 ${60+i*50} Q 200 ${30+i*50} 400 ${80+i*50} T 800 ${50+i*50}`} fill="none" stroke="rgba(255,255,255,.05)" strokeWidth="1"/>
+                  )}
+                  <text x="50%" y="50%" textAnchor="middle" fontFamily="ui-monospace,monospace" fontSize="11" fill="rgba(255,255,255,.4)" letterSpacing="0.2em">[ SET YOUR TRUCK ]</text>
+                </svg>;
+          })()}
+          {garage && <div className="hero-tag" style={{color:'#fff',fontFamily:'Montserrat',fontWeight:'800'}}>FITS YOUR TRUCK</div>}
         </div>
       </div>
     </section>
