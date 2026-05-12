@@ -343,7 +343,7 @@ const PRODUCT_TYPES = {
 
 const COVER_IMAGES = {
   'BAKFlip MX4':'bak-bakflip-mx4-2016-ford-f150-HERO-IMAGE-08.webp',
-  'BAKFlip MX4 TS':'bak-bakflip-mx4-2016-ford-f150-HERO-IMAGE-08.webp',
+  'BAKFlip MX4 TS':'MX4-TS/bak-bakflip-mx4-ts-ghost.webp',
   'BAKFlip F1':'bakflip-f1-cover.webp',
   'BAKFlip G2':'bak-g2-cover.webp',
   'BAKFlip FiberMax':'fibermax-main-image.webp',
@@ -384,13 +384,39 @@ const COVER_IMAGES = {
   'Truxport':'truxedo-sentry-ct-2018-ford-f250-white-moab-lifestyle04.webp',
   'Deuce':'truxedo-sentry-ct-2018-ford-f250-white-moab-lifestyle04.webp',
   'ArmorFlex':'undercover-armor-flex-2017-ford-f150-raptor-red-construction-lifestyle-01.webp',
-  'Ultra Flex':'Undercover Ultra Flex.webp',
+  'Ultra Flex':'undercover-ultra-flex.webp',
   'Flex':'undercover-armor-flex-2017-ford-f150-raptor-red-construction-lifestyle-01.webp',
   'Elite':'undercover-elite-cover.webp',
   'Elite Smooth':'undercover-elite-cover.webp',
   'Elite LX':'undercover-elite-lx.webp',
   'SE':'undercover-se-cover.webp',
   'SE Smooth':'undercover-se-cover.webp',
+};
+
+// Multiple gallery images per product — first image is the hero/catalog card
+const PRODUCT_GALLERY = {
+  'BAKFlip MX4': [
+    'bak-bakflip-mx4-2016-ford-f150-HERO-IMAGE-08.webp',
+    'bak-bakflip-mx4-2016-ford-f150-blue-beach-lifestyle-01.webp',
+    'bak-bakflip-mx4-2016-ford-f150-blue-beach-lifestyle-02.webp',
+    'bak-bakflip-mx4-2016-ford-f150-blue-beach-lifestyle-05.webp',
+    'bak-bakflip-mx4-2016-ford-f150-blue-beach-lifestyle-06.webp',
+    'bak-bakflip-mx4-2016-ford-f150-blue-beach-lifestyle-07.webp',
+    'bak-bakflip-mx4-2016-ford-f150-blue-beach-lifestyle-08.webp',
+  ],
+  'BAKFlip MX4 TS': [
+    'MX4-TS/bak-bakflip-mx4-ts-ghost.webp',
+    'MX4-TS/bakflip-mx4-ts.webp',
+    'MX4-TS/bakflip-mx4-ts-1.webp',
+    'MX4-TS/bakflip-mx4-ts-2.webp',
+    'MX4-TS/bakflip-mx4-ts-3.webp',
+  ],
+  'BAKFlip F1': [
+    'bakflip-f1-cover.webp',
+    'bak-f1-hero.webp',
+    'MX4-TS/bak-bakflip-f1-2019-chevrolet-silverado-red_1.webp',
+    'bak-bakflip-f1-2019-chevrolet-silverado-red.webp',
+  ],
 };
 
 const PRODUCT_INFO = {
@@ -524,19 +550,25 @@ function Breadcrumbs({ productName, coverType }) {
   );
 }
 
-function Gallery({ imgSrc, productName, fits, garage }) {
+function Gallery({ images, productName, fits, garage }) {
+  const [active, setActive] = useState(0);
+  const safeActive = Math.min(active, images.length - 1);
   return (
     <div className="gallery">
       <div className="gal-thumbs">
-        <button className="gal-thumb active">
-          {imgSrc
-            ? <img src={imgSrc} alt={productName} />
-            : <div style={{width:'100%',height:'100%',background:'#f4f4f1'}} />}
-        </button>
+        {images.length > 0 ? images.map((src, i) => (
+          <button key={i} className={`gal-thumb ${safeActive===i?'active':''}`} onClick={() => setActive(i)}>
+            <img src={src} alt={`${productName} view ${i+1}`} />
+          </button>
+        )) : (
+          <button className="gal-thumb active">
+            <div style={{width:'100%',height:'100%',background:'#f4f4f1'}} />
+          </button>
+        )}
       </div>
       <div className="gal-main">
-        {imgSrc
-          ? <img src={imgSrc} alt={productName} />
+        {images.length > 0
+          ? <img src={images[safeActive]} alt={productName} />
           : <div className="gal-main-placeholder">{productName}</div>}
         {garage && fits && (
           <div className="gal-badge">
@@ -964,7 +996,11 @@ function App() {
   const fits = useMemo(() => garage && entries.some(row => matchesTruck(row, garage)), [entries, garage]);
   const coverType = PRODUCT_TYPES[productName] || 'Hard Folding';
   const info = getProductInfo(productName, coverType);
-  const imgSrc = COVER_IMAGES[productName] || null;
+  const gallery = useMemo(() => {
+    if (PRODUCT_GALLERY[productName]) return PRODUCT_GALLERY[productName];
+    const single = COVER_IMAGES[productName];
+    return single ? [single] : [];
+  }, [productName]);
 
   useEffect(() => { document.title = `${productName} · ${brandName} Tonneau Cover · RLSH`; }, [productName, brandName]);
 
@@ -984,7 +1020,7 @@ function App() {
       <Breadcrumbs productName={productName} coverType={coverType} />
       <main className="pdp">
         <div className="pdp-top">
-          <Gallery imgSrc={imgSrc} productName={productName} fits={fits} garage={garage} />
+          <Gallery images={gallery} productName={productName} fits={fits} garage={garage} />
           <Info
             productName={productName} brandName={brandName} coverType={coverType}
             minPrice={minPrice} bedSizes={bedSizes} info={info}
