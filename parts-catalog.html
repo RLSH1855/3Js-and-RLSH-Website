@@ -92,8 +92,11 @@
   .crumb-sep { color: var(--fg-dim); }
   .crumb-now { color: var(--fg); }
 
-  /* ── Mobile garage btn ── */
-  .garage-mob-btn { display: none; }
+  /* ── Mobile search row (inside header, mobile only) ── */
+  .mob-search-row { display: none; }
+
+  /* ── Mobile vehicle bar (below header, mobile only) ── */
+  .mob-vehicle-bar { display: none; }
 
   /* ── Mobile sticky bar ── */
   .mobile-bar { display: none; }
@@ -286,30 +289,59 @@
 
   /* ── Responsive ── */
   @media (max-width: 900px) {
+    /* Header */
     .hdr-promo { display: none; }
-    .hdr-main { grid-template-columns: auto 1fr auto; gap: 12px; padding: 12px 16px; }
+    .hdr-main { grid-template-columns: auto 1fr; gap: 12px; padding: 10px 16px; }
     .search { display: none; }
     .garage-pill { display: none; }
-    .garage-mob-btn { display:inline-flex; align-items:center; background:var(--accent); color:#fff; border:0; padding:9px 14px; font-family:var(--display); font-weight:700; font-size:12px; letter-spacing:.08em; text-transform:uppercase; cursor:pointer; white-space:nowrap; }
+    .hdr-actions { display: none; }
+    .hdr-nav { display: none; }
+
+    /* Mobile search row — full-width inside sticky header */
+    .mob-search-row { display:flex; align-items:center; gap:10px; background:rgba(255,255,255,.07); margin:0 16px 10px; padding:0 14px; height:44px; border:1px solid rgba(255,255,255,.12); }
+    .mob-search-row:focus-within { border-color:var(--accent); }
+    .mob-search-row svg { width:16px; height:16px; color:rgba(255,255,255,.4); flex-shrink:0; }
+    .mob-search-row input { flex:1; background:transparent; border:0; color:#fff; font-size:14px; outline:none; }
+    .mob-search-row input::placeholder { color:rgba(255,255,255,.3); }
+
+    /* Mobile vehicle bar — full-width below header */
+    .mob-vehicle-bar { display:flex; align-items:center; gap:14px; padding:14px 18px; cursor:pointer; transition:filter .15s; }
+    .mob-vehicle-bar.no-vehicle { background:var(--accent); }
+    .mob-vehicle-bar.has-vehicle { background:#1c1c1e; border-bottom:1px solid rgba(255,255,255,.08); }
+    .mob-vehicle-bar:hover { filter:brightness(1.08); }
+    .mvb-ico { display:inline-flex; flex-shrink:0; }
+    .mvb-ico svg { width:28px; height:28px; }
+    .mob-vehicle-bar.no-vehicle .mvb-ico svg { stroke:#fff; }
+    .mob-vehicle-bar.has-vehicle .mvb-ico svg { stroke:var(--accent); }
+    .mvb-label { flex:1; font-family:var(--display); font-weight:700; font-size:16px; letter-spacing:.06em; text-transform:uppercase; }
+    .mob-vehicle-bar.no-vehicle .mvb-label { color:#fff; }
+    .mob-vehicle-bar.has-vehicle .mvb-label { color:#fff; }
+    .mvb-chev { display:inline-flex; flex-shrink:0; }
+    .mvb-chev svg { width:18px; height:18px; }
+    .mob-vehicle-bar.no-vehicle .mvb-chev svg { stroke:rgba(255,255,255,.7); }
+    .mob-vehicle-bar.has-vehicle .mvb-chev svg { stroke:rgba(255,255,255,.45); }
+
+    /* Filters/sort/view bar */
+    .mobile-bar { display:flex; position:sticky; top:110px; z-index:30; background:rgba(10,10,12,.97); backdrop-filter:blur(12px); padding:10px 16px; gap:0; border-bottom:1px solid var(--border); align-items:center; justify-content:space-between; }
+    .mb-filters { flex:1; display:flex; align-items:center; justify-content:center; gap:6px; background:var(--surface2); border:1px solid var(--border-strong); color:var(--fg); padding:10px; font-family:var(--display); font-weight:600; letter-spacing:.08em; text-transform:uppercase; font-size:12px; cursor:pointer; margin-right:8px; }
+    .mb-filters svg { width:15px; height:15px; }
+    .mb-count { background:var(--accent); color:#fff; padding:2px 6px; font-family:var(--mono); font-size:11px; font-weight:700; }
+    .mb-sort { flex:1; background:var(--surface); color:var(--fg); border:1px solid var(--border); padding:10px 6px; font-size:12px; outline:none; min-width:0; margin-right:8px; text-align:center; }
+    .mb-view { display:flex; border:1px solid var(--border); flex-shrink:0; }
+    .mb-view button { background:transparent; border:0; color:var(--fg-muted); padding:9px 12px; cursor:pointer; }
+    .mb-view button.on { color:var(--accent); background:var(--surface2); }
+    .mb-view svg { width:15px; height:15px; }
+
+    /* Layout */
+    .toolbar { display: none; }
     .hero-grid { grid-template-columns: 1fr; }
-    .hero-copy { padding: 32px 20px; }
+    .hero-copy { padding: 28px 18px; }
     .hero-art { display: none; }
-    .crumbs { padding: 12px 16px; font-size: 10px; }
+    .crumbs { padding: 10px 16px; font-size: 10px; }
     .chip-rail { padding: 0 16px 12px; }
     .layout-sidebar { grid-template-columns: 1fr; padding: 0 16px; }
     .sidebar { display: none; }
     .catalog { padding-bottom: 48px; }
-    .mobile-bar { display:flex; position: sticky; top: 56px; z-index: 30; background: rgba(10,10,12,.97); backdrop-filter: blur(12px); padding: 10px 16px; gap: 0; border-bottom: 1px solid var(--border); align-items: center; justify-content: space-between; }
-    .mb-filters { flex: 1; display:flex; align-items: center; justify-content:center; gap: 6px; background: var(--surface2); border: 1px solid var(--border-strong); color: var(--fg); padding: 10px 10px; font-family: var(--display); font-weight: 600; letter-spacing: .08em; text-transform: uppercase; font-size: 12px; cursor: pointer; margin-right: 8px; }
-    .mb-filters svg { width: 15px; height: 15px; }
-    .mb-count { background: var(--accent); color: #fff; padding: 2px 6px; font-family: var(--mono); font-size: 11px; font-weight: 700; }
-    .mb-sort { flex: 1; background: var(--surface); color: var(--fg); border: 1px solid var(--border); padding: 10px 6px; font-size: 12px; outline: none; min-width: 0; margin-right: 8px; text-align:center; }
-    .mb-view { display:flex; border: 1px solid var(--border); flex-shrink:0; }
-    .mb-view button { background:transparent; border:0; color: var(--fg-muted); padding: 9px 12px; cursor: pointer; }
-    .mb-view button.on { color: var(--accent); background: var(--surface2); }
-    .mb-view svg { width: 15px; height: 15px; }
-    .toolbar { display: none; }
-    .hdr-nav { padding: 0 8px; }
     .grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
     .row { grid-template-columns: 120px 1fr; }
     .row-side { grid-column: 2; flex-direction: row; align-items: center; justify-content: space-between; flex-wrap: wrap; }
@@ -515,6 +547,7 @@ function App() {
   return (
     <div className="app">
       <Header garage={garage} onSwapVehicle={() => setGarageOpen(true)} />
+      <MobileVehicleBar garage={garage} onSwap={() => setGarageOpen(true)} />
       <HeroBanner garage={garage} onSwapVehicle={() => setGarageOpen(true)} />
       <Breadcrumbs />
 
@@ -599,8 +632,11 @@ function Header({ garage, onSwapVehicle }) {
             </span>
             <span className="garage-pill-swap">{Icon.swap}</span>
           </button>
-          <button className="garage-mob-btn" onClick={onSwapVehicle}>{mobBtnLabel}</button>
         </div>
+      </div>
+      <div className="mob-search-row">
+        {Icon.search}
+        <input placeholder="Search tonneau covers, brands…" />
       </div>
       <nav className="hdr-nav">
         <a className="nav-item active">Tonneau Covers</a>
@@ -609,6 +645,19 @@ function Header({ garage, onSwapVehicle }) {
         <a className="nav-item" href="inside-3js.html">About 3J's</a>
       </nav>
     </header>
+  );
+}
+
+// ── Mobile Vehicle Bar ──
+function MobileVehicleBar({ garage, onSwap }) {
+  const chevDown = <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="m6 9 6 6 6-6"/></svg>;
+  const truckIco = <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="M1 6h13v9H1z"/><path d="M14 9h5l3 3v3h-8z"/><circle cx="6" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg>;
+  return (
+    <div className={`mob-vehicle-bar ${garage ? 'has-vehicle' : 'no-vehicle'}`} onClick={onSwap}>
+      <span className="mvb-ico">{truckIco}</span>
+      <span className="mvb-label">{garage ? `${garage.year} ${garage.make} ${garage.model}` : 'Add Your Vehicle'}</span>
+      <span className="mvb-chev">{chevDown}</span>
+    </div>
   );
 }
 
