@@ -342,9 +342,12 @@
     });
   }
 
-  // Init on DOM ready
+  // Expose open function for manual trigger
+  window.rlshShowYMMPopup = initPopup;
+
+  // Init on DOM ready — skip auto-show if rlshYmmManual is set
   function maybeShow(){
-    if(!hasYMM()){
+    if(!window.rlshYmmManual && !hasYMM()){
       setTimeout(initPopup, 600);
     }
   }

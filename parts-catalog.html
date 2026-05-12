@@ -57,15 +57,23 @@
   .search kbd { font-family: var(--mono); font-size: 11px; color: rgba(255,255,255,.3); border: 1px solid rgba(255,255,255,.15); padding: 2px 6px; border-radius: 2px; }
 
   .hdr-actions { display:flex; align-items:center; gap: 8px; }
-  .garage-pill { display:flex; align-items:center; gap: 10px; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.15); color: #fff; padding: 6px 8px 6px 12px; cursor: pointer; border-radius: 2px; transition: border-color .15s, background .15s; }
-  .garage-pill:hover { border-color: var(--accent); }
-  .garage-pill-ico { color: var(--accent); display:inline-flex; }
-  .garage-pill-ico svg { width: 22px; height: 22px; }
-  .garage-pill-txt { display:flex; flex-direction: column; align-items: flex-start; line-height: 1.1; }
-  .garage-pill-label { font-family: var(--mono); font-size: 9.5px; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.45); }
-  .garage-pill-vehicle { font-family: var(--display); font-weight: 700; font-size: 14px; letter-spacing: .03em; color: #fff; }
-  .garage-pill-swap { color: rgba(255,255,255,.4); padding: 4px; }
+  .garage-pill { display:flex; align-items:center; gap: 12px; width:350px; height:66px; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.15); color: #fff; padding: 0 14px 0 16px; cursor: pointer; transition: border-color .15s, background .15s; flex-shrink:0; }
+  .garage-pill:hover { border-color: var(--accent); background: rgba(255,255,255,.11); }
+  .garage-pill-ico { color: var(--accent); display:inline-flex; flex-shrink:0; }
+  .garage-pill-ico svg { width: 26px; height: 26px; }
+  .garage-pill-txt { display:flex; flex-direction: column; align-items: flex-start; line-height: 1.15; flex:1; }
+  .garage-pill-label { font-family: var(--mono); font-size: 9.5px; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.45); }
+  .garage-pill-vehicle { font-family: var(--display); font-weight: 700; font-size: 15px; letter-spacing: .03em; color: #fff; }
+  .garage-pill-swap { color: rgba(255,255,255,.35); flex-shrink:0; }
   .garage-pill-swap svg { width: 16px; height: 16px; }
+
+  /* ── Garage iframe popup ── */
+  .garage-popup-root { position: fixed; inset: 0; z-index: 500; display: flex; align-items: center; justify-content: center; }
+  .garage-popup-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,.72); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); animation: fadeIn .2s ease-out; }
+  .garage-popup-card { position: relative; z-index: 1; width: 680px; max-width: 95vw; max-height: 88vh; overflow-y: auto; animation: fadeIn .22s ease-out; box-shadow: 0 24px 64px rgba(0,0,0,.6); }
+  .garage-popup-close { position: absolute; top: 12px; right: 12px; z-index: 10; background: rgba(0,0,0,.55); border: 1px solid rgba(255,255,255,.15); color: #fff; width: 36px; height: 36px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 20px; line-height: 1; transition: background .15s; }
+  .garage-popup-close:hover { background: var(--accent); }
+  .garage-popup-iframe { width: 100%; height: 720px; border: 0; display: block; }
 
   .hdr-nav { display:flex; align-items: center; gap: 4px; padding: 0 18px; border-top: 1px solid rgba(255,255,255,.07); overflow-x: auto; scrollbar-width: none; }
   .hdr-nav::-webkit-scrollbar { display: none; }
@@ -365,7 +373,9 @@
 <body>
 <div id="root"></div>
 
+<script>window.rlshYmmManual = true;</script>
 <script src="catalog-data.js"></script>
+<script src="ymm-popup.js"></script>
 <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
@@ -476,6 +486,23 @@ function App() {
   // Persist view
   useEffect(() => { localStorage.setItem('catalog_view', view); }, [view]);
 
+  // Listen for YMM popup submission and update garage state
+  useEffect(() => {
+    const onYMM = (e) => {
+      const { year, make, model } = e.detail;
+      const g = { year, make, model, trim:'', bedSize:'', bedIn:null, vin:'' };
+      localStorage.setItem('garage_vehicle', JSON.stringify(g));
+      setGarageState(g);
+      setFilters(f => ({...f, fitOnly:true}));
+    };
+    window.addEventListener('rlsh:ymm', onYMM);
+    return () => window.removeEventListener('rlsh:ymm', onYMM);
+  }, []);
+
+  const openGaragePopup = () => {
+    if (window.rlshShowYMMPopup) window.rlshShowYMMPopup();
+  };
+
   // Build unique product list from CATALOG
   const allProducts = useMemo(() => {
     const pm = {};
@@ -542,9 +569,9 @@ function App() {
 
   return (
     <div className="app">
-      <Header garage={garage} onSwapVehicle={() => setGarageOpen(true)} />
-      <MobileVehicleBar garage={garage} onSwap={() => setGarageOpen(true)} />
-      <HeroBanner garage={garage} onSwapVehicle={() => setGarageOpen(true)} />
+      <Header garage={garage} onSwapVehicle={openGaragePopup} />
+      <MobileVehicleBar garage={garage} onSwap={openGaragePopup} />
+      <HeroBanner garage={garage} onSwapVehicle={openGaragePopup} />
       <Breadcrumbs />
 
       <main className="catalog">
@@ -564,7 +591,7 @@ function App() {
 
         <div className="layout layout-sidebar">
           <aside className="sidebar">
-            <FilterPanel filters={filters} setFilters={setFilters} toggleSet={toggleSet} garage={garage} onSwapVehicle={()=>setGarageOpen(true)} brandCounts={brandCounts} typeCounts={typeCounts} />
+            <FilterPanel filters={filters} setFilters={setFilters} toggleSet={toggleSet} garage={garage} onSwapVehicle={openGaragePopup} brandCounts={brandCounts} typeCounts={typeCounts} />
           </aside>
           <section className="results">
             <Toolbar count={filtered.length} sort={sort} setSort={setSort} view={view} setView={setView} garage={garage} />
@@ -590,10 +617,8 @@ function App() {
 
 
       <FilterDrawer open={drawerOpen} onClose={() => setDrawerOpen(false)}>
-        <FilterPanel filters={filters} setFilters={setFilters} toggleSet={toggleSet} garage={garage} onSwapVehicle={()=>{setDrawerOpen(false);setGarageOpen(true);}} brandCounts={brandCounts} typeCounts={typeCounts} mobile />
+        <FilterPanel filters={filters} setFilters={setFilters} toggleSet={toggleSet} garage={garage} onSwapVehicle={()=>{setDrawerOpen(false);openGaragePopup();}} brandCounts={brandCounts} typeCounts={typeCounts} mobile />
       </FilterDrawer>
-
-      <GarageModal open={garageOpen} onClose={() => setGarageOpen(false)} garage={garage} setGarage={setGarage} />
     </div>
   );
 }
