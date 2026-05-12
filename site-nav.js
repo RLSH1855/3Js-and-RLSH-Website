@@ -1372,4 +1372,12 @@
     }
   })();
 
+  // Load garage FAB widget on all pages that use site-nav
+  (function(){
+    if(document.getElementById('gc-ov')) return; // already loaded
+    var s=document.createElement('script');
+    s.src='https://rlsh1855.github.io/3Js-and-RLSH-Website/my-garage-widget.js';
+    document.head.appendChild(s);
+  })();
+
 })();

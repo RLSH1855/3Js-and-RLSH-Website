@@ -77,6 +77,8 @@
   .garage-popup-close { position: absolute; top: 12px; right: 12px; z-index: 10; background: rgba(0,0,0,.55); border: 1px solid rgba(255,255,255,.15); color: #fff; width: 36px; height: 36px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 20px; line-height: 1; transition: background .15s; }
   .garage-popup-close:hover { background: var(--accent); }
   .garage-popup-iframe { width: 100%; height: 720px; border: 0; display: block; }
+  .garage-popup-skip { display: block; width: 100%; padding: 12px; background: none; border: none; border-top: 1px solid #e8e8e8; font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #aaa; cursor: pointer; text-align: center; transition: color .15s; }
+  .garage-popup-skip:hover { color: #666; }
   /* ── Product Detail Popup ── */
   .detail-popup-root { position: fixed; inset: 0; z-index: 500; display: flex; align-items: flex-end; justify-content: center; }
   .detail-popup-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,.72); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); animation: fadeIn .2s ease-out; }
@@ -587,7 +589,7 @@ function App() {
   const [sort, setSort] = useState('featured');
   const [view, setView] = useState(() => localStorage.getItem('catalog_view') || 'grid');
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const [garageOpen, setGarageOpen] = useState(false);
+  const [garageOpen, setGarageOpen] = useState(() => !loadGarage());
   const [detailProduct, setDetailProduct] = useState(null);
   const [showCount, setShowCount] = useState(8);
   const openDetail = (brand, name) => setDetailProduct({brand, name});
@@ -613,7 +615,7 @@ function App() {
 
   const openGaragePopup = () => setGarageOpen(true);
 
-  // Listen for garage save from iframe
+  // Listen for garage save/clear from iframe
   useEffect(() => {
     const onMsg = (e) => {
       try {
@@ -626,10 +628,38 @@ function App() {
         if(data && data.type === 'garage_close'){
           setGarageOpen(false);
         }
+        if(data && data.type === 'garage_clear'){
+          setGarageState(null);
+          setFilters(f => ({...f, fitOnly:false}));
+          setGarageOpen(false);
+        }
       } catch(err){}
     };
     window.addEventListener('message', onMsg);
     return () => window.removeEventListener('message', onMsg);
+  }, []);
+
+  // Listen for garage changes from FAB widget (same page) or other tabs
+  useEffect(() => {
+    const onStorage = (e) => {
+      if(e.key !== 'garage_vehicle') return;
+      if(e.newValue){
+        try{ setGarageState(JSON.parse(e.newValue)); setFilters(f=>({...f,fitOnly:true})); }catch(err){}
+      } else {
+        setGarageState(null);
+        setFilters(f => ({...f, fitOnly:false}));
+      }
+    };
+    const onGarageEvent = (e) => {
+      if(e.detail){ setGarageState(e.detail); setFilters(f=>({...f,fitOnly:true})); }
+      else { setGarageState(null); setFilters(f=>({...f,fitOnly:false})); }
+    };
+    window.addEventListener('storage', onStorage);
+    window.addEventListener('garageUpdated', onGarageEvent);
+    return () => {
+      window.removeEventListener('storage', onStorage);
+      window.removeEventListener('garageUpdated', onGarageEvent);
+    };
   }, []);
 
   // Build unique product list from CATALOG
@@ -760,7 +790,11 @@ function GaragePopup({ onClose }) {
   React.useEffect(() => {
     const onKey = (e) => { if (e.key === 'Escape') onClose(); };
     document.addEventListener('keydown', onKey);
-    return () => document.removeEventListener('keydown', onKey);
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.removeEventListener('keydown', onKey);
+      document.body.style.overflow = '';
+    };
   }, [onClose]);
   return (
     <div className="garage-popup-root">
@@ -772,6 +806,7 @@ function GaragePopup({ onClose }) {
           src="https://rlsh1855.github.io/3Js-and-RLSH-Website/my-garage.html"
           title="My Garage"
         />
+        <button className="garage-popup-skip" onClick={onClose}>Skip for now — Browse all covers</button>
       </div>
     </div>
   );

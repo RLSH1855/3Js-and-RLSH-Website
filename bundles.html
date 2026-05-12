@@ -108,16 +108,6 @@
       max-width:560px;margin:0 auto 32px;
       line-height:1.75;
     }
-    .hero-tags{
-      display:flex;flex-wrap:wrap;gap:10px;
-      justify-content:center;
-    }
-    .hero-tag{
-      font-size:9px;font-weight:800;letter-spacing:2px;
-      text-transform:uppercase;color:#8B0000;
-      background:#fff0f0;border:1px solid rgba(139,0,0,0.20);
-      border-radius:0;padding:5px 12px;
-    }
 
     /* ── INTRO STRIP ── */
     .intro-strip{
@@ -230,6 +220,7 @@
       position:relative;
       overflow:visible;
       border-radius:0 14px 0 0;
+      min-height:190px;
     }
 
     /* ── GHOST ELEMENTS ── */
@@ -649,12 +640,6 @@
   <p class="hero-eyebrow">3J's Auto Body &amp; Paint · Signal Hill, CA · Est. 1991</p>
   <h1>More Truck.<br><span>Less Spend.</span></h1>
   <p class="hero-sub">Hand-picked service bundles built for real truck owners. Everything you need, done right, by people who know their stuff — all under one roof.</p>
-  <div class="hero-tags">
-    <span class="hero-tag">Rhino Linings Authorized Dealer</span>
-    <span class="hero-tag">Call for Pricing</span>
-    <span class="hero-tag">One Shop. Everything.</span>
-    <span class="hero-tag">Mon–Fri 8AM–5PM</span>
-  </div>
 </section>
 
 <!-- ══════════════════════════════════════════════
@@ -878,7 +863,11 @@
   function reportHeight(){
     var sentinel=document.getElementById('height-sentinel');
     var h=sentinel?(sentinel.offsetTop+sentinel.offsetHeight):Math.max(document.body.scrollHeight,document.body.offsetHeight,document.documentElement.scrollHeight,document.documentElement.offsetHeight);
-    if(h!==_lastHeight){_lastHeight=h;window.parent.postMessage(JSON.stringify({height:h}),'*');}
+    if(h!==_lastHeight){
+      _lastHeight=h;
+      if(window.Wix && window.Wix.setHeight){window.Wix.setHeight(h);}
+      window.parent.postMessage(JSON.stringify({height:h}),'*');
+    }
   }
   var _roTimer;
   var _ro=window.ResizeObserver?new ResizeObserver(function(){clearTimeout(_roTimer);_roTimer=setTimeout(reportHeight,100);}):null;
