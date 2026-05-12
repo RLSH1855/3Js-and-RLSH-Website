@@ -748,7 +748,7 @@ function ProductDetailPopup({ brand, name, onClose }) {
     document.addEventListener('keydown', onKey);
     return () => document.removeEventListener('keydown', onKey);
   }, [onClose]);
-  const src = `https://rlsh1855.github.io/3Js-and-RLSH-Website/product-detail.html?product=${encodeURIComponent(name)}&brand=${encodeURIComponent(brand)}`;
+  const src = `https://rlsh1855.github.io/3Js-and-RLSH-Website/product-detail-page.html?product=${encodeURIComponent(name)}&brand=${encodeURIComponent(brand)}`;
   return (
     <div className="detail-popup-root">
       <div className="detail-popup-backdrop" onClick={onClose} />
