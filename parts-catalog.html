@@ -40,9 +40,12 @@
 
   /* ── Header ── */
   .hdr { position: sticky; top: 0; z-index: 50; background: rgba(10,10,12,.95); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
-  .hdr-promo { background: #000; color: #fff; font-size: 12px; padding: 8px 16px; display:flex; align-items:center; justify-content:center; gap: 8px; }
+  .hdr-promo { background: #000; color: #fff; font-size: 12px; height: 34px; overflow: hidden; display:flex; align-items:center; mask-image: linear-gradient(to right, transparent 0%, #000 10%, #000 90%, transparent 100%); -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 10%, #000 90%, transparent 100%); }
   .hdr-promo .bolt { color: var(--accent); display:inline-flex; }
   .hdr-promo .bolt svg { width: 14px; height: 14px; }
+  .hdr-ticker { display:flex; white-space:nowrap; animation: ticker-scroll 20s linear infinite; }
+  .hdr-ticker-item { display:inline-flex; align-items:center; gap: 8px; padding: 0 80px; }
+  @keyframes ticker-scroll { 0% { transform:translateX(0); } 100% { transform:translateX(-50%); } }
 
   .hdr-main { display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center; padding: 12px 24px; }
   .logo { display:flex; align-items:center; gap: 10px; }
@@ -630,10 +633,16 @@ function Header({ garage, onSwapVehicle }) {
   return (
     <header className="hdr">
       <div className="hdr-promo">
-        <span className="bolt">{Icon.bolt}</span>
-        <span>Free estimates · Professional installation · Signal Hill, CA</span>
-        <span style={{opacity:.4}}>·</span>
-        <a href="tel:5624246744" style={{color:'#fff'}}>(562) 424-6744</a>
+        <div className="hdr-ticker">
+          {[0,1].map(i => (
+            <span key={i} className="hdr-ticker-item" aria-hidden={i===1||undefined}>
+              <span className="bolt">{Icon.bolt}</span>
+              <span>Free estimates · Professional installation · Signal Hill, CA</span>
+              <span style={{opacity:.4}}>·</span>
+              <a href="tel:5624246744" style={{color:'#fff'}}>(562) 424-6744</a>
+            </span>
+          ))}
+        </div>
       </div>
       <div className="hdr-main">
         <div className="search">
