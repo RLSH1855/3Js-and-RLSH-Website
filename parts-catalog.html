@@ -44,7 +44,7 @@
   .hdr-promo .bolt { color: var(--accent); display:inline-flex; }
   .hdr-promo .bolt svg { width: 14px; height: 14px; }
 
-  .hdr-main { display: grid; grid-template-columns: auto 1fr auto; gap: 24px; align-items: center; padding: 14px 24px; }
+  .hdr-main { display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center; padding: 14px 24px; }
   .logo { display:flex; align-items:center; gap: 10px; }
   .logo img { height: 60px; display:block; }
 
@@ -95,8 +95,18 @@
   /* ── Mobile search row (inside header, mobile only) ── */
   .mob-search-row { display: none; }
 
-  /* ── Mobile vehicle bar (below header, mobile only) ── */
-  .mob-vehicle-bar { display: none; }
+  /* ── Vehicle bar ── */
+  .mob-vehicle-bar { display:flex; align-items:center; gap:14px; padding:13px 18px; cursor:pointer; transition:filter .15s; width:350px; margin-left:auto; }
+  .mob-vehicle-bar.no-vehicle { background:var(--accent); }
+  .mob-vehicle-bar.has-vehicle { background:#1c1c1e; border-bottom:1px solid rgba(255,255,255,.08); }
+  .mob-vehicle-bar:hover { filter:brightness(1.08); }
+  .mvb-ico { display:inline-flex; flex-shrink:0; }
+  .mvb-ico svg { width:26px; height:26px; }
+  .mob-vehicle-bar.no-vehicle .mvb-ico svg { stroke:#fff; }
+  .mob-vehicle-bar.has-vehicle .mvb-ico svg { stroke:var(--accent); }
+  .mvb-label { flex:1; font-family:var(--display); font-weight:700; font-size:15px; letter-spacing:.06em; text-transform:uppercase; color:#fff; }
+  .mvb-chev { display:inline-flex; flex-shrink:0; }
+  .mvb-chev svg { width:18px; height:18px; stroke:rgba(255,255,255,.6); }
 
   /* ── Mobile sticky bar ── */
   .mobile-bar { display: none; }
@@ -304,22 +314,8 @@
     .mob-search-row input { flex:1; background:transparent; border:0; color:#fff; font-size:14px; outline:none; }
     .mob-search-row input::placeholder { color:rgba(255,255,255,.3); }
 
-    /* Mobile vehicle bar — full-width below header */
-    .mob-vehicle-bar { display:flex; align-items:center; gap:14px; padding:14px 18px; cursor:pointer; transition:filter .15s; }
-    .mob-vehicle-bar.no-vehicle { background:var(--accent); }
-    .mob-vehicle-bar.has-vehicle { background:#1c1c1e; border-bottom:1px solid rgba(255,255,255,.08); }
-    .mob-vehicle-bar:hover { filter:brightness(1.08); }
-    .mvb-ico { display:inline-flex; flex-shrink:0; }
-    .mvb-ico svg { width:28px; height:28px; }
-    .mob-vehicle-bar.no-vehicle .mvb-ico svg { stroke:#fff; }
-    .mob-vehicle-bar.has-vehicle .mvb-ico svg { stroke:var(--accent); }
-    .mvb-label { flex:1; font-family:var(--display); font-weight:700; font-size:16px; letter-spacing:.06em; text-transform:uppercase; }
-    .mob-vehicle-bar.no-vehicle .mvb-label { color:#fff; }
-    .mob-vehicle-bar.has-vehicle .mvb-label { color:#fff; }
-    .mvb-chev { display:inline-flex; flex-shrink:0; }
-    .mvb-chev svg { width:18px; height:18px; }
-    .mob-vehicle-bar.no-vehicle .mvb-chev svg { stroke:rgba(255,255,255,.7); }
-    .mob-vehicle-bar.has-vehicle .mvb-chev svg { stroke:rgba(255,255,255,.45); }
+    /* Vehicle bar — full width on mobile */
+    .mob-vehicle-bar { width:100%; margin-left:0; padding:14px 18px; }
 
     /* Filters/sort/view bar */
     .mobile-bar { display:flex; position:sticky; top:110px; z-index:30; background:rgba(10,10,12,.97); backdrop-filter:blur(12px); padding:10px 16px; gap:0; border-bottom:1px solid var(--border); align-items:center; justify-content:space-between; }
@@ -615,10 +611,6 @@ function Header({ garage, onSwapVehicle }) {
         <a href="tel:5624246744" style={{color:'#fff'}}>(562) 424-6744</a>
       </div>
       <div className="hdr-main">
-        <a href="https://www.3jsautobody.com/" className="logo">
-          <img src="https://static.wixstatic.com/media/b95bd9_86c7cf1e525d4b9e961a2738ed9af502~mv2.png" alt="3J's Auto Body" />
-          <img src="https://static.wixstatic.com/media/b95bd9_8e3e4f256c85462d960aaa1e3ef740c8~mv2.png" alt="Rhino Linings Signal Hill" style={{height:52,marginLeft:8}} />
-        </a>
         <div className="search">
           <span className="search-ico">{Icon.search}</span>
           <input placeholder="Search tonneau covers, brands…" />
