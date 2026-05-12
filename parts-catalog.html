@@ -587,6 +587,9 @@ function App() {
           setFilters(f => ({...f, fitOnly:true}));
           setGarageOpen(false);
         }
+        if(data && data.type === 'garage_close'){
+          setGarageOpen(false);
+        }
       } catch(err){}
     };
     window.addEventListener('message', onMsg);

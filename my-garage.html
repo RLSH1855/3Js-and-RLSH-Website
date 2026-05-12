@@ -268,7 +268,7 @@
     .saved-check{
       width:64px;height:64px;border-radius:0;
       background:#8B0000;display:flex;align-items:center;justify-content:center;
-      margin:0 auto 16px;font-size:30px;line-height:1;
+      margin:0 auto 16px;font-size:30px;line-height:1;color:#fff;
     }
     .saved-title{font-size:18px;font-weight:800;color:#1a1a1a;margin-bottom:6px;}
     .saved-sub{font-family:'Inter',sans-serif;font-size:14px;color:#424954;font-weight:400;line-height:1.65;margin-bottom:20px;}
@@ -303,7 +303,6 @@
     <span class="garage-fits-badge">✓ Your Vehicle</span>
   </div>
   <div class="garage-bar-right">
-    <button class="garage-change-btn" id="bar-change-btn">Change Vehicle</button>
   </div>
 </div>
 
@@ -443,6 +442,9 @@
         <div class="saved-actions">
           <a href="parts-catalog.html" class="btn-primary">Shop Tonneau Covers</a>
           <button class="btn-secondary" onclick="resetGarage()">Change Vehicle</button>
+        </div>
+        <div style="margin-top:20px;text-align:center;">
+          <button onclick="try{window.parent.postMessage(JSON.stringify({type:'garage_close'}),'*');}catch(e){}" style="background:none;border:none;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#888;cursor:pointer;text-decoration:underline;padding:8px;">Close Window</button>
         </div>
       </div>
     </div>
