@@ -452,6 +452,58 @@ const Icon = {
   phone:  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16.92z"/></svg>,
 };
 
+// ── Product image map (one hero image per product name) ──
+const PRODUCT_IMAGES = {
+  // BAK
+  'BAKFlip MX4':              'bak-bakflip-mx4-2016-ford-f150-HERO-IMAGE-08.webp',
+  'BAKFlip MX4 TS':           'bak-bakflip-mx4-2016-ford-f150-HERO-IMAGE-08.webp',
+  'BAKFlip F1':               'bak-bakflip-f1-2019-chevrolet-silverado-red.webp',
+  'BAKFlip FiberMax':         'fibermax-main-image.webp',
+  'BAKFlip Fibermax':         'fibermax-main-image.webp',
+  'Revolver X4s':             'bak-revolver-x4s-2022-ram-1500-trx-blue.webp',
+  'Revolver X2':              'bak-revolver-x4s-2022-ram-1500-trx-blue.webp',
+  'Revolver X4ts':            'BAK- Revolver X4TS-elevate-2023-10-17-Tundra-181_4.webp',
+  'Revolver X4ts Rails':      'BAK- Revolver X4TS-elevate-2023-10-17-Tundra-181_4.webp',
+  // Extang
+  'Solid Fold ALX':           'extang-solid-fold-alx-2024-toyota-tacoma-88832-ov-037-2.webp',
+  'Solid Fold 2.0 Toolbox':   'extang-solid-fold-alx-2024-toyota-tacoma-88832-ov-037-2.webp',
+  'Endure ALX':               'extang-solid-fold-alx-2024-toyota-tacoma-88832-ov-037-2.webp',
+  'Trifecta 2.0':             'Extang-solidfold-alx-2021-ford-f150-red-lifestyle-05.webp',
+  'Trifecta ALX':             'Extang-solidfold-alx-2021-ford-f150-red-lifestyle-05.webp',
+  'Trifecta Signature 2.0':   'Extang-solidfold-alx-2021-ford-f150-red-lifestyle-05.webp',
+  'Trifecta Toolbox 2.0':     'Extang-solidfold-alx-2021-ford-f150-red-lifestyle-05.webp',
+  'Trifecta e-Series':        'Extang-solidfold-alx-2021-ford-f150-red-lifestyle-05.webp',
+  // Retrax
+  'RetraxPRO MX':             'realtruck-retrax-pro-2024-mitsubishi-triton-lifestyle-7182.webp',
+  'RetraxPRO XR':             'realtruck-retrax-pro-2024-mitsubishi-triton-lifestyle-7182.webp',
+  'PowertraxPRO MX':          'realtruck-retrax-pro-2024-mitsubishi-triton-lifestyle-7182.webp',
+  'PowertraxPRO XR':          'realtruck-retrax-pro-2024-mitsubishi-triton-lifestyle-7182.webp',
+  'RetraxONE MX':             'retrax-one-mx-2015-toyota-tacoma-red-studio-09.webp',
+  'RetraxONE XR':             'retrax-one-mx-2015-toyota-tacoma-red-studio-09.webp',
+  'Retrax EQ':                'retrax-one-mx-2015-toyota-tacoma-red-studio-09.webp',
+  'Retrax IX':                'retrax-one-mx-2015-toyota-tacoma-red-studio-09.webp',
+  // Roll N Lock
+  'E-Series':                 'roll-n-lock-e-series-2017-ford-f150-black-beach-lifestyle-10.webp',
+  'E-Series XT':              'roll-n-lock-e-series-2017-ford-f150-black-beach-lifestyle-10.webp',
+  'A-Series':                 'roll-n-lock-e-series-2017-ford-f150-black-beach-lifestyle-10.webp',
+  'A-Series XT':              'roll-n-lock-e-series-2017-ford-f150-black-beach-lifestyle-10.webp',
+  'M-Series':                 'roll-n-lock-e-series-2017-ford-f150-black-beach-lifestyle-10.webp',
+  'M-Series XT':              'roll-n-lock-e-series-2017-ford-f150-black-beach-lifestyle-10.webp',
+  // TruXedo
+  'Sentry CT':                'truxedo-sentry-ct-2018-ford-f250-white-moab-lifestyle04.webp',
+  'Sentry':                   'truxedo-sentry-ct-2018-ford-f250-white-moab-lifestyle04.webp',
+  'Lo Pro':                   'truxedo-sentry-ct-2018-ford-f250-white-moab-lifestyle04.webp',
+  'Pro X15':                  'truxedo-sentry-ct-2018-ford-f250-white-moab-lifestyle04.webp',
+  'Pro X15 TS':               'truxedo-sentry-ct-2018-ford-f250-white-moab-lifestyle04.webp',
+  'TruXport':                 'truxedo-sentry-ct-2018-ford-f250-white-moab-lifestyle04.webp',
+  'Truxport':                 'truxedo-sentry-ct-2018-ford-f250-white-moab-lifestyle04.webp',
+  'Deuce':                    'truxedo-sentry-ct-2018-ford-f250-white-moab-lifestyle04.webp',
+  // UnderCover
+  'ArmorFlex':                'undercover-armor-flex-2017-ford-f150-raptor-red-construction-lifestyle-01.webp',
+  'Ultra Flex':               'Undercover Ultra Flex.webp',
+  'Flex':                     'undercover-armor-flex-2017-ford-f150-raptor-red-construction-lifestyle-01.webp',
+};
+
 // ── Placeholder image ──
 function ProductPlaceholder({ brand, name }) {
   const bg = BRAND_BG[brand] || '#181818';
@@ -897,10 +949,13 @@ function Toolbar({ count, sort, setSort, view, setView, garage }) {
 
 // ── Product Card ──
 function ProductCard({ p }) {
+  const imgSrc = PRODUCT_IMAGES[p.name];
   return (
     <a className="card" href="https://www.3jsautobody.com/rhino-lining-quote">
       <div className="card-media">
-        <ProductPlaceholder brand={p.brand} name={p.name} />
+        {imgSrc
+          ? <img src={imgSrc} alt={p.name} style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}} />
+          : <ProductPlaceholder brand={p.brand} name={p.name} />}
         <button className="card-heart" aria-label="Save" onClick={e=>e.preventDefault()}>{Icon.heart}</button>
         {p.fits && <div className="card-fit"><span className="card-fit-check">{Icon.check}</span><span>FITS</span></div>}
       </div>
@@ -921,7 +976,7 @@ function ProductCard({ p }) {
 function ProductRow({ p, garage }) {
   return (
     <a className="row" href="https://www.3jsautobody.com/rhino-lining-quote">
-      <div className="row-media"><ProductPlaceholder brand={p.brand} name={p.name} /></div>
+      <div className="row-media">{PRODUCT_IMAGES[p.name] ? <img src={PRODUCT_IMAGES[p.name]} alt={p.name} style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}} /> : <ProductPlaceholder brand={p.brand} name={p.name} />}</div>
       <div className="row-body">
         <div className="card-brand-label">{p.brand}</div>
         <div className="row-name">{p.name}</div>
