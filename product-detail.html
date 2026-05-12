@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8"/>
@@ -810,23 +810,19 @@ function filterFitTable(q){
 
 // ── Height reporting for Wix iframe ──
 function reportHeight(){
-    var h = Math.max(
-      document.body.scrollHeight,
-      document.body.offsetHeight,
-      document.documentElement.scrollHeight,
-      document.documentElement.offsetHeight
-    );
-    window.parent.postMessage(JSON.stringify({height:h}),'*');
-  }
-  document.addEventListener('DOMContentLoaded', reportHeight);
-  window.addEventListener('load', function(){
-    [0,200,500,1000,2000,3500].forEach(function(t){ setTimeout(reportHeight,t); });
-  });
-  window.addEventListener('resize', reportHeight);
-  if(window.ResizeObserver){ new ResizeObserver(reportHeight).observe(document.body); }
+  var h = Math.max(
+    document.body.scrollHeight,
+    document.body.offsetHeight,
+    document.documentElement.scrollHeight,
+    document.documentElement.offsetHeight
+  );
+  window.parent.postMessage(JSON.stringify({height:h}),'*');
 }
-window.addEventListener('load',function(){reportHeight();setTimeout(reportHeight,600);});
-window.addEventListener('resize',reportHeight);
+window.addEventListener('load', function(){
+  [0,200,500,1000,2000,3500].forEach(function(t){ setTimeout(reportHeight,t); });
+});
+window.addEventListener('resize', reportHeight);
+if(window.ResizeObserver){ new ResizeObserver(reportHeight).observe(document.body); }
 </script>
 
 </body>
