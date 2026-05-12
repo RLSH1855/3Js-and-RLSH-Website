@@ -1,0 +1,1022 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Hard Tri-Fold Flip-Up Cover — Tonneau Cover · RLSH Truck &amp; Jeep Outfitters</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#ffffff; --surface:#ffffff; --surface2:#f4f4f1;
+    --border:rgba(20,18,14,.08); --border-strong:rgba(20,18,14,.18);
+    --fg:#1a1815; --fg-muted:rgba(26,24,21,.62); --fg-dim:rgba(26,24,21,.42);
+    --accent:#8B0000;
+    --display:'Barlow Condensed', Impact, sans-serif;
+    --body:'Inter', system-ui, sans-serif;
+    --mono:'JetBrains Mono', ui-monospace, monospace;
+  }
+  *,*::before,*::after { box-sizing: border-box; }
+  html,body { margin:0; padding:0; overflow-x:hidden; }
+  body { font-family: var(--body); background: var(--bg); color: var(--fg); -webkit-font-smoothing: antialiased; }
+  a { color: inherit; text-decoration: none; }
+  button { font-family: inherit; }
+  svg { display:inline-block; vertical-align: middle; }
+  ::selection { background: var(--accent); color:#fff; }
+
+  /* Page reveal */
+  @keyframes pageFadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes pageFadeDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes pageFade { from { opacity: 0; } to { opacity: 1; } }
+  .hdr { animation: pageFadeDown .55s cubic-bezier(.2,.7,.2,1) both; }
+  .crumbs { animation: pageFadeUp .6s cubic-bezier(.2,.7,.2,1) both; animation-delay: .08s; }
+  .pdp-top > .gallery { animation: pageFadeUp .75s cubic-bezier(.2,.7,.2,1) both; animation-delay: .14s; }
+  .pdp-top > .pdp-info { animation: pageFadeUp .75s cubic-bezier(.2,.7,.2,1) both; animation-delay: .22s; }
+  .pdp-tabs { animation: pageFadeUp .7s cubic-bezier(.2,.7,.2,1) both; animation-delay: .34s; }
+  .related, .faq, .recently-viewed { animation: pageFade .7s ease both; animation-delay: .42s; }
+  @media (prefers-reduced-motion: reduce) {
+    .hdr, .crumbs, .pdp-top > .gallery, .pdp-top > .pdp-info, .pdp-tabs, .related, .faq, .recently-viewed { animation: none; }
+  }
+
+  /* Buttons */
+  .btn-primary { background: var(--accent); color:#fff; border:0; padding: 12px 18px; font-family: var(--display); font-weight: 700; letter-spacing: .08em; text-transform: uppercase; font-size: 14px; cursor: pointer; transition: filter .15s, transform .1s; }
+  .btn-primary:hover { filter: brightness(1.1); }
+  .btn-primary:active { transform: translateY(1px); }
+  .btn-ghost { background: transparent; color: var(--fg); border: 1px solid var(--border-strong); padding: 12px 18px; font-family: var(--display); font-weight: 600; letter-spacing: .08em; text-transform: uppercase; font-size: 13px; cursor: pointer; }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* Header — matches catalog */
+  .hdr { position: sticky; top: 0; z-index: 50; background: rgba(10,10,12,.97); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,.08); }
+  .hdr-promo { background: #000; color: #fff; font-size: 12px; height: 34px; overflow: hidden; display:flex; align-items:center; mask-image: linear-gradient(to right, transparent 0%, #000 10%, #000 90%, transparent 100%); -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 10%, #000 90%, transparent 100%); }
+  .hdr-promo .bolt { color: var(--accent); display:inline-flex; }
+  .hdr-promo .bolt svg { width: 14px; height: 14px; }
+  .hdr-ticker { display:flex; white-space:nowrap; animation: ticker-scroll 38s linear infinite; }
+  .hdr-ticker-item { display:inline-flex; align-items:center; gap: 8px; padding: 0 60px; }
+  @keyframes ticker-scroll { 0% { transform:translateX(0); } 100% { transform:translateX(-50%); } }
+
+  .hdr-main { display: grid; grid-template-columns: auto 1fr auto; gap: 24px; align-items: center; padding: 12px 24px; }
+  .logo { display:flex; align-items:center; gap: 10px; }
+  .logo-mark { display:inline-flex; align-items:center; justify-content:center; width:46px; height:46px; background: var(--accent); color:#fff; font-family: var(--display); font-weight: 800; font-size: 18px; letter-spacing: .04em; transform: skewX(-8deg); }
+  .logo-word { font-family: var(--display); font-weight: 800; font-size: 20px; letter-spacing: .04em; color: #fff; line-height: 1; }
+  .logo-word small { display: block; font-size: 10px; font-weight: 500; color: rgba(255,255,255,.5); letter-spacing: .14em; margin-top: 2px; }
+
+  .search { display:flex; align-items:center; gap: 8px; max-width: 600px; width: 100%; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12); padding: 0 14px; height: 42px; }
+  .search:focus-within { border-color: var(--accent); }
+  .search-ico { color: rgba(255,255,255,.4); display:inline-flex; }
+  .search-ico svg { width: 18px; height: 18px; }
+  .search input { flex:1; background: transparent; border: 0; color: #fff; font-size: 14px; outline: none; min-width: 0; }
+  .search input::placeholder { color: rgba(255,255,255,.3); }
+
+  .hdr-actions { display:flex; align-items:center; gap: 10px; }
+  .garage-pill { display:flex; align-items:center; gap: 12px; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.15); color: #fff; padding: 8px 14px; cursor: pointer; transition: border-color .15s, background .15s; }
+  .garage-pill:hover { border-color: var(--accent); background: rgba(255,255,255,.11); }
+  .garage-pill-ico { color: var(--accent); display:inline-flex; flex-shrink:0; }
+  .garage-pill-ico svg { width: 24px; height: 24px; }
+  .garage-pill-txt { display:flex; flex-direction: column; align-items: flex-start; line-height: 1.15; }
+  .garage-pill-label { font-family: var(--mono); font-size: 9.5px; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.45); }
+  .garage-pill-vehicle { font-family: var(--display); font-weight: 700; font-size: 15px; letter-spacing: .03em; color: #fff; }
+
+  .hdr-nav { display:flex; align-items: center; gap: 4px; padding: 0 18px; border-top: 1px solid rgba(255,255,255,.07); overflow-x: auto; scrollbar-width: none; }
+  .hdr-nav::-webkit-scrollbar { display: none; }
+  .nav-item { font-family: var(--display); font-weight: 600; letter-spacing: .08em; text-transform: uppercase; font-size: 13px; padding: 14px 14px; color: rgba(255,255,255,.5); white-space: nowrap; cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -1px; transition: color .15s, border-color .15s; }
+  .nav-item:hover { color: #fff; }
+  .nav-item.active { color: #fff; border-bottom-color: var(--accent); }
+
+  /* Crumbs */
+  .crumbs { max-width: 1440px; margin: 0 auto; padding: 16px 24px 12px; font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--fg-muted); display:flex; align-items:center; gap: 10px; flex-wrap: wrap; }
+  .crumbs a { cursor: pointer; }
+  .crumbs a:hover { color: var(--accent); }
+  .crumb-sep { color: var(--fg-dim); }
+  .crumb-now { color: var(--accent); font-weight: 500; }
+
+  /* PDP Layout */
+  .pdp { max-width: 1440px; margin: 0 auto; padding: 0 24px 80px; }
+  .pdp-top { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 48px; align-items: start; padding-top: 8px; }
+
+  /* Gallery — vertical thumbs left, large image right */
+  .gallery { display: grid; grid-template-columns: 92px 1fr; gap: 14px; align-items: start; }
+  .gallery.bottom-thumbs { grid-template-columns: 1fr; gap: 12px; }
+  .gallery.bottom-thumbs .gal-thumbs { flex-direction: row; order: 2; overflow-x: auto; padding-bottom: 4px; }
+  .gallery.bottom-thumbs .gal-thumb { width: 88px; height: 88px; flex-shrink: 0; }
+  .gallery.stacked { grid-template-columns: 1fr; gap: 10px; }
+  .gallery.stacked .gal-thumbs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+  .gallery.stacked .gal-thumb { width: 100%; height: auto; aspect-ratio: 1; }
+
+  .gal-thumbs { display:flex; flex-direction: column; gap: 10px; }
+  .gal-thumb { width: 92px; height: 92px; background: var(--surface2); border: 1.5px solid var(--border); cursor: pointer; overflow: hidden; transition: border-color .15s; padding: 0; position: relative; }
+  .gal-thumb:hover { border-color: var(--border-strong); }
+  .gal-thumb.active { border-color: var(--accent); }
+  .gal-thumb image-slot { width: 100%; height: 100%; display: block; --img-slot-bg: var(--surface2); --img-slot-border: transparent; --img-slot-radius: 0; border-radius: 0; }
+  .gal-main { position: relative; aspect-ratio: 4/3; background: var(--surface2); overflow: hidden; border: 1px solid var(--border); }
+  .gal-main image-slot { width: 100%; height: 100%; display: block; --img-slot-bg: var(--surface2); --img-slot-border: transparent; --img-slot-radius: 0; border-radius: 0; }
+  .gal-badge { position: absolute; top: 14px; left: 14px; display:inline-flex; align-items: center; gap: 6px; background: rgba(62,194,124,.16); border: 1px solid rgba(62,194,124,.55); color: #1f7e3e; padding: 6px 10px; font-family: var(--mono); font-size: 10px; letter-spacing: .15em; font-weight: 600; backdrop-filter: blur(6px); z-index: 2; }
+  .gal-badge svg { width: 12px; height: 12px; }
+  .gal-zoom { position: absolute; bottom: 14px; right: 14px; background: rgba(10,10,12,.85); border: 1px solid rgba(255,255,255,.15); color: #fff; padding: 8px 12px; font-family: var(--mono); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; cursor: pointer; z-index: 2; }
+  .gal-zoom:hover { background: var(--accent); border-color: var(--accent); }
+
+  /* Info column */
+  .pdp-info { display:flex; flex-direction: column; gap: 14px; }
+  .pdp-info.sticky { position: sticky; top: 130px; align-self: start; max-height: calc(100vh - 150px); overflow-y: auto; padding-right: 4px; scrollbar-width: thin; }
+  .pdp-info.sticky::-webkit-scrollbar { width: 5px; }
+  .pdp-info.sticky::-webkit-scrollbar-thumb { background: var(--border-strong); }
+  .pdp-brand { font-family: var(--mono); font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--accent); font-weight: 500; }
+  .pdp-brand .sep { color: var(--fg-dim); margin: 0 8px; }
+  .pdp-title { font-family: var(--display); font-weight: 800; font-size: clamp(34px, 4vw, 48px); line-height: .98; letter-spacing: -.005em; text-transform: uppercase; margin: 0; color: var(--fg); }
+  .pdp-sub { font-size: 14px; color: var(--fg-muted); line-height: 1.55; max-width: 480px; margin: 0; }
+
+  .pdp-rating { display:flex; align-items: center; gap: 12px; padding: 4px 0 4px; flex-wrap: wrap; }
+  .stars { display:inline-flex; gap: 2px; }
+  .stars svg { width: 16px; height: 16px; fill: var(--accent); }
+  .stars svg.off { fill: var(--border-strong); }
+  .pdp-rating-num { font-family: var(--mono); font-size: 12px; color: var(--fg-muted); }
+  .pdp-rating-link { font-size: 12px; color: var(--accent); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+
+  /* Fitment block */
+  .pdp-fit { display:flex; align-items: center; gap: 12px; padding: 14px 16px; background: var(--surface2); border-left: 4px solid #097530; }
+  .pdp-fit-ico { width: 36px; height: 36px; background: transparent; color: #097530; display:inline-flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .pdp-fit-ico svg { width: 20px; height: 20px; }
+  .pdp-fit-body { flex: 1; min-width: 0; }
+  .pdp-fit-label { font-family: var(--mono); font-size: 10px; letter-spacing: .15em; text-transform: uppercase; color: var(--fg-dim); }
+  .pdp-fit-vehicle { font-family: var(--display); font-weight: 700; font-size: 17px; letter-spacing: .02em; text-transform: uppercase; color: var(--fg); margin-top: 2px; }
+  .pdp-fit-link { font-size: 12px; color: var(--accent); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; font-weight: 500; }
+
+  /* Variants */
+  .variants { display:flex; flex-direction: column; gap: 16px; padding: 18px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .var-group-label { font-family: var(--mono); font-size: 10px; letter-spacing: .15em; text-transform: uppercase; color: var(--fg-dim); margin-bottom: 8px; }
+  .var-options { display:flex; gap: 8px; flex-wrap: wrap; }
+  .var-chip { background: transparent; border: 1.5px solid var(--border-strong); color: var(--fg); padding: 10px 16px; font-family: var(--display); font-weight: 600; letter-spacing: .04em; font-size: 13px; cursor: pointer; transition: all .15s; min-width: 80px; text-align: center; }
+  .var-chip:hover { border-color: var(--fg); }
+  .var-chip.on { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+  .var-chip.unavailable { opacity: .35; cursor: not-allowed; text-decoration: line-through; }
+  .var-color { width: 44px; min-width: 44px; height: 44px; padding: 0; position: relative; border-radius: 0; }
+  .var-color .swatch { position: absolute; inset: 4px; }
+  .var-color.on { border-color: var(--fg); }
+  .var-color.on::after { content: ''; position: absolute; inset: -4px; border: 1.5px solid var(--accent); pointer-events: none; }
+
+  /* Price + CTA */
+  .pdp-price-row { display:flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
+  .pdp-price { font-family: var(--display); font-weight: 800; font-size: 42px; letter-spacing: .01em; line-height: 1; color: var(--fg); }
+  .pdp-price-was { font-size: 17px; color: var(--fg-dim); text-decoration: line-through; }
+  .pdp-price-save { font-family: var(--mono); font-size: 11px; letter-spacing: .1em; color: var(--accent); background: rgba(139,0,0,.08); padding: 4px 8px; font-weight: 600; }
+  .pdp-stock { display:inline-flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: 11px; letter-spacing: .08em; color: #097530; padding-top: 6px; }
+  .pdp-stock-dot { width: 8px; height: 8px; border-radius: 50%; background: #097530; }
+
+  .pdp-actions { display:grid; grid-template-columns: 110px 1fr; gap: 10px; align-items: stretch; }
+  .qty-stepper { display:grid; grid-template-columns: 36px 1fr 36px; align-items: center; border: 1.5px solid var(--border-strong); background: var(--surface); height: 52px; }
+  .qty-stepper button { background: transparent; border: 0; color: var(--fg); cursor: pointer; height: 100%; font-size: 18px; font-family: var(--display); font-weight: 600; }
+  .qty-stepper button:hover { background: var(--surface2); color: var(--accent); }
+  .qty-stepper input { width: 100%; height: 100%; text-align: center; border: 0; border-left: 1px solid var(--border); border-right: 1px solid var(--border); background: transparent; font-family: var(--mono); font-size: 14px; color: var(--fg); outline: none; -moz-appearance: textfield; }
+  .qty-stepper input::-webkit-outer-spin-button, .qty-stepper input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+  .pdp-cta { background: var(--accent); color: #fff; border: 0; height: 52px; font-family: var(--display); font-weight: 700; letter-spacing: .1em; text-transform: uppercase; font-size: 15px; cursor: pointer; transition: filter .15s; display:inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 0 18px; }
+  .pdp-cta:hover { filter: brightness(1.12); }
+  .pdp-cta svg { width: 18px; height: 18px; }
+
+  .pdp-secondary { display:flex; gap: 8px; flex-wrap: wrap; }
+  .pdp-sec-btn { background: transparent; border: 1px solid var(--border-strong); color: var(--fg); padding: 10px 14px; font-family: var(--display); font-weight: 600; letter-spacing: .06em; text-transform: uppercase; font-size: 12px; cursor: pointer; display:inline-flex; align-items: center; gap: 6px; }
+  .pdp-sec-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .pdp-sec-btn svg { width: 14px; height: 14px; }
+
+  /* Trust badges */
+  .trust { display:grid; grid-template-columns: repeat(3, 1fr); gap: 14px; padding: 16px 0 4px; border-top: 1px solid var(--border); margin-top: 4px; }
+  .trust-item { display:flex; gap: 10px; align-items: flex-start; }
+  .trust-ico { color: var(--accent); flex-shrink: 0; padding-top: 2px; }
+  .trust-ico svg { width: 22px; height: 22px; }
+  .trust-text { font-size: 11px; line-height: 1.4; }
+  .trust-text strong { display: block; font-family: var(--display); font-weight: 700; font-size: 13px; letter-spacing: .04em; text-transform: uppercase; }
+  .trust-text span { color: var(--fg-muted); }
+
+  /* Quick highlights bullets */
+  .highlights { padding: 16px 0 4px; }
+  .highlights-title { font-family: var(--mono); font-size: 10px; letter-spacing: .15em; text-transform: uppercase; color: var(--fg-dim); margin-bottom: 10px; }
+  .highlights ul { list-style: none; padding: 0; margin: 0; display:flex; flex-direction: column; gap: 8px; }
+  .highlights li { display:flex; align-items: flex-start; gap: 10px; font-size: 13px; line-height: 1.5; color: var(--fg); }
+  .highlights li::before { content: ''; display:inline-block; width: 6px; height: 6px; background: var(--accent); margin-top: 8px; flex-shrink: 0; }
+
+  /* Tabs */
+  .pdp-tabs { margin-top: 56px; border-top: 1px solid var(--border); padding-top: 0; }
+  .tabs-bar { display:flex; gap: 0; border-bottom: 1px solid var(--border); overflow-x: auto; scrollbar-width: none; }
+  .tabs-bar::-webkit-scrollbar { display: none; }
+  .tab-btn { background: transparent; border: 0; padding: 18px 22px; font-family: var(--display); font-weight: 700; letter-spacing: .08em; text-transform: uppercase; font-size: 14px; color: var(--fg-muted); cursor: pointer; border-bottom: 3px solid transparent; margin-bottom: -1px; white-space: nowrap; transition: color .15s, border-color .15s; }
+  .tab-btn:hover { color: var(--fg); }
+  .tab-btn.on { color: var(--fg); border-bottom-color: var(--accent); }
+  .tab-count { font-family: var(--mono); font-weight: 400; font-size: 11px; margin-left: 6px; color: var(--fg-dim); letter-spacing: .04em; text-transform: none; }
+  .tab-panel { padding: 32px 0; display:grid; grid-template-columns: 1fr 340px; gap: 48px; align-items: start; }
+
+  /* Stacked mode (no tabs) */
+  .stacked-sections { margin-top: 56px; display:flex; flex-direction: column; gap: 56px; }
+  .stacked-section { border-top: 1px solid var(--border); padding-top: 32px; }
+  .stacked-section-head { display:flex; align-items: baseline; justify-content: space-between; margin-bottom: 18px; gap: 12px; flex-wrap: wrap; }
+  .stacked-section-head h2 { font-family: var(--display); font-weight: 800; font-size: 28px; letter-spacing: .04em; text-transform: uppercase; margin: 0; }
+  .stacked-section-head .sec-num { font-family: var(--mono); font-size: 11px; letter-spacing: .14em; color: var(--fg-dim); }
+
+  /* Description panel */
+  .desc h3 { font-family: var(--display); font-weight: 700; font-size: 22px; letter-spacing: .03em; text-transform: uppercase; margin: 0 0 12px; }
+  .desc p { font-size: 15px; line-height: 1.65; color: var(--fg); margin: 0 0 16px; max-width: 680px; }
+  .desc p strong { font-weight: 600; }
+  .feat-grid { display:grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin: 18px 0 8px; }
+  .feat-card { background: var(--surface2); border-left: 2px solid var(--accent); padding: 14px 16px; }
+  .feat-card-title { font-family: var(--display); font-weight: 700; font-size: 14px; letter-spacing: .05em; text-transform: uppercase; margin-bottom: 4px; }
+  .feat-card-body { font-size: 12px; color: var(--fg-muted); line-height: 1.5; }
+
+  /* Specs */
+  .specs-table { width: 100%; border-collapse: collapse; border-top: 1px solid var(--border); }
+  .specs-table tr { border-bottom: 1px solid var(--border); }
+  .specs-table td { padding: 12px 0; font-size: 13px; vertical-align: top; }
+  .specs-table td:first-child { font-family: var(--mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--fg-muted); width: 40%; }
+  .specs-table td:last-child { color: var(--fg); font-weight: 500; }
+
+  /* Aside (in tab area) */
+  .tab-aside { display:flex; flex-direction: column; gap: 16px; }
+  .install-card { background: var(--surface2); border: 1px solid var(--border); padding: 20px; }
+  .install-card-eyebrow { font-family: var(--mono); font-size: 10px; letter-spacing: .15em; text-transform: uppercase; color: var(--fg-dim); margin-bottom: 6px; }
+  .install-card h4 { font-family: var(--display); font-weight: 700; font-size: 18px; letter-spacing: .03em; text-transform: uppercase; margin: 0 0 8px; }
+  .install-card p { font-size: 13px; line-height: 1.5; color: var(--fg-muted); margin: 0 0 12px; }
+  .install-card .row-btns { display:flex; gap: 8px; flex-wrap: wrap; }
+  .install-card .row-btns a { font-family: var(--display); font-weight: 600; letter-spacing: .06em; text-transform: uppercase; font-size: 11px; padding: 8px 12px; border: 1px solid var(--border-strong); cursor: pointer; }
+  .install-card .row-btns a:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* Reviews */
+  .reviews-summary { display:grid; grid-template-columns: 200px 1fr; gap: 28px; padding-bottom: 24px; border-bottom: 1px solid var(--border); margin-bottom: 24px; align-items: start; }
+  .rev-big-num { font-family: var(--display); font-weight: 800; font-size: 72px; line-height: 1; color: var(--fg); }
+  .rev-stars { padding-top: 8px; }
+  .rev-stars svg { width: 18px; height: 18px; }
+  .rev-count { font-family: var(--mono); font-size: 11px; color: var(--fg-muted); margin-top: 6px; }
+  .rev-bars { display:flex; flex-direction: column; gap: 6px; }
+  .rev-bar-row { display:grid; grid-template-columns: 28px 1fr 36px; gap: 10px; align-items: center; font-size: 12px; }
+  .rev-bar-row .lbl { font-family: var(--mono); color: var(--fg-muted); }
+  .rev-bar-track { height: 6px; background: var(--border); position: relative; }
+  .rev-bar-fill { position: absolute; left: 0; top: 0; height: 100%; background: var(--accent); }
+  .rev-bar-num { font-family: var(--mono); font-size: 11px; color: var(--fg-dim); text-align: right; }
+  .rev-list { display:flex; flex-direction: column; gap: 20px; }
+  .rev-card { padding-bottom: 20px; border-bottom: 1px solid var(--border); }
+  .rev-card-head { display:flex; gap: 10px; align-items: center; margin-bottom: 6px; flex-wrap: wrap; }
+  .rev-avatar { width: 36px; height: 36px; background: var(--surface2); border: 1px solid var(--border); display:inline-flex; align-items: center; justify-content: center; font-family: var(--display); font-weight: 700; font-size: 14px; color: var(--fg); flex-shrink: 0; }
+  .rev-name { font-weight: 600; font-size: 13px; }
+  .rev-verified { font-family: var(--mono); font-size: 9.5px; letter-spacing: .12em; text-transform: uppercase; color: #1f7e3e; background: rgba(62,194,124,.1); padding: 2px 6px; }
+  .rev-date { font-family: var(--mono); font-size: 11px; color: var(--fg-dim); margin-left: auto; }
+  .rev-card-stars { padding: 2px 0; }
+  .rev-card-stars svg { width: 13px; height: 13px; }
+  .rev-card-title { font-family: var(--display); font-weight: 700; font-size: 16px; letter-spacing: .02em; margin: 4px 0 4px; }
+  .rev-card-body { font-size: 13px; line-height: 1.6; color: var(--fg); }
+  .rev-truck-tag { font-family: var(--mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--fg-dim); margin-top: 8px; }
+
+  /* Q&A */
+  .qa-list { display:flex; flex-direction: column; gap: 18px; }
+  .qa-item { display:grid; grid-template-columns: auto 1fr; gap: 12px; padding-bottom: 18px; border-bottom: 1px solid var(--border); }
+  .qa-tag { font-family: var(--display); font-weight: 800; font-size: 14px; letter-spacing: .06em; color: var(--accent); width: 24px; flex-shrink: 0; padding-top: 2px; }
+  .qa-tag.ans { color: var(--fg); }
+  .qa-q-text { font-family: var(--display); font-weight: 600; font-size: 16px; letter-spacing: .02em; }
+  .qa-a-text { font-size: 13px; line-height: 1.6; color: var(--fg-muted); margin-top: 6px; }
+  .qa-a-meta { font-family: var(--mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--fg-dim); margin-top: 8px; }
+  .qa-ask { background: var(--surface2); border: 1px dashed var(--border-strong); padding: 16px; margin-top: 8px; display:flex; justify-content:space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+  .qa-ask-text { font-size: 13px; }
+  .qa-ask-text strong { font-family: var(--display); font-weight: 700; font-size: 14px; letter-spacing: .04em; text-transform: uppercase; display: block; margin-bottom: 2px; }
+
+  /* Related + Recently Viewed */
+  .product-strip { margin-top: 56px; }
+  .strip-head { display:flex; justify-content: space-between; align-items: baseline; margin-bottom: 18px; flex-wrap: wrap; gap: 8px; }
+  .strip-head h2 { font-family: var(--display); font-weight: 800; font-size: 28px; letter-spacing: .04em; text-transform: uppercase; margin: 0; }
+  .strip-head a { font-family: var(--mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); cursor: pointer; }
+  .strip-grid { display:grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+  .rel-card { background: var(--surface); border: 1px solid var(--border); transition: border-color .15s; overflow: hidden; cursor: pointer; display:flex; flex-direction: column; }
+  .rel-card:hover { border-color: var(--accent); }
+  .rel-media { aspect-ratio: 4/3; background: var(--surface2); overflow: hidden; position: relative; }
+  .rel-media image-slot { width: 100%; height: 100%; display:block; --img-slot-bg: var(--surface2); --img-slot-border: transparent; --img-slot-radius: 0; border-radius: 0; }
+  .rel-body { padding: 12px 14px 14px; display:flex; flex-direction: column; gap: 4px; flex: 1; }
+  .rel-brand { font-family: var(--mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--fg-dim); }
+  .rel-name { font-family: var(--display); font-weight: 700; font-size: 15px; letter-spacing: .02em; text-transform: uppercase; line-height: 1.1; margin: 2px 0 4px; }
+  .rel-sub { font-size: 11px; color: var(--fg-muted); margin-bottom: 8px; min-height: 16px; }
+  .rel-foot { display:flex; justify-content: space-between; align-items: center; margin-top: auto; padding-top: 6px; }
+  .rel-price { font-family: var(--display); font-weight: 800; font-size: 18px; }
+  .rel-fit { font-family: var(--mono); font-size: 9.5px; letter-spacing: .12em; color: #1f7e3e; }
+
+  /* FAQ — matches site FAQ section */
+  .faq { margin-top: 80px; max-width: 740px; margin-left: auto; margin-right: auto; padding: 0 8px; }
+  .faq-eyebrow { font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; color: #8B0000; text-align: center; margin-bottom: 10px; }
+  .faq-head { font-family: 'Montserrat', sans-serif; font-size: clamp(22px, 6vw, 42px); font-weight: 900; letter-spacing: -1px; line-height: 1.05; text-align: center; margin: 0 0 8px; text-transform: uppercase; color: #1a1a1a; text-wrap: balance; }
+  .faq-head em { font-style: normal; color: #8B0000; }
+  .faq-sub { font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 400; color: #888; text-align: center; margin: 0 0 48px; line-height: 1.7; padding: 0 8px; text-wrap: pretty; }
+  .faq-list { border-top: 1px solid #e0e0e0; }
+  .faq-item { border-bottom: 1px solid #e0e0e0; }
+  .faq-q { width: 100%; background: none; border: 0; display:flex; align-items: flex-start; justify-content: space-between; padding: 20px 0; cursor: pointer; font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 700; color: #1a1a1a; text-transform: uppercase; letter-spacing: 2px; text-align: left; gap: 16px; line-height: 1.5; transition: color .22s ease; }
+  .faq-q:hover { color: #8B0000; }
+  .faq-item.open .faq-q { color: #8B0000; font-weight: 800; }
+  .faq-q svg { width: 18px; height: 18px; flex-shrink: 0; margin-top: 2px; stroke: #8B0000; stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; transition: transform .72s cubic-bezier(0.22,1,0.36,1); transform-origin: center; }
+  .faq-item.open .faq-q svg { transform: rotate(45deg); }
+  .faq-a-wrap { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .42s cubic-bezier(.4,0,.2,1); }
+  .faq-item.open .faq-a-wrap { grid-template-rows: 1fr; }
+  .faq-a-inner { overflow: hidden; }
+  .faq-a { padding: 0 0 20px; font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 400; color: #555; line-height: 1.85; opacity: 0; transform: translateY(-4px); transition: opacity .32s ease .06s, transform .32s ease .06s; }
+  .faq-item.open .faq-a { opacity: 1; transform: translateY(0); }
+  .faq-cta { display:flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 48px; }
+  .faq-cta a { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; height: 48px; padding: 0 32px; transition: all .3s ease; cursor: pointer; }
+  .faq-cta .faq-btn-primary { background: #8B0000; color: #fff; border: 0; }
+  .faq-cta .faq-btn-primary:hover { background: #A00000; }
+  .faq-cta .faq-btn-secondary { background: transparent; color: #8B0000; border: 2px solid #8B0000; }
+  .faq-cta .faq-btn-secondary:hover { background: #8B0000; color: #fff; }
+  .faq-cta a svg { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
+  @media (max-width: 600px) {
+    .faq-cta { flex-direction: column; align-items: stretch; }
+    .faq-cta a { width: 100%; }
+  }
+
+  /* Sticky mobile buy bar */
+  .mobile-buy-bar { display: none; }
+
+  /* Footer removed — site has its own */
+
+  /* Responsive */
+  @media (max-width: 1100px) {
+    .strip-grid { grid-template-columns: repeat(3, 1fr); }
+    .tab-panel { grid-template-columns: 1fr; gap: 32px; }
+    .pdp-info.sticky { position: relative; top: 0; max-height: none; }
+  }
+  @media (max-width: 900px) {
+    .hdr-promo { display: none; }
+    .hdr-main { grid-template-columns: auto 1fr; gap: 12px; padding: 10px 16px; }
+    .search { display: none; }
+    .logo-word { display: none; }
+    .garage-pill-txt { display: none; }
+    .garage-pill { padding: 8px; }
+    .hdr-nav { padding: 0 8px; }
+    .nav-item { padding: 12px 10px; font-size: 12px; }
+
+    .pdp { padding: 0 16px 60px; }
+    .pdp-top { grid-template-columns: 1fr; gap: 28px; }
+    .gallery { grid-template-columns: 1fr; }
+    .gal-thumbs { flex-direction: row; order: 2; overflow-x: auto; padding-bottom: 4px; }
+    .gal-thumb { width: 72px; height: 72px; flex-shrink: 0; }
+    .pdp-title { font-size: clamp(28px, 7vw, 38px); }
+    .pdp-price { font-size: 36px; }
+    .trust { grid-template-columns: 1fr; gap: 10px; }
+    .strip-grid { grid-template-columns: repeat(2, 1fr); }
+    .reviews-summary { grid-template-columns: 1fr; gap: 16px; }
+    .feat-grid { grid-template-columns: 1fr; }
+
+    .mobile-buy-bar { display:flex; position: fixed; bottom: 0; left: 0; right: 0; background: rgba(10,10,12,.97); backdrop-filter: blur(12px); border-top: 1px solid rgba(255,255,255,.1); padding: 10px 14px; gap: 12px; z-index: 60; align-items: center; }
+    .mbb-info { flex: 1; display:flex; flex-direction: column; gap: 0; }
+    .mbb-price { font-family: var(--display); font-weight: 800; font-size: 22px; color: #fff; line-height: 1; }
+    .mbb-stock { font-family: var(--mono); font-size: 10px; color: #6ddf9b; letter-spacing: .1em; margin-top: 2px; }
+    .mbb-cta { background: var(--accent); color: #fff; border: 0; padding: 14px 22px; font-family: var(--display); font-weight: 700; letter-spacing: .08em; text-transform: uppercase; font-size: 14px; cursor: pointer; }
+    .pdp { padding-bottom: 100px; }
+  }
+  @media (max-width: 560px) {
+    .strip-grid { grid-template-columns: 1fr; }
+    .pdp-actions { grid-template-columns: 1fr; }
+    .qty-stepper { width: 140px; }
+    .specs-table td:first-child { width: 50%; }
+  }
+</style>
+</head>
+<body style="font-family: Inter">
+<div id="root"></div>
+
+<script src="image-slot.js"></script>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel">
+
+
+const { useState, useEffect } = React;
+
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "layout": "tabs",
+  "galleryStyle": "vertical-left",
+  "stickyBuy": true
+} /*EDITMODE-END*/;
+
+const VEHICLE = { year: 2006, make: 'Nissan', model: 'Frontier', trim: 'King Cab · 6\u2032 Bed' };
+
+const PRODUCT = {
+  brand: 'RLSH',
+  name: 'Hard Tri-Fold Flip-Up Cover',
+  type: 'Hard Folding Tonneau Cover',
+  tagline: 'Three-panel aluminum hard cover with a low-profile matte finish. Folds flat at the cab for full bed access — locks down weather-tight in seconds.',
+  partNum: 'RLSH-HTF-849',
+  rating: 4.7,
+  reviews: 312,
+  price: 849.95,
+  msrp: 949.95,
+  stock: 'in',
+  highlights: [
+  'Three heavy-duty aluminum panels with low-profile matte finish',
+  'Folds flat against the cab — 100% bed access, no removal needed',
+  'Automatic rotational latching at every panel for a secure seal',
+  'Weather-tight EPDM rubber seals on all four sides + integrated drains',
+  'No-drill clamp-on install — ready in under an hour',
+  'Backed by a 3-year manufacturer warranty'],
+
+  description: 'The Hard Tri-Fold Flip-Up Cover is built for truck owners who want the strength of an aluminum cover without the bulk of a one-piece. Three heavy-duty aluminum panels hinge together, fold flat against the cab for full bed access, and lock down with rotational latches at every panel for a weather-tight seal. The matte powder-coat finish is UV-stable so it stays looking new through seasons of sun, rain, and road grime — and the clamp-on install means no drilling into your bed rails.',
+  features: [
+  { title: 'Three-Panel Build', body: 'Heavy-duty aluminum panels stand up to ladders, gear, and weather without flexing.' },
+  { title: 'Matte UV Finish', body: 'Powder-coat finish resists fading and scuffs — looks new years later.' },
+  { title: 'Auto-Latching', body: 'Rotational latches engage at every panel automatically when you fold down.' },
+  { title: 'Full Bed Access', body: 'Folds flat against the cab for hauling tall cargo — no removal needed.' }],
+
+  specs: [
+  ['Bed Length', '6\u2032 (fits 2006 Frontier King Cab)'],
+  ['Material', 'Aluminum panels · matte powder coat'],
+  ['Cover Style', 'Hard Folding (tri-fold)'],
+  ['Bed Access', '100% — folds flat against cab'],
+  ['Weight Rating', '400 lbs evenly distributed'],
+  ['Seal Type', 'EPDM rubber, all four sides'],
+  ['Drainage', 'Integrated drain tubes (4)'],
+  ['Latching', 'Automatic rotational, all panels'],
+  ['Install Time', '30\u201345 minutes · no drilling'],
+  ['Warranty', '3 years manufacturer'],
+  ['Country of Origin', 'United States'],
+  ['Part Number', 'RLSH-HTF-849']],
+
+  variants: {
+    bedLength: [
+    { id: '5.0', label: '6\u00BD\u2032', available: true },
+    { id: '6.0', label: '6\u2032', available: true },
+    { id: '6.5', label: '6\u00BD\u2032', available: true },
+    { id: '8.0', label: '8\u2032', available: false }],
+
+    color: [
+    { id: 'matte-black', label: 'Matte Black', swatch: '#1a1a1c', available: true },
+    { id: 'textured-black', label: 'Textured Black', swatch: '#262626', available: true },
+    { id: 'satin-graphite', label: 'Satin Graphite', swatch: '#3a3a3d', available: true }]
+
+  },
+  reviewBreakdown: [
+  { stars: 5, count: 218 }, { stars: 4, count: 62 }, { stars: 3, count: 18 }, { stars: 2, count: 8 }, { stars: 1, count: 6 }]
+
+};
+
+const REVIEWS = [
+{ name: 'Mike R.', initial: 'M', verified: true, date: 'Mar 12, 2026', stars: 5, title: 'Worth every penny', body: 'Installed in about 40 minutes on my Frontier. Looks factory. Survived a season of Tahoe ski trips with zero water in the bed. The matte finish looks great in person.', truck: '2018 Ford F-150 · Crew Cab · 5.5\u2032' },
+{ name: 'Diego A.', initial: 'D', verified: true, date: 'Feb 28, 2026', stars: 5, title: 'Bought one for every truck on the crew', body: 'We run a small landscaping crew. These replaced soft roll-ups on all four trucks. Way more secure, way easier to fold up when loading mowers. RLSH installed them in an afternoon.', truck: '2020 Chevrolet Silverado 1500' },
+{ name: 'Sarah K.', initial: 'S', verified: true, date: 'Feb 10, 2026', stars: 4, title: 'Solid cover — latching took practice', body: 'Quality is excellent and it looks great. The auto-latching system took me a few tries to get the hang of — once aligned correctly it\u2019s flawless. Knocked one star for install instructions that could be clearer.', truck: '2022 Toyota Tacoma' }];
+
+
+const QA = [
+{ q: 'Will this fit my 2006 Frontier King Cab with the over-rail bed liner?', a: 'Yes — the clamp-on rails sit above the liner without modification on a stock bed. If you have an extra-thick aftermarket liner with a high lip, you may need our optional rail extension kit (about $40). Bring it by the shop and we\u2019ll confirm in 5 minutes.', meta: 'Answered by RLSH Spec Team · Feb 4, 2026' },
+{ q: 'Can I drive on the highway with the cover folded up?', a: 'Yes. The cover folds flat against the cab and locks with included prop rods. Manufacturer recommends a 70 mph max when folded, which is more than enough for highway use.', meta: 'Answered by RLSH Spec Team · Jan 28, 2026' },
+{ q: 'Is the install really no-drill, or are there exceptions?', a: 'Truly no-drill on all standard bed rails. The only exception is if your truck has a non-standard bed rail (e.g., a rare factory accessory rail or aftermarket trailrails), in which case we have an adapter kit available.', meta: 'Answered by RLSH Spec Team · Jan 15, 2026' },
+{ q: 'How does it compare to BAKFlip MX4?', a: 'Same general construction (aluminum tri-fold), similar latching, slightly different finish texture. The MX4 has a 5-year warranty vs. our 3-year, but our cover comes in at about $350 less and we install it for free locally. For most customers — especially Frontier owners — this cover is the better value.', meta: 'Answered by RLSH Spec Team · Jan 3, 2026' }];
+
+
+const RELATED = [
+{ brand: 'RLSH', name: 'Soft Roll-Up', sub: 'Roll-Up Tonneau', price: 299, fits: true },
+{ brand: 'BAK', name: 'BAKFlip MX4', sub: 'Hard Folding', price: 1199, fits: true },
+{ brand: 'Retrax', name: 'RetraxPRO MX', sub: 'Retractable', price: 1499, fits: false },
+{ brand: 'TruXedo', name: 'Sentry CT', sub: 'Hard Folding', price: 899, fits: true }];
+
+
+const RECENTLY_VIEWED = [
+{ brand: 'Roll N Lock', name: 'E-Series', sub: 'Retractable', price: 1299, fits: true },
+{ brand: 'Extang', name: 'Solid Fold ALX', sub: 'Hard Folding', price: 1099, fits: true },
+{ brand: 'UnderCover', name: 'ArmorFlex', sub: 'Hard Folding', price: 1149, fits: true },
+{ brand: 'RLSH', name: 'Bed Liner Spray-In', sub: 'Rhino Lining', price: 549, fits: true }];
+
+
+// ── Icons ──
+const Icon = {
+  search: <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6"><circle cx="9" cy="9" r="6" /><path d="m14 14 4 4" /></svg>,
+  truck: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="M1 6h13v9H1z" /><path d="M14 9h5l3 3v3h-8z" /><circle cx="6" cy="17" r="2" /><circle cx="17" cy="17" r="2" /></svg>,
+  cart: <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="M3 4h2l1.5 9.5a1.5 1.5 0 0 0 1.5 1.3h7.6a1.5 1.5 0 0 0 1.5-1.2L18 7H6" /><circle cx="8" cy="18" r="1.2" /><circle cx="15" cy="18" r="1.2" /></svg>,
+  check: <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2"><path d="m3 8 3.5 3.5L13 5" style={{ stroke: "rgb(42, 147, 85)" }} /></svg>,
+  heart: <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="M10 16.5s-6-3.7-6-8a3.5 3.5 0 0 1 6-2.5 3.5 3.5 0 0 1 6 2.5c0 4.3-6 8-6 8z" /></svg>,
+  share: <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="M4 10v6a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-6" /><path d="m7 6 3-3 3 3" /><path d="M10 3v10" /></svg>,
+  compare: <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="M4 4h5v12H4zM11 4h5v12h-5z" /><path d="M6.5 7v6M13.5 7v6" /></svg>,
+  shield: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="M12 2 4 5v7c0 5 3.5 8 8 10 4.5-2 8-5 8-10V5l-8-3z" /></svg>,
+  ship: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="M1 6h13v9H1zM14 9h5l3 3v3h-8z" /><circle cx="6" cy="17" r="2" /><circle cx="17" cy="17" r="2" /></svg>,
+  install: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="M14.7 6.3a4 4 0 0 0-5.6 5.6L3 18v3h3l6.1-6.1a4 4 0 0 0 5.6-5.6l-2 2-2.4-2.4 2-2zM18 6l3 3" /></svg>,
+  chev: <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="m3 4.5 3 3 3-3" /></svg>,
+  bolt: <svg viewBox="0 0 16 16" fill="currentColor"><path d="M9 1 3 9h4l-1 6 6-8H8z" /></svg>,
+  star: <svg viewBox="0 0 16 16" fill="currentColor"><path d="m8 1.6 2 4.3 4.6.6-3.4 3.2.9 4.6L8 12l-4.1 2.3.9-4.6L1.4 6.5l4.6-.6z" /></svg>
+};
+
+// Star row component
+function Stars({ value = 5, size = 16 }) {
+  const full = Math.round(value);
+  return (
+    <span className="stars">
+      {[1, 2, 3, 4, 5].map((i) =>
+      React.cloneElement(Icon.star, { key: i, style: { width: size, height: size }, className: i <= full ? '' : 'off' })
+      )}
+    </span>);
+
+}
+
+function Header() {
+  const tickerItems = [
+  'FREE LOCAL INSTALL ON TONNEAU COVERS',
+  'SIGNAL HILL, CA',
+  '(562) 424-6744',
+  '30-DAY FIT GUARANTEE',
+  'FREE SHIPPING OVER $99'];
+
+  const ticker = [...tickerItems, ...tickerItems];
+  return (
+    <header className="hdr">
+      <div className="hdr-promo">
+        <div className="hdr-ticker">
+          {ticker.map((t, i) =>
+          <span key={i} className="hdr-ticker-item"><span className="bolt">{Icon.bolt}</span><span>{t}</span></span>
+          )}
+        </div>
+      </div>
+      <div className="hdr-main">
+        <a href="#" className="logo">
+          <span className="logo-mark">RL</span>
+          <span className="logo-word">RLSH<small>TRUCK &amp; JEEP OUTFITTERS</small></span>
+        </a>
+        <div className="search">
+          <span className="search-ico">{Icon.search}</span>
+          <input placeholder="Search parts, brands, fitments…" />
+        </div>
+        <div className="hdr-actions">
+          <button className="garage-pill">
+            <span className="garage-pill-ico">{Icon.truck}</span>
+            <span className="garage-pill-txt">
+              <span className="garage-pill-label">In your garage</span>
+              <span className="garage-pill-vehicle">{VEHICLE.year} {VEHICLE.make} {VEHICLE.model}</span>
+            </span>
+          </button>
+        </div>
+      </div>
+      <nav className="hdr-nav">
+        <a className="nav-item active">Tonneau Covers</a>
+        <a className="nav-item">Bed Liners</a>
+        <a className="nav-item">Wheels &amp; Tires</a>
+        <a className="nav-item">Lighting</a>
+        <a className="nav-item">Recovery</a>
+        <a className="nav-item">Builds</a>
+        <a className="nav-item">Install Bay</a>
+      </nav>
+    </header>);
+
+}
+
+function Breadcrumbs() {
+  return (
+    <nav className="crumbs">
+      <a>Home</a><span className="crumb-sep">/</span>
+      <a>Parts &amp; Accessories</a><span className="crumb-sep">/</span>
+      <a>Tonneau Covers</a><span className="crumb-sep">/</span>
+      <a>Hard Folding</a><span className="crumb-sep">/</span>
+      <span className="crumb-now">{PRODUCT.name}</span>
+    </nav>);
+
+}
+
+function Gallery({ style }) {
+  const [active, setActive] = useState(0);
+  const views = [0, 1, 2, 3, 4];
+  const className = `gallery ${style === 'bottom-thumbs' ? 'bottom-thumbs' : style === 'stacked' ? 'stacked' : ''}`;
+  return (
+    <div className={className}>
+      <div className="gal-thumbs">
+        {views.map((v) =>
+        <button key={v} className={`gal-thumb ${active === v ? 'active' : ''}`} onClick={() => setActive(v)}>
+            <image-slot id={`pdp-gallery-thumb-${v}`} placeholder={`View ${v + 1}`}></image-slot>
+          </button>
+        )}
+      </div>
+      <div className="gal-main">
+        <image-slot id={`pdp-gallery-main-${active}`} placeholder={`Main photo — view ${active + 1}`}></image-slot>
+      </div>
+    </div>);
+
+}
+
+function Info({ sticky }) {
+  const [bedLength, setBedLength] = useState('6.0');
+  const [color, setColor] = useState('matte-black');
+  const [qty, setQty] = useState(1);
+
+  return (
+    <div className={`pdp-info ${sticky ? 'sticky' : ''}`}>
+      <div className="pdp-brand">{PRODUCT.brand}<span className="sep">·</span>Part # {PRODUCT.partNum}</div>
+      <h1 className="pdp-title">{PRODUCT.name}</h1>
+      <p className="pdp-sub">{PRODUCT.tagline}</p>
+
+      <div className="pdp-rating">
+        <Stars value={PRODUCT.rating} size={18} />
+        <span className="pdp-rating-num">{PRODUCT.rating.toFixed(1)} · {PRODUCT.reviews.toLocaleString()} reviews</span>
+        <a className="pdp-rating-link">Read reviews</a>
+      </div>
+
+      <div className="pdp-fit" style={{ backgroundColor: "rgb(250, 250, 250)", borderWidth: "0px 0px 0px 2.9128px", borderColor: "rgb(42, 147, 85)" }}>
+        <div className="pdp-fit-ico" style={{ backgroundColor: "rgba(42, 147, 85, 0)" }}>{Icon.check}</div>
+        <div className="pdp-fit-body">
+          <div className="pdp-fit-label">Confirmed fit for</div>
+          <div className="pdp-fit-vehicle">{VEHICLE.year} {VEHICLE.make} {VEHICLE.model}</div>
+        </div>
+        <a className="pdp-fit-link">Change</a>
+      </div>
+
+      <div className="variants">
+        <div>
+          <div className="var-group-label">Bed length</div>
+          <div className="var-options">
+            {PRODUCT.variants.bedLength.map((v) =>
+            <button key={v.id}
+            className={`var-chip ${bedLength === v.id ? 'on' : ''} ${!v.available ? 'unavailable' : ''}`}
+            onClick={() => v.available && setBedLength(v.id)}
+            disabled={!v.available}>{v.label}</button>
+            )}
+          </div>
+        </div>
+        <div>
+          <div className="var-group-label">Finish · <strong style={{ color: 'var(--fg)', textTransform: 'none', letterSpacing: 0, fontWeight: 600 }}>{PRODUCT.variants.color.find((c) => c.id === color)?.label}</strong></div>
+          <div className="var-options">
+            {PRODUCT.variants.color.map((v) =>
+            <button key={v.id}
+            className={`var-chip var-color ${color === v.id ? 'on' : ''}`}
+            onClick={() => setColor(v.id)}
+            aria-label={v.label}
+            title={v.label}>
+                <span className="swatch" style={{ background: v.swatch }}></span>
+              </button>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div className="pdp-price-row">
+          <span className="pdp-price">${PRODUCT.price.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
+          <span className="pdp-price-was">${PRODUCT.msrp.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
+          <span className="pdp-price-save">SAVE ${(PRODUCT.msrp - PRODUCT.price).toFixed(0)}</span>
+        </div>
+        <div className="pdp-stock">
+          <span className="pdp-stock-dot" style={{ color: "rgb(5, 117, 46)" }}></span>
+          IN STOCK
+        </div>
+      </div>
+
+      <div className="pdp-actions">
+        <div className="qty-stepper">
+          <button onClick={() => setQty((q) => Math.max(1, q - 1))}>−</button>
+          <input type="number" value={qty} onChange={(e) => setQty(Math.max(1, +e.target.value || 1))} />
+          <button onClick={() => setQty((q) => q + 1)}>+</button>
+        </div>
+        <button className="pdp-cta">
+          <span>{Icon.cart}</span>
+          Add to Cart · ${(PRODUCT.price * qty).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+        </button>
+      </div>
+
+      <div className="pdp-secondary">
+        <button className="pdp-sec-btn">{Icon.heart}Save</button>
+        <button className="pdp-sec-btn">{Icon.compare}Compare</button>
+        <button className="pdp-sec-btn">{Icon.share}Share</button>
+        <button className="pdp-sec-btn">{Icon.install}Book Install</button>
+      </div>
+
+      <div className="highlights">
+        <div className="highlights-title">Key Features</div>
+        <ul>
+          {PRODUCT.highlights.map((h, i) => <li key={i}>{h}</li>)}
+        </ul>
+      </div>
+
+      <div className="trust">
+        <div className="trust-item">
+          <span className="trust-ico">{Icon.ship}</span>
+          <div className="trust-text"><strong>50% Off Install</strong><span>When you pair a Rhino Linings bedliner with a tonneau cover · excludes electric, retractable &amp; truck caps</span></div>
+        </div>
+        <div className="trust-item">
+          <span className="trust-ico">{Icon.shield}</span>
+          <div className="trust-text"><strong>3-Year Warranty</strong><span>Manufacturer-backed</span></div>
+        </div>
+        <div className="trust-item">
+          <span className="trust-ico">{Icon.install}</span>
+          <div className="trust-text"><strong>Pro Install</strong><span>Free with purchase, Signal Hill</span></div>
+        </div>
+      </div>
+    </div>);
+
+}
+
+// Section content components
+function DescriptionPane() {
+  return (
+    <div className="desc">
+      <h3>Built to last, designed to look factory</h3>
+      <p>{PRODUCT.description}</p>
+      <div className="feat-grid">
+        {PRODUCT.features.map((f, i) =>
+        <div key={i} className="feat-card">
+            <div className="feat-card-title">{f.title}</div>
+            <div className="feat-card-body">{f.body}</div>
+          </div>
+        )}
+      </div>
+    </div>);
+
+}
+
+function SpecsPane() {
+  return (
+    <div className="desc">
+      <h3>Technical specifications</h3>
+      <table className="specs-table">
+        <tbody>
+          {PRODUCT.specs.map((s, i) => <tr key={i}><td>{s[0]}</td><td>{s[1]}</td></tr>)}
+        </tbody>
+      </table>
+    </div>);
+
+}
+
+function ReviewsPane() {
+  return (
+    <div className="desc">
+      <h3>Owner reviews</h3>
+      <div className="reviews-summary">
+        <div>
+          <div className="rev-big-num">{PRODUCT.rating.toFixed(1)}</div>
+          <div className="rev-stars"><Stars value={PRODUCT.rating} size={20} /></div>
+          <div className="rev-count">Based on {PRODUCT.reviews.toLocaleString()} verified reviews</div>
+        </div>
+        <div className="rev-bars">
+          {PRODUCT.reviewBreakdown.map((b) => {
+            const pct = b.count / PRODUCT.reviews * 100;
+            return (
+              <div key={b.stars} className="rev-bar-row">
+                <span className="lbl">{b.stars}★</span>
+                <div className="rev-bar-track"><div className="rev-bar-fill" style={{ width: `${pct}%` }} /></div>
+                <span className="rev-bar-num">{b.count}</span>
+              </div>);
+
+          })}
+        </div>
+      </div>
+      <div className="rev-list">
+        {REVIEWS.map((r, i) =>
+        <div key={i} className="rev-card">
+            <div className="rev-card-head">
+              <div className="rev-avatar">{r.initial}</div>
+              <span className="rev-name">{r.name}</span>
+              {r.verified && <span className="rev-verified">Verified Buyer</span>}
+              <span className="rev-date">{r.date}</span>
+            </div>
+            <div className="rev-card-stars"><Stars value={r.stars} size={13} /></div>
+            <div className="rev-card-title">{r.title}</div>
+            <div className="rev-card-body">{r.body}</div>
+            <div className="rev-truck-tag">on {r.truck}</div>
+          </div>
+        )}
+      </div>
+    </div>);
+
+}
+
+function QAPane() {
+  return (
+    <div className="desc">
+      <h3>Questions &amp; Answers</h3>
+      <div className="qa-list">
+        {QA.map((item, i) =>
+        <div key={i} className="qa-item">
+            <div>
+              <div className="qa-tag">Q</div>
+            </div>
+            <div>
+              <div className="qa-q-text">{item.q}</div>
+              <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: 12, marginTop: 10 }}>
+                <span className="qa-tag ans">A</span>
+                <div>
+                  <div className="qa-a-text">{item.a}</div>
+                  <div className="qa-a-meta">{item.meta}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+      <div className="qa-ask">
+        <div className="qa-ask-text">
+          <strong>Have a question?</strong>
+          <span>Our spec techs answer most questions within 24 hours.</span>
+        </div>
+        <button className="btn-primary">Ask a Question</button>
+      </div>
+    </div>);
+
+}
+
+function InstallAside() {
+  return (
+    <aside className="tab-aside">
+      <div className="install-card">
+        <div className="install-card-eyebrow">Local install bay</div>
+        <h4>Free Pro Install</h4>
+        <p>Bring your Frontier to our shop in Signal Hill, CA. We’ll install your cover in under an hour while you wait — free with purchase.</p>
+        <div className="row-btns">
+          <a>Book appointment</a>
+          <a>Call (562) 424-6744</a>
+        </div>
+      </div>
+      <div className="install-card">
+        <div className="install-card-eyebrow">Need help fitting?</div>
+        <h4>Talk to a spec tech</h4>
+        <p>Not sure which bed length or finish? Our team has installed thousands of these — we know which trucks need the optional rail kit.</p>
+        <div className="row-btns">
+          <a>Live chat</a>
+          <a>Email a tech</a>
+        </div>
+      </div>
+    </aside>);
+
+}
+
+function TabbedSections() {
+  const [tab, setTab] = useState('desc');
+  return (
+    <section className="pdp-tabs">
+      <div className="tabs-bar">
+        <button className={`tab-btn ${tab === 'desc' ? 'on' : ''}`} onClick={() => setTab('desc')}>Description</button>
+        <button className={`tab-btn ${tab === 'specs' ? 'on' : ''}`} onClick={() => setTab('specs')}>Specs</button>
+        <button className={`tab-btn ${tab === 'reviews' ? 'on' : ''}`} onClick={() => setTab('reviews')}>Reviews<span className="tab-count">({PRODUCT.reviews.toLocaleString()})</span></button>
+        <button className={`tab-btn ${tab === 'qa' ? 'on' : ''}`} onClick={() => setTab('qa')}>Q&amp;A<span className="tab-count">({QA.length})</span></button>
+      </div>
+      <div className="tab-panel">
+        <div>
+          {tab === 'desc' && <DescriptionPane />}
+          {tab === 'specs' && <SpecsPane />}
+          {tab === 'reviews' && <ReviewsPane />}
+          {tab === 'qa' && <QAPane />}
+        </div>
+        <InstallAside />
+      </div>
+    </section>);
+
+}
+
+function StackedSections() {
+  return (
+    <div className="stacked-sections">
+      <section className="stacked-section">
+        <div className="stacked-section-head">
+          <h2>Description</h2>
+          <span className="sec-num">01 / 04</span>
+        </div>
+        <div className="tab-panel" style={{ padding: 0, gridTemplateColumns: '1fr 340px', gap: 48, alignItems: 'start' }}>
+          <DescriptionPane />
+          <InstallAside />
+        </div>
+      </section>
+      <section className="stacked-section">
+        <div className="stacked-section-head">
+          <h2>Specs</h2>
+          <span className="sec-num">02 / 04</span>
+        </div>
+        <SpecsPane />
+      </section>
+      <section className="stacked-section">
+        <div className="stacked-section-head">
+          <h2>Reviews <span className="sec-num" style={{ marginLeft: 8 }}>({PRODUCT.reviews.toLocaleString()})</span></h2>
+          <span className="sec-num">03 / 04</span>
+        </div>
+        <ReviewsPane />
+      </section>
+      <section className="stacked-section">
+        <div className="stacked-section-head">
+          <h2>Q&amp;A <span className="sec-num" style={{ marginLeft: 8 }}>({QA.length})</span></h2>
+          <span className="sec-num">04 / 04</span>
+        </div>
+        <QAPane />
+      </section>
+    </div>);
+
+}
+
+function ProductStrip({ title, items, slotPrefix, link = 'View all →' }) {
+  return (
+    <section className="product-strip">
+      <div className="strip-head">
+        <h2>{title}</h2>
+        <a>{link}</a>
+      </div>
+      <div className="strip-grid">
+        {items.map((r, i) =>
+        <div key={i} className="rel-card">
+            <div className="rel-media">
+              <image-slot id={`${slotPrefix}-${i}`} placeholder={r.name}></image-slot>
+            </div>
+            <div className="rel-body">
+              <div className="rel-brand">{r.brand}</div>
+              <div className="rel-name">{r.name}</div>
+              <div className="rel-sub">{r.sub}</div>
+              <div className="rel-foot">
+                <span className="rel-price">${r.price.toLocaleString()}</span>
+                {r.fits && <span className="rel-fit">✓ FITS</span>}
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+    </section>);
+
+}
+
+function FAQ() {
+  const items = [
+  { q: 'Will this fit my 2006 Frontier with bed liner?', a: 'Yes — the clamp-on rails sit above standard bed liners without modification. If you have a high-lip aftermarket liner, you may need our rail extension kit. Call the shop and we can confirm fitment by liner brand.' },
+  { q: 'How weather-tight is it?', a: 'EPDM rubber seals run along all four sides and integrated drain tubes route water out below the bed. In real-world use — snow, heavy rain, pressure washing — the bed stays dry. The rotational latches keep the panels under uniform pressure for a consistent seal.' },
+  { q: 'Can I drive with it folded up?', a: 'Yes. The cover folds flat against the cab and locks in place with included prop rods. Manufacturer recommends a 70 mph maximum when folded, which is more than enough for most highway driving.' },
+  { q: 'What\u2019s actually covered under the 3-year warranty?', a: 'The warranty covers manufacturer defects in materials and workmanship — panels, hinges, latches, and the powder coat finish. Normal wear, abuse, or modifications aren\u2019t covered. We handle warranty claims directly for local customers.' },
+  { q: 'Is professional install required?', a: 'No — most customers install it themselves in 30–45 minutes. If you\u2019d rather not, we install it free with purchase at our Signal Hill shop.' },
+  { q: 'Will the cover work with a toolbox?', a: 'Yes, with our optional rail-extension kit. The kit raises the cover above standard over-rail toolboxes so both stay usable. Call us with your toolbox brand and we\u2019ll confirm fitment.' }];
+
+  const [open, setOpen] = useState(0);
+  const plus = <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg>;
+  return (
+    <section className="faq">
+      <p className="faq-eyebrow">Got Questions?</p>
+      <h2 className="faq-head">Common <em>FAQ</em></h2>
+      <p className="faq-sub">Everything you need to know before bringing your truck in.</p>
+      <div className="faq-list">
+        {items.map((it, i) =>
+        <div key={i} className={`faq-item ${open === i ? 'open' : ''}`}>
+            <button className="faq-q" aria-expanded={open === i} onClick={() => setOpen(open === i ? -1 : i)}>
+              {it.q}
+              {plus}
+            </button>
+            <div className="faq-a-wrap"><div className="faq-a-inner"><div className="faq-a">{it.a}</div></div></div>
+          </div>
+        )}
+      </div>
+      <div className="faq-cta">
+        <a href="tel:+15624246744" className="faq-btn-primary">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.7 10.82 19.79 19.79 0 01.67 2.18 2 2 0 012.66 0h3a2 2 0 012 1.72c.13 1 .36 1.97.7 2.91a2 2 0 01-.45 2.11L6.91 7.74a16 16 0 006.29 6.29l1-.99a2 2 0 012.11-.45c.94.34 1.91.57 2.91.7A2 2 0 0122 16.92z" /></svg>
+          Call 562-424-6744
+        </a>
+        <a href="#" className="faq-btn-secondary">
+          <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" /></svg>
+          Chat With a Spec Tech
+        </a>
+      </div>
+    </section>);
+
+}
+
+function MobileBuyBar() {
+  return (
+    <div className="mobile-buy-bar">
+      <div className="mbb-info">
+        <span className="mbb-price">${PRODUCT.price.toFixed(2)}</span>
+        <span className="mbb-stock">● IN STOCK · FITS YOUR TRUCK</span>
+      </div>
+      <button className="mbb-cta">Add to Cart</button>
+    </div>);
+
+}
+
+function App() {
+  const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
+
+  return (
+    <div>
+      <Header />
+      <Breadcrumbs />
+      <main className="pdp">
+        <div className="pdp-top">
+          <Gallery style={t.galleryStyle} />
+          <Info sticky={t.stickyBuy} />
+        </div>
+
+        {t.layout === 'tabs' ? <TabbedSections /> : <StackedSections />}
+
+        <ProductStrip title="You may also like" items={RELATED} slotPrefix="pdp-related" link="View all tonneau covers →" />
+        <ProductStrip title="Recently viewed" items={RECENTLY_VIEWED} slotPrefix="pdp-recent" link="Clear history" />
+
+        <FAQ />
+      </main>
+      <MobileBuyBar />
+
+      <TweaksPanel title="Tweaks">
+        <TweakSection title="Section layout">
+          <TweakRadio label="Sections" value={t.layout} options={[
+          { value: 'tabs', label: 'Tabs' },
+          { value: 'stacked', label: 'Stacked' }]
+          } onChange={(v) => setTweak('layout', v)} />
+        </TweakSection>
+        <TweakSection title="Gallery">
+          <TweakSelect label="Layout" value={t.galleryStyle} options={[
+          { value: 'vertical-left', label: 'Vertical thumbs (left)' },
+          { value: 'bottom-thumbs', label: 'Bottom thumb strip' },
+          { value: 'stacked', label: 'Stacked thumb grid' }]
+          } onChange={(v) => setTweak('galleryStyle', v)} />
+        </TweakSection>
+        <TweakSection title="Purchase panel">
+          <TweakToggle label="Sticky on scroll" value={t.stickyBuy} onChange={(v) => setTweak('stickyBuy', v)} />
+        </TweakSection>
+      </TweaksPanel>
+    </div>);
+
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>
