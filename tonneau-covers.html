@@ -107,6 +107,7 @@
     [data-delay="300"]{transition-delay:0.30s;}
     [data-delay="400"]{transition-delay:0.40s;}
     [data-delay="500"]{transition-delay:0.50s;}
+    @media(prefers-reduced-motion:reduce){[data-anim]{opacity:1;transform:none;transition:none;}[data-delay="100"],[data-delay="200"],[data-delay="300"],[data-delay="400"],[data-delay="500"]{transition-delay:0s;}}
 
     /* ─── EYEBROW ─── */
     .eyebrow{
@@ -543,7 +544,7 @@
     .intro-stat{flex:1;min-width:0;padding:0 8px;gap:8px;}
     .intro-stat-divider{display:none;}
     .intro-stat svg{width:30px;height:30px;}
-    .intro-stat-label{font-size:8px;letter-spacing:1.5px;}
+    .intro-stat-label{font-size:10px;letter-spacing:1.5px;}
 
     .section-head{padding:48px 20px 32px;}
     .section-head p{font-size:15px;}

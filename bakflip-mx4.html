@@ -189,6 +189,7 @@
     [data-d="4"]{transition-delay:.40s;}
     [data-d="5"]{transition-delay:.50s;}
     [data-d="6"]{transition-delay:.60s;}
+    @media(prefers-reduced-motion:reduce){[data-a]{opacity:1;transform:none;transition:none;}[data-d="1"],[data-d="2"],[data-d="3"],[data-d="4"],[data-d="5"],[data-d="6"]{transition-delay:0s;}}
 
     /* ════════ UTILITY ════════ */
     .label{font-size:10px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--crimson);display:block;}
