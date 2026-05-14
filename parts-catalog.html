@@ -422,6 +422,8 @@
 <script src="fender-flares-data.js"></script>
 <script src="deflectors-data.js"></script>
 <script src="lighting-data.js"></script>
+<script src="grilles-data.js"></script>
+<script src="husky-data.js"></script>
 <script src="ymm-popup.js"></script>
 <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
@@ -649,6 +651,16 @@ const CATEGORY_DEFS = [
     id:'lighting', name:'Lighting', catLabel:'Lighting',
     heroTitle:'Lighting', heroSub:'Off-road and vehicle-specific lighting. Baja Designs, KC HiLites, Morimoto and more.',
     data: safeArr(LIGHTING_CATALOG)
+  },
+  {
+    id:'grilles', name:'Grilles', catLabel:'Grilles',
+    heroTitle:'Grilles', heroSub:'Morimoto XB LED and OEM-style grilles. Plug-and-play for your truck.',
+    data: safeArr(GRILLE_CATALOG)
+  },
+  {
+    id:'bed-protection', name:'Bed Protection', catLabel:'Bed Protection',
+    heroTitle:'Bed Mats & Bed Protection', heroSub:'Husky Liners Guardian bed mats and liners. Installed at 3J\'s.',
+    data: safeArr(HUSKY_CATALOG)
   },
   {
     id:'floor-liners', name:'Floor Liners', catLabel:'Floor Liners',
