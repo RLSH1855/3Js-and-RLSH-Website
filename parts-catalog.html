@@ -60,7 +60,7 @@
   .search kbd { font-family: var(--mono); font-size: 11px; color: rgba(255,255,255,.3); border: 1px solid rgba(255,255,255,.15); padding: 2px 6px; border-radius: 2px; }
 
   .hdr-actions { display:flex; align-items:center; gap: 8px; }
-  .garage-pill { display:none; }
+  .garage-pill { display:flex; align-items:center; gap:8px; padding:6px 12px 6px 8px; border:1px solid rgba(255,255,255,.18); background:rgba(255,255,255,.07); cursor:pointer; transition:border-color .15s,background .15s; }
   .garage-pill:hover { border-color: var(--accent); background: rgba(255,255,255,.11); }
   .garage-pill-ico { color: var(--accent); display:inline-flex; flex-shrink:0; }
   .garage-pill-ico svg { width: 26px; height: 26px; }
@@ -314,7 +314,8 @@
   .garage-go { margin-top: 4px; }
 
   /* Garage widget (sidebar) */
-  .garage-widget { display:flex; align-items: center; gap: 10px; padding: 12px; background: var(--surface2); border: 1px solid var(--border-strong); margin-bottom: 16px; }
+  .garage-widget { display:flex; align-items: center; gap: 10px; padding: 12px; background: var(--surface2); border: 1px solid var(--border-strong); margin-bottom: 16px; cursor: pointer; transition: border-color .15s; }
+  .garage-widget:hover { border-color: var(--accent); }
   .garage-widget-ico { color: var(--accent); }
   .garage-widget-ico svg { width: 22px; height: 22px; }
   .garage-widget-text { flex: 1; min-width: 0; }
@@ -1420,13 +1421,13 @@ function ProductRow({ p, garage, onOpenDetail }) {
 // ── Garage Widget (sidebar) ──
 function GarageWidget({ garage, onSwap }) {
   return (
-    <div className="garage-widget">
+    <div className="garage-widget" onClick={onSwap} style={{cursor:'pointer'}}>
       <div className="garage-widget-ico">{Icon.truck}</div>
       <div className="garage-widget-text">
         <div className="garage-widget-label">My Garage</div>
         <div className="garage-widget-vehicle">{garage ? `${garage.year} ${garage.make} ${garage.model}` : 'No vehicle set'}</div>
       </div>
-      <button className="garage-widget-swap" onClick={onSwap} aria-label="Change vehicle">{Icon.swap}</button>
+      <span className="garage-widget-swap" aria-hidden="true">{Icon.swap}</span>
     </div>
   );
 }
