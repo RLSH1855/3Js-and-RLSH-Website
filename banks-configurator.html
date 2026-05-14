@@ -154,6 +154,63 @@ body{
   top:0;left:0;
 }
 
+/* ── PART OVERLAY (product image on bike) ── */
+.part-overlay{
+  position:absolute;
+  z-index:6;
+  width:100px;
+  background:rgba(0,0,0,0.75);
+  border:1.5px solid rgba(255,165,0,0.5);
+  padding:5px;
+  filter:drop-shadow(0 0 10px rgba(255,160,0,0.45));
+  transform:translate(-50%,-50%);
+  pointer-events:none;
+}
+.part-overlay img{
+  width:100%;display:block;
+}
+.part-overlay-label{
+  font-family:'Montserrat',sans-serif;
+  font-size:7px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;
+  color:rgba(255,165,0,0.85);text-align:center;
+  padding:4px 0 2px;
+  background:rgba(0,0,0,0.6);
+}
+/* Position: left fork */
+.part-fork{left:19%;top:54%;}
+
+/* Fly-off / fly-in animations */
+@keyframes flyOff{
+  0%  {transform:translate(-50%,-50%) rotate(0deg);opacity:1;}
+  100%{transform:translate(calc(-50% - 180px),calc(-50% - 80px)) rotate(-22deg);opacity:0;}
+}
+@keyframes flyIn{
+  0%  {transform:translate(calc(-50% + 180px),calc(-50% + 60px)) rotate(18deg);opacity:0;}
+  100%{transform:translate(-50%,-50%) rotate(0deg);opacity:1;}
+}
+.part-overlay.fly-off{animation:flyOff 0.42s ease-in forwards;}
+.part-overlay.fly-in {animation:flyIn  0.44s ease-out forwards;}
+
+/* ── PART CARDS (sidebar) ── */
+.part-cards{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.part-card{
+  border:2px solid #1e1e1e;background:#0d0d0d;
+  cursor:pointer;padding:10px 8px;text-align:center;
+  transition:border-color 0.2s,background 0.2s;
+}
+.part-card:hover{border-color:#444;}
+.part-card.active{border-color:#FFA500;background:rgba(255,165,0,0.05);}
+.part-card img{
+  width:100%;display:block;margin-bottom:8px;
+}
+.part-card-name{
+  font-size:9px;font-weight:800;letter-spacing:0.5px;text-transform:uppercase;
+  color:#fff;margin-bottom:2px;
+}
+.part-card-price{
+  font-size:9px;font-weight:600;color:#FFA500;letter-spacing:0.5px;
+}
+
 /* Pulse animation for active glows */
 @keyframes pulse{
   0%,100%{filter:brightness(1);}
@@ -310,6 +367,12 @@ body{
     <div class="bike-wrap" id="bikeWrap">
       <img class="bike-img" src="images/banks/bike-template.png" alt="Banks Performance Custom Harley">
 
+      <!-- Part overlay: fork light product image -->
+      <div class="part-overlay part-fork" id="partOverlay">
+        <img id="partImg" src="images/banks/s2-pro-pair.png" alt="Fork Light">
+        <div class="part-overlay-label" id="partLabel">S2 Pro Pair</div>
+      </div>
+
       <!-- Light glows -->
       <div class="glow glow-main amber" id="glowMain"></div>
       <div class="glow glow-fork-l amber" id="glowForkL"></div>
@@ -335,6 +398,23 @@ body{
       <div class="swatches" id="lensSwatches">
         <div class="swatch active" data-mode="amber" style="background:#FFA500;" title="Amber"><span class="swatch-label">Amber</span></div>
         <div class="swatch" data-mode="white-light" style="background:#c8e0ff;border:1px solid #555;" title="White"><span class="swatch-label">White</span></div>
+      </div>
+    </div>
+
+    <!-- FORK LIGHT STYLE -->
+    <div class="section">
+      <div class="section-label">Fork Light Style</div>
+      <div class="part-cards" id="partCards">
+        <div class="part-card active" data-src="images/banks/s2-pro-pair.png" data-name="S2 Pro Pair">
+          <img src="images/banks/s2-pro-pair.png" alt="S2 Pro Pair">
+          <div class="part-card-name">S2 Pro Pair</div>
+          <div class="part-card-price">$189</div>
+        </div>
+        <div class="part-card" data-src="images/banks/lp6-pro.png" data-name="LP6 Pro">
+          <img src="images/banks/lp6-pro.png" alt="LP6 Pro">
+          <div class="part-card-name">LP6 Pro</div>
+          <div class="part-card-price">$229</div>
+        </div>
       </div>
     </div>
 
@@ -423,6 +503,34 @@ document.querySelectorAll('#lensSwatches .swatch').forEach(function(sw){
         });
       }
     });
+  });
+});
+
+/* ── PART SWAP (fly-off / fly-in) ── */
+var partOverlay = document.getElementById('partOverlay');
+var partImg     = document.getElementById('partImg');
+var partLabel   = document.getElementById('partLabel');
+
+document.querySelectorAll('#partCards .part-card').forEach(function(card){
+  card.addEventListener('click', function(){
+    if(card.classList.contains('active')) return;
+    var newSrc  = card.dataset.src;
+    var newName = card.dataset.name;
+
+    document.querySelectorAll('#partCards .part-card').forEach(function(c){ c.classList.remove('active'); });
+    card.classList.add('active');
+
+    // Fly current part off
+    partOverlay.classList.remove('fly-in');
+    partOverlay.classList.add('fly-off');
+
+    setTimeout(function(){
+      partImg.src  = newSrc;
+      partLabel.textContent = newName;
+      partOverlay.classList.remove('fly-off');
+      void partOverlay.offsetWidth; // force reflow
+      partOverlay.classList.add('fly-in');
+    }, 380);
   });
 });
 
