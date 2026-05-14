@@ -412,6 +412,13 @@
 
 <script>window.rlshYmmManual = true;</script>
 <script src="catalog-data.js"></script>
+<script src="extra-tonneau-data.js"></script>
+<script src="running-boards-data.js"></script>
+<script src="amp-data.js"></script>
+<script src="gorhino-data.js"></script>
+<script src="westin-data.js"></script>
+<script src="lund-data.js"></script>
+<script src="headache-racks-data.js"></script>
 <script src="ymm-popup.js"></script>
 <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
@@ -596,14 +603,50 @@ function ProductPlaceholder({ brand, name }) {
   );
 }
 
+// ── Schema normalizers ──
+// Running boards files: [brand,product,partNum,cabType,startYear,endYear,make,model,desc,price,img]
+// Standard format:      [brand,product,partNum,bedIn,bedSize,startYear,endYear,make,model,desc,fitNote,map,img]
+function normRB(rows) {
+  return rows.map(r => [r[0],r[1],r[2],null,r[3]||null,r[4],r[5],r[6],r[7],r[8],null,r[9],r[10]]);
+}
+// Headache racks: [brand,product,partNum,startYear,endYear,make,model,desc,price,img]
+function normHR(rows) {
+  return rows.map(r => [r[0],r[1],r[2],null,null,r[3],r[4],r[5],r[6],r[7],null,r[8],r[9]]);
+}
+function safeArr(v) { return typeof v !== 'undefined' ? v : []; }
+
 // ── Category definitions ──
-// Add product data arrays here as new categories come online
 const CATEGORY_DEFS = [
-  { id:'tonneau',        name:'Tonneau Covers',      data: typeof CATALOG !== 'undefined' ? CATALOG : [], heroTitle:'Bed Covers', heroSub:'Locked-in fitment for your truck. We show you covers that bolt on — nothing else.', catLabel:'Tonneau Covers' },
-  { id:'running-boards', name:'Running Boards',       data: [], heroTitle:'Running Boards & Steps', heroSub:'Step up your truck. Professionally installed at 3J\'s Auto Body.', catLabel:'Running Boards' },
-  { id:'floor-liners',   name:'Floor Liners',         data: [], heroTitle:'Floor Liners & Mats', heroSub:'Protect your interior. Custom-fit to your exact year, make and model.', catLabel:'Floor Liners' },
-  { id:'towing',         name:'Towing',               data: [], heroTitle:'Towing Equipment', heroSub:'Hitches, ball mounts and wiring harnesses. Installed right.', catLabel:'Towing Equipment' },
-  { id:'lighting',       name:'Lighting',             data: [], heroTitle:'Off-Road Lighting', heroSub:'Auxiliary and off-road lighting. Wired and mounted by our techs.', catLabel:'Lighting' },
+  {
+    id:'tonneau', name:'Tonneau Covers', catLabel:'Tonneau Covers',
+    heroTitle:'Bed Covers', heroSub:'Locked-in fitment for your truck. We show you covers that bolt on — nothing else.',
+    data: [...safeArr(CATALOG), ...safeArr(EXTRA_TONNEAU)]
+  },
+  {
+    id:'running-boards', name:'Running Boards', catLabel:'Running Boards',
+    heroTitle:'Running Boards & Steps', heroSub:'Step up your truck. Professionally installed at 3J\'s Auto Body.',
+    data: normRB([...safeArr(RB_CATALOG), ...safeArr(AMP_CATALOG), ...safeArr(GR_CATALOG), ...safeArr(WESTIN_CATALOG), ...safeArr(LUND_CATALOG)])
+  },
+  {
+    id:'headache-racks', name:'Headache Racks', catLabel:'Headache Racks',
+    heroTitle:'Headache Racks', heroSub:'Protect your cab glass and secure your cargo. Professionally installed.',
+    data: normHR(safeArr(HR_CATALOG))
+  },
+  {
+    id:'floor-liners', name:'Floor Liners', catLabel:'Floor Liners',
+    heroTitle:'Floor Liners & Mats', heroSub:'Protect your interior. Custom-fit to your exact year, make and model.',
+    data: []
+  },
+  {
+    id:'towing', name:'Towing', catLabel:'Towing Equipment',
+    heroTitle:'Towing Equipment', heroSub:'Hitches, ball mounts and wiring harnesses. Installed right.',
+    data: []
+  },
+  {
+    id:'lighting', name:'Lighting', catLabel:'Lighting',
+    heroTitle:'Off-Road Lighting', heroSub:'Auxiliary and off-road lighting. Wired and mounted by our techs.',
+    data: []
+  },
 ];
 
 function getUniqueProdCount(data) {
