@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Banks Performance — Build Your Bike</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  background:#050505;
+  color:#fff;
+  font-family:'Montserrat',sans-serif;
+  min-height:100vh;
+  overflow-x:hidden;
+}
+
+/* ── HEADER ── */
+.header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:18px 40px;
+  border-bottom:1px solid #1a1a1a;
+  background:rgba(0,0,0,0.8);
+  position:sticky;top:0;z-index:100;
+}
+.header-logo img{
+  height:40px;
+  filter:invert(1);
+}
+.header-tag{
+  font-size:9px;font-weight:700;
+  letter-spacing:3px;text-transform:uppercase;
+  color:rgba(255,255,255,0.35);
+}
+.header-cta{
+  display:inline-flex;align-items:center;
+  padding:12px 24px;
+  background:#FFA500;color:#000;
+  font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;
+  border:none;cursor:pointer;
+  transition:background 0.2s;text-decoration:none;
+}
+.header-cta:hover{background:#e69400;}
+
+/* ── MAIN LAYOUT ── */
+.main{
+  display:grid;
+  grid-template-columns:1fr 360px;
+  min-height:calc(100vh - 77px);
+}
+
+/* ── BIKE CANVAS ── */
+.bike-canvas{
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:radial-gradient(ellipse at 40% 60%, #0f0f0f 0%, #050505 100%);
+  overflow:hidden;
+  padding:40px;
+}
+.bike-wrap{
+  position:relative;
+  width:100%;
+  max-width:720px;
+}
+.bike-wrap img.bike-img{
+  width:100%;
+  display:block;
+  position:relative;
+  z-index:2;
+}
+
+/* ── GLOW OVERLAYS ── */
+.glow{
+  position:absolute;
+  border-radius:50%;
+  pointer-events:none;
+  z-index:3;
+  transition:opacity 0.4s ease, background 0.4s ease;
+  mix-blend-mode:screen;
+}
+.glow.off{opacity:0;}
+.glow.amber{opacity:1;}
+.glow.white-light{opacity:1;}
+
+/* Main LP6 center light */
+.glow-main{
+  width:120px;height:90px;
+  left:31%;top:22%;
+  transform:translate(-50%,-50%);
+}
+.glow-main.amber{background:radial-gradient(ellipse, rgba(255,180,0,1) 0%, rgba(255,120,0,0.6) 35%, transparent 70%);}
+.glow-main.white-light{background:radial-gradient(ellipse, rgba(255,255,255,1) 0%, rgba(200,230,255,0.6) 35%, transparent 70%);}
+
+/* Left fork light */
+.glow-fork-l{
+  width:70px;height:55px;
+  left:18%;top:55%;
+  transform:translate(-50%,-50%);
+}
+.glow-fork-l.amber{background:radial-gradient(ellipse, rgba(255,180,0,0.95) 0%, rgba(255,120,0,0.5) 35%, transparent 70%);}
+.glow-fork-l.white-light{background:radial-gradient(ellipse, rgba(255,255,255,0.95) 0%, rgba(200,230,255,0.5) 35%, transparent 70%);}
+
+/* Right fork light */
+.glow-fork-r{
+  width:60px;height:50px;
+  left:37%;top:56%;
+  transform:translate(-50%,-50%);
+}
+.glow-fork-r.amber{background:radial-gradient(ellipse, rgba(255,180,0,0.9) 0%, rgba(255,120,0,0.4) 35%, transparent 70%);}
+.glow-fork-r.white-light{background:radial-gradient(ellipse, rgba(255,255,255,0.9) 0%, rgba(200,230,255,0.4) 35%, transparent 70%);}
+
+/* Lower crash bar lights */
+.glow-low-l{
+  width:50px;height:40px;
+  left:14%;top:71%;
+  transform:translate(-50%,-50%);
+}
+.glow-low-l.amber{background:radial-gradient(ellipse, rgba(255,180,0,0.85) 0%, rgba(255,120,0,0.3) 40%, transparent 70%);}
+.glow-low-l.white-light{background:radial-gradient(ellipse, rgba(255,255,255,0.85) 0%, rgba(200,230,255,0.3) 40%, transparent 70%);}
+
+.glow-low-r{
+  width:50px;height:40px;
+  left:29%;top:70%;
+  transform:translate(-50%,-50%);
+}
+.glow-low-r.amber{background:radial-gradient(ellipse, rgba(255,180,0,0.85) 0%, rgba(255,120,0,0.3) 40%, transparent 70%);}
+.glow-low-r.white-light{background:radial-gradient(ellipse, rgba(255,255,255,0.85) 0%, rgba(200,230,255,0.3) 40%, transparent 70%);}
+
+/* Rim glow */
+.glow-rim{
+  width:160px;height:50px;
+  left:60%;top:85%;
+  transform:translate(-50%,-50%);
+  border-radius:50%;
+}
+.glow-rim.amber{background:radial-gradient(ellipse, rgba(255,160,0,0.5) 0%, rgba(255,120,0,0.15) 50%, transparent 70%);}
+.glow-rim.white-light{background:radial-gradient(ellipse, rgba(200,220,255,0.5) 0%, rgba(180,200,255,0.15) 50%, transparent 70%);}
+
+/* Windshield color overlay */
+.windshield-overlay{
+  position:absolute;
+  z-index:3;
+  pointer-events:none;
+  mix-blend-mode:screen;
+  transition:background 0.5s ease, opacity 0.5s ease;
+  opacity:0.7;
+  /* Approximate polygon over windshield area */
+  clip-path:polygon(24% 0%, 52% 0%, 60% 35%, 48% 48%, 20% 42%, 14% 20%);
+  width:100%;height:100%;
+  top:0;left:0;
+}
+
+/* Pulse animation for active glows */
+@keyframes pulse{
+  0%,100%{filter:brightness(1);}
+  50%{filter:brightness(1.15);}
+}
+.glow:not(.off){animation:pulse 2.5s ease-in-out infinite;}
+
+/* ── SIDEBAR ── */
+.sidebar{
+  background:#0a0a0a;
+  border-left:1px solid #1a1a1a;
+  display:flex;
+  flex-direction:column;
+  overflow-y:auto;
+}
+.sidebar-head{
+  padding:28px 28px 20px;
+  border-bottom:1px solid #1a1a1a;
+}
+.sidebar-eyebrow{
+  font-size:8px;font-weight:800;letter-spacing:3px;text-transform:uppercase;
+  color:#FFA500;margin-bottom:8px;
+}
+.sidebar-title{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:32px;letter-spacing:1px;color:#fff;line-height:1;
+}
+.sidebar-sub{
+  font-size:10px;font-weight:500;color:rgba(255,255,255,0.35);
+  margin-top:6px;letter-spacing:0.5px;
+}
+
+/* Sections */
+.section{
+  padding:22px 28px;
+  border-bottom:1px solid #111;
+}
+.section-label{
+  font-size:8px;font-weight:800;letter-spacing:3px;text-transform:uppercase;
+  color:rgba(255,255,255,0.35);margin-bottom:14px;
+}
+
+/* Color swatches */
+.swatches{
+  display:flex;flex-wrap:wrap;gap:10px;
+}
+.swatch{
+  width:36px;height:36px;
+  border:2px solid transparent;
+  cursor:pointer;
+  transition:transform 0.15s,border-color 0.15s;
+  position:relative;
+}
+.swatch:hover{transform:scale(1.1);}
+.swatch.active{border-color:#FFA500;transform:scale(1.12);}
+.swatch-label{
+  position:absolute;
+  bottom:-18px;left:50%;transform:translateX(-50%);
+  font-size:8px;font-weight:700;letter-spacing:0.5px;
+  color:rgba(255,255,255,0.5);white-space:nowrap;
+}
+
+/* Light toggle */
+.light-toggle{
+  display:flex;gap:10px;margin-bottom:14px;
+}
+.toggle-btn{
+  flex:1;padding:10px 8px;
+  font-family:'Montserrat',sans-serif;
+  font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
+  border:1.5px solid #2a2a2a;background:transparent;color:rgba(255,255,255,0.4);
+  cursor:pointer;transition:all 0.2s;
+}
+.toggle-btn:hover{border-color:#444;color:rgba(255,255,255,0.7);}
+.toggle-btn.active-amber{border-color:#FFA500;color:#FFA500;background:rgba(255,165,0,0.08);}
+.toggle-btn.active-white{border-color:#c8e0ff;color:#c8e0ff;background:rgba(200,224,255,0.08);}
+.toggle-btn.active-off{border-color:#333;color:rgba(255,255,255,0.25);}
+
+/* Section subtitle */
+.section-sub{
+  font-size:10px;font-weight:600;color:rgba(255,255,255,0.55);
+  margin-bottom:10px;
+}
+
+/* Paint note */
+.paint-note{
+  padding:16px 28px;
+  background:#0d0d0d;
+  border-bottom:1px solid #111;
+}
+.paint-note-inner{
+  display:flex;align-items:flex-start;gap:12px;
+  border:1px solid #1a1a1a;
+  padding:14px 16px;
+}
+.paint-note-icon{font-size:18px;}
+.paint-note-text{
+  font-size:10px;line-height:1.7;color:rgba(255,255,255,0.45);
+}
+.paint-note-text strong{color:#FFA500;font-weight:700;}
+
+/* CTA bottom */
+.sidebar-cta{
+  padding:24px 28px;
+  margin-top:auto;
+}
+.cta-btn{
+  width:100%;display:flex;align-items:center;justify-content:center;gap:8px;
+  height:52px;
+  background:#FFA500;color:#000;border:none;cursor:pointer;
+  font-family:'Montserrat',sans-serif;
+  font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;
+  transition:background 0.2s;
+}
+.cta-btn:hover{background:#e69400;}
+.cta-note{
+  text-align:center;margin-top:10px;
+  font-size:9px;color:rgba(255,255,255,0.25);letter-spacing:0.5px;
+}
+
+/* Powered by */
+.powered{
+  padding:14px 28px;
+  text-align:center;
+  border-top:1px solid #111;
+  font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  color:rgba(255,255,255,0.2);
+}
+.powered span{color:rgba(255,255,255,0.4);}
+
+/* Mobile */
+@media(max-width:900px){
+  .main{grid-template-columns:1fr;}
+  .sidebar{border-left:none;border-top:1px solid #1a1a1a;}
+  .header{padding:14px 20px;}
+  .bike-canvas{padding:24px 16px;}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <img src="images/banks/banks-logo.png" class="header-logo" style="height:36px;filter:invert(1);" alt="Banks Performance">
+  <div class="header-tag">Bike Configurator — Preview</div>
+  <a href="#quote" class="header-cta">Get a Quote</a>
+</header>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- BIKE CANVAS -->
+  <div class="bike-canvas">
+    <div class="bike-wrap" id="bikeWrap">
+      <img class="bike-img" src="images/banks/bike-template.png" alt="Banks Performance Custom Harley">
+
+      <!-- Windshield color overlay -->
+      <div class="windshield-overlay" id="windshieldOverlay" style="background:rgba(255,180,0,0.35);"></div>
+
+      <!-- Light glows -->
+      <div class="glow glow-main amber" id="glowMain"></div>
+      <div class="glow glow-fork-l amber" id="glowForkL"></div>
+      <div class="glow glow-fork-r amber" id="glowForkR"></div>
+      <div class="glow glow-low-l amber" id="glowLowL"></div>
+      <div class="glow glow-low-r amber" id="glowLowR"></div>
+      <div class="glow glow-rim amber" id="glowRim"></div>
+    </div>
+  </div>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <div class="sidebar-head">
+      <div class="sidebar-eyebrow">Banks Performance</div>
+      <div class="sidebar-title">Build Your<br>Bike</div>
+      <div class="sidebar-sub">Select your options below</div>
+    </div>
+
+    <!-- WINDSHIELD COLOR -->
+    <div class="section">
+      <div class="section-label">Windshield Color</div>
+      <div class="swatches" id="windshieldSwatches">
+        <div class="swatch active" data-color="rgba(255,180,0,0.35)" style="background:#FFA500;" title="Amber/Yellow"><span class="swatch-label">Amber</span></div>
+        <div class="swatch" data-color="rgba(50,200,50,0.35)" style="background:#32c832;" title="Green"><span class="swatch-label">Green</span></div>
+        <div class="swatch" data-color="rgba(180,30,30,0.30)" style="background:#cc2222;" title="Red"><span class="swatch-label">Red</span></div>
+        <div class="swatch" data-color="rgba(50,100,220,0.30)" style="background:#2255cc;" title="Blue"><span class="swatch-label">Blue</span></div>
+        <div class="swatch" data-color="rgba(180,180,200,0.25)" style="background:#aaaacc;" title="Smoke"><span class="swatch-label">Smoke</span></div>
+        <div class="swatch" data-color="rgba(255,255,255,0.12)" style="background:#ddd;border:1px solid #555;" title="Clear"><span class="swatch-label">Clear</span></div>
+      </div>
+    </div>
+
+    <!-- LIGHTING -->
+    <div class="section">
+      <div class="section-label">Lighting — Baja Designs</div>
+      <div class="section-sub">Main LP6 Light</div>
+      <div class="light-toggle">
+        <button class="toggle-btn active-amber" data-group="main" data-mode="amber">Amber</button>
+        <button class="toggle-btn" data-group="main" data-mode="white-light">White</button>
+        <button class="toggle-btn" data-group="main" data-mode="off">Off</button>
+      </div>
+      <div class="section-sub">Fork Lights</div>
+      <div class="light-toggle">
+        <button class="toggle-btn active-amber" data-group="fork" data-mode="amber">Amber</button>
+        <button class="toggle-btn" data-group="fork" data-mode="white-light">White</button>
+        <button class="toggle-btn" data-group="fork" data-mode="off">Off</button>
+      </div>
+      <div class="section-sub">Lower Lights</div>
+      <div class="light-toggle">
+        <button class="toggle-btn active-amber" data-group="lower" data-mode="amber">Amber</button>
+        <button class="toggle-btn" data-group="lower" data-mode="white-light">White</button>
+        <button class="toggle-btn" data-group="lower" data-mode="off">Off</button>
+      </div>
+    </div>
+
+    <!-- PAINT NOTE -->
+    <div class="paint-note">
+      <div class="paint-note-inner">
+        <div class="paint-note-icon">🎨</div>
+        <div class="paint-note-text">
+          Custom paint &amp; color matching by <strong>3J's Auto Body &amp; Paint</strong> — Signal Hill, CA.<br>Every Banks Performance build starts with a perfect finish.
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="sidebar-cta" id="quote">
+      <button class="cta-btn" onclick="alert('Quote request coming soon!')">
+        Request a Build Quote
+      </button>
+      <div class="cta-note">No commitment · We'll reach out within 24 hrs</div>
+    </div>
+
+    <div class="powered">
+      Powered by <span>Banks Performance × 3J's Auto Body</span>
+    </div>
+
+  </aside>
+
+</div>
+
+<script>
+/* ── WINDSHIELD COLOR ── */
+var wsSwatches = document.querySelectorAll('#windshieldSwatches .swatch');
+var wsOverlay  = document.getElementById('windshieldOverlay');
+
+wsSwatches.forEach(function(sw){
+  sw.addEventListener('click', function(){
+    wsSwatches.forEach(function(s){ s.classList.remove('active'); });
+    sw.classList.add('active');
+    wsOverlay.style.background = sw.dataset.color;
+  });
+});
+
+/* ── LIGHT TOGGLES ── */
+var lightGroups = {
+  main:  ['glowMain'],
+  fork:  ['glowForkL','glowForkR'],
+  lower: ['glowLowL','glowLowR','glowRim']
+};
+
+document.querySelectorAll('.light-toggle').forEach(function(row){
+  var btns = row.querySelectorAll('.toggle-btn');
+  btns.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var group = btn.dataset.group;
+      var mode  = btn.dataset.mode;
+
+      // Update button styles
+      btns.forEach(function(b){ b.className='toggle-btn'; });
+      btn.classList.add('active-'+mode);
+
+      // Update glows
+      lightGroups[group].forEach(function(id){
+        var el = document.getElementById(id);
+        if(!el) return;
+        el.className = el.className.replace(/\s*(amber|white-light|off)/g,'');
+        el.classList.add(mode);
+      });
+    });
+  });
+});
+</script>
+</body>
+</html>
