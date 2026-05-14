@@ -1,4 +1,4 @@
-var HR_CATALOG=[
+﻿var HR_CATALOG=[
 ["BackRack","Safety Rack Frame","10200",2004,2012,"Chevrolet","Colorado","Safety Rack Frame; Requires Installation Kit Sold Separately;",299.99,"https://www.catalograck.com/ImgVDHR/BAC/BRK_Safety_Frm_closeup_v2.jpg"],
 ["BackRack","Safety Rack Frame","10200",1982,2004,"Chevrolet","S-10","Safety Rack Frame; Requires Installation Kit Sold Separately;",299.99,"https://www.catalograck.com/ImgVDHR/BAC/BRK_Safety_Frm_closeup_v2.jpg"],
 ["BackRack","Safety Rack Frame","10200",1987,2010,"Dodge","Dakota","Safety Rack Frame; Requires Installation Kit Sold Separately;",299.99,"https://www.catalograck.com/ImgVDHR/BAC/BRK_Safety_Frm_closeup_v2.jpg"],
@@ -672,4 +672,14 @@ var HR_CATALOG=[
 ["BackRack","SRX Rack Frame","SRX900",2011,2026,"Ram","2500","SRX Rack Frame; Black Powder Coat;",299.0,"https://www.catalograck.com/ImgVDHR/BAC/BRKbrk_srxseries_lifestyle_1.jpg"],
 ["BackRack","SRX Rack Frame","SRX900",2011,2026,"Ram","3500","SRX Rack Frame; Black Powder Coat;",299.0,"https://www.catalograck.com/ImgVDHR/BAC/BRKbrk_srxseries_lifestyle_1.jpg"],
 ["BackRack","SRX Rack Frame","SRX900",2008,2026,"Toyota","Tundra","SRX Rack Frame; Black Powder Coat;",299.0,"https://www.catalograck.com/ImgVDHR/BAC/BRKbrk_srxseries_lifestyle_1.jpg"]
+];
+
+// N-Fab Headache Racks
+// 5 entries
+var NFAB_RACKS=[
+["N-Fab","ARC Sports Bar - Textured Black","F19BR-TX",null,null,2019,2025,"Ford","Ranger","Direct Bolt on",null,649.99,null],
+["N-Fab","ARC Sports Bar - Textured Black","G15BR-TX",null,null,2015,2026,"Chevrolet","Canyon / Colorado","Direct Bolt on",null,649.99,null],
+["N-Fab","ARC Sports Bar w/o Bed Cover- Textured Black","J19BR-RLT",null,null,2020,2025,"Jeep","Gladiator JT","Roll And Lock Cover",null,649.99,null],
+["N-Fab","ARC Sports Bar W/RollNlock/Armis Bed Cover- Textured Black","J19BR-TX",null,null,2020,2025,"Jeep","Gladiator JT","Direct Bolt on",null,649.99,null],
+["N-Fab","ARC Sports Bar - Textured Black","T16BR-TX",null,null,2016,2023,"Toyota","Tacoma","Direct Bolt on",null,649.99,null]
 ];
