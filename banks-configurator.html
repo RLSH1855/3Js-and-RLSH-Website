@@ -176,8 +176,8 @@ body{
   padding:4px 0 2px;
   background:rgba(0,0,0,0.6);
 }
-/* Position: left fork */
-.part-fork{left:19%;top:54%;}
+/* Position: main headlight (fairing center) */
+.part-headlight{left:32%;top:28%;width:110px;}
 
 /* Fly-off / fly-in animations */
 @keyframes flyOff{
@@ -190,6 +190,42 @@ body{
 }
 .part-overlay.fly-off{animation:flyOff 0.42s ease-in forwards;}
 .part-overlay.fly-in {animation:flyIn  0.44s ease-out forwards;}
+
+/* ── DRAG GHOST ── */
+.drag-ghost{
+  position:fixed;z-index:99999;width:90px;
+  background:rgba(0,0,0,0.9);
+  border:1.5px solid rgba(255,165,0,0.75);
+  padding:5px;pointer-events:none;
+  filter:drop-shadow(0 0 14px rgba(255,160,0,0.65));
+  transform:rotate(-6deg) scale(1.08);
+  transition:transform 0.12s ease;
+  cursor:grabbing;
+}
+.drag-ghost img{width:100%;display:block;}
+.drag-ghost.near-drop{
+  transform:rotate(0deg) scale(0.85);
+  border-color:rgba(255,165,0,1);
+}
+
+/* Snap-ready ring on drop zone */
+.part-overlay.snap-ready{
+  border-color:rgba(255,165,0,1)!important;
+  animation:snapRing 0.55s ease-in-out infinite;
+}
+@keyframes snapRing{
+  0%,100%{box-shadow:0 0 0 3px rgba(255,165,0,0.7),0 0 18px rgba(255,165,0,0.3);}
+  50%{box-shadow:0 0 0 7px rgba(255,165,0,0.25),0 0 32px rgba(255,165,0,0.5);}
+}
+
+/* Snap-in bounce */
+@keyframes snapIn{
+  0%  {transform:translate(-50%,-50%) scale(0.25);opacity:0.6;}
+  55% {transform:translate(-50%,-50%) scale(1.18);}
+  75% {transform:translate(-50%,-50%) scale(0.93);}
+  100%{transform:translate(-50%,-50%) scale(1);opacity:1;}
+}
+.part-overlay.snap-in{animation:snapIn 0.48s cubic-bezier(0.34,1.56,0.64,1) forwards;}
 
 /* ── PART CARDS (sidebar) ── */
 .part-cards{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
@@ -331,6 +367,13 @@ body{
   font-size:9px;color:rgba(255,255,255,0.25);letter-spacing:0.5px;
 }
 
+/* Drag hint */
+.drag-hint{
+  display:flex;align-items:center;gap:6px;
+  font-size:8px;font-weight:600;letter-spacing:1px;text-transform:uppercase;
+  color:rgba(255,165,0,0.55);margin-bottom:12px;
+}
+
 /* Powered by */
 .powered{
   padding:14px 28px;
@@ -367,10 +410,10 @@ body{
     <div class="bike-wrap" id="bikeWrap">
       <img class="bike-img" src="images/banks/bike-template.png" alt="Banks Performance Custom Harley">
 
-      <!-- Part overlay: fork light product image -->
-      <div class="part-overlay part-fork" id="partOverlay">
-        <img id="partImg" src="images/banks/s2-pro-pair.png" alt="Fork Light">
-        <div class="part-overlay-label" id="partLabel">S2 Pro Pair</div>
+      <!-- Part overlay: headlight -->
+      <div class="part-overlay part-headlight" id="partOverlay">
+        <img id="partImg" src="images/banks/lp6-pro.png" alt="Headlight">
+        <div class="part-overlay-label" id="partLabel">LP6 Pro</div>
       </div>
 
       <!-- Light glows -->
@@ -401,16 +444,20 @@ body{
       </div>
     </div>
 
-    <!-- FORK LIGHT STYLE -->
+    <!-- HEADLIGHT STYLE -->
     <div class="section">
-      <div class="section-label">Fork Light Style</div>
+      <div class="section-label">Headlight — Click or Drag onto Bike</div>
+      <div class="drag-hint">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 9l-3 3 3 3M9 5l3-3 3 3M15 19l-3 3-3-3M19 9l3 3-3 3M2 12h20M12 2v20"/></svg>
+        Drag a light to the headlight position
+      </div>
       <div class="part-cards" id="partCards">
-        <div class="part-card active" data-src="images/banks/s2-pro-pair.png" data-name="S2 Pro Pair">
+        <div class="part-card" data-src="images/banks/s2-pro-pair.png" data-name="S2 Pro Pair">
           <img src="images/banks/s2-pro-pair.png" alt="S2 Pro Pair">
           <div class="part-card-name">S2 Pro Pair</div>
           <div class="part-card-price">$189</div>
         </div>
-        <div class="part-card" data-src="images/banks/lp6-pro.png" data-name="LP6 Pro">
+        <div class="part-card active" data-src="images/banks/lp6-pro.png" data-name="LP6 Pro">
           <img src="images/banks/lp6-pro.png" alt="LP6 Pro">
           <div class="part-card-name">LP6 Pro</div>
           <div class="part-card-price">$229</div>
@@ -468,90 +515,138 @@ body{
 </div>
 
 <script>
-var allGlowIds = ['glowMain','glowForkL','glowForkR','glowLowL','glowLowR','glowRim'];
+/* ══════ GLOW CONTROLS ══════ */
 var currentMode = { main:'amber', fork:'amber', lower:'amber' };
 var currentLens = 'amber';
-
 var lightGroups = {
   main:  ['glowMain'],
   fork:  ['glowForkL','glowForkR'],
   lower: ['glowLowL','glowLowR','glowRim']
 };
-
-function setGlowColor(id, mode){
-  var el = document.getElementById(id);
-  if(!el) return;
-  el.className = el.className.replace(/\s*(amber|white-light|off)/g,'');
+function setGlowColor(id,mode){
+  var el=document.getElementById(id); if(!el)return;
+  el.className=el.className.replace(/\s*(amber|white-light|off)/g,'');
   el.classList.add(mode);
 }
-
-/* ── LENS COLOR (all groups) ── */
 document.querySelectorAll('#lensSwatches .swatch').forEach(function(sw){
-  sw.addEventListener('click', function(){
-    document.querySelectorAll('#lensSwatches .swatch').forEach(function(s){ s.classList.remove('active'); });
-    sw.classList.add('active');
-    currentLens = sw.dataset.mode;
-    // Apply new lens color to all groups that are not off
+  sw.addEventListener('click',function(){
+    document.querySelectorAll('#lensSwatches .swatch').forEach(function(s){s.classList.remove('active');});
+    sw.classList.add('active'); currentLens=sw.dataset.mode;
     Object.keys(lightGroups).forEach(function(group){
-      if(currentMode[group] !== 'off'){
-        currentMode[group] = currentLens;
-        lightGroups[group].forEach(function(id){ setGlowColor(id, currentLens); });
-        // Sync toggle buttons
+      if(currentMode[group]!=='off'){
+        currentMode[group]=currentLens;
+        lightGroups[group].forEach(function(id){setGlowColor(id,currentLens);});
         document.querySelectorAll('[data-group="'+group+'"]').forEach(function(b){
-          b.className = 'toggle-btn';
-          if(b.dataset.mode === currentLens) b.classList.add('active-'+currentLens);
+          b.className='toggle-btn';
+          if(b.dataset.mode===currentLens)b.classList.add('active-'+currentLens);
         });
       }
     });
   });
 });
-
-/* ── PART SWAP (fly-off / fly-in) ── */
-var partOverlay = document.getElementById('partOverlay');
-var partImg     = document.getElementById('partImg');
-var partLabel   = document.getElementById('partLabel');
-
-document.querySelectorAll('#partCards .part-card').forEach(function(card){
-  card.addEventListener('click', function(){
-    if(card.classList.contains('active')) return;
-    var newSrc  = card.dataset.src;
-    var newName = card.dataset.name;
-
-    document.querySelectorAll('#partCards .part-card').forEach(function(c){ c.classList.remove('active'); });
-    card.classList.add('active');
-
-    // Fly current part off
-    partOverlay.classList.remove('fly-in');
-    partOverlay.classList.add('fly-off');
-
-    setTimeout(function(){
-      partImg.src  = newSrc;
-      partLabel.textContent = newName;
-      partOverlay.classList.remove('fly-off');
-      void partOverlay.offsetWidth; // force reflow
-      partOverlay.classList.add('fly-in');
-    }, 380);
-  });
-});
-
-/* ── PER-GROUP LIGHT TOGGLES ── */
 document.querySelectorAll('.light-toggle').forEach(function(row){
-  var btns = row.querySelectorAll('.toggle-btn');
+  var btns=row.querySelectorAll('.toggle-btn');
   btns.forEach(function(btn){
-    btn.addEventListener('click', function(){
-      var group = btn.dataset.group;
-      var mode  = btn.dataset.mode === 'amber' || btn.dataset.mode === 'white-light'
-                  ? currentLens : btn.dataset.mode;
-      if(btn.dataset.mode === 'off') mode = 'off';
-
-      currentMode[group] = mode;
-      btns.forEach(function(b){ b.className='toggle-btn'; });
+    btn.addEventListener('click',function(){
+      var group=btn.dataset.group;
+      var mode=(btn.dataset.mode==='off')?'off':currentLens;
+      currentMode[group]=mode;
+      btns.forEach(function(b){b.className='toggle-btn';});
       btn.classList.add('active-'+(btn.dataset.mode==='off'?'off':currentLens));
-
-      lightGroups[group].forEach(function(id){ setGlowColor(id, mode); });
+      lightGroups[group].forEach(function(id){setGlowColor(id,mode);});
     });
   });
 });
+
+/* ══════ PART SWAP ══════ */
+var partOverlay=document.getElementById('partOverlay');
+var partImg=document.getElementById('partImg');
+var partLabel=document.getElementById('partLabel');
+
+function swapPart(src,name,card,snap){
+  document.querySelectorAll('#partCards .part-card').forEach(function(c){c.classList.remove('active');});
+  if(card) card.classList.add('active');
+  partOverlay.classList.remove('fly-in','fly-off','snap-in','snap-ready');
+
+  if(snap){
+    partImg.src=src; partLabel.textContent=name;
+    void partOverlay.offsetWidth;
+    partOverlay.classList.add('snap-in');
+    setTimeout(function(){partOverlay.classList.remove('snap-in');},500);
+  } else {
+    partOverlay.classList.add('fly-off');
+    setTimeout(function(){
+      partImg.src=src; partLabel.textContent=name;
+      partOverlay.classList.remove('fly-off');
+      void partOverlay.offsetWidth;
+      partOverlay.classList.add('fly-in');
+      setTimeout(function(){partOverlay.classList.remove('fly-in');},450);
+    },380);
+  }
+}
+
+/* Click to swap */
+document.querySelectorAll('#partCards .part-card').forEach(function(card){
+  card.addEventListener('click',function(){
+    if(card.classList.contains('active'))return;
+    swapPart(card.dataset.src,card.dataset.name,card,false);
+  });
+});
+
+/* ══════ DRAG + DROP ══════ */
+var ghost=null, dragSrc=null, dragName=null, dragCard=null;
+var SNAP_R=90;
+
+function dropCenter(){
+  var r=partOverlay.getBoundingClientRect();
+  return {x:r.left+r.width/2, y:r.top+r.height/2};
+}
+function dist(ex,ey){var c=dropCenter();return Math.sqrt(Math.pow(ex-c.x,2)+Math.pow(ey-c.y,2));}
+
+function startGhost(src,name,ex,ey){
+  ghost=document.createElement('div');
+  ghost.className='drag-ghost';
+  ghost.innerHTML='<img src="'+src+'"><div class="part-overlay-label">'+name+'</div>';
+  ghost.style.cssText='left:'+(ex-45)+'px;top:'+(ey-45)+'px;';
+  document.body.appendChild(ghost);
+}
+function moveGhost(ex,ey){
+  if(!ghost)return;
+  ghost.style.left=(ex-45)+'px'; ghost.style.top=(ey-45)+'px';
+  var near=dist(ex,ey)<SNAP_R;
+  ghost.classList.toggle('near-drop',near);
+  partOverlay.classList.toggle('snap-ready',near);
+}
+function dropGhost(ex,ey){
+  if(!ghost)return;
+  var dropped=dist(ex,ey)<SNAP_R;
+  partOverlay.classList.remove('snap-ready');
+  document.body.removeChild(ghost); ghost=null;
+  if(dropped) swapPart(dragSrc,dragName,dragCard,true);
+  dragSrc=dragName=dragCard=null;
+}
+
+/* Mouse */
+document.querySelectorAll('#partCards .part-card').forEach(function(card){
+  card.addEventListener('mousedown',function(e){
+    if(e.button!==0)return; e.preventDefault();
+    dragSrc=card.dataset.src; dragName=card.dataset.name; dragCard=card;
+    startGhost(dragSrc,dragName,e.clientX,e.clientY);
+  });
+});
+document.addEventListener('mousemove',function(e){if(ghost)moveGhost(e.clientX,e.clientY);});
+document.addEventListener('mouseup',function(e){if(ghost)dropGhost(e.clientX,e.clientY);});
+
+/* Touch */
+document.querySelectorAll('#partCards .part-card').forEach(function(card){
+  card.addEventListener('touchstart',function(e){
+    var t=e.touches[0];
+    dragSrc=card.dataset.src; dragName=card.dataset.name; dragCard=card;
+    startGhost(dragSrc,dragName,t.clientX,t.clientY);
+  },{passive:true});
+});
+document.addEventListener('touchmove',function(e){if(ghost){var t=e.touches[0];moveGhost(t.clientX,t.clientY);}},{passive:true});
+document.addEventListener('touchend',function(e){if(ghost){var t=e.changedTouches[0];dropGhost(t.clientX,t.clientY);}});
 </script>
 </body>
 </html>
