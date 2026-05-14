@@ -158,23 +158,23 @@ body{
 .part-overlay{
   position:absolute;
   z-index:6;
-  width:100px;
-  background:rgba(0,0,0,0.75);
-  border:1.5px solid rgba(255,165,0,0.5);
-  padding:5px;
-  filter:drop-shadow(0 0 10px rgba(255,160,0,0.45));
+  width:110px;
+  background:none;
+  border:none;
+  padding:0;
   transform:translate(-50%,-50%);
   pointer-events:none;
 }
 .part-overlay img{
   width:100%;display:block;
+  mix-blend-mode:multiply;
 }
 .part-overlay-label{
   font-family:'Montserrat',sans-serif;
   font-size:7px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;
   color:rgba(255,165,0,0.85);text-align:center;
-  padding:4px 0 2px;
-  background:rgba(0,0,0,0.6);
+  padding:3px 0 0;
+  text-shadow:0 0 6px rgba(0,0,0,0.9);
 }
 /* Position: main headlight (fairing center) */
 .part-headlight{left:71.4%;top:20.1%;width:110px;}
