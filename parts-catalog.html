@@ -426,6 +426,7 @@
 <script src="husky-data.js"></script>
 <script src="floor-liners-data.js"></script>
 <script src="bull-bars-data.js"></script>
+<script src="towing-data.js"></script>
 <script src="ymm-popup.js"></script>
 <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
@@ -632,7 +633,7 @@ const CATEGORY_DEFS = [
   {
     id:'running-boards', name:'Running Boards', catLabel:'Running Boards',
     heroTitle:'Running Boards & Steps', heroSub:'Step up your truck. Professionally installed at 3J\'s Auto Body.',
-    data: [...normRB([...safeArr(RB_CATALOG), ...safeArr(AMP_CATALOG), ...safeArr(GR_CATALOG), ...safeArr(WESTIN_CATALOG), ...safeArr(LUND_CATALOG)]), ...safeArr(NFAB_STEPS)]
+    data: [...normRB([...safeArr(RB_CATALOG), ...safeArr(AMP_CATALOG), ...safeArr(GR_CATALOG), ...safeArr(WESTIN_CATALOG), ...safeArr(LUND_CATALOG)]), ...safeArr(NFAB_STEPS), ...safeArr(LUND_RB)]
   },
   {
     id:'headache-racks', name:'Headache Racks', catLabel:'Headache Racks',
@@ -642,7 +643,7 @@ const CATEGORY_DEFS = [
   {
     id:'fender-flares', name:'Fender Flares', catLabel:'Fender Flares',
     heroTitle:'Fender Flares', heroSub:'Bushwacker pocket, cutout, and OE-style fender flares. Professionally installed.',
-    data: safeArr(FF_CATALOG)
+    data: [...safeArr(FF_CATALOG), ...safeArr(LUND_FF)]
   },
   {
     id:'deflectors', name:'Deflectors', catLabel:'Hood & Window Deflectors',
@@ -676,8 +677,8 @@ const CATEGORY_DEFS = [
   },
   {
     id:'towing', name:'Towing', catLabel:'Towing Equipment',
-    heroTitle:'Towing Equipment', heroSub:'Hitches, ball mounts and wiring harnesses. Installed right.',
-    data: []
+    heroTitle:'Towing Equipment', heroSub:'CURT hitches, ball mounts, wiring harnesses and brake controllers. Professionally installed.',
+    data: safeArr(CURT_CATALOG)
   },
 ];
 
