@@ -427,6 +427,7 @@
 <script src="floor-liners-data.js"></script>
 <script src="bull-bars-data.js"></script>
 <script src="towing-data.js"></script>
+<script src="bw-hitches-data.js"></script>
 <script src="ymm-popup.js"></script>
 <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
@@ -677,8 +678,8 @@ const CATEGORY_DEFS = [
   },
   {
     id:'towing', name:'Towing', catLabel:'Towing Equipment',
-    heroTitle:'Towing Equipment', heroSub:'CURT hitches, ball mounts, wiring harnesses and brake controllers. Professionally installed.',
-    data: safeArr(CURT_CATALOG)
+    heroTitle:'Towing Equipment', heroSub:'CURT and B&W hitches, gooseneck, 5th wheel, ball mounts and wiring. Professionally installed.',
+    data: [...safeArr(CURT_CATALOG), ...safeArr(BW_CATALOG)]
   },
 ];
 
