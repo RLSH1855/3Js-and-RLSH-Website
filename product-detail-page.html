@@ -997,13 +997,18 @@ function Header({ garage }) {
   );
 }
 
-function Breadcrumbs({ productName, coverType }) {
+function Breadcrumbs({ productName, brandName, coverType }) {
+  const cat     = _qParams.get('cat')    || 'Tonneau Covers';
+  const catUrl  = _qParams.get('catUrl') || 'parts-catalog.html';
+  const type    = _qParams.get('type')   || coverType;
+  const fullName = [brandName, productName].filter(Boolean).join(' ');
   return (
     <nav className="crumbs">
       <a href="https://www.3jsautobody.com">Home</a><span className="crumb-sep">/</span>
-      <a href="parts-catalog.html">Tonneau Covers</a><span className="crumb-sep">/</span>
-      <a href={`parts-catalog.html#type=${encodeURIComponent(coverType)}`}>{coverType}</a><span className="crumb-sep">/</span>
-      <span className="crumb-now">{productName}</span>
+      <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/exterior-accessories.html">Exterior Accessories</a><span className="crumb-sep">/</span>
+      <a href={catUrl}>{cat}</a><span className="crumb-sep">/</span>
+      {type && <React.Fragment><a href={catUrl}>{type}</a><span className="crumb-sep">/</span></React.Fragment>}
+      <span className="crumb-now">{fullName}</span>
     </nav>
   );
 }
@@ -1475,7 +1480,7 @@ function App() {
   return (
     <div>
       <Header garage={garage} />
-      <Breadcrumbs productName={productName} coverType={coverType} />
+      <Breadcrumbs productName={productName} brandName={brandName} coverType={coverType} />
       <main className="pdp">
         <div className="pdp-top">
           <Gallery images={gallery} productName={productName} fits={fits} garage={garage} />

@@ -598,9 +598,12 @@ function App() {
   const [view, setView] = useState(() => localStorage.getItem('catalog_view') || 'grid');
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [garageOpen, setGarageOpen] = useState(false); // auto-open disabled
-  const [detailProduct, setDetailProduct] = useState(null);
   const [showCount, setShowCount] = useState(8);
-  const openDetail = (brand, name) => setDetailProduct({brand, name});
+  const openDetail = (brand, name) => {
+    const p = new URLSearchParams({ brand, product: name, cat: 'Tonneau Covers', catUrl: 'parts-catalog.html' });
+    if (filters.types.size === 1) p.set('type', [...filters.types][0]);
+    window.location.href = `https://rlsh1855.github.io/3Js-and-RLSH-Website/product-detail-page.html?${p}`;
+  };
 
   // Reset showCount whenever filters or sort change
   useEffect(() => { setShowCount(8); }, [filters, sort, garage]);
@@ -788,7 +791,6 @@ function App() {
       </FilterDrawer>
 
       {garageOpen && <GaragePopup onClose={() => setGarageOpen(false)} onClear={() => { setGarage(null); setGarageOpen(false); }} hasVehicle={!!garage} />}
-      {detailProduct && <ProductDetailPopup brand={detailProduct.brand} name={detailProduct.name} onClose={() => setDetailProduct(null)} />}
     </div>
   );
 }
@@ -824,23 +826,6 @@ function GaragePopup({ onClose, onClear, hasVehicle }) {
 }
 
 // ── Product Detail Popup ──
-function ProductDetailPopup({ brand, name, onClose }) {
-  React.useEffect(() => {
-    const onKey = (e) => { if (e.key === 'Escape') onClose(); };
-    document.addEventListener('keydown', onKey);
-    return () => document.removeEventListener('keydown', onKey);
-  }, [onClose]);
-  const src = `https://rlsh1855.github.io/3Js-and-RLSH-Website/product-detail-page.html?product=${encodeURIComponent(name)}&brand=${encodeURIComponent(brand)}`;
-  return (
-    <div className="detail-popup-root">
-      <div className="detail-popup-backdrop" onClick={onClose} />
-      <div className="detail-popup-card">
-        <button className="detail-popup-close" onClick={onClose} aria-label="Close">✕</button>
-        <iframe className="detail-popup-iframe" src={src} title={name} />
-      </div>
-    </div>
-  );
-}
 
 // ── Header ──
 function Header({ garage, onSwapVehicle }) {
