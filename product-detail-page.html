@@ -9,8 +9,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg:#ffffff; --surface:#ffffff; --surface2:#f4f4f1;
-    --border:rgba(20,18,14,.08); --border-strong:rgba(20,18,14,.18);
+    --bg:#ffffff; --surface:#ffffff; --surface2:#f2f2f2;
+    --border:rgba(0,0,0,.10); --border-strong:rgba(0,0,0,.20);
     --fg:#1a1815; --fg-muted:rgba(26,24,21,.62); --fg-dim:rgba(26,24,21,.42);
     --accent:#8B0000;
     --display:'Barlow Condensed', Impact, sans-serif;
@@ -978,15 +978,7 @@ function Header({ garage }) {
         <a href="https://www.3jsautobody.com" className="logo">
           <img src={LOGO_URL} alt="3J's Auto Body & Rhino Linings" />
         </a>
-        <div className="hdr-actions">
-          <a href="parts-catalog.html" className="garage-pill" style={{textDecoration:'none'}}>
-            <span className="garage-pill-ico">{Icon.truck}</span>
-            <span className="garage-pill-txt">
-              <span className="garage-pill-label">{garage ? 'In your garage' : 'My Garage'}</span>
-              <span className="garage-pill-vehicle">{garageLabel}</span>
-            </span>
-          </a>
-        </div>
+        <div className="hdr-actions"></div>
       </div>
       <nav className="hdr-nav">
         <a href="parts-catalog.html" className="nav-item active">Tonneau Covers</a>
@@ -1086,20 +1078,6 @@ function Info({ productName, brandName, coverType, minPrice, bedSizes, info, gar
 
       <FitmentBlock garage={garage} fits={fits} />
 
-      {bedSizes.length > 1 && (
-        <div className="variants">
-          <div>
-            <div className="var-group-label">Bed Size</div>
-            <div className="var-options">
-              {bedSizes.map(b => (
-                <button key={b.label} className={`var-chip ${selBed===b.label?'on':''}`} onClick={() => setSelBed(b.label)}>
-                  {b.label}
-                </button>
-              ))}
-            </div>
-          </div>
-        </div>
-      )}
 
       <div>
         <div className="pdp-price-row">
@@ -1294,13 +1272,13 @@ function InstallAside() {
           <a href="tel:+15624246744">Call (562) 424-6744</a>
         </div>
       </div>
-      <div className="install-card">
-        <div className="install-card-eyebrow">Need help choosing?</div>
-        <h4>Talk to a spec tech</h4>
-        <p>Not sure which bed length or cover type is right for your truck? Our team has installed thousands of these — we'll point you to the right one.</p>
+      <div className="install-card" style={{background:'var(--accent)',borderColor:'var(--accent)'}}>
+        <div className="install-card-eyebrow" style={{color:'rgba(255,255,255,.6)'}}>Need help choosing?</div>
+        <h4 style={{color:'#fff'}}>Talk to a Spec Tech</h4>
+        <p style={{color:'rgba(255,255,255,.8)'}}>Not sure which bed length or cover type is right for your truck? Our team has installed thousands of these — we'll point you to the right one.</p>
         <div className="row-btns">
-          <a href={QUOTE_URL}>Get a Quote</a>
-          <a href="tel:+15624246744">Call Us</a>
+          <a href={QUOTE_URL} style={{background:'#fff',color:'var(--accent)',border:'none',fontWeight:700}}>Get a Quote</a>
+          <a href="tel:+15624246744" style={{border:'1px solid rgba(255,255,255,.5)',color:'#fff'}}>Call Us</a>
         </div>
       </div>
     </aside>
