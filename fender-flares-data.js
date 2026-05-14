@@ -3541,3 +3541,25 @@ var LUND_FF=[
 ["Lund","FF SX-STYLE 4PC TEXTURED","SX607T",null,null,2014,2021,"TOYOTA","TUNDRA","FF SX-STYLE 4PC TEXTURED",null,null,null],
 ["Lund","FF SX-STYLE 2PC RR TEXTURED","SX607TB",null,null,2014,2021,"TOYOTA","TUNDRA","FF SX-STYLE 2PC RR TEXTURED",null,null,null]
 ];
+
+// Aries Fender Flares
+// 17 entries
+var ARIES_FF=[
+["Aries","Jeep Wrangler JK Textured Black Aluminum Front Fender Flares","1500201",null,null,2000,2026,"Universal","All","Fender Flare",null,674.95,"https://www.catalograck.com/ImgVD/ARI/1500201_3008x1990_ca.jpg"],
+["Aries","Jeep Wrangler JK Raw Aluminum Front Fender Flares","1500202",null,null,2000,2026,"Universal","All","Fender Flare",null,642.95,"https://www.catalograck.com/ImgVD/ARI/1500202_3008x1990_ca.jpg"],
+["Aries","Jeep Wrangler JL; Gladiator JT Textured Black Aluminum Front Fender Flares","1500203",null,null,2000,2026,"Universal","All","Fender Flare",null,706.95,"https://www.catalograck.com/ImgVD/ARI/1500203_3008x1990_ca.jpg"],
+["Aries","Jeep Wrangler JK Smooth Carbide Black Aluminum Front Fender Flares","1500211",null,null,2000,2026,"Universal","All","Fender Flare",null,674.95,"https://www.catalograck.com/ImgVD/ARI/1500211_3008x1990_ca.jpg"],
+["Aries","Jeep Gladiator/Wrangler JL Smooth Carbide Black Aluminum Front Fender Flares","1500213",null,null,2000,2026,"Universal","All","Fender Flare",null,706.95,"https://www.catalograck.com/ImgVD/ARI/1500213_3008x1990_ca.jpg"],
+["Aries","Ford Bronco 2DR 4DR Smooth Black Aluminum Tubular-Style Front Fender Flares","1500302",null,null,2000,2026,"Universal","All","Fender Flare",null,596.95,"https://www.catalograck.com/ImgVD/ARI/1500302_3008x1990_ca.jpg"],
+["Aries","Jeep Wrangler JK Textured Black Aluminum Rear Fender Flares","2500201",null,null,2000,2026,"Universal","All","Fender Flare",null,642.95,"https://www.catalograck.com/ImgVD/ARI/2500201_3008x1990_ca.jpg"],
+["Aries","Jeep Wrangler JK Raw Aluminum Rear Fender Flares","2500202",null,null,2000,2026,"Universal","All","Fender Flare",null,609.95,"https://www.catalograck.com/ImgVD/ARI/2500202_3008x1990_ca.jpg"],
+["Aries","Jeep Wrangler JL Textured Black Aluminum Rear Fender Flares","2500203",null,null,2000,2026,"Universal","All","Fender Flare",null,663.95,"https://www.catalograck.com/ImgVD/ARI/2500203_3008x1990_ca.jpg"],
+["Aries","Jeep Gladiator JT Textured Black Aluminum Rear Fender Flares","2500207",null,null,2000,2026,"Universal","All","Fender Flare",null,733.95,"https://www.catalograck.com/ImgVD/ARI/2500207_3008x1990_fb.jpg"],
+["Aries","Jeep Wrangler JK Smooth Black Aluminum Rear Fender Flares","2500211",null,null,2000,2026,"Universal","All","Fender Flare",null,642.95,"https://www.catalograck.com/ImgVD/ARI/2500211_3008x1990_ca.jpg"],
+["Aries","Jeep Wrangler JL Smooth Carbide Black Aluminum Rear Fender Flares","2500213",null,null,2000,2026,"Universal","All","Fender Flare",null,663.95,"https://www.catalograck.com/ImgVD/ARI/2500213_3008x1990_ca.jpg"],
+["Aries","Jeep Gladiator JT Smooth Carbide Black Aluminum Rear Fender Flares","2500217",null,null,2000,2026,"Universal","All","Fender Flare",null,733.95,"https://www.catalograck.com/ImgVD/ARI/2500217_3008x1990_fa.jpg"],
+["Aries","Ford Bronco Smooth Black Aluminum Tubular-Style Rear Fender Flares for 4-Door","2500303",null,null,2000,2026,"Universal","All","Fender Flare",null,596.95,"https://www.catalograck.com/ImgVD/ARI/2500303_3008x1990_ca.jpg"],
+["Aries","Ford Bronco Smooth Black Aluminum Tubular-Style Rear Fender Flares for 2-Door","2500304",null,null,2000,2026,"Universal","All","Fender Flare",null,596.95,"https://www.catalograck.com/ImgVD/ARI/2500304_3008x1990_ca.jpg"],
+["Aries","Jeep Wrangler JK Textured Black Aluminum Front Fender Flares with LED Lights","2500830",null,null,2000,2026,"Universal","All","Fender Flare",null,952.95,"https://www.catalograck.com/ImgVDHR/ARI/2500830_3008x1990_a.jpg"],
+["Aries","Jeep Wrangler JL Textured Black Aluminum Front Fender Flares with LED Lights","2500835",null,null,2000,2026,"Universal","All","Fender Flare",null,1027.95,"https://www.catalograck.com/ImgVD/ARI/2500835_3008x1990_fa.jpg"]
+];

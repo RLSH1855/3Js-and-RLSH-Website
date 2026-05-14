@@ -683,3 +683,33 @@ var NFAB_RACKS=[
 ["N-Fab","ARC Sports Bar W/RollNlock/Armis Bed Cover- Textured Black","J19BR-TX",null,null,2020,2025,"Jeep","Gladiator JT","Direct Bolt on",null,649.99,null],
 ["N-Fab","ARC Sports Bar - Textured Black","T16BR-TX",null,null,2016,2023,"Toyota","Tacoma","Direct Bolt on",null,649.99,null]
 ];
+
+// Aries Headache Racks
+// 25 entries
+var ARIES_HR=[
+["Aries","Classic Black Steel Headache Rack; Select Chevrolet; Ford; Dodge; GMC; Ram","111000",null,null,2000,2026,"CHEVROLET","","Truck Cab Protector / Headache Rack",null,353.95,"https://www.catalograck.com/ImgVD/ARI/111000_3008x1990_ca.jpg"],
+["Aries","Classic Black Steel Headache Rack; Select Chevrolet; Ford; Dodge; GMC; Ram","111000",null,null,2000,2026,"FORD","ALL","Truck Cab Protector / Headache Rack",null,353.95,"https://www.catalograck.com/ImgVD/ARI/111000_3008x1990_ca.jpg"],
+["Aries","Classic Black Steel Headache Rack; Select Chevrolet; Ford; Dodge; GMC; Ram","111000",null,null,2000,2026,"DODGE","ALL","Truck Cab Protector / Headache Rack",null,353.95,"https://www.catalograck.com/ImgVD/ARI/111000_3008x1990_ca.jpg"],
+["Aries","Classic Black Steel Headache Rack; Select Chevrolet; Ford; Dodge; GMC; Ram","111000",null,null,2000,2026,"GMC","ALL","Truck Cab Protector / Headache Rack",null,353.95,"https://www.catalograck.com/ImgVD/ARI/111000_3008x1990_ca.jpg"],
+["Aries","Classic Black Steel Headache Rack; Select Chevrolet; Ford; Dodge; GMC; Ram","111000",null,null,2000,2026,"RAM","ALL","Truck Cab Protector / Headache Rack",null,353.95,"https://www.catalograck.com/ImgVD/ARI/111000_3008x1990_ca.jpg"],
+["Aries","Classic Black Steel Headache Rack; Select Ford F-250; F-350; F-450 Super Duty","111001",null,null,2000,2026,"FORD","F-250","Truck Cab Protector / Headache Rack",null,353.95,"https://www.catalograck.com/ImgVD/ARI/111001_3008x1990_ca.jpg"],
+["Aries","Classic Black Steel Headache Rack; Select Ford F-250; F-350; F-450 Super Duty","111001",null,null,2000,2026,"FORD","F-350","Truck Cab Protector / Headache Rack",null,353.95,"https://www.catalograck.com/ImgVD/ARI/111001_3008x1990_ca.jpg"],
+["Aries","Classic Black Steel Headache Rack; Select Ford F-250; F-350; F-450 Super Duty","111001",null,null,2000,2026,"FORD","F-450 SUPER DUTY","Truck Cab Protector / Headache Rack",null,353.95,"https://www.catalograck.com/ImgVD/ARI/111001_3008x1990_ca.jpg"],
+["Aries","Classic Black Steel Headache Rack; Select Ford F-150","111002",null,null,2000,2026,"FORD","F-150","Truck Cab Protector / Headache Rack",null,353.95,"https://www.catalograck.com/ImgVD/ARI/111002_3008x1990_ca.jpg"],
+["Aries","Classic Black Steel Headache Rack; Select Chevy Silverado 1500; GMC Sierra 1500","111003",null,null,2000,2026,"CHEVY","SILVERADO 1500","Truck Cab Protector / Headache Rack",null,353.95,"https://www.catalograck.com/ImgVDHR/ARI/111003_3008x1990_a.jpg"],
+["Aries","Classic Black Steel Headache Rack; Select Chevy Silverado 1500; GMC Sierra 1500","111003",null,null,2000,2026,"CHEVY","GMC SIERRA 1500","Truck Cab Protector / Headache Rack",null,353.95,"https://www.catalograck.com/ImgVDHR/ARI/111003_3008x1990_a.jpg"],
+["Aries","Switchback Black Aluminum Headache Rack; Select Chevrolet Colorado; GMC Canyon","1110109",null,null,2000,2026,"CHEVROLET","COLORADO","Truck Cab Protector / Headache Rack",null,856.95,"https://www.catalograck.com/ImgVD/ARI/1110109_3008x1990_ca.jpg"],
+["Aries","Switchback Black Aluminum Headache Rack; Select Chevrolet Colorado; GMC Canyon","1110109",null,null,2000,2026,"CHEVROLET","GMC CANYON","Truck Cab Protector / Headache Rack",null,856.95,"https://www.catalograck.com/ImgVD/ARI/1110109_3008x1990_ca.jpg"],
+["Aries","Switchback Black Aluminum Headache Rack; Select Chevrolet Silverado; GMC Sierra","1110110",null,null,2000,2026,"CHEVROLET","SILVERADO","Truck Cab Protector / Headache Rack",null,856.95,"https://www.catalograck.com/ImgVD/ARI/1110110_3008x1990_ca.jpg"],
+["Aries","Switchback Black Aluminum Headache Rack; Select Chevrolet Silverado; GMC Sierra","1110110",null,null,2000,2026,"CHEVROLET","GMC SIERRA","Truck Cab Protector / Headache Rack",null,856.95,"https://www.catalograck.com/ImgVD/ARI/1110110_3008x1990_ca.jpg"],
+["Aries","Switchback Black Aluminum Headache Rack; Select Ford F-150; Lightning","1110112",null,null,2000,2026,"FORD","F-150","Truck Cab Protector / Headache Rack",null,856.95,"https://www.catalograck.com/ImgVD/ARI/1110112_3008x1990_ca.jpg"],
+["Aries","Switchback Black Aluminum Headache Rack; Select Ford F-150; Lightning","1110112",null,null,2000,2026,"FORD","LIGHTNING","Truck Cab Protector / Headache Rack",null,856.95,"https://www.catalograck.com/ImgVD/ARI/1110112_3008x1990_ca.jpg"],
+["Aries","Switchback Black Aluminum Headache Rack; Select Toyota Tacoma","1110114",null,null,2000,2026,"TOYOTA","TACOMA","Truck Cab Protector / Headache Rack",null,856.95,"https://www.catalograck.com/ImgVD/ARI/1110114_3008x1990_ca.jpg"],
+["Aries","Switchback Black Aluminum Headache Rack; Select Toyota Tundra","1110115",null,null,2000,2026,"TOYOTA","TUNDRA","Truck Cab Protector / Headache Rack",null,856.95,"https://www.catalograck.com/ImgVD/ARI/1110115_3008x1990_ca.jpg"],
+["Aries","Switchback Black Aluminum Headache Rack; Select Toyota Tundra","1110117",null,null,2000,2026,"TOYOTA","TUNDRA","Truck Cab Protector / Headache Rack",null,856.95,"https://www.catalograck.com/ImgVD/ARI/1110117_3008x1990_ca.jpg"],
+["Aries","AdvantEDGE Chrome Aluminum Headache Rack; Select Ford F-150; Lightning","1110202",null,null,2000,2026,"FORD","F-150","Truck Cab Protector / Headache Rack",null,781.95,"https://www.catalograck.com/ImgVD/ARI/1110202_3008x1990_ca.jpg"],
+["Aries","AdvantEDGE Chrome Aluminum Headache Rack; Select Ford F-150; Lightning","1110202",null,null,2000,2026,"FORD","LIGHTNING","Truck Cab Protector / Headache Rack",null,781.95,"https://www.catalograck.com/ImgVD/ARI/1110202_3008x1990_ca.jpg"],
+["Aries","AdvantEDGE Chrome Aluminum Headache Rack; Select Silverado; Sierra 2500; 3500 HD","1110205",null,null,2000,2026,"SILVERADO","ALL","Truck Cab Protector / Headache Rack",null,781.95,"https://www.catalograck.com/ImgVD/ARI/1110205_3008x1990_ca.jpg"],
+["Aries","AdvantEDGE Chrome Aluminum Headache Rack; Select Silverado; Sierra 2500; 3500 HD","1110205",null,null,2000,2026,"SILVERADO","SIERRA 2500","Truck Cab Protector / Headache Rack",null,781.95,"https://www.catalograck.com/ImgVD/ARI/1110205_3008x1990_ca.jpg"],
+["Aries","AdvantEDGE Chrome Aluminum Headache Rack; Select Silverado; Sierra 2500; 3500 HD","1110205",null,null,2000,2026,"SILVERADO","3500 HD","Truck Cab Protector / Headache Rack",null,781.95,"https://www.catalograck.com/ImgVD/ARI/1110205_3008x1990_ca.jpg"]
+];
