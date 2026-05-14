@@ -240,11 +240,12 @@
   .card:hover .card-heart { opacity: 1; }
   .card-heart:hover { color: var(--accent); }
   .card-heart svg { width: 16px; height: 16px; }
-  .card-fit { position: absolute; top: 10px; left: 10px; display:inline-flex; align-items: center; gap: 5px; background: rgba(62,194,124,.14); border: 1px solid rgba(62,194,124,.5); color: #6ddf9b; padding: 4px 8px; font-family: var(--mono); font-size: 10px; letter-spacing: .15em; font-weight: 600; }
-  .card-fit-check svg { width: 11px; height: 11px; }
+  .card-fit { position: absolute; bottom: 0; left: 0; right: 0; padding: 8px 12px; background: rgba(4,16,8,.84); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-top: 1px solid rgba(62,194,124,.25); display:flex; align-items: center; gap: 8px; font-family: var(--display); font-size: 11px; font-weight: 700; letter-spacing: 2px; color: #fff; text-transform: uppercase; }
+  .card-fit-dot { width: 8px; height: 8px; background: #3ea47c; flex-shrink: 0; }
   .card-body { padding: 14px 16px 16px; display:flex; flex-direction: column; gap: 4px; flex: 1; }
   .card-name { font-family: var(--display); font-weight: 700; font-size: 16px; letter-spacing: .02em; text-transform: uppercase; line-height: 1.1; }
-  .card-sub { color: var(--fg-muted); font-size: 12px; line-height: 1.4; min-height: 32px; }
+  .card-sub { color: var(--fg-muted); font-size: 12px; line-height: 1.5; flex: 1; }
+  .card-type { font-family: var(--mono); font-size: 9.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--fg-dim); margin-bottom: 4px; }
   .card-meta { display:flex; align-items: center; gap: 8px; margin-top: 4px; font-size: 12px; }
   .card-foot { display:flex; align-items: center; justify-content: space-between; margin-top: auto; padding-top: 10px; gap: 8px; flex-wrap: wrap; }
   .card-price { font-family: var(--display); font-weight: 800; font-size: 22px; letter-spacing: .01em; }
@@ -468,6 +469,90 @@ const PRODUCT_TYPES = {
 
 // ── Brand bg colors for placeholder ──
 const BRAND_BG = { 'BAK':'#1a1a2e','Extang':'#16213e','Retrax':'#1a2a1a','Roll N Lock':'#2a1a1a','TruXedo':'#1a1a2a','UnderCover':'#201a10' };
+
+// ── Short product descriptions ──
+const PRODUCT_DESC = {
+  // BAK Tonneaus
+  'BAKFlip MX4':           'All-aluminum hard fold with matte black finish. Drain rails, dual-action latches, flush mount.',
+  'BAKFlip MX4 TS':        'MX4 with toolbox-compatible clearance. Full aluminum, matte finish, flush mount design.',
+  'BAKFlip F1':            'Lightweight fiberglass panels with a sleek low-profile look. One of the most popular hard folds.',
+  'BAKFlip FiberMax':      'Fiberglass construction with automotive-grade finish. Maximum strength, ultra-clean look.',
+  'BAKFlip G2':            'Aluminum hard tri-fold with integrated pull-strap. Great entry-level hard fold.',
+  'BAKFlip X4S':           'Hard folding aluminum with integrated side rails and a sharp low-profile stance.',
+  // Extang
+  'ArmorFlex':             'Hard folding with ArmorTec matte coating for scratch resistance. Solid aluminum frame.',
+  'Solid Fold 2.0 Toolbox':'Hard fold with clearance for underbody toolbox. Aluminum construction, slam-to-lock latches.',
+  'Solid Fold ALX':        'All-aluminum hard tri-fold. Aerodynamic low-profile design with EZ-Lock clamps.',
+  'Endure ALX':            'One-piece hard cover with aircraft-grade aluminum and powder-coat finish.',
+  'Deuce':                 'Innovative two-in-one design — use as a soft fold or convert to hard fold.',
+  'Sentry':                'Solid hard folding cover with push-button latch. Matte black, flush mount.',
+  'Sentry CT':             'Sentry with carbon texture finish. Sleek, durable, and scratch resistant.',
+  'Ultra Flex':            'Hard tri-fold with slotted aluminum slats. Strong, low-profile, easy install.',
+  'Trifecta 2.0':          'Snap-on soft tri-fold. Quick removal in under 60 seconds, no tools needed.',
+  'Trifecta ALX':          'Aluminum-reinforced soft tri-fold hybrid. More rigid than vinyl, lighter than full aluminum.',
+  'Trifecta Signature 2.0':'Premium soft fold with e-coated aluminum frame and TriTex fabric cover.',
+  'Trifecta Toolbox 2.0':  'Trifecta soft fold designed for underbody toolbox compatibility.',
+  'Trifecta e-Series':     "Updated Trifecta with enhanced weather sealing and snap-on attachment.",
+  // TruXedo
+  'Lo Pro':                'Ultra-low profile roll-up with a streamlined look that sits nearly flush with the bed rails.',
+  'TruXport':              'Economy soft roll-up with weather-resistant seal and buckle-free tension control.',
+  'Lux':                   'Premium roll-up with soft vinyl cover and powder-coated aluminum frame.',
+  'Fusion':                'Upscale soft roll-up. Premium vinyl with aluminum slats for added rigidity.',
+  'Select':                'Affordable soft roll-up. Easy install, easy removal, solid everyday cover.',
+  'Flex':                  'Roll-up with TruXedo\'s EasyLock II mounting — no drilling, quick attach clamps.',
+  // Roll N Lock
+  'Roll-X':                'Heavy-duty roll-up with aluminum slats that lock in any position along the rail.',
+  'Revolver X2':           'Hard rolling aluminum slat cover with low-profile design and built-in tailgate seal.',
+  'Revolver X4s':          'Aircraft-grade aluminum slats with flush-mount design. Locks at any open position.',
+  'Revolver X4ts':         'Revolver X4s with clearance for underbody toolbox. Full aluminum, cam-lock system.',
+  'Titanium':              'Premium tri-fold with durable matte black finish. Hinged sections snap in tight.',
+  'Element':               'Soft tri-fold with weather-resistant vinyl and aluminum frame reinforcement.',
+  'Edge':                  'Snap-on soft fold. Installs in minutes, sleek look, no clamps to tighten.',
+  // Retrax
+  'RetraxONE MX':          'Retractable with matte-finish aluminum slats. Rolls up smoothly, UV-protected seal.',
+  'RetraxONE XR':          'RetraxONE with extended side rails — accommodates over-rail bed accessories.',
+  'RetraxPRO MX':          'Premium polycarbonate slat retractable. Strongest non-electric cover in the lineup.',
+  'RetraxPRO XR':          'RetraxPRO with extended rail system for bed accessories and toolbox clearance.',
+  'PowertraxPRO MX':       'Electric retractable with auto-open/close. No handles, operates by button or key fob.',
+  'PowertraxPRO XR':       'Electric retractable with extended rail. Full access with one button press.',
+  'Retrax EQ':             'Entry-level retractable with aluminum slats. Clean lines, easy operation.',
+  'Retrax IX':             'Impact-resistant polycarbonate slats. Handles heavy loads without denting.',
+  'Pro X15':               'Roll N Lock\'s flagship retractable — keyless locking, aluminum construction.',
+  'Pro X15 TS':            'Pro X15 retractable with toolbox compatibility. Keyless aluminum roll-up.',
+  // UnderCover
+  'Ultra Flex':            'Hard tri-fold with slotted aluminum slats. Hinged sections open from any panel.',
+  // Running boards / Steps
+  'AMP PowerStep':         'Electric running boards — automatically extend when you open the door, retract when you close it.',
+  'AMP PowerStep XL':      'Wider XL platform for lifted trucks. Same power-extend/retract system as PowerStep.',
+  'AMP PowerStep Xtreme':  'Heavy-duty PowerStep with all-terrain grip pads and weatherproof motor.',
+  'BedStep':               'AMP flip-down step integrated into the bumper — hands-free bed access.',
+  'BedStep2':              'Side-mounted flip-down bed step. Installs in the wheel well, stays hidden when not in use.',
+  // Fender Flares
+  'OE Style Fender Flares':'Factory-matched style flare. Paintable to match your truck — looks stock, adds coverage.',
+  'Pocket Style Fender Flares':'Bold pocket-rivet look. Adds up to 3.5" of tire coverage on each side.',
+  'Flat Style Fender Flares':'Flat edge design for a clean look. Accommodates wider tires without standing out.',
+  // Deflectors
+  'Aeroskin II':           'Low-profile hood deflector that protects against rock chips with a sleek, painted look.',
+  'Bug Deflector':         'Mounted at the front of the hood to divert insects and road debris away from the windshield.',
+  'Ventvisor':             'Slim in-channel window vent visor. Lets air in with windows up, keeps rain out.',
+  'Ventshade':             'Original OEM-style window vent. Deflects air and rain for all-weather venting.',
+  // Headache Racks
+  'Headache Rack':         'Full-width rack protects your cab glass and prevents cargo from shifting forward.',
+  'Cab Protector':         'Steel cab protector with mounting points for lights and accessories.',
+  // Towing
+  'Turnoverball Gooseneck Hitch':  'Underbed gooseneck hitch that flips down when not in use — clean, flat bed when empty.',
+  '5th Wheel Hitch':               'B&W Companion 5th wheel hitch — mounts in your truck bed for fifth-wheel towing.',
+  'Receiver Hitch':                'Bolt-on receiver hitch. CURT-engineered for max tongue weight and tow capacity.',
+  'Weight Distribution Hitch':     'Levels your load for safer, smoother towing with heavy trailers.',
+  'Gooseneck Ball & Safety Chain': 'OEM-matched gooseneck ball kit with dual safety chain rings.',
+};
+
+// ── Get short description for a product ──
+function getProdDesc(name, type) {
+  if (PRODUCT_DESC[name]) return PRODUCT_DESC[name];
+  if (type) return type + ' cover';
+  return '';
+}
 
 // ── Fitment match ──
 function matchesTruck(row, garage) {
@@ -1292,7 +1377,12 @@ function ProductCard({ p, onOpenDetail }) {
           ? <img src={imgSrc} alt={p.name} style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}} />
           : <ProductPlaceholder brand={p.brand} name={p.name} />}
         <button className="card-heart" aria-label="Save" onClick={e=>e.stopPropagation()}>{Icon.heart}</button>
-        {p.fits && <div className="card-fit"><span className="card-fit-check">{Icon.check}</span><span>FITS</span></div>}
+        {p.fits && (
+          <div className="card-fit">
+            <span className="card-fit-dot"></span>
+            <span>Fits Your Truck</span>
+          </div>
+        )}
       </div>
       <div className="card-body">
         <div className="card-brand-label">{p.brand}</div>
