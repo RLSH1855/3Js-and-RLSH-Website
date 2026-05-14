@@ -419,6 +419,9 @@
 <script src="westin-data.js"></script>
 <script src="lund-data.js"></script>
 <script src="headache-racks-data.js"></script>
+<script src="fender-flares-data.js"></script>
+<script src="deflectors-data.js"></script>
+<script src="lighting-data.js"></script>
 <script src="ymm-popup.js"></script>
 <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
@@ -633,6 +636,21 @@ const CATEGORY_DEFS = [
     data: normHR(safeArr(HR_CATALOG))
   },
   {
+    id:'fender-flares', name:'Fender Flares', catLabel:'Fender Flares',
+    heroTitle:'Fender Flares', heroSub:'Bushwacker pocket, cutout, and OE-style fender flares. Professionally installed.',
+    data: safeArr(FF_CATALOG)
+  },
+  {
+    id:'deflectors', name:'Deflectors', catLabel:'Hood & Window Deflectors',
+    heroTitle:'Hood & Window Deflectors', heroSub:'AVS Aeroskin, Ventvisor, and Ventshade. Installed at 3J\'s.',
+    data: safeArr(DEF_CATALOG)
+  },
+  {
+    id:'lighting', name:'Lighting', catLabel:'Lighting',
+    heroTitle:'Lighting', heroSub:'Off-road and vehicle-specific lighting. Baja Designs, KC HiLites, Morimoto and more.',
+    data: safeArr(LIGHTING_CATALOG)
+  },
+  {
     id:'floor-liners', name:'Floor Liners', catLabel:'Floor Liners',
     heroTitle:'Floor Liners & Mats', heroSub:'Protect your interior. Custom-fit to your exact year, make and model.',
     data: []
@@ -640,11 +658,6 @@ const CATEGORY_DEFS = [
   {
     id:'towing', name:'Towing', catLabel:'Towing Equipment',
     heroTitle:'Towing Equipment', heroSub:'Hitches, ball mounts and wiring harnesses. Installed right.',
-    data: []
-  },
-  {
-    id:'lighting', name:'Lighting', catLabel:'Lighting',
-    heroTitle:'Off-Road Lighting', heroSub:'Auxiliary and off-road lighting. Wired and mounted by our techs.',
     data: []
   },
 ];
