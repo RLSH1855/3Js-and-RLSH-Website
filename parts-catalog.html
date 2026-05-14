@@ -410,25 +410,27 @@
 <body>
 <div id="root"></div>
 
-<script>window.rlshYmmManual = true;</script>
+<script>
+window.rlshYmmManual = true;
+// ── Lazy data loader ──
+const _CDN = 'https://rlsh1855.github.io/3Js-and-RLSH-Website/';
+const _loaded = new Set(['catalog-data.js','extra-tonneau-data.js']);
+function loadDataScript(file) {
+  return new Promise(res => {
+    if (_loaded.has(file)) { res(); return; }
+    const s = document.createElement('script');
+    s.src = _CDN + file;
+    s.onload = () => { _loaded.add(file); res(); };
+    s.onerror = () => { console.warn('Failed to load:', file); res(); };
+    document.head.appendChild(s);
+  });
+}
+function loadDataFiles(files) {
+  return Promise.all(files.map(loadDataScript));
+}
+</script>
 <script src="catalog-data.js"></script>
 <script src="extra-tonneau-data.js"></script>
-<script src="running-boards-data.js"></script>
-<script src="amp-data.js"></script>
-<script src="gorhino-data.js"></script>
-<script src="westin-data.js"></script>
-<script src="lund-data.js"></script>
-<script src="headache-racks-data.js"></script>
-<script src="fender-flares-data.js"></script>
-<script src="deflectors-data.js"></script>
-<script src="lighting-data.js"></script>
-<script src="grilles-data.js"></script>
-<script src="husky-data.js"></script>
-<script src="floor-liners-data.js"></script>
-<script src="bull-bars-data.js"></script>
-<script src="grille-guards-data.js"></script>
-<script src="towing-data.js"></script>
-<script src="bw-hitches-data.js"></script>
 <script src="ymm-popup.js"></script>
 <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
@@ -626,95 +628,124 @@ function normHR(rows) {
 function safeArr(v) { return typeof v !== 'undefined' ? v : []; }
 
 // ── Category definitions ──
+// files: lazy-loaded on first select. getData: called after files load.
 const CATEGORY_DEFS = [
   {
     id:'tonneau', name:'Tonneau Covers', catLabel:'Tonneau Covers',
     heroTitle:'Bed Covers', heroSub:'Locked-in fitment for your truck. We show you covers that bolt on — nothing else.',
-    data: [...safeArr(CATALOG), ...safeArr(EXTRA_TONNEAU)]
+    files: [], approxCount: 51,
+    getData: () => [...safeArr(CATALOG), ...safeArr(EXTRA_TONNEAU)]
   },
   {
     id:'running-boards', name:'Running Boards', catLabel:'Running Boards',
     heroTitle:'Running Boards & Steps', heroSub:'Step up your truck. Professionally installed at 3J\'s Auto Body.',
-    data: [...normRB([...safeArr(RB_CATALOG), ...safeArr(AMP_CATALOG), ...safeArr(GR_CATALOG), ...safeArr(WESTIN_CATALOG), ...safeArr(LUND_CATALOG)]), ...safeArr(NFAB_STEPS), ...safeArr(LUND_RB), ...safeArr(ARIES_RB)]
+    files: ['running-boards-data.js','amp-data.js','gorhino-data.js','westin-data.js','lund-data.js'], approxCount: 420,
+    getData: () => [...normRB([...safeArr(RB_CATALOG),...safeArr(AMP_CATALOG),...safeArr(GR_CATALOG),...safeArr(WESTIN_CATALOG),...safeArr(LUND_CATALOG)]),...safeArr(NFAB_STEPS),...safeArr(LUND_RB),...safeArr(ARIES_RB)]
   },
   {
     id:'headache-racks', name:'Headache Racks', catLabel:'Headache Racks',
     heroTitle:'Headache Racks', heroSub:'Protect your cab glass and secure your cargo. Professionally installed.',
-    data: [...normHR(safeArr(HR_CATALOG)), ...safeArr(NFAB_RACKS), ...safeArr(ARIES_HR)]
+    files: ['headache-racks-data.js'], approxCount: 85,
+    getData: () => [...normHR(safeArr(HR_CATALOG)),...safeArr(NFAB_RACKS),...safeArr(ARIES_HR)]
   },
   {
     id:'fender-flares', name:'Fender Flares', catLabel:'Fender Flares',
-    heroTitle:'Fender Flares', heroSub:'Bushwacker pocket, cutout, and OE-style fender flares. Professionally installed.',
-    data: [...safeArr(FF_CATALOG), ...safeArr(LUND_FF), ...safeArr(ARIES_FF)]
+    heroTitle:'Fender Flares', heroSub:'Bushwacker, Stampede, and Lund fender flares. Professionally installed.',
+    files: ['fender-flares-data.js'], approxCount: 180,
+    getData: () => [...safeArr(FF_CATALOG),...safeArr(LUND_FF),...safeArr(ARIES_FF)]
   },
   {
     id:'deflectors', name:'Deflectors', catLabel:'Hood & Window Deflectors',
     heroTitle:'Hood & Window Deflectors', heroSub:'AVS Aeroskin, Ventvisor, and Ventshade. Installed at 3J\'s.',
-    data: safeArr(DEF_CATALOG)
+    files: ['deflectors-data.js'], approxCount: 220,
+    getData: () => safeArr(DEF_CATALOG)
   },
   {
     id:'lighting', name:'Lighting', catLabel:'Lighting',
     heroTitle:'Lighting', heroSub:'Off-road and vehicle-specific lighting. Baja Designs, KC HiLites, Morimoto and more.',
-    data: safeArr(LIGHTING_CATALOG)
+    files: ['lighting-data.js'], approxCount: 600,
+    getData: () => safeArr(LIGHTING_CATALOG)
   },
   {
     id:'grilles', name:'Grilles', catLabel:'Grilles',
     heroTitle:'Grilles', heroSub:'Morimoto XB LED and OEM-style grilles. Plug-and-play for your truck.',
-    data: safeArr(GRILLE_CATALOG)
+    files: ['grilles-data.js'], approxCount: 63,
+    getData: () => safeArr(GRILLE_CATALOG)
   },
   {
     id:'bed-protection', name:'Bed Protection', catLabel:'Bed Protection',
     heroTitle:'Bed Mats & Bed Protection', heroSub:'Husky Liners Guardian bed mats and liners. Installed at 3J\'s.',
-    data: safeArr(HUSKY_CATALOG)
+    files: ['husky-data.js'], approxCount: 120,
+    getData: () => safeArr(HUSKY_CATALOG)
   },
   {
     id:'floor-liners', name:'Floor Liners', catLabel:'Floor Liners',
     heroTitle:'Floor Liners & Mats', heroSub:'Husky Liners Classic Style, WeatherBeater, and Heavy Duty floor liners. Custom-fit for your truck.',
-    data: safeArr(FLOOR_CATALOG)
+    files: ['floor-liners-data.js'], approxCount: 310,
+    getData: () => safeArr(FLOOR_CATALOG)
   },
   {
     id:'grille-guards', name:'Grille Guards', catLabel:'Grille Guards',
-    heroTitle:'Grille Guards & Brush Guards', heroSub:'Aries steel grille guards and bumper guards. Professionally installed at 3J\'s.',
-    data: safeArr(ARIES_GG)
+    heroTitle:'Grille Guards & Brush Guards', heroSub:'Aries steel grille guards and bumper guards. Professionally installed.',
+    files: ['grille-guards-data.js'], approxCount: 90,
+    getData: () => safeArr(ARIES_GG)
   },
   {
     id:'bull-bars', name:'Bull Bars', catLabel:'Bull Bars',
     heroTitle:'Bull Bars', heroSub:'Lund Revolution and standard bull bars with integrated lighting. Professionally installed.',
-    data: safeArr(BULLBAR_CATALOG)
+    files: ['bull-bars-data.js'], approxCount: 30,
+    getData: () => safeArr(BULLBAR_CATALOG)
   },
   {
     id:'towing', name:'Towing', catLabel:'Towing Equipment',
     heroTitle:'Towing Equipment', heroSub:'CURT and B&W hitches, gooseneck, 5th wheel, ball mounts and wiring. Professionally installed.',
-    data: [...safeArr(CURT_CATALOG), ...safeArr(BW_CATALOG)]
+    files: ['towing-data.js','bw-hitches-data.js'], approxCount: 400,
+    getData: () => [...safeArr(CURT_CATALOG),...safeArr(BW_CATALOG)]
   },
 ];
 
+// Build unique product list from raw data rows
+function buildProducts(data) {
+  const pm = {};
+  (data || []).forEach(row => {
+    const key = `${row[F.brand]}|${row[F.product]}`;
+    if (!pm[key]) pm[key] = { id:key, brand:row[F.brand], name:row[F.product], type:PRODUCT_TYPES[row[F.product]]||'', minPrice:null, fitments:[] };
+    if (row[F.map] && (pm[key].minPrice === null || row[F.map] < pm[key].minPrice)) pm[key].minPrice = row[F.map];
+    pm[key].fitments.push(row);
+  });
+  return Object.values(pm);
+}
+
 function getUniqueProdCount(data) {
   const s = new Set();
-  data.forEach(r => s.add(r[F.brand] + '|' + r[F.product]));
+  (data || []).forEach(r => s.add(r[F.brand] + '|' + r[F.product]));
   return s.size;
 }
 
 // ── Category tabs ──
-function CategoryTabs({ cats, selectedId, onSelect }) {
+function CategoryTabs({ cats, selectedId, onSelect, loading, loadedCount }) {
   return (
     <nav className="cat-tabs" aria-label="Product categories">
       <div className="cat-tabs-inner">
         {cats.map(cat => {
-          const count = getUniqueProdCount(cat.data);
-          const isEmpty = count === 0;
+          const isActive = cat.id === selectedId;
+          const isLoading = isActive && loading;
+          const isEmpty = cat.approxCount === 0;
+          // Show real count for active+loaded tab, approx for others
+          const badge = isActive && !loading ? loadedCount : (cat.approxCount || null);
           return (
             <button
               key={cat.id}
-              className={`cat-tab ${cat.id===selectedId?'cat-tab-active':''} ${isEmpty?'cat-tab-empty':''}`}
+              className={`cat-tab ${isActive?'cat-tab-active':''} ${isEmpty?'cat-tab-empty':''}`}
               onClick={() => !isEmpty && onSelect(cat.id)}
-              aria-current={cat.id===selectedId?'page':undefined}
-              title={isEmpty ? `${cat.name} — coming soon` : cat.name}
+              aria-current={isActive?'page':undefined}
             >
               {cat.name}
-              {isEmpty
-                ? <span className="cat-tab-soon">Soon</span>
-                : <span className="cat-tab-badge">{count}</span>
+              {isLoading
+                ? <span className="cat-tab-badge" style={{opacity:0.5}}>…</span>
+                : isEmpty
+                  ? <span className="cat-tab-soon">Soon</span>
+                  : badge ? <span className="cat-tab-badge">{badge}</span> : null
               }
             </button>
           );
@@ -740,13 +771,26 @@ function App() {
   const [garageOpen, setGarageOpen] = useState(() => !loadGarage());
   const [showCount, setShowCount] = useState(8);
   const [selectedCatId, setSelectedCatId] = useState('tonneau');
+  const [catLoading, setCatLoading] = useState(false);
   const selectedCat = CATEGORY_DEFS.find(c => c.id === selectedCatId) || CATEGORY_DEFS[0];
 
   const handleCatChange = (id) => {
-    setSelectedCatId(id);
-    setFilters({ brands:new Set(), types:new Set(), priceMin:0, priceMax:2500, fitOnly:!!loadGarage() });
-    setShowCount(8);
-    setSort('featured');
+    const def = CATEGORY_DEFS.find(c => c.id === id);
+    if (!def) return;
+    if (!def.files || def.files.length === 0) {
+      // Already loaded (e.g. tonneau)
+      setSelectedCatId(id);
+      setFilters({ brands:new Set(), types:new Set(), priceMin:0, priceMax:2500, fitOnly:!!loadGarage() });
+      setShowCount(8); setSort('featured');
+      return;
+    }
+    setCatLoading(true);
+    loadDataFiles(def.files).then(() => {
+      setSelectedCatId(id);
+      setFilters({ brands:new Set(), types:new Set(), priceMin:0, priceMax:2500, fitOnly:!!loadGarage() });
+      setShowCount(8); setSort('featured');
+      setCatLoading(false);
+    });
   };
 
   const openDetail = (brand, name) => {
@@ -823,17 +867,11 @@ function App() {
     };
   }, []);
 
-  // Build unique product list from selected category's data
+  // Build unique product list — recalculates when category or loading state changes
   const allProducts = useMemo(() => {
-    const pm = {};
-    (selectedCat.data || []).forEach(row => {
-      const key = `${row[F.brand]}|${row[F.product]}`;
-      if (!pm[key]) pm[key] = { id:key, brand:row[F.brand], name:row[F.product], type:PRODUCT_TYPES[row[F.product]]||'', minPrice:null, fitments:[] };
-      if (row[F.map] && (pm[key].minPrice === null || row[F.map] < pm[key].minPrice)) pm[key].minPrice = row[F.map];
-      pm[key].fitments.push(row);
-    });
-    return Object.values(pm);
-  }, [selectedCatId]);
+    if (catLoading) return [];
+    return buildProducts(selectedCat.getData ? selectedCat.getData() : []);
+  }, [selectedCatId, catLoading]);
 
   // Brand/type counts
   const brandCounts = useMemo(() => {
@@ -892,7 +930,7 @@ function App() {
       <Header garage={garage} onSwapVehicle={openGaragePopup} />
       <MobileVehicleBar garage={garage} onSwap={openGaragePopup} />
       <HeroBanner garage={garage} onSwapVehicle={openGaragePopup} catDef={selectedCat} />
-      <CategoryTabs cats={CATEGORY_DEFS} selectedId={selectedCatId} onSelect={handleCatChange} />
+      <CategoryTabs cats={CATEGORY_DEFS} selectedId={selectedCatId} onSelect={handleCatChange} loading={catLoading} loadedCount={allProducts.length} />
       <Breadcrumbs />
 
       <main className="catalog">
@@ -917,7 +955,10 @@ function App() {
           <section className="results">
             <Toolbar count={filtered.length} sort={sort} setSort={setSort} view={view} setView={setView} garage={garage} />
             {filtered.length === 0
-              ? <div className="empty"><h3>No {selectedCat.name} match those filters</h3><p>Try removing a filter or expanding the price range.</p><button className="btn-primary" onClick={clearAll}>Clear all filters</button></div>
+              ? (catLoading
+    ? <div className="empty"><h3>Loading {selectedCat.name}…</h3><p>Fetching product data, just a moment.</p></div>
+    : <div className="empty"><h3>No {selectedCat.name} match those filters</h3><p>Try removing a filter or expanding the price range.</p><button className="btn-primary" onClick={clearAll}>Clear all filters</button></div>
+  )
               : <>
                   {view === 'grid'
                     ? <div className="grid">{filtered.slice(0, showCount).map((p) => <ProductCard key={p.id} p={p} onOpenDetail={openDetail} />)}</div>
