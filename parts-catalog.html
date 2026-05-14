@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg:#ffffff; --surface:#ffffff; --surface2:#f4f4f1;
@@ -248,7 +248,7 @@
   .card-type { font-family: var(--mono); font-size: 9.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--fg-dim); margin-bottom: 4px; }
   .card-meta { display:flex; align-items: center; gap: 8px; margin-top: 4px; font-size: 12px; }
   .card-foot { display:flex; align-items: center; justify-content: space-between; margin-top: auto; padding-top: 10px; gap: 8px; flex-wrap: wrap; }
-  .card-price { font-family: 'Playfair Display', Georgia, serif; font-weight: 800; font-size: 22px; letter-spacing: .02em; }
+  .card-price { font-family: var(--display); font-weight: 800; font-size: 22px; letter-spacing: .04em; }
   .card-brand-label { font-family: var(--body); font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--fg-muted); margin-bottom: 2px; }
   .card-cta { background: var(--accent); color:#fff; border:0; padding: 9px 16px; font-family: var(--display); font-weight: 700; letter-spacing: .07em; text-transform: uppercase; font-size: 12px; cursor: pointer; white-space: nowrap; }
   .card-cta:hover { filter: brightness(1.1); }
@@ -1087,11 +1087,20 @@ function App() {
 function GaragePopup({ onClose, onClear, hasVehicle }) {
   const [offsetY, setOffsetY] = React.useState(0);
   React.useEffect(() => {
-    setOffsetY(window.scrollY);
+    // Ask parent for its scrollY (Wix controls outer scroll, not this iframe)
+    window.parent.postMessage({type:'needScrollY'}, '*');
+    const onMsg = (e) => {
+      try {
+        const d = typeof e.data === 'string' ? JSON.parse(e.data) : e.data;
+        if (d && d.type === 'scrollY') setOffsetY(d.y || 0);
+      } catch(_) {}
+    };
+    window.addEventListener('message', onMsg);
     const onKey = (e) => { if (e.key === 'Escape') onClose(); };
     document.addEventListener('keydown', onKey);
     document.body.style.overflow = 'hidden';
     return () => {
+      window.removeEventListener('message', onMsg);
       document.removeEventListener('keydown', onKey);
       document.body.style.overflow = '';
     };
