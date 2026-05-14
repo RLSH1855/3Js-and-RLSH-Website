@@ -1361,6 +1361,15 @@
     if(yb&&yp&&!yb.contains(e.target)&&!yp.contains(e.target)) snGCloseYear();
   });
 
+  /* Expose functions called by inline onclick/onchange in the injected HTML */
+  window.snGTab=snGTab;
+  window.snGToggleYear=snGToggleYear;
+  window.snGMakeChange=snGMakeChange;
+  window.snGModelChange=snGModelChange;
+  window.snGDecodeVIN=snGDecodeVIN;
+  window.snGSave=snGSave;
+  window.snGReset=snGReset;
+
   (function(){
     var saved=localStorage.getItem('garage_vehicle');
     if(saved){
