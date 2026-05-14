@@ -768,7 +768,7 @@ function App() {
   const [sort, setSort] = useState('featured');
   const [view, setView] = useState(() => localStorage.getItem('catalog_view') || 'grid');
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const [garageOpen, setGarageOpen] = useState(() => !loadGarage());
+  const [garageOpen, setGarageOpen] = useState(false); // auto-open disabled
   const [showCount, setShowCount] = useState(8);
   const [selectedCatId, setSelectedCatId] = useState('tonneau');
   const [catLoading, setCatLoading] = useState(false);
