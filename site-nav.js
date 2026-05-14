@@ -1372,14 +1372,5 @@
     }
   })();
 
-  // Load garage FAB widget on all pages that use site-nav
-  // Skip if the page already has the catalog embedded (it has its own garage UI)
-  (function(){
-    if(document.getElementById('gc-ov')) return; // already loaded
-    if(document.querySelector('iframe[src*="parts-catalog"]')) return; // catalog page has own garage
-    var s=document.createElement('script');
-    s.src='https://rlsh1855.github.io/3Js-and-RLSH-Website/my-garage-widget.js';
-    document.head.appendChild(s);
-  })();
 
 })();
