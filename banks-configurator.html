@@ -310,9 +310,6 @@ body{
     <div class="bike-wrap" id="bikeWrap">
       <img class="bike-img" src="images/banks/bike-template.png" alt="Banks Performance Custom Harley">
 
-      <!-- Windshield color overlay -->
-      <div class="windshield-overlay" id="windshieldOverlay" style="background:rgba(255,180,0,0.35);"></div>
-
       <!-- Light glows -->
       <div class="glow glow-main amber" id="glowMain"></div>
       <div class="glow glow-fork-l amber" id="glowForkL"></div>
@@ -332,16 +329,12 @@ body{
       <div class="sidebar-sub">Select your options below</div>
     </div>
 
-    <!-- WINDSHIELD COLOR -->
+    <!-- LIGHT LENS COLOR -->
     <div class="section">
-      <div class="section-label">Windshield Color</div>
-      <div class="swatches" id="windshieldSwatches">
-        <div class="swatch active" data-color="rgba(255,180,0,0.35)" style="background:#FFA500;" title="Amber/Yellow"><span class="swatch-label">Amber</span></div>
-        <div class="swatch" data-color="rgba(50,200,50,0.35)" style="background:#32c832;" title="Green"><span class="swatch-label">Green</span></div>
-        <div class="swatch" data-color="rgba(180,30,30,0.30)" style="background:#cc2222;" title="Red"><span class="swatch-label">Red</span></div>
-        <div class="swatch" data-color="rgba(50,100,220,0.30)" style="background:#2255cc;" title="Blue"><span class="swatch-label">Blue</span></div>
-        <div class="swatch" data-color="rgba(180,180,200,0.25)" style="background:#aaaacc;" title="Smoke"><span class="swatch-label">Smoke</span></div>
-        <div class="swatch" data-color="rgba(255,255,255,0.12)" style="background:#ddd;border:1px solid #555;" title="Clear"><span class="swatch-label">Clear</span></div>
+      <div class="section-label">Light Lens Color — All Groups</div>
+      <div class="swatches" id="lensSwatches">
+        <div class="swatch active" data-mode="amber" style="background:#FFA500;" title="Amber"><span class="swatch-label">Amber</span></div>
+        <div class="swatch" data-mode="white-light" style="background:#c8e0ff;border:1px solid #555;" title="White"><span class="swatch-label">White</span></div>
       </div>
     </div>
 
@@ -395,43 +388,59 @@ body{
 </div>
 
 <script>
-/* ── WINDSHIELD COLOR ── */
-var wsSwatches = document.querySelectorAll('#windshieldSwatches .swatch');
-var wsOverlay  = document.getElementById('windshieldOverlay');
+var allGlowIds = ['glowMain','glowForkL','glowForkR','glowLowL','glowLowR','glowRim'];
+var currentMode = { main:'amber', fork:'amber', lower:'amber' };
+var currentLens = 'amber';
 
-wsSwatches.forEach(function(sw){
-  sw.addEventListener('click', function(){
-    wsSwatches.forEach(function(s){ s.classList.remove('active'); });
-    sw.classList.add('active');
-    wsOverlay.style.background = sw.dataset.color;
-  });
-});
-
-/* ── LIGHT TOGGLES ── */
 var lightGroups = {
   main:  ['glowMain'],
   fork:  ['glowForkL','glowForkR'],
   lower: ['glowLowL','glowLowR','glowRim']
 };
 
+function setGlowColor(id, mode){
+  var el = document.getElementById(id);
+  if(!el) return;
+  el.className = el.className.replace(/\s*(amber|white-light|off)/g,'');
+  el.classList.add(mode);
+}
+
+/* ── LENS COLOR (all groups) ── */
+document.querySelectorAll('#lensSwatches .swatch').forEach(function(sw){
+  sw.addEventListener('click', function(){
+    document.querySelectorAll('#lensSwatches .swatch').forEach(function(s){ s.classList.remove('active'); });
+    sw.classList.add('active');
+    currentLens = sw.dataset.mode;
+    // Apply new lens color to all groups that are not off
+    Object.keys(lightGroups).forEach(function(group){
+      if(currentMode[group] !== 'off'){
+        currentMode[group] = currentLens;
+        lightGroups[group].forEach(function(id){ setGlowColor(id, currentLens); });
+        // Sync toggle buttons
+        document.querySelectorAll('[data-group="'+group+'"]').forEach(function(b){
+          b.className = 'toggle-btn';
+          if(b.dataset.mode === currentLens) b.classList.add('active-'+currentLens);
+        });
+      }
+    });
+  });
+});
+
+/* ── PER-GROUP LIGHT TOGGLES ── */
 document.querySelectorAll('.light-toggle').forEach(function(row){
   var btns = row.querySelectorAll('.toggle-btn');
   btns.forEach(function(btn){
     btn.addEventListener('click', function(){
       var group = btn.dataset.group;
-      var mode  = btn.dataset.mode;
+      var mode  = btn.dataset.mode === 'amber' || btn.dataset.mode === 'white-light'
+                  ? currentLens : btn.dataset.mode;
+      if(btn.dataset.mode === 'off') mode = 'off';
 
-      // Update button styles
+      currentMode[group] = mode;
       btns.forEach(function(b){ b.className='toggle-btn'; });
-      btn.classList.add('active-'+mode);
+      btn.classList.add('active-'+(btn.dataset.mode==='off'?'off':currentLens));
 
-      // Update glows
-      lightGroups[group].forEach(function(id){
-        var el = document.getElementById(id);
-        if(!el) return;
-        el.className = el.className.replace(/\s*(amber|white-light|off)/g,'');
-        el.classList.add(mode);
-      });
+      lightGroups[group].forEach(function(id){ setGlowColor(id, mode); });
     });
   });
 });
