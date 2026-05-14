@@ -90,8 +90,6 @@
   .gal-main { position: relative; aspect-ratio: 4/3; background: var(--surface2); overflow: hidden; border: 1px solid var(--border); }
   .gal-main img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .gal-main-placeholder { width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:12px;color:var(--fg-dim);letter-spacing:.08em;text-transform:uppercase; }
-  .gal-badge { position: absolute; top: 14px; left: 14px; display:inline-flex; align-items: center; gap: 6px; background: rgba(62,194,124,.16); border: 1px solid rgba(62,194,124,.55); color: #1f7e3e; padding: 6px 10px; font-family: var(--mono); font-size: 10px; letter-spacing: .15em; font-weight: 600; backdrop-filter: blur(6px); z-index: 2; }
-  .gal-badge svg { width: 12px; height: 12px; }
 
   /* Info column */
   .pdp-info { display:flex; flex-direction: column; gap: 14px; position: sticky; top: 130px; align-self: start; padding-right: 4px; }
@@ -314,7 +312,15 @@
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
 <script type="text/babel">
-window.scrollTo(0, 0);
+// Tell Wix outer page to scroll to top and match iframe height
+(function() {
+  function reportHeight() {
+    window.parent.postMessage({ type: 'setHeight', height: document.body.scrollHeight }, '*');
+  }
+  window.parent.postMessage({ type: 'scrollToTop' }, '*');
+  reportHeight();
+  new ResizeObserver(reportHeight).observe(document.body);
+})();
 const { useState, useEffect, useMemo } = React;
 
 const _qParams = new URLSearchParams(window.location.search);
@@ -1028,12 +1034,6 @@ function Gallery({ images, productName, fits, garage }) {
         {images.length > 0
           ? <img src={images[safeActive]} alt={productName} />
           : <div className="gal-main-placeholder">{productName}</div>}
-        {garage && fits && (
-          <div className="gal-badge">
-            {Icon.check}
-            <span>Guaranteed Fit</span>
-          </div>
-        )}
       </div>
     </div>
   );
