@@ -110,7 +110,7 @@
   .cat-tabs { background: #111; border-bottom: 1px solid rgba(255,255,255,.08); }
   .cat-tabs-inner { display:flex; overflow-x:auto; white-space:nowrap; scrollbar-width:none; padding:0 16px; max-width:1440px; margin:0 auto; }
   .cat-tabs-inner::-webkit-scrollbar { display:none; }
-  .cat-tab { display:inline-flex; align-items:center; gap:8px; padding:14px 18px; font-family:var(--display); font-size:11px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:rgba(255,255,255,.4); background:none; border:none; border-bottom:2px solid transparent; margin-bottom:-1px; white-space:nowrap; flex-shrink:0; min-height:48px; cursor:pointer; transition:color .2s,border-color .2s; }
+  .cat-tab { display:inline-flex; align-items:center; gap:8px; padding:14px 18px; font-family:var(--display); font-size:13px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,.4); background:none; border:none; border-bottom:2px solid transparent; margin-bottom:-1px; white-space:nowrap; flex-shrink:0; min-height:48px; cursor:pointer; transition:color .2s,border-color .2s; }
   .cat-tab:hover:not(.cat-tab-empty) { color:rgba(255,255,255,.80); }
   .cat-tab.cat-tab-active { color:#fff; border-bottom-color:var(--accent); }
   .cat-tab.cat-tab-empty { opacity:.35; cursor:default; }
@@ -128,14 +128,14 @@
   .hero-copy p { color: rgba(255,255,255,.55); max-width: 440px; font-size: 15px; line-height: 1.5; margin: 0; }
   .hero-cta { display:flex; gap: 10px; margin-top: 8px; flex-wrap: wrap; }
   .hero-art { position: relative; overflow: hidden; }
-  .hero-tag { position: absolute; bottom: 16px; left: 16px; font-family: var(--mono); font-size: 10px; letter-spacing: .2em; padding: 6px 10px; background: var(--accent); color: #fff; font-weight: 600; }
+  .hero-tag { position: absolute; bottom: 16px; left: 16px; font-family: var(--display); font-size: 12px; letter-spacing: .22em; padding: 8px 16px; background: rgba(255,255,255,.13); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border: 1px solid rgba(255,255,255,.32); color: #fff; font-weight: 700; text-transform: uppercase; }
 
   /* ── Crumbs ── */
-  .crumbs { max-width: 1440px; margin: 0 auto; padding: 14px 24px; font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--fg-muted); display:flex; align-items:center; gap: 10px; flex-wrap: wrap; }
+  .crumbs { max-width: 1440px; margin: 0 auto; padding: 14px 24px; font-family: var(--body); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; font-weight: 500; color: var(--fg-muted); display:flex; align-items:center; gap: 10px; flex-wrap: wrap; }
   .crumbs a { cursor: pointer; }
   .crumbs a:hover { color: var(--accent); }
   .crumb-sep { color: var(--fg-dim); }
-  .crumb-now { color: var(--fg); }
+  .crumb-now { color: #000; font-weight: 700; }
 
   /* ── Mobile search row (inside header, mobile only) ── */
   .mob-search-row { display: none; }
@@ -186,7 +186,7 @@
   .fit-toggle input:checked + .fit-toggle-track .fit-toggle-thumb { transform: translateX(14px); }
 
   .filter-section { border-bottom: 1px solid var(--border); }
-  .filter-section-head { display:flex; justify-content: space-between; align-items: center; width: 100%; background:transparent; border: 0; padding: 16px 0; color: var(--fg); font-family: var(--display); font-weight: 700; letter-spacing: .06em; text-transform: uppercase; font-size: 13px; cursor: pointer; }
+  .filter-section-head { display:flex; justify-content: space-between; align-items: center; width: 100%; background:transparent; border: 0; padding: 16px 0; color: var(--fg); font-family: var(--display); font-weight: 700; letter-spacing: .14em; text-transform: uppercase; font-size: 15px; cursor: pointer; }
   .filter-section-chev { transition: transform .2s; color: var(--fg-muted); display:inline-flex; }
   .filter-section-chev svg { width: 12px; height: 12px; }
   .filter-section.open .filter-section-chev { transform: rotate(180deg); }
@@ -317,8 +317,8 @@
   .garage-widget-ico { color: var(--accent); }
   .garage-widget-ico svg { width: 22px; height: 22px; }
   .garage-widget-text { flex: 1; min-width: 0; }
-  .garage-widget-label { font-family: var(--mono); font-size: 9.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--fg-dim); }
-  .garage-widget-vehicle { font-family: var(--display); font-weight: 700; font-size: 14px; letter-spacing: .02em; }
+  .garage-widget-label { font-family: var(--body); font-size: 9px; letter-spacing: .22em; text-transform: uppercase; font-weight: 700; color: var(--fg-muted); }
+  .garage-widget-vehicle { font-family: var(--display); font-weight: 700; font-size: 16px; letter-spacing: .04em; color: var(--fg); }
   .garage-widget-swap { background: transparent; border: 0; color: var(--fg-muted); cursor: pointer; padding: 4px; }
   .garage-widget-swap:hover { color: var(--accent); }
   .garage-widget-swap svg { width: 16px; height: 16px; }
@@ -938,7 +938,7 @@ function App() {
       <MobileVehicleBar garage={garage} onSwap={openGaragePopup} />
       <HeroBanner garage={garage} onSwapVehicle={openGaragePopup} catDef={selectedCat} />
       <CategoryTabs cats={CATEGORY_DEFS} selectedId={selectedCatId} onSelect={handleCatChange} loading={catLoading} loadedCount={allProducts.length} />
-      <Breadcrumbs />
+      <Breadcrumbs catLabel={selectedCat.catLabel} />
 
       <main className="catalog">
         <MobileBar count={filtered.length} onOpenFilters={() => setDrawerOpen(true)} sort={sort} setSort={setSort} view={view} setView={setView} />
@@ -1123,7 +1123,7 @@ function HeroBanner({ garage, onSwapVehicle, catDef }) {
                   <text x="50%" y="50%" textAnchor="middle" fontFamily="ui-monospace,monospace" fontSize="11" fill="rgba(255,255,255,.4)" letterSpacing="0.2em">[ SET YOUR TRUCK ]</text>
                 </svg>;
           })()}
-          {garage && <div className="hero-tag" style={{color:'#fff',fontFamily:'Montserrat',fontWeight:'800'}}>FITS YOUR TRUCK</div>}
+          {garage && <div className="hero-tag">FITS YOUR TRUCK</div>}
         </div>
       </div>
     </section>
@@ -1131,14 +1131,14 @@ function HeroBanner({ garage, onSwapVehicle, catDef }) {
 }
 
 // ── Breadcrumbs ──
-function Breadcrumbs() {
+function Breadcrumbs({ catLabel }) {
   return (
     <nav className="crumbs">
       <a href="https://www.3jsautobody.com/">Home</a>
       <span className="crumb-sep">/</span>
-      <a>Parts &amp; Accessories</a>
+      <a href="exterior-accessories.html">Parts &amp; Accessories</a>
       <span className="crumb-sep">/</span>
-      <span className="crumb-now">Bed Covers &amp; Tonneau Covers</span>
+      <span className="crumb-now">{catLabel || 'Tonneau Covers'}</span>
     </nav>
   );
 }
