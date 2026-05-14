@@ -4,50 +4,79 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Get a Quote — 3J's Auto Body &amp; Paint</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
   <style>
     html,body{max-width:100%;}
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    body{font-family:'Inter',sans-serif;background:#F2F2F2;color:#1a1a1a;min-height:100vh;}
+    body{font-family:'Inter',sans-serif;background:#F0F0EE;color:#1a1a1a;min-height:100vh;}
 
     /* ── PAGE HEADER ── */
-    .page-header{background:#0A0A0A;padding:clamp(28px,4vw,40px) clamp(20px,4vw,32px);border-bottom:3px solid #8B0000;position:relative;overflow:hidden;}
+    .page-header{background:#0A0A0A;padding:clamp(28px,4vw,40px) clamp(20px,4vw,40px);border-bottom:3px solid #8B0000;position:relative;overflow:hidden;}
     .page-header::after{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,0.03) 1px,transparent 1px);background-size:26px 26px;pointer-events:none;}
-    .page-header-inner{position:relative;z-index:1;}
-    .page-header .eyebrow{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:#8B0000;margin-bottom:10px;display:block;}
+    .page-header-inner{position:relative;z-index:1;max-width:1240px;margin:0 auto;}
+    .page-header .eyebrow{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:4px;text-transform:uppercase;color:#8B0000;margin-bottom:10px;display:block;}
     .page-header h1{font-family:'Montserrat',sans-serif;font-size:clamp(24px,4vw,38px);font-weight:900;color:#fff;letter-spacing:-1px;line-height:1.05;}
     .page-header .sub{font-family:'Inter',sans-serif;font-size:13px;font-weight:400;color:rgba(255,255,255,0.50);margin-top:8px;}
 
-    /* ── MAIN WRAP ── */
-    .page-wrap{max-width:680px;margin:0 auto;padding:32px 20px 80px;}
+    /* ── OUTER WRAP ── */
+    .page-outer{padding:32px 20px 80px;max-width:1280px;margin:0 auto;}
 
     /* ── NO PRODUCT STATE ── */
-    #no-product{display:none;text-align:center;padding:56px 24px;background:#fff;border:1px solid #E8E8E8;margin-top:32px;}
+    #no-product{display:none;text-align:center;padding:72px 24px;background:#fff;border:1px solid #E8E8E8;margin-top:0;}
     #no-product h2{font-family:'Montserrat',sans-serif;font-size:18px;font-weight:900;color:#1a1a1a;margin-bottom:10px;}
     #no-product p{font-size:14px;color:#666;margin-bottom:24px;line-height:1.65;}
     #no-product a{display:inline-flex;align-items:center;padding:0 28px;height:48px;background:#8B0000;color:#fff;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;transition:background 0.2s;}
     #no-product a:hover{background:#6d0000;}
 
-    /* ── INFO CARDS ── */
+    /* ── 3-COLUMN LAYOUT ── */
+    #form-wrap{display:none;}
+    .quote-layout{display:grid;grid-template-columns:240px 1fr 240px;gap:24px;align-items:start;}
+
+    /* ── SIDE PANEL SHARED ── */
+    .trust-panel,.upsell-panel{display:flex;flex-direction:column;gap:16px;}
+    .panel-block{background:#fff;border:1px solid #E8E8E8;padding:20px;}
+    .panel-block-title{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:900;letter-spacing:4px;text-transform:uppercase;color:#8B0000;margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid #F0F0EE;}
+
+    /* ── LEFT: TRUST PANEL ── */
+    .stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:4px;}
+    .stat-item{text-align:center;padding:12px 8px;background:#F8F8F6;border:1px solid #E8E8E8;}
+    .stat-num{font-family:'Montserrat',sans-serif;font-size:24px;font-weight:900;color:#0A0A0A;line-height:1;}
+    .stat-label{font-size:10px;font-weight:600;color:#666;margin-top:4px;line-height:1.3;}
+    .stat-item.full-width{grid-column:1/-1;}
+
+    .brand-tags{display:flex;flex-wrap:wrap;gap:6px;}
+    .brand-tag{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;background:#F0F0EE;border:1px solid #E0E0DC;color:#444;padding:4px 8px;}
+
+    .review-block{background:#0A0A0A;border:none;padding:20px;}
+    .review-stars{color:#f59e0b;font-size:14px;letter-spacing:2px;margin-bottom:10px;}
+    .review-text{font-size:13px;font-style:italic;color:rgba(255,255,255,.75);line-height:1.6;margin-bottom:10px;}
+    .review-author{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.4);}
+
+    .step-list{display:flex;flex-direction:column;gap:14px;}
+    .step{display:flex;align-items:flex-start;gap:12px;}
+    .step-num{width:26px;height:26px;background:#8B0000;color:#fff;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+    .step-text{font-size:12px;color:#444;line-height:1.5;padding-top:4px;}
+    .step-text strong{display:block;color:#0A0A0A;font-weight:700;font-size:13px;margin-bottom:2px;}
+
+    /* ── CENTER: FORM COLUMN ── */
+    .form-col{display:flex;flex-direction:column;gap:0;}
+
     .info-card{background:#fff;border:1px solid #E8E8E8;border-top:3px solid #8B0000;padding:22px 24px;margin-bottom:14px;}
     .info-card.amber{border-top-color:#d4860a;}
     .card-eyebrow{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:5px;text-transform:uppercase;color:#8B0000;margin-bottom:8px;display:block;}
     .info-card.amber .card-eyebrow{color:#d4860a;}
     .card-title{font-family:'Montserrat',sans-serif;font-size:20px;font-weight:900;color:#0A0A0A;line-height:1.2;margin-bottom:4px;}
-    .card-sub{font-size:13px;font-weight:600;color:#444;}
     .card-part{font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;color:#666;margin-top:6px;}
     .no-vehicle-note{font-size:13px;font-weight:700;color:#5c4000;background:#fff8e1;border:1px solid #ffe082;padding:14px 18px;margin-bottom:14px;}
     .no-vehicle-note a{color:#8B0000;font-weight:800;}
 
-    /* ── QUOTE INCLUDES BANNER ── */
-    .quote-includes{background:#0A0A0A;border-top:3px solid #1a7a1a;padding:18px 22px;margin-bottom:20px;display:flex;align-items:center;gap:14px;}
-    .qi-icon{width:32px;height:32px;background:#1a7a1a;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px;color:#fff;}
-    .qi-text{font-size:12px;font-weight:500;color:rgba(255,255,255,0.80);line-height:1.55;}
+    .quote-includes{background:#0A0A0A;border-top:3px solid #1a7a1a;padding:16px 22px;margin-bottom:14px;display:flex;align-items:center;gap:14px;}
+    .qi-icon{width:30px;height:30px;background:#1a7a1a;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:15px;color:#fff;}
+    .qi-text{font-size:12px;font-weight:500;color:rgba(255,255,255,0.78);line-height:1.55;}
     .qi-text strong{font-family:'Montserrat',sans-serif;color:#fff;font-weight:800;display:block;font-size:13px;margin-bottom:2px;}
 
-    /* ── FORM ── */
     .form-card{background:#fff;border:1px solid #E8E8E8;padding:28px 24px;margin-bottom:14px;}
-    .form-section-title{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:900;letter-spacing:5px;text-transform:uppercase;color:#8B0000;margin-bottom:22px;padding-bottom:12px;border-bottom:2px solid #F2F2F2;}
+    .form-section-title{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:900;letter-spacing:5px;text-transform:uppercase;color:#8B0000;margin-bottom:22px;padding-bottom:12px;border-bottom:2px solid #F0F0EE;}
     .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;}
     @media(max-width:560px){.form-row{grid-template-columns:1fr;}}
     .form-group{margin-bottom:14px;}
@@ -56,36 +85,85 @@
     label span.req{color:#8B0000;}
     input[type=text],input[type=tel],input[type=email]{width:100%;padding:12px 14px;border:2px solid #E8E8E8;border-radius:0;font-family:'Inter',sans-serif;font-size:15px;font-weight:500;color:#1a1a1a;background:#fff;transition:border-color 0.15s;outline:none;}
     input[type=text]:focus,input[type=tel]:focus,input[type=email]:focus{border-color:#8B0000;}
-    input.readonly-field{background:#F9F9F9;color:#666;cursor:default;}
 
-    /* ── ADDON CHECKBOX ── */
-    .addon-box{background:#F9F9F9;border:2px solid #E8E8E8;padding:16px 18px;margin-bottom:14px;display:flex;align-items:flex-start;gap:12px;cursor:pointer;transition:border-color 0.15s;}
+    .addon-box{background:#F8F8F6;border:2px solid #E8E8E8;padding:16px 18px;margin-bottom:14px;display:flex;align-items:flex-start;gap:12px;cursor:pointer;transition:border-color 0.15s;}
     .addon-box:hover{border-color:#8B0000;}
     .addon-box.checked{border-color:#8B0000;background:#fff8f8;}
-    .addon-checkbox{width:18px;height:18px;border:2px solid #ccc;flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;transition:background 0.15s,border-color 0.15s;}
-    .addon-box.checked .addon-checkbox{background:#8B0000;border-color:#8B0000;color:#fff;font-size:12px;font-weight:900;}
+    .addon-checkbox{width:18px;height:18px;border:2px solid #ccc;flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;transition:background 0.15s,border-color 0.15s;font-size:12px;font-weight:900;}
+    .addon-box.checked .addon-checkbox{background:#8B0000;border-color:#8B0000;color:#fff;}
     .addon-text{flex:1;}
-    .addon-title{font-family:'Montserrat',sans-serif;font-size:15px;font-weight:800;color:#0A0A0A;margin-bottom:5px;}
-    .addon-sub{font-size:13px;font-weight:400;color:#444;line-height:1.6;}
+    .addon-title{font-family:'Montserrat',sans-serif;font-size:15px;font-weight:800;color:#0A0A0A;margin-bottom:4px;}
+    .addon-sub{font-size:13px;font-weight:400;color:#555;line-height:1.6;}
 
-    /* ── SUBMIT ── */
-    .submit-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;width:100%;height:48px;padding:0 24px;background:#8B0000;color:#fff;border:none;border-radius:0;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:background 0.2s;margin-top:6px;}
+    .submit-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;width:100%;height:52px;padding:0 24px;background:#8B0000;color:#fff;border:none;border-radius:0;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;cursor:pointer;transition:background 0.2s;margin-top:6px;}
     .submit-btn:hover{background:#6d0000;}
     .submit-btn:disabled{background:#aaa;cursor:not-allowed;}
-
-    /* ── ERROR ── */
     #form-error{display:none;background:#fdecea;border:1px solid #f5c6cb;padding:12px 16px;margin-top:12px;font-size:12px;font-weight:600;color:#721c24;}
 
-    /* ── SUCCESS STATE ── */
-    #success-state{display:none;background:#fff;border:1px solid #E8E8E8;border-top:3px solid #1a7a1a;padding:48px 32px;text-align:center;}
-    .success-check{width:64px;height:64px;background:#1a7a1a;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:28px;color:#fff;}
-    #success-state h2{font-family:'Montserrat',sans-serif;font-size:22px;font-weight:900;color:#1a1a1a;margin-bottom:10px;}
-    #success-state p{font-size:14px;color:#666;margin-bottom:6px;line-height:1.65;}
-    #success-state .back-link{display:inline-flex;align-items:center;height:48px;padding:0 32px;margin-top:24px;background:#0A0A0A;color:#fff;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;transition:background 0.2s;}
-    #success-state .back-link:hover{background:#1a1a1a;}
+    /* ── RIGHT: UPSELL PANEL ── */
+    .upsell-item{display:flex;align-items:flex-start;gap:12px;padding:12px 0;border-bottom:1px solid #F0F0EE;cursor:pointer;transition:opacity .15s;}
+    .upsell-item:last-child{border-bottom:none;padding-bottom:0;}
+    .upsell-item:hover{opacity:.8;}
+    .upsell-item.checked .upsell-check{background:#8B0000;border-color:#8B0000;color:#fff;}
+    .upsell-check{width:18px;height:18px;border:2px solid #ccc;flex-shrink:0;margin-top:3px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900;transition:background .15s,border-color .15s;}
+    .upsell-item-name{font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;color:#0A0A0A;margin-bottom:2px;}
+    .upsell-item-desc{font-size:11px;color:#777;line-height:1.4;}
 
-    /* ── FORM WRAP ── */
-    #form-wrap{display:none;}
+    .special-box{background:#8B0000;padding:20px;}
+    .special-eyebrow{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:800;letter-spacing:3.5px;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:8px;}
+    .special-title{font-family:'Montserrat',sans-serif;font-size:20px;font-weight:900;color:#fff;line-height:1.1;margin-bottom:8px;}
+    .special-text{font-size:12px;color:rgba(255,255,255,.8);line-height:1.6;}
+
+    .garage-prompt{background:#fff;border:1px solid #E8E8E8;border-top:3px solid #d4860a;padding:18px 20px;text-align:center;}
+    .garage-prompt-ico{font-size:28px;margin-bottom:8px;}
+    .garage-prompt-text{font-size:12px;color:#555;line-height:1.55;margin-bottom:14px;}
+    .garage-prompt-btn{display:inline-block;background:#0A0A0A;color:#fff;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:10px 18px;text-decoration:none;transition:background .2s;}
+    .garage-prompt-btn:hover{background:#8B0000;}
+
+    /* ── FEATURED PRODUCTS STRIP ── */
+    .featured-outer{margin-top:40px;padding-top:32px;border-top:2px solid #E0E0DC;}
+    .featured-header{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:20px;}
+    .featured-title{font-family:'Montserrat',sans-serif;font-size:13px;font-weight:900;letter-spacing:3px;text-transform:uppercase;color:#0A0A0A;}
+    .featured-all{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#8B0000;text-decoration:none;}
+    .featured-all:hover{text-decoration:underline;}
+    .featured-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+    .feat-card{background:#fff;border:1px solid #E8E8E8;text-decoration:none;color:inherit;display:flex;flex-direction:column;transition:border-color .15s,transform .15s;}
+    .feat-card:hover{border-color:#8B0000;transform:translateY(-2px);}
+    .feat-img{height:140px;display:flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-size:22px;font-weight:900;letter-spacing:2px;color:rgba(255,255,255,.7);overflow:hidden;position:relative;}
+    .feat-img img{width:100%;height:100%;object-fit:cover;display:block;}
+    .feat-body{padding:14px 16px 16px;}
+    .feat-brand{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#aaa;margin-bottom:4px;}
+    .feat-name{font-family:'Montserrat',sans-serif;font-size:15px;font-weight:900;color:#0A0A0A;line-height:1.2;margin-bottom:6px;}
+    .feat-desc{font-size:11px;color:#666;line-height:1.5;margin-bottom:12px;flex:1;}
+    .feat-cta{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#8B0000;}
+
+    /* ── SUCCESS STATE ── */
+    #success-state{display:none;background:#fff;border:1px solid #E8E8E8;border-top:3px solid #1a7a1a;padding:64px 32px;text-align:center;max-width:600px;margin:0 auto;}
+    .success-check{width:64px;height:64px;background:#1a7a1a;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:28px;color:#fff;}
+    #success-state h2{font-family:'Montserrat',sans-serif;font-size:24px;font-weight:900;color:#1a1a1a;margin-bottom:10px;}
+    #success-state p{font-size:14px;color:#555;margin-bottom:8px;line-height:1.65;}
+    .success-items{background:#F8F8F6;border:1px solid #E8E8E8;padding:16px 20px;margin:16px 0;text-align:left;}
+    .success-items-label{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:#8B0000;margin-bottom:10px;}
+    .success-item-line{font-size:13px;color:#333;font-weight:600;padding:4px 0;border-bottom:1px solid #eee;}
+    .success-item-line:last-child{border-bottom:none;}
+    #success-state .back-link{display:inline-flex;align-items:center;height:48px;padding:0 32px;margin-top:24px;background:#0A0A0A;color:#fff;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;transition:background 0.2s;}
+    #success-state .back-link:hover{background:#8B0000;}
+
+    /* ── RESPONSIVE ── */
+    @media(max-width:1100px){
+      .quote-layout{grid-template-columns:1fr 220px;}
+      .trust-panel{display:none;}
+    }
+    @media(max-width:768px){
+      .quote-layout{grid-template-columns:1fr;}
+      .upsell-panel{order:10;}
+      .featured-grid{grid-template-columns:1fr 1fr;gap:12px;}
+    }
+    @media(max-width:480px){
+      .featured-grid{grid-template-columns:1fr 1fr;}
+      .feat-img{height:110px;}
+    }
+
     *:focus{outline:none;}
     *:focus-visible{outline:2px solid #8B0000;outline-offset:3px;}
   </style>
@@ -101,84 +179,288 @@
   </div>
 </div>
 
-<div class="page-wrap">
+<div class="page-outer">
 
   <!-- No Product State -->
   <div id="no-product">
-    <div class="np-icon">🔍</div>
+    <div style="font-size:36px;margin-bottom:16px;">🔍</div>
     <h2>No Product Selected</h2>
-    <p>It looks like you arrived here without selecting a product. Head back to the catalog to find what you need.</p>
+    <p>Head back to the catalog to find what you need, then click "Get a Quote" on any product.</p>
     <a href="parts-catalog.html">Browse Accessories</a>
   </div>
 
-  <!-- Form Wrap -->
+  <!-- ── FORM WRAP (3-col layout) ── -->
   <div id="form-wrap">
 
-    <!-- Product Card -->
-    <div class="info-card" id="product-card">
-      <div class="card-eyebrow">Selected Product</div>
-      <div class="card-title" id="display-product">—</div>
-      <div class="card-part" id="display-partnum">—</div>
-    </div>
+    <div class="quote-layout">
 
-    <!-- Vehicle Card -->
-    <div class="info-card amber" id="vehicle-card-saved" style="display:none">
-      <div class="card-eyebrow">Your Vehicle</div>
-      <div class="card-title" id="display-vehicle">—</div>
-    </div>
-    <div class="no-vehicle-note" id="vehicle-card-none" style="display:none">
-      ⚠ No vehicle saved — fitment not confirmed. <a href="my-garage.html" style="color:#8B0000;font-weight:800;">Save your truck →</a>
-    </div>
+      <!-- ════ LEFT: TRUST PANEL ════ -->
+      <aside class="trust-panel">
 
-    <!-- Quote Includes Banner -->
-    <div class="quote-includes">
-      <div class="qi-icon">✓</div>
-      <div class="qi-text">
-        <strong>What's included in your quote</strong>
-        Part pricing + professional installation pricing — both included in every quote we send.
+        <!-- Stats -->
+        <div class="panel-block">
+          <div class="panel-block-title">Why 3J's</div>
+          <div class="stat-grid">
+            <div class="stat-item">
+              <div class="stat-num">30+</div>
+              <div class="stat-label">Years in Business</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-num">Free</div>
+              <div class="stat-label">Pro Install Included</div>
+            </div>
+            <div class="stat-item full-width">
+              <div class="stat-num">1,000s</div>
+              <div class="stat-label">Accessories Installed</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review -->
+        <div class="panel-block review-block">
+          <div class="review-stars">★★★★★</div>
+          <div class="review-text">"3J's had my BAKFlip installed in under an hour. Great price, no surprises."</div>
+          <div class="review-author">— Mike T., Long Beach CA</div>
+        </div>
+
+        <!-- Brands -->
+        <div class="panel-block">
+          <div class="panel-block-title">Brands We Carry</div>
+          <div class="brand-tags">
+            <span class="brand-tag">BAK</span>
+            <span class="brand-tag">Extang</span>
+            <span class="brand-tag">Retrax</span>
+            <span class="brand-tag">Roll N Lock</span>
+            <span class="brand-tag">TruXedo</span>
+            <span class="brand-tag">Aries</span>
+            <span class="brand-tag">CURT</span>
+            <span class="brand-tag">B&amp;W</span>
+            <span class="brand-tag">Husky</span>
+            <span class="brand-tag">AMP Research</span>
+            <span class="brand-tag">N-Fab</span>
+            <span class="brand-tag">Lund</span>
+          </div>
+        </div>
+
+        <!-- What Happens Next -->
+        <div class="panel-block">
+          <div class="panel-block-title">What Happens Next</div>
+          <div class="step-list">
+            <div class="step">
+              <div class="step-num">1</div>
+              <div class="step-text"><strong>Submit your request</strong>Takes about 60 seconds</div>
+            </div>
+            <div class="step">
+              <div class="step-num">2</div>
+              <div class="step-text"><strong>We call you back</strong>Usually the same business day</div>
+            </div>
+            <div class="step">
+              <div class="step-num">3</div>
+              <div class="step-text"><strong>Drop off your truck</strong>We install while you wait</div>
+            </div>
+          </div>
+        </div>
+
+      </aside>
+
+      <!-- ════ CENTER: FORM COLUMN ════ -->
+      <div class="form-col">
+
+        <!-- Product Card -->
+        <div class="info-card" id="product-card">
+          <div class="card-eyebrow">Selected Product</div>
+          <div class="card-title" id="display-product">—</div>
+          <div class="card-part" id="display-partnum"></div>
+        </div>
+
+        <!-- Vehicle Card -->
+        <div class="info-card amber" id="vehicle-card-saved" style="display:none">
+          <div class="card-eyebrow">Your Vehicle</div>
+          <div class="card-title" id="display-vehicle">—</div>
+        </div>
+        <div class="no-vehicle-note" id="vehicle-card-none" style="display:none">
+          ⚠ No vehicle saved — fitment not confirmed. <a href="my-garage.html">Set your truck →</a>
+        </div>
+
+        <!-- Quote Includes Banner -->
+        <div class="quote-includes">
+          <div class="qi-icon">✓</div>
+          <div class="qi-text">
+            <strong>What's included in your quote</strong>
+            Part pricing + professional installation — both in every quote we send.
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="form-card">
+          <div class="form-section-title">Your Contact Info</div>
+          <form id="quote-form" novalidate>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="f-firstname">First Name <span class="req">*</span></label>
+                <input type="text" id="f-firstname" placeholder="John" required autocomplete="given-name" style="text-transform:capitalize;"/>
+              </div>
+              <div class="form-group">
+                <label for="f-lastname">Last Name <span class="req">*</span></label>
+                <input type="text" id="f-lastname" placeholder="Smith" required autocomplete="family-name" style="text-transform:capitalize;"/>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="f-phone">Phone <span class="req">*</span></label>
+                <input type="tel" id="f-phone" placeholder="(562) 555-0100" required autocomplete="tel" inputmode="numeric"/>
+              </div>
+              <div class="form-group">
+                <label for="f-email">Email <span class="req">*</span></label>
+                <input type="email" id="f-email" placeholder="you@email.com" required autocomplete="email" style="text-transform:lowercase;"/>
+              </div>
+            </div>
+
+            <!-- Bedliner Add-On -->
+            <div class="addon-box" id="bedliner-addon" onclick="toggleBedliner()">
+              <div class="addon-checkbox" id="bedliner-check"></div>
+              <div class="addon-text">
+                <div class="addon-title">Also quote me on a Spray-In Bedliner</div>
+                <div class="addon-sub">We'll include bedliner pricing alongside your quote — no extra form needed.</div>
+              </div>
+            </div>
+
+            <button type="submit" class="submit-btn" id="submit-btn">Request Quote</button>
+            <div id="form-error">Something went wrong. Please try again or call us at (562) 424-6744.</div>
+
+          </form>
+        </div>
+
+      </div><!-- /form-col -->
+
+      <!-- ════ RIGHT: UPSELL PANEL ════ -->
+      <aside class="upsell-panel">
+
+        <!-- Also Add to Your Quote -->
+        <div class="panel-block">
+          <div class="panel-block-title">Also Add to Your Quote</div>
+          <p style="font-size:11px;color:#666;line-height:1.5;margin-bottom:14px;">Check anything below and we'll include pricing in the same quote — no extra forms.</p>
+
+          <div class="upsell-item" id="upsell-running-boards" onclick="toggleUpsell('running-boards')">
+            <div class="upsell-check" id="check-running-boards"></div>
+            <div>
+              <div class="upsell-item-name">Running Boards</div>
+              <div class="upsell-item-desc">Power steps, nerf bars, step bars</div>
+            </div>
+          </div>
+
+          <div class="upsell-item" id="upsell-floor-liners" onclick="toggleUpsell('floor-liners')">
+            <div class="upsell-check" id="check-floor-liners"></div>
+            <div>
+              <div class="upsell-item-name">Floor Liners</div>
+              <div class="upsell-item-desc">Husky Liners, custom-fit</div>
+            </div>
+          </div>
+
+          <div class="upsell-item" id="upsell-fender-flares" onclick="toggleUpsell('fender-flares')">
+            <div class="upsell-check" id="check-fender-flares"></div>
+            <div>
+              <div class="upsell-item-name">Fender Flares</div>
+              <div class="upsell-item-desc">Bushwacker, Stampede, Lund</div>
+            </div>
+          </div>
+
+          <div class="upsell-item" id="upsell-grille-guard" onclick="toggleUpsell('grille-guard')">
+            <div class="upsell-check" id="check-grille-guard"></div>
+            <div>
+              <div class="upsell-item-name">Grille Guard</div>
+              <div class="upsell-item-desc">Aries brush guards &amp; bumpers</div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Current Special -->
+        <div class="special-box">
+          <div class="special-eyebrow">Current Special</div>
+          <div class="special-title">Free Pro Install</div>
+          <div class="special-text">Every accessory we quote includes free professional installation at our Signal Hill shop. No hidden fees.</div>
+        </div>
+
+        <!-- Garage prompt — shown if no vehicle saved -->
+        <div class="garage-prompt" id="garage-prompt" style="display:none">
+          <div class="garage-prompt-ico">🚘</div>
+          <p class="garage-prompt-text">Set your truck in My Garage for a fitment-confirmed quote with exact part numbers.</p>
+          <a href="my-garage.html" class="garage-prompt-btn">Set My Truck →</a>
+        </div>
+
+        <!-- Call us block -->
+        <div class="panel-block" style="text-align:center;">
+          <div class="panel-block-title">Rather Talk to Us?</div>
+          <p style="font-size:12px;color:#555;line-height:1.5;margin-bottom:14px;">Call our shop directly and we'll get you a quote over the phone in minutes.</p>
+          <a href="tel:5624246744" style="display:block;background:#0A0A0A;color:#fff;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:13px;text-decoration:none;transition:background .2s;" onmouseover="this.style.background='#8B0000'" onmouseout="this.style.background='#0A0A0A'">(562) 424-6744</a>
+        </div>
+
+      </aside>
+
+    </div><!-- /quote-layout -->
+
+    <!-- ════ FEATURED PRODUCTS STRIP ════ -->
+    <div class="featured-outer">
+      <div class="featured-header">
+        <div class="featured-title">Top Sellers at 3J's</div>
+        <a href="parts-catalog.html" class="featured-all">View All Products →</a>
       </div>
-    </div>
+      <div class="featured-grid">
 
-    <!-- Form Card -->
-    <div class="form-card">
-      <div class="form-section-title">Your Contact Info</div>
-      <form id="quote-form" novalidate>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label for="f-firstname">First Name <span class="req">*</span></label>
-            <input type="text" id="f-firstname" placeholder="John" required autocomplete="given-name" style="text-transform:capitalize;"/>
+        <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/product-detail-page.html?brand=BAK&product=BAKFlip%20MX4&cat=Tonneau%20Covers&catUrl=parts-catalog.html" class="feat-card">
+          <div class="feat-img" style="background:#1a1a2e;">
+            <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/images/products/bakflip-mx4.webp" alt="BAKFlip MX4" onerror="this.style.display='none'"/>
+            <span style="position:absolute;">MX4</span>
           </div>
-          <div class="form-group">
-            <label for="f-lastname">Last Name <span class="req">*</span></label>
-            <input type="text" id="f-lastname" placeholder="Smith" required autocomplete="family-name" style="text-transform:capitalize;"/>
+          <div class="feat-body">
+            <div class="feat-brand">BAK Industries</div>
+            <div class="feat-name">BAKFlip MX4</div>
+            <div class="feat-desc">All-aluminum hard fold, matte black finish, flush mount design.</div>
+            <div class="feat-cta">View &amp; Quote →</div>
           </div>
-        </div>
+        </a>
 
-        <div class="form-row">
-          <div class="form-group">
-            <label for="f-phone">Phone <span class="req">*</span></label>
-            <input type="tel" id="f-phone" placeholder="(562) 555-0100" required autocomplete="tel" inputmode="numeric"/>
+        <a href="parts-catalog.html" class="feat-card" onclick="localStorage.setItem('catalog_cat','running-boards')">
+          <div class="feat-img" style="background:#0d1a0d;">
+            <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/go-rhino/GR_RB10_T_4Steps_Primary__80786.1677057201.webp" alt="Running Boards" onerror="this.style.display='none'"/>
+            <span style="position:absolute;">STEPS</span>
           </div>
-          <div class="form-group">
-            <label for="f-email">Email <span class="req">*</span></label>
-            <input type="email" id="f-email" placeholder="you@email.com" required autocomplete="email" style="text-transform:lowercase;"/>
+          <div class="feat-body">
+            <div class="feat-brand">AMP Research · Go Rhino</div>
+            <div class="feat-name">Running Boards</div>
+            <div class="feat-desc">Power steps, nerf bars, and cab-length side steps. Professionally installed.</div>
+            <div class="feat-cta">Browse &amp; Quote →</div>
           </div>
-        </div>
+        </a>
 
-        <!-- Bedliner Add-On -->
-        <div class="addon-box" id="bedliner-addon" onclick="toggleBedliner()">
-          <div class="addon-checkbox" id="bedliner-check"></div>
-          <div class="addon-text">
-            <div class="addon-title">Also quote me on a Spray-In Bedliner</div>
-            <div class="addon-sub">We'll include bedliner pricing alongside your tonneau cover quote — no extra form needed.</div>
+        <a href="https://www.3jsautobody.com/rhino-lining-quote" class="feat-card">
+          <div class="feat-img" style="background:#1a0a0a;">
+            <span style="position:absolute;font-size:14px;text-align:center;padding:0 16px;line-height:1.3;">SPRAY-IN<br/>BEDLINER</span>
           </div>
-        </div>
+          <div class="feat-body">
+            <div class="feat-brand">Rhino Linings</div>
+            <div class="feat-name">Spray-In Bedliner</div>
+            <div class="feat-desc">#1 protective coating in the industry. Custom color available. Installed in-shop.</div>
+            <div class="feat-cta">Get Bedliner Quote →</div>
+          </div>
+        </a>
 
-        <button type="submit" class="submit-btn" id="submit-btn">Request Quote</button>
-        <div id="form-error">Something went wrong. Please try again or call us at (562) 424-6744.</div>
+        <a href="parts-catalog.html" class="feat-card">
+          <div class="feat-img" style="background:#0d0d1a;">
+            <span style="position:absolute;font-size:14px;text-align:center;padding:0 16px;line-height:1.3;">FLOOR<br/>LINERS</span>
+          </div>
+          <div class="feat-body">
+            <div class="feat-brand">Husky Liners</div>
+            <div class="feat-name">Floor Liners</div>
+            <div class="feat-desc">WeatherBeater and X-Act Contour liners. Custom-fit for your exact truck.</div>
+            <div class="feat-cta">Browse &amp; Quote →</div>
+          </div>
+        </a>
 
-      </form>
+      </div>
     </div>
 
   </div><!-- /form-wrap -->
@@ -187,21 +469,24 @@
   <div id="success-state">
     <div class="success-check">✓</div>
     <h2>Quote Request Received!</h2>
-    <p>We'll be in touch within 1 business day with pricing for your part and installation.</p>
-    <p>Questions? Call us at <strong>(562) 424-6744</strong>.</p>
+    <p>We'll be in touch within one business day with pricing for your part and installation.</p>
+    <p>Questions in the meantime? Call us at <strong>(562) 424-6744</strong>.</p>
+    <div class="success-items" id="success-items" style="display:none">
+      <div class="success-items-label">Items Quoted</div>
+      <div id="success-items-list"></div>
+    </div>
     <a href="parts-catalog.html" class="back-link">Back to Catalog</a>
   </div>
 
-</div><!-- /page-wrap -->
+</div><!-- /page-outer -->
 
 <script>
-// Scroll to top — quote is linked from the bottom of the PDP
 if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
 window.scrollTo({ top: 0, behavior: 'instant' });
 
 var SHEETS_URL = 'https://script.google.com/macros/s/AKfycbyn_Lhl96O0vAujT3ddSavZmcbFqts5miqCditRFYYknMwutEJAvKe5YFAjUNLb98-hTw/exec';
 
-// ── Read URL params ──
+// ── URL params ──
 var params  = new URLSearchParams(window.location.search);
 var product = params.get('product') || '';
 var partNum = params.get('partNum') || '';
@@ -209,24 +494,21 @@ var urlYear = params.get('year') || '';
 var urlMake = params.get('make') || '';
 var urlModel = params.get('model') || '';
 
-// ── Read garage (localStorage takes priority; URL params as fallback) ──
+// ── Garage ──
 var garage = null;
 try { garage = JSON.parse(localStorage.getItem('garage_vehicle')); } catch(e){}
 if(!garage && urlYear && urlMake && urlModel){
-  garage = { year: urlYear, make: urlMake, model: urlModel, trim:'', bedSize:'', vin:'' };
+  garage = { year:urlYear, make:urlMake, model:urlModel, trim:'', bedSize:'', vin:'' };
 }
 
-// ── Init page ──
+// ── Init ──
 if(!product){
   document.getElementById('no-product').style.display = 'block';
 } else {
   document.getElementById('form-wrap').style.display = 'block';
-
-  // Product
   document.getElementById('display-product').textContent = product;
-  document.getElementById('display-partnum').textContent = partNum ? 'Part #' + partNum : '';
+  if(partNum) document.getElementById('display-partnum').textContent = 'Part #' + partNum;
 
-  // Vehicle
   if(garage && garage.year){
     var vLabel = garage.year + ' ' + garage.make + ' ' + garage.model;
     if(garage.trim) vLabel += ' ' + garage.trim;
@@ -235,10 +517,11 @@ if(!product){
     document.getElementById('vehicle-card-saved').style.display = 'block';
   } else {
     document.getElementById('vehicle-card-none').style.display = 'block';
+    document.getElementById('garage-prompt').style.display = 'block';
   }
 }
 
-// ── Bedliner add-on toggle ──
+// ── Bedliner toggle ──
 var addBedliner = false;
 function toggleBedliner(){
   addBedliner = !addBedliner;
@@ -248,18 +531,28 @@ function toggleBedliner(){
   chk.textContent = addBedliner ? '✓' : '';
 }
 
+// ── Upsell toggles ──
+var upsells = { 'running-boards':false, 'floor-liners':false, 'fender-flares':false, 'grille-guard':false };
+function toggleUpsell(key){
+  upsells[key] = !upsells[key];
+  var item = document.getElementById('upsell-' + key);
+  var chk  = document.getElementById('check-' + key);
+  item.classList.toggle('checked', upsells[key]);
+  chk.textContent = upsells[key] ? '✓' : '';
+}
+
 // ── Submit ──
 document.getElementById('quote-form').addEventListener('submit', function(e){
   e.preventDefault();
-
   var firstName = document.getElementById('f-firstname').value.trim();
   var lastName  = document.getElementById('f-lastname').value.trim();
   var phone     = document.getElementById('f-phone').value.trim();
   var email     = document.getElementById('f-email').value.trim();
 
   if(!firstName || !lastName || !phone || !email){
-    document.getElementById('form-error').style.display = 'block';
-    document.getElementById('form-error').textContent = 'Please fill in all required fields.';
+    var err = document.getElementById('form-error');
+    err.style.display = 'block';
+    err.textContent = 'Please fill in all required fields.';
     return;
   }
 
@@ -271,6 +564,14 @@ document.getElementById('quote-form').addEventListener('submit', function(e){
     if(garage.vin) vehicleStr += ' (VIN: ' + garage.vin + ')';
   }
 
+  // Collect upsell selections
+  var addOnsList = [];
+  if(addBedliner) addOnsList.push('Spray-In Bedliner');
+  if(upsells['running-boards']) addOnsList.push('Running Boards');
+  if(upsells['floor-liners']) addOnsList.push('Floor Liners');
+  if(upsells['fender-flares']) addOnsList.push('Fender Flares');
+  if(upsells['grille-guard']) addOnsList.push('Grille Guard');
+
   var btn = document.getElementById('submit-btn');
   btn.disabled = true;
   btn.textContent = 'Sending...';
@@ -280,51 +581,65 @@ document.getElementById('quote-form').addEventListener('submit', function(e){
   var dateStr = (now.getMonth()+1) + '/' + now.getDate() + '/' + now.getFullYear();
 
   var record = {
-    date:      dateStr,
-    firstName: firstName,
-    lastName:  lastName,
-    name:      firstName + ' ' + lastName,
-    phone:     phone,
-    email:     email,
-    vehicle:   vehicleStr || 'Not saved',
-    garageYear:    (garage && garage.year)    ? garage.year    : '',
-    garageMake:    (garage && garage.make)    ? garage.make    : '',
-    garageModel:   (garage && garage.model)   ? garage.model   : '',
-    garageTrim:    (garage && garage.trim)    ? garage.trim    : '',
-    garageBedSize: (garage && garage.bedSize) ? garage.bedSize : '',
-    garageVin:     (garage && garage.vin)     ? garage.vin     : '',
-    product:    product,
-    partNum:    partNum,
-    quoteType:  'Part + Installation',
-    addBedliner: addBedliner ? 'Yes' : 'No'
+    formType:       'parts-quote',
+    date:           dateStr,
+    firstName:      firstName,
+    lastName:       lastName,
+    name:           firstName + ' ' + lastName,
+    phone:          phone,
+    email:          email,
+    vehicle:        vehicleStr || 'Not saved',
+    garageYear:     (garage && garage.year)    ? garage.year    : '',
+    garageMake:     (garage && garage.make)    ? garage.make    : '',
+    garageModel:    (garage && garage.model)   ? garage.model   : '',
+    garageTrim:     (garage && garage.trim)    ? garage.trim    : '',
+    garageBedSize:  (garage && garage.bedSize) ? garage.bedSize : '',
+    garageVin:      (garage && garage.vin)     ? garage.vin     : '',
+    product:        product,
+    partNum:        partNum,
+    quoteType:      'Part + Installation',
+    addOns:         addOnsList.length ? addOnsList.join(', ') : 'None'
   };
 
   fetch(SHEETS_URL, {
     method: 'POST',
-    body: JSON.stringify(Object.assign({ formType: 'parts-quote' }, record))
-  }).then(function(res){ return res.json(); })
+    body: JSON.stringify(record)
+  }).then(function(r){ return r.json(); })
     .then(function(data){
       if(data.ok || data.status === 'ok'){
+        // Build success summary
+        var allItems = [product].concat(addOnsList);
+        var list = document.getElementById('success-items-list');
+        var container = document.getElementById('success-items');
+        allItems.forEach(function(item){
+          var div = document.createElement('div');
+          div.className = 'success-item-line';
+          div.textContent = '✓ ' + item;
+          list.appendChild(div);
+        });
+        if(allItems.length > 0) container.style.display = 'block';
         document.getElementById('form-wrap').style.display = 'none';
         document.getElementById('success-state').style.display = 'block';
       } else {
-        throw new Error(data.error || 'Unknown error');
+        throw new Error(data.error || 'Unknown');
       }
     }).catch(function(){
       btn.disabled = false;
       btn.textContent = 'Request Quote';
-      document.getElementById('form-error').style.display = 'block';
-      document.getElementById('form-error').textContent = 'Something went wrong. Please try again or call us at (562) 424-6744.';
+      var err = document.getElementById('form-error');
+      err.style.display = 'block';
+      err.textContent = 'Something went wrong. Please try again or call (562) 424-6744.';
     });
 });
+
 // ── Phone formatter ──
 document.getElementById('f-phone').addEventListener('input', function(e){
-  var digits = e.target.value.replace(/\D/g,'').slice(0,10);
-  var fmt = '';
-  if(digits.length > 6)      fmt = '('+digits.slice(0,3)+') '+digits.slice(3,6)+'-'+digits.slice(6);
-  else if(digits.length > 3) fmt = '('+digits.slice(0,3)+') '+digits.slice(3);
-  else if(digits.length > 0) fmt = '('+digits;
-  e.target.value = fmt;
+  var d = e.target.value.replace(/\D/g,'').slice(0,10);
+  var f = '';
+  if(d.length > 6)      f = '('+d.slice(0,3)+') '+d.slice(3,6)+'-'+d.slice(6);
+  else if(d.length > 3) f = '('+d.slice(0,3)+') '+d.slice(3);
+  else if(d.length > 0) f = '('+d;
+  e.target.value = f;
 });
 </script>
 
