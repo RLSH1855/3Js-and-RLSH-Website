@@ -355,7 +355,7 @@
     .c-bg{position:absolute;inset:0;z-index:0;}
     .c-bg img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 8s ease;}
     .c-bg::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,0.52);}
-    .c-card{position:relative;z-index:1;background:var(--white);padding:22px 18px;max-width:100%;margin:16px 14px;}
+    .c-card{position:relative;z-index:1;background:var(--white);padding:28px 20px;max-width:100%;margin:20px 16px;}
     .content-section.flip .c-card{margin-left:14px;}
     .c-card .label{margin-bottom:14px;}
     .c-card h2{font-size:clamp(26px,3.5vw,44px);font-weight:900;letter-spacing:-1.5px;line-height:1.0;color:var(--black-2);text-transform:uppercase;margin-bottom:12px;}
@@ -370,8 +370,8 @@
     .c-cta svg{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:2.2;flex-shrink:0;}
 
     @media(min-width:431px){
-      .c-card{margin:16px 14px;padding:22px 18px;}
-      .content-section.flip .c-card{margin-left:14px;}
+      .c-card{margin:20px 16px;padding:28px 20px;}
+      .content-section.flip .c-card{margin-left:16px;}
     }
     @media(min-width:601px){
       .c-bg::after{background:rgba(0,0,0,0.42);}
@@ -391,7 +391,7 @@
     .split-section{display:grid;grid-template-columns:1fr;min-height:auto;border-top:1px solid var(--divider);}
     .split-section.flip .s-text{order:1;}
     .split-section.flip .s-img{order:2;}
-    .s-text{display:flex;flex-direction:column;justify-content:center;padding:28px 18px;}
+    .s-text{display:flex;flex-direction:column;justify-content:center;padding:48px 20px;}
     .s-text .label{margin-bottom:14px;}
     .s-text h2{font-size:clamp(26px,3.5vw,44px);font-weight:900;letter-spacing:-1.5px;line-height:1.0;color:var(--black-2);text-transform:uppercase;margin-bottom:12px;}
     .s-text h2 em{color:var(--crimson);font-style:normal;}
@@ -413,7 +413,7 @@
     .s-img{overflow:hidden;min-height:220px;}
     .s-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.7s cubic-bezier(0.16,1,0.3,1);}
 
-    @media(min-width:431px){.s-text{padding:32px 20px;}.split-section.flip .s-text{padding-left:20px;}}
+    @media(min-width:431px){.s-text{padding:48px 20px;}.split-section.flip .s-text{padding-left:20px;}}
     @media(min-width:601px){
       .s-text{padding:56px 36px;}
       .split-section.flip .s-text{padding-left:36px;}

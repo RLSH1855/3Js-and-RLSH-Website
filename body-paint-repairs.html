@@ -231,8 +231,8 @@
     @media(prefers-reduced-motion:reduce){.faq-q svg,.faq-a{transition:none!important;}}
 
     /* RESPONSIVE — mobile-first */
-    .page-header{height:130px;padding-top:16px;}
-    .two-col{grid-template-columns:1fr;padding:24px 16px;gap:14px;}
+    .page-header{height:170px;padding-top:16px;}
+    .two-col{grid-template-columns:1fr;padding:48px 16px;gap:14px;}
     .two-col.flip .col-text{order:1;}
     .two-col.flip .col-visual{order:2;}
     .dark,.light{padding:0;}
@@ -240,14 +240,14 @@
     .num-badge{display:none;}
     .steps{grid-template-columns:1fr 1fr;gap:14px;}
     .steps::before{display:none;}
-    .process-section{padding:24px 16px;}
+    .process-section{padding:48px 16px;}
     .process-header{margin-bottom:18px;}
     .stat-bar{padding:12px;}
     .stat{min-width:80px;padding:6px 10px;}
     .stat-number{font-size:22px;}
     .cert-strip{gap:8px;padding:10px 16px;}
     .cert-item span{font-size:10px;}
-    .faq-q{font-size:12px;padding:12px 0;}
+    .faq-q{font-size:13px;padding:12px 0;}
     .cta-buttons{flex-direction:column;align-items:stretch;}
     .btn-primary,.btn-secondary{width:100%;justify-content:center;}
     .section-body{font-size:15px;}
@@ -290,6 +290,34 @@
     @media(prefers-reduced-motion:reduce){
       .ins-marquee{animation-play-state:paused;}
     }
+
+    /* ── Owner section redesign ── */
+    .owner-section{position:relative;overflow:hidden;}
+    .owner-grid{display:grid;grid-template-columns:1fr;gap:48px;max-width:1100px;margin:0 auto;padding:clamp(56px,8vw,96px) clamp(20px,4vw,48px);position:relative;z-index:1;}
+    .owner-text .eyebrow{color:#8B0000;margin-bottom:16px;}
+    .owner-text h2{font-family:'Montserrat',sans-serif;font-size:clamp(28px,4vw,52px);font-weight:900;letter-spacing:-1.5px;line-height:1.05;color:#fff;margin-bottom:20px;text-wrap:balance;}
+    .owner-text h2 em{font-style:normal;color:#8B0000;}
+    .owner-text p{font-family:'Inter',sans-serif;font-size:16px;font-weight:400;color:rgba(255,255,255,0.72);line-height:1.75;max-width:520px;text-wrap:pretty;}
+    .owner-stats{display:flex;flex-direction:column;gap:0;}
+    .owner-stat{border-top:1px solid rgba(255,255,255,0.10);padding:28px 0;}
+    .owner-num{font-family:'Montserrat',sans-serif;font-size:clamp(52px,7vw,84px);font-weight:900;letter-spacing:-3px;line-height:1;color:#fff;}
+    .owner-lbl{font-family:'Inter',sans-serif;font-size:13px;font-weight:500;color:rgba(255,255,255,0.50);margin-top:6px;line-height:1.5;}
+    @media(min-width:640px){
+      .owner-grid{grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+    }
+
+    /* ── Frame bleed section ── */
+    .frame-bleed{position:relative;overflow:hidden;min-height:480px;display:flex;align-items:center;}
+    .frame-bleed-bg{position:absolute;inset:0;z-index:0;}
+    .frame-bleed-bg img{width:100%;height:100%;object-fit:cover;display:block;}
+    .frame-bleed-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(105deg,rgba(0,0,0,0.92) 0%,rgba(0,0,0,0.78) 50%,rgba(0,0,0,0.35) 100%);}
+    .frame-bleed-content{position:relative;z-index:1;padding:clamp(56px,8vw,96px) clamp(20px,4vw,64px);max-width:620px;}
+    .frame-bleed-content .eyebrow{color:rgba(255,255,255,0.45);margin-bottom:16px;}
+    .frame-bleed-content h2{font-family:'Montserrat',sans-serif;font-size:clamp(28px,4vw,52px);font-weight:900;letter-spacing:-1.5px;line-height:1.05;color:#fff;text-transform:uppercase;margin-bottom:24px;text-wrap:balance;}
+    .frame-bleed-content h2 em{font-style:normal;color:#8B0000;}
+    .frame-warning{background:rgba(139,0,0,0.18);border:1px solid rgba(139,0,0,0.40);padding:16px 20px;margin-bottom:28px;font-family:'Inter',sans-serif;font-size:14px;font-weight:500;color:rgba(255,255,255,0.85);line-height:1.7;}
+    .frame-bleed-content .feature-list li{color:rgba(255,255,255,0.85);}
+    .frame-bleed-content .feature-list li::before{background:#8B0000;}
   </style>
 </head>
 <body>
@@ -353,30 +381,27 @@
   </div>
 </section>
 
-<!-- FAMILY OWNED BAND -->
-<section class="dark" style="position:relative;overflow:hidden;">
+<!-- FAMILY OWNED BAND — redesigned -->
+<section class="dark owner-section">
   <div style="position:absolute;inset:0;background-image:repeating-linear-gradient(-45deg,rgba(139,0,0,0.04) 0px,rgba(139,0,0,0.04) 1px,transparent 1px,transparent 10px);pointer-events:none;"></div>
-  <div class="owner-inner" style="max-width:900px;margin:0 auto;padding:clamp(48px,7vw,80px) clamp(20px,4vw,40px);text-align:center;position:relative;z-index:1;">
-    <p class="eyebrow" style="color:#8B0000;margin-bottom:16px;">The 3J's Difference</p>
-    <h2 style="font-family:'Montserrat',sans-serif;font-size:clamp(26px,4vw,50px);font-weight:900;letter-spacing:-1.5px;line-height:1.05;color:#fff;margin-bottom:24px;text-wrap:balance;">You Talk to the <em style="font-style:normal;color:#8B0000;">Owner.</em><br>Every Single Time.</h2>
-    <p style="font-family:'Inter',sans-serif;font-size:16px;font-weight:400;color:rgba(255,255,255,0.72);line-height:1.75;max-width:680px;margin:0 auto 16px;text-wrap:pretty;">At a corporate shop you get a service writer who passes your car to a manager who assigns it to a tech. <strong style="color:#fff;font-weight:600;">Nobody's personally accountable.</strong> At 3J's, you walk in, you shake James's hand, you look him in the eye — and he is the person <strong style="color:#fff;font-weight:600;">personally responsible for your vehicle from start to finish.</strong> That's not something you get from a chain. That's something you only get from a family — and we've been that family since <strong style="color:#fff;font-weight:600;">1991.</strong></p>
-    <p style="font-family:'Montserrat',sans-serif;font-size:16px;font-weight:800;color:#fff;letter-spacing:0.5px;margin-bottom:40px;">We welcome you to join the 3J's family.</p>
-    <div style="display:flex;justify-content:center;flex-wrap:wrap;gap:16px;">
-      <div style="background:#111;border:1px solid #1e1e1e;border-radius:0;padding:20px 28px;min-width:180px;">
-        <div style="font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#8B0000;margin-bottom:6px;">Family Owned</div>
-        <div style="font-family:'Inter',sans-serif;font-size:13px;font-weight:400;color:rgba(255,255,255,0.65);line-height:1.5;">3 generations,<br>same location since 1991</div>
+  <div class="owner-grid">
+    <div class="owner-text">
+      <p class="eyebrow">The 3J's Difference</p>
+      <h2>You Talk to the <em>Owner.</em> Every Single Time.</h2>
+      <p>At a corporate shop you get a service writer who passes your car to a manager who assigns it to a tech. Nobody's personally accountable. At 3J's, you walk in, you shake James's hand — and he is personally responsible for your vehicle from start to finish. That's not something you get from a chain.</p>
+    </div>
+    <div class="owner-stats">
+      <div class="owner-stat">
+        <div class="owner-num">30+</div>
+        <div class="owner-lbl">Years at the same Signal Hill location</div>
       </div>
-      <div style="background:#111;border:1px solid #1e1e1e;border-radius:0;padding:20px 28px;min-width:180px;">
-        <div style="font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#8B0000;margin-bottom:6px;">Face to Face</div>
-        <div style="font-family:'Inter',sans-serif;font-size:13px;font-weight:400;color:rgba(255,255,255,0.65);line-height:1.5;">Meet the owner<br>on your first visit</div>
+      <div class="owner-stat">
+        <div class="owner-num">3</div>
+        <div class="owner-lbl">Generations of the Sferrazza family</div>
       </div>
-      <div style="background:#111;border:1px solid #1e1e1e;border-radius:0;padding:20px 28px;min-width:180px;">
-        <div style="font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#8B0000;margin-bottom:6px;">Accountable</div>
-        <div style="font-family:'Inter',sans-serif;font-size:13px;font-weight:400;color:rgba(255,255,255,0.65);line-height:1.5;">Your car is personal<br>to us — not a ticket number</div>
-      </div>
-      <div style="background:#111;border:1px solid #1e1e1e;border-radius:0;padding:20px 28px;min-width:180px;">
-        <div style="font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#8B0000;margin-bottom:6px;">No Corporate</div>
-        <div style="font-family:'Inter',sans-serif;font-size:13px;font-weight:400;color:rgba(255,255,255,0.65);line-height:1.5;">No scripts, no runaround —<br>just honest people</div>
+      <div class="owner-stat">
+        <div class="owner-num">1991</div>
+        <div class="owner-lbl">The year we opened. Never moved, never franchised.</div>
       </div>
     </div>
   </div>
@@ -478,29 +503,21 @@
 
 <div style="height:60px;background:#F2F2F2;clip-path:polygon(0 0,100% 0,100% 0,0 100%);margin-bottom:-1px;"></div>
 
-<!-- 4. FRAME & STRUCTURAL — DARK -->
-<section class="dark texture-dark">
-  <div class="two-col flip">
-    <div class="col-text">
-      <p class="eyebrow">Service 04</p>
-      <h2 class="section-title">Frame &amp;<br><em>Structural Repair</em></h2>
-      <div class="section-body">
-        <p>Frame damage after a collision isn't just a cosmetic issue — <span class="hl">it's a safety issue.</span> We use <strong>computerized measuring and alignment systems</strong> to diagnose and correct structural damage back to factory specifications before any bodywork begins.</p>
-        <p>Driving a vehicle with unrepaired frame damage puts you and everyone on the road at risk. <strong>Don't skip this step.</strong></p>
-      </div>
-      <ul class="feature-list">
-        <li>Computerized Frame Measuring</li>
-        <li>Unibody &amp; Full Frame Repair</li>
-        <li>Factory Specification Alignment</li>
-        <li>Pre-Repair Structural Assessment</li>
-      </ul>
-    </div>
-    <div class="col-visual">
-      <span class="num-badge">04</span>
-      <div class="visual-box">
-        <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/frame-straightening.webp" alt="Frame straightening at 3J's Auto Body" loading="lazy">
-      </div>
-    </div>
+<!-- 4. FRAME & STRUCTURAL — full-bleed -->
+<section class="frame-bleed">
+  <div class="frame-bleed-bg">
+    <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/frame-straightening.webp" alt="Frame straightening at 3J's Auto Body" loading="lazy">
+  </div>
+  <div class="frame-bleed-content">
+    <p class="eyebrow">Service 04 — Safety Critical</p>
+    <h2>Frame &amp;<br><em>Structural Repair</em></h2>
+    <div class="frame-warning">Frame damage after a collision isn't cosmetic: it's a safety issue. Driving on an unrepaired frame puts you and everyone on the road at risk. Don't skip this step.</div>
+    <ul class="feature-list">
+      <li>Computerized Frame Measuring</li>
+      <li>Unibody &amp; Full Frame Repair</li>
+      <li>Factory Specification Alignment</li>
+      <li>Pre-Repair Structural Assessment</li>
+    </ul>
   </div>
 </section>
 
