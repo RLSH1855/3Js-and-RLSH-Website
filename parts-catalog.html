@@ -106,6 +106,18 @@
   .nav-item:hover { color: #fff; }
   .nav-item.active { color: #fff; border-bottom-color: var(--accent); }
 
+  /* ── Category tabs ── */
+  .cat-tabs { background: #111; border-bottom: 1px solid rgba(255,255,255,.08); }
+  .cat-tabs-inner { display:flex; overflow-x:auto; white-space:nowrap; scrollbar-width:none; padding:0 16px; max-width:1440px; margin:0 auto; }
+  .cat-tabs-inner::-webkit-scrollbar { display:none; }
+  .cat-tab { display:inline-flex; align-items:center; gap:8px; padding:14px 18px; font-family:var(--display); font-size:11px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:rgba(255,255,255,.4); background:none; border:none; border-bottom:2px solid transparent; margin-bottom:-1px; white-space:nowrap; flex-shrink:0; min-height:48px; cursor:pointer; transition:color .2s,border-color .2s; }
+  .cat-tab:hover:not(.cat-tab-empty) { color:rgba(255,255,255,.80); }
+  .cat-tab.cat-tab-active { color:#fff; border-bottom-color:var(--accent); }
+  .cat-tab.cat-tab-empty { opacity:.35; cursor:default; }
+  .cat-tab-badge { background:rgba(255,255,255,.1); font-size:9px; font-weight:800; padding:2px 6px; letter-spacing:1px; }
+  .cat-tab.cat-tab-active .cat-tab-badge { background:var(--accent); }
+  .cat-tab-soon { font-size:8px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:rgba(255,255,255,.3); border:1px solid rgba(255,255,255,.15); padding:2px 6px; }
+
   /* ── Hero ── */
   .hero { background: #000; border-bottom: 1px solid var(--border); min-height: 400px; }
   .hero-grid { display: grid; grid-template-columns: 1fr 1fr; min-height: 400px; }
@@ -584,6 +596,51 @@ function ProductPlaceholder({ brand, name }) {
   );
 }
 
+// ── Category definitions ──
+// Add product data arrays here as new categories come online
+const CATEGORY_DEFS = [
+  { id:'tonneau',        name:'Tonneau Covers',      data: typeof CATALOG !== 'undefined' ? CATALOG : [], heroTitle:'Bed Covers', heroSub:'Locked-in fitment for your truck. We show you covers that bolt on — nothing else.', catLabel:'Tonneau Covers' },
+  { id:'running-boards', name:'Running Boards',       data: [], heroTitle:'Running Boards & Steps', heroSub:'Step up your truck. Professionally installed at 3J\'s Auto Body.', catLabel:'Running Boards' },
+  { id:'floor-liners',   name:'Floor Liners',         data: [], heroTitle:'Floor Liners & Mats', heroSub:'Protect your interior. Custom-fit to your exact year, make and model.', catLabel:'Floor Liners' },
+  { id:'towing',         name:'Towing',               data: [], heroTitle:'Towing Equipment', heroSub:'Hitches, ball mounts and wiring harnesses. Installed right.', catLabel:'Towing Equipment' },
+  { id:'lighting',       name:'Lighting',             data: [], heroTitle:'Off-Road Lighting', heroSub:'Auxiliary and off-road lighting. Wired and mounted by our techs.', catLabel:'Lighting' },
+];
+
+function getUniqueProdCount(data) {
+  const s = new Set();
+  data.forEach(r => s.add(r[F.brand] + '|' + r[F.product]));
+  return s.size;
+}
+
+// ── Category tabs ──
+function CategoryTabs({ cats, selectedId, onSelect }) {
+  return (
+    <nav className="cat-tabs" aria-label="Product categories">
+      <div className="cat-tabs-inner">
+        {cats.map(cat => {
+          const count = getUniqueProdCount(cat.data);
+          const isEmpty = count === 0;
+          return (
+            <button
+              key={cat.id}
+              className={`cat-tab ${cat.id===selectedId?'cat-tab-active':''} ${isEmpty?'cat-tab-empty':''}`}
+              onClick={() => !isEmpty && onSelect(cat.id)}
+              aria-current={cat.id===selectedId?'page':undefined}
+              title={isEmpty ? `${cat.name} — coming soon` : cat.name}
+            >
+              {cat.name}
+              {isEmpty
+                ? <span className="cat-tab-soon">Soon</span>
+                : <span className="cat-tab-badge">{count}</span>
+              }
+            </button>
+          );
+        })}
+      </div>
+    </nav>
+  );
+}
+
 // ── App ──
 function App() {
   const [garage, setGarageState] = useState(() => loadGarage());
@@ -597,10 +654,20 @@ function App() {
   const [sort, setSort] = useState('featured');
   const [view, setView] = useState(() => localStorage.getItem('catalog_view') || 'grid');
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const [garageOpen, setGarageOpen] = useState(false); // auto-open disabled
+  const [garageOpen, setGarageOpen] = useState(() => !loadGarage());
   const [showCount, setShowCount] = useState(8);
+  const [selectedCatId, setSelectedCatId] = useState('tonneau');
+  const selectedCat = CATEGORY_DEFS.find(c => c.id === selectedCatId) || CATEGORY_DEFS[0];
+
+  const handleCatChange = (id) => {
+    setSelectedCatId(id);
+    setFilters({ brands:new Set(), types:new Set(), priceMin:0, priceMax:2500, fitOnly:!!loadGarage() });
+    setShowCount(8);
+    setSort('featured');
+  };
+
   const openDetail = (brand, name) => {
-    const p = new URLSearchParams({ brand, product: name, cat: 'Tonneau Covers', catUrl: 'parts-catalog.html' });
+    const p = new URLSearchParams({ brand, product: name, cat: selectedCat.catLabel, catUrl: 'parts-catalog.html' });
     if (filters.types.size === 1) p.set('type', [...filters.types][0]);
     window.location.href = `https://rlsh1855.github.io/3Js-and-RLSH-Website/product-detail-page.html?${p}`;
   };
@@ -673,17 +740,17 @@ function App() {
     };
   }, []);
 
-  // Build unique product list from CATALOG
+  // Build unique product list from selected category's data
   const allProducts = useMemo(() => {
     const pm = {};
-    CATALOG.forEach(row => {
+    (selectedCat.data || []).forEach(row => {
       const key = `${row[F.brand]}|${row[F.product]}`;
       if (!pm[key]) pm[key] = { id:key, brand:row[F.brand], name:row[F.product], type:PRODUCT_TYPES[row[F.product]]||'', minPrice:null, fitments:[] };
       if (row[F.map] && (pm[key].minPrice === null || row[F.map] < pm[key].minPrice)) pm[key].minPrice = row[F.map];
       pm[key].fitments.push(row);
     });
     return Object.values(pm);
-  }, []);
+  }, [selectedCatId]);
 
   // Brand/type counts
   const brandCounts = useMemo(() => {
@@ -741,7 +808,8 @@ function App() {
     <div className="app">
       <Header garage={garage} onSwapVehicle={openGaragePopup} />
       <MobileVehicleBar garage={garage} onSwap={openGaragePopup} />
-      <HeroBanner garage={garage} onSwapVehicle={openGaragePopup} />
+      <HeroBanner garage={garage} onSwapVehicle={openGaragePopup} catDef={selectedCat} />
+      <CategoryTabs cats={CATEGORY_DEFS} selectedId={selectedCatId} onSelect={handleCatChange} />
       <Breadcrumbs />
 
       <main className="catalog">
@@ -766,7 +834,7 @@ function App() {
           <section className="results">
             <Toolbar count={filtered.length} sort={sort} setSort={setSort} view={view} setView={setView} garage={garage} />
             {filtered.length === 0
-              ? <div className="empty"><h3>No covers match those filters</h3><p>Try removing a filter or expanding the price range.</p><button className="btn-primary" onClick={clearAll}>Clear all filters</button></div>
+              ? <div className="empty"><h3>No {selectedCat.name} match those filters</h3><p>Try removing a filter or expanding the price range.</p><button className="btn-primary" onClick={clearAll}>Clear all filters</button></div>
               : <>
                   {view === 'grid'
                     ? <div className="grid">{filtered.slice(0, showCount).map((p) => <ProductCard key={p.id} p={p} onOpenDetail={openDetail} />)}</div>
@@ -883,15 +951,17 @@ function MobileVehicleBar({ garage, onSwap }) {
 }
 
 // ── Hero Banner ──
-function HeroBanner({ garage, onSwapVehicle }) {
+function HeroBanner({ garage, onSwapVehicle, catDef }) {
   const kicker = garage ? `${garage.year} ${garage.make.toUpperCase()} ${garage.model.toUpperCase()}` : 'SIGNAL HILL, CA';
+  const title = catDef ? catDef.heroTitle : 'Bed Covers';
+  const sub = catDef ? catDef.heroSub : 'Locked-in fitment for your truck. We show you covers that bolt on — nothing else.';
   return (
     <section className="hero">
       <div className="hero-grid">
         <div className="hero-copy">
           <div className="hero-kicker" style={{color:'#fff',fontFamily:'Montserrat',fontWeight:'600'}}>{kicker}</div>
-          <h1 style={{color:'rgb(132,132,132)'}}>Bed Covers <span className="amp">/</span> Tonneaus</h1>
-          <p>Locked-in fitment for your truck. We show you covers that bolt on — nothing else.</p>
+          <h1 style={{color:'#fff'}}>{title}</h1>
+          <p>{sub}</p>
           <div className="hero-cta">
             <a href="tel:5624246744" className="btn-primary" style={{fontFamily:'Montserrat',fontSize:'11px'}}>Call for a quote</a>
             <button className="btn-ghost" onClick={onSwapVehicle} style={{fontFamily:'Montserrat',fontSize:'11px',color:'#fff',borderColor:'rgba(255,255,255,.25)'}}>

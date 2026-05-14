@@ -3,178 +3,86 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Request a Quote — RLSH Truck & Jeep Outfitters</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <title>Get a Quote — 3J's Auto Body &amp; Paint</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
   <style>
     html,body{max-width:100%;}
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    body{font-family:'Montserrat',sans-serif;background:#f0f0f0;color:#1a1a1a;min-height:100vh;}
+    body{font-family:'Inter',sans-serif;background:#F2F2F2;color:#1a1a1a;min-height:100vh;}
 
     /* ── PAGE HEADER ── */
-    .page-header{
-      background:#1a1a1a;padding:28px 28px 24px;
-      border-bottom:3px solid #8B0000;
-    }
-    .page-header .eyebrow{
-      font-size:9px;font-weight:800;letter-spacing:3px;text-transform:uppercase;
-      color:#8B0000;margin-bottom:8px;
-    }
-    .page-header h1{
-      font-size:clamp(22px,4vw,36px);font-weight:900;color:#fff;
-      letter-spacing:-1px;line-height:1.05;
-    }
-    .page-header .sub{
-      font-size:12px;font-weight:500;color:rgba(255,255,255,0.5);margin-top:6px;
-    }
+    .page-header{background:#0A0A0A;padding:clamp(28px,4vw,40px) clamp(20px,4vw,32px);border-bottom:3px solid #8B0000;position:relative;overflow:hidden;}
+    .page-header::after{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,0.03) 1px,transparent 1px);background-size:26px 26px;pointer-events:none;}
+    .page-header-inner{position:relative;z-index:1;}
+    .page-header .eyebrow{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:#8B0000;margin-bottom:10px;display:block;}
+    .page-header h1{font-family:'Montserrat',sans-serif;font-size:clamp(24px,4vw,38px);font-weight:900;color:#fff;letter-spacing:-1px;line-height:1.05;}
+    .page-header .sub{font-family:'Inter',sans-serif;font-size:13px;font-weight:400;color:rgba(255,255,255,0.50);margin-top:8px;}
 
     /* ── MAIN WRAP ── */
-    .page-wrap{max-width:680px;margin:0 auto;padding:32px 20px 60px;}
+    .page-wrap{max-width:680px;margin:0 auto;padding:32px 20px 80px;}
 
     /* ── NO PRODUCT STATE ── */
-    #no-product{
-      display:none;text-align:center;padding:60px 24px;
-      background:#fff;border-radius:10px;margin-top:32px;
-    }
-    #no-product .np-icon{font-size:48px;margin-bottom:16px;}
-    #no-product h2{font-size:18px;font-weight:800;color:#1a1a1a;margin-bottom:8px;}
-    #no-product p{font-size:13px;color:#666;margin-bottom:24px;}
-    #no-product a{
-      display:inline-block;padding:12px 28px;
-      background:#8B0000;color:#fff;border-radius:7px;
-      font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;
-      text-decoration:none;
-    }
+    #no-product{display:none;text-align:center;padding:56px 24px;background:#fff;border:1px solid #E8E8E8;margin-top:32px;}
+    #no-product h2{font-family:'Montserrat',sans-serif;font-size:18px;font-weight:900;color:#1a1a1a;margin-bottom:10px;}
+    #no-product p{font-size:14px;color:#666;margin-bottom:24px;line-height:1.65;}
+    #no-product a{display:inline-flex;align-items:center;padding:0 28px;height:48px;background:#8B0000;color:#fff;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;transition:background 0.2s;}
+    #no-product a:hover{background:#6d0000;}
 
-    /* ── CARDS ── */
-    .info-card{
-      background:#fff;border-radius:10px;
-      border:2px solid #e8e8e8;
-      padding:20px 22px;margin-bottom:16px;
-      position:relative;overflow:hidden;
-    }
-    .info-card::before{
-      content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:#8B0000;
-    }
-    .info-card.amber::before{background:#e6a817;}
-    .card-eyebrow{
-      font-size:8px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;
-      color:#8B0000;margin-bottom:6px;
-    }
-    .info-card.amber .card-eyebrow{color:#e6a817;}
-    .card-title{font-size:16px;font-weight:900;color:#1a1a1a;margin-bottom:4px;}
-    .card-sub{font-size:11px;font-weight:600;color:#888;}
-    .card-part{font-size:10px;font-weight:700;color:#aaa;margin-top:4px;}
-    .no-vehicle-note{
-      font-size:11px;font-weight:700;color:#856404;
-      background:#fff8e1;border:1px solid #ffe082;border-radius:6px;
-      padding:10px 14px;margin-top:0;
-    }
+    /* ── INFO CARDS ── */
+    .info-card{background:#fff;border:1px solid #E8E8E8;border-top:3px solid #8B0000;padding:20px 22px;margin-bottom:14px;}
+    .info-card.amber{border-top-color:#d4860a;}
+    .card-eyebrow{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:#8B0000;margin-bottom:6px;}
+    .info-card.amber .card-eyebrow{color:#d4860a;}
+    .card-title{font-family:'Montserrat',sans-serif;font-size:16px;font-weight:900;color:#1a1a1a;margin-bottom:4px;}
+    .card-sub{font-size:12px;font-weight:500;color:#888;}
+    .card-part{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;color:#aaa;margin-top:4px;}
+    .no-vehicle-note{font-size:12px;font-weight:600;color:#856404;background:#fff8e1;border:1px solid #ffe082;padding:12px 16px;margin-bottom:14px;}
+    .no-vehicle-note a{color:#8B0000;font-weight:800;}
 
     /* ── QUOTE INCLUDES BANNER ── */
-    .quote-includes{
-      background:#1a1a1a;border-radius:10px;
-      padding:16px 20px;margin-bottom:20px;
-      display:flex;align-items:center;gap:14px;
-    }
-    .qi-icon{
-      width:38px;height:38px;border-radius:50%;
-      background:#1a7a1a;display:flex;align-items:center;justify-content:center;
-      flex-shrink:0;font-size:18px;
-    }
-    .qi-text{font-size:11px;font-weight:700;color:#fff;line-height:1.5;}
-    .qi-text strong{color:#fff;font-weight:900;display:block;font-size:13px;margin-bottom:2px;}
+    .quote-includes{background:#0A0A0A;border-top:3px solid #1a7a1a;padding:18px 22px;margin-bottom:20px;display:flex;align-items:center;gap:14px;}
+    .qi-icon{width:32px;height:32px;background:#1a7a1a;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px;color:#fff;}
+    .qi-text{font-size:12px;font-weight:500;color:rgba(255,255,255,0.80);line-height:1.55;}
+    .qi-text strong{font-family:'Montserrat',sans-serif;color:#fff;font-weight:800;display:block;font-size:13px;margin-bottom:2px;}
 
     /* ── FORM ── */
-    .form-card{
-      background:#fff;border-radius:10px;
-      border:2px solid #e8e8e8;padding:24px 22px;margin-bottom:16px;
-    }
-    .form-section-title{
-      font-size:9px;font-weight:900;letter-spacing:2.5px;text-transform:uppercase;
-      color:#8B0000;margin-bottom:18px;padding-bottom:8px;border-bottom:1px solid #f0f0f0;
-    }
+    .form-card{background:#fff;border:1px solid #E8E8E8;padding:28px 24px;margin-bottom:14px;}
+    .form-section-title{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:900;letter-spacing:2.5px;text-transform:uppercase;color:#8B0000;margin-bottom:20px;padding-bottom:10px;border-bottom:1px solid #F2F2F2;}
     .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;}
     @media(max-width:560px){.form-row{grid-template-columns:1fr;}}
     .form-group{margin-bottom:14px;}
     .form-group:last-child{margin-bottom:0;}
-    label{
-      display:block;font-size:9px;font-weight:800;letter-spacing:1.5px;
-      text-transform:uppercase;color:#666;margin-bottom:6px;
-    }
+    label{display:block;font-family:'Montserrat',sans-serif;font-size:9px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#666;margin-bottom:7px;}
     label span.req{color:#8B0000;}
-    input[type=text],input[type=tel],input[type=email]{
-      width:100%;padding:11px 14px;
-      border:2px solid #e0e0e0;border-radius:7px;
-      font-family:'Montserrat',sans-serif;font-size:13px;font-weight:600;
-      color:#1a1a1a;background:#fff;
-      transition:border-color 0.15s;outline:none;
-    }
-    input[type=text]:focus,input[type=tel]:focus,input[type=email]:focus{
-      border-color:#8B0000;
-    }
-    input.readonly-field{
-      background:#f7f7f7;color:#666;cursor:default;
-    }
+    input[type=text],input[type=tel],input[type=email]{width:100%;padding:12px 14px;border:2px solid #E8E8E8;border-radius:0;font-family:'Inter',sans-serif;font-size:15px;font-weight:500;color:#1a1a1a;background:#fff;transition:border-color 0.15s;outline:none;}
+    input[type=text]:focus,input[type=tel]:focus,input[type=email]:focus{border-color:#8B0000;}
+    input.readonly-field{background:#F9F9F9;color:#666;cursor:default;}
 
     /* ── ADDON CHECKBOX ── */
-    .addon-box{
-      background:#f7f7f7;border:2px solid #e8e8e8;border-radius:8px;
-      padding:14px 16px;margin-bottom:14px;
-      display:flex;align-items:flex-start;gap:12px;cursor:pointer;
-      transition:border-color 0.15s;
-    }
+    .addon-box{background:#F9F9F9;border:2px solid #E8E8E8;padding:16px 18px;margin-bottom:14px;display:flex;align-items:flex-start;gap:12px;cursor:pointer;transition:border-color 0.15s;}
     .addon-box:hover{border-color:#8B0000;}
     .addon-box.checked{border-color:#8B0000;background:#fff8f8;}
-    .addon-checkbox{
-      width:18px;height:18px;border:2px solid #ccc;border-radius:4px;
-      flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center;
-      transition:background 0.15s,border-color 0.15s;
-    }
+    .addon-checkbox{width:18px;height:18px;border:2px solid #ccc;flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;transition:background 0.15s,border-color 0.15s;}
     .addon-box.checked .addon-checkbox{background:#8B0000;border-color:#8B0000;color:#fff;font-size:12px;font-weight:900;}
     .addon-text{flex:1;}
-    .addon-title{font-size:12px;font-weight:800;color:#1a1a1a;margin-bottom:2px;}
-    .addon-sub{font-size:10px;font-weight:600;color:#666;line-height:1.5;}
+    .addon-title{font-family:'Montserrat',sans-serif;font-size:12px;font-weight:800;color:#1a1a1a;margin-bottom:3px;}
+    .addon-sub{font-size:12px;font-weight:400;color:#666;line-height:1.55;}
 
     /* ── SUBMIT ── */
-    .submit-btn{
-      display:inline-flex;align-items:center;justify-content:center;gap:8px;
-      width:100%;min-height:44px;padding:0 24px;
-      background:#8B0000;color:#fff;border:none;border-radius:0;
-      font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;
-      letter-spacing:2px;text-transform:uppercase;text-decoration:none;cursor:pointer;
-      transition:all 0.3s ease;margin-top:4px;
-    }
+    .submit-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;width:100%;height:48px;padding:0 24px;background:#8B0000;color:#fff;border:none;border-radius:0;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:background 0.2s;margin-top:6px;}
     .submit-btn:hover{background:#6d0000;}
     .submit-btn:disabled{background:#aaa;cursor:not-allowed;}
 
     /* ── ERROR ── */
-    #form-error{
-      display:none;
-      background:#fdecea;border:1px solid #f5c6cb;border-radius:7px;
-      padding:12px 16px;margin-top:12px;
-      font-size:11px;font-weight:700;color:#721c24;
-    }
+    #form-error{display:none;background:#fdecea;border:1px solid #f5c6cb;padding:12px 16px;margin-top:12px;font-size:12px;font-weight:600;color:#721c24;}
 
     /* ── SUCCESS STATE ── */
-    #success-state{
-      display:none;
-      background:#fff;border-radius:10px;border:2px solid #e8e8e8;
-      padding:48px 32px;text-align:center;
-    }
-    .success-check{
-      width:72px;height:72px;border-radius:50%;
-      background:#1a7a1a;display:flex;align-items:center;justify-content:center;
-      margin:0 auto 20px;font-size:36px;
-    }
-    #success-state h2{font-size:22px;font-weight:900;color:#1a1a1a;margin-bottom:8px;}
-    #success-state p{font-size:13px;color:#666;margin-bottom:6px;line-height:1.6;}
-    #success-state .back-link{
-      display:inline-block;margin-top:24px;
-      padding:12px 28px;background:#1a1a1a;color:#fff;
-      border-radius:7px;font-size:11px;font-weight:800;
-      letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;
-    }
-    #success-state .back-link:hover{background:#333;}
+    #success-state{display:none;background:#fff;border:1px solid #E8E8E8;border-top:3px solid #1a7a1a;padding:48px 32px;text-align:center;}
+    .success-check{width:64px;height:64px;background:#1a7a1a;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:28px;color:#fff;}
+    #success-state h2{font-family:'Montserrat',sans-serif;font-size:22px;font-weight:900;color:#1a1a1a;margin-bottom:10px;}
+    #success-state p{font-size:14px;color:#666;margin-bottom:6px;line-height:1.65;}
+    #success-state .back-link{display:inline-flex;align-items:center;height:48px;padding:0 32px;margin-top:24px;background:#0A0A0A;color:#fff;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;transition:background 0.2s;}
+    #success-state .back-link:hover{background:#1a1a1a;}
 
     /* ── FORM WRAP ── */
     #form-wrap{display:none;}
@@ -186,9 +94,11 @@
 
 <!-- Page Header -->
 <div class="page-header">
-  <div class="eyebrow">Parts Quote Request</div>
-  <h1>Get a Quote</h1>
-  <div class="sub">Part pricing + professional installation — we'll get back to you fast.</div>
+  <div class="page-header-inner">
+    <span class="eyebrow">3J's Auto Body &amp; Paint · Signal Hill, CA</span>
+    <h1>Get a Quote</h1>
+    <p class="sub">Part pricing + professional installation — we'll get back to you within one business day.</p>
+  </div>
 </div>
 
 <div class="page-wrap">
