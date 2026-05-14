@@ -97,7 +97,7 @@
   .pdp-info { display:flex; flex-direction: column; gap: 14px; position: sticky; top: 130px; align-self: start; max-height: calc(100vh - 150px); overflow-y: auto; padding-right: 4px; scrollbar-width: thin; }
   .pdp-info::-webkit-scrollbar { width: 5px; }
   .pdp-info::-webkit-scrollbar-thumb { background: var(--border-strong); }
-  .pdp-brand { font-family: var(--mono); font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--accent); font-weight: 500; }
+  .pdp-brand { font-family: var(--mono); font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--fg-muted); font-weight: 600; }
   .pdp-brand .sep { color: var(--fg-dim); margin: 0 8px; }
   .pdp-title { font-family: var(--display); font-weight: 800; font-size: clamp(34px, 4vw, 48px); line-height: .98; letter-spacing: -.005em; text-transform: uppercase; margin: 0; color: var(--fg); }
   .pdp-sub { font-size: 14px; color: var(--fg-muted); line-height: 1.55; max-width: 480px; margin: 0; }
@@ -242,7 +242,7 @@
 
   /* FAQ */
   .faq { margin-top: 80px; max-width: 740px; margin-left: auto; margin-right: auto; padding: 0 8px; }
-  .faq-eyebrow { font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; color: #8B0000; text-align: center; margin-bottom: 10px; }
+  .faq-eyebrow { font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; color: var(--fg-muted, rgba(26,24,21,.62)); text-align: center; margin-bottom: 10px; }
   .faq-head { font-family: 'Montserrat', sans-serif; font-size: clamp(22px, 6vw, 42px); font-weight: 900; letter-spacing: -1px; line-height: 1.05; text-align: center; margin: 0 0 8px; text-transform: uppercase; color: #1a1a1a; }
   .faq-head em { font-style: normal; color: #8B0000; }
   .faq-sub { font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 400; color: #888; text-align: center; margin: 0 0 48px; line-height: 1.7; padding: 0 8px; }
@@ -319,7 +319,11 @@
 const { useState, useEffect, useMemo } = React;
 
 const _qParams = new URLSearchParams(window.location.search);
-const QUOTE_URL = `parts-quote.html?product=${encodeURIComponent((_qParams.get('brand')||'BAK') + ' ' + (_qParams.get('product')||'BAKFlip F1'))}`;
+const _garage = (() => { try { return JSON.parse(localStorage.getItem('garage_vehicle')); } catch(e) { return null; } })();
+const _garageQS = _garage && _garage.year
+  ? `&year=${encodeURIComponent(_garage.year)}&make=${encodeURIComponent(_garage.make)}&model=${encodeURIComponent(_garage.model)}`
+  : '';
+const QUOTE_URL = `parts-quote.html?product=${encodeURIComponent((_qParams.get('brand')||'BAK') + ' ' + (_qParams.get('product')||'BAKFlip F1'))}${_garageQS}`;
 const LOGO_URL = 'https://static.wixstatic.com/media/b95bd9_86c7cf1e525d4b9e961a2738ed9af502~mv2.png';
 
 const F = { brand:0, product:1, partNum:2, bedIn:3, bedSize:4, startYear:5, endYear:6, make:7, model:8, desc:9, fitNote:10, map:11, img:12 };

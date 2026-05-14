@@ -439,7 +439,7 @@ function loadDataFiles(files) {
 const { useState, useMemo, useEffect, useRef } = React;
 
 // ── TOGGLE: set to false to disable garage popup for editor preview ──
-const GARAGE_AUTO_OPEN = false;
+const GARAGE_AUTO_OPEN = true;
 
 // ── Field indexes ──
 const F = { brand:0, product:1, partNum:2, bedIn:3, bedSize:4, startYear:5, endYear:6, make:7, model:8, desc:9, fitNote:10, map:11, img:12 };
@@ -891,10 +891,14 @@ function App() {
 
   // Filtered + sorted products
   const filtered = useMemo(() => {
-    let list = allProducts.map(p => ({
-      ...p,
-      fits: p.fitments.some(row => matchesTruck(row, garage))
-    }));
+    let list = allProducts.map(p => {
+      const matchRow = garage ? p.fitments.find(row => matchesTruck(row, garage)) : null;
+      return {
+        ...p,
+        fits: !!matchRow,
+        partNum: matchRow ? matchRow[F.partNum] : (p.fitments.length === 1 ? p.fitments[0][F.partNum] : '')
+      };
+    });
     if (filters.brands.size) list = list.filter(p => filters.brands.has(p.brand));
     if (filters.types.size) list = list.filter(p => filters.types.has(p.type));
     list = list.filter(p => p.minPrice === null || (p.minPrice >= filters.priceMin && p.minPrice <= filters.priceMax));
@@ -1279,7 +1283,7 @@ function Toolbar({ count, sort, setSort, view, setView, garage }) {
 // ── Product Card ──
 function ProductCard({ p, onOpenDetail }) {
   const imgSrc = PRODUCT_IMAGES[p.name];
-  const quoteUrl = `https://rlsh1855.github.io/3Js-and-RLSH-Website/parts-quote.html?product=${encodeURIComponent(p.brand + ' ' + p.name)}`;
+  const quoteUrl = `https://rlsh1855.github.io/3Js-and-RLSH-Website/parts-quote.html?product=${encodeURIComponent(p.brand + ' ' + p.name)}${p.partNum ? '&partNum=' + encodeURIComponent(p.partNum) : ''}`;
   return (
     <div className="card" onClick={() => onOpenDetail(p.brand, p.name)} style={{cursor:'pointer'}}>
       <div className="card-media">
@@ -1304,7 +1308,7 @@ function ProductCard({ p, onOpenDetail }) {
 
 // ── Product Row ──
 function ProductRow({ p, garage, onOpenDetail }) {
-  const quoteUrl = `https://rlsh1855.github.io/3Js-and-RLSH-Website/parts-quote.html?product=${encodeURIComponent(p.brand + ' ' + p.name)}`;
+  const quoteUrl = `https://rlsh1855.github.io/3Js-and-RLSH-Website/parts-quote.html?product=${encodeURIComponent(p.brand + ' ' + p.name)}${p.partNum ? '&partNum=' + encodeURIComponent(p.partNum) : ''}`;
   return (
     <div className="row" onClick={() => onOpenDetail(p.brand, p.name)} style={{cursor:'pointer'}}>
       <div className="row-media">{PRODUCT_IMAGES[p.name] ? <img src={PRODUCT_IMAGES[p.name]} alt={p.name} style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}} /> : <ProductPlaceholder brand={p.brand} name={p.name} />}</div>

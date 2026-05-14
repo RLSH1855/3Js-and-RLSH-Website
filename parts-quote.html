@@ -195,16 +195,26 @@
 </div><!-- /page-wrap -->
 
 <script>
+// Scroll to top — quote is linked from the bottom of the PDP
+if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+window.scrollTo({ top: 0, behavior: 'instant' });
+
 var SHEETS_URL = 'https://script.google.com/macros/s/AKfycbyn_Lhl96O0vAujT3ddSavZmcbFqts5miqCditRFYYknMwutEJAvKe5YFAjUNLb98-hTw/exec';
 
 // ── Read URL params ──
 var params  = new URLSearchParams(window.location.search);
 var product = params.get('product') || '';
 var partNum = params.get('partNum') || '';
+var urlYear = params.get('year') || '';
+var urlMake = params.get('make') || '';
+var urlModel = params.get('model') || '';
 
-// ── Read garage ──
+// ── Read garage (localStorage takes priority; URL params as fallback) ──
 var garage = null;
 try { garage = JSON.parse(localStorage.getItem('garage_vehicle')); } catch(e){}
+if(!garage && urlYear && urlMake && urlModel){
+  garage = { year: urlYear, make: urlMake, model: urlModel, trim:'', bedSize:'', vin:'' };
+}
 
 // ── Init page ──
 if(!product){
