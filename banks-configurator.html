@@ -184,6 +184,12 @@ body{
   content:'';
   position:absolute;
   inset:-30px;
+  pointer-events:none;
+  z-index:4;
+  animation:shinePulse 2.8s ease-in-out infinite;
+  mix-blend-mode:screen;
+}
+.part-overlay.glow-white::after{
   background:radial-gradient(circle at 50% 45%,
     rgba(255,255,255,0.80) 0%,
     rgba(230,242,255,0.35) 20%,
@@ -191,10 +197,15 @@ body{
     rgba(200,225,255,0.02) 55%,
     transparent 65%
   );
-  pointer-events:none;
-  z-index:4;
-  animation:shinePulse 2.8s ease-in-out infinite;
-  mix-blend-mode:screen;
+}
+.part-overlay.glow-amber::after{
+  background:radial-gradient(circle at 50% 45%,
+    rgba(255,200,0,0.90) 0%,
+    rgba(255,170,0,0.45) 20%,
+    rgba(255,140,0,0.15) 40%,
+    rgba(255,120,0,0.03) 55%,
+    transparent 65%
+  );
 }
 @keyframes shinePulse{
   0%,100%{opacity:0.82;}
@@ -434,9 +445,9 @@ body{
       <img class="bike-img" src="images/banks/bike-template.png" alt="Banks Performance Custom Harley">
 
       <!-- Part overlay: headlight -->
-      <div class="part-overlay part-headlight" id="partOverlay">
+      <div class="part-overlay part-headlight glow-white" id="partOverlay">
         <img id="partImg" src="images/banks/lp9.png" alt="Headlight">
-        <div class="part-overlay-label" id="partLabel">LP9</div>
+        <div class="part-overlay-label" id="partLabel">LP9 — White</div>
       </div>
 
 
@@ -460,12 +471,12 @@ body{
         Drag a light to the headlight position
       </div>
       <div class="part-cards" id="partCards">
-        <div class="part-card" data-src="images/banks/lp9-yellow.png" data-name="LP9 — Amber">
+        <div class="part-card" data-src="images/banks/lp9-yellow.png" data-name="LP9 — Amber" data-glow="glow-amber">
           <img src="images/banks/lp9-yellow.png" alt="LP9 Amber">
           <div class="part-card-name">LP9 Amber</div>
           <div class="part-card-price">$349</div>
         </div>
-        <div class="part-card active" data-src="images/banks/lp9.png" data-name="LP9 — White">
+        <div class="part-card active" data-src="images/banks/lp9.png" data-name="LP9 — White" data-glow="glow-white">
           <img src="images/banks/lp9.png" alt="LP9 White">
           <div class="part-card-name">LP9 White</div>
           <div class="part-card-price">$349</div>
@@ -552,7 +563,8 @@ var partLabel=document.getElementById('partLabel');
 function swapPart(src,name,card,snap){
   document.querySelectorAll('#partCards .part-card').forEach(function(c){c.classList.remove('active');});
   if(card) card.classList.add('active');
-  partOverlay.classList.remove('fly-in','fly-off','snap-in','snap-ready');
+  partOverlay.classList.remove('fly-in','fly-off','snap-in','snap-ready','glow-white','glow-amber');
+  if(card && card.dataset.glow) partOverlay.classList.add(card.dataset.glow);
 
   if(snap){
     partImg.src=src; partLabel.textContent=name;
