@@ -641,9 +641,16 @@ document.querySelectorAll('#partCards .part-card').forEach(function(card){
     var t=e.touches[0];
     dragSrc=card.dataset.src; dragName=card.dataset.name; dragCard=card;
     startGhost(dragSrc,dragName,t.clientX,t.clientY);
-  },{passive:true});
+    e.preventDefault();
+  },{passive:false});
 });
-document.addEventListener('touchmove',function(e){if(ghost){var t=e.touches[0];moveGhost(t.clientX,t.clientY);}},{passive:true});
+document.addEventListener('touchmove',function(e){
+  if(ghost){
+    e.preventDefault();
+    var t=e.touches[0];
+    moveGhost(t.clientX,t.clientY);
+  }
+},{passive:false});
 document.addEventListener('touchend',function(e){if(ghost){var t=e.changedTouches[0];dropGhost(t.clientX,t.clientY);}});
 
 </script>
