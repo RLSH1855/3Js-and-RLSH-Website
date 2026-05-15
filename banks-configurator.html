@@ -201,35 +201,6 @@ body{
   50%{opacity:1;}
 }
 
-/* Position helper */
-#posHelper{
-  position:absolute;inset:0;z-index:20;cursor:crosshair;
-  display:none;
-}
-#posHelper.active{display:block;}
-#posReadout{
-  position:fixed;bottom:20px;left:50%;transform:translateX(-50%);
-  background:#000;border:1px solid #FFA500;
-  padding:10px 20px;
-  font-family:'Montserrat',sans-serif;font-size:13px;font-weight:700;
-  color:#FFA500;letter-spacing:1px;z-index:99999;
-  pointer-events:none;display:none;
-}
-#posReadout.active{display:block;}
-#posHelperBtn{
-  position:absolute;bottom:12px;left:12px;z-index:10;
-  background:rgba(0,0,0,0.7);border:1px solid #444;
-  color:rgba(255,255,255,0.5);font-family:'Montserrat',sans-serif;
-  font-size:8px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
-  padding:6px 10px;cursor:pointer;transition:border-color 0.2s,color 0.2s;
-}
-#posHelperBtn:hover,#posHelperBtn.active{border-color:#FFA500;color:#FFA500;}
-/* Crosshair lines on hover */
-#posHelper::before,#posHelper::after{
-  content:'';position:absolute;background:rgba(255,165,0,0.5);pointer-events:none;
-}
-#posHelper::before{width:1px;height:100%;left:var(--cx,50%);top:0;}
-#posHelper::after{height:1px;width:100%;top:var(--cy,50%);left:0;}
 
 /* Fly-off / fly-in animations */
 @keyframes flyOff{
@@ -468,17 +439,7 @@ body{
         <div class="part-overlay-label" id="partLabel">LP9</div>
       </div>
 
-      <!-- Position helper overlay -->
-      <div id="posHelper"></div>
-      <button id="posHelperBtn">📍 Position Helper</button>
 
-      <!-- Light glows -->
-      <div class="glow glow-main amber" id="glowMain"></div>
-      <div class="glow glow-fork-l amber" id="glowForkL"></div>
-      <div class="glow glow-fork-r amber" id="glowForkR"></div>
-      <div class="glow glow-low-l amber" id="glowLowL"></div>
-      <div class="glow glow-low-r amber" id="glowLowR"></div>
-      <div class="glow glow-rim amber" id="glowRim"></div>
     </div>
   </div>
 
@@ -489,15 +450,6 @@ body{
       <div class="sidebar-eyebrow">Banks Performance</div>
       <div class="sidebar-title">Build Your<br>Bike</div>
       <div class="sidebar-sub">Select your options below</div>
-    </div>
-
-    <!-- LIGHT LENS COLOR -->
-    <div class="section">
-      <div class="section-label">Light Lens Color — All Groups</div>
-      <div class="swatches" id="lensSwatches">
-        <div class="swatch active" data-mode="amber" style="background:#FFA500;" title="Amber"><span class="swatch-label">Amber</span></div>
-        <div class="swatch" data-mode="white-light" style="background:#c8e0ff;border:1px solid #555;" title="White"><span class="swatch-label">White</span></div>
-      </div>
     </div>
 
     <!-- HEADLIGHT STYLE -->
@@ -521,28 +473,6 @@ body{
       </div>
     </div>
 
-    <!-- LIGHTING -->
-    <div class="section">
-      <div class="section-label">Lighting — Baja Designs</div>
-      <div class="section-sub">Main LP6 Light</div>
-      <div class="light-toggle">
-        <button class="toggle-btn active-amber" data-group="main" data-mode="amber">Amber</button>
-        <button class="toggle-btn" data-group="main" data-mode="white-light">White</button>
-        <button class="toggle-btn" data-group="main" data-mode="off">Off</button>
-      </div>
-      <div class="section-sub">Fork Lights</div>
-      <div class="light-toggle">
-        <button class="toggle-btn active-amber" data-group="fork" data-mode="amber">Amber</button>
-        <button class="toggle-btn" data-group="fork" data-mode="white-light">White</button>
-        <button class="toggle-btn" data-group="fork" data-mode="off">Off</button>
-      </div>
-      <div class="section-sub">Lower Lights</div>
-      <div class="light-toggle">
-        <button class="toggle-btn active-amber" data-group="lower" data-mode="amber">Amber</button>
-        <button class="toggle-btn" data-group="lower" data-mode="white-light">White</button>
-        <button class="toggle-btn" data-group="lower" data-mode="off">Off</button>
-      </div>
-    </div>
 
     <!-- PAINT NOTE -->
     <div class="paint-note">
@@ -704,34 +634,6 @@ document.querySelectorAll('#partCards .part-card').forEach(function(card){
 document.addEventListener('touchmove',function(e){if(ghost){var t=e.touches[0];moveGhost(t.clientX,t.clientY);}},{passive:true});
 document.addEventListener('touchend',function(e){if(ghost){var t=e.changedTouches[0];dropGhost(t.clientX,t.clientY);}});
 
-/* ══════ POSITION HELPER ══════ */
-var posHelper    = document.getElementById('posHelper');
-var posReadout   = document.getElementById('posReadout');
-var posHelperBtn = document.getElementById('posHelperBtn');
-var bikeWrap     = document.getElementById('bikeWrap');
-
-posHelperBtn.addEventListener('click', function(){
-  var on = posHelper.classList.toggle('active');
-  posHelperBtn.classList.toggle('active', on);
-  if(!on){ posReadout.classList.remove('active'); document.body.removeChild(posReadout); document.body.appendChild(posReadout); }
-});
-
-posHelper.addEventListener('mousemove', function(e){
-  var r   = bikeWrap.getBoundingClientRect();
-  var pct_x = (((e.clientX - r.left) / r.width)  * 100).toFixed(1);
-  var pct_y = (((e.clientY - r.top)  / r.height) * 100).toFixed(1);
-  posHelper.style.setProperty('--cx', pct_x+'%');
-  posHelper.style.setProperty('--cy', pct_y+'%');
-  posReadout.textContent = 'left: '+pct_x+'%   top: '+pct_y+'%';
-  posReadout.classList.add('active');
-});
-
-posHelper.addEventListener('click', function(e){
-  var r     = bikeWrap.getBoundingClientRect();
-  var pct_x = (((e.clientX - r.left) / r.width)  * 100).toFixed(1);
-  var pct_y = (((e.clientY - r.top)  / r.height) * 100).toFixed(1);
-  alert('CLICK POSITION\nleft: '+pct_x+'%\ntop:  '+pct_y+'%\n\nTell James to give these numbers to Claude!');
-});
 </script>
 </body>
 </html>
