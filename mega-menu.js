@@ -1,4 +1,4 @@
-/* 3J's AutoBody — Mega Menu Inject
+﻿/* 3J's AutoBody — Mega Menu Inject
  * Drop this via Wix Settings → Custom Code (body, all pages).
  * Finds the 3 Wix nav triggers by text, positions panels below the nav bar.
  */
@@ -453,3 +453,4 @@
   })();
 
 })();
+
