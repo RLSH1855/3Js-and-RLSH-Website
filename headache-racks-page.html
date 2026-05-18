@@ -151,16 +151,39 @@
 
     /* ── MOBILE ── */
     @media(max-width:767px){
-      .hero{min-height:320px;}
-      .hero-content{padding:80px 20px 48px;max-width:100%;}
+      /* Hero */
+      .hero{min-height:300px;}
+      .hero-content{padding:80px 20px 40px;max-width:100%;}
       .hero h1{font-size:28px;letter-spacing:-1px;line-height:1.1;}
+      .hero-sub{font-size:15px;line-height:1.65;}
       .hero-ctas{flex-direction:column;}
       .btn-red,.btn-ghost{width:100%;justify-content:center;}
+      /* Stats */
+      .stats-strip{padding:20px 20px;}
       .stats-inner{grid-template-columns:repeat(2,1fr);gap:16px;}
       .stat{border-right:none;padding:0;}
-      .product-grid{grid-template-columns:1fr;}
-      .why-grid{grid-template-columns:1fr;}
-      .brand-features{grid-template-columns:1fr;}
+      /* Sections */
+      .products-section,.why-section{padding:48px 20px 56px;}
+      .brand-section{padding:48px 20px 56px;}
+      .section-wrap{padding:0;}
+      .section-title{font-size:22px;letter-spacing:-0.3px;}
+      .section-sub{font-size:15px;margin-bottom:24px;}
+      /* Product cards */
+      .product-grid{grid-template-columns:1fr;gap:14px;margin-top:24px;}
+      .product-img{height:180px;}
+      .product-body{padding:16px 16px 18px;gap:6px;}
+      .product-name{font-size:15px;}
+      .product-desc{font-size:13px;}
+      .product-cta{height:48px;font-size:11px;}
+      /* Brand */
+      .brand-card{padding:20px 16px;}
+      .brand-name{font-size:22px;}
+      .brand-features{grid-template-columns:1fr;gap:8px;}
+      /* Why */
+      .why-grid{grid-template-columns:1fr;gap:14px;margin-top:24px;}
+      .why-card{padding:18px 16px;}
+      /* CTA */
+      .cta-band{padding:48px 20px 56px;}
       .cta-btns{flex-direction:column;align-items:center;}
       .btn-white,.btn-glass-white{width:100%;max-width:320px;justify-content:center;}
     }
