@@ -96,8 +96,8 @@
 
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
     
-    html{overflow-x:hidden;scrollbar-width:none;}
-    body{font-family:'Inter',sans-serif;font-size:15px;max-width:100%;overflow-x:hidden;background:var(--black-1);}
+    html{overflow-x:hidden;overflow-y:auto;scrollbar-width:none;}
+    body{font-family:'Inter',sans-serif;font-size:15px;max-width:100%;overflow-x:hidden;overflow-y:auto;background:var(--black-1);}
     h1,h2,h3{font-family:'Montserrat',sans-serif;text-wrap:balance;}
     p{font-family:'Inter',sans-serif;text-wrap:pretty;}
 
@@ -189,7 +189,7 @@
       font-size:9px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;
       color:rgba(255,255,255,0.70);
       border:1px solid rgba(255,255,255,0.18);
-      border-radius:30px;padding:5px 13px;
+      border-radius:0;padding:5px 13px;
       backdrop-filter:blur(4px);
     }
 
@@ -246,7 +246,7 @@
       gap:14px;
     }
     .cat-card{
-      background:#f7f7f7;border-radius:10px;
+      background:#f7f7f7;border-radius:0;
       padding:28px 22px;
       border:1.5px solid #ebebeb;
       transition:border-color 0.2s,box-shadow 0.2s,transform 0.2s;
@@ -259,7 +259,7 @@
     }
     .cat-icon{
       width:48px;height:48px;
-      background:var(--crimson);border-radius:10px;
+      background:var(--crimson);border-radius:0;
       display:flex;align-items:center;justify-content:center;
       margin-bottom:18px;
     }
@@ -309,7 +309,7 @@
     .curt-product{
       background:#181818;
       border:1px solid rgba(255,255,255,0.07);
-      border-radius:10px;
+      border-radius:0;
       overflow:hidden;
       transition:border-color 0.2s;
     }
@@ -337,7 +337,7 @@
     .curt-rebellion{
       background:rgba(139,0,0,0.08);
       border:1px solid rgba(139,0,0,0.22);
-      border-radius:12px;
+      border-radius:0;
       padding:32px;
       display:grid;grid-template-columns:1fr 1fr;
       gap:48px;align-items:center;
@@ -365,7 +365,7 @@
     .btn-red-sm:hover{background:#a50000;}
     .btn-red-sm svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2.5;}
     .rebellion-img{
-      border-radius:10px;overflow:hidden;
+      border-radius:0;overflow:hidden;
       background:#fff;
       padding:24px;
       display:flex;align-items:center;justify-content:center;
@@ -422,11 +422,11 @@
     }
     .bw-img-main{
       grid-column:span 2;
-      border-radius:10px;overflow:hidden;
+      border-radius:0;overflow:hidden;
     }
     .bw-img-main img{width:100%;height:260px;object-fit:cover;display:block;transition:transform 0.5s ease;}
     
-    .bw-img-sm{border-radius:8px;overflow:hidden;}
+    .bw-img-sm{border-radius:0;overflow:hidden;}
     .bw-img-sm img{width:100%;height:170px;object-fit:cover;display:block;transition:transform 0.5s ease;}
     .bw-img-sm:hover img{transform:scale(1.04);}
 
@@ -449,7 +449,7 @@
       gap:20px;
     }
     .acc-card{
-      background:#fff;border-radius:10px;
+      background:#fff;border-radius:0;
       padding:26px 22px;
       border:1.5px solid var(--divider);
       transition:border-color 0.2s,box-shadow 0.2s;
@@ -462,7 +462,7 @@
       width:100%;height:160px;
       object-fit:contain;
       background:#f7f7f7;
-      border-radius:6px;
+      border-radius:0;
       display:block;
       padding:12px;
       margin-bottom:18px;
@@ -503,7 +503,7 @@
     .why-card{
       background:rgba(255,255,255,0.04);
       border:1px solid rgba(255,255,255,0.07);
-      border-radius:10px;padding:26px 22px;
+      border-radius:0;padding:26px 22px;
       transition:border-color 0.2s,background 0.2s;
     }
     .why-card:hover{
@@ -583,7 +583,7 @@
     .faq-item.open .faq-q{color:#8B0000;font-weight:800;}
     .faq-q svg{width:18px;height:18px;stroke:#8B0000;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;margin-top:2px;transition:transform var(--dur-accordion) var(--ease-smooth);transform-origin:center;}
     .faq-item.open .faq-q svg{transform:rotate(45deg);}
-    .faq-a{height:0;overflow:hidden;transition:height var(--dur-accordion) var(--ease-smooth);}
+    .faq-a{display:none;}
     .faq-a-inner{font-family:'Inter',sans-serif;font-size:15px;font-weight:400;color:#555;line-height:1.85;padding-bottom:20px;}
     @media(prefers-reduced-motion:reduce){.faq-q svg,.faq-a{transition:none!important;}}
 
@@ -598,24 +598,35 @@
       .acc-grid{grid-template-columns:repeat(2,1fr);}
       .why-grid{grid-template-columns:repeat(2,1fr);}
     }
+    /* cat card image (replaces icon) */
+    .cat-img{width:100%;height:120px;object-fit:contain;mix-blend-mode:multiply;margin-bottom:16px;display:block;}
+
     @media(max-width:640px){
-      .hero{min-height:640px;}
-      .hero-content{padding:110px 24px 80px 28px;max-width:100%;}
-      .hero h1{letter-spacing:-2px;}
+      .hero{min-height:580px;}
+      .hero-content{padding:100px 20px 56px;max-width:100%;}
+      .hero h1{font-size:28px;letter-spacing:-1px;line-height:1.1;}
+      .section-title{font-size:22px;letter-spacing:-0.3px;line-height:1.2;}
+      .hero-body{font-size:15px;line-height:1.65;}
       .hero-ctas{flex-direction:column;}
       .btn-red,.btn-ghost{width:100%;justify-content:center;}
-      .categories,.curt-section,.bw-section,.acc-section,.why-section{padding:60px 24px;}.faq-section{padding:60px 24px clamp(80px,10vw,120px);}
+      .categories,.curt-section,.bw-section,.acc-section,.why-section{padding:48px 20px 56px;}
+      .faq-section{padding:48px 20px 56px;}
       .cat-grid{grid-template-columns:1fr 1fr;}
       .curt-grid{grid-template-columns:1fr;}
-      .curt-rebellion{padding:24px;}
+      .curt-rebellion{padding:20px;}
       .acc-grid{grid-template-columns:1fr;}
       .why-grid{grid-template-columns:1fr;}
-      .cta-section{padding:52px 24px;}
+      .cta-section{padding:48px 20px 56px;}
       .cta-btns{flex-direction:column;align-items:center;}
       .btn-white,.btn-outline-white{width:100%;max-width:340px;justify-content:center;}
-      .brands-bar{padding:20px 24px;}
+      .brands-bar{padding:16px 20px;}
       .bw-img-main img{height:200px;}
       .bw-img-sm img{height:130px;}
+      .section-header{margin-bottom:20px;}
+      .cat-card{padding:20px 16px;}
+      .curt-product-img{height:160px;}
+      .why-card{padding:20px 16px;}
+      .acc-card{padding:20px 16px;}
     }
   </style>
 </head>
@@ -684,33 +695,25 @@
     <div class="cat-grid">
 
       <div class="cat-card">
-        <div class="cat-icon">
-          <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-        </div>
+        <img class="cat-img" src="https://www.catalograck.com/ImgVDHR/CUR/11000_3008x1990_a.jpg" alt="CURT Class III Trailer Hitch" loading="lazy" onerror="this.style.display='none'">
         <h3>Trailer Hitches</h3>
         <p>Class I through Class V receiver hitches for every truck, SUV, and car. Vehicle-specific — bolts on with no drilling on most applications.</p>
       </div>
 
       <div class="cat-card">
-        <div class="cat-icon">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="8"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/></svg>
-        </div>
+        <img class="cat-img" src="https://www.catalograck.com/ImgVDHR/CUR/110003_3008x1990_a.jpg" alt="CURT Ball Mount and Hitch Ball" loading="lazy" onerror="this.style.display='none'">
         <h3>Ball Mounts</h3>
         <p>Fixed and adjustable ball mounts, hitch balls, and pins for all tow ratings. We'll match the right drop and rise to your setup.</p>
       </div>
 
       <div class="cat-card">
-        <div class="cat-icon">
-          <svg viewBox="0 0 24 24"><polyline points="13 2 13 9 20 9"/><path d="M20 14v5a2 2 0 01-2 2H6a2 2 0 01-2-2V4a2 2 0 012-2h7"/><line x1="9" y1="14" x2="15" y2="14"/><line x1="9" y1="18" x2="13" y2="18"/></svg>
-        </div>
+        <img class="cat-img" src="https://www.catalograck.com/ImgVDHR/CUR/56000_3008x1990_a.jpg" alt="CURT T-One Wiring Harness" loading="lazy" onerror="this.style.display='none'">
         <h3>Wiring Harnesses</h3>
         <p>Plug-and-play T-One connectors and custom 4-pin and 7-pin wiring for your trailer lights — installed clean and routed right.</p>
       </div>
 
       <div class="cat-card">
-        <div class="cat-icon">
-          <svg viewBox="0 0 24 24"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
-        </div>
+        <img class="cat-img" src="https://www.catalograck.com/ImgVDHR/CUR/51140_3008x1990_a.jpg" alt="CURT Trailer Brake Controller" loading="lazy" onerror="this.style.display='none'">
         <h3>Brake Controllers</h3>
         <p>Trailer brake controllers for electric brake trailers — required by law in most states over a certain tow weight. We handle the wiring and installation.</p>
       </div>
@@ -971,10 +974,9 @@
   window.addEventListener('resize',reportHeight);
   if(window.ResizeObserver){new ResizeObserver(reportHeight).observe(document.body);}
 
-  function faqClose(item){var p=item.querySelector('.faq-a');p.style.height=p.scrollHeight+'px';void p.offsetHeight;p.style.height='0px';item.classList.remove('open');item.querySelector('.faq-q').setAttribute('aria-expanded','false');}
-  function faqOpen(item){var p=item.querySelector('.faq-a');item.classList.add('open');item.querySelector('.faq-q').setAttribute('aria-expanded','true');p.style.height=p.querySelector('.faq-a-inner').offsetHeight+'px';}
-  document.querySelectorAll('.faq-a').forEach(function(p){p.addEventListener('transitionend',function(e){if(e.propertyName!=='height')return;if(p.closest('.faq-item').classList.contains('open')){p.style.height='auto';[0,100,280,450,600,800].forEach(function(t){setTimeout(reportHeight,t);});}});});
-  document.querySelectorAll('.faq-q').forEach(function(btn){btn.addEventListener('click',function(){var item=btn.closest('.faq-item');var wasOpen=item.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(faqClose);if(!wasOpen){faqOpen(item);[0,100,280,450,600,800].forEach(function(t){setTimeout(reportHeight,t);});}});});
+  function faqClose(item){item.querySelector('.faq-a').style.display='none';item.classList.remove('open');item.querySelector('.faq-q').setAttribute('aria-expanded','false');}
+  function faqOpen(item){item.querySelector('.faq-a').style.display='block';item.classList.add('open');item.querySelector('.faq-q').setAttribute('aria-expanded','true');reportHeight();setTimeout(reportHeight,50);}
+  document.querySelectorAll('.faq-q').forEach(function(btn){btn.addEventListener('click',function(){var item=btn.closest('.faq-item');var wasOpen=item.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(faqClose);if(!wasOpen){faqOpen(item);}});});
 </script>
 <script src="https://rlsh1855.github.io/3Js-and-RLSH-Website/site-nav.js"></script>
 
@@ -982,5 +984,6 @@
 
 </body>
 </html>
+
 
 
