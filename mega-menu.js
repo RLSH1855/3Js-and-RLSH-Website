@@ -196,7 +196,7 @@
             '</div>',
             '<span class="jj-go">&rarr;</span>',
           '</a>',
-          '<a href="https://www.3jsautobody.com/testimonials" class="jj-tile">',
+          '<a href="https://www.3jsautobody.com/our-work" class="jj-tile">',
             '<div class="jj-timg jj-social-img">',
               '<span class="jj-ctag"><span class="jj-pulse"></span>LIVE</span>',
               '<div class="jj-scell"></div><div class="jj-scell"></div><div class="jj-scell"></div><div class="jj-scell"></div>',
