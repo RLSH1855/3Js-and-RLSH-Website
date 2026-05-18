@@ -443,7 +443,7 @@
           <button class="btn-secondary" onclick="resetGarage()">Change Vehicle</button>
         </div>
         <div style="margin-top:20px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:6px;">
-          <button onclick="try{window.parent.postMessage(JSON.stringify({type:'garage_close'}),'*');}catch(e){}" style="background:none;border:none;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#888;cursor:pointer;text-decoration:underline;padding:8px;">Close Window</button>
+          <button onclick="if(window.history.length>1){window.history.back();}else{window.location.href='https://www.3jsautobody.com';}" style="background:none;border:none;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#888;cursor:pointer;text-decoration:underline;padding:8px;">← Back to Site</button>
           <button onclick="clearGarage()" style="background:none;border:none;font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:#bbb;cursor:pointer;text-decoration:underline;padding:4px;">Remove Vehicle</button>
         </div>
       </div>
