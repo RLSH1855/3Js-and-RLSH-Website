@@ -364,16 +364,26 @@
     /* Vehicle bar — full width on mobile */
     .mob-vehicle-bar { width:100%; margin-left:0; padding:14px 18px; }
 
-    /* Filters/sort/view bar */
-    .mobile-bar { display:flex; position:sticky; top:110px; z-index:30; background:rgba(10,10,12,.97); backdrop-filter:blur(12px); padding:10px 16px; gap:0; border-bottom:1px solid var(--border); align-items:center; justify-content:space-between; }
-    .mb-filters { flex:1; display:flex; align-items:center; justify-content:center; gap:6px; background:var(--surface2); border:1px solid var(--border-strong); color:var(--fg); padding:10px; font-family:var(--display); font-weight:600; letter-spacing:.08em; text-transform:uppercase; font-size:12px; cursor:pointer; margin-right:8px; }
-    .mb-filters svg { width:15px; height:15px; }
-    .mb-count { background:var(--accent); color:#fff; padding:2px 6px; font-family:var(--mono); font-size:11px; font-weight:700; }
-    .mb-sort { flex:1; background:var(--surface); color:var(--fg); border:1px solid var(--border); padding:10px 6px; font-size:12px; outline:none; min-width:0; margin-right:8px; text-align:center; }
-    .mb-view { display:flex; border:1px solid var(--border); flex-shrink:0; }
-    .mb-view button { background:transparent; border:0; color:var(--fg-muted); padding:9px 12px; cursor:pointer; }
-    .mb-view button.on { color:var(--accent); background:var(--surface2); }
-    .mb-view svg { width:15px; height:15px; }
+    /* Filters/sort bar — white, two-column, divider */
+    .mobile-bar { display:flex; position:sticky; top:110px; z-index:30; background:#fff; border-bottom:1px solid #e0e0e0; align-items:stretch; height:52px; padding:0; gap:0; }
+    .mb-filters { flex:1; display:flex; align-items:center; justify-content:center; gap:8px; background:transparent; border:none; border-right:1px solid #e0e0e0; color:#1a1a1a; font-family:var(--display); font-weight:700; letter-spacing:.1em; text-transform:uppercase; font-size:12px; cursor:pointer; padding:0; }
+    .mb-filters svg { width:18px; height:18px; stroke:#1a1a1a; }
+    .mb-count { display:none; }
+    .mb-sort-wrap { flex:1; position:relative; display:flex; align-items:center; justify-content:center; gap:6px; }
+    .mb-sort-label { font-family:var(--display); font-weight:700; letter-spacing:.1em; text-transform:uppercase; font-size:12px; color:#1a1a1a; pointer-events:none; }
+    .mb-sort-chev { pointer-events:none; display:flex; }
+    .mb-sort-chev svg { width:14px; height:14px; stroke:#1a1a1a; fill:none; stroke-width:2; stroke-linecap:round; }
+    .mb-sort { position:absolute; inset:0; width:100%; height:100%; opacity:0; cursor:pointer; font-size:16px; }
+    .mb-view { display:none; }
+
+    /* My Garage vertical tab — right side, mobile only */
+    .mob-garage-tab { display:flex; position:fixed; right:0; top:50%; transform:translateY(-50%); z-index:200; flex-direction:column; align-items:center; justify-content:center; gap:8px; padding:14px 9px; background:#fff; border:1px solid #ddd; border-right:none; cursor:pointer; box-shadow:-3px 0 12px rgba(0,0,0,.12); }
+    .mob-garage-tab-label { writing-mode:vertical-lr; transform:rotate(180deg); font-family:var(--display); font-size:9px; font-weight:800; letter-spacing:2.5px; text-transform:uppercase; color:#1a1a1a; }
+    .mob-garage-tab-ico { color:#8B0000; display:flex; }
+    .mob-garage-tab-ico svg { width:18px; height:18px; stroke:currentColor; fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+
+    /* Hide the mobile vehicle bar — garage tab replaces it */
+    .mob-vehicle-bar { display:none; }
 
     /* Layout */
     .toolbar { display: none; }
@@ -1028,9 +1038,10 @@ function App() {
       <HeroBanner garage={garage} onSwapVehicle={openGaragePopup} catDef={selectedCat} />
       <CategoryTabs cats={CATEGORY_DEFS} selectedId={selectedCatId} onSelect={handleCatChange} loading={catLoading} loadedCount={allProducts.length} />
       <Breadcrumbs catLabel={selectedCat.catLabel} />
+      <MobileGarageTab onOpen={openGaragePopup} />
 
       <main className="catalog">
-        <MobileBar count={filtered.length} onOpenFilters={() => setDrawerOpen(true)} sort={sort} setSort={setSort} view={view} setView={setView} />
+        <MobileBar count={filtered.length} onOpenFilters={() => setDrawerOpen(true)} sort={sort} setSort={setSort} />
 
         {activeChips.length > 0 &&
           <div className="chip-rail">
@@ -1244,25 +1255,36 @@ function Breadcrumbs({ catLabel }) {
 }
 
 // ── Mobile bar ──
-function MobileBar({ count, onOpenFilters, sort, setSort, view, setView }) {
+function MobileBar({ count, onOpenFilters, sort, setSort }) {
+  const chevDown = <svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>;
   return (
     <div className="mobile-bar">
       <button className="mb-filters" onClick={onOpenFilters}>
         <span>{Icon.filter}</span>
         <span>Filters</span>
-        <span className="mb-count">{count}</span>
       </button>
-      <select className="mb-sort" value={sort} onChange={e => setSort(e.target.value)}>
-        <option value="featured">Featured</option>
-        <option value="price-asc">Price: Low → High</option>
-        <option value="price-desc">Price: High → Low</option>
-        <option value="brand">Brand A–Z</option>
-      </select>
-      <div className="mb-view">
-        <button className={view==='grid'?'on':''} onClick={() => setView('grid')} aria-label="Grid">{Icon.grid}</button>
-        <button className={view==='list'?'on':''} onClick={() => setView('list')} aria-label="List">{Icon.list}</button>
+      <div className="mb-sort-wrap">
+        <span className="mb-sort-label">Sort by</span>
+        <span className="mb-sort-chev">{chevDown}</span>
+        <select className="mb-sort" value={sort} onChange={e => setSort(e.target.value)}>
+          <option value="featured">Featured</option>
+          <option value="price-asc">Price: Low → High</option>
+          <option value="price-desc">Price: High → Low</option>
+          <option value="brand">Brand A–Z</option>
+        </select>
       </div>
     </div>
+  );
+}
+
+// ── Mobile Garage Tab ──
+function MobileGarageTab({ onOpen }) {
+  const truckIco = <svg viewBox="0 0 24 24"><path d="M1 6h13v9H1z"/><path d="M14 9h5l3 3v3h-8z"/><circle cx="6" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg>;
+  return (
+    <button className="mob-garage-tab" onClick={onOpen} aria-label="My Garage">
+      <span className="mob-garage-tab-label">Garage</span>
+      <span className="mob-garage-tab-ico">{truckIco}</span>
+    </button>
   );
 }
 
