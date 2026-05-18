@@ -834,33 +834,40 @@
   }
 
   /* ════════════════════════════════
-     MY GARAGE — load widget script
+     MY GARAGE — load widget + wire buttons
   ════════════════════════════════ */
   (function(){
-    // Skip if already loaded (e.g. page included widget directly)
-    if(document.getElementById('gc-ov')) return;
-    var s=document.createElement('script');
-    s.src='https://rlsh1855.github.io/3Js-and-RLSH-Website/my-garage-widget.js';
-    s.onload=function(){
-      var btn=document.getElementById('sn-garage-btn');
-      var mobBtn=document.getElementById('sn-mob-garage-btn');
-      if(btn) btn.addEventListener('click',function(){if(window.gcOpen)window.gcOpen();});
-      if(mobBtn) mobBtn.addEventListener('click',function(){if(window.gcOpen)window.gcOpen();});
-    };
-    document.head.appendChild(s);
-  })();
+    var _widgetLoading=false;
 
-  // Fallback: if widget was already on page before site-nav loaded
-  (function poll(){
-    var btn=document.getElementById('sn-garage-btn');
-    var mobBtn=document.getElementById('sn-mob-garage-btn');
-    if(window.gcOpen&&btn&&!btn._gcWired){
-      btn._gcWired=true;
-      btn.addEventListener('click',function(){window.gcOpen();});
-      if(mobBtn&&!mobBtn._gcWired){mobBtn._gcWired=true;mobBtn.addEventListener('click',function(){window.gcOpen();});}
-    } else if(!window.gcOpen){
-      setTimeout(poll,200);
+    function loadWidget(cb){
+      if(window.gcOpen){cb&&cb();return;}
+      if(_widgetLoading){
+        var t=setInterval(function(){if(window.gcOpen){clearInterval(t);cb&&cb();}},50);
+        return;
+      }
+      if(document.getElementById('gc-ov')){
+        // HTML already injected, wait for gcOpen to be set
+        var t2=setInterval(function(){if(window.gcOpen){clearInterval(t2);cb&&cb();}},50);
+        return;
+      }
+      _widgetLoading=true;
+      var s=document.createElement('script');
+      s.src='https://rlsh1855.github.io/3Js-and-RLSH-Website/my-garage-widget.js';
+      s.onload=function(){_widgetLoading=false;cb&&cb();};
+      s.onerror=function(){_widgetLoading=false;};
+      document.head.appendChild(s);
     }
+
+    // Event delegation — wired immediately, no timing dependency
+    document.addEventListener('click',function(e){
+      var tgt=e.target.closest?e.target.closest('#sn-garage-btn,#sn-mob-garage-btn'):null;
+      if(!tgt){if(e.target.id==='sn-garage-btn'||e.target.id==='sn-mob-garage-btn')tgt=e.target;}
+      if(!tgt)return;
+      loadWidget(function(){if(window.gcOpen)window.gcOpen();});
+    });
+
+    // Preload widget in background so it's ready before first click
+    loadWidget();
   })();
 
 
