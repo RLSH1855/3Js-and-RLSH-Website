@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lifetime Bedliner Warranty | Rhino Linings of Signal Hill | 3J's Auto Body</title>
+  <meta name="description" content="Rhino Linings Nationwide Lifetime Bedliner Warranty — covers cracking, bubbling, and peeling for as long as you own your truck. Installed at 3J's Auto Body in Signal Hill, CA." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --red: #8B0000;
+      --red-hot: #a30000;
+      --navy: #0b1220;
+      --navy-2: #131c30;
+      --fg: #1a1a1a;
+      --fg-muted: #5b6473;
+      --border: #e0e0e0;
+      --surface: #f7f7f7;
+    }
+
+    html { -webkit-font-smoothing: antialiased; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--fg);
+      background: #fff;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--navy);
+      background-image: linear-gradient(135deg, var(--navy) 0%, var(--navy-2) 100%);
+      padding: 72px 24px 64px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 110%, rgba(139,0,0,.45) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .hero-eyebrow {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 16px;
+      position: relative;
+    }
+    .hero h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: clamp(28px, 5vw, 52px);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      color: #fff;
+      max-width: 780px;
+      margin: 0 auto 20px;
+      position: relative;
+    }
+    .hero h1 em {
+      font-style: normal;
+      color: var(--red);
+    }
+    .hero-sub {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      color: rgba(255,255,255,.65);
+      max-width: 560px;
+      margin: 0 auto 36px;
+      line-height: 1.6;
+      position: relative;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.14);
+      padding: 12px 24px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #fff;
+      position: relative;
+    }
+    .hero-badge .dot {
+      width: 8px;
+      height: 8px;
+      background: #22c55e;
+      border-radius: 50%;
+      box-shadow: 0 0 0 3px rgba(34,197,94,.25);
+    }
+
+    /* ── LAYOUT ── */
+    .page-wrap {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ── STATS STRIP ── */
+    .stats-strip {
+      background: var(--red);
+      padding: 28px 24px;
+    }
+    .stats-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+    }
+    .stat {
+      text-align: center;
+      padding: 0 16px;
+      border-right: 1px solid rgba(255,255,255,.2);
+    }
+    .stat:last-child { border-right: none; }
+    .stat-num {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: clamp(22px, 4vw, 36px);
+      color: #fff;
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+    .stat-lbl {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.65);
+      margin-top: 6px;
+    }
+
+    /* ── SECTIONS ── */
+    .sections {
+      padding: 72px 24px;
+    }
+    .sections-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 56px;
+      align-items: start;
+    }
+
+    /* ── SECTION BLOCK ── */
+    .section-block {
+      margin-bottom: 52px;
+    }
+    .section-block:last-child { margin-bottom: 0; }
+    .section-eyebrow {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-eyebrow::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+    .section-block h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: clamp(20px, 3vw, 28px);
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      color: var(--navy);
+      margin-bottom: 16px;
+      line-height: 1.1;
+    }
+    .section-block p {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--fg-muted);
+      margin-bottom: 14px;
+    }
+    .section-block p:last-child { margin-bottom: 0; }
+    .section-block p b {
+      color: var(--fg);
+      font-weight: 600;
+    }
+
+    /* ── COVERAGE GRID ── */
+    .coverage-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      margin-top: 24px;
+    }
+    .coverage-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 24px 20px;
+      text-align: center;
+    }
+    .coverage-icon {
+      width: 48px;
+      height: 48px;
+      margin: 0 auto 14px;
+      background: var(--navy);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .coverage-icon svg {
+      width: 24px;
+      height: 24px;
+      stroke: #fff;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .coverage-card h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 13px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--navy);
+      margin-bottom: 6px;
+    }
+    .coverage-card p {
+      font-size: 12px;
+      color: var(--fg-muted);
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    /* ── CHECK LIST ── */
+    .check-list {
+      list-style: none;
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .check-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 14px;
+      color: var(--fg);
+      line-height: 1.55;
+    }
+    .check-list li::before {
+      content: '';
+      width: 20px;
+      height: 20px;
+      background: var(--red);
+      flex-shrink: 0;
+      margin-top: 2px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M4 10l4 4 8-8' stroke='%23fff' stroke-width='2.2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+
+    /* ── X LIST (exclusions) ── */
+    .x-list {
+      list-style: none;
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .x-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 14px;
+      color: var(--fg-muted);
+      line-height: 1.55;
+    }
+    .x-list li::before {
+      content: '';
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      margin-top: 2px;
+      background-color: #e5e5e5;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M6 6l8 8M14 6l-8 8' stroke='%23888' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+
+    /* ── SIDEBAR ── */
+    .sidebar {
+      position: sticky;
+      top: 100px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .sidebar-card {
+      background: var(--navy);
+      padding: 28px 24px;
+    }
+    .sidebar-card h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 16px;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+    .sidebar-card p {
+      font-size: 13px;
+      color: rgba(255,255,255,.6);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .sidebar-card-light {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--red);
+      padding: 24px;
+    }
+    .sidebar-card-light h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 14px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: var(--navy);
+      margin-bottom: 12px;
+    }
+    .sidebar-card-light .info-row {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .info-item {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .info-item .info-lbl {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--fg-muted);
+    }
+    .info-item .info-val {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--fg);
+    }
+
+    /* ── BUTTONS ── */
+    .btn-red {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: var(--red);
+      color: #fff;
+      border: none;
+      padding: 16px 28px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background .15s;
+      width: 100%;
+    }
+    .btn-red:hover { background: var(--red-hot); }
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--navy);
+      border: 2px solid var(--border);
+      padding: 14px 28px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+      transition: border-color .15s, color .15s;
+      width: 100%;
+    }
+    .btn-outline:hover { border-color: var(--navy); color: var(--navy); }
+
+    /* ── CTA BAND ── */
+    .cta-band {
+      background: var(--navy);
+      background-image: linear-gradient(135deg, var(--navy) 0%, var(--navy-2) 100%);
+      padding: 72px 24px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-band::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 80% at 50% 0%, rgba(139,0,0,.4) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .cta-band .eyebrow {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 14px;
+      position: relative;
+    }
+    .cta-band h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: clamp(24px, 4vw, 40px);
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      color: #fff;
+      margin-bottom: 14px;
+      position: relative;
+      line-height: 1.05;
+    }
+    .cta-band h2 em { font-style: normal; color: var(--red); }
+    .cta-band p {
+      font-size: 15px;
+      color: rgba(255,255,255,.6);
+      max-width: 480px;
+      margin: 0 auto 36px;
+      line-height: 1.6;
+      position: relative;
+    }
+    .cta-buttons {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      position: relative;
+    }
+    .cta-buttons .btn-red { width: auto; padding: 16px 36px; }
+    .cta-buttons .btn-glass {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,.08);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,.2);
+      padding: 16px 36px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background .15s;
+    }
+    .cta-buttons .btn-glass:hover { background: rgba(255,255,255,.14); }
+
+    /* ── DIVIDER ── */
+    .red-divider {
+      width: 48px;
+      height: 4px;
+      background: var(--red);
+      margin: 0 auto 28px;
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 767px) {
+      .hero { padding: 48px 20px 40px; }
+      .stats-inner { grid-template-columns: 1fr; gap: 20px; }
+      .stat { border-right: none; border-bottom: 1px solid rgba(255,255,255,.2); padding-bottom: 20px; }
+      .stat:last-child { border-bottom: none; padding-bottom: 0; }
+      .sections { padding: 48px 20px; }
+      .sections-inner { grid-template-columns: 1fr; gap: 40px; }
+      .sidebar { position: static; }
+      .coverage-grid { grid-template-columns: 1fr; }
+      .cta-band { padding: 48px 20px; }
+      .cta-buttons { flex-direction: column; align-items: center; }
+      .cta-buttons .btn-red, .cta-buttons .btn-glass { width: 100%; max-width: 320px; justify-content: center; }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 26px; }
+      .section-block h2 { font-size: 20px; }
+      .coverage-card { padding: 20px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<script src="https://rlsh1855.github.io/3Js-and-RLSH-Website/site-nav.js"></script>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-eyebrow">Rhino Linings of Signal Hill</div>
+  <h1>Nationwide <em>Lifetime</em><br>Bedliner Warranty</h1>
+  <p class="hero-sub">The industry's strongest protection — covering your Rhino Liner for as long as you own your truck.</p>
+  <div class="hero-badge">
+    <span class="dot"></span>
+    Installed &amp; Backed at 3J's Auto Body · Signal Hill, CA
+  </div>
+</section>
+
+<!-- ── STATS STRIP ── -->
+<div class="stats-strip">
+  <div class="stats-inner">
+    <div class="stat">
+      <div class="stat-num">Lifetime</div>
+      <div class="stat-lbl">Warranty Coverage</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">3</div>
+      <div class="stat-lbl">Defects Covered</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">Nationwide</div>
+      <div class="stat-lbl">Service Network</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── MAIN SECTIONS ── -->
+<div class="sections">
+  <div class="sections-inner">
+
+    <!-- LEFT COLUMN -->
+    <div>
+
+      <!-- Coverage -->
+      <div class="section-block">
+        <div class="section-eyebrow">What's Covered</div>
+        <h2>Lifetime Protection<br>Against Defects</h2>
+        <p>Your Rhino Liner is backed by a <b>Nationwide Limited Lifetime Bedliner Warranty</b> covering every truck bed liner applied by a certified North American applicator — including 3J's Auto Body right here in Signal Hill, CA.</p>
+        <p>Coverage protects against three specific manufacturing and application defects for <b>as long as you own your truck</b>.</p>
+        <div class="coverage-grid">
+          <div class="coverage-card">
+            <div class="coverage-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+            </div>
+            <h3>Cracking</h3>
+            <p>Surface or structural cracks caused by application defects</p>
+          </div>
+          <div class="coverage-card">
+            <div class="coverage-icon">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg>
+            </div>
+            <h3>Bubbling</h3>
+            <p>Air pockets or bubbles forming beneath the liner surface</p>
+          </div>
+          <div class="coverage-card">
+            <div class="coverage-icon">
+              <svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+            </div>
+            <h3>Peeling</h3>
+            <p>Delamination or separation of the liner from the truck bed</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Eligibility -->
+      <div class="section-block">
+        <div class="section-eyebrow">Eligibility</div>
+        <h2>Who Qualifies</h2>
+        <p>The warranty applies to the following conditions. All three must be met for coverage to be valid.</p>
+        <ul class="check-list">
+          <li>Original equipment truck bed with factory paint intact at time of application</li>
+          <li>Vehicle used for <b>personal, non-commercial purposes only</b></li>
+          <li><b>Original owner only</b> — warranty does not transfer upon vehicle resale</li>
+          <li>Application performed by a certified Rhino Linings applicator after October 2006</li>
+        </ul>
+      </div>
+
+      <!-- How to Claim -->
+      <div class="section-block">
+        <div class="section-eyebrow">Making a Claim</div>
+        <h2>How to Submit<br>a Warranty Claim</h2>
+        <p>If you believe your bedliner has a covered defect, here's what you'll need to start the process:</p>
+        <ul class="check-list">
+          <li><b>Original invoice</b> from your Rhino Linings installation appointment</li>
+          <li><b>Photographs</b> clearly documenting the damaged or defective areas</li>
+          <li>Submit your claim online through the Rhino Linings warranty portal</li>
+        </ul>
+        <p style="margin-top:20px;">If you've moved since your installation, Rhino Linings' nationwide network of certified applicators can assist with your claim locally.</p>
+      </div>
+
+      <!-- Limitations -->
+      <div class="section-block">
+        <div class="section-eyebrow">Limitations &amp; Exclusions</div>
+        <h2>What's Not Covered</h2>
+        <p>The following are explicitly excluded from warranty coverage:</p>
+        <ul class="x-list">
+          <li>Applications performed <b>before October 2006</b></li>
+          <li>Rhino Linings applied to areas <b>other than the truck bed</b> (e.g., exterior body panels, floors)</li>
+          <li>Damage caused by misuse, accidents, or commercial vehicle use</li>
+          <li>Vehicles where the warranty has been transferred to a subsequent owner</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <div class="sidebar-card">
+        <h3>Ready to Get<br>Your Quote?</h3>
+        <p>Protect your truck bed with the toughest spray-on liner available. Installed by certified techs at our Signal Hill shop.</p>
+        <a href="https://www.3jsautobody.com/request-a-quote" class="btn-red">Get A Free Quote</a>
+        <div style="height:10px;"></div>
+        <a href="tel:+15624246744" class="btn-outline" style="color:#fff;border-color:rgba(255,255,255,.2);">Call (562) 424-6744</a>
+      </div>
+
+      <div class="sidebar-card-light">
+        <h3>Installation Details</h3>
+        <div class="info-row">
+          <div class="info-item">
+            <span class="info-lbl">Starting At</span>
+            <span class="info-val">$549</span>
+          </div>
+          <div class="info-item">
+            <span class="info-lbl">Warranty</span>
+            <span class="info-val">Nationwide Lifetime</span>
+          </div>
+          <div class="info-item">
+            <span class="info-lbl">Coverage</span>
+            <span class="info-val">Cracking, Bubbling, Peeling</span>
+          </div>
+          <div class="info-item">
+            <span class="info-lbl">Eligible Vehicles</span>
+            <span class="info-val">Personal Use Pick-Up Trucks</span>
+          </div>
+          <div class="info-item">
+            <span class="info-lbl">Location</span>
+            <span class="info-val">1855 E 29th St, Signal Hill CA</span>
+          </div>
+          <div class="info-item">
+            <span class="info-lbl">Hours</span>
+            <span class="info-val">Mon–Fri · 8 AM – 5 PM</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar-card-light">
+        <h3>Need Help With<br>a Claim?</h3>
+        <div style="margin-bottom:10px;">
+          <a href="https://rhinolinings.com/warranty/" target="_blank" rel="noopener" class="btn-red" style="font-size:11px;">Submit Warranty Claim</a>
+        </div>
+        <div style="margin-bottom:16px;">
+          <a href="https://rhinolinings.com/wp-content/uploads/2025/05/WarrantyBrochure.pdf" target="_blank" rel="noopener" class="btn-outline" style="font-size:11px;">Download Warranty Brochure (PDF)</a>
+        </div>
+        <p style="font-size:12px;color:var(--fg-muted);line-height:1.6;margin:0;">Claims are processed through Rhino Linings' national portal. Have your original invoice and photos ready before submitting.</p>
+      </div>
+
+    </aside>
+
+  </div>
+</div>
+
+<!-- ── CTA BAND ── -->
+<section class="cta-band">
+  <div class="eyebrow">Signal Hill's Certified Installer</div>
+  <div class="red-divider"></div>
+  <h2>Get Your Truck<br><em>Protected Today</em></h2>
+  <p>Same-day installs available. Walk in or book online — our certified techs handle everything.</p>
+  <div class="cta-buttons">
+    <a href="https://www.3jsautobody.com/request-a-quote" class="btn-red">Get A Free Quote</a>
+    <a href="https://www.3jsautobody.com/rhino-liner" class="btn-glass">Learn About Rhino Liner</a>
+  </div>
+</section>
+
+<script src="https://rlsh1855.github.io/3Js-and-RLSH-Website/mega-menu.js"></script>
+
+</body>
+</html>
