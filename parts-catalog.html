@@ -451,7 +451,7 @@ function loadDataFiles(files) {
 const { useState, useMemo, useEffect, useRef } = React;
 
 // ── Garage popup — always on. Add ?nogarage to the URL to suppress (use in Wix editor) ──
-const GARAGE_AUTO_OPEN = true;
+const GARAGE_AUTO_OPEN = false;
 const _noGarage = new URLSearchParams(window.location.search).has('nogarage');
 
 // ── Field indexes ──
