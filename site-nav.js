@@ -618,7 +618,9 @@
           </div>
         </div>
 
-        <a href="https://www.3jsautobody.com/rhino-liner">Rhino Liner</a>
+        <a href="https://www.3jsautobody.com/rhino-liner" id="sn-trigger-rhino">Rhino Liner +</a>
+        <a href="https://www.3jsautobody.com/bundles" id="sn-trigger-bundles">Bundles &amp; Packages +</a>
+        <a href="https://www.3jsautobody.com/exterior-accessories" id="sn-trigger-exterior">Exterior Accessories +</a>
         <a href="https://www.3jsautobody.com/contact-us">Contact Us</a>
         <a href="https://www.3jsautobody.com/faq">FAQ</a>
 
@@ -832,6 +834,16 @@
       if(e.key === 'Escape') overlay.classList.remove('sn-popen');
     });
   }
+
+  /* ════════════════════════════════
+     MEGA MENU — load inject script
+  ════════════════════════════════ */
+  (function(){
+    if(document.getElementById('jj-mega-styles')) return;
+    var s=document.createElement('script');
+    s.src='https://rlsh1855.github.io/3Js-and-RLSH-Website/mega-menu.js';
+    document.head.appendChild(s);
+  })();
 
   /* ════════════════════════════════
      MY GARAGE — load widget + wire buttons

@@ -186,7 +186,7 @@
           '<div class="jj-meta"><span class="jj-pip"></span> Same-day installs available</div>',
         '</div>',
         '<div class="jj-tiles" data-cols="1">',
-          '<a href="https://www.3jsautobody.com/rhino-lining-quote" class="jj-tile">',
+          '<a href="https://www.3jsautobody.com/request-a-quote" class="jj-tile">',
             '<div class="jj-timg" style="background-image:url(\'https://rlsh1855.github.io/3Js-and-RLSH-Website/Bedliner-Jeep_exterior.webp\');background-size:cover;background-position:center;"></div>',
             '<div class="jj-tbody">',
               '<h3>Rhino Liner Quote <span class="jj-new">FAST</span></h3>',
@@ -196,7 +196,7 @@
             '</div>',
             '<span class="jj-go">&rarr;</span>',
           '</a>',
-          '<a href="https://www.3jsautobody.com/rhino-liner" class="jj-tile">',
+          '<a href="https://www.3jsautobody.com/testimonials" class="jj-tile">',
             '<div class="jj-timg jj-social-img">',
               '<span class="jj-ctag"><span class="jj-pulse"></span>LIVE</span>',
               '<div class="jj-scell"></div><div class="jj-scell"></div><div class="jj-scell"></div><div class="jj-scell"></div>',
@@ -370,14 +370,22 @@
       host.style.top = rect.bottom + 'px';
     }
 
-    // Text-based trigger finder — Wix uses dynamic class names
+    // Trigger finder — checks IDs first (site-nav.js), falls back to text match (Wix)
     function findTriggers() {
+      var found = {
+        rhino:    document.getElementById('sn-trigger-rhino'),
+        bundles:  document.getElementById('sn-trigger-bundles'),
+        exterior: document.getElementById('sn-trigger-exterior')
+      };
+      // ID-based match (GitHub Pages / site-nav.js) — fast and precise
+      if (found.rhino && found.bundles && found.exterior) return found;
+      // Text-based match (Wix) — scan visible nav-level elements only
       var all = document.querySelectorAll('a, button, [role="menuitem"], [role="button"]');
-      var found = { rhino: null, bundles: null, exterior: null };
       for (var i = 0; i < all.length; i++) {
         var el = all[i];
-        // skip elements inside our own mega menu
         if (host.contains(el)) continue;
+        // Skip elements that are inside dropdown panels (deep nesting means they're sub-items)
+        if (el.closest('[class*="panel"], [class*="dropdown"], [class*="dd-panel"], [class*="sub"]')) continue;
         var txt = el.textContent.replace(/\s+/g, ' ').trim().toLowerCase();
         if (!found.rhino && /rhino\s*liner/.test(txt) && txt.length < 60) found.rhino = el;
         if (!found.bundles && /bundles?\s*((&amp;|&|and)\s*packages?)?/.test(txt) && txt.length < 60) found.bundles = el;
