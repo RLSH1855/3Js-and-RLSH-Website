@@ -894,6 +894,11 @@ function App() {
   };
 
   const openDetail = (brand, name) => {
+    // If no vehicle saved yet, open garage popup first
+    if (!garage) {
+      openGaragePopup();
+      return;
+    }
     const p = new URLSearchParams({ brand, product: name, cat: selectedCat.catLabel, catUrl: 'parts-catalog.html' });
     if (filters.types.size === 1) p.set('type', [...filters.types][0]);
     window.location.href = `https://rlsh1855.github.io/3Js-and-RLSH-Website/product-detail-page.html?${p}`;
