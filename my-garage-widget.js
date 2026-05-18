@@ -221,6 +221,7 @@
     var fabLabel=document.getElementById('gc-fab-label');
     if(fabLabel) fabLabel.textContent='My Garage';
     try{window.dispatchEvent(new CustomEvent('garageUpdated',{detail:null}));}catch(e){}
+    if(_inFrame){try{window.parent.postMessage({type:'garage_clear',vehicle:null},'*');}catch(e){}}
     gcClose();
   }
 
@@ -274,11 +275,18 @@
     if(yb&&yp&&!yb.contains(e.target)&&!yp.contains(e.target))gcCloseYear();
   });
 
-  // Restore saved vehicle on load + broadcast to iframes
+  // Restore saved vehicle on load + broadcast to iframes + notify Wix parent
   (function(){
     var saved=localStorage.getItem('garage_vehicle');
     if(saved){try{gcShowSaved(JSON.parse(saved));}catch(e){}}
     setTimeout(gcBroadcast, 1000);
     setTimeout(gcBroadcast, 3000);
+    // Tell Wix parent nav button the current garage state
+    if(_inFrame){
+      try{
+        var v=saved?JSON.parse(saved):null;
+        window.parent.postMessage({type:v?'garage_saved':'garage_clear',vehicle:v},'*');
+      }catch(e){}
+    }
   })();
 })();
