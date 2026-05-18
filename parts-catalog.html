@@ -377,10 +377,6 @@
     .mb-view { display:none; }
 
     /* My Garage vertical tab — right side, mobile only */
-    .mob-garage-tab { display:flex; position:fixed; right:0; top:50%; transform:translateY(-50%); z-index:200; flex-direction:column; align-items:center; justify-content:center; gap:8px; padding:14px 9px; background:#fff; border:1px solid #ddd; border-right:none; cursor:pointer; box-shadow:-3px 0 12px rgba(0,0,0,.12); }
-    .mob-garage-tab-label { writing-mode:vertical-lr; transform:rotate(180deg); font-family:var(--display); font-size:9px; font-weight:800; letter-spacing:2.5px; text-transform:uppercase; color:#1a1a1a; }
-    .mob-garage-tab-ico { color:#8B0000; display:flex; }
-    .mob-garage-tab-ico svg { width:18px; height:18px; stroke:currentColor; fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
 
     /* Hide the mobile vehicle bar — garage tab replaces it */
     .mob-vehicle-bar { display:none; }
@@ -1043,7 +1039,6 @@ function App() {
       <HeroBanner garage={garage} onSwapVehicle={openGaragePopup} catDef={selectedCat} />
       <CategoryTabs cats={CATEGORY_DEFS} selectedId={selectedCatId} onSelect={handleCatChange} loading={catLoading} loadedCount={allProducts.length} />
       <Breadcrumbs catLabel={selectedCat.catLabel} />
-      <MobileGarageTab onOpen={openGaragePopup} />
 
       <main className="catalog">
         <MobileBar count={filtered.length} onOpenFilters={() => setDrawerOpen(true)} sort={sort} setSort={setSort} />
@@ -1272,16 +1267,6 @@ function MobileBar({ count, onOpenFilters, sort, setSort }) {
 }
 
 // ── Mobile Garage Tab ──
-function MobileGarageTab({ onOpen }) {
-  const truckIco = <svg viewBox="0 0 24 24"><path d="M1 6h13v9H1z"/><path d="M14 9h5l3 3v3h-8z"/><circle cx="6" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg>;
-  return (
-    <button className="mob-garage-tab" onClick={onOpen} aria-label="My Garage">
-      <span className="mob-garage-tab-label">Garage</span>
-      <span className="mob-garage-tab-ico">{truckIco}</span>
-    </button>
-  );
-}
-
 // ── Filter Panel ──
 function FilterPanel({ filters, setFilters, toggleSet, garage, onSwapVehicle, brandCounts, typeCounts, mobile }) {
   return (
@@ -1621,5 +1606,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
 </script>
 </body>
 </html>
+
 
 
