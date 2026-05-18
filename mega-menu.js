@@ -222,7 +222,7 @@
         '<div class="jj-foot-links">',
           '<a href="https://www.3jsautobody.com/request-a-quote" class="jj-foot-link"><span class="jj-foot-dot"></span> Schedule an install</a>',
           '<a href="https://www.3jsautobody.com/rhino-liner" class="jj-foot-link"><span class="jj-foot-dot"></span> Color options</a>',
-          '<a href="https://www.3jsautobody.com/rhino-liner" class="jj-foot-link"><span class="jj-foot-dot"></span> Warranty info</a>',
+          '<a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/warranty.html" class="jj-foot-link"><span class="jj-foot-dot"></span> Warranty info</a>',
         '</div>',
         '<div class="jj-foot-ctr"><b>3J\'s Auto Body</b><span class="jj-sep">|</span><b>Rhino Linings of Signal Hill</b><span class="jj-addr">1855 E 29th St Ste A, Signal Hill, CA 90755</span></div>',
         '<div class="jj-foot-phone"><span>&#9679;</span> CALL (562) 424-6744</div>',
