@@ -405,7 +405,7 @@
       var clickedAt = 0;
       el.addEventListener('mouseenter', function () {
         if (Date.now() - clickedAt < 2000) return; // suppressed after click
-        hoverTimer = setTimeout(function () { showMenu(key); }, 250);
+        hoverTimer = setTimeout(function () { showMenu(key); }, 50);
       });
       el.addEventListener('mouseleave', function () {
         clearTimeout(hoverTimer);
