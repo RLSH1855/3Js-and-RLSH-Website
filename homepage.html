@@ -30,7 +30,7 @@
   <style>
     /* ── RESET & BASE ── */
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    html{overflow-x:hidden;}
+    html{overflow-x:hidden;overflow-y:hidden;}
     body{font-family:'Inter',sans-serif;background:#0A0A0A;color:#fff;overflow-x:hidden;}
     h1,h2,h3{font-family:'Montserrat',sans-serif;text-wrap:balance;}
     p{text-wrap:pretty;}
@@ -255,7 +255,7 @@
       .hero-ctas{flex-direction:row;flex-wrap:wrap;justify-content:center;}
     }
     @media(min-width:1024px){
-      .hero{min-height:100vh;min-height:100svh;padding:80px 24px;}
+      .hero{min-height:640px;padding:80px 24px;}
     }
     @media(prefers-reduced-motion:reduce){
       .scroll-arrow{animation:none;opacity:.5;}
