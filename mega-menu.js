@@ -402,7 +402,9 @@
 
     function wireTrigger(el, key) {
       var hoverTimer = null;
+      var clickedAt = 0;
       el.addEventListener('mouseenter', function () {
+        if (Date.now() - clickedAt < 2000) return; // suppressed after click
         hoverTimer = setTimeout(function () { showMenu(key); }, 250);
       });
       el.addEventListener('mouseleave', function () {
@@ -410,6 +412,8 @@
       });
       el.addEventListener('focus', function () { showMenu(key); });
       el.addEventListener('click', function (e) {
+        clickedAt = Date.now(); // stamp the click — suppress hover for 2s
+        hideMenu(true);
         // Touch: first tap opens, second tap navigates
         if (window.matchMedia('(hover:none)').matches && open !== key) {
           e.preventDefault();
