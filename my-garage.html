@@ -289,6 +289,16 @@
     .btn-primary:hover{background:#6d0000;}
     .btn-secondary{background:#fff;color:#1a1a1a;border:2px solid #e8e8e8;}
     .btn-secondary:hover{border-color:#1a1a1a;}
+    .btn-clear{
+      width:100%;margin-top:16px;
+      display:inline-flex;align-items:center;justify-content:center;gap:8px;
+      min-height:48px;padding:0 24px;border-radius:0;
+      font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;
+      letter-spacing:2px;text-transform:uppercase;cursor:pointer;
+      text-decoration:none;transition:all 0.3s ease;
+      background:#fff;color:#8B0000;border:2px solid #8B0000;
+    }
+    .btn-clear:hover{background:#8B0000;color:#fff;}
     *:focus{outline:none;}
     *:focus-visible{outline:2px solid #8B0000;outline-offset:3px;}
   </style>
@@ -442,9 +452,9 @@
           <a href="parts-catalog.html" class="btn-primary">Shop Tonneau Covers</a>
           <button class="btn-secondary" onclick="resetGarage()">Change Vehicle</button>
         </div>
-        <div style="margin-top:20px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:6px;">
+        <button class="btn-clear" onclick="clearGarage()">✕ Clear Vehicle</button>
+        <div style="margin-top:16px;text-align:center;">
           <button onclick="if(window.history.length>1){window.history.back();}else{window.location.href='https://www.3jsautobody.com';}" style="background:none;border:none;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#888;cursor:pointer;text-decoration:underline;padding:8px;">← Back to Site</button>
-          <button onclick="clearGarage()" style="background:none;border:none;font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:#bbb;cursor:pointer;text-decoration:underline;padding:4px;">Remove Vehicle</button>
         </div>
       </div>
     </div>
@@ -875,8 +885,6 @@ function resetGarage(){
   closeYearGrid();
   reportHeight();
 }
-
-document.getElementById('bar-change-btn').addEventListener('click', resetGarage);
 
 // ── On load — check for saved vehicle ──
 (function(){
