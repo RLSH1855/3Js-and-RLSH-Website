@@ -401,7 +401,13 @@
     }
 
     function wireTrigger(el, key) {
-      el.addEventListener('mouseenter', function () { showMenu(key); });
+      var hoverTimer = null;
+      el.addEventListener('mouseenter', function () {
+        hoverTimer = setTimeout(function () { showMenu(key); }, 250);
+      });
+      el.addEventListener('mouseleave', function () {
+        clearTimeout(hoverTimer);
+      });
       el.addEventListener('focus', function () { showMenu(key); });
       el.addEventListener('click', function (e) {
         // Touch: first tap opens, second tap navigates
