@@ -137,7 +137,7 @@
     '.jj-mega.jj-exterior .jj-tile>h3{grid-area:title;align-self:center;margin:0;}',
     '.jj-mega.jj-exterior .jj-tbody{grid-area:desc;}',
     '.jj-mega.jj-exterior .jj-tbody p{margin:0;font-size:13px;line-height:1.5;color:rgb(70,78,92);}',
-    '.jj-mega.jj-exterior .jj-tiles{row-gap:36px;column-gap:2px;}',
+    '.jj-mega.jj-exterior .jj-tiles{row-gap:36px;column-gap:20px;}',
 
     /* footer strip */
     '.jj-foot{background:#121212;color:#b9c0cf;padding:14px 28px;display:flex;align-items:center;justify-content:space-between;gap:24px;font-family:"Barlow",sans-serif;font-size:13px;flex-wrap:nowrap;}',
