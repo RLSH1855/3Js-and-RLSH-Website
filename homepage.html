@@ -63,7 +63,7 @@
        1. HERO
     ════════════════════════════ */
     .hero{position:relative;min-height:720px;display:flex;align-items:center;justify-content:flex-start;overflow:hidden;background:#0a0a0a;}
-    .hero-bg{position:absolute;inset:0;background-image:url('https://raw.githubusercontent.com/RLSH1855/3Js-and-RLSH-Website/main/CHEVY%20BOAT%20LAUNCH%20RAMP_TRANSPARENT_BG.png');background-size:cover;background-position:center 40%;background-repeat:no-repeat;z-index:0;filter:brightness(1.18) contrast(1.08);}
+    .hero-bg{position:absolute;inset:0;background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/CHEVY%20BOAT%20LAUNCH%20RAMP_TRANSPARENT_BG.png');background-size:cover;background-position:center 40%;background-repeat:no-repeat;z-index:0;filter:brightness(1.18) contrast(1.08);}
     .hero-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,0.82) 0%,rgba(0,0,0,0.65) 45%,rgba(0,0,0,0.35) 75%,rgba(0,0,0,0.20) 100%);z-index:1;}
     .hero-vignette{position:absolute;bottom:0;left:0;right:0;height:280px;background:linear-gradient(to top,rgba(0,0,0,1) 0%,rgba(0,0,0,0.85) 20%,rgba(0,0,0,0.4) 55%,transparent 100%);z-index:2;pointer-events:none;}
     .hero-accent-bar{position:absolute;left:0;top:0;bottom:0;width:5px;background:#8B0000;z-index:3;}
@@ -182,11 +182,10 @@
     .svc-cta svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2.5;stroke-linecap:round;}
 
     /* CTA band */
-    .cta-band{background:#8B0000;padding:clamp(40px,5vw,64px) 20px;text-align:center;position:relative;overflow:hidden;}
-    .cta-band::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.04) 1px,transparent 1px);background-size:24px 24px;}
+    .cta-band{background:#fff;padding:clamp(40px,5vw,64px) 20px;text-align:center;position:relative;overflow:hidden;border-top:1px solid #e8e8e8;}
     .cta-band-inner{position:relative;z-index:1;}
-    .cta-band h2{font-family:'Montserrat',sans-serif;font-size:clamp(22px,3.5vw,38px);font-weight:900;margin-bottom:10px;color:#fff;}
-    .cta-band p{font-family:'Inter',sans-serif;font-size:15px;color:rgba(255,255,255,.8);max-width:480px;margin:0 auto 28px;line-height:1.65;}
+    .cta-band h2{font-family:'Montserrat',sans-serif;font-size:clamp(22px,3.5vw,38px);font-weight:900;margin-bottom:10px;color:#1a1a1a;}
+    .cta-band p{font-family:'Inter',sans-serif;font-size:15px;color:#666;max-width:480px;margin:0 auto 28px;line-height:1.65;}
 
     /* ════════════════════════════
        5. FAQ
@@ -620,7 +619,7 @@
     <div class="cta-band-inner">
       <h2>Ready to Get Started?</h2>
       <p>Walk in Mon–Fri 8AM–5PM · Free estimates · Signal Hill, CA · Same-day Rhino Liner installs available.</p>
-      <a href="https://www.3jsautobody.com/request-a-quote" class="btn-white btn" target="_top">
+      <a href="https://www.3jsautobody.com/request-a-quote" class="btn-red btn" target="_top">
         <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
         Request a Quote
       </a>
