@@ -531,7 +531,7 @@ function renderGrid(){
     var fits   = checkFits(e);
     var badge  = state.fitActive && fits!==null ? '<span class="fits-badge '+(fits?'fits':'no-fit')+'">'+(fits?'Fits Your Truck':'Does Not Fit')+'</span>' : '';
     var img    = e[9] ? '<img src="'+e[9]+'" alt="'+esc(e[1])+'" loading="lazy" onerror="this.style.display=\'none\'">' : '<div class="card-placeholder">'+esc(e[1])+'</div>';
-    var price  = e[8] ? '<span class="card-price-label">MAP Price</span><div class="card-price">$'+e[8].toFixed(2)+'</div>' : '';
+    var price  = e[8] ? '<div class="card-price">Starting at $'+e[8].toFixed(2)+'</div>' : '';
     var fitLine = state.fitActive
       ? esc(e[5])+' '+esc(e[6])+' &nbsp;·&nbsp; '+e[3]+'–'+e[4]
       : 'Fits '+(FITMENT_COUNT[e[2]]||1)+' truck'+(FITMENT_COUNT[e[2]]===1?'':'s');
@@ -729,6 +729,210 @@ if(window.ResizeObserver){new ResizeObserver(reportHeight).observe(document.body
 
 </body>
 </html>
+
+
+
+
+
++e[8].toFixed(2)+'</div>' : '';
+    var fitLine = state.fitActive
+      ? esc(e[5])+' '+esc(e[6])+' &nbsp;·&nbsp; '+e[3]+'–'+e[4]
+      : 'Fits '+(FITMENT_COUNT[e[2]]||1)+' truck'+(FITMENT_COUNT[e[2]]===1?'':'s');
+    return '<div class="product-card">'
+      +'<div class="card-img">'+img+badge+'</div>'
+      +'<div class="card-body">'
+      +'<div class="card-brand">BackRack</div>'
+      +'<div class="card-name">'+esc(e[1])+'</div>'
+      +'<div class="card-years">'+fitLine+'</div>'
+      +price
+      +'<div class="card-btns">'
+      +'<div class="card-btn card-btn-part">'+esc(e[2])+'</div>'
+      +'<a href="'+QUOTE_URL+'" target="_top" class="card-btn card-btn-quote">Get a Quote</a>'
+      +'</div>'
+      +'</div></div>';
+  }).join('');
+}
+
+function renderSidebar(){
+  document.getElementById('sidebar-products').innerHTML = ALL_PRODUCTS.map(function(p){
+    var on = state.filterProducts.includes(p);
+    var cnt = CATALOG.filter(e=>e[1]===p).length;
+    return '<div class="filter-item" onclick="toggleProduct(\''+p.replace(/'/g,"\\'")+'\')">'
+      +'<div class="cb'+(on?' checked':'')+'"></div>'
+      +'<span class="filter-label">'+esc(p)+'</span>'
+      +'<span class="filter-count">'+cnt+'</span></div>';
+  }).join('');
+}
+
+function renderMobileChips(){
+  document.getElementById('mob-chips-product').innerHTML = ALL_PRODUCTS.map(function(p){
+    var on = state.filterProducts.includes(p);
+    return '<div class="mob-chip'+(on?' active':'')+'" onclick="toggleProduct(\''+p.replace(/'/g,"\\'")+'\',true)">'+esc(p)+'</div>';
+  }).join('');
+}
+
+function renderActiveTags(){
+  var tags = state.filterProducts.map(function(p){ return [p,'product']; });
+  if(state.fitActive) tags.push([state.fitYear+' '+state.fitMake+' '+state.fitModel,'fit']);
+  var cnt = state.filterProducts.length;
+  var badge = document.getElementById('filter-badge');
+  badge.textContent = cnt; badge.style.display = cnt ? 'flex' : 'none';
+  var strip = document.getElementById('active-filters');
+  if(!tags.length){ strip.innerHTML='<span class="active-label">Filters:</span>'; return; }
+  strip.innerHTML = '<span class="active-label">Active:</span>'
+    + tags.map(function(t){
+        return '<span class="filter-tag" onclick="removeTag(\''+t[1]+'\',\''+t[0].replace(/'/g,"\\'")+'\')">'+esc(t[0])+' &times;</span>';
+      }).join('');
+}
+
+function render(){ renderGrid(); renderSidebar(); renderMobileChips(); renderActiveTags(); }
+
+function toggleProduct(name, mobileOnly){
+  var i = state.filterProducts.indexOf(name);
+  if(i===-1) state.filterProducts.push(name); else state.filterProducts.splice(i,1);
+  if(!mobileOnly) render();
+}
+function filterProduct(name){
+  state.filterProducts = [name];
+  render();
+  document.getElementById('product-grid').scrollIntoView({behavior:'smooth',block:'start'});
+}
+function removeTag(type, val){
+  if(type==='product'){ var i=state.filterProducts.indexOf(val); if(i>-1) state.filterProducts.splice(i,1); }
+  if(type==='fit'){ state.fitActive=false; resetYmm(); }
+  render();
+}
+
+document.getElementById('sort-select').addEventListener('change',function(){ state.sort=this.value; document.getElementById('sort-select-mob').value=this.value; render(); });
+document.getElementById('sort-select-mob').addEventListener('change',function(){ state.sort=this.value; document.getElementById('sort-select').value=this.value; render(); });
+document.getElementById('mob-filter-open').addEventListener('click',function(){ document.getElementById('mob-filter').classList.add('open'); renderMobileChips(); });
+document.getElementById('mob-filter-close').addEventListener('click',function(){ document.getElementById('mob-filter').classList.remove('open'); });
+document.getElementById('mob-apply').addEventListener('click',function(){ document.getElementById('mob-filter').classList.remove('open'); render(); });
+function faqClose(item){item.querySelector('.faq-a').style.display='none';item.classList.remove('open');item.querySelector('.faq-q').setAttribute('aria-expanded','false');}
+function faqOpen(item){item.querySelector('.faq-a').style.display='block';item.classList.add('open');item.querySelector('.faq-q').setAttribute('aria-expanded','true');}
+document.querySelectorAll('.faq-a').forEach(function(p){p.addEventListener('transitionend',function(e){if(e.propertyName!=='height')return;if(p.closest('.faq-item').classList.contains('open')){p.style.height='auto';[0,100,280,450,600,800].forEach(function(t){setTimeout(reportHeight,t);});}});});
+document.querySelectorAll('.faq-q').forEach(function(btn){btn.addEventListener('click',function(){var item=btn.closest('.faq-item');var wasOpen=item.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(faqClose);if(!wasOpen){faqOpen(item);[0,100,280,450,600,800].forEach(function(t){setTimeout(reportHeight,t);});}});});
+
+/* ── Garage bar ── */
+function loadGarage(){ try{ return JSON.parse(localStorage.getItem(STORAGE_KEY)); }catch(e){ return null; } }
+function updateGarageBar(){
+  var g = state.garage;
+  var textEl = document.getElementById('gb-vehicle-text');
+  var badge  = document.getElementById('gb-badge');
+  var banner = document.getElementById('no-garage-banner');
+  if(g && g.year && g.make && g.model){
+    textEl.textContent = g.year+' '+g.make+' '+g.model;
+    badge.textContent='Saved'; badge.classList.remove('no-garage');
+    banner.style.display='none';
+  } else {
+    textEl.textContent='No vehicle saved';
+    badge.textContent='My Garage'; badge.classList.add('no-garage');
+    banner.style.display='flex';
+  }
+}
+document.getElementById('gb-change').addEventListener('click',function(){
+  try{ localStorage.removeItem(STORAGE_KEY); }catch(e){}
+  state.garage=null; state.fitActive=false;
+  updateGarageBar(); resetYmm(); render();
+});
+
+/* ── YMM bar ── */
+var selYear  = document.getElementById('ymm-year');
+var selMake  = document.getElementById('ymm-make');
+var selModel = document.getElementById('ymm-model');
+var btnShop  = document.getElementById('ymm-shop');
+
+var thisYear = new Date().getFullYear();
+for(var y=thisYear+1; y>=1967; y--){
+  var o=document.createElement('option'); o.value=y; o.textContent=y; selYear.appendChild(o);
+}
+ALL_MAKES.forEach(function(make){
+  var o=document.createElement('option'); o.value=make; o.textContent=make; selMake.appendChild(o);
+});
+
+function checkYmmReady(){ btnShop.disabled = !(selYear.value && selMake.value && selModel.value); }
+
+selYear.addEventListener('change',function(){
+  selMake.disabled=!this.value;
+  selModel.disabled=true; selModel.innerHTML='<option value="">Model</option>';
+  checkYmmReady();
+});
+selMake.addEventListener('change',function(){
+  selModel.innerHTML='<option value="">Model</option>';
+  if(!this.value){ selModel.disabled=true; checkYmmReady(); return; }
+  selModel.disabled=false;
+  getModels(this.value).forEach(function(m){
+    var o=document.createElement('option'); o.value=m; o.textContent=m; selModel.appendChild(o);
+  });
+  checkYmmReady();
+});
+selModel.addEventListener('change',function(){ checkYmmReady(); });
+
+btnShop.addEventListener('click',function(){
+  state.fitYear=selYear.value; state.fitMake=selMake.value; state.fitModel=selModel.value;
+  state.fitActive=true;
+  var g={year:state.fitYear,make:state.fitMake,model:state.fitModel};
+  try{ localStorage.setItem(STORAGE_KEY,JSON.stringify(g)); }catch(e){}
+  state.garage=g; updateGarageBar();
+  var cnt = getFiltered().length;
+  document.getElementById('hero-chip-text').textContent = cnt+' products fit your '+state.fitYear+' '+state.fitMake+' '+state.fitModel;
+  document.getElementById('hero-chip').querySelector('.dot').style.background = cnt?'#4caf50':'#e65c00';
+  render();
+  document.getElementById('product-grid').scrollIntoView({behavior:'smooth',block:'start'});
+});
+
+function resetYmm(){
+  selYear.value=''; selMake.disabled=true; selMake.value='';
+  selModel.disabled=true; selModel.innerHTML='<option value="">Model</option>';
+  btnShop.disabled=true;
+  document.getElementById('hero-chip-text').textContent=CATALOG.length+' products available';
+  document.getElementById('hero-chip').querySelector('.dot').style.background='#4caf50';
+}
+
+function prefillFromGarage(g){
+  if(!g||!g.year||!g.make||!g.model) return;
+  selYear.value=g.year; selMake.disabled=false; selMake.value=g.make;
+  selModel.innerHTML='<option value="">Model</option>';
+  getModels(g.make).forEach(function(m){
+    var o=document.createElement('option'); o.value=m; o.textContent=m; selModel.appendChild(o);
+  });
+  selModel.disabled=false; selModel.value=g.model;
+  /* activate fit filter so render() applies it on load */
+  state.fitYear=g.year; state.fitMake=g.make; state.fitModel=g.model;
+  state.fitCab=g.cab||null; state.fitActive=true;
+  checkYmmReady();
+}
+
+/* ── Init ── */
+state.garage=loadGarage();
+updateGarageBar();
+if(state.garage) prefillFromGarage(state.garage);
+render();
+if(state.fitActive){
+  var filtered=getFiltered();
+  document.getElementById('hero-chip-text').textContent=filtered.length+' products fit your '+state.fitYear+' '+state.fitMake+' '+state.fitModel;
+  document.getElementById('hero-chip').querySelector('.dot').style.background=filtered.length?'#4caf50':'#e65c00';
+}
+
+/* ── Wix height ── */
+function reportHeight(){
+  var sentinel=document.getElementById('height-sentinel');
+  var h=sentinel?(sentinel.offsetTop+sentinel.offsetHeight):Math.max(document.body.scrollHeight,document.body.offsetHeight,document.documentElement.scrollHeight,document.documentElement.offsetHeight);
+  window.parent.postMessage(JSON.stringify({height:h}),'*');
+}
+document.addEventListener('DOMContentLoaded',reportHeight);
+window.addEventListener('load',function(){[0,200,500,1000,2000,3500].forEach(function(t){setTimeout(reportHeight,t);});});
+window.addEventListener('resize',reportHeight);
+if(window.ResizeObserver){new ResizeObserver(reportHeight).observe(document.body);}
+</script>
+
+<script src="https://rlsh1855.github.io/3Js-and-RLSH-Website/site-nav.js"></script>
+
+<div id="height-sentinel" style="height:1px;width:1px;visibility:hidden;pointer-events:none;"></div>
+
+</body>
+</html>
+
 
 
 

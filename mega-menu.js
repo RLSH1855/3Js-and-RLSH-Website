@@ -191,7 +191,7 @@
             '<div class="jj-tbody">',
               '<h3>Rhino Liner Quote <span class="jj-new">FAST</span></h3>',
               '<p>Get a no-obligation, online quote for your truck bed in under 60 seconds — pick your make, model, and bed size.</p>',
-              '<div class="jj-price">START AT <b>$549</b> &middot; LIFETIME WARRANTY</div>',
+              '<div class="jj-price">Starting at <b>$549</b> &middot; LIFETIME WARRANTY</div>',
               '<div class="jj-detail"><b>Premium spray-on bedliner protection</b> built to resist <b>scratches, dents, corrosion</b> and daily wear. Creates a <b>tough, factory-style finish</b> that shields your truck bed and exterior surfaces from impact and harsh conditions.</div>',
             '</div>',
             '<span class="jj-go">&rarr;</span>',
@@ -243,19 +243,19 @@
         '<div class="jj-tiles" data-cols="4">',
           '<a href="https://www.3jsautobody.com/the-405-essentials" class="jj-tile">',
             '<div class="jj-timg" style="background-image:url(\'https://rlsh1855.github.io/3Js-and-RLSH-Website/405%20ESSENTIALS%20METAL%20CARD.png\');background-size:cover;background-position:center;"></div>',
-            '<div class="jj-tbody"><h3>The 405 Essential <span class="jj-badge">3 ITEMS</span></h3><p>Bed liner, tonneau cover &amp; floor liners — the daily-driver starter kit.</p><div class="jj-price">FROM <b>$1,299</b></div></div>',
+            '<div class="jj-tbody"><h3>The 405 Essential <span class="jj-badge">3 ITEMS</span></h3><p>Bed liner, tonneau cover &amp; floor liners — the daily-driver starter kit.</p><div class="jj-price">Starting at <b>$1,299</b></div></div>',
           '</a>',
           '<a href="https://www.3jsautobody.com/the-working-man" class="jj-tile">',
             '<div class="jj-timg" style="background-image:url(\'https://rlsh1855.github.io/3Js-and-RLSH-Website/WORKING%20MAN%20METAL%20CARD-1.png\');background-size:cover;background-position:center;"></div>',
-            '<div class="jj-tbody"><h3>The Working Man <span class="jj-badge">4 ITEMS</span></h3><p>Built for tradesmen — liner, towing pkg, running boards &amp; bed organizer.</p><div class="jj-price">FROM <b>$1,899</b></div></div>',
+            '<div class="jj-tbody"><h3>The Working Man <span class="jj-badge">4 ITEMS</span></h3><p>Built for tradesmen — liner, towing pkg, running boards &amp; bed organizer.</p><div class="jj-price">Starting at <b>$1,899</b></div></div>',
           '</a>',
           '<a href="https://www.3jsautobody.com/the-3-wise-men-standard" class="jj-tile">',
             '<div class="jj-timg" style="background-image:url(\'https://rlsh1855.github.io/3Js-and-RLSH-Website/3%20WISE%20MEN1%20METAL%20CARD.png\');background-size:cover;background-position:center;"></div>',
-            '<div class="jj-tbody"><h3>3 Wise Men <span class="jj-badge">STANDARD</span></h3><p>Our signature trio: bed liner, BAKFlip MX4 &amp; LED light bar install.</p><div class="jj-price">FROM <b>$2,499</b></div></div>',
+            '<div class="jj-tbody"><h3>3 Wise Men <span class="jj-badge">STANDARD</span></h3><p>Our signature trio: bed liner, BAKFlip MX4 &amp; LED light bar install.</p><div class="jj-price">Starting at <b>$2,499</b></div></div>',
           '</a>',
           '<a href="https://www.3jsautobody.com/the-3-wise-men-premium" class="jj-tile">',
             '<div class="jj-timg" style="background-image:url(\'https://rlsh1855.github.io/3Js-and-RLSH-Website/3%20WISE%20MEN%20-PREMIUM%20METAL%20CARD.png\');background-size:cover;background-position:center;"></div>',
-            '<div class="jj-tbody"><h3>3 Wise Men <span class="jj-premium">PREMIUM</span></h3><p>Top-tier finishes, upgraded electronics, paint-matched accents.</p><div class="jj-price">FROM <b>$3,299</b></div></div>',
+            '<div class="jj-tbody"><h3>3 Wise Men <span class="jj-premium">PREMIUM</span></h3><p>Top-tier finishes, upgraded electronics, paint-matched accents.</p><div class="jj-price">Starting at <b>$3,299</b></div></div>',
           '</a>',
         '</div>',
       '</div>',
@@ -453,4 +453,6 @@
   })();
 
 })();
+
+
 

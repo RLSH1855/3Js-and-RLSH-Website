@@ -1448,7 +1448,7 @@ function ProductCard({ p, onOpenDetail }) {
         <div className="card-name">{p.name}</div>
         <div className="card-sub">{p.type || ' '}</div>
         <div className="card-foot">
-          <span className="card-price">{p.minPrice ? `$${p.minPrice.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})}` : '—'}</span>
+          <span className="card-price">{p.minPrice ? `Starting at $${p.minPrice.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})}` : '—'}</span>
           <button className="card-cta" onClick={e=>{e.stopPropagation();window.location=quoteUrl;}}>Get a Quote</button>
         </div>
       </div>
@@ -1469,7 +1469,7 @@ function ProductRow({ p, garage, onOpenDetail }) {
         {p.fits && garage && <div className="row-fit">{Icon.check} Fits your {garage.year} {garage.make} {garage.model}</div>}
       </div>
       <div className="row-side">
-        <span className="card-price">{p.minPrice ? `$${p.minPrice.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})}` : '—'}</span>
+        <span className="card-price">{p.minPrice ? `Starting at $${p.minPrice.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})}` : '—'}</span>
         <button className="btn-primary row-cta" onClick={e=>{e.stopPropagation();window.location=quoteUrl;}}>Get a Quote</button>
       </div>
     </div>
@@ -1650,6 +1650,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
 </script>
 </body>
 </html>
+
 
 
 
