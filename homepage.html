@@ -30,7 +30,7 @@
   <style>
     /* ── RESET & BASE ── */
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    html{overflow-x:hidden;}
+    html{overflow-x:hidden;overflow-y:hidden;}
     body{font-family:'Inter',sans-serif;background:#0A0A0A;color:#fff;overflow-x:hidden;}
     h1,h2,h3{font-family:'Montserrat',sans-serif;text-wrap:balance;}
     p{text-wrap:pretty;}
@@ -635,6 +635,16 @@
 </main>
 
 <script>
+  /* Height reporting for Wix iframe auto-resize */
+  function reportHeight(){
+    var h=Math.max(document.body.scrollHeight,document.body.offsetHeight,document.documentElement.scrollHeight,document.documentElement.offsetHeight);
+    window.parent.postMessage(JSON.stringify({height:h}),'*');
+  }
+  document.addEventListener('DOMContentLoaded',reportHeight);
+  window.addEventListener('load',function(){[0,200,500,1000,2000,3500].forEach(function(t){setTimeout(reportHeight,t);});});
+  window.addEventListener('resize',reportHeight);
+  if(window.ResizeObserver){new ResizeObserver(reportHeight).observe(document.body);}
+
   /* FAQ toggle — display:none/block */
   document.querySelectorAll('.faq-q').forEach(function(btn){
     btn.addEventListener('click',function(){
@@ -649,6 +659,8 @@
         item.querySelector('.faq-a').style.display='block';
         item.classList.add('open');
         btn.setAttribute('aria-expanded','true');
+        reportHeight();
+        setTimeout(reportHeight,50);
       }
     });
   });
