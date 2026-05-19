@@ -411,6 +411,7 @@
       .sn-logo-3js img{height:42px;}
       .sn-logo-rlsh img{height:50px;}
       .sn-btn-red,.sn-btn-blue{font-size:10px;padding:11px 14px;}
+      .sn-btn-blue{display:none;}
     }
     @media(max-width:430px){
       .sn-btns{gap:8px;}
