@@ -128,99 +128,6 @@
     .btn-glass:hover{background:rgba(255,255,255,.14);}
     .btn-white svg,.btn-glass svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;}
 
-    /* ══════════════════════════════════════
-       ⚡ OVERDRIVE — CINEMATIC HERO REVEAL
-       ══════════════════════════════════════ */
-
-    /* Keyframes */
-    @keyframes heroSweep {
-      from { clip-path: inset(0 100% 0 0); }
-      to   { clip-path: inset(0 0% 0 0); }
-    }
-    @keyframes accentDraw {
-      from { transform: scaleY(0); transform-origin: top center; }
-      to   { transform: scaleY(1); transform-origin: top center; }
-    }
-    @keyframes ruleDraw {
-      from { transform: scaleX(0); transform-origin: left center; }
-      to   { transform: scaleX(1); transform-origin: left center; }
-    }
-    @keyframes wordSlam {
-      from { opacity: 0; transform: translateY(32px) skewX(-4deg); }
-      65%  { opacity: 1; transform: translateY(-4px) skewX(0deg); }
-      to   { opacity: 1; transform: translateY(0) skewX(0deg); }
-    }
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(18px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Hero background — hard clip-path wipe, left to right */
-    .hero-bg {
-      animation: heroSweep 0.88s cubic-bezier(0.77, 0, 0.18, 1) 0.08s both;
-    }
-
-    /* Red accent bar draws downward */
-    .hero-accent {
-      animation: accentDraw 0.55s cubic-bezier(0.77, 0, 0.18, 1) 0.5s both;
-    }
-
-    /* Eyebrow */
-    .hero-eyebrow {
-      animation: fadeUp 0.45s cubic-bezier(0.22, 1, 0.36, 1) 0.9s both;
-    }
-
-    /* H1 words — inline-block so transform works per word */
-    .hero-word {
-      display: inline-block;
-      animation: wordSlam 0.48s cubic-bezier(0.22, 1, 0.36, 1) both;
-      will-change: transform, opacity;
-    }
-    .hw-1 { animation-delay: 1.0s; }
-    .hw-2 { animation-delay: 1.12s; }
-    .hw-3 { animation-delay: 1.24s; }
-    .hw-4 { animation-delay: 1.36s; }
-
-    /* Rule draws left to right */
-    .hero-rule {
-      animation: ruleDraw 0.52s cubic-bezier(0.77, 0, 0.18, 1) 1.5s both;
-    }
-
-    /* Subtitle and CTAs */
-    .hero-sub {
-      animation: fadeUp 0.55s cubic-bezier(0.22, 1, 0.36, 1) 1.65s both;
-    }
-    .hero-ctas {
-      animation: fadeUp 0.55s cubic-bezier(0.22, 1, 0.36, 1) 1.82s both;
-    }
-
-    /* Scroll-reveal targets (set by JS) */
-    .sr-hide {
-      opacity: 0;
-      transform: translateY(22px);
-      transition: opacity 0.55s ease-out, transform 0.58s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-    .sr-show {
-      opacity: 1;
-      transform: none;
-    }
-
-    /* Reduced motion — skip all animation, reveal everything instantly */
-    @media (prefers-reduced-motion: reduce) {
-      .hero-bg, .hero-accent, .hero-eyebrow,
-      .hero-word, .hero-rule, .hero-sub, .hero-ctas {
-        animation: none !important;
-        opacity: 1 !important;
-        transform: none !important;
-        clip-path: none !important;
-      }
-      .sr-hide {
-        opacity: 1 !important;
-        transform: none !important;
-        transition: none !important;
-      }
-    }
-
     /* ── MOBILE ── */
     @media(max-width:767px){
       .hero{min-height:320px;}
@@ -264,7 +171,7 @@
   <div class="hero-accent"></div>
   <div class="hero-content">
     <span class="hero-eyebrow">3J's Auto Body · Signal Hill, CA · Since 1991</span>
-    <h1><span class="hero-word hw-1">Truck</span> <em><span class="hero-word hw-2">Accessories.</span></em><br><span class="hero-word hw-3">Installed</span> <span class="hero-word hw-4">Right.</span></h1>
+    <h1>Truck <em>Accessories.</em><br>Installed Right.</h1>
     <div class="hero-rule"></div>
     <p class="hero-sub">Every accessory we sell, we install — by trained techs using proper hardware and manufacturer specs. Browse every category below.</p>
     <div class="hero-ctas">
@@ -468,39 +375,6 @@
   window.addEventListener('load',function(){[0,200,500,1000,2000].forEach(function(t){setTimeout(reportHeight,t);});});
   window.addEventListener('resize',reportHeight);
   if(window.ResizeObserver){new ResizeObserver(reportHeight).observe(document.body);}
-
-  /* ⚡ OVERDRIVE — Scroll reveals */
-  (function(){
-    var noMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if(noMotion) return;
-
-    var groups = [
-      { sel: '.stat',         delay: 80  },
-      { sel: '.cat-card',     delay: 90  },
-      { sel: '.why-card',     delay: 100 },
-      { sel: '.section-eyebrow,.section-title,.section-sub', delay: 0 },
-      { sel: '.faq-item',     delay: 60  },
-      { sel: '.cta-band-inner', delay: 0 },
-    ];
-
-    var observer = new IntersectionObserver(function(entries){
-      entries.forEach(function(entry){
-        if(entry.isIntersecting){
-          entry.target.classList.add('sr-show');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
-
-    groups.forEach(function(g){
-      var els = document.querySelectorAll(g.sel);
-      els.forEach(function(el, i){
-        el.classList.add('sr-hide');
-        if(g.delay) el.style.transitionDelay = (i * g.delay) + 'ms';
-        observer.observe(el);
-      });
-    });
-  })();
 
   function faqClose(item){item.querySelector('.faq-a').style.display='none';item.classList.remove('open');item.querySelector('.faq-q').setAttribute('aria-expanded','false');}
   function faqOpen(item){item.querySelector('.faq-a').style.display='block';item.classList.add('open');item.querySelector('.faq-q').setAttribute('aria-expanded','true');reportHeight();setTimeout(reportHeight,50);}
