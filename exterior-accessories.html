@@ -78,8 +78,7 @@
     /* Category grid — 3 cols desktop, 2 mobile */
     .cat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;}
     .cat-card{position:relative;aspect-ratio:4/3;overflow:hidden;display:block;text-decoration:none;}
-    .cat-card-wide{grid-column:span 2;}
-    .cat-card-tall{aspect-ratio:3/4;}
+    .cat-card-full{grid-column:span 3;aspect-ratio:21/9;}
     .cat-card-bg{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform .55s ease;}
     .cat-card:hover .cat-card-bg{transform:scale(1.04);}
     .cat-card-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.85) 0%,rgba(0,0,0,.45) 55%,rgba(0,0,0,.1) 100%);}
@@ -143,7 +142,7 @@
       .section-title{font-size:22px;letter-spacing:-0.3px;}
       .section-sub{font-size:15px;margin-bottom:28px;}
       .cat-grid{grid-template-columns:1fr 1fr;gap:2px;}
-      .cat-card-wide{grid-column:span 2;}
+      .cat-card-full{grid-column:span 2;aspect-ratio:16/7;}
       .cat-card{aspect-ratio:3/2;}
       .cat-card-name{font-size:15px;}
       .cat-card-body{padding:14px 16px;}
@@ -156,7 +155,7 @@
     }
     @media(max-width:480px){
       .cat-grid{grid-template-columns:1fr;}
-      .cat-card-wide{grid-column:span 1;}
+      .cat-card-full{grid-column:span 1;aspect-ratio:4/3;}
       .cat-card{aspect-ratio:4/3;}
     }
   </style>
@@ -208,8 +207,8 @@
   <div style="max-width:1100px;margin:0 auto;padding:0 20px;">
     <div class="cat-grid">
 
-      <!-- TONNEAU COVERS — wide -->
-      <a href="https://www.3jsautobody.com/exterior-accessories/tonneau-covers" target="_top" class="cat-card cat-card-wide">
+      <!-- ROW 1: Tonneau · BAKFlip · Lighting -->
+      <a href="https://www.3jsautobody.com/exterior-accessories/tonneau-covers" target="_top" class="cat-card">
         <div class="cat-card-bg" style="background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/Tonneau-covers-page-hero-image.webp');background-position:center 55%;"></div>
         <div class="cat-card-overlay"></div>
         <div class="cat-card-body">
@@ -220,7 +219,6 @@
         </div>
       </a>
 
-      <!-- BAKFLIP MX4 -->
       <a href="https://www.3jsautobody.com/exterior-accessories/bakflip-mx4-tonneau-cover" target="_top" class="cat-card">
         <div class="cat-card-bg" style="background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/bak-bakflip-mx4-2016-ford-f150-blue-beach-lifestyle-01.webp');background-position:center;"></div>
         <div class="cat-card-overlay"></div>
@@ -232,7 +230,18 @@
         </div>
       </a>
 
-      <!-- RUNNING BOARDS -->
+      <a href="https://www.3jsautobody.com/exterior-accessories/premium-led-offroad-lighting" target="_top" class="cat-card">
+        <div class="cat-card-bg" style="background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/offroad-lighting-hero.webp');background-position:center 60%;"></div>
+        <div class="cat-card-overlay"></div>
+        <div class="cat-card-body">
+          <span class="cat-card-label">LED Upgrades</span>
+          <div class="cat-card-name">Lighting</div>
+          <div class="cat-card-tagline">Morimoto · Baja Designs · Rigid Industries · Spyder Auto — headlights, tail lights, light bars &amp; fog lights</div>
+          <span class="cat-card-cta">Shop Now <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></span>
+        </div>
+      </a>
+
+      <!-- ROW 2: Running Boards · Floor Liners · Headache Racks -->
       <a href="https://www.3jsautobody.com/exterior-accessories/steps-running-boards" target="_top" class="cat-card">
         <div class="cat-card-bg" style="background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/go-rhino/rb-running-board-red-truck.webp');background-position:center;"></div>
         <div class="cat-card-overlay"></div>
@@ -244,7 +253,6 @@
         </div>
       </a>
 
-      <!-- FLOOR LINERS -->
       <a href="https://www.3jsautobody.com/exterior-accessories/floor-liners-mats" target="_top" class="cat-card">
         <div class="cat-card-bg" style="background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/FLOOR%20LINERS%20IMAGE.webp');background-position:center;"></div>
         <div class="cat-card-overlay"></div>
@@ -256,19 +264,6 @@
         </div>
       </a>
 
-      <!-- LIGHTING — wide -->
-      <a href="https://www.3jsautobody.com/exterior-accessories/premium-led-offroad-lighting" target="_top" class="cat-card cat-card-wide">
-        <div class="cat-card-bg" style="background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/offroad-lighting-hero.webp');background-position:center 60%;"></div>
-        <div class="cat-card-overlay"></div>
-        <div class="cat-card-body">
-          <span class="cat-card-label">LED Upgrades</span>
-          <div class="cat-card-name">Lighting</div>
-          <div class="cat-card-tagline">Morimoto · Baja Designs · Rigid Industries · Spyder Auto — headlights, tail lights, light bars &amp; fog lights</div>
-          <span class="cat-card-cta">Shop Now <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></span>
-        </div>
-      </a>
-
-      <!-- HEADACHE RACKS -->
       <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/headache-racks-page.html" target="_top" class="cat-card">
         <div class="cat-card-bg" style="background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/Elevate%20Base%20Truck%20Rack.webp');background-position:center;"></div>
         <div class="cat-card-overlay"></div>
@@ -280,8 +275,8 @@
         </div>
       </a>
 
-      <!-- TOWING -->
-      <a href="https://www.3jsautobody.com/exterior-accessories/towing" target="_top" class="cat-card">
+      <!-- ROW 3: Towing — full width -->
+      <a href="https://www.3jsautobody.com/exterior-accessories/towing" target="_top" class="cat-card cat-card-full">
         <div class="cat-card-bg" style="background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/CURT%20Reb%20Hitch%20Email.webp');background-position:center;"></div>
         <div class="cat-card-overlay"></div>
         <div class="cat-card-body">
