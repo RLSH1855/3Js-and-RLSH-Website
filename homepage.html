@@ -62,33 +62,52 @@
     /* ════════════════════════════
        1. HERO
     ════════════════════════════ */
-    .hero{
-      position:relative;min-height:auto;
-      display:flex;align-items:center;justify-content:center;
-      text-align:center;padding:56px 20px;
-      overflow:hidden;background:var(--black);
-    }
-    .hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,0.03) 1px,transparent 1px);background-size:28px 28px;pointer-events:none;z-index:0;}
-    .hero::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(139,0,0,0.18) 0%,transparent 60%);pointer-events:none;z-index:0;}
-    .hero-stripe{position:absolute;top:0;left:0;width:100%;height:100%;background-image:repeating-linear-gradient(-55deg,rgba(139,0,0,0.025) 0px,rgba(139,0,0,0.025) 1px,transparent 1px,transparent 40px);pointer-events:none;z-index:0;}
-    .hero-content{position:relative;z-index:1;max-width:860px;margin:0 auto;display:flex;flex-direction:column;align-items:center;}
-    .est-badge{display:inline-flex;align-items:center;gap:10px;background:rgba(139,0,0,0.15);border:1px solid rgba(139,0,0,0.35);padding:7px 18px;margin-bottom:36px;}
-    .est-badge-dot{width:7px;height:7px;background:#8B0000;flex-shrink:0;}
-    .est-badge span{font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.7);}
-    .hero-headline{font-size:clamp(36px,7vw,82px);font-weight:900;letter-spacing:-2.5px;line-height:.95;text-transform:uppercase;margin-bottom:10px;}
+    .hero{position:relative;min-height:720px;display:flex;align-items:center;justify-content:flex-start;overflow:hidden;background:#0a0a0a;}
+    .hero-bg{position:absolute;inset:0;background-image:url('https://raw.githubusercontent.com/RLSH1855/3Js-and-RLSH-Website/main/CHEVY%20BOAT%20LAUNCH%20RAMP_TRANSPARENT_BG.png');background-size:cover;background-position:center 40%;background-repeat:no-repeat;z-index:0;filter:brightness(1.18) contrast(1.08);}
+    .hero-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,0.82) 0%,rgba(0,0,0,0.65) 45%,rgba(0,0,0,0.35) 75%,rgba(0,0,0,0.20) 100%);z-index:1;}
+    .hero-vignette{position:absolute;bottom:0;left:0;right:0;height:280px;background:linear-gradient(to top,rgba(0,0,0,1) 0%,rgba(0,0,0,0.85) 20%,rgba(0,0,0,0.4) 55%,transparent 100%);z-index:2;pointer-events:none;}
+    .hero-accent-bar{position:absolute;left:0;top:0;bottom:0;width:5px;background:#8B0000;z-index:3;}
+    .hero-content{position:relative;z-index:2;padding:80px 72px 80px 80px;max-width:680px;color:#fff;}
+    .hero-eyebrow{position:absolute;top:40px;left:80px;display:flex;align-items:center;gap:12px;z-index:4;}
+    .eyebrow-line{width:36px;height:2px;background:#8B0000;flex-shrink:0;}
+    .eyebrow-text{font-size:10px;font-weight:800;letter-spacing:3.5px;text-transform:uppercase;color:rgba(255,255,255,0.70);}
+    .hero-headline{font-size:clamp(44px,6.5vw,90px);font-weight:900;letter-spacing:-3px;line-height:0.92;text-transform:uppercase;margin-bottom:0;color:#fff;}
     .hero-headline .line-red{color:#8B0000;}
-    .hero-headline .line-dim{color:rgba(255,255,255,0.85);}
-    .hero-rule{width:56px;height:3px;background:#8B0000;margin:28px auto;}
-    .hero-body{font-family:'Inter',sans-serif;font-size:clamp(15px,1.8vw,18px);font-weight:400;color:rgba(255,255,255,0.7);line-height:1.85;max-width:640px;margin:0 auto 24px;}
-    .hero-body strong{color:#fff;font-weight:700;}
-    .hero-body .promise{display:block;font-size:clamp(15px,2vw,20px);font-weight:800;color:#fff;margin:16px 0 8px;}
-    .hero-body .since{display:block;font-size:clamp(11px,1.2vw,13px);font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-top:14px;}
-    .hero-ctas{display:flex;flex-direction:column;align-items:stretch;gap:12px;width:100%;}
-    .hero-bottom-bar{position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(to right,transparent,#8B0000 25%,#8B0000 75%,transparent);}
-    .scroll-hint{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;opacity:0.3;z-index:1;}
-    .scroll-hint span{font-size:9px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;}
-    .scroll-arrow{width:1px;height:32px;background:linear-gradient(to bottom,rgba(255,255,255,0),rgba(255,255,255,0.8));animation:drop 1.6s infinite;}
-    @keyframes drop{0%,100%{transform:translateY(-4px);opacity:0;}50%{transform:translateY(4px);opacity:1;}}
+    .hero-rule{width:52px;height:4px;background:#8B0000;margin:32px 0;}
+    .hero-body{font-family:'Inter',sans-serif;font-size:clamp(15px,1.6vw,17px);font-weight:400;color:rgba(255,255,255,0.82);line-height:1.85;max-width:520px;}
+    .hero-body .promise{display:block;font-size:clamp(15px,1.9vw,19px);font-weight:800;color:#fff;margin:16px 0 8px;letter-spacing:2px;text-transform:uppercase;text-align:center;}
+    .hero-body .since{display:block;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-top:18px;white-space:nowrap;}
+    .hero-ctas{display:flex;flex-wrap:wrap;gap:14px;margin-top:40px;}
+    .hero-stats{display:flex;gap:36px;margin-top:52px;padding-top:32px;border-top:1px solid rgba(255,255,255,0.12);}
+    .hero-stats .stat{display:flex;flex-direction:column;gap:3px;}
+    .hero-stats .stat-num{font-size:clamp(20px,2.5vw,28px);font-weight:900;color:#fff;letter-spacing:-1px;line-height:1;}
+    .hero-stats .stat-num span{color:#8B0000;}
+    .hero-stats .stat-label{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.45);}
+    .hero-bottom-bar{position:absolute;bottom:0;left:0;right:0;height:4px;background:linear-gradient(to right,#8B0000,#8B0000 60%,transparent);z-index:3;}
+    .river-rat{position:absolute;bottom:22px;left:80px;font-size:9px;font-weight:600;color:rgba(255,255,255,0.22);letter-spacing:0.5px;font-style:italic;z-index:3;}
+    .scroll-hint{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;opacity:0.80;z-index:3;animation:bounce 1.8s ease-in-out infinite;}
+    .scroll-hint span{font-size:8px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:#fff;}
+    .scroll-hint svg{width:22px;height:22px;stroke:#fff;stroke-width:2.5;}
+    @keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(7px);}}
+    @media(max-width:900px){
+      .hero-content{padding:72px 48px;}
+      .hero-overlay{background:linear-gradient(to right,rgba(0,0,0,0.85) 0%,rgba(0,0,0,0.70) 60%,rgba(0,0,0,0.50) 100%);}
+      .hero-stats{gap:24px;}
+    }
+    @media(max-width:640px){
+      .hero{min-height:700px;align-items:flex-start;}
+      .hero-bg{background-size:125%;background-position:center top;}
+      .hero-content{padding:230px 28px 48px 28px;max-width:100%;}
+      .hero-eyebrow{top:18px;left:16px;right:16px;flex-direction:column;align-items:center;gap:8px;justify-content:center;}
+      .eyebrow-line{width:28px;}
+      .eyebrow-text{text-align:center;white-space:normal;font-size:8px;letter-spacing:2px;}
+      .hero-overlay{background:rgba(0,0,0,0.62);}
+      .hero-ctas{flex-direction:column;}
+      .hero-stats{gap:20px;flex-wrap:wrap;}
+      .scroll-hint{display:none;}
+      .river-rat{left:20px;font-size:8px;}
+    }
+    @media(prefers-reduced-motion:reduce){.scroll-hint{animation:none;}}
 
     /* ════════════════════════════
        2. PHOTO STRIP
@@ -319,25 +338,30 @@
 <main id="main-content">
 
 <!-- ═══════════════════════════════════
-     1. HERO
+     1. HERO — Red Truck at Boat Launch Ramp
 ═══════════════════════════════════ -->
 <section class="hero">
-  <div class="hero-stripe"></div>
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-vignette"></div>
+  <div class="hero-accent-bar"></div>
+
+  <div class="hero-eyebrow">
+    <div class="eyebrow-line"></div>
+    <span class="eyebrow-text">Signal Hill, CA · Est. 1991 · Family Owned</span>
+  </div>
+
   <div class="hero-content">
-    <div class="est-badge">
-      <div class="est-badge-dot"></div>
-      <span>3J's Auto Body &amp; Paint · Signal Hill, CA</span>
-    </div>
     <h1 class="hero-headline">
-      <span class="line-dim">30+ Years.</span><br>
-      <span class="line-dim">One Location.</span><br>
+      30+ Years.<br>
+      One Location.<br>
       <span class="line-red">One Family.</span>
     </h1>
     <div class="hero-rule"></div>
     <div class="hero-body">
       No corporate. No runaround. No ticket numbers.<br>
       Just James, his crew, and the promise that
-      <span class="promise">we'll know your name before we touch your car.</span>
+      <span class="promise">"We'll know your name before we touch your car."</span>
       <span class="since">Serving Signal Hill since 1991 — and we're not going anywhere.</span>
     </div>
     <div class="hero-ctas">
@@ -350,11 +374,31 @@
         Get a Free Quote
       </a>
     </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">30<span>+</span></div>
+        <div class="stat-label">Years in Business</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">2<span>×</span></div>
+        <div class="stat-label">Readers' Choice Award</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">5<span>★</span></div>
+        <div class="stat-label">Yelp Rating</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">1</div>
+        <div class="stat-label">Location · Always</div>
+      </div>
+    </div>
   </div>
+
+  <p class="river-rat">* Yes, that is a boat launch ramp. Some of us have our priorities straight.</p>
   <div class="hero-bottom-bar"></div>
   <div class="scroll-hint">
-    <span>Explore</span>
-    <div class="scroll-arrow"></div>
+    <span>Scroll</span>
+    <svg fill="none" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
   </div>
 </section>
 
