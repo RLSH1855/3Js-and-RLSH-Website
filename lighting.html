@@ -55,7 +55,7 @@
 
     /* ── HERO ── */
     .hero{
-      position:relative;min-height:420px;
+      position:relative;min-height:320px;
       display:flex;align-items:flex-start;
       overflow:hidden;background:var(--black);
     }
@@ -82,7 +82,7 @@
 
     /* ── STATS STRIP ── */
     .stats-strip{background:var(--red);padding:24px 20px;}
-    .stats-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);}
+    .stats-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
     .stat{text-align:center;padding:0 12px;border-right:1px solid rgba(255,255,255,.2);}
     .stat:last-child{border-right:none;}
     .stat-num{font-family:'Montserrat',sans-serif;font-size:clamp(20px,3vw,32px);font-weight:900;color:#fff;line-height:1;letter-spacing:-1px;}
@@ -106,7 +106,7 @@
 
     /* ── CATEGORY GRID ── */
     .cat-section{background:#fff;padding:56px 0;}
-    .cat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:32px;}
+    .cat-grid{display:grid;grid-template-columns:1fr;gap:2px;margin-top:24px;}
     .cat-card{position:relative;aspect-ratio:4/3;overflow:hidden;text-decoration:none;display:block;}
     .cat-card-wide{grid-column:span 2;}
     .cat-card-bg{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform .5s ease;}
@@ -120,7 +120,7 @@
 
     /* ── PRODUCT GRID ── */
     .products-section{background:var(--surface);padding:56px 0;}
-    .product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:32px;}
+    .product-grid{display:grid;grid-template-columns:1fr;gap:14px;margin-top:24px;}
     .product-card{background:#fff;border:1px solid var(--border);display:flex;flex-direction:column;text-decoration:none;color:inherit;transition:border-color .15s;}
     .product-card:hover{border-color:var(--red);}
     .product-img{aspect-ratio:4/3;width:100%;object-fit:contain;background:#f0f0f0;display:block;padding:16px;}
@@ -138,7 +138,7 @@
 
     /* ── BRANDS FEATURE ── */
     .brands-section{background:var(--navy);padding:56px 0;}
-    .brands-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;margin-top:32px;}
+    .brands-grid{display:grid;grid-template-columns:1fr;gap:2px;margin-top:24px;}
     .brand-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);padding:28px 24px;transition:border-color .15s,background .15s;}
     .brand-card:hover{border-color:rgba(139,0,0,.4);background:rgba(139,0,0,.05);}
     .brand-card-name{font-family:'Montserrat',sans-serif;font-size:20px;font-weight:900;text-transform:uppercase;letter-spacing:-.5px;color:#fff;margin-bottom:8px;}
@@ -147,7 +147,7 @@
 
     /* ── WHY INSTALL ── */
     .why-section{background:#fff;padding:56px 0;}
-    .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:32px;}
+    .why-grid{display:grid;grid-template-columns:1fr;gap:14px;margin-top:24px;}
     .why-card{background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--red);padding:24px 20px;}
     .why-card h3{font-family:'Montserrat',sans-serif;font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;color:var(--navy);margin-bottom:8px;}
     .why-card p{font-size:13px;color:var(--fg-muted);line-height:1.65;}
@@ -180,30 +180,32 @@
     .btn-glass-white:hover{background:rgba(255,255,255,.14);}
     .btn-white svg,.btn-glass-white svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;}
 
-    /* ── MOBILE ── */
-    @media(max-width:767px){
-      .hero{min-height:320px;}
-      .hero-content{padding:80px 20px 40px;max-width:100%;}
-      .hero h1{font-size:28px;letter-spacing:-1px;line-height:1.1;}
-      .hero-sub{font-size:15px;}
-      .hero-ctas{flex-direction:column;}
-      .btn-red,.btn-ghost{width:100%;justify-content:center;}
-      .stats-inner{grid-template-columns:repeat(2,1fr);gap:16px;}
-      .stat{border-right:none;padding:0;}
+    /* ── RESPONSIVE — mobile-first, scale up ── */
+    .hero-content{padding:80px 20px 40px;max-width:100%;}
+    .hero-ctas{display:flex;gap:12px;flex-wrap:wrap;flex-direction:column;align-items:stretch;}
+    .stat{border-right:none;padding:0;}
+    .product-actions{flex-direction:column;}
+    .cta-btns{flex-direction:column;align-items:center;}
+    .btn-white,.btn-glass-white{width:100%;max-width:320px;justify-content:center;}
+    @media(min-width:481px){
       .cat-grid{grid-template-columns:1fr 1fr;}
       .cat-card-wide{grid-column:span 2;}
-      .product-grid{grid-template-columns:1fr;}
-      .brands-grid{grid-template-columns:1fr;}
-      .why-grid{grid-template-columns:1fr;}
-      .cta-btns{flex-direction:column;align-items:center;}
-      .btn-white,.btn-glass-white{width:100%;max-width:320px;justify-content:center;}
-      .brands-logos{gap:16px;}
-      .section-wrap{padding:0 20px;}
     }
-    @media(max-width:480px){
-      .cat-grid{grid-template-columns:1fr;}
+    @media(min-width:768px){
+      .hero{min-height:420px;}
+      .hero-content{padding:72px 20px 64px;max-width:680px;}
+      .hero-ctas{flex-direction:row;align-items:flex-start;}
+      .stats-inner{grid-template-columns:repeat(4,1fr);gap:0;}
+      .stat{border-right:1px solid rgba(255,255,255,.2);padding:0 12px;}
+      .stat:last-child{border-right:none;}
+      .cat-grid{grid-template-columns:repeat(3,1fr);margin-top:32px;}
       .cat-card-wide{grid-column:span 1;}
-      .product-actions{flex-direction:column;}
+      .product-grid{grid-template-columns:repeat(3,1fr);gap:2px;margin-top:32px;}
+      .brands-grid{grid-template-columns:repeat(2,1fr);margin-top:32px;}
+      .why-grid{grid-template-columns:repeat(3,1fr);gap:2px;margin-top:32px;}
+      .cta-btns{flex-direction:row;align-items:initial;}
+      .btn-white,.btn-glass-white{width:auto;max-width:none;}
+      .product-actions{flex-direction:row;}
     }
   </style>
 </head>

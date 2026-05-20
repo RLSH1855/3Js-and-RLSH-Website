@@ -108,7 +108,7 @@
       flex:1;
       padding:13px 16px;
       border:2px solid #e8e8e8;border-radius:0;
-      font-family:'Inter',sans-serif;font-size:14px;font-weight:600;
+      font-family:'Inter',sans-serif;font-size:16px;font-weight:600;
       color:#1a1a1a;letter-spacing:1px;text-transform:uppercase;
       transition:border-color 0.2s;
     }
@@ -132,8 +132,8 @@
     .vin-status.success{color:#8B0000;}
 
     /* YMM dropdowns */
-    .ymm-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
-    @media(max-width:480px){.ymm-grid{grid-template-columns:1fr;}}
+    .ymm-grid{display:grid;grid-template-columns:1fr;gap:14px;}
+    @media(min-width:481px){.ymm-grid{grid-template-columns:1fr 1fr;}}
 
     /* Custom year picker */
     .year-picker{position:relative;}
@@ -178,7 +178,7 @@
     .field select{
       width:100%;padding:12px 14px;
       border:2px solid #e8e8e8;border-radius:0;
-      font-family:'Inter',sans-serif;font-size:14px;font-weight:600;color:#1a1a1a;
+      font-family:'Inter',sans-serif;font-size:16px;font-weight:600;color:#1a1a1a;
       background:#fff;appearance:none;
       background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238B0000' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
       background-repeat:no-repeat;background-position:right 12px center;
@@ -206,8 +206,8 @@
     .confirm-body{padding:20px;}
     .confirm-vehicle{font-size:17px;font-weight:800;color:#1a1a1a;margin-bottom:16px;}
 
-    .confirm-extras{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px;}
-    @media(max-width:480px){.confirm-extras{grid-template-columns:1fr;}}
+    .confirm-extras{display:grid;grid-template-columns:1fr;gap:14px;margin-bottom:20px;}
+    @media(min-width:481px){.confirm-extras{grid-template-columns:1fr 1fr;}}
 
     /* Color picker */
     .color-label{font-size:12px;font-weight:700;letter-spacing:0.5px;color:#1a1a1a;margin-bottom:8px;}
