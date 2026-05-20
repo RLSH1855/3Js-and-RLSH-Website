@@ -9,6 +9,7 @@
   ════════════════════════════════ */
   var css = `
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap');
+    :root{--sn-red:#8B0000;--sn-red-dark:#6e0000;}
 
     .sn-header{
       font-family:'Montserrat',Arial,sans-serif;
@@ -204,7 +205,7 @@
       align-items:center;text-align:center;
       text-decoration:none;
       padding:14px 8px;
-      border-radius:8px;
+      border-radius:0;
       border:1.5px solid transparent;
       transition:border-color 0.2s,background 0.2s;
     }
@@ -285,7 +286,7 @@
       font-size:10px;font-weight:700;
       letter-spacing:1px;text-transform:uppercase;
       text-decoration:none;
-      border-radius:4px;
+      border-radius:0;
       transition:background 0.2s,transform 0.15s;
       white-space:nowrap;
     }
@@ -442,6 +443,11 @@
     }
     .sn-mob-garage-btn svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;}
 
+    /* ── Garage saved-state indicator ── */
+    .sn-garage-btn.sn-garage-saved{background:rgba(139,0,0,0.22);border-color:rgba(139,0,0,0.55);}
+    .sn-garage-btn.sn-garage-saved::after{content:'';position:absolute;top:5px;right:5px;width:7px;height:7px;background:#8B0000;border:1.5px solid rgba(255,255,255,0.85);}
+    .sn-mob-garage-btn.sn-garage-saved{background:rgba(139,0,0,0.08);}
+
     /* ════════════════════════════════
        FOOTER
     ════════════════════════════════ */
@@ -528,7 +534,7 @@
             </a>
           </div>
           <div class="sn-btns">
-            <button class="sn-garage-btn" id="sn-garage-btn" title="My Garage">
+            <button class="sn-garage-btn" id="sn-garage-btn" title="My Garage" aria-label="My Garage">
               <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
             </button>
             <a href="https://www.3jsautobody.com/rhino-lining-quote" class="sn-btn-red">Bed-Liner Quote</a>
@@ -577,12 +583,8 @@
                 <span>Floor Liners</span>
               </a>
               <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/lighting.html" class="sn-mega-item">
-                <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/MEGA%20MENU%20IMAGES/TOWING.webp" alt="Lighting">
+                <div style="width:80px;height:60px;display:flex;align-items:center;justify-content:center;margin-bottom:10px;"><svg viewBox="0 0 40 36" width="64" height="58" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="0" width="40" height="12" fill="#8B0000"/><circle cx="8" cy="6" r="3.5" fill="#FFD700"/><circle cx="20" cy="6" r="3.5" fill="#FFD700"/><circle cx="32" cy="6" r="3.5" fill="#FFD700"/><rect x="0" y="14" width="40" height="4" fill="#8B0000" opacity="0.35"/><path d="M18 20L10 36h8l-2 0 6-12 6 12h-2l8 0-8-16z" fill="#8B0000" opacity="0.5"/></svg></div>
                 <span>Lighting</span>
-              </a>
-              <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/towing-hitches.html" class="sn-mega-item">
-                <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/MEGA%20MENU%20IMAGES/TOWING.webp" alt="Towing &amp; Hitches">
-                <span>Towing &amp; Hitches</span>
               </a>
               <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/headache-racks.html" class="sn-mega-item">
                 <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/MEGA%20MENU%20IMAGES/RUNNING%20BOARDS%20-%20SIDE%20STEPS.webp" alt="Headache Racks">
@@ -769,7 +771,7 @@
       }
       .sn-phone-overlay.sn-popen{display:flex;}
       .sn-phone-box{
-        background:#fff;border-radius:16px;
+        background:#fff;border-radius:0;
         padding:44px 52px;text-align:center;
         box-shadow:0 24px 64px rgba(0,0,0,0.28);
         font-family:'Montserrat',Arial,sans-serif;
@@ -790,7 +792,7 @@
       }
       .sn-phone-close{
         background:#8B0000;color:#fff;border:none;
-        padding:13px 36px;border-radius:8px;
+        padding:13px 36px;border-radius:0;
         font-family:'Montserrat',Arial,sans-serif;
         font-size:10px;font-weight:700;letter-spacing:1.5px;
         text-transform:uppercase;cursor:pointer;
@@ -883,5 +885,30 @@
     loadWidget();
   })();
 
+  /* ════════════════════════════════
+     GARAGE STATE INDICATOR
+  ════════════════════════════════ */
+  (function(){
+    function snSyncGarage(){
+      var saved=!!localStorage.getItem('garage_vehicle');
+      var btn=document.getElementById('sn-garage-btn');
+      var mob=document.getElementById('sn-mob-garage-btn');
+      if(btn){
+        btn.classList.toggle('sn-garage-saved',saved);
+        var v=saved?JSON.parse(localStorage.getItem('garage_vehicle')||'null'):null;
+        btn.setAttribute('aria-label',v?(v.year+' '+v.make+' '+v.model):'My Garage');
+      }
+      if(mob) mob.classList.toggle('sn-garage-saved',saved);
+    }
+    snSyncGarage();
+    window.addEventListener('storage',function(e){if(e.key==='garage_vehicle')snSyncGarage();});
+    window.addEventListener('garageUpdated',snSyncGarage);
+    window.addEventListener('message',function(e){
+      try{
+        var d=typeof e.data==='string'?JSON.parse(e.data):e.data;
+        if(d&&(d.type==='garage_saved'||d.type==='garage_clear'))snSyncGarage();
+      }catch(ex){}
+    });
+  })();
 
 })();

@@ -299,7 +299,6 @@
       background:#fff;color:#8B0000;border:2px solid #8B0000;
     }
     .btn-clear:hover{background:#8B0000;color:#fff;}
-    *:focus{outline:none;}
     *:focus-visible{outline:2px solid #8B0000;outline-offset:3px;}
   </style>
 </head>
@@ -847,7 +846,7 @@ function saveVehicle(){
   localStorage.setItem('garage_vehicle', JSON.stringify(vehicle));
   showSaved(vehicle);
   // Notify parent catalog page so it updates without a refresh
-  try { window.parent.postMessage(JSON.stringify({type:'garage_saved',vehicle:vehicle}), '*'); } catch(e){}
+  try { window.parent.postMessage({type:'garage_saved',vehicle:vehicle}, '*'); } catch(e){}
 }
 
 function showSaved(v){
@@ -867,7 +866,7 @@ function showGarageBar(v){
 
 function clearGarage(){
   localStorage.removeItem('garage_vehicle');
-  try{window.parent.postMessage(JSON.stringify({type:'garage_clear'}),'*');}catch(e){}
+  try{window.parent.postMessage({type:'garage_clear',vehicle:null},'*');}catch(e){}
   resetGarage();
 }
 

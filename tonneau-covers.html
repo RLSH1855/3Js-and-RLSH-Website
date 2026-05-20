@@ -1210,6 +1210,7 @@
 <!-- ══════════════════════════════
      CTA BAND
 ══════════════════════════════ -->
+<div id="tc-garage-badge" style="display:none;background:#8B0000;color:#fff;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:12px 24px;text-align:center;"></div>
 <div class="cta-band">
   <div class="cta-band-inner" data-anim="fade-up">
     <h2>Ready to Protect Your Truck Bed?</h2>
@@ -1222,6 +1223,23 @@
 </div>
 
 <script>
+/* ── My Garage — vehicle fit badge ── */
+(function(){
+  function tcShowBadge(v){
+    var el=document.getElementById('tc-garage-badge');
+    if(!el) return;
+    if(!v){el.style.display='none';return;}
+    el.textContent='✓ Fits Your '+v.year+' '+v.make+' '+v.model+(v.bedSize?' · '+v.bedSize:'');
+    el.style.display='block';
+  }
+  try{var s=localStorage.getItem('garage_vehicle');if(s) tcShowBadge(JSON.parse(s));}catch(e){}
+  window.addEventListener('storage',function(e){
+    if(e.key!=='garage_vehicle') return;
+    try{tcShowBadge(e.newValue?JSON.parse(e.newValue):null);}catch(err){}
+  });
+  window.addEventListener('garageUpdated',function(e){tcShowBadge(e.detail||null);});
+})();
+
 /* ── Scroll animations ── */
 (function(){
   var els = document.querySelectorAll('[data-anim]');
