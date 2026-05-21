@@ -21,7 +21,7 @@
     ':root{--jj-red:#8b0000;--jj-red-hot:#b3000a;--jj-gold:#d9a441;--jj-nav:#0b1220;--jj-panel:#fff;--jj-soft:#f3f4f6;--jj-ink:#0b1220;--jj-mute:#5b6473;--jj-line:rgba(255,255,255,0.08);}',
 
     /* container */
-    '#jj-mega-host{position:fixed;left:0;right:0;z-index:999999;pointer-events:none;}',
+    '#jj-mega-host{position:fixed;left:0;right:0;z-index:999999;pointer-events:none;overflow-x:hidden;}',
 
     /* panel */
     '.jj-mega{background:var(--jj-panel);color:var(--jj-ink);box-shadow:0 8px 32px rgba(0,0,0,.22),0 3px 6px rgba(0,0,0,.14);overflow:hidden;transform-origin:top center;opacity:0;transform:translateY(-12px) scaleY(0.97);transition:opacity .38s cubic-bezier(.22,1,.36,1),transform .44s cubic-bezier(.22,1,.36,1);pointer-events:none;max-height:0;display:none;}',
