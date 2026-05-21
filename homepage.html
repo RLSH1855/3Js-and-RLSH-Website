@@ -811,6 +811,7 @@
   /* Only hide overflow when inside Wix iframe */
   if(window.self !== window.top){
     document.documentElement.style.overflowY = 'hidden';
+    document.body.style.overflowY = 'hidden';
   }
 
   /* Height reporting for Wix iframe auto-resize */
@@ -820,7 +821,20 @@
   }
   document.addEventListener('DOMContentLoaded',reportHeight);
   window.addEventListener('load',function(){[0,200,500,1000,2000,3500].forEach(function(t){setTimeout(reportHeight,t);});});
-  window.addEventListener('resize',reportHeight);
+
+  /* Debounced resize — iOS fires resize before viewport is stable */
+  var _rszTimer;
+  window.addEventListener('resize',function(){
+    clearTimeout(_rszTimer);
+    _rszTimer=setTimeout(reportHeight,200);
+  });
+
+  /* orientationchange — iOS needs extra time to finish reflowing */
+  window.addEventListener('orientationchange',function(){
+    clearTimeout(_rszTimer);
+    [200,500,900,1400,2000].forEach(function(t){setTimeout(reportHeight,t);});
+  });
+
   if(window.ResizeObserver){new ResizeObserver(reportHeight).observe(document.body);}
 
   /* FAQ toggle — display:none/block */

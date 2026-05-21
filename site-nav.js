@@ -898,7 +898,13 @@
         var v=saved?JSON.parse(localStorage.getItem('garage_vehicle')||'null'):null;
         btn.setAttribute('aria-label',v?(v.year+' '+v.make+' '+v.model):'My Garage');
       }
-      if(mob) mob.classList.toggle('sn-garage-saved',saved);
+      if(mob){
+        mob.classList.toggle('sn-garage-saved',saved);
+        var label=v?(v.year+' '+v.make+' '+v.model):'My Garage';
+        // Update visible text node (last child, after the SVG)
+        var nodes=mob.childNodes;
+        for(var i=nodes.length-1;i>=0;i--){if(nodes[i].nodeType===3){nodes[i].textContent='\n          '+label+'\n        ';break;}}
+      }
     }
     snSyncGarage();
     window.addEventListener('storage',function(e){if(e.key==='garage_vehicle')snSyncGarage();});
