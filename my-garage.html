@@ -83,14 +83,14 @@
     .vin-row{display:flex;gap:10px;}
     .vin-input{
       flex:1;
-      padding:13px 16px;
+      padding:12px 14px;
       border:2px solid #e8e8e8;border-radius:0;
-      font-family:'Inter',sans-serif;font-size:16px;font-weight:600;
-      color:#1a1a1a;letter-spacing:1px;text-transform:uppercase;
-      transition:border-color 0.2s;
+      font-family:'Montserrat',sans-serif;font-size:13px;font-weight:700;
+      color:#1a1a1a;letter-spacing:2px;text-transform:uppercase;
+      transition:border-color 0.2s;min-height:44px;
     }
     .vin-input:focus{outline:none;border-color:#8B0000;}
-    .vin-input::placeholder{letter-spacing:0;text-transform:none;font-weight:500;color:#bbb;}
+    .vin-input::placeholder{letter-spacing:1px;text-transform:none;font-weight:500;color:#bbb;}
     .vin-decode-btn{
       display:inline-flex;align-items:center;justify-content:center;gap:8px;
       min-height:44px;padding:0 20px;
@@ -117,7 +117,7 @@
     .year-picker-btn{
       width:100%;padding:12px 14px;
       border:2px solid #e8e8e8;border-radius:0;
-      font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;color:#1a1a1a;
+      font-family:'Montserrat',sans-serif;font-size:13px;font-weight:700;color:#1a1a1a;
       letter-spacing:2px;text-transform:uppercase;text-decoration:none;
       background:#fff;cursor:pointer;text-align:left;
       display:flex;align-items:center;justify-content:space-between;gap:8px;
@@ -149,17 +149,18 @@
     .year-cell.selected{background:#8B0000;color:#fff;}
 
     .field label{
-      display:block;font-size:12px;font-weight:700;letter-spacing:0.5px;
+      display:block;font-size:14px;font-weight:700;letter-spacing:0.5px;
       color:#1a1a1a;margin-bottom:6px;
     }
     .field select{
       width:100%;padding:12px 14px;
       border:2px solid #e8e8e8;border-radius:0;
-      font-family:'Inter',sans-serif;font-size:16px;font-weight:600;color:#1a1a1a;
+      font-family:'Montserrat',sans-serif;font-size:13px;font-weight:700;color:#1a1a1a;
+      letter-spacing:2px;text-transform:uppercase;
       background:#fff;appearance:none;
       background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238B0000' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
       background-repeat:no-repeat;background-position:right 12px center;
-      cursor:pointer;transition:border-color 0.2s;
+      cursor:pointer;transition:border-color 0.2s;min-height:44px;
     }
     .field select:focus{outline:none;border-color:#8B0000;}
     .field select:disabled{color:#bbb;background-color:#fafafa;cursor:not-allowed;}
