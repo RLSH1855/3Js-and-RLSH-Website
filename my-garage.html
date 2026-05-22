@@ -10,6 +10,7 @@
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
     html,body{overflow-x:clip;}
     body{font-family:'Inter',sans-serif;background:#fff;color:#424954;}
+    :root{--input-bg:#f5f5f5;--input-border:#d0d0d0;}
 
     /* ── GARAGE BAR (shows saved vehicle) ── */
     #garage-bar{
@@ -67,7 +68,7 @@
     .card-body{padding:16px;}
 
     /* Tabs */
-    .tabs{display:flex;gap:0;margin-bottom:16px;border:2px solid #e8e8e8;border-radius:0;overflow:hidden;}
+    .tabs{display:flex;gap:0;margin-bottom:16px;border:1px solid var(--input-border);border-radius:0;overflow:hidden;}
     .tab-btn{
       flex:1;display:inline-flex;align-items:center;justify-content:center;gap:8px;
       font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;
@@ -84,10 +85,10 @@
     .vin-input{
       flex:1;
       padding:12px 14px;
-      border:2px solid #e8e8e8;border-radius:0;
+      border:1px solid var(--input-border);border-radius:0;
       font-family:'Montserrat',sans-serif;font-size:13px;font-weight:700;
       color:#1a1a1a;letter-spacing:2px;text-transform:uppercase;
-      transition:border-color 0.2s;min-height:44px;
+      background:var(--input-bg);transition:border-color 0.2s;min-height:44px;
     }
     .vin-input:focus{outline:none;border-color:#8B0000;}
     .vin-input::placeholder{letter-spacing:1px;text-transform:none;font-weight:500;color:#bbb;}
@@ -116,8 +117,9 @@
     .year-picker{position:relative;}
     .year-picker-btn{
       width:100%;padding:12px 14px;
-      border:2px solid #e8e8e8;border-radius:0;
+      border:1px solid var(--input-border);border-radius:0;
       font-family:'Montserrat',sans-serif;font-size:13px;font-weight:700;color:#1a1a1a;
+      background:var(--input-bg);
       letter-spacing:2px;text-transform:uppercase;text-decoration:none;
       background:#fff;cursor:pointer;text-align:left;
       display:flex;align-items:center;justify-content:space-between;gap:8px;
@@ -154,16 +156,16 @@
     }
     .field select{
       width:100%;padding:12px 14px;
-      border:2px solid #e8e8e8;border-radius:0;
+      border:1px solid var(--input-border);border-radius:0;
       font-family:'Montserrat',sans-serif;font-size:13px;font-weight:700;color:#1a1a1a;
       letter-spacing:2px;text-transform:uppercase;
-      background:#fff;appearance:none;
+      background:var(--input-bg);appearance:none;
       background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238B0000' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
       background-repeat:no-repeat;background-position:right 12px center;
       cursor:pointer;transition:border-color 0.2s;min-height:44px;
     }
     .field select:focus{outline:none;border-color:#8B0000;}
-    .field select:disabled{color:#bbb;background-color:#fafafa;cursor:not-allowed;}
+    .field select:disabled{color:#bbb;background-color:#efefef;cursor:not-allowed;}
 
     /* Vehicle confirm popup */
     #confirm-panel{
