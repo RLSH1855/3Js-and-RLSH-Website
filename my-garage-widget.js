@@ -30,15 +30,6 @@
     '</div></div>'
   );
 
-  // Only inject the floating button when viewed standalone (not inside Wix iframe)
-  if(!_inFrame){
-    document.body.insertAdjacentHTML('beforeend',
-      '<button class="gc-fab" id="gc-fab" onclick="gcOpen()">'+
-      '<svg viewBox="0 0 24 24"><path d="M1 6h13v9H1z"/><path d="M14 9h5l3 3v3h-8z"/><circle cx="6" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg>'+
-      '<span id="gc-fab-label">My Garage</span>'+
-      '</button>'
-    );
-  }
 
   var GC_COLORS=[{name:'White',hex:'#F5F5F0'},{name:'Silver',hex:'#C0C0C0'},{name:'Gray',hex:'#808080'},{name:'Black',hex:'#1a1a1a'},{name:'Red',hex:'#B22222'},{name:'Blue',hex:'#1E3A8A'},{name:'Navy',hex:'#0a1628'},{name:'Green',hex:'#2D5016'},{name:'Brown',hex:'#6B3A2A'},{name:'Orange',hex:'#CC5500'},{name:'Yellow',hex:'#D4A017'},{name:'Beige',hex:'#D2B48C'}];
   var GC_MAKES={'Ford':['F-150','F-150 Lightning','Super Duty F-250/F-350','Ranger','Maverick'],'Chevrolet':['Silverado 1500','Silverado 2500HD/3500HD','Colorado'],'GMC':['Sierra 1500','Sierra 2500HD/3500HD','Sierra EV','Canyon','Canyon AT4'],'RAM':['1500','1500 TRX','1500 RHO','2500/3500'],'Toyota':['Tacoma','Tundra','Pickup','T100'],'Nissan':['Titan','Titan XD','Frontier'],'Honda':['Ridgeline'],'Jeep':['Gladiator']};
