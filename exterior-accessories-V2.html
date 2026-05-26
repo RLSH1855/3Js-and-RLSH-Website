@@ -25,9 +25,9 @@
     .shop-nav-hint::before{content:'';display:block;width:3px;height:14px;background:var(--crimson);flex-shrink:0;}
     .shop-nav-tabs{display:flex;overflow-x:auto;white-space:nowrap;scrollbar-width:none;padding:0 8px;}
     .shop-nav-tabs::-webkit-scrollbar{display:none;}
-    .shop-nav-link{display:inline-flex;align-items:center;justify-content:center;padding:14px 18px;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;color:rgba(255,255,255,0.45);border-bottom:3px solid transparent;border-right:1px solid rgba(255,255,255,0.10);transition:color 0.2s,border-color 0.2s;white-space:nowrap;flex-shrink:0;min-height:48px;}
+    .shop-nav-link{display:inline-flex;align-items:center;justify-content:center;padding:14px 18px;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;color:rgba(255,255,255,0.90);border-bottom:3px solid transparent;border-right:1px solid rgba(255,255,255,0.10);transition:color 0.2s,border-color 0.2s,background 0.2s;white-space:nowrap;flex-shrink:0;min-height:48px;}
     .shop-nav-link:last-child{border-right:none;}
-    .shop-nav-link:hover{color:rgba(255,255,255,0.85);}
+    .shop-nav-link:hover{color:#fff;background:rgba(255,255,255,0.08);}
     .shop-nav-link.active{color:#fff;border-bottom-color:var(--crimson);letter-spacing:2.5px;}
     @media(min-width:768px){.shop-nav-tabs{justify-content:center;}.shop-nav-hint{justify-content:center;}}
     @media(max-width:480px){.shop-nav-link{font-size:10px;padding:12px 14px;}.shop-nav-hint{font-size:10px;}}
@@ -57,12 +57,12 @@
     .cat-btn svg{width:12px;height:12px;flex-shrink:0;}
 
     /* ── CTA BAND ── */
-    .cta-band{background:var(--black-1);padding:40px 16px;text-align:center;position:relative;overflow:hidden;}
-    .cta-band::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(139,0,0,0.12) 0%,transparent 65%);pointer-events:none;}
+    .cta-band{background:#8B0000;padding:40px 16px;text-align:center;position:relative;overflow:hidden;}
+    .cta-band::before{display:none;}
     .cta-band-inner{position:relative;z-index:1;max-width:600px;margin:0 auto;}
     .cta-band h2{font-family:'Montserrat',sans-serif;font-size:clamp(22px,3.5vw,36px);font-weight:900;letter-spacing:-0.5px;color:#fff;margin-bottom:10px;}
-    .cta-band h2 em{font-style:normal;color:var(--crimson);}
-    .cta-band p{font-size:15px;color:rgba(255,255,255,0.60);line-height:1.65;margin-bottom:28px;}
+    .cta-band h2 em{font-style:normal;color:#111;}
+    .cta-band p{font-size:15px;color:rgba(255,255,255,0.90);line-height:1.65;margin-bottom:28px;}
     .cta-btns{display:flex;gap:12px;flex-direction:column;align-items:center;flex-wrap:wrap;}
     .btn-red{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:48px;padding:0 32px;background:var(--crimson);color:#fff;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border:none;transition:background 0.2s;touch-action:manipulation;width:100%;max-width:320px;}
     .btn-red:hover{background:#a50000;}
@@ -87,11 +87,38 @@
     @media(min-width:901px){
       .shop-intro{padding:48px 24px 0;}
       .shop-grid-wrap{padding:40px 24px 72px;}
-      .shop-grid{grid-template-columns:repeat(3,1fr);}
+      .shop-grid{grid-template-columns:repeat(4,1fr);}
       .cat-card{height:300px;}
       .cta-band{padding:56px 24px;}
     }
     *:focus{outline:none;}*:focus-visible{outline:2px solid var(--crimson);outline-offset:3px;}
+
+    /* CTA band button overrides for red background */
+    .cta-band .btn-red{background:#111;border:none;}
+    .cta-band .btn-red:hover{background:#000;}
+    .cta-band .btn-ghost{border-color:rgba(255,255,255,0.75);background:rgba(255,255,255,0.12);}
+    .cta-band .btn-ghost:hover{background:rgba(255,255,255,0.25);border-color:#fff;}
+
+    /* ── BRANDS MARQUEE ── */
+    .brands-section{background:#fff;padding:clamp(36px,5vw,60px) 0;text-align:center;border-bottom:1px solid #ebebeb;}
+    .brands-header{padding:0 clamp(16px,4vw,24px);margin-bottom:clamp(20px,3vw,36px);}
+    .brands-eyebrow{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--crimson);margin-bottom:10px;display:block;}
+    .brands-heading{font-size:clamp(18px,2.8vw,28px);font-weight:900;color:#1a1a1a;letter-spacing:-0.5px;margin-bottom:6px;font-family:'Montserrat',sans-serif;}
+    .brands-heading em{font-style:normal;color:var(--crimson);}
+    .brands-sub{font-size:13px;font-weight:500;color:#888;letter-spacing:0.3px;font-family:'Inter',sans-serif;}
+    .marquee-wrapper{width:100%;overflow:hidden;position:relative;margin-bottom:16px;padding-bottom:8px;-webkit-mask-image:linear-gradient(to right,transparent 0%,black 6%,black 94%,transparent 100%);mask-image:linear-gradient(to right,transparent 0%,black 6%,black 94%,transparent 100%);}
+    .marquee-track{display:flex;align-items:center;gap:16px;width:max-content;will-change:transform;animation-timing-function:linear;animation-iteration-count:infinite;}
+    .marquee-track.ea-row1{animation-name:eaScrollLeft;animation-duration:32s;}
+    .marquee-track.ea-row2{animation-name:eaScrollRight;animation-duration:40s;}
+    .marquee-wrapper:hover .marquee-track{animation-play-state:paused;}
+    @keyframes eaScrollLeft{0%{transform:translateX(0);}100%{transform:translateX(var(--ea-w1,0px));}}
+    @keyframes eaScrollRight{0%{transform:translateX(var(--ea-w2-neg,0px));}100%{transform:translateX(0);}}
+    .logo-card{display:inline-flex;align-items:center;justify-content:center;height:72px;width:160px;padding:12px 20px;background:#fff;border:1.5px solid #ebebeb;flex-shrink:0;transition:border-color 0.3s,box-shadow 0.3s;box-shadow:0 2px 8px rgba(0,0,0,0.04);}
+    .logo-card:hover{border-color:#ccc;box-shadow:0 6px 24px rgba(0,0,0,0.10);}
+    .logo-card img{width:120px;height:40px;object-fit:contain;filter:grayscale(1) opacity(0.55);transition:filter 0.3s;}
+    .logo-card:hover img{filter:grayscale(0) opacity(1);}
+    @media(max-width:640px){.logo-card{width:130px;height:60px;padding:10px 14px;}.logo-card img{width:100px;height:34px;}}
+    @media(prefers-reduced-motion:reduce){.marquee-track{animation-play-state:paused;}}
   </style>
 </head>
 <body>
@@ -126,6 +153,42 @@
     })();
   </script>
 </div>
+
+<!-- BRANDS MARQUEE -->
+<section class="brands-section">
+  <div class="brands-header">
+    <span class="brands-eyebrow">Trusted Products</span>
+    <h2 class="brands-heading">Top <em>Aftermarket Brands</em> We Install</h2>
+    <p class="brands-sub">Premium brands. Professional installation. Built to last.</p>
+  </div>
+  <div class="marquee-wrapper">
+    <div class="marquee-track ea-row1" id="ea-row1">
+      <div class="logo-card"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/rhino%20linings.webp" alt="Rhino Liner" loading="lazy"></div>
+      <div class="logo-card"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/brand-logo%20(1).webp" alt="AMP Research" loading="lazy"></div>
+      <div class="logo-card"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/brand-logo%20(2).webp" alt="UnderCover" loading="lazy"></div>
+      <div class="logo-card"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/brand-logo%20(4).webp" alt="TruXedo" loading="lazy"></div>
+      <div class="logo-card"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/brand-logo%20(5).webp" alt="B&amp;W Trailer Hitches" loading="lazy"></div>
+      <div class="logo-card"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/brand-logo%20(6).webp" alt="Extang" loading="lazy"></div>
+      <div class="logo-card"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/brand-logo%20(7).webp" alt="Bushwacker" loading="lazy"></div>
+      <div class="logo-card"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/brand-logo%20(8).webp" alt="Dee Zee" loading="lazy"></div>
+      <div class="logo-card"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/brand-logo%20(12).webp" alt="BAK Industries" loading="lazy"></div>
+    </div>
+  </div>
+  <div class="marquee-wrapper">
+    <div class="marquee-track ea-row2" id="ea-row2">
+      <div class="logo-card"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/brand-logo%20(9).webp" alt="Rigid Industries" loading="lazy"></div>
+      <div class="logo-card"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/brand-logo%20(14).webp" alt="WeatherTech" loading="lazy"></div>
+      <div class="logo-card"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/brand-logo%20(15).webp" alt="Retrax" loading="lazy"></div>
+      <div class="logo-card"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/westin.webp" alt="Westin" loading="lazy"></div>
+      <div class="logo-card"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/husky.webp" alt="Husky Liners" loading="lazy"></div>
+      <div class="logo-card"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/curt.webp" alt="CURT" loading="lazy"></div>
+      <div class="logo-card"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/baja%20designs%20logo.webp" alt="Baja Designs" loading="lazy"></div>
+      <div class="logo-card"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/n-fab-logo.webp" alt="N-Fab" loading="lazy"></div>
+      <div class="logo-card"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/brand-logo%20(3).webp" alt="TrailFX" loading="lazy"></div>
+      <div class="logo-card"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/brand-logo%20(17).webp" alt="Smittybilt" loading="lazy"></div>
+    </div>
+  </div>
+</section>
 
 <!-- INTRO -->
 <div class="shop-intro">
@@ -314,6 +377,20 @@
   </div>
 </div>
 
+<script>
+  // Brands marquee
+  (function(){
+    var r1=document.getElementById('ea-row1');
+    var r2=document.getElementById('ea-row2');
+    if(!r1||!r2)return;
+    var vw=window.innerWidth||1200;
+    while(r1.scrollWidth<vw*2.2)r1.innerHTML+=r1.innerHTML;
+    while(r2.scrollWidth<vw*2.2)r2.innerHTML+=r2.innerHTML;
+    var w1=r1.scrollWidth/2,w2=r2.scrollWidth/2;
+    document.documentElement.style.setProperty('--ea-w1','-'+w1+'px');
+    document.documentElement.style.setProperty('--ea-w2-neg','-'+w2+'px');
+  })();
+</script>
 <script>
   function reportHeight(){
     var sentinel=document.getElementById('height-sentinel');

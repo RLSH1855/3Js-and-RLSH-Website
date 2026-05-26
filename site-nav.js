@@ -492,15 +492,16 @@
     }
     .sn-footer-phone:hover{color:#8B0000;}
     .sn-footer-hours{
-      font-size:11px;font-weight:400;
-      color:rgba(255,255,255,0.50);
-      line-height:1.95;
+      font-size:13px;font-weight:600;
+      color:rgba(255,255,255,0.85);
+      line-height:2.2;
+      letter-spacing:0.4px;
       margin-bottom:20px;
     }
     .sn-footer-copy{
       text-align:center;
       font-size:10px;font-weight:400;
-      color:rgba(255,255,255,0.28);
+      color:#8B0000;
       border-top:1px solid #1a1a1a;
       padding-top:24px;
       max-width:1100px;

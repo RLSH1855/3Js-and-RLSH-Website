@@ -20,19 +20,18 @@
     html::-webkit-scrollbar{display:none;}
     body{font-family:'Montserrat',sans-serif;background:#0A0A0A;color:#fff;}
 
-    /* ─── HERO ─── */
-    .hero{position:relative;width:100%;overflow:hidden;}
-    .hero-img{width:100%;height:auto;display:block;}
-    .hero-overlay{position:absolute;inset:0;background:rgba(0,0,0,0.52);}
-    .hero-content{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;}
-    .hero-eyebrow{font-size:11px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:#ffffff;margin-bottom:14px;}
-    .hero-content h1{font-size:clamp(28px,6vw,68px);font-weight:900;line-height:1.0;letter-spacing:-1.5px;text-transform:uppercase;}
-    .hero-content h1 em{font-style:normal;color:#8B0000;}
-    .hero-sub{font-size:clamp(12px,1.5vw,16px);font-weight:500;color:rgba(255,255,255,0.65);margin-top:14px;letter-spacing:0.3px;}
-    .scroll-hint{margin-top:28px;display:flex;flex-direction:column;align-items:center;gap:6px;opacity:0.5;}
-    .scroll-hint span{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;}
-    .arrow{width:1px;height:36px;background:linear-gradient(to bottom,rgba(255,255,255,0),rgba(255,255,255,0.6));animation:drop 1.6s infinite;}
-    @keyframes drop{0%,100%{transform:translateY(-6px);opacity:0;}50%{transform:translateY(6px);opacity:1;}}
+    /* ─── TOP HERO OVERLAY (inside truck-wrap) ─── */
+    .diagram-top-hero{position:absolute;top:0;left:0;right:0;z-index:10;text-align:center;padding:clamp(20px,4vw,52px) 24px clamp(16px,3vw,40px);background:linear-gradient(to bottom,rgba(0,0,0,0.78) 0%,rgba(0,0,0,0.28) 70%,transparent 100%);pointer-events:none;}
+    .hero-eyebrow{font-size:11px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.80);margin-bottom:12px;}
+    .diagram-top-hero h1{font-size:clamp(26px,5.5vw,64px);font-weight:900;line-height:1.0;letter-spacing:-1.5px;text-transform:uppercase;color:#fff;}
+    .diagram-top-hero h1 em{font-style:normal;color:#8B0000;}
+    .hero-sub{font-size:clamp(12px,1.4vw,15px);font-weight:500;color:rgba(255,255,255,0.70);margin-top:12px;letter-spacing:0.3px;}
+    /* ─── BOTTOM LABEL (below truck image) ─── */
+    .diagram-label-bottom{text-align:center;padding:28px 20px 8px;background:#0A0A0A;}
+    .diagram-label-bottom p{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#8B0000;margin-bottom:8px;}
+    .diagram-label-bottom h2{font-size:clamp(18px,3vw,30px);font-weight:900;letter-spacing:-0.5px;color:#fff;}
+    .diagram-label-bottom h2 em{font-style:normal;color:#8B0000;}
+    .diagram-label-bottom .hint{font-size:12px;font-weight:500;color:rgba(255,255,255,0.50);margin-top:8px;letter-spacing:0.3px;}
 
     /* ─── DIAGRAM SECTION ─── */
     .diagram-section{background:#0A0A0A;padding:56px 0 72px;}
@@ -168,7 +167,7 @@
       .diagram-section{padding:30px 0 36px;}
       .diagram-label{margin-bottom:24px;}
       .diagram-label .hint{font-size:11px;}
-      .hero-eyebrow{font-size:9px;letter-spacing:2px;}
+      .diagram-top-hero .hero-eyebrow{font-size:9px;letter-spacing:2px;}
       .cta{padding:36px 20px;}
       .cta p{font-size:12px;}
     }
@@ -191,33 +190,16 @@
 <body>
 
 <!-- ═══════════════════════════════════════
-     HERO
-════════════════════════════════════════ -->
-<section class="hero">
-  <img class="hero-img" src="https://static.wixstatic.com/media/b95bd9_a30212cb855749b9af34ef33d36cbf4e~mv2.png" fetchpriority="high" decoding="async" alt="3J's Auto Body — Go Beyond the Bedliner" />
-  <div class="hero-overlay"></div>
-  <div class="hero-content">
-    <p class="hero-eyebrow">3J's Auto Body &amp; Paint — Signal Hill, CA</p>
-    <h1>Go Beyond<br>the <em>Bedliner</em></h1>
-    <p class="hero-sub">Full-service truck builds, collision repair &amp; accessories — all under one roof</p>
-    <div class="scroll-hint">
-      <span>Explore</span>
-      <div class="arrow"></div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════
      DIAGRAM — Silver Ford Raptor
 ════════════════════════════════════════ -->
 <section class="diagram-section">
-  <div class="diagram-label">
-    <p>Interactive Service Guide</p>
-    <h2>Everything We Do — <em>Built Into One Truck</em></h2>
-    <p class="hint">Hover any marker to explore our services</p>
-  </div>
-
   <div class="truck-wrap" id="diagram">
+    <!-- "Go Beyond the Bedliner" top overlay -->
+    <div class="diagram-top-hero">
+      <p class="hero-eyebrow">3J's Auto Body &amp; Paint — Signal Hill, CA</p>
+      <h1>Go Beyond<br>the <em>Bedliner</em></h1>
+      <p class="hero-sub">Full-service truck builds, collision repair &amp; accessories — all under one roof</p>
+    </div>
 
     <!-- Real image — visible, drives layout height -->
     <img class="truck-img" id="truckImg" src="https://static.wixstatic.com/media/b95bd9_a209cfd665d74fef8b78efdeec254533~mv2.png" fetchpriority="high" decoding="async"
@@ -381,6 +363,13 @@
     <div class="tap-nudge">TAP THE DOTS TO EXPLORE</div>
 
   </div><!-- /.truck-wrap -->
+
+  <!-- "Everything We Do" label — bottom of diagram -->
+  <div class="diagram-label-bottom">
+    <p>Interactive Service Guide</p>
+    <h2>Everything We Do — <em>Built Into One Truck</em></h2>
+    <p class="hint">Hover any marker to explore our services</p>
+  </div>
 </section>
 
 <!-- ─── CTA ─── -->
