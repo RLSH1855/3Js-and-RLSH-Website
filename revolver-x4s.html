@@ -622,7 +622,7 @@
 })();
 (function(){
   var nums=document.querySelectorAll('.stat-num em');if(!nums.length)return;
-  var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(!e.isIntersecting)return;var el=e.target;var target=parseInt(el.textContent,10);if(isNaN(target))return;var dur=1400,start=null;function step(ts){if(!start)start=ts;var p=Math.min((ts-start)/dur,1);var ease=1-Math.pow(1-p,4);el.textContent=Math.round(ease*target);if(p<1)requestAnimationFrame(step);else el.textContent=target;}requestAnimationFrame(step);io.unobserve(el);});},{threshold:0.5});
+  var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(!e.isIntersecting)return;var el=e.target;var target=parseInt(el.textContent,10);if(isNaN(target))return;if(window.matchMedia('(prefers-reduced-motion:reduce)').matches){el.textContent=target;io.unobserve(el);return;}var dur=1400,start=null;function step(ts){if(!start)start=ts;var p=Math.min((ts-start)/dur,1);var ease=1-Math.pow(1-p,4);el.textContent=Math.round(ease*target);if(p<1)requestAnimationFrame(step);else el.textContent=target;}requestAnimationFrame(step);io.unobserve(el);});},{threshold:0.5});
   nums.forEach(function(el){io.observe(el);});
 })();
 function faqClose(item){var p=item.querySelector('.faq-a');p.style.height=p.scrollHeight+'px';void p.offsetHeight;p.style.height='0px';item.classList.remove('open');item.querySelector('.faq-q').setAttribute('aria-expanded','false');}

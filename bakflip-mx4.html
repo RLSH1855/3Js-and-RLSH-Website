@@ -933,6 +933,7 @@
       var el = e.target;
       var target = parseInt(el.textContent, 10);
       if(isNaN(target)) return;
+      if(window.matchMedia('(prefers-reduced-motion:reduce)').matches){ el.textContent = target; io.unobserve(el); return; }
       var dur = 1400, start = null;
       function step(ts){
         if(!start) start = ts;
