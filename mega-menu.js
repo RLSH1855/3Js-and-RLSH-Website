@@ -313,7 +313,7 @@
             '<h3>Towing &amp; Hitches</h3>',
             '<div class="jj-tbody"><p>Hitches, wiring harnesses, brake controllers &amp; weight-distribution setups — installed &amp; tested.</p></div>',
           '</a>',
-          '<a href="https://www.3jsautobody.com/exterior-accessories/headache-racks" class="jj-tile">',
+          '<a href="https://www.3jsautobody.com/exterior-accessories/headacherack" class="jj-tile">',
             '<div class="jj-timg" style="background-image:url(\'https://rlsh1855.github.io/3Js-and-RLSH-Website/Elevate%20Base%20Truck%20Rack.webp\');background-size:cover;background-position:center;"></div>',
             '<h3>Headache Racks</h3>',
             '<div class="jj-tbody"><p>BackRack open, safety &amp; louvered frames — cab protection for work trucks.</p></div>',
