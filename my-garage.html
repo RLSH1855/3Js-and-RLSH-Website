@@ -799,15 +799,24 @@ function loadSavedVehicle(v){
   s3.classList.add('visible');
 }
 
+var vehicleLoaded=false;
+var readyTimer=null;
+
 window.addEventListener('message',function(event){
   if(!event.data||!event.data.type) return;
   if(event.data.type==='load_vehicle'&&event.data.vehicle){
+    vehicleLoaded=true;
+    if(readyTimer){clearInterval(readyTimer);readyTimer=null;}
     loadSavedVehicle(event.data.vehicle);
   }
 });
 
 window.addEventListener('load',function(){
   window.parent.postMessage({type:'garage_ready'},'*');
+  readyTimer=setInterval(function(){
+    if(!vehicleLoaded) window.parent.postMessage({type:'garage_ready'},'*');
+  },300);
+  setTimeout(function(){if(readyTimer){clearInterval(readyTimer);readyTimer=null;}},4000);
 });
 
 function browseAccessories(){
