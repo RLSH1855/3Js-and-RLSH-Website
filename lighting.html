@@ -39,14 +39,12 @@
     :root{
       --red:#8B0000;
       --red-hot:#a30000;
-      --navy:#0b1220;
-      --navy-2:#131c30;
       --black:#0a0a0a;
       --black-2:#111;
       --fg:#1a1a1a;
-      --fg-muted:#5b6473;
+      --fg-muted:#666;
       --border:#e0e0e0;
-      --surface:#f7f7f7;
+      --surface:#fff;
     }
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
     html{overflow-y:auto;scrollbar-width:none;}
@@ -102,12 +100,12 @@
     .section-wrap{max-width:1100px;margin:0 auto;padding:0 20px;}
     .section-eyebrow{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:10px;display:flex;align-items:center;gap:10px;}
     .section-eyebrow::after{content:'';flex:1;height:1px;background:var(--border);}
-    .section-title{font-family:'Montserrat',sans-serif;font-size:clamp(20px,3vw,34px);font-weight:900;letter-spacing:-1px;line-height:1.1;text-transform:uppercase;color:var(--navy);margin-bottom:12px;}
+    .section-title{font-family:'Montserrat',sans-serif;font-size:clamp(20px,3vw,34px);font-weight:900;letter-spacing:-1px;line-height:1.1;text-transform:uppercase;color:var(--fg);margin-bottom:12px;}
     .section-title em{font-style:normal;color:var(--red);}
     .section-sub{font-size:15px;color:var(--fg-muted);line-height:1.65;max-width:600px;margin-bottom:36px;}
 
     /* ── CATEGORY GRID ── */
-    .cat-section{background:#fff;padding:56px 0;}
+    .cat-section{background:#fff;padding:48px 0;}
     .cat-grid{display:grid;grid-template-columns:1fr;gap:2px;margin-top:24px;}
     .cat-card{position:relative;aspect-ratio:4/3;overflow:hidden;text-decoration:none;display:block;}
     .cat-card-wide{grid-column:span 2;}
@@ -121,7 +119,7 @@
     .cat-card-cta svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2.5;stroke-linecap:round;}
 
     /* ── PRODUCT GRID ── */
-    .products-section{background:var(--surface);padding:56px 0;}
+    .products-section{background:#fff;padding:48px 0;}
     .product-grid{display:grid;grid-template-columns:1fr;gap:14px;margin-top:24px;}
     .product-card{background:#fff;border:1px solid var(--border);display:flex;flex-direction:column;text-decoration:none;color:inherit;transition:border-color .15s;}
     .product-card:hover{border-color:var(--red);}
@@ -129,17 +127,17 @@
     .product-body{padding:18px 18px 20px;flex:1;display:flex;flex-direction:column;gap:6px;}
     .product-badge{display:inline-block;font-family:'Montserrat',sans-serif;font-size:8px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;background:var(--red);color:#fff;padding:3px 8px;align-self:flex-start;}
     .product-brand{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--red);}
-    .product-name{font-family:'Montserrat',sans-serif;font-size:15px;font-weight:800;text-transform:uppercase;letter-spacing:-.3px;color:var(--navy);}
+    .product-name{font-family:'Montserrat',sans-serif;font-size:15px;font-weight:800;text-transform:uppercase;letter-spacing:-.3px;color:var(--fg);}
     .product-fit{font-family:'Inter',sans-serif;font-size:12px;color:var(--fg-muted);line-height:1.5;}
     .product-actions{display:flex;gap:8px;margin-top:auto;padding-top:14px;}
-    .btn-quote-sm{display:inline-flex;align-items:center;justify-content:center;height:40px;padding:0 18px;background:var(--red);color:#fff;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;border:none;flex:1;transition:background .15s;}
+    .btn-quote-sm{display:inline-flex;align-items:center;justify-content:center;height:48px;padding:0 18px;background:var(--red);color:#fff;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border:none;flex:1;transition:background .15s;}
     .btn-quote-sm:hover{background:var(--red-hot);}
-    .btn-view-sm{display:inline-flex;align-items:center;justify-content:center;gap:5px;height:40px;padding:0 14px;background:#fff;color:var(--fg);font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;border:1.5px solid var(--border);flex:1;transition:border-color .15s;}
+    .btn-view-sm{display:inline-flex;align-items:center;justify-content:center;gap:5px;height:48px;padding:0 14px;background:#fff;color:var(--fg);font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border:1.5px solid var(--border);flex:1;transition:border-color .15s;}
     .btn-view-sm:hover{border-color:var(--fg);}
     .btn-view-sm svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2.5;stroke-linecap:round;}
 
     /* ── BRANDS FEATURE ── */
-    .brands-section{background:var(--navy);padding:56px 0;}
+    .brands-section{background:var(--black);padding:48px 0;}
     .brands-grid{display:grid;grid-template-columns:1fr;gap:2px;margin-top:24px;}
     .brand-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);padding:28px 24px;transition:border-color .15s,background .15s;}
     .brand-card:hover{border-color:rgba(139,0,0,.4);background:rgba(139,0,0,.05);}
@@ -148,14 +146,14 @@
     .brand-card p{font-size:13px;color:rgba(255,255,255,.6);line-height:1.65;}
 
     /* ── WHY INSTALL ── */
-    .why-section{background:#fff;padding:56px 0;}
+    .why-section{background:#fff;padding:48px 0;}
     .why-grid{display:grid;grid-template-columns:1fr;gap:14px;margin-top:24px;}
     .why-card{background:rgba(139,0,0,0.05);border:1px solid var(--border);padding:24px 20px;}
-    .why-card h3{font-family:'Montserrat',sans-serif;font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;color:var(--navy);margin-bottom:8px;}
+    .why-card h3{font-family:'Montserrat',sans-serif;font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;color:var(--fg);margin-bottom:8px;}
     .why-card p{font-size:13px;color:var(--fg-muted);line-height:1.65;}
 
     /* ── FAQ ── */
-    .faq-section{background:#fff;padding:48px 0 56px;border-top:1px solid var(--border);}
+    .faq-section{background:#fff;padding:48px 0;border-top:1px solid var(--border);}
     .faq-inner{max-width:760px;margin:0 auto;padding:0 20px;}
     .faq-header{text-align:center;margin-bottom:36px;}
     .faq-item{border-bottom:1px solid var(--border);}
@@ -168,7 +166,7 @@
     .faq-a-inner{font-family:'Inter',sans-serif;font-size:15px;font-weight:400;color:#555;line-height:1.85;padding-bottom:20px;}
 
     /* ── CTA BAND ── */
-    .cta-band{background:var(--navy);background-image:linear-gradient(135deg,var(--navy) 0%,var(--navy-2) 100%);padding:56px 20px;text-align:center;position:relative;overflow:hidden;}
+    .cta-band{background:var(--black);padding:48px 20px;text-align:center;position:relative;overflow:hidden;}
     .cta-band::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 50% 0%,rgba(139,0,0,.4) 0%,transparent 65%);pointer-events:none;}
     .cta-band-inner{position:relative;max-width:620px;margin:0 auto;}
     .cta-band .eyebrow{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:14px;display:block;}
@@ -183,7 +181,10 @@
     .btn-white svg,.btn-glass-white svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;}
 
     /* ── RESPONSIVE — mobile-first, scale up ── */
-    .hero-content{padding:80px 20px 40px;max-width:100%;}
+    .hero{min-height:0;height:auto;}
+    .hero-content{padding:36px 20px 32px;max-width:100%;}
+    .hero h1{font-size:clamp(28px,8vw,42px);letter-spacing:-1px;}
+    .hero-sub{font-size:14px;margin-bottom:24px;}
     .hero-ctas{display:flex;gap:12px;flex-wrap:wrap;flex-direction:column;align-items:stretch;}
     .stat{border-right:none;padding:0;}
     .product-actions{flex-direction:column;}
