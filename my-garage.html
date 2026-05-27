@@ -485,6 +485,7 @@ var COLORS=[
 
 var selectedColor=COLORS[0];
 var pendingVehicle={};
+var currentVehicle=null;
 
 // Build year grid
 (function(){
@@ -720,20 +721,17 @@ function saveVehicle(){
   document.getElementById('s3-vehicle').innerHTML=
     '<span class="year-tag">'+yTag+'</span> '+make+' '+model+trimStr+bedStr;
 
-  // Notify Wix Velo to update garage button label + save to session
+  // Store vehicle locally — postMessage sent when user dismisses screen 3
   var vehicleLabel=yTag+' '+make+' '+model+(trim?' — '+trim:'');
-  window.parent.postMessage({
-    type:'garage_saved',
-    vehicle:{
-      year:pendingVehicle.year,
-      make:make,
-      model:model,
-      trim:trim||'',
-      bedSize:bedLabel||'',
-      color:selectedColor.name,
-      label:vehicleLabel
-    }
-  },'*');
+  currentVehicle={
+    year:pendingVehicle.year,
+    make:make,
+    model:model,
+    trim:trim||'',
+    bedSize:bedLabel||'',
+    color:selectedColor.name,
+    label:vehicleLabel
+  };
 
   transitionTo('screen-3','forward');
 }
@@ -777,7 +775,11 @@ function transitionTo(newId,dir){
 }
 
 function closeGarage(){
-  window.parent.postMessage({type:'close_garage'},'*');
+  if(currentVehicle){
+    window.parent.postMessage({type:'garage_saved',vehicle:currentVehicle},'*');
+  } else {
+    window.parent.postMessage({type:'close_garage'},'*');
+  }
 }
 
 function loadSavedVehicle(v){
@@ -805,7 +807,9 @@ window.addEventListener('message',function(event){
 });
 
 function browseAccessories(){
-  closeGarage();
+  if(currentVehicle){
+    window.parent.postMessage({type:'garage_saved',vehicle:currentVehicle},'*');
+  }
   setTimeout(function(){
     window.top.location.href='https://www.3jsautobody.com/exterior-accessories';
   },300);
