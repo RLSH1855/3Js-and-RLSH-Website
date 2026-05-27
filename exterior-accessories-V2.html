@@ -233,28 +233,48 @@
     .vin-stamp{left:14px;font-size:8px;}
   }
   @media(max-width:560px){
-    .garage-bar{min-height:0;clip-path:none;}
+    .garage-bar{min-height:0;clip-path:none;width:100%;max-width:100%;overflow:hidden;}
     .garage-nameplate{display:none;}
     .garage-id{display:none;}
-    .garage-inner{padding:14px 16px;gap:10px;flex-direction:row;align-items:center;flex-wrap:nowrap;}
-    /* Hide the 3-field readout — too cramped on mobile */
-    .garage-readout{display:none;}
-    /* Show vin-stamp inline as the vehicle label */
-    .vin-stamp{
-      position:static!important;display:flex!important;
-      flex:1 1 auto;min-width:0;
-      font-size:13px;font-weight:600;letter-spacing:0.12em;
-      white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+    .vin-stamp{display:none!important;}
+    /* Stack: info on top, button below */
+    .garage-inner{
+      padding:12px 16px 0;gap:0;
+      flex-direction:column;align-items:stretch;
     }
-    .vin-stamp::before{display:none;}
+    /* Show readout as a single info block */
+    .garage-readout{
+      display:flex;flex-direction:column;gap:2px;
+      padding-bottom:10px;
+    }
+    /* Label: MY GARAGE */
+    .gb-field-label{
+      font-size:8px;letter-spacing:0.25em;color:#8B0000;
+      margin-bottom:0;
+    }
+    .gb-field-label::before{display:none;}
+    /* Hide year/make/model individual labels, only show values */
+    .gb-field:not(:first-child) .gb-field-label{display:none;}
+    .gb-field:first-child .gb-field-label{display:flex;margin-bottom:4px;}
+    /* Vehicle name: all values on one line */
+    .garage-readout{flex-direction:row;flex-wrap:wrap;align-items:baseline;gap:4px;padding-bottom:8px;}
+    .gb-field{padding:0;border:none;flex:0 0 auto;}
+    .gb-field-value{font-size:13px;font-weight:700;white-space:normal;color:#fff;}
+    .gb-field-value.is-empty{font-size:11px;}
     /* Prompt state */
-    .garage-prompt{padding:0;flex:1 1 auto;}
-    .garage-prompt .gb-field-label{margin-bottom:4px;font-size:9px;}
+    .garage-prompt{padding:4px 0 10px;}
+    .garage-prompt .gb-field-label{margin-bottom:3px;}
     .garage-prompt .prompt-text{font-size:13px;}
-    .garage-actions{padding-left:0;flex-shrink:0;}
-    .gb-btn{height:44px;padding:0 14px;font-size:10px;letter-spacing:0.15em;}
-    .gb-btn--primary{clip-path:none;padding-left:14px;}
-    .gb-btn--ghost{border:1px solid rgba(255,255,255,0.25)!important;}
+    /* Button: full width below */
+    .garage-actions{padding:0;width:100%;}
+    .gb-btn{
+      width:100%;height:44px;
+      font-size:10px;letter-spacing:0.18em;
+      clip-path:none!important;padding:0 16px;
+      border-top:1px solid rgba(255,255,255,0.08);
+    }
+    .gb-btn--primary{background:#8B0000;}
+    .gb-btn--ghost{border:1px solid rgba(255,255,255,0.18)!important;border-top:1px solid rgba(255,255,255,0.18)!important;}
   }
   @media(max-width:820px){
     .garage-form{padding:18px 36px 18px 16px;}
