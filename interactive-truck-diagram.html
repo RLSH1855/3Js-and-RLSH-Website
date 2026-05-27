@@ -121,7 +121,6 @@
       transform:translateY(-50%);
     }
     .truck-wrap.animated .hs-label{opacity:1;}
-    .hs-label.hs-bright{background:#8B0000;color:#fff;border-color:#8B0000;}
 
     /* Popup */
     .popup{position:absolute;background:#fff;border-radius:10px;padding:14px 16px;width:210px;box-shadow:0 10px 40px rgba(0,0,0,0.55);opacity:0;pointer-events:none;transition:opacity 0.2s,transform 0.2s;z-index:100;}
@@ -489,16 +488,6 @@
       hs._labelEl = lbl;
     });
   }
-
-  // Hover: toggle bright class on the tracked label
-  hotspots.forEach(function(hs) {
-    hs.addEventListener('mouseenter', function() {
-      if (hs._labelEl) hs._labelEl.classList.add('hs-bright');
-    });
-    hs.addEventListener('mouseleave', function() {
-      if (hs._labelEl) hs._labelEl.classList.remove('hs-bright');
-    });
-  });
 
   // Run on image load (handles cached images too)
   if (img.complete && img.naturalWidth) {
