@@ -7,12 +7,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    html,body{height:100%;overflow:hidden;background:#080808;}
+    html,body{height:100%;overflow:hidden;background:#080808;overscroll-behavior:none;touch-action:pan-y;}
 
     /* ── POPUP (fills lightbox iframe) ── */
     .popup{
       width:100%;height:100vh;
-      display:flex;position:relative;overflow:hidden;
+      display:flex;position:fixed;top:0;left:0;right:0;bottom:0;overflow:hidden;
       border:1px solid #2a2a2a;
       box-shadow:0 32px 80px rgba(0,0,0,0.8), 0 0 0 1px rgba(255,255,255,0.04);
     }
@@ -311,15 +311,23 @@
     }
     body.mobile .image-panel{display:none!important;}
     body.mobile .content-panel{width:100%!important;}
-    body.mobile .screen{padding:20px 20px 18px;}
+    body.mobile .screen{padding:16px 18px 14px;overflow-y:auto;overscroll-behavior:contain;}
     body.mobile .form-wrap{width:100%;}
-    body.mobile .s1-heading{font-size:22px;margin-bottom:16px;}
-    body.mobile .picker-btn{font-size:13px;min-height:44px;}
-    body.mobile .next-btn,body.mobile .save-btn{height:48px;}
-    body.mobile .screen-3-inner{padding-top:32px;gap:16px;}
-    body.mobile .s3-actions{flex-direction:column;align-items:stretch;}
-    body.mobile .s3-btn-primary,body.mobile .s3-btn-secondary{width:100%;text-align:center;}
-    body.mobile .confirm-vehicle{font-size:15px;}
+    body.mobile .step-pill{margin-bottom:10px;}
+    body.mobile .s1-heading{font-size:18px;line-height:1.25;margin-bottom:12px;}
+    body.mobile .picker-field{margin-bottom:6px;}
+    body.mobile .picker-label{margin-bottom:3px;}
+    body.mobile .picker-btn{font-size:12px;min-height:40px;padding:8px 10px;}
+    body.mobile .next-btn,body.mobile .save-btn{height:44px;margin-top:12px;}
+    body.mobile .confirm-vehicle{font-size:14px;margin-bottom:16px;padding-bottom:12px;}
+    body.mobile .s2-field{margin-bottom:12px;}
+    body.mobile .color-row{margin-bottom:14px;}
+    body.mobile .screen-3-inner{padding-top:20px;gap:12px;}
+    body.mobile .s3-check{width:36px;height:36px;font-size:16px;}
+    body.mobile .s3-title{font-size:15px;}
+    body.mobile .s3-actions{flex-direction:column;align-items:stretch;gap:8px;}
+    body.mobile .s3-btn-primary,body.mobile .s3-btn-secondary{width:100%;text-align:center;padding:10px 16px;}
+    body.mobile .s3-close{margin-top:10px;}
   </style>
 </head>
 <body>
