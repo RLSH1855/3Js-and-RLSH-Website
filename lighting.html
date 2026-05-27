@@ -121,25 +121,29 @@
 
     /* ── PRODUCT GRID / CAROUSEL ── */
     .products-section{background:#fff;padding:48px 0;}
-    .product-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;gap:14px;padding:0 20px 4px;margin-top:24px;scrollbar-width:none;}
+    .product-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scroll-padding-left:20px;gap:12px;padding:0 20px 4px;margin-top:24px;scrollbar-width:none;}
     .product-grid::-webkit-scrollbar{display:none;}
-    .product-card{background:#fff;border:1px solid #e8e8e8;display:flex;flex-direction:column;overflow:hidden;transition:border-color .25s,box-shadow .25s;flex:0 0 calc(100vw - 64px);scroll-snap-align:start;}
+    .product-card{background:#fff;border:1px solid #e8e8e8;display:flex;flex-direction:column;overflow:hidden;transition:border-color .25s,box-shadow .25s;flex:0 0 78vw;scroll-snap-align:start;}
     .product-card:hover{border-color:#bbb;box-shadow:0 8px 28px rgba(0,0,0,.09);}
     .card-img{width:100%;aspect-ratio:16/9;background:#f2f2f2;position:relative;overflow:hidden;}
     .card-img-inner{position:absolute;inset:0;}
     .card-img-inner img{width:100%;height:100%;object-fit:cover;display:block;}
-    .card-badge{position:absolute;top:12px;left:12px;z-index:2;font-family:'Montserrat',sans-serif;font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;background:var(--red);color:#fff;padding:4px 10px;}
-    .card-body{padding:20px 20px 22px;display:flex;flex-direction:column;flex:1;}
-    .card-brand{font-size:9px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:4px;font-family:'Montserrat',sans-serif;}
-    .card-name{font-family:'Montserrat',sans-serif;font-size:22px;font-weight:800;color:var(--fg);letter-spacing:-.5px;line-height:1.05;margin-bottom:10px;text-wrap:balance;}
-    .card-tagline{font-family:'Inter',sans-serif;font-size:14px;font-weight:400;color:#424954;line-height:1.65;margin-bottom:14px;text-wrap:pretty;}
-    .card-chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px;}
-    .card-chip{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:4px 9px;border:1.5px solid #ddd;color:#555;background:#fafafa;}
-    .card-actions{display:flex;gap:10px;margin-top:auto;}
-    .btn-view{flex:1;display:inline-flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;text-decoration:none;padding:13px 10px;background:transparent;color:#444;border:1.5px solid #ccc;transition:border-color .2s,color .2s;}
+    .card-badge{position:absolute;top:10px;left:10px;z-index:2;font-family:'Montserrat',sans-serif;font-size:8px;font-weight:800;letter-spacing:2px;text-transform:uppercase;background:var(--red);color:#fff;padding:3px 8px;}
+    .card-body{padding:12px 12px 14px;display:flex;flex-direction:column;flex:1;}
+    .card-brand{font-size:9px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:2px;font-family:'Montserrat',sans-serif;}
+    .card-name{font-family:'Montserrat',sans-serif;font-size:18px;font-weight:800;color:var(--fg);letter-spacing:-.5px;line-height:1.05;margin-bottom:6px;text-wrap:balance;}
+    .card-tagline{font-family:'Inter',sans-serif;font-size:12px;font-weight:400;color:#424954;line-height:1.55;margin-bottom:10px;text-wrap:pretty;}
+    .card-chips{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px;}
+    .card-chip{font-family:'Montserrat',sans-serif;font-size:8px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;padding:3px 7px;border:1px solid #ddd;color:#555;background:#fafafa;}
+    .card-actions{display:flex;gap:8px;margin-top:auto;}
+    .btn-view{flex:1;display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;font-family:'Montserrat',sans-serif;font-size:9px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;text-decoration:none;padding:11px 8px;background:transparent;color:#444;border:1.5px solid #ccc;transition:border-color .2s,color .2s;}
     .btn-view:hover{border-color:var(--red);color:var(--red);}
-    .btn-quote{flex:1;display:inline-flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;text-decoration:none;padding:13px 10px;background:var(--red);color:#fff;border:1.5px solid transparent;transition:background .2s;}
+    .btn-quote{flex:1;display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;font-family:'Montserrat',sans-serif;font-size:9px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;text-decoration:none;padding:11px 8px;background:var(--red);color:#fff;border:1.5px solid transparent;transition:background .2s;}
     .btn-quote:hover{background:var(--red-hot);}
+    /* carousel dots */
+    .carousel-dots{display:flex;justify-content:center;gap:6px;padding:14px 0 0;}
+    .carousel-dot{width:6px;height:6px;background:#ddd;border:none;padding:0;cursor:pointer;transition:background .2s,width .2s;}
+    .carousel-dot.active{background:var(--red);width:18px;}
 
     /* ── BRANDS FEATURE ── */
     .brands-section{background:var(--black);padding:48px 0;}
@@ -211,6 +215,13 @@
       .cat-card-wide{grid-column:span 1;}
       .product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:32px;overflow:visible;padding:0;scroll-snap-type:none;}
       .product-card{flex:none;}
+      .card-body{padding:20px 20px 22px;}
+      .card-name{font-size:22px;margin-bottom:10px;}
+      .card-tagline{font-size:14px;line-height:1.65;margin-bottom:14px;}
+      .card-chips{gap:6px;margin-bottom:18px;}
+      .card-chip{font-size:9px;padding:4px 9px;}
+      .btn-view,.btn-quote{font-size:10px;letter-spacing:1.2px;padding:13px 10px;}
+      .carousel-dots{display:none;}
       .brands-grid{grid-template-columns:repeat(2,1fr);gap:14px;margin-top:32px;}
       .why-grid{grid-template-columns:repeat(3,1fr);gap:14px;margin-top:32px;}
       .cta-btns{flex-direction:row;align-items:initial;}
@@ -494,6 +505,14 @@
       </div>
 
     </div>
+    <div class="carousel-dots" id="productDots">
+      <button class="carousel-dot active"></button>
+      <button class="carousel-dot"></button>
+      <button class="carousel-dot"></button>
+      <button class="carousel-dot"></button>
+      <button class="carousel-dot"></button>
+      <button class="carousel-dot"></button>
+    </div>
   </div>
 </section>
 
@@ -618,6 +637,23 @@
   function faqClose(item){item.querySelector('.faq-a').style.display='none';item.classList.remove('open');item.querySelector('.faq-q').setAttribute('aria-expanded','false');}
   function faqOpen(item){item.querySelector('.faq-a').style.display='block';item.classList.add('open');item.querySelector('.faq-q').setAttribute('aria-expanded','true');reportHeight();setTimeout(reportHeight,50);}
   document.querySelectorAll('.faq-q').forEach(function(btn){btn.addEventListener('click',function(){var item=btn.closest('.faq-item');var wasOpen=item.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(faqClose);if(!wasOpen)faqOpen(item);});});
+
+  // Carousel dots
+  (function(){
+    var grid=document.querySelector('.product-grid');
+    var dots=document.querySelectorAll('#productDots .carousel-dot');
+    if(!grid||!dots.length)return;
+    function updateDots(){
+      var idx=Math.round(grid.scrollLeft/(grid.querySelector('.product-card').offsetWidth+12));
+      dots.forEach(function(d,i){d.classList.toggle('active',i===idx);});
+    }
+    grid.addEventListener('scroll',updateDots,{passive:true});
+    dots.forEach(function(dot,i){
+      dot.addEventListener('click',function(){
+        grid.scrollTo({left:i*(grid.querySelector('.product-card').offsetWidth+12),behavior:'smooth'});
+      });
+    });
+  })();
 </script>
 
 <script src="https://rlsh1855.github.io/3Js-and-RLSH-Website/site-nav.js"></script>
