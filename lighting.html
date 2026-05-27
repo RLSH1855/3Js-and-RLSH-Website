@@ -105,9 +105,10 @@
     .section-sub{font-size:15px;color:var(--fg-muted);line-height:1.65;max-width:600px;margin-bottom:32px;}
 
     /* ── CATEGORY GRID ── */
-    .cat-section{background:#fff;padding:48px 0;}
-    .cat-grid{display:grid;grid-template-columns:1fr;gap:14px;margin-top:24px;}
-    .cat-card{position:relative;aspect-ratio:4/3;overflow:hidden;text-decoration:none;display:block;}
+    .cat-section{background:#fff;padding:48px 0 0;}
+    .cat-grid-wrap{padding:0;}
+    .cat-grid{display:grid;grid-template-columns:1fr;gap:0;margin-top:16px;}
+    .cat-card{position:relative;aspect-ratio:16/9;overflow:hidden;text-decoration:none;display:block;}
     .cat-card-wide{grid-column:span 2;}
     .cat-card-bg{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform .5s ease;}
     .cat-card:hover .cat-card-bg{transform:scale(1.04);}
@@ -202,7 +203,10 @@
       .stats-inner{grid-template-columns:repeat(4,1fr);gap:0;}
       .stat{border-right:1px solid rgba(255,255,255,.2);padding:0 12px;}
       .stat:last-child{border-right:none;}
-      .cat-grid{grid-template-columns:repeat(3,1fr);margin-top:32px;}
+      .cat-section{padding:48px 0 48px;}
+      .cat-grid-wrap{padding:0 20px;}
+      .cat-grid{grid-template-columns:repeat(3,1fr);gap:2px;margin-top:32px;}
+      .cat-card{aspect-ratio:4/3;}
       .cat-card-wide{grid-column:span 1;}
       .product-grid{grid-template-columns:repeat(3,1fr);gap:14px;margin-top:32px;}
       .brands-grid{grid-template-columns:repeat(2,1fr);gap:14px;margin-top:32px;}
@@ -298,7 +302,7 @@
     <h2 class="section-title">What Are You<br><em>Looking For?</em></h2>
     <p class="section-sub">Select a lighting category to see all available products, brands and fitments for your truck, SUV or Jeep.</p>
   </div>
-  <div style="max-width:1100px;margin:0 auto;padding:0 20px;">
+  <div class="cat-grid-wrap" style="max-width:1100px;margin:0 auto;">
     <div class="cat-grid">
       <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/lighting-catalog.html#headlights" target="_top" class="cat-card cat-card-wide">
         <div class="cat-card-bg" style="background-image:url('https://5129608.app.netsuite.com/images/Item%20Images/105134.010.jpg');"></div>
