@@ -9,7 +9,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
     :root{--crimson:#8B0000;--black-1:#0A0A0A;--black-2:#111111;--white:#FFFFFF;--body-text:#424954;--charcoal:#1F2937;--divider:#E8E8E8;}
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
@@ -153,6 +153,208 @@
     })();
   </script>
 </div>
+
+<!-- MY GARAGE BAR -->
+<style>
+  /* ── GARAGE BAR ── */
+  .garage-bar{position:relative;width:100%;background:radial-gradient(120% 200% at 100% 50%,rgba(139,0,0,0.10),rgba(139,0,0,0) 55%),linear-gradient(180deg,#161616 0%,#0e0e0e 100%);color:#fff;display:flex;align-items:stretch;min-height:96px;overflow:hidden;clip-path:polygon(0 0,100% 0,calc(100% - 22px) 100%,0 100%);}
+  .garage-bar::after{content:"";position:absolute;inset:0;pointer-events:none;background-image:repeating-linear-gradient(135deg,rgba(255,255,255,0.012) 0 1px,transparent 1px 6px);mix-blend-mode:screen;z-index:1;}
+  .garage-nameplate{flex:0 0 30px;width:30px;background:#8B0000;position:relative;display:flex;align-items:center;justify-content:center;box-shadow:inset -1px 0 0 rgba(0,0,0,0.35);}
+  .garage-nameplate__word{font-family:"JetBrains Mono",ui-monospace,Menlo,monospace;font-size:8px;font-weight:600;letter-spacing:0.32em;color:#fff;text-transform:uppercase;writing-mode:vertical-rl;transform:rotate(180deg);white-space:nowrap;line-height:1;user-select:none;}
+  .garage-body{flex:1 1 auto;display:flex;flex-direction:column;min-width:0;}
+  .garage-inner{position:relative;z-index:2;flex:1 1 auto;display:flex;align-items:center;gap:20px;padding:14px 44px 14px 22px;min-width:0;}
+  .vin-stamp{position:absolute;top:8px;left:22px;font-family:"JetBrains Mono",ui-monospace,Menlo,monospace;font-size:10px;font-weight:500;letter-spacing:0.18em;color:#E0E0E0;text-transform:uppercase;z-index:3;pointer-events:none;display:flex;align-items:center;gap:8px;}
+  .vin-stamp::before{content:"";width:14px;height:1px;background:#8B0000;}
+  .garage-id{display:flex;align-items:center;gap:14px;flex:0 0 auto;padding-right:18px;border-right:1px solid rgba(255,255,255,0.15);align-self:stretch;}
+  .garage-icon{position:relative;width:96px;height:60px;color:#fff;flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;}
+  .garage-icon img{width:100%;height:100%;object-fit:contain;display:block;filter:brightness(0) invert(1);}
+  .garage-readout{display:flex;align-items:stretch;gap:0;flex:1 1 auto;min-width:0;}
+  .gb-field{display:flex;flex-direction:column;justify-content:center;padding:0 22px;border-right:1px solid rgba(255,255,255,0.4);min-width:0;}
+  .gb-field:last-of-type{border-right:0;}
+  .gb-field:first-of-type{padding-left:4px;}
+  .gb-field-label{font-family:"JetBrains Mono",ui-monospace,Menlo,monospace;font-size:10px;font-weight:500;letter-spacing:0.28em;color:#E0E0E0;text-transform:uppercase;margin:0 0 6px 0;line-height:1;display:flex;align-items:center;gap:6px;}
+  .gb-field-label::before{content:"";width:6px;height:1px;background:#8B0000;}
+  .gb-field-value{font-family:"Montserrat",sans-serif;font-size:16px;font-weight:700;color:#fff;letter-spacing:0.02em;line-height:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin:0;}
+  .gb-field-value.is-empty{color:rgba(224,224,224,0.45);font-weight:500;letter-spacing:0.18em;}
+  .garage-prompt{flex:1 1 auto;min-width:0;display:flex;flex-direction:column;justify-content:center;padding-left:4px;}
+  .garage-prompt .gb-field-label{margin-bottom:8px;}
+  .garage-prompt .prompt-text{font-family:"Montserrat",sans-serif;font-size:17px;font-weight:600;color:#fff;margin:0;line-height:1.2;letter-spacing:0.005em;}
+  .garage-prompt .prompt-text em{font-style:normal;color:#E0E0E0;font-weight:500;}
+  .garage-actions{flex:0 0 auto;display:flex;align-items:center;gap:0;align-self:stretch;padding-left:8px;}
+  .gb-btn{appearance:none;-webkit-appearance:none;margin:0;border-radius:0;height:56px;min-width:48px;padding:0 22px;font-family:"Montserrat",sans-serif;font-size:12px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:12px;white-space:nowrap;user-select:none;text-decoration:none;border:none;transition:background-color 160ms ease,color 160ms ease,border-color 160ms ease;}
+  .gb-btn:active{transform:translateY(1px);}
+  .gb-btn--primary{background:#8B0000;color:#fff;clip-path:polygon(14px 0,100% 0,100% 100%,0 100%);padding-left:30px;}
+  .gb-btn--primary:hover{background:#B30000;}
+  .gb-btn--ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,0.18)!important;}
+  .gb-btn--ghost:hover{border-color:#fff!important;background:rgba(255,255,255,0.05);}
+  .gb-btn .gb-chev{width:14px;height:12px;flex:0 0 auto;transition:transform 180ms ease;}
+  .gb-btn:hover .gb-chev{transform:translateX(3px);}
+  /* form panel */
+  .garage-form{position:relative;z-index:2;border-top:1px solid #8B0000;padding:22px 44px 20px 22px;background:rgba(0,0,0,0.18);}
+  .garage-bar:not(.gb-open) .garage-form{display:none;}
+  .garage-bar.gb-open .vin-stamp{display:none!important;}
+  .gb-form-row{display:grid;grid-template-columns:1fr auto 1fr;gap:24px;align-items:end;}
+  .gb-form-section{display:flex;flex-direction:column;gap:12px;min-width:0;}
+  .gb-form-step{font-family:"JetBrains Mono",monospace;font-size:9px;font-weight:600;letter-spacing:0.3em;color:#8B0000;background:rgba(139,0,0,0.12);padding:6px 10px;text-transform:uppercase;line-height:1;align-self:flex-start;}
+  .gb-ymm-row{display:grid;grid-template-columns:1fr 1.2fr 1.2fr;gap:10px;}
+  .gb-sel{position:relative;min-width:0;}
+  .gb-sel__label{display:block;font-family:"JetBrains Mono",monospace;font-size:9px;font-weight:500;letter-spacing:0.28em;color:#E0E0E0;text-transform:uppercase;margin:0 0 6px 0;line-height:1;}
+  .gb-sel select,.gb-sel input{appearance:none;-webkit-appearance:none;width:100%;height:48px;background:#0c0c0c;color:#fff;border:1px solid rgba(255,255,255,0.18);border-radius:0;padding:0 36px 0 12px;font-family:"Montserrat",sans-serif;font-size:14px;font-weight:600;letter-spacing:0.02em;cursor:pointer;transition:border-color 120ms ease;outline:none;}
+  .gb-sel select:focus,.gb-sel input:focus{border-color:#8B0000;background:#0e0e0e;}
+  .gb-sel select:disabled{color:rgba(224,224,224,0.35);cursor:not-allowed;background:#0a0a0a;}
+  .gb-sel::after{content:"";position:absolute;right:14px;bottom:19px;width:7px;height:7px;border-right:1.5px solid #fff;border-bottom:1.5px solid #fff;transform:rotate(45deg);pointer-events:none;}
+  .gb-sel.no-chev::after{display:none;}
+  .gb-sel option{background:#111;color:#fff;}
+  .gb-vin-wrap{position:relative;}
+  .gb-vin-input{font-family:"JetBrains Mono",monospace!important;font-size:14px!important;letter-spacing:0.10em!important;text-transform:uppercase;padding-right:92px!important;cursor:text!important;}
+  .gb-vin-input::placeholder{color:rgba(224,224,224,0.28);letter-spacing:0.10em;}
+  .gb-paste-btn{position:absolute;right:6px;bottom:6px;height:36px;padding:0 12px;background:rgba(139,0,0,0.18);border:1px solid rgba(139,0,0,0.55);color:#fff;font-family:"JetBrains Mono",monospace;font-size:10px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;cursor:pointer;border-radius:0;transition:background-color 120ms ease,border-color 120ms ease;}
+  .gb-paste-btn:hover{background:rgba(139,0,0,0.32);border-color:#8B0000;}
+  .gb-paste-btn:active{transform:translateY(1px);}
+  .gb-divider{display:flex;align-items:center;justify-content:center;padding:0 6px 6px;min-width:28px;}
+  .gb-divider span{font-family:"JetBrains Mono",monospace;font-size:10px;font-weight:600;letter-spacing:0.3em;color:#E0E0E0;}
+  .gb-form-actions{display:flex;align-items:center;justify-content:flex-end;gap:10px;margin-top:18px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.06);flex-wrap:wrap;}
+  .gb-form-hint{font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:0.2em;color:#E0E0E0;text-transform:uppercase;margin-right:auto;flex:1 1 200px;}
+  .gb-btn:disabled{cursor:not-allowed;}
+  .gb-btn--primary:disabled{background:#2a2a2a;color:rgba(224,224,224,0.35);}
+  .garage-bar[data-state="loading"]{visibility:hidden;}
+  /* responsive */
+  @media(max-width:780px){
+    .garage-inner{gap:14px;padding:16px 36px 14px 14px;flex-wrap:wrap;}
+    .garage-id{padding-right:12px;}
+    .gb-field{padding:0 14px;}
+    .gb-field-value{font-size:14px;}
+    .vin-stamp{left:14px;font-size:8px;}
+  }
+  @media(max-width:560px){
+    .garage-bar{min-height:0;clip-path:polygon(0 0,100% 0,calc(100% - 14px) 100%,0 100%);}
+    .garage-nameplate{flex:0 0 24px;width:24px;}
+    .garage-nameplate__word{font-size:9px;}
+    .garage-inner{padding:18px 26px 14px 12px;gap:10px;flex-direction:column;align-items:stretch;}
+    .garage-id{border-right:0;padding-right:0;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,0.15);align-self:stretch;}
+    .garage-readout{flex-wrap:wrap;}
+    .gb-field{padding:6px 14px 6px 0;border-right:1px solid rgba(255,255,255,0.4);flex:1 1 33%;min-width:0;}
+    .gb-field:last-of-type{border-right:0;}
+    .gb-field:first-of-type{padding-left:0;}
+    .gb-field-value{font-size:13px;}
+    .garage-prompt{padding:4px 0 2px 0;}
+    .garage-prompt .prompt-text{font-size:15px;}
+    .garage-actions{padding-left:0;width:100%;}
+    .gb-btn{flex:1 1 auto;height:52px;}
+    .gb-btn--primary{padding-left:24px;clip-path:polygon(10px 0,100% 0,100% 100%,0 100%);}
+    .vin-stamp{left:12px;top:6px;}
+  }
+  @media(max-width:820px){
+    .garage-form{padding:18px 36px 18px 16px;}
+    .gb-form-row{grid-template-columns:1fr;gap:14px;}
+    .gb-divider{padding:6px 0;}
+    .gb-ymm-row{grid-template-columns:1fr 1fr;}
+    .gb-ymm-row>.gb-sel:first-child{grid-column:1 / -1;}
+  }
+  @media(max-width:480px){
+    .gb-ymm-row{grid-template-columns:1fr;}
+    .gb-ymm-row>.gb-sel:first-child{grid-column:auto;}
+    .gb-form-actions{flex-direction:column-reverse;align-items:stretch;}
+    .gb-form-actions .gb-btn{width:100%;}
+    .gb-form-hint{margin-right:0;text-align:left;}
+  }
+</style>
+
+<div class="garage-bar" id="garageBar" data-state="loading" role="region" aria-label="My Garage — Vehicle Selector">
+  <div class="garage-nameplate" aria-hidden="true">
+    <span class="garage-nameplate__word">My Vehicle</span>
+  </div>
+  <div class="garage-body">
+    <div class="garage-inner">
+      <span class="vin-stamp" aria-hidden="true" id="gbVinStamp"></span>
+      <div class="garage-id">
+        <span class="garage-icon" aria-hidden="true">
+          <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/images/trucks/corner-view-truck.png" alt="" width="96" height="60" />
+        </span>
+      </div>
+      <div class="garage-readout" id="gbReadout"></div>
+      <div class="garage-actions" id="gbActions"></div>
+    </div>
+    <div class="garage-form" id="gbForm">
+      <div class="gb-form-row">
+        <div class="gb-form-section">
+          <span class="gb-form-step">01 / Manual</span>
+          <div class="gb-ymm-row">
+            <div class="gb-sel"><label class="gb-sel__label" for="gbYear">Year</label><select id="gbYear" aria-label="Year"></select></div>
+            <div class="gb-sel"><label class="gb-sel__label" for="gbMake">Make</label><select id="gbMake" aria-label="Make"></select></div>
+            <div class="gb-sel"><label class="gb-sel__label" for="gbModel">Model</label><select id="gbModel" aria-label="Model" disabled></select></div>
+          </div>
+        </div>
+        <div class="gb-divider" aria-hidden="true"><span>OR</span></div>
+        <div class="gb-form-section">
+          <span class="gb-form-step">02 / VIN</span>
+          <div class="gb-sel no-chev gb-vin-wrap">
+            <label class="gb-sel__label" for="gbVin">17-Digit VIN</label>
+            <input id="gbVin" class="gb-vin-input" type="text" maxlength="17" autocomplete="off" spellcheck="false" placeholder="1FTFW1ET5DKE12345" />
+            <button type="button" class="gb-paste-btn" id="gbPaste" title="Paste VIN from clipboard">Paste</button>
+          </div>
+        </div>
+      </div>
+      <div class="gb-form-actions">
+        <span class="gb-form-hint" id="gbHint">— Choose a year, make &amp; model to continue</span>
+        <button type="button" class="gb-btn gb-btn--ghost" id="gbCancel">Cancel</button>
+        <button type="button" class="gb-btn gb-btn--primary" id="gbSave" disabled>
+          <span>Save Vehicle</span>
+          <svg class="gb-chev" viewBox="0 0 14 12" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M0 6 L11 6 M7 1 L12 6 L7 11" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linejoin="miter" stroke-linecap="square"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  "use strict";
+  var KEY="garage_vehicle";
+  var MAKES={Ford:["F-150","F-250","F-350","Ranger","Maverick","Bronco","Super Duty"],Chevrolet:["Silverado 1500","Silverado 2500HD","Silverado 3500HD","Colorado"],GMC:["Sierra 1500","Sierra 2500HD","Sierra 3500HD","Canyon"],RAM:["1500","2500","3500","ProMaster"],Toyota:["Tundra","Tacoma"],Nissan:["Titan","Frontier"],Jeep:["Gladiator","Wrangler"],Honda:["Ridgeline"]};
+  var YEAR_MIN=1995,YEAR_MAX=new Date().getFullYear()+1;
+  var bar=document.getElementById("garageBar"),readout=document.getElementById("gbReadout"),actions=document.getElementById("gbActions"),stamp=document.getElementById("gbVinStamp");
+  var form=document.getElementById("gbForm"),selYear=document.getElementById("gbYear"),selMake=document.getElementById("gbMake"),selModel=document.getElementById("gbModel"),vinInput=document.getElementById("gbVin"),pasteBtn=document.getElementById("gbPaste"),hint=document.getElementById("gbHint"),saveBtn=document.getElementById("gbSave"),cancelBtn=document.getElementById("gbCancel");
+
+  function readVehicle(){try{var raw=localStorage.getItem(KEY);if(!raw)return null;var v=JSON.parse(raw);if(!v||typeof v!=="object")return null;var yr=String(v.year||"").trim(),mk=String(v.make||"").trim(),mo=String(v.model||"").trim();if(!yr&&!mk&&!mo)return null;return{year:yr,make:mk,model:mo};}catch(e){return null;}}
+  function titleCase(s){return String(s).toLowerCase().replace(/\b\w/g,function(c){return c.toUpperCase();});}
+  function composeStamp(v){var p=[];if(v.make)p.push(titleCase(v.make));if(v.model)p.push(v.model);var l=p.join(" ");if(v.year)l=(l?l+" ":"")+"'"+String(v.year).slice(-2);return l;}
+
+  function addOpt(sel,val,label,ph){var o=document.createElement("option");o.value=val;o.textContent=label;if(ph){o.disabled=true;o.selected=true;}sel.appendChild(o);}
+  addOpt(selYear,"","Year",true);
+  for(var y=YEAR_MAX;y>=YEAR_MIN;y--)addOpt(selYear,String(y),String(y));
+  addOpt(selMake,"","Make",true);
+  Object.keys(MAKES).forEach(function(m){addOpt(selMake,m,m);});
+  addOpt(selModel,"","Model",true);
+
+  function refreshModels(){selModel.innerHTML="";var mk=selMake.value;if(!mk){addOpt(selModel,"","Model",true);selModel.disabled=true;return;}selModel.disabled=false;addOpt(selModel,"","Model",true);MAKES[mk].forEach(function(mod){addOpt(selModel,mod,mod);});}
+  function sanitizeVin(raw){return String(raw||"").toUpperCase().replace(/[^A-HJ-NPR-Z0-9]/g,"").slice(0,17);}
+  function vinOk(v){return/^[A-HJ-NPR-Z0-9]{17}$/i.test(v);}
+
+  function refreshState(){var hasYMM=selYear.value&&selMake.value&&selModel.value,vin=sanitizeVin(vinInput.value),hasVin=vinOk(vin);saveBtn.disabled=!(hasYMM||hasVin);if(hasVin)hint.textContent="— VIN ready · Save to continue";else if(hasYMM)hint.textContent="— "+selYear.value+" "+selMake.value+" "+selModel.value+" · ready to save";else if(vin.length>0)hint.textContent="— Keep typing VIN ("+vin.length+" / 17)";else if(selMake.value&&!selModel.value)hint.textContent="— Pick a model to continue";else if(selYear.value&&!selMake.value)hint.textContent="— Pick a make to continue";else hint.textContent="— Choose a year, make & model to continue";}
+
+  function openForm(){bar.classList.add("gb-open");form.style.display="";var v=readVehicle();if(v){if(v.year)selYear.value=String(v.year);if(v.make&&MAKES[v.make]){selMake.value=v.make;refreshModels();if(v.model)selModel.value=v.model;}}refreshState();setTimeout(function(){try{selYear.focus();}catch(e){}},60);}
+  function closeForm(){bar.classList.remove("gb-open");form.style.display="none";}
+
+  selMake.addEventListener("change",function(){refreshModels();refreshState();});
+  selYear.addEventListener("change",refreshState);
+  selModel.addEventListener("change",refreshState);
+  vinInput.addEventListener("input",function(){var c=sanitizeVin(vinInput.value);if(c!==vinInput.value)vinInput.value=c;refreshState();});
+  vinInput.addEventListener("paste",function(e){if(!e.clipboardData)return;var p=e.clipboardData.getData("text");if(p==null)return;e.preventDefault();var ci=sanitizeVin(p),s=vinInput.selectionStart||0,en=vinInput.selectionEnd||0,combined=sanitizeVin(vinInput.value.slice(0,s)+ci+vinInput.value.slice(en));vinInput.value=combined;try{vinInput.setSelectionRange(Math.min(combined.length,s+ci.length),Math.min(combined.length,s+ci.length));}catch(_){}refreshState();});
+  pasteBtn.addEventListener("click",async function(){try{if(navigator.clipboard&&navigator.clipboard.readText){var t=await navigator.clipboard.readText();vinInput.value=sanitizeVin(t);vinInput.focus();refreshState();return;}}catch(e){}vinInput.focus();vinInput.select();});
+  cancelBtn.addEventListener("click",closeForm);
+  saveBtn.addEventListener("click",function(){var vin=sanitizeVin(vinInput.value),payload=null;if(vinOk(vin))payload={year:"",make:"",model:"",vin:vin};else if(selYear.value&&selMake.value&&selModel.value)payload={year:selYear.value,make:selMake.value,model:selModel.value};if(!payload)return;try{localStorage.setItem(KEY,JSON.stringify(payload));}catch(e){}closeForm();render();});
+
+  function fieldNode(label,value,isEmpty){var wrap=document.createElement("div");wrap.className="gb-field";var lab=document.createElement("p");lab.className="gb-field-label";lab.textContent=label;var val=document.createElement("p");val.className="gb-field-value"+(isEmpty?" is-empty":"");val.textContent=value;wrap.appendChild(lab);wrap.appendChild(val);return wrap;}
+
+  function render(){var v=readVehicle();readout.innerHTML="";actions.innerHTML="";if(v){bar.setAttribute("data-state","selected");if(stamp){stamp.textContent=composeStamp(v);stamp.style.display="";}readout.appendChild(fieldNode("Year",v.year||"—",!v.year));readout.appendChild(fieldNode("Make",(v.make||"—").toUpperCase(),!v.make));readout.appendChild(fieldNode("Model",(v.model||"—").toUpperCase(),!v.model));var ch=document.createElement("button");ch.type="button";ch.className="gb-btn gb-btn--ghost";ch.textContent="Change Vehicle";ch.addEventListener("click",openForm);actions.appendChild(ch);}else{bar.setAttribute("data-state","empty");if(stamp){stamp.textContent="";stamp.style.display="none";}var pr=document.createElement("div");pr.className="garage-prompt";var pl=document.createElement("p");pl.className="gb-field-label";pl.textContent="No Vehicle Selected";var pm=document.createElement("p");pm.className="prompt-text";pm.innerHTML='Select your truck <em>to filter accessories</em>';pr.appendChild(pl);pr.appendChild(pm);readout.appendChild(pr);var op=document.createElement("button");op.type="button";op.className="gb-btn gb-btn--primary";op.innerHTML='<span>Open My Garage</span><svg class="gb-chev" viewBox="0 0 14 12" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M0 6 L11 6 M7 1 L12 6 L7 11" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linejoin="miter" stroke-linecap="square"/></svg>';op.addEventListener("click",openForm);actions.appendChild(op);}};
+
+  render();
+  window.addEventListener("storage",function(e){if(e.key===KEY||e.key===null)render();});
+  window.MyGarageBar={refresh:render};
+  window.addEventListener("message",function(e){if(!e||!e.data)return;if(e.data==="garage:refresh"||(typeof e.data==="object"&&e.data.type==="garage:refresh"))render();});
+  closeForm();
+})();
+</script>
 
 <!-- BRANDS MARQUEE -->
 <section class="brands-section">
