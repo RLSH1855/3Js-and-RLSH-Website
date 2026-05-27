@@ -1,908 +1,784 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>My Garage — 3J's Auto Body</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
   <style>
-    
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    html,body{overflow-x:clip;}
-    body{font-family:'Inter',sans-serif;background:#fff;color:#424954;}
-    :root{--input-bg:#f5f5f5;--input-border:#d0d0d0;}
+    html,body{height:100%;overflow:hidden;background:#080808;}
 
-    /* ── GARAGE BAR (shows saved vehicle) ── */
-    #garage-bar{
-      display:none;
-      background:#1a1a1a;
-      padding:8px 16px;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      flex-wrap:wrap;
+    /* ── POPUP (fills lightbox iframe) ── */
+    .popup{
+      width:100%;height:100vh;
+      display:flex;position:relative;overflow:hidden;
+      border:1px solid #2a2a2a;
+      box-shadow:0 32px 80px rgba(0,0,0,0.8), 0 0 0 1px rgba(255,255,255,0.04);
     }
-    #garage-bar.visible{display:flex;}
-    .garage-bar-left{display:flex;align-items:center;gap:10px;}
-    .garage-icon{font-size:16px;}
-    .garage-vehicle-name{font-size:11px;font-weight:800;color:#fff;letter-spacing:0.5px;}
-    .garage-fits-badge{
-      display:inline-block;background:#8B0000;color:#fff;
-      font-size:9px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;
-      padding:3px 8px;border-radius:0;
-    }
-    .garage-bar-right{display:flex;gap:12px;align-items:center;}
-    .garage-change-btn{
-      font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;color:#aaa;
-      background:none;border:none;cursor:pointer;letter-spacing:2px;text-transform:uppercase;
-      display:inline-flex;align-items:center;justify-content:center;gap:8px;
-      min-height:44px;padding:0 12px;transition:all 0.3s ease;
-    }
-    .garage-change-btn:hover{color:#fff;}
 
-    /* ── MAIN WRAP ── */
-    .wrap{max-width:100%;margin:0;padding:0;}
-
-    /* ── ENTRY CARD ── */
-    .entry-card{background:#fff;border-radius:0;}
-
-    .card-header{
-      position:relative;min-height:150px;
-      display:flex;align-items:center;overflow:hidden;padding:0;
+    /* ── CLOSE BTN ── */
+    .close-btn{
+      position:absolute;top:14px;right:16px;
+      background:none;border:none;
+      color:rgba(255,255,255,0.35);font-size:16px;
+      cursor:pointer;z-index:20;padding:4px 8px;
+      transition:color 0.2s;line-height:1;
+      font-family:'Montserrat',sans-serif;font-weight:300;
     }
-    .card-header-bg{
-      position:absolute;inset:0;
-      background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/My_Garage_Header_image.webp');
-      background-size:cover;background-position:center 40%;
-    }
-    .card-header-overlay{
-      position:absolute;inset:0;
-      background:linear-gradient(to right,rgba(0,0,0,0.82) 0%,rgba(0,0,0,0.55) 55%,rgba(0,0,0,0.15) 100%);
-    }
-    .card-header-content{position:relative;z-index:2;padding:20px 24px;max-width:480px;}
-    .card-eyebrow{font-size:9px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:#fff;margin-bottom:4px;text-shadow:0 2px 8px rgba(0,0,0,0.6);}
-    .card-title{font-family:'Montserrat',sans-serif;font-size:clamp(16px,4vw,24px);font-weight:800;letter-spacing:-0.5px;color:#fff;line-height:1.05;text-transform:uppercase;text-shadow:0 3px 12px rgba(0,0,0,0.7);text-wrap:balance;}
-    .card-title em{font-style:normal;color:#8B0000;text-shadow:0 3px 12px rgba(0,0,0,0.8);}
-    .card-sub{font-family:'Inter',sans-serif;font-size:11px;color:rgba(255,255,255,0.85);margin-top:6px;font-weight:400;line-height:1.5;text-shadow:0 2px 6px rgba(0,0,0,0.5);}
+    .close-btn:hover{color:#fff;}
 
-    .card-body{padding:16px;}
-
-    /* Tabs */
-    .tabs{display:flex;gap:0;margin-bottom:16px;border:1px solid var(--input-border);border-radius:0;overflow:hidden;}
-    .tab-btn{
-      flex:1;display:inline-flex;align-items:center;justify-content:center;gap:8px;
-      font-family:'Rajdhani',sans-serif;font-size:12px;font-weight:700;letter-spacing:1.5px;
-      text-transform:uppercase;min-height:40px;padding:0 12px;border-radius:0;
-      background:#fff;color:#999;border:none;cursor:pointer;transition:all 0.3s ease;
+    /* ── LEFT PANEL: persistent image ── */
+    .image-panel{
+      width:50%;flex-shrink:0;
+      position:relative;overflow:hidden;
     }
-    .tab-btn.active{background:#8B0000;color:#fff;}
-    .tab-btn:focus{outline:none;}
-
-    /* VIN panel */
-    #panel-vin{display:none;}
-    #panel-ymm{display:block;}
-
-    .vin-row{display:flex;gap:10px;}
-    .vin-input{
-      flex:1;
-      padding:12px 14px;
-      border:1px solid var(--input-border);border-radius:0;
-      font-family:'Rajdhani',sans-serif;font-size:15px;font-weight:700;
-      color:#1a1a1a;letter-spacing:2px;text-transform:uppercase;
-      background:var(--input-bg);transition:border-color 0.2s;min-height:44px;
-    }
-    .vin-input:focus{outline:none;border-color:#8B0000;}
-    .vin-input::placeholder{letter-spacing:1px;text-transform:none;font-weight:500;color:#bbb;}
-    .vin-decode-btn{
-      display:inline-flex;align-items:center;justify-content:center;gap:8px;
-      min-height:44px;padding:0 20px;
-      background:#8B0000;color:#fff;
-      font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;
-      letter-spacing:2px;text-transform:uppercase;text-decoration:none;
-      border:none;border-radius:0;cursor:pointer;
-      transition:all 0.3s ease;white-space:nowrap;
-    }
-    .vin-decode-btn:hover{background:#6d0000;}
-    .vin-decode-btn:disabled{background:#ccc;cursor:not-allowed;}
-
-    .vin-status{margin-top:10px;font-family:'Inter',sans-serif;font-size:13px;font-weight:400;color:#666;min-height:18px;}
-    .vin-status.error{color:#c00;}
-    .vin-status.loading{color:#8B0000;}
-    .vin-status.success{color:#8B0000;}
-
-    /* YMM dropdowns */
-    .ymm-grid{display:grid;grid-template-columns:1fr;gap:10px;}
-    @media(min-width:481px){.ymm-grid{grid-template-columns:1fr 1fr;}}
-
-    /* Custom year picker */
-    .year-picker{position:relative;}
-    .year-picker-btn{
-      width:100%;padding:12px 14px;
-      border:1px solid var(--input-border);border-radius:0;
-      font-family:'Rajdhani',sans-serif;font-size:13px;font-weight:700;color:#1a1a1a;
-      background:var(--input-bg);
-      letter-spacing:2px;text-transform:uppercase;text-decoration:none;
-      background:#fff;cursor:pointer;text-align:left;
-      display:flex;align-items:center;justify-content:space-between;gap:8px;
-      min-height:44px;
-      transition:all 0.3s ease;
-    }
-    .year-picker-btn:hover{border-color:#ccc;}
-    .year-picker-btn.open{border-color:#8B0000;}
-    .year-picker-btn .placeholder{color:#bbb;font-weight:500;}
-    .year-picker-arrow{font-size:10px;color:#8B0000;transition:transform 0.2s;}
-    .year-picker-btn.open .year-picker-arrow{transform:rotate(180deg);}
-    .year-grid-panel{
-      display:none;
-      position:absolute;top:calc(100% + 6px);left:0;right:0;
-      background:#fff;border:2px solid #e8e8e8;border-radius:0;
-      box-shadow:0 8px 32px rgba(0,0,0,0.12);
-      z-index:100;padding:12px;
-      max-height:260px;overflow-y:auto;
-    }
-    .year-grid-panel.open{display:block;}
-    .year-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;}
-    .year-cell{
-      padding:8px 4px;text-align:center;
-      font-family:'Inter',sans-serif;font-size:12px;font-weight:600;
-      color:#1a1a1a;cursor:pointer;border-radius:0;
-      transition:background 0.15s,color 0.15s;
-    }
-    .year-cell:hover{background:#8B0000;color:#fff;}
-    .year-cell.selected{background:#8B0000;color:#fff;}
-
-    .field label{
-      display:block;font-size:12px;font-weight:700;letter-spacing:0.5px;
-      color:#1a1a1a;margin-bottom:6px;
-    }
-    .field select{
-      width:100%;padding:12px 14px;
-      border:1px solid var(--input-border);border-radius:0;
-      font-family:'Rajdhani',sans-serif !important;font-size:13px;font-weight:700;color:#1a1a1a;
-      letter-spacing:2px;text-transform:uppercase;
-      -webkit-font-smoothing:antialiased;
-      background:#fff;appearance:none;-webkit-appearance:none;
-      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238B0000' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-      background-repeat:no-repeat;background-position:right 12px center;
-      cursor:pointer;transition:border-color 0.2s;min-height:44px;
-    }
-    .field select:focus{outline:none !important;border-color:#8B0000;box-shadow:none !important;-webkit-tap-highlight-color:transparent;}
-    .field select:focus-visible{outline:none !important;}
-    .field select:disabled{color:#bbb;background-color:#fff;cursor:not-allowed;}
-    .field select option{font-family:'Rajdhani',sans-serif;font-weight:700;letter-spacing:2px;text-transform:uppercase;}
-
-    /* Vehicle confirm popup */
-    #confirm-panel{
-      display:none;
-      margin-top:24px;
-      border:2px solid #e8e8e8;border-radius:0;
-      overflow:hidden;
-    }
-    #confirm-panel.visible{display:block;}
-
-    .confirm-header{
-      background:#f9f9f9;border-bottom:2px solid #e8e8e8;
-      padding:14px 20px;
-      display:flex;align-items:center;justify-content:space-between;
-    }
-    .confirm-title{font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#8B0000;}
-
-    .confirm-body{padding:20px;}
-    .confirm-vehicle{font-size:17px;font-weight:800;color:#1a1a1a;margin-bottom:16px;}
-
-    .confirm-extras{display:grid;grid-template-columns:1fr;gap:10px;margin-bottom:14px;}
-    @media(min-width:481px){.confirm-extras{grid-template-columns:1fr 1fr;}}
-
-    /* Color picker */
-    .color-label{font-size:12px;font-weight:700;letter-spacing:0.5px;color:#1a1a1a;margin-bottom:8px;}
-    .color-swatches{display:flex;flex-wrap:wrap;gap:8px;}
-    .swatch{
-      width:28px;height:28px;border-radius:50%;
-      border:2px solid transparent;cursor:pointer;
-      transition:transform 0.15s,border-color 0.15s;
-    }
-    .swatch:hover{transform:scale(1.15);}
-    .swatch.selected{border-color:#8B0000;transform:scale(1.15);}
-
-    /* Truck visual */
-    .truck-visual{
-      background:#1a1a1a;border-radius:0;
-      height:110px;
-      overflow:hidden;position:relative;
-    }
-    .truck-photo{
+    .image-panel img{
       width:100%;height:100%;
       object-fit:cover;object-position:center;
       display:block;
-      transition:opacity 0.3s;
     }
-    .truck-color-overlay{
+    .image-panel-overlay{
       position:absolute;inset:0;
-      mix-blend-mode:color;
-      border-radius:0;
-      transition:background 0.3s;
+      background:rgba(0,0,0,0.15);
+    }
+
+    /* ── RIGHT PANEL ── */
+    .content-panel{
+      flex:1;background:#080808;
+      position:relative;
+      overflow:hidden;
+    }
+
+    /* Form content wrapper — centers content at 350px within right panel */
+    .form-wrap{
+      width:350px;max-width:100%;margin:0 auto;
+      display:flex;flex-direction:column;flex:1;
+    }
+
+    /* ── SCREENS ── */
+    .screen{
+      position:absolute;inset:0;
+      padding:28px 28px 24px;
+      display:flex;flex-direction:column;
+      transform:translateX(100%);
+      opacity:0;
+      transition:transform 0.38s cubic-bezier(0.4,0,0.2,1), opacity 0.3s ease;
       pointer-events:none;
+      overflow-y:auto;
     }
-    .truck-photo-label{
-      position:absolute;bottom:8px;right:10px;
-      font-size:9px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;
-      color:rgba(255,255,255,0.6);
+    .screen.visible{
+      transform:translateX(0);opacity:1;pointer-events:all;
     }
+    .screen.exit-left{
+      transform:translateX(-26%);opacity:0;pointer-events:none;
+    }
+    .screen.exit-right{
+      transform:translateX(100%);opacity:0;pointer-events:none;
+    }
+
+    /* ── STEP INDICATOR ── */
+    .step-pill{
+      display:inline-flex;align-items:center;gap:6px;
+      margin-bottom:16px;
+    }
+    .step-dot{
+      width:6px;height:6px;background:#8B0000;
+    }
+    .step-text{
+      font-family:'Montserrat',sans-serif;font-size:9px;font-weight:700;
+      letter-spacing:2.5px;text-transform:uppercase;color:#555;
+    }
+    .step-text span{color:#888;}
+
+    /* ── SCREEN 1 ── */
+    .s1-heading{
+      font-family:'Montserrat',sans-serif;font-size:clamp(22px,2.6vw,32px);
+      font-weight:900;letter-spacing:-0.5px;text-transform:uppercase;
+      color:#fff;line-height:1.35;margin-bottom:20px;
+    }
+    .s1-heading em{font-style:normal;color:#8B0000;}
+
+    /* Custom pickers shared */
+    .picker-field{margin-bottom:10px;}
+    .picker-label{
+      font-family:'Montserrat',sans-serif;font-size:9px;font-weight:700;
+      letter-spacing:2px;text-transform:uppercase;color:#555;
+      display:block;margin-bottom:5px;
+    }
+    .picker-wrap{position:relative;}
+
+    /* Picker button */
+    .picker-btn{
+      width:100%;padding:10px 12px;
+      background:#111;border:1px solid #2a2a2a;
+      font-family:'Montserrat',sans-serif;font-size:14px;font-weight:700;
+      color:#fff;letter-spacing:1.5px;
+      display:flex;align-items:center;justify-content:space-between;gap:8px;
+      cursor:pointer;text-align:left;min-height:42px;
+      transition:border-color 0.2s;
+    }
+    .picker-btn:hover{border-color:#444;}
+    .picker-btn.open{border-color:#8B0000;}
+    .picker-btn .ph{color:#3a3a3a;font-weight:600;}
+    .picker-btn.disabled-state{opacity:0.35;cursor:not-allowed;pointer-events:none;}
+    .picker-arrow{font-size:9px;color:#8B0000;transition:transform 0.2s;flex-shrink:0;}
+    .picker-btn.open .picker-arrow{transform:rotate(180deg);}
+
+    /* Picker dropdown panel */
+    .picker-panel{
+      display:none;
+      position:absolute;top:calc(100% + 4px);left:0;right:0;
+      background:#111;border:1px solid #2a2a2a;
+      box-shadow:0 12px 40px rgba(0,0,0,0.7);
+      z-index:200;padding:8px;
+      max-height:220px;overflow-y:auto;
+    }
+    .picker-panel.open{display:block;}
+
+    /* Year grid */
+    .year-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;}
+    .picker-cell{
+      padding:7px 4px;text-align:center;
+      font-family:'Montserrat',sans-serif;font-size:13px;font-weight:700;
+      color:#ccc;cursor:pointer;letter-spacing:1px;
+      transition:background 0.12s,color 0.12s;
+    }
+    .picker-cell:hover{background:#8B0000;color:#fff;}
+    .picker-cell.selected{background:#8B0000;color:#fff;}
+
+    /* Make grid (2 col) */
+    .make-grid{display:grid;grid-template-columns:1fr 1fr;gap:3px;}
+
+    /* Model list (1 col) */
+    .model-list{display:grid;grid-template-columns:1fr;gap:2px;}
+    .model-cell{
+      padding:9px 12px;
+      font-family:'Montserrat',sans-serif;font-size:13px;font-weight:700;
+      color:#ccc;cursor:pointer;letter-spacing:1px;
+      transition:background 0.12s,color 0.12s;
+    }
+    .model-cell:hover{background:#8B0000;color:#fff;}
+    .model-cell.selected{background:#8B0000;color:#fff;}
+
+    /* Next btn */
+    .next-btn{
+      margin-top:auto;
+      width:100%;height:48px;
+      background:#8B0000;color:#fff;border:2px solid #8B0000;
+      font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;
+      letter-spacing:2px;text-transform:uppercase;cursor:pointer;
+      transition:background 0.2s,color 0.2s,border-color 0.2s,opacity 0.2s;
+      opacity:0.3;pointer-events:none;
+    }
+    .next-btn.ready{opacity:1;pointer-events:all;}
+    .next-btn:hover{background:#fff;color:#8B0000;border-color:#fff;}
+
+    /* ── SCREEN 2 ── */
+    .back-btn{
+      display:inline-flex;align-items:center;gap:6px;
+      padding:0 14px;height:30px;width:fit-content;margin-bottom:14px;
+      background:#111;border:1px solid #333;
+      font-family:'Montserrat',sans-serif;font-size:9px;font-weight:700;
+      letter-spacing:2px;text-transform:uppercase;color:#777;
+      cursor:pointer;transition:background 0.2s,border-color 0.2s,color 0.2s;
+    }
+    .back-btn:hover{background:#1e1e1e;border-color:#555;color:#ccc;}
+
+    .confirm-label{
+      font-family:'Montserrat',sans-serif;font-size:9px;font-weight:700;
+      letter-spacing:2px;text-transform:uppercase;color:#555;margin-bottom:4px;
+    }
+    .confirm-vehicle{
+      font-family:'Montserrat',sans-serif;font-size:17px;font-weight:900;
+      text-transform:uppercase;letter-spacing:0.5px;color:#fff;
+      margin-bottom:24px;padding-bottom:16px;
+      border-bottom:1px solid #1e1e1e;line-height:1.2;
+    }
+
+    .s2-field{margin-bottom:18px;}
+    .s2-label{
+      font-family:'Montserrat',sans-serif;font-size:9px;font-weight:700;
+      letter-spacing:2px;text-transform:uppercase;color:#555;
+      display:block;margin-bottom:5px;
+    }
+
+    /* Color row */
+    .color-row{display:flex;align-items:center;gap:10px;margin-bottom:22px;}
+    .color-row-label{
+      font-family:'Montserrat',sans-serif;font-size:9px;font-weight:700;
+      letter-spacing:2px;text-transform:uppercase;color:#555;white-space:nowrap;
+    }
+    .swatches{display:flex;gap:6px;flex-wrap:wrap;}
+    .swatch{
+      width:20px;height:20px;border-radius:50%;
+      border:2px solid transparent;cursor:pointer;flex-shrink:0;
+      transition:transform 0.15s,border-color 0.15s;
+    }
+    .swatch:hover{transform:scale(1.2);}
+    .swatch.selected{border-color:#8B0000;transform:scale(1.2);}
 
     .save-btn{
-      width:100%;
-      display:inline-flex;align-items:center;justify-content:center;gap:8px;
-      min-height:44px;padding:0 24px;
-      background:#8B0000;color:#fff;
-      font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;
-      letter-spacing:2px;text-transform:uppercase;text-decoration:none;
-      border:none;border-radius:0;cursor:pointer;
-      transition:all 0.3s ease;
+      margin-top:auto;
+      width:100%;height:48px;
+      background:#8B0000;color:#fff;border:2px solid #8B0000;
+      font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;
+      letter-spacing:2px;text-transform:uppercase;cursor:pointer;
+      transition:background 0.2s,color 0.2s,border-color 0.2s;
     }
-    .save-btn:hover{background:#6d0000;transform:translateY(-1px);}
+    .save-btn:hover{background:#fff;color:#8B0000;border-color:#fff;}
 
-    /* Saved state */
-    #saved-panel{
-      display:none;
-      text-align:center;
-      padding:20px 16px;
+    /* ── SCREEN 3 ── */
+    .screen-3-inner{
+      display:flex;flex-direction:column;
+      align-items:center;justify-content:flex-start;
+      text-align:center;gap:22px;flex:1;
+      padding-top:44px;
     }
-    #saved-panel.visible{display:block;}
-    .saved-check{
-      width:48px;height:48px;border-radius:0;
-      background:#8B0000;display:flex;align-items:center;justify-content:center;
-      margin:0 auto 12px;font-size:22px;line-height:1;color:#fff;
+    .s3-check{
+      width:44px;height:44px;background:#8B0000;
+      display:flex;align-items:center;justify-content:center;
+      font-size:20px;color:#fff;margin-bottom:4px;
     }
-    .saved-title{font-size:16px;font-weight:800;color:#1a1a1a;margin-bottom:4px;}
-    .saved-sub{font-family:'Inter',sans-serif;font-size:12px;color:#424954;font-weight:400;line-height:1.55;margin-bottom:14px;}
-    .saved-vehicle-pill{
-      display:block;
-      font-size:15px;font-weight:800;color:#1a1a1a;
-      letter-spacing:1px;text-transform:uppercase;
-      margin-bottom:20px;
+    .s3-title{
+      font-family:'Montserrat',sans-serif;font-size:18px;font-weight:900;
+      text-transform:uppercase;letter-spacing:1px;color:#fff;
     }
-    .saved-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
-    .saved-actions a,.saved-actions button{
-      display:inline-flex;align-items:center;justify-content:center;gap:8px;
-      min-height:44px;padding:0 20px;border-radius:0;
-      font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;
+    .s3-sub{
+      font-family:'Inter',sans-serif;font-size:12px;color:#555;
+      font-weight:400;
+    }
+    .s3-vehicle{
+      font-family:'Montserrat',sans-serif;font-weight:900;
+      font-size:clamp(13px,2vw,17px);
+      letter-spacing:1px;
+      color:#fff;line-height:1.3;
+    }
+    .s3-vehicle .year-tag{color:#8B0000;}
+
+    .s3-actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;}
+    .s3-btn-primary{
+      padding:12px 20px;
+      background:#8B0000;color:#fff;border:2px solid #8B0000;
+      font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;
       letter-spacing:2px;text-transform:uppercase;cursor:pointer;
-      text-decoration:none;transition:all 0.3s ease;
+      transition:background 0.2s,color 0.2s,border-color 0.2s;
     }
-    .btn-primary{background:#8B0000;color:#fff;border:none;}
-    .btn-primary:hover{background:#6d0000;}
-    .btn-secondary{background:#fff;color:#1a1a1a;border:2px solid #e8e8e8;}
-    .btn-secondary:hover{border-color:#1a1a1a;}
-    .btn-clear{
-      width:100%;margin-top:16px;
-      display:inline-flex;align-items:center;justify-content:center;gap:8px;
-      min-height:48px;padding:0 24px;border-radius:0;
-      font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;
+    .s3-btn-primary:hover{background:#fff;color:#8B0000;border-color:#fff;}
+    .s3-btn-secondary{
+      padding:12px 20px;
+      background:transparent;color:#888;
+      border:1px solid #2a2a2a;
+      font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;
       letter-spacing:2px;text-transform:uppercase;cursor:pointer;
-      text-decoration:none;transition:all 0.3s ease;
-      background:#fff;color:#8B0000;border:2px solid #8B0000;
+      transition:all 0.2s;
     }
-    .btn-clear:hover{background:#8B0000;color:#fff;}
-    *:focus-visible{outline:2px solid #8B0000;outline-offset:3px;}
+    .s3-btn-secondary:hover{border-color:#666;color:#fff;}
+
+    .s3-close{
+      margin-top:auto;align-self:center;
+      display:inline-flex;align-items:center;justify-content:center;
+      padding:0 14px;height:30px;width:fit-content;
+      background:#111;border:1px solid #333;
+      font-family:'Montserrat',sans-serif;font-size:9px;font-weight:700;
+      letter-spacing:2px;text-transform:uppercase;color:#777;
+      cursor:pointer;transition:background 0.2s,border-color 0.2s,color 0.2s;
+      text-decoration:none;
+    }
+    .s3-close:hover{background:#1e1e1e;border-color:#555;color:#ccc;}
+
+    /* Scrollbar */
+    .picker-panel::-webkit-scrollbar{width:4px;}
+    .picker-panel::-webkit-scrollbar-track{background:#0d0d0d;}
+    .picker-panel::-webkit-scrollbar-thumb{background:#2a2a2a;}
+    .screen::-webkit-scrollbar{width:4px;}
+    .screen::-webkit-scrollbar-track{background:#080808;}
+    .screen::-webkit-scrollbar-thumb{background:#1e1e1e;}
   </style>
 </head>
 <body>
 
-<!-- Garage bar (persistent across pages) -->
-<div id="garage-bar">
-  <div class="garage-bar-left">
-    <span class="garage-vehicle-name" id="bar-vehicle-name">—</span>
-    <span class="garage-fits-badge">✓ Your Vehicle</span>
-  </div>
-  <div class="garage-bar-right">
-    <button class="garage-change-btn" onclick="resetGarage()">Change Vehicle</button>
-  </div>
-</div>
+<div class="popup" id="popup">
 
-<div class="wrap">
+  <!-- Close -->
+  <button class="close-btn" onclick="closeGarage()">✕</button>
 
-  <!-- Entry card -->
-  <div class="entry-card" id="entry-card">
-    <div class="card-header">
-      <div class="card-header-bg"></div>
-      <div class="card-header-overlay"></div>
-      <div class="card-header-content">
-        <p class="card-eyebrow">My Garage</p>
-        <h1 class="card-title">Find Parts That<br><em>Fit</em> Your <em>Truck</em></h1>
-        <p class="card-sub">Enter your VIN or select Year / Make / Model — we'll save your vehicle and show you exactly what fits.</p>
+  <!-- LEFT: persistent image -->
+  <div class="image-panel">
+    <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/images/trucks/garage-hero-raptor.png" alt="Truck"/>
+    <div class="image-panel-overlay"></div>
+  </div>
+
+  <!-- RIGHT: screens -->
+  <div class="content-panel" id="content-panel">
+
+    <!-- SCREEN 1 -->
+    <div class="screen visible" id="screen-1">
+      <div class="step-pill">
+        <div class="step-dot"></div>
+        <span class="step-text">Step <span>1 of 2</span> — Select Vehicle</span>
       </div>
+      <div class="form-wrap">
+      <h2 class="s1-heading">Find Parts That<br><em>Fit</em> Your Truck</h2>
+
+      <!-- Year picker -->
+      <div class="picker-field">
+        <span class="picker-label">Year</span>
+        <div class="picker-wrap" id="year-wrap">
+          <button type="button" class="picker-btn" id="year-btn" onclick="togglePicker('year')">
+            <span id="year-label" class="ph">Select Year</span>
+            <span class="picker-arrow">▼</span>
+          </button>
+          <div class="picker-panel" id="year-panel">
+            <div class="year-grid" id="year-grid"></div>
+          </div>
+        </div>
+        <input type="hidden" id="val-year"/>
+      </div>
+
+      <!-- Make picker -->
+      <div class="picker-field">
+        <span class="picker-label">Make</span>
+        <div class="picker-wrap" id="make-wrap">
+          <button type="button" class="picker-btn disabled-state" id="make-btn" onclick="togglePicker('make')">
+            <span id="make-label" class="ph">Select Make</span>
+            <span class="picker-arrow">▼</span>
+          </button>
+          <div class="picker-panel" id="make-panel">
+            <div class="make-grid" id="make-grid"></div>
+          </div>
+        </div>
+        <input type="hidden" id="val-make"/>
+      </div>
+
+      <!-- Model picker -->
+      <div class="picker-field">
+        <span class="picker-label">Model</span>
+        <div class="picker-wrap" id="model-wrap">
+          <button type="button" class="picker-btn disabled-state" id="model-btn" onclick="togglePicker('model')">
+            <span id="model-label" class="ph">Select Model</span>
+            <span class="picker-arrow">▼</span>
+          </button>
+          <div class="picker-panel" id="model-panel">
+            <div class="model-list" id="model-grid"></div>
+          </div>
+        </div>
+        <input type="hidden" id="val-model"/>
+      </div>
+
+      <button class="next-btn" id="next-btn" onclick="goStep2()">Next — Confirm Details →</button>
+      </div><!-- /form-wrap -->
     </div>
-    <div class="card-body">
 
-      <!-- Tabs -->
-      <div class="tabs">
-        <button class="tab-btn" id="tab-vin" onclick="switchTab('vin')">Enter VIN</button>
-        <button class="tab-btn active" id="tab-ymm" onclick="switchTab('ymm')">Year / Make / Model</button>
+    <!-- SCREEN 2 -->
+    <div class="screen" id="screen-2">
+      <div class="step-pill">
+        <div class="step-dot"></div>
+        <span class="step-text">Step <span>2 of 2</span> — Confirm Details</span>
       </div>
+      <button class="back-btn" onclick="goBack()">← Back</button>
+      <div class="form-wrap">
+      <div class="confirm-label">Your Vehicle</div>
+      <div class="confirm-vehicle" id="confirm-name">—</div>
 
-      <!-- VIN Panel -->
-      <div id="panel-vin">
-        <div class="vin-row">
-          <input class="vin-input" id="vin-input" type="text" maxlength="17" placeholder="Enter your 17-digit VIN" />
-          <button class="vin-decode-btn" id="vin-btn" onclick="decodeVIN()">Decode</button>
-        </div>
-        <p class="vin-status" id="vin-status"></p>
-      </div>
-
-      <!-- YMM Panel -->
-      <div id="panel-ymm">
-        <div class="ymm-grid">
-          <div class="field">
-            <label>Year</label>
-            <div class="year-picker" id="year-picker">
-              <button type="button" class="year-picker-btn" id="year-picker-btn" onclick="toggleYearGrid()">
-                <span id="year-picker-label" class="placeholder">Select Year</span>
-                <span class="year-picker-arrow">▼</span>
-              </button>
-              <div class="year-grid-panel" id="year-grid-panel">
-                <div class="year-grid" id="year-grid"></div>
-              </div>
-            </div>
-            <input type="hidden" id="ymm-year" value=""/>
-          </div>
-          <div class="field">
-            <label>Make</label>
-            <select id="ymm-make" disabled onchange="ymmMakeChange()">
-              <option value="">SELECT MAKE</option>
-            </select>
-          </div>
-          <div class="field" style="grid-column:1/-1;">
-            <label>Model</label>
-            <select id="ymm-model" disabled onchange="ymmModelChange()">
-              <option value="">SELECT MODEL</option>
-            </select>
+      <div class="s2-field" id="trim-field">
+        <span class="s2-label">Trim Level</span>
+        <div class="picker-wrap" id="trim-wrap">
+          <button type="button" class="picker-btn" id="trim-btn" onclick="togglePicker('trim')">
+            <span id="trim-label" class="ph">Unknown / Not Listed</span>
+            <span class="picker-arrow">▼</span>
+          </button>
+          <div class="picker-panel" id="trim-panel">
+            <div class="model-list" id="trim-grid"></div>
           </div>
         </div>
+        <input type="hidden" id="val-trim"/>
       </div>
 
-      <!-- Confirm panel (trim + color + visual) -->
-      <div id="confirm-panel">
-        <div class="confirm-header">
-          <span class="confirm-title">Confirm Your Vehicle</span>
+      <div class="s2-field" id="bed-field" style="display:none;">
+        <span class="s2-label">Bed Size</span>
+        <div class="picker-wrap" id="bed-wrap">
+          <button type="button" class="picker-btn" id="bed-btn" onclick="togglePicker('bed')">
+            <span id="bed-label" class="ph">Select Bed Size</span>
+            <span class="picker-arrow">▼</span>
+          </button>
+          <div class="picker-panel" id="bed-panel">
+            <div class="model-list" id="bed-grid"></div>
+          </div>
         </div>
-        <div class="confirm-body">
-          <p class="confirm-vehicle" id="confirm-vehicle-name">—</p>
-
-          <div class="confirm-extras">
-
-            <!-- Trim selector -->
-            <div>
-              <div class="field">
-                <label>Trim Level</label>
-                <select id="sel-trim" onchange="handleTrimChange()">
-                  <option value="">Select Trim</option>
-                </select>
-              </div>
-              <div class="field" id="trim-other-field" style="display:none;margin-top:8px;">
-                <label>Enter Trim</label>
-                <input type="text" id="trim-other-input" placeholder="e.g. FX4, Sport, Off-Road" style="width:100%;padding:10px 12px;border:2px solid #e0e0e0;border-radius:0;font-family:'Inter',sans-serif;font-size:14px;font-weight:600;"/>
-              </div>
-            </div>
-
-            <!-- Color picker -->
-            <div>
-              <p class="color-label">Truck Color</p>
-              <div class="color-swatches" id="color-swatches"></div>
-            </div>
-
-          </div>
-
-          <!-- Bed size selector -->
-          <div class="field" id="bed-field" style="margin-bottom:16px;display:none;">
-            <label>Bed Size</label>
-            <select id="sel-bed" onchange="bedSizeChange()">
-              <option value="">Select Bed Size</option>
-            </select>
-          </div>
-
-          <!-- Truck visual -->
-          <div class="truck-visual" id="truck-visual">
-            <img class="truck-photo" id="truck-photo" src="" alt="Your truck"/>
-            <div class="truck-color-overlay" id="truck-color-overlay"></div>
-            <span class="truck-photo-label" id="truck-photo-label"></span>
-          </div>
-
-          <br/>
-          <div style="margin-bottom:14px;">
-            <button type="button" onclick="toggleGarageBedTip(this)" style="font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;color:#1a6bbf;cursor:pointer;text-decoration:underline;background:none;border:none;padding:0;">📏 How to Measure Your Truck Bed</button>
-            <div id="garage-bed-tip" style="max-height:0;overflow:hidden;transition:max-height 0.4s ease;border-radius:0;margin-top:0;">
-              <div style="margin-top:10px;border:2px solid #e8e8e8;border-radius:0;overflow:hidden;">
-                <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/TRUCK%20BED%20MEASURE%20GUIDE.webp" alt="How to measure truck bed size" style="width:100%;display:block;" loading="lazy"/>
-                <p style="padding:10px 14px;background:#fafafa;font-size:11px;font-weight:600;color:#666;line-height:1.5;text-align:center;">Measure from the <strong>inside of the bulkhead</strong> (front wall) to the <strong>inside of the tailgate</strong> (closed). That's your bed length.</p>
-              </div>
-            </div>
-          </div>
-          <button class="save-btn" onclick="saveVehicle()">Save to My Garage</button>
-        </div>
+        <input type="hidden" id="val-bed"/>
       </div>
 
+      <div class="color-row">
+        <span class="color-row-label">Color</span>
+        <div class="swatches" id="swatches"></div>
+      </div>
+
+      <button class="save-btn" onclick="saveVehicle()">✓ Save to My Garage</button>
+      </div><!-- /form-wrap -->
     </div>
-  </div>
 
-  <!-- Saved panel -->
-  <div id="saved-panel">
-    <div class="entry-card">
-      <div class="card-body">
-        <div class="saved-check">✓</div>
-        <p class="saved-title">Vehicle Saved!</p>
-        <p class="saved-sub">We'll show you parts that fit your truck across every page.</p>
-        <div class="saved-vehicle-pill" id="saved-pill">—</div>
-        <div class="saved-actions">
-          <a href="parts-catalog.html" class="btn-primary">Shop Tonneau Covers</a>
-          <button class="btn-secondary" onclick="resetGarage()">Change Vehicle</button>
-        </div>
-        <button class="btn-clear" onclick="clearGarage()">✕ Clear Vehicle</button>
-        <div style="margin-top:16px;text-align:center;">
-          <button onclick="if(window.history.length>1){window.history.back();}else{window.location.href='https://www.3jsautobody.com';}" style="background:none;border:none;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#888;cursor:pointer;text-decoration:underline;padding:8px;">← Back to Site</button>
+    <!-- SCREEN 3 -->
+    <div class="screen" id="screen-3">
+      <button class="back-btn" onclick="transitionTo('screen-2','back')">← Back</button>
+      <div class="screen-3-inner">
+        <div class="s3-check">✓</div>
+        <div class="s3-title">Garage Locked In</div>
+        <div class="s3-sub">Parts that fit your truck — across every page.</div>
+        <div class="s3-vehicle" id="s3-vehicle">—</div>
+        <div class="s3-actions">
+          <button class="s3-btn-primary" onclick="window.top.location.href='https://www.3jsautobody.com/exterior-accessories'">Browse Accessories</button>
+          <button class="s3-btn-secondary" onclick="resetAll()">Change Vehicle</button>
         </div>
       </div>
+      <button class="s3-close" onclick="closeGarage()">Close</button>
     </div>
-  </div>
 
-</div>
+  </div><!-- /content-panel -->
+</div><!-- /popup -->
 
 <script>
-// ── Color definitions ──
-var COLORS = [
-  {name:"White",   hex:"#F5F5F0"},
-  {name:"Silver",  hex:"#C0C0C0"},
-  {name:"Gray",    hex:"#808080"},
-  {name:"Black",   hex:"#1a1a1a"},
-  {name:"Red",     hex:"#B22222"},
-  {name:"Blue",    hex:"#1E3A8A"},
-  {name:"Navy",    hex:"#0a1628"},
-  {name:"Green",   hex:"#2D5016"},
-  {name:"Brown",   hex:"#6B3A2A"},
-  {name:"Orange",  hex:"#CC5500"},
-  {name:"Yellow",  hex:"#D4A017"},
-  {name:"Beige",   hex:"#D2B48C"},
+var MAKES={
+  "Ford":     ["F-150","F-150 Lightning","Super Duty F-250/F-350","Ranger","Maverick"],
+  "Chevrolet":["Silverado 1500","Silverado 2500HD/3500HD","Colorado"],
+  "GMC":      ["Sierra 1500","Sierra 2500HD/3500HD","Canyon"],
+  "RAM":      ["1500","1500 TRX","1500 RHO","2500/3500"],
+  "Toyota":   ["Tacoma","Tundra","Pickup","T100"],
+  "Nissan":   ["Titan","Titan XD","Frontier"],
+  "Honda":    ["Ridgeline"],
+  "Jeep":     ["Gladiator"],
+};
+
+var TRIMS={
+  "F-150":          ["XL","XLT","Lariat","King Ranch","Platinum","Limited","Raptor","Raptor R"],
+  "Silverado 1500": ["WT","Custom","LT","RST","LTZ","High Country","ZR2","Trail Boss"],
+  "Sierra 1500":    ["Pro","SLE","SLT","AT4","Denali","Denali Ultimate"],
+  "1500":           ["Tradesman","Big Horn","Lone Star","Laramie","Rebel","Limited","Longhorn"],
+  "Tacoma":         ["SR","SR5","TRD Sport","TRD Off-Road","Limited","TRD Pro","Trailhunter"],
+  "Tundra":         ["SR","SR5","Limited","Platinum","1794 Edition","TRD Pro","Capstone"],
+  "Ranger":         ["XL","XLT","Lariat","Raptor"],
+  "Colorado":       ["WT","LT","Z71","ZR2","Trail Boss"],
+  "Canyon":         ["Pro","SLE","Elevation","SLT","AT4X","Denali"],
+  "Gladiator":      ["Sport","Sport S","Willys","Rubicon","Mojave"],
+};
+
+var BED_SIZES={
+  "F-150":                 [["5'6\" Short",66],["6'6\" Standard",78]],
+  "Super Duty F-250/F-350":[["6'9\" Standard",81],["8' Long",96]],
+  "Silverado 1500":        [["5'9\" Short",69],["6'7\" Standard",79]],
+  "Sierra 1500":           [["5'9\" Short",69],["6'7\" Standard",79]],
+  "1500":                  [["5'7\" Short",67],["6'4\" Standard",76],["8' Long",96]],
+  "Tacoma":                [["5' Short",60],["6' Standard",72]],
+  "Tundra":                [["5'6\" Short",66],["6'6\" Standard",78],["8' Long",96]],
+  "Ranger":                [["5' Short",60],["6' Standard",72]],
+  "Colorado":              [["5'2\" Short",62],["6'7\" Standard",79]],
+  "Canyon":                [["5'2\" Short",62],["6'7\" Standard",79]],
+  "Frontier":              [["5' Short",60],["6' Standard",72]],
+};
+
+var COLORS=[
+  {name:"White",hex:"#F5F5F0"},{name:"Silver",hex:"#C0C0C0"},{name:"Gray",hex:"#808080"},
+  {name:"Black",hex:"#1a1a1a"},{name:"Red",hex:"#B22222"},{name:"Blue",hex:"#1E3A8A"},
+  {name:"Navy",hex:"#0a1628"},{name:"Green",hex:"#2D5016"},{name:"Brown",hex:"#6B3A2A"},
+  {name:"Orange",hex:"#CC5500"},{name:"Yellow",hex:"#D4A017"},
 ];
 
-// ── Bed sizes per model [label, bedIn inches] ──
-var BED_SIZES = {
-  "F-150":                     [["5'6\" Short Bed",66],["6'6\" Standard Bed",78]],
-  "F-150 Lightning":           [["5'6\" Short Bed",66]],
-  "Super Duty F-250/F-350":    [["6'9\" Standard Bed",81],["8' Long Bed",96]],
-  "Ranger":                    [["5' Short Bed",60],["6' Standard Bed",72]],
-  "Maverick":                  [["4'6\" Compact Bed",54]],
-  "Silverado 1500":            [["5'9\" Short Bed",69],["6'7\" Standard Bed",79]],
-  "Silverado 2500HD/3500HD":   [["6'7\" Standard Bed",79],["8' Long Bed",96]],
-  "Silverado/Sierra 1500":     [["5'9\" Short Bed",69],["6'7\" Standard Bed",79]],
-  "Silverado/Sierra 2500HD/3500HD":[["6'7\" Standard Bed",79],["8' Long Bed",96]],
-  "Sierra 1500":               [["5'9\" Short Bed",69],["6'7\" Standard Bed",79]],
-  "Sierra 2500HD/3500HD":      [["6'7\" Standard Bed",79],["8' Long Bed",96]],
-  "Colorado":                  [["5'2\" Short Bed",62],["6'7\" Standard Bed",79]],
-  "Canyon":                    [["5'2\" Short Bed",62],["6'7\" Standard Bed",79]],
-  "Canyon/Colorado":           [["5'2\" Short Bed",62],["6'7\" Standard Bed",79]],
-  "1500/2500/3500":            [["5'7\" Short Bed",67],["6'4\" Standard Bed",76],["8' Long Bed",96]],
-  "1500 W/O Ram Box":          [["5'7\" Short Bed",67],["6'4\" Standard Bed",76]],
-  "1500 With Ram Box":         [["5'7\" Short Bed",67],["6'4\" Standard Bed",76]],
-  "Sierra EV":                 [["5'11\" Short Bed",71]],
-  "Canyon AT4":                [["5'2\" Short Bed",62]],
-  "1500 TRX":                  [["5'7\" Short Bed",67]],
-  "1500 RHO":                  [["5'7\" Short Bed",67],["6'4\" Standard Bed",76]],
-  "Tacoma":                    [["5' Short Bed",60],["6' Standard Bed",72]],
-  "Tundra":                    [["5'6\" Short Bed",66],["6'6\" Standard Bed",78],["8' Long Bed",96]],
-  "Pickup":                    [["6' Standard Bed",72],["7'6\" Long Bed",90]],
-  "T100":                      [["6' Standard Bed",72],["7'6\" Long Bed",90]],
-  "Titan":                     [["5'7\" Short Bed",67],["6'7\" Standard Bed",79]],
-  "Titan XD":                  [["6'7\" Standard Bed",79]],
-  "Frontier":                  [["5' Short Bed",60],["6' Standard Bed",72]],
-  "Ridgeline":                 [["5'4\" Bed",64]],
-  "Gladiator":                 [["5' Bed",60]],
-};
+var selectedColor=COLORS[0];
+var pendingVehicle={};
 
-// ── Makes/models for YMM (top US trucks) ──
-var MAKES = {
-  "Ford":       ["F-150","F-150 Lightning","Super Duty F-250/F-350","Ranger","Maverick"],
-  "Chevrolet":  ["Silverado 1500","Silverado 2500HD/3500HD","Colorado"],
-  "GMC":        ["Sierra 1500","Sierra 2500HD/3500HD","Sierra EV","Canyon","Canyon AT4"],
-  "RAM":        ["1500","1500 TRX","1500 RHO","2500/3500"],
-  "Toyota":     ["Tacoma","Tundra","Pickup","T100"],
-  "Nissan":     ["Titan","Titan XD","Frontier"],
-  "Honda":      ["Ridgeline"],
-  "Jeep":       ["Gladiator"],
-};
-
-// ── Trim levels per model ──
-var TRIMS = {
-  "F-150":               ["Regular","XL","XLT","Lariat","King Ranch","Platinum","Limited","Raptor","Raptor R"],
-  "Super Duty F-250/F-350":["XL","XLT","Lariat","King Ranch","Platinum","Limited","Tremor"],
-  "Ranger":              ["XL","XLT","Lariat","Raptor"],
-  "Maverick":            ["XL","XLT","Lariat"],
-  "Silverado 1500":      ["WT","Custom","LT","RST","LTZ","High Country","Trail Boss","ZR2"],
-  "Silverado 2500HD/3500HD":["WT","Custom","LT","LTZ","High Country"],
-  "Colorado":            ["WT","LT","Z71","ZR2","Trail Boss"],
-  "Sierra 1500":         ["Pro","SLE","Elevation","SLT","AT4","Denali","Denali Ultimate"],
-  "Sierra 2500HD/3500HD":["Pro","SLE","SLT","AT4","Denali"],
-  "Sierra EV":           ["Standard Range WT","Standard Range SLT","Standard Range Denali","Extended Range Denali"],
-  "Canyon":              ["Pro","SLE","Elevation","SLT","AT4X","Denali"],
-  "Canyon AT4":          ["AT4"],
-  "1500":                ["Tradesman","Big Horn","Lone Star","Laramie","Rebel","TRX","Limited","Longhorn"],
-  "1500 TRX":            ["TRX"],
-  "1500 RHO":            ["RHO"],
-  "2500/3500":           ["Tradesman","Big Horn","Laramie","Power Wagon","Limited","Longhorn"],
-  "Tacoma":              ["SR","SR5","TRD Sport","TRD Off-Road","Limited","TRD Pro","Trailhunter"],
-  "Pickup":              ["DLX","SR5","Xtracab"],
-  "T100":                ["DX","SR5"],
-  "Tundra":              ["SR","SR5","Limited","Platinum","1794 Edition","TRD Pro","Capstone"],
-  "Titan":               ["S","SV","Pro-4X","Platinum Reserve"],
-  "Titan XD":            ["S","SV","Pro-4X","Platinum Reserve"],
-  "Frontier":            ["S","SV","Pro-4X","PRO-X"],
-  "Ridgeline":           ["Sport","RTL","RTL-E","Black Edition"],
-  "Gladiator":           ["Sport","Sport S","Willys","Rubicon","Mojave"],
-};
-
-var selectedColor = COLORS[0];
-var pendingVehicle = {};
-
-// ── Tab switch ──
-function switchTab(tab){
-  document.getElementById('tab-vin').classList.toggle('active', tab==='vin');
-  document.getElementById('tab-ymm').classList.toggle('active', tab==='ymm');
-  document.getElementById('panel-vin').style.display = tab==='vin'?'block':'none';
-  document.getElementById('panel-ymm').style.display = tab==='ymm'?'block':'none';
-  hideConfirm();
-}
-
-function hideConfirm(){
-  document.getElementById('confirm-panel').classList.remove('visible');
-}
-
-// ── VIN Decode via NHTSA free API ──
-function decodeVIN(){
-  var vin = document.getElementById('vin-input').value.trim().toUpperCase();
-  var status = document.getElementById('vin-status');
-  var btn = document.getElementById('vin-btn');
-
-  if(vin.length !== 17){
-    status.className = 'vin-status error';
-    status.textContent = 'VIN must be exactly 17 characters.';
-    return;
-  }
-
-  status.className = 'vin-status loading';
-  status.textContent = 'Decoding VIN...';
-  btn.disabled = true;
-
-  fetch('https://vpic.nhtsa.dot.gov/api/vehicles/DecodeVin/'+vin+'?format=json')
-    .then(function(r){ return r.json(); })
-    .then(function(data){
-      btn.disabled = false;
-      var results = data.Results;
-      var get = function(var_name){
-        var item = results.find(function(r){ return r.Variable===var_name; });
-        return item ? (item.Value||'') : '';
-      };
-
-      var year  = get('Model Year');
-      var make  = get('Make');
-      var model = get('Model');
-      var trim  = get('Trim');
-
-      // Normalize make (FORD → Ford)
-      make = make.charAt(0).toUpperCase() + make.slice(1).toLowerCase();
-      if(make==='Ram') make='RAM';
-
-      if(!year || !make || !model){
-        status.className = 'vin-status error';
-        status.textContent = 'Could not decode VIN. Please try Year/Make/Model tab.';
-        return;
-      }
-
-      status.className = 'vin-status success';
-      status.textContent = '✓ VIN decoded!';
-
-      pendingVehicle = { year:year, make:make, model:model, trim:trim, vin:vin };
-      showConfirm(year, make, model, trim);
-    })
-    .catch(function(){
-      btn.disabled = false;
-      status.className = 'vin-status error';
-      status.textContent = 'Decode failed. Check your connection and try again.';
-    });
-}
-
-// ── Allow Enter key on VIN input ──
-document.getElementById('vin-input').addEventListener('keydown', function(e){
-  if(e.key==='Enter') decodeVIN();
-});
-
-// ── YMM Dropdowns ──
-// Build year grid 2026 → 1981
+// Build year grid
 (function(){
-  var grid = document.getElementById('year-grid');
+  var grid=document.getElementById('year-grid');
   for(var y=2026;y>=1981;y--){
     (function(yr){
-      var cell = document.createElement('div');
-      cell.className = 'year-cell';
-      cell.textContent = yr;
-      cell.onclick = function(){
-        document.getElementById('ymm-year').value = yr;
-        document.getElementById('year-picker-label').textContent = yr;
-        document.getElementById('year-picker-label').classList.remove('placeholder');
-        document.querySelectorAll('.year-cell').forEach(function(c){c.classList.remove('selected');});
-        cell.classList.add('selected');
-        closeYearGrid();
-        ymmYearChange();
+      var c=document.createElement('div');
+      c.className='picker-cell';
+      c.textContent=yr;
+      c.onclick=function(){
+        document.getElementById('val-year').value=yr;
+        document.getElementById('year-label').textContent=yr;
+        document.getElementById('year-label').classList.remove('ph');
+        grid.querySelectorAll('.picker-cell').forEach(function(x){x.classList.remove('selected');});
+        c.classList.add('selected');
+        closePicker('year');
+        onYearPicked();
       };
-      grid.appendChild(cell);
+      grid.appendChild(c);
     })(y);
   }
 })();
 
-function handleTrimChange(){
-  var val = document.getElementById('sel-trim').value;
-  document.getElementById('trim-other-field').style.display = val === '__other__' ? 'block' : 'none';
+function onYearPicked(){
+  document.getElementById('val-make').value='';
+  document.getElementById('make-label').textContent='Select Make';
+  document.getElementById('make-label').classList.add('ph');
+  document.getElementById('make-btn').classList.remove('disabled-state');
+  document.querySelectorAll('#make-grid .picker-cell').forEach(function(c){c.classList.remove('selected');});
+  document.getElementById('val-model').value='';
+  document.getElementById('model-label').textContent='Select Model';
+  document.getElementById('model-label').classList.add('ph');
+  document.getElementById('model-btn').classList.add('disabled-state');
+
+  var g=document.getElementById('make-grid');
+  g.innerHTML='';
+  Object.keys(MAKES).forEach(function(m){
+    var c=document.createElement('div');
+    c.className='picker-cell';
+    c.textContent=m;
+    c.onclick=function(){
+      document.getElementById('val-make').value=m;
+      document.getElementById('make-label').textContent=m;
+      document.getElementById('make-label').classList.remove('ph');
+      g.querySelectorAll('.picker-cell').forEach(function(x){x.classList.remove('selected');});
+      c.classList.add('selected');
+      closePicker('make');
+      onMakePicked(m);
+    };
+    g.appendChild(c);
+  });
+  checkReady();
 }
 
-function toggleYearGrid(){
-  var panel = document.getElementById('year-grid-panel');
-  var btn   = document.getElementById('year-picker-btn');
-  var open  = panel.classList.contains('open');
-  panel.classList.toggle('open', !open);
-  btn.classList.toggle('open', !open);
-  if(!open) panel.scrollTop = 0;
+function onMakePicked(make){
+  document.getElementById('val-model').value='';
+  document.getElementById('model-label').textContent='Select Model';
+  document.getElementById('model-label').classList.add('ph');
+  document.getElementById('model-btn').classList.remove('disabled-state');
+
+  var g=document.getElementById('model-grid');
+  g.innerHTML='';
+  (MAKES[make]||[]).forEach(function(m){
+    var c=document.createElement('div');
+    c.className='model-cell';
+    c.textContent=m;
+    c.onclick=function(){
+      document.getElementById('val-model').value=m;
+      document.getElementById('model-label').textContent=m;
+      document.getElementById('model-label').classList.remove('ph');
+      g.querySelectorAll('.model-cell').forEach(function(x){x.classList.remove('selected');});
+      c.classList.add('selected');
+      closePicker('model');
+      checkReady();
+    };
+    g.appendChild(c);
+  });
+  checkReady();
 }
 
-function closeYearGrid(){
-  document.getElementById('year-grid-panel').classList.remove('open');
-  document.getElementById('year-picker-btn').classList.remove('open');
+function checkReady(){
+  var y=document.getElementById('val-year').value;
+  var mk=document.getElementById('val-make').value;
+  var mo=document.getElementById('val-model').value;
+  document.getElementById('next-btn').classList.toggle('ready',!!(y&&mk&&mo));
 }
 
-document.addEventListener('click', function(e){
-  if(!document.getElementById('year-picker').contains(e.target)) closeYearGrid();
+function togglePicker(name){
+  var btn=document.getElementById(name+'-btn');
+  var panel=document.getElementById(name+'-panel');
+  var isOpen=panel.classList.contains('open');
+  ['year','make','model','trim','bed'].forEach(function(n){
+    var p=document.getElementById(n+'-panel');
+    var b=document.getElementById(n+'-btn');
+    if(p) p.classList.remove('open');
+    if(b) b.classList.remove('open');
+  });
+  if(!isOpen){
+    panel.classList.add('open');
+    btn.classList.add('open');
+  }
+}
+function closePicker(name){
+  var p=document.getElementById(name+'-panel');
+  var b=document.getElementById(name+'-btn');
+  if(p) p.classList.remove('open');
+  if(b) b.classList.remove('open');
+}
+
+document.addEventListener('click',function(e){
+  ['year','make','model','trim','bed'].forEach(function(n){
+    var wrap=document.getElementById(n+'-wrap');
+    if(wrap&&!wrap.contains(e.target)) closePicker(n);
+  });
 });
 
-// If loaded inside the catalog popup, hide the hero header
-if(window.self !== window.top){ document.body.classList.add('in-iframe'); }
-
-function ymmYearChange(){
-  var makeSel = document.getElementById('ymm-make');
-  var modelSel = document.getElementById('ymm-model');
-  makeSel.innerHTML='<option value="">Select Make</option>';
-  modelSel.innerHTML='<option value="">Select Model</option>';
-  makeSel.disabled=false; modelSel.disabled=true;
-  Object.keys(MAKES).forEach(function(m){
-    var o=document.createElement('option');o.value=m;o.textContent=m;makeSel.appendChild(o);
-  });
-  hideConfirm();
-}
-
-function ymmMakeChange(){
-  var make = document.getElementById('ymm-make').value;
-  var modelSel = document.getElementById('ymm-model');
-  modelSel.innerHTML='<option value="">Select Model</option>';
-  modelSel.disabled=true;
-  if(!make) return;
-  (MAKES[make]||[]).forEach(function(m){
-    var o=document.createElement('option');o.value=m;o.textContent=m;modelSel.appendChild(o);
-  });
-  modelSel.disabled=false;
-  hideConfirm();
-}
-
-function ymmModelChange(){
-  var year  = document.getElementById('ymm-year').value;
-  var make  = document.getElementById('ymm-make').value;
-  var model = document.getElementById('ymm-model').value;
+function goStep2(){
+  var year=document.getElementById('val-year').value;
+  var make=document.getElementById('val-make').value;
+  var model=document.getElementById('val-model').value;
   if(!year||!make||!model) return;
-  pendingVehicle = { year:year, make:make, model:model, trim:'', vin:'' };
-  showConfirm(year, make, model, '');
-}
+  pendingVehicle={year:year,make:make,model:model};
+  document.getElementById('confirm-name').textContent=year+' '+make+' '+model;
 
-// ── Show confirm panel ──
-function showConfirm(year, make, model, trim){
-  var panel = document.getElementById('confirm-panel');
-  document.getElementById('confirm-vehicle-name').textContent = year+' '+make+' '+model;
-
-  // Trim selector
-  var trimSel = document.getElementById('sel-trim');
-  trimSel.innerHTML='<option value="">Unknown / Not Listed</option>';
-  var trimList = TRIMS[model] || [];
-  trimList.forEach(function(t){
-    var o=document.createElement('option');
-    o.value=t;o.textContent=t;
-    if(t===trim) o.selected=true;
-    trimSel.appendChild(o);
-  });
-  var other=document.createElement('option');
-  other.value='__other__';other.textContent='Other — type it in';
-  trimSel.appendChild(other);
-  document.getElementById('trim-other-field').style.display='none';
-  document.getElementById('trim-other-input').value='';
-
-  // Bed size selector
-  var bedSel   = document.getElementById('sel-bed');
-  var bedField = document.getElementById('bed-field');
-  var bedList  = BED_SIZES[model] || [];
-  bedSel.innerHTML = '<option value="">Select Bed Size</option>';
-  if(bedList.length){
-    bedList.forEach(function(b){
-      var o=document.createElement('option');
-      o.value=b[1]; o.textContent=b[0];
-      bedSel.appendChild(o);
+  var trims=TRIMS[model]||[];
+  var trimGrid=document.getElementById('trim-grid');
+  var trimBtn=document.getElementById('trim-btn');
+  var trimLabel=document.getElementById('trim-label');
+  document.getElementById('val-trim').value='';
+  trimLabel.textContent='Unknown / Not Listed';
+  trimLabel.classList.add('ph');
+  trimGrid.innerHTML='';
+  if(trims.length){
+    trimBtn.classList.remove('disabled-state');
+    var unknown=document.createElement('div');
+    unknown.className='model-cell';
+    unknown.textContent='Unknown / Not Listed';
+    unknown.onclick=function(){
+      document.getElementById('val-trim').value='';
+      trimLabel.textContent='Unknown / Not Listed';
+      trimLabel.classList.add('ph');
+      trimGrid.querySelectorAll('.model-cell').forEach(function(x){x.classList.remove('selected');});
+      unknown.classList.add('selected');
+      closePicker('trim');
+    };
+    trimGrid.appendChild(unknown);
+    trims.forEach(function(t){
+      var c=document.createElement('div');
+      c.className='model-cell';
+      c.textContent=t;
+      c.onclick=function(){
+        document.getElementById('val-trim').value=t;
+        trimLabel.textContent=t;
+        trimLabel.classList.remove('ph');
+        trimGrid.querySelectorAll('.model-cell').forEach(function(x){x.classList.remove('selected');});
+        c.classList.add('selected');
+        closePicker('trim');
+      };
+      trimGrid.appendChild(c);
     });
-    if(bedList.length===1){ bedSel.value=bedList[0][1]; }
-    bedField.style.display='block';
   } else {
-    bedField.style.display='none';
+    trimBtn.classList.add('disabled-state');
+    trimLabel.textContent='No trim data';
+  }
+  document.getElementById('trim-field').style.display='block';
+
+  var beds=BED_SIZES[model]||[];
+  var bedGrid=document.getElementById('bed-grid');
+  var bedBtn=document.getElementById('bed-btn');
+  var bedLabel=document.getElementById('bed-label');
+  document.getElementById('val-bed').value='';
+  bedLabel.textContent='Select Bed Size';
+  bedLabel.classList.add('ph');
+  bedGrid.innerHTML='';
+  if(beds.length){
+    beds.forEach(function(b){
+      var c=document.createElement('div');
+      c.className='model-cell';
+      c.textContent=b[0];
+      c.onclick=function(){
+        document.getElementById('val-bed').value=b[1];
+        bedLabel.textContent=b[0];
+        bedLabel.classList.remove('ph');
+        bedGrid.querySelectorAll('.model-cell').forEach(function(x){x.classList.remove('selected');});
+        c.classList.add('selected');
+        closePicker('bed');
+      };
+      bedGrid.appendChild(c);
+    });
+    if(beds.length===1) bedGrid.firstChild.click();
+    document.getElementById('bed-field').style.display='block';
+  } else {
+    document.getElementById('bed-field').style.display='none';
   }
 
-  // Color swatches
   buildSwatches();
-
-  // Truck SVG
-  renderTruck(selectedColor.hex);
-
-  panel.classList.add('visible');
-  reportHeight();
+  transitionTo('screen-2','forward');
 }
 
+function goBack(){ transitionTo('screen-1','back'); }
+
 function buildSwatches(){
-  var wrap = document.getElementById('color-swatches');
+  var wrap=document.getElementById('swatches');
   wrap.innerHTML='';
   COLORS.forEach(function(c){
-    var s = document.createElement('div');
-    s.className = 'swatch' + (c.name===selectedColor.name?' selected':'');
-    s.style.background = c.hex;
-    if(c.name==='White') s.style.border='2px solid #ddd';
-    s.title = c.name;
-    s.onclick = function(){
-      selectedColor = c;
-      buildSwatches();
-      renderTruck(c.hex);
-    };
+    var s=document.createElement('div');
+    s.className='swatch'+(c.name===selectedColor.name?' selected':'');
+    s.style.background=c.hex;
+    if(c.name==='White') s.style.border='2px solid #444';
+    s.title=c.name;
+    s.onclick=function(){selectedColor=c;buildSwatches();};
     wrap.appendChild(s);
   });
 }
 
-var TRUCK_PHOTOS = {
-  'Ford F-150':          'https://rlsh1855.github.io/3Js-and-RLSH-Website/Ford%20truck.webp',
-  'Ford Super Duty F-250/F-350': 'https://rlsh1855.github.io/3Js-and-RLSH-Website/Ford%20truck.webp',
-  'Chevrolet Silverado 1500':    'https://rlsh1855.github.io/3Js-and-RLSH-Website/Chevy%20truck.webp',
-  'Chevrolet Silverado 2500HD/3500HD': 'https://rlsh1855.github.io/3Js-and-RLSH-Website/Chevy%20truck.webp',
-  'GMC Sierra 1500':     'https://rlsh1855.github.io/3Js-and-RLSH-Website/Chevy%20truck.webp',
-  'GMC Sierra 2500HD/3500HD': 'https://rlsh1855.github.io/3Js-and-RLSH-Website/Chevy%20truck.webp',
-  'RAM 1500':            'https://rlsh1855.github.io/3Js-and-RLSH-Website/Ram%20truck.webp',
-  'RAM 2500/3500':       'https://rlsh1855.github.io/3Js-and-RLSH-Website/Ram%20truck.webp',
-  'Toyota Tacoma':       'https://rlsh1855.github.io/3Js-and-RLSH-Website/TOYOTA%20TRUCK.webp',
-  'Toyota Tundra':       'https://rlsh1855.github.io/3Js-and-RLSH-Website/TOYOTA%20TRUCK.webp',
-  'Jeep Gladiator':      'https://rlsh1855.github.io/3Js-and-RLSH-Website/rhino%20Jeep%20edited.webp',
-};
-
-function renderTruck(color){
-  var make  = pendingVehicle.make  || '';
-  var model = pendingVehicle.model || '';
-  var key   = (make + ' ' + model).trim();
-  var photo = TRUCK_PHOTOS[key] || null;
-  var visual  = document.getElementById('truck-visual');
-
-  if(!photo){
-    visual.style.display = 'none';
-    return;
-  }
-
-  visual.style.display = 'block';
-  var img     = document.getElementById('truck-photo');
-  var overlay = document.getElementById('truck-color-overlay');
-  var label   = document.getElementById('truck-photo-label');
-  img.src = photo;
-  img.alt = key;
-  if(color === '#F5F5F0' || color === '#fff' || color === '#ffffff'){
-    overlay.style.background = 'transparent';
-  } else {
-    overlay.style.background = color;
-    overlay.style.opacity = '0.45';
-  }
-  label.textContent = key;
-}
-
-function bedSizeChange(){}
-
-// ── Save to localStorage ──
 function saveVehicle(){
-  var trimRaw = document.getElementById('sel-trim').value;
-  var trim    = trimRaw === '__other__' ? document.getElementById('trim-other-input').value.trim() : trimRaw;
-  var bedIn   = parseFloat(document.getElementById('sel-bed').value) || null;
-  var bedList = BED_SIZES[pendingVehicle.model] || [];
-  var bedLabel = '';
-  if(bedIn){
-    var match = bedList.find(function(b){ return b[1]===bedIn; });
-    bedLabel = match ? match[0] : '';
+  var trim=document.getElementById('val-trim').value;
+  var bedVal=document.getElementById('val-bed').value;
+  var beds=BED_SIZES[pendingVehicle.model]||[];
+  var bedLabel='';
+  if(bedVal){
+    var match=beds.find(function(b){return b[1]==bedVal;});
+    bedLabel=match?match[0]:'';
   }
-  var vehicle = {
-    year:     pendingVehicle.year,
-    make:     pendingVehicle.make,
-    model:    pendingVehicle.model,
-    trim:     trim || pendingVehicle.trim || '',
-    bedIn:    bedIn,
-    bedSize:  bedLabel,
-    color:    selectedColor.name,
-    colorHex: selectedColor.hex,
-    vin:      pendingVehicle.vin || '',
-  };
-  localStorage.setItem('garage_vehicle', JSON.stringify(vehicle));
-  showSaved(vehicle);
-  // Notify parent catalog page so it updates without a refresh
-  try { window.parent.postMessage({type:'garage_saved',vehicle:vehicle}, '*'); } catch(e){}
+
+  var yr=String(pendingVehicle.year).slice(2);
+  var yTag="'"+yr;
+  var make=pendingVehicle.make;
+  var model=pendingVehicle.model;
+  var trimStr=trim&&trim!==''?' — '+trim:'';
+  var bedStr=bedLabel?' · '+bedLabel:'';
+
+  document.getElementById('s3-vehicle').innerHTML=
+    '<span class="year-tag">'+yTag+'</span> '+make+' '+model+trimStr+bedStr;
+
+  // Notify Wix Velo to update garage button label + save to session
+  var vehicleLabel=yTag+' '+make+' '+model+(trim?' — '+trim:'');
+  window.parent.postMessage({
+    type:'garage_saved',
+    vehicle:{
+      year:pendingVehicle.year,
+      make:make,
+      model:model,
+      trim:trim||'',
+      bedSize:bedLabel||'',
+      color:selectedColor.name,
+      label:vehicleLabel
+    }
+  },'*');
+
+  transitionTo('screen-3','forward');
 }
 
-function showSaved(v){
-  var label = v.year+' '+v.make+' '+v.model+(v.trim?' '+v.trim:'')+(v.bedSize?' · '+v.bedSize:'');
-  document.getElementById('saved-pill').textContent = label;
-  document.getElementById('entry-card').style.display='none';
-  document.getElementById('saved-panel').classList.add('visible');
-  showGarageBar(v);
-  reportHeight();
+function resetAll(){
+  ['year','make','model'].forEach(function(n){
+    document.getElementById('val-'+n).value='';
+    document.getElementById(n+'-label').textContent='Select '+(n.charAt(0).toUpperCase()+n.slice(1));
+    document.getElementById(n+'-label').classList.add('ph');
+    closePicker(n);
+  });
+  document.getElementById('make-btn').classList.add('disabled-state');
+  document.getElementById('model-btn').classList.add('disabled-state');
+  document.getElementById('year-grid').querySelectorAll('.picker-cell').forEach(function(c){c.classList.remove('selected');});
+  document.getElementById('next-btn').classList.remove('ready');
+
+  var screens=document.querySelectorAll('.screen');
+  screens.forEach(function(s){
+    s.classList.remove('visible','exit-left','exit-right');
+    s.style.cssText='';
+  });
+  document.getElementById('screen-1').classList.add('visible');
 }
 
-function showGarageBar(v){
-  var label = v.year+' '+v.make+' '+v.model+(v.trim?' '+v.trim:'')+(v.bedSize?' · '+v.bedSize:'');
-  document.getElementById('bar-vehicle-name').textContent = label;
-  document.getElementById('garage-bar').classList.add('visible');
-}
-
-function clearGarage(){
-  localStorage.removeItem('garage_vehicle');
-  try{window.parent.postMessage({type:'garage_clear',vehicle:null},'*');}catch(e){}
-  resetGarage();
-}
-
-function resetGarage(){
-  localStorage.removeItem('garage_vehicle');
-  document.getElementById('entry-card').style.display='block';
-  document.getElementById('saved-panel').classList.remove('visible');
-  document.getElementById('garage-bar').classList.remove('visible');
-  hideConfirm();
-  document.getElementById('vin-input').value='';
-  document.getElementById('vin-status').textContent='';
-  document.getElementById('ymm-year').value='';
-  document.getElementById('year-picker-label').textContent='Select Year';
-  document.getElementById('year-picker-label').classList.add('placeholder');
-  document.querySelectorAll('.year-cell').forEach(function(c){c.classList.remove('selected');});
-  closeYearGrid();
-  reportHeight();
-}
-
-// ── On load — check for saved vehicle ──
-(function(){
-  var saved = localStorage.getItem('garage_vehicle');
-  if(saved){
-    try{
-      var v = JSON.parse(saved);
-      showSaved(v);
-    } catch(e){ localStorage.removeItem('garage_vehicle'); }
+function transitionTo(newId,dir){
+  var current=document.querySelector('.screen.visible');
+  var next=document.getElementById(newId);
+  if(current){
+    current.classList.remove('visible');
+    current.classList.add(dir==='forward'?'exit-left':'exit-right');
+    setTimeout(function(){current.classList.remove('exit-left','exit-right');},420);
   }
-})();
-
-function toggleGarageBedTip(el){
-  var t = document.getElementById('garage-bed-tip');
-  var open = t.style.maxHeight && t.style.maxHeight !== '0px';
-  t.style.maxHeight = open ? '0' : t.scrollHeight + 300 + 'px';
-  el.style.color = open ? '#1a6bbf' : '#0a4a8f';
-  reportHeight();
+  next.style.transition='none';
+  next.style.transform=dir==='forward'?'translateX(100%)':'translateX(-26%)';
+  next.style.opacity='0';
+  next.offsetHeight;
+  next.style.transition='';
+  next.style.transform='';
+  next.style.opacity='';
+  next.classList.add('visible');
 }
 
-function reportHeight(){
-  var sentinel=document.getElementById('height-sentinel');
-  var h=sentinel?(sentinel.offsetTop+sentinel.offsetHeight):Math.max(document.body.scrollHeight,document.body.offsetHeight,document.documentElement.scrollHeight,document.documentElement.offsetHeight);
-  window.parent.postMessage(JSON.stringify({height:h}),'*');
+function closeGarage(){
+  window.parent.postMessage({type:'close_garage'},'*');
 }
-document.addEventListener('DOMContentLoaded',reportHeight);
-window.addEventListener('load',function(){[0,200,500,1000,2000,3500].forEach(function(t){setTimeout(reportHeight,t);});});
-window.addEventListener('resize',reportHeight);
-if(window.ResizeObserver){new ResizeObserver(reportHeight).observe(document.body);}
 </script>
-
-<div id="height-sentinel" style="height:1px;width:1px;visibility:hidden;pointer-events:none;"></div>
-
 </body>
 </html>
