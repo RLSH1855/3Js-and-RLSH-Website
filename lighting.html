@@ -102,11 +102,11 @@
     .section-eyebrow::after{content:'';flex:1;height:1px;background:var(--border);}
     .section-title{font-family:'Montserrat',sans-serif;font-size:clamp(20px,3vw,34px);font-weight:900;letter-spacing:-1px;line-height:1.1;text-transform:uppercase;color:var(--fg);margin-bottom:12px;}
     .section-title em{font-style:normal;color:var(--red);}
-    .section-sub{font-size:15px;color:var(--fg-muted);line-height:1.65;max-width:600px;margin-bottom:36px;}
+    .section-sub{font-size:15px;color:var(--fg-muted);line-height:1.65;max-width:600px;margin-bottom:32px;}
 
     /* ── CATEGORY GRID ── */
     .cat-section{background:#fff;padding:48px 0;}
-    .cat-grid{display:grid;grid-template-columns:1fr;gap:2px;margin-top:24px;}
+    .cat-grid{display:grid;grid-template-columns:1fr;gap:14px;margin-top:24px;}
     .cat-card{position:relative;aspect-ratio:4/3;overflow:hidden;text-decoration:none;display:block;}
     .cat-card-wide{grid-column:span 2;}
     .cat-card-bg{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform .5s ease;}
@@ -121,24 +121,27 @@
     /* ── PRODUCT GRID ── */
     .products-section{background:#fff;padding:48px 0;}
     .product-grid{display:grid;grid-template-columns:1fr;gap:14px;margin-top:24px;}
-    .product-card{background:#fff;border:1px solid var(--border);display:flex;flex-direction:column;text-decoration:none;color:inherit;transition:border-color .15s;}
-    .product-card:hover{border-color:var(--red);}
-    .product-img{aspect-ratio:4/3;width:100%;object-fit:contain;background:#f0f0f0;display:block;padding:16px;}
-    .product-body{padding:18px 18px 20px;flex:1;display:flex;flex-direction:column;gap:6px;}
-    .product-badge{display:inline-block;font-family:'Montserrat',sans-serif;font-size:8px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;background:var(--red);color:#fff;padding:3px 8px;align-self:flex-start;}
-    .product-brand{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--red);}
-    .product-name{font-family:'Montserrat',sans-serif;font-size:15px;font-weight:800;text-transform:uppercase;letter-spacing:-.3px;color:var(--fg);}
-    .product-fit{font-family:'Inter',sans-serif;font-size:12px;color:var(--fg-muted);line-height:1.5;}
-    .product-actions{display:flex;gap:8px;margin-top:auto;padding-top:14px;}
-    .btn-quote-sm{display:inline-flex;align-items:center;justify-content:center;height:48px;padding:0 18px;background:var(--red);color:#fff;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border:none;flex:1;transition:background .15s;}
-    .btn-quote-sm:hover{background:var(--red-hot);}
-    .btn-view-sm{display:inline-flex;align-items:center;justify-content:center;gap:5px;height:48px;padding:0 14px;background:#fff;color:var(--fg);font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border:1.5px solid var(--fg);flex:1;transition:border-color .15s,background .15s;}
-    .btn-view-sm:hover{background:var(--fg);color:#fff;}
-    .btn-view-sm svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2.5;stroke-linecap:round;}
+    .product-card{background:#fff;border:1px solid #e8e8e8;display:flex;flex-direction:column;overflow:hidden;transition:border-color .25s,box-shadow .25s;}
+    .product-card:hover{border-color:#bbb;box-shadow:0 8px 28px rgba(0,0,0,.09);}
+    .card-img{width:100%;aspect-ratio:16/9;background:#f2f2f2;position:relative;overflow:hidden;}
+    .card-img-inner{position:absolute;inset:0;}
+    .card-img-inner img{width:100%;height:100%;object-fit:cover;display:block;}
+    .card-badge{position:absolute;top:12px;left:12px;z-index:2;font-family:'Montserrat',sans-serif;font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;background:var(--red);color:#fff;padding:4px 10px;}
+    .card-body{padding:20px 20px 22px;display:flex;flex-direction:column;flex:1;}
+    .card-brand{font-size:9px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:4px;font-family:'Montserrat',sans-serif;}
+    .card-name{font-family:'Montserrat',sans-serif;font-size:22px;font-weight:800;color:var(--fg);letter-spacing:-.5px;line-height:1.05;margin-bottom:10px;text-wrap:balance;}
+    .card-tagline{font-family:'Inter',sans-serif;font-size:14px;font-weight:400;color:#424954;line-height:1.65;margin-bottom:14px;text-wrap:pretty;}
+    .card-chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px;}
+    .card-chip{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:4px 9px;border:1.5px solid #ddd;color:#555;background:#fafafa;}
+    .card-actions{display:flex;gap:10px;margin-top:auto;}
+    .btn-view{flex:1;display:inline-flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;text-decoration:none;padding:13px 10px;background:transparent;color:#444;border:1.5px solid #ccc;transition:border-color .2s,color .2s;}
+    .btn-view:hover{border-color:var(--red);color:var(--red);}
+    .btn-quote{flex:1;display:inline-flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;text-decoration:none;padding:13px 10px;background:var(--red);color:#fff;border:1.5px solid transparent;transition:background .2s;}
+    .btn-quote:hover{background:var(--red-hot);}
 
     /* ── BRANDS FEATURE ── */
     .brands-section{background:var(--black);padding:48px 0;}
-    .brands-grid{display:grid;grid-template-columns:1fr;gap:2px;margin-top:24px;}
+    .brands-grid{display:grid;grid-template-columns:1fr;gap:14px;margin-top:24px;}
     .brand-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);padding:28px 24px;transition:border-color .15s,background .15s;}
     .brand-card:hover{border-color:rgba(139,0,0,.4);background:rgba(139,0,0,.05);}
     .brand-card-name{font-family:'Montserrat',sans-serif;font-size:20px;font-weight:900;text-transform:uppercase;letter-spacing:-.5px;color:#fff;margin-bottom:8px;}
@@ -187,12 +190,10 @@
     .hero-sub{font-size:14px;margin-bottom:24px;}
     .hero-ctas{display:flex;gap:12px;flex-wrap:wrap;flex-direction:column;align-items:stretch;}
     .stat{border-right:none;padding:0;}
-    .product-actions{flex-direction:column;}
     .cta-btns{flex-direction:column;align-items:center;}
     .btn-white,.btn-glass-white{width:100%;max-width:320px;justify-content:center;}
     @media(min-width:481px){
       .cat-grid{grid-template-columns:1fr 1fr;}
-      .cat-card-wide{grid-column:span 2;}
     }
     @media(min-width:768px){
       .hero{min-height:420px;}
@@ -203,12 +204,11 @@
       .stat:last-child{border-right:none;}
       .cat-grid{grid-template-columns:repeat(3,1fr);margin-top:32px;}
       .cat-card-wide{grid-column:span 1;}
-      .product-grid{grid-template-columns:repeat(3,1fr);gap:2px;margin-top:32px;}
-      .brands-grid{grid-template-columns:repeat(2,1fr);margin-top:32px;}
-      .why-grid{grid-template-columns:repeat(3,1fr);gap:2px;margin-top:32px;}
+      .product-grid{grid-template-columns:repeat(3,1fr);gap:14px;margin-top:32px;}
+      .brands-grid{grid-template-columns:repeat(2,1fr);gap:14px;margin-top:32px;}
+      .why-grid{grid-template-columns:repeat(3,1fr);gap:14px;margin-top:32px;}
       .cta-btns{flex-direction:row;align-items:initial;}
       .btn-white,.btn-glass-white{width:auto;max-width:none;}
-      .product-actions{flex-direction:row;}
     }
       *:focus{outline:none;}*:focus-visible{outline:2px solid #8B0000;outline-offset:3px;}
   </style>
@@ -358,84 +358,131 @@
     <div class="product-grid">
 
       <div class="product-card">
-        <img class="product-img" src="https://5129608.app.netsuite.com/images/Item%20Images/105134.010.jpg" alt="Morimoto XB LED Headlights Ford F-150 2021-2023" loading="lazy" onerror="this.style.background='#e8e8e8'">
-        <div class="product-body">
-          <span class="product-badge">Best Seller</span>
-          <div class="product-brand">Morimoto</div>
-          <div class="product-name">XB LED Headlights</div>
-          <p class="product-fit">Ford F-150 · 2021–2023 · Bi-LED Projector · Amber DRL</p>
-          <div class="product-actions">
-            <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/lighting-catalog.html#headlights" target="_top" class="btn-view-sm">View Options <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></a>
-            <a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote-sm">Get a Quote</a>
+        <div class="card-img">
+          <div class="card-img-inner"><img src="https://5129608.app.netsuite.com/images/Item%20Images/105134.010.jpg" alt="Morimoto XB LED Headlights Ford F-150 2021-2023" loading="lazy"></div>
+          <span class="card-badge">Best Seller</span>
+        </div>
+        <div class="card-body">
+          <div class="card-brand">Morimoto</div>
+          <div class="card-name">XB LED Headlights</div>
+          <p class="card-tagline">Bi-LED projector headlights with signature amber DRL rings. Direct-fit for Ford F-150 — no wiring modifications needed.</p>
+          <div class="card-chips">
+            <span class="card-chip">Ford F-150</span>
+            <span class="card-chip">2021–2023</span>
+            <span class="card-chip">Bi-LED</span>
+            <span class="card-chip">Plug &amp; Play</span>
+          </div>
+          <div class="card-actions">
+            <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/lighting-catalog.html#headlights" target="_top" class="btn-view">View Options</a>
+            <a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote">Get a Quote</a>
           </div>
         </div>
       </div>
 
       <div class="product-card">
-        <img class="product-img" src="https://5129608.app.netsuite.com/images/Item%20Images/108777.010.jpg" alt="Morimoto XB LED Headlights Ford Bronco 2021+" loading="lazy" onerror="this.style.background='#e8e8e8'">
-        <div class="product-body">
-          <span class="product-badge">Popular</span>
-          <div class="product-brand">Morimoto</div>
-          <div class="product-name">XB LED Headlights</div>
-          <p class="product-fit">Ford Bronco · 2021+ · Bi-LED Projector · Amber DRL</p>
-          <div class="product-actions">
-            <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/lighting-catalog.html#headlights" target="_top" class="btn-view-sm">View Options <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></a>
-            <a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote-sm">Get a Quote</a>
+        <div class="card-img">
+          <div class="card-img-inner"><img src="https://5129608.app.netsuite.com/images/Item%20Images/108777.010.jpg" alt="Morimoto XB LED Headlights Ford Bronco 2021+" loading="lazy"></div>
+          <span class="card-badge">Popular</span>
+        </div>
+        <div class="card-body">
+          <div class="card-brand">Morimoto</div>
+          <div class="card-name">XB LED Headlights</div>
+          <p class="card-tagline">OEM-fit bi-LED projectors built specifically for the Bronco. Smoked housing, signature DRL pattern, zero modifications.</p>
+          <div class="card-chips">
+            <span class="card-chip">Ford Bronco</span>
+            <span class="card-chip">2021+</span>
+            <span class="card-chip">Bi-LED</span>
+            <span class="card-chip">DOT/SAE</span>
+          </div>
+          <div class="card-actions">
+            <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/lighting-catalog.html#headlights" target="_top" class="btn-view">View Options</a>
+            <a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote">Get a Quote</a>
           </div>
         </div>
       </div>
 
       <div class="product-card">
-        <img class="product-img" src="https://5129608.app.netsuite.com/images/Item%20Images/108265.010.jpg" alt="Morimoto XB LED Tail Lights Jeep Wrangler JL" loading="lazy" onerror="this.style.background='#e8e8e8'">
-        <div class="product-body">
-          <span class="product-badge">Jeep</span>
-          <div class="product-brand">Morimoto</div>
-          <div class="product-name">XB LED Tail Lights</div>
-          <p class="product-fit">Jeep Wrangler JL · 2018+ · Smoked Lens · DOT/SAE</p>
-          <div class="product-actions">
-            <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/lighting-catalog.html#taillights" target="_top" class="btn-view-sm">View Options <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></a>
-            <a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote-sm">Get a Quote</a>
+        <div class="card-img">
+          <div class="card-img-inner"><img src="https://5129608.app.netsuite.com/images/Item%20Images/108265.010.jpg" alt="Morimoto XB LED Tail Lights Jeep Wrangler JL" loading="lazy"></div>
+          <span class="card-badge">Jeep</span>
+        </div>
+        <div class="card-body">
+          <div class="card-brand">Morimoto</div>
+          <div class="card-name">XB LED Tail Lights</div>
+          <p class="card-tagline">Smoked lens tail lights that look factory from the outside. Sequential turn signals, bright stop light output, DOT/SAE certified.</p>
+          <div class="card-chips">
+            <span class="card-chip">Wrangler JL</span>
+            <span class="card-chip">2018+</span>
+            <span class="card-chip">Sequential</span>
+            <span class="card-chip">DOT/SAE</span>
+          </div>
+          <div class="card-actions">
+            <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/lighting-catalog.html#taillights" target="_top" class="btn-view">View Options</a>
+            <a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote">Get a Quote</a>
           </div>
         </div>
       </div>
 
       <div class="product-card">
-        <img class="product-img" src="https://5129608.app.netsuite.com/images/Item%20Images/132261.010.jpg" alt="Morimoto XB Evo+ Fog Lights Ford F-150" loading="lazy" onerror="this.style.background='#e8e8e8'">
-        <div class="product-body">
-          <span class="product-badge">Dual Color</span>
-          <div class="product-brand">Morimoto</div>
-          <div class="product-name">XB Evo+ Fog Lights</div>
-          <p class="product-fit">Ford F-150 · 2015–2020 · White + Yellow Switchable · SAE</p>
-          <div class="product-actions">
-            <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/lighting-catalog.html#foglights" target="_top" class="btn-view-sm">View Options <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></a>
-            <a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote-sm">Get a Quote</a>
+        <div class="card-img">
+          <div class="card-img-inner"><img src="https://5129608.app.netsuite.com/images/Item%20Images/132261.010.jpg" alt="Morimoto XB Evo+ Fog Lights Ford F-150" loading="lazy"></div>
+          <span class="card-badge">Dual Color</span>
+        </div>
+        <div class="card-body">
+          <div class="card-brand">Morimoto</div>
+          <div class="card-name">XB Evo+ Fog Lights</div>
+          <p class="card-tagline">Switch between crisp white and driving yellow output at the push of a button. No bulb swaps — one unit, two colors.</p>
+          <div class="card-chips">
+            <span class="card-chip">Ford F-150</span>
+            <span class="card-chip">2015–2020</span>
+            <span class="card-chip">White + Yellow</span>
+            <span class="card-chip">SAE Certified</span>
+          </div>
+          <div class="card-actions">
+            <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/lighting-catalog.html#foglights" target="_top" class="btn-view">View Options</a>
+            <a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote">Get a Quote</a>
           </div>
         </div>
       </div>
 
       <div class="product-card">
-        <img class="product-img" src="https://5129608.app.netsuite.com/images/Item%20Images/109304.010.jpg" alt="Morimoto XB DRL Lights" loading="lazy" onerror="this.style.background='#e8e8e8'">
-        <div class="product-body">
-          <div class="product-brand">Morimoto</div>
-          <div class="product-name">XB DRL Lights</div>
-          <p class="product-fit">Multiple Fitments · Sequential Turn Signal · Plug & Play</p>
-          <div class="product-actions">
-            <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/lighting-catalog.html#drl" target="_top" class="btn-view-sm">View Options <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></a>
-            <a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote-sm">Get a Quote</a>
+        <div class="card-img">
+          <div class="card-img-inner"><img src="https://5129608.app.netsuite.com/images/Item%20Images/109304.010.jpg" alt="Morimoto XB DRL Lights" loading="lazy"></div>
+        </div>
+        <div class="card-body">
+          <div class="card-brand">Morimoto</div>
+          <div class="card-name">XB DRL Lights</div>
+          <p class="card-tagline">Sequential amber turn signals with daytime running LED strips. Multiple truck fitments available — call for your year and make.</p>
+          <div class="card-chips">
+            <span class="card-chip">Sequential Signal</span>
+            <span class="card-chip">Plug &amp; Play</span>
+            <span class="card-chip">Multi-Fit</span>
+          </div>
+          <div class="card-actions">
+            <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/lighting-catalog.html#drl" target="_top" class="btn-view">View Options</a>
+            <a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote">Get a Quote</a>
           </div>
         </div>
       </div>
 
       <div class="product-card">
-        <img class="product-img" src="https://5129608.app.netsuite.com/images/Item%20Images/108777.010.jpg" alt="Baja Designs Off-Road Light Bar" loading="lazy" onerror="this.style.background='#e8e8e8'">
-        <div class="product-body">
-          <span class="product-badge">Off-Road</span>
-          <div class="product-brand">Baja Designs</div>
-          <div class="product-name">Squadron Sport Pod Lights</div>
-          <p class="product-fit">Universal · Spot/Driving Combo · IP69K · Lifetime Warranty</p>
-          <div class="product-actions">
-            <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/lighting-catalog.html#offroad" target="_top" class="btn-view-sm">View Options <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></a>
-            <a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote-sm">Get a Quote</a>
+        <div class="card-img">
+          <div class="card-img-inner"><img src="https://5129608.app.netsuite.com/images/Item%20Images/108777.010.jpg" alt="Baja Designs Squadron Sport Pod Lights" loading="lazy"></div>
+          <span class="card-badge">Off-Road</span>
+        </div>
+        <div class="card-body">
+          <div class="card-brand">Baja Designs</div>
+          <div class="card-name">Squadron Sport Pod Lights</div>
+          <p class="card-tagline">Race-proven pod lights with spot/driving combo beam pattern. IP69K waterproof, built for serious off-road use.</p>
+          <div class="card-chips">
+            <span class="card-chip">Universal Fit</span>
+            <span class="card-chip">IP69K</span>
+            <span class="card-chip">Spot/Combo</span>
+            <span class="card-chip">Lifetime Warranty</span>
+          </div>
+          <div class="card-actions">
+            <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/lighting-catalog.html#offroad" target="_top" class="btn-view">View Options</a>
+            <a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-quote">Get a Quote</a>
           </div>
         </div>
       </div>
