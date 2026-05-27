@@ -119,10 +119,11 @@
     .cat-card-cta{display:inline-flex;align-items:center;gap:6px;margin-top:10px;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--red);background:rgba(0,0,0,.5);padding:6px 12px;}
     .cat-card-cta svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2.5;stroke-linecap:round;}
 
-    /* ── PRODUCT GRID ── */
+    /* ── PRODUCT GRID / CAROUSEL ── */
     .products-section{background:#fff;padding:48px 0;}
-    .product-grid{display:grid;grid-template-columns:1fr;gap:14px;margin-top:24px;}
-    .product-card{background:#fff;border:1px solid #e8e8e8;display:flex;flex-direction:column;overflow:hidden;transition:border-color .25s,box-shadow .25s;}
+    .product-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;gap:14px;padding:0 20px 4px;margin-top:24px;scrollbar-width:none;}
+    .product-grid::-webkit-scrollbar{display:none;}
+    .product-card{background:#fff;border:1px solid #e8e8e8;display:flex;flex-direction:column;overflow:hidden;transition:border-color .25s,box-shadow .25s;flex:0 0 calc(100vw - 64px);scroll-snap-align:start;}
     .product-card:hover{border-color:#bbb;box-shadow:0 8px 28px rgba(0,0,0,.09);}
     .card-img{width:100%;aspect-ratio:16/9;background:#f2f2f2;position:relative;overflow:hidden;}
     .card-img-inner{position:absolute;inset:0;}
@@ -208,7 +209,8 @@
       .cat-grid{grid-template-columns:repeat(3,1fr);gap:2px;margin-top:32px;}
       .cat-card{aspect-ratio:4/3;}
       .cat-card-wide{grid-column:span 1;}
-      .product-grid{grid-template-columns:repeat(3,1fr);gap:14px;margin-top:32px;}
+      .product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:32px;overflow:visible;padding:0;scroll-snap-type:none;}
+      .product-card{flex:none;}
       .brands-grid{grid-template-columns:repeat(2,1fr);gap:14px;margin-top:32px;}
       .why-grid{grid-template-columns:repeat(3,1fr);gap:14px;margin-top:32px;}
       .cta-btns{flex-direction:row;align-items:initial;}
