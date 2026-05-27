@@ -297,8 +297,8 @@
 
     /* ── MOBILE ── */
     @media(max-width:640px){
-      .image-panel{display:none;}
-      .content-panel{width:100%;}
+      .image-panel{display:none!important;}
+      .content-panel{width:100%!important;}
       .screen{padding:20px 20px 18px;}
       .form-wrap{width:100%;}
       .s1-heading{font-size:22px;margin-bottom:16px;}
@@ -309,6 +309,17 @@
       .s3-btn-primary,.s3-btn-secondary{width:100%;text-align:center;}
       .confirm-vehicle{font-size:15px;}
     }
+    body.mobile .image-panel{display:none!important;}
+    body.mobile .content-panel{width:100%!important;}
+    body.mobile .screen{padding:20px 20px 18px;}
+    body.mobile .form-wrap{width:100%;}
+    body.mobile .s1-heading{font-size:22px;margin-bottom:16px;}
+    body.mobile .picker-btn{font-size:13px;min-height:44px;}
+    body.mobile .next-btn,body.mobile .save-btn{height:48px;}
+    body.mobile .screen-3-inner{padding-top:32px;gap:16px;}
+    body.mobile .s3-actions{flex-direction:column;align-items:stretch;}
+    body.mobile .s3-btn-primary,body.mobile .s3-btn-secondary{width:100%;text-align:center;}
+    body.mobile .confirm-vehicle{font-size:15px;}
   </style>
 </head>
 <body>
@@ -501,6 +512,18 @@ var COLORS=[
 var selectedColor=COLORS[0];
 var pendingVehicle={};
 var currentVehicle=null;
+
+(function(){
+  function checkMobile(){
+    if(window.innerWidth<=640||document.documentElement.clientWidth<=640){
+      document.body.classList.add('mobile');
+    } else {
+      document.body.classList.remove('mobile');
+    }
+  }
+  checkMobile();
+  window.addEventListener('resize',checkMobile);
+})();
 
 // Build year grid
 (function(){
