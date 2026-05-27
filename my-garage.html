@@ -783,13 +783,13 @@ function closeGarage(){
 }
 
 function loadSavedVehicle(v){
+  currentVehicle = v;
   var yr=String(v.year).slice(2);
   var yTag="'"+yr;
   var trimStr=v.trim&&v.trim!==''?' — '+v.trim:'';
   var bedStr=v.bedSize?' · '+v.bedSize:'';
   document.getElementById('s3-vehicle').innerHTML=
     '<span class="year-tag">'+yTag+'</span> '+v.make+' '+v.model+trimStr+bedStr;
-  // Swap directly to screen 3 with no animation
   document.querySelectorAll('.screen').forEach(function(s){
     s.classList.remove('visible','exit-left','exit-right');
     s.style.cssText='';
@@ -811,12 +811,7 @@ window.addEventListener('load',function(){
 });
 
 function browseAccessories(){
-  if(currentVehicle){
-    window.parent.postMessage({type:'garage_saved',vehicle:currentVehicle},'*');
-  }
-  setTimeout(function(){
-    window.top.location.href='https://www.3jsautobody.com/exterior-accessories';
-  },300);
+  window.parent.postMessage({type:'browse_accessories',vehicle:currentVehicle||null},'*');
 }
 </script>
 </body>
