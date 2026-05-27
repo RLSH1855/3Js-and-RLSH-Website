@@ -427,7 +427,7 @@
         <div class="s3-sub">Parts that fit your truck — across every page.</div>
         <div class="s3-vehicle" id="s3-vehicle">—</div>
         <div class="s3-actions">
-          <button class="s3-btn-primary" onclick="window.top.location.href='https://www.3jsautobody.com/exterior-accessories'">Browse Accessories</button>
+          <button class="s3-btn-primary" onclick="browseAccessories()">Browse Accessories</button>
           <button class="s3-btn-secondary" onclick="resetAll()">Change Vehicle</button>
         </div>
       </div>
@@ -778,6 +778,13 @@ function transitionTo(newId,dir){
 
 function closeGarage(){
   window.parent.postMessage({type:'close_garage'},'*');
+}
+
+function browseAccessories(){
+  closeGarage();
+  setTimeout(function(){
+    window.top.location.href='https://www.3jsautobody.com/exterior-accessories';
+  },300);
 }
 </script>
 </body>
