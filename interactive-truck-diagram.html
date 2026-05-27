@@ -20,18 +20,24 @@
     html::-webkit-scrollbar{display:none;}
     body{font-family:'Montserrat',sans-serif;background:#0A0A0A;color:#fff;}
 
-    /* ─── TOP HERO OVERLAY (inside truck-wrap) ─── */
+    /* ─── TOP HERO OVERLAY (inside truck-wrap) — desktop ─── */
     .diagram-top-hero{position:absolute;top:0;left:0;right:0;z-index:10;text-align:center;padding:clamp(20px,4vw,52px) 24px clamp(16px,3vw,40px);background:linear-gradient(to bottom,rgba(0,0,0,0.78) 0%,rgba(0,0,0,0.28) 70%,transparent 100%);pointer-events:none;}
     .hero-eyebrow{font-size:11px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.80);margin-bottom:12px;}
     .diagram-top-hero h1{font-size:clamp(26px,5.5vw,64px);font-weight:900;line-height:1.0;letter-spacing:-1.5px;text-transform:uppercase;color:#fff;}
     .diagram-top-hero h1 em{font-style:normal;color:#8B0000;}
     .hero-sub{font-size:clamp(12px,1.4vw,15px);font-weight:500;color:rgba(255,255,255,0.70);margin-top:12px;letter-spacing:0.3px;}
+    /* ─── MOBILE HEADER (above truck image) — hidden on desktop ─── */
+    .diagram-mobile-header{display:none;background:#0A0A0A;text-align:center;padding:28px 20px 16px;}
+    .diagram-mobile-header .hero-eyebrow{display:block;margin-bottom:10px;}
+    .diagram-mobile-header h1{font-size:clamp(28px,8vw,42px);font-weight:900;line-height:1.0;letter-spacing:-1px;text-transform:uppercase;color:#fff;}
+    .diagram-mobile-header h1 em{font-style:normal;color:#8B0000;}
     /* ─── BOTTOM LABEL (below truck image) ─── */
     .diagram-label-bottom{text-align:center;padding:28px 20px 8px;background:#0A0A0A;}
-    .diagram-label-bottom p{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#8B0000;margin-bottom:8px;}
+    .diagram-label-bottom > p:first-child{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#8B0000;margin-bottom:8px;}
     .diagram-label-bottom h2{font-size:clamp(18px,3vw,30px);font-weight:900;letter-spacing:-0.5px;color:#fff;}
     .diagram-label-bottom h2 em{font-style:normal;color:#8B0000;}
     .diagram-label-bottom .hint{font-size:12px;font-weight:500;color:rgba(255,255,255,0.50);margin-top:8px;letter-spacing:0.3px;}
+    .diagram-sub-mobile{display:none;font-size:13px;font-weight:500;color:rgba(255,255,255,0.70);margin-top:10px;letter-spacing:0.3px;padding:0 16px;}
 
     /* ─── DIAGRAM SECTION ─── */
     .diagram-section{background:#0A0A0A;padding:56px 0 72px;}
@@ -164,11 +170,13 @@
       .center-dot{width:10px;height:10px;}
       .center-dot::after{animation:none;opacity:0;}
       .hs .popup{display:none !important;}
-      .diagram-section{padding:30px 0 36px;}
-      .diagram-label{margin-bottom:24px;}
-      .diagram-label .hint{font-size:11px;}
-      .diagram-top-hero .hero-eyebrow{font-size:9px;letter-spacing:2px;}
-      .cta{padding:36px 20px;}
+      /* Truck section mobile layout */
+      .diagram-section{padding:0;}
+      .diagram-top-hero{display:none;}
+      .diagram-mobile-header{display:block;}
+      .diagram-label-bottom{padding:20px 20px 16px;}
+      .diagram-sub-mobile{display:block;}
+      .cta{padding:28px 20px;}
       .cta p{font-size:12px;}
     }
 
@@ -193,8 +201,14 @@
      DIAGRAM — Silver Ford Raptor
 ════════════════════════════════════════ -->
 <section class="diagram-section">
+  <!-- Mobile only: title above truck image -->
+  <div class="diagram-mobile-header">
+    <p class="hero-eyebrow">3J's Auto Body &amp; Paint — Signal Hill, CA</p>
+    <h1>Go Beyond<br>the <em>Bedliner</em></h1>
+  </div>
+
   <div class="truck-wrap" id="diagram">
-    <!-- "Go Beyond the Bedliner" top overlay -->
+    <!-- Desktop overlay: title on top of truck image -->
     <div class="diagram-top-hero">
       <p class="hero-eyebrow">3J's Auto Body &amp; Paint — Signal Hill, CA</p>
       <h1>Go Beyond<br>the <em>Bedliner</em></h1>
@@ -368,6 +382,7 @@
   <div class="diagram-label-bottom">
     <p>Interactive Service Guide</p>
     <h2>Everything We Do — <em>Built Into One Truck</em></h2>
+    <p class="diagram-sub-mobile">Full-service truck builds, collision repair &amp; accessories — all under one roof</p>
     <p class="hint">Hover any marker to explore our services</p>
   </div>
 </section>

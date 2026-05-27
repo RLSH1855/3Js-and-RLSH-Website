@@ -167,43 +167,45 @@
       .footer-brand{grid-column:1/-1;}
     }
     @media(max-width:480px){
-      .footer{padding:28px 16px 0;}
-      .footer-top{grid-template-columns:1fr 1fr;gap:20px;padding-bottom:28px;}
+      .footer{padding:20px 16px 0;}
+      .footer-top{grid-template-columns:1fr 1fr;gap:14px;padding-bottom:20px;}
       .footer-brand{grid-column:1/-1;}
 
       /* logos on mobile */
-      .footer-logo{height:48px;}
+      .footer-logo{height:44px;}
 
       /* tagline tighter */
-      .footer-tagline{font-size:11px;margin-bottom:14px;max-width:100%;}
+      .footer-tagline{font-size:11px;margin-bottom:10px;max-width:100%;}
 
-      /* condense social — smaller buttons */
-      .social-label{font-size:8px;margin-bottom:6px;}
-      .social-btn{font-size:9px;padding:5px 8px;gap:4px;}
+      /* condense social — tighter buttons, all fit one row */
+      .social-label{font-size:8px;margin-bottom:5px;}
+      .social-btn{font-size:9px;padding:0 10px;gap:4px;min-height:36px;}
       .social-btn svg{width:11px;height:11px;}
-      .social-group{margin-bottom:8px;}
+      .social-group{margin-bottom:6px;}
+      .social-row{flex-wrap:nowrap;}
 
       /* hours rows tighter — abbreviate day names */
-      .hours-row{font-size:10px;margin-bottom:4px;}
+      .hours-row{font-size:10px;margin-bottom:3px;}
       .hours-row span:first-child{min-width:36px;}
       .day-short{display:inline;}
       .day-full{display:none;}
 
-      /* contact tighter */
+      /* contact — phone stacks below heading */
+      .contact-title-row{flex-direction:column;align-items:flex-start;gap:4px;margin-bottom:10px;}
       .contact-item p{font-size:11px;}
-      .contact-phone-inline{font-size:10px;}
+      .contact-phone-inline{font-size:11px;}
 
       /* links tighter */
-      .footer-links li{margin-bottom:7px;}
+      .footer-links li{margin-bottom:6px;}
       .footer-links a{font-size:11px;}
 
       /* col titles */
-      .footer-col-title{font-size:10px;margin-bottom:10px;}
+      .footer-col-title{font-size:10px;margin-bottom:8px;}
 
       /* contact spans full width */
       .footer-brand ~ div:last-of-type{grid-column:1/-1;}
 
-      .footer-bottom{flex-direction:column;align-items:flex-start;gap:6px;padding:14px 0;}
+      .footer-bottom{flex-direction:column;align-items:flex-start;gap:6px;padding:12px 0;}
       .footer-copy,.footer-bottom-links a{font-size:10px;}
     }
   </style>

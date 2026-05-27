@@ -19,6 +19,7 @@
   /* ── 2. CSS ────────────────────────────────────────────────────────── */
   var css = [
     ':root{--jj-red:#8b0000;--jj-red-hot:#b3000a;--jj-gold:#d9a441;--jj-nav:#0b1220;--jj-panel:#fff;--jj-soft:#f3f4f6;--jj-ink:#0b1220;--jj-mute:#5b6473;--jj-line:rgba(255,255,255,0.08);}',
+    '@media(max-width:900px){#jj-mega-host{display:none!important;}}',
 
     /* container */
     '#jj-mega-host{position:fixed;left:0;right:0;z-index:999999;pointer-events:none;overflow-x:hidden;}',
