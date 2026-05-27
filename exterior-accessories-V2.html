@@ -310,6 +310,26 @@
 (function(){
   "use strict";
   var KEY="garage_vehicle";
+
+  // Read vehicle from URL params if Wix parent passed them in the iframe src
+  try {
+    var params=new URLSearchParams(window.location.search);
+    var py=params.get('year'),pm=params.get('make'),pmo=params.get('model');
+    if(py||pm||pmo){
+      localStorage.setItem(KEY,JSON.stringify({year:py||'',make:pm||'',model:pmo||''}));
+    }
+  } catch(e){}
+
+  // Also accept full vehicle payload via postMessage from Wix parent
+  window.addEventListener('message',function(e){
+    if(!e||!e.data)return;
+    var d=e.data;
+    if(typeof d==='object'&&d.type==='garage:vehicle'&&d.vehicle){
+      try{localStorage.setItem(KEY,JSON.stringify(d.vehicle));}catch(err){}
+      render();
+    }
+    if(d==='garage:refresh'||(typeof d==='object'&&d.type==='garage:refresh'))render();
+  });
   var MAKES={Ford:["F-150","F-250","F-350","Ranger","Maverick","Bronco","Super Duty"],Chevrolet:["Silverado 1500","Silverado 2500HD","Silverado 3500HD","Colorado"],GMC:["Sierra 1500","Sierra 2500HD","Sierra 3500HD","Canyon"],RAM:["1500","2500","3500","ProMaster"],Toyota:["Tundra","Tacoma"],Nissan:["Titan","Frontier"],Jeep:["Gladiator","Wrangler"],Honda:["Ridgeline"]};
   var YEAR_MIN=1995,YEAR_MAX=new Date().getFullYear()+1;
   var bar=document.getElementById("garageBar"),readout=document.getElementById("gbReadout"),actions=document.getElementById("gbActions"),stamp=document.getElementById("gbVinStamp");
@@ -351,7 +371,6 @@
   render();
   window.addEventListener("storage",function(e){if(e.key===KEY||e.key===null)render();});
   window.MyGarageBar={refresh:render};
-  window.addEventListener("message",function(e){if(!e||!e.data)return;if(e.data==="garage:refresh"||(typeof e.data==="object"&&e.data.type==="garage:refresh"))render();});
   closeForm();
 })();
 </script>
