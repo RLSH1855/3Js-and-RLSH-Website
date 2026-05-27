@@ -806,6 +806,10 @@ window.addEventListener('message',function(event){
   }
 });
 
+window.addEventListener('load',function(){
+  window.parent.postMessage({type:'garage_ready'},'*');
+});
+
 function browseAccessories(){
   if(currentVehicle){
     window.parent.postMessage({type:'garage_saved',vehicle:currentVehicle},'*');
