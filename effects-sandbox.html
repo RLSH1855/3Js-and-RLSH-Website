@@ -1320,23 +1320,19 @@ if(window.ResizeObserver){new ResizeObserver(reportHeight).observe(document.body
 .product-card::before,.mfr-card::before{
   content:'';
   position:absolute;inset:0;
-  border:2px solid transparent;
+  border:2px solid #8B0000;
   pointer-events:none;z-index:6;
-  transition:none;
-  /* sweep via background-clip border trick */
-  background:linear-gradient(#fff,#fff) padding-box,
-             linear-gradient(105deg,transparent 30%,#8B0000 50%,transparent 70%) border-box;
-  background-size:200% 200%;
-  background-position:-100% 0;
   opacity:0;
+  clip-path:inset(0 100% 0 0);
+  transition:none;
 }
 .product-card:hover::before,.mfr-card:hover::before{
   opacity:1;
-  background-position:200% 0;
-  transition:background-position 0.85s ease, opacity 0.15s ease;
+  clip-path:inset(0 0% 0 0);
+  transition:clip-path 0.9s ease, opacity 0.08s ease;
 }
 .product-card:not(:hover)::before,.mfr-card:not(:hover)::before{
-  transition:opacity 0.3s ease;
+  transition:opacity 0.4s ease;
 }
 </style>
 
