@@ -1315,28 +1315,164 @@ if(window.ResizeObserver){new ResizeObserver(reportHeight).observe(document.body
      Card shimmer · Hero parallax · Inertia scroll
 ═══════════════════════════════════════ -->
 <style>
-/* ── Red border sweep on hover ── */
+/* ── Red border sweep — starts from touch point ── */
 .product-card{position:relative;}
-.product-card::before,.mfr-card::before{
-  content:'';
+.mfr-card{position:relative;}
+.card-border-sweep{
   position:absolute;inset:0;
-  border:2px solid #8B0000;
   pointer-events:none;z-index:6;
-  opacity:0;
-  clip-path:inset(0 100% 0 0);
-  transition:none;
+  overflow:hidden;
 }
-.product-card:hover::before,.mfr-card:hover::before{
-  opacity:1;
-  clip-path:inset(0 0% 0 0);
-  transition:clip-path 0.9s ease, opacity 0.08s ease;
-}
-.product-card:not(:hover)::before,.mfr-card:not(:hover)::before{
-  transition:opacity 0.4s ease;
+.card-border-sweep canvas{
+  position:absolute;inset:0;
+  width:100%;height:100%;
 }
 </style>
 
 <script>
+/* ── Red border sweep from touch point ── */
+(function(){
+  var COLOR='#8B0000';
+  var DURATION=700;
+  var BORDER=2;
+
+  function getPerimeterLength(w,h){return 2*(w+h);}
+
+  function pointToPerimeter(x,y,w,h){
+    // Returns distance along perimeter from top-left corner, clockwise
+    // Top edge: x goes 0→w
+    if(y<=BORDER) return x;
+    // Right edge: y goes 0→h
+    if(x>=w-BORDER) return w+(y);
+    // Bottom edge: x goes w→0
+    if(y>=h-BORDER) return w+h+(w-x);
+    // Left edge: y goes h→0
+    return w+h+w+(h-y);
+  }
+
+  function initCard(card){
+    if(card.querySelector('.card-border-sweep')) return;
+    var wrap=document.createElement('div');
+    wrap.className='card-border-sweep';
+    var canvas=document.createElement('canvas');
+    wrap.appendChild(canvas);
+    card.appendChild(wrap);
+
+    var raf=null,startPerim=0,progress=0,animStart=0,leaving=false,leaveStart=0,leaveOpacity=0;
+
+    function resize(){
+      canvas.width=card.offsetWidth;
+      canvas.height=card.offsetHeight;
+    }
+    resize();
+    new ResizeObserver(resize).observe(card);
+
+    function draw(now){
+      var w=canvas.width,h=canvas.height;
+      var ctx=canvas.getContext('2d');
+      ctx.clearRect(0,0,w,h);
+      var perim=getPerimeterLength(w,h);
+
+      var opacity=1;
+      if(leaving){
+        var elapsed=now-leaveStart;
+        opacity=leaveOpacity*(1-Math.min(elapsed/350,1));
+        if(opacity<=0){raf=null;return;}
+      } else {
+        var elapsed=now-animStart;
+        progress=Math.min(elapsed/DURATION,1);
+        // ease out
+        progress=1-Math.pow(1-progress,3);
+      }
+
+      var sweepLen=perim*progress;
+      ctx.save();
+      ctx.strokeStyle=COLOR;
+      ctx.lineWidth=BORDER;
+      ctx.globalAlpha=opacity;
+      ctx.beginPath();
+
+      // Draw perimeter path starting from startPerim, clockwise for sweepLen
+      var segments=[
+        {x1:0,y1:0,x2:w,y2:0},       // top
+        {x1:w,y1:0,x2:w,y2:h},       // right
+        {x1:w,y1:h,x2:0,y2:h},       // bottom
+        {x1:0,y1:h,x2:0,y2:0}        // left
+      ];
+      var segLens=[w,h,w,h];
+      var totalPerim=perim;
+
+      // Find start coordinates
+      var s=startPerim%totalPerim;
+      var drawn=0;
+      var started=false;
+
+      for(var pass=0;pass<2;pass++){
+        var cum=0;
+        for(var i=0;i<4;i++){
+          var segLen=segLens[i];
+          var segStart=cum;
+          var segEnd=cum+segLen;
+          cum+=segLen;
+
+          if(!started){
+            if(segEnd<=s){continue;}
+            // start point within this segment
+            var t=(s-segStart)/segLen;
+            var sx=segments[i].x1+(segments[i].x2-segments[i].x1)*t;
+            var sy=segments[i].y1+(segments[i].y2-segments[i].y1)*t;
+            ctx.moveTo(sx,sy);
+            started=true;
+            // draw rest of this segment
+            var remaining=segLen*(1-t);
+            var canDraw=Math.min(remaining,sweepLen-drawn);
+            var t2=t+canDraw/segLen;
+            var ex=segments[i].x1+(segments[i].x2-segments[i].x1)*t2;
+            var ey=segments[i].y1+(segments[i].y2-segments[i].y1)*t2;
+            ctx.lineTo(ex,ey);
+            drawn+=canDraw;
+          } else {
+            var canDraw=Math.min(segLen,sweepLen-drawn);
+            var t2=canDraw/segLen;
+            var ex=segments[i].x1+(segments[i].x2-segments[i].x1)*t2;
+            var ey=segments[i].y1+(segments[i].y2-segments[i].y1)*t2;
+            ctx.lineTo(ex,ey);
+            drawn+=canDraw;
+          }
+          if(drawn>=sweepLen) break;
+        }
+        if(drawn>=sweepLen||pass===1) break;
+        s=0; // second pass starts from beginning
+      }
+
+      ctx.stroke();
+      ctx.restore();
+      raf=requestAnimationFrame(draw);
+    }
+
+    card.addEventListener('mouseenter',function(e){
+      leaving=false;
+      var rect=card.getBoundingClientRect();
+      var x=e.clientX-rect.left;
+      var y=e.clientY-rect.top;
+      startPerim=pointToPerimeter(x,y,canvas.width,canvas.height);
+      progress=0;
+      animStart=performance.now();
+      if(!raf) raf=requestAnimationFrame(draw);
+    });
+
+    card.addEventListener('mouseleave',function(){
+      leaving=true;
+      leaveStart=performance.now();
+      leaveOpacity=progress; // fade from current opacity
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded',function(){
+    document.querySelectorAll('.product-card,.mfr-card').forEach(initCard);
+  });
+})();
+
 /* ── Hero parallax ── */
 (function(){
   if(window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;
