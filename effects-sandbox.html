@@ -1315,17 +1315,28 @@ if(window.ResizeObserver){new ResizeObserver(reportHeight).observe(document.body
      Card shimmer · Hero parallax · Inertia scroll
 ═══════════════════════════════════════ -->
 <style>
-/* ── Card shimmer ── */
+/* ── Red border sweep on hover ── */
 .product-card{position:relative;}
-.product-card::after,.mfr-card::after{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,0.13) 50%,transparent 65%);
-  transform:translateX(-110%) skewX(-12deg);
-  pointer-events:none;z-index:5;transition:none;
+.product-card::before,.mfr-card::before{
+  content:'';
+  position:absolute;inset:0;
+  border:2px solid transparent;
+  pointer-events:none;z-index:6;
+  transition:none;
+  /* sweep via background-clip border trick */
+  background:linear-gradient(#fff,#fff) padding-box,
+             linear-gradient(105deg,transparent 30%,#8B0000 50%,transparent 70%) border-box;
+  background-size:200% 200%;
+  background-position:-100% 0;
+  opacity:0;
 }
-.product-card:hover::after,.mfr-card:hover::after{
-  transform:translateX(210%) skewX(-12deg);
-  transition:transform 0.65s ease;
+.product-card:hover::before,.mfr-card:hover::before{
+  opacity:1;
+  background-position:200% 0;
+  transition:background-position 0.85s ease, opacity 0.15s ease;
+}
+.product-card:not(:hover)::before,.mfr-card:not(:hover)::before{
+  transition:opacity 0.3s ease;
 }
 </style>
 
@@ -1358,10 +1369,10 @@ if(window.ResizeObserver){new ResizeObserver(reportHeight).observe(document.body
     if(!raf){target=window.scrollY;current=window.scrollY;}
   },{passive:true});
   function tick(){
-    current=lerp(current,target,0.10);
+    current=lerp(current,target,0.08);
     window.scrollTo(0,current);
-    if(Math.abs(target-current)>0.5){raf=requestAnimationFrame(tick);}
-    else{current=target;raf=null;}
+    if(Math.abs(target-current)>0.3){raf=requestAnimationFrame(tick);}
+    else{current=target;window.scrollTo(0,target);raf=null;}
   }
 })();
 </script>
