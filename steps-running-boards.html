@@ -214,18 +214,22 @@
     .faq-header .label{text-align:center;margin-bottom:10px;}
     .faq-header h2{font-size:clamp(22px,3.5vw,34px);font-weight:900;letter-spacing:-1px;color:var(--neutral-dark);line-height:1.1;}
     .faq-header h2 em{font-style:normal;color:var(--crimson);}
-    .faq-item{border-bottom:1px solid var(--divider);}
-    .faq-item:first-of-type{border-top:1px solid var(--divider);}
-    :root{--ease-smooth:cubic-bezier(0.22,1,0.36,1);--dur-accordion:720ms;--dur-ui:220ms;}
-    .faq-q{width:100%;background:none;border:none;display:flex;align-items:flex-start;justify-content:space-between;padding:20px 0;cursor:pointer;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;color:var(--neutral-dark);text-transform:uppercase;letter-spacing:2px;text-align:left;gap:16px;transition:color var(--dur-ui) ease;line-height:1.5;touch-action:manipulation;-webkit-tap-highlight-color:transparent;}
-    .faq-q:hover{color:#8B0000;}
-    .faq-q:focus-visible{outline:2px solid #8B0000;outline-offset:4px;}
-    .faq-item.open .faq-q{color:#8B0000;font-weight:800;}
-    .faq-q svg{width:18px;height:18px;flex-shrink:0;margin-top:2px;stroke:#8B0000;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;transition:transform var(--dur-accordion) var(--ease-smooth);transform-origin:center;}
-    .faq-item.open .faq-q svg{transform:rotate(45deg);}
-    .faq-a{display:none;}
-    .faq-a-inner{font-family:'Inter',sans-serif;font-size:15px;font-weight:400;color:#555;line-height:1.85;padding-bottom:20px;}
-    @media(prefers-reduced-motion:reduce){.faq-q svg,.faq-a{transition:none!important;}}
+    .faq-list{display:flex;flex-direction:column;gap:6px;}
+    .faq-item{background:#fff;border:1.5px solid #E2E8F0;border-radius:0;overflow:hidden;transition:border-color 0.2s,box-shadow 0.2s;}
+    .faq-item:hover{border-color:#CBD5E0;box-shadow:0 2px 8px rgba(15,30,46,0.07);}
+    .faq-item.open{border-color:#B0BBC8;box-shadow:0 4px 16px rgba(15,30,46,0.10);}
+    .faq-trigger{width:100%;background:none;border:none;padding:0;cursor:pointer;display:block;text-align:left;}
+    .faq-trigger-inner{display:flex;align-items:center;gap:16px;padding:18px 20px;transition:background 0.15s;}
+    .faq-trigger:hover .faq-trigger-inner,.faq-item.open .faq-trigger-inner{background:#f4f4f4;}
+    .q-badge{flex-shrink:0;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:900;color:#AAAAAA;padding:3px 8px;border:1px solid #E8ECF0;border-radius:0;background:#fff;align-self:flex-start;margin-top:2px;box-shadow:0 1px 4px rgba(0,0,0,0.07);}
+    .q-label{flex:1;font-family:'Montserrat',sans-serif;font-size:14px;font-weight:700;color:#1a1a1a;line-height:1.45;}
+    .toggle-icon{flex-shrink:0;width:40px;height:40px;display:flex;align-items:center;justify-content:center;transition:transform 0.3s ease;color:#111;}
+    .toggle-icon svg{width:20px;height:20px;}
+    .faq-item.open .toggle-icon{transform:rotate(45deg);}
+    .faq-body{height:0;overflow:hidden;transition:height 720ms cubic-bezier(0.22,1,0.36,1);}
+    .faq-answer{padding:0 20px 20px 60px;}
+    .answer-text{font-family:'Inter',sans-serif;font-size:13px;font-weight:500;color:#3B3B3B;line-height:1.8;}
+    @media(max-width:640px){.faq-answer{padding:0 14px 18px 14px;}.q-badge{display:none;}}
 
     /* ── CTA BAND ── */
     .cta-band{background:var(--crimson);padding:clamp(48px,6vw,72px) clamp(16px,4vw,40px);text-align:center;position:relative;overflow:hidden;}
@@ -461,20 +465,20 @@
     </div>
     <div class="faq-list">
       <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">What's the difference between nerf bars and running boards?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
-        <div class="faq-a"><div class="faq-a-inner">Nerf bars are round or oval tubes that provide a step point and side protection. Running boards are wide flat platforms running the full cab length for easier entry and exit. Both are available in fixed and electric retractable styles.</div></div>
+        <button class="faq-trigger" aria-expanded="false"><div class="faq-trigger-inner"><span class="q-badge">Q</span><span class="q-label">What's the difference between nerf bars and running boards?</span><span class="toggle-icon" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></div></button>
+        <div class="faq-body"><div class="faq-body-inner"><div class="faq-answer"><p class="answer-text">Nerf bars are round or oval tubes that provide a step point and side protection. Running boards are wide flat platforms running the full cab length for easier entry and exit. Both are available in fixed and electric retractable styles.</p></div></div></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">How long does installation take?<svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
-        <div class="faq-a"><div class="faq-a-inner">Most nerf bar and running board installs take 1–2 hours. AMP Research PowerSteps take 2–3 hours due to the electrical wiring. We'll give you an exact time estimate when you call.</div></div>
+        <button class="faq-trigger" aria-expanded="false"><div class="faq-trigger-inner"><span class="q-badge">Q</span><span class="q-label">How long does installation take?</span><span class="toggle-icon" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></div></button>
+        <div class="faq-body"><div class="faq-body-inner"><div class="faq-answer"><p class="answer-text">Most nerf bar and running board installs take 1–2 hours. AMP Research PowerSteps take 2–3 hours due to the electrical wiring. We'll give you an exact time estimate when you call.</p></div></div></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">Will these fit my lifted truck?<svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
-        <div class="faq-a"><div class="faq-a-inner">Yes — we have options for lifted trucks. Call us at (562) 424-6744 and we'll confirm fitment and clearance for your specific lift height and tire setup.</div></div>
+        <button class="faq-trigger" aria-expanded="false"><div class="faq-trigger-inner"><span class="q-badge">Q</span><span class="q-label">Will these fit my lifted truck?</span><span class="toggle-icon" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></div></button>
+        <div class="faq-body"><div class="faq-body-inner"><div class="faq-answer"><p class="answer-text">Yes — we have options for lifted trucks. Call us at (562) 424-6744 and we'll confirm fitment and clearance for your specific lift height and tire setup.</p></div></div></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">Do you install AMP Research PowerSteps?<svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
-        <div class="faq-a"><div class="faq-a-inner">Yes. We handle the full electrical installation in-house. AMP PowerSteps auto-deploy when you open your door and retract when you close it — we wire everything correctly the first time so you drive home with a fully working system.</div></div>
+        <button class="faq-trigger" aria-expanded="false"><div class="faq-trigger-inner"><span class="q-badge">Q</span><span class="q-label">Do you install AMP Research PowerSteps?</span><span class="toggle-icon" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></div></button>
+        <div class="faq-body"><div class="faq-body-inner"><div class="faq-answer"><p class="answer-text">Yes. We handle the full electrical installation in-house. AMP PowerSteps auto-deploy when you open your door and retract when you close it — we wire everything correctly the first time so you drive home with a fully working system.</p></div></div></div>
       </div>
     </div>
   </div>
@@ -620,9 +624,10 @@ document.querySelectorAll('.br-tier').forEach(function(pill){
 });
 
 // FAQ
-function faqClose(item){item.querySelector('.faq-a').style.display='none';item.classList.remove('open');item.querySelector('.faq-q').setAttribute('aria-expanded','false');}
-function faqOpen(item){item.querySelector('.faq-a').style.display='block';item.classList.add('open');item.querySelector('.faq-q').setAttribute('aria-expanded','true');reportHeight();setTimeout(reportHeight,50);}
-document.querySelectorAll('.faq-q').forEach(function(btn){btn.addEventListener('click',function(){var item=btn.closest('.faq-item');var wasOpen=item.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(faqClose);if(!wasOpen)faqOpen(item);});});
+function faqClose(item){var p=item.querySelector('.faq-body');p.style.height=p.scrollHeight+'px';void p.offsetHeight;p.style.height='0px';item.classList.remove('open');item.querySelector('.faq-trigger').setAttribute('aria-expanded','false');}
+function faqOpen(item){var p=item.querySelector('.faq-body');item.classList.add('open');item.querySelector('.faq-trigger').setAttribute('aria-expanded','true');p.style.height=p.querySelector('.faq-body-inner').offsetHeight+'px';}
+document.querySelectorAll('.faq-body').forEach(function(p){p.addEventListener('transitionend',function(e){if(e.propertyName!=='height')return;if(p.closest('.faq-item').classList.contains('open'))p.style.height='auto';});});
+document.querySelectorAll('.faq-trigger').forEach(function(btn){btn.addEventListener('click',function(){var item=btn.closest('.faq-item'),wasOpen=item.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(faqClose);if(!wasOpen){faqOpen(item);}setTimeout(reportHeight,350);});});
 
 // Scroll animations + immediate fallback for iframe/Wix context
 (function(){

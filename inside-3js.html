@@ -25,7 +25,8 @@
       --divider-dark:rgba(255,255,255,0.08);
     }
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    html,body{margin:0;padding:0;width:100%;overflow-x:hidden;}
+    html{margin:0;padding:0;overscroll-behavior:none;}
+    body{margin:0;padding:0;width:100%;overflow-x:hidden;}
     body{font-family:'Inter',sans-serif;font-size:16px;color:var(--body-text);background:var(--white);}
     .skip-link{position:absolute;top:-100%;left:16px;z-index:9999;background:#8B0000;color:#fff;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:8px 20px;text-decoration:none;}
     .skip-link:focus{top:16px;}
@@ -359,18 +360,21 @@
   .acc-col-label{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--crimson);margin-bottom:8px;display:block;}
   .acc-col-title{font-family:'Montserrat',sans-serif;font-size:clamp(18px,2vw,24px);font-weight:800;letter-spacing:-0.5px;color:var(--neutral-dark);margin-bottom:20px;line-height:1.15;}
   .acc-col-title em{font-style:normal;color:var(--crimson);}
-  .acc-list{border-top:1px solid var(--divider);}
-  .acc-item{border-bottom:1px solid var(--divider);}
-  .acc-btn{width:100%;background:none;border:none;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 0;cursor:pointer;text-align:left;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--neutral-dark);transition:color 0.2s;touch-action:manipulation;-webkit-tap-highlight-color:transparent;}
-  .acc-btn:hover{color:var(--crimson);}
-  .acc-icon{width:18px;height:18px;flex-shrink:0;position:relative;}
-  .acc-icon .i-h,.acc-icon .i-v{position:absolute;background:var(--crimson);border-radius:0;transition:transform 0.35s cubic-bezier(0.4,0,0.2,1),opacity 0.3s ease;}
-  .acc-icon .i-h{width:12px;height:2px;top:8px;left:3px;}
-  .acc-icon .i-v{width:2px;height:12px;top:3px;left:8px;transform-origin:center;}
-  .acc-item.open .acc-icon .i-v{transform:rotate(90deg);opacity:0;}
-  .acc-body{font-family:'Inter',sans-serif;font-size:14px;font-weight:400;color:var(--body-text);line-height:1.75;height:0;overflow:hidden;transition:height 720ms cubic-bezier(0.22,1,0.36,1);}
-  .acc-body-inner{padding-bottom:18px;}
-  @media(max-width:768px){.dual-acc-wrap{grid-template-columns:1fr;gap:40px;}}
+  .acc-list{display:flex;flex-direction:column;gap:6px;}
+  .acc-item{background:#fff;border:1.5px solid #E2E8F0;border-radius:0;overflow:hidden;transition:border-color 0.2s,box-shadow 0.2s;}
+  .acc-item:hover{border-color:#CBD5E0;box-shadow:0 2px 8px rgba(15,30,46,0.07);}
+  .acc-item.open{border-color:#B0BBC8;box-shadow:0 4px 16px rgba(15,30,46,0.10);}
+  .acc-btn{width:100%;background:none;border:none;padding:0;cursor:pointer;display:block;text-align:left;touch-action:manipulation;-webkit-tap-highlight-color:transparent;}
+  .acc-btn-inner{display:flex;align-items:center;gap:16px;padding:16px 20px;transition:background 0.15s;}
+  .acc-btn:hover .acc-btn-inner,.acc-item.open .acc-btn-inner{background:#f4f4f4;}
+  .acc-q-badge{flex-shrink:0;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:900;color:#AAAAAA;padding:3px 8px;border:1px solid #E8ECF0;border-radius:0;background:#fff;align-self:flex-start;margin-top:2px;box-shadow:0 1px 4px rgba(0,0,0,0.07);}
+  .acc-q-label{flex:1;font-family:'Montserrat',sans-serif;font-size:14px;font-weight:700;color:#1a1a1a;line-height:1.45;}
+  .acc-toggle{flex-shrink:0;width:36px;height:36px;display:flex;align-items:center;justify-content:center;transition:transform 0.3s ease;color:#111;}
+  .acc-toggle svg{width:18px;height:18px;}
+  .acc-item.open .acc-toggle{transform:rotate(45deg);}
+  .acc-body{height:0;overflow:hidden;transition:height 720ms cubic-bezier(0.22,1,0.36,1);}
+  .acc-body-inner{font-family:'Inter',sans-serif;font-size:13px;font-weight:500;color:#3B3B3B;line-height:1.8;padding:0 20px 18px 60px;}
+  @media(max-width:768px){.dual-acc-wrap{grid-template-columns:1fr;gap:40px;}.acc-body-inner{padding:0 14px 16px 14px;}.acc-q-badge{display:none;}}
 </style>
 
 <section class="acc-section">
@@ -382,17 +386,17 @@
       <h2 class="acc-col-title">Our <em>Services</em></h2>
       <div class="acc-list" id="svc-acc">
 
-        <div class="acc-item"><button class="acc-btn" aria-expanded="false"><span>Spray-In Rhino Liner</span><span class="acc-icon"><span class="i-h"></span><span class="i-v"></span></span></button><div class="acc-body"><div class="acc-body-inner">Certified Rhino Liner installer — permanently bonded, textured, waterproof. Not the drop-in kind. Same-day installation available. Lifetime warranty included. Multiple color options.<br><br><strong style="color:#1a1a1a;">Highlights:</strong> Certified installer · Same-day service · Lifetime warranty · Color match options</div></div></div>
+        <div class="acc-item"><button class="acc-btn" aria-expanded="false"><div class="acc-btn-inner"><span class="acc-q-badge">Q</span><span class="acc-q-label">Spray-In Rhino Liner</span><span class="acc-toggle" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></div></button><div class="acc-body"><div class="acc-body-inner">Certified Rhino Liner installer — permanently bonded, textured, waterproof. Not the drop-in kind. Same-day installation available. Lifetime warranty included. Multiple color options.<br><br><strong style="color:#1a1a1a;">Highlights:</strong> Certified installer · Same-day service · Lifetime warranty · Color match options</div></div></div>
 
-        <div class="acc-item"><button class="acc-btn" aria-expanded="false"><span>Tonneau Covers</span><span class="acc-icon"><span class="i-h"></span><span class="i-v"></span></span></button><div class="acc-body"><div class="acc-body-inner">Protect your cargo and improve fuel economy. Soft roll-up, hard folding, and retractable options from all major brands. We'll help you find the right fit for your truck and budget.<br><br><strong style="color:#1a1a1a;">Highlights:</strong> All styles · All major brands · Professional install</div></div></div>
+        <div class="acc-item"><button class="acc-btn" aria-expanded="false"><div class="acc-btn-inner"><span class="acc-q-badge">Q</span><span class="acc-q-label">Tonneau Covers</span><span class="acc-toggle" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></div></button><div class="acc-body"><div class="acc-body-inner">Protect your cargo and improve fuel economy. Soft roll-up, hard folding, and retractable options from all major brands. We'll help you find the right fit for your truck and budget.<br><br><strong style="color:#1a1a1a;">Highlights:</strong> All styles · All major brands · Professional install</div></div></div>
 
-        <div class="acc-item"><button class="acc-btn" aria-expanded="false"><span>Running Boards &amp; Steps</span><span class="acc-icon"><span class="i-h"></span><span class="i-v"></span></span></button><div class="acc-body"><div class="acc-body-inner">Fixed boards, nerf bars, and power electric retractable steps for all trucks and SUVs — including lifted vehicles. All major brands available.<br><br><strong style="color:#1a1a1a;">Highlights:</strong> Fixed, nerf &amp; electric options · Lifted vehicle friendly · All makes &amp; models</div></div></div>
+        <div class="acc-item"><button class="acc-btn" aria-expanded="false"><div class="acc-btn-inner"><span class="acc-q-badge">Q</span><span class="acc-q-label">Running Boards &amp; Steps</span><span class="acc-toggle" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></div></button><div class="acc-body"><div class="acc-body-inner">Fixed boards, nerf bars, and power electric retractable steps for all trucks and SUVs — including lifted vehicles. All major brands available.<br><br><strong style="color:#1a1a1a;">Highlights:</strong> Fixed, nerf &amp; electric options · Lifted vehicle friendly · All makes &amp; models</div></div></div>
 
-        <div class="acc-item"><button class="acc-btn" aria-expanded="false"><span>Full Exterior Paint</span><span class="acc-icon"><span class="i-h"></span><span class="i-v"></span></span></button><div class="acc-body"><div class="acc-body-inner">Computer-matched paint for a perfect finish — single panels or full repaints. Any factory color or fully custom. From daily drivers to show trucks, every job gets the same care.<br><br><strong style="color:#1a1a1a;">Highlights:</strong> Computer color match · Single panel or full repaint · Custom colors</div></div></div>
+        <div class="acc-item"><button class="acc-btn" aria-expanded="false"><div class="acc-btn-inner"><span class="acc-q-badge">Q</span><span class="acc-q-label">Full Exterior Paint</span><span class="acc-toggle" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></div></button><div class="acc-body"><div class="acc-body-inner">Computer-matched paint for a perfect finish — single panels or full repaints. Any factory color or fully custom. From daily drivers to show trucks, every job gets the same care.<br><br><strong style="color:#1a1a1a;">Highlights:</strong> Computer color match · Single panel or full repaint · Custom colors</div></div></div>
 
-        <div class="acc-item"><button class="acc-btn" aria-expanded="false"><span>Rock Guard Protection</span><span class="acc-icon"><span class="i-h"></span><span class="i-v"></span></span></button><div class="acc-body"><div class="acc-body-inner">Rhino Linings material applied to the lower body — stops chips, rocks, and road debris on and off road. Color match available so it blends seamlessly.<br><br><strong style="color:#1a1a1a;">Highlights:</strong> Rhino Linings material · Color match · On &amp; off-road protection</div></div></div>
+        <div class="acc-item"><button class="acc-btn" aria-expanded="false"><div class="acc-btn-inner"><span class="acc-q-badge">Q</span><span class="acc-q-label">Rock Guard Protection</span><span class="acc-toggle" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></div></button><div class="acc-body"><div class="acc-body-inner">Rhino Linings material applied to the lower body — stops chips, rocks, and road debris on and off road. Color match available so it blends seamlessly.<br><br><strong style="color:#1a1a1a;">Highlights:</strong> Rhino Linings material · Color match · On &amp; off-road protection</div></div></div>
 
-        <div class="acc-item"><button class="acc-btn" aria-expanded="false"><span>Undercarriage Coating</span><span class="acc-icon"><span class="i-h"></span><span class="i-v"></span></span></button><div class="acc-body"><div class="acc-body-inner">Full spray coating seals out moisture, road salt, and corrosion. Essential for off-road trucks, coastal drivers, and anyone who wants their investment to last.<br><br><strong style="color:#1a1a1a;">Highlights:</strong> Full coverage · Seals moisture &amp; salt · Rust &amp; corrosion protection</div></div></div>
+        <div class="acc-item"><button class="acc-btn" aria-expanded="false"><div class="acc-btn-inner"><span class="acc-q-badge">Q</span><span class="acc-q-label">Undercarriage Coating</span><span class="acc-toggle" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></div></button><div class="acc-body"><div class="acc-body-inner">Full spray coating seals out moisture, road salt, and corrosion. Essential for off-road trucks, coastal drivers, and anyone who wants their investment to last.<br><br><strong style="color:#1a1a1a;">Highlights:</strong> Full coverage · Seals moisture &amp; salt · Rust &amp; corrosion protection</div></div></div>
 
       </div>
     </div>
@@ -403,17 +407,17 @@
       <h2 class="acc-col-title">About <em>3J's Auto Body</em></h2>
       <div class="acc-list" id="faq-acc">
 
-        <div class="acc-item"><button class="acc-btn" aria-expanded="false"><span>Is 3J's Auto Body family owned?</span><span class="acc-icon"><span class="i-h"></span><span class="i-v"></span></span></button><div class="acc-body"><div class="acc-body-inner">Yes — founded in 1991 by Jim Sferrazza, the shop has been passed down through three generations of the Sferrazza family right here in Signal Hill, CA.</div></div></div>
+        <div class="acc-item"><button class="acc-btn" aria-expanded="false"><div class="acc-btn-inner"><span class="acc-q-badge">Q</span><span class="acc-q-label">Is 3J's Auto Body family owned?</span><span class="acc-toggle" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></div></button><div class="acc-body"><div class="acc-body-inner">Yes — founded in 1991 by Jim Sferrazza, the shop has been passed down through three generations of the Sferrazza family right here in Signal Hill, CA.</div></div></div>
 
-        <div class="acc-item"><button class="acc-btn" aria-expanded="false"><span>Is 3J's Auto Body certified?</span><span class="acc-icon"><span class="i-h"></span><span class="i-v"></span></span></button><div class="acc-body"><div class="acc-body-inner">Yes — I-CAR Gold Class certified, ASE certified, and a certified Rhino Liner installer. I-CAR Gold Class is the highest training recognition in the collision repair industry.</div></div></div>
+        <div class="acc-item"><button class="acc-btn" aria-expanded="false"><div class="acc-btn-inner"><span class="acc-q-badge">Q</span><span class="acc-q-label">Is 3J's Auto Body certified?</span><span class="acc-toggle" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></div></button><div class="acc-body"><div class="acc-body-inner">Yes — I-CAR Gold Class certified, ASE certified, and a certified Rhino Liner installer. I-CAR Gold Class is the highest training recognition in the collision repair industry.</div></div></div>
 
-        <div class="acc-item"><button class="acc-btn" aria-expanded="false"><span>How long have you been in business?</span><span class="acc-icon"><span class="i-h"></span><span class="i-v"></span></span></button><div class="acc-body"><div class="acc-body-inner">Over 30 years — same location at 1855 E 29th Street, Signal Hill, CA since 1991. Same family, same address, same commitment to quality.</div></div></div>
+        <div class="acc-item"><button class="acc-btn" aria-expanded="false"><div class="acc-btn-inner"><span class="acc-q-badge">Q</span><span class="acc-q-label">How long have you been in business?</span><span class="acc-toggle" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></div></button><div class="acc-body"><div class="acc-body-inner">Over 30 years — same location at 1855 E 29th Street, Signal Hill, CA since 1991. Same family, same address, same commitment to quality.</div></div></div>
 
-        <div class="acc-item"><button class="acc-btn" aria-expanded="false"><span>Do you work with insurance companies?</span><span class="acc-icon"><span class="i-h"></span><span class="i-v"></span></span></button><div class="acc-body"><div class="acc-body-inner">Yes — we work directly with all major carriers including State Farm, Geico, Progressive, Allstate, Farmers, AAA, and more. We handle the paperwork so you don't have to.</div></div></div>
+        <div class="acc-item"><button class="acc-btn" aria-expanded="false"><div class="acc-btn-inner"><span class="acc-q-badge">Q</span><span class="acc-q-label">Do you work with insurance companies?</span><span class="acc-toggle" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></div></button><div class="acc-body"><div class="acc-body-inner">Yes — we work directly with all major carriers including State Farm, Geico, Progressive, Allstate, Farmers, AAA, and more. We handle the paperwork so you don't have to.</div></div></div>
 
-        <div class="acc-item"><button class="acc-btn" aria-expanded="false"><span>Do you offer a warranty?</span><span class="acc-icon"><span class="i-h"></span><span class="i-v"></span></span></button><div class="acc-body"><div class="acc-body-inner">Yes — every repair is backed by a written limited lifetime warranty on our workmanship for as long as you own the vehicle.</div></div></div>
+        <div class="acc-item"><button class="acc-btn" aria-expanded="false"><div class="acc-btn-inner"><span class="acc-q-badge">Q</span><span class="acc-q-label">Do you offer a warranty?</span><span class="acc-toggle" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></div></button><div class="acc-body"><div class="acc-body-inner">Yes — every repair is backed by a written limited lifetime warranty on our workmanship for as long as you own the vehicle.</div></div></div>
 
-        <div class="acc-item"><button class="acc-btn" aria-expanded="false"><span>Do you offer free estimates?</span><span class="acc-icon"><span class="i-h"></span><span class="i-v"></span></span></button><div class="acc-body"><div class="acc-body-inner">Always. Walk in Mon–Fri 8AM–5PM or submit an online photo estimate. No appointment needed for estimates.</div></div></div>
+        <div class="acc-item"><button class="acc-btn" aria-expanded="false"><div class="acc-btn-inner"><span class="acc-q-badge">Q</span><span class="acc-q-label">Do you offer free estimates?</span><span class="acc-toggle" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></div></button><div class="acc-body"><div class="acc-body-inner">Always. Walk in Mon–Fri 8AM–5PM or submit an online photo estimate. No appointment needed for estimates.</div></div></div>
 
       </div>
     </div>
@@ -907,7 +911,7 @@
         list.querySelectorAll('.acc-item.open').forEach(accClose);
         if(!wasOpen){
           accOpen(item);
-          setTimeout(reportHeight,550);
+          setTimeout(reportHeight,350);
         }
       });
     });

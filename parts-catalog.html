@@ -33,10 +33,10 @@
   .btn-primary:active { transform: translateY(1px); }
   .btn-ghost { background: transparent; color: var(--fg); border: 1px solid var(--border-strong); padding: 12px 18px; font-family: var(--display); font-weight: 600; letter-spacing: .08em; text-transform: uppercase; font-size: 13px; cursor: pointer; }
   .btn-ghost:hover { background: rgba(255,255,255,.04); }
-  .icon-btn { background:transparent; border:0; color: var(--fg); width:40px; height:40px; cursor:pointer; position:relative; display:inline-flex; align-items:center; justify-content:center; border-radius: 4px; }
+  .icon-btn { background:transparent; border:0; color: var(--fg); width:40px; height:40px; cursor:pointer; position:relative; display:inline-flex; align-items:center; justify-content:center; border-radius: 0; }
   .icon-btn:hover { background: rgba(255,255,255,.05); }
   .icon-btn svg { width: 20px; height: 20px; }
-  .cart-dot { position:absolute; top:6px; right:4px; background: var(--accent); color:#fff; font-size: 10px; font-weight: 700; min-width: 16px; height: 16px; border-radius: 8px; display:flex; align-items:center; justify-content:center; padding: 0 4px; }
+  .cart-dot { position:absolute; top:6px; right:4px; background: var(--accent); color:#fff; font-size: 10px; font-weight: 700; min-width: 16px; height: 16px; border-radius: 0; display:flex; align-items:center; justify-content:center; padding: 0 4px; }
 
   /* ── Header ── */
   .hdr { position: sticky; top: 0; z-index: 50; background: rgba(10,10,12,.95); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
@@ -90,13 +90,13 @@
   /* ── Product Detail Popup ── */
   .detail-popup-root { position: fixed; inset: 0; z-index: 500; display: flex; align-items: flex-end; justify-content: center; }
   .detail-popup-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,.72); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); animation: fadeIn .2s ease-out; }
-  .detail-popup-card { position: relative; z-index: 1; width: 100%; max-height: 94vh; overflow: hidden; animation: slideUp .25s ease-out; background: #fff; border-top-left-radius: 12px; border-top-right-radius: 12px; box-shadow: 0 -8px 48px rgba(0,0,0,.5); }
-  .detail-popup-close { position: absolute; top: 10px; right: 10px; z-index: 10; background: rgba(0,0,0,.6); border: 1px solid rgba(255,255,255,.2); color: #fff; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 18px; line-height: 1; transition: background .15s; }
+  .detail-popup-card { position: relative; z-index: 1; width: 100%; max-height: 94vh; overflow: hidden; animation: slideUp .25s ease-out; background: #fff; border-radius: 0; box-shadow: 0 -8px 48px rgba(0,0,0,.5); }
+  .detail-popup-close { position: absolute; top: 10px; right: 10px; z-index: 10; background: rgba(0,0,0,.6); border: 1px solid rgba(255,255,255,.2); color: #fff; width: 36px; height: 36px; border-radius: 0; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 18px; line-height: 1; transition: background .15s; }
   .detail-popup-close:hover { background: #8B0000; }
   .detail-popup-iframe { width: 100%; height: 90vh; border: 0; display: block; }
   @media(min-width:768px) {
     .detail-popup-root { align-items: center; }
-    .detail-popup-card { width: 980px; max-width: 96vw; max-height: 92vh; border-radius: 8px; animation: fadeIn .2s ease-out; }
+    .detail-popup-card { width: 980px; max-width: 96vw; max-height: 92vh; border-radius: 0; animation: fadeIn .2s ease-out; }
     .detail-popup-iframe { height: 88vh; }
   }
 
@@ -176,7 +176,7 @@
 
   /* ── Chip rail ── */
   .chip-rail { max-width: 1440px; margin: 0 auto; padding: 0 24px 16px; display:flex; flex-wrap: wrap; gap: 8px; align-items: center; }
-  .chip-pill { display:inline-flex; align-items:center; gap: 8px; background: var(--surface2); border: 1px solid var(--border); color: var(--fg); padding: 6px 8px 6px 12px; border-radius: 2px; font-size: 12px; font-weight: 500; cursor: pointer; transition: border-color .15s; }
+  .chip-pill { display:inline-flex; align-items:center; gap: 8px; background: var(--surface2); border: 1px solid var(--border); color: var(--fg); padding: 6px 8px 6px 12px; border-radius: 0; font-size: 12px; font-weight: 500; cursor: pointer; transition: border-color .15s; }
   .chip-pill:hover { border-color: var(--accent); }
   .chip-pill .chip-x { display:inline-flex; opacity: .6; }
   .chip-pill .chip-x svg { width: 12px; height: 12px; }
@@ -212,7 +212,7 @@
 
   .check-row { display:flex; align-items: center; gap: 10px; cursor: pointer; font-size: 13px; padding: 4px 0; }
   .check-row input { display: none; }
-  .check-box { width: 16px; height: 16px; border: 1.5px solid var(--border-strong); border-radius: 2px; flex-shrink: 0; display:inline-flex; align-items: center; justify-content: center; transition: background .15s, border-color .15s; }
+  .check-box { width: 16px; height: 16px; border: 1.5px solid var(--border-strong); border-radius: 0; flex-shrink: 0; display:inline-flex; align-items: center; justify-content: center; transition: background .15s, border-color .15s; }
   .check-box .check-mark { color: #fff; opacity: 0; transition: opacity .1s; display:inline-flex; }
   .check-box .check-mark svg { width: 12px; height: 12px; }
   .check-row input:checked + .check-box { background: var(--accent); border-color: var(--accent); }
@@ -314,7 +314,7 @@
   /* Garage modal */
   .garage-modal { position: absolute; bottom: 0; left: 0; right: 0; background: var(--bg); max-height: 90vh; display:flex; flex-direction: column; animation: slideUp .25s ease-out; border-top: 1px solid var(--border); }
   @media (min-width: 640px) {
-    .garage-modal { left: 50%; right: auto; top: 50%; bottom: auto; transform: translate(-50%, -50%); width: 520px; max-width: 90vw; border-radius: 4px; animation: fadeIn .2s ease-out; }
+    .garage-modal { left: 50%; right: auto; top: 50%; bottom: auto; transform: translate(-50%, -50%); width: 520px; max-width: 90vw; border-radius: 0; animation: fadeIn .2s ease-out; }
   }
   .garage-body { padding: 20px; display:flex; flex-direction: column; gap: 16px; }
   .garage-current { display:flex; align-items: center; gap: 14px; padding: 16px; background: var(--surface2); border-top: 3px solid var(--accent); }
@@ -1648,6 +1648,18 @@ function Footer() {
 }
 
 ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+<script>
+  function reportHeight(){
+    var h = Math.max(document.body.scrollHeight,document.body.offsetHeight,document.documentElement.scrollHeight,document.documentElement.offsetHeight);
+    window.parent.postMessage(JSON.stringify({height:h}),'*');
+  }
+  document.addEventListener('DOMContentLoaded',reportHeight);
+  window.addEventListener('load',function(){
+    [0,200,500,1000,2000,3500].forEach(function(t){setTimeout(reportHeight,t);});
+  });
+  window.addEventListener('resize',reportHeight);
+  if(window.ResizeObserver){new ResizeObserver(reportHeight).observe(document.body);}
 </script>
 </body>
 </html>

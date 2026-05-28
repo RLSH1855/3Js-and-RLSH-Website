@@ -68,25 +68,22 @@
     }
 
     /* ─── ACCORDION ─── */
-    .faq-list{border-top:1px solid #e0e0e0;}
-    .faq-item{border-bottom:1px solid #e0e0e0;}
-    .faq-q{
-      width:100%;background:#fff;border:none;
-      display:flex;align-items:flex-start;justify-content:space-between;
-      padding:20px 0;cursor:pointer;
-      font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;
-      color:#1a1a1a;text-transform:uppercase;letter-spacing:2px;text-align:left;
-      gap:16px;transition:color .2s ease,background .2s ease;line-height:1.5;
-      touch-action:manipulation;-webkit-tap-highlight-color:transparent;
-    }
-    .faq-q:hover{color:#8B0000;background:#f4f4f4;}
-    .faq-q:focus-visible{outline:2px solid #8B0000;outline-offset:4px;}
-    .faq-item.open .faq-q{color:#8B0000;font-weight:800;background:#f4f4f4;}
-    .faq-q svg{width:18px;height:18px;flex-shrink:0;margin-top:2px;stroke:#8B0000;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;transition:transform .25s ease;transform-origin:center;}
-    .faq-item.open .faq-q svg{transform:rotate(45deg);}
-    /* display:none/block — no height animation = no scrollbar in Wix iframe */
-    .faq-a{display:none;}
-    .faq-a-inner{font-family:'Inter',sans-serif;font-size:15px;font-weight:400;color:#555;line-height:1.85;padding-bottom:20px;}
+    .faq-list{display:flex;flex-direction:column;gap:6px;}
+    .faq-item{background:#fff;border:1.5px solid #E2E8F0;border-radius:0;overflow:hidden;transition:border-color 0.2s,box-shadow 0.2s;}
+    .faq-item:hover{border-color:#CBD5E0;box-shadow:0 2px 8px rgba(15,30,46,0.07);}
+    .faq-item.open{border-color:#B0BBC8;box-shadow:0 4px 16px rgba(15,30,46,0.10);}
+    .faq-trigger{width:100%;background:none;border:none;padding:0;cursor:pointer;display:block;text-align:left;}
+    .faq-trigger-inner{display:flex;align-items:center;gap:16px;padding:18px 20px;transition:background 0.15s;}
+    .faq-trigger:hover .faq-trigger-inner,.faq-item.open .faq-trigger-inner{background:#f4f4f4;}
+    .q-badge{flex-shrink:0;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:900;color:#AAAAAA;padding:3px 8px;border:1px solid #E8ECF0;border-radius:0;background:#fff;align-self:flex-start;margin-top:2px;box-shadow:0 1px 4px rgba(0,0,0,0.07);}
+    .q-label{flex:1;font-family:'Montserrat',sans-serif;font-size:14px;font-weight:700;color:#1a1a1a;line-height:1.45;}
+    .toggle-icon{flex-shrink:0;width:40px;height:40px;display:flex;align-items:center;justify-content:center;transition:transform 0.3s ease;color:#111;}
+    .toggle-icon svg{width:20px;height:20px;}
+    .faq-item.open .toggle-icon{transform:rotate(45deg);}
+    .faq-body{height:0;overflow:hidden;transition:height 720ms cubic-bezier(0.22,1,0.36,1);}
+    .faq-answer{padding:0 20px 20px 60px;}
+    .answer-text{font-family:'Inter',sans-serif;font-size:13px;font-weight:500;color:#3B3B3B;line-height:1.8;}
+    @media(max-width:640px){.faq-answer{padding:0 14px 18px 14px;}.q-badge{display:none;}}
 
     /* ─── CTA ROW ─── */
     .faq-cta{
@@ -144,51 +141,33 @@
     <div class="faq-list">
 
       <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          Do you work with insurance companies?
-          <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-        </button>
-        <div class="faq-a"><div class="faq-a-inner">Yes — 3J's Auto Body works directly with all major insurance carriers including State Farm, Geico, Progressive, Allstate, Farmers, AAA, and more. We handle the paperwork so you don't have to.</div></div>
+        <button class="faq-trigger" aria-expanded="false"><div class="faq-trigger-inner"><span class="q-badge">Q</span><span class="q-label">Do you work with insurance companies?</span><span class="toggle-icon" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></div></button>
+        <div class="faq-body"><div class="faq-body-inner"><div class="faq-answer"><p class="answer-text">Yes — 3J's Auto Body works directly with all major insurance carriers including State Farm, Geico, Progressive, Allstate, Farmers, AAA, and more. We handle the paperwork so you don't have to.</p></div></div></div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          How long does auto body repair take?
-          <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-        </button>
-        <div class="faq-a"><div class="faq-a-inner">Repair time depends on the extent of the damage. Minor repairs can be done same-day or next day. Major collision repairs typically take several days to a week. We keep you informed throughout and aim for the fastest turnaround without sacrificing quality.</div></div>
+        <button class="faq-trigger" aria-expanded="false"><div class="faq-trigger-inner"><span class="q-badge">Q</span><span class="q-label">How long does auto body repair take?</span><span class="toggle-icon" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></div></button>
+        <div class="faq-body"><div class="faq-body-inner"><div class="faq-answer"><p class="answer-text">Repair time depends on the extent of the damage. Minor repairs can be done same-day or next day. Major collision repairs typically take several days to a week. We keep you informed throughout and aim for the fastest turnaround without sacrificing quality.</p></div></div></div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          Do you offer free estimates?
-          <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-        </button>
-        <div class="faq-a"><div class="faq-a-inner">Yes — estimates are always free at 3J's Auto Body. Walk in Mon–Fri 8AM–5PM or submit an online photo estimate through our website. No appointment needed.</div></div>
+        <button class="faq-trigger" aria-expanded="false"><div class="faq-trigger-inner"><span class="q-badge">Q</span><span class="q-label">Do you offer free estimates?</span><span class="toggle-icon" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></div></button>
+        <div class="faq-body"><div class="faq-body-inner"><div class="faq-answer"><p class="answer-text">Yes — estimates are always free at 3J's Auto Body. Walk in Mon–Fri 8AM–5PM or submit an online photo estimate through our website. No appointment needed.</p></div></div></div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          Is there a warranty on repairs?
-          <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-        </button>
-        <div class="faq-a"><div class="faq-a-inner">Yes — 3J's Auto Body backs every repair with a lifetime warranty on our workmanship for as long as you own the vehicle.</div></div>
+        <button class="faq-trigger" aria-expanded="false"><div class="faq-trigger-inner"><span class="q-badge">Q</span><span class="q-label">Is there a warranty on repairs?</span><span class="toggle-icon" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></div></button>
+        <div class="faq-body"><div class="faq-body-inner"><div class="faq-answer"><p class="answer-text">Yes — 3J's Auto Body backs every repair with a lifetime warranty on our workmanship for as long as you own the vehicle.</p></div></div></div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          Do you offer towing?
-          <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-        </button>
-        <div class="faq-a"><div class="faq-a-inner">Yes — we can arrange towing for your vehicle to our shop in Signal Hill. Call us at (562) 424-6744 and we will get you taken care of.</div></div>
+        <button class="faq-trigger" aria-expanded="false"><div class="faq-trigger-inner"><span class="q-badge">Q</span><span class="q-label">Do you offer towing?</span><span class="toggle-icon" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></div></button>
+        <div class="faq-body"><div class="faq-body-inner"><div class="faq-answer"><p class="answer-text">Yes — we can arrange towing for your vehicle to our shop in Signal Hill. Call us at (562) 424-6744 and we will get you taken care of.</p></div></div></div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          What areas do you serve?
-          <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-        </button>
-        <div class="faq-a"><div class="faq-a-inner">We are located in Signal Hill, CA and serve the greater Long Beach area including Long Beach, Lakewood, Carson, Compton, Torrance, and surrounding communities in Los Angeles and Orange County.</div></div>
+        <button class="faq-trigger" aria-expanded="false"><div class="faq-trigger-inner"><span class="q-badge">Q</span><span class="q-label">What areas do you serve?</span><span class="toggle-icon" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></div></button>
+        <div class="faq-body"><div class="faq-body-inner"><div class="faq-answer"><p class="answer-text">We are located in Signal Hill, CA and serve the greater Long Beach area including Long Beach, Lakewood, Carson, Compton, Torrance, and surrounding communities in Los Angeles and Orange County.</p></div></div></div>
       </div>
 
     </div>
@@ -210,26 +189,10 @@
 <div id="height-sentinel" style="height:1px;width:1px;visibility:hidden;pointer-events:none;"></div>
 
 <script>
-  document.querySelectorAll('.faq-q').forEach(function(btn){
-    btn.addEventListener('click',function(){
-      var item=btn.closest('.faq-item');
-      var wasOpen=item.classList.contains('open');
-      document.querySelectorAll('.faq-item.open').forEach(function(i){
-        i.querySelector('.faq-a').style.display='none';
-        i.classList.remove('open');
-        i.querySelector('.faq-q').setAttribute('aria-expanded','false');
-      });
-      if(!wasOpen){
-        item.querySelector('.faq-a').style.display='block';
-        item.classList.add('open');
-        btn.setAttribute('aria-expanded','true');
-        reportHeight();
-        setTimeout(reportHeight,50);
-      } else {
-        reportHeight();
-      }
-    });
-  });
+  function faqClose(item){var p=item.querySelector('.faq-body');p.style.height=p.scrollHeight+'px';void p.offsetHeight;p.style.height='0px';item.classList.remove('open');item.querySelector('.faq-trigger').setAttribute('aria-expanded','false');}
+  function faqOpen(item){var p=item.querySelector('.faq-body');item.classList.add('open');item.querySelector('.faq-trigger').setAttribute('aria-expanded','true');p.style.height=p.querySelector('.faq-body-inner').offsetHeight+'px';}
+  document.querySelectorAll('.faq-body').forEach(function(p){p.addEventListener('transitionend',function(e){if(e.propertyName!=='height')return;if(p.closest('.faq-item').classList.contains('open'))p.style.height='auto';});});
+  document.querySelectorAll('.faq-trigger').forEach(function(btn){btn.addEventListener('click',function(){var item=btn.closest('.faq-item'),wasOpen=item.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(faqClose);if(!wasOpen){faqOpen(item);}setTimeout(reportHeight,350);});});
 
   function reportHeight(){
     var sentinel=document.getElementById('height-sentinel');

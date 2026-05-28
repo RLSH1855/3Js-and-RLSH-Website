@@ -274,19 +274,23 @@
     .faq-wrap .label{margin-bottom:14px;}
     .faq-wrap h2{font-size:clamp(26px,3.5vw,44px);font-weight:900;letter-spacing:-1.5px;line-height:1.0;color:#111;text-transform:uppercase;margin-bottom:28px;}
     .faq-wrap h2 em{color:#8B0000;font-style:normal;}
-    .faq-list{display:flex;flex-direction:column;}
-    .faq-item{border-bottom:1px solid var(--divider);}
-    .faq-item:first-child{border-top:1px solid var(--divider);}
-    .faq-q{width:100%;background:none;border:none;display:flex;align-items:flex-start;justify-content:space-between;padding:18px 0;cursor:pointer;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#111;text-align:left;gap:16px;transition:color var(--dur-ui) ease;touch-action:manipulation;-webkit-tap-highlight-color:transparent;line-height:1.5;}
-    .faq-q:hover{color:#8B0000;}
-    .faq-q:focus-visible{outline:2px solid #8B0000;outline-offset:4px;}
-    .faq-item.open .faq-q{color:#8B0000;font-weight:800;}
-    .faq-q svg{width:18px;height:18px;flex-shrink:0;margin-top:2px;stroke:#8B0000;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;transition:transform var(--dur-accordion) var(--ease-smooth);transform-origin:center;}
-    .faq-item.open .faq-q svg{transform:rotate(45deg);}
-    .faq-a{height:0;overflow:hidden;transition:height var(--dur-accordion) var(--ease-smooth);}
-    .faq-a-inner{font-size:13px;font-weight:400;color:#444;line-height:1.85;padding-bottom:20px;}
-    @media(prefers-reduced-motion:reduce){.faq-q svg,.faq-a{transition:none!important;}}
-    @media(min-width:601px){.faq-wrap{padding:56px 36px clamp(80px,10vw,120px);}.faq-wrap h2{margin-bottom:40px;}.faq-q{padding:20px 0;}.faq-a-inner{font-size:14px;}}
+    .faq-list{display:flex;flex-direction:column;gap:6px;}
+    .faq-item{background:#fff;border:1.5px solid #E2E8F0;border-radius:0;overflow:hidden;transition:border-color 0.2s,box-shadow 0.2s;}
+    .faq-item:hover{border-color:#CBD5E0;box-shadow:0 2px 8px rgba(15,30,46,0.07);}
+    .faq-item.open{border-color:#B0BBC8;box-shadow:0 4px 16px rgba(15,30,46,0.10);}
+    .faq-trigger{width:100%;background:none;border:none;padding:0;cursor:pointer;display:block;text-align:left;}
+    .faq-trigger-inner{display:flex;align-items:center;gap:16px;padding:18px 20px;transition:background 0.15s;}
+    .faq-trigger:hover .faq-trigger-inner,.faq-item.open .faq-trigger-inner{background:#f4f4f4;}
+    .q-badge{flex-shrink:0;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:900;color:#AAAAAA;padding:3px 8px;border:1px solid #E8ECF0;border-radius:0;background:#fff;align-self:flex-start;margin-top:2px;box-shadow:0 1px 4px rgba(0,0,0,0.07);}
+    .q-label{flex:1;font-family:'Montserrat',sans-serif;font-size:14px;font-weight:700;color:#1a1a1a;line-height:1.45;}
+    .toggle-icon{flex-shrink:0;width:40px;height:40px;display:flex;align-items:center;justify-content:center;transition:transform 0.3s ease;color:#111;}
+    .toggle-icon svg{width:20px;height:20px;}
+    .faq-item.open .toggle-icon{transform:rotate(45deg);}
+    .faq-body{height:0;overflow:hidden;transition:height 720ms cubic-bezier(0.22,1,0.36,1);}
+    .faq-answer{padding:0 20px 20px 60px;}
+    .answer-text{font-family:'Inter',sans-serif;font-size:13px;font-weight:500;color:#3B3B3B;line-height:1.8;}
+    @media(max-width:640px){.faq-answer{padding:0 14px 18px 14px;}.q-badge{display:none;}}
+    @media(min-width:601px){.faq-wrap{padding:56px 36px clamp(80px,10vw,120px);}.faq-wrap h2{margin-bottom:40px;}}
     @media(min-width:961px){.faq-wrap{padding:80px 64px clamp(80px,10vw,120px) 56px;}}
 
     /* CTA BAND */
@@ -522,29 +526,29 @@
   <span class="label" data-a="up">Common Questions</span>
   <h2 data-a="up" data-d="1">X4s <em>FAQ</em></h2>
   <div class="faq-list">
-    <div class="faq-item" data-a="up">
-      <button class="faq-q" aria-expanded="false">How secure is the Revolver X4s?<svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
-      <div class="faq-a"><div class="faq-a-inner"><em class="emph">Level-3 — BAK's highest security rating.</em> Patented rotational locking rails run the full length of the cover, and automatic slam latches engage every time you close it. No exposed hardware when closed.</div></div>
+    <div class="faq-item">
+      <button class="faq-trigger" aria-expanded="false"><div class="faq-trigger-inner"><span class="q-badge">Q</span><span class="q-label">How secure is the Revolver X4s?</span><span class="toggle-icon" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></div></button>
+      <div class="faq-body"><div class="faq-body-inner"><div class="faq-answer"><p class="answer-text"><em class="emph">Level-3 — BAK's highest security rating.</em> Patented rotational locking rails run the full length of the cover, and automatic slam latches engage every time you close it. No exposed hardware when closed.</p></div></div></div>
     </div>
-    <div class="faq-item" data-a="up" data-d="1">
-      <button class="faq-q" aria-expanded="false">Is the X4s waterproof?<svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
-      <div class="faq-a"><div class="faq-a-inner">Yes. A full <em class="emph">perimeter compression seal</em> keeps water out, and drain tubes channel any moisture away from your cargo. The flush side seals give it the lowest profile of any hard roll-up.</div></div>
+    <div class="faq-item">
+      <button class="faq-trigger" aria-expanded="false"><div class="faq-trigger-inner"><span class="q-badge">Q</span><span class="q-label">Is the X4s waterproof?</span><span class="toggle-icon" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></div></button>
+      <div class="faq-body"><div class="faq-body-inner"><div class="faq-answer"><p class="answer-text">Yes. A full <em class="emph">perimeter compression seal</em> keeps water out, and drain tubes channel any moisture away from your cargo. The flush side seals give it the lowest profile of any hard roll-up.</p></div></div></div>
     </div>
-    <div class="faq-item" data-a="up" data-d="2">
-      <button class="faq-q" aria-expanded="false">How much weight can it hold?<svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
-      <div class="faq-a"><div class="faq-a-inner">Up to <em class="hi">400 lbs</em> of evenly distributed weight on the patented interlocking aluminum slats.</div></div>
+    <div class="faq-item">
+      <button class="faq-trigger" aria-expanded="false"><div class="faq-trigger-inner"><span class="q-badge">Q</span><span class="q-label">How much weight can it hold?</span><span class="toggle-icon" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></div></button>
+      <div class="faq-body"><div class="faq-body-inner"><div class="faq-answer"><p class="answer-text">Up to <em class="hi">400 lbs</em> of evenly distributed weight on the patented interlocking aluminum slats.</p></div></div></div>
     </div>
-    <div class="faq-item" data-a="up" data-d="3">
-      <button class="faq-q" aria-expanded="false">What is the difference between the X4s and the X2?<svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
-      <div class="faq-a"><div class="faq-a-inner">The <em class="emph">X4s uses TriShield 70-grade vinyl</em> over patented interlocking aluminum slats for maximum durability. The X2 uses DualShield 60-grade one-piece vinyl — a clean, cost-effective option. Both share Level-3 security and 400 lb capacity.</div></div>
+    <div class="faq-item">
+      <button class="faq-trigger" aria-expanded="false"><div class="faq-trigger-inner"><span class="q-badge">Q</span><span class="q-label">What is the difference between the X4s and the X2?</span><span class="toggle-icon" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></div></button>
+      <div class="faq-body"><div class="faq-body-inner"><div class="faq-answer"><p class="answer-text">The <em class="emph">X4s uses TriShield 70-grade vinyl</em> over patented interlocking aluminum slats for maximum durability. The X2 uses DualShield 60-grade one-piece vinyl — a clean, cost-effective option. Both share Level-3 security and 400 lb capacity.</p></div></div></div>
     </div>
-    <div class="faq-item" data-a="up" data-d="4">
-      <button class="faq-q" aria-expanded="false">Where can I get one installed near Signal Hill or Long Beach?<svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
-      <div class="faq-a"><div class="faq-a-inner">Right here — 3J's Auto Body &amp; Paint at 1855 E 29th Street, Signal Hill, CA 90755. Call us at (562) 424-6744. Open Mon–Fri, 8AM–5PM.</div></div>
+    <div class="faq-item">
+      <button class="faq-trigger" aria-expanded="false"><div class="faq-trigger-inner"><span class="q-badge">Q</span><span class="q-label">Where can I get one installed near Signal Hill or Long Beach?</span><span class="toggle-icon" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></div></button>
+      <div class="faq-body"><div class="faq-body-inner"><div class="faq-answer"><p class="answer-text">Right here — 3J's Auto Body &amp; Paint at 1855 E 29th Street, Signal Hill, CA 90755. Call us at (562) 424-6744. Open Mon–Fri, 8AM–5PM.</p></div></div></div>
     </div>
-    <div class="faq-item" data-a="up" data-d="5">
-      <button class="faq-q" aria-expanded="false">What warranty does it come with?<svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
-      <div class="faq-a"><div class="faq-a-inner">5-year hassle-free limited warranty from the original purchase date — direct from BAK Industries.</div></div>
+    <div class="faq-item">
+      <button class="faq-trigger" aria-expanded="false"><div class="faq-trigger-inner"><span class="q-badge">Q</span><span class="q-label">What warranty does it come with?</span><span class="toggle-icon" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></div></button>
+      <div class="faq-body"><div class="faq-body-inner"><div class="faq-answer"><p class="answer-text">5-year hassle-free limited warranty from the original purchase date — direct from BAK Industries.</p></div></div></div>
     </div>
   </div>
 </div>
@@ -625,10 +629,10 @@
   var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(!e.isIntersecting)return;var el=e.target;var target=parseInt(el.textContent,10);if(isNaN(target))return;if(window.matchMedia('(prefers-reduced-motion:reduce)').matches){el.textContent=target;io.unobserve(el);return;}var dur=1400,start=null;function step(ts){if(!start)start=ts;var p=Math.min((ts-start)/dur,1);var ease=1-Math.pow(1-p,4);el.textContent=Math.round(ease*target);if(p<1)requestAnimationFrame(step);else el.textContent=target;}requestAnimationFrame(step);io.unobserve(el);});},{threshold:0.5});
   nums.forEach(function(el){io.observe(el);});
 })();
-function faqClose(item){var p=item.querySelector('.faq-a');p.style.height=p.scrollHeight+'px';void p.offsetHeight;p.style.height='0px';item.classList.remove('open');item.querySelector('.faq-q').setAttribute('aria-expanded','false');}
-function faqOpen(item){var p=item.querySelector('.faq-a');item.classList.add('open');item.querySelector('.faq-q').setAttribute('aria-expanded','true');p.style.height=p.querySelector('.faq-a-inner').offsetHeight+'px';}
-document.querySelectorAll('.faq-a').forEach(function(p){p.addEventListener('transitionend',function(e){if(e.propertyName!=='height')return;if(p.closest('.faq-item').classList.contains('open')){p.style.height='auto';[0,100,280,450,600,800].forEach(function(t){setTimeout(reportHeight,t);});}});});
-document.querySelectorAll('.faq-q').forEach(function(btn){btn.addEventListener('click',function(){var item=btn.closest('.faq-item');var wasOpen=item.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(faqClose);if(!wasOpen){faqOpen(item);[0,100,280,450,600,800].forEach(function(t){setTimeout(reportHeight,t);});}});});
+function faqClose(item){var p=item.querySelector('.faq-body');p.style.height=p.scrollHeight+'px';void p.offsetHeight;p.style.height='0px';item.classList.remove('open');item.querySelector('.faq-trigger').setAttribute('aria-expanded','false');}
+function faqOpen(item){var p=item.querySelector('.faq-body');item.classList.add('open');item.querySelector('.faq-trigger').setAttribute('aria-expanded','true');p.style.height=p.querySelector('.faq-body-inner').offsetHeight+'px';}
+document.querySelectorAll('.faq-body').forEach(function(p){p.addEventListener('transitionend',function(e){if(e.propertyName!=='height')return;if(p.closest('.faq-item').classList.contains('open'))p.style.height='auto';});});
+document.querySelectorAll('.faq-trigger').forEach(function(btn){btn.addEventListener('click',function(){var item=btn.closest('.faq-item'),wasOpen=item.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(faqClose);if(!wasOpen){faqOpen(item);}setTimeout(reportHeight,350);});});
 function reportHeight(){var sentinel=document.getElementById('height-sentinel');var h=sentinel?(sentinel.offsetTop+sentinel.offsetHeight):Math.max(document.body.scrollHeight,document.body.offsetHeight,document.documentElement.scrollHeight,document.documentElement.offsetHeight);window.parent.postMessage(JSON.stringify({height:h}),'*');}
 document.addEventListener('DOMContentLoaded',reportHeight);
 window.addEventListener('load',function(){[0,200,500,1000,2000,3500].forEach(function(t){setTimeout(reportHeight,t);});});
