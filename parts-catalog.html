@@ -47,7 +47,7 @@
   .hdr-ticker-item { display:inline-flex; align-items:center; gap: 8px; padding: 0 60px; }
   @keyframes ticker-scroll { 0% { transform:translateX(0); } 100% { transform:translateX(-50%); } }
 
-  .hdr-main { display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center; padding: 12px 24px; }
+  .hdr-main { display: grid; grid-template-columns: 1fr; align-items: center; padding: 12px 48px; }
   .logo { display:flex; align-items:center; gap: 10px; }
   .logo img { height: 60px; display:block; }
 
@@ -1193,16 +1193,6 @@ function Header({ garage, onSwapVehicle }) {
         <div className="search">
           <span className="search-ico">{Icon.search}</span>
           <input placeholder="Search tonneau covers, brands…" />
-        </div>
-        <div className="hdr-actions">
-          <button className="garage-pill" onClick={onSwapVehicle}>
-            <span className="garage-pill-ico">{Icon.truck}</span>
-            <span className="garage-pill-txt">
-              <span className="garage-pill-label">My Garage</span>
-              <span className="garage-pill-vehicle">{vehicleLabel}</span>
-            </span>
-            <span className="garage-pill-swap">{Icon.swap}</span>
-          </button>
         </div>
       </div>
       <div className="mob-search-row">
