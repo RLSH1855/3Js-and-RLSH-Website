@@ -220,6 +220,10 @@
       .service-card:last-child:hover{border-bottom-color:#8B0000;}
       .service-card-num{font-size:11px;letter-spacing:3px;margin-bottom:16px;}
       .service-card-title{font-size:clamp(36px,4vw,52px);letter-spacing:-2px;line-height:1.0;}
+      /* Alternate: even cards flip title to right */
+      .service-card:nth-child(even){grid-template-columns:1fr 280px;}
+      .service-card:nth-child(even) .service-card-left{order:2;}
+      .service-card:nth-child(even) .service-card-right{order:1;}
     }
 
     /* ── BEFORE & AFTER ── */

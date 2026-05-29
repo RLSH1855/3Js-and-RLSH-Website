@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Card Design Mockup — 3J's Auto Body</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Inter',sans-serif;background:#f2f2f2;padding:48px 24px 80px;color:#1a1a1a;}
+
+h1{font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:4px;text-transform:uppercase;color:rgba(0,0,0,0.35);text-align:center;margin-bottom:64px;}
+
+/* ── ROW LABELS ── */
+.row-label{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(0,0,0,0.35);margin-bottom:16px;padding-left:2px;}
+
+/* ── GRID ── */
+.card-row{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1080px;margin:0 auto 56px;}
+
+/* ── CARD BASE ── */
+.card{border:1px solid #2a2a2a;overflow:hidden;display:flex;flex-direction:column;position:relative;}
+
+/* ── IMAGE ZONE ── */
+.card-img{background:#fff;aspect-ratio:4/3;position:relative;overflow:hidden;}
+.card-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.4s ease;}
+.card:hover .card-img img{transform:scale(1.03);}
+
+/* ── BRAND BADGE ── */
+.card-badge{position:absolute;top:12px;right:12px;background:#1a1a1a;color:#fff;font-family:'Montserrat',sans-serif;font-size:8px;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:4px 10px;border-radius:0;z-index:2;}
+
+/* ── FITMENT BADGE ── */
+.fit-badge{display:flex;align-items:center;gap:10px;padding:10px 0;margin:auto 0 0;}
+.fit-badge-check{width:20px;height:20px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:#1a5c1a;border-radius:0;}
+.fit-badge-check svg{width:11px;height:11px;}
+.fit-badge-text{}
+.fit-badge-main{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:0.5px;color:#fff;line-height:1.2;}
+.fit-badge-sub{font-family:'Inter',sans-serif;font-size:10px;font-weight:400;color:rgba(255,255,255,0.65);margin-top:2px;}
+
+/* ── INFO PANEL — SHARED ── */
+.card-info{display:flex;flex-direction:column;flex:1;padding:20px 20px 20px;}
+.card-cols{display:grid;grid-template-columns:55% 45%;gap:16px;}
+
+/* LEFT */
+.card-left{}
+.card-name{font-family:'Montserrat',sans-serif;font-size:17px;font-weight:800;line-height:1.1;letter-spacing:-0.3px;margin-bottom:8px;text-wrap:balance;}
+.card-tagline{font-family:'Inter',sans-serif;font-size:12px;font-weight:400;line-height:1.6;text-wrap:pretty;}
+
+/* RIGHT — specs */
+.card-specs{display:flex;flex-direction:column;gap:10px;padding-left:16px;}
+.card-specs{border-left:1px solid;}
+.spec-row{}
+.spec-label{font-family:'Montserrat',sans-serif;font-size:8px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#8B0000;display:block;margin-bottom:2px;}
+.spec-val{font-family:'Inter',sans-serif;font-size:12px;font-weight:400;line-height:1.4;}
+
+/* ── CTA ── */
+.card-cta{margin-top:20px;}
+.btn-quote{display:block;width:100%;background:#8B0000;color:#fff;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;text-align:center;padding:13px;border:none;border-radius:0;cursor:pointer;transition:background 0.2s;}
+.btn-quote:hover{background:#a00000;}
+
+/* ════════════════════════
+   ROW 1 — DARK
+════════════════════════ */
+.dark .card{background:#1a1a1a;}
+.dark .card-info{background:linear-gradient(to bottom,#222,#141414);border-top:1px solid #2e2e2e;box-shadow:0 -4px 16px rgba(0,0,0,0.5);}
+.dark .card-name{color:#fff;}
+.dark .card-tagline{color:rgba(255,255,255,0.55);}
+.dark .card-specs{border-left:1px solid #060606;box-shadow:inset 1px 0 0 rgba(255,255,255,0.09);}
+.dark .spec-val{color:rgba(255,255,255,0.80);}
+
+/* ════════════════════════
+   ROW 2 — GRAY GRADIENT
+════════════════════════ */
+.gray .card{background:#f0f0f0;}
+.gray .card-info{background:linear-gradient(to bottom,#e8e8e8,#f5f5f5);border-top:1px solid #ccc;box-shadow:0 -3px 12px rgba(0,0,0,0.10);}
+.gray .card-name{color:#111;}
+.gray .card-tagline{color:#555;}
+.gray .card-specs{border-color:#ccc;}
+.gray .spec-val{color:#222;}
+.gray .btn-quote{background:#8B0000;}
+
+/* ════════════════════════
+   ROW 3 — WHITE
+════════════════════════ */
+.white .card{background:#fff;}
+.white .card-info{background:#fff;border-top:1px solid #e8e8e8;box-shadow:0 -3px 10px rgba(0,0,0,0.07);}
+.white .card-name{color:#111;}
+.white .card-tagline{color:#555;}
+.white .card-specs{border-color:#e0e0e0;}
+.white .spec-val{color:#1a1a1a;}
+.white .card-badge{border:1px solid #e0e0e0;}
+.white .btn-quote{background:#8B0000;}
+
+/* ── MOBILE ── */
+@media(max-width:767px){
+  .card-row{grid-template-columns:1fr;}
+  h1{margin-bottom:40px;}
+}
+@media(min-width:768px) and (max-width:1023px){
+  .card-row{grid-template-columns:repeat(2,1fr);}
+}
+
+.row-wrap{max-width:1080px;margin:0 auto 56px;}
+</style>
+</head>
+<body>
+
+<h1>Card Design Mockup — 3J's Auto Body</h1>
+
+<!-- ══ ROW 1: DARK ══ -->
+<div class="row-wrap">
+  <div class="row-label">Option A — Dark Panel</div>
+  <div class="card-row dark">
+
+    <div class="card">
+      <div class="card-img">
+        <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/bak-bakflip-mx4-2016-ford-f150-blue-beach-lifestyle-05.webp" alt="BAKFlip MX4" loading="lazy"/>
+        <span class="card-badge">BAKFlip</span>
+      </div>
+      <div class="card-info">
+        <div class="card-cols">
+          <div class="card-left">
+            <div class="card-name">BAKFlip MX4</div>
+            <p class="card-tagline">All-aluminum hard fold with matte black finish and flush mount design.</p>
+          </div>
+          <div class="card-specs">
+            <div class="spec-row"><span class="spec-label">Type</span><span class="spec-val">Hard Folding</span></div>
+            <div class="spec-row"><span class="spec-label">Material</span><span class="spec-val">Aircraft-grade aluminum</span></div>
+            <div class="spec-row"><span class="spec-label">Warranty</span><span class="spec-val">5-year limited</span></div>
+          </div>
+        </div>
+        <div class="fit-badge">
+          <div class="fit-badge-check"><svg viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></div>
+          <div class="fit-badge-text">
+            <div class="fit-badge-main">Fits your 2022 GMC Sierra 1500</div>
+            <div class="fit-badge-sub">Bed Length: 5.8 Ft. (69.9 In.)</div>
+          </div>
+        </div>
+        <div class="card-cta"><button class="btn-quote">Get a Quote</button></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-img">
+        <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/retrax-one-mx-2015-toyota-tacoma-red-studio-09.webp" alt="Retrax PRO MX" loading="lazy"/>
+        <span class="card-badge">Retrax</span>
+      </div>
+      <div class="card-info">
+        <div class="card-cols">
+          <div class="card-left">
+            <div class="card-name">Retrax PRO MX</div>
+            <p class="card-tagline">Polycarbonate retractable with built-in T-slot rail system.</p>
+          </div>
+          <div class="card-specs">
+            <div class="spec-row"><span class="spec-label">Type</span><span class="spec-val">Retractable</span></div>
+            <div class="spec-row"><span class="spec-label">Material</span><span class="spec-val">Polycarbonate</span></div>
+            <div class="spec-row"><span class="spec-label">Warranty</span><span class="spec-val">Limited lifetime</span></div>
+          </div>
+        </div>
+        <div class="card-cta"><button class="btn-quote">Get a Quote</button></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-img">
+        <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/truxedo-sentry-ct-2018-ford-f250-white-moab-lifestyle04%20(1).webp" alt="TruXedo Sentry CT" loading="lazy"/>
+        <span class="card-badge">TruXedo</span>
+      </div>
+      <div class="card-info">
+        <div class="card-cols">
+          <div class="card-left">
+            <div class="card-name">TruXedo Sentry CT</div>
+            <p class="card-tagline">Hard roll-up with low-profile design and dual-action latches.</p>
+          </div>
+          <div class="card-specs">
+            <div class="spec-row"><span class="spec-label">Type</span><span class="spec-val">Hard Roll-Up</span></div>
+            <div class="spec-row"><span class="spec-label">Material</span><span class="spec-val">Aluminum slats</span></div>
+            <div class="spec-row"><span class="spec-label">Warranty</span><span class="spec-val">5-year limited</span></div>
+          </div>
+        </div>
+        <div class="card-cta"><button class="btn-quote">Get a Quote</button></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══ ROW 2: GRAY GRADIENT ══ -->
+<div class="row-wrap">
+  <div class="row-label">Option B — Gray Gradient Panel</div>
+  <div class="card-row gray">
+
+    <div class="card">
+      <div class="card-img">
+        <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/bak-bakflip-mx4-2016-ford-f150-blue-beach-lifestyle-05.webp" alt="BAKFlip MX4" loading="lazy"/>
+        <span class="card-badge">BAKFlip</span>
+      </div>
+      <div class="card-info">
+        <div class="card-cols">
+          <div class="card-left">
+            <div class="card-name">BAKFlip MX4</div>
+            <p class="card-tagline">All-aluminum hard fold with matte black finish and flush mount design.</p>
+          </div>
+          <div class="card-specs">
+            <div class="spec-row"><span class="spec-label">Type</span><span class="spec-val">Hard Folding</span></div>
+            <div class="spec-row"><span class="spec-label">Material</span><span class="spec-val">Aircraft-grade aluminum</span></div>
+            <div class="spec-row"><span class="spec-label">Warranty</span><span class="spec-val">5-year limited</span></div>
+          </div>
+        </div>
+        <div class="card-cta"><button class="btn-quote">Get a Quote</button></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-img">
+        <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/retrax-one-mx-2015-toyota-tacoma-red-studio-09.webp" alt="Retrax PRO MX" loading="lazy"/>
+        <span class="card-badge">Retrax</span>
+      </div>
+      <div class="card-info">
+        <div class="card-cols">
+          <div class="card-left">
+            <div class="card-name">Retrax PRO MX</div>
+            <p class="card-tagline">Polycarbonate retractable with built-in T-slot rail system.</p>
+          </div>
+          <div class="card-specs">
+            <div class="spec-row"><span class="spec-label">Type</span><span class="spec-val">Retractable</span></div>
+            <div class="spec-row"><span class="spec-label">Material</span><span class="spec-val">Polycarbonate</span></div>
+            <div class="spec-row"><span class="spec-label">Warranty</span><span class="spec-val">Limited lifetime</span></div>
+          </div>
+        </div>
+        <div class="card-cta"><button class="btn-quote">Get a Quote</button></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-img">
+        <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/truxedo-sentry-ct-2018-ford-f250-white-moab-lifestyle04%20(1).webp" alt="TruXedo Sentry CT" loading="lazy"/>
+        <span class="card-badge">TruXedo</span>
+      </div>
+      <div class="card-info">
+        <div class="card-cols">
+          <div class="card-left">
+            <div class="card-name">TruXedo Sentry CT</div>
+            <p class="card-tagline">Hard roll-up with low-profile design and dual-action latches.</p>
+          </div>
+          <div class="card-specs">
+            <div class="spec-row"><span class="spec-label">Type</span><span class="spec-val">Hard Roll-Up</span></div>
+            <div class="spec-row"><span class="spec-label">Material</span><span class="spec-val">Aluminum slats</span></div>
+            <div class="spec-row"><span class="spec-label">Warranty</span><span class="spec-val">5-year limited</span></div>
+          </div>
+        </div>
+        <div class="card-cta"><button class="btn-quote">Get a Quote</button></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══ ROW 3: WHITE ══ -->
+<div class="row-wrap">
+  <div class="row-label">Option C — White Panel</div>
+  <div class="card-row white">
+
+    <div class="card">
+      <div class="card-img">
+        <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/bak-bakflip-mx4-2016-ford-f150-blue-beach-lifestyle-05.webp" alt="BAKFlip MX4" loading="lazy"/>
+        <span class="card-badge">BAKFlip</span>
+      </div>
+      <div class="card-info">
+        <div class="card-cols">
+          <div class="card-left">
+            <div class="card-name">BAKFlip MX4</div>
+            <p class="card-tagline">All-aluminum hard fold with matte black finish and flush mount design.</p>
+          </div>
+          <div class="card-specs">
+            <div class="spec-row"><span class="spec-label">Type</span><span class="spec-val">Hard Folding</span></div>
+            <div class="spec-row"><span class="spec-label">Material</span><span class="spec-val">Aircraft-grade aluminum</span></div>
+            <div class="spec-row"><span class="spec-label">Warranty</span><span class="spec-val">5-year limited</span></div>
+          </div>
+        </div>
+        <div class="card-cta"><button class="btn-quote">Get a Quote</button></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-img">
+        <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/retrax-one-mx-2015-toyota-tacoma-red-studio-09.webp" alt="Retrax PRO MX" loading="lazy"/>
+        <span class="card-badge">Retrax</span>
+      </div>
+      <div class="card-info">
+        <div class="card-cols">
+          <div class="card-left">
+            <div class="card-name">Retrax PRO MX</div>
+            <p class="card-tagline">Polycarbonate retractable with built-in T-slot rail system.</p>
+          </div>
+          <div class="card-specs">
+            <div class="spec-row"><span class="spec-label">Type</span><span class="spec-val">Retractable</span></div>
+            <div class="spec-row"><span class="spec-label">Material</span><span class="spec-val">Polycarbonate</span></div>
+            <div class="spec-row"><span class="spec-label">Warranty</span><span class="spec-val">Limited lifetime</span></div>
+          </div>
+        </div>
+        <div class="card-cta"><button class="btn-quote">Get a Quote</button></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-img">
+        <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/truxedo-sentry-ct-2018-ford-f250-white-moab-lifestyle04%20(1).webp" alt="TruXedo Sentry CT" loading="lazy"/>
+        <span class="card-badge">TruXedo</span>
+      </div>
+      <div class="card-info">
+        <div class="card-cols">
+          <div class="card-left">
+            <div class="card-name">TruXedo Sentry CT</div>
+            <p class="card-tagline">Hard roll-up with low-profile design and dual-action latches.</p>
+          </div>
+          <div class="card-specs">
+            <div class="spec-row"><span class="spec-label">Type</span><span class="spec-val">Hard Roll-Up</span></div>
+            <div class="spec-row"><span class="spec-label">Material</span><span class="spec-val">Aluminum slats</span></div>
+            <div class="spec-row"><span class="spec-label">Warranty</span><span class="spec-val">5-year limited</span></div>
+          </div>
+        </div>
+        <div class="card-cta"><button class="btn-quote">Get a Quote</button></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
