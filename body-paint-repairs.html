@@ -709,25 +709,17 @@ document.querySelectorAll('.faq-trigger').forEach(function(btn){btn.addEventList
   els.forEach(function(el){io.observe(el);});
 })();
 
-/* ── Hero Parallax ── */
-(function(){
-  if(window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;
-  var bg=document.querySelector('.hero-bg');
-  if(!bg)return;
-  window.addEventListener('scroll',function(){
-    bg.style.transform='scale(1.04) translateY('+(window.scrollY*0.28)+'px)';
-  },{passive:true});
-})();
-
 /* ── Wix iframe height ── */
 function reportHeight(){
-  var h=Math.max(document.body.scrollHeight,document.body.offsetHeight,document.documentElement.scrollHeight,document.documentElement.offsetHeight);
+  var sentinel=document.getElementById('height-sentinel');
+  var h=sentinel?(sentinel.offsetTop+sentinel.offsetHeight):Math.max(document.body.scrollHeight,document.body.offsetHeight,document.documentElement.scrollHeight,document.documentElement.offsetHeight);
   window.parent.postMessage(JSON.stringify({height:h}),'*');
 }
 document.addEventListener('DOMContentLoaded',reportHeight);
 window.addEventListener('load',function(){[0,200,500,1000,2000,3500].forEach(function(t){setTimeout(reportHeight,t);});});
 window.addEventListener('resize',reportHeight);
-if(window.ResizeObserver){new ResizeObserver(reportHeight).observe(document.body);}
+var _roTimer=null;
+if(window.ResizeObserver){new ResizeObserver(function(){clearTimeout(_roTimer);_roTimer=setTimeout(reportHeight,120);}).observe(document.body);}
 document.querySelectorAll('.faq-item').forEach(function(el){el.addEventListener('click',function(){setTimeout(reportHeight,350);});});
 </script>
 
