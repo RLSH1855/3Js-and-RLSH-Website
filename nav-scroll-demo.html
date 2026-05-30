@@ -123,34 +123,7 @@
   }
   .nav-scrim.show{opacity:1;pointer-events:auto;}
 
-  /* ════════ MEGA MENU (reused from mega-menu.js, light) ════════ */
-  #mega-host{position:fixed;left:0;right:0;z-index:950;pointer-events:none;overflow-x:hidden;}
-  @media(max-width:900px){#mega-host{display:none!important;}}
-  .jj-mega{background:#fff;color:var(--ink);box-shadow:0 18px 48px rgba(0,0,0,.28);overflow:hidden;transform-origin:top center;opacity:0;transform:translateY(-12px) scaleY(.97);transition:opacity .38s cubic-bezier(.22,1,.36,1),transform .44s cubic-bezier(.22,1,.36,1);pointer-events:none;max-height:0;display:none;max-width:1180px;margin:0 auto;}
-  .jj-mega.jj-open{opacity:1;transform:translateY(0) scaleY(1);pointer-events:auto;max-height:1200px;display:block;animation:jjSlide .44s cubic-bezier(.22,1,.36,1) both;}
-  @keyframes jjSlide{from{opacity:0;transform:translateY(-12px) scaleY(.97);}to{opacity:1;transform:translateY(0) scaleY(1);}}
-  .jj-accent{height:4px;background:linear-gradient(90deg,var(--red) 35%,var(--navy) 35%);}
-  .jj-grid{display:grid;grid-template-columns:280px 1fr;min-height:340px;}
-  .jj-feat{background:#fff;padding:34px 26px;border-right:2px solid var(--red);display:flex;flex-direction:column;gap:16px;}
-  .jj-kicker{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--red);}
-  .jj-feat h2{font-family:'Oswald',sans-serif;text-transform:uppercase;font-weight:700;font-size:32px;line-height:.92;margin:-2px 0 0;color:var(--navy);display:flex;flex-direction:column;gap:2px;}
-  .jj-feat h2 .jj-r2{color:var(--red);display:inline-flex;align-items:center;gap:12px;}
-  .jj-dash{display:inline-block;width:26px;height:5px;background:var(--red);flex-shrink:0;transform:translateY(-3px);}
-  .jj-feat p{margin:0;color:var(--mute);font-family:'Barlow',sans-serif;font-size:13.5px;line-height:1.55;letter-spacing:.4px;}
-  .jj-cta{background:var(--red);color:#fff;border:0;padding:12px 22px;font-family:'Oswald',sans-serif;font-weight:600;letter-spacing:.05em;font-size:13px;text-transform:uppercase;cursor:pointer;align-self:flex-start;display:inline-flex;align-items:center;gap:10px;text-decoration:none;transition:background .15s;}
-  .jj-cta:hover{background:var(--red-hot);}
-  .jj-arrow{width:16px;height:2px;background:currentColor;position:relative;}
-  .jj-arrow::after{content:"";position:absolute;right:-1px;top:-3px;width:8px;height:8px;border-right:2px solid currentColor;border-top:2px solid currentColor;transform:rotate(45deg);}
-  .jj-meta{display:flex;align-items:center;gap:10px;font-family:'Oswald',sans-serif;font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:rgb(112,117,129);margin-top:auto;}
-  .jj-pip{width:6px;height:6px;background:var(--red);display:inline-block;flex-shrink:0;}
-  .jj-tiles{padding:34px 28px;display:grid;gap:14px;grid-template-columns:repeat(4,1fr);}
-  .jj-tile{padding:0 0 16px;display:flex;flex-direction:column;gap:12px;background:#f8f9fa;border:1px solid rgba(11,18,32,.12);cursor:pointer;text-decoration:none;color:inherit;transition:background .15s,border-color .15s;}
-  .jj-tile:hover{background:#fff;border-color:rgba(11,18,32,.28);}
-  .jj-tile:hover h3{color:var(--red);}
-  .jj-timg{width:100%;aspect-ratio:4/3;background:#e7e8ea center/cover no-repeat;border-bottom:1px solid rgba(11,18,32,.12);}
-  .jj-tile h3{font-family:'Oswald',sans-serif;text-transform:uppercase;font-weight:600;font-size:13.5px;letter-spacing:.04em;margin:0;padding:0 14px;color:var(--navy);display:flex;align-items:center;gap:8px;transition:color .15s;}
-  .jj-tile p{margin:0;padding:0 14px;color:var(--mute);font-family:'Barlow',sans-serif;font-size:12px;line-height:1.45;}
-  .jj-new{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.14em;background:var(--red);color:#fff;padding:2px 5px;}
+  /* ════════ MEGA MENU — loaded live from the real mega-menu.js (it injects its own CSS) ════════ */
 
   /* ════════ DEMO PAGE CONTENT ════════ */
   .demo-band{padding:90px 40px;}
@@ -191,9 +164,9 @@
       <a href="#" class="active">Home</a>
       <a href="#">Inside 3J's</a>
       <a href="#">Body &amp; Paint Repairs</a>
-      <a href="#">Rhino Liner +</a>
-      <a href="#">Bundles &amp; Packages +</a>
-      <button class="nav-trigger" id="trigExterior">Exterior Accessories <span class="nav-caret">▾</span></button>
+      <a href="#" id="sn-trigger-rhino">Rhino Liner +</a>
+      <a href="#" id="sn-trigger-bundles">Bundles &amp; Packages +</a>
+      <button class="nav-trigger" id="sn-trigger-exterior">Exterior Accessories <span class="nav-caret">▾</span></button>
       <a href="#">Shop</a>
       <a href="#">Contact Us</a>
       <a href="#">FAQ</a>
@@ -218,38 +191,15 @@
 <!-- ════════ BLUR SCRIM ════════ -->
 <div class="nav-scrim" id="navScrim"></div>
 
-<!-- ════════ MEGA MENU HOST (Exterior Accessories) ════════ -->
-<div id="mega-host">
-  <div class="jj-mega jj-exterior" data-menu="exterior" id="megaExterior">
-    <div class="jj-accent"></div>
-    <div class="jj-grid">
-      <div class="jj-feat">
-        <div class="jj-kicker">Exterior Accessories</div>
-        <h2><span>Build Out</span><span class="jj-r2"><i class="jj-dash"></i>Your Rig</span></h2>
-        <p>From tonneau covers to towing rigs — professionally installed at our Signal Hill shop with a 12-month workmanship guarantee.</p>
-        <a href="#" class="jj-cta">Shop All Categories <span class="jj-arrow"></span></a>
-        <div class="jj-meta"><span class="jj-pip"></span> Free fitment check on every order</div>
-      </div>
-      <div class="jj-tiles">
-        <a href="#" class="jj-tile"><div class="jj-timg" style="background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/Tonneau-covers-page-hero-image.webp');"></div><h3>Tonneau Covers</h3><p>Hard, soft, retractable &amp; folding covers from top brands.</p></a>
-        <a href="#" class="jj-tile"><div class="jj-timg" style="background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/bak-bakflip-mx4-2016-ford-f150-blue-beach-lifestyle-01.webp');"></div><h3>BAKFlip MX4 <span class="jj-new">POPULAR</span></h3><p>The industry-standard folding hard cover.</p></a>
-        <a href="#" class="jj-tile"><div class="jj-timg" style="background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/offroad-lighting-hero.webp');"></div><h3>Lighting</h3><p>LED light bars, pods, fog &amp; halo upgrades.</p></a>
-        <a href="#" class="jj-tile"><div class="jj-timg" style="background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/go-rhino/rb-running-board-red-truck.webp');"></div><h3>Running Boards</h3><p>Powered, fixed &amp; oval-step boards.</p></a>
-        <a href="#" class="jj-tile"><div class="jj-timg" style="background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/FLOOR%20LINERS%20IMAGE.webp');"></div><h3>Floor Liners &amp; Mats</h3><p>Custom-cut, all-weather coverage.</p></a>
-        <a href="#" class="jj-tile"><div class="jj-timg" style="background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/CURT%20Reb%20Hitch%20Email.webp');"></div><h3>Towing &amp; Hitches</h3><p>Hitches, wiring &amp; brake controllers.</p></a>
-        <a href="#" class="jj-tile"><div class="jj-timg" style="background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/Elevate%20Base%20Truck%20Rack.webp');"></div><h3>Headache Racks</h3><p>Open, safety &amp; louvered cab protection.</p></a>
-        <a href="#" class="jj-tile"><div class="jj-timg" style="background:linear-gradient(135deg,#111b2e,#0b1220);"></div><h3>View All →</h3><p>Browse every category in the catalog.</p></a>
-      </div>
-    </div>
-  </div>
-</div>
+<!-- Real mega menu (#jj-mega-host with all 3 panels) is injected here at runtime by mega-menu.js -->
+
 
 <!-- ════════ DEMO CONTENT ════════ -->
 <section class="demo-band">
   <div class="demo-inner">
     <div class="demo-eyebrow">Demo · Read Me First</div>
     <h2>Scroll Down To Feel It</h2>
-    <p>Hover <strong>“Exterior Accessories”</strong> in the nav to open the mega menu — watch the page behind it blur and dim so all focus lands on the menu. Click anywhere on the blurred area to close it.</p>
+    <p>Hover <strong>“Rhino Liner +”, “Bundles &amp; Packages +”, or “Exterior Accessories”</strong> in the nav to open the real mega menu — watch the page behind it blur and dim so all focus lands on the menu. Click anywhere on the blurred area to close it.</p>
     <div class="demo-hint">
       <strong>Shrink-on-scroll:</strong> as you scroll down, the top branding bar (logos + buttons) smoothly collapses and only the menu row stays pinned at the top. Scroll all the way back up and the full nav smoothly drops back in.<br><br>
       <strong>Buttery scroll:</strong> on desktop, the whole page now glides with momentum — it eases in when you start and glides to a stop, instead of the hard step-scroll.
@@ -277,7 +227,7 @@
   <div class="demo-inner">
     <div class="demo-eyebrow">Section Four</div>
     <h2>Almost There</h2>
-    <p>Notice the Oswald nav lettering, the red hover underline, the red/gold accents, and the red→navy accent strip under the bar — all pulled straight from the mega menu’s design language so the two feel like one system.</p>
+    <p>Notice the clean Inter nav lettering, the red hover underline, and the real full-width mega menu dropping in over the blurred page — the same premium menu that’s already built, untouched.</p>
   </div>
 </section>
 
@@ -308,50 +258,33 @@
   update();
 })();
 
-/* ════════ MEGA MENU + BLUR SCRIM ════════ */
+/* ════════ REAL MEGA MENU (mega-menu.js) + BLUR SCRIM ════════ */
 (function(){
-  var trig=document.getElementById('trigExterior');
-  var host=document.getElementById('mega-host');
-  var panel=document.getElementById('megaExterior');
   var scrim=document.getElementById('navScrim');
-  var shell=document.getElementById('navShell');
-  var closeTimer=null, isOpen=false;
 
-  function positionHost(){
-    host.style.top=shell.getBoundingClientRect().bottom+'px';
-  }
-  function open(){
-    clearTimeout(closeTimer);
-    if(isOpen)return;
-    isOpen=true;
-    positionHost();
-    panel.classList.add('jj-open');
-    scrim.classList.add('show');
-    trig.classList.add('open');
-  }
-  function close(immediate){
-    function doClose(){
-      isOpen=false;
-      panel.classList.remove('jj-open');
-      scrim.classList.remove('show');
-      trig.classList.remove('open');
-    }
-    if(immediate){clearTimeout(closeTimer);doClose();}
-    else closeTimer=setTimeout(doClose,160);
-  }
+  // Load the actual production mega menu — it injects #jj-mega-host with all 3 panels + its own CSS
+  var s=document.createElement('script');
+  s.src='mega-menu.js';
+  document.head.appendChild(s);
 
-  trig.addEventListener('mouseenter',open);
-  trig.addEventListener('focus',open);
-  trig.addEventListener('mouseleave',function(){close(false);});
-  trig.addEventListener('click',function(e){e.preventDefault();isOpen?close(true):open();});
+  // Drive the blur scrim off the real menu's open state — WITHOUT modifying mega-menu.js
+  function anyOpen(){ return !!document.querySelector('#jj-mega-host .jj-mega.jj-open'); }
+  function sync(){ scrim.classList.toggle('show', anyOpen()); }
 
-  host.addEventListener('mouseenter',function(){clearTimeout(closeTimer);});
-  host.addEventListener('mouseleave',function(){close(false);});
+  var tries=0;
+  (function waitForHost(){
+    var host=document.getElementById('jj-mega-host');
+    if(host){
+      new MutationObserver(sync).observe(host,{subtree:true,attributes:true,attributeFilter:['class']});
+      sync();
+    } else if(tries++<80){ setTimeout(waitForHost,150); }
+  })();
 
-  scrim.addEventListener('click',function(){close(true);});
-  document.addEventListener('keydown',function(e){if(e.key==='Escape')close(true);});
-  window.addEventListener('scroll',function(){if(isOpen){positionHost();}},{passive:true});
-  window.addEventListener('resize',positionHost,{passive:true});
+  // Clicking the blurred area closes the menu (mega-menu.js also closes on outside click)
+  scrim.addEventListener('click',function(){
+    document.querySelectorAll('#jj-mega-host .jj-mega.jj-open').forEach(function(p){p.classList.remove('jj-open');});
+    scrim.classList.remove('show');
+  });
 })();
 
 /* ════════ BUTTERY INERTIA SCROLL (desktop only) ════════ */
