@@ -61,7 +61,7 @@
   .ss-shell.ss-shrunk .ss-links > a{padding-top:14px;padding-bottom:14px;}
 
   /* My Garage pill */
-  .ss-garage{margin-left:auto;align-self:center;display:flex;align-items:center;gap:8px;padding:8px 14px 8px 10px;
+  .ss-garage{margin-left:auto;align-self:center;display:flex;align-items:center;gap:8px;padding:8px 18px 8px 12px;min-width:210px;
     border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.07);text-decoration:none;cursor:pointer;border-radius:0;
     transition:border-color .15s,background .15s;}
   .ss-garage:hover{border-color:var(--ssr);background:rgba(255,255,255,.11);}
@@ -69,7 +69,7 @@
   .ss-garage-ico svg{width:26px;height:26px;stroke:currentColor;fill:none;stroke-width:1.6;}
   .ss-garage-txt{display:flex;flex-direction:column;align-items:flex-start;line-height:1.15;}
   .ss-garage-label{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.45);}
-  .ss-garage-veh{font-family:var(--ssnav-font),sans-serif;font-weight:700;font-size:15px;letter-spacing:.03em;color:#fff;}
+  .ss-garage-veh{font-family:var(--ssnav-font),sans-serif;font-weight:700;font-size:15px;letter-spacing:.03em;color:#fff;white-space:nowrap;}
   .ss-garage-swap{color:rgba(255,255,255,.35);flex-shrink:0;display:inline-flex;}
   .ss-garage-swap svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;}
   .ss-garage.ss-saved{background:rgba(139,0,0,.18);border-color:rgba(139,0,0,.5);}
@@ -80,6 +80,12 @@
   /* blur scrim behind open mega menu */
   .ss-scrim{position:fixed;inset:0;z-index:900;background:rgba(7,12,22,.34);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);opacity:0;pointer-events:none;transition:opacity .38s ease;}
   .ss-scrim.ss-show{opacity:1;pointer-events:auto;}
+
+  /* My Garage popup overlay (blurred dark backdrop) */
+  .ss-garage-ov{position:fixed;inset:0;z-index:1300;display:none;align-items:center;justify-content:center;background:rgba(7,12,22,.55);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);opacity:0;transition:opacity .3s ease;padding:24px;}
+  .ss-garage-ov.ss-open{display:flex;opacity:1;}
+  .ss-garage-frame{width:min(960px,100%);height:min(600px,88vh);border:none;background:#fff;box-shadow:0 40px 100px rgba(0,0,0,.6);}
+  @media(max-width:640px){.ss-garage-ov{padding:0;}.ss-garage-frame{width:100%;height:100%;}}
 
   /* ── Hamburger (mobile) ── */
   .ss-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none;}
@@ -216,7 +222,8 @@
     '</div>'+
   '</header>'+
   '<div class="ss-spacer"></div>'+
-  '<div class="ss-scrim" id="ssScrim"></div>';
+  '<div class="ss-scrim" id="ssScrim"></div>'+
+  '<div class="ss-garage-ov" id="ssGarageOv"><iframe class="ss-garage-frame" id="ssGarageFrame" title="My Garage"></iframe></div>';
 
   /* ════════ FOOTER HTML ════════ */
   var footer =
@@ -314,24 +321,32 @@
 
   /* ════════ MY GARAGE — load widget + wire buttons + state ════════ */
   (function(){
-    var loading=false;
-    function loadWidget(cb){
-      if(window.gcOpen){cb&&cb();return;}
-      if(loading||document.getElementById('gc-ov')){var t=setInterval(function(){if(window.gcOpen){clearInterval(t);cb&&cb();}},50);return;}
-      loading=true;
-      var s=document.createElement('script');
-      s.src='https://rlsh1855.github.io/3Js-and-RLSH-Website/my-garage-widget.js';
-      s.onload=function(){loading=false;cb&&cb();};
-      s.onerror=function(){loading=false;};
-      document.head.appendChild(s);
+    /* relative URL keeps the popup same-origin so it shares localStorage with every page */
+    var GARAGE_URL='my-garage-v2.html';
+    var ov=document.getElementById('ssGarageOv');
+    var frame=document.getElementById('ssGarageFrame');
+    var frameLoaded=false;
+
+    function openGarage(){
+      if(!ov||!frame) return;
+      if(!frameLoaded){ frame.src=GARAGE_URL; frameLoaded=true; }
+      ov.classList.add('ss-open');
+      document.documentElement.style.overflow='hidden';
     }
+    function closeGarage(){
+      if(!ov) return;
+      ov.classList.remove('ss-open');
+      document.documentElement.style.overflow='';
+    }
+
     document.addEventListener('click',function(e){
       var t=e.target.closest?e.target.closest('#ss-garage-btn,#ss-mob-garage-btn'):null;
-      if(!t)return;
+      if(!t) return;
       e.preventDefault();
-      loadWidget(function(){if(window.gcOpen)window.gcOpen();});
+      openGarage();
     });
-    loadWidget(); /* preload */
+    if(ov) ov.addEventListener('click',function(e){ if(e.target===ov) closeGarage(); });
+    document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeGarage(); });
 
     function sync(){
       var saved=false,v=null;
@@ -339,15 +354,22 @@
       var pill=document.getElementById('ss-garage-btn');
       var veh=document.getElementById('ssGarageVeh');
       var mveh=document.getElementById('ssMobGarageVeh');
-      var label=(v&&v.year)?(v.year+' '+v.make+' '+v.model):'Set your truck';
+      var label=(v&&v.year)?(v.year+' '+v.make+' '+v.model+(v.trim?' '+v.trim:'')):'Set your truck';
       if(pill) pill.classList.toggle('ss-saved',saved);
       if(veh) veh.textContent=label;
-      if(mveh) mveh.textContent=(v&&v.year)?(v.year+' '+v.make+' '+v.model):'My Garage';
+      if(mveh) mveh.textContent=(v&&v.year)?(v.year+' '+v.make+' '+v.model+(v.trim?' '+v.trim:'')):'My Garage';
     }
     sync();
     window.addEventListener('storage',function(e){if(e.key==='garage_vehicle')sync();});
     window.addEventListener('garageUpdated',sync);
-    window.addEventListener('message',function(e){try{var d=typeof e.data==='string'?JSON.parse(e.data):e.data;if(d&&(d.type==='garage_saved'||d.type==='garage_clear'))sync();}catch(ex){}});
+    window.addEventListener('message',function(e){
+      var d; try{ d=typeof e.data==='string'?JSON.parse(e.data):e.data; }catch(ex){ return; }
+      if(!d||!d.type) return;
+      if(d.type==='garage_saved'){ sync(); closeGarage(); }
+      else if(d.type==='garage_clear'){ sync(); }
+      else if(d.type==='close_garage'){ closeGarage(); }
+      else if(d.type==='browse_accessories'){ closeGarage(); window.location.href='/exterior-accessories-V2'; }
+    });
   })();
 
 })();
