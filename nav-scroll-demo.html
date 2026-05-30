@@ -15,7 +15,7 @@
   :root{
     --navy:#0b1220;--navy-2:#111b2e;--red:#8b0000;--red-hot:#b3000a;
     --gold:#d9a441;--ink:#0b1220;--mute:#5b6473;--line:rgba(255,255,255,.10);
-    --nav-font:'Barlow';   /* nav font — toggled live by the demo control */
+    --nav-font:'Inter';   /* LOCKED IN: Inter (toggle kept for now to re-compare) */
   }
 
   /* ════════ NAV SHELL (fixed) ════════ */
@@ -69,17 +69,18 @@
   .nav-links{display:flex;align-items:stretch;flex-wrap:wrap;}
   .nav-links > a, .nav-trigger{
     display:inline-flex;align-items:center;gap:5px;
-    padding:18px 15px;
-    font-family:var(--nav-font),sans-serif;font-size:13px;font-weight:500;
+    padding:18px 22px;
+    font-family:var(--nav-font),sans-serif;font-size:13px;font-weight:500;line-height:1;
     letter-spacing:1.4px;text-transform:uppercase;
     color:#fff;text-decoration:none;white-space:nowrap;
-    background:none;border:none;cursor:pointer;
+    background:none;border:none;cursor:pointer;margin:0;
+    -webkit-appearance:none;appearance:none;vertical-align:middle;
     position:relative;transition:color .2s,padding .45s cubic-bezier(.22,1,.36,1);
   }
   .nav-shell.shrunk .nav-links > a,
   .nav-shell.shrunk .nav-trigger{padding-top:14px;padding-bottom:14px;transition:color .2s,padding .7s cubic-bezier(.4,0,.2,1);}
   .nav-links > a::after, .nav-trigger::after{
-    content:'';position:absolute;left:15px;right:15px;bottom:0;height:3px;
+    content:'';position:absolute;left:22px;right:22px;bottom:0;height:3px;
     background:var(--red);transform:scaleX(0);transform-origin:left;
     transition:transform .25s ease;
   }
@@ -109,11 +110,8 @@
   .garage-pill-swap{color:rgba(255,255,255,.35);flex-shrink:0;display:inline-flex;}
   .garage-pill-swap svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;}
 
-  /* ── Accent strip under nav (ties to mega menu) ── */
-  .nav-accent{height:4px;background:linear-gradient(90deg,var(--red) 35%,var(--navy) 35%);}
-
   /* spacer so content clears the fixed header */
-  .nav-spacer{height:178px;}
+  .nav-spacer{height:174px;}
 
   /* ════════ BLUR SCRIM behind open mega menu ════════ */
   .nav-scrim{
@@ -213,7 +211,6 @@
       </span>
     </a>
   </nav>
-  <div class="nav-accent"></div>
 </header>
 
 <div class="nav-spacer"></div>
@@ -401,7 +398,7 @@
     <button data-font="'Montserrat'" class="ft-btn">Montserrat</button>
     <button data-font="'Oswald'" class="ft-btn">Oswald</button>
   </div>
-  <div id="ftCurrent" style="margin-top:9px;font-size:11px;color:#5b6473;">Showing: <b style="color:#0b1220;">Barlow</b></div>
+  <div id="ftCurrent" style="margin-top:9px;font-size:11px;color:#5b6473;">Showing: <b style="color:#0b1220;">Inter</b></div>
 </div>
 <style>
   .ft-btn{font-family:'Inter',sans-serif;font-size:12px;font-weight:600;padding:8px 12px;border:1px solid #c8ccd2;background:#f5f6f8;color:#0b1220;cursor:pointer;border-radius:0;transition:background .15s,color .15s,border-color .15s;}
@@ -418,7 +415,7 @@
     if(el){el.classList.add('active');label.textContent=el.textContent;}
   }
   btns.forEach(function(b){b.addEventListener('click',function(){setFont(b.dataset.font,b);});});
-  setFont("'Barlow'",btns[0]); /* default to the recommendation */
+  setFont("'Inter'",btns[1]); /* locked in: Inter */
 })();
 </script>
 </body>
