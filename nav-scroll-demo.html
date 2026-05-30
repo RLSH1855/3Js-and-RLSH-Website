@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Nav + Scroll Demo — 3J's</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{overscroll-behavior:none;}
+  body{overflow-x:hidden;font-family:'Barlow',sans-serif;background:#f3f4f6;color:#0b1220;}
+
+  :root{
+    --navy:#0b1220;--navy-2:#111b2e;--red:#8b0000;--red-hot:#b3000a;
+    --gold:#d9a441;--ink:#0b1220;--mute:#5b6473;--line:rgba(255,255,255,.10);
+  }
+
+  /* ════════ NAV SHELL (fixed) ════════ */
+  .nav-shell{
+    position:fixed;top:0;left:0;right:0;z-index:1000;
+    font-family:'Oswald',sans-serif;
+  }
+
+  /* ── Top branding bar (collapses on scroll) ── */
+  .topbar{
+    background:var(--navy) url('https://rlsh1855.github.io/3Js-and-RLSH-Website/1-BG_dark_blue_gradiant_edited_edited.jpg') center/cover no-repeat;
+    display:flex;align-items:center;justify-content:space-between;gap:24px;
+    padding:14px 40px;
+    max-height:120px;opacity:1;overflow:hidden;
+    transition:max-height .45s cubic-bezier(.22,1,.36,1),
+               opacity .30s ease,
+               padding .45s cubic-bezier(.22,1,.36,1);
+  }
+  .nav-shell.shrunk .topbar{
+    max-height:0;opacity:0;padding-top:0;padding-bottom:0;
+  }
+  .topbar-logos{display:flex;align-items:center;gap:28px;}
+  .topbar-logos img{display:block;object-fit:contain;}
+  .logo-rlsh{height:64px;}
+  .logo-3js{height:62px;}
+  .tb-btn{
+    display:inline-flex;align-items:center;justify-content:center;
+    height:46px;padding:0 26px;
+    font-family:'Oswald',sans-serif;font-size:13px;font-weight:600;
+    letter-spacing:1px;text-transform:uppercase;text-decoration:none;
+    border-radius:0;white-space:nowrap;transition:background .2s,color .2s,border-color .2s;
+  }
+  .tb-btn.red{background:var(--red);color:#fff;border:1px solid #a30505;}
+  .tb-btn.red:hover{background:var(--red-hot);}
+  .tb-btn.blue{background:#366B8F;color:#fff;border:1px solid #4181AD;}
+  .tb-btn.blue:hover{background:#2d5a7a;}
+
+  /* ── Menu row (pinned, always visible) ── */
+  .navbar{
+    background:var(--navy);
+    display:flex;align-items:stretch;justify-content:center;
+    padding:0 16px 0 40px;
+    position:relative;
+    box-shadow:0 2px 0 0 rgba(0,0,0,.25);
+  }
+  .nav-links{display:flex;align-items:stretch;flex-wrap:wrap;}
+  .nav-links > a, .nav-trigger{
+    display:inline-flex;align-items:center;gap:5px;
+    padding:18px 15px;
+    font-family:'Oswald',sans-serif;font-size:13px;font-weight:500;
+    letter-spacing:1.4px;text-transform:uppercase;
+    color:#fff;text-decoration:none;white-space:nowrap;
+    background:none;border:none;cursor:pointer;
+    position:relative;transition:color .2s,padding .45s cubic-bezier(.22,1,.36,1);
+  }
+  .nav-shell.shrunk .nav-links > a,
+  .nav-shell.shrunk .nav-trigger{padding-top:14px;padding-bottom:14px;}
+  .nav-links > a::after, .nav-trigger::after{
+    content:'';position:absolute;left:15px;right:15px;bottom:0;height:3px;
+    background:var(--red);transform:scaleX(0);transform-origin:left;
+    transition:transform .25s ease;
+  }
+  .nav-links > a:hover, .nav-trigger:hover{color:#fff;}
+  .nav-links > a:hover::after, .nav-trigger:hover::after,
+  .nav-links > a.active::after{transform:scaleX(1);}
+  .nav-links > a.active{color:#fff;}
+  .nav-caret{font-size:9px;opacity:.7;transition:transform .25s;}
+  .nav-trigger.open .nav-caret{transform:rotate(180deg);}
+
+  /* ── My Garage box (pinned right) ── */
+  .garage-box{
+    margin-left:auto;align-self:center;
+    display:inline-flex;align-items:center;gap:11px;
+    background:#fff;color:var(--ink);
+    padding:11px 20px;text-decoration:none;
+    border-radius:0;transition:background .2s;
+  }
+  .garage-box:hover{background:#f0f0f0;}
+  .garage-box svg{width:26px;height:26px;stroke:var(--red);fill:none;stroke-width:1.6;}
+  .garage-box .gb-txt{font-family:'Oswald',sans-serif;font-size:13px;font-weight:600;letter-spacing:.6px;text-transform:uppercase;line-height:1.1;}
+
+  /* ── Accent strip under nav (ties to mega menu) ── */
+  .nav-accent{height:4px;background:linear-gradient(90deg,var(--red) 35%,var(--navy) 35%);}
+
+  /* spacer so content clears the fixed header */
+  .nav-spacer{height:178px;}
+
+  /* ════════ BLUR SCRIM behind open mega menu ════════ */
+  .nav-scrim{
+    position:fixed;inset:0;z-index:900;
+    background:rgba(7,12,22,.34);
+    backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);
+    opacity:0;pointer-events:none;
+    transition:opacity .38s ease;
+  }
+  .nav-scrim.show{opacity:1;pointer-events:auto;}
+
+  /* ════════ MEGA MENU (reused from mega-menu.js, light) ════════ */
+  #mega-host{position:fixed;left:0;right:0;z-index:950;pointer-events:none;overflow-x:hidden;}
+  @media(max-width:900px){#mega-host{display:none!important;}}
+  .jj-mega{background:#fff;color:var(--ink);box-shadow:0 18px 48px rgba(0,0,0,.28);overflow:hidden;transform-origin:top center;opacity:0;transform:translateY(-12px) scaleY(.97);transition:opacity .38s cubic-bezier(.22,1,.36,1),transform .44s cubic-bezier(.22,1,.36,1);pointer-events:none;max-height:0;display:none;max-width:1180px;margin:0 auto;}
+  .jj-mega.jj-open{opacity:1;transform:translateY(0) scaleY(1);pointer-events:auto;max-height:1200px;display:block;animation:jjSlide .44s cubic-bezier(.22,1,.36,1) both;}
+  @keyframes jjSlide{from{opacity:0;transform:translateY(-12px) scaleY(.97);}to{opacity:1;transform:translateY(0) scaleY(1);}}
+  .jj-accent{height:4px;background:linear-gradient(90deg,var(--red) 35%,var(--navy) 35%);}
+  .jj-grid{display:grid;grid-template-columns:280px 1fr;min-height:340px;}
+  .jj-feat{background:#fff;padding:34px 26px;border-right:2px solid var(--red);display:flex;flex-direction:column;gap:16px;}
+  .jj-kicker{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--red);}
+  .jj-feat h2{font-family:'Oswald',sans-serif;text-transform:uppercase;font-weight:700;font-size:32px;line-height:.92;margin:-2px 0 0;color:var(--navy);display:flex;flex-direction:column;gap:2px;}
+  .jj-feat h2 .jj-r2{color:var(--red);display:inline-flex;align-items:center;gap:12px;}
+  .jj-dash{display:inline-block;width:26px;height:5px;background:var(--red);flex-shrink:0;transform:translateY(-3px);}
+  .jj-feat p{margin:0;color:var(--mute);font-family:'Barlow',sans-serif;font-size:13.5px;line-height:1.55;letter-spacing:.4px;}
+  .jj-cta{background:var(--red);color:#fff;border:0;padding:12px 22px;font-family:'Oswald',sans-serif;font-weight:600;letter-spacing:.05em;font-size:13px;text-transform:uppercase;cursor:pointer;align-self:flex-start;display:inline-flex;align-items:center;gap:10px;text-decoration:none;transition:background .15s;}
+  .jj-cta:hover{background:var(--red-hot);}
+  .jj-arrow{width:16px;height:2px;background:currentColor;position:relative;}
+  .jj-arrow::after{content:"";position:absolute;right:-1px;top:-3px;width:8px;height:8px;border-right:2px solid currentColor;border-top:2px solid currentColor;transform:rotate(45deg);}
+  .jj-meta{display:flex;align-items:center;gap:10px;font-family:'Oswald',sans-serif;font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:rgb(112,117,129);margin-top:auto;}
+  .jj-pip{width:6px;height:6px;background:var(--red);display:inline-block;flex-shrink:0;}
+  .jj-tiles{padding:34px 28px;display:grid;gap:14px;grid-template-columns:repeat(4,1fr);}
+  .jj-tile{padding:0 0 16px;display:flex;flex-direction:column;gap:12px;background:#f8f9fa;border:1px solid rgba(11,18,32,.12);cursor:pointer;text-decoration:none;color:inherit;transition:background .15s,border-color .15s;}
+  .jj-tile:hover{background:#fff;border-color:rgba(11,18,32,.28);}
+  .jj-tile:hover h3{color:var(--red);}
+  .jj-timg{width:100%;aspect-ratio:4/3;background:#e7e8ea center/cover no-repeat;border-bottom:1px solid rgba(11,18,32,.12);}
+  .jj-tile h3{font-family:'Oswald',sans-serif;text-transform:uppercase;font-weight:600;font-size:13.5px;letter-spacing:.04em;margin:0;padding:0 14px;color:var(--navy);display:flex;align-items:center;gap:8px;transition:color .15s;}
+  .jj-tile p{margin:0;padding:0 14px;color:var(--mute);font-family:'Barlow',sans-serif;font-size:12px;line-height:1.45;}
+  .jj-new{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.14em;background:var(--red);color:#fff;padding:2px 5px;}
+
+  /* ════════ DEMO PAGE CONTENT ════════ */
+  .demo-band{padding:90px 40px;}
+  .demo-band:nth-child(odd){background:#fff;}
+  .demo-band:nth-child(even){background:var(--navy);color:#fff;}
+  .demo-inner{max-width:1100px;margin:0 auto;}
+  .demo-eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--red);margin-bottom:14px;}
+  .demo-band:nth-child(even) .demo-eyebrow{color:var(--gold);}
+  .demo-band h2{font-family:'Oswald',sans-serif;font-size:42px;font-weight:700;text-transform:uppercase;letter-spacing:.01em;line-height:1;margin-bottom:18px;}
+  .demo-band p{font-family:'Barlow',sans-serif;font-size:16px;line-height:1.65;max-width:680px;color:inherit;opacity:.92;}
+  .demo-hint{margin-top:28px;padding:18px 22px;border-left:3px solid var(--red);background:rgba(139,0,0,.06);font-family:'Barlow',sans-serif;font-size:14px;line-height:1.6;}
+  .demo-band:nth-child(even) .demo-hint{background:rgba(255,255,255,.06);}
+
+  @media(max-width:900px){
+    .topbar{padding:12px 18px;}.navbar{padding:0 18px;}
+    .logo-rlsh,.logo-3js{height:44px;}
+    .nav-links{display:none;}.garage-box{margin-left:0;}
+    .nav-spacer{height:120px;}
+    .demo-band{padding:56px 20px;}.demo-band h2{font-size:30px;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ════════ NAV ════════ -->
+<header class="nav-shell" id="navShell">
+  <div class="topbar">
+    <a href="#" class="tb-btn red">Bed-Liner Quote</a>
+    <div class="topbar-logos">
+      <img class="logo-rlsh" src="https://static.wixstatic.com/media/b95bd9_8e3e4f256c85462d960aaa1e3ef740c8~mv2.png" alt="RLSH Rhino Lining of Signal Hill">
+      <img class="logo-3js" src="https://static.wixstatic.com/media/b95bd9_86c7cf1e525d4b9e961a2738ed9af502~mv2.png" alt="3J's Auto Body & Paint">
+    </div>
+    <a href="#" class="tb-btn blue">Free Online Repair Estimate</a>
+  </div>
+
+  <nav class="navbar">
+    <div class="nav-links">
+      <a href="#" class="active">Home</a>
+      <a href="#">Inside 3J's</a>
+      <a href="#">Body &amp; Paint Repairs</a>
+      <a href="#">Rhino Liner +</a>
+      <a href="#">Bundles &amp; Packages +</a>
+      <button class="nav-trigger" id="trigExterior">Exterior Accessories <span class="nav-caret">▾</span></button>
+      <a href="#">Shop</a>
+      <a href="#">Contact Us</a>
+      <a href="#">FAQ</a>
+    </div>
+    <a href="#" class="garage-box">
+      <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      <span class="gb-txt">My Garage —<br>Select your Vehicle</span>
+    </a>
+  </nav>
+  <div class="nav-accent"></div>
+</header>
+
+<div class="nav-spacer"></div>
+
+<!-- ════════ BLUR SCRIM ════════ -->
+<div class="nav-scrim" id="navScrim"></div>
+
+<!-- ════════ MEGA MENU HOST (Exterior Accessories) ════════ -->
+<div id="mega-host">
+  <div class="jj-mega jj-exterior" data-menu="exterior" id="megaExterior">
+    <div class="jj-accent"></div>
+    <div class="jj-grid">
+      <div class="jj-feat">
+        <div class="jj-kicker">Exterior Accessories</div>
+        <h2><span>Build Out</span><span class="jj-r2"><i class="jj-dash"></i>Your Rig</span></h2>
+        <p>From tonneau covers to towing rigs — professionally installed at our Signal Hill shop with a 12-month workmanship guarantee.</p>
+        <a href="#" class="jj-cta">Shop All Categories <span class="jj-arrow"></span></a>
+        <div class="jj-meta"><span class="jj-pip"></span> Free fitment check on every order</div>
+      </div>
+      <div class="jj-tiles">
+        <a href="#" class="jj-tile"><div class="jj-timg" style="background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/Tonneau-covers-page-hero-image.webp');"></div><h3>Tonneau Covers</h3><p>Hard, soft, retractable &amp; folding covers from top brands.</p></a>
+        <a href="#" class="jj-tile"><div class="jj-timg" style="background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/bak-bakflip-mx4-2016-ford-f150-blue-beach-lifestyle-01.webp');"></div><h3>BAKFlip MX4 <span class="jj-new">POPULAR</span></h3><p>The industry-standard folding hard cover.</p></a>
+        <a href="#" class="jj-tile"><div class="jj-timg" style="background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/offroad-lighting-hero.webp');"></div><h3>Lighting</h3><p>LED light bars, pods, fog &amp; halo upgrades.</p></a>
+        <a href="#" class="jj-tile"><div class="jj-timg" style="background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/go-rhino/rb-running-board-red-truck.webp');"></div><h3>Running Boards</h3><p>Powered, fixed &amp; oval-step boards.</p></a>
+        <a href="#" class="jj-tile"><div class="jj-timg" style="background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/FLOOR%20LINERS%20IMAGE.webp');"></div><h3>Floor Liners &amp; Mats</h3><p>Custom-cut, all-weather coverage.</p></a>
+        <a href="#" class="jj-tile"><div class="jj-timg" style="background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/CURT%20Reb%20Hitch%20Email.webp');"></div><h3>Towing &amp; Hitches</h3><p>Hitches, wiring &amp; brake controllers.</p></a>
+        <a href="#" class="jj-tile"><div class="jj-timg" style="background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/Elevate%20Base%20Truck%20Rack.webp');"></div><h3>Headache Racks</h3><p>Open, safety &amp; louvered cab protection.</p></a>
+        <a href="#" class="jj-tile"><div class="jj-timg" style="background:linear-gradient(135deg,#111b2e,#0b1220);"></div><h3>View All →</h3><p>Browse every category in the catalog.</p></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════ DEMO CONTENT ════════ -->
+<section class="demo-band">
+  <div class="demo-inner">
+    <div class="demo-eyebrow">Demo · Read Me First</div>
+    <h2>Scroll Down To Feel It</h2>
+    <p>Hover <strong>“Exterior Accessories”</strong> in the nav to open the mega menu — watch the page behind it blur and dim so all focus lands on the menu. Click anywhere on the blurred area to close it.</p>
+    <div class="demo-hint">
+      <strong>Shrink-on-scroll:</strong> as you scroll down, the top branding bar (logos + buttons) smoothly collapses and only the menu row stays pinned at the top. Scroll all the way back up and the full nav smoothly drops back in.<br><br>
+      <strong>Buttery scroll:</strong> on desktop, the whole page now glides with momentum — it eases in when you start and glides to a stop, instead of the hard step-scroll.
+    </div>
+  </div>
+</section>
+
+<section class="demo-band">
+  <div class="demo-inner">
+    <div class="demo-eyebrow">Section Two</div>
+    <h2>Dark Section</h2>
+    <p>Sections alternate light and dark — same as the real site — so you can see how the navy nav reads against both as you scroll past. The menu row should always stay legible and pinned at the top.</p>
+  </div>
+</section>
+
+<section class="demo-band">
+  <div class="demo-inner">
+    <div class="demo-eyebrow">Section Three</div>
+    <h2>Keep Scrolling</h2>
+    <p>The condensed menu bar stays put the entire way down the page. Try opening the Exterior Accessories menu while scrolled down too — the blur scrim still covers the whole page and the menu drops right under the pinned bar.</p>
+  </div>
+</section>
+
+<section class="demo-band">
+  <div class="demo-inner">
+    <div class="demo-eyebrow">Section Four</div>
+    <h2>Almost There</h2>
+    <p>Notice the Oswald nav lettering, the red hover underline, the red/gold accents, and the red→navy accent strip under the bar — all pulled straight from the mega menu’s design language so the two feel like one system.</p>
+  </div>
+</section>
+
+<section class="demo-band">
+  <div class="demo-inner">
+    <div class="demo-eyebrow">Bottom</div>
+    <h2>Now Scroll Back Up</h2>
+    <p>Ride it all the way to the very top — the full branding bar with both logos and the Bed-Liner Quote / Free Estimate buttons should smoothly expand back into place the moment you reach the top.</p>
+  </div>
+</section>
+
+<script>
+/* ════════ SHRINK-ON-SCROLL ════════ */
+(function(){
+  var shell=document.getElementById('navShell');
+  var ticking=false;
+  function update(){
+    var y=window.pageYOffset||document.documentElement.scrollTop;
+    // shrink once past the top; restore only when back at the very top
+    if(y>10) shell.classList.add('shrunk');
+    else shell.classList.remove('shrunk');
+    ticking=false;
+  }
+  window.addEventListener('scroll',function(){
+    if(!ticking){requestAnimationFrame(update);ticking=true;}
+  },{passive:true});
+  update();
+})();
+
+/* ════════ MEGA MENU + BLUR SCRIM ════════ */
+(function(){
+  var trig=document.getElementById('trigExterior');
+  var host=document.getElementById('mega-host');
+  var panel=document.getElementById('megaExterior');
+  var scrim=document.getElementById('navScrim');
+  var shell=document.getElementById('navShell');
+  var closeTimer=null, isOpen=false;
+
+  function positionHost(){
+    host.style.top=shell.getBoundingClientRect().bottom+'px';
+  }
+  function open(){
+    clearTimeout(closeTimer);
+    if(isOpen)return;
+    isOpen=true;
+    positionHost();
+    panel.classList.add('jj-open');
+    scrim.classList.add('show');
+    trig.classList.add('open');
+  }
+  function close(immediate){
+    function doClose(){
+      isOpen=false;
+      panel.classList.remove('jj-open');
+      scrim.classList.remove('show');
+      trig.classList.remove('open');
+    }
+    if(immediate){clearTimeout(closeTimer);doClose();}
+    else closeTimer=setTimeout(doClose,160);
+  }
+
+  trig.addEventListener('mouseenter',open);
+  trig.addEventListener('focus',open);
+  trig.addEventListener('mouseleave',function(){close(false);});
+  trig.addEventListener('click',function(e){e.preventDefault();isOpen?close(true):open();});
+
+  host.addEventListener('mouseenter',function(){clearTimeout(closeTimer);});
+  host.addEventListener('mouseleave',function(){close(false);});
+
+  scrim.addEventListener('click',function(){close(true);});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')close(true);});
+  window.addEventListener('scroll',function(){if(isOpen){positionHost();}},{passive:true});
+  window.addEventListener('resize',positionHost,{passive:true});
+})();
+
+/* ════════ BUTTERY INERTIA SCROLL (desktop only) ════════ */
+(function(){
+  var isTouch=('ontouchstart' in window)||navigator.maxTouchPoints>0||
+              (window.matchMedia&&window.matchMedia('(pointer:coarse)').matches);
+  if(isTouch)return;
+  if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+
+  var target=window.pageYOffset, current=target, rafId=null;
+  var LERP=0.08, MULT=0.85;
+
+  function clamp(v){
+    var max=document.documentElement.scrollHeight-window.innerHeight;
+    return v<0?0:(v>max?max:v);
+  }
+  function loop(){
+    current+=(target-current)*LERP;
+    if(Math.abs(target-current)<0.3){current=target;window.scrollTo(0,current);rafId=null;return;}
+    window.scrollTo(0,current);
+    rafId=requestAnimationFrame(loop);
+  }
+  window.addEventListener('wheel',function(e){
+    if(e.ctrlKey)return; // let pinch-zoom through
+    e.preventDefault();
+    target=clamp(target+e.deltaY*MULT);
+    if(!rafId)rafId=requestAnimationFrame(loop);
+  },{passive:false});
+
+  // keep in sync if scroll position changes by other means (keyboard, anchor, resize)
+  window.addEventListener('scroll',function(){
+    if(!rafId){current=target=window.pageYOffset;}
+  },{passive:true});
+  window.addEventListener('resize',function(){target=clamp(target);},{passive:true});
+})();
+</script>
+</body>
+</html>
