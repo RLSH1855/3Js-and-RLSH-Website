@@ -21,6 +21,11 @@
   .nav-shell{
     position:fixed;top:0;left:0;right:0;z-index:1000;
     font-family:'Oswald',sans-serif;
+    background:var(--navy);              /* solid base — no see-through gap */
+    transform:translateZ(0);            /* promote to its own paint layer */
+    will-change:transform;
+    backface-visibility:hidden;
+    -webkit-backface-visibility:hidden;
   }
 
   /* ── Top branding bar (collapses on scroll) ── */
