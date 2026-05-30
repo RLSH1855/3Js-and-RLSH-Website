@@ -6,7 +6,7 @@
 <title>Nav + Scroll Demo — 3J's</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 <style>
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
   html{overscroll-behavior:none;}
@@ -15,12 +15,13 @@
   :root{
     --navy:#0b1220;--navy-2:#111b2e;--red:#8b0000;--red-hot:#b3000a;
     --gold:#d9a441;--ink:#0b1220;--mute:#5b6473;--line:rgba(255,255,255,.10);
+    --nav-font:'Barlow';   /* nav font — toggled live by the demo control */
   }
 
   /* ════════ NAV SHELL (fixed) ════════ */
   .nav-shell{
     position:fixed;top:0;left:0;right:0;z-index:1000;
-    font-family:'Oswald',sans-serif;
+    font-family:var(--nav-font),sans-serif;
     background:var(--navy);              /* solid base — no see-through gap */
     transform:translateZ(0);            /* promote to its own paint layer */
     will-change:transform;
@@ -48,7 +49,7 @@
   .tb-btn{
     display:inline-flex;align-items:center;justify-content:center;
     height:46px;padding:0 26px;
-    font-family:'Oswald',sans-serif;font-size:13px;font-weight:600;
+    font-family:var(--nav-font),sans-serif;font-size:13px;font-weight:600;
     letter-spacing:1px;text-transform:uppercase;text-decoration:none;
     border-radius:0;white-space:nowrap;transition:background .2s,color .2s,border-color .2s;
   }
@@ -69,7 +70,7 @@
   .nav-links > a, .nav-trigger{
     display:inline-flex;align-items:center;gap:5px;
     padding:18px 15px;
-    font-family:'Oswald',sans-serif;font-size:13px;font-weight:500;
+    font-family:var(--nav-font),sans-serif;font-size:13px;font-weight:500;
     letter-spacing:1.4px;text-transform:uppercase;
     color:#fff;text-decoration:none;white-space:nowrap;
     background:none;border:none;cursor:pointer;
@@ -99,7 +100,7 @@
   }
   .garage-box:hover{background:#f0f0f0;}
   .garage-box svg{width:26px;height:26px;stroke:var(--red);fill:none;stroke-width:1.6;}
-  .garage-box .gb-txt{font-family:'Oswald',sans-serif;font-size:13px;font-weight:600;letter-spacing:.6px;text-transform:uppercase;line-height:1.1;}
+  .garage-box .gb-txt{font-family:var(--nav-font),sans-serif;font-size:13px;font-weight:600;letter-spacing:.6px;text-transform:uppercase;line-height:1.1;}
 
   /* ── Accent strip under nav (ties to mega menu) ── */
   .nav-accent{height:4px;background:linear-gradient(90deg,var(--red) 35%,var(--navy) 35%);}
@@ -373,6 +374,36 @@
     if(!rafId){current=target=window.pageYOffset;}
   },{passive:true});
   window.addEventListener('resize',function(){target=clamp(target);},{passive:true});
+})();
+</script>
+
+<!-- ════════ FONT TOGGLE (demo control only — removed before go-live) ════════ -->
+<div id="fontToggle" style="position:fixed;right:16px;bottom:16px;z-index:2000;background:#fff;border:1px solid #d0d4da;box-shadow:0 10px 30px rgba(0,0,0,.20);padding:13px 15px;font-family:'Inter',sans-serif;max-width:240px;">
+  <div style="font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#8b0000;font-weight:700;margin-bottom:9px;">Nav Font — Tap To Compare</div>
+  <div style="display:flex;gap:6px;flex-wrap:wrap;">
+    <button data-font="'Barlow'" class="ft-btn">Barlow</button>
+    <button data-font="'Inter'" class="ft-btn">Inter</button>
+    <button data-font="'Montserrat'" class="ft-btn">Montserrat</button>
+    <button data-font="'Oswald'" class="ft-btn">Oswald</button>
+  </div>
+  <div id="ftCurrent" style="margin-top:9px;font-size:11px;color:#5b6473;">Showing: <b style="color:#0b1220;">Barlow</b></div>
+</div>
+<style>
+  .ft-btn{font-family:'Inter',sans-serif;font-size:12px;font-weight:600;padding:8px 12px;border:1px solid #c8ccd2;background:#f5f6f8;color:#0b1220;cursor:pointer;border-radius:0;transition:background .15s,color .15s,border-color .15s;}
+  .ft-btn:hover{border-color:#8b0000;}
+  .ft-btn.active{background:#8b0000;color:#fff;border-color:#8b0000;}
+</style>
+<script>
+(function(){
+  var btns=document.querySelectorAll('#fontToggle .ft-btn');
+  var label=document.querySelector('#ftCurrent b');
+  function setFont(f,el){
+    document.documentElement.style.setProperty('--nav-font',f);
+    btns.forEach(function(b){b.classList.remove('active');});
+    if(el){el.classList.add('active');label.textContent=el.textContent;}
+  }
+  btns.forEach(function(b){b.addEventListener('click',function(){setFont(b.dataset.font,b);});});
+  setFont("'Barlow'",btns[0]); /* default to the recommendation */
 })();
 </script>
 </body>
