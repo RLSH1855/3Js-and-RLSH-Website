@@ -1,1192 +1,1 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Shop Truck Accessories — 3J's Auto Body Signal Hill CA</title>
-  <meta name="description" content="Shop tonneau covers, running boards, nerf bars, power steps, and headache racks for your truck — professionally installed at 3J's Auto Body in Signal Hill, CA.">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://rlsh1855.github.io/3Js-and-RLSH-Website/shop.html">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
-
-  <!-- Data files -->
-  <script src="https://rlsh1855.github.io/3Js-and-RLSH-Website/catalog-data.js"></script>
-  <script src="https://rlsh1855.github.io/3Js-and-RLSH-Website/extra-tonneau-data.js"></script>
-  <script src="https://rlsh1855.github.io/3Js-and-RLSH-Website/running-boards-data.js"></script>
-  <script src="https://rlsh1855.github.io/3Js-and-RLSH-Website/gorhino-data.js"></script>
-  <script src="https://rlsh1855.github.io/3Js-and-RLSH-Website/amp-data.js"></script>
-  <script src="https://rlsh1855.github.io/3Js-and-RLSH-Website/westin-data.js"></script>
-  <script src="https://rlsh1855.github.io/3Js-and-RLSH-Website/lund-data.js"></script>
-  <script src="https://rlsh1855.github.io/3Js-and-RLSH-Website/headache-racks-data.js"></script>
-  <script src="https://rlsh1855.github.io/3Js-and-RLSH-Website/product-content.js"></script>
-
-  <style>
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    html{overflow-y:scroll;scrollbar-width:none;}
-    body{font-family:'Inter',sans-serif;background:#f2f2f2;color:#1a1a1a;font-size:15px;overflow-x:hidden;}
-    a{text-decoration:none;color:inherit;}
-    img{max-width:100%;display:block;}
-    button,select,input{font-family:'Montserrat',sans-serif;}
-
-    /* ── GARAGE BAR ── */
-    #garage-bar{background:#1a1a1a;padding:9px 16px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
-    .gb-left{display:flex;align-items:center;gap:10px;}
-    .gb-vehicle{font-family:'Inter',sans-serif;font-size:12px;font-weight:600;color:#fff;}
-    .gb-badge{background:#1a7a1a;color:#fff;font-family:'Montserrat',sans-serif;font-size:9px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:3px 10px;border-radius:0;}
-    .gb-badge.no-garage{background:#555;}
-    .gb-right{display:flex;gap:12px;}
-    .gb-link{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;color:#999;text-decoration:none;cursor:pointer;background:none;border:none;letter-spacing:2px;text-transform:uppercase;display:inline-flex;align-items:center;gap:6px;transition:color 0.2s;}
-    .gb-link:hover{color:#fff;}
-
-    /* ── PAGE HEADER ── */
-    .page-header{background:#111;padding:20px 16px 18px;border-bottom:3px solid #8B0000;}
-    .page-header-inner{max-width:1200px;margin:0 auto;display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:12px;}
-    .page-header-left .eyebrow{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:#8B0000;display:block;margin-bottom:5px;}
-    .page-header-left h1{font-family:'Montserrat',sans-serif;font-size:clamp(20px,3vw,28px);font-weight:800;color:#fff;letter-spacing:-0.5px;text-transform:uppercase;line-height:1.0;}
-    .page-header-left h1 em{color:#8B0000;font-style:normal;}
-    .page-header-right{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
-    .cat-pill{display:inline-flex;align-items:center;height:32px;padding:0 14px;font-family:'Montserrat',sans-serif;font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.5);border:1px solid rgba(255,255,255,0.15);border-radius:0;cursor:pointer;transition:all 0.2s;background:transparent;}
-    .cat-pill:hover{color:#fff;border-color:rgba(255,255,255,0.4);}
-    .cat-pill.active{background:#8B0000;color:#fff;border-color:#8B0000;}
-
-    /* ── YMM BAR ── */
-    #ymm-bar{background:#fff;border-bottom:2px solid #e8e8e8;padding:12px 16px;}
-    .ymm-bar-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
-    .ymm-bar-label{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#8B0000;white-space:nowrap;flex-shrink:0;}
-    .ymm-selects{display:flex;gap:6px;flex:1;flex-wrap:wrap;}
-    .ymm-sel{flex:1;min-width:80px;padding:8px 10px;border:2px solid #e0e0e0;border-radius:0;font-family:'Inter',sans-serif;font-size:13px;font-weight:500;color:#1a1a1a;background:#fff;appearance:none;-webkit-appearance:none;cursor:pointer;outline:none;}
-    .ymm-sel:focus{border-color:#8B0000;}
-    .ymm-sel:disabled{background:#f5f5f5;color:#bbb;cursor:not-allowed;}
-    .ymm-go{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:40px;padding:0 18px;background:#8B0000;color:#fff;border:none;border-radius:0;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;cursor:pointer;white-space:nowrap;flex-shrink:0;transition:background 0.2s;}
-    .ymm-go:hover{background:#a00000;}
-    .ymm-go:disabled{background:#ccc;cursor:not-allowed;}
-
-    /* ── CATALOG LAYOUT ── */
-    .catalog-wrap{display:grid;grid-template-columns:1fr;min-height:60vh;}
-
-    /* ── SIDEBAR ── */
-    .sidebar{display:none;background:#fff;border-right:2px solid #e8e8e8;padding:20px 16px;align-self:start;position:sticky;top:0;max-height:100vh;overflow-y:auto;scrollbar-width:thin;}
-    .sidebar-section{margin-bottom:24px;}
-    .sidebar-section-title{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:#8B0000;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid #e8e8e8;}
-    .filter-item{display:flex;align-items:center;gap:8px;padding:5px 0;cursor:pointer;user-select:none;}
-    .cb{width:14px;height:14px;border:2px solid #ccc;border-radius:0;flex-shrink:0;transition:background 0.15s,border-color 0.15s;}
-    .cb.checked{background:#8B0000;border-color:#8B0000;}
-    .filter-label{font-family:'Inter',sans-serif;font-size:13px;font-weight:500;color:#333;}
-    .filter-count{font-family:'Inter',sans-serif;font-size:11px;color:#999;margin-left:auto;}
-    .clear-link{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#8B0000;cursor:pointer;text-decoration:underline;margin-left:auto;}
-
-    /* ── MAIN ── */
-    .main-col{background:#f2f2f2;min-width:0;}
-    .toolbar{background:#fff;padding:10px 16px;border-bottom:2px solid #e8e8e8;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;position:sticky;top:0;z-index:10;}
-    .result-count{font-family:'Inter',sans-serif;font-size:13px;font-weight:600;color:#444;}
-    .result-count span{color:#8B0000;font-weight:800;}
-    .toolbar-right{display:flex;align-items:center;gap:8px;}
-    .sort-label{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:#555;}
-    .sort-sel{padding:6px 10px;border:2px solid #e8e8e8;border-radius:0;font-family:'Inter',sans-serif;font-size:12px;font-weight:500;background:#fff;appearance:none;cursor:pointer;}
-    .mob-filter-btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:40px;padding:0 16px;border:2px solid #1a1a1a;border-radius:0;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;background:#fff;cursor:pointer;transition:background 0.2s,color 0.2s;}
-    .mob-filter-btn:hover{background:#1a1a1a;color:#fff;}
-    .filter-badge{background:#8B0000;color:#fff;font-size:8px;font-weight:800;min-width:16px;height:16px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;padding:0 3px;}
-
-    /* ── ACTIVE FILTERS ── */
-    .active-filters{background:#fafafa;padding:8px 16px;border-bottom:1px solid #e8e8e8;display:flex;align-items:center;gap:6px;flex-wrap:wrap;min-height:36px;}
-    .active-label{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#999;}
-    .filter-tag{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;background:#1a1a1a;color:#fff;border-radius:0;font-family:'Montserrat',sans-serif;font-size:9px;font-weight:800;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:background 0.2s;}
-    .filter-tag:hover{background:#8B0000;}
-    .filter-tag-fit{background:#1a7a1a;}
-    .filter-tag-fit:hover{background:#8B0000;}
-
-    /* ── PRODUCT GRID ── */
-    .product-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;padding:12px;}
-
-    /* ── PRODUCT CARD ── */
-    .product-card{background:#fff;border:1px solid #e8e8e8;border-radius:0;overflow:hidden;display:flex;flex-direction:column;transition:border-color 0.2s,box-shadow 0.2s;}
-    .product-card:hover{border-color:#bbb;box-shadow:0 4px 18px rgba(0,0,0,0.09);}
-    .card-img-wrap{width:100%;aspect-ratio:4/3;background:#f2f2f2;position:relative;overflow:hidden;}
-    .card-img-wrap img{width:100%;height:100%;object-fit:cover;object-position:center 30%;}
-    .card-ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;background:linear-gradient(135deg,#f5f5f5,#eaeaea);}
-    .card-ph-brand{font-family:'Montserrat',sans-serif;font-size:22px;font-weight:900;color:rgba(139,0,0,0.18);letter-spacing:-1px;}
-    .card-ph-type{font-family:'Montserrat',sans-serif;font-size:8px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:rgba(0,0,0,0.2);}
-    .card-cat-badge{position:absolute;top:8px;left:8px;font-family:'Montserrat',sans-serif;font-size:8px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:3px 8px;border-radius:0;background:#1a1a1a;color:#fff;}
-    .card-cat-badge.cat-tonneau{background:#1a3a6a;}
-    .card-cat-badge.cat-steps{background:#1a1a1a;}
-    .card-cat-badge.cat-racks{background:#4a2a00;}
-    .card-body{padding:12px 12px 14px;display:flex;flex-direction:column;flex:1;}
-    .card-brand{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#8B0000;margin-bottom:4px;}
-    .card-name{font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;color:#1a1a1a;line-height:1.2;margin-bottom:6px;text-wrap:balance;flex:1;}
-    .card-type{font-family:'Inter',sans-serif;font-size:11px;font-weight:500;color:#777;margin-bottom:8px;}
-    .card-fit{display:flex;align-items:center;gap:6px;padding:5px 8px;background:#f0faf0;border-top:2px solid #1a7a1a;margin-bottom:8px;}
-    .card-fit-icon{font-size:11px;color:#1a7a1a;font-weight:900;}
-    .card-fit-text{font-family:'Montserrat',sans-serif;font-size:8px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:#1a7a1a;}
-    .card-nofit{font-family:'Montserrat',sans-serif;font-size:8px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:#888;padding:4px 0;margin-bottom:6px;}
-    .card-price-row{display:flex;align-items:baseline;gap:4px;margin-bottom:10px;}
-    .card-from{font-family:'Montserrat',sans-serif;font-size:8px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:#888;}
-    .card-price{font-family:'Montserrat',sans-serif;font-size:15px;font-weight:800;color:#8B0000;}
-    .card-btns{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:auto;}
-    .card-btn{display:inline-flex;align-items:center;justify-content:center;height:40px;padding:0 8px;border-radius:0;font-family:'Montserrat',sans-serif;font-size:9px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;text-decoration:none;transition:background 0.2s,color 0.2s;border:none;}
-    .card-btn-view{background:#f0f0f0;color:#555;border:1px solid #ddd;}
-    .card-btn-view:hover{background:#e0e0e0;}
-    .card-btn-quote{background:#8B0000;color:#fff;}
-    .card-btn-quote:hover{background:#a00000;}
-
-    /* ── EMPTY STATE ── */
-    #empty-state{display:none;padding:56px 24px;text-align:center;background:#fff;margin:12px;}
-    #empty-state svg{width:48px;height:48px;stroke:#ddd;fill:none;stroke-width:1.5;margin:0 auto 16px;}
-    #empty-state p{font-family:'Montserrat',sans-serif;font-size:15px;font-weight:800;color:#444;margin-bottom:8px;}
-    #empty-state small{font-family:'Inter',sans-serif;font-size:13px;color:#888;}
-
-    /* ── MOBILE FILTER OVERLAY ── */
-    #mob-filter{display:none;position:fixed;inset:0;z-index:400;background:#fff;overflow-y:auto;}
-    #mob-filter.open{display:block;}
-    .mob-filter-header{padding:14px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:2px solid #e8e8e8;position:sticky;top:0;background:#fff;z-index:1;}
-    .mob-filter-title{font-family:'Montserrat',sans-serif;font-size:15px;font-weight:800;color:#1a1a1a;}
-    .mob-filter-close{font-size:24px;cursor:pointer;background:none;border:none;color:#1a1a1a;line-height:1;padding:0 4px;}
-    .mob-filter-section{padding:16px 16px;border-bottom:1px solid #f0f0f0;}
-    .mob-filter-section-title{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:#8B0000;margin-bottom:10px;}
-    .mob-chips{display:flex;flex-wrap:wrap;gap:8px;}
-    .mob-chip{padding:6px 14px;border-radius:0;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase;border:2px solid #e8e8e8;background:#fff;color:#444;cursor:pointer;transition:all 0.15s;}
-    .mob-chip.active{background:#1a1a1a;color:#fff;border-color:#1a1a1a;}
-    .mob-apply{display:block;margin:16px;height:48px;background:#8B0000;color:#fff;border:none;border-radius:0;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;cursor:pointer;width:calc(100% - 32px);transition:background 0.2s;}
-    .mob-apply:hover{background:#a00000;}
-
-    /* ── PRICE RANGE FILTER ── */
-    .price-buckets{display:flex;flex-direction:column;gap:2px;}
-
-    /* ── RESPONSIVE ── */
-    @media(min-width:768px){
-      .catalog-wrap{grid-template-columns:260px 1fr;}
-      .sidebar{display:block;padding:20px 16px 20px 28px;}
-      .mob-filter-btn{display:none;}
-      .product-grid{grid-template-columns:repeat(2,1fr);}
-    }
-    @media(min-width:1024px){
-      .catalog-wrap{grid-template-columns:280px 1fr;}
-      .sidebar{padding:24px 16px 24px 32px;}
-      .product-grid{grid-template-columns:repeat(3,1fr);}
-    }
-    @media(max-width:480px){
-      .card-name{font-size:12px;}
-      .card-btns{grid-template-columns:1fr;}
-    }
-    *:focus{outline:none;}
-    *:focus-visible{outline:2px solid #8B0000;outline-offset:3px;}
-  </style>
-</head>
-<body>
-
-<!-- ── GARAGE BAR ── -->
-<div id="garage-bar">
-  <div class="gb-left">
-    <span class="gb-vehicle" id="gb-vehicle-text">No vehicle saved</span>
-    <span class="gb-badge no-garage" id="gb-badge">My Garage</span>
-  </div>
-  <div class="gb-right">
-    <button class="gb-link" id="gb-change-btn">&#x21ba; Change</button>
-    <a class="gb-link" href="https://rlsh1855.github.io/3Js-and-RLSH-Website/my-garage.html" target="_top">My Garage</a>
-  </div>
-</div>
-
-<!-- ── PAGE HEADER ── -->
-<div class="page-header">
-  <div class="page-header-inner">
-    <div class="page-header-left">
-      <span class="eyebrow" id="header-eyebrow">3J's Auto Body · Signal Hill, CA</span>
-      <h1 id="header-title">Shop <em>Accessories</em></h1>
-    </div>
-    <div class="page-header-right" id="header-cat-pills">
-      <button class="cat-pill active" data-cat="all">All</button>
-      <button class="cat-pill" data-cat="tonneau">Tonneau Covers</button>
-      <button class="cat-pill" data-cat="steps">Steps &amp; Boards</button>
-      <button class="cat-pill" data-cat="racks">Headache Racks</button>
-    </div>
-  </div>
-</div>
-
-<!-- ── YMM BAR ── -->
-<div id="ymm-bar">
-  <div class="ymm-bar-inner">
-    <span class="ymm-bar-label">Your Truck</span>
-    <div class="ymm-selects">
-      <select class="ymm-sel" id="ymm-year"><option value="">Year</option></select>
-      <select class="ymm-sel" id="ymm-make" disabled><option value="">Make</option></select>
-      <select class="ymm-sel" id="ymm-model" disabled><option value="">Model</option></select>
-    </div>
-    <button class="ymm-go" id="ymm-go-btn" disabled>
-      <svg viewBox="0 0 24 24" style="width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2.5;"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-      Find My Fit
-    </button>
-  </div>
-</div>
-
-<!-- ── MOBILE FILTER OVERLAY ── -->
-<div id="mob-filter">
-  <div class="mob-filter-header">
-    <span class="mob-filter-title">Filter</span>
-    <button class="mob-filter-close" id="mob-filter-close">&times;</button>
-  </div>
-  <div class="mob-filter-section">
-    <div class="mob-filter-section-title">Category</div>
-    <div class="mob-chips" id="mob-chips-cat"></div>
-  </div>
-  <div class="mob-filter-section">
-    <div class="mob-filter-section-title">Price Range</div>
-    <div class="mob-chips" id="mob-chips-price"></div>
-  </div>
-  <div class="mob-filter-section">
-    <div class="mob-filter-section-title">Brand</div>
-    <div class="mob-chips" id="mob-chips-brand"></div>
-  </div>
-  <div class="mob-filter-section">
-    <div class="mob-filter-section-title">Type</div>
-    <div class="mob-chips" id="mob-chips-type"></div>
-  </div>
-  <div class="mob-filter-section">
-    <div class="mob-filter-section-title">Cab Type</div>
-    <div class="mob-chips" id="mob-chips-cab"></div>
-  </div>
-  <div class="mob-filter-section">
-    <div class="mob-filter-section-title">Finish</div>
-    <div class="mob-chips" id="mob-chips-finish"></div>
-  </div>
-  <button class="mob-apply" id="mob-apply-btn">Apply Filters</button>
-</div>
-
-<!-- ── CATALOG ── -->
-<div class="catalog-wrap">
-
-  <!-- SIDEBAR -->
-  <div class="sidebar" id="sidebar">
-    <div class="sidebar-section" id="sb-price-section">
-      <div class="sidebar-section-title">Price Range</div>
-      <div class="price-buckets" id="sb-prices"></div>
-    </div>
-    <div class="sidebar-section" id="sb-brand-section">
-      <div class="sidebar-section-title">Brand</div>
-      <div id="sb-brands"></div>
-    </div>
-    <div class="sidebar-section" id="sb-type-section">
-      <div class="sidebar-section-title">Type</div>
-      <div id="sb-types"></div>
-    </div>
-    <div class="sidebar-section" id="sb-cab-section" style="display:none;">
-      <div class="sidebar-section-title">Cab Type</div>
-      <div id="sb-cabs"></div>
-    </div>
-    <div class="sidebar-section" id="sb-finish-section">
-      <div class="sidebar-section-title">Finish</div>
-      <div id="sb-finishes"></div>
-    </div>
-    <div class="sidebar-section" id="sb-bed-section" style="display:none;">
-      <div class="sidebar-section-title">Bed Size</div>
-      <div id="sb-beds"></div>
-    </div>
-  </div>
-
-  <!-- MAIN -->
-  <div class="main-col">
-
-    <!-- Toolbar -->
-    <div class="toolbar">
-      <div class="result-count" id="result-count">Loading…</div>
-      <div class="toolbar-right">
-        <span class="sort-label">Sort</span>
-        <select class="sort-sel" id="sort-sel">
-          <option value="fit">Best Fit First</option>
-          <option value="price-asc">Price: Low–High</option>
-          <option value="price-desc">Price: High–Low</option>
-          <option value="brand">Brand A–Z</option>
-          <option value="name">Name A–Z</option>
-        </select>
-        <button class="mob-filter-btn" id="mob-filter-open-btn">
-          Filter
-          <span class="filter-badge" id="filter-badge" style="display:none">0</span>
-        </button>
-      </div>
-    </div>
-
-    <!-- Active filters -->
-    <div class="active-filters" id="active-filters">
-      <span class="active-label">Filters:</span>
-    </div>
-
-    <!-- Grid -->
-    <div class="product-grid" id="product-grid"></div>
-
-    <!-- Empty state -->
-    <div id="empty-state">
-      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-      <p>No products match your filters.</p>
-      <small>Try removing a filter or changing your vehicle.</small>
-    </div>
-
-  </div>
-</div>
-
-<script>
-/* ════════════════════════════════════════════════
-   CONSTANTS & CONFIG
-════════════════════════════════════════════════ */
-var QUOTE_URL = 'https://rlsh1855.github.io/3Js-and-RLSH-Website/parts-quote.html';
-var GARAGE_KEY = 'garage_vehicle';
-var CATALOG_HERO = {
-  all:     { eyebrow:'3J\'s Auto Body · Signal Hill, CA', title:'Shop <em>Accessories</em>' },
-  tonneau: { eyebrow:'Tonneau Covers · Professional Installation', title:'Tonneau <em>Covers</em>' },
-  steps:   { eyebrow:'Steps & Running Boards · All Brands', title:'Steps &amp; Running <em>Boards</em>' },
-  racks:   { eyebrow:'Headache Racks · BackRack', title:'Headache <em>Racks</em>' }
-};
-
-/* ── Product type mapping ── */
-var TONNEAU_TYPES = {
-  'BAKFlip F1':'Hard Folding','BAKFlip FiberMax':'Hard Folding','BAKFlip G2':'Hard Folding',
-  'BAKFlip MX4':'Hard Folding','BAKFlip MX4 TS':'Hard Folding',
-  'ArmorFlex':'Hard Folding','Solid Fold ALX':'Hard Folding','Endure ALX':'Hard Folding',
-  'Trifecta 2.0':'Soft Folding','Trifecta ALX':'Soft Folding','Trifecta Signature 2.0':'Soft Folding',
-  'Trifecta e-Series':'Soft Folding','E-Series':'Soft Folding','M-Series':'Soft Folding',
-  'A-Series':'Soft Folding','Elite':'Soft Folding','Elite LX':'Soft Folding','SE':'Soft Folding',
-  'Lo Pro':'Roll-Up','TruXport':'Roll-Up','Lux':'Roll-Up','Flex':'Roll-Up','Select':'Roll-Up',
-  'RetraxONE MX':'Retractable','RetraxONE XR':'Retractable','RetraxPRO MX':'Retractable',
-  'RetraxPRO XR':'Retractable','PowertraxPRO MX':'Retractable','PowertraxPRO XR':'Retractable',
-  'Retrax EQ':'Retractable','Revolver X4s':'Roll-Up','Pro X15':'Retractable','Sentry':'Roll-Up',
-  'Sentry CT':'Hard Folding','Ultra Flex':'Hard Folding','Deuce':'Soft Folding'
-};
-
-function getStepType(product) {
-  var p = product.toLowerCase();
-  if (p.includes('bedstep')) return 'BedStep';
-  if (p.includes('power') || p.includes('powerstep') || p.includes('pro-e') || p.includes('pro e')) return 'Power Steps';
-  if (p.includes('wheel-to-wheel') || p.includes('wheel to wheel') || p.includes('w2w')) return 'Wheel-to-Wheel';
-  if (p.includes('running board') || p.includes('rb10')||p.includes('rb20')||p.includes('rb30')
-      || p.includes('at6') || p.includes('hdx run') || p.includes('outlaw run') || p.includes('pro traxx')) return 'Running Boards';
-  if (p.includes('nerf') || p.includes('oval') || p.includes('drop nerf') || p.includes('hdx drop')) return 'Nerf Bars';
-  if (p.includes('sidestep') || p.includes('side step') || p.includes('oe xtreme')
-      || p.includes('dominator') || p.includes('v-series') || p.includes('4000')
-      || p.includes('415 series') || p.includes('1000 series')) return 'Side Steps';
-  return 'Steps';
-}
-
-function getProductType(e) {
-  if (e.cat === 'tonneau') return TONNEAU_TYPES[e.product] || 'Other';
-  if (e.cat === 'steps')   return getStepType(e.product);
-  if (e.cat === 'racks')   return 'Headache Rack';
-  return 'Other';
-}
-
-/* ════════════════════════════════════════════════
-   NORMALIZE ALL DATA SOURCES
-════════════════════════════════════════════════ */
-var ALL_ENTRIES = [];
-
-// Tonneau: [brand,product,partNum,bedIn,bedSize,startYear,endYear,make,model,desc,fitNote,map,img]
-if (typeof CATALOG !== 'undefined') {
-  CATALOG.forEach(function(e) {
-    ALL_ENTRIES.push({ cat:'tonneau', brand:e[0], product:e[1], partNum:e[2],
-      bedIn:e[3], bedSize:e[4], startYear:e[5], endYear:e[6], make:e[7], model:e[8],
-      desc:e[9], fitNote:e[10], price:e[11], img:e[12], cabType:null });
-  });
-}
-// N-Fab: [brand,product,part,cabType,startYear,endYear,make,model,desc,price,imgUrl]
-if (typeof RB_CATALOG !== 'undefined') {
-  RB_CATALOG.forEach(function(e) {
-    ALL_ENTRIES.push({ cat:'steps', brand:e[0], product:e[1], partNum:e[2],
-      cabType:e[3], startYear:e[4], endYear:e[5], make:e[6], model:e[7],
-      desc:e[8], price:e[9], img:e[10], bedIn:null, bedSize:null, fitNote:null });
-  });
-}
-// Extra tonneaus: [brand,product,partNum,bedIn,bedSize,startYear,endYear,make,model,desc,fitNote,map,img]
-if (typeof EXTRA_TONNEAU !== 'undefined') {
-  EXTRA_TONNEAU.forEach(function(e) {
-    ALL_ENTRIES.push({ cat:'tonneau', brand:e[0], product:e[1], partNum:e[2],
-      bedIn:e[3], bedSize:e[4], startYear:e[5], endYear:e[6], make:e[7], model:e[8],
-      desc:e[9], fitNote:e[10], price:e[11], img:e[12], cabType:null });
-  });
-}
-// Go Rhino / AMP / Westin / Lund steps: [brand,product,partNum,cabType,startYear,endYear,make,model,desc,price,img]
-[typeof GR_CATALOG!=='undefined'?GR_CATALOG:[],
- typeof AMP_CATALOG!=='undefined'?AMP_CATALOG:[],
- typeof WESTIN_CATALOG!=='undefined'?WESTIN_CATALOG:[],
- typeof LUND_CATALOG!=='undefined'?LUND_CATALOG:[]
-].forEach(function(src) {
-  src.forEach(function(e) {
-    ALL_ENTRIES.push({ cat:'steps', brand:e[0], product:e[1], partNum:e[2],
-      cabType:e[3], startYear:e[4], endYear:e[5], make:e[6], model:e[7],
-      desc:e[8], price:e[9], img:e[10], bedIn:null, bedSize:null, fitNote:null });
-  });
-});
-// BackRack: [brand,product,partNum,startYear,endYear,make,model,desc,price,imgUrl]
-if (typeof HR_CATALOG !== 'undefined') {
-  HR_CATALOG.forEach(function(e) {
-    ALL_ENTRIES.push({ cat:'racks', brand:e[0], product:e[1], partNum:e[2],
-      startYear:e[3], endYear:e[4], make:e[5], model:e[6],
-      desc:e[7], price:e[8], img:e[9], bedIn:null, bedSize:null, cabType:null, fitNote:null });
-  });
-}
-
-/* ── Price buckets ── */
-var PRICE_BUCKETS = [
-  {label:'Under $300',      min:0,    max:300},
-  {label:'$300 – $600',     min:300,  max:600},
-  {label:'$600 – $1,000',   min:600,  max:1000},
-  {label:'$1,000 – $1,500', min:1000, max:1500},
-  {label:'$1,500+',         min:1500, max:Infinity},
-];
-
-/* ── Finish detection from product name ── */
-function getFinish(product) {
-  var p = (product||'').toLowerCase();
-  if (p.includes('chrome')) return 'Chrome';
-  if (p.includes('stainless') || / ss$/.test(p) || p.includes('- ss') || p.includes('— ss')) return 'Stainless Steel';
-  if (p.includes('textured black') || p.includes('- black') || p.includes('— black') || p.includes('black steel') || p.includes('black aluminum') || / black$/.test(p) || p.includes('matte black')) return 'Textured Black';
-  if (p.includes('polished') || p.includes('polished stainless')) return 'Polished';
-  return null;
-}
-
-/* ════════════════════════════════════════════════
-   STATE
-════════════════════════════════════════════════ */
-var state = {
-  garage: null,
-  fitActive: false,
-  activeCat: 'all',
-  activeBrands: {},
-  activeTypes: {},
-  activePrices: {},
-  activeCabTypes: {},
-  activeFinishes: {},
-  activeBeds: {},
-  sort: 'fit'
-};
-
-/* ════════════════════════════════════════════════
-   INIT
-════════════════════════════════════════════════ */
-(function init() {
-  // Read URL param
-  var params = new URLSearchParams(window.location.search);
-  var catParam = params.get('cat');
-  if (catParam && ['tonneau','steps','racks'].includes(catParam)) {
-    state.activeCat = catParam;
-  }
-
-  // Load garage
-  try { state.garage = JSON.parse(localStorage.getItem(GARAGE_KEY)); } catch(e) {}
-  if (state.garage && state.garage.year) state.fitActive = true;
-
-  updateHeader();
-  updateGarageBar();
-  updateYMMBar();
-  buildYMMDropdowns();
-  buildSidebar();
-  render();
-  updateCatPills();
-})();
-
-/* ════════════════════════════════════════════════
-   FITMENT MATCHING
-════════════════════════════════════════════════ */
-function makesMatch(cm, gm) {
-  cm = (cm||'').toLowerCase(); gm = (gm||'').toLowerCase();
-  if (cm === gm) return true;
-  if ((cm==='ram'||cm==='dodge') && (gm==='ram'||gm==='dodge')) return true;
-  return false;
-}
-
-function modelsMatch(cm, gm) {
-  if (!cm || !gm) return false;
-  if (cm === gm) return true;
-  if (cm.indexOf(gm) !== -1 || gm.indexOf(cm) !== -1) return true;
-  // Tonneau combined model aliases
-  var aliases = [
-    [['silverado/sierra 1500'],['silverado 1500','sierra 1500']],
-    [['silverado/sierra 2500hd/3500hd'],['silverado 2500hd/3500hd','silverado hd','sierra 2500hd/3500hd','sierra hd']],
-    [['canyon/colorado'],['canyon','colorado']],
-    [['1500 w/o ram box','1500 with ram box','1500/2500/3500'],['1500']],
-  ];
-  for (var i=0; i<aliases.length; i++) {
-    var keys = aliases[i][0], vals = aliases[i][1];
-    if (keys.some(function(k){return cm===k||cm.includes(k);}) && vals.some(function(v){return gm===v||gm.includes(v)||v.includes(gm);})) return true;
-    if (vals.some(function(v){return cm===v||cm.includes(v)||v.includes(cm);}) && keys.some(function(k){return gm===k||gm.includes(k);})) return true;
-  }
-  return false;
-}
-
-function entryFits(e) {
-  if (!state.garage) return false;
-  var g = state.garage;
-  var yr = parseInt(g.year);
-  if (yr < e.startYear || yr > e.endYear) return false;
-  if (!makesMatch(e.make, g.make)) return false;
-  if (!modelsMatch((e.model||'').toLowerCase(), (g.model||'').toLowerCase())) return false;
-  // Bed size for tonneau
-  if (e.cat === 'tonneau' && e.bedIn && g.bedIn) {
-    if (Math.abs(e.bedIn - parseFloat(g.bedIn)) > 2) return false;
-  }
-  return true;
-}
-
-/* ════════════════════════════════════════════════
-   PRODUCT GROUPING
-   Groups ALL_ENTRIES by brand+product key,
-   one card per unique product
-════════════════════════════════════════════════ */
-function getGroupedProducts() {
-  var activeBrands   = Object.keys(state.activeBrands).filter(function(b){return state.activeBrands[b];});
-  var activeTypes    = Object.keys(state.activeTypes).filter(function(t){return state.activeTypes[t];});
-  var activePrices   = PRICE_BUCKETS.filter(function(b){return state.activePrices[b.label];});
-  var activeCabTypes = Object.keys(state.activeCabTypes).filter(function(c){return state.activeCabTypes[c];});
-  var activeFinishes = Object.keys(state.activeFinishes).filter(function(f){return state.activeFinishes[f];});
-  var activeBeds     = Object.keys(state.activeBeds).filter(function(b){return state.activeBeds[b];});
-
-  var pm = Object.create(null);
-
-  ALL_ENTRIES.forEach(function(e) {
-    if (state.activeCat !== 'all' && e.cat !== state.activeCat) return;
-    if (activeBrands.length && !activeBrands.includes(e.brand)) return;
-    if (activeTypes.length && !activeTypes.includes(getProductType(e))) return;
-    if (activeBeds.length && e.cat === 'tonneau' && !activeBeds.includes(e.bedSize)) return;
-    if (activeCabTypes.length && e.cabType && !activeCabTypes.includes(e.cabType)) return;
-    if (activeFinishes.length) {
-      var fin = getFinish(e.product);
-      if (!fin || !activeFinishes.includes(fin)) return;
-    }
-
-    var key = e.brand + '|' + e.product;
-    if (!pm[key]) {
-      pm[key] = { brand:e.brand, product:e.product, cat:e.cat,
-        repr:e, minPrice:null, fitCount:0, hasfit:false };
-    }
-    var p = pm[key];
-    if (e.price && (p.minPrice === null || e.price < p.minPrice)) p.minPrice = e.price;
-    if (entryFits(e)) { p.hasfit = true; p.fitCount++; }
-    if (!p.repr.img && e.img) p.repr = e;
-  });
-
-  var products = Object.keys(pm).map(function(k){ return pm[k]; });
-
-  // Price filter (applied at product level after grouping)
-  if (activePrices.length) {
-    products = products.filter(function(p){
-      if (p.minPrice === null) return false;
-      return activePrices.some(function(b){ return p.minPrice >= b.min && p.minPrice < b.max; });
-    });
-  }
-
-  if (state.fitActive && state.garage) {
-    products = products.filter(function(p){ return p.hasfit; });
-  }
-
-  return products;
-}
-
-/* ════════════════════════════════════════════════
-   SORT
-════════════════════════════════════════════════ */
-function sortProducts(arr) {
-  arr = arr.slice();
-  var s = state.sort;
-  if (s === 'price-asc')  arr.sort(function(a,b){ return (a.minPrice||9999)-(b.minPrice||9999); });
-  else if (s === 'price-desc') arr.sort(function(a,b){ return (b.minPrice||0)-(a.minPrice||0); });
-  else if (s === 'brand') arr.sort(function(a,b){ return a.brand.localeCompare(b.brand); });
-  else if (s === 'name')  arr.sort(function(a,b){ return a.product.localeCompare(b.product); });
-  else arr.sort(function(a,b){ return (b.hasfit?1:0)-(a.hasfit?1:0); });
-  return arr;
-}
-
-/* ════════════════════════════════════════════════
-   RENDER GRID
-════════════════════════════════════════════════ */
-function esc(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
-
-function render() {
-  var products = sortProducts(getGroupedProducts());
-  var grid = document.getElementById('product-grid');
-  var empty = document.getElementById('empty-state');
-  var countEl = document.getElementById('result-count');
-
-  // Result count
-  var fitCount = products.filter(function(p){ return p.hasfit; }).length;
-  if (state.fitActive && state.garage) {
-    var g = state.garage;
-    countEl.innerHTML = '<span>' + fitCount + '</span> products fit your ' + esc(g.year + ' ' + g.make + ' ' + g.model);
-  } else {
-    countEl.innerHTML = 'Showing <span>' + products.length + '</span> products';
-  }
-
-  if (!products.length) {
-    grid.innerHTML = '';
-    empty.style.display = 'block';
-    return;
-  }
-  empty.style.display = 'none';
-
-  grid.innerHTML = products.map(function(p) {
-    var e = p.repr;
-    var catBadge = {tonneau:'cat-tonneau',steps:'cat-steps',racks:'cat-racks'}[e.cat] || '';
-    var catLabel = {tonneau:'Tonneau Cover',steps:'Steps / Boards',racks:'Headache Rack'}[e.cat] || '';
-    var typeLabel = getProductType(e);
-
-    // Image
-    var imgSrc = (typeof PRODUCT_CONTENT !== 'undefined' && PRODUCT_CONTENT[e.product] && PRODUCT_CONTENT[e.product].img)
-      ? PRODUCT_CONTENT[e.product].img : (e.img || null);
-    var imgHtml = imgSrc
-      ? '<img src="' + esc(imgSrc) + '" alt="' + esc(e.product) + '" loading="lazy">'
-      : '<div class="card-ph"><div class="card-ph-brand">' + esc(e.brand.charAt(0)) + '</div><div class="card-ph-type">' + esc(typeLabel) + '</div></div>';
-
-    // Fit badge
-    var fitHtml = '';
-    if (state.fitActive && state.garage) {
-      fitHtml = p.hasfit
-        ? '<div class="card-fit"><div class="card-fit-icon">&#10003;</div><div class="card-fit-text">Fits Your Truck</div></div>'
-        : '<div class="card-nofit">&#x2715; Verify Fitment</div>';
-    }
-
-    // Price
-    var priceHtml = p.minPrice
-      ? '<div class="card-price-row"><span class="card-from">From</span><span class="card-price">$' + p.minPrice.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}) + '</span></div>'
-      : '';
-
-    return '<div class="product-card">'
-      + '<div class="card-img-wrap">' + imgHtml + '<span class="card-cat-badge ' + catBadge + '">' + esc(catLabel) + '</span></div>'
-      + '<div class="card-body">'
-        + '<div class="card-brand">' + esc(e.brand) + '</div>'
-        + '<div class="card-name">' + esc(e.product) + '</div>'
-        + '<div class="card-type">' + esc(typeLabel) + '</div>'
-        + fitHtml
-        + priceHtml
-        + '<div class="card-btns">'
-          + '<button class="card-btn card-btn-view" onclick="viewProduct(\'' + esc(e.brand).replace(/'/g,"\\'") + '\',\'' + esc(e.product).replace(/'/g,"\\'") + '\')">Details</button>'
-          + '<a href="' + QUOTE_URL + '" target="_top" class="card-btn card-btn-quote">Get a Quote</a>'
-        + '</div>'
-      + '</div>'
-      + '</div>';
-  }).join('');
-
-  renderActiveTags();
-  updateFilterBadge();
-  reportHeight();
-}
-
-function viewProduct(brand, product) {
-  var url = 'product-detail.html?brand=' + encodeURIComponent(brand) + '&product=' + encodeURIComponent(product);
-  window.location.href = url;
-}
-
-/* ════════════════════════════════════════════════
-   SIDEBAR BUILDER
-════════════════════════════════════════════════ */
-function buildSidebar() {
-  buildPriceFilter();
-  buildBrandFilter();
-  buildTypeFilter();
-  buildCabTypeFilter();
-  buildFinishFilter();
-  buildBedFilter();
-}
-
-function getVisibleEntries() {
-  return ALL_ENTRIES.filter(function(e){
-    return state.activeCat === 'all' || e.cat === state.activeCat;
-  });
-}
-
-function buildBrandFilter() {
-  var visible = getVisibleEntries();
-  var counts = Object.create(null);
-  var seen = Object.create(null);
-  visible.forEach(function(e) {
-    var k = e.brand + '|' + e.product;
-    if (!seen[k]) { seen[k]=true; counts[e.brand]=(counts[e.brand]||0)+1; }
-  });
-  var brands = Object.keys(counts).sort();
-  var el = document.getElementById('sb-brands');
-  // Reset state for new brands
-  var newBrands = Object.create(null);
-  brands.forEach(function(b){ newBrands[b] = state.activeBrands[b] || false; });
-  state.activeBrands = newBrands;
-  el.innerHTML = brands.map(function(b) {
-    var id = 'cb-brand-' + b.replace(/[^a-z0-9]/gi,'-');
-    return '<div class="filter-item" onclick="toggleBrand(\'' + b.replace(/'/g,"\\'") + '\')">'
-      + '<div class="cb' + (state.activeBrands[b]?' checked':'') + '" id="' + id + '"></div>'
-      + '<span class="filter-label">' + esc(b) + '</span>'
-      + '<span class="filter-count">' + counts[b] + '</span>'
-      + '</div>';
-  }).join('');
-
-  // Mobile chips
-  var mEl = document.getElementById('mob-chips-brand');
-  mEl.innerHTML = brands.map(function(b){
-    return '<div class="mob-chip' + (state.activeBrands[b]?' active':'') + '" data-filter="brand" data-val="' + esc(b) + '" onclick="mobChipToggle(this)">' + esc(b) + '</div>';
-  }).join('');
-}
-
-function buildTypeFilter() {
-  var visible = getVisibleEntries();
-  var counts = Object.create(null);
-  var seen = Object.create(null);
-  visible.forEach(function(e) {
-    var k = e.brand + '|' + e.product;
-    if (!seen[k]) {
-      seen[k] = true;
-      var t = getProductType(e);
-      counts[t] = (counts[t]||0)+1;
-    }
-  });
-  var types = Object.keys(counts).sort();
-  var newTypes = Object.create(null);
-  types.forEach(function(t){ newTypes[t] = state.activeTypes[t] || false; });
-  state.activeTypes = newTypes;
-
-  var el = document.getElementById('sb-types');
-  el.innerHTML = types.map(function(t) {
-    var id = 'cb-type-' + t.replace(/[^a-z0-9]/gi,'-');
-    return '<div class="filter-item" onclick="toggleType(\'' + t.replace(/'/g,"\\'") + '\')">'
-      + '<div class="cb' + (state.activeTypes[t]?' checked':'') + '" id="' + id + '"></div>'
-      + '<span class="filter-label">' + esc(t) + '</span>'
-      + '<span class="filter-count">' + counts[t] + '</span>'
-      + '</div>';
-  }).join('');
-
-  var mEl = document.getElementById('mob-chips-type');
-  mEl.innerHTML = types.map(function(t){
-    return '<div class="mob-chip' + (state.activeTypes[t]?' active':'') + '" data-filter="type" data-val="' + esc(t) + '" onclick="mobChipToggle(this)">' + esc(t) + '</div>';
-  }).join('');
-}
-
-function buildPriceFilter() {
-  var el = document.getElementById('sb-prices');
-  var mob = document.getElementById('mob-chips-price');
-  el.innerHTML = PRICE_BUCKETS.map(function(b) {
-    var id = 'cb-price-' + b.label.replace(/[^a-z0-9]/gi,'-');
-    return '<div class="filter-item" onclick="togglePrice(\'' + b.label.replace(/'/g,"\\'") + '\')">'
-      + '<div class="cb' + (state.activePrices[b.label]?' checked':'') + '" id="' + id + '"></div>'
-      + '<span class="filter-label">' + esc(b.label) + '</span>'
-      + '</div>';
-  }).join('');
-  mob.innerHTML = PRICE_BUCKETS.map(function(b){
-    return '<div class="mob-chip' + (state.activePrices[b.label]?' active':'') + '" data-filter="price" data-val="' + esc(b.label) + '" onclick="mobChipToggle(this)">' + esc(b.label) + '</div>';
-  }).join('');
-}
-
-function buildCabTypeFilter() {
-  var show = (state.activeCat === 'steps' || state.activeCat === 'all');
-  document.getElementById('sb-cab-section').style.display = show ? 'block' : 'none';
-  if (!show) return;
-  var visible = ALL_ENTRIES.filter(function(e){ return (state.activeCat==='all'||e.cat==='steps') && e.cabType; });
-  var counts = Object.create(null);
-  var seen = Object.create(null);
-  visible.forEach(function(e){
-    var k = e.brand+'|'+e.product+'|'+e.cabType;
-    if (!seen[k]) { seen[k]=true; counts[e.cabType]=(counts[e.cabType]||0)+1; }
-  });
-  var cabs = Object.keys(counts).sort();
-  var newCabs = Object.create(null);
-  cabs.forEach(function(c){ newCabs[c] = state.activeCabTypes[c]||false; });
-  state.activeCabTypes = newCabs;
-  var el = document.getElementById('sb-cabs');
-  el.innerHTML = cabs.map(function(c){
-    var id = 'cb-cab-' + c.replace(/[^a-z0-9]/gi,'-');
-    return '<div class="filter-item" onclick="toggleCabType(\'' + c.replace(/'/g,"\\'") + '\')">'
-      + '<div class="cb' + (state.activeCabTypes[c]?' checked':'') + '" id="' + id + '"></div>'
-      + '<span class="filter-label">' + esc(c) + '</span>'
-      + '<span class="filter-count">' + counts[c] + '</span>'
-      + '</div>';
-  }).join('');
-  var mob = document.getElementById('mob-chips-cab');
-  mob.innerHTML = cabs.map(function(c){
-    return '<div class="mob-chip' + (state.activeCabTypes[c]?' active':'') + '" data-filter="cab" data-val="' + esc(c) + '" onclick="mobChipToggle(this)">' + esc(c) + '</div>';
-  }).join('');
-}
-
-function buildFinishFilter() {
-  var visible = getVisibleEntries();
-  var counts = Object.create(null);
-  var seen = Object.create(null);
-  visible.forEach(function(e){
-    var fin = getFinish(e.product);
-    if (!fin) return;
-    var k = e.brand+'|'+e.product;
-    if (!seen[k]) { seen[k]=true; counts[fin]=(counts[fin]||0)+1; }
-  });
-  var finishes = Object.keys(counts).sort();
-  var newFin = Object.create(null);
-  finishes.forEach(function(f){ newFin[f]=state.activeFinishes[f]||false; });
-  state.activeFinishes = newFin;
-  var el = document.getElementById('sb-finishes');
-  var mob = document.getElementById('mob-chips-finish');
-  if (!finishes.length) {
-    el.innerHTML = '<span style="font-family:Inter,sans-serif;font-size:12px;color:#aaa;">Multiple finishes available</span>';
-    mob.innerHTML = '';
-    return;
-  }
-  el.innerHTML = finishes.map(function(f){
-    var id = 'cb-fin-' + f.replace(/[^a-z0-9]/gi,'-');
-    return '<div class="filter-item" onclick="toggleFinish(\'' + f.replace(/'/g,"\\'") + '\')">'
-      + '<div class="cb' + (state.activeFinishes[f]?' checked':'') + '" id="' + id + '"></div>'
-      + '<span class="filter-label">' + esc(f) + '</span>'
-      + '<span class="filter-count">' + counts[f] + '</span>'
-      + '</div>';
-  }).join('');
-  mob.innerHTML = finishes.map(function(f){
-    return '<div class="mob-chip' + (state.activeFinishes[f]?' active':'') + '" data-filter="finish" data-val="' + esc(f) + '" onclick="mobChipToggle(this)">' + esc(f) + '</div>';
-  }).join('');
-}
-
-function buildBedFilter() {
-  var show = (state.activeCat === 'tonneau' || state.activeCat === 'all');
-  document.getElementById('sb-bed-section').style.display = show ? 'block' : 'none';
-  if (!show) return;
-  var visible = ALL_ENTRIES.filter(function(e){ return e.cat === 'tonneau' && e.bedSize; });
-  var counts = Object.create(null);
-  var seen = Object.create(null);
-  visible.forEach(function(e){
-    if (!seen[e.bedSize]) { seen[e.bedSize]=true; counts[e.bedSize]=(counts[e.bedSize]||0)+1; }
-  });
-  var beds = Object.keys(counts).sort();
-  var newBeds = Object.create(null);
-  beds.forEach(function(b){ newBeds[b] = state.activeBeds[b] || false; });
-  state.activeBeds = newBeds;
-  var el = document.getElementById('sb-beds');
-  el.innerHTML = beds.map(function(b){
-    var id = 'cb-bed-' + b.replace(/[^a-z0-9]/gi,'-');
-    return '<div class="filter-item" onclick="toggleBed(\'' + b.replace(/'/g,"\\'") + '\')">'
-      + '<div class="cb' + (state.activeBeds[b]?' checked':'') + '" id="' + id + '"></div>'
-      + '<span class="filter-label">' + esc(b) + '</span>'
-      + '<span class="filter-count">' + counts[b] + '</span>'
-      + '</div>';
-  }).join('');
-}
-
-/* ════════════════════════════════════════════════
-   FILTER TOGGLES
-════════════════════════════════════════════════ */
-function toggleBrand(b) {
-  state.activeBrands[b] = !state.activeBrands[b];
-  var el = document.getElementById('cb-brand-' + b.replace(/[^a-z0-9]/gi,'-'));
-  if (el) el.classList.toggle('checked', state.activeBrands[b]);
-  render();
-}
-function toggleType(t) {
-  state.activeTypes[t] = !state.activeTypes[t];
-  var el = document.getElementById('cb-type-' + t.replace(/[^a-z0-9]/gi,'-'));
-  if (el) el.classList.toggle('checked', state.activeTypes[t]);
-  render();
-}
-function toggleBed(b) {
-  state.activeBeds[b] = !state.activeBeds[b];
-  var el = document.getElementById('cb-bed-' + b.replace(/[^a-z0-9]/gi,'-'));
-  if (el) el.classList.toggle('checked', state.activeBeds[b]);
-  render();
-}
-function togglePrice(label) {
-  state.activePrices[label] = !state.activePrices[label];
-  var el = document.getElementById('cb-price-' + label.replace(/[^a-z0-9]/gi,'-'));
-  if (el) el.classList.toggle('checked', state.activePrices[label]);
-  render();
-}
-function toggleCabType(c) {
-  state.activeCabTypes[c] = !state.activeCabTypes[c];
-  var el = document.getElementById('cb-cab-' + c.replace(/[^a-z0-9]/gi,'-'));
-  if (el) el.classList.toggle('checked', state.activeCabTypes[c]);
-  render();
-}
-function toggleFinish(f) {
-  state.activeFinishes[f] = !state.activeFinishes[f];
-  var el = document.getElementById('cb-fin-' + f.replace(/[^a-z0-9]/gi,'-'));
-  if (el) el.classList.toggle('checked', state.activeFinishes[f]);
-  render();
-}
-
-function setCat(cat) {
-  state.activeCat = cat;
-  state.activeBrands = {};
-  state.activeTypes = {};
-  state.activePrices = {};
-  state.activeCabTypes = {};
-  state.activeFinishes = {};
-  state.activeBeds = {};
-  updateHeader();
-  updateCatPills();
-  buildSidebar();
-  render();
-}
-
-/* ════════════════════════════════════════════════
-   ACTIVE FILTER TAGS
-════════════════════════════════════════════════ */
-function renderActiveTags() {
-  var strip = document.getElementById('active-filters');
-  strip.innerHTML = '<span class="active-label">Filters:</span>';
-
-  if (state.fitActive && state.garage) {
-    var g = state.garage;
-    var tag = document.createElement('span');
-    tag.className = 'filter-tag filter-tag-fit';
-    tag.innerHTML = esc(g.year + ' ' + g.make + ' ' + g.model) + ' &times;';
-    tag.onclick = function(){ clearGarage(); };
-    strip.appendChild(tag);
-  }
-  Object.keys(state.activeBrands).forEach(function(b){
-    if (!state.activeBrands[b]) return;
-    var tag = document.createElement('span');
-    tag.className = 'filter-tag';
-    tag.innerHTML = esc(b) + ' &times;';
-    tag.onclick = function(){ toggleBrand(b); };
-    strip.appendChild(tag);
-  });
-  Object.keys(state.activeTypes).forEach(function(t){
-    if (!state.activeTypes[t]) return;
-    var tag = document.createElement('span');
-    tag.className = 'filter-tag';
-    tag.innerHTML = esc(t) + ' &times;';
-    tag.onclick = function(){ toggleType(t); };
-    strip.appendChild(tag);
-  });
-  PRICE_BUCKETS.forEach(function(b){
-    if (!state.activePrices[b.label]) return;
-    var tag = document.createElement('span');
-    tag.className = 'filter-tag';
-    tag.innerHTML = esc(b.label) + ' &times;';
-    tag.onclick = function(){ togglePrice(b.label); };
-    strip.appendChild(tag);
-  });
-  Object.keys(state.activeCabTypes).forEach(function(c){
-    if (!state.activeCabTypes[c]) return;
-    var tag = document.createElement('span');
-    tag.className = 'filter-tag';
-    tag.innerHTML = esc(c) + ' &times;';
-    tag.onclick = function(){ toggleCabType(c); };
-    strip.appendChild(tag);
-  });
-  Object.keys(state.activeFinishes).forEach(function(f){
-    if (!state.activeFinishes[f]) return;
-    var tag = document.createElement('span');
-    tag.className = 'filter-tag';
-    tag.innerHTML = esc(f) + ' &times;';
-    tag.onclick = function(){ toggleFinish(f); };
-    strip.appendChild(tag);
-  });
-}
-
-function updateFilterBadge() {
-  var count = (state.fitActive?1:0)
-    + Object.values(state.activeBrands).filter(Boolean).length
-    + Object.values(state.activeTypes).filter(Boolean).length
-    + Object.values(state.activePrices).filter(Boolean).length
-    + Object.values(state.activeCabTypes).filter(Boolean).length
-    + Object.values(state.activeFinishes).filter(Boolean).length
-    + Object.values(state.activeBeds).filter(Boolean).length;
-  var badge = document.getElementById('filter-badge');
-  badge.textContent = count;
-  badge.style.display = count ? 'inline-flex' : 'none';
-}
-
-/* ════════════════════════════════════════════════
-   GARAGE BAR
-════════════════════════════════════════════════ */
-function updateGarageBar() {
-  var g = state.garage;
-  var textEl = document.getElementById('gb-vehicle-text');
-  var badge  = document.getElementById('gb-badge');
-  if (g && g.year && g.make && g.model) {
-    textEl.textContent = g.year + ' ' + g.make + ' ' + g.model + (g.bedSize ? ' · ' + g.bedSize : '');
-    badge.textContent = '✓ Fitment Active';
-    badge.classList.remove('no-garage');
-  } else {
-    textEl.textContent = 'No vehicle saved';
-    badge.textContent = 'My Garage';
-    badge.classList.add('no-garage');
-  }
-}
-
-function updateYMMBar() {
-  document.getElementById('ymm-bar').style.display = (state.garage && state.garage.year) ? 'none' : 'block';
-}
-
-function clearGarage() {
-  try { localStorage.removeItem(GARAGE_KEY); } catch(e) {}
-  state.garage = null; state.fitActive = false;
-  updateGarageBar(); updateYMMBar();
-  buildYMMDropdowns();
-  render();
-}
-
-document.getElementById('gb-change-btn').addEventListener('click', clearGarage);
-
-/* ════════════════════════════════════════════════
-   YMM BAR
-════════════════════════════════════════════════ */
-function buildYMMDropdowns() {
-  var selYear  = document.getElementById('ymm-year');
-  var selMake  = document.getElementById('ymm-make');
-  var selModel = document.getElementById('ymm-model');
-
-  // Build year set from active category entries
-  var catEntries = state.activeCat === 'all' ? ALL_ENTRIES
-    : ALL_ENTRIES.filter(function(e){ return e.cat === state.activeCat; });
-
-  var yearSet = Object.create(null);
-  catEntries.forEach(function(e){ for(var y=e.startYear;y<=e.endYear;y++) yearSet[y]=true; });
-  var years = Object.keys(yearSet).map(Number).sort(function(a,b){return b-a;});
-
-  selYear.innerHTML = '<option value="">Year</option>';
-  years.forEach(function(y){ var o=document.createElement('option'); o.value=y; o.textContent=y; selYear.appendChild(o); });
-  selMake.innerHTML = '<option value="">Make</option>';
-  selMake.disabled = true;
-  selModel.innerHTML = '<option value="">Model</option>';
-  selModel.disabled = true;
-  document.getElementById('ymm-go-btn').disabled = true;
-}
-
-document.getElementById('ymm-year').addEventListener('change', function(){
-  var yr = parseInt(this.value);
-  var selMake = document.getElementById('ymm-make');
-  var selModel = document.getElementById('ymm-model');
-  selMake.innerHTML = '<option value="">Make</option>';
-  selModel.innerHTML = '<option value="">Model</option>';
-  selModel.disabled = true;
-  document.getElementById('ymm-go-btn').disabled = true;
-  if (!yr) { selMake.disabled=true; return; }
-  var catEntries = state.activeCat==='all' ? ALL_ENTRIES : ALL_ENTRIES.filter(function(e){return e.cat===state.activeCat;});
-  var makes = [...new Set(catEntries.filter(function(e){return yr>=e.startYear&&yr<=e.endYear;}).map(function(e){return e.make;}))].sort();
-  selMake.disabled = false;
-  makes.forEach(function(m){ var o=document.createElement('option'); o.value=m; o.textContent=m; selMake.appendChild(o); });
-});
-
-document.getElementById('ymm-make').addEventListener('change', function(){
-  var yr = parseInt(document.getElementById('ymm-year').value);
-  var make = this.value;
-  var selModel = document.getElementById('ymm-model');
-  selModel.innerHTML = '<option value="">Model</option>';
-  document.getElementById('ymm-go-btn').disabled = true;
-  if (!make) { selModel.disabled=true; return; }
-  var catEntries = state.activeCat==='all' ? ALL_ENTRIES : ALL_ENTRIES.filter(function(e){return e.cat===state.activeCat;});
-  var models = [...new Set(catEntries.filter(function(e){return yr>=e.startYear&&yr<=e.endYear&&e.make===make;}).map(function(e){return e.model;}))].sort();
-  selModel.disabled = false;
-  models.forEach(function(m){ var o=document.createElement('option'); o.value=m; o.textContent=m; selModel.appendChild(o); });
-});
-
-document.getElementById('ymm-model').addEventListener('change', function(){
-  document.getElementById('ymm-go-btn').disabled = !this.value;
-});
-
-document.getElementById('ymm-go-btn').addEventListener('click', function(){
-  var yr  = document.getElementById('ymm-year').value;
-  var mk  = document.getElementById('ymm-make').value;
-  var mdl = document.getElementById('ymm-model').value;
-  if (!yr||!mk||!mdl) return;
-  var g = { year:yr, make:mk, model:mdl };
-  try { localStorage.setItem(GARAGE_KEY, JSON.stringify(g)); } catch(e) {}
-  state.garage = g; state.fitActive = true;
-  updateGarageBar(); updateYMMBar(); render();
-  document.getElementById('product-grid').scrollIntoView({behavior:'smooth',block:'start'});
-});
-
-/* ════════════════════════════════════════════════
-   HEADER & CAT PILLS
-════════════════════════════════════════════════ */
-function updateHeader() {
-  var h = CATALOG_HERO[state.activeCat] || CATALOG_HERO.all;
-  document.getElementById('header-eyebrow').textContent = h.eyebrow;
-  document.getElementById('header-title').innerHTML = h.title;
-}
-
-function updateCatPills() {
-  document.querySelectorAll('.cat-pill').forEach(function(btn){
-    btn.classList.toggle('active', btn.dataset.cat === state.activeCat);
-  });
-}
-
-document.querySelectorAll('.cat-pill').forEach(function(btn){
-  btn.addEventListener('click', function(){ setCat(this.dataset.cat); });
-});
-
-document.getElementById('sort-sel').addEventListener('change', function(){ state.sort=this.value; render(); });
-
-/* ════════════════════════════════════════════════
-   MOBILE FILTER
-════════════════════════════════════════════════ */
-document.getElementById('mob-filter-open-btn').addEventListener('click', function(){
-  document.getElementById('mob-filter').classList.add('open');
-  buildBrandFilter(); buildTypeFilter();
-});
-document.getElementById('mob-filter-close').addEventListener('click', function(){
-  document.getElementById('mob-filter').classList.remove('open');
-});
-document.getElementById('mob-apply-btn').addEventListener('click', function(){
-  // Apply category
-  var catChip = document.querySelector('#mob-chips-cat .mob-chip.active');
-  if (catChip) setCat(catChip.dataset.val);
-  // Apply brands
-  Object.keys(state.activeBrands).forEach(function(b){ state.activeBrands[b]=false; });
-  document.querySelectorAll('#mob-chips-brand .mob-chip.active').forEach(function(c){ state.activeBrands[c.dataset.val]=true; });
-  // Apply types
-  Object.keys(state.activeTypes).forEach(function(t){ state.activeTypes[t]=false; });
-  document.querySelectorAll('#mob-chips-type .mob-chip.active').forEach(function(c){ state.activeTypes[c.dataset.val]=true; });
-  // Apply prices
-  Object.keys(state.activePrices).forEach(function(p){ state.activePrices[p]=false; });
-  document.querySelectorAll('#mob-chips-price .mob-chip.active').forEach(function(c){ state.activePrices[c.dataset.val]=true; });
-  // Apply cab types
-  Object.keys(state.activeCabTypes).forEach(function(c){ state.activeCabTypes[c]=false; });
-  document.querySelectorAll('#mob-chips-cab .mob-chip.active').forEach(function(c){ state.activeCabTypes[c.dataset.val]=true; });
-  // Apply finishes
-  Object.keys(state.activeFinishes).forEach(function(f){ state.activeFinishes[f]=false; });
-  document.querySelectorAll('#mob-chips-finish .mob-chip.active').forEach(function(c){ state.activeFinishes[c.dataset.val]=true; });
-  document.getElementById('mob-filter').classList.remove('open');
-  buildSidebar(); render();
-});
-
-function mobChipToggle(chip) {
-  var filter = chip.dataset.filter;
-  if (filter === 'cat') {
-    document.querySelectorAll('#mob-chips-cat .mob-chip').forEach(function(c){ c.classList.remove('active'); });
-    chip.classList.add('active');
-  } else {
-    chip.classList.toggle('active');
-  }
-}
-
-
-// Build mobile cat chips
-(function(){
-  var cats = [{val:'all',label:'All'},{val:'tonneau',label:'Tonneau Covers'},{val:'steps',label:'Steps & Boards'},{val:'racks',label:'Headache Racks'}];
-  var el = document.getElementById('mob-chips-cat');
-  el.innerHTML = cats.map(function(c){
-    return '<div class="mob-chip' + (c.val===state.activeCat?' active':'') + '" data-filter="cat" data-val="' + c.val + '" onclick="mobChipToggle(this)">' + c.label + '</div>';
-  }).join('');
-})();
-
-/* ════════════════════════════════════════════════
-   WIX IFRAME HEIGHT REPORTING
-════════════════════════════════════════════════ */
-function reportHeight(){
-  var sentinel=document.getElementById('height-sentinel');
-  var h=sentinel?(sentinel.offsetTop+sentinel.offsetHeight):Math.max(document.body.scrollHeight,document.body.offsetHeight,document.documentElement.scrollHeight,document.documentElement.offsetHeight);
-  window.parent.postMessage(JSON.stringify({height:h}),'*');
-}
-document.addEventListener('DOMContentLoaded',reportHeight);
-window.addEventListener('load',function(){[0,200,500,1000,2000,3500].forEach(function(t){setTimeout(reportHeight,t);});});
-window.addEventListener('resize',reportHeight);
-if(window.ResizeObserver){new ResizeObserver(reportHeight).observe(document.body);}
-</script>
-
-<script src="https://rlsh1855.github.io/3Js-and-RLSH-Website/site-nav.js"></script>
-<div id="height-sentinel" style="height:1px;width:1px;visibility:hidden;pointer-events:none;"></div>
-<script>
-(function(){var active=false,startY=0,lastY=0,rafId=null;document.addEventListener('mousedown',function(e){if(e.button!==1)return;if(e.target.closest('a'))return;e.preventDefault();active=true;startY=e.clientY;lastY=e.clientY;document.body.style.cursor='ns-resize';tick();});document.addEventListener('mousemove',function(e){if(active)lastY=e.clientY;});document.addEventListener('mouseup',function(e){if(e.button!==1||!active)return;active=false;document.body.style.cursor='';if(rafId){cancelAnimationFrame(rafId);rafId=null;}});function tick(){if(!active){rafId=null;return;}var dy=lastY-startY;if(Math.abs(dy)>5)window.scrollBy(0,dy*0.12);rafId=requestAnimationFrame(tick);}})();
-</script><!-- EFFECTS: grain Â· scroll-reveal Â· border sweep Â· parallax Â· inertia -->
-<style>
-@keyframes grain{0%,100%{transform:translate(0,0);}10%{transform:translate(-2%,-3%);}20%{transform:translate(3%,1%);}30%{transform:translate(-1%,4%);}40%{transform:translate(4%,-2%);}50%{transform:translate(-3%,3%);}60%{transform:translate(2%,-4%);}70%{transform:translate(-4%,1%);}80%{transform:translate(1%,3%);}90%{transform:translate(3%,-1%);}}
-.grain::before{content:'';position:absolute;inset:-50%;width:200%;height:200%;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");background-size:200px 200px;opacity:0.038;animation:grain 0.8s steps(1) infinite;pointer-events:none;z-index:3;}
-[data-anim]{opacity:0;transition:opacity 0.65s ease,transform 0.65s ease;}[data-anim="fade-up"]{transform:translateY(32px);}[data-anim="fade-in"]{transform:none;}[data-anim].visible{opacity:1;transform:none;}[data-delay="100"]{transition-delay:0.10s;}[data-delay="200"]{transition-delay:0.20s;}[data-delay="300"]{transition-delay:0.30s;}[data-delay="400"]{transition-delay:0.40s;}[data-delay="500"]{transition-delay:0.50s;}
-@media(prefers-reduced-motion:reduce){[data-anim]{opacity:1;transform:none;transition:none;}[data-delay="100"],[data-delay="200"],[data-delay="300"],[data-delay="400"],[data-delay="500"]{transition-delay:0s;}}
-.product-card,.mfr-card{position:relative;}.card-border-sweep{position:absolute;inset:0;pointer-events:none;z-index:6;overflow:hidden;}.card-border-sweep canvas{position:absolute;inset:0;width:100%;height:100%;}
-</style>
-<script>
-(function(){var els=document.querySelectorAll('[data-anim]');if(!els.length)return;var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}});},{threshold:0.12});els.forEach(function(el){io.observe(el);});})();
-(function(){var COLOR='#8B0000',DURATION=700,BORDER=2;function getPL(w,h){return 2*(w+h);}function ptP(x,y,w,h){if(y<=BORDER)return x;if(x>=w-BORDER)return w+y;if(y>=h-BORDER)return w+h+(w-x);return w+h+w+(h-y);}function initCard(card){if(card.querySelector('.card-border-sweep'))return;var wrap=document.createElement('div');wrap.className='card-border-sweep';var cvs=document.createElement('canvas');wrap.appendChild(cvs);card.appendChild(wrap);var raf=null,startP=0,progress=0,animStart=0,leaving=false,leaveStart=0,leaveOpacity=0;function resize(){cvs.width=card.offsetWidth;cvs.height=card.offsetHeight;}resize();new ResizeObserver(resize).observe(card);function draw(now){var w=cvs.width,h=cvs.height,ctx=cvs.getContext('2d');ctx.clearRect(0,0,w,h);var perim=getPL(w,h),opacity=1;if(leaving){var elapsed=now-leaveStart;opacity=leaveOpacity*(1-Math.min(elapsed/350,1));if(opacity<=0){raf=null;return;}}else{var elapsed2=now-animStart;progress=Math.min(elapsed2/DURATION,1);progress=1-Math.pow(1-progress,3);}var sweepLen=perim*progress,segs=[{x1:0,y1:0,x2:w,y2:0},{x1:w,y1:0,x2:w,y2:h},{x1:w,y1:h,x2:0,y2:h},{x1:0,y1:h,x2:0,y2:0}],sLens=[w,h,w,h],drawn=0,s=startP%perim,started=false;ctx.save();ctx.strokeStyle=COLOR;ctx.lineWidth=BORDER;ctx.globalAlpha=opacity;ctx.beginPath();for(var pass=0;pass<2;pass++){var cum=0;for(var i=0;i<4;i++){var sLen=sLens[i],sStart=cum,sEnd=cum+sLen;cum+=sLen;if(!started){if(sEnd<=s)continue;var t=(s-sStart)/sLen,sx=segs[i].x1+(segs[i].x2-segs[i].x1)*t,sy=segs[i].y1+(segs[i].y2-segs[i].y1)*t;ctx.moveTo(sx,sy);started=true;var rem=sLen*(1-t),canDraw=Math.min(rem,sweepLen-drawn),t2=t+canDraw/sLen;ctx.lineTo(segs[i].x1+(segs[i].x2-segs[i].x1)*t2,segs[i].y1+(segs[i].y2-segs[i].y1)*t2);drawn+=canDraw;}else{var canDraw2=Math.min(sLen,sweepLen-drawn),t3=canDraw2/sLen;ctx.lineTo(segs[i].x1+(segs[i].x2-segs[i].x1)*t3,segs[i].y1+(segs[i].y2-segs[i].y1)*t3);drawn+=canDraw2;}if(drawn>=sweepLen)break;}if(drawn>=sweepLen||pass===1)break;s=0;}ctx.stroke();ctx.restore();raf=requestAnimationFrame(draw);}card.addEventListener('mouseenter',function(e){leaving=false;var rect=card.getBoundingClientRect();startP=ptP(e.clientX-rect.left,e.clientY-rect.top,cvs.width,cvs.height);progress=0;animStart=performance.now();if(!raf)raf=requestAnimationFrame(draw);});card.addEventListener('mouseleave',function(){leaving=true;leaveStart=performance.now();leaveOpacity=progress;});}document.addEventListener('DOMContentLoaded',function(){document.querySelectorAll('.product-card,.mfr-card').forEach(initCard);});})();
-(function(){if(window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;var bg=document.querySelector('.hero-bg');if(!bg)return;window.addEventListener('scroll',function(){bg.style.transform='scale(1.04) translateY('+(window.scrollY*0.28)+'px)';},{passive:true});})();
-(function(){if(window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;if('ontouchstart' in window)return;var target=window.scrollY,current=window.scrollY,raf=null;function clamp(v){return Math.max(0,Math.min(v,document.documentElement.scrollHeight-window.innerHeight));}window.addEventListener('wheel',function(e){if(e.ctrlKey)return;if(document.documentElement.scrollHeight<=window.innerHeight+5)return;e.preventDefault();target=clamp(target+e.deltaY*0.85);if(!raf)raf=requestAnimationFrame(tick);},{passive:false});window.addEventListener('scroll',function(){if(!raf){target=window.scrollY;current=window.scrollY;}},{passive:true});function tick(){current=current+(target-current)*0.08;window.scrollTo(0,current);if(Math.abs(target-current)>0.3)raf=requestAnimationFrame(tick);else{current=target;window.scrollTo(0,target);raf=null;}}})()
-</script>
-</body>
-</html>
-
+<!DOCTYPE html>\n<html lang="en">\n<head>\n  <meta charset="UTF-8"/>\n  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>\n  <title>Shop Truck Accessories — 3J's Auto Body Signal Hill CA</title>\n  <meta name="description" content="Shop tonneau covers, running boards, nerf bars, power steps, and headache racks for your truck — professionally installed at 3J's Auto Body in Signal Hill, CA.">\n  <meta name="robots" content="index, follow">\n  <link rel="canonical" href="https://rlsh1855.github.io/3Js-and-RLSH-Website/shop.html">\n  <link rel="preconnect" href="https://fonts.googleapis.com">\n  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>\n\n  <!-- Data files -->\n  <script src="https://rlsh1855.github.io/3Js-and-RLSH-Website/catalog-data.js"></script>\n  <script src="https://rlsh1855.github.io/3Js-and-RLSH-Website/extra-tonneau-data.js"></script>\n  <script src="https://rlsh1855.github.io/3Js-and-RLSH-Website/running-boards-data.js"></script>\n  <script src="https://rlsh1855.github.io/3Js-and-RLSH-Website/gorhino-data.js"></script>\n  <script src="https://rlsh1855.github.io/3Js-and-RLSH-Website/amp-data.js"></script>\n  <script src="https://rlsh1855.github.io/3Js-and-RLSH-Website/westin-data.js"></script>\n  <script src="https://rlsh1855.github.io/3Js-and-RLSH-Website/lund-data.js"></script>\n  <script src="https://rlsh1855.github.io/3Js-and-RLSH-Website/headache-racks-data.js"></script>\n  <script src="https://rlsh1855.github.io/3Js-and-RLSH-Website/product-content.js"></script>\n\n  <style>\n    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}\n    html{overflow-y:scroll;scrollbar-width:none;}\n    body{font-family:'Inter',sans-serif;background:#f2f2f2;color:#1a1a1a;font-size:15px;overflow-x:hidden;}\n    a{text-decoration:none;color:inherit;}\n    img{max-width:100%;display:block;}\n    button,select,input{font-family:'Montserrat',sans-serif;}\n\n    /* ── GARAGE BAR ── */\n    #garage-bar{background:#1a1a1a;padding:9px 16px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}\n    .gb-left{display:flex;align-items:center;gap:10px;}\n    .gb-vehicle{font-family:'Inter',sans-serif;font-size:12px;font-weight:600;color:#fff;}\n    .gb-badge{background:#1a7a1a;color:#fff;font-family:'Montserrat',sans-serif;font-size:9px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:3px 10px;border-radius:0;}\n    .gb-badge.no-garage{background:#555;}\n    .gb-right{display:flex;gap:12px;}\n    .gb-link{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;color:#999;text-decoration:none;cursor:pointer;background:none;border:none;letter-spacing:2px;text-transform:uppercase;display:inline-flex;align-items:center;gap:6px;transition:color 0.2s;}\n    .gb-link:hover{color:#fff;}\n\n    /* ── PAGE HEADER ── */\n    .page-header{background:#111;padding:20px 16px 18px;border-bottom:3px solid #8B0000;}\n    .page-header-inner{max-width:1200px;margin:0 auto;display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:12px;}\n    .page-header-left .eyebrow{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:#8B0000;display:block;margin-bottom:5px;}\n    .page-header-left h1{font-family:'Montserrat',sans-serif;font-size:clamp(20px,3vw,28px);font-weight:800;color:#fff;letter-spacing:-0.5px;text-transform:uppercase;line-height:1.0;}\n    .page-header-left h1 em{color:#8B0000;font-style:normal;}\n    .page-header-right{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}\n    .cat-pill{display:inline-flex;align-items:center;height:32px;padding:0 14px;font-family:'Montserrat',sans-serif;font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.5);border:1px solid rgba(255,255,255,0.15);border-radius:0;cursor:pointer;transition:all 0.2s;background:transparent;}\n    .cat-pill:hover{color:#fff;border-color:rgba(255,255,255,0.4);}\n    .cat-pill.active{background:#8B0000;color:#fff;border-color:#8B0000;}\n\n    /* ── YMM BAR ── */\n    #ymm-bar{background:#fff;border-bottom:2px solid #e8e8e8;padding:12px 16px;}\n    .ymm-bar-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:8px;flex-wrap:wrap;}\n    .ymm-bar-label{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#8B0000;white-space:nowrap;flex-shrink:0;}\n    .ymm-selects{display:flex;gap:6px;flex:1;flex-wrap:wrap;}\n    .ymm-sel{flex:1;min-width:80px;padding:8px 10px;border:2px solid #e0e0e0;border-radius:0;font-family:'Inter',sans-serif;font-size:13px;font-weight:500;color:#1a1a1a;background:#fff;appearance:none;-webkit-appearance:none;cursor:pointer;outline:none;}\n    .ymm-sel:focus{border-color:#8B0000;}\n    .ymm-sel:disabled{background:#f5f5f5;color:#bbb;cursor:not-allowed;}\n    .ymm-go{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:40px;padding:0 18px;background:#8B0000;color:#fff;border:none;border-radius:0;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;cursor:pointer;white-space:nowrap;flex-shrink:0;transition:background 0.2s;}\n    .ymm-go:hover{background:#a00000;}\n    .ymm-go:disabled{background:#ccc;cursor:not-allowed;}\n\n    /* ── CATALOG LAYOUT ── */\n    .catalog-wrap{display:grid;grid-template-columns:1fr;min-height:60vh;}\n\n    /* ── SIDEBAR ── */\n    .sidebar{display:none;background:#fff;border-right:2px solid #e8e8e8;padding:20px 16px;align-self:start;position:sticky;top:0;max-height:100vh;overflow-y:auto;scrollbar-width:thin;}\n    .sidebar-section{margin-bottom:24px;}\n    .sidebar-section-title{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:#8B0000;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid #e8e8e8;}\n    .filter-item{display:flex;align-items:center;gap:8px;padding:5px 0;cursor:pointer;user-select:none;}\n    .cb{width:14px;height:14px;border:2px solid #ccc;border-radius:0;flex-shrink:0;transition:background 0.15s,border-color 0.15s;}\n    .cb.checked{background:#8B0000;border-color:#8B0000;}\n    .filter-label{font-family:'Inter',sans-serif;font-size:13px;font-weight:500;color:#333;}\n    .filter-count{font-family:'Inter',sans-serif;font-size:11px;color:#999;margin-left:auto;}\n    .clear-link{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#8B0000;cursor:pointer;text-decoration:underline;margin-left:auto;}\n\n    /* ── MAIN ── */\n    .main-col{background:#f2f2f2;min-width:0;}\n    .toolbar{background:#fff;padding:10px 16px;border-bottom:2px solid #e8e8e8;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;position:sticky;top:0;z-index:10;}\n    .result-count{font-family:'Inter',sans-serif;font-size:13px;font-weight:600;color:#444;}\n    .result-count span{color:#8B0000;font-weight:800;}\n    .toolbar-right{display:flex;align-items:center;gap:8px;}\n    .sort-label{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:#555;}\n    .sort-sel{padding:6px 10px;border:2px solid #e8e8e8;border-radius:0;font-family:'Inter',sans-serif;font-size:12px;font-weight:500;background:#fff;appearance:none;cursor:pointer;}\n    .mob-filter-btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:40px;padding:0 16px;border:2px solid #1a1a1a;border-radius:0;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;background:#fff;cursor:pointer;transition:background 0.2s,color 0.2s;}\n    .mob-filter-btn:hover{background:#1a1a1a;color:#fff;}\n    .filter-badge{background:#8B0000;color:#fff;font-size:8px;font-weight:800;min-width:16px;height:16px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;padding:0 3px;}\n\n    /* ── ACTIVE FILTERS ── */\n    .active-filters{background:#fafafa;padding:8px 16px;border-bottom:1px solid #e8e8e8;display:flex;align-items:center;gap:6px;flex-wrap:wrap;min-height:36px;}\n    .active-label{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#999;}\n    .filter-tag{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;background:#1a1a1a;color:#fff;border-radius:0;font-family:'Montserrat',sans-serif;font-size:9px;font-weight:800;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:background 0.2s;}\n    .filter-tag:hover{background:#8B0000;}\n    .filter-tag-fit{background:#1a7a1a;}\n    .filter-tag-fit:hover{background:#8B0000;}\n\n    /* ── PRODUCT GRID ── */\n    .product-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;padding:12px;}\n\n    /* ── PRODUCT CARD ── */\n    .product-card{background:#fff;border:1px solid #e8e8e8;border-radius:0;overflow:hidden;display:flex;flex-direction:column;transition:border-color 0.2s,box-shadow 0.2s;}\n    .product-card:hover{border-color:#bbb;box-shadow:0 4px 18px rgba(0,0,0,0.09);}\n    .card-img-wrap{width:100%;aspect-ratio:4/3;background:#f2f2f2;position:relative;overflow:hidden;}\n    .card-img-wrap img{width:100%;height:100%;object-fit:cover;object-position:center 30%;}\n    .card-ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;background:linear-gradient(135deg,#f5f5f5,#eaeaea);}\n    .card-ph-brand{font-family:'Montserrat',sans-serif;font-size:22px;font-weight:900;color:rgba(139,0,0,0.18);letter-spacing:-1px;}\n    .card-ph-type{font-family:'Montserrat',sans-serif;font-size:8px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:rgba(0,0,0,0.2);}\n    .card-cat-badge{position:absolute;top:8px;left:8px;font-family:'Montserrat',sans-serif;font-size:8px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:3px 8px;border-radius:0;background:#1a1a1a;color:#fff;}\n    .card-cat-badge.cat-tonneau{background:#1a3a6a;}\n    .card-cat-badge.cat-steps{background:#1a1a1a;}\n    .card-cat-badge.cat-racks{background:#4a2a00;}\n    .card-body{padding:12px 12px 14px;display:flex;flex-direction:column;flex:1;}\n    .card-brand{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#8B0000;margin-bottom:4px;}\n    .card-name{font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;color:#1a1a1a;line-height:1.2;margin-bottom:6px;text-wrap:balance;flex:1;}\n    .card-type{font-family:'Inter',sans-serif;font-size:11px;font-weight:500;color:#777;margin-bottom:8px;}\n    .card-fit{display:flex;align-items:center;gap:6px;padding:5px 8px;background:#f0faf0;border-top:2px solid #1a7a1a;margin-bottom:8px;}\n    .card-fit-icon{font-size:11px;color:#1a7a1a;font-weight:900;}\n    .card-fit-text{font-family:'Montserrat',sans-serif;font-size:8px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:#1a7a1a;}\n    .card-nofit{font-family:'Montserrat',sans-serif;font-size:8px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:#888;padding:4px 0;margin-bottom:6px;}\n    .card-price-row{display:flex;align-items:baseline;gap:4px;margin-bottom:10px;}\n    .card-from{font-family:'Montserrat',sans-serif;font-size:8px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:#888;}\n    .card-price{font-family:'Montserrat',sans-serif;font-size:15px;font-weight:800;color:#8B0000;}\n    .card-btns{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:auto;}\n    .card-btn{display:inline-flex;align-items:center;justify-content:center;height:40px;padding:0 8px;border-radius:0;font-family:'Montserrat',sans-serif;font-size:9px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;text-decoration:none;transition:background 0.2s,color 0.2s;border:none;}\n    .card-btn-view{background:#f0f0f0;color:#555;border:1px solid #ddd;}\n    .card-btn-view:hover{background:#e0e0e0;}\n    .card-btn-quote{background:#8B0000;color:#fff;}\n    .card-btn-quote:hover{background:#a00000;}\n\n    /* ── EMPTY STATE ── */\n    #empty-state{display:none;padding:56px 24px;text-align:center;background:#fff;margin:12px;}\n    #empty-state svg{width:48px;height:48px;stroke:#ddd;fill:none;stroke-width:1.5;margin:0 auto 16px;}\n    #empty-state p{font-family:'Montserrat',sans-serif;font-size:15px;font-weight:800;color:#444;margin-bottom:8px;}\n    #empty-state small{font-family:'Inter',sans-serif;font-size:13px;color:#888;}\n\n    /* ── MOBILE FILTER OVERLAY ── */\n    #mob-filter{display:none;position:fixed;inset:0;z-index:400;background:#fff;overflow-y:auto;}\n    #mob-filter.open{display:block;}\n    .mob-filter-header{padding:14px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:2px solid #e8e8e8;position:sticky;top:0;background:#fff;z-index:1;}\n    .mob-filter-title{font-family:'Montserrat',sans-serif;font-size:15px;font-weight:800;color:#1a1a1a;}\n    .mob-filter-close{font-size:24px;cursor:pointer;background:none;border:none;color:#1a1a1a;line-height:1;padding:0 4px;}\n    .mob-filter-section{padding:16px 16px;border-bottom:1px solid #f0f0f0;}\n    .mob-filter-section-title{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:#8B0000;margin-bottom:10px;}\n    .mob-chips{display:flex;flex-wrap:wrap;gap:8px;}\n    .mob-chip{padding:6px 14px;border-radius:0;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase;border:2px solid #e8e8e8;background:#fff;color:#444;cursor:pointer;transition:all 0.15s;}\n    .mob-chip.active{background:#1a1a1a;color:#fff;border-color:#1a1a1a;}\n    .mob-apply{display:block;margin:16px;height:48px;background:#8B0000;color:#fff;border:none;border-radius:0;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;cursor:pointer;width:calc(100% - 32px);transition:background 0.2s;}\n    .mob-apply:hover{background:#a00000;}\n\n    /* ── PRICE RANGE FILTER ── */\n    .price-buckets{display:flex;flex-direction:column;gap:2px;}\n\n    /* ── RESPONSIVE ── */\n    @media(min-width:768px){\n      .catalog-wrap{grid-template-columns:260px 1fr;}\n      .sidebar{display:block;padding:20px 16px 20px 28px;}\n      .mob-filter-btn{display:none;}\n      .product-grid{grid-template-columns:repeat(2,1fr);}\n    }\n    @media(min-width:1024px){\n      .catalog-wrap{grid-template-columns:280px 1fr;}\n      .sidebar{padding:24px 16px 24px 32px;}\n      .product-grid{grid-template-columns:repeat(3,1fr);}\n    }\n    @media(max-width:480px){\n      .card-name{font-size:12px;}\n      .card-btns{grid-template-columns:1fr;}\n    }\n    *:focus{outline:none;}\n    *:focus-visible{outline:2px solid #8B0000;outline-offset:3px;}\n  </style>\n</head>\n<body>\n\n<!-- ── GARAGE BAR ── -->\n<div id="garage-bar">\n  <div class="gb-left">\n    <span class="gb-vehicle" id="gb-vehicle-text">No vehicle saved</span>\n    <span class="gb-badge no-garage" id="gb-badge">My Garage</span>\n  </div>\n  <div class="gb-right">\n    <button class="gb-link" id="gb-change-btn">&#x21ba; Change</button>\n    <a class="gb-link" href="https://rlsh1855.github.io/3Js-and-RLSH-Website/my-garage.html" target="_top">My Garage</a>\n  </div>\n</div>\n\n<!-- ── PAGE HEADER ── -->\n<div class="page-header">\n  <div class="page-header-inner">\n    <div class="page-header-left">\n      <span class="eyebrow" id="header-eyebrow">3J's Auto Body · Signal Hill, CA</span>\n      <h1 id="header-title">Shop <em>Accessories</em></h1>\n    </div>\n    <div class="page-header-right" id="header-cat-pills">\n      <button class="cat-pill active" data-cat="all">All</button>\n      <button class="cat-pill" data-cat="tonneau">Tonneau Covers</button>\n      <button class="cat-pill" data-cat="steps">Steps &amp; Boards</button>\n      <button class="cat-pill" data-cat="racks">Headache Racks</button>\n    </div>\n  </div>\n</div>\n\n<!-- ── YMM BAR ── -->\n<div id="ymm-bar">\n  <div class="ymm-bar-inner">\n    <span class="ymm-bar-label">Your Truck</span>\n    <div class="ymm-selects">\n      <select class="ymm-sel" id="ymm-year"><option value="">Year</option></select>\n      <select class="ymm-sel" id="ymm-make" disabled><option value="">Make</option></select>\n      <select class="ymm-sel" id="ymm-model" disabled><option value="">Model</option></select>\n    </div>\n    <button class="ymm-go" id="ymm-go-btn" disabled>\n      <svg viewBox="0 0 24 24" style="width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2.5;"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>\n      Find My Fit\n    </button>\n  </div>\n</div>\n\n<!-- ── MOBILE FILTER OVERLAY ── -->\n<div id="mob-filter">\n  <div class="mob-filter-header">\n    <span class="mob-filter-title">Filter</span>\n    <button class="mob-filter-close" id="mob-filter-close">&times;</button>\n  </div>\n  <div class="mob-filter-section">\n    <div class="mob-filter-section-title">Category</div>\n    <div class="mob-chips" id="mob-chips-cat"></div>\n  </div>\n  <div class="mob-filter-section">\n    <div class="mob-filter-section-title">Price Range</div>\n    <div class="mob-chips" id="mob-chips-price"></div>\n  </div>\n  <div class="mob-filter-section">\n    <div class="mob-filter-section-title">Brand</div>\n    <div class="mob-chips" id="mob-chips-brand"></div>\n  </div>\n  <div class="mob-filter-section">\n    <div class="mob-filter-section-title">Type</div>\n    <div class="mob-chips" id="mob-chips-type"></div>\n  </div>\n  <div class="mob-filter-section">\n    <div class="mob-filter-section-title">Cab Type</div>\n    <div class="mob-chips" id="mob-chips-cab"></div>\n  </div>\n  <div class="mob-filter-section">\n    <div class="mob-filter-section-title">Finish</div>\n    <div class="mob-chips" id="mob-chips-finish"></div>\n  </div>\n  <button class="mob-apply" id="mob-apply-btn">Apply Filters</button>\n</div>\n\n<!-- ── CATALOG ── -->\n<div class="catalog-wrap">\n\n  <!-- SIDEBAR -->\n  <div class="sidebar" id="sidebar">\n    <div class="sidebar-section" id="sb-price-section">\n      <div class="sidebar-section-title">Price Range</div>\n      <div class="price-buckets" id="sb-prices"></div>\n    </div>\n    <div class="sidebar-section" id="sb-brand-section">\n      <div class="sidebar-section-title">Brand</div>\n      <div id="sb-brands"></div>\n    </div>\n    <div class="sidebar-section" id="sb-type-section">\n      <div class="sidebar-section-title">Type</div>\n      <div id="sb-types"></div>\n    </div>\n    <div class="sidebar-section" id="sb-cab-section" style="display:none;">\n      <div class="sidebar-section-title">Cab Type</div>\n      <div id="sb-cabs"></div>\n    </div>\n    <div class="sidebar-section" id="sb-finish-section">\n      <div class="sidebar-section-title">Finish</div>\n      <div id="sb-finishes"></div>\n    </div>\n    <div class="sidebar-section" id="sb-bed-section" style="display:none;">\n      <div class="sidebar-section-title">Bed Size</div>\n      <div id="sb-beds"></div>\n    </div>\n  </div>\n\n  <!-- MAIN -->\n  <div class="main-col">\n\n    <!-- Toolbar -->\n    <div class="toolbar">\n      <div class="result-count" id="result-count">Loading…</div>\n      <div class="toolbar-right">\n        <span class="sort-label">Sort</span>\n        <select class="sort-sel" id="sort-sel">\n          <option value="fit">Best Fit First</option>\n          <option value="price-asc">Price: Low–High</option>\n          <option value="price-desc">Price: High–Low</option>\n          <option value="brand">Brand A–Z</option>\n          <option value="name">Name A–Z</option>\n        </select>\n        <button class="mob-filter-btn" id="mob-filter-open-btn">\n          Filter\n          <span class="filter-badge" id="filter-badge" style="display:none">0</span>\n        </button>\n      </div>\n    </div>\n\n    <!-- Active filters -->\n    <div class="active-filters" id="active-filters">\n      <span class="active-label">Filters:</span>\n    </div>\n\n    <!-- Grid -->\n    <div class="product-grid" id="product-grid"></div>\n\n    <!-- Empty state -->\n    <div id="empty-state">\n      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>\n      <p>No products match your filters.</p>\n      <small>Try removing a filter or changing your vehicle.</small>\n    </div>\n\n  </div>\n</div>\n\n<script>\n/* ════════════════════════════════════════════════\n   CONSTANTS & CONFIG\n════════════════════════════════════════════════ */\nvar QUOTE_URL = 'https://rlsh1855.github.io/3Js-and-RLSH-Website/parts-quote.html';\nvar GARAGE_KEY = 'garage_vehicle';\nvar CATALOG_HERO = {\n  all:     { eyebrow:'3J\'s Auto Body · Signal Hill, CA', title:'Shop <em>Accessories</em>' },\n  tonneau: { eyebrow:'Tonneau Covers · Professional Installation', title:'Tonneau <em>Covers</em>' },\n  steps:   { eyebrow:'Steps & Running Boards · All Brands', title:'Steps &amp; Running <em>Boards</em>' },\n  racks:   { eyebrow:'Headache Racks · BackRack', title:'Headache <em>Racks</em>' }\n};\n\n/* ── Product type mapping ── */\nvar TONNEAU_TYPES = {\n  'BAKFlip F1':'Hard Folding','BAKFlip FiberMax':'Hard Folding','BAKFlip G2':'Hard Folding',\n  'BAKFlip MX4':'Hard Folding','BAKFlip MX4 TS':'Hard Folding',\n  'ArmorFlex':'Hard Folding','Solid Fold ALX':'Hard Folding','Endure ALX':'Hard Folding',\n  'Trifecta 2.0':'Soft Folding','Trifecta ALX':'Soft Folding','Trifecta Signature 2.0':'Soft Folding',\n  'Trifecta e-Series':'Soft Folding','E-Series':'Soft Folding','M-Series':'Soft Folding',\n  'A-Series':'Soft Folding','Elite':'Soft Folding','Elite LX':'Soft Folding','SE':'Soft Folding',\n  'Lo Pro':'Roll-Up','TruXport':'Roll-Up','Lux':'Roll-Up','Flex':'Roll-Up','Select':'Roll-Up',\n  'RetraxONE MX':'Retractable','RetraxONE XR':'Retractable','RetraxPRO MX':'Retractable',\n  'RetraxPRO XR':'Retractable','PowertraxPRO MX':'Retractable','PowertraxPRO XR':'Retractable',\n  'Retrax EQ':'Retractable','Revolver X4s':'Roll-Up','Pro X15':'Retractable','Sentry':'Roll-Up',\n  'Sentry CT':'Hard Folding','Ultra Flex':'Hard Folding','Deuce':'Soft Folding'\n};\n\nfunction getStepType(product) {\n  var p = product.toLowerCase();\n  if (p.includes('bedstep')) return 'BedStep';\n  if (p.includes('power') || p.includes('powerstep') || p.includes('pro-e') || p.includes('pro e')) return 'Power Steps';\n  if (p.includes('wheel-to-wheel') || p.includes('wheel to wheel') || p.includes('w2w')) return 'Wheel-to-Wheel';\n  if (p.includes('running board') || p.includes('rb10')||p.includes('rb20')||p.includes('rb30')\n      || p.includes('at6') || p.includes('hdx run') || p.includes('outlaw run') || p.includes('pro traxx')) return 'Running Boards';\n  if (p.includes('nerf') || p.includes('oval') || p.includes('drop nerf') || p.includes('hdx drop')) return 'Nerf Bars';\n  if (p.includes('sidestep') || p.includes('side step') || p.includes('oe xtreme')\n      || p.includes('dominator') || p.includes('v-series') || p.includes('4000')\n      || p.includes('415 series') || p.includes('1000 series')) return 'Side Steps';\n  return 'Steps';\n}\n\nfunction getProductType(e) {\n  if (e.cat === 'tonneau') return TONNEAU_TYPES[e.product] || 'Other';\n  if (e.cat === 'steps')   return getStepType(e.product);\n  if (e.cat === 'racks')   return 'Headache Rack';\n  return 'Other';\n}\n\n/* ════════════════════════════════════════════════\n   NORMALIZE ALL DATA SOURCES\n════════════════════════════════════════════════ */\nvar ALL_ENTRIES = [];\n\n// Tonneau: [brand,product,partNum,bedIn,bedSize,startYear,endYear,make,model,desc,fitNote,map,img]\nif (typeof CATALOG !== 'undefined') {\n  CATALOG.forEach(function(e) {\n    ALL_ENTRIES.push({ cat:'tonneau', brand:e[0], product:e[1], partNum:e[2],\n      bedIn:e[3], bedSize:e[4], startYear:e[5], endYear:e[6], make:e[7], model:e[8],\n      desc:e[9], fitNote:e[10], price:e[11], img:e[12], cabType:null });\n  });\n}\n// N-Fab: [brand,product,part,cabType,startYear,endYear,make,model,desc,price,imgUrl]\nif (typeof RB_CATALOG !== 'undefined') {\n  RB_CATALOG.forEach(function(e) {\n    ALL_ENTRIES.push({ cat:'steps', brand:e[0], product:e[1], partNum:e[2],\n      cabType:e[3], startYear:e[4], endYear:e[5], make:e[6], model:e[7],\n      desc:e[8], price:e[9], img:e[10], bedIn:null, bedSize:null, fitNote:null });\n  });\n}\n// Extra tonneaus: [brand,product,partNum,bedIn,bedSize,startYear,endYear,make,model,desc,fitNote,map,img]\nif (typeof EXTRA_TONNEAU !== 'undefined') {\n  EXTRA_TONNEAU.forEach(function(e) {\n    ALL_ENTRIES.push({ cat:'tonneau', brand:e[0], product:e[1], partNum:e[2],\n      bedIn:e[3], bedSize:e[4], startYear:e[5], endYear:e[6], make:e[7], model:e[8],\n      desc:e[9], fitNote:e[10], price:e[11], img:e[12], cabType:null });\n  });\n}\n// Go Rhino / AMP / Westin / Lund steps: [brand,product,partNum,cabType,startYear,endYear,make,model,desc,price,img]\n[typeof GR_CATALOG!=='undefined'?GR_CATALOG:[],\n typeof AMP_CATALOG!=='undefined'?AMP_CATALOG:[],\n typeof WESTIN_CATALOG!=='undefined'?WESTIN_CATALOG:[],\n typeof LUND_CATALOG!=='undefined'?LUND_CATALOG:[]\n].forEach(function(src) {\n  src.forEach(function(e) {\n    ALL_ENTRIES.push({ cat:'steps', brand:e[0], product:e[1], partNum:e[2],\n      cabType:e[3], startYear:e[4], endYear:e[5], make:e[6], model:e[7],\n      desc:e[8], price:e[9], img:e[10], bedIn:null, bedSize:null, fitNote:null });\n  });\n});\n// BackRack: [brand,product,partNum,startYear,endYear,make,model,desc,price,imgUrl]\nif (typeof HR_CATALOG !== 'undefined') {\n  HR_CATALOG.forEach(function(e) {\n    ALL_ENTRIES.push({ cat:'racks', brand:e[0], product:e[1], partNum:e[2],\n      startYear:e[3], endYear:e[4], make:e[5], model:e[6],\n      desc:e[7], price:e[8], img:e[9], bedIn:null, bedSize:null, cabType:null, fitNote:null });\n  });\n}\n\n/* ── Price buckets ── */\nvar PRICE_BUCKETS = [\n  {label:'Under $300',      min:0,    max:300},\n  {label:'$300 – $600',     min:300,  max:600},\n  {label:'$600 – $1,000',   min:600,  max:1000},\n  {label:'$1,000 – $1,500', min:1000, max:1500},\n  {label:'$1,500+',         min:1500, max:Infinity},\n];\n\n/* ── Finish detection from product name ── */\nfunction getFinish(product) {\n  var p = (product||'').toLowerCase();\n  if (p.includes('chrome')) return 'Chrome';\n  if (p.includes('stainless') || / ss$/.test(p) || p.includes('- ss') || p.includes('— ss')) return 'Stainless Steel';\n  if (p.includes('textured black') || p.includes('- black') || p.includes('— black') || p.includes('black steel') || p.includes('black aluminum') || / black$/.test(p) || p.includes('matte black')) return 'Textured Black';\n  if (p.includes('polished') || p.includes('polished stainless')) return 'Polished';\n  return null;\n}\n\n/* ════════════════════════════════════════════════\n   STATE\n════════════════════════════════════════════════ */\nvar state = {\n  garage: null,\n  fitActive: false,\n  activeCat: 'all',\n  activeBrands: {},\n  activeTypes: {},\n  activePrices: {},\n  activeCabTypes: {},\n  activeFinishes: {},\n  activeBeds: {},\n  sort: 'fit'\n};\n\n/* ════════════════════════════════════════════════\n   INIT\n════════════════════════════════════════════════ */\n(function init() {\n  // Read URL param\n  var params = new URLSearchParams(window.location.search);\n  var catParam = params.get('cat');\n  if (catParam && ['tonneau','steps','racks'].includes(catParam)) {\n    state.activeCat = catParam;\n  }\n\n  // Load garage\n  try { state.garage = JSON.parse(localStorage.getItem(GARAGE_KEY)); } catch(e) {}\n  if (state.garage && state.garage.year) state.fitActive = true;\n\n  updateHeader();\n  updateGarageBar();\n  updateYMMBar();\n  buildYMMDropdowns();\n  buildSidebar();\n  render();\n  updateCatPills();\n})();\n\n/* ════════════════════════════════════════════════\n   FITMENT MATCHING\n════════════════════════════════════════════════ */\nfunction makesMatch(cm, gm) {\n  cm = (cm||'').toLowerCase(); gm = (gm||'').toLowerCase();\n  if (cm === gm) return true;\n  if ((cm==='ram'||cm==='dodge') && (gm==='ram'||gm==='dodge')) return true;\n  return false;\n}\n\nfunction modelsMatch(cm, gm) {\n  if (!cm || !gm) return false;\n  if (cm === gm) return true;\n  if (cm.indexOf(gm) !== -1 || gm.indexOf(cm) !== -1) return true;\n  // Tonneau combined model aliases\n  var aliases = [\n    [['silverado/sierra 1500'],['silverado 1500','sierra 1500']],\n    [['silverado/sierra 2500hd/3500hd'],['silverado 2500hd/3500hd','silverado hd','sierra 2500hd/3500hd','sierra hd']],\n    [['canyon/colorado'],['canyon','colorado']],\n    [['1500 w/o ram box','1500 with ram box','1500/2500/3500'],['1500']],\n  ];\n  for (var i=0; i<aliases.length; i++) {\n    var keys = aliases[i][0], vals = aliases[i][1];\n    if (keys.some(function(k){return cm===k||cm.includes(k);}) && vals.some(function(v){return gm===v||gm.includes(v)||v.includes(gm);})) return true;\n    if (vals.some(function(v){return cm===v||cm.includes(v)||v.includes(cm);}) && keys.some(function(k){return gm===k||gm.includes(k);})) return true;\n  }\n  return false;\n}\n\nfunction entryFits(e) {\n  if (!state.garage) return false;\n  var g = state.garage;\n  var yr = parseInt(g.year);\n  if (yr < e.startYear || yr > e.endYear) return false;\n  if (!makesMatch(e.make, g.make)) return false;\n  if (!modelsMatch((e.model||'').toLowerCase(), (g.model||'').toLowerCase())) return false;\n  // Bed size for tonneau\n  if (e.cat === 'tonneau' && e.bedIn && g.bedIn) {\n    if (Math.abs(e.bedIn - parseFloat(g.bedIn)) > 2) return false;\n  }\n  return true;\n}\n\n/* ════════════════════════════════════════════════\n   PRODUCT GROUPING\n   Groups ALL_ENTRIES by brand+product key,\n   one card per unique product\n════════════════════════════════════════════════ */\nfunction getGroupedProducts() {\n  var activeBrands   = Object.keys(state.activeBrands).filter(function(b){return state.activeBrands[b];});\n  var activeTypes    = Object.keys(state.activeTypes).filter(function(t){return state.activeTypes[t];});\n  var activePrices   = PRICE_BUCKETS.filter(function(b){return state.activePrices[b.label];});\n  var activeCabTypes = Object.keys(state.activeCabTypes).filter(function(c){return state.activeCabTypes[c];});\n  var activeFinishes = Object.keys(state.activeFinishes).filter(function(f){return state.activeFinishes[f];});\n  var activeBeds     = Object.keys(state.activeBeds).filter(function(b){return state.activeBeds[b];});\n\n  var pm = Object.create(null);\n\n  ALL_ENTRIES.forEach(function(e) {\n    if (state.activeCat !== 'all' && e.cat !== state.activeCat) return;\n    if (activeBrands.length && !activeBrands.includes(e.brand)) return;\n    if (activeTypes.length && !activeTypes.includes(getProductType(e))) return;\n    if (activeBeds.length && e.cat === 'tonneau' && !activeBeds.includes(e.bedSize)) return;\n    if (activeCabTypes.length && e.cabType && !activeCabTypes.includes(e.cabType)) return;\n    if (activeFinishes.length) {\n      var fin = getFinish(e.product);\n      if (!fin || !activeFinishes.includes(fin)) return;\n    }\n\n    var key = e.brand + '|' + e.product;\n    if (!pm[key]) {\n      pm[key] = { brand:e.brand, product:e.product, cat:e.cat,\n        repr:e, minPrice:null, fitCount:0, hasfit:false };\n    }\n    var p = pm[key];\n    if (e.price && (p.minPrice === null || e.price < p.minPrice)) p.minPrice = e.price;\n    if (entryFits(e)) { p.hasfit = true; p.fitCount++; }\n    if (!p.repr.img && e.img) p.repr = e;\n  });\n\n  var products = Object.keys(pm).map(function(k){ return pm[k]; });\n\n  // Price filter (applied at product level after grouping)\n  if (activePrices.length) {\n    products = products.filter(function(p){\n      if (p.minPrice === null) return false;\n      return activePrices.some(function(b){ return p.minPrice >= b.min && p.minPrice < b.max; });\n    });\n  }\n\n  if (state.fitActive && state.garage) {\n    products = products.filter(function(p){ return p.hasfit; });\n  }\n\n  return products;\n}\n\n/* ════════════════════════════════════════════════\n   SORT\n════════════════════════════════════════════════ */\nfunction sortProducts(arr) {\n  arr = arr.slice();\n  var s = state.sort;\n  if (s === 'price-asc')  arr.sort(function(a,b){ return (a.minPrice||9999)-(b.minPrice||9999); });\n  else if (s === 'price-desc') arr.sort(function(a,b){ return (b.minPrice||0)-(a.minPrice||0); });\n  else if (s === 'brand') arr.sort(function(a,b){ return a.brand.localeCompare(b.brand); });\n  else if (s === 'name')  arr.sort(function(a,b){ return a.product.localeCompare(b.product); });\n  else arr.sort(function(a,b){ return (b.hasfit?1:0)-(a.hasfit?1:0); });\n  return arr;\n}\n\n/* ════════════════════════════════════════════════\n   RENDER GRID\n════════════════════════════════════════════════ */\nfunction esc(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }\n\nfunction render() {\n  var products = sortProducts(getGroupedProducts());\n  var grid = document.getElementById('product-grid');\n  var empty = document.getElementById('empty-state');\n  var countEl = document.getElementById('result-count');\n\n  // Result count\n  var fitCount = products.filter(function(p){ return p.hasfit; }).length;\n  if (state.fitActive && state.garage) {\n    var g = state.garage;\n    countEl.innerHTML = '<span>' + fitCount + '</span> products fit your ' + esc(g.year + ' ' + g.make + ' ' + g.model);\n  } else {\n    countEl.innerHTML = 'Showing <span>' + products.length + '</span> products';\n  }\n\n  if (!products.length) {\n    grid.innerHTML = '';\n    empty.style.display = 'block';\n    return;\n  }\n  empty.style.display = 'none';\n\n  grid.innerHTML = products.map(function(p) {\n    var e = p.repr;\n    var catBadge = {tonneau:'cat-tonneau',steps:'cat-steps',racks:'cat-racks'}[e.cat] || '';\n    var catLabel = {tonneau:'Tonneau Cover',steps:'Steps / Boards',racks:'Headache Rack'}[e.cat] || '';\n    var typeLabel = getProductType(e);\n\n    // Image\n    var imgSrc = (typeof PRODUCT_CONTENT !== 'undefined' && PRODUCT_CONTENT[e.product] && PRODUCT_CONTENT[e.product].img)\n      ? PRODUCT_CONTENT[e.product].img : (e.img || null);\n    var imgHtml = imgSrc\n      ? '<img src="' + esc(imgSrc) + '" alt="' + esc(e.product) + '" loading="lazy">'\n      : '<div class="card-ph"><div class="card-ph-brand">' + esc(e.brand.charAt(0)) + '</div><div class="card-ph-type">' + esc(typeLabel) + '</div></div>';\n\n    // Fit badge\n    var fitHtml = '';\n    if (state.fitActive && state.garage) {\n      fitHtml = p.hasfit\n        ? '<div class="card-fit"><div class="card-fit-icon">&#10003;</div><div class="card-fit-text">Fits Your Truck</div></div>'\n        : '<div class="card-nofit">&#x2715; Verify Fitment</div>';\n    }\n\n    // Price\n    var priceHtml = p.minPrice\n      ? '<div class="card-price-row"><span class="card-from">From</span><span class="card-price">$' + p.minPrice.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}) + '</span></div>'\n      : '';\n\n    return '<div class="product-card">'\n      + '<div class="card-img-wrap">' + imgHtml + '<span class="card-cat-badge ' + catBadge + '">' + esc(catLabel) + '</span></div>'\n      + '<div class="card-body">'\n        + '<div class="card-brand">' + esc(e.brand) + '</div>'\n        + '<div class="card-name">' + esc(e.product) + '</div>'\n        + '<div class="card-type">' + esc(typeLabel) + '</div>'\n        + fitHtml\n        + priceHtml\n        + '<div class="card-btns">'\n          + '<button class="card-btn card-btn-view" onclick="viewProduct(\'' + esc(e.brand).replace(/'/g,"\\'") + '\',\'' + esc(e.product).replace(/'/g,"\\'") + '\')">Details</button>'\n          + '<a href="' + QUOTE_URL + '" target="_top" class="card-btn card-btn-quote">Get a Quote</a>'\n        + '</div>'\n      + '</div>'\n      + '</div>';\n  }).join('');\n\n  renderActiveTags();\n  updateFilterBadge();\n  reportHeight();\n}\n\nfunction viewProduct(brand, product) {\n  var url = 'product-detail.html?brand=' + encodeURIComponent(brand) + '&product=' + encodeURIComponent(product);\n  window.location.href = url;\n}\n\n/* ════════════════════════════════════════════════\n   SIDEBAR BUILDER\n════════════════════════════════════════════════ */\nfunction buildSidebar() {\n  buildPriceFilter();\n  buildBrandFilter();\n  buildTypeFilter();\n  buildCabTypeFilter();\n  buildFinishFilter();\n  buildBedFilter();\n}\n\nfunction getVisibleEntries() {\n  return ALL_ENTRIES.filter(function(e){\n    return state.activeCat === 'all' || e.cat === state.activeCat;\n  });\n}\n\nfunction buildBrandFilter() {\n  var visible = getVisibleEntries();\n  var counts = Object.create(null);\n  var seen = Object.create(null);\n  visible.forEach(function(e) {\n    var k = e.brand + '|' + e.product;\n    if (!seen[k]) { seen[k]=true; counts[e.brand]=(counts[e.brand]||0)+1; }\n  });\n  var brands = Object.keys(counts).sort();\n  var el = document.getElementById('sb-brands');\n  // Reset state for new brands\n  var newBrands = Object.create(null);\n  brands.forEach(function(b){ newBrands[b] = state.activeBrands[b] || false; });\n  state.activeBrands = newBrands;\n  el.innerHTML = brands.map(function(b) {\n    var id = 'cb-brand-' + b.replace(/[^a-z0-9]/gi,'-');\n    return '<div class="filter-item" onclick="toggleBrand(\'' + b.replace(/'/g,"\\'") + '\')">'\n      + '<div class="cb' + (state.activeBrands[b]?' checked':'') + '" id="' + id + '"></div>'\n      + '<span class="filter-label">' + esc(b) + '</span>'\n      + '<span class="filter-count">' + counts[b] + '</span>'\n      + '</div>';\n  }).join('');\n\n  // Mobile chips\n  var mEl = document.getElementById('mob-chips-brand');\n  mEl.innerHTML = brands.map(function(b){\n    return '<div class="mob-chip' + (state.activeBrands[b]?' active':'') + '" data-filter="brand" data-val="' + esc(b) + '" onclick="mobChipToggle(this)">' + esc(b) + '</div>';\n  }).join('');\n}\n\nfunction buildTypeFilter() {\n  var visible = getVisibleEntries();\n  var counts = Object.create(null);\n  var seen = Object.create(null);\n  visible.forEach(function(e) {\n    var k = e.brand + '|' + e.product;\n    if (!seen[k]) {\n      seen[k] = true;\n      var t = getProductType(e);\n      counts[t] = (counts[t]||0)+1;\n    }\n  });\n  var types = Object.keys(counts).sort();\n  var newTypes = Object.create(null);\n  types.forEach(function(t){ newTypes[t] = state.activeTypes[t] || false; });\n  state.activeTypes = newTypes;\n\n  var el = document.getElementById('sb-types');\n  el.innerHTML = types.map(function(t) {\n    var id = 'cb-type-' + t.replace(/[^a-z0-9]/gi,'-');\n    return '<div class="filter-item" onclick="toggleType(\'' + t.replace(/'/g,"\\'") + '\')">'\n      + '<div class="cb' + (state.activeTypes[t]?' checked':'') + '" id="' + id + '"></div>'\n      + '<span class="filter-label">' + esc(t) + '</span>'\n      + '<span class="filter-count">' + counts[t] + '</span>'\n      + '</div>';\n  }).join('');\n\n  var mEl = document.getElementById('mob-chips-type');\n  mEl.innerHTML = types.map(function(t){\n    return '<div class="mob-chip' + (state.activeTypes[t]?' active':'') + '" data-filter="type" data-val="' + esc(t) + '" onclick="mobChipToggle(this)">' + esc(t) + '</div>';\n  }).join('');\n}\n\nfunction buildPriceFilter() {\n  var el = document.getElementById('sb-prices');\n  var mob = document.getElementById('mob-chips-price');\n  el.innerHTML = PRICE_BUCKETS.map(function(b) {\n    var id = 'cb-price-' + b.label.replace(/[^a-z0-9]/gi,'-');\n    return '<div class="filter-item" onclick="togglePrice(\'' + b.label.replace(/'/g,"\\'") + '\')">'\n      + '<div class="cb' + (state.activePrices[b.label]?' checked':'') + '" id="' + id + '"></div>'\n      + '<span class="filter-label">' + esc(b.label) + '</span>'\n      + '</div>';\n  }).join('');\n  mob.innerHTML = PRICE_BUCKETS.map(function(b){\n    return '<div class="mob-chip' + (state.activePrices[b.label]?' active':'') + '" data-filter="price" data-val="' + esc(b.label) + '" onclick="mobChipToggle(this)">' + esc(b.label) + '</div>';\n  }).join('');\n}\n\nfunction buildCabTypeFilter() {\n  var show = (state.activeCat === 'steps' || state.activeCat === 'all');\n  document.getElementById('sb-cab-section').style.display = show ? 'block' : 'none';\n  if (!show) return;\n  var visible = ALL_ENTRIES.filter(function(e){ return (state.activeCat==='all'||e.cat==='steps') && e.cabType; });\n  var counts = Object.create(null);\n  var seen = Object.create(null);\n  visible.forEach(function(e){\n    var k = e.brand+'|'+e.product+'|'+e.cabType;\n    if (!seen[k]) { seen[k]=true; counts[e.cabType]=(counts[e.cabType]||0)+1; }\n  });\n  var cabs = Object.keys(counts).sort();\n  var newCabs = Object.create(null);\n  cabs.forEach(function(c){ newCabs[c] = state.activeCabTypes[c]||false; });\n  state.activeCabTypes = newCabs;\n  var el = document.getElementById('sb-cabs');\n  el.innerHTML = cabs.map(function(c){\n    var id = 'cb-cab-' + c.replace(/[^a-z0-9]/gi,'-');\n    return '<div class="filter-item" onclick="toggleCabType(\'' + c.replace(/'/g,"\\'") + '\')">'\n      + '<div class="cb' + (state.activeCabTypes[c]?' checked':'') + '" id="' + id + '"></div>'\n      + '<span class="filter-label">' + esc(c) + '</span>'\n      + '<span class="filter-count">' + counts[c] + '</span>'\n      + '</div>';\n  }).join('');\n  var mob = document.getElementById('mob-chips-cab');\n  mob.innerHTML = cabs.map(function(c){\n    return '<div class="mob-chip' + (state.activeCabTypes[c]?' active':'') + '" data-filter="cab" data-val="' + esc(c) + '" onclick="mobChipToggle(this)">' + esc(c) + '</div>';\n  }).join('');\n}\n\nfunction buildFinishFilter() {\n  var visible = getVisibleEntries();\n  var counts = Object.create(null);\n  var seen = Object.create(null);\n  visible.forEach(function(e){\n    var fin = getFinish(e.product);\n    if (!fin) return;\n    var k = e.brand+'|'+e.product;\n    if (!seen[k]) { seen[k]=true; counts[fin]=(counts[fin]||0)+1; }\n  });\n  var finishes = Object.keys(counts).sort();\n  var newFin = Object.create(null);\n  finishes.forEach(function(f){ newFin[f]=state.activeFinishes[f]||false; });\n  state.activeFinishes = newFin;\n  var el = document.getElementById('sb-finishes');\n  var mob = document.getElementById('mob-chips-finish');\n  if (!finishes.length) {\n    el.innerHTML = '<span style="font-family:Inter,sans-serif;font-size:12px;color:#aaa;">Multiple finishes available</span>';\n    mob.innerHTML = '';\n    return;\n  }\n  el.innerHTML = finishes.map(function(f){\n    var id = 'cb-fin-' + f.replace(/[^a-z0-9]/gi,'-');\n    return '<div class="filter-item" onclick="toggleFinish(\'' + f.replace(/'/g,"\\'") + '\')">'\n      + '<div class="cb' + (state.activeFinishes[f]?' checked':'') + '" id="' + id + '"></div>'\n      + '<span class="filter-label">' + esc(f) + '</span>'\n      + '<span class="filter-count">' + counts[f] + '</span>'\n      + '</div>';\n  }).join('');\n  mob.innerHTML = finishes.map(function(f){\n    return '<div class="mob-chip' + (state.activeFinishes[f]?' active':'') + '" data-filter="finish" data-val="' + esc(f) + '" onclick="mobChipToggle(this)">' + esc(f) + '</div>';\n  }).join('');\n}\n\nfunction buildBedFilter() {\n  var show = (state.activeCat === 'tonneau' || state.activeCat === 'all');\n  document.getElementById('sb-bed-section').style.display = show ? 'block' : 'none';\n  if (!show) return;\n  var visible = ALL_ENTRIES.filter(function(e){ return e.cat === 'tonneau' && e.bedSize; });\n  var counts = Object.create(null);\n  var seen = Object.create(null);\n  visible.forEach(function(e){\n    if (!seen[e.bedSize]) { seen[e.bedSize]=true; counts[e.bedSize]=(counts[e.bedSize]||0)+1; }\n  });\n  var beds = Object.keys(counts).sort();\n  var newBeds = Object.create(null);\n  beds.forEach(function(b){ newBeds[b] = state.activeBeds[b] || false; });\n  state.activeBeds = newBeds;\n  var el = document.getElementById('sb-beds');\n  el.innerHTML = beds.map(function(b){\n    var id = 'cb-bed-' + b.replace(/[^a-z0-9]/gi,'-');\n    return '<div class="filter-item" onclick="toggleBed(\'' + b.replace(/'/g,"\\'") + '\')">'\n      + '<div class="cb' + (state.activeBeds[b]?' checked':'') + '" id="' + id + '"></div>'\n      + '<span class="filter-label">' + esc(b) + '</span>'\n      + '<span class="filter-count">' + counts[b] + '</span>'\n      + '</div>';\n  }).join('');\n}\n\n/* ════════════════════════════════════════════════\n   FILTER TOGGLES\n════════════════════════════════════════════════ */\nfunction toggleBrand(b) {\n  state.activeBrands[b] = !state.activeBrands[b];\n  var el = document.getElementById('cb-brand-' + b.replace(/[^a-z0-9]/gi,'-'));\n  if (el) el.classList.toggle('checked', state.activeBrands[b]);\n  render();\n}\nfunction toggleType(t) {\n  state.activeTypes[t] = !state.activeTypes[t];\n  var el = document.getElementById('cb-type-' + t.replace(/[^a-z0-9]/gi,'-'));\n  if (el) el.classList.toggle('checked', state.activeTypes[t]);\n  render();\n}\nfunction toggleBed(b) {\n  state.activeBeds[b] = !state.activeBeds[b];\n  var el = document.getElementById('cb-bed-' + b.replace(/[^a-z0-9]/gi,'-'));\n  if (el) el.classList.toggle('checked', state.activeBeds[b]);\n  render();\n}\nfunction togglePrice(label) {\n  state.activePrices[label] = !state.activePrices[label];\n  var el = document.getElementById('cb-price-' + label.replace(/[^a-z0-9]/gi,'-'));\n  if (el) el.classList.toggle('checked', state.activePrices[label]);\n  render();\n}\nfunction toggleCabType(c) {\n  state.activeCabTypes[c] = !state.activeCabTypes[c];\n  var el = document.getElementById('cb-cab-' + c.replace(/[^a-z0-9]/gi,'-'));\n  if (el) el.classList.toggle('checked', state.activeCabTypes[c]);\n  render();\n}\nfunction toggleFinish(f) {\n  state.activeFinishes[f] = !state.activeFinishes[f];\n  var el = document.getElementById('cb-fin-' + f.replace(/[^a-z0-9]/gi,'-'));\n  if (el) el.classList.toggle('checked', state.activeFinishes[f]);\n  render();\n}\n\nfunction setCat(cat) {\n  state.activeCat = cat;\n  state.activeBrands = {};\n  state.activeTypes = {};\n  state.activePrices = {};\n  state.activeCabTypes = {};\n  state.activeFinishes = {};\n  state.activeBeds = {};\n  updateHeader();\n  updateCatPills();\n  buildSidebar();\n  render();\n}\n\n/* ════════════════════════════════════════════════\n   ACTIVE FILTER TAGS\n════════════════════════════════════════════════ */\nfunction renderActiveTags() {\n  var strip = document.getElementById('active-filters');\n  strip.innerHTML = '<span class="active-label">Filters:</span>';\n\n  if (state.fitActive && state.garage) {\n    var g = state.garage;\n    var tag = document.createElement('span');\n    tag.className = 'filter-tag filter-tag-fit';\n    tag.innerHTML = esc(g.year + ' ' + g.make + ' ' + g.model) + ' &times;';\n    tag.onclick = function(){ clearGarage(); };\n    strip.appendChild(tag);\n  }\n  Object.keys(state.activeBrands).forEach(function(b){\n    if (!state.activeBrands[b]) return;\n    var tag = document.createElement('span');\n    tag.className = 'filter-tag';\n    tag.innerHTML = esc(b) + ' &times;';\n    tag.onclick = function(){ toggleBrand(b); };\n    strip.appendChild(tag);\n  });\n  Object.keys(state.activeTypes).forEach(function(t){\n    if (!state.activeTypes[t]) return;\n    var tag = document.createElement('span');\n    tag.className = 'filter-tag';\n    tag.innerHTML = esc(t) + ' &times;';\n    tag.onclick = function(){ toggleType(t); };\n    strip.appendChild(tag);\n  });\n  PRICE_BUCKETS.forEach(function(b){\n    if (!state.activePrices[b.label]) return;\n    var tag = document.createElement('span');\n    tag.className = 'filter-tag';\n    tag.innerHTML = esc(b.label) + ' &times;';\n    tag.onclick = function(){ togglePrice(b.label); };\n    strip.appendChild(tag);\n  });\n  Object.keys(state.activeCabTypes).forEach(function(c){\n    if (!state.activeCabTypes[c]) return;\n    var tag = document.createElement('span');\n    tag.className = 'filter-tag';\n    tag.innerHTML = esc(c) + ' &times;';\n    tag.onclick = function(){ toggleCabType(c); };\n    strip.appendChild(tag);\n  });\n  Object.keys(state.activeFinishes).forEach(function(f){\n    if (!state.activeFinishes[f]) return;\n    var tag = document.createElement('span');\n    tag.className = 'filter-tag';\n    tag.innerHTML = esc(f) + ' &times;';\n    tag.onclick = function(){ toggleFinish(f); };\n    strip.appendChild(tag);\n  });\n}\n\nfunction updateFilterBadge() {\n  var count = (state.fitActive?1:0)\n    + Object.values(state.activeBrands).filter(Boolean).length\n    + Object.values(state.activeTypes).filter(Boolean).length\n    + Object.values(state.activePrices).filter(Boolean).length\n    + Object.values(state.activeCabTypes).filter(Boolean).length\n    + Object.values(state.activeFinishes).filter(Boolean).length\n    + Object.values(state.activeBeds).filter(Boolean).length;\n  var badge = document.getElementById('filter-badge');\n  badge.textContent = count;\n  badge.style.display = count ? 'inline-flex' : 'none';\n}\n\n/* ════════════════════════════════════════════════\n   GARAGE BAR\n════════════════════════════════════════════════ */\nfunction updateGarageBar() {\n  var g = state.garage;\n  var textEl = document.getElementById('gb-vehicle-text');\n  var badge  = document.getElementById('gb-badge');\n  if (g && g.year && g.make && g.model) {\n    textEl.textContent = g.year + ' ' + g.make + ' ' + g.model + (g.bedSize ? ' · ' + g.bedSize : '');\n    badge.textContent = '✓ Fitment Active';\n    badge.classList.remove('no-garage');\n  } else {\n    textEl.textContent = 'No vehicle saved';\n    badge.textContent = 'My Garage';\n    badge.classList.add('no-garage');\n  }\n}\n\nfunction updateYMMBar() {\n  document.getElementById('ymm-bar').style.display = (state.garage && state.garage.year) ? 'none' : 'block';\n}\n\nfunction clearGarage() {\n  try { localStorage.removeItem(GARAGE_KEY); } catch(e) {}\n  state.garage = null; state.fitActive = false;\n  updateGarageBar(); updateYMMBar();\n  buildYMMDropdowns();\n  render();\n}\n\ndocument.getElementById('gb-change-btn').addEventListener('click', clearGarage);\n\n/* ════════════════════════════════════════════════\n   YMM BAR\n════════════════════════════════════════════════ */\nfunction buildYMMDropdowns() {\n  var selYear  = document.getElementById('ymm-year');\n  var selMake  = document.getElementById('ymm-make');\n  var selModel = document.getElementById('ymm-model');\n\n  // Build year set from active category entries\n  var catEntries = state.activeCat === 'all' ? ALL_ENTRIES\n    : ALL_ENTRIES.filter(function(e){ return e.cat === state.activeCat; });\n\n  var yearSet = Object.create(null);\n  catEntries.forEach(function(e){ for(var y=e.startYear;y<=e.endYear;y++) yearSet[y]=true; });\n  var years = Object.keys(yearSet).map(Number).sort(function(a,b){return b-a;});\n\n  selYear.innerHTML = '<option value="">Year</option>';\n  years.forEach(function(y){ var o=document.createElement('option'); o.value=y; o.textContent=y; selYear.appendChild(o); });\n  selMake.innerHTML = '<option value="">Make</option>';\n  selMake.disabled = true;\n  selModel.innerHTML = '<option value="">Model</option>';\n  selModel.disabled = true;\n  document.getElementById('ymm-go-btn').disabled = true;\n}\n\ndocument.getElementById('ymm-year').addEventListener('change', function(){\n  var yr = parseInt(this.value);\n  var selMake = document.getElementById('ymm-make');\n  var selModel = document.getElementById('ymm-model');\n  selMake.innerHTML = '<option value="">Make</option>';\n  selModel.innerHTML = '<option value="">Model</option>';\n  selModel.disabled = true;\n  document.getElementById('ymm-go-btn').disabled = true;\n  if (!yr) { selMake.disabled=true; return; }\n  var catEntries = state.activeCat==='all' ? ALL_ENTRIES : ALL_ENTRIES.filter(function(e){return e.cat===state.activeCat;});\n  var makes = [...new Set(catEntries.filter(function(e){return yr>=e.startYear&&yr<=e.endYear;}).map(function(e){return e.make;}))].sort();\n  selMake.disabled = false;\n  makes.forEach(function(m){ var o=document.createElement('option'); o.value=m; o.textContent=m; selMake.appendChild(o); });\n});\n\ndocument.getElementById('ymm-make').addEventListener('change', function(){\n  var yr = parseInt(document.getElementById('ymm-year').value);\n  var make = this.value;\n  var selModel = document.getElementById('ymm-model');\n  selModel.innerHTML = '<option value="">Model</option>';\n  document.getElementById('ymm-go-btn').disabled = true;\n  if (!make) { selModel.disabled=true; return; }\n  var catEntries = state.activeCat==='all' ? ALL_ENTRIES : ALL_ENTRIES.filter(function(e){return e.cat===state.activeCat;});\n  var models = [...new Set(catEntries.filter(function(e){return yr>=e.startYear&&yr<=e.endYear&&e.make===make;}).map(function(e){return e.model;}))].sort();\n  selModel.disabled = false;\n  models.forEach(function(m){ var o=document.createElement('option'); o.value=m; o.textContent=m; selModel.appendChild(o); });\n});\n\ndocument.getElementById('ymm-model').addEventListener('change', function(){\n  document.getElementById('ymm-go-btn').disabled = !this.value;\n});\n\ndocument.getElementById('ymm-go-btn').addEventListener('click', function(){\n  var yr  = document.getElementById('ymm-year').value;\n  var mk  = document.getElementById('ymm-make').value;\n  var mdl = document.getElementById('ymm-model').value;\n  if (!yr||!mk||!mdl) return;\n  var g = { year:yr, make:mk, model:mdl };\n  try { localStorage.setItem(GARAGE_KEY, JSON.stringify(g)); } catch(e) {}\n  state.garage = g; state.fitActive = true;\n  updateGarageBar(); updateYMMBar(); render();\n  document.getElementById('product-grid').scrollIntoView({behavior:'smooth',block:'start'});\n});\n\n/* ════════════════════════════════════════════════\n   HEADER & CAT PILLS\n════════════════════════════════════════════════ */\nfunction updateHeader() {\n  var h = CATALOG_HERO[state.activeCat] || CATALOG_HERO.all;\n  document.getElementById('header-eyebrow').textContent = h.eyebrow;\n  document.getElementById('header-title').innerHTML = h.title;\n}\n\nfunction updateCatPills() {\n  document.querySelectorAll('.cat-pill').forEach(function(btn){\n    btn.classList.toggle('active', btn.dataset.cat === state.activeCat);\n  });\n}\n\ndocument.querySelectorAll('.cat-pill').forEach(function(btn){\n  btn.addEventListener('click', function(){ setCat(this.dataset.cat); });\n});\n\ndocument.getElementById('sort-sel').addEventListener('change', function(){ state.sort=this.value; render(); });\n\n/* ════════════════════════════════════════════════\n   MOBILE FILTER\n════════════════════════════════════════════════ */\ndocument.getElementById('mob-filter-open-btn').addEventListener('click', function(){\n  document.getElementById('mob-filter').classList.add('open');\n  buildBrandFilter(); buildTypeFilter();\n});\ndocument.getElementById('mob-filter-close').addEventListener('click', function(){\n  document.getElementById('mob-filter').classList.remove('open');\n});\ndocument.getElementById('mob-apply-btn').addEventListener('click', function(){\n  // Apply category\n  var catChip = document.querySelector('#mob-chips-cat .mob-chip.active');\n  if (catChip) setCat(catChip.dataset.val);\n  // Apply brands\n  Object.keys(state.activeBrands).forEach(function(b){ state.activeBrands[b]=false; });\n  document.querySelectorAll('#mob-chips-brand .mob-chip.active').forEach(function(c){ state.activeBrands[c.dataset.val]=true; });\n  // Apply types\n  Object.keys(state.activeTypes).forEach(function(t){ state.activeTypes[t]=false; });\n  document.querySelectorAll('#mob-chips-type .mob-chip.active').forEach(function(c){ state.activeTypes[c.dataset.val]=true; });\n  // Apply prices\n  Object.keys(state.activePrices).forEach(function(p){ state.activePrices[p]=false; });\n  document.querySelectorAll('#mob-chips-price .mob-chip.active').forEach(function(c){ state.activePrices[c.dataset.val]=true; });\n  // Apply cab types\n  Object.keys(state.activeCabTypes).forEach(function(c){ state.activeCabTypes[c]=false; });\n  document.querySelectorAll('#mob-chips-cab .mob-chip.active').forEach(function(c){ state.activeCabTypes[c.dataset.val]=true; });\n  // Apply finishes\n  Object.keys(state.activeFinishes).forEach(function(f){ state.activeFinishes[f]=false; });\n  document.querySelectorAll('#mob-chips-finish .mob-chip.active').forEach(function(c){ state.activeFinishes[c.dataset.val]=true; });\n  document.getElementById('mob-filter').classList.remove('open');\n  buildSidebar(); render();\n});\n\nfunction mobChipToggle(chip) {\n  var filter = chip.dataset.filter;\n  if (filter === 'cat') {\n    document.querySelectorAll('#mob-chips-cat .mob-chip').forEach(function(c){ c.classList.remove('active'); });\n    chip.classList.add('active');\n  } else {\n    chip.classList.toggle('active');\n  }\n}\n\n\n// Build mobile cat chips\n(function(){\n  var cats = [{val:'all',label:'All'},{val:'tonneau',label:'Tonneau Covers'},{val:'steps',label:'Steps & Boards'},{val:'racks',label:'Headache Racks'}];\n  var el = document.getElementById('mob-chips-cat');\n  el.innerHTML = cats.map(function(c){\n    return '<div class="mob-chip' + (c.val===state.activeCat?' active':'') + '" data-filter="cat" data-val="' + c.val + '" onclick="mobChipToggle(this)">' + c.label + '</div>';\n  }).join('');\n})();\n\n/* ════════════════════════════════════════════════\n   WIX IFRAME HEIGHT REPORTING\n════════════════════════════════════════════════ */\nfunction reportHeight(){\n  var sentinel=document.getElementById('height-sentinel');\n  var h=sentinel?(sentinel.offsetTop+sentinel.offsetHeight):Math.max(document.body.scrollHeight,document.body.offsetHeight,document.documentElement.scrollHeight,document.documentElement.offsetHeight);\n  window.parent.postMessage(JSON.stringify({height:h}),'*');\n}\ndocument.addEventListener('DOMContentLoaded',reportHeight);\nwindow.addEventListener('load',function(){[0,200,500,1000,2000,3500].forEach(function(t){setTimeout(reportHeight,t);});});\nwindow.addEventListener('resize',reportHeight);\nif(window.ResizeObserver){new ResizeObserver(reportHeight).observe(document.body);}\n</script>\n\n<script src="https://rlsh1855.github.io/3Js-and-RLSH-Website/site-nav.js"></script>\n<div id="height-sentinel" style="height:1px;width:1px;visibility:hidden;pointer-events:none;"></div>\n<script>\n(function(){var active=false,startY=0,lastY=0,rafId=null;document.addEventListener('mousedown',function(e){if(e.button!==1)return;if(e.target.closest('a'))return;e.preventDefault();active=true;startY=e.clientY;lastY=e.clientY;document.body.style.cursor='ns-resize';tick();});document.addEventListener('mousemove',function(e){if(active)lastY=e.clientY;});document.addEventListener('mouseup',function(e){if(e.button!==1||!active)return;active=false;document.body.style.cursor='';if(rafId){cancelAnimationFrame(rafId);rafId=null;}});function tick(){if(!active){rafId=null;return;}var dy=lastY-startY;if(Math.abs(dy)>5)window.scrollBy(0,dy*0.12);rafId=requestAnimationFrame(tick);}})();\n</script><!-- EFFECTS: grain Â· scroll-reveal Â· border sweep Â· parallax Â· inertia -->\n<style>\n@keyframes grain{0%,100%{transform:translate(0,0);}10%{transform:translate(-2%,-3%);}20%{transform:translate(3%,1%);}30%{transform:translate(-1%,4%);}40%{transform:translate(4%,-2%);}50%{transform:translate(-3%,3%);}60%{transform:translate(2%,-4%);}70%{transform:translate(-4%,1%);}80%{transform:translate(1%,3%);}90%{transform:translate(3%,-1%);}}\n.grain::before{content:'';position:absolute;inset:-50%;width:200%;height:200%;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");background-size:200px 200px;opacity:0.038;animation:grain 0.8s steps(1) infinite;pointer-events:none;z-index:3;}\n[data-anim]{opacity:0;transition:opacity 0.65s ease,transform 0.65s ease;}[data-anim="fade-up"]{transform:translateY(32px);}[data-anim="fade-in"]{transform:none;}[data-anim].visible{opacity:1;transform:none;}[data-delay="100"]{transition-delay:0.10s;}[data-delay="200"]{transition-delay:0.20s;}[data-delay="300"]{transition-delay:0.30s;}[data-delay="400"]{transition-delay:0.40s;}[data-delay="500"]{transition-delay:0.50s;}\n@media(prefers-reduced-motion:reduce){[data-anim]{opacity:1;transform:none;transition:none;}[data-delay="100"],[data-delay="200"],[data-delay="300"],[data-delay="400"],[data-delay="500"]{transition-delay:0s;}}\n.product-card,.mfr-card{position:relative;}.card-border-sweep{position:absolute;inset:0;pointer-events:none;z-index:6;overflow:hidden;}.card-border-sweep canvas{position:absolute;inset:0;width:100%;height:100%;}\n</style>\n<script>\n(function(){var els=document.querySelectorAll('[data-anim]');if(!els.length)return;var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}});},{threshold:0.12});els.forEach(function(el){io.observe(el);});})();\n(function(){var COLOR='#8B0000',DURATION=700,BORDER=2;function getPL(w,h){return 2*(w+h);}function ptP(x,y,w,h){if(y<=BORDER)return x;if(x>=w-BORDER)return w+y;if(y>=h-BORDER)return w+h+(w-x);return w+h+w+(h-y);}function initCard(card){if(card.querySelector('.card-border-sweep'))return;var wrap=document.createElement('div');wrap.className='card-border-sweep';var cvs=document.createElement('canvas');wrap.appendChild(cvs);card.appendChild(wrap);var raf=null,startP=0,progress=0,animStart=0,leaving=false,leaveStart=0,leaveOpacity=0;function resize(){cvs.width=card.offsetWidth;cvs.height=card.offsetHeight;}resize();new ResizeObserver(resize).observe(card);function draw(now){var w=cvs.width,h=cvs.height,ctx=cvs.getContext('2d');ctx.clearRect(0,0,w,h);var perim=getPL(w,h),opacity=1;if(leaving){var elapsed=now-leaveStart;opacity=leaveOpacity*(1-Math.min(elapsed/350,1));if(opacity<=0){raf=null;return;}}else{var elapsed2=now-animStart;progress=Math.min(elapsed2/DURATION,1);progress=1-Math.pow(1-progress,3);}var sweepLen=perim*progress,segs=[{x1:0,y1:0,x2:w,y2:0},{x1:w,y1:0,x2:w,y2:h},{x1:w,y1:h,x2:0,y2:h},{x1:0,y1:h,x2:0,y2:0}],sLens=[w,h,w,h],drawn=0,s=startP%perim,started=false;ctx.save();ctx.strokeStyle=COLOR;ctx.lineWidth=BORDER;ctx.globalAlpha=opacity;ctx.beginPath();for(var pass=0;pass<2;pass++){var cum=0;for(var i=0;i<4;i++){var sLen=sLens[i],sStart=cum,sEnd=cum+sLen;cum+=sLen;if(!started){if(sEnd<=s)continue;var t=(s-sStart)/sLen,sx=segs[i].x1+(segs[i].x2-segs[i].x1)*t,sy=segs[i].y1+(segs[i].y2-segs[i].y1)*t;ctx.moveTo(sx,sy);started=true;var rem=sLen*(1-t),canDraw=Math.min(rem,sweepLen-drawn),t2=t+canDraw/sLen;ctx.lineTo(segs[i].x1+(segs[i].x2-segs[i].x1)*t2,segs[i].y1+(segs[i].y2-segs[i].y1)*t2);drawn+=canDraw;}else{var canDraw2=Math.min(sLen,sweepLen-drawn),t3=canDraw2/sLen;ctx.lineTo(segs[i].x1+(segs[i].x2-segs[i].x1)*t3,segs[i].y1+(segs[i].y2-segs[i].y1)*t3);drawn+=canDraw2;}if(drawn>=sweepLen)break;}if(drawn>=sweepLen||pass===1)break;s=0;}ctx.stroke();ctx.restore();raf=requestAnimationFrame(draw);}card.addEventListener('mouseenter',function(e){leaving=false;var rect=card.getBoundingClientRect();startP=ptP(e.clientX-rect.left,e.clientY-rect.top,cvs.width,cvs.height);progress=0;animStart=performance.now();if(!raf)raf=requestAnimationFrame(draw);});card.addEventListener('mouseleave',function(){leaving=true;leaveStart=performance.now();leaveOpacity=progress;});}document.addEventListener('DOMContentLoaded',function(){document.querySelectorAll('.product-card,.mfr-card').forEach(initCard);});})();\n(function(){if(window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;var bg=document.querySelector('.hero-bg');if(!bg)return;window.addEventListener('scroll',function(){bg.style.transform='scale(1.04) translateY('+(window.scrollY*0.28)+'px)';},{passive:true});})();\n</script>\n</body>\n</html>\n\n

@@ -1,908 +1,1 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>3J's Auto Body & Paint — Signal Hill CA | Family Owned Since 1991</title>
-  <meta name="description" content="3J's Auto Body & Paint in Signal Hill, CA. Family owned since 1991. I-CAR Gold Class certified collision repair, Rhino Liner, tonneau covers, running boards. (562) 424-6744.">
-  <meta name="robots" content="index, follow">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="3J's Auto Body & Paint — Signal Hill CA | Family Owned Since 1991">
-  <meta property="og:description" content="30+ years. One location. One family. I-CAR Gold Class certified. Collision repair, Rhino Liner, truck accessories. Signal Hill, CA. (562) 424-6744.">
-  <meta property="og:site_name" content="3J's Auto Body &amp; Paint">
-
-  <script type="application/ld+json">
-  {"@context":"https://schema.org","@graph":[
-    {"@type":"AutoBodyShop","name":"3J's Auto Body & Paint","telephone":"+1-562-424-6744","url":"https://www.3jsautobody.com/","address":{"@type":"PostalAddress","streetAddress":"1855 E 29th Street","addressLocality":"Signal Hill","addressRegion":"CA","postalCode":"90755","addressCountry":"US"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"08:00","closes":"17:00"}]},
-    {"@type":"FAQPage","mainEntity":[
-      {"@type":"Question","name":"Do you work with insurance companies?","acceptedAnswer":{"@type":"Answer","text":"Yes — 3J's Auto Body works directly with all major insurance carriers including State Farm, Geico, Progressive, Allstate, Farmers, AAA, and more. We handle the paperwork so you don't have to."}},
-      {"@type":"Question","name":"How long does auto body repair take?","acceptedAnswer":{"@type":"Answer","text":"Repair time depends on the extent of the damage. Minor repairs can be done same-day or next day. Major collision repairs typically take several days to a week."}},
-      {"@type":"Question","name":"Do you offer free estimates?","acceptedAnswer":{"@type":"Answer","text":"Yes — estimates are always free at 3J's Auto Body. Walk in Mon–Fri 8AM–5PM or submit an online photo estimate through our website. No appointment needed."}},
-      {"@type":"Question","name":"Is there a warranty on repairs?","acceptedAnswer":{"@type":"Answer","text":"Yes — 3J's Auto Body backs every repair with a lifetime warranty on our workmanship for as long as you own the vehicle."}},
-      {"@type":"Question","name":"Do you offer towing?","acceptedAnswer":{"@type":"Answer","text":"Yes — we can arrange towing for your vehicle to our shop in Signal Hill. Call us at (562) 424-6744."}},
-      {"@type":"Question","name":"What areas do you serve?","acceptedAnswer":{"@type":"Answer","text":"We are located in Signal Hill, CA and serve the greater Long Beach area including Long Beach, Lakewood, Carson, Compton, Torrance, and surrounding communities."}}
-    ]}
-  ]}
-  </script>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
-
-  <style>
-    /* ── RESET & BASE ── */
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    html{}
-    body{font-family:'Inter',sans-serif;background:#0A0A0A;color:#fff;overflow-x:clip;}
-    h1,h2,h3{font-family:'Montserrat',sans-serif;text-wrap:balance;}
-    p{text-wrap:pretty;}
-    .skip-link{position:absolute;top:-100%;left:16px;z-index:9999;background:#8B0000;color:#fff;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:8px 20px;text-decoration:none;}
-    .skip-link:focus{top:16px;}
-
-    /* ── SHARED TOKENS ── */
-    :root{
-      --red:#8B0000;--red-hot:#A00000;
-      --black:#0A0A0A;--black-2:#111;
-      --off-white:#F2F2F2;--neutral:#1a1a1a;
-      --body:#424954;--border:#e0e0e0;
-    }
-
-    /* ── SHARED BUTTONS ── */
-    .btn-red{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:48px;padding:0 32px;background:var(--red);color:#fff;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border:none;transition:background .2s;}
-    .btn-red:hover{background:var(--red-hot);}
-    .btn-ghost{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:48px;padding:0 28px;background:rgba(255,255,255,.15);backdrop-filter:blur(12px);color:#fff;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border:1.5px solid rgba(255,255,255,.55);transition:background .2s;}
-    .btn-ghost:hover{background:rgba(255,255,255,.28);}
-    .btn-outline-red{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:48px;padding:0 28px;background:transparent;color:var(--red);font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border:2px solid var(--red);transition:background .2s,color .2s;}
-    .btn-outline-red:hover{background:var(--red);color:#fff;}
-    .btn-white{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:48px;padding:0 32px;background:#fff;color:var(--red);font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;transition:background .2s;}
-    .btn-white:hover{background:#f0f0f0;}
-    .btn svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;}
-
-    /* ── EYEBROW ── */
-    .eyebrow{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:12px;display:block;}
-
-    /* ════════════════════════════
-       1. HERO
-    ════════════════════════════ */
-    .hero{position:relative;min-height:720px;display:flex;align-items:center;justify-content:flex-start;overflow:hidden;background:#0a0a0a;}
-    .hero-bg{position:absolute;inset:0;background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/CHEVY%20BOAT%20LAUNCH%20RAMP_TRANSPARENT_BG.png');background-size:cover;background-position:center 40%;background-repeat:no-repeat;z-index:0;filter:brightness(1.18) contrast(1.08);}
-    .hero-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,0.82) 0%,rgba(0,0,0,0.65) 45%,rgba(0,0,0,0.35) 75%,rgba(0,0,0,0.20) 100%);z-index:1;}
-    .hero-vignette{position:absolute;bottom:0;left:0;right:0;height:280px;background:linear-gradient(to top,rgba(0,0,0,1) 0%,rgba(0,0,0,0.85) 20%,rgba(0,0,0,0.4) 55%,transparent 100%);z-index:2;pointer-events:none;}
-    .hero-accent-bar{position:absolute;left:0;top:0;bottom:0;width:5px;background:#8B0000;z-index:3;}
-    .hero-content{position:relative;z-index:2;padding:80px 72px 80px 80px;max-width:680px;color:#fff;}
-    .hero-eyebrow{position:absolute;top:40px;left:80px;display:flex;align-items:center;gap:12px;z-index:4;}
-    .eyebrow-line{width:36px;height:2px;background:#8B0000;flex-shrink:0;}
-    .eyebrow-text{font-size:10px;font-weight:800;letter-spacing:3.5px;text-transform:uppercase;color:rgba(255,255,255,0.70);}
-    .hero-headline{font-size:clamp(44px,6.5vw,90px);font-weight:900;letter-spacing:-3px;line-height:0.92;text-transform:uppercase;margin-bottom:0;color:#fff;}
-    .hero-headline .line-red{color:#8B0000;}
-    .hero-rule{width:52px;height:4px;background:#8B0000;margin:32px 0;}
-    .hero-body{font-family:'Inter',sans-serif;font-size:clamp(15px,1.6vw,17px);font-weight:400;color:rgba(255,255,255,0.82);line-height:1.85;max-width:520px;}
-    .hero-body .promise{display:block;font-size:clamp(15px,1.9vw,19px);font-weight:800;color:#fff;margin:16px 0 8px;letter-spacing:2px;text-transform:uppercase;text-align:center;}
-    .hero-body .since{display:block;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-top:18px;white-space:nowrap;}
-    .hero-ctas{display:flex;flex-wrap:wrap;gap:14px;margin-top:40px;}
-    .hero-stats{display:flex;gap:36px;margin-top:52px;padding-top:32px;border-top:1px solid rgba(255,255,255,0.12);}
-    .hero-stats .stat{display:flex;flex-direction:column;gap:3px;}
-    .hero-stats .stat-num{font-size:clamp(20px,2.5vw,28px);font-weight:900;color:#fff;letter-spacing:-1px;line-height:1;}
-    .hero-stats .stat-num span{color:#8B0000;}
-    .hero-stats .stat-label{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.45);}
-    .hero-bottom-bar{position:absolute;bottom:0;left:0;right:0;height:4px;background:linear-gradient(to right,#8B0000,#8B0000 60%,transparent);z-index:3;}
-    .river-rat{position:absolute;bottom:22px;left:80px;font-size:9px;font-weight:600;color:rgba(255,255,255,0.22);letter-spacing:0.5px;font-style:italic;z-index:3;}
-    .scroll-hint{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;opacity:0;z-index:3;animation:hintFadeIn 0.9s 1.2s ease-out forwards;}
-    .scroll-hint span{font-size:8px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:#fff;}
-    .scroll-hint svg{width:22px;height:22px;stroke:#fff;stroke-width:2.5;}
-    @keyframes hintFadeIn{from{opacity:0;transform:translateX(-50%) translateY(-6px);}to{opacity:0.80;transform:translateX(-50%) translateY(0);}}
-    @media(max-width:900px){
-      .hero-content{padding:72px 48px;}
-      .hero-overlay{background:linear-gradient(to right,rgba(0,0,0,0.85) 0%,rgba(0,0,0,0.70) 60%,rgba(0,0,0,0.50) 100%);}
-      .hero-stats{gap:24px;}
-    }
-    @media(max-width:640px){
-      .hero{min-height:700px;align-items:flex-start;}
-      .hero-bg{background-size:125%;background-position:center top;}
-      .hero-content{padding:230px 28px 48px 28px;max-width:100%;}
-      .hero-eyebrow{top:18px;left:16px;right:16px;flex-direction:column;align-items:center;gap:8px;justify-content:center;}
-      .eyebrow-line{width:28px;}
-      .eyebrow-text{text-align:center;white-space:normal;font-size:8px;letter-spacing:2px;}
-      .hero-overlay{background:rgba(0,0,0,0.62);}
-      .hero-ctas{flex-direction:column;}
-      .hero-stats{gap:20px;flex-wrap:wrap;}
-      .scroll-hint{display:none;}
-      .river-rat{left:20px;font-size:8px;}
-    }
-    @media(prefers-reduced-motion:reduce){.scroll-hint{animation:none;opacity:0.80;}}
-
-    /* ════════════════════════════
-       2. PHOTO STRIP
-    ════════════════════════════ */
-    .strip{display:flex;width:100%;height:380px;}
-    .panel{flex:1;position:relative;overflow:hidden;cursor:pointer;}
-    .panel-bg{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform .5s ease;}
-    .panel:hover .panel-bg{transform:scale(1.05);}
-    .panel-overlay{position:absolute;inset:0;background:linear-gradient(160deg,rgba(0,0,0,.62) 0%,rgba(0,0,0,.35) 100%);transition:background .4s ease;}
-    .panel:hover .panel-overlay{background:linear-gradient(160deg,rgba(0,0,0,.72) 0%,rgba(0,0,0,.50) 100%);}
-
-    .panel-content{position:relative;z-index:4;padding:28px 24px;height:100%;display:flex;flex-direction:column;justify-content:flex-start;}
-    .panel-eyebrow{font-size:9px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:#cc2222;margin-bottom:8px;}
-    .panel-title{font-family:'Montserrat',sans-serif;font-size:clamp(18px,2.2vw,26px);font-weight:900;color:#fff;letter-spacing:-.3px;line-height:1.15;text-transform:uppercase;margin-bottom:12px;}
-    .panel-sub{font-family:'Inter',sans-serif;font-size:13px;font-weight:400;color:rgba(255,255,255,.78);line-height:1.65;max-width:280px;}
-    .panel-link{margin-top:auto;display:inline-flex;align-items:center;gap:7px;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#fff;text-decoration:none;border-bottom:2px solid #8B0000;padding-bottom:2px;width:fit-content;transition:color .2s;}
-    .panel-link:hover{color:#8B0000;}
-    .panel-link::after{content:'→';}
-    .panel-sep{display:none;}
-
-    /* ════════════════════════════
-       3. AWARDS
-    ════════════════════════════ */
-    .awards-section{background:var(--off-white);padding:clamp(48px,7vw,72px) clamp(16px,4vw,24px);text-align:center;position:relative;overflow:hidden;}
-    .awards-section::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(0,0,0,.06) 1px,transparent 1px);background-size:28px 28px;pointer-events:none;}
-    .awards-section::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(139,0,0,.05) 0%,transparent 65%);pointer-events:none;}
-    .awards-content{position:relative;z-index:1;max-width:1000px;margin:0 auto;}
-    .awards-eyebrow{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:#8B0000;margin-bottom:14px;}
-    .awards-heading{font-family:'Montserrat',sans-serif;font-size:clamp(22px,3.5vw,38px);font-weight:900;letter-spacing:-.5px;margin-bottom:8px;color:var(--neutral);}
-    .awards-heading em{font-style:normal;color:#8B0000;}
-    .awards-sub{font-family:'Inter',sans-serif;font-size:13px;color:#888;margin-bottom:52px;letter-spacing:.3px;}
-    .awards-grid{display:flex;justify-content:center;gap:24px;flex-wrap:wrap;margin-bottom:48px;}
-    .award-card{background:#fff;border:1px solid #e0e0e0;padding:36px 40px;min-width:260px;flex:1;max-width:320px;position:relative;transition:border-color .25s,transform .25s,box-shadow .25s;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.06);}
-    .award-card:hover{border-color:#8B0000;transform:translateY(-4px);box-shadow:0 12px 36px rgba(139,0,0,.12);}
-    .award-year{font-family:'Montserrat',sans-serif;font-size:clamp(52px,8vw,80px);font-weight:900;letter-spacing:-3px;line-height:1;color:#8B0000;margin-bottom:12px;}
-    .award-title{font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--neutral);margin-bottom:6px;}
-    .award-source{font-family:'Inter',sans-serif;font-size:11px;font-weight:500;color:#999;line-height:1.6;}
-    .award-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(139,0,0,.08);border:1px solid rgba(139,0,0,.25);padding:5px 12px;margin-top:14px;font-family:'Montserrat',sans-serif;font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#8B0000;}
-    .award-card.featured{border-color:#8B0000;box-shadow:0 8px 32px rgba(139,0,0,.14);}
-    .award-card.featured::after{content:'MOST RECENT';position:absolute;top:12px;right:12px;font-family:'Montserrat',sans-serif;font-size:8px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:rgba(139,0,0,.7);}
-    .award-card.legacy::after{content:'EST. EXCELLENCE';position:absolute;top:12px;right:12px;font-family:'Montserrat',sans-serif;font-size:8px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#bbb;}
-    .winner-callout{display:inline-flex;align-items:center;gap:16px;background:#8B0000;padding:18px 32px;box-shadow:0 8px 32px rgba(139,0,0,.25);}
-    .winner-icon{width:44px;height:44px;background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-    .winner-icon svg{width:22px;height:22px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
-    .winner-text .wt-top{font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:3px;}
-    .winner-text .wt-main{font-family:'Montserrat',sans-serif;font-size:clamp(14px,2vw,18px);font-weight:900;color:#fff;}
-
-    /* ════════════════════════════
-       4. TOP SERVICES — COMPACT
-    ════════════════════════════ */
-    .services-section{background:var(--black);padding:clamp(56px,7vw,80px) 0 0;}
-    .services-inner{max-width:1100px;margin:0 auto;padding:0 20px;}
-    .services-header{text-align:center;margin-bottom:48px;}
-    .services-header .eyebrow{color:rgba(255,255,255,.4);}
-    .services-title{font-family:'Montserrat',sans-serif;font-size:clamp(22px,3.5vw,38px);font-weight:900;letter-spacing:-1px;color:#fff;text-transform:uppercase;}
-    .services-title em{font-style:normal;color:#8B0000;}
-    .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;}
-    .svc-card{background:var(--black-2);border:1px solid #1a1a1a;overflow:hidden;display:flex;flex-direction:column;transition:border-color .2s;}
-    .svc-card:hover{border-color:#8B0000;}
-    .svc-img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;}
-    .svc-img-wrap{overflow:hidden;position:relative;}
-    .svc-img-wrap video{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;}
-    .svc-body{padding:22px 20px 24px;flex:1;display:flex;flex-direction:column;}
-    .svc-num{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:rgba(139,0,0,.6);margin-bottom:6px;}
-    .svc-name{font-family:'Montserrat',sans-serif;font-size:16px;font-weight:900;letter-spacing:-.3px;text-transform:uppercase;color:#fff;margin-bottom:12px;line-height:1.15;}
-    .svc-name em{font-style:normal;color:#8B0000;}
-    .svc-list{list-style:none;display:flex;flex-direction:column;gap:7px;margin-bottom:20px;}
-    .svc-list li{font-family:'Inter',sans-serif;font-size:12px;font-weight:500;color:rgba(255,255,255,.6);display:flex;align-items:center;gap:8px;letter-spacing:.3px;}
-    .svc-list li::before{content:'';width:8px;height:1.5px;background:#8B0000;flex-shrink:0;}
-    .svc-cta{margin-top:auto;display:inline-flex;align-items:center;gap:6px;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#fff;text-decoration:none;background:#8B0000;height:38px;padding:0 16px;transition:background .2s;width:fit-content;}
-    .svc-cta:hover{background:var(--red-hot);}
-    .svc-cta svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2.5;stroke-linecap:round;}
-
-    /* CTA band */
-    .cta-band{background:#fff;padding:clamp(40px,5vw,64px) 20px;text-align:center;position:relative;overflow:hidden;border-top:1px solid #e8e8e8;}
-    .cta-band-inner{position:relative;z-index:1;}
-    .cta-band h2{font-family:'Montserrat',sans-serif;font-size:clamp(22px,3.5vw,38px);font-weight:900;margin-bottom:10px;color:#1a1a1a;}
-    .cta-band p{font-family:'Inter',sans-serif;font-size:15px;color:#666;max-width:480px;margin:0 auto 28px;line-height:1.65;}
-
-    /* ════════════════════════════
-       5. FAQ
-    ════════════════════════════ */
-    .faq-section{background:#fff;padding:clamp(48px,7vw,80px) 24px clamp(56px,8vw,96px);position:relative;}
-    .faq-inner{max-width:740px;margin:0 auto;}
-    .faq-header{text-align:center;margin-bottom:48px;}
-    .faq-header .eyebrow{color:#8B0000;}
-    .faq-title{font-family:'Montserrat',sans-serif;font-size:clamp(22px,6vw,42px);font-weight:900;letter-spacing:-1px;line-height:1.05;text-transform:uppercase;color:var(--neutral);margin-bottom:8px;}
-    .faq-title em{font-style:normal;color:#8B0000;}
-    .faq-sub{font-family:'Inter',sans-serif;font-size:13px;color:#888;text-align:center;line-height:1.7;}
-    .faq-list{display:flex;flex-direction:column;gap:6px;}
-    .faq-item{background:#fff;border:1.5px solid #E2E8F0;border-radius:0;overflow:hidden;transition:border-color 0.2s,box-shadow 0.2s;}
-    .faq-item:hover{border-color:#CBD5E0;box-shadow:0 2px 8px rgba(15,30,46,0.07);}
-    .faq-item.open{border-color:#B0BBC8;box-shadow:0 4px 16px rgba(15,30,46,0.10);}
-    .faq-trigger{width:100%;background:none;border:none;padding:0;cursor:pointer;display:block;text-align:left;}
-    .faq-trigger-inner{display:flex;align-items:center;gap:16px;padding:18px 20px;transition:background 0.15s;}
-    .faq-trigger:hover .faq-trigger-inner,.faq-item.open .faq-trigger-inner{background:#f4f4f4;}
-    .q-badge{flex-shrink:0;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:900;color:#AAAAAA;padding:3px 8px;border:1px solid #E8ECF0;border-radius:0;background:#fff;align-self:flex-start;margin-top:2px;box-shadow:0 1px 4px rgba(0,0,0,0.07);}
-    .q-label{flex:1;font-family:'Montserrat',sans-serif;font-size:14px;font-weight:700;color:#1a1a1a;line-height:1.45;}
-    .faq-item.open .q-label{color:#1a1a1a;}
-    .toggle-icon{flex-shrink:0;width:40px;height:40px;border-radius:0;background:transparent;border:none;display:flex;align-items:center;justify-content:center;transition:transform 0.3s ease;color:#111;}
-    .toggle-icon svg{width:20px;height:20px;}
-    .faq-item.open .toggle-icon{transform:rotate(45deg);}
-    .faq-body{height:0;overflow:hidden;transition:height 720ms cubic-bezier(0.22,1,0.36,1);}
-    .faq-answer{padding:0 20px 20px 60px;}
-    .answer-text{font-family:'Inter',sans-serif;font-size:13px;font-weight:500;color:#3B3B3B;line-height:1.8;}
-    @media(max-width:640px){.faq-answer{padding:0 14px 18px 14px;}.q-badge{display:none;}}
-    .faq-cta{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:48px;}
-
-    /* ════════════════════════════
-       6. ABOUT / WARRANTY
-    ════════════════════════════ */
-    .red-section{position:relative;background:#8B0000;padding:clamp(36px,7vw,72px) clamp(18px,4vw,32px) clamp(72px,13vw,160px);background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/crimson-spray-divider.webp');background-size:100% auto;background-position:bottom center;background-repeat:no-repeat;}
-    .about-inner{max-width:1180px;margin:0 auto;}
-    .about-eyebrow{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.5);display:inline-flex;align-items:center;gap:10px;margin-bottom:18px;}
-    .about-eyebrow::before{content:'';width:24px;height:2px;background:rgba(255,255,255,.4);flex-shrink:0;}
-    .about-intro{display:grid;grid-template-columns:1fr;gap:24px;align-items:end;margin-bottom:40px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.14);}
-    .about-h2{font-family:'Montserrat',sans-serif;font-size:clamp(24px,6vw,52px);font-weight:900;letter-spacing:-1px;line-height:1.05;color:#fff;margin-bottom:16px;}
-    .about-lead{font-family:'Inter',sans-serif;font-size:clamp(14px,3.5vw,17px);color:rgba(255,255,255,.78);line-height:1.65;max-width:600px;}
-    .warranty-badge .wnum{font-family:'Montserrat',sans-serif;font-size:clamp(44px,11vw,84px);font-weight:900;letter-spacing:-2px;color:#fff;line-height:.9;margin-bottom:6px;}
-    .warranty-badge .wsub{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.55);display:block;margin-bottom:10px;}
-    .warranty-badge .wdesc{font-family:'Inter',sans-serif;font-size:14px;color:rgba(255,255,255,.72);line-height:1.55;max-width:340px;}
-    .about-body{display:grid;grid-template-columns:1fr;gap:40px;}
-    .col-label{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.45);display:block;margin-bottom:18px;}
-    .service-grid-about{display:grid;grid-template-columns:1fr 1fr;gap:0 20px;}
-    .service-grid-about li{list-style:none;display:flex;align-items:center;gap:10px;font-family:'Inter',sans-serif;font-size:14px;font-weight:500;color:rgba(255,255,255,.9);padding:9px 0;border-top:1px solid rgba(255,255,255,.22);}
-    .service-grid-about li:first-child,.service-grid-about li:nth-child(2){border-top:none;}
-    .service-grid-about li::before{content:'';width:5px;height:5px;background:rgba(255,255,255,.55);flex-shrink:0;transform:rotate(45deg);}
-    .about-cta-block{display:flex;flex-direction:column;align-items:flex-start;gap:16px;}
-    .about-cta-block .pitch{font-family:'Inter',sans-serif;font-size:14px;color:rgba(255,255,255,.75);line-height:1.6;}
-    .about-cta-block .pitch strong{color:#fff;font-weight:600;}
-    .btn-about{display:inline-flex;align-items:center;gap:10px;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;height:50px;padding:0 28px;background:#fff;color:#8B0000;border:none;transition:background .2s;}
-    .btn-about:hover{background:#f0f0f0;}
-    .btn-about-ghost{display:inline-flex;align-items:center;gap:10px;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;height:50px;padding:0 28px;background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.45);transition:background .2s,border-color .2s;}
-    .btn-about-ghost:hover{background:rgba(255,255,255,.08);border-color:#fff;}
-    .btn-about svg,.btn-about-ghost svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2.4;flex-shrink:0;}
-    .black-section{background:var(--black);padding:clamp(36px,7vw,72px) clamp(18px,4vw,32px) clamp(40px,6vw,72px);}
-    .rlsh-head{margin-bottom:36px;padding-bottom:32px;border-bottom:1px solid rgba(255,255,255,.1);}
-    .rlsh-head h2{font-family:'Montserrat',sans-serif;font-size:clamp(24px,6vw,52px);font-weight:900;letter-spacing:-1px;color:#fff;line-height:1.05;margin-bottom:14px;}
-    .rlsh-head h2 em{font-style:normal;color:#8B0000;}
-    .rlsh-head .about-lead{margin-top:6px;}
-    .stat-row{display:grid;grid-template-columns:1fr;margin-bottom:36px;border-top:1px solid rgba(255,255,255,.1);border-bottom:1px solid rgba(255,255,255,.1);}
-    .ab-stat{padding:clamp(18px,4vw,28px) clamp(16px,3.5vw,28px);border-top:1px solid rgba(255,255,255,.1);}
-    .ab-stat:first-child{border-top:none;}
-    .ab-stat .snum{font-family:'Montserrat',sans-serif;font-size:clamp(28px,7vw,46px);font-weight:900;letter-spacing:-1.5px;color:#fff;line-height:1;margin-bottom:6px;}
-    .ab-stat .snum em{font-style:normal;color:#8B0000;}
-    .ab-stat .slbl{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:8px;display:block;}
-    .ab-stat .stxt{font-family:'Inter',sans-serif;font-size:13px;color:rgba(255,255,255,.7);line-height:1.55;}
-    .rlsh-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px;}
-    .rlsh-foot p{font-family:'Inter',sans-serif;font-size:15px;color:rgba(255,255,255,.78);line-height:1.6;max-width:560px;}
-    .rlsh-foot p strong{color:#fff;font-weight:600;}
-    @media(min-width:860px){
-      .about-intro{grid-template-columns:1.4fr 1fr;gap:64px;}
-      .about-body{grid-template-columns:1.4fr 1fr;gap:64px;}
-      .stat-row{grid-template-columns:repeat(3,1fr);}
-      .ab-stat{border-top:none;border-left:1px solid rgba(255,255,255,.1);}
-      .ab-stat:first-child{border-left:none;}
-    }
-    @media(max-width:480px){.btn-about,.btn-about-ghost{width:100%;}}
-
-    /* ════════════════════════════
-       7. INSTAGRAM
-    ════════════════════════════ */
-    .ig-section{background:var(--black);padding:56px 0 64px;text-align:center;border-top:3px solid #8B0000;}
-    .ig-header{padding:0 24px;}
-    .ig-eyebrow{font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:#8B0000;margin-bottom:12px;display:block;}
-    .ig-heading{font-family:'Montserrat',sans-serif;font-size:clamp(22px,3.5vw,36px);font-weight:900;letter-spacing:-.5px;margin-bottom:6px;}
-    .ig-heading em{font-style:normal;color:#8B0000;}
-    .ig-sub{font-family:'Montserrat',sans-serif;font-size:13px;font-weight:500;color:#555;margin-bottom:32px;}
-    .ig-profile{display:inline-flex;align-items:center;gap:14px;background:#141414;border:1px solid #222;border-radius:0;padding:10px 22px 10px 10px;margin-bottom:36px;text-decoration:none;transition:border-color .2s,background .2s;}
-    .ig-profile:hover{background:#1a1a1a;border-color:#8B0000;}
-    .ig-avatar{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#8B0000,#a00000,#c00000);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-    .ig-avatar svg{width:20px;height:20px;}
-    .ig-info{text-align:left;}
-    .ig-handle{font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;color:#fff;}
-    .ig-name{font-family:'Montserrat',sans-serif;font-size:11px;font-weight:500;color:#555;margin-top:1px;}
-    .ig-grid{display:flex;gap:4px;width:100%;margin:0 0 36px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
-    .ig-grid::-webkit-scrollbar{display:none;}
-    .ig-tile{flex:1 1 0;min-width:0;position:relative;aspect-ratio:1;background:#111;overflow:hidden;cursor:pointer;text-decoration:none;display:block;}
-    .ig-tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .4s ease;}
-    .ig-tile:hover img{transform:scale(1.06);}
-    .ig-tile::before{content:'';position:absolute;inset:0;}
-    .ig-tile:nth-child(1)::before{background:linear-gradient(135deg,#0d0d0d,#1c1010);}
-    .ig-tile:nth-child(2)::before{background:linear-gradient(145deg,#111,#1a0808);}
-    .ig-tile:nth-child(3)::before{background:linear-gradient(125deg,#0f0f0f,#180a0a);}
-    .ig-tile:nth-child(4)::before{background:linear-gradient(155deg,#131010,#0d0d0d);}
-    .ig-tile:nth-child(5)::before{background:linear-gradient(135deg,#1a0808,#111);}
-    .ig-tile:nth-child(6)::before{background:linear-gradient(120deg,#0f0a0a,#1c1010);}
-    .ig-tile::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:#8B0000;transform:scaleX(0);transform-origin:left;transition:transform .3s ease;}
-    .ig-tile:hover::after{transform:scaleX(1);}
-    .ig-tile-hover{position:absolute;inset:0;background:rgba(139,0,0,0);display:flex;align-items:center;justify-content:center;transition:background .25s;}
-    .ig-tile-hover-icon{opacity:0;transform:scale(.7);transition:opacity .25s,transform .25s;display:flex;flex-direction:column;align-items:center;gap:8px;}
-    .ig-tile-hover-icon svg{width:28px;height:28px;color:#fff;}
-    .ig-tile-hover-icon span{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#fff;}
-    .ig-tile:hover .ig-tile-hover{background:rgba(139,0,0,.75);}
-    .ig-tile:hover .ig-tile-hover-icon{opacity:1;transform:scale(1);}
-    .ig-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:#8B0000;color:#fff;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;text-decoration:none;height:48px;padding:0 32px;border:2px solid transparent;transition:all .3s ease;letter-spacing:2px;text-transform:uppercase;}
-    .ig-btn:hover{background:var(--red-hot);}
-
-    /* ── MOBILE ── */
-    @media(max-width:960px){
-      .services-grid{grid-template-columns:repeat(2,1fr);}
-    }
-    @media(max-width:680px){
-      .strip{flex-direction:column;height:auto;}
-      .panel{height:280px;flex:none;}
-      .panel-sep{display:block;width:100%;height:3px;background:#8B0000;}
-    }
-    @media(max-width:600px){
-      .hero-ctas{flex-direction:column;align-items:stretch;}
-      .awards-grid{flex-direction:column;align-items:center;}
-      .award-card{min-width:0;width:100%;max-width:100%;}
-      .winner-callout{flex-direction:column;text-align:center;gap:10px;padding:18px 20px;}
-      .services-grid{grid-template-columns:1fr;}
-      .faq-section{padding:48px 20px 72px;}
-      .faq-cta{flex-direction:column;align-items:stretch;}
-      .ig-tile{flex:0 0 140px;}
-      .ig-section{padding:40px 0 48px;}
-    }
-    @media(min-width:601px){
-      .hero{min-height:560px;padding:64px 24px;}
-      .hero-content{align-items:center;}
-      .hero-ctas{flex-direction:row;flex-wrap:wrap;justify-content:center;}
-    }
-    @media(min-width:1024px){
-      .hero{min-height:640px;padding:80px 24px;}
-    }
-    @media(prefers-reduced-motion:reduce){
-      .scroll-arrow{animation:none;opacity:.5;}
-      .panel-bg,.svc-card,.ig-tile img{transition:none;}
-    }
-      *:focus{outline:none;}*:focus-visible{outline:2px solid #8B0000;outline-offset:3px;}
-  </style>
-</head>
-<body>
-<a href="#main-content" class="skip-link">Skip to content</a>
-<main id="main-content">
-
-<!-- ═══════════════════════════════════
-     1. HERO — Red Truck at Boat Launch Ramp
-═══════════════════════════════════ -->
-<section class="hero grain">
-  <div class="hero-bg"></div>
-  <div class="hero-overlay"></div>
-  <div class="hero-vignette"></div>
-  <div class="hero-accent-bar"></div>
-
-  <div class="hero-eyebrow">
-    <div class="eyebrow-line"></div>
-    <span class="eyebrow-text">Signal Hill, CA · Est. 1991 · Family Owned</span>
-  </div>
-
-  <div class="hero-content">
-    <h1 class="hero-headline">
-      30+ Years.<br>
-      One Location.<br>
-      <span class="line-red">One Family.</span>
-    </h1>
-    <div class="hero-rule"></div>
-    <div class="hero-body">
-      No corporate. No runaround. No ticket numbers.<br>
-      Just James, his crew, and the promise that
-      <span class="promise">"We'll know your name before we touch your car."</span>
-      <span class="since">Serving Signal Hill since 1991 — and we're not going anywhere.</span>
-    </div>
-    <div class="hero-ctas">
-      <a href="tel:+15624246744" class="btn-red btn" target="_top">
-        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.7 10.82 19.79 19.79 0 01.67 2.18 2 2 0 012.66 0h3a2 2 0 012 1.72c.13 1 .36 1.97.7 2.91a2 2 0 01-.45 2.11L6.91 7.74a16 16 0 006.29 6.29l1-.99a2 2 0 012.11-.45c.94.34 1.91.57 2.91.7A2 2 0 0122 16.92z"/></svg>
-        Call 562-424-6744
-      </a>
-      <a href="https://www.3jsautobody.com/request-a-quote" class="btn-ghost btn" target="_top">
-        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-        Get a Free Quote
-      </a>
-    </div>
-    <div class="hero-stats">
-      <div class="stat">
-        <div class="stat-num">30<span>+</span></div>
-        <div class="stat-label">Years in Business</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">2<span>×</span></div>
-        <div class="stat-label">Readers' Choice Award</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">5<span>★</span></div>
-        <div class="stat-label">Yelp Rating</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">1</div>
-        <div class="stat-label">Location · Always</div>
-      </div>
-    </div>
-  </div>
-
-  <p class="river-rat">* Yes, that is a boat launch ramp. Some of us have our priorities straight.</p>
-  <div class="hero-bottom-bar"></div>
-  <div class="scroll-hint">
-    <span>Scroll</span>
-    <svg fill="none" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════
-     2. PHOTO STRIP
-═══════════════════════════════════ -->
-<div class="strip">
-  <div class="panel">
-    <div class="panel-bg" style="background-image:url(https://rlsh1855.github.io/3Js-and-RLSH-Website/collision-before-after.png);"></div>
-    <div class="panel-overlay"></div>
-    <div class="panel-content">
-      <p class="panel-eyebrow">Auto Body</p>
-      <h2 class="panel-title">Collision<br>Repair</h2>
-      <p class="panel-sub">From minor dents to major damage — we restore your vehicle to factory condition.</p>
-      <a class="panel-link" href="https://www.3jsautobody.com/body-paint-repairs" target="_top">Learn More</a>
-    </div>
-  </div>
-  <div class="panel-sep"></div>
-  <div class="panel">
-    <div class="panel-bg" style="background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/Jeep%20Bedliner%20Photo%20Strip.webp');"></div>
-    <div class="panel-overlay"></div>
-    <div class="panel-content">
-      <p class="panel-eyebrow">Spray-On Protection</p>
-      <h2 class="panel-title">Rhino<br>Linings</h2>
-      <p class="panel-sub">Truck beds, Jeeps, and more — the toughest protective coating available.</p>
-      <a class="panel-link" href="https://www.3jsautobody.com/rhino-lining-quote" target="_top">Get a Quote</a>
-    </div>
-  </div>
-  <div class="panel-sep"></div>
-  <div class="panel">
-    <div class="panel-bg" style="background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/accessories-banner-truck-800x500px.webp');"></div>
-    <div class="panel-overlay"></div>
-    <div class="panel-content">
-      <p class="panel-eyebrow">Truck · Jeep · SUV</p>
-      <h2 class="panel-title">Accessories</h2>
-      <a class="panel-link" href="https://www.3jsautobody.com/exterior-accessories" target="_top">Shop All</a>
-    </div>
-  </div>
-</div>
-
-<!-- ═══════════════════════════════════
-     3. AWARDS
-═══════════════════════════════════ -->
-<section class="awards-section">
-  <div class="awards-content">
-    <p class="awards-eyebrow">Recognized by the Community</p>
-    <h2 class="awards-heading">Voted Best Body Shop — <em>Twice.</em></h2>
-    <p class="awards-sub">Press-Telegram &amp; Grunion Gazette · Readers' Choice Awards · Signal Hill &amp; Long Beach</p>
-    <div class="awards-grid">
-      <div class="award-card legacy">
-        <div class="award-year">2021</div>
-        <div class="award-title">Best Body Shop</div>
-        <div class="award-source">Press-Telegram &amp; Grunion Gazette<br>Readers' Choice Awards</div>
-        <div class="award-badge">
-          <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-          First Win
-        </div>
-      </div>
-      <div class="award-card featured">
-        <div class="award-year">2025</div>
-        <div class="award-title">Best Body Shop</div>
-        <div class="award-source">Press-Telegram &amp; Grunion Gazette<br>Readers' Choice Awards</div>
-        <div class="award-badge">
-          <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-          Still the Best
-        </div>
-      </div>
-    </div>
-    <div class="winner-callout">
-      <div class="winner-icon">
-        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-      </div>
-      <div class="winner-text">
-        <div class="wt-top">2-Time Award Winner · Family Owned Since 1991</div>
-        <div class="wt-main">The community has spoken — twice. We're honored every time.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════
-     4. TOP SERVICES — COMPACT GRID
-═══════════════════════════════════ -->
-<section class="services-section">
-  <div class="services-inner">
-    <div class="services-header">
-      <span class="eyebrow" style="color:rgba(255,255,255,.4);">What We Do</span>
-      <h2 class="services-title">Our Top <em>Services</em></h2>
-    </div>
-    <div class="services-grid">
-
-      <!-- 01 Rhino Liner -->
-      <div class="svc-card">
-        <div class="svc-img-wrap">
-          <img class="svc-img" src="https://rlsh1855.github.io/3Js-and-RLSH-Website/BEDLINER%20WITH%20LOGO.webp" alt="Spray-In Rhino Liner" loading="lazy"/>
-        </div>
-        <div class="svc-body">
-          <span class="svc-num">01</span>
-          <div class="svc-name">Spray-In <em>Rhino Liner</em></div>
-          <ul class="svc-list">
-            <li>Certified Rhino Liner Installer</li>
-            <li>Same-Day Service Available</li>
-            <li>Lifetime Warranty Included</li>
-            <li>Color Match Options</li>
-          </ul>
-          <a href="https://www.3jsautobody.com/rhino-lining-quote" class="svc-cta" target="_top">
-            Get a Quote <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
-          </a>
-        </div>
-      </div>
-
-      <!-- 02 Tonneau -->
-      <div class="svc-card">
-        <div class="svc-img-wrap">
-          <img class="svc-img" src="https://rlsh1855.github.io/3Js-and-RLSH-Website/bak-bakflip-mx4-2016-ford-f150-blue-beach-lifestyle-05.webp" alt="Tonneau Cover" loading="lazy"/>
-        </div>
-        <div class="svc-body">
-          <span class="svc-num">02</span>
-          <div class="svc-name">Tonneau <em>Covers</em></div>
-          <ul class="svc-list">
-            <li>Soft Roll-Up &amp; Hard Folding</li>
-            <li>Retractable Cover Installs</li>
-            <li>All Major Brands Available</li>
-            <li>Professional Installation</li>
-          </ul>
-          <a href="https://www.3jsautobody.com/exterior-accessories/tonneau-covers" class="svc-cta" target="_top">
-            Shop Covers <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
-          </a>
-        </div>
-      </div>
-
-      <!-- 03 Running Boards -->
-      <div class="svc-card">
-        <div class="svc-img-wrap">
-          <video autoplay loop muted playsinline preload="metadata" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;" aria-label="Running boards demo">
-            <source src="https://rlsh1855.github.io/3Js-and-RLSH-Website/step_gif_1080x720__1_.mp4" type="video/mp4">
-          </video>
-        </div>
-        <div class="svc-body">
-          <span class="svc-num">03</span>
-          <div class="svc-name">Running Boards <em>&amp; Steps</em></div>
-          <ul class="svc-list">
-            <li>Fixed &amp; Nerf Bar Options</li>
-            <li>Power Retractable Steps</li>
-            <li>Lifted Vehicle Friendly</li>
-            <li>All Makes &amp; Models</li>
-          </ul>
-          <a href="https://www.3jsautobody.com/exterior-accessories/steps-running-boards" class="svc-cta" target="_top">
-            Shop Steps <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
-          </a>
-        </div>
-      </div>
-
-      <!-- 04 Paint Jobs -->
-      <div class="svc-card">
-        <div class="svc-img-wrap">
-          <img class="svc-img" src="https://rlsh1855.github.io/3Js-and-RLSH-Website/72%20land%20cruiser%20full%20exterior%20paint%20job.webp" alt="Full exterior paint job" loading="lazy"/>
-        </div>
-        <div class="svc-body">
-          <span class="svc-num">04</span>
-          <div class="svc-name">Full Exterior <em>Paint Jobs</em></div>
-          <ul class="svc-list">
-            <li>Computer Color Matching</li>
-            <li>Single Panel or Full Repaint</li>
-            <li>Custom Colors Available</li>
-            <li>Factory Finish Quality</li>
-          </ul>
-          <a href="https://www.3jsautobody.com/body-paint-repairs" class="svc-cta" target="_top">
-            Learn More <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
-          </a>
-        </div>
-      </div>
-
-      <!-- 05 Rock Guard -->
-      <div class="svc-card">
-        <div class="svc-img-wrap">
-          <img class="svc-img" src="https://rlsh1855.github.io/3Js-and-RLSH-Website/Bedliner-Jeep_exterior.webp" alt="Rock guard protection" loading="lazy"/>
-        </div>
-        <div class="svc-body">
-          <span class="svc-num">05</span>
-          <div class="svc-name">Rock Guard <em>Protection</em></div>
-          <ul class="svc-list">
-            <li>Rhino Linings Material</li>
-            <li>Color Match Available</li>
-            <li>On &amp; Off-Road Protection</li>
-            <li>Stops Chips &amp; Debris</li>
-          </ul>
-          <a href="https://www.3jsautobody.com/rhino-lining-quote" class="svc-cta" target="_top">
-            Get a Quote <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
-          </a>
-        </div>
-      </div>
-
-      <!-- 06 Undercarriage -->
-      <div class="svc-card">
-        <div class="svc-img-wrap">
-          <img class="svc-img" src="https://rlsh1855.github.io/3Js-and-RLSH-Website/Bedliner-Color-Undercarriage.webp" alt="Undercarriage coating" loading="lazy"/>
-        </div>
-        <div class="svc-body">
-          <span class="svc-num">06</span>
-          <div class="svc-name">Undercarriage <em>Coating</em></div>
-          <ul class="svc-list">
-            <li>Full Undercarriage Coverage</li>
-            <li>Seals Out Moisture &amp; Salt</li>
-            <li>Rust &amp; Corrosion Protection</li>
-            <li>Coast &amp; Off-Road Recommended</li>
-          </ul>
-          <a href="https://www.3jsautobody.com/rhino-lining-quote" class="svc-cta" target="_top">
-            Get a Quote <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
-          </a>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- CTA Band -->
-  <div class="cta-band grain" style="margin-top:2px;">
-    <div class="cta-band-inner">
-      <h2>Ready to Get Started?</h2>
-      <p>Walk in Mon–Fri 8AM–5PM · Free estimates · Signal Hill, CA · Same-day Rhino Liner installs available.</p>
-      <a href="https://www.3jsautobody.com/request-a-quote" class="btn-red btn" target="_top">
-        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-        Request a Quote
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════
-     5. ABOUT / WARRANTY (after Top Services)
-═══════════════════════════════════ -->
-<section class="red-section">
-  <div class="about-inner">
-    <div class="about-intro">
-      <div>
-        <span class="about-eyebrow">3J's Auto Body · Signal Hill, CA · Est. 1991</span>
-        <h2 class="about-h2">Repairs Done <span style="border-bottom:4px solid #fff;padding-bottom:3px;">RIGHT</span>.<br>Every Time.<br>Guaranteed.</h2>
-        <p class="about-lead">A damaged vehicle is stressful. Our job is to make the rest of it easy — from your first call to the day you drive away confident.</p>
-      </div>
-      <div class="warranty-badge">
-        <div class="wnum">LIFETIME</div>
-        <span class="wsub">Limited Warranty</span>
-        <p class="wdesc">Parts, labor, color matching, and gloss retention — covered on every job. One of the premier shops in LA and Orange County.</p>
-      </div>
-    </div>
-    <div class="about-body">
-      <div>
-        <span class="col-label">What We Offer</span>
-        <ul class="service-grid-about">
-          <li>Auto Detailing</li>
-          <li>Interior Cosmetic Repair</li>
-          <li>Alloy Wheel Repair</li>
-          <li>Paintless Dent Removal</li>
-          <li>Window Tinting</li>
-          <li>Headlight Restoration</li>
-          <li>Off-Road Parts</li>
-          <li>Jeep &amp; Truck Accessories</li>
-          <li>Suspension, Rims &amp; Tires</li>
-          <li>Bolt-On Installation</li>
-        </ul>
-      </div>
-      <div class="about-cta-block">
-        <span class="col-label">Get Started</span>
-        <p class="pitch">Tell us about your vehicle and we'll send a <strong>complimentary quote</strong> back — no obligation, no pressure.</p>
-        <a href="https://www.3jsautobody.com/request-a-quote" class="btn-about" target="_top">
-          <svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
-          Request a Quote
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="black-section">
-  <div class="about-inner">
-    <div class="rlsh-head">
-      <span class="about-eyebrow">Rhino Linings of Signal Hill</span>
-      <h2>Southern California's <em>#1</em> spot for CUSTOM truck, Jeep &amp; car accessories.</h2>
-      <p class="about-lead">Custom, professional installs for trucks, Jeeps, commercial vans and more. If you're ready to take your build to the next level, you're in the right place.</p>
-    </div>
-    <div class="stat-row">
-      <div class="ab-stat">
-        <div class="snum" id="parts-counter" data-target="7000">0<em style="padding:5px;">+</em></div>
-        <span class="slbl">Off-Road Parts</span>
-        <p class="stxt">A massive in-house catalog of suspension, armor, lighting, wheels and tires.</p>
-      </div>
-      <div class="ab-stat">
-        <div class="snum"><span style="color:#8B0000;">U</span>S<span style="color:#033F7E;">A</span><em style="padding:5px;">·</em></div>
-        <span class="slbl">Made &amp; Manufactured</span>
-        <p class="stxt">We strive to use only parts made and manufactured in the United States.</p>
-      </div>
-      <div class="ab-stat">
-        <div class="snum">1<em style="padding:5px;">:</em>1</div>
-        <span class="slbl">Custom Installs</span>
-        <p class="stxt">Every build is dialed in by hand — no cookie-cutter packages, no shortcuts.</p>
-      </div>
-    </div>
-    <div class="rlsh-foot">
-      <p>From bed liners to full off-road builds, RLSH crews handle the install start to finish — under the same roof as 3J's Auto Body.</p>
-      <a href="https://www.3jsautobody.com/request-a-quote" class="btn-about-ghost" target="_top">
-        Build Your Rig
-        <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════
-     6. FAQ
-═══════════════════════════════════ -->
-<section class="faq-section">
-  <div class="faq-inner">
-    <div class="faq-header">
-      <span class="eyebrow">Got Questions?</span>
-      <h2 class="faq-title">Common <em>FAQ</em></h2>
-      <p class="faq-sub">Everything you need to know before bringing your vehicle in.</p>
-    </div>
-    <div class="faq-list">
-      <div class="faq-item">
-        <button class="faq-trigger" aria-expanded="false"><div class="faq-trigger-inner"><span class="q-badge">Q</span><span class="q-label">Do you work with insurance companies?</span><span class="toggle-icon" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></div></button>
-        <div class="faq-body"><div class="faq-body-inner"><div class="faq-answer"><p class="answer-text">Yes — 3J's Auto Body works directly with all major insurance carriers including State Farm, Geico, Progressive, Allstate, Farmers, AAA, and more. We handle the paperwork so you don't have to.</p></div></div></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-trigger" aria-expanded="false"><div class="faq-trigger-inner"><span class="q-badge">Q</span><span class="q-label">How long does auto body repair take?</span><span class="toggle-icon" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></div></button>
-        <div class="faq-body"><div class="faq-body-inner"><div class="faq-answer"><p class="answer-text">Repair time depends on the extent of the damage. Minor repairs can be done same-day or next day. Major collision repairs typically take several days to a week. We keep you informed throughout and aim for the fastest turnaround without sacrificing quality.</p></div></div></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-trigger" aria-expanded="false"><div class="faq-trigger-inner"><span class="q-badge">Q</span><span class="q-label">Do you offer free estimates?</span><span class="toggle-icon" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></div></button>
-        <div class="faq-body"><div class="faq-body-inner"><div class="faq-answer"><p class="answer-text">Yes — estimates are always free at 3J's Auto Body. Walk in Mon–Fri 8AM–5PM or submit an online photo estimate through our website. No appointment needed.</p></div></div></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-trigger" aria-expanded="false"><div class="faq-trigger-inner"><span class="q-badge">Q</span><span class="q-label">Is there a warranty on repairs?</span><span class="toggle-icon" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></div></button>
-        <div class="faq-body"><div class="faq-body-inner"><div class="faq-answer"><p class="answer-text">Yes — 3J's Auto Body backs every repair with a lifetime warranty on our workmanship for as long as you own the vehicle.</p></div></div></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-trigger" aria-expanded="false"><div class="faq-trigger-inner"><span class="q-badge">Q</span><span class="q-label">Do you offer towing?</span><span class="toggle-icon" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></div></button>
-        <div class="faq-body"><div class="faq-body-inner"><div class="faq-answer"><p class="answer-text">Yes — we can arrange towing for your vehicle to our shop in Signal Hill. Call us at (562) 424-6744 and we will get you taken care of.</p></div></div></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-trigger" aria-expanded="false"><div class="faq-trigger-inner"><span class="q-badge">Q</span><span class="q-label">What areas do you serve?</span><span class="toggle-icon" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></div></button>
-        <div class="faq-body"><div class="faq-body-inner"><div class="faq-answer"><p class="answer-text">We are located in Signal Hill, CA and serve the greater Long Beach area including Long Beach, Lakewood, Carson, Compton, Torrance, and surrounding communities in Los Angeles and Orange County.</p></div></div></div>
-      </div>
-    </div>
-    <div class="faq-cta">
-      <a href="tel:+15624246744" class="btn-red btn" target="_top">
-        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.7 10.82 19.79 19.79 0 01.67 2.18 2 2 0 012.66 0h3a2 2 0 012 1.72c.13 1 .36 1.97.7 2.91a2 2 0 01-.45 2.11L6.91 7.74a16 16 0 006.29 6.29l1-.99a2 2 0 012.11-.45c.94.34 1.91.57 2.91.7A2 2 0 0122 16.92z"/></svg>
-        Call 562-424-6744
-      </a>
-      <a href="https://www.carwise.com/online-photo-estimate/3js-autobody-paint-inc-signal-hill-ca-90755/479382?source=shop.profile&referer=estimate.cccone.com" target="_blank" class="btn-outline-red btn">
-        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-        Free Online Estimate
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════
-     6. INSTAGRAM
-═══════════════════════════════════ -->
-<section class="ig-section">
-  <div class="ig-header">
-    <span class="ig-eyebrow">Follow the Build</span>
-    <h2 class="ig-heading">See Our Work on <em>Instagram</em></h2>
-    <p class="ig-sub">Real trucks. Real jobs. Real results — straight from the shop.</p>
-    <a class="ig-profile" href="https://www.instagram.com/rlofsignalhill/" target="_blank" rel="noopener">
-      <div class="ig-avatar">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="#fff" stroke="none"/></svg>
-      </div>
-      <div class="ig-info">
-        <div class="ig-handle">@rlofsignalhill</div>
-        <div class="ig-name">3J's Auto Body &amp; Paint</div>
-      </div>
-    </a>
-  </div>
-  <div class="ig-grid">
-    <a class="ig-tile" href="https://www.instagram.com/rlofsignalhill/" target="_blank" rel="noopener">
-      <img src="https://static.wixstatic.com/media/b95bd9_092c1d6eb24f454dbd85a03cb8013baa~mv2.png" alt="3J's Auto Body work" loading="lazy"/>
-      <div class="ig-tile-hover"><div class="ig-tile-hover-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg><span>View on Instagram</span></div></div>
-    </a>
-    <a class="ig-tile" href="https://www.instagram.com/rlofsignalhill/" target="_blank" rel="noopener">
-      <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/IMG_3269.webp" alt="3J's Auto Body work" loading="lazy"/>
-      <div class="ig-tile-hover"><div class="ig-tile-hover-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg><span>View on Instagram</span></div></div>
-    </a>
-    <a class="ig-tile" href="https://www.instagram.com/rlofsignalhill/" target="_blank" rel="noopener">
-      <img src="https://static.wixstatic.com/media/b95bd9_4e457f8fb3074ab4a0ce359330032928~mv2.png" alt="3J's Auto Body work" loading="lazy"/>
-      <div class="ig-tile-hover"><div class="ig-tile-hover-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg><span>View on Instagram</span></div></div>
-    </a>
-    <a class="ig-tile" href="https://www.instagram.com/rlofsignalhill/" target="_blank" rel="noopener">
-      <img src="https://static.wixstatic.com/media/b95bd9_eddb7d0ea76d4eb989a697292c8a3845~mv2.png" alt="3J's Auto Body work" loading="lazy"/>
-      <div class="ig-tile-hover"><div class="ig-tile-hover-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg><span>View on Instagram</span></div></div>
-    </a>
-    <a class="ig-tile" href="https://www.instagram.com/rlofsignalhill/" target="_blank" rel="noopener">
-      <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/IMG_3269.webp" alt="3J's Auto Body work" loading="lazy"/>
-      <div class="ig-tile-hover"><div class="ig-tile-hover-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg><span>View on Instagram</span></div></div>
-    </a>
-    <a class="ig-tile" href="https://www.instagram.com/rlofsignalhill/" target="_blank" rel="noopener">
-      <img src="https://static.wixstatic.com/media/b95bd9_8839269f9afa452f966883da2c40a057~mv2.png" alt="3J's Auto Body work" loading="lazy"/>
-      <div class="ig-tile-hover"><div class="ig-tile-hover-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg><span>View on Instagram</span></div></div>
-    </a>
-  </div>
-  <a class="ig-btn" href="https://www.instagram.com/rlofsignalhill/" target="_blank" rel="noopener">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-    Follow @rlofsignalhill
-  </a>
-</section>
-
-</main>
-
-<script>
-  /* Only hide overflow when inside Wix iframe */
-  if(window.self !== window.top){
-    document.documentElement.style.overflowY = 'hidden';
-    document.body.style.overflowY = 'hidden';
-  }
-
-  /* Height reporting for Wix iframe auto-resize */
-  function reportHeight(){
-    var h=Math.max(document.body.scrollHeight,document.body.offsetHeight,document.documentElement.scrollHeight,document.documentElement.offsetHeight);
-    window.parent.postMessage(JSON.stringify({height:h}),'*');
-  }
-  document.addEventListener('DOMContentLoaded',reportHeight);
-  window.addEventListener('load',function(){[0,200,500,1000,2000,3500].forEach(function(t){setTimeout(reportHeight,t);});});
-
-  /* Debounced resize — iOS fires resize before viewport is stable */
-  var _rszTimer;
-  window.addEventListener('resize',function(){
-    clearTimeout(_rszTimer);
-    _rszTimer=setTimeout(reportHeight,200);
-  });
-
-  /* orientationchange — iOS needs extra time to finish reflowing */
-  window.addEventListener('orientationchange',function(){
-    clearTimeout(_rszTimer);
-    [200,500,900,1400,2000].forEach(function(t){setTimeout(reportHeight,t);});
-  });
-
-  if(window.ResizeObserver){new ResizeObserver(reportHeight).observe(document.body);}
-
-  /* FAQ accordion — smooth height animation */
-  function faqClose(item){var p=item.querySelector('.faq-body');p.style.height=p.scrollHeight+'px';void p.offsetHeight;p.style.height='0px';item.classList.remove('open');item.querySelector('.faq-trigger').setAttribute('aria-expanded','false');}
-  function faqOpen(item){var p=item.querySelector('.faq-body');item.classList.add('open');item.querySelector('.faq-trigger').setAttribute('aria-expanded','true');p.style.height=p.querySelector('.faq-body-inner').offsetHeight+'px';}
-  document.querySelectorAll('.faq-body').forEach(function(p){p.addEventListener('transitionend',function(e){if(e.propertyName!=='height')return;if(p.closest('.faq-item').classList.contains('open'))p.style.height='auto';});});
-  document.querySelectorAll('.faq-trigger').forEach(function(btn){btn.addEventListener('click',function(){var item=btn.closest('.faq-item'),wasOpen=item.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(faqClose);if(!wasOpen)faqOpen(item);setTimeout(reportHeight,350);});});
-
-  /* Parts counter animation */
-  (function(){
-    var el=document.getElementById('parts-counter');
-    if(!el) return;
-    var target=7000;
-    var em=el.querySelector('em');
-    var emHTML=em?em.outerHTML:'';
-    var started=false;
-    var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches;
-    function fmt(n){return n.toLocaleString('en-US');}
-    function run(){
-      if(started)return;started=true;
-      if(reduce){el.innerHTML=fmt(target)+emHTML;return;}
-      var dur=1800,t0=null;
-      function tick(ts){
-        if(!t0)t0=ts;
-        var p=Math.min((ts-t0)/dur,1);
-        var e=p===1?1:1-Math.pow(2,-10*p);
-        el.innerHTML=fmt(Math.round(target*e))+emHTML;
-        if(p<1)requestAnimationFrame(tick);
-      }
-      requestAnimationFrame(tick);
-    }
-    if('IntersectionObserver' in window){
-      var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){run();io.disconnect();}});},{threshold:0.35});
-      io.observe(el);
-    }else{run();}
-  })();
-
-  /* Pause video for reduced-motion users */
-  if(window.matchMedia('(prefers-reduced-motion:reduce)').matches){
-    document.querySelectorAll('video').forEach(function(v){v.pause();v.removeAttribute('autoplay');});
-  }
-</script>
-<script>
-(function(){var active=false,startY=0,lastY=0,rafId=null;document.addEventListener('mousedown',function(e){if(e.button!==1)return;if(e.target.closest('a'))return;e.preventDefault();active=true;startY=e.clientY;lastY=e.clientY;document.body.style.cursor='ns-resize';tick();});document.addEventListener('mousemove',function(e){if(active)lastY=e.clientY;});document.addEventListener('mouseup',function(e){if(e.button!==1||!active)return;active=false;document.body.style.cursor='';if(rafId){cancelAnimationFrame(rafId);rafId=null;}});function tick(){if(!active){rafId=null;return;}var dy=lastY-startY;if(Math.abs(dy)>5)window.scrollBy(0,dy*0.12);rafId=requestAnimationFrame(tick);}})();
-</script><!-- EFFECTS: grain Â· scroll-reveal Â· border sweep Â· parallax Â· inertia -->
-<style>
-@keyframes grain{0%,100%{transform:translate(0,0);}10%{transform:translate(-2%,-3%);}20%{transform:translate(3%,1%);}30%{transform:translate(-1%,4%);}40%{transform:translate(4%,-2%);}50%{transform:translate(-3%,3%);}60%{transform:translate(2%,-4%);}70%{transform:translate(-4%,1%);}80%{transform:translate(1%,3%);}90%{transform:translate(3%,-1%);}}
-.grain::before{content:'';position:absolute;inset:-50%;width:200%;height:200%;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");background-size:200px 200px;opacity:0.038;animation:grain 0.8s steps(1) infinite;pointer-events:none;z-index:3;}
-[data-anim]{opacity:0;transition:opacity 0.65s ease,transform 0.65s ease;}[data-anim="fade-up"]{transform:translateY(32px);}[data-anim="fade-in"]{transform:none;}[data-anim].visible{opacity:1;transform:none;}[data-delay="100"]{transition-delay:0.10s;}[data-delay="200"]{transition-delay:0.20s;}[data-delay="300"]{transition-delay:0.30s;}[data-delay="400"]{transition-delay:0.40s;}[data-delay="500"]{transition-delay:0.50s;}
-@media(prefers-reduced-motion:reduce){[data-anim]{opacity:1;transform:none;transition:none;}[data-delay="100"],[data-delay="200"],[data-delay="300"],[data-delay="400"],[data-delay="500"]{transition-delay:0s;}}
-.product-card,.mfr-card{position:relative;}.card-border-sweep{position:absolute;inset:0;pointer-events:none;z-index:6;overflow:hidden;}.card-border-sweep canvas{position:absolute;inset:0;width:100%;height:100%;}
-</style>
-<script>
-(function(){var els=document.querySelectorAll('[data-anim]');if(!els.length)return;var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}});},{threshold:0.12});els.forEach(function(el){io.observe(el);});})();
-(function(){var COLOR='#8B0000',DURATION=700,BORDER=2;function getPL(w,h){return 2*(w+h);}function ptP(x,y,w,h){if(y<=BORDER)return x;if(x>=w-BORDER)return w+y;if(y>=h-BORDER)return w+h+(w-x);return w+h+w+(h-y);}function initCard(card){if(card.querySelector('.card-border-sweep'))return;var wrap=document.createElement('div');wrap.className='card-border-sweep';var cvs=document.createElement('canvas');wrap.appendChild(cvs);card.appendChild(wrap);var raf=null,startP=0,progress=0,animStart=0,leaving=false,leaveStart=0,leaveOpacity=0;function resize(){cvs.width=card.offsetWidth;cvs.height=card.offsetHeight;}resize();new ResizeObserver(resize).observe(card);function draw(now){var w=cvs.width,h=cvs.height,ctx=cvs.getContext('2d');ctx.clearRect(0,0,w,h);var perim=getPL(w,h),opacity=1;if(leaving){var elapsed=now-leaveStart;opacity=leaveOpacity*(1-Math.min(elapsed/350,1));if(opacity<=0){raf=null;return;}}else{var elapsed2=now-animStart;progress=Math.min(elapsed2/DURATION,1);progress=1-Math.pow(1-progress,3);}var sweepLen=perim*progress,segs=[{x1:0,y1:0,x2:w,y2:0},{x1:w,y1:0,x2:w,y2:h},{x1:w,y1:h,x2:0,y2:h},{x1:0,y1:h,x2:0,y2:0}],sLens=[w,h,w,h],drawn=0,s=startP%perim,started=false;ctx.save();ctx.strokeStyle=COLOR;ctx.lineWidth=BORDER;ctx.globalAlpha=opacity;ctx.beginPath();for(var pass=0;pass<2;pass++){var cum=0;for(var i=0;i<4;i++){var sLen=sLens[i],sStart=cum,sEnd=cum+sLen;cum+=sLen;if(!started){if(sEnd<=s)continue;var t=(s-sStart)/sLen,sx=segs[i].x1+(segs[i].x2-segs[i].x1)*t,sy=segs[i].y1+(segs[i].y2-segs[i].y1)*t;ctx.moveTo(sx,sy);started=true;var rem=sLen*(1-t),canDraw=Math.min(rem,sweepLen-drawn),t2=t+canDraw/sLen;ctx.lineTo(segs[i].x1+(segs[i].x2-segs[i].x1)*t2,segs[i].y1+(segs[i].y2-segs[i].y1)*t2);drawn+=canDraw;}else{var canDraw2=Math.min(sLen,sweepLen-drawn),t3=canDraw2/sLen;ctx.lineTo(segs[i].x1+(segs[i].x2-segs[i].x1)*t3,segs[i].y1+(segs[i].y2-segs[i].y1)*t3);drawn+=canDraw2;}if(drawn>=sweepLen)break;}if(drawn>=sweepLen||pass===1)break;s=0;}ctx.stroke();ctx.restore();raf=requestAnimationFrame(draw);}card.addEventListener('mouseenter',function(e){leaving=false;var rect=card.getBoundingClientRect();startP=ptP(e.clientX-rect.left,e.clientY-rect.top,cvs.width,cvs.height);progress=0;animStart=performance.now();if(!raf)raf=requestAnimationFrame(draw);});card.addEventListener('mouseleave',function(){leaving=true;leaveStart=performance.now();leaveOpacity=progress;});}document.addEventListener('DOMContentLoaded',function(){document.querySelectorAll('.product-card,.mfr-card').forEach(initCard);});})();
-(function(){if(window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;var bg=document.querySelector('.hero-bg');if(!bg)return;window.addEventListener('scroll',function(){bg.style.transform='scale(1.04) translateY('+(window.scrollY*0.28)+'px)';},{passive:true});})();
-(function(){if(window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;if('ontouchstart' in window)return;var target=window.scrollY,current=window.scrollY,raf=null;function clamp(v){return Math.max(0,Math.min(v,document.documentElement.scrollHeight-window.innerHeight));}window.addEventListener('wheel',function(e){if(e.ctrlKey)return;if(document.documentElement.scrollHeight<=window.innerHeight+5)return;e.preventDefault();target=clamp(target+e.deltaY*0.85);if(!raf)raf=requestAnimationFrame(tick);},{passive:false});window.addEventListener('scroll',function(){if(!raf){target=window.scrollY;current=window.scrollY;}},{passive:true});function tick(){current=current+(target-current)*0.08;window.scrollTo(0,current);if(Math.abs(target-current)>0.3)raf=requestAnimationFrame(tick);else{current=target;window.scrollTo(0,target);raf=null;}}})()
-</script>
-</body>
-</html>
+<!DOCTYPE html>\n<html lang="en">\n<head>\n  <meta charset="UTF-8"/>\n  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>\n  <title>3J's Auto Body & Paint — Signal Hill CA | Family Owned Since 1991</title>\n  <meta name="description" content="3J's Auto Body & Paint in Signal Hill, CA. Family owned since 1991. I-CAR Gold Class certified collision repair, Rhino Liner, tonneau covers, running boards. (562) 424-6744.">\n  <meta name="robots" content="index, follow">\n  <meta property="og:type" content="website">\n  <meta property="og:title" content="3J's Auto Body & Paint — Signal Hill CA | Family Owned Since 1991">\n  <meta property="og:description" content="30+ years. One location. One family. I-CAR Gold Class certified. Collision repair, Rhino Liner, truck accessories. Signal Hill, CA. (562) 424-6744.">\n  <meta property="og:site_name" content="3J's Auto Body &amp; Paint">\n\n  <script type="application/ld+json">\n  {"@context":"https://schema.org","@graph":[\n    {"@type":"AutoBodyShop","name":"3J's Auto Body & Paint","telephone":"+1-562-424-6744","url":"https://www.3jsautobody.com/","address":{"@type":"PostalAddress","streetAddress":"1855 E 29th Street","addressLocality":"Signal Hill","addressRegion":"CA","postalCode":"90755","addressCountry":"US"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"08:00","closes":"17:00"}]},\n    {"@type":"FAQPage","mainEntity":[\n      {"@type":"Question","name":"Do you work with insurance companies?","acceptedAnswer":{"@type":"Answer","text":"Yes — 3J's Auto Body works directly with all major insurance carriers including State Farm, Geico, Progressive, Allstate, Farmers, AAA, and more. We handle the paperwork so you don't have to."}},\n      {"@type":"Question","name":"How long does auto body repair take?","acceptedAnswer":{"@type":"Answer","text":"Repair time depends on the extent of the damage. Minor repairs can be done same-day or next day. Major collision repairs typically take several days to a week."}},\n      {"@type":"Question","name":"Do you offer free estimates?","acceptedAnswer":{"@type":"Answer","text":"Yes — estimates are always free at 3J's Auto Body. Walk in Mon–Fri 8AM–5PM or submit an online photo estimate through our website. No appointment needed."}},\n      {"@type":"Question","name":"Is there a warranty on repairs?","acceptedAnswer":{"@type":"Answer","text":"Yes — 3J's Auto Body backs every repair with a lifetime warranty on our workmanship for as long as you own the vehicle."}},\n      {"@type":"Question","name":"Do you offer towing?","acceptedAnswer":{"@type":"Answer","text":"Yes — we can arrange towing for your vehicle to our shop in Signal Hill. Call us at (562) 424-6744."}},\n      {"@type":"Question","name":"What areas do you serve?","acceptedAnswer":{"@type":"Answer","text":"We are located in Signal Hill, CA and serve the greater Long Beach area including Long Beach, Lakewood, Carson, Compton, Torrance, and surrounding communities."}}\n    ]}\n  ]}\n  </script>\n\n  <link rel="preconnect" href="https://fonts.googleapis.com">\n  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>\n\n  <style>\n    /* ── RESET & BASE ── */\n    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}\n    html{}\n    body{font-family:'Inter',sans-serif;background:#0A0A0A;color:#fff;overflow-x:clip;}\n    h1,h2,h3{font-family:'Montserrat',sans-serif;text-wrap:balance;}\n    p{text-wrap:pretty;}\n    .skip-link{position:absolute;top:-100%;left:16px;z-index:9999;background:#8B0000;color:#fff;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:8px 20px;text-decoration:none;}\n    .skip-link:focus{top:16px;}\n\n    /* ── SHARED TOKENS ── */\n    :root{\n      --red:#8B0000;--red-hot:#A00000;\n      --black:#0A0A0A;--black-2:#111;\n      --off-white:#F2F2F2;--neutral:#1a1a1a;\n      --body:#424954;--border:#e0e0e0;\n    }\n\n    /* ── SHARED BUTTONS ── */\n    .btn-red{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:48px;padding:0 32px;background:var(--red);color:#fff;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border:none;transition:background .2s;}\n    .btn-red:hover{background:var(--red-hot);}\n    .btn-ghost{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:48px;padding:0 28px;background:rgba(255,255,255,.15);backdrop-filter:blur(12px);color:#fff;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border:1.5px solid rgba(255,255,255,.55);transition:background .2s;}\n    .btn-ghost:hover{background:rgba(255,255,255,.28);}\n    .btn-outline-red{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:48px;padding:0 28px;background:transparent;color:var(--red);font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border:2px solid var(--red);transition:background .2s,color .2s;}\n    .btn-outline-red:hover{background:var(--red);color:#fff;}\n    .btn-white{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:48px;padding:0 32px;background:#fff;color:var(--red);font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;transition:background .2s;}\n    .btn-white:hover{background:#f0f0f0;}\n    .btn svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;}\n\n    /* ── EYEBROW ── */\n    .eyebrow{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:12px;display:block;}\n\n    /* ════════════════════════════\n       1. HERO\n    ════════════════════════════ */\n    .hero{position:relative;min-height:720px;display:flex;align-items:center;justify-content:flex-start;overflow:hidden;background:#0a0a0a;}\n    .hero-bg{position:absolute;inset:0;background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/CHEVY%20BOAT%20LAUNCH%20RAMP_TRANSPARENT_BG.png');background-size:cover;background-position:center 40%;background-repeat:no-repeat;z-index:0;filter:brightness(1.18) contrast(1.08);}\n    .hero-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,0.82) 0%,rgba(0,0,0,0.65) 45%,rgba(0,0,0,0.35) 75%,rgba(0,0,0,0.20) 100%);z-index:1;}\n    .hero-vignette{position:absolute;bottom:0;left:0;right:0;height:280px;background:linear-gradient(to top,rgba(0,0,0,1) 0%,rgba(0,0,0,0.85) 20%,rgba(0,0,0,0.4) 55%,transparent 100%);z-index:2;pointer-events:none;}\n    .hero-accent-bar{position:absolute;left:0;top:0;bottom:0;width:5px;background:#8B0000;z-index:3;}\n    .hero-content{position:relative;z-index:2;padding:80px 72px 80px 80px;max-width:680px;color:#fff;}\n    .hero-eyebrow{position:absolute;top:40px;left:80px;display:flex;align-items:center;gap:12px;z-index:4;}\n    .eyebrow-line{width:36px;height:2px;background:#8B0000;flex-shrink:0;}\n    .eyebrow-text{font-size:10px;font-weight:800;letter-spacing:3.5px;text-transform:uppercase;color:rgba(255,255,255,0.70);}\n    .hero-headline{font-size:clamp(44px,6.5vw,90px);font-weight:900;letter-spacing:-3px;line-height:0.92;text-transform:uppercase;margin-bottom:0;color:#fff;}\n    .hero-headline .line-red{color:#8B0000;}\n    .hero-rule{width:52px;height:4px;background:#8B0000;margin:32px 0;}\n    .hero-body{font-family:'Inter',sans-serif;font-size:clamp(15px,1.6vw,17px);font-weight:400;color:rgba(255,255,255,0.82);line-height:1.85;max-width:520px;}\n    .hero-body .promise{display:block;font-size:clamp(15px,1.9vw,19px);font-weight:800;color:#fff;margin:16px 0 8px;letter-spacing:2px;text-transform:uppercase;text-align:center;}\n    .hero-body .since{display:block;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-top:18px;white-space:nowrap;}\n    .hero-ctas{display:flex;flex-wrap:wrap;gap:14px;margin-top:40px;}\n    .hero-stats{display:flex;gap:36px;margin-top:52px;padding-top:32px;border-top:1px solid rgba(255,255,255,0.12);}\n    .hero-stats .stat{display:flex;flex-direction:column;gap:3px;}\n    .hero-stats .stat-num{font-size:clamp(20px,2.5vw,28px);font-weight:900;color:#fff;letter-spacing:-1px;line-height:1;}\n    .hero-stats .stat-num span{color:#8B0000;}\n    .hero-stats .stat-label{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.45);}\n    .hero-bottom-bar{position:absolute;bottom:0;left:0;right:0;height:4px;background:linear-gradient(to right,#8B0000,#8B0000 60%,transparent);z-index:3;}\n    .river-rat{position:absolute;bottom:22px;left:80px;font-size:9px;font-weight:600;color:rgba(255,255,255,0.22);letter-spacing:0.5px;font-style:italic;z-index:3;}\n    .scroll-hint{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;opacity:0;z-index:3;animation:hintFadeIn 0.9s 1.2s ease-out forwards;}\n    .scroll-hint span{font-size:8px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:#fff;}\n    .scroll-hint svg{width:22px;height:22px;stroke:#fff;stroke-width:2.5;}\n    @keyframes hintFadeIn{from{opacity:0;transform:translateX(-50%) translateY(-6px);}to{opacity:0.80;transform:translateX(-50%) translateY(0);}}\n    @media(max-width:900px){\n      .hero-content{padding:72px 48px;}\n      .hero-overlay{background:linear-gradient(to right,rgba(0,0,0,0.85) 0%,rgba(0,0,0,0.70) 60%,rgba(0,0,0,0.50) 100%);}\n      .hero-stats{gap:24px;}\n    }\n    @media(max-width:640px){\n      .hero{min-height:700px;align-items:flex-start;}\n      .hero-bg{background-size:125%;background-position:center top;}\n      .hero-content{padding:230px 28px 48px 28px;max-width:100%;}\n      .hero-eyebrow{top:18px;left:16px;right:16px;flex-direction:column;align-items:center;gap:8px;justify-content:center;}\n      .eyebrow-line{width:28px;}\n      .eyebrow-text{text-align:center;white-space:normal;font-size:8px;letter-spacing:2px;}\n      .hero-overlay{background:rgba(0,0,0,0.62);}\n      .hero-ctas{flex-direction:column;}\n      .hero-stats{gap:20px;flex-wrap:wrap;}\n      .scroll-hint{display:none;}\n      .river-rat{left:20px;font-size:8px;}\n    }\n    @media(prefers-reduced-motion:reduce){.scroll-hint{animation:none;opacity:0.80;}}\n\n    /* ════════════════════════════\n       2. PHOTO STRIP\n    ════════════════════════════ */\n    .strip{display:flex;width:100%;height:380px;}\n    .panel{flex:1;position:relative;overflow:hidden;cursor:pointer;}\n    .panel-bg{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform .5s ease;}\n    .panel:hover .panel-bg{transform:scale(1.05);}\n    .panel-overlay{position:absolute;inset:0;background:linear-gradient(160deg,rgba(0,0,0,.62) 0%,rgba(0,0,0,.35) 100%);transition:background .4s ease;}\n    .panel:hover .panel-overlay{background:linear-gradient(160deg,rgba(0,0,0,.72) 0%,rgba(0,0,0,.50) 100%);}\n\n    .panel-content{position:relative;z-index:4;padding:28px 24px;height:100%;display:flex;flex-direction:column;justify-content:flex-start;}\n    .panel-eyebrow{font-size:9px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:#cc2222;margin-bottom:8px;}\n    .panel-title{font-family:'Montserrat',sans-serif;font-size:clamp(18px,2.2vw,26px);font-weight:900;color:#fff;letter-spacing:-.3px;line-height:1.15;text-transform:uppercase;margin-bottom:12px;}\n    .panel-sub{font-family:'Inter',sans-serif;font-size:13px;font-weight:400;color:rgba(255,255,255,.78);line-height:1.65;max-width:280px;}\n    .panel-link{margin-top:auto;display:inline-flex;align-items:center;gap:7px;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#fff;text-decoration:none;border-bottom:2px solid #8B0000;padding-bottom:2px;width:fit-content;transition:color .2s;}\n    .panel-link:hover{color:#8B0000;}\n    .panel-link::after{content:'→';}\n    .panel-sep{display:none;}\n\n    /* ════════════════════════════\n       3. AWARDS\n    ════════════════════════════ */\n    .awards-section{background:var(--off-white);padding:clamp(48px,7vw,72px) clamp(16px,4vw,24px);text-align:center;position:relative;overflow:hidden;}\n    .awards-section::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(0,0,0,.06) 1px,transparent 1px);background-size:28px 28px;pointer-events:none;}\n    .awards-section::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(139,0,0,.05) 0%,transparent 65%);pointer-events:none;}\n    .awards-content{position:relative;z-index:1;max-width:1000px;margin:0 auto;}\n    .awards-eyebrow{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:#8B0000;margin-bottom:14px;}\n    .awards-heading{font-family:'Montserrat',sans-serif;font-size:clamp(22px,3.5vw,38px);font-weight:900;letter-spacing:-.5px;margin-bottom:8px;color:var(--neutral);}\n    .awards-heading em{font-style:normal;color:#8B0000;}\n    .awards-sub{font-family:'Inter',sans-serif;font-size:13px;color:#888;margin-bottom:52px;letter-spacing:.3px;}\n    .awards-grid{display:flex;justify-content:center;gap:24px;flex-wrap:wrap;margin-bottom:48px;}\n    .award-card{background:#fff;border:1px solid #e0e0e0;padding:36px 40px;min-width:260px;flex:1;max-width:320px;position:relative;transition:border-color .25s,transform .25s,box-shadow .25s;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.06);}\n    .award-card:hover{border-color:#8B0000;transform:translateY(-4px);box-shadow:0 12px 36px rgba(139,0,0,.12);}\n    .award-year{font-family:'Montserrat',sans-serif;font-size:clamp(52px,8vw,80px);font-weight:900;letter-spacing:-3px;line-height:1;color:#8B0000;margin-bottom:12px;}\n    .award-title{font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--neutral);margin-bottom:6px;}\n    .award-source{font-family:'Inter',sans-serif;font-size:11px;font-weight:500;color:#999;line-height:1.6;}\n    .award-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(139,0,0,.08);border:1px solid rgba(139,0,0,.25);padding:5px 12px;margin-top:14px;font-family:'Montserrat',sans-serif;font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#8B0000;}\n    .award-card.featured{border-color:#8B0000;box-shadow:0 8px 32px rgba(139,0,0,.14);}\n    .award-card.featured::after{content:'MOST RECENT';position:absolute;top:12px;right:12px;font-family:'Montserrat',sans-serif;font-size:8px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:rgba(139,0,0,.7);}\n    .award-card.legacy::after{content:'EST. EXCELLENCE';position:absolute;top:12px;right:12px;font-family:'Montserrat',sans-serif;font-size:8px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#bbb;}\n    .winner-callout{display:inline-flex;align-items:center;gap:16px;background:#8B0000;padding:18px 32px;box-shadow:0 8px 32px rgba(139,0,0,.25);}\n    .winner-icon{width:44px;height:44px;background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;}\n    .winner-icon svg{width:22px;height:22px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}\n    .winner-text .wt-top{font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:3px;}\n    .winner-text .wt-main{font-family:'Montserrat',sans-serif;font-size:clamp(14px,2vw,18px);font-weight:900;color:#fff;}\n\n    /* ════════════════════════════\n       4. TOP SERVICES — COMPACT\n    ════════════════════════════ */\n    .services-section{background:var(--black);padding:clamp(56px,7vw,80px) 0 0;}\n    .services-inner{max-width:1100px;margin:0 auto;padding:0 20px;}\n    .services-header{text-align:center;margin-bottom:48px;}\n    .services-header .eyebrow{color:rgba(255,255,255,.4);}\n    .services-title{font-family:'Montserrat',sans-serif;font-size:clamp(22px,3.5vw,38px);font-weight:900;letter-spacing:-1px;color:#fff;text-transform:uppercase;}\n    .services-title em{font-style:normal;color:#8B0000;}\n    .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;}\n    .svc-card{background:var(--black-2);border:1px solid #1a1a1a;overflow:hidden;display:flex;flex-direction:column;transition:border-color .2s;}\n    .svc-card:hover{border-color:#8B0000;}\n    .svc-img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;}\n    .svc-img-wrap{overflow:hidden;position:relative;}\n    .svc-img-wrap video{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;}\n    .svc-body{padding:22px 20px 24px;flex:1;display:flex;flex-direction:column;}\n    .svc-num{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:rgba(139,0,0,.6);margin-bottom:6px;}\n    .svc-name{font-family:'Montserrat',sans-serif;font-size:16px;font-weight:900;letter-spacing:-.3px;text-transform:uppercase;color:#fff;margin-bottom:12px;line-height:1.15;}\n    .svc-name em{font-style:normal;color:#8B0000;}\n    .svc-list{list-style:none;display:flex;flex-direction:column;gap:7px;margin-bottom:20px;}\n    .svc-list li{font-family:'Inter',sans-serif;font-size:12px;font-weight:500;color:rgba(255,255,255,.6);display:flex;align-items:center;gap:8px;letter-spacing:.3px;}\n    .svc-list li::before{content:'';width:8px;height:1.5px;background:#8B0000;flex-shrink:0;}\n    .svc-cta{margin-top:auto;display:inline-flex;align-items:center;gap:6px;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#fff;text-decoration:none;background:#8B0000;height:38px;padding:0 16px;transition:background .2s;width:fit-content;}\n    .svc-cta:hover{background:var(--red-hot);}\n    .svc-cta svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2.5;stroke-linecap:round;}\n\n    /* CTA band */\n    .cta-band{background:#fff;padding:clamp(40px,5vw,64px) 20px;text-align:center;position:relative;overflow:hidden;border-top:1px solid #e8e8e8;}\n    .cta-band-inner{position:relative;z-index:1;}\n    .cta-band h2{font-family:'Montserrat',sans-serif;font-size:clamp(22px,3.5vw,38px);font-weight:900;margin-bottom:10px;color:#1a1a1a;}\n    .cta-band p{font-family:'Inter',sans-serif;font-size:15px;color:#666;max-width:480px;margin:0 auto 28px;line-height:1.65;}\n\n    /* ════════════════════════════\n       5. FAQ\n    ════════════════════════════ */\n    .faq-section{background:#fff;padding:clamp(48px,7vw,80px) 24px clamp(56px,8vw,96px);position:relative;}\n    .faq-inner{max-width:740px;margin:0 auto;}\n    .faq-header{text-align:center;margin-bottom:48px;}\n    .faq-header .eyebrow{color:#8B0000;}\n    .faq-title{font-family:'Montserrat',sans-serif;font-size:clamp(22px,6vw,42px);font-weight:900;letter-spacing:-1px;line-height:1.05;text-transform:uppercase;color:var(--neutral);margin-bottom:8px;}\n    .faq-title em{font-style:normal;color:#8B0000;}\n    .faq-sub{font-family:'Inter',sans-serif;font-size:13px;color:#888;text-align:center;line-height:1.7;}\n    .faq-list{display:flex;flex-direction:column;gap:6px;}\n    .faq-item{background:#fff;border:1.5px solid #E2E8F0;border-radius:0;overflow:hidden;transition:border-color 0.2s,box-shadow 0.2s;}\n    .faq-item:hover{border-color:#CBD5E0;box-shadow:0 2px 8px rgba(15,30,46,0.07);}\n    .faq-item.open{border-color:#B0BBC8;box-shadow:0 4px 16px rgba(15,30,46,0.10);}\n    .faq-trigger{width:100%;background:none;border:none;padding:0;cursor:pointer;display:block;text-align:left;}\n    .faq-trigger-inner{display:flex;align-items:center;gap:16px;padding:18px 20px;transition:background 0.15s;}\n    .faq-trigger:hover .faq-trigger-inner,.faq-item.open .faq-trigger-inner{background:#f4f4f4;}\n    .q-badge{flex-shrink:0;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:900;color:#AAAAAA;padding:3px 8px;border:1px solid #E8ECF0;border-radius:0;background:#fff;align-self:flex-start;margin-top:2px;box-shadow:0 1px 4px rgba(0,0,0,0.07);}\n    .q-label{flex:1;font-family:'Montserrat',sans-serif;font-size:14px;font-weight:700;color:#1a1a1a;line-height:1.45;}\n    .faq-item.open .q-label{color:#1a1a1a;}\n    .toggle-icon{flex-shrink:0;width:40px;height:40px;border-radius:0;background:transparent;border:none;display:flex;align-items:center;justify-content:center;transition:transform 0.3s ease;color:#111;}\n    .toggle-icon svg{width:20px;height:20px;}\n    .faq-item.open .toggle-icon{transform:rotate(45deg);}\n    .faq-body{height:0;overflow:hidden;transition:height 720ms cubic-bezier(0.22,1,0.36,1);}\n    .faq-answer{padding:0 20px 20px 60px;}\n    .answer-text{font-family:'Inter',sans-serif;font-size:13px;font-weight:500;color:#3B3B3B;line-height:1.8;}\n    @media(max-width:640px){.faq-answer{padding:0 14px 18px 14px;}.q-badge{display:none;}}\n    .faq-cta{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:48px;}\n\n    /* ════════════════════════════\n       6. ABOUT / WARRANTY\n    ════════════════════════════ */\n    .red-section{position:relative;background:#8B0000;padding:clamp(36px,7vw,72px) clamp(18px,4vw,32px) clamp(72px,13vw,160px);background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/crimson-spray-divider.webp');background-size:100% auto;background-position:bottom center;background-repeat:no-repeat;}\n    .about-inner{max-width:1180px;margin:0 auto;}\n    .about-eyebrow{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.5);display:inline-flex;align-items:center;gap:10px;margin-bottom:18px;}\n    .about-eyebrow::before{content:'';width:24px;height:2px;background:rgba(255,255,255,.4);flex-shrink:0;}\n    .about-intro{display:grid;grid-template-columns:1fr;gap:24px;align-items:end;margin-bottom:40px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.14);}\n    .about-h2{font-family:'Montserrat',sans-serif;font-size:clamp(24px,6vw,52px);font-weight:900;letter-spacing:-1px;line-height:1.05;color:#fff;margin-bottom:16px;}\n    .about-lead{font-family:'Inter',sans-serif;font-size:clamp(14px,3.5vw,17px);color:rgba(255,255,255,.78);line-height:1.65;max-width:600px;}\n    .warranty-badge .wnum{font-family:'Montserrat',sans-serif;font-size:clamp(44px,11vw,84px);font-weight:900;letter-spacing:-2px;color:#fff;line-height:.9;margin-bottom:6px;}\n    .warranty-badge .wsub{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.55);display:block;margin-bottom:10px;}\n    .warranty-badge .wdesc{font-family:'Inter',sans-serif;font-size:14px;color:rgba(255,255,255,.72);line-height:1.55;max-width:340px;}\n    .about-body{display:grid;grid-template-columns:1fr;gap:40px;}\n    .col-label{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.45);display:block;margin-bottom:18px;}\n    .service-grid-about{display:grid;grid-template-columns:1fr 1fr;gap:0 20px;}\n    .service-grid-about li{list-style:none;display:flex;align-items:center;gap:10px;font-family:'Inter',sans-serif;font-size:14px;font-weight:500;color:rgba(255,255,255,.9);padding:9px 0;border-top:1px solid rgba(255,255,255,.22);}\n    .service-grid-about li:first-child,.service-grid-about li:nth-child(2){border-top:none;}\n    .service-grid-about li::before{content:'';width:5px;height:5px;background:rgba(255,255,255,.55);flex-shrink:0;transform:rotate(45deg);}\n    .about-cta-block{display:flex;flex-direction:column;align-items:flex-start;gap:16px;}\n    .about-cta-block .pitch{font-family:'Inter',sans-serif;font-size:14px;color:rgba(255,255,255,.75);line-height:1.6;}\n    .about-cta-block .pitch strong{color:#fff;font-weight:600;}\n    .btn-about{display:inline-flex;align-items:center;gap:10px;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;height:50px;padding:0 28px;background:#fff;color:#8B0000;border:none;transition:background .2s;}\n    .btn-about:hover{background:#f0f0f0;}\n    .btn-about-ghost{display:inline-flex;align-items:center;gap:10px;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;height:50px;padding:0 28px;background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.45);transition:background .2s,border-color .2s;}\n    .btn-about-ghost:hover{background:rgba(255,255,255,.08);border-color:#fff;}\n    .btn-about svg,.btn-about-ghost svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2.4;flex-shrink:0;}\n    .black-section{background:var(--black);padding:clamp(36px,7vw,72px) clamp(18px,4vw,32px) clamp(40px,6vw,72px);}\n    .rlsh-head{margin-bottom:36px;padding-bottom:32px;border-bottom:1px solid rgba(255,255,255,.1);}\n    .rlsh-head h2{font-family:'Montserrat',sans-serif;font-size:clamp(24px,6vw,52px);font-weight:900;letter-spacing:-1px;color:#fff;line-height:1.05;margin-bottom:14px;}\n    .rlsh-head h2 em{font-style:normal;color:#8B0000;}\n    .rlsh-head .about-lead{margin-top:6px;}\n    .stat-row{display:grid;grid-template-columns:1fr;margin-bottom:36px;border-top:1px solid rgba(255,255,255,.1);border-bottom:1px solid rgba(255,255,255,.1);}\n    .ab-stat{padding:clamp(18px,4vw,28px) clamp(16px,3.5vw,28px);border-top:1px solid rgba(255,255,255,.1);}\n    .ab-stat:first-child{border-top:none;}\n    .ab-stat .snum{font-family:'Montserrat',sans-serif;font-size:clamp(28px,7vw,46px);font-weight:900;letter-spacing:-1.5px;color:#fff;line-height:1;margin-bottom:6px;}\n    .ab-stat .snum em{font-style:normal;color:#8B0000;}\n    .ab-stat .slbl{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:8px;display:block;}\n    .ab-stat .stxt{font-family:'Inter',sans-serif;font-size:13px;color:rgba(255,255,255,.7);line-height:1.55;}\n    .rlsh-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px;}\n    .rlsh-foot p{font-family:'Inter',sans-serif;font-size:15px;color:rgba(255,255,255,.78);line-height:1.6;max-width:560px;}\n    .rlsh-foot p strong{color:#fff;font-weight:600;}\n    @media(min-width:860px){\n      .about-intro{grid-template-columns:1.4fr 1fr;gap:64px;}\n      .about-body{grid-template-columns:1.4fr 1fr;gap:64px;}\n      .stat-row{grid-template-columns:repeat(3,1fr);}\n      .ab-stat{border-top:none;border-left:1px solid rgba(255,255,255,.1);}\n      .ab-stat:first-child{border-left:none;}\n    }\n    @media(max-width:480px){.btn-about,.btn-about-ghost{width:100%;}}\n\n    /* ════════════════════════════\n       7. INSTAGRAM\n    ════════════════════════════ */\n    .ig-section{background:var(--black);padding:56px 0 64px;text-align:center;border-top:3px solid #8B0000;}\n    .ig-header{padding:0 24px;}\n    .ig-eyebrow{font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:#8B0000;margin-bottom:12px;display:block;}\n    .ig-heading{font-family:'Montserrat',sans-serif;font-size:clamp(22px,3.5vw,36px);font-weight:900;letter-spacing:-.5px;margin-bottom:6px;}\n    .ig-heading em{font-style:normal;color:#8B0000;}\n    .ig-sub{font-family:'Montserrat',sans-serif;font-size:13px;font-weight:500;color:#555;margin-bottom:32px;}\n    .ig-profile{display:inline-flex;align-items:center;gap:14px;background:#141414;border:1px solid #222;border-radius:0;padding:10px 22px 10px 10px;margin-bottom:36px;text-decoration:none;transition:border-color .2s,background .2s;}\n    .ig-profile:hover{background:#1a1a1a;border-color:#8B0000;}\n    .ig-avatar{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#8B0000,#a00000,#c00000);display:flex;align-items:center;justify-content:center;flex-shrink:0;}\n    .ig-avatar svg{width:20px;height:20px;}\n    .ig-info{text-align:left;}\n    .ig-handle{font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;color:#fff;}\n    .ig-name{font-family:'Montserrat',sans-serif;font-size:11px;font-weight:500;color:#555;margin-top:1px;}\n    .ig-grid{display:flex;gap:4px;width:100%;margin:0 0 36px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;}\n    .ig-grid::-webkit-scrollbar{display:none;}\n    .ig-tile{flex:1 1 0;min-width:0;position:relative;aspect-ratio:1;background:#111;overflow:hidden;cursor:pointer;text-decoration:none;display:block;}\n    .ig-tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .4s ease;}\n    .ig-tile:hover img{transform:scale(1.06);}\n    .ig-tile::before{content:'';position:absolute;inset:0;}\n    .ig-tile:nth-child(1)::before{background:linear-gradient(135deg,#0d0d0d,#1c1010);}\n    .ig-tile:nth-child(2)::before{background:linear-gradient(145deg,#111,#1a0808);}\n    .ig-tile:nth-child(3)::before{background:linear-gradient(125deg,#0f0f0f,#180a0a);}\n    .ig-tile:nth-child(4)::before{background:linear-gradient(155deg,#131010,#0d0d0d);}\n    .ig-tile:nth-child(5)::before{background:linear-gradient(135deg,#1a0808,#111);}\n    .ig-tile:nth-child(6)::before{background:linear-gradient(120deg,#0f0a0a,#1c1010);}\n    .ig-tile::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:#8B0000;transform:scaleX(0);transform-origin:left;transition:transform .3s ease;}\n    .ig-tile:hover::after{transform:scaleX(1);}\n    .ig-tile-hover{position:absolute;inset:0;background:rgba(139,0,0,0);display:flex;align-items:center;justify-content:center;transition:background .25s;}\n    .ig-tile-hover-icon{opacity:0;transform:scale(.7);transition:opacity .25s,transform .25s;display:flex;flex-direction:column;align-items:center;gap:8px;}\n    .ig-tile-hover-icon svg{width:28px;height:28px;color:#fff;}\n    .ig-tile-hover-icon span{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#fff;}\n    .ig-tile:hover .ig-tile-hover{background:rgba(139,0,0,.75);}\n    .ig-tile:hover .ig-tile-hover-icon{opacity:1;transform:scale(1);}\n    .ig-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:#8B0000;color:#fff;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;text-decoration:none;height:48px;padding:0 32px;border:2px solid transparent;transition:all .3s ease;letter-spacing:2px;text-transform:uppercase;}\n    .ig-btn:hover{background:var(--red-hot);}\n\n    /* ── MOBILE ── */\n    @media(max-width:960px){\n      .services-grid{grid-template-columns:repeat(2,1fr);}\n    }\n    @media(max-width:680px){\n      .strip{flex-direction:column;height:auto;}\n      .panel{height:280px;flex:none;}\n      .panel-sep{display:block;width:100%;height:3px;background:#8B0000;}\n    }\n    @media(max-width:600px){\n      .hero-ctas{flex-direction:column;align-items:stretch;}\n      .awards-grid{flex-direction:column;align-items:center;}\n      .award-card{min-width:0;width:100%;max-width:100%;}\n      .winner-callout{flex-direction:column;text-align:center;gap:10px;padding:18px 20px;}\n      .services-grid{grid-template-columns:1fr;}\n      .faq-section{padding:48px 20px 72px;}\n      .faq-cta{flex-direction:column;align-items:stretch;}\n      .ig-tile{flex:0 0 140px;}\n      .ig-section{padding:40px 0 48px;}\n    }\n    @media(min-width:601px){\n      .hero{min-height:560px;padding:64px 24px;}\n      .hero-content{align-items:center;}\n      .hero-ctas{flex-direction:row;flex-wrap:wrap;justify-content:center;}\n    }\n    @media(min-width:1024px){\n      .hero{min-height:640px;padding:80px 24px;}\n    }\n    @media(prefers-reduced-motion:reduce){\n      .scroll-arrow{animation:none;opacity:.5;}\n      .panel-bg,.svc-card,.ig-tile img{transition:none;}\n    }\n      *:focus{outline:none;}*:focus-visible{outline:2px solid #8B0000;outline-offset:3px;}\n  </style>\n</head>\n<body>\n<a href="#main-content" class="skip-link">Skip to content</a>\n<main id="main-content">\n\n<!-- ═══════════════════════════════════\n     1. HERO — Red Truck at Boat Launch Ramp\n═══════════════════════════════════ -->\n<section class="hero grain">\n  <div class="hero-bg"></div>\n  <div class="hero-overlay"></div>\n  <div class="hero-vignette"></div>\n  <div class="hero-accent-bar"></div>\n\n  <div class="hero-eyebrow">\n    <div class="eyebrow-line"></div>\n    <span class="eyebrow-text">Signal Hill, CA · Est. 1991 · Family Owned</span>\n  </div>\n\n  <div class="hero-content">\n    <h1 class="hero-headline">\n      30+ Years.<br>\n      One Location.<br>\n      <span class="line-red">One Family.</span>\n    </h1>\n    <div class="hero-rule"></div>\n    <div class="hero-body">\n      No corporate. No runaround. No ticket numbers.<br>\n      Just James, his crew, and the promise that\n      <span class="promise">"We'll know your name before we touch your car."</span>\n      <span class="since">Serving Signal Hill since 1991 — and we're not going anywhere.</span>\n    </div>\n    <div class="hero-ctas">\n      <a href="tel:+15624246744" class="btn-red btn" target="_top">\n        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.7 10.82 19.79 19.79 0 01.67 2.18 2 2 0 012.66 0h3a2 2 0 012 1.72c.13 1 .36 1.97.7 2.91a2 2 0 01-.45 2.11L6.91 7.74a16 16 0 006.29 6.29l1-.99a2 2 0 012.11-.45c.94.34 1.91.57 2.91.7A2 2 0 0122 16.92z"/></svg>\n        Call 562-424-6744\n      </a>\n      <a href="https://www.3jsautobody.com/request-a-quote" class="btn-ghost btn" target="_top">\n        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>\n        Get a Free Quote\n      </a>\n    </div>\n    <div class="hero-stats">\n      <div class="stat">\n        <div class="stat-num">30<span>+</span></div>\n        <div class="stat-label">Years in Business</div>\n      </div>\n      <div class="stat">\n        <div class="stat-num">2<span>×</span></div>\n        <div class="stat-label">Readers' Choice Award</div>\n      </div>\n      <div class="stat">\n        <div class="stat-num">5<span>★</span></div>\n        <div class="stat-label">Yelp Rating</div>\n      </div>\n      <div class="stat">\n        <div class="stat-num">1</div>\n        <div class="stat-label">Location · Always</div>\n      </div>\n    </div>\n  </div>\n\n  <p class="river-rat">* Yes, that is a boat launch ramp. Some of us have our priorities straight.</p>\n  <div class="hero-bottom-bar"></div>\n  <div class="scroll-hint">\n    <span>Scroll</span>\n    <svg fill="none" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>\n  </div>\n</section>\n\n<!-- ═══════════════════════════════════\n     2. PHOTO STRIP\n═══════════════════════════════════ -->\n<div class="strip">\n  <div class="panel">\n    <div class="panel-bg" style="background-image:url(https://rlsh1855.github.io/3Js-and-RLSH-Website/collision-before-after.png);"></div>\n    <div class="panel-overlay"></div>\n    <div class="panel-content">\n      <p class="panel-eyebrow">Auto Body</p>\n      <h2 class="panel-title">Collision<br>Repair</h2>\n      <p class="panel-sub">From minor dents to major damage — we restore your vehicle to factory condition.</p>\n      <a class="panel-link" href="https://www.3jsautobody.com/body-paint-repairs" target="_top">Learn More</a>\n    </div>\n  </div>\n  <div class="panel-sep"></div>\n  <div class="panel">\n    <div class="panel-bg" style="background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/Jeep%20Bedliner%20Photo%20Strip.webp');"></div>\n    <div class="panel-overlay"></div>\n    <div class="panel-content">\n      <p class="panel-eyebrow">Spray-On Protection</p>\n      <h2 class="panel-title">Rhino<br>Linings</h2>\n      <p class="panel-sub">Truck beds, Jeeps, and more — the toughest protective coating available.</p>\n      <a class="panel-link" href="https://www.3jsautobody.com/rhino-lining-quote" target="_top">Get a Quote</a>\n    </div>\n  </div>\n  <div class="panel-sep"></div>\n  <div class="panel">\n    <div class="panel-bg" style="background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/accessories-banner-truck-800x500px.webp');"></div>\n    <div class="panel-overlay"></div>\n    <div class="panel-content">\n      <p class="panel-eyebrow">Truck · Jeep · SUV</p>\n      <h2 class="panel-title">Accessories</h2>\n      <a class="panel-link" href="https://www.3jsautobody.com/exterior-accessories" target="_top">Shop All</a>\n    </div>\n  </div>\n</div>\n\n<!-- ═══════════════════════════════════\n     3. AWARDS\n═══════════════════════════════════ -->\n<section class="awards-section">\n  <div class="awards-content">\n    <p class="awards-eyebrow">Recognized by the Community</p>\n    <h2 class="awards-heading">Voted Best Body Shop — <em>Twice.</em></h2>\n    <p class="awards-sub">Press-Telegram &amp; Grunion Gazette · Readers' Choice Awards · Signal Hill &amp; Long Beach</p>\n    <div class="awards-grid">\n      <div class="award-card legacy">\n        <div class="award-year">2021</div>\n        <div class="award-title">Best Body Shop</div>\n        <div class="award-source">Press-Telegram &amp; Grunion Gazette<br>Readers' Choice Awards</div>\n        <div class="award-badge">\n          <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>\n          First Win\n        </div>\n      </div>\n      <div class="award-card featured">\n        <div class="award-year">2025</div>\n        <div class="award-title">Best Body Shop</div>\n        <div class="award-source">Press-Telegram &amp; Grunion Gazette<br>Readers' Choice Awards</div>\n        <div class="award-badge">\n          <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>\n          Still the Best\n        </div>\n      </div>\n    </div>\n    <div class="winner-callout">\n      <div class="winner-icon">\n        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>\n      </div>\n      <div class="winner-text">\n        <div class="wt-top">2-Time Award Winner · Family Owned Since 1991</div>\n        <div class="wt-main">The community has spoken — twice. We're honored every time.</div>\n      </div>\n    </div>\n  </div>\n</section>\n\n<!-- ═══════════════════════════════════\n     4. TOP SERVICES — COMPACT GRID\n═══════════════════════════════════ -->\n<section class="services-section">\n  <div class="services-inner">\n    <div class="services-header">\n      <span class="eyebrow" style="color:rgba(255,255,255,.4);">What We Do</span>\n      <h2 class="services-title">Our Top <em>Services</em></h2>\n    </div>\n    <div class="services-grid">\n\n      <!-- 01 Rhino Liner -->\n      <div class="svc-card">\n        <div class="svc-img-wrap">\n          <img class="svc-img" src="https://rlsh1855.github.io/3Js-and-RLSH-Website/BEDLINER%20WITH%20LOGO.webp" alt="Spray-In Rhino Liner" loading="lazy"/>\n        </div>\n        <div class="svc-body">\n          <span class="svc-num">01</span>\n          <div class="svc-name">Spray-In <em>Rhino Liner</em></div>\n          <ul class="svc-list">\n            <li>Certified Rhino Liner Installer</li>\n            <li>Same-Day Service Available</li>\n            <li>Lifetime Warranty Included</li>\n            <li>Color Match Options</li>\n          </ul>\n          <a href="https://www.3jsautobody.com/rhino-lining-quote" class="svc-cta" target="_top">\n            Get a Quote <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>\n          </a>\n        </div>\n      </div>\n\n      <!-- 02 Tonneau -->\n      <div class="svc-card">\n        <div class="svc-img-wrap">\n          <img class="svc-img" src="https://rlsh1855.github.io/3Js-and-RLSH-Website/bak-bakflip-mx4-2016-ford-f150-blue-beach-lifestyle-05.webp" alt="Tonneau Cover" loading="lazy"/>\n        </div>\n        <div class="svc-body">\n          <span class="svc-num">02</span>\n          <div class="svc-name">Tonneau <em>Covers</em></div>\n          <ul class="svc-list">\n            <li>Soft Roll-Up &amp; Hard Folding</li>\n            <li>Retractable Cover Installs</li>\n            <li>All Major Brands Available</li>\n            <li>Professional Installation</li>\n          </ul>\n          <a href="https://www.3jsautobody.com/exterior-accessories/tonneau-covers" class="svc-cta" target="_top">\n            Shop Covers <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>\n          </a>\n        </div>\n      </div>\n\n      <!-- 03 Running Boards -->\n      <div class="svc-card">\n        <div class="svc-img-wrap">\n          <video autoplay loop muted playsinline preload="metadata" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;" aria-label="Running boards demo">\n            <source src="https://rlsh1855.github.io/3Js-and-RLSH-Website/step_gif_1080x720__1_.mp4" type="video/mp4">\n          </video>\n        </div>\n        <div class="svc-body">\n          <span class="svc-num">03</span>\n          <div class="svc-name">Running Boards <em>&amp; Steps</em></div>\n          <ul class="svc-list">\n            <li>Fixed &amp; Nerf Bar Options</li>\n            <li>Power Retractable Steps</li>\n            <li>Lifted Vehicle Friendly</li>\n            <li>All Makes &amp; Models</li>\n          </ul>\n          <a href="https://www.3jsautobody.com/exterior-accessories/steps-running-boards" class="svc-cta" target="_top">\n            Shop Steps <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>\n          </a>\n        </div>\n      </div>\n\n      <!-- 04 Paint Jobs -->\n      <div class="svc-card">\n        <div class="svc-img-wrap">\n          <img class="svc-img" src="https://rlsh1855.github.io/3Js-and-RLSH-Website/72%20land%20cruiser%20full%20exterior%20paint%20job.webp" alt="Full exterior paint job" loading="lazy"/>\n        </div>\n        <div class="svc-body">\n          <span class="svc-num">04</span>\n          <div class="svc-name">Full Exterior <em>Paint Jobs</em></div>\n          <ul class="svc-list">\n            <li>Computer Color Matching</li>\n            <li>Single Panel or Full Repaint</li>\n            <li>Custom Colors Available</li>\n            <li>Factory Finish Quality</li>\n          </ul>\n          <a href="https://www.3jsautobody.com/body-paint-repairs" class="svc-cta" target="_top">\n            Learn More <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>\n          </a>\n        </div>\n      </div>\n\n      <!-- 05 Rock Guard -->\n      <div class="svc-card">\n        <div class="svc-img-wrap">\n          <img class="svc-img" src="https://rlsh1855.github.io/3Js-and-RLSH-Website/Bedliner-Jeep_exterior.webp" alt="Rock guard protection" loading="lazy"/>\n        </div>\n        <div class="svc-body">\n          <span class="svc-num">05</span>\n          <div class="svc-name">Rock Guard <em>Protection</em></div>\n          <ul class="svc-list">\n            <li>Rhino Linings Material</li>\n            <li>Color Match Available</li>\n            <li>On &amp; Off-Road Protection</li>\n            <li>Stops Chips &amp; Debris</li>\n          </ul>\n          <a href="https://www.3jsautobody.com/rhino-lining-quote" class="svc-cta" target="_top">\n            Get a Quote <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>\n          </a>\n        </div>\n      </div>\n\n      <!-- 06 Undercarriage -->\n      <div class="svc-card">\n        <div class="svc-img-wrap">\n          <img class="svc-img" src="https://rlsh1855.github.io/3Js-and-RLSH-Website/Bedliner-Color-Undercarriage.webp" alt="Undercarriage coating" loading="lazy"/>\n        </div>\n        <div class="svc-body">\n          <span class="svc-num">06</span>\n          <div class="svc-name">Undercarriage <em>Coating</em></div>\n          <ul class="svc-list">\n            <li>Full Undercarriage Coverage</li>\n            <li>Seals Out Moisture &amp; Salt</li>\n            <li>Rust &amp; Corrosion Protection</li>\n            <li>Coast &amp; Off-Road Recommended</li>\n          </ul>\n          <a href="https://www.3jsautobody.com/rhino-lining-quote" class="svc-cta" target="_top">\n            Get a Quote <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>\n          </a>\n        </div>\n      </div>\n\n    </div>\n  </div>\n\n  <!-- CTA Band -->\n  <div class="cta-band grain" style="margin-top:2px;">\n    <div class="cta-band-inner">\n      <h2>Ready to Get Started?</h2>\n      <p>Walk in Mon–Fri 8AM–5PM · Free estimates · Signal Hill, CA · Same-day Rhino Liner installs available.</p>\n      <a href="https://www.3jsautobody.com/request-a-quote" class="btn-red btn" target="_top">\n        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>\n        Request a Quote\n      </a>\n    </div>\n  </div>\n</section>\n\n<!-- ═══════════════════════════════════\n     5. ABOUT / WARRANTY (after Top Services)\n═══════════════════════════════════ -->\n<section class="red-section">\n  <div class="about-inner">\n    <div class="about-intro">\n      <div>\n        <span class="about-eyebrow">3J's Auto Body · Signal Hill, CA · Est. 1991</span>\n        <h2 class="about-h2">Repairs Done <span style="border-bottom:4px solid #fff;padding-bottom:3px;">RIGHT</span>.<br>Every Time.<br>Guaranteed.</h2>\n        <p class="about-lead">A damaged vehicle is stressful. Our job is to make the rest of it easy — from your first call to the day you drive away confident.</p>\n      </div>\n      <div class="warranty-badge">\n        <div class="wnum">LIFETIME</div>\n        <span class="wsub">Limited Warranty</span>\n        <p class="wdesc">Parts, labor, color matching, and gloss retention — covered on every job. One of the premier shops in LA and Orange County.</p>\n      </div>\n    </div>\n    <div class="about-body">\n      <div>\n        <span class="col-label">What We Offer</span>\n        <ul class="service-grid-about">\n          <li>Auto Detailing</li>\n          <li>Interior Cosmetic Repair</li>\n          <li>Alloy Wheel Repair</li>\n          <li>Paintless Dent Removal</li>\n          <li>Window Tinting</li>\n          <li>Headlight Restoration</li>\n          <li>Off-Road Parts</li>\n          <li>Jeep &amp; Truck Accessories</li>\n          <li>Suspension, Rims &amp; Tires</li>\n          <li>Bolt-On Installation</li>\n        </ul>\n      </div>\n      <div class="about-cta-block">\n        <span class="col-label">Get Started</span>\n        <p class="pitch">Tell us about your vehicle and we'll send a <strong>complimentary quote</strong> back — no obligation, no pressure.</p>\n        <a href="https://www.3jsautobody.com/request-a-quote" class="btn-about" target="_top">\n          <svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>\n          Request a Quote\n        </a>\n      </div>\n    </div>\n  </div>\n</section>\n\n<section class="black-section">\n  <div class="about-inner">\n    <div class="rlsh-head">\n      <span class="about-eyebrow">Rhino Linings of Signal Hill</span>\n      <h2>Southern California's <em>#1</em> spot for CUSTOM truck, Jeep &amp; car accessories.</h2>\n      <p class="about-lead">Custom, professional installs for trucks, Jeeps, commercial vans and more. If you're ready to take your build to the next level, you're in the right place.</p>\n    </div>\n    <div class="stat-row">\n      <div class="ab-stat">\n        <div class="snum" id="parts-counter" data-target="7000">0<em style="padding:5px;">+</em></div>\n        <span class="slbl">Off-Road Parts</span>\n        <p class="stxt">A massive in-house catalog of suspension, armor, lighting, wheels and tires.</p>\n      </div>\n      <div class="ab-stat">\n        <div class="snum"><span style="color:#8B0000;">U</span>S<span style="color:#033F7E;">A</span><em style="padding:5px;">·</em></div>\n        <span class="slbl">Made &amp; Manufactured</span>\n        <p class="stxt">We strive to use only parts made and manufactured in the United States.</p>\n      </div>\n      <div class="ab-stat">\n        <div class="snum">1<em style="padding:5px;">:</em>1</div>\n        <span class="slbl">Custom Installs</span>\n        <p class="stxt">Every build is dialed in by hand — no cookie-cutter packages, no shortcuts.</p>\n      </div>\n    </div>\n    <div class="rlsh-foot">\n      <p>From bed liners to full off-road builds, RLSH crews handle the install start to finish — under the same roof as 3J's Auto Body.</p>\n      <a href="https://www.3jsautobody.com/request-a-quote" class="btn-about-ghost" target="_top">\n        Build Your Rig\n        <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>\n      </a>\n    </div>\n  </div>\n</section>\n\n<!-- ═══════════════════════════════════\n     6. FAQ\n═══════════════════════════════════ -->\n<section class="faq-section">\n  <div class="faq-inner">\n    <div class="faq-header">\n      <span class="eyebrow">Got Questions?</span>\n      <h2 class="faq-title">Common <em>FAQ</em></h2>\n      <p class="faq-sub">Everything you need to know before bringing your vehicle in.</p>\n    </div>\n    <div class="faq-list">\n      <div class="faq-item">\n        <button class="faq-trigger" aria-expanded="false"><div class="faq-trigger-inner"><span class="q-badge">Q</span><span class="q-label">Do you work with insurance companies?</span><span class="toggle-icon" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></div></button>\n        <div class="faq-body"><div class="faq-body-inner"><div class="faq-answer"><p class="answer-text">Yes — 3J's Auto Body works directly with all major insurance carriers including State Farm, Geico, Progressive, Allstate, Farmers, AAA, and more. We handle the paperwork so you don't have to.</p></div></div></div>\n      </div>\n      <div class="faq-item">\n        <button class="faq-trigger" aria-expanded="false"><div class="faq-trigger-inner"><span class="q-badge">Q</span><span class="q-label">How long does auto body repair take?</span><span class="toggle-icon" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></div></button>\n        <div class="faq-body"><div class="faq-body-inner"><div class="faq-answer"><p class="answer-text">Repair time depends on the extent of the damage. Minor repairs can be done same-day or next day. Major collision repairs typically take several days to a week. We keep you informed throughout and aim for the fastest turnaround without sacrificing quality.</p></div></div></div>\n      </div>\n      <div class="faq-item">\n        <button class="faq-trigger" aria-expanded="false"><div class="faq-trigger-inner"><span class="q-badge">Q</span><span class="q-label">Do you offer free estimates?</span><span class="toggle-icon" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></div></button>\n        <div class="faq-body"><div class="faq-body-inner"><div class="faq-answer"><p class="answer-text">Yes — estimates are always free at 3J's Auto Body. Walk in Mon–Fri 8AM–5PM or submit an online photo estimate through our website. No appointment needed.</p></div></div></div>\n      </div>\n      <div class="faq-item">\n        <button class="faq-trigger" aria-expanded="false"><div class="faq-trigger-inner"><span class="q-badge">Q</span><span class="q-label">Is there a warranty on repairs?</span><span class="toggle-icon" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></div></button>\n        <div class="faq-body"><div class="faq-body-inner"><div class="faq-answer"><p class="answer-text">Yes — 3J's Auto Body backs every repair with a lifetime warranty on our workmanship for as long as you own the vehicle.</p></div></div></div>\n      </div>\n      <div class="faq-item">\n        <button class="faq-trigger" aria-expanded="false"><div class="faq-trigger-inner"><span class="q-badge">Q</span><span class="q-label">Do you offer towing?</span><span class="toggle-icon" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></div></button>\n        <div class="faq-body"><div class="faq-body-inner"><div class="faq-answer"><p class="answer-text">Yes — we can arrange towing for your vehicle to our shop in Signal Hill. Call us at (562) 424-6744 and we will get you taken care of.</p></div></div></div>\n      </div>\n      <div class="faq-item">\n        <button class="faq-trigger" aria-expanded="false"><div class="faq-trigger-inner"><span class="q-badge">Q</span><span class="q-label">What areas do you serve?</span><span class="toggle-icon" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></div></button>\n        <div class="faq-body"><div class="faq-body-inner"><div class="faq-answer"><p class="answer-text">We are located in Signal Hill, CA and serve the greater Long Beach area including Long Beach, Lakewood, Carson, Compton, Torrance, and surrounding communities in Los Angeles and Orange County.</p></div></div></div>\n      </div>\n    </div>\n    <div class="faq-cta">\n      <a href="tel:+15624246744" class="btn-red btn" target="_top">\n        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.7 10.82 19.79 19.79 0 01.67 2.18 2 2 0 012.66 0h3a2 2 0 012 1.72c.13 1 .36 1.97.7 2.91a2 2 0 01-.45 2.11L6.91 7.74a16 16 0 006.29 6.29l1-.99a2 2 0 012.11-.45c.94.34 1.91.57 2.91.7A2 2 0 0122 16.92z"/></svg>\n        Call 562-424-6744\n      </a>\n      <a href="https://www.carwise.com/online-photo-estimate/3js-autobody-paint-inc-signal-hill-ca-90755/479382?source=shop.profile&referer=estimate.cccone.com" target="_blank" class="btn-outline-red btn">\n        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>\n        Free Online Estimate\n      </a>\n    </div>\n  </div>\n</section>\n\n<!-- ═══════════════════════════════════\n     6. INSTAGRAM\n═══════════════════════════════════ -->\n<section class="ig-section">\n  <div class="ig-header">\n    <span class="ig-eyebrow">Follow the Build</span>\n    <h2 class="ig-heading">See Our Work on <em>Instagram</em></h2>\n    <p class="ig-sub">Real trucks. Real jobs. Real results — straight from the shop.</p>\n    <a class="ig-profile" href="https://www.instagram.com/rlofsignalhill/" target="_blank" rel="noopener">\n      <div class="ig-avatar">\n        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="#fff" stroke="none"/></svg>\n      </div>\n      <div class="ig-info">\n        <div class="ig-handle">@rlofsignalhill</div>\n        <div class="ig-name">3J's Auto Body &amp; Paint</div>\n      </div>\n    </a>\n  </div>\n  <div class="ig-grid">\n    <a class="ig-tile" href="https://www.instagram.com/rlofsignalhill/" target="_blank" rel="noopener">\n      <img src="https://static.wixstatic.com/media/b95bd9_092c1d6eb24f454dbd85a03cb8013baa~mv2.png" alt="3J's Auto Body work" loading="lazy"/>\n      <div class="ig-tile-hover"><div class="ig-tile-hover-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg><span>View on Instagram</span></div></div>\n    </a>\n    <a class="ig-tile" href="https://www.instagram.com/rlofsignalhill/" target="_blank" rel="noopener">\n      <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/IMG_3269.webp" alt="3J's Auto Body work" loading="lazy"/>\n      <div class="ig-tile-hover"><div class="ig-tile-hover-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg><span>View on Instagram</span></div></div>\n    </a>\n    <a class="ig-tile" href="https://www.instagram.com/rlofsignalhill/" target="_blank" rel="noopener">\n      <img src="https://static.wixstatic.com/media/b95bd9_4e457f8fb3074ab4a0ce359330032928~mv2.png" alt="3J's Auto Body work" loading="lazy"/>\n      <div class="ig-tile-hover"><div class="ig-tile-hover-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg><span>View on Instagram</span></div></div>\n    </a>\n    <a class="ig-tile" href="https://www.instagram.com/rlofsignalhill/" target="_blank" rel="noopener">\n      <img src="https://static.wixstatic.com/media/b95bd9_eddb7d0ea76d4eb989a697292c8a3845~mv2.png" alt="3J's Auto Body work" loading="lazy"/>\n      <div class="ig-tile-hover"><div class="ig-tile-hover-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg><span>View on Instagram</span></div></div>\n    </a>\n    <a class="ig-tile" href="https://www.instagram.com/rlofsignalhill/" target="_blank" rel="noopener">\n      <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/IMG_3269.webp" alt="3J's Auto Body work" loading="lazy"/>\n      <div class="ig-tile-hover"><div class="ig-tile-hover-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg><span>View on Instagram</span></div></div>\n    </a>\n    <a class="ig-tile" href="https://www.instagram.com/rlofsignalhill/" target="_blank" rel="noopener">\n      <img src="https://static.wixstatic.com/media/b95bd9_8839269f9afa452f966883da2c40a057~mv2.png" alt="3J's Auto Body work" loading="lazy"/>\n      <div class="ig-tile-hover"><div class="ig-tile-hover-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg><span>View on Instagram</span></div></div>\n    </a>\n  </div>\n  <a class="ig-btn" href="https://www.instagram.com/rlofsignalhill/" target="_blank" rel="noopener">\n    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>\n    Follow @rlofsignalhill\n  </a>\n</section>\n\n</main>\n\n<script>\n  /* Only hide overflow when inside Wix iframe */\n  if(window.self !== window.top){\n    document.documentElement.style.overflowY = 'hidden';\n    document.body.style.overflowY = 'hidden';\n  }\n\n  /* Height reporting for Wix iframe auto-resize */\n  function reportHeight(){\n    var h=Math.max(document.body.scrollHeight,document.body.offsetHeight,document.documentElement.scrollHeight,document.documentElement.offsetHeight);\n    window.parent.postMessage(JSON.stringify({height:h}),'*');\n  }\n  document.addEventListener('DOMContentLoaded',reportHeight);\n  window.addEventListener('load',function(){[0,200,500,1000,2000,3500].forEach(function(t){setTimeout(reportHeight,t);});});\n\n  /* Debounced resize — iOS fires resize before viewport is stable */\n  var _rszTimer;\n  window.addEventListener('resize',function(){\n    clearTimeout(_rszTimer);\n    _rszTimer=setTimeout(reportHeight,200);\n  });\n\n  /* orientationchange — iOS needs extra time to finish reflowing */\n  window.addEventListener('orientationchange',function(){\n    clearTimeout(_rszTimer);\n    [200,500,900,1400,2000].forEach(function(t){setTimeout(reportHeight,t);});\n  });\n\n  if(window.ResizeObserver){new ResizeObserver(reportHeight).observe(document.body);}\n\n  /* FAQ accordion — smooth height animation */\n  function faqClose(item){var p=item.querySelector('.faq-body');p.style.height=p.scrollHeight+'px';void p.offsetHeight;p.style.height='0px';item.classList.remove('open');item.querySelector('.faq-trigger').setAttribute('aria-expanded','false');}\n  function faqOpen(item){var p=item.querySelector('.faq-body');item.classList.add('open');item.querySelector('.faq-trigger').setAttribute('aria-expanded','true');p.style.height=p.querySelector('.faq-body-inner').offsetHeight+'px';}\n  document.querySelectorAll('.faq-body').forEach(function(p){p.addEventListener('transitionend',function(e){if(e.propertyName!=='height')return;if(p.closest('.faq-item').classList.contains('open'))p.style.height='auto';});});\n  document.querySelectorAll('.faq-trigger').forEach(function(btn){btn.addEventListener('click',function(){var item=btn.closest('.faq-item'),wasOpen=item.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(faqClose);if(!wasOpen)faqOpen(item);setTimeout(reportHeight,350);});});\n\n  /* Parts counter animation */\n  (function(){\n    var el=document.getElementById('parts-counter');\n    if(!el) return;\n    var target=7000;\n    var em=el.querySelector('em');\n    var emHTML=em?em.outerHTML:'';\n    var started=false;\n    var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches;\n    function fmt(n){return n.toLocaleString('en-US');}\n    function run(){\n      if(started)return;started=true;\n      if(reduce){el.innerHTML=fmt(target)+emHTML;return;}\n      var dur=1800,t0=null;\n      function tick(ts){\n        if(!t0)t0=ts;\n        var p=Math.min((ts-t0)/dur,1);\n        var e=p===1?1:1-Math.pow(2,-10*p);\n        el.innerHTML=fmt(Math.round(target*e))+emHTML;\n        if(p<1)requestAnimationFrame(tick);\n      }\n      requestAnimationFrame(tick);\n    }\n    if('IntersectionObserver' in window){\n      var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){run();io.disconnect();}});},{threshold:0.35});\n      io.observe(el);\n    }else{run();}\n  })();\n\n  /* Pause video for reduced-motion users */\n  if(window.matchMedia('(prefers-reduced-motion:reduce)').matches){\n    document.querySelectorAll('video').forEach(function(v){v.pause();v.removeAttribute('autoplay');});\n  }\n</script>\n<script>\n(function(){var active=false,startY=0,lastY=0,rafId=null;document.addEventListener('mousedown',function(e){if(e.button!==1)return;if(e.target.closest('a'))return;e.preventDefault();active=true;startY=e.clientY;lastY=e.clientY;document.body.style.cursor='ns-resize';tick();});document.addEventListener('mousemove',function(e){if(active)lastY=e.clientY;});document.addEventListener('mouseup',function(e){if(e.button!==1||!active)return;active=false;document.body.style.cursor='';if(rafId){cancelAnimationFrame(rafId);rafId=null;}});function tick(){if(!active){rafId=null;return;}var dy=lastY-startY;if(Math.abs(dy)>5)window.scrollBy(0,dy*0.12);rafId=requestAnimationFrame(tick);}})();\n</script><!-- EFFECTS: grain Â· scroll-reveal Â· border sweep Â· parallax Â· inertia -->\n<style>\n@keyframes grain{0%,100%{transform:translate(0,0);}10%{transform:translate(-2%,-3%);}20%{transform:translate(3%,1%);}30%{transform:translate(-1%,4%);}40%{transform:translate(4%,-2%);}50%{transform:translate(-3%,3%);}60%{transform:translate(2%,-4%);}70%{transform:translate(-4%,1%);}80%{transform:translate(1%,3%);}90%{transform:translate(3%,-1%);}}\n.grain::before{content:'';position:absolute;inset:-50%;width:200%;height:200%;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");background-size:200px 200px;opacity:0.038;animation:grain 0.8s steps(1) infinite;pointer-events:none;z-index:3;}\n[data-anim]{opacity:0;transition:opacity 0.65s ease,transform 0.65s ease;}[data-anim="fade-up"]{transform:translateY(32px);}[data-anim="fade-in"]{transform:none;}[data-anim].visible{opacity:1;transform:none;}[data-delay="100"]{transition-delay:0.10s;}[data-delay="200"]{transition-delay:0.20s;}[data-delay="300"]{transition-delay:0.30s;}[data-delay="400"]{transition-delay:0.40s;}[data-delay="500"]{transition-delay:0.50s;}\n@media(prefers-reduced-motion:reduce){[data-anim]{opacity:1;transform:none;transition:none;}[data-delay="100"],[data-delay="200"],[data-delay="300"],[data-delay="400"],[data-delay="500"]{transition-delay:0s;}}\n.product-card,.mfr-card{position:relative;}.card-border-sweep{position:absolute;inset:0;pointer-events:none;z-index:6;overflow:hidden;}.card-border-sweep canvas{position:absolute;inset:0;width:100%;height:100%;}\n</style>\n<script>\n(function(){var els=document.querySelectorAll('[data-anim]');if(!els.length)return;var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}});},{threshold:0.12});els.forEach(function(el){io.observe(el);});})();\n(function(){var COLOR='#8B0000',DURATION=700,BORDER=2;function getPL(w,h){return 2*(w+h);}function ptP(x,y,w,h){if(y<=BORDER)return x;if(x>=w-BORDER)return w+y;if(y>=h-BORDER)return w+h+(w-x);return w+h+w+(h-y);}function initCard(card){if(card.querySelector('.card-border-sweep'))return;var wrap=document.createElement('div');wrap.className='card-border-sweep';var cvs=document.createElement('canvas');wrap.appendChild(cvs);card.appendChild(wrap);var raf=null,startP=0,progress=0,animStart=0,leaving=false,leaveStart=0,leaveOpacity=0;function resize(){cvs.width=card.offsetWidth;cvs.height=card.offsetHeight;}resize();new ResizeObserver(resize).observe(card);function draw(now){var w=cvs.width,h=cvs.height,ctx=cvs.getContext('2d');ctx.clearRect(0,0,w,h);var perim=getPL(w,h),opacity=1;if(leaving){var elapsed=now-leaveStart;opacity=leaveOpacity*(1-Math.min(elapsed/350,1));if(opacity<=0){raf=null;return;}}else{var elapsed2=now-animStart;progress=Math.min(elapsed2/DURATION,1);progress=1-Math.pow(1-progress,3);}var sweepLen=perim*progress,segs=[{x1:0,y1:0,x2:w,y2:0},{x1:w,y1:0,x2:w,y2:h},{x1:w,y1:h,x2:0,y2:h},{x1:0,y1:h,x2:0,y2:0}],sLens=[w,h,w,h],drawn=0,s=startP%perim,started=false;ctx.save();ctx.strokeStyle=COLOR;ctx.lineWidth=BORDER;ctx.globalAlpha=opacity;ctx.beginPath();for(var pass=0;pass<2;pass++){var cum=0;for(var i=0;i<4;i++){var sLen=sLens[i],sStart=cum,sEnd=cum+sLen;cum+=sLen;if(!started){if(sEnd<=s)continue;var t=(s-sStart)/sLen,sx=segs[i].x1+(segs[i].x2-segs[i].x1)*t,sy=segs[i].y1+(segs[i].y2-segs[i].y1)*t;ctx.moveTo(sx,sy);started=true;var rem=sLen*(1-t),canDraw=Math.min(rem,sweepLen-drawn),t2=t+canDraw/sLen;ctx.lineTo(segs[i].x1+(segs[i].x2-segs[i].x1)*t2,segs[i].y1+(segs[i].y2-segs[i].y1)*t2);drawn+=canDraw;}else{var canDraw2=Math.min(sLen,sweepLen-drawn),t3=canDraw2/sLen;ctx.lineTo(segs[i].x1+(segs[i].x2-segs[i].x1)*t3,segs[i].y1+(segs[i].y2-segs[i].y1)*t3);drawn+=canDraw2;}if(drawn>=sweepLen)break;}if(drawn>=sweepLen||pass===1)break;s=0;}ctx.stroke();ctx.restore();raf=requestAnimationFrame(draw);}card.addEventListener('mouseenter',function(e){leaving=false;var rect=card.getBoundingClientRect();startP=ptP(e.clientX-rect.left,e.clientY-rect.top,cvs.width,cvs.height);progress=0;animStart=performance.now();if(!raf)raf=requestAnimationFrame(draw);});card.addEventListener('mouseleave',function(){leaving=true;leaveStart=performance.now();leaveOpacity=progress;});}document.addEventListener('DOMContentLoaded',function(){document.querySelectorAll('.product-card,.mfr-card').forEach(initCard);});})();\n(function(){if(window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;var bg=document.querySelector('.hero-bg');if(!bg)return;window.addEventListener('scroll',function(){bg.style.transform='scale(1.04) translateY('+(window.scrollY*0.28)+'px)';},{passive:true});})();\n</script>\n</body>\n</html>\n
