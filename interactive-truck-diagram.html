@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -399,6 +399,7 @@
 <script>
 
   // ── Touch device hint
+  if ('ontouchstart' in window) {
     var hint = document.querySelector('.hint');
     if (hint) hint.textContent = 'Tap any marker to explore our services';
   }

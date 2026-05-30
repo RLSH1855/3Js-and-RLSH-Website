@@ -23,7 +23,7 @@
       --divider:#E8E8E8;
     }
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    html{scrollbar-width:none;overscroll-behavior:none;}
+    html{scrollbar-width:none;}
     html::-webkit-scrollbar{display:none;}
     body{font-family:'Inter',sans-serif;overflow-x:hidden;background:#fff;color:var(--body-text);}
     *:focus{outline:none;}
@@ -61,7 +61,7 @@
       background:var(--black-2);
       padding:100px 40px 88px;
       text-align:center;
-      position:relative;overflow:hidden;clip-path:inset(0);
+      position:relative;overflow:hidden;
       min-height:520px;
       display:flex;align-items:center;justify-content:center;
     }
@@ -170,61 +170,72 @@
     .owner-num{font-family:'Montserrat',sans-serif;font-size:clamp(52px,7vw,84px);font-weight:900;letter-spacing:-3px;line-height:1;color:#fff;}
     .owner-lbl{font-family:'Inter',sans-serif;font-size:13px;font-weight:500;color:rgba(255,255,255,0.50);margin-top:6px;line-height:1.5;}
 
-    /* ── SERVICES SECTION ── */
-    .services-section{background:#fff;padding:clamp(48px,7vw,80px) clamp(20px,4vw,40px);}
-    .services-inner{max-width:1100px;margin:0 auto;}
-    .services-header{text-align:center;margin-bottom:48px;}
-    .services-header .eyebrow{color:var(--crimson);}
-    .services-header h2{font-family:'Montserrat',sans-serif;font-size:clamp(24px,3.5vw,38px);font-weight:900;color:var(--neutral-dark);letter-spacing:-0.5px;text-wrap:balance;}
-    .services-header h2 em{font-style:normal;color:var(--crimson);}
-
-    /* Mobile: card grid */
-    .services-grid{display:grid;grid-template-columns:1fr;gap:14px;}
-    .service-card{border:1.5px solid #E2E8F0;border-radius:0;padding:28px 24px;background:#fff;transition:border-color 0.2s,box-shadow 0.2s;}
-    .service-card:hover{border-color:#8B0000;box-shadow:0 4px 16px rgba(0,0,0,0.08);}
-    .service-card-num{display:block;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--crimson);margin-bottom:10px;}
-    .service-card-title{font-family:'Montserrat',sans-serif;font-size:22px;font-weight:900;color:var(--neutral-dark);letter-spacing:-0.5px;line-height:1.1;margin-bottom:12px;text-wrap:balance;}
-    .service-card-desc{font-family:'Inter',sans-serif;font-size:15px;color:var(--body-text);line-height:1.65;margin-bottom:12px;text-wrap:pretty;}
-    .service-card-desc strong{font-weight:600;color:var(--emphasis-text);}
-    .service-card-desc:last-of-type{margin-bottom:0;}
+    /* ── SERVICE PANELS ── */
+    .service-panel{position:relative;overflow:hidden;min-height:500px;display:flex;align-items:center;}
+    .service-panel-bg{position:absolute;inset:0;z-index:0;}
+    .service-panel-bg img{width:100%;height:100%;object-fit:cover;display:block;}
+    .service-panel.left .service-panel-bg::after{
+      content:'';position:absolute;inset:0;
+      background:linear-gradient(to right,rgba(0,0,0,0.92) 0%,rgba(0,0,0,0.78) 55%,rgba(0,0,0,0.20) 100%);
+    }
+    .service-panel.right .service-panel-bg::after{
+      content:'';position:absolute;inset:0;
+      background:linear-gradient(to left,rgba(0,0,0,0.92) 0%,rgba(0,0,0,0.78) 55%,rgba(0,0,0,0.20) 100%);
+    }
+    .service-panel-content{
+      position:relative;z-index:1;
+      padding:clamp(56px,8vw,96px) clamp(20px,4vw,64px);
+      max-width:580px;
+      width:100%;
+    }
+    .service-panel.right .service-panel-content{margin-left:auto;}
+    .service-panel-content .eyebrow{color:rgba(255,255,255,0.50);}
+    .service-panel-content h2{
+      font-family:'Montserrat',sans-serif;
+      font-size:clamp(28px,4vw,52px);font-weight:900;
+      letter-spacing:-1.5px;line-height:1.05;
+      color:#fff;text-transform:uppercase;
+      margin-bottom:18px;text-wrap:balance;
+    }
+    .service-panel-content h2 em{font-style:normal;color:var(--crimson);}
+    .service-panel-content p{
+      font-family:'Inter',sans-serif;font-size:15px;
+      color:rgba(255,255,255,0.82);line-height:1.75;
+      margin-bottom:14px;text-wrap:pretty;
+    }
+    .service-panel-content p strong{color:#fff;font-weight:600;}
+    .service-panel-content p .hl{color:var(--crimson);filter:brightness(1.4);font-weight:600;}
+    .service-num{
+      font-family:'Montserrat',sans-serif;
+      font-size:clamp(100px,18vw,180px);font-weight:900;
+      line-height:1;letter-spacing:-6px;
+      opacity:0.05;position:absolute;
+      bottom:-20px;right:20px;
+      color:#fff;pointer-events:none;user-select:none;z-index:0;
+    }
+    .service-panel.right .service-num{right:auto;left:20px;}
 
     /* Feature list */
-    .feature-list{list-style:none;margin-top:16px;display:flex;flex-direction:column;gap:10px;}
-    .feature-list li{font-family:'Inter',sans-serif;display:flex;align-items:center;gap:10px;font-size:13px;font-weight:600;letter-spacing:0.8px;text-transform:uppercase;color:var(--emphasis-text);}
+    .feature-list{list-style:none;margin-top:20px;display:flex;flex-direction:column;gap:10px;}
+    .feature-list li{font-family:'Inter',sans-serif;display:flex;align-items:center;gap:10px;font-size:13px;font-weight:600;letter-spacing:0.8px;text-transform:uppercase;color:rgba(255,255,255,0.85);}
     .feature-list li::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--crimson);flex-shrink:0;}
 
-    /* Safety alert */
-    .safety-alert{background:rgba(139,0,0,0.06);border:1px solid rgba(139,0,0,0.20);padding:14px 18px;margin-bottom:16px;font-family:'Inter',sans-serif;font-size:14px;font-weight:500;color:var(--emphasis-text);line-height:1.7;}
-
-    /* Service CTA */
-    .service-cta{display:inline-flex;align-items:center;gap:8px;margin-top:20px;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;height:48px;padding:0 28px;border-radius:0;background:var(--crimson);color:#fff;border:2px solid var(--crimson);transition:background 0.2s,border-color 0.2s;}
+    /* Service CTA link */
+    .service-cta{
+      display:inline-flex;align-items:center;gap:8px;
+      margin-top:28px;
+      font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;
+      letter-spacing:2px;text-transform:uppercase;text-decoration:none;
+      height:48px;padding:0 28px;border-radius:0;
+      background:var(--crimson);color:#fff;
+      border:2px solid var(--crimson);
+      transition:background 0.2s,border-color 0.2s;
+    }
     .service-cta:hover{background:var(--crimson-hover);border-color:var(--crimson-hover);}
     .service-cta svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2.2;flex-shrink:0;}
 
-    /* Tablet: 2-col card grid */
-    @media(min-width:600px){
-      .services-grid{grid-template-columns:repeat(2,1fr);}
-    }
-
-    /* Desktop: list layout */
-    @media(min-width:1024px){
-      .services-grid{display:block;}
-      .service-card{
-        display:grid;grid-template-columns:280px 1fr;gap:80px;align-items:start;
-        padding:52px 0;background:transparent;
-        border:none;border-top:1.5px solid #E2E8F0;
-        box-shadow:none;border-radius:0;
-      }
-      .service-card:last-child{border-bottom:1.5px solid #E2E8F0;}
-      .service-card:hover{border-top-color:#8B0000;box-shadow:none;}
-      .service-card:last-child:hover{border-bottom-color:#8B0000;}
-      .service-card-num{font-size:11px;letter-spacing:3px;margin-bottom:16px;}
-      .service-card-title{font-size:clamp(36px,4vw,52px);letter-spacing:-2px;line-height:1.0;}
-      /* Alternate: even cards flip title to right */
-      .service-card:nth-child(even){grid-template-columns:1fr 280px;}
-      .service-card:nth-child(even) .service-card-left{order:2;}
-      .service-card:nth-child(even) .service-card-right{order:1;}
-    }
+    /* Red accent bar between panels */
+    .panel-divider{height:3px;background:linear-gradient(to right,transparent,var(--crimson) 20%,var(--crimson) 80%,transparent);}
 
     /* ── BEFORE & AFTER ── */
     .ba-section{background:var(--black-1);padding:clamp(48px,7vw,80px) clamp(16px,4vw,40px);}
@@ -233,7 +244,7 @@
     .ba-section-header h2{font-family:'Montserrat',sans-serif;font-size:clamp(24px,3.5vw,38px);font-weight:900;letter-spacing:-0.5px;color:#fff;}
     .ba-section-header h2 em{font-style:normal;color:var(--crimson);}
     .ba-grid{display:grid;grid-template-columns:1fr;gap:24px;max-width:1100px;margin:0 auto;}
-    .ba-slider{position:relative;width:100%;overflow:hidden;cursor:ew-resize;user-select:none;aspect-ratio:4/3;touch-action:pan-y;}
+    .ba-slider{position:relative;width:100%;overflow:hidden;cursor:ew-resize;user-select:none;aspect-ratio:4/3;touch-action:none;}
     .ba-img{position:absolute;inset:0;width:100%;height:100%;}
     .ba-img img{width:100%;height:100%;object-fit:cover;display:block;}
     .ba-img.after{clip-path:inset(0 0 0 50%);}
@@ -308,6 +319,9 @@
     .steps::before{display:none;}
     .step{background:#fff;padding:28px 20px;}
     .process-header{margin-bottom:32px;}
+    .service-panel{min-height:420px;}
+    .service-panel-content{max-width:100%;}
+    .service-num{display:none;}
     .owner-grid{grid-template-columns:1fr;gap:32px;}
     .cta-buttons{flex-direction:column;align-items:stretch;}
     .cta-buttons .btn-primary,.cta-buttons .btn-glass{width:100%;justify-content:center;}
@@ -328,6 +342,8 @@
       .step{background:transparent;padding:0 20px;}
       .process-section{padding:clamp(48px,7vw,80px) clamp(20px,4vw,40px);}
       .process-header{margin-bottom:56px;}
+      .service-panel{min-height:520px;}
+      .service-num{display:block;}
       .owner-grid{grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
       .cta-buttons{flex-direction:row;align-items:center;}
       .cta-buttons .btn-primary,.cta-buttons .btn-glass{width:auto;}
@@ -431,116 +447,123 @@
   </div>
 </section>
 
-<!-- ══ SERVICES ══ -->
-<section class="services-section">
-  <div class="services-inner">
-    <div class="services-header" data-anim="fade-up">
-      <span class="eyebrow">What We Do</span>
-      <h2>Our <em>Services</em></h2>
-    </div>
-    <div class="services-grid">
+<div class="panel-divider"></div>
 
-      <!-- 01 Collision Repair -->
-      <div class="service-card" data-anim="fade-up">
-        <div class="service-card-left">
-          <span class="service-card-num">01</span>
-          <h3 class="service-card-title">Collision<br>Repair</h3>
-        </div>
-        <div class="service-card-right">
-          <p class="service-card-desc">From <strong>minor fender benders to major structural damage</strong> — we repair it all. Our I-CAR Gold Class certified technicians are trained to factory standards, meaning every repair is done the right way, not the fast way.</p>
-          <p class="service-card-desc">We use <strong>computerized measuring systems</strong> to restore your vehicle's frame and structure to exact factory specifications before we touch the paint.</p>
-          <ul class="feature-list">
-            <li>I-CAR Gold Class Certified Repairs</li>
-            <li>Frame &amp; Structural Damage</li>
-            <li>Panel Replacement &amp; Repair</li>
-            <li>Factory-Spec Restoration</li>
-            <li>All Makes &amp; Models</li>
-          </ul>
-          <a href="https://www.carwise.com/online-photo-estimate/3js-autobody-paint-inc-signal-hill-ca-90755/479382?source=shop.profile&referer=estimate.cccone.com" target="_blank" class="service-cta">
-            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.7 10.82 19.79 19.79 0 01.67 2.18 2 2 0 012.66 0h3a2 2 0 012 1.72c.13 1 .36 1.97.7 2.91a2 2 0 01-.45 2.11L6.91 7.74a16 16 0 006.29 6.29l1-.99a2 2 0 012.11-.45c.94.34 1.91.57 2.91.7A2 2 0 0122 16.92z"/></svg>
-            Get a Free Estimate
-          </a>
-        </div>
-      </div>
-
-      <!-- 02 Paint & Refinishing -->
-      <div class="service-card" data-anim="fade-up">
-        <div class="service-card-left">
-          <span class="service-card-num">02</span>
-          <h3 class="service-card-title">Paint &amp;<br>Refinishing</h3>
-        </div>
-        <div class="service-card-right">
-          <p class="service-card-desc">A repair is only as good as the paint job on top of it. We use <strong>advanced computer color-matching technology</strong> to ensure repaired panels are completely indistinguishable from the rest of your vehicle.</p>
-          <p class="service-card-desc">Whether it's a <strong>single panel blend or a full exterior repaint</strong>, we prep right, spray right, and finish right — every time.</p>
-          <ul class="feature-list">
-            <li>Computer Color Matching</li>
-            <li>Single Panel Blending</li>
-            <li>Full Exterior Repaints</li>
-            <li>Clear Coat &amp; Finish Correction</li>
-            <li>Factory &amp; Custom Colors</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- 03 Dent & Scratch -->
-      <div class="service-card" data-anim="fade-up">
-        <div class="service-card-left">
-          <span class="service-card-num">03</span>
-          <h3 class="service-card-title">Dent &amp; Scratch<br>Repair</h3>
-        </div>
-        <div class="service-card-right">
-          <p class="service-card-desc"><strong>Parking lot dings, key scratches, road rash</strong> — we handle it all. Small damage doesn't have to cost a fortune or take forever. We assess every job individually and recommend the most cost-effective repair method for your situation.</p>
-          <p class="service-card-desc">Our goal is always to <strong>restore, not replace</strong> — saving you time and money without cutting corners on quality.</p>
-          <ul class="feature-list">
-            <li>Paintless Dent Repair (PDR)</li>
-            <li>Scratch &amp; Scuff Removal</li>
-            <li>Chip &amp; Road Rash Repair</li>
-            <li>Faded &amp; Oxidized Panel Restoration</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- 04 Frame & Structural -->
-      <div class="service-card" data-anim="fade-up">
-        <div class="service-card-left">
-          <span class="service-card-num">04 — Safety Critical</span>
-          <h3 class="service-card-title">Frame &amp;<br>Structural Repair</h3>
-        </div>
-        <div class="service-card-right">
-          <div class="safety-alert">Frame damage after a collision isn't cosmetic — it's a safety issue. Driving on an unrepaired frame puts you and everyone on the road at risk.</div>
-          <ul class="feature-list">
-            <li>Computerized Frame Measuring</li>
-            <li>Unibody &amp; Full Frame Repair</li>
-            <li>Factory Specification Alignment</li>
-            <li>Pre-Repair Structural Assessment</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- 05 Lease Turn-In -->
-      <div class="service-card" data-anim="fade-up">
-        <div class="service-card-left">
-          <span class="service-card-num">05</span>
-          <h3 class="service-card-title">Lease Turn-In &amp;<br>Out-of-Pocket</h3>
-        </div>
-        <div class="service-card-right">
-          <p class="service-card-desc">Lease ending soon? Don't get hit with dealer fees for damage you could have repaired for less. We specialize in getting lease vehicles back to <strong>factory condition quickly and affordably</strong> before turn-in.</p>
-          <p class="service-card-desc">Paying out of pocket? We give you <strong>honest, upfront pricing</strong> and only recommend what actually needs to be done. No upselling. No pressure.</p>
-          <ul class="feature-list">
-            <li>Lease Vehicle Preparation</li>
-            <li>Avoid Dealer Damage Fees</li>
-            <li>Transparent Out-of-Pocket Pricing</li>
-            <li>Fast Turnaround Available</li>
-          </ul>
-          <a href="https://www.carwise.com/online-photo-estimate/3js-autobody-paint-inc-signal-hill-ca-90755/479382?source=shop.profile&referer=estimate.cccone.com" target="_blank" class="service-cta">
-            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.7 10.82 19.79 19.79 0 01.67 2.18 2 2 0 012.66 0h3a2 2 0 012 1.72c.13 1 .36 1.97.7 2.91a2 2 0 01-.45 2.11L6.91 7.74a16 16 0 006.29 6.29l1-.99a2 2 0 012.11-.45c.94.34 1.91.57 2.91.7A2 2 0 0122 16.92z"/></svg>
-            Get a Free Estimate
-          </a>
-        </div>
-      </div>
-
-    </div>
+<!-- ══ SERVICE 01 — COLLISION REPAIR ══ -->
+<section class="service-panel left grain">
+  <div class="service-panel-bg">
+    <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/ba-audi-after.webp" alt="Collision repair at 3J's Auto Body" loading="lazy">
   </div>
+  <div class="service-panel-content" data-anim="fade-up">
+    <span class="eyebrow">Service 01</span>
+    <h2>Collision<br><em>Repair</em></h2>
+    <p>From <strong>minor fender benders to major structural damage</strong> — we repair it all. Our <span class="hl">I-CAR Gold Class certified technicians</span> are trained to factory standards, meaning every repair is done the right way, not the fast way.</p>
+    <p>We use <strong>computerized measuring systems</strong> to ensure your vehicle's frame and structure are restored to exact factory specifications before we touch the paint.</p>
+    <ul class="feature-list">
+      <li>I-CAR Gold Class Certified Repairs</li>
+      <li>Frame &amp; Structural Damage</li>
+      <li>Panel Replacement &amp; Repair</li>
+      <li>Factory-Spec Restoration</li>
+      <li>All Makes &amp; Models</li>
+    </ul>
+    <a href="https://www.carwise.com/online-photo-estimate/3js-autobody-paint-inc-signal-hill-ca-90755/479382?source=shop.profile&referer=estimate.cccone.com" target="_blank" class="service-cta">
+      <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.7 10.82 19.79 19.79 0 01.67 2.18 2 2 0 012.66 0h3a2 2 0 012 1.72c.13 1 .36 1.97.7 2.91a2 2 0 01-.45 2.11L6.91 7.74a16 16 0 006.29 6.29l1-.99a2 2 0 012.11-.45c.94.34 1.91.57 2.91.7A2 2 0 0122 16.92z"/></svg>
+      Get a Free Estimate
+    </a>
+  </div>
+  <div class="service-num">01</div>
+</section>
+
+<div class="panel-divider"></div>
+
+<!-- ══ SERVICE 02 — PAINT & REFINISHING ══ -->
+<section class="service-panel right grain">
+  <div class="service-panel-bg">
+    <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/mirror-paint-finish.webp" alt="Paint and refinishing at 3J's Auto Body" loading="lazy">
+  </div>
+  <div class="service-panel-content" data-anim="fade-up">
+    <span class="eyebrow">Service 02</span>
+    <h2>Paint &amp;<br><em>Refinishing</em></h2>
+    <p>A repair is only as good as the paint job on top of it. We use <strong>advanced computer color-matching technology</strong> to ensure repaired panels are completely indistinguishable from the rest of your vehicle.</p>
+    <p>Whether it's a <strong>single panel blend or a full exterior repaint,</strong> we prep right, spray right, and <span class="hl">finish right — every time.</span></p>
+    <ul class="feature-list">
+      <li>Computer Color Matching</li>
+      <li>Single Panel Blending</li>
+      <li>Full Exterior Repaints</li>
+      <li>Clear Coat &amp; Finish Correction</li>
+      <li>Factory &amp; Custom Colors</li>
+    </ul>
+  </div>
+  <div class="service-num">02</div>
+</section>
+
+<div class="panel-divider"></div>
+
+<!-- ══ SERVICE 03 — DENT & SCRATCH ══ -->
+<section class="service-panel left grain">
+  <div class="service-panel-bg">
+    <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/paintless-dent-repair.webp" alt="Dent and scratch repair at 3J's Auto Body" loading="lazy">
+  </div>
+  <div class="service-panel-content" data-anim="fade-up">
+    <span class="eyebrow">Service 03</span>
+    <h2>Dent &amp; Scratch<br><em>Repair</em></h2>
+    <p><strong>Parking lot dings, key scratches, road rash</strong> — we handle it all. Small damage doesn't have to cost a fortune or take forever. We assess every job individually and recommend the <span class="hl">most cost-effective repair method</span> for your situation.</p>
+    <p>Our goal is always to <strong>restore, not replace</strong> — saving you time and money without cutting corners on quality.</p>
+    <ul class="feature-list">
+      <li>Paintless Dent Repair (PDR)</li>
+      <li>Scratch &amp; Scuff Removal</li>
+      <li>Chip &amp; Road Rash Repair</li>
+      <li>Faded &amp; Oxidized Panel Restoration</li>
+    </ul>
+  </div>
+  <div class="service-num">03</div>
+</section>
+
+<div class="panel-divider"></div>
+
+<!-- ══ SERVICE 04 — FRAME & STRUCTURAL ══ -->
+<section class="service-panel right grain">
+  <div class="service-panel-bg">
+    <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/frame-straightening.webp" alt="Frame and structural repair at 3J's Auto Body" loading="lazy">
+  </div>
+  <div class="service-panel-content" data-anim="fade-up">
+    <span class="eyebrow">Service 04 — Safety Critical</span>
+    <h2>Frame &amp;<br><em>Structural Repair</em></h2>
+    <div style="background:rgba(139,0,0,0.18);border:1px solid rgba(139,0,0,0.40);padding:16px 20px;margin-bottom:20px;font-family:'Inter',sans-serif;font-size:14px;font-weight:500;color:rgba(255,255,255,0.85);line-height:1.7;">Frame damage after a collision isn't cosmetic — it's a safety issue. Driving on an unrepaired frame puts you and everyone on the road at risk.</div>
+    <ul class="feature-list">
+      <li>Computerized Frame Measuring</li>
+      <li>Unibody &amp; Full Frame Repair</li>
+      <li>Factory Specification Alignment</li>
+      <li>Pre-Repair Structural Assessment</li>
+    </ul>
+  </div>
+  <div class="service-num">04</div>
+</section>
+
+<div class="panel-divider"></div>
+
+<!-- ══ SERVICE 05 — LEASE TURN-IN ══ -->
+<section class="service-panel left grain">
+  <div class="service-panel-bg">
+    <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/lease-turn-in.webp" alt="Lease turn-in repair at 3J's Auto Body" loading="lazy">
+  </div>
+  <div class="service-panel-content" data-anim="fade-up">
+    <span class="eyebrow">Service 05</span>
+    <h2>Lease Turn-In &amp;<br><em>Out-of-Pocket Repairs</em></h2>
+    <p>Lease ending soon? <span class="hl">Don't get hit with dealer fees</span> for damage you could have repaired for less. We specialize in getting lease vehicles back to <strong>factory condition quickly and affordably</strong> before turn-in.</p>
+    <p>Paying out of pocket? We give you <strong>honest, upfront pricing</strong> and only recommend what actually needs to be done. <span class="hl">No upselling. No pressure.</span></p>
+    <ul class="feature-list">
+      <li>Lease Vehicle Preparation</li>
+      <li>Avoid Dealer Damage Fees</li>
+      <li>Transparent Out-of-Pocket Pricing</li>
+      <li>Fast Turnaround Available</li>
+    </ul>
+    <a href="https://www.carwise.com/online-photo-estimate/3js-autobody-paint-inc-signal-hill-ca-90755/479382?source=shop.profile&referer=estimate.cccone.com" target="_blank" class="service-cta">
+      <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.7 10.82 19.79 19.79 0 01.67 2.18 2 2 0 012.66 0h3a2 2 0 012 1.72c.13 1 .36 1.97.7 2.91a2 2 0 01-.45 2.11L6.91 7.74a16 16 0 006.29 6.29l1-.99a2 2 0 012.11-.45c.94.34 1.91.57 2.91.7A2 2 0 0122 16.92z"/></svg>
+      Get a Free Estimate
+    </a>
+  </div>
+  <div class="service-num">05</div>
 </section>
 
 <!-- ══ BEFORE & AFTER ══ -->
@@ -719,19 +742,15 @@ document.querySelectorAll('.faq-trigger').forEach(function(btn){btn.addEventList
   },{passive:true});
 })();
 
-/* ── Inertia Scroll ── */
-
 /* ── Wix iframe height ── */
 function reportHeight(){
-  var sentinel=document.getElementById('height-sentinel');
-  var h=sentinel?(sentinel.offsetTop+sentinel.offsetHeight):Math.max(document.body.scrollHeight,document.body.offsetHeight,document.documentElement.scrollHeight,document.documentElement.offsetHeight);
+  var h=Math.max(document.body.scrollHeight,document.body.offsetHeight,document.documentElement.scrollHeight,document.documentElement.offsetHeight);
   window.parent.postMessage(JSON.stringify({height:h}),'*');
 }
 document.addEventListener('DOMContentLoaded',reportHeight);
 window.addEventListener('load',function(){[0,200,500,1000,2000,3500].forEach(function(t){setTimeout(reportHeight,t);});});
 window.addEventListener('resize',reportHeight);
-var _roTimer=null;
-if(window.ResizeObserver){new ResizeObserver(function(){clearTimeout(_roTimer);_roTimer=setTimeout(reportHeight,120);}).observe(document.body);}
+if(window.ResizeObserver){new ResizeObserver(reportHeight).observe(document.body);}
 document.querySelectorAll('.faq-item').forEach(function(el){el.addEventListener('click',function(){setTimeout(reportHeight,350);});});
 </script>
 
