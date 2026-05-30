@@ -29,9 +29,9 @@
     display:flex;align-items:center;justify-content:space-between;gap:24px;
     padding:14px 40px;
     max-height:120px;opacity:1;overflow:hidden;
-    transition:max-height .45s cubic-bezier(.22,1,.36,1),
-               opacity .30s ease,
-               padding .45s cubic-bezier(.22,1,.36,1);
+    transition:max-height .7s cubic-bezier(.4,0,.2,1),
+               opacity .55s cubic-bezier(.4,0,.2,1),
+               padding .7s cubic-bezier(.4,0,.2,1);
   }
   .nav-shell.shrunk .topbar{
     max-height:0;opacity:0;padding-top:0;padding-bottom:0;
@@ -71,7 +71,7 @@
     position:relative;transition:color .2s,padding .45s cubic-bezier(.22,1,.36,1);
   }
   .nav-shell.shrunk .nav-links > a,
-  .nav-shell.shrunk .nav-trigger{padding-top:14px;padding-bottom:14px;}
+  .nav-shell.shrunk .nav-trigger{padding-top:14px;padding-bottom:14px;transition:color .2s,padding .7s cubic-bezier(.4,0,.2,1);}
   .nav-links > a::after, .nav-trigger::after{
     content:'';position:absolute;left:15px;right:15px;bottom:0;height:3px;
     background:var(--red);transform:scaleX(0);transform-origin:left;
@@ -278,9 +278,10 @@
   var ticking=false;
   function update(){
     var y=window.pageYOffset||document.documentElement.scrollTop;
-    // shrink once past the top; restore only when back at the very top
-    if(y>10) shell.classList.add('shrunk');
-    else shell.classList.remove('shrunk');
+    // hysteresis buffer: collapse only after scrolling down a bit,
+    // restore only once you're back near the very top — prevents snappy flicker
+    if(y>110) shell.classList.add('shrunk');
+    else if(y<40) shell.classList.remove('shrunk');
     ticking=false;
   }
   window.addEventListener('scroll',function(){
