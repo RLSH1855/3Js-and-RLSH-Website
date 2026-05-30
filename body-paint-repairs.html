@@ -121,14 +121,15 @@
     .texture-light .two-col{position:relative;z-index:1;}
 
     /* PAGE HEADER */
-    .page-header{background:var(--black-1);color:var(--white);min-height:170px;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px 24px 0;position:relative;overflow:hidden;flex-direction:column;}
-    .page-header::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(139,0,0,0.16) 0%,transparent 65%);pointer-events:none;}
-    .page-header::after{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,0.035) 1px,transparent 1px);background-size:26px 26px;pointer-events:none;}
+    .page-header{color:var(--white);min-height:340px;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px 24px 0;position:relative;overflow:hidden;flex-direction:column;}
+    .page-header-bg{position:absolute;inset:0;z-index:0;}
+    .page-header-bg img{width:100%;height:100%;object-fit:cover;display:block;}
     .page-header-content{position:relative;z-index:1;}
     .page-header .eyebrow{color:var(--crimson);margin-bottom:12px;}
     .page-header h1{font-family:'Montserrat',sans-serif;font-size:clamp(32px,6vw,56px);font-weight:900;letter-spacing:-2px;line-height:1.0;text-transform:uppercase;}
     .page-header h1 em{font-style:normal;color:var(--crimson);}
-    .page-header-bar{position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(to right,transparent,var(--crimson) 25%,var(--crimson) 75%,transparent);}
+    .page-header-bar{position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(to right,transparent,var(--crimson) 25%,var(--crimson) 75%,transparent);z-index:2;}
+    @media(min-width:601px){.page-header{min-height:480px;}}
 
     /* CERT STRIP */
     .cert-strip{background:var(--crimson);padding:20px 24px;display:flex;justify-content:center;align-items:center;gap:32px;flex-wrap:wrap;}
@@ -237,7 +238,7 @@
     @media(max-width:640px){.faq-answer{padding:0 14px 18px 14px;}.q-badge{display:none;}}
 
     /* RESPONSIVE — mobile-first */
-    .page-header{min-height:170px;padding-top:16px;}
+    .page-header{min-height:340px;padding-top:16px;}
     .two-col{grid-template-columns:1fr;padding:48px 16px;gap:14px;}
     .two-col.flip .col-text{order:1;}
     .two-col.flip .col-visual{order:2;}
@@ -265,7 +266,7 @@
     .step-item.open .step-body-text{padding:0 0 16px 36px;}
 
     @media(min-width:601px){
-      .page-header{min-height:260px;padding-top:24px;}
+      .page-header{min-height:480px;padding-top:24px;}
       .two-col{padding:clamp(56px,8vw,100px) clamp(20px,4vw,40px);gap:28px;}
       .visual-box{aspect-ratio:4/3;}
       .num-badge{display:block;}
@@ -335,6 +336,7 @@
 
 <!-- PAGE HEADER -->
 <header class="page-header">
+  <div class="page-header-bg"><img src="images/trucks/Camaro_Hero_img2.webp" alt="Body and paint repair — 3J's Auto Body Signal Hill" loading="eager" fetchpriority="high"></div>
   <div class="page-header-content">
     <p class="eyebrow">3J's Auto Body · Signal Hill, CA</p>
     <h1>Body &amp; <em>Paint</em> Repairs</h1>
