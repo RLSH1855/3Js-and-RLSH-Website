@@ -1,1 +1,560 @@
-<!DOCTYPE html>\n<html lang="en">\n<head>\n  <meta charset="UTF-8" />\n  <meta name="viewport" content="width=device-width, initial-scale=1.0" />\n  <title>Go Beyond the Bedliner — Interactive Truck Service Guide | 3J's Auto Body Signal Hill CA</title>\n  <meta name="description" content="Explore everything 3J's Auto Body does — bedliners, rock guards, running boards, wheel wells, undercarriage coating, paint, grilles, bumpers and more. Interactive truck diagram. Signal Hill, CA.">\n  <meta name="robots" content="index, follow">\n  <meta property="og:type" content="website">\n  <meta property="og:title" content="Go Beyond the Bedliner — Interactive Truck Guide | 3J's Auto Body">\n  <meta property="og:description" content="See every service 3J's Auto Body offers on an interactive truck diagram. Bedliners, paint, running boards, undercarriage, and more. Signal Hill, CA.">\n  <meta property="og:site_name" content="3J's Auto Body &amp; Paint">\n  <link rel="preconnect" href="https://fonts.googleapis.com">\n  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />\n  <style>\n    \n    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}\n    html{overflow-y:scroll;scrollbar-width:none;}\n    html::-webkit-scrollbar{display:none;}\n    body{font-family:'Montserrat',sans-serif;background:#0A0A0A;color:#fff;}\n\n    /* ─── TOP HERO OVERLAY — hidden on all sizes; mobile-header handles title ─── */\n    .diagram-top-hero{display:none;}\n    .hero-eyebrow{font-size:11px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.80);margin-bottom:12px;}\n    .diagram-top-hero h1{font-size:clamp(26px,5.5vw,64px);font-weight:900;line-height:1.0;letter-spacing:-1.5px;text-transform:uppercase;color:#fff;}\n    .diagram-top-hero h1 em{font-style:normal;color:#8B0000;}\n    .hero-sub{font-size:clamp(12px,1.4vw,15px);font-weight:500;color:rgba(255,255,255,0.70);margin-top:12px;letter-spacing:0.3px;}\n    /* ─── MOBILE HEADER (above truck image) — hidden on desktop ─── */\n    .diagram-mobile-header{display:block;background:#0A0A0A;text-align:center;padding:28px 20px 16px;}\n    .diagram-mobile-header .hero-eyebrow{display:block;margin-bottom:10px;}\n    .diagram-mobile-header h1{font-size:clamp(28px,8vw,42px);font-weight:900;line-height:1.0;letter-spacing:-1px;text-transform:uppercase;color:#fff;}\n    .diagram-mobile-header h1 em{font-style:normal;color:#8B0000;}\n    /* ─── BOTTOM LABEL (below truck image) ─── */\n    .diagram-label-bottom{text-align:center;padding:28px 20px 8px;background:#0A0A0A;}\n    .diagram-label-bottom > p:first-child{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,0.40);margin-bottom:8px;}\n    .diagram-label-bottom h2{font-size:clamp(18px,3vw,30px);font-weight:900;letter-spacing:-0.5px;color:#fff;}\n    .diagram-label-bottom h2 em{font-style:normal;color:#8B0000;}\n    .diagram-label-bottom .hint{font-size:12px;font-weight:500;color:rgba(255,255,255,0.50);margin-top:8px;letter-spacing:0.3px;}\n    .hint-dot{display:inline-block;width:10px;height:10px;background:#8B0000;border-radius:50%;vertical-align:middle;margin:0 3px;box-shadow:0 0 0 3px rgba(139,0,0,0.40);position:relative;top:-1px;}\n    .diagram-sub-mobile{display:none;font-size:13px;font-weight:500;color:rgba(255,255,255,0.70);margin-top:10px;letter-spacing:0.3px;padding:0 16px;}\n\n    /* ─── DIAGRAM SECTION ─── */\n    .diagram-section{background:#0A0A0A;padding:56px 0 72px;}\n    .diagram-label{text-align:center;margin-bottom:36px;padding:0 20px;}\n    .diagram-label p{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#8B0000;margin-bottom:10px;}\n    .diagram-label h2{font-size:clamp(20px,3.5vw,34px);font-weight:900;letter-spacing:-0.5px;}\n    .diagram-label h2 em{font-style:normal;color:#8B0000;}\n    .diagram-label .hint{font-size:12px;font-weight:500;color:rgba(255,255,255,0.55);margin-top:8px;letter-spacing:0.3px;}\n\n    /* First-load mobile tap affordance */\n    .tap-nudge{\n      position:absolute;bottom:16px;left:50%;transform:translateX(-50%);\n      display:none;\n      background:rgba(139,0,0,0.85);\n      color:#fff;\n      font-family:'Montserrat',sans-serif;\n      font-size:9px;font-weight:800;letter-spacing:2.5px;\n      text-transform:uppercase;\n      padding:7px 18px;\n      pointer-events:none;\n      z-index:50;\n      animation:nudgeFade 3.5s ease-out forwards;\n    }\n    @keyframes nudgeFade{0%{opacity:0;transform:translateX(-50%) translateY(6px);}15%{opacity:1;transform:translateX(-50%) translateY(0);}75%{opacity:1;}100%{opacity:0;}}\n    @media(max-width:768px){.tap-nudge{display:block;}}\n\n    /* Truck container — JS positions everything inside here */\n    .truck-wrap{\n      position:relative;\n      width:100%;\n      max-width:1200px;\n      margin:0 auto;\n      /* Height set by JS to match rendered image height */\n    }\n    .truck-img{width:100%;height:auto;display:block;}\n\n    /* SVG lines layer — JS draws lines here */\n    .lines-svg{\n      position:absolute;\n      top:0;left:0;\n      width:100%;height:100%;\n      pointer-events:none;\n      overflow:visible;\n    }\n    .anim-line{\n      stroke:#8B0000;stroke-width:1.2;fill:none;\n      stroke-dasharray:1000;stroke-dashoffset:1000;\n      transition:stroke-dashoffset 2.0s cubic-bezier(0.4,0,0.2,1);\n    }\n    .truck-wrap.animated .anim-line{stroke-dashoffset:0;}\n\n    /* Hotspot wrapper — JS sets left/top as px */\n    .hs{position:absolute;transform:translate(-50%,-50%);z-index:20;cursor:pointer;}\n\n    /* Splatter icon */\n    .hs-icon{position:relative;width:44px;height:44px;transition:transform 0.2s;}\n    .hs-icon img{width:44px;height:44px;object-fit:contain;display:none;transition:filter 0.25s;}\n    .center-dot{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:14px;height:14px;border-radius:50%;background:#8B0000;transition:background 0.25s,transform 0.2s;box-shadow:0 0 0 3px rgba(139,0,0,0.45),0 0 10px rgba(139,0,0,0.6);}\n    .center-dot::after{content:'';position:absolute;inset:-5px;border-radius:50%;border:2.5px solid rgba(200,0,0,0.75);animation:pulse 1.8s ease-out infinite;animation-delay:var(--pulse-delay,0s);will-change:transform;}\n    @keyframes pulse{0%{transform:scale(1);opacity:0.9;}100%{transform:scale(3);opacity:0;}}\n\n    .hs:hover{z-index:200;}\n    .hs:hover .hs-icon{transform:scale(1.12);}\n    .hs:hover .hs-icon img{filter:invert(9%) sepia(87%) saturate(3891%) hue-rotate(353deg) brightness(98%) contrast(116%);}\n    .hs:hover .center-dot{background:#111;box-shadow:0 0 0 3px rgba(0,0,0,0.3);}\n    .hs:hover .center-dot::after{animation:none;opacity:0;}\n\n    /* Labels — JS positions these; dark by default, bright on hotspot hover */\n    .hs-label{\n      position:absolute;\n      white-space:nowrap;\n      font-size:11px;font-weight:800;letter-spacing:1.6px;text-transform:uppercase;\n      color:#111;\n      background:#fff;\n      border:1px solid rgba(0,0,0,0.12);\n      padding:3px 8px;\n      border-radius:0;\n      pointer-events:none;\n      opacity:0;\n      transition:opacity 0.5s ease, background 0.22s ease, color 0.22s ease, border-color 0.22s ease;\n      transform:translateY(-50%);\n    }\n    .truck-wrap.animated .hs-label{opacity:1;}\n\n    /* Popup */\n    .popup{position:absolute;background:#fff;border-radius:10px;padding:14px 16px;width:210px;box-shadow:0 10px 40px rgba(0,0,0,0.55);opacity:0;pointer-events:none;transition:opacity 0.2s,transform 0.2s;z-index:100;}\n    .hs:hover .popup{opacity:1;pointer-events:auto;}\n    .popup-tag{font-size:9px;font-weight:700;letter-spacing:1.3px;text-transform:uppercase;color:#8B0000;margin-bottom:4px;}\n    .popup-title{font-size:13px;font-weight:800;color:#1B2A3B;margin-bottom:5px;line-height:1.3;}\n    .popup-desc{font-size:11.5px;font-weight:500;color:#4A5568;line-height:1.65;}\n\n    .popup::after{content:'';position:absolute;width:9px;height:9px;background:#fff;transform:rotate(45deg);}\n    .p-above{bottom:calc(100% + 12px);left:50%;transform:translateX(-50%);}\n    .p-above::after{bottom:-4px;left:50%;margin-left:-4px;}\n    .p-below{top:calc(100% + 12px);left:50%;transform:translateX(-50%);}\n    .p-below::after{top:-4px;left:50%;margin-left:-4px;}\n    .p-right{left:calc(100% + 12px);top:50%;transform:translateY(-50%);}\n    .p-right::after{left:-4px;top:50%;margin-top:-4px;}\n    .p-left{right:calc(100% + 12px);top:50%;transform:translateY(-50%);}\n    .p-left::after{right:-4px;top:50%;margin-top:-4px;}\n    .p-above-right{bottom:calc(100% + 12px);left:0;}\n    .p-above-right::after{bottom:-4px;left:16px;}\n    .p-above-left{bottom:calc(100% + 12px);right:0;}\n    .p-above-left::after{bottom:-4px;right:16px;}\n\n    /* Line stagger delays */\n    .l1{transition-delay:0.00s;}.l2{transition-delay:0.25s;}.l3{transition-delay:0.50s;}\n    .l4{transition-delay:0.75s;}.l5{transition-delay:1.00s;}.l6{transition-delay:1.25s;}\n    .l7{transition-delay:1.50s;}.l8{transition-delay:1.75s;}.l9{transition-delay:2.00s;}\n    .l10{transition-delay:2.25s;}.l11{transition-delay:2.50s;}.l12{transition-delay:2.75s;}\n    .l13{transition-delay:3.00s;}\n\n    /* Label fade delays = line delay + 2s draw time */\n    .lb1{transition-delay:2.00s;}.lb2{transition-delay:2.25s;}.lb3{transition-delay:2.50s;}\n    .lb4{transition-delay:2.75s;}.lb5{transition-delay:3.00s;}.lb6{transition-delay:3.25s;}\n    .lb7{transition-delay:3.50s;}.lb8{transition-delay:3.75s;}.lb9{transition-delay:4.00s;}\n    .lb10{transition-delay:4.25s;}.lb11{transition-delay:4.50s;}.lb12{transition-delay:4.75s;}\n    .lb13{transition-delay:5.00s;}\n\n    /* ─── RESPONSIVE ─── */\n    @media (max-width: 900px) {\n      .hs-label{font-size:8px;letter-spacing:1px;}\n      .hs-icon,.hs-icon img{width:38px;height:38px;}\n      .center-dot{width:12px;height:12px;}\n    }\n    @media (max-width: 650px) {\n      .hs-label{display:none;}\n      .lines-svg{display:none;}\n      .hs-icon,.hs-icon img{width:32px;height:32px;}\n      .center-dot{width:10px;height:10px;}\n      .center-dot::after{animation:none;opacity:0;}\n      .hs .popup{display:none !important;}\n      /* Truck section mobile layout */\n      .diagram-section{padding:0;}\n      .diagram-mobile-header{display:block;}\n      .diagram-label-bottom{padding:20px 20px 16px;}\n      .diagram-sub-mobile{display:block;}\n      .cta{padding:28px 20px;}\n      .cta p{font-size:12px;}\n    }\n\n    /* Bottom CTA */\n    .cta{background:#0A0A0A;padding:52px 24px;text-align:center;}\n    .cta h3{font-size:clamp(18px,3vw,28px);font-weight:900;margin-bottom:10px;}\n    .cta h3 em{font-style:normal;color:#8B0000;}\n    .cta p{font-size:13px;color:#666;font-weight:500;margin-bottom:24px;}\n    .cta-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:#8B0000;color:#fff;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;text-decoration:none;height:48px;padding:0 32px;border-radius:0;border:2px solid transparent;transition:all 0.3s ease;cursor:pointer;letter-spacing:2px;text-transform:uppercase;}\n    .cta-btn:hover{background:#A00000;border-color:#BF3030;}\n    @media(prefers-reduced-motion:reduce){\n      .center-dot::after{animation:none;}\n      .arrow{animation:none;opacity:0.5;}\n      .tap-nudge{animation:none;opacity:0.8;}\n    }\n      *:focus{outline:none;}*:focus-visible{outline:2px solid #8B0000;outline-offset:3px;}\n  </style>\n</head>\n<body>\n\n<!-- ═══════════════════════════════════════\n     DIAGRAM — Silver Ford Raptor\n════════════════════════════════════════ -->\n<section class="diagram-section">\n  <!-- Mobile only: title above truck image -->\n  <div class="diagram-mobile-header">\n    <h1>Go Beyond the <em>Bedliner</em></h1>\n  </div>\n\n  <div class="truck-wrap" id="diagram">\n    <!-- Desktop overlay: title on top of truck image -->\n    <div class="diagram-top-hero">\n      <p class="hero-eyebrow">3J's Auto Body &amp; Paint — Signal Hill, CA</p>\n      <h1>Go Beyond<br>the <em>Bedliner</em></h1>\n      <p class="hero-sub">Full-service truck builds, collision repair &amp; accessories — all under one roof</p>\n    </div>\n\n    <!-- Real image — visible, drives layout height -->\n    <img class="truck-img" id="truckImg" src="https://static.wixstatic.com/media/b95bd9_a209cfd665d74fef8b78efdeec254533~mv2.png" fetchpriority="high" decoding="async"\n         alt="Interactive service guide — Ford Raptor truck with clickable service hotspots"\n         style="visibility:visible;" />\n\n    <div class="truck-overlay" style="position:absolute;inset:0;background:rgba(0,0,0,0.30);pointer-events:none;"></div>\n\n    <!-- SVG for animated lines — JS writes the <line> elements -->\n    <svg class="lines-svg" id="linesSvg" style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;overflow:visible;"></svg>\n\n    <!-- ══════════════ HOTSPOTS ══════════════ -->\n    <!-- JS positions these; data-x / data-y = fraction of IMAGE (0–1) -->\n\n    <!-- 1. BEDLINER -->\n    <div class="hs" id="hs1" style="--pulse-delay:0s" data-x="0.202" data-y="0.354"\n         data-lx="0.02" data-ly="0.16" data-lclass="lb1" data-ltext="BEDLINER" data-line="l1">\n      <div class="hs-icon"><img src="icon 1.webp" alt="" /><div class="center-dot"></div></div>\n      <div class="popup p-right">\n        <div class="popup-tag">Truck Bed Protection</div>\n        <div class="popup-title">Spray-In Bedliners</div>\n        <div class="popup-desc">We are a certified Rhino Liner installer. Permanent bond, textured finish, same-day service, and a lifetime warranty. Not the drop-in kind — the real thing.</div>\n        <a href="https://www.3jsautobody.com/rhino-liner" style="font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#8B0000;text-decoration:none;display:inline-block;margin-top:8px;">See Products →</a>\n      </div>\n    </div>\n\n    <!-- 2. REAR BUMPER -->\n    <div class="hs" id="hs2" style="--pulse-delay:0.2s" data-x="0.14" data-y="0.55"\n         data-lx="0.02" data-ly="0.52" data-lclass="lb2" data-ltext="REAR BUMPER" data-line="l2">\n      <div class="hs-icon"><img src="icon 1.webp" alt="" /><div class="center-dot"></div></div>\n      <div class="popup p-right">\n        <div class="popup-tag">Rear End</div>\n        <div class="popup-title">Rear Bumpers</div>\n        <div class="popup-desc">Collision damage, rust, or just an upgrade — we repair, replace, and color-match rear bumpers on any Truck, SUV or Jeep.</div>\n      </div>\n    </div>\n\n    <!-- 3. ROCK GUARDS -->\n    <div class="hs" id="hs3" style="--pulse-delay:0.4s" data-x="0.25" data-y="0.60"\n         data-lx="0.02" data-ly="0.64" data-lclass="lb3" data-ltext="ROCK GUARDS" data-line="l3">\n      <div class="hs-icon"><img src="icon 1.webp" alt="" /><div class="center-dot"></div></div>\n      <div class="popup p-right">\n        <div class="popup-tag">Fender Protection</div>\n        <div class="popup-title">Rock Guard Protection</div>\n        <div class="popup-desc">Rock guard protection is an off-road or outdoors must-have. We protect the lower section of your vehicle's body with Rhino Linings materials to stop chips, rocks, and road debris on and off road. We can color match too — so it blends in seamlessly.</div>\n      </div>\n    </div>\n\n    <!-- 4. RUNNING BOARDS -->\n    <div class="hs" id="hs4" style="--pulse-delay:0.6s" data-x="0.355" data-y="0.692"\n         data-lx="0.03" data-ly="0.80" data-lclass="lb4" data-ltext="RUNNING BOARDS" data-line="l4">\n      <div class="hs-icon"><img src="icon 1.webp" alt="" /><div class="center-dot"></div></div>\n      <div class="popup p-right">\n        <div class="popup-tag">Side Steps</div>\n        <div class="popup-title">Running Boards</div>\n        <div class="popup-desc">Fixed boards, nerf bars, and power electric retractable steps for all trucks and SUVs — including lifted vehicles. All major brands available.</div>\n        <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/steps-running-boards.html" target="_blank" style="font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#8B0000;text-decoration:none;display:inline-block;margin-top:8px;">See Products →</a>\n      </div>\n    </div>\n\n    <!-- 5. FULL EXTERIOR PAINT -->\n    <div class="hs" id="hs5" style="--pulse-delay:0.8s" data-x="0.33" data-y="0.47"\n         data-lx="0.02" data-ly="0.38" data-lclass="lb5" data-ltext="FULL EXTERIOR PAINT" data-line="l5">\n      <div class="hs-icon"><img src="icon 1.webp" alt="" /><div class="center-dot"></div></div>\n      <div class="popup p-right">\n        <div class="popup-tag">Custom Paint</div>\n        <div class="popup-title">Full Exterior Paint Jobs</div>\n        <div class="popup-desc">We can match any factory color or go fully custom. Computer-matched paint for a perfect finish — single panels or full repaints. Shhh... we've even matched colors from home improvement store paint chips.</div>\n        <a href="https://www.3jsautobody.com/body-paint-repairs" style="font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#8B0000;text-decoration:none;display:inline-block;margin-top:8px;">Learn More →</a>\n      </div>\n    </div>\n\n    <!-- 6. EXTERIOR / BLACK TRIM -->\n    <div class="hs" id="hs6" style="--pulse-delay:1.0s" data-x="0.343" data-y="0.285"\n         data-lx="0.16" data-ly="0.06" data-lclass="lb6" data-ltext="EXTERIOR / BLACK TRIM" data-line="l6">\n      <div class="hs-icon"><img src="icon 1.webp" alt="" /><div class="center-dot"></div></div>\n      <div class="popup p-below">\n        <div class="popup-tag">Exterior Parts</div>\n        <div class="popup-title">Faded Black Trim</div>\n        <div class="popup-desc">Faded grey plastic trim makes any truck look old. We restore or replace black textured parts — pillars, cladding, moldings — back to factory condition. Tons of aftermarket accessories to choose from, or we spray Rhino Linings materials on it so it lasts for years without fading or losing pigment.</div>\n      </div>\n    </div>\n\n    <!-- 7. ROOF RUST -->\n    <div class="hs" id="hs7" style="--pulse-delay:1.2s" data-x="0.530" data-y="0.156"\n         data-lx="0.56" data-ly="0.06" data-lclass="lb7" data-ltext="ROOF" data-line="l7">\n      <div class="hs-icon"><img src="icon 1.webp" alt="" /><div class="center-dot"></div></div>\n      <div class="popup p-below">\n        <div class="popup-tag">Roof Panel</div>\n        <div class="popup-title">Roof Rust Repair</div>\n        <div class="popup-desc">Rust bubbling through the roof? We treat it at the source, repair the panel, and apply Rhino Linings materials over it to help prolong the life of your ride. Common on department vehicles, fleet trucks, and older daily drivers.</div>\n      </div>\n    </div>\n\n    <!-- 8. HOODS -->\n    <div class="hs" id="hs8" style="--pulse-delay:1.4s" data-x="0.722" data-y="0.343"\n         data-lx="0.82" data-ly="0.20" data-lclass="lb8" data-ltext="HOODS" data-line="l8">\n      <div class="hs-icon"><img src="icon 1.webp" alt="" /><div class="center-dot"></div></div>\n      <div class="popup p-left">\n        <div class="popup-tag">Fleet &amp; Police</div>\n        <div class="popup-title">Hood Painting</div>\n        <div class="popup-desc">Custom hood painting, decals, and lettering for local police departments, city fleet vehicles, and commercial trucks. Fast turnaround, done right. Always a lifetime warranty on our workmanship.</div>\n      </div>\n    </div>\n\n    <!-- 9. GRILLE -->\n    <div class="hs" id="hs9" style="--pulse-delay:1.6s" data-x="0.81" data-y="0.40"\n         data-lx="0.86" data-ly="0.47" data-lclass="lb9" data-ltext="GRILLE" data-line="l9">\n      <div class="hs-icon"><img src="icon 1.webp" alt="" /><div class="center-dot"></div></div>\n      <div class="popup p-left">\n        <div class="popup-tag">Front Face</div>\n        <div class="popup-title">Grilles</div>\n        <div class="popup-desc">Aftermarket grille installation with factory color match or custom contrast finish. All makes and models — we handle the installation and the paint. Looking for an upgrade? Speak to us directly and we'll help you find the right fit.</div>\n      </div>\n    </div>\n\n    <!-- 10. FRONT BUMPER -->\n    <div class="hs" id="hs10" style="--pulse-delay:1.8s" data-x="0.866" data-y="0.638"\n         data-lx="0.87" data-ly="0.80" data-lclass="lb10" data-ltext="FRONT BUMPER" data-line="l10">\n      <div class="hs-icon"><img src="icon 1.webp" alt="" /><div class="center-dot"></div></div>\n      <div class="popup p-left">\n        <div class="popup-tag">Front End</div>\n        <div class="popup-title">Front Bumpers</div>\n        <div class="popup-desc">Collision repair, aftermarket upgrades, and color-matched painting. Steel, aluminum, or factory plastic — we work with all of it.</div>\n      </div>\n    </div>\n\n    <!-- 11. WHEEL WELLS -->\n    <div class="hs" id="hs11" style="--pulse-delay:2.0s" data-x="0.425" data-y="0.482"\n         data-lx="0.38" data-ly="0.87" data-lclass="lb11" data-ltext="WHEEL WELLS" data-line="l11">\n      <div class="hs-icon"><img src="icon 1.webp" alt="" /><div class="center-dot"></div></div>\n      <div class="popup p-above">\n        <div class="popup-tag">Wheel Wells</div>\n        <div class="popup-title">Wheel Well Coating</div>\n        <div class="popup-desc">Spray-in liner coating for wheel wells stops rust, deadens road noise, and protects against rocks and debris kicking up into the body. Plus — it just looks really cool.</div>\n      </div>\n    </div>\n\n    <!-- 12. UNDERCARRIAGE -->\n    <div class="hs" id="hs12" style="--pulse-delay:2.2s" data-x="0.587" data-y="0.734"\n         data-lx="0.56" data-ly="0.87" data-lclass="lb12" data-ltext="UNDERCARRIAGE" data-line="l12">\n      <div class="hs-icon"><img src="icon 1.webp" alt="" /><div class="center-dot"></div></div>\n      <div class="popup p-above">\n        <div class="popup-tag">Underside</div>\n        <div class="popup-title">Undercarriage Coating</div>\n        <div class="popup-desc">Full undercarriage spray coating seals out moisture, road salt, and corrosion. Especially important for trucks used off-road, near the coast, or for the winter enthusiast who loves fresh powder on the mountains.</div>\n      </div>\n    </div>\n\n    <!-- 13. SKID PLATES -->\n    <div class="hs" id="hs13" style="--pulse-delay:2.4s" data-x="0.73" data-y="0.71"\n         data-lx="0.72" data-ly="0.87" data-lclass="lb13" data-ltext="SKID PLATES" data-line="l13">\n      <div class="hs-icon"><img src="icon 1.webp" alt="" /><div class="center-dot"></div></div>\n      <div class="popup p-left">\n        <div class="popup-tag">Front Underside</div>\n        <div class="popup-title">Skid Plates</div>\n        <div class="popup-desc">Heavy-duty skid plate installation to protect your engine, transmission, and transfer case. Essential for any truck that goes off road. Don't forget to ask us to Rhino Line it for superior protection.</div>\n      </div>\n    </div>\n\n    <div class="tap-nudge">TAP THE DOTS TO EXPLORE</div>\n\n  </div><!-- /.truck-wrap -->\n\n  <!-- "Everything We Do" label — bottom of diagram -->\n  <div class="diagram-label-bottom">\n    <p>Interactive Service Guide</p>\n    <h2>Everything We Do — <em>Built Into One Truck</em></h2>\n    <p class="diagram-sub-mobile">Full-service truck builds, collision repair &amp; accessories — all under one roof</p>\n    <p class="hint">Hover any marker <span class="hint-dot"></span> to explore our services</p>\n  </div>\n</section>\n\n<!-- ─── CTA ─── -->\n<div class="cta">\n  <h3>Ready to Build Your <em>Truck?</em></h3>\n  <p>Walk in Mon–Fri 8AM–5PM · Free estimates · 562-424-6744</p>\n  <a href="tel:+15624246744" class="cta-btn">\n    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.7 10.82 19.79 19.79 0 01.67 2.18 2 2 0 012.66 0h3a2 2 0 012 1.72c.13 1 .36 1.97.7 2.91a2 2 0 01-.45 2.11L6.91 7.74a16 16 0 006.29 6.29l1-.99a2 2 0 012.11-.45c.94.34 1.91.57 2.91.7A2 2 0 0122 16.92z"/></svg>\n    Call 562-424-6744\n  </a>\n</div>\n\n<script>\n\n  // ── Touch device hint\n    var hint = document.querySelector('.hint');\n    if (hint) hint.textContent = 'Tap any marker to explore our services';\n  }\n\n  // ─────────────────────────────────────────────────────────────────\n  // POSITIONING ENGINE\n  // All hotspot data-x / data-y / data-lx / data-ly are fractions\n  // of the IMAGE's rendered width & height — not the container.\n  // On every load/resize we measure the image rect and reposition\n  // every element in pixel coordinates so Wix embedding never\n  // breaks the layout.\n  // ─────────────────────────────────────────────────────────────────\n\n  var img     = document.getElementById('truckImg');\n  var wrap    = document.getElementById('diagram');\n  var svg     = document.getElementById('linesSvg');\n  var hotspots = Array.from(document.querySelectorAll('.hs'));\n\n  function positionAll() {\n    // Get the image's rendered size\n    var iw = img.offsetWidth;\n    var ih = img.offsetHeight;\n\n    if (!iw || !ih) return; // image not ready yet\n\n    // Sync wrap height to image height so overlay fills correctly\n    wrap.style.height = ih + 'px';\n\n    // Clear existing SVG lines and labels\n    svg.innerHTML = '';\n    // Remove old JS-placed labels\n    var oldLabels = wrap.querySelectorAll('.hs-label');\n    oldLabels.forEach(function(el){ el.parentNode.removeChild(el); });\n\n    // Position each hotspot and draw its line + label\n    hotspots.forEach(function(hs) {\n      var dx = parseFloat(hs.dataset.x) * iw;\n      var dy = parseFloat(hs.dataset.y) * ih;\n      hs.style.left = dx + 'px';\n      hs.style.top  = dy + 'px';\n\n      var lx = parseFloat(hs.dataset.lx) * iw;\n      var ly = parseFloat(hs.dataset.ly) * ih;\n\n      // Draw SVG line from dot to label anchor\n      // Nudge endpoint slightly into the label box so line visually touches the edge\n      var lxEnd = lx, lyEnd = ly;\n      var lxFrac = parseFloat(hs.dataset.lx);\n      var lyFrac = parseFloat(hs.dataset.ly);\n      // Nudges are mutually exclusive: left/right labels only nudge X; top/bottom only nudge Y\n      if (lxFrac < 0.15) {\n        lxEnd = lx + 10;  // left label: line enters left edge at center-Y\n      } else if (lxFrac > 0.85) {\n        lxEnd = lx + 10;  // right label: line enters left edge at center-Y\n      } else if (lyFrac > 0.8) {\n        lyEnd = ly + 10;  // bottom label: line enters top edge at center-X\n      } else if (lyFrac < 0.15) {\n        lyEnd = ly + 10;  // top label: line enters top edge at center-X\n      }\n\n      var lineEl = document.createElementNS('http://www.w3.org/2000/svg','line');\n      lineEl.setAttribute('x1', dx);\n      lineEl.setAttribute('y1', dy);\n      lineEl.setAttribute('x2', lxEnd);\n      lineEl.setAttribute('y2', lyEnd);\n      lineEl.setAttribute('class', 'anim-line ' + hs.dataset.line);\n      svg.appendChild(lineEl);\n\n      // Create label element and position it\n      var lbl = document.createElement('div');\n      lbl.className = 'hs-label ' + hs.dataset.lclass;\n      lbl.textContent = hs.dataset.ltext;\n      lbl.style.left = lx + 'px';\n      lbl.style.top  = ly + 'px';\n      // Line always ends at the edge of the label closest to the dot.\n      // Left/Right labels: left edge at anchor, label centered vertically.\n      // Top/Bottom labels: top edge at anchor, label centered horizontally.\n      if (parseFloat(hs.dataset.lx) < 0.15 || parseFloat(hs.dataset.lx) > 0.85) {\n        lbl.style.transform = 'translateY(-50%)';\n      } else {\n        lbl.style.transform = 'translateX(-50%) translateY(0)';\n      }\n      wrap.appendChild(lbl);\n\n      // Track label on the hotspot element so hover handler can find it\n      hs._labelEl = lbl;\n    });\n  }\n\n  // Run on image load (handles cached images too)\n  if (img.complete && img.naturalWidth) {\n    positionAll();\n  } else {\n    img.addEventListener('load', positionAll);\n  }\n\n  // Re-run on resize\n  var resizeTimer;\n  window.addEventListener('resize', function() {\n    clearTimeout(resizeTimer);\n    resizeTimer = setTimeout(positionAll, 60);\n  });\n\n  // ── Intersection observer: trigger line draw animation\n  var observer = new IntersectionObserver(function(entries) {\n    entries.forEach(function(entry) {\n      if (entry.isIntersecting) {\n        wrap.classList.add('animated');\n        observer.unobserve(wrap);\n      }\n    });\n  }, { threshold: 0.2 });\n  observer.observe(wrap);\n\n  // ── Mobile tap overlay — injected into wrap so it centers within the image\n  var mobOv = document.createElement('div');\n  mobOv.style.cssText = 'display:none;position:absolute;inset:0;z-index:9999;background:rgba(0,0,0,0.72);align-items:center;justify-content:center;padding:16px;';\n  mobOv.innerHTML = '<div style="background:#fff;width:100%;max-width:290px;position:relative;box-shadow:0 24px 64px rgba(0,0,0,0.9);"><button id="itd-close" style="position:absolute;top:0;right:0;width:36px;height:36px;background:#1a1a1a;border:none;color:#fff;font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;">&#x2715;</button><div id="itd-content" style="padding:18px 48px 18px 18px;"></div></div>';\n  wrap.appendChild(mobOv);\n  document.getElementById('itd-close').addEventListener('click', function(){ mobOv.style.display='none'; });\n  mobOv.addEventListener('click', function(e){ if(e.target===mobOv) mobOv.style.display='none'; });\n\n  hotspots.forEach(function(hs){\n    hs.addEventListener('click', function(e){\n      if(window.innerWidth > 650) return;\n      e.stopPropagation();\n      var tag   = hs.querySelector('.popup-tag');\n      var title = hs.querySelector('.popup-title');\n      var desc  = hs.querySelector('.popup-desc');\n      document.getElementById('itd-content').innerHTML =\n        (tag   ? '<div style="font-size:9px;font-weight:700;letter-spacing:1.3px;text-transform:uppercase;color:#8B0000;margin-bottom:6px;font-family:\'Montserrat\',sans-serif;">'+ tag.textContent +'</div>' : '') +\n        (title ? '<div style="font-size:14px;font-weight:800;color:#1B2A3B;margin-bottom:8px;line-height:1.3;font-family:\'Montserrat\',sans-serif;">'+ title.innerHTML +'</div>' : '') +\n        (desc  ? '<div style="font-size:12px;font-weight:400;color:#4A5568;line-height:1.65;">'+ desc.textContent +'</div>' : '');\n      mobOv.style.display = 'flex';\n    });\n  });\n</script>\n\n\n<script>\n  function reportHeight(){\n    var sentinel=document.getElementById('height-sentinel');\n    var h=sentinel?(sentinel.offsetTop+sentinel.offsetHeight):Math.max(document.body.scrollHeight,document.body.offsetHeight,document.documentElement.scrollHeight,document.documentElement.offsetHeight);\n    window.parent.postMessage(JSON.stringify({height:h}),'*');\n  }\n  document.addEventListener('DOMContentLoaded', reportHeight);\n  window.addEventListener('load', function(){\n    [0,200,500,1000,2000,3500].forEach(function(t){ setTimeout(reportHeight,t); });\n  });\n  window.addEventListener('resize', reportHeight);\n  if(window.ResizeObserver){ new ResizeObserver(reportHeight).observe(document.body); }\n</script>\n\n<div id="height-sentinel" style="height:1px;width:1px;visibility:hidden;pointer-events:none;"></div>\n\n<script>\n(function(){var active=false,startY=0,lastY=0,rafId=null;document.addEventListener('mousedown',function(e){if(e.button!==1)return;if(e.target.closest('a'))return;e.preventDefault();active=true;startY=e.clientY;lastY=e.clientY;document.body.style.cursor='ns-resize';tick();});document.addEventListener('mousemove',function(e){if(active)lastY=e.clientY;});document.addEventListener('mouseup',function(e){if(e.button!==1||!active)return;active=false;document.body.style.cursor='';if(rafId){cancelAnimationFrame(rafId);rafId=null;}});function tick(){if(!active){rafId=null;return;}var dy=lastY-startY;if(Math.abs(dy)>5)window.scrollBy(0,dy*0.12);rafId=requestAnimationFrame(tick);}})();\n</script></body>\n</html>\n
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Go Beyond the Bedliner — Interactive Truck Service Guide | 3J's Auto Body Signal Hill CA</title>
+  <meta name="description" content="Explore everything 3J's Auto Body does — bedliners, rock guards, running boards, wheel wells, undercarriage coating, paint, grilles, bumpers and more. Interactive truck diagram. Signal Hill, CA.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Go Beyond the Bedliner — Interactive Truck Guide | 3J's Auto Body">
+  <meta property="og:description" content="See every service 3J's Auto Body offers on an interactive truck diagram. Bedliners, paint, running boards, undercarriage, and more. Signal Hill, CA.">
+  <meta property="og:site_name" content="3J's Auto Body &amp; Paint">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{overflow-y:scroll;scrollbar-width:none;}
+    html::-webkit-scrollbar{display:none;}
+    body{font-family:'Montserrat',sans-serif;background:#0A0A0A;color:#fff;}
+
+    /* ─── TOP HERO OVERLAY — hidden on all sizes; mobile-header handles title ─── */
+    .diagram-top-hero{display:none;}
+    .hero-eyebrow{font-size:11px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.80);margin-bottom:12px;}
+    .diagram-top-hero h1{font-size:clamp(26px,5.5vw,64px);font-weight:900;line-height:1.0;letter-spacing:-1.5px;text-transform:uppercase;color:#fff;}
+    .diagram-top-hero h1 em{font-style:normal;color:#8B0000;}
+    .hero-sub{font-size:clamp(12px,1.4vw,15px);font-weight:500;color:rgba(255,255,255,0.70);margin-top:12px;letter-spacing:0.3px;}
+    /* ─── MOBILE HEADER (above truck image) — hidden on desktop ─── */
+    .diagram-mobile-header{display:block;background:#0A0A0A;text-align:center;padding:28px 20px 16px;}
+    .diagram-mobile-header .hero-eyebrow{display:block;margin-bottom:10px;}
+    .diagram-mobile-header h1{font-size:clamp(28px,8vw,42px);font-weight:900;line-height:1.0;letter-spacing:-1px;text-transform:uppercase;color:#fff;}
+    .diagram-mobile-header h1 em{font-style:normal;color:#8B0000;}
+    /* ─── BOTTOM LABEL (below truck image) ─── */
+    .diagram-label-bottom{text-align:center;padding:28px 20px 8px;background:#0A0A0A;}
+    .diagram-label-bottom > p:first-child{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,0.40);margin-bottom:8px;}
+    .diagram-label-bottom h2{font-size:clamp(18px,3vw,30px);font-weight:900;letter-spacing:-0.5px;color:#fff;}
+    .diagram-label-bottom h2 em{font-style:normal;color:#8B0000;}
+    .diagram-label-bottom .hint{font-size:12px;font-weight:500;color:rgba(255,255,255,0.50);margin-top:8px;letter-spacing:0.3px;}
+    .hint-dot{display:inline-block;width:10px;height:10px;background:#8B0000;border-radius:50%;vertical-align:middle;margin:0 3px;box-shadow:0 0 0 3px rgba(139,0,0,0.40);position:relative;top:-1px;}
+    .diagram-sub-mobile{display:none;font-size:13px;font-weight:500;color:rgba(255,255,255,0.70);margin-top:10px;letter-spacing:0.3px;padding:0 16px;}
+
+    /* ─── DIAGRAM SECTION ─── */
+    .diagram-section{background:#0A0A0A;padding:56px 0 72px;}
+    .diagram-label{text-align:center;margin-bottom:36px;padding:0 20px;}
+    .diagram-label p{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#8B0000;margin-bottom:10px;}
+    .diagram-label h2{font-size:clamp(20px,3.5vw,34px);font-weight:900;letter-spacing:-0.5px;}
+    .diagram-label h2 em{font-style:normal;color:#8B0000;}
+    .diagram-label .hint{font-size:12px;font-weight:500;color:rgba(255,255,255,0.55);margin-top:8px;letter-spacing:0.3px;}
+
+    /* First-load mobile tap affordance */
+    .tap-nudge{
+      position:absolute;bottom:16px;left:50%;transform:translateX(-50%);
+      display:none;
+      background:rgba(139,0,0,0.85);
+      color:#fff;
+      font-family:'Montserrat',sans-serif;
+      font-size:9px;font-weight:800;letter-spacing:2.5px;
+      text-transform:uppercase;
+      padding:7px 18px;
+      pointer-events:none;
+      z-index:50;
+      animation:nudgeFade 3.5s ease-out forwards;
+    }
+    @keyframes nudgeFade{0%{opacity:0;transform:translateX(-50%) translateY(6px);}15%{opacity:1;transform:translateX(-50%) translateY(0);}75%{opacity:1;}100%{opacity:0;}}
+    @media(max-width:768px){.tap-nudge{display:block;}}
+
+    /* Truck container — JS positions everything inside here */
+    .truck-wrap{
+      position:relative;
+      width:100%;
+      max-width:1200px;
+      margin:0 auto;
+      /* Height set by JS to match rendered image height */
+    }
+    .truck-img{width:100%;height:auto;display:block;}
+
+    /* SVG lines layer — JS draws lines here */
+    .lines-svg{
+      position:absolute;
+      top:0;left:0;
+      width:100%;height:100%;
+      pointer-events:none;
+      overflow:visible;
+    }
+    .anim-line{
+      stroke:#8B0000;stroke-width:1.2;fill:none;
+      stroke-dasharray:1000;stroke-dashoffset:1000;
+      transition:stroke-dashoffset 2.0s cubic-bezier(0.4,0,0.2,1);
+    }
+    .truck-wrap.animated .anim-line{stroke-dashoffset:0;}
+
+    /* Hotspot wrapper — JS sets left/top as px */
+    .hs{position:absolute;transform:translate(-50%,-50%);z-index:20;cursor:pointer;}
+
+    /* Splatter icon */
+    .hs-icon{position:relative;width:44px;height:44px;transition:transform 0.2s;}
+    .hs-icon img{width:44px;height:44px;object-fit:contain;display:none;transition:filter 0.25s;}
+    .center-dot{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:14px;height:14px;border-radius:50%;background:#8B0000;transition:background 0.25s,transform 0.2s;box-shadow:0 0 0 3px rgba(139,0,0,0.45),0 0 10px rgba(139,0,0,0.6);}
+    .center-dot::after{content:'';position:absolute;inset:-5px;border-radius:50%;border:2.5px solid rgba(200,0,0,0.75);animation:pulse 1.8s ease-out infinite;animation-delay:var(--pulse-delay,0s);will-change:transform;}
+    @keyframes pulse{0%{transform:scale(1);opacity:0.9;}100%{transform:scale(3);opacity:0;}}
+
+    .hs:hover{z-index:200;}
+    .hs:hover .hs-icon{transform:scale(1.12);}
+    .hs:hover .hs-icon img{filter:invert(9%) sepia(87%) saturate(3891%) hue-rotate(353deg) brightness(98%) contrast(116%);}
+    .hs:hover .center-dot{background:#111;box-shadow:0 0 0 3px rgba(0,0,0,0.3);}
+    .hs:hover .center-dot::after{animation:none;opacity:0;}
+
+    /* Labels — JS positions these; dark by default, bright on hotspot hover */
+    .hs-label{
+      position:absolute;
+      white-space:nowrap;
+      font-size:11px;font-weight:800;letter-spacing:1.6px;text-transform:uppercase;
+      color:#111;
+      background:#fff;
+      border:1px solid rgba(0,0,0,0.12);
+      padding:3px 8px;
+      border-radius:0;
+      pointer-events:none;
+      opacity:0;
+      transition:opacity 0.5s ease, background 0.22s ease, color 0.22s ease, border-color 0.22s ease;
+      transform:translateY(-50%);
+    }
+    .truck-wrap.animated .hs-label{opacity:1;}
+
+    /* Popup */
+    .popup{position:absolute;background:#fff;border-radius:10px;padding:14px 16px;width:210px;box-shadow:0 10px 40px rgba(0,0,0,0.55);opacity:0;pointer-events:none;transition:opacity 0.2s,transform 0.2s;z-index:100;}
+    .hs:hover .popup{opacity:1;pointer-events:auto;}
+    .popup-tag{font-size:9px;font-weight:700;letter-spacing:1.3px;text-transform:uppercase;color:#8B0000;margin-bottom:4px;}
+    .popup-title{font-size:13px;font-weight:800;color:#1B2A3B;margin-bottom:5px;line-height:1.3;}
+    .popup-desc{font-size:11.5px;font-weight:500;color:#4A5568;line-height:1.65;}
+
+    .popup::after{content:'';position:absolute;width:9px;height:9px;background:#fff;transform:rotate(45deg);}
+    .p-above{bottom:calc(100% + 12px);left:50%;transform:translateX(-50%);}
+    .p-above::after{bottom:-4px;left:50%;margin-left:-4px;}
+    .p-below{top:calc(100% + 12px);left:50%;transform:translateX(-50%);}
+    .p-below::after{top:-4px;left:50%;margin-left:-4px;}
+    .p-right{left:calc(100% + 12px);top:50%;transform:translateY(-50%);}
+    .p-right::after{left:-4px;top:50%;margin-top:-4px;}
+    .p-left{right:calc(100% + 12px);top:50%;transform:translateY(-50%);}
+    .p-left::after{right:-4px;top:50%;margin-top:-4px;}
+    .p-above-right{bottom:calc(100% + 12px);left:0;}
+    .p-above-right::after{bottom:-4px;left:16px;}
+    .p-above-left{bottom:calc(100% + 12px);right:0;}
+    .p-above-left::after{bottom:-4px;right:16px;}
+
+    /* Line stagger delays */
+    .l1{transition-delay:0.00s;}.l2{transition-delay:0.25s;}.l3{transition-delay:0.50s;}
+    .l4{transition-delay:0.75s;}.l5{transition-delay:1.00s;}.l6{transition-delay:1.25s;}
+    .l7{transition-delay:1.50s;}.l8{transition-delay:1.75s;}.l9{transition-delay:2.00s;}
+    .l10{transition-delay:2.25s;}.l11{transition-delay:2.50s;}.l12{transition-delay:2.75s;}
+    .l13{transition-delay:3.00s;}
+
+    /* Label fade delays = line delay + 2s draw time */
+    .lb1{transition-delay:2.00s;}.lb2{transition-delay:2.25s;}.lb3{transition-delay:2.50s;}
+    .lb4{transition-delay:2.75s;}.lb5{transition-delay:3.00s;}.lb6{transition-delay:3.25s;}
+    .lb7{transition-delay:3.50s;}.lb8{transition-delay:3.75s;}.lb9{transition-delay:4.00s;}
+    .lb10{transition-delay:4.25s;}.lb11{transition-delay:4.50s;}.lb12{transition-delay:4.75s;}
+    .lb13{transition-delay:5.00s;}
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .hs-label{font-size:8px;letter-spacing:1px;}
+      .hs-icon,.hs-icon img{width:38px;height:38px;}
+      .center-dot{width:12px;height:12px;}
+    }
+    @media (max-width: 650px) {
+      .hs-label{display:none;}
+      .lines-svg{display:none;}
+      .hs-icon,.hs-icon img{width:32px;height:32px;}
+      .center-dot{width:10px;height:10px;}
+      .center-dot::after{animation:none;opacity:0;}
+      .hs .popup{display:none !important;}
+      /* Truck section mobile layout */
+      .diagram-section{padding:0;}
+      .diagram-mobile-header{display:block;}
+      .diagram-label-bottom{padding:20px 20px 16px;}
+      .diagram-sub-mobile{display:block;}
+      .cta{padding:28px 20px;}
+      .cta p{font-size:12px;}
+    }
+
+    /* Bottom CTA */
+    .cta{background:#0A0A0A;padding:52px 24px;text-align:center;}
+    .cta h3{font-size:clamp(18px,3vw,28px);font-weight:900;margin-bottom:10px;}
+    .cta h3 em{font-style:normal;color:#8B0000;}
+    .cta p{font-size:13px;color:#666;font-weight:500;margin-bottom:24px;}
+    .cta-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:#8B0000;color:#fff;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;text-decoration:none;height:48px;padding:0 32px;border-radius:0;border:2px solid transparent;transition:all 0.3s ease;cursor:pointer;letter-spacing:2px;text-transform:uppercase;}
+    .cta-btn:hover{background:#A00000;border-color:#BF3030;}
+    @media(prefers-reduced-motion:reduce){
+      .center-dot::after{animation:none;}
+      .arrow{animation:none;opacity:0.5;}
+      .tap-nudge{animation:none;opacity:0.8;}
+    }
+      *:focus{outline:none;}*:focus-visible{outline:2px solid #8B0000;outline-offset:3px;}
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════
+     DIAGRAM — Silver Ford Raptor
+════════════════════════════════════════ -->
+<section class="diagram-section">
+  <!-- Mobile only: title above truck image -->
+  <div class="diagram-mobile-header">
+    <h1>Go Beyond the <em>Bedliner</em></h1>
+  </div>
+
+  <div class="truck-wrap" id="diagram">
+    <!-- Desktop overlay: title on top of truck image -->
+    <div class="diagram-top-hero">
+      <p class="hero-eyebrow">3J's Auto Body &amp; Paint — Signal Hill, CA</p>
+      <h1>Go Beyond<br>the <em>Bedliner</em></h1>
+      <p class="hero-sub">Full-service truck builds, collision repair &amp; accessories — all under one roof</p>
+    </div>
+
+    <!-- Real image — visible, drives layout height -->
+    <img class="truck-img" id="truckImg" src="https://static.wixstatic.com/media/b95bd9_a209cfd665d74fef8b78efdeec254533~mv2.png" fetchpriority="high" decoding="async"
+         alt="Interactive service guide — Ford Raptor truck with clickable service hotspots"
+         style="visibility:visible;" />
+
+    <div class="truck-overlay" style="position:absolute;inset:0;background:rgba(0,0,0,0.30);pointer-events:none;"></div>
+
+    <!-- SVG for animated lines — JS writes the <line> elements -->
+    <svg class="lines-svg" id="linesSvg" style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;overflow:visible;"></svg>
+
+    <!-- ══════════════ HOTSPOTS ══════════════ -->
+    <!-- JS positions these; data-x / data-y = fraction of IMAGE (0–1) -->
+
+    <!-- 1. BEDLINER -->
+    <div class="hs" id="hs1" style="--pulse-delay:0s" data-x="0.202" data-y="0.354"
+         data-lx="0.02" data-ly="0.16" data-lclass="lb1" data-ltext="BEDLINER" data-line="l1">
+      <div class="hs-icon"><img src="icon 1.webp" alt="" /><div class="center-dot"></div></div>
+      <div class="popup p-right">
+        <div class="popup-tag">Truck Bed Protection</div>
+        <div class="popup-title">Spray-In Bedliners</div>
+        <div class="popup-desc">We are a certified Rhino Liner installer. Permanent bond, textured finish, same-day service, and a lifetime warranty. Not the drop-in kind — the real thing.</div>
+        <a href="https://www.3jsautobody.com/rhino-liner" style="font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#8B0000;text-decoration:none;display:inline-block;margin-top:8px;">See Products →</a>
+      </div>
+    </div>
+
+    <!-- 2. REAR BUMPER -->
+    <div class="hs" id="hs2" style="--pulse-delay:0.2s" data-x="0.14" data-y="0.55"
+         data-lx="0.02" data-ly="0.52" data-lclass="lb2" data-ltext="REAR BUMPER" data-line="l2">
+      <div class="hs-icon"><img src="icon 1.webp" alt="" /><div class="center-dot"></div></div>
+      <div class="popup p-right">
+        <div class="popup-tag">Rear End</div>
+        <div class="popup-title">Rear Bumpers</div>
+        <div class="popup-desc">Collision damage, rust, or just an upgrade — we repair, replace, and color-match rear bumpers on any Truck, SUV or Jeep.</div>
+      </div>
+    </div>
+
+    <!-- 3. ROCK GUARDS -->
+    <div class="hs" id="hs3" style="--pulse-delay:0.4s" data-x="0.25" data-y="0.60"
+         data-lx="0.02" data-ly="0.64" data-lclass="lb3" data-ltext="ROCK GUARDS" data-line="l3">
+      <div class="hs-icon"><img src="icon 1.webp" alt="" /><div class="center-dot"></div></div>
+      <div class="popup p-right">
+        <div class="popup-tag">Fender Protection</div>
+        <div class="popup-title">Rock Guard Protection</div>
+        <div class="popup-desc">Rock guard protection is an off-road or outdoors must-have. We protect the lower section of your vehicle's body with Rhino Linings materials to stop chips, rocks, and road debris on and off road. We can color match too — so it blends in seamlessly.</div>
+      </div>
+    </div>
+
+    <!-- 4. RUNNING BOARDS -->
+    <div class="hs" id="hs4" style="--pulse-delay:0.6s" data-x="0.355" data-y="0.692"
+         data-lx="0.03" data-ly="0.80" data-lclass="lb4" data-ltext="RUNNING BOARDS" data-line="l4">
+      <div class="hs-icon"><img src="icon 1.webp" alt="" /><div class="center-dot"></div></div>
+      <div class="popup p-right">
+        <div class="popup-tag">Side Steps</div>
+        <div class="popup-title">Running Boards</div>
+        <div class="popup-desc">Fixed boards, nerf bars, and power electric retractable steps for all trucks and SUVs — including lifted vehicles. All major brands available.</div>
+        <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/steps-running-boards.html" target="_blank" style="font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#8B0000;text-decoration:none;display:inline-block;margin-top:8px;">See Products →</a>
+      </div>
+    </div>
+
+    <!-- 5. FULL EXTERIOR PAINT -->
+    <div class="hs" id="hs5" style="--pulse-delay:0.8s" data-x="0.33" data-y="0.47"
+         data-lx="0.02" data-ly="0.38" data-lclass="lb5" data-ltext="FULL EXTERIOR PAINT" data-line="l5">
+      <div class="hs-icon"><img src="icon 1.webp" alt="" /><div class="center-dot"></div></div>
+      <div class="popup p-right">
+        <div class="popup-tag">Custom Paint</div>
+        <div class="popup-title">Full Exterior Paint Jobs</div>
+        <div class="popup-desc">We can match any factory color or go fully custom. Computer-matched paint for a perfect finish — single panels or full repaints. Shhh... we've even matched colors from home improvement store paint chips.</div>
+        <a href="https://www.3jsautobody.com/body-paint-repairs" style="font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#8B0000;text-decoration:none;display:inline-block;margin-top:8px;">Learn More →</a>
+      </div>
+    </div>
+
+    <!-- 6. EXTERIOR / BLACK TRIM -->
+    <div class="hs" id="hs6" style="--pulse-delay:1.0s" data-x="0.343" data-y="0.285"
+         data-lx="0.16" data-ly="0.06" data-lclass="lb6" data-ltext="EXTERIOR / BLACK TRIM" data-line="l6">
+      <div class="hs-icon"><img src="icon 1.webp" alt="" /><div class="center-dot"></div></div>
+      <div class="popup p-below">
+        <div class="popup-tag">Exterior Parts</div>
+        <div class="popup-title">Faded Black Trim</div>
+        <div class="popup-desc">Faded grey plastic trim makes any truck look old. We restore or replace black textured parts — pillars, cladding, moldings — back to factory condition. Tons of aftermarket accessories to choose from, or we spray Rhino Linings materials on it so it lasts for years without fading or losing pigment.</div>
+      </div>
+    </div>
+
+    <!-- 7. ROOF RUST -->
+    <div class="hs" id="hs7" style="--pulse-delay:1.2s" data-x="0.530" data-y="0.156"
+         data-lx="0.56" data-ly="0.06" data-lclass="lb7" data-ltext="ROOF" data-line="l7">
+      <div class="hs-icon"><img src="icon 1.webp" alt="" /><div class="center-dot"></div></div>
+      <div class="popup p-below">
+        <div class="popup-tag">Roof Panel</div>
+        <div class="popup-title">Roof Rust Repair</div>
+        <div class="popup-desc">Rust bubbling through the roof? We treat it at the source, repair the panel, and apply Rhino Linings materials over it to help prolong the life of your ride. Common on department vehicles, fleet trucks, and older daily drivers.</div>
+      </div>
+    </div>
+
+    <!-- 8. HOODS -->
+    <div class="hs" id="hs8" style="--pulse-delay:1.4s" data-x="0.722" data-y="0.343"
+         data-lx="0.82" data-ly="0.20" data-lclass="lb8" data-ltext="HOODS" data-line="l8">
+      <div class="hs-icon"><img src="icon 1.webp" alt="" /><div class="center-dot"></div></div>
+      <div class="popup p-left">
+        <div class="popup-tag">Fleet &amp; Police</div>
+        <div class="popup-title">Hood Painting</div>
+        <div class="popup-desc">Custom hood painting, decals, and lettering for local police departments, city fleet vehicles, and commercial trucks. Fast turnaround, done right. Always a lifetime warranty on our workmanship.</div>
+      </div>
+    </div>
+
+    <!-- 9. GRILLE -->
+    <div class="hs" id="hs9" style="--pulse-delay:1.6s" data-x="0.81" data-y="0.40"
+         data-lx="0.86" data-ly="0.47" data-lclass="lb9" data-ltext="GRILLE" data-line="l9">
+      <div class="hs-icon"><img src="icon 1.webp" alt="" /><div class="center-dot"></div></div>
+      <div class="popup p-left">
+        <div class="popup-tag">Front Face</div>
+        <div class="popup-title">Grilles</div>
+        <div class="popup-desc">Aftermarket grille installation with factory color match or custom contrast finish. All makes and models — we handle the installation and the paint. Looking for an upgrade? Speak to us directly and we'll help you find the right fit.</div>
+      </div>
+    </div>
+
+    <!-- 10. FRONT BUMPER -->
+    <div class="hs" id="hs10" style="--pulse-delay:1.8s" data-x="0.866" data-y="0.638"
+         data-lx="0.87" data-ly="0.80" data-lclass="lb10" data-ltext="FRONT BUMPER" data-line="l10">
+      <div class="hs-icon"><img src="icon 1.webp" alt="" /><div class="center-dot"></div></div>
+      <div class="popup p-left">
+        <div class="popup-tag">Front End</div>
+        <div class="popup-title">Front Bumpers</div>
+        <div class="popup-desc">Collision repair, aftermarket upgrades, and color-matched painting. Steel, aluminum, or factory plastic — we work with all of it.</div>
+      </div>
+    </div>
+
+    <!-- 11. WHEEL WELLS -->
+    <div class="hs" id="hs11" style="--pulse-delay:2.0s" data-x="0.425" data-y="0.482"
+         data-lx="0.38" data-ly="0.87" data-lclass="lb11" data-ltext="WHEEL WELLS" data-line="l11">
+      <div class="hs-icon"><img src="icon 1.webp" alt="" /><div class="center-dot"></div></div>
+      <div class="popup p-above">
+        <div class="popup-tag">Wheel Wells</div>
+        <div class="popup-title">Wheel Well Coating</div>
+        <div class="popup-desc">Spray-in liner coating for wheel wells stops rust, deadens road noise, and protects against rocks and debris kicking up into the body. Plus — it just looks really cool.</div>
+      </div>
+    </div>
+
+    <!-- 12. UNDERCARRIAGE -->
+    <div class="hs" id="hs12" style="--pulse-delay:2.2s" data-x="0.587" data-y="0.734"
+         data-lx="0.56" data-ly="0.87" data-lclass="lb12" data-ltext="UNDERCARRIAGE" data-line="l12">
+      <div class="hs-icon"><img src="icon 1.webp" alt="" /><div class="center-dot"></div></div>
+      <div class="popup p-above">
+        <div class="popup-tag">Underside</div>
+        <div class="popup-title">Undercarriage Coating</div>
+        <div class="popup-desc">Full undercarriage spray coating seals out moisture, road salt, and corrosion. Especially important for trucks used off-road, near the coast, or for the winter enthusiast who loves fresh powder on the mountains.</div>
+      </div>
+    </div>
+
+    <!-- 13. SKID PLATES -->
+    <div class="hs" id="hs13" style="--pulse-delay:2.4s" data-x="0.73" data-y="0.71"
+         data-lx="0.72" data-ly="0.87" data-lclass="lb13" data-ltext="SKID PLATES" data-line="l13">
+      <div class="hs-icon"><img src="icon 1.webp" alt="" /><div class="center-dot"></div></div>
+      <div class="popup p-left">
+        <div class="popup-tag">Front Underside</div>
+        <div class="popup-title">Skid Plates</div>
+        <div class="popup-desc">Heavy-duty skid plate installation to protect your engine, transmission, and transfer case. Essential for any truck that goes off road. Don't forget to ask us to Rhino Line it for superior protection.</div>
+      </div>
+    </div>
+
+    <div class="tap-nudge">TAP THE DOTS TO EXPLORE</div>
+
+  </div><!-- /.truck-wrap -->
+
+  <!-- "Everything We Do" label — bottom of diagram -->
+  <div class="diagram-label-bottom">
+    <p>Interactive Service Guide</p>
+    <h2>Everything We Do — <em>Built Into One Truck</em></h2>
+    <p class="diagram-sub-mobile">Full-service truck builds, collision repair &amp; accessories — all under one roof</p>
+    <p class="hint">Hover any marker <span class="hint-dot"></span> to explore our services</p>
+  </div>
+</section>
+
+<!-- ─── CTA ─── -->
+<div class="cta">
+  <h3>Ready to Build Your <em>Truck?</em></h3>
+  <p>Walk in Mon–Fri 8AM–5PM · Free estimates · 562-424-6744</p>
+  <a href="tel:+15624246744" class="cta-btn">
+    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.7 10.82 19.79 19.79 0 01.67 2.18 2 2 0 012.66 0h3a2 2 0 012 1.72c.13 1 .36 1.97.7 2.91a2 2 0 01-.45 2.11L6.91 7.74a16 16 0 006.29 6.29l1-.99a2 2 0 012.11-.45c.94.34 1.91.57 2.91.7A2 2 0 0122 16.92z"/></svg>
+    Call 562-424-6744
+  </a>
+</div>
+
+<script>
+
+  // ── Touch device hint
+    var hint = document.querySelector('.hint');
+    if (hint) hint.textContent = 'Tap any marker to explore our services';
+  }
+
+  // ─────────────────────────────────────────────────────────────────
+  // POSITIONING ENGINE
+  // All hotspot data-x / data-y / data-lx / data-ly are fractions
+  // of the IMAGE's rendered width & height — not the container.
+  // On every load/resize we measure the image rect and reposition
+  // every element in pixel coordinates so Wix embedding never
+  // breaks the layout.
+  // ─────────────────────────────────────────────────────────────────
+
+  var img     = document.getElementById('truckImg');
+  var wrap    = document.getElementById('diagram');
+  var svg     = document.getElementById('linesSvg');
+  var hotspots = Array.from(document.querySelectorAll('.hs'));
+
+  function positionAll() {
+    // Get the image's rendered size
+    var iw = img.offsetWidth;
+    var ih = img.offsetHeight;
+
+    if (!iw || !ih) return; // image not ready yet
+
+    // Sync wrap height to image height so overlay fills correctly
+    wrap.style.height = ih + 'px';
+
+    // Clear existing SVG lines and labels
+    svg.innerHTML = '';
+    // Remove old JS-placed labels
+    var oldLabels = wrap.querySelectorAll('.hs-label');
+    oldLabels.forEach(function(el){ el.parentNode.removeChild(el); });
+
+    // Position each hotspot and draw its line + label
+    hotspots.forEach(function(hs) {
+      var dx = parseFloat(hs.dataset.x) * iw;
+      var dy = parseFloat(hs.dataset.y) * ih;
+      hs.style.left = dx + 'px';
+      hs.style.top  = dy + 'px';
+
+      var lx = parseFloat(hs.dataset.lx) * iw;
+      var ly = parseFloat(hs.dataset.ly) * ih;
+
+      // Draw SVG line from dot to label anchor
+      // Nudge endpoint slightly into the label box so line visually touches the edge
+      var lxEnd = lx, lyEnd = ly;
+      var lxFrac = parseFloat(hs.dataset.lx);
+      var lyFrac = parseFloat(hs.dataset.ly);
+      // Nudges are mutually exclusive: left/right labels only nudge X; top/bottom only nudge Y
+      if (lxFrac < 0.15) {
+        lxEnd = lx + 10;  // left label: line enters left edge at center-Y
+      } else if (lxFrac > 0.85) {
+        lxEnd = lx + 10;  // right label: line enters left edge at center-Y
+      } else if (lyFrac > 0.8) {
+        lyEnd = ly + 10;  // bottom label: line enters top edge at center-X
+      } else if (lyFrac < 0.15) {
+        lyEnd = ly + 10;  // top label: line enters top edge at center-X
+      }
+
+      var lineEl = document.createElementNS('http://www.w3.org/2000/svg','line');
+      lineEl.setAttribute('x1', dx);
+      lineEl.setAttribute('y1', dy);
+      lineEl.setAttribute('x2', lxEnd);
+      lineEl.setAttribute('y2', lyEnd);
+      lineEl.setAttribute('class', 'anim-line ' + hs.dataset.line);
+      svg.appendChild(lineEl);
+
+      // Create label element and position it
+      var lbl = document.createElement('div');
+      lbl.className = 'hs-label ' + hs.dataset.lclass;
+      lbl.textContent = hs.dataset.ltext;
+      lbl.style.left = lx + 'px';
+      lbl.style.top  = ly + 'px';
+      // Line always ends at the edge of the label closest to the dot.
+      // Left/Right labels: left edge at anchor, label centered vertically.
+      // Top/Bottom labels: top edge at anchor, label centered horizontally.
+      if (parseFloat(hs.dataset.lx) < 0.15 || parseFloat(hs.dataset.lx) > 0.85) {
+        lbl.style.transform = 'translateY(-50%)';
+      } else {
+        lbl.style.transform = 'translateX(-50%) translateY(0)';
+      }
+      wrap.appendChild(lbl);
+
+      // Track label on the hotspot element so hover handler can find it
+      hs._labelEl = lbl;
+    });
+  }
+
+  // Run on image load (handles cached images too)
+  if (img.complete && img.naturalWidth) {
+    positionAll();
+  } else {
+    img.addEventListener('load', positionAll);
+  }
+
+  // Re-run on resize
+  var resizeTimer;
+  window.addEventListener('resize', function() {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(positionAll, 60);
+  });
+
+  // ── Intersection observer: trigger line draw animation
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        wrap.classList.add('animated');
+        observer.unobserve(wrap);
+      }
+    });
+  }, { threshold: 0.2 });
+  observer.observe(wrap);
+
+  // ── Mobile tap overlay — injected into wrap so it centers within the image
+  var mobOv = document.createElement('div');
+  mobOv.style.cssText = 'display:none;position:absolute;inset:0;z-index:9999;background:rgba(0,0,0,0.72);align-items:center;justify-content:center;padding:16px;';
+  mobOv.innerHTML = '<div style="background:#fff;width:100%;max-width:290px;position:relative;box-shadow:0 24px 64px rgba(0,0,0,0.9);"><button id="itd-close" style="position:absolute;top:0;right:0;width:36px;height:36px;background:#1a1a1a;border:none;color:#fff;font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;">&#x2715;</button><div id="itd-content" style="padding:18px 48px 18px 18px;"></div></div>';
+  wrap.appendChild(mobOv);
+  document.getElementById('itd-close').addEventListener('click', function(){ mobOv.style.display='none'; });
+  mobOv.addEventListener('click', function(e){ if(e.target===mobOv) mobOv.style.display='none'; });
+
+  hotspots.forEach(function(hs){
+    hs.addEventListener('click', function(e){
+      if(window.innerWidth > 650) return;
+      e.stopPropagation();
+      var tag   = hs.querySelector('.popup-tag');
+      var title = hs.querySelector('.popup-title');
+      var desc  = hs.querySelector('.popup-desc');
+      document.getElementById('itd-content').innerHTML =
+        (tag   ? '<div style="font-size:9px;font-weight:700;letter-spacing:1.3px;text-transform:uppercase;color:#8B0000;margin-bottom:6px;font-family:\'Montserrat\',sans-serif;">'+ tag.textContent +'</div>' : '') +
+        (title ? '<div style="font-size:14px;font-weight:800;color:#1B2A3B;margin-bottom:8px;line-height:1.3;font-family:\'Montserrat\',sans-serif;">'+ title.innerHTML +'</div>' : '') +
+        (desc  ? '<div style="font-size:12px;font-weight:400;color:#4A5568;line-height:1.65;">'+ desc.textContent +'</div>' : '');
+      mobOv.style.display = 'flex';
+    });
+  });
+</script>
+
+
+<script>
+  function reportHeight(){
+    var sentinel=document.getElementById('height-sentinel');
+    var h=sentinel?(sentinel.offsetTop+sentinel.offsetHeight):Math.max(document.body.scrollHeight,document.body.offsetHeight,document.documentElement.scrollHeight,document.documentElement.offsetHeight);
+    window.parent.postMessage(JSON.stringify({height:h}),'*');
+  }
+  document.addEventListener('DOMContentLoaded', reportHeight);
+  window.addEventListener('load', function(){
+    [0,200,500,1000,2000,3500].forEach(function(t){ setTimeout(reportHeight,t); });
+  });
+  window.addEventListener('resize', reportHeight);
+  if(window.ResizeObserver){ new ResizeObserver(reportHeight).observe(document.body); }
+</script>
+
+<div id="height-sentinel" style="height:1px;width:1px;visibility:hidden;pointer-events:none;"></div>
+
+<script>
+(function(){var active=false,startY=0,lastY=0,rafId=null;document.addEventListener('mousedown',function(e){if(e.button!==1)return;if(e.target.closest('a'))return;e.preventDefault();active=true;startY=e.clientY;lastY=e.clientY;document.body.style.cursor='ns-resize';tick();});document.addEventListener('mousemove',function(e){if(active)lastY=e.clientY;});document.addEventListener('mouseup',function(e){if(e.button!==1||!active)return;active=false;document.body.style.cursor='';if(rafId){cancelAnimationFrame(rafId);rafId=null;}});function tick(){if(!active){rafId=null;return;}var dy=lastY-startY;if(Math.abs(dy)>5)window.scrollBy(0,dy*0.12);rafId=requestAnimationFrame(tick);}})();
+</script></body>
+</html>

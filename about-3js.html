@@ -1,1 +1,241 @@
-<!DOCTYPE html>\n<html lang="en">\n<head>\n  <meta charset="UTF-8" />\n  <meta name="viewport" content="width=device-width, initial-scale=1.0" />\n  <title>About 3J's Auto Body &amp; Rhino Linings of Signal Hill</title>\n  <link rel="preconnect" href="https://fonts.googleapis.com">\n  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />\n  <style>\n    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}\n    html{margin:0;padding:0;overscroll-behavior:none;background:#0A0A0A;}\n    body{font-family:'Inter',sans-serif;margin:0;padding:0;overflow-x:hidden;background:#0A0A0A;}\n\n    .skip-link{position:absolute;top:-100%;left:16px;z-index:9999;background:#fff;color:#8B0000;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:8px 20px;text-decoration:none;}\n    .skip-link:focus{top:16px;}\n\n    .eyebrow{font-family:'Montserrat',sans-serif;font-size:clamp(9px,2.4vw,10px);font-weight:800;letter-spacing:clamp(2px,0.6vw,3px);text-transform:uppercase;color:rgba(255,255,255,0.50);display:inline-flex;align-items:center;gap:10px;margin-bottom:clamp(12px,3vw,18px);}\n    .eyebrow::before{content:'';width:clamp(16px,4vw,24px);height:2px;background:rgba(255,255,255,0.40);flex-shrink:0;}\n    h2{font-family:'Montserrat',sans-serif;font-size:clamp(24px,6.2vw,52px);font-weight:900;letter-spacing:-1px;line-height:1.05;color:#fff;text-wrap:balance;margin-bottom:clamp(14px,3vw,22px);}\n    h2 em{font-style:normal;color:rgba(255,255,255,0.50);}\n    .lead{font-family:'Inter',sans-serif;font-size:clamp(14px,3.6vw,17px);font-weight:400;color:rgba(255,255,255,0.78);line-height:1.65;max-width:600px;text-wrap:pretty;}\n\n    .inner{max-width:1180px;margin:0 auto;}\n\n    .red-section{\n      position:relative;\n      background:#8B0000;\n      padding:clamp(36px,7vw,72px) clamp(18px,4vw,32px) clamp(72px,13vw,160px);\n      background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/crimson-spray-divider.webp');\n      background-size:100% auto;\n      background-position:bottom center;\n      background-repeat:no-repeat;\n    }\n\n    .intro{display:grid;grid-template-columns:1fr;gap:clamp(24px,5vw,32px);align-items:end;margin-bottom:clamp(28px,4.5vw,48px);padding-bottom:clamp(28px,4.5vw,40px);border-bottom:1px solid rgba(255,255,255,0.14);}\n    @media(min-width:860px){.intro{grid-template-columns:1.4fr 1fr;gap:64px;}}\n\n    .warranty-badge{display:flex;flex-direction:column;align-items:flex-start;}\n    .warranty-badge .num{font-family:'Montserrat',sans-serif;font-size:clamp(44px,11vw,84px);font-weight:900;letter-spacing:-2px;color:#fff;line-height:0.9;margin-bottom:6px;}\n    .warranty-badge .sub{font-family:'Montserrat',sans-serif;font-size:clamp(10px,2.6vw,11px);font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:10px;}\n    .warranty-badge .desc{font-family:'Inter',sans-serif;font-size:clamp(13px,3.4vw,14px);font-weight:400;color:rgba(255,255,255,0.72);line-height:1.55;max-width:340px;text-wrap:pretty;}\n\n    .body-block{display:grid;grid-template-columns:1fr;gap:clamp(28px,5vw,48px);}\n    @media(min-width:860px){.body-block{grid-template-columns:1.4fr 1fr;gap:64px;}}\n\n    .col-label{font-family:'Montserrat',sans-serif;font-size:clamp(9px,2.4vw,10px);font-weight:800;letter-spacing:clamp(2px,0.6vw,3px);text-transform:uppercase;color:rgba(255,255,255,0.45);display:block;margin-bottom:clamp(14px,3vw,20px);}\n\n    .service-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 clamp(14px,3vw,28px);}\n    .service-grid li{list-style:none;display:flex;align-items:center;gap:10px;font-family:'Inter',sans-serif;font-size:clamp(13px,3.4vw,14px);font-weight:500;color:rgba(255,255,255,0.90);line-height:1.35;padding:clamp(7px,1.8vw,9px) 0;border-top:1px solid rgba(255,255,255,0.22);}\n    .service-grid li:first-child,.service-grid li:nth-child(2){border-top:none;}\n    .service-grid li::before{content:'';width:5px;height:5px;background:rgba(255,255,255,0.55);flex-shrink:0;transform:rotate(45deg);}\n\n    .cta-block{display:flex;flex-direction:column;align-items:flex-start;gap:clamp(12px,2.5vw,18px);}\n    .cta-block .pitch{font-family:'Inter',sans-serif;font-size:clamp(13px,3.4vw,14px);font-weight:400;color:rgba(255,255,255,0.75);line-height:1.6;text-wrap:pretty;}\n    .cta-block .pitch strong{color:#fff;font-weight:600;}\n\n    .cta{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:'Montserrat',sans-serif;font-size:clamp(10px,2.6vw,11px);font-weight:800;letter-spacing:clamp(1.4px,0.4vw,2px);text-transform:uppercase;text-decoration:none;height:clamp(46px,10vw,52px);padding:0 clamp(20px,4.5vw,28px);background:#fff;color:#8B0000;border-radius:0;transition:background 0.2s,transform 0.2s;touch-action:manipulation;border:none;cursor:pointer;}\n    .cta:hover{background:#f0f0f0;transform:translateY(-1px);}\n    .cta svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2.4;flex-shrink:0;}\n    .cta.ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,0.45);}\n    .cta.ghost:hover{background:rgba(255,255,255,0.08);border-color:#fff;}\n\n    @media(max-width:480px){.cta{width:100%;}}\n\n    .black-section{\n      position:relative;\n      background:#0A0A0A;\n      padding:clamp(36px,7vw,72px) clamp(18px,4vw,32px) clamp(40px,6vw,72px);\n    }\n\n    .rlsh-head{text-align:left;margin-bottom:clamp(24px,4vw,40px);padding-bottom:clamp(22px,4vw,36px);border-bottom:1px solid rgba(255,255,255,0.10);}\n    .rlsh-head h2 em{color:#8B0000;font-style:normal;}\n    .rlsh-head .lead{margin-top:6px;}\n\n    .stat-row{display:grid;grid-template-columns:1fr;gap:0;margin-bottom:clamp(24px,4vw,40px);border-top:1px solid rgba(255,255,255,0.10);border-bottom:1px solid rgba(255,255,255,0.10);}\n    @media(min-width:680px){.stat-row{grid-template-columns:repeat(3,1fr);}}\n\n    .stat{padding:clamp(18px,4vw,28px) clamp(16px,3.5vw,28px);border-top:1px solid rgba(255,255,255,0.10);}\n    .stat:first-child{border-top:none;}\n    @media(min-width:680px){\n      .stat{border-top:none;border-left:1px solid rgba(255,255,255,0.10);}\n      .stat:first-child{border-left:none;}\n    }\n    .stat .num{font-family:'Montserrat',sans-serif;font-size:clamp(28px,7vw,46px);font-weight:900;letter-spacing:-1.5px;color:#fff;line-height:1;margin-bottom:6px;}\n    .stat .num em{font-style:normal;color:#8B0000;}\n    .stat .lbl{font-family:'Montserrat',sans-serif;font-size:clamp(9px,2.4vw,10px);font-weight:800;letter-spacing:clamp(2px,0.6vw,2.5px);text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:8px;display:block;}\n    .stat .txt{font-family:'Inter',sans-serif;font-size:clamp(12px,3.2vw,13px);font-weight:400;color:rgba(255,255,255,0.70);line-height:1.55;text-wrap:pretty;}\n\n    .rlsh-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:clamp(16px,3vw,24px);}\n    .rlsh-foot p{font-family:'Inter',sans-serif;font-size:clamp(13px,3.4vw,15px);font-weight:400;color:rgba(255,255,255,0.78);line-height:1.6;max-width:560px;text-wrap:pretty;}\n    .rlsh-foot p strong{color:#fff;font-weight:600;}\n\n    @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;}}\n      *:focus{outline:none;}*:focus-visible{outline:2px solid #8B0000;outline-offset:3px;}\n  </style>\n</head>\n<body>\n<a href="#main-content" class="skip-link">Skip to content</a>\n<main id="main-content">\n\n  <section class="red-section">\n    <div class="inner">\n      <div class="intro">\n        <div>\n          <span class="eyebrow">3J's Auto Body · Signal Hill, CA · Est. 1991</span>\n          <h2 style="border-width:0;border-style:solid;line-height:0.95;letter-spacing:-2px;">Repairs Done <span style="border-bottom:4px solid #fff;padding-bottom:3px;">RIGHT</span>.<br>Every Time.<br><span style="color:#fff;">Guaranteed.</span></h2>\n          <p class="lead">A damaged vehicle is stressful. Our job is to make the rest of it easy — from your first call to the day you drive away confident.</p>\n        </div>\n        <div class="warranty-badge">\n          <div class="num">LIFETIME</div>\n          <span class="sub">Limited Warranty</span>\n          <p class="desc">Parts, labor, color matching, and gloss retention — covered on every job. One of the premier shops in LA and Orange County.</p>\n        </div>\n      </div>\n\n      <div class="body-block">\n        <div>\n          <span class="col-label">What We Offer</span>\n          <ul class="service-grid">\n            <li>Auto Detailing</li>\n            <li>Interior Cosmetic Repair</li>\n            <li>Alloy Wheel Repair</li>\n            <li>Paintless Dent Removal</li>\n            <li>Window Tinting</li>\n            <li>Headlight Restoration</li>\n            <li>Off-Road Parts</li>\n            <li>Jeep &amp; Truck Accessories</li>\n            <li>Suspension, Rims &amp; Tires</li>\n            <li>Bolt-On Installation</li>\n          </ul>\n        </div>\n        <div class="cta-block">\n          <span class="col-label" style="font-size:11px;">Get Started</span>\n          <p class="pitch">Tell us about your vehicle and we'll send a <strong>complimentary quote</strong> back — no obligation, no pressure.</p>\n          <a href="https://www.3jsautobody.com/request-a-quote" class="cta" target="_top">\n            <svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>\n            Request a Quote\n          </a>\n        </div>\n      </div>\n    </div>\n  </section>\n\n  <section class="black-section">\n    <div class="inner">\n      <div class="rlsh-head">\n        <span class="eyebrow">Rhino Linings of Signal Hill</span>\n        <h2>Southern California's <em>#1</em> spot for CUSTOM truck, Jeep &amp; car accessories.</h2>\n        <p class="lead">Custom, professional installs for trucks, Jeeps, commercial vans and more. If you're ready to take your build to the next level, you're in the right place.</p>\n      </div>\n\n      <div class="stat-row">\n        <div class="stat">\n          <div class="num" id="parts-counter" data-target="7000" aria-label="7,000+ off-road parts">0<em style="padding:5px;">+</em></div>\n          <span class="lbl">Off-Road Parts</span>\n          <p class="txt">A massive in-house catalog of suspension, armor, lighting, wheels and tires.</p>\n        </div>\n        <div class="stat">\n          <div class="num"><span style="color:#8B0000;">U</span>S<span style="color:#033F7E;">A</span><em style="padding:5px;">·</em></div>\n          <span class="lbl">Made &amp; Manufactured</span>\n          <p class="txt">We strive to use only parts made and manufactured in the United States.</p>\n        </div>\n        <div class="stat">\n          <div class="num">1<em style="padding:5px;">:</em>1</div>\n          <span class="lbl">Custom Installs</span>\n          <p class="txt">Every build is dialed in by hand — no cookie-cutter packages, no shortcuts.</p>\n        </div>\n      </div>\n\n      <div class="rlsh-foot">\n        <p>From bed liners to full off-road builds, RLSH crews handle the install start to finish — under the same roof as 3J's Auto Body.</p>\n        <a href="https://www.3jsautobody.com/request-a-quote" class="cta ghost" target="_top">\n          Build Your Rig\n          <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>\n        </a>\n      </div>\n    </div>\n  </section>\n\n</main>\n<script>\n(function(){\n  var el=document.getElementById('parts-counter');\n  if(!el) return;\n  var target=parseInt(el.getAttribute('data-target'),10)||0;\n  var em=el.querySelector('em');\n  var emHTML=em?em.outerHTML:'';\n  var started=false;\n  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches;\n  function format(n){return n.toLocaleString('en-US');}\n  function run(){\n    if(started) return; started=true;\n    if(reduce){el.innerHTML=format(target)+emHTML;return;}\n    var duration=1800,start=null;\n    function tick(ts){\n      if(start===null) start=ts;\n      var p=Math.min((ts-start)/duration,1);\n      var eased=p===1?1:1-Math.pow(2,-10*p);\n      var v=Math.round(target*eased);\n      el.innerHTML=format(v)+emHTML;\n      if(p<1) requestAnimationFrame(tick);\n    }\n    requestAnimationFrame(tick);\n  }\n  if('IntersectionObserver' in window){\n    var io=new IntersectionObserver(function(entries){\n      entries.forEach(function(e){if(e.isIntersecting){run();io.disconnect();}});\n    },{threshold:0.35});\n    io.observe(el);\n  }else{\n    run();\n  }\n})();\n\nfunction reportHeight(){\n  var h=Math.max(document.body.scrollHeight,document.body.offsetHeight,document.documentElement.scrollHeight,document.documentElement.offsetHeight);\n  window.parent.postMessage(JSON.stringify({height:h}),'*');\n}\ndocument.addEventListener('DOMContentLoaded',reportHeight);\nwindow.addEventListener('load',function(){[0,200,500,1000,2000].forEach(function(t){setTimeout(reportHeight,t);});});\nwindow.addEventListener('resize',reportHeight);\nif(window.ResizeObserver){new ResizeObserver(reportHeight).observe(document.body);}\n</script>\n<script>\n(function(){var active=false,startY=0,lastY=0,rafId=null;document.addEventListener('mousedown',function(e){if(e.button!==1)return;if(e.target.closest('a'))return;e.preventDefault();active=true;startY=e.clientY;lastY=e.clientY;document.body.style.cursor='ns-resize';tick();});document.addEventListener('mousemove',function(e){if(active)lastY=e.clientY;});document.addEventListener('mouseup',function(e){if(e.button!==1||!active)return;active=false;document.body.style.cursor='';if(rafId){cancelAnimationFrame(rafId);rafId=null;}});function tick(){if(!active){rafId=null;return;}var dy=lastY-startY;if(Math.abs(dy)>5)window.scrollBy(0,dy*0.12);rafId=requestAnimationFrame(tick);}})();\n</script><!-- EFFECTS: grain Â· scroll-reveal Â· border sweep Â· parallax Â· inertia -->\n<style>\n@keyframes grain{0%,100%{transform:translate(0,0);}10%{transform:translate(-2%,-3%);}20%{transform:translate(3%,1%);}30%{transform:translate(-1%,4%);}40%{transform:translate(4%,-2%);}50%{transform:translate(-3%,3%);}60%{transform:translate(2%,-4%);}70%{transform:translate(-4%,1%);}80%{transform:translate(1%,3%);}90%{transform:translate(3%,-1%);}}\n.grain::before{content:'';position:absolute;inset:-50%;width:200%;height:200%;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");background-size:200px 200px;opacity:0.038;animation:grain 0.8s steps(1) infinite;pointer-events:none;z-index:3;}\n[data-anim]{opacity:0;transition:opacity 0.65s ease,transform 0.65s ease;}[data-anim="fade-up"]{transform:translateY(32px);}[data-anim="fade-in"]{transform:none;}[data-anim].visible{opacity:1;transform:none;}[data-delay="100"]{transition-delay:0.10s;}[data-delay="200"]{transition-delay:0.20s;}[data-delay="300"]{transition-delay:0.30s;}[data-delay="400"]{transition-delay:0.40s;}[data-delay="500"]{transition-delay:0.50s;}\n@media(prefers-reduced-motion:reduce){[data-anim]{opacity:1;transform:none;transition:none;}[data-delay="100"],[data-delay="200"],[data-delay="300"],[data-delay="400"],[data-delay="500"]{transition-delay:0s;}}\n.product-card,.mfr-card{position:relative;}.card-border-sweep{position:absolute;inset:0;pointer-events:none;z-index:6;overflow:hidden;}.card-border-sweep canvas{position:absolute;inset:0;width:100%;height:100%;}\n</style>\n<script>\n(function(){var els=document.querySelectorAll('[data-anim]');if(!els.length)return;var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}});},{threshold:0.12});els.forEach(function(el){io.observe(el);});})();\n(function(){var COLOR='#8B0000',DURATION=700,BORDER=2;function getPL(w,h){return 2*(w+h);}function ptP(x,y,w,h){if(y<=BORDER)return x;if(x>=w-BORDER)return w+y;if(y>=h-BORDER)return w+h+(w-x);return w+h+w+(h-y);}function initCard(card){if(card.querySelector('.card-border-sweep'))return;var wrap=document.createElement('div');wrap.className='card-border-sweep';var cvs=document.createElement('canvas');wrap.appendChild(cvs);card.appendChild(wrap);var raf=null,startP=0,progress=0,animStart=0,leaving=false,leaveStart=0,leaveOpacity=0;function resize(){cvs.width=card.offsetWidth;cvs.height=card.offsetHeight;}resize();new ResizeObserver(resize).observe(card);function draw(now){var w=cvs.width,h=cvs.height,ctx=cvs.getContext('2d');ctx.clearRect(0,0,w,h);var perim=getPL(w,h),opacity=1;if(leaving){var elapsed=now-leaveStart;opacity=leaveOpacity*(1-Math.min(elapsed/350,1));if(opacity<=0){raf=null;return;}}else{var elapsed2=now-animStart;progress=Math.min(elapsed2/DURATION,1);progress=1-Math.pow(1-progress,3);}var sweepLen=perim*progress,segs=[{x1:0,y1:0,x2:w,y2:0},{x1:w,y1:0,x2:w,y2:h},{x1:w,y1:h,x2:0,y2:h},{x1:0,y1:h,x2:0,y2:0}],sLens=[w,h,w,h],drawn=0,s=startP%perim,started=false;ctx.save();ctx.strokeStyle=COLOR;ctx.lineWidth=BORDER;ctx.globalAlpha=opacity;ctx.beginPath();for(var pass=0;pass<2;pass++){var cum=0;for(var i=0;i<4;i++){var sLen=sLens[i],sStart=cum,sEnd=cum+sLen;cum+=sLen;if(!started){if(sEnd<=s)continue;var t=(s-sStart)/sLen,sx=segs[i].x1+(segs[i].x2-segs[i].x1)*t,sy=segs[i].y1+(segs[i].y2-segs[i].y1)*t;ctx.moveTo(sx,sy);started=true;var rem=sLen*(1-t),canDraw=Math.min(rem,sweepLen-drawn),t2=t+canDraw/sLen;ctx.lineTo(segs[i].x1+(segs[i].x2-segs[i].x1)*t2,segs[i].y1+(segs[i].y2-segs[i].y1)*t2);drawn+=canDraw;}else{var canDraw2=Math.min(sLen,sweepLen-drawn),t3=canDraw2/sLen;ctx.lineTo(segs[i].x1+(segs[i].x2-segs[i].x1)*t3,segs[i].y1+(segs[i].y2-segs[i].y1)*t3);drawn+=canDraw2;}if(drawn>=sweepLen)break;}if(drawn>=sweepLen||pass===1)break;s=0;}ctx.stroke();ctx.restore();raf=requestAnimationFrame(draw);}card.addEventListener('mouseenter',function(e){leaving=false;var rect=card.getBoundingClientRect();startP=ptP(e.clientX-rect.left,e.clientY-rect.top,cvs.width,cvs.height);progress=0;animStart=performance.now();if(!raf)raf=requestAnimationFrame(draw);});card.addEventListener('mouseleave',function(){leaving=true;leaveStart=performance.now();leaveOpacity=progress;});}document.addEventListener('DOMContentLoaded',function(){document.querySelectorAll('.product-card,.mfr-card').forEach(initCard);});})();\n(function(){if(window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;var bg=document.querySelector('.hero-bg');if(!bg)return;window.addEventListener('scroll',function(){bg.style.transform='scale(1.04) translateY('+(window.scrollY*0.28)+'px)';},{passive:true});})();\n</script>\n</body>\n</html>\n
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About 3J's Auto Body &amp; Rhino Linings of Signal Hill</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{margin:0;padding:0;overscroll-behavior:none;background:#0A0A0A;}
+    body{font-family:'Inter',sans-serif;margin:0;padding:0;overflow-x:hidden;background:#0A0A0A;}
+
+    .skip-link{position:absolute;top:-100%;left:16px;z-index:9999;background:#fff;color:#8B0000;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:8px 20px;text-decoration:none;}
+    .skip-link:focus{top:16px;}
+
+    .eyebrow{font-family:'Montserrat',sans-serif;font-size:clamp(9px,2.4vw,10px);font-weight:800;letter-spacing:clamp(2px,0.6vw,3px);text-transform:uppercase;color:rgba(255,255,255,0.50);display:inline-flex;align-items:center;gap:10px;margin-bottom:clamp(12px,3vw,18px);}
+    .eyebrow::before{content:'';width:clamp(16px,4vw,24px);height:2px;background:rgba(255,255,255,0.40);flex-shrink:0;}
+    h2{font-family:'Montserrat',sans-serif;font-size:clamp(24px,6.2vw,52px);font-weight:900;letter-spacing:-1px;line-height:1.05;color:#fff;text-wrap:balance;margin-bottom:clamp(14px,3vw,22px);}
+    h2 em{font-style:normal;color:rgba(255,255,255,0.50);}
+    .lead{font-family:'Inter',sans-serif;font-size:clamp(14px,3.6vw,17px);font-weight:400;color:rgba(255,255,255,0.78);line-height:1.65;max-width:600px;text-wrap:pretty;}
+
+    .inner{max-width:1180px;margin:0 auto;}
+
+    .red-section{
+      position:relative;
+      background:#8B0000;
+      padding:clamp(36px,7vw,72px) clamp(18px,4vw,32px) clamp(72px,13vw,160px);
+      background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/crimson-spray-divider.webp');
+      background-size:100% auto;
+      background-position:bottom center;
+      background-repeat:no-repeat;
+    }
+
+    .intro{display:grid;grid-template-columns:1fr;gap:clamp(24px,5vw,32px);align-items:end;margin-bottom:clamp(28px,4.5vw,48px);padding-bottom:clamp(28px,4.5vw,40px);border-bottom:1px solid rgba(255,255,255,0.14);}
+    @media(min-width:860px){.intro{grid-template-columns:1.4fr 1fr;gap:64px;}}
+
+    .warranty-badge{display:flex;flex-direction:column;align-items:flex-start;}
+    .warranty-badge .num{font-family:'Montserrat',sans-serif;font-size:clamp(44px,11vw,84px);font-weight:900;letter-spacing:-2px;color:#fff;line-height:0.9;margin-bottom:6px;}
+    .warranty-badge .sub{font-family:'Montserrat',sans-serif;font-size:clamp(10px,2.6vw,11px);font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:10px;}
+    .warranty-badge .desc{font-family:'Inter',sans-serif;font-size:clamp(13px,3.4vw,14px);font-weight:400;color:rgba(255,255,255,0.72);line-height:1.55;max-width:340px;text-wrap:pretty;}
+
+    .body-block{display:grid;grid-template-columns:1fr;gap:clamp(28px,5vw,48px);}
+    @media(min-width:860px){.body-block{grid-template-columns:1.4fr 1fr;gap:64px;}}
+
+    .col-label{font-family:'Montserrat',sans-serif;font-size:clamp(9px,2.4vw,10px);font-weight:800;letter-spacing:clamp(2px,0.6vw,3px);text-transform:uppercase;color:rgba(255,255,255,0.45);display:block;margin-bottom:clamp(14px,3vw,20px);}
+
+    .service-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 clamp(14px,3vw,28px);}
+    .service-grid li{list-style:none;display:flex;align-items:center;gap:10px;font-family:'Inter',sans-serif;font-size:clamp(13px,3.4vw,14px);font-weight:500;color:rgba(255,255,255,0.90);line-height:1.35;padding:clamp(7px,1.8vw,9px) 0;border-top:1px solid rgba(255,255,255,0.22);}
+    .service-grid li:first-child,.service-grid li:nth-child(2){border-top:none;}
+    .service-grid li::before{content:'';width:5px;height:5px;background:rgba(255,255,255,0.55);flex-shrink:0;transform:rotate(45deg);}
+
+    .cta-block{display:flex;flex-direction:column;align-items:flex-start;gap:clamp(12px,2.5vw,18px);}
+    .cta-block .pitch{font-family:'Inter',sans-serif;font-size:clamp(13px,3.4vw,14px);font-weight:400;color:rgba(255,255,255,0.75);line-height:1.6;text-wrap:pretty;}
+    .cta-block .pitch strong{color:#fff;font-weight:600;}
+
+    .cta{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:'Montserrat',sans-serif;font-size:clamp(10px,2.6vw,11px);font-weight:800;letter-spacing:clamp(1.4px,0.4vw,2px);text-transform:uppercase;text-decoration:none;height:clamp(46px,10vw,52px);padding:0 clamp(20px,4.5vw,28px);background:#fff;color:#8B0000;border-radius:0;transition:background 0.2s,transform 0.2s;touch-action:manipulation;border:none;cursor:pointer;}
+    .cta:hover{background:#f0f0f0;transform:translateY(-1px);}
+    .cta svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2.4;flex-shrink:0;}
+    .cta.ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,0.45);}
+    .cta.ghost:hover{background:rgba(255,255,255,0.08);border-color:#fff;}
+
+    @media(max-width:480px){.cta{width:100%;}}
+
+    .black-section{
+      position:relative;
+      background:#0A0A0A;
+      padding:clamp(36px,7vw,72px) clamp(18px,4vw,32px) clamp(40px,6vw,72px);
+    }
+
+    .rlsh-head{text-align:left;margin-bottom:clamp(24px,4vw,40px);padding-bottom:clamp(22px,4vw,36px);border-bottom:1px solid rgba(255,255,255,0.10);}
+    .rlsh-head h2 em{color:#8B0000;font-style:normal;}
+    .rlsh-head .lead{margin-top:6px;}
+
+    .stat-row{display:grid;grid-template-columns:1fr;gap:0;margin-bottom:clamp(24px,4vw,40px);border-top:1px solid rgba(255,255,255,0.10);border-bottom:1px solid rgba(255,255,255,0.10);}
+    @media(min-width:680px){.stat-row{grid-template-columns:repeat(3,1fr);}}
+
+    .stat{padding:clamp(18px,4vw,28px) clamp(16px,3.5vw,28px);border-top:1px solid rgba(255,255,255,0.10);}
+    .stat:first-child{border-top:none;}
+    @media(min-width:680px){
+      .stat{border-top:none;border-left:1px solid rgba(255,255,255,0.10);}
+      .stat:first-child{border-left:none;}
+    }
+    .stat .num{font-family:'Montserrat',sans-serif;font-size:clamp(28px,7vw,46px);font-weight:900;letter-spacing:-1.5px;color:#fff;line-height:1;margin-bottom:6px;}
+    .stat .num em{font-style:normal;color:#8B0000;}
+    .stat .lbl{font-family:'Montserrat',sans-serif;font-size:clamp(9px,2.4vw,10px);font-weight:800;letter-spacing:clamp(2px,0.6vw,2.5px);text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:8px;display:block;}
+    .stat .txt{font-family:'Inter',sans-serif;font-size:clamp(12px,3.2vw,13px);font-weight:400;color:rgba(255,255,255,0.70);line-height:1.55;text-wrap:pretty;}
+
+    .rlsh-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:clamp(16px,3vw,24px);}
+    .rlsh-foot p{font-family:'Inter',sans-serif;font-size:clamp(13px,3.4vw,15px);font-weight:400;color:rgba(255,255,255,0.78);line-height:1.6;max-width:560px;text-wrap:pretty;}
+    .rlsh-foot p strong{color:#fff;font-weight:600;}
+
+    @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;}}
+      *:focus{outline:none;}*:focus-visible{outline:2px solid #8B0000;outline-offset:3px;}
+  </style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to content</a>
+<main id="main-content">
+
+  <section class="red-section">
+    <div class="inner">
+      <div class="intro">
+        <div>
+          <span class="eyebrow">3J's Auto Body · Signal Hill, CA · Est. 1991</span>
+          <h2 style="border-width:0;border-style:solid;line-height:0.95;letter-spacing:-2px;">Repairs Done <span style="border-bottom:4px solid #fff;padding-bottom:3px;">RIGHT</span>.<br>Every Time.<br><span style="color:#fff;">Guaranteed.</span></h2>
+          <p class="lead">A damaged vehicle is stressful. Our job is to make the rest of it easy — from your first call to the day you drive away confident.</p>
+        </div>
+        <div class="warranty-badge">
+          <div class="num">LIFETIME</div>
+          <span class="sub">Limited Warranty</span>
+          <p class="desc">Parts, labor, color matching, and gloss retention — covered on every job. One of the premier shops in LA and Orange County.</p>
+        </div>
+      </div>
+
+      <div class="body-block">
+        <div>
+          <span class="col-label">What We Offer</span>
+          <ul class="service-grid">
+            <li>Auto Detailing</li>
+            <li>Interior Cosmetic Repair</li>
+            <li>Alloy Wheel Repair</li>
+            <li>Paintless Dent Removal</li>
+            <li>Window Tinting</li>
+            <li>Headlight Restoration</li>
+            <li>Off-Road Parts</li>
+            <li>Jeep &amp; Truck Accessories</li>
+            <li>Suspension, Rims &amp; Tires</li>
+            <li>Bolt-On Installation</li>
+          </ul>
+        </div>
+        <div class="cta-block">
+          <span class="col-label" style="font-size:11px;">Get Started</span>
+          <p class="pitch">Tell us about your vehicle and we'll send a <strong>complimentary quote</strong> back — no obligation, no pressure.</p>
+          <a href="https://www.3jsautobody.com/request-a-quote" class="cta" target="_top">
+            <svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+            Request a Quote
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="black-section">
+    <div class="inner">
+      <div class="rlsh-head">
+        <span class="eyebrow">Rhino Linings of Signal Hill</span>
+        <h2>Southern California's <em>#1</em> spot for CUSTOM truck, Jeep &amp; car accessories.</h2>
+        <p class="lead">Custom, professional installs for trucks, Jeeps, commercial vans and more. If you're ready to take your build to the next level, you're in the right place.</p>
+      </div>
+
+      <div class="stat-row">
+        <div class="stat">
+          <div class="num" id="parts-counter" data-target="7000" aria-label="7,000+ off-road parts">0<em style="padding:5px;">+</em></div>
+          <span class="lbl">Off-Road Parts</span>
+          <p class="txt">A massive in-house catalog of suspension, armor, lighting, wheels and tires.</p>
+        </div>
+        <div class="stat">
+          <div class="num"><span style="color:#8B0000;">U</span>S<span style="color:#033F7E;">A</span><em style="padding:5px;">·</em></div>
+          <span class="lbl">Made &amp; Manufactured</span>
+          <p class="txt">We strive to use only parts made and manufactured in the United States.</p>
+        </div>
+        <div class="stat">
+          <div class="num">1<em style="padding:5px;">:</em>1</div>
+          <span class="lbl">Custom Installs</span>
+          <p class="txt">Every build is dialed in by hand — no cookie-cutter packages, no shortcuts.</p>
+        </div>
+      </div>
+
+      <div class="rlsh-foot">
+        <p>From bed liners to full off-road builds, RLSH crews handle the install start to finish — under the same roof as 3J's Auto Body.</p>
+        <a href="https://www.3jsautobody.com/request-a-quote" class="cta ghost" target="_top">
+          Build Your Rig
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+<script>
+(function(){
+  var el=document.getElementById('parts-counter');
+  if(!el) return;
+  var target=parseInt(el.getAttribute('data-target'),10)||0;
+  var em=el.querySelector('em');
+  var emHTML=em?em.outerHTML:'';
+  var started=false;
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  function format(n){return n.toLocaleString('en-US');}
+  function run(){
+    if(started) return; started=true;
+    if(reduce){el.innerHTML=format(target)+emHTML;return;}
+    var duration=1800,start=null;
+    function tick(ts){
+      if(start===null) start=ts;
+      var p=Math.min((ts-start)/duration,1);
+      var eased=p===1?1:1-Math.pow(2,-10*p);
+      var v=Math.round(target*eased);
+      el.innerHTML=format(v)+emHTML;
+      if(p<1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){if(e.isIntersecting){run();io.disconnect();}});
+    },{threshold:0.35});
+    io.observe(el);
+  }else{
+    run();
+  }
+})();
+
+function reportHeight(){
+  var h=Math.max(document.body.scrollHeight,document.body.offsetHeight,document.documentElement.scrollHeight,document.documentElement.offsetHeight);
+  window.parent.postMessage(JSON.stringify({height:h}),'*');
+}
+document.addEventListener('DOMContentLoaded',reportHeight);
+window.addEventListener('load',function(){[0,200,500,1000,2000].forEach(function(t){setTimeout(reportHeight,t);});});
+window.addEventListener('resize',reportHeight);
+if(window.ResizeObserver){new ResizeObserver(reportHeight).observe(document.body);}
+</script>
+<script>
+(function(){var active=false,startY=0,lastY=0,rafId=null;document.addEventListener('mousedown',function(e){if(e.button!==1)return;if(e.target.closest('a'))return;e.preventDefault();active=true;startY=e.clientY;lastY=e.clientY;document.body.style.cursor='ns-resize';tick();});document.addEventListener('mousemove',function(e){if(active)lastY=e.clientY;});document.addEventListener('mouseup',function(e){if(e.button!==1||!active)return;active=false;document.body.style.cursor='';if(rafId){cancelAnimationFrame(rafId);rafId=null;}});function tick(){if(!active){rafId=null;return;}var dy=lastY-startY;if(Math.abs(dy)>5)window.scrollBy(0,dy*0.12);rafId=requestAnimationFrame(tick);}})();
+</script><!-- EFFECTS: grain Â· scroll-reveal Â· border sweep Â· parallax Â· inertia -->
+<style>
+@keyframes grain{0%,100%{transform:translate(0,0);}10%{transform:translate(-2%,-3%);}20%{transform:translate(3%,1%);}30%{transform:translate(-1%,4%);}40%{transform:translate(4%,-2%);}50%{transform:translate(-3%,3%);}60%{transform:translate(2%,-4%);}70%{transform:translate(-4%,1%);}80%{transform:translate(1%,3%);}90%{transform:translate(3%,-1%);}}
+.grain::before{content:'';position:absolute;inset:-50%;width:200%;height:200%;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");background-size:200px 200px;opacity:0.038;animation:grain 0.8s steps(1) infinite;pointer-events:none;z-index:3;}
+[data-anim]{opacity:0;transition:opacity 0.65s ease,transform 0.65s ease;}[data-anim="fade-up"]{transform:translateY(32px);}[data-anim="fade-in"]{transform:none;}[data-anim].visible{opacity:1;transform:none;}[data-delay="100"]{transition-delay:0.10s;}[data-delay="200"]{transition-delay:0.20s;}[data-delay="300"]{transition-delay:0.30s;}[data-delay="400"]{transition-delay:0.40s;}[data-delay="500"]{transition-delay:0.50s;}
+@media(prefers-reduced-motion:reduce){[data-anim]{opacity:1;transform:none;transition:none;}[data-delay="100"],[data-delay="200"],[data-delay="300"],[data-delay="400"],[data-delay="500"]{transition-delay:0s;}}
+.product-card,.mfr-card{position:relative;}.card-border-sweep{position:absolute;inset:0;pointer-events:none;z-index:6;overflow:hidden;}.card-border-sweep canvas{position:absolute;inset:0;width:100%;height:100%;}
+</style>
+<script>
+(function(){var els=document.querySelectorAll('[data-anim]');if(!els.length)return;var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}});},{threshold:0.12});els.forEach(function(el){io.observe(el);});})();
+(function(){var COLOR='#8B0000',DURATION=700,BORDER=2;function getPL(w,h){return 2*(w+h);}function ptP(x,y,w,h){if(y<=BORDER)return x;if(x>=w-BORDER)return w+y;if(y>=h-BORDER)return w+h+(w-x);return w+h+w+(h-y);}function initCard(card){if(card.querySelector('.card-border-sweep'))return;var wrap=document.createElement('div');wrap.className='card-border-sweep';var cvs=document.createElement('canvas');wrap.appendChild(cvs);card.appendChild(wrap);var raf=null,startP=0,progress=0,animStart=0,leaving=false,leaveStart=0,leaveOpacity=0;function resize(){cvs.width=card.offsetWidth;cvs.height=card.offsetHeight;}resize();new ResizeObserver(resize).observe(card);function draw(now){var w=cvs.width,h=cvs.height,ctx=cvs.getContext('2d');ctx.clearRect(0,0,w,h);var perim=getPL(w,h),opacity=1;if(leaving){var elapsed=now-leaveStart;opacity=leaveOpacity*(1-Math.min(elapsed/350,1));if(opacity<=0){raf=null;return;}}else{var elapsed2=now-animStart;progress=Math.min(elapsed2/DURATION,1);progress=1-Math.pow(1-progress,3);}var sweepLen=perim*progress,segs=[{x1:0,y1:0,x2:w,y2:0},{x1:w,y1:0,x2:w,y2:h},{x1:w,y1:h,x2:0,y2:h},{x1:0,y1:h,x2:0,y2:0}],sLens=[w,h,w,h],drawn=0,s=startP%perim,started=false;ctx.save();ctx.strokeStyle=COLOR;ctx.lineWidth=BORDER;ctx.globalAlpha=opacity;ctx.beginPath();for(var pass=0;pass<2;pass++){var cum=0;for(var i=0;i<4;i++){var sLen=sLens[i],sStart=cum,sEnd=cum+sLen;cum+=sLen;if(!started){if(sEnd<=s)continue;var t=(s-sStart)/sLen,sx=segs[i].x1+(segs[i].x2-segs[i].x1)*t,sy=segs[i].y1+(segs[i].y2-segs[i].y1)*t;ctx.moveTo(sx,sy);started=true;var rem=sLen*(1-t),canDraw=Math.min(rem,sweepLen-drawn),t2=t+canDraw/sLen;ctx.lineTo(segs[i].x1+(segs[i].x2-segs[i].x1)*t2,segs[i].y1+(segs[i].y2-segs[i].y1)*t2);drawn+=canDraw;}else{var canDraw2=Math.min(sLen,sweepLen-drawn),t3=canDraw2/sLen;ctx.lineTo(segs[i].x1+(segs[i].x2-segs[i].x1)*t3,segs[i].y1+(segs[i].y2-segs[i].y1)*t3);drawn+=canDraw2;}if(drawn>=sweepLen)break;}if(drawn>=sweepLen||pass===1)break;s=0;}ctx.stroke();ctx.restore();raf=requestAnimationFrame(draw);}card.addEventListener('mouseenter',function(e){leaving=false;var rect=card.getBoundingClientRect();startP=ptP(e.clientX-rect.left,e.clientY-rect.top,cvs.width,cvs.height);progress=0;animStart=performance.now();if(!raf)raf=requestAnimationFrame(draw);});card.addEventListener('mouseleave',function(){leaving=true;leaveStart=performance.now();leaveOpacity=progress;});}document.addEventListener('DOMContentLoaded',function(){document.querySelectorAll('.product-card,.mfr-card').forEach(initCard);});})();
+(function(){if(window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;var bg=document.querySelector('.hero-bg');if(!bg)return;window.addEventListener('scroll',function(){bg.style.transform='scale(1.04) translateY('+(window.scrollY*0.28)+'px)';},{passive:true});})();
+</script>
+</body>
+</html>
