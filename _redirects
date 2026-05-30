@@ -1,0 +1,6 @@
+# Cloudflare Pages redirects/rewrites
+# (Wix ignores this file — it only affects the Cloudflare site)
+
+# Serve the homepage at the root URL without renaming homepage.html
+# (renaming would break the live Wix iframe embed while Wix is still up)
+/    /homepage.html    200
