@@ -499,7 +499,7 @@
 </div>
 
 </main>
-<script src="https://rlsh1855.github.io/3Js-and-RLSH-Website/site-nav.js"></script>
+<script src="https://rlsh1855.github.io/3Js-and-RLSH-Website/site-shell.js"></script>
 <script>
 (function(){try{var s=localStorage.getItem('garage_vehicle');if(!s)return;var v=JSON.parse(s);if(!v||!v.year||!v.make)return;var el=document.getElementById('g2-garage-badge');if(!el)return;el.textContent='✓ Fits Your '+v.year+' '+v.make+' '+v.model+(v.bedSize?' · '+v.bedSize:'');el.style.display='block';}catch(e){}})();
 (function(){var els=document.querySelectorAll('[data-a]');if(!window.IntersectionObserver){els.forEach(function(el){el.classList.add('on');});return;}var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target);}});},{threshold:0.10,rootMargin:'0px 0px -40px 0px'});els.forEach(function(el){io.observe(el);});})();

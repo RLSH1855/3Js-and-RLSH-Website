@@ -403,7 +403,7 @@
 </div>
 
 </main>
-<script src="https://rlsh1855.github.io/3Js-and-RLSH-Website/site-nav.js"></script>
+<script src="https://rlsh1855.github.io/3Js-and-RLSH-Website/site-shell.js"></script>
 <script>
 (function(){var els=document.querySelectorAll('[data-a]');if(!window.IntersectionObserver){els.forEach(function(el){el.classList.add('on');});return;}var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target);}});},{threshold:0.10,rootMargin:'0px 0px -40px 0px'});els.forEach(function(el){io.observe(el);});})();
 (function(){var nums=document.querySelectorAll('.stat-num em');if(!nums.length)return;var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(!e.isIntersecting)return;var el=e.target;var target=parseInt(el.textContent,10);if(isNaN(target))return;if(window.matchMedia('(prefers-reduced-motion:reduce)').matches){el.textContent=target;io.unobserve(el);return;}var dur=1400,start=null;function step(ts){if(!start)start=ts;var p=Math.min((ts-start)/dur,1);var ease=1-Math.pow(1-p,4);el.textContent=Math.round(ease*target);if(p<1)requestAnimationFrame(step);else el.textContent=target;}requestAnimationFrame(step);io.unobserve(el);});},{threshold:0.5});nums.forEach(function(el){io.observe(el);});})();

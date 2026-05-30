@@ -825,7 +825,7 @@
   document.querySelectorAll('.faq-body').forEach(function(p){p.addEventListener('transitionend',function(e){if(e.propertyName!=='height')return;if(p.closest('.faq-item').classList.contains('open'))p.style.height='auto';});});
   document.querySelectorAll('.faq-trigger').forEach(function(btn){btn.addEventListener('click',function(){var item=btn.closest('.faq-item'),wasOpen=item.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(faqClose);if(!wasOpen){faqOpen(item);}setTimeout(reportHeight,350);});});
 </script>
-<script src="https://rlsh1855.github.io/3Js-and-RLSH-Website/site-nav.js"></script>
+<script src="https://rlsh1855.github.io/3Js-and-RLSH-Website/site-shell.js"></script>
 
 <div id="height-sentinel" style="height:1px;width:1px;visibility:hidden;pointer-events:none;"></div>
 
