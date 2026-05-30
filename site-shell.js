@@ -150,23 +150,23 @@
     '<div class="ss-top">'+
       '<a href="https://www.3jsautobody.com/rhino-lining-quote" class="ss-tb-btn red" target="_top">Bed-Liner Quote</a>'+
       '<div class="ss-logos">'+
-        '<a href="https://www.3jsautobody.com/" target="_top"><img class="ss-logo-rlsh" src="https://static.wixstatic.com/media/b95bd9_8e3e4f256c85462d960aaa1e3ef740c8~mv2.png" alt="RLSH Rhino Lining of Signal Hill"></a>'+
-        '<a href="https://www.3jsautobody.com/" target="_top"><img class="ss-logo-3js" src="https://static.wixstatic.com/media/b95bd9_86c7cf1e525d4b9e961a2738ed9af502~mv2.png" alt="3J\'s Auto Body & Paint"></a>'+
+        '<a href="/" target="_top"><img class="ss-logo-rlsh" src="https://static.wixstatic.com/media/b95bd9_8e3e4f256c85462d960aaa1e3ef740c8~mv2.png" alt="RLSH Rhino Lining of Signal Hill"></a>'+
+        '<a href="/" target="_top"><img class="ss-logo-3js" src="https://static.wixstatic.com/media/b95bd9_86c7cf1e525d4b9e961a2738ed9af502~mv2.png" alt="3J\'s Auto Body & Paint"></a>'+
       '</div>'+
       '<a href="https://www.carwise.com/online-photo-estimate/3js-autobody-paint-inc-signal-hill-ca-90755/479382?source=shop.profile&referer=estimate.cccone.com" class="ss-tb-btn blue" target="_top">Free Online Repair Estimate</a>'+
       '<button class="ss-burger" id="ssBurger" aria-label="Open menu"><span></span><span></span><span></span></button>'+
     '</div>'+
     '<nav class="ss-nav" aria-label="Main navigation">'+
       '<div class="ss-links">'+
-        '<a href="https://www.3jsautobody.com/" target="_top">Home</a>'+
-        '<a href="https://www.3jsautobody.com/inside-3js" target="_top">Inside 3J\'s</a>'+
-        '<a href="https://www.3jsautobody.com/body-paint-repairs" target="_top">Body &amp; Paint Repairs</a>'+
-        '<a href="https://www.3jsautobody.com/rhino-liner" id="sn-trigger-rhino" target="_top">Rhino Liner +</a>'+
-        '<a href="https://www.3jsautobody.com/bundles" id="sn-trigger-bundles" target="_top">Bundles &amp; Packages +</a>'+
-        '<a href="https://www.3jsautobody.com/exterior-accessories" id="sn-trigger-exterior" target="_top">Exterior Accessories +</a>'+
-        '<a href="https://www.3jsautobody.com/shop" target="_top">Shop</a>'+
-        '<a href="https://www.3jsautobody.com/contact-us" target="_top">Contact Us</a>'+
-        '<a href="https://www.3jsautobody.com/faq" target="_top">FAQ</a>'+
+        '<a href="/" target="_top">Home</a>'+
+        '<a href="/inside-3js" target="_top">Inside 3J\'s</a>'+
+        '<a href="/body-paint-repairs" target="_top">Body &amp; Paint Repairs</a>'+
+        '<a href="/rhino-liner" id="sn-trigger-rhino" target="_top">Rhino Liner +</a>'+
+        '<a href="/bundles" id="sn-trigger-bundles" target="_top">Bundles &amp; Packages +</a>'+
+        '<a href="/exterior-accessories-V2" id="sn-trigger-exterior" target="_top">Exterior Accessories +</a>'+
+        '<a href="/shop" target="_top">Shop</a>'+
+        '<a href="/contact" target="_top">Contact Us</a>'+
+        '<a href="/FAQ_PAGE_V2" target="_top">FAQ</a>'+
       '</div>'+
       '<a href="#" class="ss-garage" id="ss-garage-btn">'+
         '<span class="ss-garage-ico">'+icoTruck+'</span>'+
@@ -176,21 +176,21 @@
     '</nav>'+
     /* mobile menu */
     '<div class="ss-mob" id="ssMob" aria-label="Mobile navigation">'+
-      '<a href="https://www.3jsautobody.com/" target="_top">Home</a>'+
-      '<a href="https://www.3jsautobody.com/inside-3js" target="_top">Inside 3J\'s</a>'+
-      '<a href="https://www.3jsautobody.com/body-paint-repairs" target="_top">Body &amp; Paint Repairs</a>'+
+      '<a href="/" target="_top">Home</a>'+
+      '<a href="/inside-3js" target="_top">Inside 3J\'s</a>'+
+      '<a href="/body-paint-repairs" target="_top">Body &amp; Paint Repairs</a>'+
       '<div class="ss-mob-item">'+
         '<button class="ss-mob-top">Truck Accessories <span class="ss-mob-arrow">▶</span></button>'+
         '<div class="ss-mob-sub">'+
           '<span class="ss-mob-sub-label">Bed Protection</span>'+
-          '<a href="https://www.3jsautobody.com/rhino-liner" target="_top">Rhino Liner</a>'+
-          '<a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/floor-liners.html" target="_top">Floor Liners</a>'+
+          '<a href="/rhino-liner" target="_top">Rhino Liner</a>'+
+          '<a href="/floor-liners" target="_top">Floor Liners</a>'+
           '<span class="ss-mob-sub-label">Covers &amp; Steps</span>'+
-          '<a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/tonneau-covers.html" target="_top">Tonneau Covers</a>'+
-          '<a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/steps-running-boards.html" target="_top">Steps &amp; Running Boards</a>'+
-          '<a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/towing-hitches.html" target="_top">Towing &amp; Hitches</a>'+
-          '<a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/lighting.html" target="_top">Lighting</a>'+
-          '<a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/headache-racks.html" target="_top">Headache Racks</a>'+
+          '<a href="/tonneau-covers" target="_top">Tonneau Covers</a>'+
+          '<a href="/steps-running-boards" target="_top">Steps &amp; Running Boards</a>'+
+          '<a href="/towing-hitches" target="_top">Towing &amp; Hitches</a>'+
+          '<a href="/lighting" target="_top">Lighting</a>'+
+          '<a href="/headache-racks" target="_top">Headache Racks</a>'+
         '</div>'+
       '</div>'+
       '<div class="ss-mob-item">'+
@@ -207,10 +207,10 @@
           '<a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_BELLFLOWER.html" target="_top">Bellflower</a>'+
         '</div>'+
       '</div>'+
-      '<a href="https://www.3jsautobody.com/bundles" target="_top">Bundles &amp; Packages</a>'+
-      '<a href="https://www.3jsautobody.com/shop" target="_top">Shop</a>'+
-      '<a href="https://www.3jsautobody.com/contact-us" target="_top">Contact Us</a>'+
-      '<a href="https://www.3jsautobody.com/faq" target="_top">FAQ</a>'+
+      '<a href="/bundles" target="_top">Bundles &amp; Packages</a>'+
+      '<a href="/shop" target="_top">Shop</a>'+
+      '<a href="/contact" target="_top">Contact Us</a>'+
+      '<a href="/FAQ_PAGE_V2" target="_top">FAQ</a>'+
       '<a href="https://www.3jsautobody.com/rhino-lining-quote" class="ss-mob-red" target="_top">Bed-Liner Quote</a>'+
       '<button class="ss-mob-garage" id="ss-mob-garage-btn">'+icoTruck+' <span id="ssMobGarageVeh">My Garage</span></button>'+
     '</div>'+
@@ -224,15 +224,15 @@
     '<div class="ss-footer-grid">'+
       '<div class="ss-footer-col">'+
         '<div class="ss-footer-h">Help</div>'+
-        '<a href="https://www.3jsautobody.com/contact-us" target="_top">Contact Us</a>'+
+        '<a href="/contact" target="_top">Contact Us</a>'+
         '<a href="https://www.3jsautobody.com/shipping-policy" target="_top">Shipping Policy</a>'+
         '<a href="https://www.3jsautobody.com/terms-conditions" target="_top">Terms &amp; Conditions</a>'+
-        '<a href="https://www.3jsautobody.com/returns-warranties" target="_top">Returns &amp; Warranties</a>'+
+        '<a href="/warranty" target="_top">Returns &amp; Warranties</a>'+
         '<a href="https://www.3jsautobody.com/privacy-policy" target="_top">Privacy Policy</a>'+
       '</div>'+
       '<div class="ss-footer-col">'+
         '<div class="ss-footer-h">Resources</div>'+
-        '<a href="https://www.3jsautobody.com/company-information" target="_top">Company Information</a>'+
+        '<a href="/inside-3js" target="_top">Company Information</a>'+
         '<a href="https://www.3jsautobody.com/testimonials" target="_top">Customer Testimonials</a>'+
         '<a href="https://www.3jsautobody.com/sitemap" target="_top">Sitemap</a>'+
       '</div>'+
