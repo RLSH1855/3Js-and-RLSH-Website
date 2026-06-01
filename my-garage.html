@@ -11,7 +11,7 @@
 
     /* ── POPUP (fills lightbox iframe) ── */
     .popup{
-      width:100%;height:100vh;
+      width:100%;height:100vh;height:100dvh;
       display:flex;flex-direction:column;
       position:fixed;top:0;left:0;right:0;bottom:0;overflow:hidden;
       border:1px solid #e2e8f0;
@@ -34,7 +34,7 @@
 
     /* ── LEFT PANEL: persistent image (stays dark for contrast) ── */
     .image-panel{
-      width:100%;height:38vh;flex-shrink:0;
+      width:100%;height:26vh;flex-shrink:0;
       position:relative;overflow:hidden;background:#080808;
     }
     @media(min-width:641px){
@@ -63,7 +63,7 @@
     /* Form content wrapper — centers content at 350px within right panel */
     .form-wrap{
       width:350px;max-width:100%;margin:0 auto;
-      display:flex;flex-direction:column;flex:1;justify-content:center;
+      display:flex;flex-direction:column;flex:1;justify-content:flex-start;
     }
 
     /* ── SCREENS ── */
@@ -368,7 +368,7 @@
     .screen::-webkit-scrollbar-thumb{background:#e2e8f0;}
 
     /* ── MOBILE COMPACT (default — stacked layout) ── */
-    .screen{padding:16px 18px 14px;overflow-y:auto;overscroll-behavior:contain;}
+    .screen{padding:16px 18px 28px;overflow-y:auto;overscroll-behavior:contain;}
     .form-wrap{width:100%;}
     .step-pill{margin-bottom:8px;}
     .entry-tabs{margin-bottom:10px;}
@@ -391,7 +391,7 @@
     /* ── DESKTOP OVERRIDES ── */
     @media(min-width:641px){
       .screen{padding:28px 28px 24px;}
-      .form-wrap{width:350px;}
+      .form-wrap{width:350px;justify-content:center;}
       .step-pill{margin-bottom:16px;}
       .entry-tabs{margin-bottom:16px;}
       .s1-heading{font-size:clamp(22px,2.6vw,32px);margin-bottom:20px;}
