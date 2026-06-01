@@ -360,7 +360,7 @@
       </div>
       <p class="br-desc">Patented hoop step design. .084" wall tubular steel — thicker than anything else in its class. 5-year finish warranty, lifetime workmanship warranty. Vehicle-specific bolt-on brackets. No drilling on most applications.</p>
       <div class="br-actions">
-        <a class="br-btn" href="https://rlsh1855.github.io/3Js-and-RLSH-Website/parts-quote.html" target="_top">Get a Quote</a>
+        <a class="br-btn" href="parts-quote.html" target="_top">Get a Quote</a>
         <a class="br-link" href="https://www.3jsautobody.com/shop?brand=nfab&cat=running-boards" target="_top">View Full Lineup <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
       </div>
     </div>
@@ -382,7 +382,7 @@
       </div>
       <p class="br-desc">The original power running board. Auto-deploys when you open your door, retracts when you close it. We handle the complete in-shop electrical installation — you drive home with a fully working system.</p>
       <div class="br-actions">
-        <a class="br-btn" href="https://rlsh1855.github.io/3Js-and-RLSH-Website/parts-quote.html" target="_top">Get a Quote</a>
+        <a class="br-btn" href="parts-quote.html" target="_top">Get a Quote</a>
         <a class="br-link" href="https://www.3jsautobody.com/shop?brand=amp-research&cat=running-boards" target="_top">View Full Lineup <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
       </div>
     </div>
@@ -404,7 +404,7 @@
       </div>
       <p class="br-desc">The most complete lineup in the category. From 4" OE Xtreme tube steps to the full-cab RB20 running board, Go Rhino covers every truck and every style. Textured Black powder coat, factory bolt-on system.</p>
       <div class="br-actions">
-        <a class="br-btn" href="https://rlsh1855.github.io/3Js-and-RLSH-Website/parts-quote.html" target="_top">Get a Quote</a>
+        <a class="br-btn" href="parts-quote.html" target="_top">Get a Quote</a>
         <a class="br-link" href="https://www.3jsautobody.com/shop?brand=go-rhino&cat=running-boards" target="_top">View Full Lineup <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
       </div>
     </div>
@@ -426,7 +426,7 @@
       </div>
       <p class="br-desc">From heavy-duty drop nerf bars to full electric power boards, Westin covers every budget and every build. Available in Textured Black and Stainless Steel on most styles. We install the full lineup.</p>
       <div class="br-actions">
-        <a class="br-btn" href="https://rlsh1855.github.io/3Js-and-RLSH-Website/parts-quote.html" target="_top">Get a Quote</a>
+        <a class="br-btn" href="parts-quote.html" target="_top">Get a Quote</a>
         <a class="br-link" href="https://www.3jsautobody.com/shop?brand=westin&cat=running-boards" target="_top">View Full Lineup <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
       </div>
     </div>
@@ -494,7 +494,7 @@
         <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.7 10.82 19.79 19.79 0 01.67 2.18 2 2 0 012.66 0h3a2 2 0 012 1.72c.13 1 .36 1.97.7 2.91a2 2 0 01-.45 2.11L6.91 7.74a16 16 0 006.29 6.29l1-.99a2 2 0 012.11-.45c.94.34 1.91.57 2.91.7A2 2 0 0122 16.92z"/></svg>
         Call (562) 424-6744
       </a>
-      <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/parts-quote.html" target="_top" class="btn-ghost-white">
+      <a href="parts-quote.html" target="_top" class="btn-ghost-white">
         <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
         Get a Free Quote
       </a>
@@ -561,9 +561,10 @@ document.addEventListener('click',function(e){
       });
     });
   });
-  // Restore from sessionStorage
-  var sy=sessionStorage.getItem('rlsh_year'),sm=sessionStorage.getItem('rlsh_make'),smd=sessionStorage.getItem('rlsh_model');
-  if(sy&&sm&&smd){
+  // Restore from the site-wide garage (shared localStorage 'garage_vehicle')
+  var _g=null;try{var _s=localStorage.getItem('garage_vehicle');if(_s)_g=JSON.parse(_s);}catch(e){}
+  if(_g&&_g.year&&_g.make&&_g.model){
+    var sy=_g.year,sm=_g.make,smd=_g.model;
     document.getElementById('ymm-active-text').textContent=sy+' '+sm+' '+smd;
     document.getElementById('ymm-active').classList.add('show');
     setDdVal('ymm-year','ymm-year-lbl','dd-year',sy,sy,true);
@@ -575,16 +576,25 @@ document.addEventListener('click',function(e){
 
 document.getElementById('ymm-btn').addEventListener('click',function(){
   if(!ymm.year||!ymm.make||!ymm.model)return;
-  sessionStorage.setItem('rlsh_year',ymm.year);
-  sessionStorage.setItem('rlsh_make',ymm.make);
-  sessionStorage.setItem('rlsh_model',ymm.model);
+  // Save into the site-wide garage so the truck carries to every page
+  if(window.RLSHGarage){
+    window.RLSHGarage.set({year:ymm.year,make:ymm.make,model:ymm.model});
+  }else{
+    var _cur={};try{var _s=localStorage.getItem('garage_vehicle');if(_s)_cur=JSON.parse(_s)||{};}catch(e){}
+    if(_cur.make!==ymm.make||_cur.model!==ymm.model){_cur.trim='';_cur.bedSize='';_cur.color='';}
+    _cur.year=ymm.year;_cur.make=ymm.make;_cur.model=ymm.model;
+    _cur.label=ymm.year+' '+ymm.make+' '+ymm.model;
+    try{localStorage.setItem('garage_vehicle',JSON.stringify(_cur));}catch(e){}
+    try{window.dispatchEvent(new Event('garageUpdated'));}catch(e){}
+  }
   document.getElementById('ymm-active-text').textContent=ymm.year+' '+ymm.make+' '+ymm.model;
   document.getElementById('ymm-active').classList.add('show');
   document.querySelector('.brands-section').scrollIntoView({behavior:'smooth',block:'start'});
 });
 
 document.getElementById('ymm-clear').addEventListener('click',function(){
-  sessionStorage.removeItem('rlsh_year');sessionStorage.removeItem('rlsh_make');sessionStorage.removeItem('rlsh_model');
+  if(window.RLSHGarage){window.RLSHGarage.clear();}
+  else{try{localStorage.removeItem('garage_vehicle');}catch(e){}try{window.dispatchEvent(new Event('garageUpdated'));}catch(e){}}
   ymm={year:'',make:'',model:''};
   document.getElementById('ymm-active').classList.remove('show');
   setDdVal('ymm-year','ymm-year-lbl','dd-year','','Year',true);
@@ -593,6 +603,15 @@ document.getElementById('ymm-clear').addEventListener('click',function(){
   buildList('ymm-make-list',[],function(){});
   buildList('ymm-model-list',[],function(){});
   document.getElementById('ymm-btn').disabled=true;
+});
+
+// Live-sync the active truck if it changes on another page/tab or via the My Garage popup
+window.addEventListener('storage',function(e){
+  if(e.key!=='garage_vehicle')return;
+  var at=document.getElementById('ymm-active-text'),ac=document.getElementById('ymm-active');
+  if(!at||!ac)return;
+  if(!e.newValue){ac.classList.remove('show');return;}
+  try{var v=JSON.parse(e.newValue);if(v&&v.year){at.textContent=v.year+' '+v.make+' '+v.model;ac.classList.add('show');}}catch(err){}
 });
 
 // Tier pill swap

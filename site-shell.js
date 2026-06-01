@@ -362,6 +362,41 @@
     sync();
     window.addEventListener('storage',function(e){if(e.key==='garage_vehicle')sync();});
     window.addEventListener('garageUpdated',sync);
+
+    /* ── SHARED GARAGE ACCESSOR ── single source of truth for the saved truck.
+       Every page reads/writes the vehicle through this so the flow stays seamless. */
+    window.RLSHGarage=(function(){
+      var KEY='garage_vehicle';
+      function get(){try{var s=localStorage.getItem(KEY);return s?JSON.parse(s):null;}catch(e){return null;}}
+      function buildLabel(v){
+        if(!v||!v.year) return '';
+        return v.year+' '+v.make+' '+v.model+(v.trim?' — '+v.trim:'');
+      }
+      function set(obj){
+        if(!obj||typeof obj!=='object') return null;
+        var cur=get()||{};
+        // If the vehicle identity changed, drop trim/bed/color so they can't bleed across trucks.
+        if((obj.make&&obj.make!==cur.make)||(obj.model&&obj.model!==cur.model)){
+          cur.trim='';cur.bedSize='';cur.color='';
+        }
+        var merged=Object.assign({},cur,obj);
+        merged.label=buildLabel(merged);
+        try{localStorage.setItem(KEY,JSON.stringify(merged));}catch(e){}
+        try{window.dispatchEvent(new Event('garageUpdated'));}catch(e){}
+        return merged;
+      }
+      function clear(){
+        try{localStorage.removeItem(KEY);}catch(e){}
+        try{window.dispatchEvent(new Event('garageUpdated'));}catch(e){}
+      }
+      function subscribe(cb){
+        window.addEventListener('storage',function(e){if(e.key===KEY)cb(get());});
+        window.addEventListener('garageUpdated',function(){cb(get());});
+      }
+      // "2021 Ford F-150 XLT" style string for pre-filling the quote form
+      function vehicleString(){var v=get();return v?buildLabel(v):'';}
+      return {get:get,set:set,clear:clear,subscribe:subscribe,vehicleString:vehicleString,KEY:KEY};
+    })();
     window.addEventListener('message',function(e){
       var d; try{ d=typeof e.data==='string'?JSON.parse(e.data):e.data; }catch(ex){ return; }
       if(!d||!d.type) return;
