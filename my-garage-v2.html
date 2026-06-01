@@ -337,6 +337,15 @@
       transition:all 0.2s;
     }
     .s3-btn-secondary:hover{border-color:#8B0000;color:#8B0000;}
+    .s3-btn-clear{
+      padding:12px 20px;
+      background:transparent;color:#8B0000;
+      border:1px solid #8B0000;
+      font-family:'Inter',sans-serif;font-size:10px;font-weight:800;
+      letter-spacing:2px;text-transform:uppercase;cursor:pointer;
+      transition:background 0.2s,color 0.2s,border-color 0.2s;
+    }
+    .s3-btn-clear:hover{background:#8B0000;color:#fff;border-color:#8B0000;}
 
     .s3-close{
       margin-top:auto;align-self:center;
@@ -376,7 +385,7 @@
     .s3-check{width:36px;height:36px;font-size:16px;}
     .s3-title{font-size:15px;}
     .s3-actions{flex-direction:column;align-items:stretch;gap:8px;}
-    .s3-btn-primary,.s3-btn-secondary{width:100%;text-align:center;padding:10px 16px;}
+    .s3-btn-primary,.s3-btn-secondary,.s3-btn-clear{width:100%;text-align:center;padding:10px 16px;}
     .s3-close{margin-top:8px;}
 
     /* ── DESKTOP OVERRIDES ── */
@@ -398,7 +407,7 @@
       .s3-check{width:44px;height:44px;font-size:20px;}
       .s3-title{font-size:18px;}
       .s3-actions{flex-direction:row;align-items:center;gap:10px;}
-      .s3-btn-primary,.s3-btn-secondary{width:auto;padding:12px 20px;}
+      .s3-btn-primary,.s3-btn-secondary,.s3-btn-clear{width:auto;padding:12px 20px;}
       .s3-close{margin-top:auto;}
     }
   </style>
@@ -554,6 +563,7 @@
         <div class="s3-actions">
           <button class="s3-btn-primary" onclick="browseAccessories()">Browse Accessories</button>
           <button class="s3-btn-secondary" onclick="resetAll()">Change Vehicle</button>
+          <button class="s3-btn-clear" onclick="clearVehicle()">Clear Vehicle</button>
         </div>
       </div>
       <button class="s3-close" onclick="closeGarage()">Close</button>
@@ -915,7 +925,21 @@ function saveVehicle(){
   transitionTo('screen-3','forward');
 }
 
+function clearGarageData(){
+  try{ localStorage.removeItem('garage_vehicle'); }catch(e){}
+  if(window.RLSHGarage){ try{ window.RLSHGarage.clear(); }catch(e){} }
+  currentVehicle=null;
+  try{ window.parent.postMessage({type:'garage_clear'},'*'); }catch(e){}
+}
+
+function clearVehicle(){
+  clearGarageData();
+  document.getElementById('s3-vehicle').innerHTML='—';
+  resetAll();
+}
+
 function resetAll(){
+  clearGarageData();
   switchEntry('ymm');
   ['year','make','model'].forEach(function(n){
     document.getElementById('val-'+n).value='';
