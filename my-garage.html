@@ -4,18 +4,18 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>My Garage — 3J's Auto Body</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet"/>
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    html,body{height:100%;overflow:hidden;background:#080808;touch-action:pan-y;}
+    html,body{height:100%;overflow:hidden;background:#fff;touch-action:pan-y;}
 
     /* ── POPUP (fills lightbox iframe) ── */
     .popup{
       width:100%;height:100vh;
       display:flex;flex-direction:column;
       position:fixed;top:0;left:0;right:0;bottom:0;overflow:hidden;
-      border:1px solid #2a2a2a;
-      box-shadow:0 32px 80px rgba(0,0,0,0.8), 0 0 0 1px rgba(255,255,255,0.04);
+      border:1px solid #e2e8f0;
+      box-shadow:0 32px 80px rgba(0,0,0,0.45), 0 0 0 1px rgba(0,0,0,0.04);
     }
     @media(min-width:641px){
       .popup{flex-direction:row;}
@@ -25,17 +25,17 @@
     .close-btn{
       position:absolute;top:14px;right:16px;
       background:none;border:none;
-      color:rgba(255,255,255,0.35);font-size:16px;
+      color:#9aa3af;font-size:16px;
       cursor:pointer;z-index:20;padding:4px 8px;
       transition:color 0.2s;line-height:1;
-      font-family:'Montserrat',sans-serif;font-weight:300;
+      font-family:'Inter',sans-serif;font-weight:300;
     }
-    .close-btn:hover{color:#fff;}
+    .close-btn:hover{color:#111;}
 
-    /* ── LEFT PANEL: persistent image ── */
+    /* ── LEFT PANEL: persistent image (stays dark for contrast) ── */
     .image-panel{
       width:100%;height:38vh;flex-shrink:0;
-      position:relative;overflow:hidden;
+      position:relative;overflow:hidden;background:#080808;
     }
     @media(min-width:641px){
       .image-panel{width:50%;height:100%;}
@@ -53,9 +53,9 @@
       background:rgba(0,0,0,0.15);
     }
 
-    /* ── RIGHT PANEL ── */
+    /* ── RIGHT PANEL (WHITE) ── */
     .content-panel{
-      flex:1;background:#080808;
+      flex:1;background:#fff;
       position:relative;
       overflow:hidden;
     }
@@ -63,7 +63,7 @@
     /* Form content wrapper — centers content at 350px within right panel */
     .form-wrap{
       width:350px;max-width:100%;margin:0 auto;
-      display:flex;flex-direction:column;flex:1;
+      display:flex;flex-direction:column;flex:1;justify-content:center;
     }
 
     /* ── SCREENS ── */
@@ -89,49 +89,68 @@
 
     /* ── STEP INDICATOR ── */
     .step-pill{
+      position:absolute;top:16px;left:18px;z-index:6;
       display:inline-flex;align-items:center;gap:6px;
-      margin-bottom:16px;
     }
     .step-dot{
       width:6px;height:6px;background:#8B0000;
     }
     .step-text{
-      font-family:'Montserrat',sans-serif;font-size:9px;font-weight:700;
-      letter-spacing:2.5px;text-transform:uppercase;color:#555;
+      font-family:'Barlow',sans-serif;font-size:9px;font-weight:700;
+      letter-spacing:2.5px;text-transform:uppercase;color:#9aa3af;
     }
-    .step-text span{color:#888;}
+    .step-text span{color:#424954;}
+
+    /* ── ENTRY TABS (YMM / VIN) ── */
+    .entry-tabs{
+      display:flex;gap:0;margin-bottom:16px;
+      border:1px solid #e2e8f0;
+    }
+    .entry-tab{
+      flex:1;padding:10px 8px;
+      background:#fff;border:none;border-right:1px solid #e2e8f0;
+      font-family:'Barlow',sans-serif;font-size:10px;font-weight:800;
+      letter-spacing:1.8px;text-transform:uppercase;color:#9aa3af;
+      cursor:pointer;transition:background 0.18s,color 0.18s;
+    }
+    .entry-tab:last-child{border-right:none;}
+    .entry-tab.active{background:#8B0000;color:#fff;}
+
+    .entry-pane{display:none;}
+    .entry-pane.active{display:block;}
 
     /* ── SCREEN 1 ── */
     .s1-heading{
-      font-family:'Montserrat',sans-serif;font-size:clamp(22px,2.6vw,32px);
+      font-family:'Inter',sans-serif;font-size:clamp(22px,2.6vw,32px);
       font-weight:900;letter-spacing:-0.5px;text-transform:uppercase;
-      color:#fff;line-height:1.35;margin-bottom:20px;
+      color:#111;line-height:1.35;margin-bottom:18px;text-align:center;
     }
     .s1-heading em{font-style:normal;color:#8B0000;}
 
     /* Custom pickers shared */
     .picker-field{margin-bottom:10px;}
     .picker-label{
-      font-family:'Montserrat',sans-serif;font-size:9px;font-weight:700;
-      letter-spacing:2px;text-transform:uppercase;color:#555;
+      font-family:'Barlow',sans-serif;font-size:9px;font-weight:700;
+      letter-spacing:2px;text-transform:uppercase;color:#777;
       display:block;margin-bottom:5px;
     }
+    .picker-label .opt{color:#b0b0b0;font-weight:600;}
     .picker-wrap{position:relative;}
 
     /* Picker button */
     .picker-btn{
       width:100%;padding:10px 12px;
-      background:#111;border:1px solid #2a2a2a;
-      font-family:'Montserrat',sans-serif;font-size:14px;font-weight:700;
-      color:#fff;letter-spacing:1.5px;
+      background:#fff;border:1px solid #cbd5e0;
+      font-family:'Inter',sans-serif;font-size:14px;font-weight:700;
+      color:#111;letter-spacing:1.5px;
       display:flex;align-items:center;justify-content:space-between;gap:8px;
       cursor:pointer;text-align:left;min-height:42px;
       transition:border-color 0.2s;
     }
-    .picker-btn:hover{border-color:#444;}
+    .picker-btn:hover{border-color:#8B0000;}
     .picker-btn.open{border-color:#8B0000;}
-    .picker-btn .ph{color:#3a3a3a;font-weight:600;}
-    .picker-btn.disabled-state{opacity:0.35;cursor:not-allowed;pointer-events:none;}
+    .picker-btn .ph{color:#9aa3af;font-weight:600;}
+    .picker-btn.disabled-state{opacity:0.4;cursor:not-allowed;pointer-events:none;background:#f6f7f9;}
     .picker-arrow{font-size:9px;color:#8B0000;transition:transform 0.2s;flex-shrink:0;}
     .picker-btn.open .picker-arrow{transform:rotate(180deg);}
 
@@ -139,8 +158,8 @@
     .picker-panel{
       display:none;
       position:absolute;top:calc(100% + 4px);left:0;right:0;
-      background:#111;border:1px solid #2a2a2a;
-      box-shadow:0 12px 40px rgba(0,0,0,0.7);
+      background:#fff;border:1px solid #cbd5e0;
+      box-shadow:0 12px 40px rgba(15,30,46,0.18);
       z-index:200;padding:8px;
       max-height:220px;overflow-y:auto;
     }
@@ -150,8 +169,8 @@
     .year-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;}
     .picker-cell{
       padding:7px 4px;text-align:center;
-      font-family:'Montserrat',sans-serif;font-size:13px;font-weight:700;
-      color:#ccc;cursor:pointer;letter-spacing:1px;
+      font-family:'Inter',sans-serif;font-size:13px;font-weight:700;
+      color:#333;cursor:pointer;letter-spacing:1px;
       transition:background 0.12s,color 0.12s;
     }
     .picker-cell:hover{background:#8B0000;color:#fff;}
@@ -164,61 +183,95 @@
     .model-list{display:grid;grid-template-columns:1fr;gap:2px;}
     .model-cell{
       padding:9px 12px;
-      font-family:'Montserrat',sans-serif;font-size:13px;font-weight:700;
-      color:#ccc;cursor:pointer;letter-spacing:1px;
+      font-family:'Inter',sans-serif;font-size:13px;font-weight:700;
+      color:#333;cursor:pointer;letter-spacing:1px;
       transition:background 0.12s,color 0.12s;
     }
     .model-cell:hover{background:#8B0000;color:#fff;}
     .model-cell.selected{background:#8B0000;color:#fff;}
 
-    /* Next btn */
-    .next-btn{
-      margin-top:auto;
+    /* ── VIN PANE ── */
+    .vin-intro{
+      font-family:'Barlow',sans-serif;font-size:13px;color:#424954;letter-spacing:0.3px;
+      line-height:1.6;margin-bottom:14px;
+    }
+    .vin-input{
+      width:100%;padding:12px 14px;
+      background:#fff;border:1px solid #cbd5e0;
+      font-family:'Inter',sans-serif;font-size:16px;font-weight:700;
+      letter-spacing:2px;text-transform:uppercase;color:#111;
+      margin-bottom:6px;min-height:46px;
+    }
+    .vin-input::placeholder{color:#9aa3af;letter-spacing:1px;font-weight:600;}
+    .vin-input:focus{outline:none;border-color:#8B0000;}
+    .vin-hint{font-family:'Barlow',sans-serif;font-size:11px;color:#9aa3af;letter-spacing:0.3px;margin-bottom:14px;}
+    .vin-status{
+      font-family:'Barlow',sans-serif;font-size:11px;font-weight:700;
+      letter-spacing:1.3px;min-height:16px;margin-bottom:12px;color:#424954;
+    }
+    .vin-status.err{color:#8B0000;}
+    .vin-status.ok{color:#1a7a3a;}
+    .vin-btn{
       width:100%;height:48px;
       background:#8B0000;color:#fff;border:2px solid #8B0000;
-      font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;
+      font-family:'Inter',sans-serif;font-size:11px;font-weight:800;
+      letter-spacing:2px;text-transform:uppercase;cursor:pointer;
+      transition:background 0.2s,color 0.2s,border-color 0.2s;
+    }
+    .vin-btn:hover{background:#fff;color:#8B0000;}
+    .vin-btn:disabled{opacity:0.5;cursor:default;}
+
+    /* Next btn */
+    .next-btn{
+      margin-top:18px;
+      width:100%;height:48px;
+      background:#8B0000;color:#fff;border:2px solid #8B0000;
+      font-family:'Inter',sans-serif;font-size:11px;font-weight:800;
       letter-spacing:2px;text-transform:uppercase;cursor:pointer;
       transition:background 0.2s,color 0.2s,border-color 0.2s,opacity 0.2s;
       opacity:0.3;pointer-events:none;
     }
     .next-btn.ready{opacity:1;pointer-events:all;}
-    .next-btn:hover{background:#fff;color:#8B0000;border-color:#fff;}
+    .next-btn:hover{background:#fff;color:#8B0000;border-color:#8B0000;}
 
     /* ── SCREEN 2 ── */
     .back-btn{
       display:inline-flex;align-items:center;gap:6px;
       padding:0 14px;height:30px;width:fit-content;margin-bottom:14px;
-      background:#111;border:1px solid #333;
-      font-family:'Montserrat',sans-serif;font-size:9px;font-weight:700;
+      background:#f4f4f4;border:1px solid #e2e8f0;
+      font-family:'Barlow',sans-serif;font-size:9px;font-weight:700;
       letter-spacing:2px;text-transform:uppercase;color:#777;
       cursor:pointer;transition:background 0.2s,border-color 0.2s,color 0.2s;
     }
-    .back-btn:hover{background:#1e1e1e;border-color:#555;color:#ccc;}
+    .back-btn:hover{background:#ececec;border-color:#cbd5e0;color:#333;}
 
     .confirm-label{
-      font-family:'Montserrat',sans-serif;font-size:9px;font-weight:700;
-      letter-spacing:2px;text-transform:uppercase;color:#555;margin-bottom:4px;
+      font-family:'Barlow',sans-serif;font-size:9px;font-weight:700;
+      letter-spacing:2px;text-transform:uppercase;color:#777;margin-bottom:4px;
     }
     .confirm-vehicle{
-      font-family:'Montserrat',sans-serif;font-size:17px;font-weight:900;
-      text-transform:uppercase;letter-spacing:0.5px;color:#fff;
+      font-family:'Inter',sans-serif;font-size:17px;font-weight:900;
+      text-transform:uppercase;letter-spacing:0.5px;color:#111;
       margin-bottom:24px;padding-bottom:16px;
-      border-bottom:1px solid #1e1e1e;line-height:1.2;
+      border-bottom:1px solid #e8e8e8;line-height:1.2;
     }
 
     .s2-field{margin-bottom:18px;}
     .s2-label{
-      font-family:'Montserrat',sans-serif;font-size:9px;font-weight:700;
-      letter-spacing:2px;text-transform:uppercase;color:#555;
+      font-family:'Barlow',sans-serif;font-size:9px;font-weight:700;
+      letter-spacing:2px;text-transform:uppercase;color:#777;
       display:block;margin-bottom:5px;
     }
+    .s2-label .req{color:#8B0000;}
+    .s2-label .opt{color:#b0b0b0;font-weight:600;}
 
     /* Color row */
     .color-row{display:flex;align-items:center;gap:10px;margin-bottom:22px;}
     .color-row-label{
-      font-family:'Montserrat',sans-serif;font-size:9px;font-weight:700;
-      letter-spacing:2px;text-transform:uppercase;color:#555;white-space:nowrap;
+      font-family:'Barlow',sans-serif;font-size:9px;font-weight:700;
+      letter-spacing:2px;text-transform:uppercase;color:#777;white-space:nowrap;
     }
+    .color-row-label .opt{color:#b0b0b0;font-weight:600;}
     .swatches{display:flex;gap:6px;flex-wrap:wrap;}
     .swatch{
       width:20px;height:20px;border-radius:50%;
@@ -229,21 +282,21 @@
     .swatch.selected{border-color:#8B0000;transform:scale(1.2);}
 
     .save-btn{
-      margin-top:auto;
+      margin-top:18px;
       width:100%;height:48px;
       background:#8B0000;color:#fff;border:2px solid #8B0000;
-      font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;
+      font-family:'Inter',sans-serif;font-size:11px;font-weight:800;
       letter-spacing:2px;text-transform:uppercase;cursor:pointer;
       transition:background 0.2s,color 0.2s,border-color 0.2s;
     }
-    .save-btn:hover{background:#fff;color:#8B0000;border-color:#fff;}
+    .save-btn:hover{background:#fff;color:#8B0000;border-color:#8B0000;}
 
     /* ── SCREEN 3 ── */
     .screen-3-inner{
       display:flex;flex-direction:column;
-      align-items:center;justify-content:flex-start;
+      align-items:center;justify-content:center;
       text-align:center;gap:22px;flex:1;
-      padding-top:44px;
+      padding-top:8px;
     }
     .s3-check{
       width:44px;height:44px;background:#8B0000;
@@ -251,18 +304,18 @@
       font-size:20px;color:#fff;margin-bottom:4px;
     }
     .s3-title{
-      font-family:'Montserrat',sans-serif;font-size:18px;font-weight:900;
-      text-transform:uppercase;letter-spacing:1px;color:#fff;
+      font-family:'Inter',sans-serif;font-size:18px;font-weight:900;
+      text-transform:uppercase;letter-spacing:1px;color:#111;
     }
     .s3-sub{
-      font-family:'Inter',sans-serif;font-size:12px;color:#555;
+      font-family:'Barlow',sans-serif;font-size:12px;color:#777;letter-spacing:0.3px;
       font-weight:400;
     }
     .s3-vehicle{
-      font-family:'Montserrat',sans-serif;font-weight:900;
+      font-family:'Inter',sans-serif;font-weight:900;
       font-size:clamp(13px,2vw,17px);
       letter-spacing:1px;
-      color:#fff;line-height:1.3;
+      color:#111;line-height:1.3;
     }
     .s3-vehicle .year-tag{color:#8B0000;}
 
@@ -270,58 +323,69 @@
     .s3-btn-primary{
       padding:12px 20px;
       background:#8B0000;color:#fff;border:2px solid #8B0000;
-      font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;
+      font-family:'Inter',sans-serif;font-size:10px;font-weight:800;
       letter-spacing:2px;text-transform:uppercase;cursor:pointer;
       transition:background 0.2s,color 0.2s,border-color 0.2s;
     }
-    .s3-btn-primary:hover{background:#fff;color:#8B0000;border-color:#fff;}
+    .s3-btn-primary:hover{background:#fff;color:#8B0000;border-color:#8B0000;}
     .s3-btn-secondary{
       padding:12px 20px;
-      background:transparent;color:#888;
-      border:1px solid #2a2a2a;
-      font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;
+      background:transparent;color:#777;
+      border:1px solid #cbd5e0;
+      font-family:'Inter',sans-serif;font-size:10px;font-weight:700;
       letter-spacing:2px;text-transform:uppercase;cursor:pointer;
       transition:all 0.2s;
     }
-    .s3-btn-secondary:hover{border-color:#666;color:#fff;}
+    .s3-btn-secondary:hover{border-color:#8B0000;color:#8B0000;}
+    .s3-btn-clear{
+      padding:12px 20px;
+      background:transparent;color:#8B0000;
+      border:1px solid #8B0000;
+      font-family:'Inter',sans-serif;font-size:10px;font-weight:800;
+      letter-spacing:2px;text-transform:uppercase;cursor:pointer;
+      transition:background 0.2s,color 0.2s,border-color 0.2s;
+    }
+    .s3-btn-clear:hover{background:#8B0000;color:#fff;border-color:#8B0000;}
 
     .s3-close{
       margin-top:auto;align-self:center;
       display:inline-flex;align-items:center;justify-content:center;
       padding:0 14px;height:30px;width:fit-content;
-      background:#111;border:1px solid #333;
-      font-family:'Montserrat',sans-serif;font-size:9px;font-weight:700;
+      background:#f4f4f4;border:1px solid #e2e8f0;
+      font-family:'Barlow',sans-serif;font-size:9px;font-weight:700;
       letter-spacing:2px;text-transform:uppercase;color:#777;
       cursor:pointer;transition:background 0.2s,border-color 0.2s,color 0.2s;
       text-decoration:none;
     }
-    .s3-close:hover{background:#1e1e1e;border-color:#555;color:#ccc;}
+    .s3-close:hover{background:#ececec;border-color:#cbd5e0;color:#333;}
 
     /* Scrollbar */
     .picker-panel::-webkit-scrollbar{width:4px;}
-    .picker-panel::-webkit-scrollbar-track{background:#0d0d0d;}
-    .picker-panel::-webkit-scrollbar-thumb{background:#2a2a2a;}
+    .picker-panel::-webkit-scrollbar-track{background:#f1f1f1;}
+    .picker-panel::-webkit-scrollbar-thumb{background:#cbd5e0;}
     .screen::-webkit-scrollbar{width:4px;}
-    .screen::-webkit-scrollbar-track{background:#080808;}
-    .screen::-webkit-scrollbar-thumb{background:#1e1e1e;}
+    .screen::-webkit-scrollbar-track{background:#fff;}
+    .screen::-webkit-scrollbar-thumb{background:#e2e8f0;}
 
     /* ── MOBILE COMPACT (default — stacked layout) ── */
     .screen{padding:16px 18px 14px;overflow-y:auto;overscroll-behavior:contain;}
     .form-wrap{width:100%;}
     .step-pill{margin-bottom:8px;}
+    .entry-tabs{margin-bottom:10px;}
     .s1-heading{font-size:18px;line-height:1.25;margin-bottom:12px;}
     .picker-field{margin-bottom:6px;}
     .picker-label{margin-bottom:3px;}
-    .picker-btn{font-size:12px;min-height:40px;padding:8px 10px;}
-    .next-btn,.save-btn{height:44px;margin-top:12px;}
+    .picker-btn{font-size:12px;min-height:44px;padding:10px 10px;}
+    .next-btn,.save-btn,.vin-btn{height:44px;margin-top:12px;}
+    .vin-btn{margin-top:0;}
     .confirm-vehicle{font-size:14px;margin-bottom:14px;padding-bottom:10px;}
     .s2-field{margin-bottom:10px;}
     .color-row{margin-bottom:12px;}
-    .screen-3-inner{padding-top:16px;gap:10px;}
+    .screen-3-inner{padding-top:8px;gap:10px;}
     .s3-check{width:36px;height:36px;font-size:16px;}
     .s3-title{font-size:15px;}
     .s3-actions{flex-direction:column;align-items:stretch;gap:8px;}
-    .s3-btn-primary,.s3-btn-secondary{width:100%;text-align:center;padding:10px 16px;}
+    .s3-btn-primary,.s3-btn-secondary,.s3-btn-clear{width:100%;text-align:center;padding:10px 16px;}
     .s3-close{margin-top:8px;}
 
     /* ── DESKTOP OVERRIDES ── */
@@ -329,19 +393,21 @@
       .screen{padding:28px 28px 24px;}
       .form-wrap{width:350px;}
       .step-pill{margin-bottom:16px;}
+      .entry-tabs{margin-bottom:16px;}
       .s1-heading{font-size:clamp(22px,2.6vw,32px);margin-bottom:20px;}
       .picker-field{margin-bottom:10px;}
       .picker-label{margin-bottom:5px;}
       .picker-btn{font-size:14px;min-height:42px;padding:10px 12px;}
-      .next-btn,.save-btn{height:48px;margin-top:auto;}
+      .next-btn,.save-btn{height:48px;}
+      .vin-btn{height:48px;}
       .confirm-vehicle{font-size:17px;margin-bottom:24px;padding-bottom:16px;}
       .s2-field{margin-bottom:18px;}
       .color-row{margin-bottom:22px;}
-      .screen-3-inner{padding-top:44px;gap:22px;}
+      .screen-3-inner{padding-top:8px;gap:18px;}
       .s3-check{width:44px;height:44px;font-size:20px;}
       .s3-title{font-size:18px;}
       .s3-actions{flex-direction:row;align-items:center;gap:10px;}
-      .s3-btn-primary,.s3-btn-secondary{width:auto;padding:12px 20px;}
+      .s3-btn-primary,.s3-btn-secondary,.s3-btn-clear{width:auto;padding:12px 20px;}
       .s3-close{margin-top:auto;}
     }
   </style>
@@ -371,49 +437,67 @@
       <div class="form-wrap">
       <h2 class="s1-heading">Find Parts That<br><em>Fit</em> Your Truck</h2>
 
-      <!-- Year picker -->
-      <div class="picker-field">
-        <span class="picker-label">Year</span>
-        <div class="picker-wrap" id="year-wrap">
-          <button type="button" class="picker-btn" id="year-btn" onclick="togglePicker('year')">
-            <span id="year-label" class="ph">Select Year</span>
-            <span class="picker-arrow">▼</span>
-          </button>
-          <div class="picker-panel" id="year-panel">
-            <div class="year-grid" id="year-grid"></div>
-          </div>
-        </div>
-        <input type="hidden" id="val-year"/>
+      <!-- Entry tabs -->
+      <div class="entry-tabs">
+        <button type="button" class="entry-tab active" id="tab-ymm" onclick="switchEntry('ymm')">Year / Make / Model</button>
+        <button type="button" class="entry-tab" id="tab-vin" onclick="switchEntry('vin')">Enter VIN</button>
       </div>
 
-      <!-- Make picker -->
-      <div class="picker-field">
-        <span class="picker-label">Make</span>
-        <div class="picker-wrap" id="make-wrap">
-          <button type="button" class="picker-btn disabled-state" id="make-btn" onclick="togglePicker('make')">
-            <span id="make-label" class="ph">Select Make</span>
-            <span class="picker-arrow">▼</span>
-          </button>
-          <div class="picker-panel" id="make-panel">
-            <div class="make-grid" id="make-grid"></div>
+      <!-- YMM pane -->
+      <div class="entry-pane active" id="pane-ymm">
+        <!-- Year picker -->
+        <div class="picker-field">
+          <span class="picker-label">Year</span>
+          <div class="picker-wrap" id="year-wrap">
+            <button type="button" class="picker-btn" id="year-btn" onclick="togglePicker('year')">
+              <span id="year-label" class="ph">Select Year</span>
+              <span class="picker-arrow">▼</span>
+            </button>
+            <div class="picker-panel" id="year-panel">
+              <div class="year-grid" id="year-grid"></div>
+            </div>
           </div>
+          <input type="hidden" id="val-year"/>
         </div>
-        <input type="hidden" id="val-make"/>
-      </div>
 
-      <!-- Model picker -->
-      <div class="picker-field">
-        <span class="picker-label">Model</span>
-        <div class="picker-wrap" id="model-wrap">
-          <button type="button" class="picker-btn disabled-state" id="model-btn" onclick="togglePicker('model')">
-            <span id="model-label" class="ph">Select Model</span>
-            <span class="picker-arrow">▼</span>
-          </button>
-          <div class="picker-panel" id="model-panel">
-            <div class="model-list" id="model-grid"></div>
+        <!-- Make picker -->
+        <div class="picker-field">
+          <span class="picker-label">Make</span>
+          <div class="picker-wrap" id="make-wrap">
+            <button type="button" class="picker-btn disabled-state" id="make-btn" onclick="togglePicker('make')">
+              <span id="make-label" class="ph">Select Make</span>
+              <span class="picker-arrow">▼</span>
+            </button>
+            <div class="picker-panel" id="make-panel">
+              <div class="make-grid" id="make-grid"></div>
+            </div>
           </div>
+          <input type="hidden" id="val-make"/>
         </div>
-        <input type="hidden" id="val-model"/>
+
+        <!-- Model picker -->
+        <div class="picker-field">
+          <span class="picker-label">Model</span>
+          <div class="picker-wrap" id="model-wrap">
+            <button type="button" class="picker-btn disabled-state" id="model-btn" onclick="togglePicker('model')">
+              <span id="model-label" class="ph">Select Model</span>
+              <span class="picker-arrow">▼</span>
+            </button>
+            <div class="picker-panel" id="model-panel">
+              <div class="model-list" id="model-grid"></div>
+            </div>
+          </div>
+          <input type="hidden" id="val-model"/>
+        </div>
+      </div><!-- /pane-ymm -->
+
+      <!-- VIN pane -->
+      <div class="entry-pane" id="pane-vin">
+        <p class="vin-intro">Enter your 17-character VIN and we'll pull your exact truck automatically.</p>
+        <input type="text" class="vin-input" id="vin-input" maxlength="17" placeholder="1FTFW1E50MFA12345" autocomplete="off" spellcheck="false"/>
+        <p class="vin-hint">Found on your dashboard, door jamb, or registration.</p>
+        <div class="vin-status" id="vin-status"></div>
+        <button type="button" class="vin-btn" id="vin-btn" onclick="decodeVIN()">Decode My VIN →</button>
       </div>
 
       <button class="next-btn" id="next-btn" onclick="goStep2()">Next — Confirm Details →</button>
@@ -431,22 +515,8 @@
       <div class="confirm-label">Your Vehicle</div>
       <div class="confirm-vehicle" id="confirm-name">—</div>
 
-      <div class="s2-field" id="trim-field">
-        <span class="s2-label">Trim Level</span>
-        <div class="picker-wrap" id="trim-wrap">
-          <button type="button" class="picker-btn" id="trim-btn" onclick="togglePicker('trim')">
-            <span id="trim-label" class="ph">Unknown / Not Listed</span>
-            <span class="picker-arrow">▼</span>
-          </button>
-          <div class="picker-panel" id="trim-panel">
-            <div class="model-list" id="trim-grid"></div>
-          </div>
-        </div>
-        <input type="hidden" id="val-trim"/>
-      </div>
-
       <div class="s2-field" id="bed-field" style="display:none;">
-        <span class="s2-label">Bed Size</span>
+        <span class="s2-label">Bed Size <span class="req">• needed for fit</span></span>
         <div class="picker-wrap" id="bed-wrap">
           <button type="button" class="picker-btn" id="bed-btn" onclick="togglePicker('bed')">
             <span id="bed-label" class="ph">Select Bed Size</span>
@@ -459,8 +529,22 @@
         <input type="hidden" id="val-bed"/>
       </div>
 
+      <div class="s2-field" id="trim-field">
+        <span class="s2-label">Trim Level <span class="opt">• optional</span></span>
+        <div class="picker-wrap" id="trim-wrap">
+          <button type="button" class="picker-btn" id="trim-btn" onclick="togglePicker('trim')">
+            <span id="trim-label" class="ph">Unknown / Not Listed</span>
+            <span class="picker-arrow">▼</span>
+          </button>
+          <div class="picker-panel" id="trim-panel">
+            <div class="model-list" id="trim-grid"></div>
+          </div>
+        </div>
+        <input type="hidden" id="val-trim"/>
+      </div>
+
       <div class="color-row">
-        <span class="color-row-label">Color</span>
+        <span class="color-row-label">Color <span class="opt">• optional</span></span>
         <div class="swatches" id="swatches"></div>
       </div>
 
@@ -479,6 +563,7 @@
         <div class="s3-actions">
           <button class="s3-btn-primary" onclick="browseAccessories()">Browse Accessories</button>
           <button class="s3-btn-secondary" onclick="resetAll()">Change Vehicle</button>
+          <button class="s3-btn-clear" onclick="clearVehicle()">Clear Vehicle</button>
         </div>
       </div>
       <button class="s3-close" onclick="closeGarage()">Close</button>
@@ -536,6 +621,7 @@ var COLORS=[
 var selectedColor=COLORS[0];
 var pendingVehicle={};
 var currentVehicle=null;
+var pendingTrim='';  // used when VIN pre-fills a trim
 
 (function(){
   function checkMobile(){
@@ -548,6 +634,17 @@ var currentVehicle=null;
   checkMobile();
   window.addEventListener('resize',checkMobile);
 })();
+
+/* ── Entry tab switching (YMM / VIN) ── */
+function switchEntry(which){
+  var ymm=which==='ymm';
+  document.getElementById('tab-ymm').classList.toggle('active',ymm);
+  document.getElementById('tab-vin').classList.toggle('active',!ymm);
+  document.getElementById('pane-ymm').classList.toggle('active',ymm);
+  document.getElementById('pane-vin').classList.toggle('active',!ymm);
+  // Next button only applies to the YMM path
+  document.getElementById('next-btn').style.display=ymm?'':'none';
+}
 
 // Build year grid
 (function(){
@@ -635,6 +732,33 @@ function checkReady(){
   document.getElementById('next-btn').classList.toggle('ready',!!(y&&mk&&mo));
 }
 
+/* ── VIN decode (NHTSA vPIC — ported from proven my-garage-widget.js logic) ── */
+function decodeVIN(){
+  var vin=document.getElementById('vin-input').value.trim().toUpperCase();
+  var status=document.getElementById('vin-status');
+  var btn=document.getElementById('vin-btn');
+  if(vin.length!==17){status.className='vin-status err';status.textContent='VIN must be 17 characters.';return;}
+  status.className='vin-status';status.textContent='Decoding…';btn.disabled=true;
+  fetch('https://vpic.nhtsa.dot.gov/api/vehicles/DecodeVin/'+vin+'?format=json')
+    .then(function(r){return r.json();})
+    .then(function(data){
+      btn.disabled=false;
+      var get=function(n){var i=data.Results.find(function(r){return r.Variable===n;});return i?(i.Value||''):'';};
+      var year=get('Model Year'),make=get('Make'),model=get('Model'),trim=get('Trim');
+      make=make.charAt(0).toUpperCase()+make.slice(1).toLowerCase();
+      if(make==='Ram')make='RAM';
+      if(!year||!make||!model){status.className='vin-status err';status.textContent='Could not decode — try Year / Make / Model.';return;}
+      status.className='vin-status ok';status.textContent='VIN decoded ✓';
+      // Feed the YMM hidden fields so the rest of the flow is identical
+      document.getElementById('val-year').value=year;
+      document.getElementById('val-make').value=make;
+      document.getElementById('val-model').value=model;
+      pendingTrim=trim||'';
+      goStep2();
+    })
+    .catch(function(){btn.disabled=false;status.className='vin-status err';status.textContent='Decode failed — check your connection.';});
+}
+
 function togglePicker(name){
   var btn=document.getElementById(name+'-btn');
   var panel=document.getElementById(name+'-panel');
@@ -707,11 +831,14 @@ function goStep2(){
         closePicker('trim');
       };
       trimGrid.appendChild(c);
+      // VIN pre-fill: auto-select matching trim
+      if(pendingTrim && t.toLowerCase()===pendingTrim.toLowerCase()){ c.click(); }
     });
   } else {
     trimBtn.classList.add('disabled-state');
     trimLabel.textContent='No trim data';
   }
+  pendingTrim='';
   document.getElementById('trim-field').style.display='block';
 
   var beds=BED_SIZES[model]||[];
@@ -756,7 +883,7 @@ function buildSwatches(){
     var s=document.createElement('div');
     s.className='swatch'+(c.name===selectedColor.name?' selected':'');
     s.style.background=c.hex;
-    if(c.name==='White') s.style.border='2px solid #444';
+    if(c.name==='White') s.style.border='2px solid #cbd5e0';
     s.title=c.name;
     s.onclick=function(){selectedColor=c;buildSwatches();};
     wrap.appendChild(s);
@@ -798,7 +925,22 @@ function saveVehicle(){
   transitionTo('screen-3','forward');
 }
 
+function clearGarageData(){
+  try{ localStorage.removeItem('garage_vehicle'); }catch(e){}
+  if(window.RLSHGarage){ try{ window.RLSHGarage.clear(); }catch(e){} }
+  currentVehicle=null;
+  try{ window.parent.postMessage({type:'garage_clear'},'*'); }catch(e){}
+}
+
+function clearVehicle(){
+  clearGarageData();
+  document.getElementById('s3-vehicle').innerHTML='—';
+  resetAll();
+}
+
 function resetAll(){
+  clearGarageData();
+  switchEntry('ymm');
   ['year','make','model'].forEach(function(n){
     document.getElementById('val-'+n).value='';
     document.getElementById(n+'-label').textContent='Select '+(n.charAt(0).toUpperCase()+n.slice(1));
@@ -809,6 +951,8 @@ function resetAll(){
   document.getElementById('model-btn').classList.add('disabled-state');
   document.getElementById('year-grid').querySelectorAll('.picker-cell').forEach(function(c){c.classList.remove('selected');});
   document.getElementById('next-btn').classList.remove('ready');
+  document.getElementById('vin-input').value='';
+  document.getElementById('vin-status').textContent='';
 
   var screens=document.querySelectorAll('.screen');
   screens.forEach(function(s){
@@ -874,6 +1018,11 @@ window.addEventListener('message',function(event){
 });
 
 window.addEventListener('load',function(){
+  // If a vehicle is already saved locally, jump straight to the Garage
+  try{
+    var saved=localStorage.getItem('garage_vehicle');
+    if(saved && !vehicleLoaded){ vehicleLoaded=true; loadSavedVehicle(JSON.parse(saved)); }
+  }catch(e){}
   window.parent.postMessage({type:'garage_ready'},'*');
   readyTimer=setInterval(function(){
     if(!vehicleLoaded) window.parent.postMessage({type:'garage_ready'},'*');
@@ -897,8 +1046,6 @@ function browseAccessories(){
   window.addEventListener('resize',reportHeight);
   if(window.ResizeObserver){new ResizeObserver(reportHeight).observe(document.body);}
 </script>
-<script>
-(function(){var active=false,startY=0,lastY=0,rafId=null;document.addEventListener('mousedown',function(e){if(e.button!==1)return;if(e.target.closest('a'))return;e.preventDefault();active=true;startY=e.clientY;lastY=e.clientY;document.body.style.cursor='ns-resize';tick();});document.addEventListener('mousemove',function(e){if(active)lastY=e.clientY;});document.addEventListener('mouseup',function(e){if(e.button!==1||!active)return;active=false;document.body.style.cursor='';if(rafId){cancelAnimationFrame(rafId);rafId=null;}});function tick(){if(!active){rafId=null;return;}var dy=lastY-startY;if(Math.abs(dy)>5)window.scrollBy(0,dy*0.12);rafId=requestAnimationFrame(tick);}})();
-</script><script src="https://rlsh1855.github.io/3Js-and-RLSH-Website/site-shell.js"></script>
+<script src="https://rlsh1855.github.io/3Js-and-RLSH-Website/site-shell.js"></script>
 </body>
 </html>
