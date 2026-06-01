@@ -89,7 +89,7 @@
 
     /* ── STEP INDICATOR ── */
     .step-pill{
-      position:absolute;top:16px;left:18px;z-index:6;
+      position:static;
       display:inline-flex;align-items:center;gap:6px;
     }
     .step-dot{
@@ -392,7 +392,7 @@
     @media(min-width:641px){
       .screen{padding:28px 28px 24px;}
       .form-wrap{width:350px;justify-content:center;}
-      .step-pill{margin-bottom:16px;}
+      .step-pill{position:absolute;top:16px;left:18px;z-index:6;margin-bottom:0;}
       .entry-tabs{margin-bottom:16px;}
       .s1-heading{font-size:clamp(22px,2.6vw,32px);margin-bottom:20px;}
       .picker-field{margin-bottom:10px;}
