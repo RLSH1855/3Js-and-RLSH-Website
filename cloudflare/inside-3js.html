@@ -39,9 +39,10 @@
 
     /* PAGE HEADER */
     .page-header{background:var(--black-1);color:var(--white);height:260px;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px 24px 0;position:relative;overflow:hidden;flex-direction:column;}
-    .page-header::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(139,0,0,0.16) 0%,transparent 65%);pointer-events:none;}
-    .page-header::after{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,0.035) 1px,transparent 1px);background-size:26px 26px;pointer-events:none;}
-    .page-header-content{position:relative;z-index:1;}
+    .page-header-bg{position:absolute;inset:0;background-image:url('images/inside-3js-hero-image.png');background-size:cover;background-position:center;z-index:0;}
+    .page-header::before{content:'';position:absolute;inset:0;background:rgba(0,0,0,0.58);z-index:1;pointer-events:none;}
+    .page-header::after{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,0.025) 1px,transparent 1px);background-size:26px 26px;z-index:2;pointer-events:none;}
+    .page-header-content{position:relative;z-index:3;}
     .page-header .eyebrow{color:var(--crimson);margin-bottom:12px;}
     .page-header h1{font-family:'Montserrat',sans-serif;font-size:clamp(32px,6vw,56px);font-weight:900;letter-spacing:-2px;line-height:1.0;text-transform:uppercase;}
     .page-header h1 em{font-style:normal;color:var(--crimson);}
@@ -129,24 +130,27 @@
     .red-band-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--white);color:var(--crimson);font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;text-decoration:none;height:48px;padding:0 32px;border-radius:0;border:none;cursor:pointer;transition:all 0.3s ease;letter-spacing:2px;text-transform:uppercase;touch-action:manipulation;-webkit-tap-highlight-color:transparent;}
     .red-band-btn:hover{background:var(--off-white);}
 
-    /* FAQ */
-    .faq-section{width:100%;padding:clamp(48px,7vw,80px) clamp(16px,4vw,24px);background:var(--white);border-top:1px solid var(--divider);}
-    .faq-inner{max-width:740px;margin:0 auto;width:100%;}
-    .faq-section .eyebrow{text-align:center;margin-bottom:6px;}
-    .faq-section h2{font-family:'Montserrat',sans-serif;font-size:clamp(22px,5vw,34px);font-weight:900;letter-spacing:-1px;color:var(--neutral-dark);text-align:center;margin-bottom:40px;line-height:1.1;}
-    .faq-section h2 em{color:var(--crimson);font-style:normal;}
-    .faq-item{border-bottom:1px solid var(--divider);}
-    .faq-item:first-of-type{border-top:1px solid var(--divider);}
-    :root{--ease-smooth:cubic-bezier(0.22,1,0.36,1);--dur-accordion:720ms;--dur-ui:220ms;}
-    .faq-q{width:100%;background:none;border:none;display:flex;align-items:flex-start;justify-content:space-between;padding:20px 0;cursor:pointer;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--neutral-dark);text-align:left;gap:16px;transition:color var(--dur-ui) ease;touch-action:manipulation;-webkit-tap-highlight-color:transparent;line-height:1.5;}
-    .faq-q:hover{color:#8B0000;}
-    .faq-q:focus-visible{outline:2px solid #8B0000;outline-offset:4px;}
-    .faq-item.open .faq-q{color:#8B0000;font-weight:800;}
-    .faq-q svg{width:18px;height:18px;flex-shrink:0;margin-top:2px;stroke:#8B0000;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;transition:transform var(--dur-accordion) var(--ease-smooth);transform-origin:center;}
-    .faq-item.open .faq-q svg{transform:rotate(45deg);}
-    .faq-a{height:0;overflow:hidden;transition:height var(--dur-accordion) var(--ease-smooth);}
-    .faq-a-inner{font-family:'Inter',sans-serif;font-size:15px;font-weight:400;color:var(--body-text);line-height:1.85;padding-bottom:20px;}
-    @media(prefers-reduced-motion:reduce){.faq-q svg,.faq-a{transition:none!important;}}
+    /* FAQ — homepage standard */
+    .faq-list{display:flex;flex-direction:column;gap:6px;}
+    .faq-item{background:#fff;border:1.5px solid #E2E8F0;overflow:hidden;transition:border-color 0.2s,box-shadow 0.2s;}
+    .faq-item:hover{border-color:#CBD5E0;box-shadow:0 2px 8px rgba(15,30,46,0.07);}
+    .faq-item.open{border-color:#B0BBC8;box-shadow:0 4px 16px rgba(15,30,46,0.10);}
+    .faq-trigger{width:100%;background:none;border:none;padding:0;cursor:pointer;display:block;text-align:left;touch-action:manipulation;-webkit-tap-highlight-color:transparent;}
+    .faq-trigger-inner{display:flex;align-items:center;gap:16px;padding:18px 20px;transition:background 0.15s;}
+    .faq-trigger:hover .faq-trigger-inner,.faq-item.open .faq-trigger-inner{background:#f4f4f4;}
+    .q-badge{flex-shrink:0;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:900;color:#AAAAAA;padding:3px 8px;border:1px solid #E8ECF0;background:#fff;align-self:flex-start;margin-top:2px;box-shadow:0 1px 4px rgba(0,0,0,0.07);}
+    .q-label{flex:1;font-family:'Montserrat',sans-serif;font-size:14px;font-weight:700;color:#1a1a1a;line-height:1.45;}
+    .toggle-icon{flex-shrink:0;width:40px;height:40px;background:transparent;border:none;display:flex;align-items:center;justify-content:center;transition:transform 0.3s ease;color:#111;}
+    .toggle-icon svg{width:20px;height:20px;}
+    .faq-item.open .toggle-icon{transform:rotate(45deg);}
+    .faq-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows 720ms cubic-bezier(0.22,1,0.36,1);}
+    .faq-item.open .faq-body{grid-template-rows:1fr;}
+    .faq-body-inner{overflow:hidden;}
+    .faq-answer{padding:0 20px 20px 60px;}
+    .answer-text{font-family:'Inter',sans-serif;font-size:13px;font-weight:500;color:#3B3B3B;line-height:1.8;}
+    .answer-text strong{color:#1F2937;font-weight:700;}
+    @media(max-width:640px){.faq-answer{padding:0 14px 18px 14px;}.q-badge{display:none;}}
+    @media(prefers-reduced-motion:reduce){.faq-body{transition:none!important;}}
 
     /* RESPONSIVE — mobile-first */
     .section{padding:48px 16px;}
@@ -224,6 +228,7 @@
 <!-- LIGHTBOX -->
 <!-- PAGE HEADER -->
 <header class="page-header">
+  <div class="page-header-bg"></div>
   <div class="page-header-content">
     <p class="eyebrow">Signal Hill, CA · Est. 1991</p>
     <h1>Inside <em>3J's</em> Auto Body</h1>
@@ -405,19 +410,37 @@
     <div>
       <span class="acc-col-label">Common Questions</span>
       <h2 class="acc-col-title">About <em>3J's Auto Body</em></h2>
-      <div class="acc-list" id="faq-acc">
+      <div class="faq-list" id="faq-list">
 
-        <div class="acc-item"><button class="acc-btn" aria-expanded="false"><div class="acc-btn-inner"><span class="acc-q-badge">Q</span><span class="acc-q-label">Is 3J's Auto Body family owned?</span><span class="acc-toggle" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></div></button><div class="acc-body"><div class="acc-body-inner">Yes — founded in 1991 by Jim Sferrazza, the shop has been passed down through three generations of the Sferrazza family right here in Signal Hill, CA.</div></div></div>
+        <div class="faq-item">
+          <button class="faq-trigger" aria-expanded="false"><div class="faq-trigger-inner"><span class="q-badge">Q</span><span class="q-label">Is 3J's Auto Body family owned?</span><span class="toggle-icon" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></div></button>
+          <div class="faq-body"><div class="faq-body-inner"><div class="faq-answer"><p class="answer-text">Yes — founded in <strong>1991</strong> by Jim Sferrazza, the shop has been passed down through <strong>three generations</strong> of the Sferrazza family right here in <strong>Signal Hill, CA</strong>.</p></div></div></div>
+        </div>
 
-        <div class="acc-item"><button class="acc-btn" aria-expanded="false"><div class="acc-btn-inner"><span class="acc-q-badge">Q</span><span class="acc-q-label">Is 3J's Auto Body certified?</span><span class="acc-toggle" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></div></button><div class="acc-body"><div class="acc-body-inner">Yes — I-CAR Gold Class certified, ASE certified, and a certified Rhino Liner installer. I-CAR Gold Class is the highest training recognition in the collision repair industry.</div></div></div>
+        <div class="faq-item">
+          <button class="faq-trigger" aria-expanded="false"><div class="faq-trigger-inner"><span class="q-badge">Q</span><span class="q-label">Is 3J's Auto Body certified?</span><span class="toggle-icon" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></div></button>
+          <div class="faq-body"><div class="faq-body-inner"><div class="faq-answer"><p class="answer-text">Yes — <strong>I-CAR Gold Class certified</strong>, <strong>ASE certified</strong>, and a <strong>certified Rhino Liner installer</strong>. I-CAR Gold Class is the highest training recognition in the collision repair industry.</p></div></div></div>
+        </div>
 
-        <div class="acc-item"><button class="acc-btn" aria-expanded="false"><div class="acc-btn-inner"><span class="acc-q-badge">Q</span><span class="acc-q-label">How long have you been in business?</span><span class="acc-toggle" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></div></button><div class="acc-body"><div class="acc-body-inner">Over 30 years — same location at 1855 E 29th Street, Signal Hill, CA since 1991. Same family, same address, same commitment to quality.</div></div></div>
+        <div class="faq-item">
+          <button class="faq-trigger" aria-expanded="false"><div class="faq-trigger-inner"><span class="q-badge">Q</span><span class="q-label">How long have you been in business?</span><span class="toggle-icon" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></div></button>
+          <div class="faq-body"><div class="faq-body-inner"><div class="faq-answer"><p class="answer-text"><strong>Over 30 years</strong> — same location at <strong>1855 E 29th Street, Signal Hill, CA</strong> since 1991. Same family, same address, same commitment to quality.</p></div></div></div>
+        </div>
 
-        <div class="acc-item"><button class="acc-btn" aria-expanded="false"><div class="acc-btn-inner"><span class="acc-q-badge">Q</span><span class="acc-q-label">Do you work with insurance companies?</span><span class="acc-toggle" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></div></button><div class="acc-body"><div class="acc-body-inner">Yes — we work directly with all major carriers including State Farm, Geico, Progressive, Allstate, Farmers, AAA, and more. We handle the paperwork so you don't have to.</div></div></div>
+        <div class="faq-item">
+          <button class="faq-trigger" aria-expanded="false"><div class="faq-trigger-inner"><span class="q-badge">Q</span><span class="q-label">Do you work with insurance companies?</span><span class="toggle-icon" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></div></button>
+          <div class="faq-body"><div class="faq-body-inner"><div class="faq-answer"><p class="answer-text">Yes — we work directly with <strong>all major carriers</strong> including State Farm, Geico, Progressive, Allstate, Farmers, AAA, and more. <strong>We handle the paperwork so you don't have to.</strong></p></div></div></div>
+        </div>
 
-        <div class="acc-item"><button class="acc-btn" aria-expanded="false"><div class="acc-btn-inner"><span class="acc-q-badge">Q</span><span class="acc-q-label">Do you offer a warranty?</span><span class="acc-toggle" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></div></button><div class="acc-body"><div class="acc-body-inner">Yes — every repair is backed by a written limited lifetime warranty on our workmanship for as long as you own the vehicle.</div></div></div>
+        <div class="faq-item">
+          <button class="faq-trigger" aria-expanded="false"><div class="faq-trigger-inner"><span class="q-badge">Q</span><span class="q-label">Do you offer a warranty?</span><span class="toggle-icon" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></div></button>
+          <div class="faq-body"><div class="faq-body-inner"><div class="faq-answer"><p class="answer-text">Yes — every repair is backed by a <strong>written limited lifetime warranty</strong> on our workmanship <strong>for as long as you own the vehicle</strong>.</p></div></div></div>
+        </div>
 
-        <div class="acc-item"><button class="acc-btn" aria-expanded="false"><div class="acc-btn-inner"><span class="acc-q-badge">Q</span><span class="acc-q-label">Do you offer free estimates?</span><span class="acc-toggle" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></div></button><div class="acc-body"><div class="acc-body-inner">Always. Walk in Mon–Fri 8AM–5PM or submit an online photo estimate. No appointment needed for estimates.</div></div></div>
+        <div class="faq-item">
+          <button class="faq-trigger" aria-expanded="false"><div class="faq-trigger-inner"><span class="q-badge">Q</span><span class="q-label">Do you offer free estimates?</span><span class="toggle-icon" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></div></button>
+          <div class="faq-body"><div class="faq-body-inner"><div class="faq-answer"><p class="answer-text"><strong>Always free.</strong> Walk in <strong>Mon–Fri 8AM–5PM</strong> or submit an <strong>online photo estimate</strong>. No appointment needed for estimates.</p></div></div></div>
+        </div>
 
       </div>
     </div>
@@ -901,21 +924,13 @@
   function accClose(item){var p=item.querySelector('.acc-body');p.style.height=p.scrollHeight+'px';void p.offsetHeight;p.style.height='0px';item.classList.remove('open');item.querySelector('.acc-btn').setAttribute('aria-expanded','false');}
   function accOpen(item){var p=item.querySelector('.acc-body');item.classList.add('open');item.querySelector('.acc-btn').setAttribute('aria-expanded','true');p.style.height=p.querySelector('.acc-body-inner').offsetHeight+'px';}
   document.querySelectorAll('.acc-body').forEach(function(p){p.addEventListener('transitionend',function(e){if(e.propertyName!=='height')return;if(p.closest('.acc-item').classList.contains('open')){p.style.height='auto';setTimeout(reportHeight,50);}});});
-  ['svc-acc','faq-acc'].forEach(function(id){
-    var list=document.getElementById(id);
-    if(!list)return;
-    list.querySelectorAll('.acc-btn').forEach(function(btn){
-      btn.addEventListener('click',function(){
-        var item=btn.closest('.acc-item');
-        var wasOpen=item.classList.contains('open');
-        list.querySelectorAll('.acc-item.open').forEach(accClose);
-        if(!wasOpen){
-          accOpen(item);
-          setTimeout(reportHeight,350);
-        }
-      });
-    });
-  });
+  var svcList=document.getElementById('svc-acc');
+  if(svcList){svcList.querySelectorAll('.acc-btn').forEach(function(btn){btn.addEventListener('click',function(){var item=btn.closest('.acc-item');var wasOpen=item.classList.contains('open');svcList.querySelectorAll('.acc-item.open').forEach(accClose);if(!wasOpen){accOpen(item);setTimeout(reportHeight,350);}});});}
+
+  // Homepage-standard FAQ (CSS grid-row transition)
+  function faqClose(item){item.classList.remove('open');item.querySelector('.faq-trigger').setAttribute('aria-expanded','false');}
+  function faqOpen(item){item.classList.add('open');item.querySelector('.faq-trigger').setAttribute('aria-expanded','true');}
+  document.querySelectorAll('#faq-list .faq-trigger').forEach(function(btn){btn.addEventListener('click',function(){var item=btn.closest('.faq-item'),wasOpen=item.classList.contains('open');document.querySelectorAll('#faq-list .faq-item.open').forEach(faqClose);if(!wasOpen)faqOpen(item);setTimeout(reportHeight,350);});});
 
   // Repair Journey accordion
   document.querySelectorAll('.step-btn').forEach(function(btn){
