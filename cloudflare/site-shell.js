@@ -61,12 +61,12 @@
   .ss-shell.ss-shrunk .ss-links > a{padding-top:14px;padding-bottom:14px;}
 
   /* My Garage pill */
-  .ss-garage{margin-left:auto;align-self:center;display:flex;align-items:center;gap:10px;padding:0 20px 0 16px;width:350px;height:60px;box-sizing:border-box;
+  .ss-garage{margin-left:auto;align-self:center;display:flex;align-items:center;gap:16px;padding:0 20px 0 16px;width:350px;height:60px;box-sizing:border-box;
     border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.07);text-decoration:none;cursor:pointer;border-radius:0;
     transition:border-color .15s,background .15s;}
   .ss-garage:hover{border-color:var(--ssr);background:rgba(255,255,255,.11);}
   .ss-garage-ico{color:var(--ssr);display:inline-flex;flex-shrink:0;}
-  .ss-garage-ico svg{width:26px;height:26px;stroke:currentColor;fill:none;stroke-width:1.6;}
+  .ss-garage-ico svg{width:32px;height:32px;stroke:currentColor;fill:none;stroke-width:1.6;}
   .ss-garage-txt{display:flex;flex-direction:column;align-items:flex-start;line-height:1.15;}
   .ss-garage-label{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.45);}
   .ss-garage-veh{font-family:var(--ssnav-font),sans-serif;font-weight:700;font-size:15px;letter-spacing:.03em;color:#fff;white-space:nowrap;}
