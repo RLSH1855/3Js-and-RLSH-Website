@@ -162,8 +162,8 @@
     .award-source{font-family:'Inter',sans-serif;font-size:11px;font-weight:500;color:#767676;line-height:1.6;}
     .award-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(139,0,0,.08);border:1px solid rgba(139,0,0,.25);padding:5px 12px;margin-top:14px;font-family:'Montserrat',sans-serif;font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#8B0000;}
     .award-card.featured{border-color:#8B0000;box-shadow:0 8px 32px rgba(139,0,0,.14);}
-    .award-card.featured::after{content:'MOST RECENT';position:absolute;top:12px;right:12px;font-family:'Montserrat',sans-serif;font-size:8px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:rgba(139,0,0,.7);}
-    .award-card.legacy::after{content:'EST. EXCELLENCE';position:absolute;top:12px;right:12px;font-family:'Montserrat',sans-serif;font-size:8px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#bbb;}
+    .award-card.featured::after{content:'MOST RECENT';position:absolute;top:12px;right:12px;font-family:'Montserrat',sans-serif;font-size:8px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#8B0000;}
+    .award-card.legacy::after{content:'EST. EXCELLENCE';position:absolute;top:12px;right:12px;font-family:'Montserrat',sans-serif;font-size:8px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#888;}
     .winner-callout{display:inline-flex;align-items:center;gap:16px;background:#8B0000;padding:18px 32px;box-shadow:0 8px 32px rgba(139,0,0,.25);}
     .winner-icon{width:44px;height:44px;background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
     .winner-icon svg{width:22px;height:22px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
@@ -176,7 +176,7 @@
     .services-section{background:var(--black);padding:clamp(56px,7vw,80px) 0 0;}
     .services-inner{max-width:1100px;margin:0 auto;padding:0 20px;}
     .services-header{text-align:center;margin-bottom:48px;}
-    .services-header .eyebrow{color:rgba(255,255,255,.4);}
+    .services-header .eyebrow{color:rgba(255,255,255,.55);}
     .services-title{font-family:'Montserrat',sans-serif;font-size:clamp(22px,3.5vw,38px);font-weight:900;letter-spacing:-1px;color:#fff;text-transform:uppercase;}
     .services-title em{font-style:normal;color:#8B0000;}
     .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;}
@@ -186,7 +186,7 @@
     .svc-img-wrap{overflow:hidden;position:relative;}
     .svc-img-wrap video{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;}
     .svc-body{padding:22px 20px 24px;flex:1;display:flex;flex-direction:column;}
-    .svc-num{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:rgba(139,0,0,.6);margin-bottom:6px;}
+    .svc-num{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:6px;}
     .svc-name{font-family:'Montserrat',sans-serif;font-size:18px;font-weight:900;letter-spacing:-.3px;text-transform:uppercase;color:#fff;margin-bottom:12px;line-height:1.15;}
     .svc-name em{font-style:normal;color:#8B0000;}
     .svc-list{list-style:none;display:flex;flex-direction:column;gap:7px;margin-bottom:20px;}
@@ -292,7 +292,7 @@
     .ig-eyebrow::before{content:'';width:16px;height:2px;background:#8B0000;flex-shrink:0;}
     .ig-heading{font-family:'Montserrat',sans-serif;font-size:clamp(22px,3.5vw,36px);font-weight:900;letter-spacing:-.5px;margin-bottom:6px;}
     .ig-heading em{font-style:normal;color:#8B0000;}
-    .ig-sub{font-family:'Montserrat',sans-serif;font-size:13px;font-weight:500;color:#555;margin-bottom:32px;}
+    .ig-sub{font-family:'Montserrat',sans-serif;font-size:13px;font-weight:500;color:rgba(255,255,255,.55);margin-bottom:32px;}
     .ig-profile{display:inline-flex;align-items:center;gap:14px;background:#141414;border:1px solid #222;border-radius:0;padding:10px 22px 10px 10px;margin-bottom:36px;text-decoration:none;transition:border-color .2s,background .2s;}
     .ig-profile:hover{background:#1a1a1a;border-color:#8B0000;}
     .ig-avatar{width:42px;height:42px;border-radius:0;background:linear-gradient(135deg,#8B0000,#a00000,#c00000);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
@@ -673,7 +673,7 @@
     <div class="about-intro">
       <div>
         <span class="about-eyebrow">3J's Auto Body · Signal Hill, CA · Est. 1991</span>
-        <h2 class="about-h2" data-anim="fade-up">Repairs Done <span style="border-bottom:4px solid #8B0000;padding-bottom:3px;color:#8B0000;">RIGHT</span>.<br>Every Time.<br><span style="color:#8B0000;">GUARANTEED.</span></h2>
+        <h2 class="about-h2" data-anim="fade-up">Repairs Done <span style="border-bottom:4px solid #8B0000;padding-bottom:3px;">RIGHT</span>.<br>Every Time.<br>GUARANTEED.</h2>
         <p class="about-lead">A damaged vehicle is stressful. Our job is to make the rest of it easy — from your first call to the day you drive away confident.</p>
       </div>
       <div class="warranty-badge">
