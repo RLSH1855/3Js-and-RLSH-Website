@@ -48,8 +48,8 @@
     }
 
     /* ── SHARED BUTTONS ── */
-    .btn-red{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:48px;padding:0 32px;background:var(--red);color:#fff;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border:none;transition:background .2s;}
-    .btn-red:hover{background:var(--red-hot);}
+    .btn-red{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:48px;padding:0 32px;background:var(--red);color:#fff;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border:2px solid #a00000;transition:background .2s,color .2s,border-color .2s;}
+    .btn-red:hover{background:#fff;color:#000;border-color:#8B0000;}
     .btn-ghost{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:48px;padding:0 28px;background:rgba(255,255,255,.15);backdrop-filter:blur(12px);color:#fff;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border:1.5px solid rgba(255,255,255,.55);transition:background .2s;}
     .btn-ghost:hover{background:rgba(255,255,255,.28);}
     .btn-outline-red{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:48px;padding:0 28px;background:transparent;color:var(--red);font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border:2px solid var(--red);transition:background .2s,color .2s;}
@@ -91,7 +91,7 @@
     .hero-stats .stat-num span{color:rgba(255,255,255,0.6);}
     .hero-stats .stat-label{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.45);}
     .hero-bottom-bar{position:absolute;bottom:0;left:0;right:0;height:4px;background:linear-gradient(to right,#8B0000,#8B0000 60%,transparent);z-index:3;}
-    .river-rat{position:absolute;bottom:22px;left:80px;font-size:9px;font-weight:600;color:rgba(255,255,255,0.40);letter-spacing:0.5px;font-style:italic;z-index:3;}
+    .river-rat{position:absolute;bottom:22px;left:80px;font-size:9px;font-weight:600;color:rgba(255,255,255,0.55);letter-spacing:0.5px;font-style:italic;z-index:3;}
     .hero-trust{display:flex;flex-wrap:wrap;gap:4px 0;margin-top:16px;align-items:center;justify-content:center;align-self:stretch;}
     .hero-trust-item{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.92);}
     .hero-trust-sep{color:rgba(255,255,255,0.50);margin:0 8px;font-size:9px;}
@@ -134,7 +134,8 @@
     .panel:hover .panel-overlay{background:linear-gradient(160deg,rgba(0,0,0,.72) 0%,rgba(0,0,0,.50) 100%);}
 
     .panel-content{position:relative;z-index:4;padding:28px 24px;height:100%;display:flex;flex-direction:column;justify-content:flex-start;}
-    .panel-eyebrow{font-size:9px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:#8B0000;margin-bottom:8px;}
+    .panel-eyebrow{font-size:9px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.75);margin-bottom:8px;display:inline-flex;align-items:center;gap:8px;}
+    .panel-eyebrow::before{content:'';width:12px;height:1.5px;background:#8B0000;flex-shrink:0;}
     .panel-title{font-family:'Montserrat',sans-serif;font-size:clamp(18px,2.2vw,26px);font-weight:900;color:#fff;letter-spacing:-.3px;line-height:1.15;text-transform:uppercase;margin-bottom:12px;}
     .panel-sub{font-family:'Inter',sans-serif;font-size:13px;font-weight:400;color:rgba(255,255,255,.78);line-height:1.65;max-width:280px;}
     .panel-link{margin-top:auto;display:inline-flex;align-items:center;gap:7px;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#fff;text-decoration:none;border-bottom:2px solid #8B0000;padding-bottom:2px;width:fit-content;transition:color .2s;}
@@ -189,7 +190,7 @@
     .svc-name{font-family:'Montserrat',sans-serif;font-size:18px;font-weight:900;letter-spacing:-.3px;text-transform:uppercase;color:#fff;margin-bottom:12px;line-height:1.15;}
     .svc-name em{font-style:normal;color:#8B0000;}
     .svc-list{list-style:none;display:flex;flex-direction:column;gap:7px;margin-bottom:20px;}
-    .svc-list li{font-family:'Inter',sans-serif;font-size:13px;font-weight:500;color:rgba(255,255,255,.6);display:flex;align-items:center;gap:8px;letter-spacing:.3px;}
+    .svc-list li{font-family:'Inter',sans-serif;font-size:13px;font-weight:500;color:rgba(255,255,255,.85);display:flex;align-items:center;gap:8px;letter-spacing:.3px;}
     .svc-list li::before{content:'';width:8px;height:1.5px;background:#8B0000;flex-shrink:0;}
     .svc-cta{margin-top:auto;display:inline-flex;align-items:center;gap:6px;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#fff;text-decoration:none;background:#8B0000;height:38px;padding:0 16px;transition:background .2s;width:fit-content;}
     .svc-cta:hover{background:var(--red-hot);}
@@ -258,7 +259,7 @@
     .btn-about-ghost{display:inline-flex;align-items:center;gap:10px;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;height:50px;padding:0 28px;background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.45);transition:background .2s,border-color .2s;}
     .btn-about-ghost:hover{background:rgba(139,0,0,.08);border-color:#8B0000;color:#8B0000;}
     .btn-about svg,.btn-about-ghost svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2.4;flex-shrink:0;}
-    .black-section{background:var(--black);padding:clamp(36px,7vw,72px) clamp(18px,4vw,32px) clamp(40px,6vw,72px);}
+    .black-section{background:var(--black);padding:clamp(36px,7vw,72px) clamp(18px,4vw,32px) clamp(40px,6vw,72px);border-top:4px solid #8B0000;}
     .rlsh-head{margin-bottom:36px;padding-bottom:32px;border-bottom:1px solid rgba(255,255,255,.1);}
     .rlsh-head h2{font-family:'Montserrat',sans-serif;font-size:clamp(24px,6vw,52px);font-weight:900;letter-spacing:-1px;color:#fff;line-height:1.05;margin-bottom:14px;}
     .rlsh-head h2 em{font-style:normal;color:#8B0000;}
@@ -287,7 +288,8 @@
     ════════════════════════════ */
     .ig-section{background:var(--black);padding:56px 0 64px;text-align:center;border-top:3px solid #8B0000;}
     .ig-header{padding:0 24px;}
-    .ig-eyebrow{font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:#8B0000;margin-bottom:12px;display:block;}
+    .ig-eyebrow{font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.75);margin-bottom:12px;display:inline-flex;align-items:center;gap:8px;}
+    .ig-eyebrow::before{content:'';width:16px;height:2px;background:#8B0000;flex-shrink:0;}
     .ig-heading{font-family:'Montserrat',sans-serif;font-size:clamp(22px,3.5vw,36px);font-weight:900;letter-spacing:-.5px;margin-bottom:6px;}
     .ig-heading em{font-style:normal;color:#8B0000;}
     .ig-sub{font-family:'Montserrat',sans-serif;font-size:13px;font-weight:500;color:#555;margin-bottom:32px;}
@@ -722,7 +724,7 @@
         <p class="stxt">A massive in-house catalog of suspension, armor, lighting, wheels and tires.</p>
       </div>
       <div class="ab-stat">
-        <div class="snum"><span style="color:#8B0000;">U</span>S<span style="color:#033F7E;">A</span><em style="padding:5px;">·</em></div>
+        <div class="snum"><span style="color:#8B0000;">U</span>SA<em style="padding:5px;">·</em></div>
         <span class="slbl">Made &amp; Manufactured</span>
         <p class="stxt">We strive to use only parts made and manufactured in the United States.</p>
       </div>
