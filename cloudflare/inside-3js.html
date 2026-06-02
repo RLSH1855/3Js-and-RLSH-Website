@@ -41,7 +41,7 @@
 
     /* PAGE HEADER */
     .page-header{background:var(--black-1);color:var(--white);height:260px;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px 24px 0;position:relative;overflow:hidden;flex-direction:column;}
-    .page-header-bg{position:absolute;inset:0;background-image:url('images/inside-3js-hero-image.png');background-size:cover;background-position:center;z-index:0;}
+    .page-header-bg{position:absolute;inset:0;background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/images/inside-3js-hero-image.png');background-size:cover;background-position:center;z-index:0;}
     .page-header::before{content:'';position:absolute;inset:0;background:rgba(0,0,0,0.58);z-index:1;pointer-events:none;}
     .page-header::after{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,0.025) 1px,transparent 1px);background-size:26px 26px;z-index:2;pointer-events:none;}
     .page-header-content{position:relative;z-index:3;}
@@ -185,7 +185,6 @@
       .gallery-more-wrap{display:none;}
       .red-band-btn{width:auto;justify-content:center;}
       .hide-mobile{display:block;}
-      .svc-grid{grid-template-columns:repeat(2,1fr);gap:12px;}
       .faq-answer{padding:0 20px 20px 60px;}
       .q-badge{display:inline-flex;}
     }
@@ -194,7 +193,6 @@
     }
     @media(min-width:901px){
       .two-col{gap:64px;}
-      .svc-grid{grid-template-columns:repeat(3,1fr);gap:16px;}
       .svc-card{height:240px;}
     }
 
@@ -228,6 +226,8 @@
     .services-header h2 em{font-style:normal;color:var(--crimson);}
     .svc-grid{display:grid;grid-template-columns:1fr;gap:12px;max-width:1100px;margin:0 auto;}
     .svc-card{position:relative;min-height:200px;overflow:hidden;text-decoration:none;display:block;}
+    @media(min-width:480px){.svc-grid{grid-template-columns:repeat(2,1fr);gap:12px;}}
+    @media(min-width:640px){.svc-grid{grid-template-columns:repeat(3,1fr);gap:16px;}}
     .svc-bg{position:absolute;inset:0;background-size:cover;background-position:center;}
     .svc-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.96) 0%,rgba(0,0,0,0.70) 45%,rgba(0,0,0,0.15) 100%);}
     .svc-body{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:18px 20px;}
