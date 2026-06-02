@@ -325,7 +325,7 @@
     .sn-hamburger.sn-open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
 
     /* ── Page wrap — ON TOP of drawer; lifts, slides right, scales ── */
-    #sn-page-wrap{position:relative;z-index:5;min-height:100vh;will-change:transform;}
+    #sn-page-wrap{position:relative;z-index:5;min-height:100vh;will-change:transform;transform-origin:center center;}
     @keyframes snPageOpen{
       0%  {transform:translateX(0) scale(1);border-radius:0;}
       8%  {transform:translateX(5px) scale(1.02);}
