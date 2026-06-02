@@ -324,39 +324,27 @@
     .sn-hamburger.sn-open span:nth-child(2){opacity:0;transform:scaleX(0);}
     .sn-hamburger.sn-open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
 
-    /* ── Page wrap (scale-away effect) ── */
+    /* ── Page wrap (slides right + gentle scale on open) ── */
     #sn-page-wrap{
-      transform-origin:top center;
+      transform-origin:right center;
       transition:transform 0.48s cubic-bezier(0.22,1,0.36,1),border-radius 0.48s cubic-bezier(0.22,1,0.36,1);
       will-change:transform;
       min-height:100vh;
     }
-    body.sn-menu-open #sn-page-wrap{
-      transform:scale(0.88) translateY(28px);
-      border-radius:14px;
-      overflow:hidden;
-      pointer-events:none;
-    }
+    body.sn-menu-open #sn-page-wrap{transform:translateX(65px) scale(0.95);border-radius:14px;overflow:hidden;pointer-events:none;}
     /* ── Overlay ── */
-    .sn-overlay{
-      position:fixed;inset:0;z-index:9999;
-      background:rgba(0,0,0,0.55);
-      opacity:0;pointer-events:none;
-      transition:opacity 0.44s ease;
-    }
+    .sn-overlay{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.5);opacity:0;pointer-events:none;transition:opacity 0.44s ease;}
     body.sn-menu-open .sn-overlay{opacity:1;pointer-events:all;}
     /* ── Drawer panel ── */
     .sn-drawer{
       position:fixed;left:0;top:0;height:100%;width:min(320px,86vw);
       background:#F7F6F4;z-index:10000;
-      transform:translateX(-100%);
-      transition:transform 0.48s cubic-bezier(0.22,1,0.36,1);
+      opacity:0;transform:translateY(40px);
+      transition:transform 0.48s cubic-bezier(0.22,1,0.36,1),opacity 0.38s ease;
       display:flex;flex-direction:column;overflow:hidden;
     }
-    body.sn-menu-open .sn-drawer{
-      transform:translateX(0);
-      box-shadow:12px 0 48px rgba(0,0,0,0.18);
-    }
+    body.sn-menu-open .sn-drawer{opacity:1;transform:translateY(0);box-shadow:12px 0 48px rgba(0,0,0,0.18);}
+    body.sn-menu-closing .sn-drawer{opacity:0;transform:translateX(-110%);transition:transform 0.42s cubic-bezier(0.55,0,1,0.45),opacity 0.3s ease;}
     .snd-close-row{padding:16px 20px 14px;background:#fff;border-bottom:1px solid #ECEAE6;flex-shrink:0;}
     .snd-close{
       font-family:'Montserrat',Arial,sans-serif;font-size:10px;font-weight:700;
@@ -783,28 +771,33 @@
   var snDrawerClose = document.getElementById('sn-drawer-close');
 
   function snOpenDrawer(){
+    document.body.classList.remove('sn-menu-closing');
     document.body.classList.add('sn-menu-open');
     if(snDrawer){ snDrawer.setAttribute('aria-hidden','false'); }
     if(hamburger){ hamburger.classList.add('sn-open'); hamburger.setAttribute('aria-expanded','true'); }
     document.body.style.overflow = 'hidden';
-    // Stagger items in
+    // Stagger items up into view
     if(snDrawer){
       var items = snDrawer.querySelectorAll('.snd-close-row,.snd-garage,.snd-section,.snd-item,.snd-ctas');
       items.forEach(function(el,i){
-        el.style.opacity='0'; el.style.transform='translateX(-18px)'; el.style.transition='none';
+        el.style.opacity='0'; el.style.transform='translateY(16px)'; el.style.transition='none';
         setTimeout(function(){
-          el.style.transition='opacity 0.35s ease,transform 0.4s cubic-bezier(0.22,1,0.36,1)';
-          el.style.opacity='1'; el.style.transform='translateX(0)';
-        }, 55 + i * 28);
+          el.style.transition='opacity 0.35s ease,transform 0.42s cubic-bezier(0.22,1,0.36,1)';
+          el.style.opacity='1'; el.style.transform='translateY(0)';
+        }, 80 + i * 30);
       });
     }
   }
 
   function snCloseDrawer(){
     document.body.classList.remove('sn-menu-open');
-    if(snDrawer){ snDrawer.setAttribute('aria-hidden','true'); }
+    document.body.classList.add('sn-menu-closing');
     if(hamburger){ hamburger.classList.remove('sn-open'); hamburger.setAttribute('aria-expanded','false'); }
     document.body.style.overflow = '';
+    setTimeout(function(){
+      document.body.classList.remove('sn-menu-closing');
+      if(snDrawer){ snDrawer.setAttribute('aria-hidden','true'); }
+    }, 450);
   }
 
   if(hamburger){ hamburger.addEventListener('click', snOpenDrawer); }

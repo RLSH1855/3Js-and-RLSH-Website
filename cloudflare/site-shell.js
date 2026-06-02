@@ -101,15 +101,22 @@
   .ss-burger.ss-open span:nth-child(2){opacity:0;transform:scaleX(0);}
   .ss-burger.ss-open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
 
-  /* ── Page wrap (scale-away effect on drawer open) ── */
-  #ss-page-wrap{transform-origin:top center;transition:transform .48s cubic-bezier(.22,1,.36,1),border-radius .48s cubic-bezier(.22,1,.36,1);will-change:transform;min-height:100vh;}
-  body.ss-menu-open #ss-page-wrap{transform:scale(.88) translateY(28px);border-radius:14px;overflow:hidden;pointer-events:none;}
+  /* ── Page wrap (slides right + gentle scale on open) ── */
+  #ss-page-wrap{transform-origin:right center;transition:transform .48s cubic-bezier(.22,1,.36,1),border-radius .48s cubic-bezier(.22,1,.36,1);will-change:transform;min-height:100vh;}
+  body.ss-menu-open #ss-page-wrap{transform:translateX(65px) scale(0.95);border-radius:14px;overflow:hidden;pointer-events:none;}
   /* ── Overlay ── */
-  .ss-drawer-ov{position:fixed;inset:0;z-index:1099;background:rgba(0,0,0,.55);opacity:0;pointer-events:none;transition:opacity .44s ease;}
+  .ss-drawer-ov{position:fixed;inset:0;z-index:1099;background:rgba(0,0,0,.5);opacity:0;pointer-events:none;transition:opacity .44s ease;}
   body.ss-menu-open .ss-drawer-ov{opacity:1;pointer-events:all;}
   /* ── Drawer panel ── */
-  .ss-drawer{position:fixed;left:0;top:0;height:100%;width:min(320px,86vw);background:#F7F6F4;z-index:1100;transform:translateX(-100%);transition:transform .48s cubic-bezier(.22,1,.36,1);display:flex;flex-direction:column;overflow:hidden;}
-  body.ss-menu-open .ss-drawer{transform:translateX(0);box-shadow:12px 0 48px rgba(0,0,0,.18);}
+  /* default hidden: below + transparent (entrance start) */
+  .ss-drawer{position:fixed;left:0;top:0;height:100%;width:min(320px,86vw);background:#F7F6F4;z-index:1100;
+    opacity:0;transform:translateY(40px);
+    transition:transform .48s cubic-bezier(.22,1,.36,1),opacity .38s ease;
+    display:flex;flex-direction:column;overflow:hidden;}
+  /* open: rise into place */
+  body.ss-menu-open .ss-drawer{opacity:1;transform:translateY(0);box-shadow:12px 0 48px rgba(0,0,0,.18);}
+  /* closing: pushed out to the left by the returning page */
+  body.ss-menu-closing .ss-drawer{opacity:0;transform:translateX(-110%);transition:transform .42s cubic-bezier(.55,0,1,.45),opacity .3s ease;}
   .ssd-close-row{padding:16px 20px 14px;background:#fff;border-bottom:1px solid #ECEAE6;flex-shrink:0;}
   .ssd-close{font-family:'Inter',Arial,sans-serif;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#AAAAAA;background:none;border:none;cursor:pointer;padding:0;display:flex;align-items:center;gap:7px;}
   .ssd-close:hover{color:#555;}
@@ -450,28 +457,34 @@
     var closeBtn=document.getElementById('ssDrawerClose');
 
     function ssOpenDrawer(){
+      document.body.classList.remove('ss-menu-closing');
       document.body.classList.add('ss-menu-open');
       if(drawer) drawer.setAttribute('aria-hidden','false');
       if(burger){ burger.classList.add('ss-open'); burger.setAttribute('aria-expanded','true'); }
       document.body.style.overflow='hidden';
-      // Stagger items in
+      // Stagger items up into view
       if(drawer){
         var items=drawer.querySelectorAll('.ssd-close-row,.ssd-garage,.ssd-section,.ssd-item,.ssd-ctas');
         items.forEach(function(el,i){
-          el.style.opacity='0'; el.style.transform='translateX(-18px)'; el.style.transition='none';
+          el.style.opacity='0'; el.style.transform='translateY(16px)'; el.style.transition='none';
           setTimeout(function(){
-            el.style.transition='opacity .35s ease,transform .4s cubic-bezier(.22,1,.36,1)';
-            el.style.opacity='1'; el.style.transform='translateX(0)';
-          }, 55+i*28);
+            el.style.transition='opacity .35s ease,transform .42s cubic-bezier(.22,1,.36,1)';
+            el.style.opacity='1'; el.style.transform='translateY(0)';
+          }, 80+i*30);
         });
       }
     }
 
     function ssCloseDrawer(){
       document.body.classList.remove('ss-menu-open');
-      if(drawer) drawer.setAttribute('aria-hidden','true');
+      document.body.classList.add('ss-menu-closing');
       if(burger){ burger.classList.remove('ss-open'); burger.setAttribute('aria-expanded','false'); }
       document.body.style.overflow='';
+      // Clean up after exit animation completes
+      setTimeout(function(){
+        document.body.classList.remove('ss-menu-closing');
+        if(drawer) drawer.setAttribute('aria-hidden','true');
+      }, 450);
     }
 
     if(burger) burger.addEventListener('click',ssOpenDrawer);
