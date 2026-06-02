@@ -72,7 +72,12 @@
   .ss-garage-veh{font-family:var(--ssnav-font),sans-serif;font-weight:700;font-size:15px;letter-spacing:.03em;color:#fff;white-space:nowrap;}
   .ss-garage-swap{color:rgba(255,255,255,.35);flex-shrink:0;display:inline-flex;}
   .ss-garage-swap svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;}
-  .ss-garage.ss-saved{background:rgba(139,0,0,.18);border-color:rgba(139,0,0,.5);}
+  .ss-garage.ss-saved{background:#fff;border-color:rgba(0,0,0,.12);}
+  .ss-garage.ss-saved .ss-garage-label{color:rgba(17,17,17,.55);}
+  .ss-garage.ss-saved .ss-garage-veh{color:#111;}
+  .ss-garage.ss-saved .ss-garage-ico{color:#8b0000;}
+  .ss-garage.ss-saved .ss-garage-swap{color:rgba(17,17,17,.35);}
+  .ss-garage.ss-saved:hover{background:#f5f5f5;border-color:rgba(0,0,0,.2);}
 
   /* spacer clears the fixed shell */
   .ss-spacer{height:174px;}
