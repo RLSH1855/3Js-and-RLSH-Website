@@ -324,80 +324,105 @@
     .sn-hamburger.sn-open span:nth-child(2){opacity:0;transform:scaleX(0);}
     .sn-hamburger.sn-open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
 
-    /* ── Mobile menu ── */
-    .sn-mobile-menu{
-      display:flex;
-      flex-direction:column;
-      background:#0a0a0a;
-      border-top:1px solid #1a1a1a;
-      max-height:0;
+    /* ── Page wrap (scale-away effect) ── */
+    #sn-page-wrap{
+      transform-origin:top center;
+      transition:transform 0.48s cubic-bezier(0.22,1,0.36,1),border-radius 0.48s cubic-bezier(0.22,1,0.36,1);
+      will-change:transform;
+      min-height:100vh;
+    }
+    body.sn-menu-open #sn-page-wrap{
+      transform:scale(0.88) translateY(28px);
+      border-radius:14px;
       overflow:hidden;
-      opacity:0;
-      transform:translateY(-12px);
-      transition:max-height 0.42s cubic-bezier(0.22,1,0.36,1),
-                 opacity 0.32s ease,
-                 transform 0.38s cubic-bezier(0.22,1,0.36,1);
       pointer-events:none;
     }
-    .sn-mobile-menu.sn-open{
-      max-height:85vh;
-      overflow-y:auto;
-      opacity:1;
-      transform:translateY(0);
-      pointer-events:all;
+    /* ── Overlay ── */
+    .sn-overlay{
+      position:fixed;inset:0;z-index:9999;
+      background:rgba(0,0,0,0.55);
+      opacity:0;pointer-events:none;
+      transition:opacity 0.44s ease;
     }
-    .sn-mobile-menu > a,
-    .sn-mob-item > .sn-mob-top{
+    body.sn-menu-open .sn-overlay{opacity:1;pointer-events:all;}
+    /* ── Drawer panel ── */
+    .sn-drawer{
+      position:fixed;left:0;top:0;height:100%;width:min(320px,86vw);
+      background:#F7F6F4;z-index:10000;
+      transform:translateX(-100%);
+      transition:transform 0.48s cubic-bezier(0.22,1,0.36,1);
+      display:flex;flex-direction:column;overflow:hidden;
+    }
+    body.sn-menu-open .sn-drawer{
+      transform:translateX(0);
+      box-shadow:12px 0 48px rgba(0,0,0,0.18);
+    }
+    .snd-close-row{padding:16px 20px 14px;background:#fff;border-bottom:1px solid #ECEAE6;flex-shrink:0;}
+    .snd-close{
+      font-family:'Montserrat',Arial,sans-serif;font-size:10px;font-weight:700;
+      letter-spacing:1.5px;text-transform:uppercase;color:#AAAAAA;
+      background:none;border:none;cursor:pointer;padding:0;
+      display:flex;align-items:center;gap:7px;
+    }
+    .snd-close:hover{color:#555;}
+    .snd-garage{
+      display:flex;align-items:center;gap:14px;padding:16px 20px;
+      background:#fff;border:none;border-bottom:2px solid #E8E5E0;
+      cursor:pointer;width:100%;text-align:left;flex-shrink:0;
+      transition:background 0.15s;
+    }
+    .snd-garage:hover{background:#F2F1EF;}
+    .snd-garage-icon{width:40px;height:40px;background:#8B0000;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+    .snd-garage-icon svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:2;}
+    .snd-garage-info{flex:1;}
+    .snd-garage-label{display:block;font-family:'Montserrat',Arial,sans-serif;font-size:9px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:#BBBBB9;}
+    .snd-garage-val{display:block;font-family:'Montserrat',Arial,sans-serif;font-size:13px;font-weight:800;color:#1A1A1A;margin-top:2px;}
+    .snd-garage-arr{font-size:16px;color:#CCCCCA;flex-shrink:0;}
+    .snd-nav{flex:1;overflow-y:auto;overflow-x:hidden;background:#fff;}
+    .snd-section{padding:14px 20px 5px;font-family:'Montserrat',Arial,sans-serif;font-size:9px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:#C0BEBE;}
+    .snd-item{
       display:flex;align-items:center;justify-content:space-between;
-      padding:14px 24px;
-      font-family:'Montserrat',Arial,sans-serif;
-      font-size:11px;font-weight:600;
-      letter-spacing:1.5px;text-transform:uppercase;
-      color:#fff;text-decoration:none;
-      border-bottom:1px solid #1a1a1a;
-      transition:color 0.2s;
-      cursor:pointer;
-      background:none;border:none;width:100%;text-align:left;
-      border-bottom:1px solid #1a1a1a;
+      padding:15px 20px;
+      font-family:'Montserrat',Arial,sans-serif;font-size:14px;font-weight:700;letter-spacing:0.2px;color:#1A1A1A;
+      text-decoration:none;border-bottom:1px solid #F2F1EF;
+      background:#fff;cursor:pointer;width:100%;text-align:left;
+      border-left:none;border-right:none;border-top:none;
+      transition:background 0.15s;
     }
-    .sn-mobile-menu > a:hover,.sn-mob-top:hover{color:#8B0000;}
-    .sn-mobile-menu > a.sn-mob-red{color:#8B0000;}
-    .sn-mob-item > .sn-mob-top{
-      color:#fff;
+    .snd-item:hover{background:#F7F6F4;}
+    .snd-item.snd-red{color:#8B0000;}
+    .snd-item-arr{
+      font-size:14px;color:#CCCCCA;flex-shrink:0;
+      transition:transform 0.3s cubic-bezier(0.22,1,0.36,1);display:inline-block;
     }
-    .sn-mob-arrow{
-      font-size:9px;opacity:0.5;
-      transition:transform 0.2s;
+    .snd-item.snd-open .snd-item-arr{transform:rotate(90deg);}
+    /* Sub-menu — FAQ-style smooth expand, charcoal depth */
+    .snd-sub{
+      display:grid;grid-template-rows:0fr;background:#303647;
+      transition:grid-template-rows 540ms cubic-bezier(0.22,1,0.36,1);
     }
-    .sn-mob-item.sn-mob-open > .sn-mob-top .sn-mob-arrow{transform:rotate(90deg);}
-    .sn-mob-sub{
-      display:none;
-      flex-direction:column;
-      background:#050505;
-      border-bottom:1px solid #1a1a1a;
+    .snd-sub.snd-sub-open{grid-template-rows:1fr;}
+    .snd-sub-inner{overflow:hidden;}
+    .snd-sub-label{display:block;padding:11px 20px 4px 28px;font-family:'Montserrat',Arial,sans-serif;font-size:8px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.30);}
+    .snd-sub-item{
+      display:flex;align-items:center;gap:10px;
+      padding:12px 20px 12px 28px;
+      font-family:'Montserrat',Arial,sans-serif;font-size:13px;font-weight:600;
+      color:rgba(255,255,255,0.75);text-decoration:none;
+      border-bottom:1px solid rgba(255,255,255,0.06);
+      transition:color 0.15s,background 0.15s;
     }
-    .sn-mob-item.sn-mob-open > .sn-mob-sub{display:flex;}
-    .sn-mob-sub a{
-      display:block;
-      padding:11px 24px 11px 36px;
-      font-family:'Montserrat',Arial,sans-serif;
-      font-size:10px;font-weight:600;
-      letter-spacing:1px;text-transform:uppercase;
-      color:rgba(255,255,255,0.55);
-      text-decoration:none;
-      border-bottom:1px solid #111;
-      transition:color 0.2s;
-    }
-    .sn-mob-sub a:last-child{border-bottom:none;}
-    .sn-mob-sub a:hover{color:#fff;}
-    .sn-mob-sub-label{
-      display:block;
-      padding:8px 24px 4px 36px;
-      font-family:'Montserrat',Arial,sans-serif;
-      font-size:8px;font-weight:800;
-      letter-spacing:2px;text-transform:uppercase;
-      color:#8B0000;
-    }
+    .snd-sub-item:last-child{border-bottom:none;margin-bottom:6px;}
+    .snd-sub-item:hover{color:#fff;background:rgba(255,255,255,0.06);}
+    .snd-sub-item::before{content:'';width:4px;height:4px;background:#8B0000;flex-shrink:0;}
+    .snd-sub-top-line{height:2px;background:#8B0000;flex-shrink:0;}
+    .snd-ctas{padding:14px 16px;background:#FAFAF8;border-top:1px solid #ECEAE6;flex-shrink:0;display:flex;flex-direction:column;gap:8px;}
+    .snd-cta-red{display:block;text-align:center;text-decoration:none;background:#8B0000;color:#fff;font-family:'Montserrat',Arial,sans-serif;font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:14px;border:none;cursor:pointer;transition:background 0.2s;}
+    .snd-cta-red:hover{background:#700000;}
+    .snd-cta-outline{display:block;text-align:center;text-decoration:none;background:transparent;color:#8B0000;font-family:'Montserrat',Arial,sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:13px;border:1.5px solid #D4C0C0;cursor:pointer;transition:border-color 0.2s;}
+    .snd-cta-outline:hover{border-color:#8B0000;}
+    .snd-contact{text-align:center;font-family:'Inter',Arial,sans-serif;font-size:11px;color:#BBBBBB;letter-spacing:0.3px;}
+    @media(prefers-reduced-motion:reduce){#sn-page-wrap,.sn-drawer,.sn-overlay,.snd-sub{transition:none!important;}}
 
     /* ── Mobile top bar adjustments ── */
     @media(max-width:960px){
@@ -432,21 +457,11 @@
     }
     .sn-garage-btn:hover{background:rgba(255,255,255,0.25);border-color:rgba(255,255,255,0.7);}
     .sn-garage-btn svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;}
-    .sn-mob-garage-btn{
-      display:flex;align-items:center;gap:10px;
-      padding:14px 24px;width:100%;text-align:left;
-      font-family:'Montserrat',Arial,sans-serif;
-      font-size:11px;font-weight:600;
-      letter-spacing:1.5px;text-transform:uppercase;
-      color:#8B0000;background:none;border:none;
-      border-bottom:1px solid #1a1a1a;cursor:pointer;
-    }
-    .sn-mob-garage-btn svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;}
-
     /* ── Garage saved-state indicator ── */
     .sn-garage-btn.sn-garage-saved{background:rgba(139,0,0,0.22);border-color:rgba(139,0,0,0.55);}
     .sn-garage-btn.sn-garage-saved::after{content:'';position:absolute;top:5px;right:5px;width:7px;height:7px;background:#8B0000;border:1.5px solid rgba(255,255,255,0.85);}
-    .sn-mob-garage-btn.sn-garage-saved{background:rgba(139,0,0,0.08);}
+    .snd-garage.sn-garage-saved .snd-garage-icon{background:#6e0000;}
+    .snd-garage.sn-garage-saved .snd-garage-val{color:#8B0000;}
 
     /* ════════════════════════════════
        FOOTER
@@ -630,56 +645,6 @@
 
       </nav>
 
-      <!-- Mobile menu -->
-      <div class="sn-mobile-menu" id="sn-mobile-menu" aria-label="Mobile navigation">
-
-        <a href="https://www.3jsautobody.com/inside-3js">Inside 3J's</a>
-        <a href="https://www.3jsautobody.com/body-paint-repairs">Body &amp; Paint</a>
-
-        <!-- Truck Accessories mobile accordion -->
-        <div class="sn-mob-item" id="sn-mob-accessories">
-          <button class="sn-mob-top">Truck Accessories <span class="sn-mob-arrow">▶</span></button>
-          <div class="sn-mob-sub">
-            <span class="sn-mob-sub-label">Bed Protection</span>
-            <a href="https://www.3jsautobody.com/rhino-liner">Rhino Liner</a>
-            <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/floor-liners.html">Floor Liners</a>
-            <span class="sn-mob-sub-label">Covers &amp; Steps</span>
-            <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/tonneau-covers.html">Tonneau Covers</a>
-            <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/bakflip-mx4.html">BakFlip MX4</a>
-            <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/steps-running-boards.html">Steps &amp; Running Boards</a>
-            <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/towing-hitches.html">Towing &amp; Hitches</a>
-            <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/lighting.html">Lighting</a>
-            <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/headache-racks.html">Headache Racks</a>
-          </div>
-        </div>
-
-        <!-- Areas We Service mobile accordion -->
-        <div class="sn-mob-item" id="sn-mob-areas">
-          <button class="sn-mob-top">Areas We Service <span class="sn-mob-arrow">▶</span></button>
-          <div class="sn-mob-sub">
-            <span class="sn-mob-sub-label">South Bay</span>
-            <a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_LONG_BEACH.html">Long Beach</a>
-            <a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_TORRANCE.html">Torrance</a>
-            <a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_CARSON.html">Carson</a>
-            <a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_LAKEWOOD.html">Lakewood</a>
-            <span class="sn-mob-sub-label">Southeast LA</span>
-            <a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_COMPTON.html">Compton</a>
-            <a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_DOWNEY.html">Downey</a>
-            <a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_BELLFLOWER.html">Bellflower</a>
-          </div>
-        </div>
-
-        <a href="https://www.3jsautobody.com/rhino-liner">Rhino Liner</a>
-        <a href="https://www.3jsautobody.com/contact-us">Contact Us</a>
-        <a href="https://www.3jsautobody.com/faq">FAQ</a>
-        <a href="https://www.3jsautobody.com/rhino-lining-quote" class="sn-mob-red">Bed-Liner Quote</a>
-        <a href="https://www.carwise.com/online-photo-estimate/3js-autobody-paint-inc-signal-hill-ca-90755/479382?source=shop.profile&referer=estimate.cccone.com">Free Auto Body Estimate</a>
-        <button class="sn-mob-garage-btn" id="sn-mob-garage-btn">
-          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-          My Garage
-        </button>
-
-      </div>
     </header>
   `;
 
@@ -727,35 +692,141 @@
   `;
 
   /* ════════════════════════════════
+     DRAWER HTML
+  ════════════════════════════════ */
+  var drawerHTML = `
+    <div class="sn-drawer" id="sn-drawer" aria-label="Mobile navigation" aria-hidden="true">
+      <div class="snd-close-row">
+        <button class="snd-close" id="sn-drawer-close">
+          <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          Close menu
+        </button>
+      </div>
+      <button class="snd-garage" id="sn-mob-garage-btn">
+        <div class="snd-garage-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <div class="snd-garage-info">
+          <span class="snd-garage-label">My Garage</span>
+          <span class="snd-garage-val" id="snd-garage-val">No Vehicle Saved</span>
+        </div>
+        <span class="snd-garage-arr" aria-hidden="true">›</span>
+      </button>
+      <div class="snd-nav">
+        <div class="snd-section">Navigate</div>
+        <a href="https://www.3jsautobody.com/inside-3js" class="snd-item">Inside 3J's<span class="snd-item-arr" aria-hidden="true">›</span></a>
+        <a href="https://www.3jsautobody.com/body-paint-repairs" class="snd-item">Body &amp; Paint<span class="snd-item-arr" aria-hidden="true">›</span></a>
+        <button class="snd-item" id="snd-acc-btn" aria-expanded="false">Truck Accessories<span class="snd-item-arr" aria-hidden="true">›</span></button>
+        <div class="snd-sub" id="snd-acc-sub">
+          <div class="snd-sub-inner">
+            <div class="snd-sub-top-line"></div>
+            <span class="snd-sub-label">Bed Protection</span>
+            <a href="https://www.3jsautobody.com/rhino-liner" class="snd-sub-item">Rhino Liner</a>
+            <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/floor-liners.html" class="snd-sub-item">Floor Liners</a>
+            <span class="snd-sub-label">Covers &amp; Steps</span>
+            <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/tonneau-covers.html" class="snd-sub-item">Tonneau Covers</a>
+            <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/steps-running-boards.html" class="snd-sub-item">Steps &amp; Running Boards</a>
+            <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/towing-hitches.html" class="snd-sub-item">Towing &amp; Hitches</a>
+            <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/lighting.html" class="snd-sub-item">Lighting</a>
+            <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/headache-racks.html" class="snd-sub-item">Headache Racks</a>
+          </div>
+        </div>
+        <button class="snd-item" id="snd-areas-btn" aria-expanded="false">Areas We Service<span class="snd-item-arr" aria-hidden="true">›</span></button>
+        <div class="snd-sub" id="snd-areas-sub">
+          <div class="snd-sub-inner">
+            <div class="snd-sub-top-line"></div>
+            <span class="snd-sub-label">South Bay</span>
+            <a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_LONG_BEACH.html" class="snd-sub-item">Long Beach</a>
+            <a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_TORRANCE.html" class="snd-sub-item">Torrance</a>
+            <a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_CARSON.html" class="snd-sub-item">Carson</a>
+            <a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_LAKEWOOD.html" class="snd-sub-item">Lakewood</a>
+            <span class="snd-sub-label">Southeast LA</span>
+            <a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_COMPTON.html" class="snd-sub-item">Compton</a>
+            <a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_DOWNEY.html" class="snd-sub-item">Downey</a>
+            <a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_BELLFLOWER.html" class="snd-sub-item">Bellflower</a>
+          </div>
+        </div>
+        <div class="snd-section">Quick Links</div>
+        <a href="https://www.3jsautobody.com/rhino-liner" class="snd-item snd-red">Rhino Liner<span class="snd-item-arr" aria-hidden="true">›</span></a>
+        <a href="https://www.3jsautobody.com/contact-us" class="snd-item">Contact Us<span class="snd-item-arr" aria-hidden="true">›</span></a>
+        <a href="https://www.3jsautobody.com/faq" class="snd-item">FAQ<span class="snd-item-arr" aria-hidden="true">›</span></a>
+      </div>
+      <div class="snd-ctas">
+        <a href="https://www.3jsautobody.com/rhino-lining-quote" class="snd-cta-red">Bed-Liner Quote</a>
+        <a href="https://www.carwise.com/online-photo-estimate/3js-autobody-paint-inc-signal-hill-ca-90755/479382?source=shop.profile&referer=estimate.cccone.com" class="snd-cta-outline">Free Auto Body Estimate</a>
+        <div class="snd-contact">562-424-6744 &nbsp;·&nbsp; Mon–Fri 8AM–5PM</div>
+      </div>
+    </div>
+    <div class="sn-overlay" id="sn-overlay"></div>
+  `;
+
+  /* ════════════════════════════════
      INJECT
   ════════════════════════════════ */
   document.body.insertAdjacentHTML('afterbegin', header);
   document.body.insertAdjacentHTML('beforeend', footer);
+  // Wrap all body content in page-wrap for the scale effect
+  var snWrap = document.createElement('div');
+  snWrap.id = 'sn-page-wrap';
+  var snNodes = Array.prototype.slice.call(document.body.childNodes);
+  snNodes.forEach(function(n){ snWrap.appendChild(n); });
+  document.body.appendChild(snWrap);
+  // Add overlay + drawer outside the wrap (so they aren't scaled)
+  document.body.insertAdjacentHTML('beforeend', drawerHTML);
 
   /* ════════════════════════════════
-     HAMBURGER TOGGLE
+     DRAWER OPEN / CLOSE
   ════════════════════════════════ */
   var hamburger = document.getElementById('sn-hamburger');
-  var mobileMenu = document.getElementById('sn-mobile-menu');
-  if(hamburger && mobileMenu){
-    hamburger.addEventListener('click', function(){
-      var isOpen = mobileMenu.classList.toggle('sn-open');
-      hamburger.classList.toggle('sn-open', isOpen);
-      hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-    });
-  }
+  var snDrawer  = document.getElementById('sn-drawer');
+  var snOverlay = document.getElementById('sn-overlay');
+  var snDrawerClose = document.getElementById('sn-drawer-close');
 
-  /* ════════════════════════════════
-     MOBILE ACCORDION TOGGLES
-  ════════════════════════════════ */
-  document.querySelectorAll('.sn-mob-item').forEach(function(item){
-    var btn = item.querySelector('.sn-mob-top');
-    if(btn){
-      btn.addEventListener('click', function(){
-        item.classList.toggle('sn-mob-open');
+  function snOpenDrawer(){
+    document.body.classList.add('sn-menu-open');
+    if(snDrawer){ snDrawer.setAttribute('aria-hidden','false'); }
+    if(hamburger){ hamburger.classList.add('sn-open'); hamburger.setAttribute('aria-expanded','true'); }
+    document.body.style.overflow = 'hidden';
+    // Stagger items in
+    if(snDrawer){
+      var items = snDrawer.querySelectorAll('.snd-close-row,.snd-garage,.snd-section,.snd-item,.snd-ctas');
+      items.forEach(function(el,i){
+        el.style.opacity='0'; el.style.transform='translateX(-18px)'; el.style.transition='none';
+        setTimeout(function(){
+          el.style.transition='opacity 0.35s ease,transform 0.4s cubic-bezier(0.22,1,0.36,1)';
+          el.style.opacity='1'; el.style.transform='translateX(0)';
+        }, 55 + i * 28);
       });
     }
-  });
+  }
+
+  function snCloseDrawer(){
+    document.body.classList.remove('sn-menu-open');
+    if(snDrawer){ snDrawer.setAttribute('aria-hidden','true'); }
+    if(hamburger){ hamburger.classList.remove('sn-open'); hamburger.setAttribute('aria-expanded','false'); }
+    document.body.style.overflow = '';
+  }
+
+  if(hamburger){ hamburger.addEventListener('click', snOpenDrawer); }
+  if(snOverlay){ snOverlay.addEventListener('click', snCloseDrawer); }
+  if(snDrawerClose){ snDrawerClose.addEventListener('click', snCloseDrawer); }
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') snCloseDrawer(); });
+
+  /* ════════════════════════════════
+     DRAWER ACCORDION TOGGLES
+  ════════════════════════════════ */
+  function initSndAccordion(btnId, subId){
+    var btn = document.getElementById(btnId);
+    var sub = document.getElementById(subId);
+    if(!btn || !sub) return;
+    btn.addEventListener('click', function(){
+      var isOpen = sub.classList.toggle('snd-sub-open');
+      btn.classList.toggle('snd-open', isOpen);
+      btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+  }
+  initSndAccordion('snd-acc-btn',   'snd-acc-sub');
+  initSndAccordion('snd-areas-btn', 'snd-areas-sub');
 
   /* ════════════════════════════════
      DESKTOP PHONE MODAL
@@ -892,20 +963,19 @@
   (function(){
     function snSyncGarage(){
       var saved=!!localStorage.getItem('garage_vehicle');
+      var v=saved?JSON.parse(localStorage.getItem('garage_vehicle')||'null'):null;
+      var label=v?(v.year+' '+v.make+' '+v.model):'No Vehicle Saved';
+      // Desktop nav garage button
       var btn=document.getElementById('sn-garage-btn');
-      var mob=document.getElementById('sn-mob-garage-btn');
       if(btn){
         btn.classList.toggle('sn-garage-saved',saved);
-        var v=saved?JSON.parse(localStorage.getItem('garage_vehicle')||'null'):null;
         btn.setAttribute('aria-label',v?(v.year+' '+v.make+' '+v.model):'My Garage');
       }
-      if(mob){
-        mob.classList.toggle('sn-garage-saved',saved);
-        var label=v?(v.year+' '+v.make+' '+v.model):'My Garage';
-        // Update visible text node (last child, after the SVG)
-        var nodes=mob.childNodes;
-        for(var i=nodes.length-1;i>=0;i--){if(nodes[i].nodeType===3){nodes[i].textContent='\n          '+label+'\n        ';break;}}
-      }
+      // Drawer garage button
+      var mob=document.getElementById('sn-mob-garage-btn');
+      if(mob){ mob.classList.toggle('sn-garage-saved',saved); }
+      var valEl=document.getElementById('snd-garage-val');
+      if(valEl){ valEl.textContent=label; }
     }
     snSyncGarage();
     window.addEventListener('storage',function(e){if(e.key==='garage_vehicle')snSyncGarage();});
