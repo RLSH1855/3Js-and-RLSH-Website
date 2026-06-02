@@ -195,7 +195,7 @@
   </div>
   <div class="gb-right">
     <button class="gb-link" id="gb-change-btn">&#x21ba; Change</button>
-    <a class="gb-link" href="https://rlsh1855.github.io/3Js-and-RLSH-Website/my-garage.html" target="_top">My Garage</a>
+    <button class="gb-link" id="gb-open-garage" type="button">My Garage</button>
   </div>
 </div>
 
@@ -1151,16 +1151,16 @@ function updateHeader() {
   if (btn) btn.textContent = hasVeh ? 'Change Vehicle' : 'Set My Truck';
 }
 
-/* Hero "Set My Truck" / "Change Vehicle" → open the shared My Garage popup */
-(function(){
-  var btn = document.getElementById('gh-truck-btn');
-  if (!btn) return;
-  btn.addEventListener('click', function(){
-    var sb = document.getElementById('ss-garage-btn');     // site-shell garage popup trigger
-    if (sb) { sb.click(); }
-    else { window.location.href = 'my-garage-v2.html'; }   // fallback if shell not present
-  });
-})();
+/* Open the shared My Garage popup (site-shell overlay). Wire hero button + garage-bar button. */
+function openMyGarage(){
+  var sb = document.getElementById('ss-garage-btn');       // site-shell garage popup trigger
+  if (sb) { sb.click(); }
+  else { window.location.href = 'my-garage-v2.html'; }     // fallback if shell not present
+}
+['gh-truck-btn','gb-open-garage'].forEach(function(id){
+  var b = document.getElementById(id);
+  if (b) b.addEventListener('click', openMyGarage);
+});
 
 /* Re-sync hero/bar/grid when the garage changes anywhere (shell popup, other tab) */
 function syncGarageFromStorage(){
