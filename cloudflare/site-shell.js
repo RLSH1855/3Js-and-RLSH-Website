@@ -101,25 +101,49 @@
   .ss-burger.ss-open span:nth-child(2){opacity:0;transform:scaleX(0);}
   .ss-burger.ss-open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
 
-  /* ── Mobile menu ── */
-  .ss-mob{display:flex;flex-direction:column;background:#0a0f1a;border-top:1px solid #1a2236;max-height:0;overflow:hidden;opacity:0;transform:translateY(-12px);
-    transition:max-height .42s cubic-bezier(.22,1,.36,1),opacity .32s ease,transform .38s cubic-bezier(.22,1,.36,1);pointer-events:none;}
-  .ss-mob.ss-open{max-height:85vh;overflow-y:auto;opacity:1;transform:translateY(0);pointer-events:all;}
-  .ss-mob > a, .ss-mob-top{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;
-    font-family:var(--ssnav-font),sans-serif;font-size:12px;font-weight:600;letter-spacing:1.4px;text-transform:uppercase;
-    color:#fff;text-decoration:none;border-bottom:1px solid #1a2236;transition:color .2s;cursor:pointer;background:none;border-left:none;border-right:none;border-top:none;width:100%;text-align:left;}
-  .ss-mob > a:hover, .ss-mob-top:hover{color:var(--ssr);}
-  .ss-mob > a.ss-mob-red{color:#ff5a5a;}
-  .ss-mob-arrow{font-size:9px;opacity:.5;transition:transform .2s;}
-  .ss-mob-item.ss-mob-open > .ss-mob-top .ss-mob-arrow{transform:rotate(90deg);}
-  .ss-mob-sub{display:none;flex-direction:column;background:#06090f;border-bottom:1px solid #1a2236;}
-  .ss-mob-item.ss-mob-open > .ss-mob-sub{display:flex;}
-  .ss-mob-sub a{display:block;padding:11px 24px 11px 36px;font-family:var(--ssnav-font),sans-serif;font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.6);text-decoration:none;border-bottom:1px solid #10151f;transition:color .2s;}
-  .ss-mob-sub a:last-child{border-bottom:none;}
-  .ss-mob-sub a:hover{color:#fff;}
-  .ss-mob-sub-label{display:block;padding:8px 24px 4px 36px;font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ssr);}
-  .ss-mob-garage{display:flex;align-items:center;gap:10px;padding:14px 24px;width:100%;text-align:left;font-family:var(--ssnav-font),sans-serif;font-size:12px;font-weight:600;letter-spacing:1.4px;text-transform:uppercase;color:#ff5a5a;background:none;border:none;border-bottom:1px solid #1a2236;cursor:pointer;}
-  .ss-mob-garage svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;}
+  /* ── Page wrap (scale-away effect on drawer open) ── */
+  #ss-page-wrap{transform-origin:top center;transition:transform .48s cubic-bezier(.22,1,.36,1),border-radius .48s cubic-bezier(.22,1,.36,1);will-change:transform;min-height:100vh;}
+  body.ss-menu-open #ss-page-wrap{transform:scale(.88) translateY(28px);border-radius:14px;overflow:hidden;pointer-events:none;}
+  /* ── Overlay ── */
+  .ss-drawer-ov{position:fixed;inset:0;z-index:1099;background:rgba(0,0,0,.55);opacity:0;pointer-events:none;transition:opacity .44s ease;}
+  body.ss-menu-open .ss-drawer-ov{opacity:1;pointer-events:all;}
+  /* ── Drawer panel ── */
+  .ss-drawer{position:fixed;left:0;top:0;height:100%;width:min(320px,86vw);background:#F7F6F4;z-index:1100;transform:translateX(-100%);transition:transform .48s cubic-bezier(.22,1,.36,1);display:flex;flex-direction:column;overflow:hidden;}
+  body.ss-menu-open .ss-drawer{transform:translateX(0);box-shadow:12px 0 48px rgba(0,0,0,.18);}
+  .ssd-close-row{padding:16px 20px 14px;background:#fff;border-bottom:1px solid #ECEAE6;flex-shrink:0;}
+  .ssd-close{font-family:'Inter',Arial,sans-serif;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#AAAAAA;background:none;border:none;cursor:pointer;padding:0;display:flex;align-items:center;gap:7px;}
+  .ssd-close:hover{color:#555;}
+  .ssd-garage{display:flex;align-items:center;gap:14px;padding:16px 20px;background:#fff;border:none;border-bottom:2px solid #E8E5E0;cursor:pointer;width:100%;text-align:left;flex-shrink:0;transition:background .15s;}
+  .ssd-garage:hover{background:#F2F1EF;}
+  .ssd-garage-icon{width:40px;height:40px;background:#8B0000;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .ssd-garage-icon img{width:22px;height:22px;object-fit:contain;filter:brightness(0) invert(1);}
+  .ssd-garage-info{flex:1;}
+  .ssd-garage-label{display:block;font-family:'Inter',Arial,sans-serif;font-size:9px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:#BBBBB9;}
+  .ssd-garage-val{display:block;font-family:'Inter',Arial,sans-serif;font-size:13px;font-weight:800;color:#1A1A1A;margin-top:2px;}
+  .ssd-garage-arr{font-size:16px;color:#CCCCCA;flex-shrink:0;}
+  .ssd-nav{flex:1;overflow-y:auto;overflow-x:hidden;background:#fff;}
+  .ssd-section{padding:14px 20px 5px;font-family:'Inter',Arial,sans-serif;font-size:9px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:#C0BEBE;}
+  .ssd-item{display:flex;align-items:center;justify-content:space-between;padding:15px 20px;font-family:'Inter',Arial,sans-serif;font-size:14px;font-weight:700;letter-spacing:.2px;color:#1A1A1A;text-decoration:none;border-bottom:1px solid #F2F1EF;background:#fff;cursor:pointer;width:100%;text-align:left;border-left:none;border-right:none;border-top:none;transition:background .15s;}
+  .ssd-item:hover{background:#F7F6F4;}
+  .ssd-item.ssd-red{color:#8B0000;}
+  .ssd-item-arr{font-size:14px;color:#CCCCCA;flex-shrink:0;transition:transform .3s cubic-bezier(.22,1,.36,1);display:inline-block;}
+  .ssd-item.ssd-open .ssd-item-arr{transform:rotate(90deg);}
+  .ssd-sub{display:grid;grid-template-rows:0fr;background:#303647;transition:grid-template-rows 540ms cubic-bezier(.22,1,.36,1);}
+  .ssd-sub.ssd-sub-open{grid-template-rows:1fr;}
+  .ssd-sub-inner{overflow:hidden;}
+  .ssd-sub-label{display:block;padding:11px 20px 4px 28px;font-family:'Inter',Arial,sans-serif;font-size:8px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.30);}
+  .ssd-sub-item{display:flex;align-items:center;gap:10px;padding:12px 20px 12px 28px;font-family:'Inter',Arial,sans-serif;font-size:13px;font-weight:600;color:rgba(255,255,255,.75);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.06);transition:color .15s,background .15s;}
+  .ssd-sub-item:last-child{border-bottom:none;margin-bottom:6px;}
+  .ssd-sub-item:hover{color:#fff;background:rgba(255,255,255,.06);}
+  .ssd-sub-item::before{content:'';width:4px;height:4px;background:#8B0000;flex-shrink:0;}
+  .ssd-sub-top-line{height:2px;background:#8B0000;flex-shrink:0;}
+  .ssd-ctas{padding:14px 16px;background:#FAFAF8;border-top:1px solid #ECEAE6;flex-shrink:0;display:flex;flex-direction:column;gap:8px;}
+  .ssd-cta-red{display:block;text-align:center;text-decoration:none;background:#8B0000;color:#fff;font-family:'Inter',Arial,sans-serif;font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:14px;border:none;cursor:pointer;transition:background .2s;}
+  .ssd-cta-red:hover{background:#700000;}
+  .ssd-cta-outline{display:block;text-align:center;text-decoration:none;background:transparent;color:#8B0000;font-family:'Inter',Arial,sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:13px;border:1.5px solid #D4C0C0;cursor:pointer;transition:border-color .2s;}
+  .ssd-cta-outline:hover{border-color:#8B0000;}
+  .ssd-contact{text-align:center;font-family:'Inter',Arial,sans-serif;font-size:11px;color:#BBBBBB;letter-spacing:.3px;}
+  @media(prefers-reduced-motion:reduce){#ss-page-wrap,.ss-drawer,.ss-drawer-ov,.ssd-sub{transition:none!important;}}
 
   @media(max-width:960px){
     .ss-top{padding:14px 20px;}
@@ -213,46 +237,6 @@
         '<span class="ss-garage-swap">'+icoSwap+'</span>'+
       '</a>'+
     '</nav>'+
-    /* mobile menu */
-    '<div class="ss-mob" id="ssMob" aria-label="Mobile navigation">'+
-      '<a href="/" target="_top">Home</a>'+
-      '<a href="/inside-3js" target="_top">Inside 3J\'s</a>'+
-      '<a href="/body-paint-repairs" target="_top">Body &amp; Paint Repairs</a>'+
-      '<div class="ss-mob-item">'+
-        '<button class="ss-mob-top">Truck Accessories <span class="ss-mob-arrow">▶</span></button>'+
-        '<div class="ss-mob-sub">'+
-          '<span class="ss-mob-sub-label">Bed Protection</span>'+
-          '<a href="/rhino-liner" target="_top">Rhino Liner</a>'+
-          '<a href="/floor-liners" target="_top">Floor Liners</a>'+
-          '<span class="ss-mob-sub-label">Covers &amp; Steps</span>'+
-          '<a href="/tonneau-covers" target="_top">Tonneau Covers</a>'+
-          '<a href="/steps-running-boards" target="_top">Steps &amp; Running Boards</a>'+
-          '<a href="/towing-hitches" target="_top">Towing &amp; Hitches</a>'+
-          '<a href="/lighting" target="_top">Lighting</a>'+
-          '<a href="/headache-racks" target="_top">Headache Racks</a>'+
-        '</div>'+
-      '</div>'+
-      '<div class="ss-mob-item">'+
-        '<button class="ss-mob-top">Areas We Service <span class="ss-mob-arrow">▶</span></button>'+
-        '<div class="ss-mob-sub">'+
-          '<span class="ss-mob-sub-label">South Bay</span>'+
-          '<a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_LONG_BEACH.html" target="_top">Long Beach</a>'+
-          '<a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_TORRANCE.html" target="_top">Torrance</a>'+
-          '<a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_CARSON.html" target="_top">Carson</a>'+
-          '<a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_LAKEWOOD.html" target="_top">Lakewood</a>'+
-          '<span class="ss-mob-sub-label">Southeast LA</span>'+
-          '<a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_COMPTON.html" target="_top">Compton</a>'+
-          '<a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_DOWNEY.html" target="_top">Downey</a>'+
-          '<a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_BELLFLOWER.html" target="_top">Bellflower</a>'+
-        '</div>'+
-      '</div>'+
-      '<a href="/bundles" target="_top">Bundles &amp; Packages</a>'+
-      '<a href="/shop" target="_top">Shop</a>'+
-      '<a href="/contact" target="_top">Contact Us</a>'+
-      '<a href="/FAQ_PAGE_V2" target="_top">FAQ</a>'+
-      '<a href="https://www.3jsautobody.com/rhino-lining-quote" class="ss-mob-red" target="_top">Bed-Liner Quote</a>'+
-      '<button class="ss-mob-garage" id="ss-mob-garage-btn">'+icoTruck+' <span id="ssMobGarageVeh">My Garage</span></button>'+
-    '</div>'+
   '</header>'+
   '<div class="ss-spacer"></div>'+
   '<div class="ss-scrim" id="ssScrim"></div>'+
@@ -351,8 +335,81 @@
   </div>
 </footer>`;
 
+  var ssDrawerHTML =
+    '<div class="ss-drawer" id="ssDrawer" aria-label="Mobile navigation" aria-hidden="true">'+
+      '<div class="ssd-close-row">'+
+        '<button class="ssd-close" id="ssDrawerClose">'+
+          '<svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>'+
+          'Close menu'+
+        '</button>'+
+      '</div>'+
+      '<button class="ssd-garage" id="ss-mob-garage-btn">'+
+        '<div class="ssd-garage-icon">'+icoTruck+'</div>'+
+        '<div class="ssd-garage-info">'+
+          '<span class="ssd-garage-label">My Garage</span>'+
+          '<span class="ssd-garage-val" id="ssMobGarageVeh">Set your truck</span>'+
+        '</div>'+
+        '<span class="ssd-garage-arr" aria-hidden="true">&#8250;</span>'+
+      '</button>'+
+      '<div class="ssd-nav">'+
+        '<div class="ssd-section">Navigate</div>'+
+        '<a href="/" class="ssd-item" target="_top">Home<span class="ssd-item-arr" aria-hidden="true">&#8250;</span></a>'+
+        '<a href="/inside-3js" class="ssd-item" target="_top">Inside 3J\'s<span class="ssd-item-arr" aria-hidden="true">&#8250;</span></a>'+
+        '<a href="/body-paint-repairs" class="ssd-item" target="_top">Body &amp; Paint<span class="ssd-item-arr" aria-hidden="true">&#8250;</span></a>'+
+        '<button class="ssd-item" id="ssd-acc-btn" aria-expanded="false">Truck Accessories<span class="ssd-item-arr" aria-hidden="true">&#8250;</span></button>'+
+        '<div class="ssd-sub" id="ssd-acc-sub">'+
+          '<div class="ssd-sub-inner">'+
+            '<div class="ssd-sub-top-line"></div>'+
+            '<span class="ssd-sub-label">Bed Protection</span>'+
+            '<a href="/rhino-liner" class="ssd-sub-item" target="_top">Rhino Liner</a>'+
+            '<a href="/floor-liners" class="ssd-sub-item" target="_top">Floor Liners</a>'+
+            '<span class="ssd-sub-label">Covers &amp; Steps</span>'+
+            '<a href="/tonneau-covers" class="ssd-sub-item" target="_top">Tonneau Covers</a>'+
+            '<a href="/steps-running-boards" class="ssd-sub-item" target="_top">Steps &amp; Running Boards</a>'+
+            '<a href="/towing-hitches" class="ssd-sub-item" target="_top">Towing &amp; Hitches</a>'+
+            '<a href="/lighting" class="ssd-sub-item" target="_top">Lighting</a>'+
+            '<a href="/headache-racks" class="ssd-sub-item" target="_top">Headache Racks</a>'+
+          '</div>'+
+        '</div>'+
+        '<button class="ssd-item" id="ssd-areas-btn" aria-expanded="false">Areas We Service<span class="ssd-item-arr" aria-hidden="true">&#8250;</span></button>'+
+        '<div class="ssd-sub" id="ssd-areas-sub">'+
+          '<div class="ssd-sub-inner">'+
+            '<div class="ssd-sub-top-line"></div>'+
+            '<span class="ssd-sub-label">South Bay</span>'+
+            '<a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_LONG_BEACH.html" class="ssd-sub-item" target="_top">Long Beach</a>'+
+            '<a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_TORRANCE.html" class="ssd-sub-item" target="_top">Torrance</a>'+
+            '<a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_CARSON.html" class="ssd-sub-item" target="_top">Carson</a>'+
+            '<a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_LAKEWOOD.html" class="ssd-sub-item" target="_top">Lakewood</a>'+
+            '<span class="ssd-sub-label">Southeast LA</span>'+
+            '<a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_COMPTON.html" class="ssd-sub-item" target="_top">Compton</a>'+
+            '<a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_DOWNEY.html" class="ssd-sub-item" target="_top">Downey</a>'+
+            '<a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_BELLFLOWER.html" class="ssd-sub-item" target="_top">Bellflower</a>'+
+          '</div>'+
+        '</div>'+
+        '<div class="ssd-section">More</div>'+
+        '<a href="/bundles" class="ssd-item" target="_top">Bundles &amp; Packages<span class="ssd-item-arr" aria-hidden="true">&#8250;</span></a>'+
+        '<a href="/shop" class="ssd-item" target="_top">Shop<span class="ssd-item-arr" aria-hidden="true">&#8250;</span></a>'+
+        '<a href="/contact" class="ssd-item" target="_top">Contact Us<span class="ssd-item-arr" aria-hidden="true">&#8250;</span></a>'+
+        '<a href="/FAQ_PAGE_V2" class="ssd-item" target="_top">FAQ<span class="ssd-item-arr" aria-hidden="true">&#8250;</span></a>'+
+      '</div>'+
+      '<div class="ssd-ctas">'+
+        '<a href="https://www.3jsautobody.com/rhino-lining-quote" class="ssd-cta-red" target="_top">Bed-Liner Quote</a>'+
+        '<a href="https://www.carwise.com/online-photo-estimate/3js-autobody-paint-inc-signal-hill-ca-90755/479382?source=shop.profile&referer=estimate.cccone.com" class="ssd-cta-outline" target="_top">Free Auto Body Estimate</a>'+
+        '<div class="ssd-contact">562-424-6744 &nbsp;&middot;&nbsp; Mon&ndash;Fri 8AM&ndash;5PM</div>'+
+      '</div>'+
+    '</div>'+
+    '<div class="ss-drawer-ov" id="ssDrawerOv"></div>';
+
   document.body.insertAdjacentHTML('afterbegin', header);
   document.body.insertAdjacentHTML('beforeend', footer);
+  // Wrap body content for the scale effect
+  var ssWrap = document.createElement('div');
+  ssWrap.id = 'ss-page-wrap';
+  var ssNodes = Array.prototype.slice.call(document.body.childNodes);
+  ssNodes.forEach(function(n){ ssWrap.appendChild(n); });
+  document.body.appendChild(ssWrap);
+  // Inject drawer + overlay outside wrap
+  document.body.insertAdjacentHTML('beforeend', ssDrawerHTML);
 
   /* ════════ SPACER = EXACT HEADER HEIGHT (kills the blank strip on every page) ════════ */
   (function(){
@@ -385,19 +442,56 @@
     update();
   })();
 
-  /* ════════ HAMBURGER + MOBILE ACCORDION ════════ */
+  /* ════════ DRAWER OPEN / CLOSE ════════ */
   (function(){
-    var burger=document.getElementById('ssBurger'),mob=document.getElementById('ssMob');
-    if(burger&&mob){
-      burger.addEventListener('click',function(){
-        var open=mob.classList.toggle('ss-open');
-        burger.classList.toggle('ss-open',open);
+    var burger=document.getElementById('ssBurger');
+    var drawer=document.getElementById('ssDrawer');
+    var ov=document.getElementById('ssDrawerOv');
+    var closeBtn=document.getElementById('ssDrawerClose');
+
+    function ssOpenDrawer(){
+      document.body.classList.add('ss-menu-open');
+      if(drawer) drawer.setAttribute('aria-hidden','false');
+      if(burger){ burger.classList.add('ss-open'); burger.setAttribute('aria-expanded','true'); }
+      document.body.style.overflow='hidden';
+      // Stagger items in
+      if(drawer){
+        var items=drawer.querySelectorAll('.ssd-close-row,.ssd-garage,.ssd-section,.ssd-item,.ssd-ctas');
+        items.forEach(function(el,i){
+          el.style.opacity='0'; el.style.transform='translateX(-18px)'; el.style.transition='none';
+          setTimeout(function(){
+            el.style.transition='opacity .35s ease,transform .4s cubic-bezier(.22,1,.36,1)';
+            el.style.opacity='1'; el.style.transform='translateX(0)';
+          }, 55+i*28);
+        });
+      }
+    }
+
+    function ssCloseDrawer(){
+      document.body.classList.remove('ss-menu-open');
+      if(drawer) drawer.setAttribute('aria-hidden','true');
+      if(burger){ burger.classList.remove('ss-open'); burger.setAttribute('aria-expanded','false'); }
+      document.body.style.overflow='';
+    }
+
+    if(burger) burger.addEventListener('click',ssOpenDrawer);
+    if(ov) ov.addEventListener('click',ssCloseDrawer);
+    if(closeBtn) closeBtn.addEventListener('click',ssCloseDrawer);
+    document.addEventListener('keydown',function(e){ if(e.key==='Escape') ssCloseDrawer(); });
+
+    // Accordion toggles
+    function initAcc(btnId,subId){
+      var btn=document.getElementById(btnId);
+      var sub=document.getElementById(subId);
+      if(!btn||!sub) return;
+      btn.addEventListener('click',function(){
+        var open=sub.classList.toggle('ssd-sub-open');
+        btn.classList.toggle('ssd-open',open);
+        btn.setAttribute('aria-expanded',open?'true':'false');
       });
     }
-    document.querySelectorAll('.ss-mob-item').forEach(function(item){
-      var t=item.querySelector('.ss-mob-top');
-      if(t) t.addEventListener('click',function(){item.classList.toggle('ss-mob-open');});
-    });
+    initAcc('ssd-acc-btn','ssd-acc-sub');
+    initAcc('ssd-areas-btn','ssd-areas-sub');
   })();
 
   /* ════════ BUTTERY INERTIA SCROLL (desktop only) ════════ */
