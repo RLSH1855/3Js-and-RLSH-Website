@@ -67,6 +67,7 @@
   .ss-garage:hover{border-color:var(--ssr);background:rgba(255,255,255,.11);}
   .ss-garage-ico{color:var(--ssr);display:inline-flex;flex-shrink:0;}
   .ss-garage-ico svg{width:32px;height:32px;stroke:currentColor;fill:none;stroke-width:1.6;}
+  .ss-garage-ico img{width:32px;height:32px;display:block;object-fit:contain;}
   .ss-garage-txt{display:flex;flex-direction:column;align-items:flex-start;line-height:1.15;}
   .ss-garage-label{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.45);}
   .ss-garage-veh{font-family:var(--ssnav-font),sans-serif;font-weight:700;font-size:15px;letter-spacing:.03em;color:#fff;white-space:nowrap;}
@@ -178,7 +179,7 @@
   var st=document.createElement('style');st.textContent=css;document.head.appendChild(st);
 
   /* ════════ ICONS ════════ */
-  var icoTruck='<svg viewBox="0 0 24 24"><rect x="1" y="4.5" width="22" height="15" rx="1.5"/><rect x="3" y="6.5" width="18" height="11" rx="0.5"/><circle cx="2" cy="8" r="0.75"/><circle cx="22" cy="8" r="0.75"/><line x1="3" y1="9" x2="21" y2="9"/><text x="12" y="15" text-anchor="middle" font-family="Arial,sans-serif" font-size="4.5" font-weight="900" letter-spacing="1.2" style="fill:currentColor;stroke:none">RLSH</text></svg>';
+  var icoTruck='<img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/images/my-garage-icon.png" alt="" width="32" height="32">';
   var icoSwap='<svg viewBox="0 0 24 24"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>';
 
   /* ════════ HEADER HTML ════════ */
