@@ -78,19 +78,19 @@
     /* WORKMANSHIP */
     .work-section{background:#0a0a0a;padding:clamp(48px,7vw,80px) clamp(16px,4vw,24px);overflow:hidden;}
     .work-section .section-inner{max-width:1100px;margin:0 auto;overflow:hidden;}
-    .work-header{text-align:center;margin-bottom:48px;}
+    .work-header{text-align:center;margin-bottom:32px;}
     .work-header .eyebrow{color:var(--white);}
     .work-header h2{font-family:'Montserrat',sans-serif;font-size:clamp(24px,3.5vw,40px);font-weight:900;letter-spacing:-0.5px;line-height:1.1;color:var(--white);}
     .work-header h2 em{font-style:normal;color:var(--crimson);}
     /* BENTO GRID */
-    .bento-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;width:100%;}
-    .bento-cell{overflow:hidden;height:145px;}
+    .bento-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:6px;width:100%;}
+    .bento-cell{overflow:hidden;height:160px;}
     .bento-cell img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.35s ease;}
     .bento-cell:hover img{transform:scale(1.04);}
     .bento-cell.w2{grid-column:span 2;}
     .bento-cell.gallery-hidden{display:none;}
-    @media(min-width:601px){.bento-cell{height:160px;}.bento-cell.gallery-hidden{display:block;}}
-    @media(min-width:901px){.bento-cell{height:175px;}}
+    @media(min-width:601px){.bento-grid{grid-template-columns:repeat(4,1fr);}.bento-cell{height:165px;}.bento-cell.gallery-hidden{display:block;}}
+    @media(min-width:901px){.bento-cell{height:190px;}}
 
     /* REPAIR TIMELINE */
     .tl-track{position:relative;padding-left:32px;}
