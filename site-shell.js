@@ -425,4 +425,49 @@
     });
   })();
 
+  /* ════════ SCROLL-REVEAL (sitewide, non-catalog) ════════
+     Approved fade-up reveal from effects-sandbox. Auto-applies to section content
+     blocks on pages that don't already animate; leaves explicitly-tagged pages alone.
+     Hide-CSS is injected by JS so a script failure never leaves content hidden. */
+  (function(){
+    var p=(location.pathname||'').toLowerCase();
+    /* skip catalog / faceted-sidebar pages */
+    if(/shop|parts-catalog|product-detail|catalog/.test(p)) return;
+    if(document.querySelector('.facets,.facet-rail,.filter-sidebar,[data-facets]')) return;
+    if(window.matchMedia && window.matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+
+    function init(){
+      /* leave pages that already declare their own reveal targets untouched */
+      if(document.querySelector('[data-anim]')) return;
+      var targets=[];
+      var bands=document.querySelectorAll('section,.strip');
+      Array.prototype.forEach.call(bands,function(sec){
+        if(sec.closest('#ssShell')||sec.closest('.ss-footer')) return;
+        if(/hero/i.test(sec.className||'')) return;            /* heroes keep their own entrance */
+        /* unwrap a single inner container so we stagger the real content blocks */
+        var inner=sec;
+        if(sec.children.length===1 && sec.firstElementChild && sec.firstElementChild.children.length>1) inner=sec.firstElementChild;
+        var i=0;
+        Array.prototype.forEach.call(inner.children,function(k){
+          var tag=k.tagName;
+          if(tag==='SCRIPT'||tag==='STYLE'||tag==='BR') return;
+          if(k.matches&&k.matches('section,.strip')) return;   /* nested bands reveal on their own — never twice */
+          k.setAttribute('data-anim','fade-up');
+          var d=Math.min(i*110,330); if(d) k.setAttribute('data-delay',String(d));
+          targets.push(k); i++;
+        });
+      });
+      if(!targets.length) return;
+      var css='[data-anim]{opacity:0;transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1);}'
+        +'[data-anim="fade-up"]{transform:translateY(30px);}[data-anim="fade-in"]{transform:none;}'
+        +'[data-anim].ss-vis{opacity:1;transform:none;}'
+        +'[data-delay="110"]{transition-delay:.11s}[data-delay="220"]{transition-delay:.22s}[data-delay="330"]{transition-delay:.33s}';
+      var st=document.createElement('style');st.textContent=css;document.head.appendChild(st);
+      if(!('IntersectionObserver' in window)){targets.forEach(function(t){t.classList.add('ss-vis');});return;}
+      var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('ss-vis');io.unobserve(e.target);}});},{threshold:0.12,rootMargin:'0px 0px -7% 0px'});
+      targets.forEach(function(t){io.observe(t);});
+    }
+    if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init); else init();
+  })();
+
 })();
