@@ -91,7 +91,7 @@
     .bento-cell:hover img{transform:scale(1.04);}
     .bento-cell.w2{grid-column:span 2;}
     .bento-cell.gallery-hidden{display:none;}
-    @media(min-width:601px){.bento-grid{grid-template-columns:repeat(4,1fr);}.bento-cell{height:165px;}.bento-cell.gallery-hidden{display:block;}}
+    @media(min-width:601px){.bento-grid{grid-template-columns:repeat(4,1fr);}.bento-cell{height:165px;}}
     @media(min-width:901px){.bento-cell{height:190px;}}
 
     /* REPAIR TIMELINE */
@@ -182,7 +182,6 @@
       .page-header{height:260px;padding-top:24px;}
       .section-body{font-size:16px;}
       .eyebrow{font-size:10px;}
-      .gallery-more-wrap{display:none;}
       .red-band-btn{width:auto;justify-content:center;}
       .hide-mobile{display:block;}
       .faq-answer{padding:0 20px 20px 60px;}
@@ -1010,7 +1009,6 @@
   document.querySelectorAll('#faq-list .faq-trigger').forEach(function(btn){btn.addEventListener('click',function(){var item=btn.closest('.faq-item'),wasOpen=item.classList.contains('open');document.querySelectorAll('#faq-list .faq-item.open').forEach(faqClose);if(!wasOpen)faqOpen(item);setTimeout(reportHeight,350);});});
 
   function initGallery(){
-    if(window.innerWidth > 600) return;
     var wrap = document.getElementById('galleryMoreWrap');
     var btn = document.getElementById('galleryMoreBtn');
     var hidden = document.querySelectorAll('.bento-cell.gallery-hidden');
