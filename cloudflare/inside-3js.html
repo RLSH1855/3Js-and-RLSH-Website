@@ -94,34 +94,26 @@
     .photo-expand-close{position:absolute;top:10px;right:10px;background:rgba(0,0,0,0.6);border:none;color:var(--white);font-size:24px;cursor:pointer;width:44px;height:44px;display:flex;align-items:center;justify-content:center;z-index:10;border-radius:0;}
     .work-photo.active-thumb{outline:3px solid var(--crimson);}
 
-    /* REPAIR JOURNEY */
-    .journey-section{background:var(--white);padding:clamp(56px,8vw,90px) clamp(16px,4vw,24px);}
-    .journey-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr;gap:40px;align-items:start;}
-    .journey-sidebar{}
-    .journey-sidebar .section-title{font-size:clamp(22px,2.8vw,34px);margin-bottom:16px;}
-    .journey-sidebar p.journey-sub{font-family:'Inter',sans-serif;font-size:15px;font-weight:400;color:var(--body-text);line-height:1.65;text-wrap:pretty;}
-    .journey-divider{width:40px;height:3px;background:var(--crimson);margin:20px 0;}
-    .journey-steps{}
-    .step-item{border-bottom:1px solid var(--divider);}
-    .step-item:first-of-type{border-top:1px solid var(--divider);}
-    .step-btn{width:100%;background:none;border:none;display:flex;align-items:center;gap:8px;padding:18px 0;cursor:pointer;text-align:left;transition:all 0.3s ease;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none;touch-action:manipulation;-webkit-tap-highlight-color:transparent;}
-    .step-btn:hover .step-title{color:var(--crimson);}
-    .step-num{font-family:'Montserrat',sans-serif;font-size:11px;font-weight:900;color:var(--crimson);letter-spacing:2px;flex-shrink:0;min-width:28px;}
-    .step-title{font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;color:var(--neutral-dark);line-height:1.4;flex:1;transition:color 0.2s;text-align:left;}
-    .step-icon{width:18px;height:18px;flex-shrink:0;stroke:var(--crimson);stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;transition:transform 0.3s ease;}
-    .step-item.open .step-icon{transform:rotate(45deg);}
-    .step-body{font-family:'Inter',sans-serif;font-size:14px;font-weight:400;color:var(--body-text);line-height:1.7;display:none;padding:0 0 18px 44px;text-wrap:pretty;}
-    .step-item.open .step-body{display:block;}
-    .journey-section{padding:40px 16px;}
-    .step-body{padding:0 0 16px 36px;}
-    @media(min-width:601px){
-      .journey-section{padding:clamp(56px,8vw,90px) clamp(16px,4vw,24px);}
-      .step-body{padding:0 0 18px 44px;}
-    }
-    @media(min-width:901px){
-      .journey-inner{grid-template-columns:320px 1fr;gap:64px;}
-      .journey-sidebar{position:sticky;top:32px;}
-    }
+    /* REPAIR TIMELINE */
+    .tl-track{position:relative;padding-left:32px;}
+    .tl-track::before{content:'';position:absolute;left:7px;top:8px;bottom:8px;width:1.5px;background:#D8D8D8;}
+    .tl-step{position:relative;margin-bottom:20px;}
+    .tl-step:last-child{margin-bottom:0;}
+    .tl-dot{position:absolute;left:-32px;top:5px;width:14px;height:14px;border-radius:50%;border:2px solid var(--crimson);background:#fff;z-index:1;}
+    .tl-card{padding:0;}
+    .tl-num{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--crimson);display:block;margin-bottom:4px;}
+    .tl-card h3{font-family:'Montserrat',sans-serif;font-size:14px;font-weight:800;color:var(--neutral-dark);margin-bottom:5px;line-height:1.25;}
+    .tl-card p{font-family:'Inter',sans-serif;font-size:13px;font-weight:400;color:var(--body-text);line-height:1.6;}
+    /* STORY + TIMELINE two-col layout */
+    .story-tl-grid{display:grid;grid-template-columns:1fr;gap:40px;}
+    @media(min-width:768px){.story-tl-grid{grid-template-columns:1fr 1fr;gap:56px;align-items:start;}}
+    @media(min-width:1024px){.story-tl-grid{gap:72px;}}
+    .tl-col-head{margin-bottom:24px;}
+    .tl-col-head h2{font-family:'Montserrat',sans-serif;font-size:clamp(18px,2vw,24px);font-weight:800;letter-spacing:-0.3px;color:var(--neutral-dark);margin-bottom:8px;text-wrap:balance;}
+    .tl-col-head h2 em{font-style:normal;color:var(--crimson);}
+    .tl-col-head p{font-family:'Inter',sans-serif;font-size:13px;font-weight:400;color:var(--body-text);line-height:1.6;text-wrap:pretty;}
+    /* Generations block below pills */
+    .gen-block{margin-top:24px;border:1px solid #e8e8e8;}
 
     /* RED CTA BAND */
     .red-band{background:var(--crimson);padding:clamp(40px,5vw,56px) clamp(16px,4vw,24px);text-align:center;}
@@ -244,11 +236,13 @@
   <div class="stat"><div class="stat-number">1</div><div class="stat-label">Location · Always</div></div>
 </div>
 
-<!-- OUR STORY — TEXT LEFT, VISUAL RIGHT -->
+<!-- OUR STORY + REPAIR TIMELINE -->
 <section class="section">
   <div class="section-inner">
-    <div class="two-col">
-      <div class="col-text">
+    <div class="story-tl-grid">
+
+      <!-- LEFT: story + cert pills + three generations -->
+      <div>
         <p class="eyebrow">Our Story</p>
         <h2 class="section-title">A Family Built on <em>Doing It Right</em></h2>
         <div class="section-body">
@@ -256,34 +250,137 @@
           <p>We are a <strong>family owned and operated facility.</strong> What started as a collision repair shop has grown into a full-service truck build and accessories destination — but <span class="hl">our values have never changed.</span> We treat every vehicle like it's our own.</p>
           <p>We're not here just to fix your truck. We're here to <strong>take care of you through the whole process</strong> — from the first phone call to the day you drive out.</p>
         </div>
-        <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:32px;">
-          <div style="display:inline-flex;align-items:center;gap:8px;background:var(--off-white);border:1px solid #e0e0e0;border-radius:0;padding:8px 16px;"><div style="width:8px;height:8px;border-radius:50%;background:#8B0000;flex-shrink:0;"></div><span style="font-family:'Inter',sans-serif;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--body-text);">I-CAR Gold Class Certified</span></div>
-          <div style="display:inline-flex;align-items:center;gap:8px;background:var(--off-white);border:1px solid #e0e0e0;border-radius:0;padding:8px 16px;"><div style="width:8px;height:8px;border-radius:50%;background:#8B0000;flex-shrink:0;"></div><span style="font-family:'Inter',sans-serif;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--body-text);">ASE Certified</span></div>
-          <div style="display:inline-flex;align-items:center;gap:8px;background:var(--off-white);border:1px solid #e0e0e0;border-radius:0;padding:8px 16px;"><div style="width:8px;height:8px;border-radius:50%;background:#8B0000;flex-shrink:0;"></div><span style="font-family:'Inter',sans-serif;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--body-text);">Rhino Liner Certified</span></div>
-          <div style="display:inline-flex;align-items:center;gap:8px;background:var(--off-white);border:1px solid #e0e0e0;border-radius:0;padding:8px 16px;"><div style="width:8px;height:8px;border-radius:50%;background:#8B0000;flex-shrink:0;"></div><span style="font-family:'Inter',sans-serif;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--body-text);">Est. 1991</span></div>
+        <!-- Cert pills -->
+        <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:28px;">
+          <div style="display:inline-flex;align-items:center;gap:8px;background:var(--off-white);border:1px solid #e0e0e0;padding:8px 14px;"><div style="width:7px;height:7px;border-radius:50%;background:#8B0000;flex-shrink:0;"></div><span style="font-family:'Inter',sans-serif;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--body-text);">I-CAR Gold Class Certified</span></div>
+          <div style="display:inline-flex;align-items:center;gap:8px;background:var(--off-white);border:1px solid #e0e0e0;padding:8px 14px;"><div style="width:7px;height:7px;border-radius:50%;background:#8B0000;flex-shrink:0;"></div><span style="font-family:'Inter',sans-serif;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--body-text);">ASE Certified</span></div>
+          <div style="display:inline-flex;align-items:center;gap:8px;background:var(--off-white);border:1px solid #e0e0e0;padding:8px 14px;"><div style="width:7px;height:7px;border-radius:50%;background:#8B0000;flex-shrink:0;"></div><span style="font-family:'Inter',sans-serif;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--body-text);">Rhino Liner Certified</span></div>
+          <div style="display:inline-flex;align-items:center;gap:8px;background:var(--off-white);border:1px solid #e0e0e0;padding:8px 14px;"><div style="width:7px;height:7px;border-radius:50%;background:#8B0000;flex-shrink:0;"></div><span style="font-family:'Inter',sans-serif;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--body-text);">Est. 1991</span></div>
         </div>
-      </div>
-      <div class="col-visual">
-        <div style="background:#fff;border:1px solid #e8e8e8;border-radius:0;overflow:hidden;">
-          <div style="padding:40px;">
-            <p class="eyebrow" style="margin-bottom:20px;">Three Generations</p>
+        <!-- Three Generations -->
+        <div class="gen-block" style="background:#fff;overflow:hidden;margin-top:24px;">
+          <div style="padding:24px 24px 20px;">
+            <p class="eyebrow" style="margin-bottom:16px;">Three Generations</p>
             <ul style="list-style:none;">
-              <li style="display:flex;align-items:flex-start;gap:16px;padding:20px 0;border-bottom:1px solid #e8e8e8;">
-                <span style="font-family:'Montserrat',sans-serif;font-size:11px;font-weight:900;letter-spacing:2px;color:#8B0000;text-transform:uppercase;flex-shrink:0;padding-top:2px;min-width:36px;">1st</span>
-                <div><div style="font-family:'Montserrat',sans-serif;font-size:15px;font-weight:800;color:#1a1a1a;margin-bottom:3px;">Jim Sferrazza</div><div style="font-family:'Inter',sans-serif;font-size:11px;font-weight:500;color:#888;letter-spacing:0.5px;text-transform:uppercase;">Founder · The Original</div></div>
+              <li style="display:flex;align-items:flex-start;gap:14px;padding:14px 0;border-bottom:1px solid #e8e8e8;">
+                <span style="font-family:'Montserrat',sans-serif;font-size:10px;font-weight:900;letter-spacing:2px;color:#8B0000;text-transform:uppercase;flex-shrink:0;padding-top:2px;min-width:32px;">1st</span>
+                <div><div style="font-family:'Montserrat',sans-serif;font-size:14px;font-weight:800;color:#1a1a1a;margin-bottom:2px;">Jim Sferrazza</div><div style="font-family:'Inter',sans-serif;font-size:11px;font-weight:500;color:#888;letter-spacing:0.5px;text-transform:uppercase;">Founder · The Original</div></div>
               </li>
-              <li style="display:flex;align-items:flex-start;gap:16px;padding:20px 0;border-bottom:1px solid #e8e8e8;">
-                <span style="font-family:'Montserrat',sans-serif;font-size:11px;font-weight:900;letter-spacing:2px;color:#8B0000;text-transform:uppercase;flex-shrink:0;padding-top:2px;min-width:36px;">2nd</span>
-                <div><div style="font-family:'Montserrat',sans-serif;font-size:15px;font-weight:800;color:#1a1a1a;margin-bottom:3px;">Jimmy Sferrazza</div><div style="font-family:'Inter',sans-serif;font-size:11px;font-weight:500;color:#888;letter-spacing:0.5px;text-transform:uppercase;">Owner · Built the Business</div></div>
+              <li style="display:flex;align-items:flex-start;gap:14px;padding:14px 0;border-bottom:1px solid #e8e8e8;">
+                <span style="font-family:'Montserrat',sans-serif;font-size:10px;font-weight:900;letter-spacing:2px;color:#8B0000;text-transform:uppercase;flex-shrink:0;padding-top:2px;min-width:32px;">2nd</span>
+                <div><div style="font-family:'Montserrat',sans-serif;font-size:14px;font-weight:800;color:#1a1a1a;margin-bottom:2px;">Jimmy Sferrazza</div><div style="font-family:'Inter',sans-serif;font-size:11px;font-weight:500;color:#888;letter-spacing:0.5px;text-transform:uppercase;">Owner · Built the Business</div></div>
               </li>
-              <li style="display:flex;align-items:flex-start;gap:16px;padding:20px 0;">
-                <span style="font-family:'Montserrat',sans-serif;font-size:11px;font-weight:900;letter-spacing:2px;color:#8B0000;text-transform:uppercase;flex-shrink:0;padding-top:2px;min-width:36px;">3rd</span>
-                <div><div style="font-family:'Montserrat',sans-serif;font-size:15px;font-weight:800;color:#1a1a1a;margin-bottom:3px;">James Sferrazza</div><div style="font-family:'Inter',sans-serif;font-size:11px;font-weight:500;color:#888;letter-spacing:0.5px;text-transform:uppercase;">Current Owner · Running the Shop</div></div>
+              <li style="display:flex;align-items:flex-start;gap:14px;padding:14px 0;">
+                <span style="font-family:'Montserrat',sans-serif;font-size:10px;font-weight:900;letter-spacing:2px;color:#8B0000;text-transform:uppercase;flex-shrink:0;padding-top:2px;min-width:32px;">3rd</span>
+                <div><div style="font-family:'Montserrat',sans-serif;font-size:14px;font-weight:800;color:#1a1a1a;margin-bottom:2px;">James Sferrazza</div><div style="font-family:'Inter',sans-serif;font-size:11px;font-weight:500;color:#888;letter-spacing:0.5px;text-transform:uppercase;">Current Owner · Running the Shop</div></div>
               </li>
             </ul>
           </div>
         </div>
       </div>
+
+      <!-- RIGHT: Repair Timeline -->
+      <div>
+        <div class="tl-col-head">
+          <p class="eyebrow">Step by Step</p>
+          <h2>Your Repair <em>Journey</em></h2>
+          <p>What to expect every step of the way — from the moment the accident happens to the day you drive away.</p>
+        </div>
+        <div class="tl-track">
+
+          <div class="tl-step">
+            <div class="tl-dot"></div>
+            <div class="tl-card">
+              <span class="tl-num">Step 01</span>
+              <h3>The Accident Happens</h3>
+              <p>Make sure everyone is safe, then contact your insurance to start your claim. Call or stop by — we'll take it from there.</p>
+            </div>
+          </div>
+
+          <div class="tl-step">
+            <div class="tl-dot"></div>
+            <div class="tl-card">
+              <span class="tl-num">Step 02</span>
+              <h3>Your Estimate &amp; Getting Started</h3>
+              <p>We write a detailed estimate and work directly with your insurance to approve repairs. Enterprise rental coordination available onsite.</p>
+            </div>
+          </div>
+
+          <div class="tl-step">
+            <div class="tl-dot"></div>
+            <div class="tl-card">
+              <span class="tl-num">Step 03</span>
+              <h3>Disassembly &amp; Inspection</h3>
+              <p>We carefully disassemble damaged areas to uncover hidden damage. If anything additional is found, we communicate with you and your insurance right away — no surprises.</p>
+            </div>
+          </div>
+
+          <div class="tl-step">
+            <div class="tl-dot"></div>
+            <div class="tl-card">
+              <span class="tl-num">Step 04</span>
+              <h3>Repairs Begin</h3>
+              <p>With everything approved, repairs officially begin. We provide an estimated completion date and keep you updated throughout.</p>
+            </div>
+          </div>
+
+          <div class="tl-step">
+            <div class="tl-dot"></div>
+            <div class="tl-card">
+              <span class="tl-num">Step 05</span>
+              <h3>Structural &amp; Body Repairs</h3>
+              <p>Repaired following manufacturer guidelines. A detailed quality inspection follows every repair stage.</p>
+            </div>
+          </div>
+
+          <div class="tl-step">
+            <div class="tl-dot"></div>
+            <div class="tl-card">
+              <span class="tl-num">Step 06</span>
+              <h3>Paint &amp; Refinishing</h3>
+              <p>Surface prep, primer, computer-matched color paint, and a clear coat — with a quality check at every stage.</p>
+            </div>
+          </div>
+
+          <div class="tl-step">
+            <div class="tl-dot"></div>
+            <div class="tl-card">
+              <span class="tl-num">Step 07</span>
+              <h3>Reassembly</h3>
+              <p>All components precisely reinstalled and verified. You receive a final delivery reminder so you know exactly when your vehicle will be ready.</p>
+            </div>
+          </div>
+
+          <div class="tl-step">
+            <div class="tl-dot"></div>
+            <div class="tl-card">
+              <span class="tl-num">Step 08</span>
+              <h3>Final Quality Assurance</h3>
+              <p>We clean your vehicle, perform any required ADAS calibrations, and your Service Advisor does a final walkthrough.</p>
+            </div>
+          </div>
+
+          <div class="tl-step">
+            <div class="tl-dot"></div>
+            <div class="tl-card">
+              <span class="tl-num">Step 09</span>
+              <h3>Vehicle Ready for Pickup</h3>
+              <p>Your vehicle is ready on time, as promised. Drive away with confidence knowing every repair was done right.</p>
+            </div>
+          </div>
+
+          <div class="tl-step">
+            <div class="tl-dot"></div>
+            <div class="tl-card">
+              <span class="tl-num">Step 10</span>
+              <h3>Lifetime Warranty</h3>
+              <p>Every repair is backed by our written limited lifetime warranty — for as long as you own the vehicle.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -798,111 +895,6 @@
   </div>
 </section>
 
-<!-- REPAIR JOURNEY -->
-<section class="journey-section">
-  <div class="journey-inner">
-    <div class="journey-sidebar">
-      <p class="eyebrow">Step by Step</p>
-      <h2 class="section-title">Your Repair <em>Journey</em></h2>
-      <div class="journey-divider"></div>
-      <p class="journey-sub">What to expect every step of the way — from the moment the accident happens to the day you drive away with confidence.</p>
-    </div>
-    <div class="journey-steps">
-
-      <div class="step-item">
-        <button class="step-btn" aria-expanded="false">
-          <span class="step-num">01</span>
-          <span class="step-title">The Accident Happens</span>
-          <svg class="step-icon" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-        </button>
-        <div class="step-body">First things first—make sure everyone is safe. Then contact your insurance company to start your claim. When you're ready, give us a call, stop by, or schedule your appointment online. We'll take it from there.</div>
-      </div>
-
-      <div class="step-item">
-        <button class="step-btn" aria-expanded="false">
-          <span class="step-num">02</span>
-          <span class="step-title">Your Estimate &amp; Getting Started</span>
-          <svg class="step-icon" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-        </button>
-        <div class="step-body">We begin with a detailed initial estimate based on visible damage. From there, we work directly with your insurance company to review and approve the repairs.<br><br>If you need a rental, we can help coordinate one through our onsite partner, Enterprise. We'll also set you up with updates via phone, text, or email—whichever you prefer—so you're always in the loop.</div>
-      </div>
-
-      <div class="step-item">
-        <button class="step-btn" aria-expanded="false">
-          <span class="step-num">03</span>
-          <span class="step-title">Vehicle Disassembly &amp; Inspection</span>
-          <svg class="step-icon" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-        </button>
-        <div class="step-body">Once your vehicle is in the shop, we carefully disassemble the damaged areas to uncover any hidden damage.<br><br>If anything additional is found, we'll communicate with you and your insurance company right away to review and approve any necessary updates—no surprises.</div>
-      </div>
-
-      <div class="step-item">
-        <button class="step-btn" aria-expanded="false">
-          <span class="step-num">04</span>
-          <span class="step-title">Repairs Begin</span>
-          <svg class="step-icon" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-        </button>
-        <div class="step-body">With everything approved, repairs officially begin. We'll provide you with an estimated completion date and keep you updated throughout the process.</div>
-      </div>
-
-      <div class="step-item">
-        <button class="step-btn" aria-expanded="false">
-          <span class="step-num">05</span>
-          <span class="step-title">Structural &amp; Body Repairs</span>
-          <svg class="step-icon" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-        </button>
-        <div class="step-body">Your vehicle is repaired following manufacturer guidelines to ensure safety and proper restoration. After repairs are completed, we perform a detailed quality inspection to make sure everything meets our standards.<br><br>We'll also keep you informed and confirm your expected delivery date.</div>
-      </div>
-
-      <div class="step-item">
-        <button class="step-btn" aria-expanded="false">
-          <span class="step-num">06</span>
-          <span class="step-title">Paint &amp; Refinishing</span>
-          <svg class="step-icon" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-        </button>
-        <div class="step-body">Our team prepares the surface through careful sanding and smoothing before applying primer, color-matched paint, and a protective clear coat.<br><br>Once complete, we perform a second quality inspection to ensure a flawless finish.</div>
-      </div>
-
-      <div class="step-item">
-        <button class="step-btn" aria-expanded="false">
-          <span class="step-num">07</span>
-          <span class="step-title">Reassembly</span>
-          <svg class="step-icon" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-        </button>
-        <div class="step-body">Your vehicle is reassembled with precision, ensuring all components are properly installed and functioning as they should.<br><br>You'll receive a final delivery reminder so you know exactly when your vehicle will be ready.</div>
-      </div>
-
-      <div class="step-item">
-        <button class="step-btn" aria-expanded="false">
-          <span class="step-num">08</span>
-          <span class="step-title">Final Quality Assurance</span>
-          <svg class="step-icon" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-        </button>
-        <div class="step-body">Before pickup, we thoroughly clean and prepare your vehicle. If required, we perform advanced driver-assistance system (ADAS) calibrations to ensure all safety features are working correctly.<br><br>Your Service Advisor completes a final inspection to ensure everything is perfect.</div>
-      </div>
-
-      <div class="step-item">
-        <button class="step-btn" aria-expanded="false">
-          <span class="step-num">09</span>
-          <span class="step-title">Vehicle Ready for Pickup</span>
-          <svg class="step-icon" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-        </button>
-        <div class="step-body">Your vehicle is ready on time—just as promised. You can drive away with confidence knowing your repairs were done right.</div>
-      </div>
-
-      <div class="step-item">
-        <button class="step-btn" aria-expanded="false">
-          <span class="step-num">10</span>
-          <span class="step-title">Lifetime Warranty</span>
-          <svg class="step-icon" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-        </button>
-        <div class="step-body">We stand behind our work with a written limited lifetime warranty. As long as you own your vehicle, you can count on us to stand behind the repairs we've performed.</div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
 <!-- CTA BAND -->
 <div class="red-band">
   <h2>Ready to Bring Your Truck In?</h2>
@@ -931,24 +923,6 @@
   function faqClose(item){item.classList.remove('open');item.querySelector('.faq-trigger').setAttribute('aria-expanded','false');}
   function faqOpen(item){item.classList.add('open');item.querySelector('.faq-trigger').setAttribute('aria-expanded','true');}
   document.querySelectorAll('#faq-list .faq-trigger').forEach(function(btn){btn.addEventListener('click',function(){var item=btn.closest('.faq-item'),wasOpen=item.classList.contains('open');document.querySelectorAll('#faq-list .faq-item.open').forEach(faqClose);if(!wasOpen)faqOpen(item);setTimeout(reportHeight,350);});});
-
-  // Repair Journey accordion
-  document.querySelectorAll('.step-btn').forEach(function(btn){
-    btn.addEventListener('click',function(){
-      var item=btn.closest('.step-item');
-      var wasOpen=item.classList.contains('open');
-      document.querySelectorAll('.step-item.open').forEach(function(i){
-        i.classList.remove('open');
-        i.querySelector('.step-btn').setAttribute('aria-expanded','false');
-      });
-      if(!wasOpen){
-        item.classList.add('open');
-        btn.setAttribute('aria-expanded','true');
-      }
-      reportHeight();
-      setTimeout(reportHeight,50);
-    });
-  });
 
   function initGallery(){
     if(window.innerWidth > 600) return;
