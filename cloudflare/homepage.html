@@ -71,7 +71,8 @@
     .hero-vignette{position:absolute;bottom:0;left:0;right:0;height:280px;background:linear-gradient(to top,rgba(0,0,0,1) 0%,rgba(0,0,0,0.85) 20%,rgba(0,0,0,0.4) 55%,transparent 100%);z-index:2;pointer-events:none;}
     .hero-accent-bar{position:absolute;left:0;top:0;bottom:0;width:5px;background:#8B0000;z-index:3;}
     .hero-content{position:relative;z-index:2;padding:80px 72px 80px 80px;max-width:680px;color:#fff;}
-    .hero-eyebrow{position:absolute;top:40px;left:80px;display:flex;align-items:center;gap:12px;z-index:4;}
+    .hero-eyebrow{position:absolute;top:40px;left:80px;display:flex;flex-direction:column;align-items:flex-start;gap:10px;z-index:4;}
+    .eyebrow-row{display:flex;align-items:center;gap:12px;}
     .eyebrow-line{width:36px;height:2px;background:#8B0000;flex-shrink:0;}
     .eyebrow-text{font-size:10px;font-weight:800;letter-spacing:3.5px;text-transform:uppercase;color:rgba(255,255,255,0.70);}
     .hero-headline{font-size:clamp(44px,6.5vw,90px);font-weight:900;letter-spacing:-3px;line-height:0.92;text-transform:uppercase;margin-bottom:0;color:#fff;}
@@ -81,7 +82,7 @@
     .hero-body .promise{display:block;font-size:clamp(15px,1.9vw,19px);font-weight:800;color:#fff;margin:16px 0 8px;letter-spacing:2px;text-transform:uppercase;text-align:center;}
     .hero-body .since{display:block;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-top:18px;white-space:nowrap;}
     .hero-cta-group{display:flex;flex-direction:column;align-items:flex-start;margin-top:40px;}
-    .hero-tagline{font-family:'Montserrat',sans-serif;font-size:clamp(13px,1.6vw,18px);font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.95);margin-bottom:24px;line-height:1.4;}
+    .hero-tagline{font-family:'Montserrat',sans-serif;font-size:clamp(11px,1.2vw,14px);font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.88);margin:0;line-height:1.4;}
     .hero-ctas{display:flex;flex-wrap:wrap;gap:14px;}
     .hero-stats{display:flex;gap:36px;margin-top:52px;padding-top:32px;border-top:1px solid rgba(255,255,255,0.12);}
     .hero-stats .stat{display:flex;flex-direction:column;gap:3px;}
@@ -367,8 +368,11 @@
   <div class="hero-accent-bar"></div>
 
   <div class="hero-eyebrow">
-    <div class="eyebrow-line"></div>
-    <span class="eyebrow-text">Signal Hill, CA · Est. 1991 · Family Owned</span>
+    <div class="eyebrow-row">
+      <div class="eyebrow-line"></div>
+      <span class="eyebrow-text">Signal Hill, CA · Est. 1991 · Family Owned</span>
+    </div>
+    <p class="hero-tagline">We meet great people by accident.</p>
   </div>
 
   <div class="hero-content">
@@ -378,7 +382,6 @@
       <span class="line-red">One Family.</span>
     </h1>
     <div class="hero-rule"></div>
-    <p class="hero-tagline">We meet great people by accident.</p>
     <div class="hero-body">
       No corporate. No runaround. No ticket numbers.<br>
       Just James, his crew, and the promise that
