@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Before &amp; After — 3J's Auto Body</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:'Inter',sans-serif;font-size:16px;color:#424954;background:#fff;max-width:100%;}
+    h1,h2,h3,.eyebrow{font-family:'Montserrat',sans-serif;}
+
+    /* PAGE HEADER */
+    .page-header{background:#0A0A0A;color:#fff;height:260px;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px 24px 0;position:relative;overflow:hidden;flex-direction:column;}
+    .page-header::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(139,0,0,0.16) 0%,transparent 65%);pointer-events:none;}
+    .page-header::after{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,0.035) 1px,transparent 1px);background-size:26px 26px;pointer-events:none;}
+    .page-header-content{position:relative;z-index:1;}
+    .eyebrow{font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:#8B0000;margin-bottom:12px;}
+    .page-header .eyebrow{color:#8B0000;}
+    .page-header h1{font-family:'Montserrat',sans-serif;font-size:clamp(32px,6vw,56px);font-weight:900;letter-spacing:-2px;line-height:1.0;text-transform:uppercase;}
+    .page-header h1 em{font-style:normal;color:#8B0000;}
+    .page-header-bar{position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(to right,transparent,#8B0000 25%,#8B0000 75%,transparent);}
+
+    /* INTRO */
+    .intro{padding:64px 24px;text-align:center;border-bottom:1px solid #e8e8e8;}
+    .intro-inner{max-width:640px;margin:0 auto;}
+    .intro h2{font-family:'Montserrat',sans-serif;font-size:clamp(22px,3.5vw,34px);font-weight:900;letter-spacing:-0.5px;color:#1a1a1a;margin-bottom:16px;}
+    .intro h2 em{font-style:normal;color:#8B0000;}
+    .intro p{font-family:'Inter',sans-serif;font-size:16px;color:#424954;line-height:1.65;}
+
+    /* GALLERY GRID */
+    .gallery{padding:64px 24px 80px;background:#fff;}
+    .gallery-inner{max-width:1100px;margin:0 auto;}
+    .gallery-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:48px;}
+
+    /* BEFORE/AFTER CARD */
+    .ba-card{}
+    .ba-label{font-family:'Montserrat',sans-serif;font-size:11px;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:#1a1a1a;margin-bottom:12px;}
+    .ba-label span{color:#8B0000;}
+
+    /* SLIDER CONTAINER */
+    .ba-slider{position:relative;width:100%;overflow:hidden;cursor:ew-resize;user-select:none;background:#111;}
+    .ba-slider-inner{position:relative;aspect-ratio:4/3;width:100%;}
+    .ba-img{position:absolute;inset:0;width:100%;height:100%;}
+    .ba-img img{width:100%;height:100%;object-fit:cover;display:block;}
+    .ba-img.after{clip-path:inset(0 0 0 50%);}
+
+    /* DRAG HANDLE */
+    .ba-handle{position:absolute;top:0;bottom:0;left:50%;width:3px;background:#fff;transform:translateX(-50%);z-index:10;pointer-events:none;}
+    .ba-handle-knob{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:44px;height:44px;background:#fff;border:3px solid #8B0000;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 12px rgba(0,0,0,0.35);}
+    .ba-handle-knob svg{flex-shrink:0;}
+
+    /* BEFORE / AFTER BADGES */
+    .ba-badge{position:absolute;bottom:14px;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:900;letter-spacing:1.5px;text-transform:uppercase;padding:7px 14px;z-index:5;pointer-events:none;box-shadow:0 2px 8px rgba(0,0,0,0.45);}
+    .ba-badge.before{left:14px;background:#fff;color:#1a1a1a;}
+    .ba-badge.after{right:14px;background:#8B0000;color:#fff;}
+
+    /* CARD CAPTION */
+    .ba-caption{padding:14px 0 0;}
+    .ba-caption-title{font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;color:#1a1a1a;margin-bottom:4px;}
+    .ba-caption-sub{font-family:'Inter',sans-serif;font-size:12px;font-weight:400;color:#888;}
+
+    /* CTA BAND */
+    .red-band{background:#8B0000;padding:56px 24px;text-align:center;}
+    .red-band h2{font-family:'Montserrat',sans-serif;font-size:clamp(20px,3vw,32px);font-weight:900;letter-spacing:-0.5px;margin-bottom:10px;color:#fff;}
+    .red-band p{font-family:'Inter',sans-serif;font-size:15px;font-weight:400;color:rgba(255,255,255,0.80);max-width:540px;margin:0 auto 28px;line-height:1.65;}
+    .red-band-btn{display:inline-flex;align-items:center;gap:8px;background:#fff;color:#8B0000;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;text-decoration:none;padding:0 30px;height:48px;border-radius:0;transition:background 0.2s,color 0.2s;letter-spacing:0.5px;}
+    .red-band-btn:hover{background:#f0f0f0;}
+
+    /* RESPONSIVE */
+    @media(max-width:768px){
+      .gallery-grid{grid-template-columns:1fr;gap:36px;}
+      .page-header{height:160px;}
+      .gallery{padding:40px 16px 60px;}
+      .intro{padding:40px 16px;}
+    }
+    @media(max-width:600px){
+      .red-band{padding:36px 16px;}
+      .red-band-btn{width:100%;justify-content:center;}
+    }
+  </style>
+</head>
+<body>
+
+<!-- PAGE HEADER -->
+<header class="page-header">
+  <div class="page-header-content">
+    <p class="eyebrow">Our Work · Signal Hill, CA</p>
+    <h1>Before <em>&amp; After</em></h1>
+  </div>
+  <div class="page-header-bar"></div>
+</header>
+
+<!-- INTRO -->
+<div class="intro">
+  <div class="intro-inner">
+    <p class="eyebrow" style="text-align:center;">Results You Can See</p>
+    <h2>Real Work. <em>Real Results.</em></h2>
+    <p>Drag the slider on any photo to see the transformation. Every vehicle below came through our shop and left looking better than the day of the accident.</p>
+  </div>
+</div>
+
+<!-- GALLERY -->
+<section class="gallery">
+  <div class="gallery-inner">
+    <div class="gallery-grid">
+
+      <!-- PAIR 1 — SUBARU -->
+      <div class="ba-card">
+        
+        <div class="ba-slider" data-slider>
+          <div class="ba-slider-inner">
+            <div class="ba-img before">
+              <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/ba-subaru-before.webp" alt="Subaru before repair" fetchpriority="high" decoding="async">
+            </div>
+            <div class="ba-img after">
+              <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/ba-subaru-after.webp" alt="Subaru after repair" fetchpriority="high" decoding="async">
+            </div>
+            <div class="ba-handle" data-handle>
+              <div class="ba-handle-knob">
+                <svg width="20" height="20" fill="none" stroke="#8B0000" stroke-width="2.5" viewBox="0 0 24 24">
+                  <polyline points="15 18 9 12 15 6"/>
+                  <polyline points="9 18 3 12 9 6" style="stroke:rgba(139,0,0,0.35)"/>
+                  <polyline points="15 6 21 12 15 18" style="stroke:rgba(139,0,0,0.35)"/>
+                  <polyline points="9 6 3 12 9 18"/>
+                </svg>
+              </div>
+            </div>
+            <span class="ba-badge before">Before</span>
+            <span class="ba-badge after">After</span>
+          </div>
+        </div>
+        <div class="ba-caption">
+          <div class="ba-caption-title">Collision Repair</div>
+          <div class="ba-caption-sub">Subaru</div>
+        </div>
+      </div>
+
+      <!-- PAIR 2 — AUDI -->
+      <div class="ba-card">
+        
+        <div class="ba-slider" data-slider>
+          <div class="ba-slider-inner">
+            <div class="ba-img before">
+              <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/ba-audi-before.webp" alt="Audi before repair">
+            </div>
+            <div class="ba-img after">
+              <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/ba-audi-after.webp" alt="Audi after repair">
+            </div>
+            <div class="ba-handle" data-handle>
+              <div class="ba-handle-knob">
+                <svg width="20" height="20" fill="none" stroke="#8B0000" stroke-width="2.5" viewBox="0 0 24 24">
+                  <polyline points="15 18 9 12 15 6"/>
+                  <polyline points="9 18 3 12 9 6" style="stroke:rgba(139,0,0,0.35)"/>
+                  <polyline points="15 6 21 12 15 18" style="stroke:rgba(139,0,0,0.35)"/>
+                  <polyline points="9 6 3 12 9 18"/>
+                </svg>
+              </div>
+            </div>
+            <span class="ba-badge before">Before</span>
+            <span class="ba-badge after">After</span>
+          </div>
+        </div>
+        <div class="ba-caption">
+          <div class="ba-caption-title">Collision Repair</div>
+          <div class="ba-caption-sub">Audi</div>
+        </div>
+      </div>
+
+      <!-- PAIR 3 — DODGE -->
+      <div class="ba-card">
+        
+        <div class="ba-slider" data-slider>
+          <div class="ba-slider-inner">
+            <div class="ba-img before">
+              <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/ba-dodge-before.webp" alt="Dodge before repair" loading="lazy">
+            </div>
+            <div class="ba-img after">
+              <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/ba-dodge-after.webp" alt="Dodge after repair" loading="lazy">
+            </div>
+            <div class="ba-handle" data-handle>
+              <div class="ba-handle-knob">
+                <svg width="20" height="20" fill="none" stroke="#8B0000" stroke-width="2.5" viewBox="0 0 24 24">
+                  <polyline points="15 18 9 12 15 6"/>
+                  <polyline points="9 18 3 12 9 6" style="stroke:rgba(139,0,0,0.35)"/>
+                  <polyline points="15 6 21 12 15 18" style="stroke:rgba(139,0,0,0.35)"/>
+                  <polyline points="9 6 3 12 9 18"/>
+                </svg>
+              </div>
+            </div>
+            <span class="ba-badge before">Before</span>
+            <span class="ba-badge after">After</span>
+          </div>
+        </div>
+        <div class="ba-caption">
+          <div class="ba-caption-title">Collision Repair</div>
+          <div class="ba-caption-sub">Dodge</div>
+        </div>
+      </div>
+
+      <!-- PAIR 4 — JEEP -->
+      <div class="ba-card">
+        
+        <div class="ba-slider" data-slider>
+          <div class="ba-slider-inner">
+            <div class="ba-img before">
+              <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/ba-jeep-before.webp" alt="Jeep before repair" loading="lazy">
+            </div>
+            <div class="ba-img after">
+              <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/ba-jeep-after.webp" alt="Jeep after repair" loading="lazy">
+            </div>
+            <div class="ba-handle" data-handle>
+              <div class="ba-handle-knob">
+                <svg width="20" height="20" fill="none" stroke="#8B0000" stroke-width="2.5" viewBox="0 0 24 24">
+                  <polyline points="15 18 9 12 15 6"/>
+                  <polyline points="9 18 3 12 9 6" style="stroke:rgba(139,0,0,0.35)"/>
+                  <polyline points="15 6 21 12 15 18" style="stroke:rgba(139,0,0,0.35)"/>
+                  <polyline points="9 6 3 12 9 18"/>
+                </svg>
+              </div>
+            </div>
+            <span class="ba-badge before">Before</span>
+            <span class="ba-badge after">After</span>
+          </div>
+        </div>
+        <div class="ba-caption">
+          <div class="ba-caption-title">Collision Repair</div>
+          <div class="ba-caption-sub">Jeep</div>
+        </div>
+      </div>
+
+      <!-- PAIR 5 -->
+      <div class="ba-card">
+        
+        <div class="ba-slider" data-slider>
+          <div class="ba-slider-inner">
+            <div class="ba-img before">
+              <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/IMG_2588.webp" alt="Before repair" loading="lazy">
+            </div>
+            <div class="ba-img after">
+              <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/IMG_3267.webp" alt="After repair" loading="lazy">
+            </div>
+            <div class="ba-handle" data-handle>
+              <div class="ba-handle-knob">
+                <svg width="20" height="20" fill="none" stroke="#8B0000" stroke-width="2.5" viewBox="0 0 24 24">
+                  <polyline points="15 18 9 12 15 6"/>
+                  <polyline points="9 18 3 12 9 6" style="stroke:rgba(139,0,0,0.35)"/>
+                  <polyline points="15 6 21 12 15 18" style="stroke:rgba(139,0,0,0.35)"/>
+                  <polyline points="9 6 3 12 9 18"/>
+                </svg>
+              </div>
+            </div>
+            <span class="ba-badge before">Before</span>
+            <span class="ba-badge after">After</span>
+          </div>
+        </div>
+        <div class="ba-caption">
+          <div class="ba-caption-title">Rhino Liner — Bed &amp; Undercarriage</div>
+          <div class="ba-caption-sub">Chevrolet</div>
+        </div>
+      </div>
+
+      <!-- PAIR 6 — BRONCO -->
+      <div class="ba-card">
+        <div class="ba-slider" data-slider>
+          <div class="ba-slider-inner">
+            <div class="ba-img before">
+              <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/ba-bronco-before.webp" alt="Bronco before paint" loading="lazy">
+            </div>
+            <div class="ba-img after">
+              <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/ba-bronco-after.webp" alt="Bronco after paint" loading="lazy">
+            </div>
+            <div class="ba-handle" data-handle>
+              <div class="ba-handle-knob">
+                <svg width="20" height="20" fill="none" stroke="#8B0000" stroke-width="2.5" viewBox="0 0 24 24">
+                  <polyline points="15 18 9 12 15 6"/>
+                  <polyline points="9 18 3 12 9 6" style="stroke:rgba(139,0,0,0.35)"/>
+                  <polyline points="15 6 21 12 15 18" style="stroke:rgba(139,0,0,0.35)"/>
+                  <polyline points="9 6 3 12 9 18"/>
+                </svg>
+              </div>
+            </div>
+            <span class="ba-badge before">Before</span>
+            <span class="ba-badge after">After</span>
+          </div>
+        </div>
+        <div class="ba-caption">
+          <div class="ba-caption-title">Custom Paint — Full Exterior</div>
+          <div class="ba-caption-sub">Ford Bronco</div>
+        </div>
+      </div>
+
+      <!-- ============================================================
+           ADD MORE PAIRS BELOW — copy a ba-card block and update:
+           1. BEFORE img src
+           2. AFTER img src
+           3. Caption title and sub
+           ============================================================ -->
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<div class="red-band">
+  <h2>Want Results Like These?</h2>
+  <p>Walk in Mon–Fri 8AM–5PM · Free estimates on body &amp; paint · Same-day Rhino Liner installs available.</p>
+  <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+    <a href="tel:+15624246744" class="red-band-btn">
+      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.7 10.82 19.79 19.79 0 01.67 2.18 2 2 0 012.66 0h3a2 2 0 012 1.72c.13 1 .36 1.97.7 2.91a2 2 0 01-.45 2.11L6.91 7.74a16 16 0 006.29 6.29l1-.99a2 2 0 012.11-.45c.94.34 1.91.57 2.91.7A2 2 0 0122 16.92z"/></svg>
+      Call 562-424-6744
+    </a>
+    <a href="https://www.carwise.com/online-photo-estimate/3js-autobody-paint-inc-signal-hill-ca-90755/479382?source=shop.profile&referer=estimate.cccone.com" target="_blank" class="red-band-btn">
+      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 12h6M12 9v6"/></svg>
+      Free Auto Body Estimate
+    </a>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll('[data-slider]').forEach(function(slider) {
+    var handle = slider.querySelector('[data-handle]');
+    var afterImg = slider.querySelector('.ba-img.after');
+    var isDragging = false;
+
+    function setPosition(x) {
+      var rect = slider.getBoundingClientRect();
+      var pct = Math.min(Math.max((x - rect.left) / rect.width * 100, 2), 98);
+      afterImg.style.clipPath = 'inset(0 0 0 ' + (100 - pct) + '%)';
+      handle.style.left = pct + '%';
+    }
+
+    slider.addEventListener('mousedown', function(e) {
+      isDragging = true;
+      setPosition(e.clientX);
+      e.preventDefault();
+    });
+    window.addEventListener('mousemove', function(e) {
+      if (isDragging) setPosition(e.clientX);
+    });
+    window.addEventListener('mouseup', function() { isDragging = false; });
+
+    slider.addEventListener('touchstart', function(e) {
+      isDragging = true;
+      setPosition(e.touches[0].clientX);
+    }, {passive:true});
+    window.addEventListener('touchmove', function(e) {
+      if (isDragging) setPosition(e.touches[0].clientX);
+    }, {passive:true});
+    window.addEventListener('touchend', function() { isDragging = false; });
+  });
+
+  function reportHeight(){
+    var h=Math.max(document.body.scrollHeight,document.body.offsetHeight,document.documentElement.scrollHeight,document.documentElement.offsetHeight);
+    window.parent.postMessage(JSON.stringify({height:h}),'*');
+  }
+  document.addEventListener('DOMContentLoaded',reportHeight);
+  window.addEventListener('load',function(){[0,200,500,1000].forEach(function(t){setTimeout(reportHeight,t);});});
+  window.addEventListener('resize',reportHeight);
+</script>
+
+<script>
+(function(){var active=false,startY=0,lastY=0,rafId=null;document.addEventListener('mousedown',function(e){if(e.button!==1)return;if(e.target.closest('a'))return;e.preventDefault();active=true;startY=e.clientY;lastY=e.clientY;document.body.style.cursor='ns-resize';tick();});document.addEventListener('mousemove',function(e){if(active)lastY=e.clientY;});document.addEventListener('mouseup',function(e){if(e.button!==1||!active)return;active=false;document.body.style.cursor='';if(rafId){cancelAnimationFrame(rafId);rafId=null;}});function tick(){if(!active){rafId=null;return;}var dy=lastY-startY;if(Math.abs(dy)>5)window.scrollBy(0,dy*0.12);rafId=requestAnimationFrame(tick);}})();
+</script><script src="site-shell.js"></script>
+</body>
+</html>

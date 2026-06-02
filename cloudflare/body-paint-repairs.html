@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Body &amp; Paint Repairs — 3J's Auto Body &amp; Paint | Signal Hill CA</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root{
+      --crimson:#8B0000;
+      --crimson-hover:#A00000;
+      --crimson-active:#6B0000;
+      --black-1:#0A0A0A;
+      --black-2:#111111;
+      --white:#ffffff;
+      --off-white:#F2F2F2;
+      --warm-gray:#F9F9F9;
+      --body-text:#424954;
+      --emphasis-text:#1F2937;
+      --neutral-dark:#1a1a1a;
+      --divider:#E8E8E8;
+      --divider-dark:rgba(255,255,255,0.08);
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{overflow-y:scroll;scrollbar-width:none;}
+    html::-webkit-scrollbar{display:none;}
+    body{font-family:'Inter',sans-serif;font-size:15px;color:var(--body-text);max-width:100%;}
+    .skip-link{position:absolute;top:-100%;left:16px;z-index:9999;background:#8B0000;color:#fff;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:8px 20px;text-decoration:none;}
+    .skip-link:focus{top:16px;}
+
+    h1,h2,h3,.eyebrow,.section-title,.faq-q,.btn-primary,.btn-secondary,.cta-link,.process-header h2,.why-header h2{font-family:'Montserrat',sans-serif;}
+
+    .section-body strong{font-weight:600;color:var(--emphasis-text);}
+    .section-body .hl{font-weight:600;color:var(--crimson);}
+    .dark .section-body strong{color:var(--white);}
+    .dark .section-body .hl{color:var(--crimson);filter:brightness(1.4);}
+
+    /* BEFORE & AFTER SLIDER */
+    .ba-slider{position:relative;width:100%;overflow:hidden;cursor:ew-resize;user-select:none;aspect-ratio:4/3;touch-action:none;}
+    .ba-img{position:absolute;inset:0;width:100%;height:100%;}
+    .ba-img img{width:100%;height:100%;object-fit:cover;display:block;}
+    .ba-img.after{clip-path:inset(0 0 0 50%);}
+    .ba-handle{position:absolute;top:0;bottom:0;left:50%;width:3px;background:var(--white);transform:translateX(-50%);z-index:10;pointer-events:none;}
+    .ba-handle-knob{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:44px;height:44px;background:var(--white);border:3px solid var(--crimson);display:flex;align-items:center;justify-content:center;box-shadow:0 2px 12px rgba(0,0,0,0.35);}
+    .ba-badge{position:absolute;bottom:12px;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:900;letter-spacing:1.5px;text-transform:uppercase;padding:7px 14px;z-index:5;pointer-events:none;box-shadow:0 2px 8px rgba(0,0,0,0.45);}
+    .ba-badge.before{left:12px;background:var(--white);color:var(--neutral-dark);}
+    .ba-badge.after{right:12px;background:var(--crimson);color:var(--white);}
+    .ba-section{background:var(--black-1);padding:clamp(48px,7vw,80px) clamp(16px,4vw,40px);}
+    .ba-section-header{text-align:center;margin-bottom:48px;}
+    .ba-section-header .eyebrow{color:var(--crimson);text-align:center;margin-bottom:8px;}
+    .ba-section-header h2{font-size:clamp(24px,3.5vw,38px);font-weight:900;letter-spacing:-0.5px;color:var(--white);}
+    .ba-section-header h2 em{font-style:normal;color:var(--crimson);}
+    .ba-grid{display:grid;grid-template-columns:1fr;gap:24px;max-width:1100px;margin:0 auto;}
+    .ba-caption{padding:10px 0 0;text-align:center;}
+    .ba-caption-title{font-family:'Montserrat',sans-serif;font-size:12px;font-weight:800;color:var(--white);margin-bottom:2px;}
+    .ba-caption-sub{font-family:'Inter',sans-serif;font-size:11px;color:rgba(255,255,255,0.5);}
+    .ba-slider:focus-visible{outline:3px solid var(--crimson);outline-offset:3px;}
+    @media(min-width:769px){.ba-section{padding:clamp(48px,7vw,80px) clamp(16px,4vw,40px);}.ba-grid{grid-template-columns:repeat(3,1fr);gap:16px;}}
+
+    /* SHARED */
+    .eyebrow{font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;margin-bottom:12px;}
+    .section-title{font-size:clamp(24px,4vw,42px);font-weight:800;letter-spacing:-1px;line-height:1.1;margin-bottom:18px;text-wrap:balance;}
+    .section-title em{font-style:normal;}
+    .section-body{font-family:'Inter',sans-serif;font-size:15px;font-weight:400;line-height:1.65;max-width:520px;text-wrap:pretty;}
+    .section-body p+p{margin-top:14px;}
+
+    .feature-list{list-style:none;margin-top:24px;display:flex;flex-direction:column;gap:10px;}
+    .feature-list li{font-family:'Inter',sans-serif;display:flex;align-items:center;gap:10px;font-size:13px;font-weight:600;letter-spacing:0.8px;text-transform:uppercase;}
+    .feature-list li::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--crimson);flex-shrink:0;}
+
+    .cta-link{display:inline-flex;align-items:center;gap:8px;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;margin-top:28px;padding:0 24px;height:48px;border-radius:0;transition:background 0.2s,color 0.2s,border-color 0.2s;}
+    .cta-link svg{width:14px;height:14px;}
+
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;max-width:1100px;margin:0 auto;padding:clamp(56px,8vw,100px) clamp(20px,4vw,40px);}
+    .two-col.flip .col-text{order:2;}
+    .two-col.flip .col-visual{order:1;}
+
+    .num-badge{font-family:'Montserrat',sans-serif;font-size:clamp(80px,12vw,140px);font-weight:900;line-height:1;letter-spacing:-4px;opacity:0.06;position:absolute;top:-20px;right:-10px;pointer-events:none;user-select:none;}
+    .col-visual{position:relative;}
+
+    .visual-box{border-radius:0;overflow:hidden;aspect-ratio:4/3;position:relative;}
+    .visual-box img{width:100%;height:100%;object-fit:cover;display:block;}
+
+    /* DARK */
+    .dark{background:var(--black-1);color:var(--white);position:relative;}
+    .dark::before{content:'';position:absolute;inset:0;background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/AUTO%20GEARS%20BACKGROUND%20BLACK%20WITH%20WHITE.webp');background-size:cover;background-position:center;opacity:0.08;pointer-events:none;z-index:0;}
+    .dark>*{position:relative;z-index:1;}
+    .dark .eyebrow{color:rgba(255,255,255,0.45);}
+    .dark .section-title em{color:var(--crimson);}
+    .dark .section-body{color:rgba(255,255,255,0.82);}
+    .dark .feature-list li{color:rgba(255,255,255,0.90);}
+    .dark .cta-link{background:var(--crimson);color:var(--white);border:2px solid transparent;}
+    .dark .cta-link:hover{background:var(--crimson-hover);}
+    .dark .cta-link:active{background:var(--crimson-active);}
+    .dark .visual-box{background:var(--black-2);border:1px solid #1e1e1e;}
+    .dark .num-badge{color:var(--white);}
+
+    /* LIGHT */
+    .light{background:var(--off-white);color:var(--neutral-dark);position:relative;}
+    .light::before{display:none;}
+    .light>*{position:relative;z-index:1;}
+    .light .eyebrow{color:var(--crimson);}
+    .light .section-title em{color:var(--crimson);}
+    .light .section-body{color:var(--body-text);}
+    .light .feature-list li{color:var(--emphasis-text);}
+    .light .cta-link{background:transparent;color:var(--crimson);border:2px solid var(--crimson);}
+    .light .cta-link:hover{background:var(--crimson);color:var(--white);}
+    .light .cta-link:active{background:var(--crimson-active);color:var(--white);border-color:var(--crimson-active);}
+    .light .visual-box{background:var(--white);border:1px solid #e0e0e0;box-shadow:0 4px 30px rgba(0,0,0,0.08);}
+    .light .num-badge{color:var(--neutral-dark);}
+
+    /* TEXTURES */
+    .texture-dark{position:relative;}
+    .texture-dark::before{content:'';position:absolute;inset:0;background-image:repeating-linear-gradient(45deg,rgba(139,0,0,0.03) 0px,rgba(139,0,0,0.03) 1px,transparent 1px,transparent 8px);pointer-events:none;z-index:0;}
+    .texture-dark .two-col{position:relative;z-index:1;}
+    .texture-light{position:relative;}
+    .texture-light::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(139,0,0,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(139,0,0,0.04) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;z-index:0;}
+    .texture-light .two-col{position:relative;z-index:1;}
+
+    /* PAGE HEADER */
+    .page-header{color:var(--white);min-height:340px;display:flex;align-items:flex-start;justify-content:flex-start;text-align:left;padding:clamp(40px,6vw,64px) clamp(20px,4vw,48px) 0;position:relative;overflow:hidden;flex-direction:column;}
+    .page-header-bg{position:absolute;inset:0;z-index:0;}
+    .page-header-bg img{width:100%;height:100%;object-fit:cover;display:block;}
+    .page-header-content{position:relative;z-index:1;}
+    .page-header .eyebrow{color:var(--crimson);margin-bottom:12px;}
+    .page-header h1{font-family:'Montserrat',sans-serif;font-size:clamp(40px,12vw,118px);font-weight:900;letter-spacing:-3px;line-height:0.92;text-transform:uppercase;}
+    .page-header h1 em{font-style:normal;color:var(--crimson);}
+    .page-header-bar{position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(to right,transparent,var(--crimson) 25%,var(--crimson) 75%,transparent);z-index:2;}
+    @media(min-width:601px){.page-header{min-height:480px;}}
+
+    /* CERT STRIP */
+    .cert-strip{background:var(--crimson);padding:20px 24px;display:flex;justify-content:center;align-items:center;gap:32px;flex-wrap:wrap;}
+    .cert-item{display:flex;align-items:center;gap:8px;}
+    .cert-item svg{width:16px;height:16px;stroke:var(--white);flex-shrink:0;}
+    .cert-item span{font-family:'Inter',sans-serif;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--white);}
+
+    /* STAT BAR */
+    .stat-bar{background:var(--white);border-top:1px solid var(--divider);border-bottom:1px solid var(--divider);padding:28px 24px;display:flex;justify-content:center;flex-wrap:wrap;}
+    .stat{flex:1;min-width:140px;max-width:200px;text-align:center;padding:12px 20px;border-right:1px solid #e0e0e0;}
+    .stat:last-child{border-right:none;}
+    .stat-number{font-family:'Montserrat',sans-serif;font-size:clamp(26px,3.5vw,40px);font-weight:900;color:var(--crimson);letter-spacing:-1px;line-height:1;}
+    .stat-label{font-family:'Inter',sans-serif;font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#999;margin-top:6px;}
+
+    /* PROCESS STEPS */
+    .process-section{background:var(--white);padding:clamp(48px,7vw,80px) clamp(20px,4vw,40px);}
+    .process-inner{max-width:1100px;margin:0 auto;}
+    .process-header{text-align:center;margin-bottom:56px;}
+    .process-header .eyebrow{color:var(--crimson);}
+    .process-header h2{font-family:'Montserrat',sans-serif;font-size:clamp(24px,3.5vw,40px);font-weight:900;color:var(--neutral-dark);letter-spacing:-0.5px;text-wrap:balance;}
+    .process-header h2 em{font-style:normal;color:var(--crimson);}
+    .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;}
+    .steps::before{content:'';position:absolute;top:32px;left:10%;right:10%;height:1px;background:linear-gradient(to right,transparent,var(--crimson),var(--crimson),transparent);z-index:0;}
+    .step{text-align:center;padding:0 20px;position:relative;z-index:1;}
+    .step-num{width:64px;height:64px;border-radius:0;background:var(--white);border:2px solid var(--crimson);display:flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-size:18px;font-weight:900;color:var(--crimson);margin:0 auto 20px;}
+    .step-title{font-family:'Montserrat',sans-serif;font-size:16px;font-weight:800;color:var(--neutral-dark);margin-bottom:8px;}
+    .step-desc{font-family:'Inter',sans-serif;font-size:13px;font-weight:400;color:var(--body-text);line-height:1.7;text-wrap:pretty;}
+
+    /* DIVIDERS */
+    .divider-dark-down{height:60px;background:var(--black-1);clip-path:polygon(0 0,100% 0,100% 100%,0 0);margin-bottom:-1px;}
+    .divider-light-down{height:60px;background:var(--off-white);clip-path:polygon(0 0,100% 0,100% 100%,0 0);margin-bottom:-1px;}
+    .stripe-break{height:4px;background:linear-gradient(to right,transparent,var(--crimson) 20%,var(--crimson) 80%,transparent);}
+
+    /* INSURANCE BAND */
+    .insurance-band{background:var(--warm-gray);padding:clamp(32px,4vw,48px) clamp(16px,4vw,24px);text-align:center;border-top:1px solid var(--divider);border-bottom:1px solid var(--divider);}
+    .ins-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;max-width:1000px;margin:28px auto 0;}
+    .insurance-band .eyebrow{color:var(--crimson);margin-bottom:14px;}
+    .insurance-band h2{font-family:'Montserrat',sans-serif;font-size:clamp(22px,3vw,34px);font-weight:900;color:var(--neutral-dark);margin-bottom:10px;letter-spacing:-0.5px;text-wrap:balance;}
+    .insurance-band h2 em{font-style:normal;color:var(--crimson);}
+    .insurance-band p{font-family:'Inter',sans-serif;font-size:15px;font-weight:400;color:var(--body-text);max-width:540px;margin:0 auto 32px;line-height:1.65;text-wrap:pretty;}
+    .ins-logos{width:100%;overflow:hidden;position:relative;margin-bottom:32px;-webkit-mask-image:linear-gradient(to right,transparent 0%,black 8%,black 92%,transparent 100%);mask-image:linear-gradient(to right,transparent 0%,black 8%,black 92%,transparent 100%);}
+    .ins-marquee{display:flex;align-items:center;gap:40px;width:max-content;animation:insScroll 22s linear infinite;will-change:transform;}
+    .ins-logos:hover .ins-marquee{animation-play-state:paused;}
+    @keyframes insScroll{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+    .ins-logo-tile{display:inline-flex;align-items:center;justify-content:center;background:var(--white);border:1.5px solid var(--divider);border-radius:0;padding:6px 10px;height:40px;min-width:72px;flex-shrink:0;box-shadow:0 1px 4px rgba(0,0,0,0.06);}
+    .ins-logo-tile img{height:20px;width:auto;max-width:70px;object-fit:contain;filter:grayscale(1) opacity(0.65);}
+    .ins-grid{gap:8px;}
+    @media(min-width:601px){.ins-logo-tile{height:48px;min-width:90px;padding:8px 14px;}.ins-logo-tile img{height:24px;max-width:90px;}.ins-grid{gap:10px;}}
+
+    /* REPAIR JOURNEY */
+    .journey-section{background:var(--off-white);padding:clamp(56px,8vw,90px) clamp(16px,4vw,24px);}
+    .journey-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr;gap:32px;align-items:start;}
+    .journey-sidebar{position:static;}
+    .journey-sidebar .section-title{font-size:clamp(22px,2.8vw,34px);margin-bottom:16px;}
+    .journey-sidebar p.journey-sub{font-family:'Inter',sans-serif;font-size:15px;font-weight:400;color:var(--body-text);line-height:1.65;text-wrap:pretty;}
+    .journey-divider{width:40px;height:3px;background:var(--crimson);margin:20px 0;}
+    .step-item{border-bottom:1px solid #d8d8d8;}
+    .step-item:first-of-type{border-top:1px solid #d8d8d8;}
+    .step-btn{width:100%;background:none;border:none;display:flex;align-items:center;gap:16px;padding:18px 0;cursor:pointer;text-align:left;transition:color 0.2s;}
+    .step-btn:hover .step-num-label{color:var(--crimson);}
+    .step-num-label{font-family:'Montserrat',sans-serif;font-size:11px;font-weight:900;color:var(--crimson);letter-spacing:2px;flex-shrink:0;min-width:28px;}
+    .step-title-text{font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;color:var(--neutral-dark);line-height:1.4;flex:1;transition:color 0.2s;text-align:left;}
+    .step-btn:hover .step-title-text{color:var(--crimson);}
+    .step-icon-svg{width:18px;height:18px;flex-shrink:0;stroke:var(--crimson);stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;transition:transform 0.3s ease;}
+    .step-item.open .step-icon-svg{transform:rotate(45deg);}
+    .step-body-text{font-family:'Inter',sans-serif;font-size:14px;font-weight:400;color:var(--body-text);line-height:1.7;display:none;padding:0 0 18px 44px;text-wrap:pretty;}
+    .step-item.open .step-body-text{display:block;}
+
+    /* CTA */
+    .cta-band{background:var(--black-1);padding:clamp(48px,6vw,72px) clamp(16px,4vw,24px);text-align:center;position:relative;overflow:hidden;}
+    .cta-band::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(139,0,0,0.10) 0%,transparent 65%);}
+    .cta-band::after{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,0.03) 1px,transparent 1px);background-size:24px 24px;}
+    .cta-content{position:relative;z-index:1;}
+    .cta-band h2{font-family:'Montserrat',sans-serif;font-size:clamp(22px,3.5vw,40px);font-weight:900;color:var(--white);margin-bottom:10px;letter-spacing:-0.5px;text-wrap:balance;}
+    .cta-band h2 em{font-style:normal;color:var(--crimson);}
+    .cta-band p{font-family:'Inter',sans-serif;font-size:15px;font-weight:400;color:rgba(255,255,255,0.65);max-width:480px;margin:0 auto 32px;line-height:1.65;text-wrap:pretty;}
+    .cta-buttons{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;}
+    .btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--crimson);color:var(--white);font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;text-decoration:none;padding:0 30px;height:48px;border-radius:0;transition:background 0.2s;letter-spacing:2px;}
+    .btn-primary:hover{background:var(--crimson-hover);}
+    .btn-primary:active{background:var(--crimson-active);}
+    .btn-secondary{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.15);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);color:var(--white);font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;text-decoration:none;padding:0 30px;height:48px;border-radius:0;border:1.5px solid rgba(255,255,255,0.55);transition:background 0.2s,border-color 0.2s;letter-spacing:2px;}
+    .btn-secondary:hover{background:rgba(255,255,255,0.28);border-color:rgba(255,255,255,0.9);}
+    .btn-secondary:active{background:rgba(255,255,255,0.38);}
+
+    /* FAQ */
+    .faq-section{background:var(--white);width:100%;padding:clamp(48px,7vw,80px) clamp(16px,4vw,24px);border-top:1px solid var(--divider);border-bottom:1px solid var(--divider);}
+    .faq-inner{max-width:740px;margin:0 auto;width:100%;}
+    .faq-section .eyebrow{color:var(--crimson);text-align:center;margin-bottom:6px;}
+    .faq-section h2{font-family:'Montserrat',sans-serif;font-size:clamp(22px,5vw,34px);font-weight:900;letter-spacing:-1px;color:var(--neutral-dark);text-align:center;margin-bottom:40px;line-height:1.1;text-wrap:balance;}
+    .faq-section h2 em{color:var(--crimson);font-style:normal;}
+    .faq-list{display:flex;flex-direction:column;gap:6px;}
+    .faq-item{background:#fff;border:1.5px solid #E2E8F0;border-radius:0;overflow:hidden;transition:border-color 0.2s,box-shadow 0.2s;}
+    .faq-item:hover{border-color:#CBD5E0;box-shadow:0 2px 8px rgba(15,30,46,0.07);}
+    .faq-item.open{border-color:#B0BBC8;box-shadow:0 4px 16px rgba(15,30,46,0.10);}
+    .faq-trigger{width:100%;background:none;border:none;padding:0;cursor:pointer;display:block;text-align:left;}
+    .faq-trigger-inner{display:flex;align-items:center;gap:16px;padding:18px 20px;transition:background 0.15s;}
+    .faq-trigger:hover .faq-trigger-inner,.faq-item.open .faq-trigger-inner{background:#f4f4f4;}
+    .q-badge{flex-shrink:0;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:900;color:#AAAAAA;padding:3px 8px;border:1px solid #E8ECF0;border-radius:0;background:#fff;align-self:flex-start;margin-top:2px;box-shadow:0 1px 4px rgba(0,0,0,0.07);}
+    .q-label{flex:1;font-family:'Montserrat',sans-serif;font-size:14px;font-weight:700;color:#1a1a1a;line-height:1.45;}
+    .toggle-icon{flex-shrink:0;width:40px;height:40px;display:flex;align-items:center;justify-content:center;transition:transform 0.3s ease;color:#111;}
+    .toggle-icon svg{width:20px;height:20px;}
+    .faq-item.open .toggle-icon{transform:rotate(45deg);}
+    .faq-body{height:0;overflow:hidden;transition:height 720ms cubic-bezier(0.22,1,0.36,1);}
+    .faq-answer{padding:0 20px 20px 60px;}
+    .answer-text{font-family:'Inter',sans-serif;font-size:13px;font-weight:500;color:#3B3B3B;line-height:1.8;}
+    @media(max-width:640px){.faq-answer{padding:0 14px 18px 14px;}.q-badge{display:none;}}
+
+    /* RESPONSIVE — mobile-first */
+    .page-header{min-height:340px;padding-top:16px;}
+    .two-col{grid-template-columns:1fr;padding:48px 16px;gap:14px;}
+    .two-col.flip .col-text{order:1;}
+    .two-col.flip .col-visual{order:2;}
+    .dark,.light{padding:0;}
+    .visual-box{aspect-ratio:16/9;}
+    .num-badge{display:none;}
+    .steps{grid-template-columns:1fr;gap:1px;background:#e0e0e0;}
+    .steps::before{display:none;}
+    .step{background:#fff;padding:28px 20px;}
+    .process-section{padding:48px 0;}
+    .process-header{padding:0 20px;margin-bottom:24px;}
+    .stat-bar{padding:12px;}
+    .stat{min-width:80px;padding:6px 10px;}
+    .stat-number{font-size:22px;}
+    .cert-strip{gap:8px;padding:10px 16px;}
+    .cert-item span{font-size:10px;}
+    .faq-q{font-size:13px;padding:12px 0;}
+    .cta-buttons{flex-direction:column;align-items:stretch;}
+    .btn-primary,.btn-secondary{width:100%;justify-content:center;}
+    .section-body{font-size:15px;}
+    .section-title{font-size:clamp(22px,4vw,42px);}
+    .eyebrow{font-size:10px;}
+    .stripe-break{height:2px;}
+    .journey-section{padding:40px 16px;}
+    .step-item.open .step-body-text{padding:0 0 16px 36px;}
+
+    @media(min-width:601px){
+      .page-header{min-height:480px;padding-top:48px;}
+      .two-col{padding:clamp(56px,8vw,100px) clamp(20px,4vw,40px);gap:28px;}
+      .visual-box{aspect-ratio:4/3;}
+      .num-badge{display:block;}
+      .steps{gap:28px;background:transparent;}
+      .step{background:transparent;padding:0 20px;}
+      .process-section{padding:clamp(48px,7vw,80px) clamp(20px,4vw,40px);}
+      .process-header{padding:0;margin-bottom:36px;}
+      .stat-bar{padding:28px 24px;}
+      .stat{min-width:120px;padding:12px 20px;}
+      .stat-number{font-size:clamp(26px,3.5vw,40px);}
+      .cert-strip{gap:32px;padding:20px 24px;}
+      .cert-item span{font-size:11px;}
+      .faq-q{font-size:11px;padding:20px 0;}
+      .cta-buttons{flex-direction:row;align-items:center;}
+      .btn-primary,.btn-secondary{width:auto;}
+      .eyebrow{font-size:10px;}
+      .stripe-break{height:4px;}
+      .journey-section{padding:clamp(56px,8vw,90px) clamp(16px,4vw,24px);}
+      .step-item.open .step-body-text{padding:0 0 18px 44px;}
+      .journey-inner{grid-template-columns:320px 1fr;gap:64px;}
+      .journey-sidebar{position:sticky;top:32px;}
+    }
+    @media(min-width:901px){
+      .two-col{gap:80px;}
+      .two-col.flip .col-text{order:2;}
+      .two-col.flip .col-visual{order:1;}
+      .steps{grid-template-columns:repeat(4,1fr);}
+      .steps::before{display:block;}
+    }
+    @media(prefers-reduced-motion:reduce){
+      .ins-marquee{animation-play-state:paused;}
+    }
+
+    /* ── Owner section redesign ── */
+    .owner-section{position:relative;overflow:hidden;}
+    .owner-grid{display:grid;grid-template-columns:1fr;gap:48px;max-width:1100px;margin:0 auto;padding:clamp(56px,8vw,96px) clamp(20px,4vw,48px);position:relative;z-index:1;}
+    .owner-text .eyebrow{color:#8B0000;margin-bottom:16px;}
+    .owner-text h2{font-family:'Montserrat',sans-serif;font-size:clamp(28px,4vw,52px);font-weight:900;letter-spacing:-1.5px;line-height:1.05;color:#fff;margin-bottom:20px;text-wrap:balance;}
+    .owner-text h2 em{font-style:normal;color:#8B0000;}
+    .owner-text p{font-family:'Inter',sans-serif;font-size:16px;font-weight:400;color:rgba(255,255,255,0.72);line-height:1.75;max-width:520px;text-wrap:pretty;}
+    .owner-stats{display:flex;flex-direction:column;gap:0;}
+    .owner-stat{border-top:1px solid rgba(255,255,255,0.10);padding:28px 0;}
+    .owner-num{font-family:'Montserrat',sans-serif;font-size:clamp(52px,7vw,84px);font-weight:900;letter-spacing:-3px;line-height:1;color:#fff;}
+    .owner-lbl{font-family:'Inter',sans-serif;font-size:13px;font-weight:500;color:rgba(255,255,255,0.50);margin-top:6px;line-height:1.5;}
+    @media(min-width:640px){
+      .owner-grid{grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+    }
+
+    /* ── Frame bleed section ── */
+    .frame-bleed{position:relative;overflow:hidden;min-height:480px;display:flex;align-items:center;}
+    .frame-bleed-bg{position:absolute;inset:0;z-index:0;}
+    .frame-bleed-bg img{width:100%;height:100%;object-fit:cover;display:block;}
+    .frame-bleed-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(105deg,rgba(0,0,0,0.92) 0%,rgba(0,0,0,0.78) 50%,rgba(0,0,0,0.35) 100%);}
+    .frame-bleed-content{position:relative;z-index:1;padding:clamp(56px,8vw,96px) clamp(20px,4vw,64px);max-width:620px;}
+    .frame-bleed-content .eyebrow{color:rgba(255,255,255,0.45);margin-bottom:16px;}
+    .frame-bleed-content h2{font-family:'Montserrat',sans-serif;font-size:clamp(28px,4vw,52px);font-weight:900;letter-spacing:-1.5px;line-height:1.05;color:#fff;text-transform:uppercase;margin-bottom:24px;text-wrap:balance;}
+    .frame-bleed-content h2 em{font-style:normal;color:#8B0000;}
+    .frame-warning{background:rgba(139,0,0,0.18);border:1px solid rgba(139,0,0,0.40);padding:16px 20px;margin-bottom:28px;font-family:'Inter',sans-serif;font-size:14px;font-weight:500;color:rgba(255,255,255,0.85);line-height:1.7;}
+    .frame-bleed-content .feature-list li{color:rgba(255,255,255,0.85);}
+    .frame-bleed-content .feature-list li::before{background:#8B0000;}
+      *:focus{outline:none;}*:focus-visible{outline:2px solid #8B0000;outline-offset:3px;}
+  </style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to content</a>
+<main id="main-content">
+
+<!-- PAGE HEADER -->
+<header class="page-header">
+  <div class="page-header-bg"><img src="images/trucks/Camaro_Hero_img2.webp" alt="Body and paint repair — 3J's Auto Body Signal Hill" loading="eager" fetchpriority="high"></div>
+  <div class="page-header-content">
+    <p class="eyebrow">3J's Auto Body · Signal Hill, CA</p>
+    <h1>Body &amp; <em>Paint</em><br>Repairs</h1>
+  </div>
+  <div class="page-header-bar"></div>
+</header>
+
+<!-- CERT STRIP -->
+<div class="cert-strip">
+  <div class="cert-item"><svg fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span>I-CAR Gold Class Certified</span></div>
+  <div class="cert-item"><svg fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 12l2.5 2.5L16 9"/></svg><span>ASE Certified Technicians</span></div>
+  <div class="cert-item"><svg fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span>Lifetime Warranty on All Repairs</span></div>
+  <div class="cert-item"><svg fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg><span>Est. 1991 · Family Owned</span></div>
+</div>
+
+<!-- STAT BAR -->
+<div class="stat-bar">
+  <div class="stat"><div class="stat-number">30+</div><div class="stat-label">Years in Business</div></div>
+  <div class="stat"><div class="stat-number">5★</div><div class="stat-label">Yelp Rated</div></div>
+  <div class="stat"><div class="stat-number">Free</div><div class="stat-label">Estimates</div></div>
+  <div class="stat"><div class="stat-number">All</div><div class="stat-label">Insurance Accepted</div></div>
+</div>
+
+<!-- PROCESS STEPS -->
+<section class="process-section">
+  <div class="process-inner">
+    <div class="process-header">
+      <p class="eyebrow">How It Works</p>
+      <h2>From Drop-Off to <em>Drive-Away</em></h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-title">Free Estimate</div>
+        <div class="step-desc">Walk in or call us. We assess the damage, go over everything with you, and give you a <strong>straightforward quote</strong> — no surprises.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-title">Insurance or Direct Pay</div>
+        <div class="step-desc">We work directly with <strong>all major insurance carriers</strong> or with customers paying out of pocket. We handle the paperwork — you don't have to.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-title">Repair &amp; Paint</div>
+        <div class="step-desc"><strong>I-CAR certified technicians</strong> restore your vehicle to pre-accident condition using factory-spec repair methods and computer-matched paint.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-title">Drive Away Confident</div>
+        <div class="step-desc">We do a final quality check before you pick up. Every repair is backed by our <strong>lifetime warranty</strong> on workmanship.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAMILY OWNED BAND -->
+<section class="dark owner-section">
+  <div style="position:absolute;inset:0;background-image:repeating-linear-gradient(-45deg,rgba(139,0,0,0.04) 0px,rgba(139,0,0,0.04) 1px,transparent 1px,transparent 10px);pointer-events:none;"></div>
+  <div class="owner-grid">
+    <div class="owner-text">
+      <p class="eyebrow">The 3J's Difference</p>
+      <h2>You Talk to the <em>Owner.</em> Every Single Time.</h2>
+      <p>At a corporate shop you get a service writer who passes your car to a manager who assigns it to a tech. Nobody's personally accountable. At 3J's, you walk in, you shake James's hand — and he is personally responsible for your vehicle from start to finish. That's not something you get from a chain.</p>
+    </div>
+    <div class="owner-stats">
+      <div class="owner-stat">
+        <div class="owner-num">30+</div>
+        <div class="owner-lbl">Years at the same Signal Hill location</div>
+      </div>
+      <div class="owner-stat">
+        <div class="owner-num">3</div>
+        <div class="owner-lbl">Generations of the Sferrazza family</div>
+      </div>
+      <div class="owner-stat">
+        <div class="owner-num">1991</div>
+        <div class="owner-lbl">The year we opened. Never moved, never franchised.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div style="height:60px;background:#0A0A0A;clip-path:polygon(0 0,100% 0,100% 0,0 100%);margin-bottom:-1px;"></div>
+
+<!-- 1. COLLISION REPAIR — LIGHT -->
+<section class="light texture-light">
+  <div class="two-col">
+    <div class="col-text">
+      <p class="eyebrow">Service 01</p>
+      <h2 class="section-title">Collision<br><em>Repair</em></h2>
+      <div class="section-body">
+        <p>From <strong>minor fender benders to major structural damage</strong> — we repair it all. Our <span class="hl">I-CAR Gold Class certified technicians</span> are trained to factory standards, meaning every repair is done the right way, not the fast way.</p>
+        <p>We use <strong>computerized measuring systems</strong> to ensure your vehicle's frame and structure are restored to exact factory specifications before we touch the paint.</p>
+      </div>
+      <ul class="feature-list">
+        <li>I-CAR Gold Class Certified Repairs</li>
+        <li>Frame &amp; Structural Damage</li>
+        <li>Panel Replacement &amp; Repair</li>
+        <li>Factory-Spec Restoration</li>
+        <li>All Makes &amp; Models</li>
+      </ul>
+      <a href="https://www.carwise.com/online-photo-estimate/3js-autobody-paint-inc-signal-hill-ca-90755/479382?source=shop.profile&referer=estimate.cccone.com" target="_blank" class="cta-link">
+        <svg fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.7 10.82 19.79 19.79 0 01.67 2.18 2 2 0 012.66 0h3a2 2 0 012 1.72c.13 1 .36 1.97.7 2.91a2 2 0 01-.45 2.11L6.91 7.74a16 16 0 006.29 6.29l1-.99a2 2 0 012.11-.45c.94.34 1.91.57 2.91.7A2 2 0 0122 16.92z"/></svg>
+        Get a Free Estimate
+      </a>
+    </div>
+    <div class="col-visual">
+      <span class="num-badge">01</span>
+      <div class="visual-box" style="overflow:hidden;">
+        <div class="ba-slider" data-slider style="aspect-ratio:4/3;">
+          <div class="ba-img before"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/ba-audi-before.webp" alt="Before collision repair" loading="lazy"></div>
+          <div class="ba-img after"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/ba-audi-after.webp" alt="After collision repair" loading="lazy"></div>
+          <div class="ba-handle" data-handle><div class="ba-handle-knob"><svg width="18" height="18" fill="none" stroke="#8B0000" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/><polyline points="9 6 3 12 9 18"/></svg></div></div>
+          <span class="ba-badge before">Before</span>
+          <span class="ba-badge after">After</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stripe-break"></div>
+
+<!-- 2. PAINT & REFINISHING — DARK -->
+<section class="dark texture-dark">
+  <div class="two-col flip">
+    <div class="col-text">
+      <p class="eyebrow">Service 02</p>
+      <h2 class="section-title">Paint &amp;<br><em>Refinishing</em></h2>
+      <div class="section-body">
+        <p>A repair is only as good as the paint job on top of it. We use <strong>advanced computer color-matching technology</strong> to ensure repaired panels are completely indistinguishable from the rest of your vehicle.</p>
+        <p>Whether it's a <strong>single panel blend or a full exterior repaint,</strong> we prep right, spray right, and <span class="hl">finish right — every time.</span></p>
+      </div>
+      <ul class="feature-list">
+        <li>Computer Color Matching</li>
+        <li>Single Panel Blending</li>
+        <li>Full Exterior Repaints</li>
+        <li>Clear Coat &amp; Finish Correction</li>
+        <li>Factory &amp; Custom Colors</li>
+      </ul>
+    </div>
+    <div class="col-visual">
+      <span class="num-badge">02</span>
+      <div class="visual-box">
+        <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/mirror-paint-finish.webp" alt="Mirror paint finish at 3J's Auto Body" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. DENT & SCRATCH — LIGHT -->
+<section class="light texture-light">
+  <div class="two-col">
+    <div class="col-text">
+      <p class="eyebrow">Service 03</p>
+      <h2 class="section-title">Dent &amp; Scratch<br><em>Repair</em></h2>
+      <div class="section-body">
+        <p><strong>Parking lot dings, key scratches, road rash</strong> — we handle it all. Small damage doesn't have to cost a fortune or take forever. We assess every job individually and recommend the <span class="hl">most cost-effective repair method</span> for your specific situation.</p>
+        <p>Our goal is always to <strong>restore, not replace</strong> — saving you time and money without cutting corners on quality.</p>
+      </div>
+      <ul class="feature-list">
+        <li>Paintless Dent Repair (PDR)</li>
+        <li>Scratch &amp; Scuff Removal</li>
+        <li>Chip &amp; Road Rash Repair</li>
+        <li>Faded &amp; Oxidized Panel Restoration</li>
+      </ul>
+    </div>
+    <div class="col-visual">
+      <span class="num-badge">03</span>
+      <div class="visual-box">
+        <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/paintless-dent-repair.webp" alt="Paintless dent repair" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<div style="height:60px;background:#F2F2F2;clip-path:polygon(0 0,100% 0,100% 0,0 100%);margin-bottom:-1px;"></div>
+
+<!-- 4. FRAME & STRUCTURAL — full-bleed -->
+<section class="frame-bleed">
+  <div class="frame-bleed-bg">
+    <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/frame-straightening.webp" alt="Frame straightening at 3J's Auto Body" loading="lazy">
+  </div>
+  <div class="frame-bleed-content">
+    <p class="eyebrow">Service 04 — Safety Critical</p>
+    <h2>Frame &amp;<br><em>Structural Repair</em></h2>
+    <div class="frame-warning">Frame damage after a collision isn't cosmetic: it's a safety issue. Driving on an unrepaired frame puts you and everyone on the road at risk. Don't skip this step.</div>
+    <ul class="feature-list">
+      <li>Computerized Frame Measuring</li>
+      <li>Unibody &amp; Full Frame Repair</li>
+      <li>Factory Specification Alignment</li>
+      <li>Pre-Repair Structural Assessment</li>
+    </ul>
+  </div>
+</section>
+
+<div class="stripe-break"></div>
+
+<!-- 5. LEASE TURN-IN — LIGHT -->
+<section class="light texture-light">
+  <div class="two-col">
+    <div class="col-text">
+      <p class="eyebrow">Service 05</p>
+      <h2 class="section-title">Lease Turn-In &amp;<br><em>Out-of-Pocket Repairs</em></h2>
+      <div class="section-body">
+        <p>Lease ending soon? <span class="hl">Don't get hit with dealer fees</span> for damage you could have repaired for less. We specialize in getting lease vehicles back to <strong>factory condition quickly and affordably</strong> before turn-in.</p>
+        <p>Paying out of pocket? We give you <strong>honest, upfront pricing</strong> and only recommend what actually needs to be done. <span class="hl">No upselling. No pressure.</span></p>
+      </div>
+      <ul class="feature-list">
+        <li>Lease Vehicle Preparation</li>
+        <li>Avoid Dealer Damage Fees</li>
+        <li>Transparent Out-of-Pocket Pricing</li>
+        <li>Fast Turnaround Available</li>
+      </ul>
+      <a href="https://www.carwise.com/online-photo-estimate/3js-autobody-paint-inc-signal-hill-ca-90755/479382?source=shop.profile&referer=estimate.cccone.com" target="_blank" class="cta-link">
+        <svg fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.7 10.82 19.79 19.79 0 01.67 2.18 2 2 0 012.66 0h3a2 2 0 012 1.72c.13 1 .36 1.97.7 2.91a2 2 0 01-.45 2.11L6.91 7.74a16 16 0 006.29 6.29l1-.99a2 2 0 012.11-.45c.94.34 1.91.57 2.91.7A2 2 0 0122 16.92z"/></svg>
+        Get a Free Estimate
+      </a>
+    </div>
+    <div class="col-visual">
+      <span class="num-badge">05</span>
+      <div class="visual-box">
+        <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/lease-turn-in.webp" alt="Lease turn-in vehicle repair" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INSURANCE BAND -->
+<section class="insurance-band">
+  <p class="eyebrow">Insurance Claims</p>
+  <h2>We Work With <em>All Major Carriers</em></h2>
+  <p>You shouldn't have to fight your insurance company on your own. We work directly with <strong>all major carriers</strong> as a preferred repair facility — handling the claim process so you can focus on getting back on the road.</p>
+  <div class="ins-grid">
+    <div class="ins-logo-tile"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/ins-state-farm.webp" alt="State Farm" loading="lazy"></div>
+    <div class="ins-logo-tile"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/ins-geico.webp" alt="Geico" loading="lazy"></div>
+    <div class="ins-logo-tile"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/ins-progressive.webp" alt="Progressive" loading="lazy"></div>
+    <div class="ins-logo-tile"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/ins-allstate.webp" alt="Allstate" loading="lazy"></div>
+    <div class="ins-logo-tile"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/ins-farmers.webp" alt="Farmers" loading="lazy"></div>
+    <div class="ins-logo-tile"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/ins-usaa.webp" alt="USAA" loading="lazy"></div>
+    <div class="ins-logo-tile"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/ins-liberty-mutual.webp" alt="Liberty Mutual" loading="lazy"></div>
+    <div class="ins-logo-tile"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/ins-nationwide.webp" alt="Nationwide" loading="lazy"></div>
+    <div class="ins-logo-tile"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/ins-safeco.webp" alt="Safeco" loading="lazy"></div>
+    <div class="ins-logo-tile"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/ins-kemper.webp" alt="Kemper" loading="lazy"></div>
+    <div class="ins-logo-tile"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/ins-21st-century.webp" alt="21st Century" loading="lazy"></div>
+    <div class="ins-logo-tile"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/ins-metlife.webp" alt="MetLife" loading="lazy"></div>
+    <div class="ins-logo-tile"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/ins-hartford.webp" alt="The Hartford" loading="lazy"></div>
+    <div class="ins-logo-tile"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/ins-bristol-west.webp" alt="Bristol West" loading="lazy"></div>
+    <div class="ins-logo-tile"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/ins-american-family.webp" alt="American Family" loading="lazy"></div>
+  </div>
+</section>
+
+<!-- BEFORE & AFTER -->
+<section class="ba-section">
+  <div class="ba-section-header">
+    <p class="eyebrow">Real Results</p>
+    <h2>Before <em>&amp; After</em></h2>
+  </div>
+  <div class="ba-grid">
+    <div>
+      <div class="ba-slider" data-slider>
+        <div class="ba-img before"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/ba-audi-before.webp" alt="Audi before repair" loading="lazy"></div>
+        <div class="ba-img after"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/ba-audi-after.webp" alt="Audi after repair" loading="lazy"></div>
+        <div class="ba-handle" data-handle><div class="ba-handle-knob"><svg width="18" height="18" fill="none" stroke="#8B0000" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/><polyline points="9 6 3 12 9 18"/></svg></div></div>
+        <span class="ba-badge before">Before</span><span class="ba-badge after">After</span>
+      </div>
+      <div class="ba-caption"><div class="ba-caption-title">Collision Repair</div><div class="ba-caption-sub">Audi</div></div>
+    </div>
+    <div>
+      <div class="ba-slider" data-slider>
+        <div class="ba-img before"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/ba-dodge-before.webp" alt="Dodge before repair" loading="lazy"></div>
+        <div class="ba-img after"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/ba-dodge-after.webp" alt="Dodge after repair" loading="lazy"></div>
+        <div class="ba-handle" data-handle><div class="ba-handle-knob"><svg width="18" height="18" fill="none" stroke="#8B0000" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/><polyline points="9 6 3 12 9 18"/></svg></div></div>
+        <span class="ba-badge before">Before</span><span class="ba-badge after">After</span>
+      </div>
+      <div class="ba-caption"><div class="ba-caption-title">Collision Repair</div><div class="ba-caption-sub">Dodge</div></div>
+    </div>
+    <div>
+      <div class="ba-slider" data-slider>
+        <div class="ba-img before"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/ba-jeep-before.webp" alt="Jeep before repair" loading="lazy"></div>
+        <div class="ba-img after"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/ba-jeep-after.webp" alt="Jeep after repair" loading="lazy"></div>
+        <div class="ba-handle" data-handle><div class="ba-handle-knob"><svg width="18" height="18" fill="none" stroke="#8B0000" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/><polyline points="9 6 3 12 9 18"/></svg></div></div>
+        <span class="ba-badge before">Before</span><span class="ba-badge after">After</span>
+      </div>
+      <div class="ba-caption"><div class="ba-caption-title">Collision Repair</div><div class="ba-caption-sub">Jeep</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="faq-inner">
+    <span class="eyebrow">Common Questions</span>
+    <h2>Body &amp; Paint <em>FAQ</em></h2>
+    <div class="faq-list">
+    <div class="faq-item"><button class="faq-trigger" aria-expanded="false"><div class="faq-trigger-inner"><span class="q-badge">Q</span><span class="q-label">Do you work with insurance companies?</span><span class="toggle-icon" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></div></button><div class="faq-body"><div class="faq-body-inner"><div class="faq-answer"><p class="answer-text">Yes — 3J's Auto Body works directly with all major insurance carriers including State Farm, Geico, Progressive, Allstate, Farmers, AAA, and more. We handle the paperwork so you don't have to.</p></div></div></div></div>
+    <div class="faq-item"><button class="faq-trigger" aria-expanded="false"><div class="faq-trigger-inner"><span class="q-badge">Q</span><span class="q-label">How long does collision repair take?</span><span class="toggle-icon" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></div></button><div class="faq-body"><div class="faq-body-inner"><div class="faq-answer"><p class="answer-text">Repair time depends on the extent of the damage. Minor repairs can be done same-day or next day. Major collision repairs typically take several days. We keep you informed throughout the process and aim for the fastest turnaround without sacrificing quality.</p></div></div></div></div>
+    <div class="faq-item"><button class="faq-trigger" aria-expanded="false"><div class="faq-trigger-inner"><span class="q-badge">Q</span><span class="q-label">Can you match my car's original paint color?</span><span class="toggle-icon" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></div></button><div class="faq-body"><div class="faq-body-inner"><div class="faq-answer"><p class="answer-text">Yes — we use computerized color-matching systems to ensure a perfect match to your factory paint. We can also do custom colors or match colors from other sources.</p></div></div></div></div>
+    <div class="faq-item"><button class="faq-trigger" aria-expanded="false"><div class="faq-trigger-inner"><span class="q-badge">Q</span><span class="q-label">Is frame damage safe to drive on?</span><span class="toggle-icon" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></div></button><div class="faq-body"><div class="faq-body-inner"><div class="faq-answer"><p class="answer-text">No — frame damage after a collision is a safety issue. We use computerized measuring and alignment systems to diagnose and repair frame damage back to factory specifications before any bodywork begins.</p></div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-band">
+  <div class="cta-content">
+    <h2>Get Your <em>Free Estimate</em> Today</h2>
+    <p>Walk in Mon–Fri 8AM–5PM · No appointment needed for estimates · Signal Hill, CA</p>
+    <div class="cta-buttons">
+      <a href="tel:+15624246744" class="btn-primary"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.7 10.82 19.79 19.79 0 01.67 2.18 2 2 0 012.66 0h3a2 2 0 012 1.72c.13 1 .36 1.97.7 2.91a2 2 0 01-.45 2.11L6.91 7.74a16 16 0 006.29 6.29l1-.99a2 2 0 012.11-.45c.94.34 1.91.57 2.91.7A2 2 0 0122 16.92z"/></svg>Call 562-424-6744</a>
+      <a href="https://www.carwise.com/online-photo-estimate/3js-autobody-paint-inc-signal-hill-ca-90755/479382?source=shop.profile&referer=estimate.cccone.com" class="btn-secondary"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>Free Online Estimate</a>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll('[data-slider]').forEach(function(slider){
+    var handle=slider.querySelector('[data-handle]');
+    var afterImg=slider.querySelector('.ba-img.after');
+    var isDragging=false;
+    var currentPct=50;
+    slider.setAttribute('tabindex','0');
+    slider.setAttribute('role','slider');
+    slider.setAttribute('aria-label','Before/after comparison. Use left and right arrow keys to reveal more or less.');
+    slider.setAttribute('aria-valuemin','0');
+    slider.setAttribute('aria-valuemax','100');
+    slider.setAttribute('aria-valuenow','50');
+    function setPercent(pct){pct=Math.min(Math.max(pct,2),98);currentPct=pct;afterImg.style.clipPath='inset(0 '+(100-pct)+'% 0 0)';handle.style.left=pct+'%';slider.setAttribute('aria-valuenow',Math.round(pct));}
+    function setPosition(x){var rect=slider.getBoundingClientRect();setPercent((x-rect.left)/rect.width*100);}
+    slider.addEventListener('keydown',function(e){
+      if(e.key==='ArrowLeft'||e.key==='ArrowDown'){setPercent(currentPct-5);e.preventDefault();}
+      else if(e.key==='ArrowRight'||e.key==='ArrowUp'){setPercent(currentPct+5);e.preventDefault();}
+      else if(e.key==='Home'){setPercent(2);e.preventDefault();}
+      else if(e.key==='End'){setPercent(98);e.preventDefault();}
+    });
+    slider.addEventListener('mousedown',function(e){isDragging=true;setPosition(e.clientX);e.preventDefault();});
+    window.addEventListener('mousemove',function(e){if(isDragging)setPosition(e.clientX);});
+    window.addEventListener('mouseup',function(){isDragging=false;});
+    slider.addEventListener('touchstart',function(e){isDragging=true;setPosition(e.touches[0].clientX);},{passive:true});
+    window.addEventListener('touchmove',function(e){if(isDragging)setPosition(e.touches[0].clientX);},{passive:true});
+    window.addEventListener('touchend',function(){isDragging=false;});
+  });
+  function faqClose(item){var p=item.querySelector('.faq-body');p.style.height=p.scrollHeight+'px';void p.offsetHeight;p.style.height='0px';item.classList.remove('open');item.querySelector('.faq-trigger').setAttribute('aria-expanded','false');}
+  function faqOpen(item){var p=item.querySelector('.faq-body');item.classList.add('open');item.querySelector('.faq-trigger').setAttribute('aria-expanded','true');p.style.height=p.querySelector('.faq-body-inner').offsetHeight+'px';}
+  document.querySelectorAll('.faq-body').forEach(function(p){p.addEventListener('transitionend',function(e){if(e.propertyName!=='height')return;if(p.closest('.faq-item').classList.contains('open'))p.style.height='auto';});});
+  document.querySelectorAll('.faq-trigger').forEach(function(btn){btn.addEventListener('click',function(){var item=btn.closest('.faq-item'),wasOpen=item.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(faqClose);if(!wasOpen){faqOpen(item);}setTimeout(reportHeight,350);});});
+  function reportHeight(){
+    var sentinel=document.getElementById('height-sentinel');
+    var h=sentinel?(sentinel.offsetTop+sentinel.offsetHeight):Math.max(document.body.scrollHeight,document.body.offsetHeight,document.documentElement.scrollHeight,document.documentElement.offsetHeight);
+    window.parent.postMessage(JSON.stringify({height:h}),'*');
+  }
+  document.addEventListener('DOMContentLoaded',reportHeight);
+  window.addEventListener('load',function(){[0,200,500,1000,2000,3500].forEach(function(t){setTimeout(reportHeight,t);});});
+  window.addEventListener('resize',reportHeight);
+  if(window.ResizeObserver){new ResizeObserver(reportHeight).observe(document.body);}
+  document.querySelectorAll('img').forEach(function(img){img.addEventListener('load',reportHeight);});
+</script>
+
+</main>
+<div id="height-sentinel" style="height:1px;width:1px;visibility:hidden;pointer-events:none;"></div>
+
+<script>
+(function(){var active=false,startY=0,lastY=0,rafId=null;document.addEventListener('mousedown',function(e){if(e.button!==1)return;if(e.target.closest('a'))return;e.preventDefault();active=true;startY=e.clientY;lastY=e.clientY;document.body.style.cursor='ns-resize';tick();});document.addEventListener('mousemove',function(e){if(active)lastY=e.clientY;});document.addEventListener('mouseup',function(e){if(e.button!==1||!active)return;active=false;document.body.style.cursor='';if(rafId){cancelAnimationFrame(rafId);rafId=null;}});function tick(){if(!active){rafId=null;return;}var dy=lastY-startY;if(Math.abs(dy)>5)window.scrollBy(0,dy*0.12);rafId=requestAnimationFrame(tick);}})();
+</script><script src="site-shell.js"></script>
+</body>
+</html>

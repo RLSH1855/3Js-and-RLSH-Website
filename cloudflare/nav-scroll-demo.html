@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Nav + Scroll Demo — 3J's</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{overscroll-behavior:none;}
+  body{overflow-x:hidden;font-family:'Barlow',sans-serif;background:#f3f4f6;color:#0b1220;}
+
+  :root{
+    --navy:#0b1220;--navy-2:#111b2e;--red:#8b0000;--red-hot:#b3000a;
+    --gold:#d9a441;--ink:#0b1220;--mute:#5b6473;--line:rgba(255,255,255,.10);
+    --nav-font:'Inter';   /* LOCKED IN: Inter (toggle kept for now to re-compare) */
+  }
+
+  /* ════════ NAV SHELL (fixed) ════════ */
+  .nav-shell{
+    position:fixed;top:0;left:0;right:0;z-index:1000;
+    font-family:var(--nav-font),sans-serif;
+    background:var(--navy);              /* solid base — no see-through gap */
+    transform:translateZ(0);            /* promote to its own paint layer */
+    will-change:transform;
+    backface-visibility:hidden;
+    -webkit-backface-visibility:hidden;
+  }
+
+  /* ── Top branding bar (collapses on scroll) ── */
+  .topbar{
+    background:var(--navy) url('https://rlsh1855.github.io/3Js-and-RLSH-Website/1-BG_dark_blue_gradiant_edited_edited.jpg') center/cover no-repeat;
+    display:flex;align-items:center;justify-content:space-between;gap:24px;
+    padding:14px 40px;
+    max-height:120px;opacity:1;overflow:hidden;
+    transition:max-height .7s cubic-bezier(.4,0,.2,1),
+               opacity .55s cubic-bezier(.4,0,.2,1),
+               padding .7s cubic-bezier(.4,0,.2,1);
+  }
+  .nav-shell.shrunk .topbar{
+    max-height:0;opacity:0;padding-top:0;padding-bottom:0;
+  }
+  .topbar-logos{display:flex;align-items:center;gap:28px;}
+  .topbar-logos img{display:block;object-fit:contain;}
+  .logo-rlsh{height:64px;}
+  .logo-3js{height:62px;}
+  .tb-btn{
+    display:inline-flex;align-items:center;justify-content:center;
+    height:46px;padding:0 26px;
+    font-family:var(--nav-font),sans-serif;font-size:13px;font-weight:600;
+    letter-spacing:1px;text-transform:uppercase;text-decoration:none;
+    border-radius:0;white-space:nowrap;transition:background .2s,color .2s,border-color .2s;
+  }
+  .tb-btn.red{background:var(--red);color:#fff;border:1px solid #a30505;}
+  .tb-btn.red:hover{background:var(--red-hot);}
+  .tb-btn.blue{background:#366B8F;color:#fff;border:1px solid #4181AD;}
+  .tb-btn.blue:hover{background:#2d5a7a;}
+
+  /* ── Menu row (pinned, always visible) ── */
+  .navbar{
+    background:var(--navy);
+    display:flex;align-items:stretch;justify-content:center;
+    padding:0 16px 0 40px;
+    position:relative;
+    box-shadow:0 2px 0 0 rgba(0,0,0,.25);
+  }
+  .nav-links{display:flex;align-items:stretch;flex-wrap:wrap;}
+  .nav-links > a, .nav-trigger{
+    display:inline-flex;align-items:center;gap:5px;
+    padding:18px 22px;
+    font-family:var(--nav-font),sans-serif;font-size:13px;font-weight:500;line-height:1;
+    letter-spacing:1.4px;text-transform:uppercase;
+    color:#fff;text-decoration:none;white-space:nowrap;
+    background:none;border:none;cursor:pointer;margin:0;
+    -webkit-appearance:none;appearance:none;vertical-align:middle;
+    position:relative;transition:color .2s,padding .45s cubic-bezier(.22,1,.36,1);
+  }
+  .nav-shell.shrunk .nav-links > a,
+  .nav-shell.shrunk .nav-trigger{padding-top:14px;padding-bottom:14px;transition:color .2s,padding .7s cubic-bezier(.4,0,.2,1);}
+  .nav-links > a::after, .nav-trigger::after{
+    content:'';position:absolute;left:22px;right:22px;bottom:0;height:3px;
+    background:var(--red);transform:scaleX(0);transform-origin:left;
+    transition:transform .25s ease;
+  }
+  .nav-links > a:hover, .nav-trigger:hover{color:#fff;}
+  .nav-links > a:hover::after, .nav-trigger:hover::after,
+  .nav-links > a.active::after{transform:scaleX(1);}
+  .nav-links > a.active{color:#fff;}
+  .nav-caret{font-size:9px;opacity:.7;transition:transform .25s;}
+  .nav-trigger.open .nav-caret{transform:rotate(180deg);}
+
+  /* ── My Garage pill (pinned right — from the catalog header) ── */
+  .garage-pill{
+    margin-left:auto;align-self:center;
+    display:flex;align-items:center;gap:8px;
+    padding:8px 14px 8px 10px;
+    border:1px solid rgba(255,255,255,.18);
+    background:rgba(255,255,255,.07);
+    text-decoration:none;cursor:pointer;border-radius:0;
+    transition:border-color .15s,background .15s;
+  }
+  .garage-pill:hover{border-color:var(--red);background:rgba(255,255,255,.11);}
+  .garage-pill-ico{color:var(--red);display:inline-flex;flex-shrink:0;}
+  .garage-pill-ico svg{width:26px;height:26px;stroke:currentColor;fill:none;stroke-width:1.6;}
+  .garage-pill-txt{display:flex;flex-direction:column;align-items:flex-start;line-height:1.15;}
+  .garage-pill-label{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.45);}
+  .garage-pill-vehicle{font-family:var(--nav-font),sans-serif;font-weight:700;font-size:15px;letter-spacing:.03em;color:#fff;}
+  .garage-pill-swap{color:rgba(255,255,255,.35);flex-shrink:0;display:inline-flex;}
+  .garage-pill-swap svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;}
+
+  /* spacer so content clears the fixed header */
+  .nav-spacer{height:174px;}
+
+  /* ════════ BLUR SCRIM behind open mega menu ════════ */
+  .nav-scrim{
+    position:fixed;inset:0;z-index:900;
+    background:rgba(7,12,22,.34);
+    backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);
+    opacity:0;pointer-events:none;
+    transition:opacity .38s ease;
+  }
+  .nav-scrim.show{opacity:1;pointer-events:auto;}
+
+  /* ════════ MEGA MENU — loaded live from the real mega-menu.js (it injects its own CSS) ════════ */
+
+  /* ════════ DEMO PAGE CONTENT ════════ */
+  .demo-band{padding:90px 40px;}
+  .demo-band:nth-child(odd){background:#fff;}
+  .demo-band:nth-child(even){background:var(--navy);color:#fff;}
+  .demo-inner{max-width:1100px;margin:0 auto;}
+  .demo-eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--red);margin-bottom:14px;}
+  .demo-band:nth-child(even) .demo-eyebrow{color:var(--gold);}
+  .demo-band h2{font-family:'Oswald',sans-serif;font-size:42px;font-weight:700;text-transform:uppercase;letter-spacing:.01em;line-height:1;margin-bottom:18px;}
+  .demo-band p{font-family:'Barlow',sans-serif;font-size:16px;line-height:1.65;max-width:680px;color:inherit;opacity:.92;}
+  .demo-hint{margin-top:28px;padding:18px 22px;border-left:3px solid var(--red);background:rgba(139,0,0,.06);font-family:'Barlow',sans-serif;font-size:14px;line-height:1.6;}
+  .demo-band:nth-child(even) .demo-hint{background:rgba(255,255,255,.06);}
+
+  @media(max-width:900px){
+    .topbar{padding:12px 18px;}.navbar{padding:0 18px;}
+    .logo-rlsh,.logo-3js{height:44px;}
+    .nav-links{display:none;}.garage-pill{margin-left:0;}
+    .nav-spacer{height:120px;}
+    .demo-band{padding:56px 20px;}.demo-band h2{font-size:30px;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ════════ NAV ════════ -->
+<header class="nav-shell" id="navShell">
+  <div class="topbar">
+    <a href="#" class="tb-btn red">Bed-Liner Quote</a>
+    <div class="topbar-logos">
+      <img class="logo-rlsh" src="https://static.wixstatic.com/media/b95bd9_8e3e4f256c85462d960aaa1e3ef740c8~mv2.png" alt="RLSH Rhino Lining of Signal Hill">
+      <img class="logo-3js" src="https://static.wixstatic.com/media/b95bd9_86c7cf1e525d4b9e961a2738ed9af502~mv2.png" alt="3J's Auto Body & Paint">
+    </div>
+    <a href="#" class="tb-btn blue">Free Online Repair Estimate</a>
+  </div>
+
+  <nav class="navbar">
+    <div class="nav-links">
+      <a href="#" class="active">Home</a>
+      <a href="#">Inside 3J's</a>
+      <a href="#">Body &amp; Paint Repairs</a>
+      <a href="#" id="sn-trigger-rhino">Rhino Liner +</a>
+      <a href="#" id="sn-trigger-bundles">Bundles &amp; Packages +</a>
+      <button class="nav-trigger" id="sn-trigger-exterior">Exterior Accessories <span class="nav-caret">▾</span></button>
+      <a href="#">Shop</a>
+      <a href="#">Contact Us</a>
+      <a href="#">FAQ</a>
+    </div>
+    <a href="#" class="garage-pill">
+      <span class="garage-pill-ico">
+        <svg viewBox="0 0 24 24"><path d="M1 6h13v9H1z"/><path d="M14 9h5l3 3v3h-8z"/><circle cx="6" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg>
+      </span>
+      <span class="garage-pill-txt">
+        <span class="garage-pill-label">My Garage</span>
+        <span class="garage-pill-vehicle">Set your truck</span>
+      </span>
+      <span class="garage-pill-swap">
+        <svg viewBox="0 0 24 24"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+      </span>
+    </a>
+  </nav>
+</header>
+
+<div class="nav-spacer"></div>
+
+<!-- ════════ BLUR SCRIM ════════ -->
+<div class="nav-scrim" id="navScrim"></div>
+
+<!-- Real mega menu (#jj-mega-host with all 3 panels) is injected here at runtime by mega-menu.js -->
+
+
+<!-- ════════ DEMO CONTENT ════════ -->
+<section class="demo-band">
+  <div class="demo-inner">
+    <div class="demo-eyebrow">Demo · Read Me First</div>
+    <h2>Scroll Down To Feel It</h2>
+    <p>Hover <strong>“Rhino Liner +”, “Bundles &amp; Packages +”, or “Exterior Accessories”</strong> in the nav to open the real mega menu — watch the page behind it blur and dim so all focus lands on the menu. Click anywhere on the blurred area to close it.</p>
+    <div class="demo-hint">
+      <strong>Shrink-on-scroll:</strong> as you scroll down, the top branding bar (logos + buttons) smoothly collapses and only the menu row stays pinned at the top. Scroll all the way back up and the full nav smoothly drops back in.<br><br>
+      <strong>Buttery scroll:</strong> on desktop, the whole page now glides with momentum — it eases in when you start and glides to a stop, instead of the hard step-scroll.
+    </div>
+  </div>
+</section>
+
+<section class="demo-band">
+  <div class="demo-inner">
+    <div class="demo-eyebrow">Section Two</div>
+    <h2>Dark Section</h2>
+    <p>Sections alternate light and dark — same as the real site — so you can see how the navy nav reads against both as you scroll past. The menu row should always stay legible and pinned at the top.</p>
+  </div>
+</section>
+
+<section class="demo-band">
+  <div class="demo-inner">
+    <div class="demo-eyebrow">Section Three</div>
+    <h2>Keep Scrolling</h2>
+    <p>The condensed menu bar stays put the entire way down the page. Try opening the Exterior Accessories menu while scrolled down too — the blur scrim still covers the whole page and the menu drops right under the pinned bar.</p>
+  </div>
+</section>
+
+<section class="demo-band">
+  <div class="demo-inner">
+    <div class="demo-eyebrow">Section Four</div>
+    <h2>Almost There</h2>
+    <p>Notice the clean Inter nav lettering, the red hover underline, and the real full-width mega menu dropping in over the blurred page — the same premium menu that’s already built, untouched.</p>
+  </div>
+</section>
+
+<section class="demo-band">
+  <div class="demo-inner">
+    <div class="demo-eyebrow">Bottom</div>
+    <h2>Now Scroll Back Up</h2>
+    <p>Ride it all the way to the very top — the full branding bar with both logos and the Bed-Liner Quote / Free Estimate buttons should smoothly expand back into place the moment you reach the top.</p>
+  </div>
+</section>
+
+<script>
+/* ════════ SHRINK-ON-SCROLL ════════ */
+(function(){
+  var shell=document.getElementById('navShell');
+  var ticking=false;
+  function update(){
+    var y=window.pageYOffset||document.documentElement.scrollTop;
+    // hysteresis buffer: collapse only after scrolling down a bit,
+    // restore only once you're back near the very top — prevents snappy flicker
+    if(y>110) shell.classList.add('shrunk');
+    else if(y<40) shell.classList.remove('shrunk');
+    ticking=false;
+  }
+  window.addEventListener('scroll',function(){
+    if(!ticking){requestAnimationFrame(update);ticking=true;}
+  },{passive:true});
+  update();
+})();
+
+/* ════════ REAL MEGA MENU (mega-menu.js) + BLUR SCRIM ════════ */
+(function(){
+  var scrim=document.getElementById('navScrim');
+
+  // Load the actual production mega menu — it injects #jj-mega-host with all 3 panels + its own CSS
+  var s=document.createElement('script');
+  s.src='mega-menu.js';
+  document.head.appendChild(s);
+
+  // Drive the blur scrim off the real menu's open state — WITHOUT modifying mega-menu.js
+  function anyOpen(){ return !!document.querySelector('#jj-mega-host .jj-mega.jj-open'); }
+  function sync(){ scrim.classList.toggle('show', anyOpen()); }
+
+  var tries=0;
+  (function waitForHost(){
+    var host=document.getElementById('jj-mega-host');
+    if(host){
+      new MutationObserver(sync).observe(host,{subtree:true,attributes:true,attributeFilter:['class']});
+      sync();
+    } else if(tries++<80){ setTimeout(waitForHost,150); }
+  })();
+
+  // Clicking the blurred area closes the menu (mega-menu.js also closes on outside click)
+  scrim.addEventListener('click',function(){
+    document.querySelectorAll('#jj-mega-host .jj-mega.jj-open').forEach(function(p){p.classList.remove('jj-open');});
+    scrim.classList.remove('show');
+  });
+})();
+
+/* ════════ BUTTERY INERTIA SCROLL (desktop only) ════════ */
+(function(){
+  var isTouch=('ontouchstart' in window)||navigator.maxTouchPoints>0||
+              (window.matchMedia&&window.matchMedia('(pointer:coarse)').matches);
+  if(isTouch)return;
+  if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+
+  var target=window.pageYOffset, current=target, rafId=null;
+  var LERP=0.08, MULT=0.85;
+
+  function clamp(v){
+    var max=document.documentElement.scrollHeight-window.innerHeight;
+    return v<0?0:(v>max?max:v);
+  }
+  function loop(){
+    current+=(target-current)*LERP;
+    if(Math.abs(target-current)<0.3){current=target;window.scrollTo(0,current);rafId=null;return;}
+    window.scrollTo(0,current);
+    rafId=requestAnimationFrame(loop);
+  }
+  window.addEventListener('wheel',function(e){
+    if(e.ctrlKey)return; // let pinch-zoom through
+    e.preventDefault();
+    target=clamp(target+e.deltaY*MULT);
+    if(!rafId)rafId=requestAnimationFrame(loop);
+  },{passive:false});
+
+  // keep in sync if scroll position changes by other means (keyboard, anchor, resize)
+  window.addEventListener('scroll',function(){
+    if(!rafId){current=target=window.pageYOffset;}
+  },{passive:true});
+  window.addEventListener('resize',function(){target=clamp(target);},{passive:true});
+})();
+</script>
+
+<!-- ════════ FONT TOGGLE (demo control only — removed before go-live) ════════ -->
+<div id="fontToggle" style="position:fixed;right:16px;bottom:16px;z-index:2000;background:#fff;border:1px solid #d0d4da;box-shadow:0 10px 30px rgba(0,0,0,.20);padding:13px 15px;font-family:'Inter',sans-serif;max-width:240px;">
+  <div style="font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#8b0000;font-weight:700;margin-bottom:9px;">Nav Font — Tap To Compare</div>
+  <div style="display:flex;gap:6px;flex-wrap:wrap;">
+    <button data-font="'Barlow'" class="ft-btn">Barlow</button>
+    <button data-font="'Inter'" class="ft-btn">Inter</button>
+    <button data-font="'Montserrat'" class="ft-btn">Montserrat</button>
+    <button data-font="'Oswald'" class="ft-btn">Oswald</button>
+  </div>
+  <div id="ftCurrent" style="margin-top:9px;font-size:11px;color:#5b6473;">Showing: <b style="color:#0b1220;">Inter</b></div>
+</div>
+<style>
+  .ft-btn{font-family:'Inter',sans-serif;font-size:12px;font-weight:600;padding:8px 12px;border:1px solid #c8ccd2;background:#f5f6f8;color:#0b1220;cursor:pointer;border-radius:0;transition:background .15s,color .15s,border-color .15s;}
+  .ft-btn:hover{border-color:#8b0000;}
+  .ft-btn.active{background:#8b0000;color:#fff;border-color:#8b0000;}
+</style>
+<script>
+(function(){
+  var btns=document.querySelectorAll('#fontToggle .ft-btn');
+  var label=document.querySelector('#ftCurrent b');
+  function setFont(f,el){
+    document.documentElement.style.setProperty('--nav-font',f);
+    btns.forEach(function(b){b.classList.remove('active');});
+    if(el){el.classList.add('active');label.textContent=el.textContent;}
+  }
+  btns.forEach(function(b){b.addEventListener('click',function(){setFont(b.dataset.font,b);});});
+  setFont("'Inter'",btns[1]); /* locked in: Inter */
+})();
+</script>
+</body>
+</html>

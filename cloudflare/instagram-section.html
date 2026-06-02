@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Instagram @rlofsignalhill — See Our Work | 3J's Auto Body Signal Hill CA</title>
+  <meta name="description" content="Follow 3J's Auto Body on Instagram @rlofsignalhill. Real trucks, real jobs, real results — straight from the shop in Signal Hill, CA.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Instagram @rlofsignalhill | 3J's Auto Body Signal Hill CA">
+  <meta property="og:description" content="See our latest work on Instagram. Rhino Liners, tonneau covers, collision repairs and more from our shop in Signal Hill, CA.">
+  <meta property="og:site_name" content="3J's Auto Body &amp; Paint">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    html,body{max-width:100%;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:'Montserrat',sans-serif;background:#fff;color:#111;}
+
+    .ig-section{
+      background:#fff;
+      padding:clamp(40px,6vw,64px) 0;
+      text-align:center;
+    }
+    .ig-header{padding:0 clamp(16px,4vw,24px);}
+
+    /* Header */
+    .ig-eyebrow{
+      font-size:11px;font-weight:800;letter-spacing:3px;
+      text-transform:uppercase;color:#8B0000;margin-bottom:12px;
+    }
+    .ig-heading{
+      font-size:clamp(22px,3.5vw,36px);font-weight:900;
+      letter-spacing:-0.5px;margin-bottom:6px;
+    }
+    .ig-heading em{font-style:normal;color:#8B0000;}
+    .ig-sub{
+      font-size:13px;font-weight:500;color:#555;
+      margin-bottom:32px;letter-spacing:0.3px;
+    }
+
+    /* Profile row */
+    .ig-profile{
+      display:inline-flex;align-items:center;gap:14px;
+      background:#f5f5f5;border:1px solid #e0e0e0;
+      border-radius:0;padding:10px 22px 10px 10px;
+      margin-bottom:36px;text-decoration:none;
+      transition:border-color 0.2s,background 0.2s;
+    }
+    .ig-profile:hover{background:#ebebeb;border-color:#8B0000;}
+    .ig-avatar{
+      width:42px;height:42px;border-radius:0;
+      background:#8B0000;
+      display:flex;align-items:center;justify-content:center;
+      flex-shrink:0;
+    }
+    .ig-avatar svg{width:20px;height:20px;}
+    .ig-info{text-align:left;}
+    .ig-handle{font-size:13px;font-weight:800;color:#1a1a1a;letter-spacing:0.3px;}
+    .ig-name{font-size:11px;font-weight:500;color:#888;margin-top:1px;}
+
+    /* Grid */
+    .ig-grid{
+      display:flex;
+      flex-direction:row;
+      gap:4px;
+      width:100%;
+      margin:0 0 36px;
+      overflow-x:auto;
+      -webkit-overflow-scrolling:touch;
+      scrollbar-width:none;
+    }
+    .ig-grid::-webkit-scrollbar{display:none;}
+    .ig-tile{flex:1 1 0;min-width:0;}
+    .ig-tile{
+      position:relative;
+      aspect-ratio:1;
+      background:#f0f0f0;
+      overflow:hidden;
+      cursor:pointer;
+      text-decoration:none;
+      display:block;
+    }
+    .ig-tile img{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      transition:transform 0.4s ease;
+    }
+    
+    .ig-tile::before{
+      content:'';
+      position:absolute;inset:0;
+      background:linear-gradient(135deg,#f0f0f0 0%,#e8e8e8 50%,#f0f0f0 100%);
+    }
+    /* Subtle pattern per tile */
+    .ig-tile:nth-child(1)::before{background:linear-gradient(135deg,#efefef,#e5e5e5);}
+    .ig-tile:nth-child(2)::before{background:linear-gradient(145deg,#f2f2f2,#e8e8e8);}
+    .ig-tile:nth-child(3)::before{background:linear-gradient(125deg,#efefef,#e6e6e6);}
+    .ig-tile:nth-child(4)::before{background:linear-gradient(155deg,#f0f0f0,#e8e8e8);}
+    .ig-tile:nth-child(5)::before{background:linear-gradient(135deg,#e8e8e8,#f2f2f2);}
+    .ig-tile:nth-child(6)::before{background:linear-gradient(120deg,#efefef,#e5e5e5);}
+
+    /* Logo watermark inside each tile */
+    .ig-tile-inner{
+      position:absolute;inset:0;
+      display:flex;flex-direction:column;
+      align-items:center;justify-content:center;
+      gap:6px;opacity:0.12;
+      transition:opacity 0.25s;
+    }
+    .ig-tile-inner svg{width:32px;height:32px;}
+    .ig-tile-inner span{
+      font-size:9px;font-weight:900;letter-spacing:2px;
+      text-transform:uppercase;color:#1a1a1a;
+    }
+
+    /* Red bar accent on bottom */
+    .ig-tile::after{
+      content:'';
+      position:absolute;bottom:0;left:0;right:0;
+      height:3px;
+      background:#8B0000;
+      transform:scaleX(0);
+      transform-origin:left;
+      transition:transform 0.3s ease;
+    }
+
+    /* Hover overlay */
+    .ig-tile-hover{
+      position:absolute;inset:0;
+      background:rgba(139,0,0,0.0);
+      display:flex;align-items:center;justify-content:center;
+      transition:background 0.25s;
+    }
+    .ig-tile-hover-icon{
+      opacity:0;transform:scale(0.7);
+      transition:opacity 0.25s,transform 0.25s;
+      display:flex;flex-direction:column;align-items:center;gap:8px;
+    }
+    .ig-tile-hover-icon svg{width:28px;height:28px;color:#fff;}
+    .ig-tile-hover-icon span{
+      font-size:10px;font-weight:800;letter-spacing:2px;
+      text-transform:uppercase;color:#fff;
+    }
+
+    .ig-tile:hover .ig-tile-inner{opacity:0.06;}
+    .ig-tile:hover .ig-tile-hover{background:rgba(139,0,0,0.75);}
+    .ig-tile:hover .ig-tile-hover-icon{opacity:1;transform:scale(1);}
+    .ig-tile:hover::after{transform:scaleX(1);}
+
+    /* CTA button */
+    .ig-btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:8px;
+      background:#8B0000;color:#fff;
+      font-family:'Montserrat',sans-serif;
+      font-size:11px;font-weight:700;
+      text-decoration:none;
+      height:48px;padding:0 32px;border-radius:0;
+      border:2px solid transparent;
+      transition:all 0.3s ease;cursor:pointer;
+      letter-spacing:2px;text-transform:uppercase;
+    }
+    .ig-btn:hover{background:#A00000;border-color:#BF3030;}
+
+    /* Responsive */
+    @media(max-width:600px){
+      .ig-tile{flex:0 0 140px;}
+    }
+  </style>
+</head>
+<body>
+
+<section class="ig-section">
+
+  <div class="ig-header">
+  <p class="ig-eyebrow">Follow the Build</p>
+  <h2 class="ig-heading">See Our Work on <em>Instagram</em></h2>
+  <p class="ig-sub">Real trucks. Real jobs. Real results — straight from the shop.</p>
+
+  <!-- Profile chip -->
+  <a class="ig-profile" href="https://www.instagram.com/rlofsignalhill/" target="_blank" rel="noopener">
+    <div class="ig-avatar">
+      <!-- Instagram icon -->
+      <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+        <circle cx="12" cy="12" r="4"/>
+        <circle cx="17.5" cy="6.5" r="1" fill="#fff" stroke="none"/>
+      </svg>
+    </div>
+    <div class="ig-info">
+      <div class="ig-handle">@rlofsignalhill</div>
+      <div class="ig-name">3J's Auto Body &amp; Paint</div>
+    </div>
+  </a>
+  </div>
+
+  <!-- Grid — all tiles link to Instagram -->
+  <div class="ig-grid">
+
+    <a class="ig-tile" href="https://www.instagram.com/rlofsignalhill/" target="_blank" rel="noopener">
+      <img src="https://static.wixstatic.com/media/b95bd9_092c1d6eb24f454dbd85a03cb8013baa~mv2.png" alt="3J's Auto Body work" />
+      <div class="ig-tile-hover">
+        <div class="ig-tile-hover-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          <span>View on Instagram</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="ig-tile" href="https://www.instagram.com/rlofsignalhill/" target="_blank" rel="noopener">
+      <img src="ig-rhino-wheel-well.webp" alt="Rhino Liner coating on truck wheel well" />
+      <div class="ig-tile-hover">
+        <div class="ig-tile-hover-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          <span>View on Instagram</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="ig-tile" href="https://www.instagram.com/rlofsignalhill/" target="_blank" rel="noopener">
+      <img src="https://static.wixstatic.com/media/b95bd9_4e457f8fb3074ab4a0ce359330032928~mv2.png" alt="3J's Auto Body work" />
+      <div class="ig-tile-hover">
+        <div class="ig-tile-hover-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          <span>View on Instagram</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="ig-tile" href="https://www.instagram.com/rlofsignalhill/" target="_blank" rel="noopener">
+      <img src="https://static.wixstatic.com/media/b95bd9_eddb7d0ea76d4eb989a697292c8a3845~mv2.png" alt="3J's Auto Body work" loading="lazy" />
+      <div class="ig-tile-hover">
+        <div class="ig-tile-hover-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          <span>View on Instagram</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="ig-tile" href="https://www.instagram.com/rlofsignalhill/" target="_blank" rel="noopener">
+      <img src="ig-bedliner-tonneau-install.webp" alt="Rhino Liner bed with tonneau cover installation" loading="lazy" />
+      <div class="ig-tile-hover">
+        <div class="ig-tile-hover-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          <span>View on Instagram</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="ig-tile" href="https://www.instagram.com/rlofsignalhill/" target="_blank" rel="noopener">
+      <img src="https://static.wixstatic.com/media/b95bd9_8839269f9afa452f966883da2c40a057~mv2.png" alt="3J's Auto Body work" loading="lazy" />
+      <div class="ig-tile-hover">
+        <div class="ig-tile-hover-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          <span>View on Instagram</span>
+        </div>
+      </div>
+    </a>
+
+  </div>
+
+  <a class="ig-btn" href="https://www.instagram.com/rlofsignalhill/" target="_blank" rel="noopener">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+      <circle cx="12" cy="12" r="4"/>
+      <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+    </svg>
+    Follow @rlofsignalhill
+  </a>
+
+</section>
+
+<script>
+  function reportHeight(){
+    var h = Math.max(
+      document.body.scrollHeight,
+      document.body.offsetHeight,
+      document.documentElement.scrollHeight,
+      document.documentElement.offsetHeight
+    );
+    window.parent.postMessage(JSON.stringify({height:h}),'*');
+  }
+  document.addEventListener('DOMContentLoaded', reportHeight);
+  window.addEventListener('load', function(){
+    [0,200,500,1000,2000,3500].forEach(function(t){ setTimeout(reportHeight,t); });
+  });
+  window.addEventListener('resize', reportHeight);
+  if(window.ResizeObserver){ new ResizeObserver(reportHeight).observe(document.body); }
+</script>
+<script>
+(function(){var active=false,startY=0,lastY=0,rafId=null;document.addEventListener('mousedown',function(e){if(e.button!==1)return;if(e.target.closest('a'))return;e.preventDefault();active=true;startY=e.clientY;lastY=e.clientY;document.body.style.cursor='ns-resize';tick();});document.addEventListener('mousemove',function(e){if(active)lastY=e.clientY;});document.addEventListener('mouseup',function(e){if(e.button!==1||!active)return;active=false;document.body.style.cursor='';if(rafId){cancelAnimationFrame(rafId);rafId=null;}});function tick(){if(!active){rafId=null;return;}var dy=lastY-startY;if(Math.abs(dy)>5)window.scrollBy(0,dy*0.12);rafId=requestAnimationFrame(tick);}})();
+</script></body>
+</html>
