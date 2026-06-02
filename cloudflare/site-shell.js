@@ -468,9 +468,9 @@
         items.forEach(function(el,i){
           el.style.opacity='0'; el.style.transform='translateY(16px)'; el.style.transition='none';
           setTimeout(function(){
-            el.style.transition='opacity .35s ease,transform .42s cubic-bezier(.22,1,.36,1)';
+            el.style.transition='opacity .45s ease,transform .55s cubic-bezier(.22,1,.36,1)';
             el.style.opacity='1'; el.style.transform='translateY(0)';
-          }, 80+i*30);
+          }, 90+i*45);
         });
       }
     }
