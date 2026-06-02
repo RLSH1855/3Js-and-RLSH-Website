@@ -80,7 +80,9 @@
     .hero-body{font-family:'Inter',sans-serif;font-size:clamp(15px,1.6vw,17px);font-weight:400;color:rgba(255,255,255,0.82);line-height:1.85;max-width:520px;}
     .hero-body .promise{display:block;font-size:clamp(15px,1.9vw,19px);font-weight:800;color:#fff;margin:16px 0 8px;letter-spacing:2px;text-transform:uppercase;text-align:center;}
     .hero-body .since{display:block;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-top:18px;white-space:nowrap;}
-    .hero-ctas{display:flex;flex-wrap:wrap;gap:14px;margin-top:40px;}
+    .hero-cta-group{display:flex;flex-direction:column;align-items:flex-start;margin-top:40px;}
+    .hero-tagline{font-family:'Montserrat',sans-serif;font-size:clamp(13px,1.6vw,18px);font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.95);margin-bottom:24px;line-height:1.4;}
+    .hero-ctas{display:flex;flex-wrap:wrap;gap:14px;}
     .hero-stats{display:flex;gap:36px;margin-top:52px;padding-top:32px;border-top:1px solid rgba(255,255,255,0.12);}
     .hero-stats .stat{display:flex;flex-direction:column;gap:3px;}
     .hero-stats .stat-num{font-size:clamp(20px,2.5vw,28px);font-weight:900;color:#fff;letter-spacing:-1px;line-height:1;}
@@ -88,10 +90,10 @@
     .hero-stats .stat-label{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.45);}
     .hero-bottom-bar{position:absolute;bottom:0;left:0;right:0;height:4px;background:linear-gradient(to right,#8B0000,#8B0000 60%,transparent);z-index:3;}
     .river-rat{position:absolute;bottom:22px;left:80px;font-size:9px;font-weight:600;color:rgba(255,255,255,0.40);letter-spacing:0.5px;font-style:italic;z-index:3;}
-    .hero-trust{display:flex;flex-wrap:wrap;gap:6px 0;margin-top:20px;align-items:center;}
-    .hero-trust-item{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.72);}
-    .hero-trust-sep{color:rgba(255,255,255,0.30);margin:0 8px;font-size:9px;}
-    @media(max-width:640px){.hero-trust{justify-content:center;}.hero-trust-item{font-size:8px;}}
+    .hero-trust{display:flex;flex-wrap:wrap;gap:4px 0;margin-top:16px;align-items:center;justify-content:center;align-self:stretch;}
+    .hero-trust-item{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.92);}
+    .hero-trust-sep{color:rgba(255,255,255,0.50);margin:0 8px;font-size:9px;}
+    @media(max-width:640px){.hero-trust{justify-content:center;}.hero-trust-item{font-size:8px;}.hero-cta-group{width:100%;}}
     .scroll-hint{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;opacity:0;z-index:3;animation:hintFadeIn 0.9s 1.2s ease-out forwards;}
     .scroll-hint span{font-size:8px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:#fff;}
     .scroll-hint svg{width:22px;height:22px;stroke:#fff;stroke-width:2.5;}
@@ -376,30 +378,33 @@
       <span class="line-red">One Family.</span>
     </h1>
     <div class="hero-rule"></div>
+    <p class="hero-tagline">We meet great people by accident.</p>
     <div class="hero-body">
       No corporate. No runaround. No ticket numbers.<br>
       Just James, his crew, and the promise that
       <span class="promise">"We'll know your name before we touch your car."</span>
       <span class="since">Serving Signal Hill since 1991 — and we're not going anywhere.</span>
     </div>
-    <div class="hero-ctas">
-      <a href="tel:+15624246744" class="btn-red btn" target="_top">
-        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.7 10.82 19.79 19.79 0 01.67 2.18 2 2 0 012.66 0h3a2 2 0 012 1.72c.13 1 .36 1.97.7 2.91a2 2 0 01-.45 2.11L6.91 7.74a16 16 0 006.29 6.29l1-.99a2 2 0 012.11-.45c.94.34 1.91.57 2.91.7A2 2 0 0122 16.92z"/></svg>
-        Call 562-424-6744
-      </a>
-      <a href="https://www.3jsautobody.com/request-a-quote" class="btn-ghost btn" target="_top">
-        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-        Get a Free Quote
-      </a>
-    </div>
-    <div class="hero-trust">
-      <span class="hero-trust-item">I-CAR Gold Class</span>
-      <span class="hero-trust-sep">·</span>
-      <span class="hero-trust-item">ASE Certified</span>
-      <span class="hero-trust-sep">·</span>
-      <span class="hero-trust-item">Works with all major insurers</span>
-      <span class="hero-trust-sep">·</span>
-      <span class="hero-trust-item">Rhino Liner Installer</span>
+    <div class="hero-cta-group">
+      <div class="hero-ctas">
+        <a href="tel:+15624246744" class="btn-red btn" target="_top">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.7 10.82 19.79 19.79 0 01.67 2.18 2 2 0 012.66 0h3a2 2 0 012 1.72c.13 1 .36 1.97.7 2.91a2 2 0 01-.45 2.11L6.91 7.74a16 16 0 006.29 6.29l1-.99a2 2 0 012.11-.45c.94.34 1.91.57 2.91.7A2 2 0 0122 16.92z"/></svg>
+          Call 562-424-6744
+        </a>
+        <a href="https://www.3jsautobody.com/request-a-quote" class="btn-ghost btn" target="_top">
+          <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          Get a Free Quote
+        </a>
+      </div>
+      <div class="hero-trust">
+        <span class="hero-trust-item">I-CAR Gold Class</span>
+        <span class="hero-trust-sep">·</span>
+        <span class="hero-trust-item">ASE Certified</span>
+        <span class="hero-trust-sep">·</span>
+        <span class="hero-trust-item">Works with all major insurers</span>
+        <span class="hero-trust-sep">·</span>
+        <span class="hero-trust-item">Rhino Liner Installer</span>
+      </div>
     </div>
     <div class="hero-stats">
       <div class="stat">
