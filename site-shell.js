@@ -49,7 +49,7 @@
   .ss-tb-btn.blue:hover{background:#2d5a7a;}
 
   /* pinned menu row */
-  .ss-nav{background:var(--ssn);display:flex;align-items:center;justify-content:center;min-height:60px;padding:0 16px 0 40px;position:relative;box-shadow:0 2px 0 0 rgba(0,0,0,.25);}
+  .ss-nav{background:var(--ssn);display:flex;align-items:center;justify-content:center;min-height:60px;padding:0 0 0 40px;position:relative;box-shadow:0 2px 0 0 rgba(0,0,0,.25);}
   .ss-links{display:flex;align-items:stretch;flex-wrap:wrap;}
   .ss-links > a{display:inline-flex;align-items:center;gap:5px;padding:18px 22px;margin:0;
     font-family:var(--ssnav-font),sans-serif;font-size:13px;font-weight:500;line-height:1;
