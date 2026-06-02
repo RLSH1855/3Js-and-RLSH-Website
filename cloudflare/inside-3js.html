@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Inside 3J's — 3J's Auto Body &amp; Paint | Signal Hill CA</title>
+  <meta name="description" content="Family-owned collision repair shop in Signal Hill, CA since 1991. Three generations of the Sferrazza family. I-CAR Gold Class certified, ASE certified, certified Rhino Liner installer. Lifetime warranty on all repairs." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -164,10 +165,10 @@
     .section-title{font-size:clamp(20px,3.5vw,38px);}
     .section-body{font-size:15px;}
     .eyebrow{font-size:10px;}
-    .work-grid{grid-template-columns:1fr 1fr;gap:8px;}
-    .work-photo.gallery-hidden{display:none;}
     .gallery-more-wrap{text-align:center;margin-top:16px;}
-    .gallery-more-btn{display:inline-flex;align-items:center;gap:8px;background:var(--crimson);color:var(--white);font-family:'Montserrat',sans-serif;font-size:11px;font-weight:900;letter-spacing:1.5px;text-transform:uppercase;border:none;cursor:pointer;height:48px;padding:0 28px;}
+    .gallery-more-btn{display:inline-flex;align-items:center;gap:8px;background:var(--crimson);color:var(--white);font-family:'Montserrat',sans-serif;font-size:11px;font-weight:900;letter-spacing:1.5px;text-transform:uppercase;border:2px solid var(--crimson-hover);border-radius:0;cursor:pointer;height:48px;padding:0 28px;transition:background 0.2s,border-color 0.2s;}
+    .gallery-more-btn:hover{background:var(--crimson-hover);border-color:var(--crimson-hover);}
+    @media(prefers-reduced-motion:reduce){.bento-cell img{transition:none!important;}}
     .red-band-btn{width:100%;justify-content:center;}
     .hide-mobile{display:none;}
     .svc-card{height:200px;}
@@ -181,8 +182,6 @@
       .page-header{height:260px;padding-top:24px;}
       .section-body{font-size:16px;}
       .eyebrow{font-size:10px;}
-      .work-grid{grid-template-columns:1fr 1fr;gap:12px;}
-      .work-photo.gallery-hidden{display:block;}
       .gallery-more-wrap{display:none;}
       .red-band-btn{width:auto;justify-content:center;}
       .hide-mobile{display:block;}
@@ -195,7 +194,6 @@
     }
     @media(min-width:901px){
       .two-col{gap:64px;}
-      .work-grid{grid-template-columns:repeat(3,1fr);gap:12px;}
       .svc-grid{grid-template-columns:repeat(3,1fr);gap:16px;}
       .svc-card{height:240px;}
     }
@@ -495,8 +493,8 @@
       <div class="bento-cell gallery-hidden"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/insta/659154155_18521041744079313_1238217352399438890_n.webp" alt="3J's Auto Body Signal Hill CA" loading="lazy"></div>
     </div>
     <div class="gallery-more-wrap" id="galleryMoreWrap" style="display:none;">
-      <button class="gallery-more-btn" id="galleryMoreBtn">
-        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      <button class="gallery-more-btn" id="galleryMoreBtn" aria-expanded="false">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
         See More
       </button>
     </div>
@@ -704,8 +702,8 @@
         <p class="eyebrow">Our Commitment</p>
         <h2 class="section-title">Trust &amp; <em>Transparency</em></h2>
         <div class="section-body">
-          <p>We understand that <strong>trust has to be earned</strong>—especially when it comes to your vehicle. That's why we focus on <strong>clear communication, honest service,</strong> and doing exactly what we say we will.</p>
-          <p>From start to finish, we keep you updated so you <strong>always know what's happening with your vehicle.</strong> <span class="hl">No surprises, no confusion</span>—just straightforward information and support when you need it.</p>
+          <p>We understand that <strong>trust has to be earned,</strong> especially when it comes to your vehicle. That's why we focus on <strong>clear communication, honest service,</strong> and doing exactly what we say we will.</p>
+          <p>From start to finish, we keep you updated so you <strong>always know what's happening with your vehicle.</strong> <span class="hl">No surprises, no confusion</span>: just straightforward information and support when you need it.</p>
           <p>We work with <strong>all major insurance companies</strong> and help guide you through the process, making things easier during what can be a stressful time.</p>
           <p>At the end of the day, our goal is simple: <span class="hl">take care of you, stand behind our work,</span> and get you back on the road with <strong>total confidence.</strong></p>
         </div>
@@ -733,7 +731,7 @@
         <p class="eyebrow">Collision Repair</p>
         <h2 class="section-title">Auto Body <em>Repair</em></h2>
         <div class="section-body">
-          <p>We know being in an accident can be <strong>stressful, inconvenient, and sometimes overwhelming.</strong> That's why our goal is simple—to make the repair process <span class="hl">as easy and worry-free as possible</span> for you.</p>
+          <p>We know being in an accident can be <strong>stressful, inconvenient, and sometimes overwhelming.</strong> That's why our goal is simple: to make the repair process <span class="hl">as easy and worry-free as possible</span> for you.</p>
           <p>We work with <strong>all major insurance companies</strong> and handle the communication directly, helping move your claim along without the back-and-forth. Whether you're going through insurance or paying out of pocket, <strong>we'll walk you through everything clearly</strong> so you always know what to expect.</p>
           <p>Our experienced, <span class="hl">I-CAR certified technicians</span> repair your vehicle using the proper methods and attention to detail it deserves. From small cosmetic fixes to major collision repairs, we focus on <strong>doing the job right</strong>—so you can get back on the road <strong>safely and confidently.</strong></p>
         </div>
@@ -752,7 +750,7 @@
         <h2 class="section-title">Direct Repair · Out of Pocket · <em>Lease Turn-In</em></h2>
         <div class="section-body">
           <p>No matter your situation, we're here to help. We work with <strong>all major insurance companies</strong> to simplify the repair process and help avoid unnecessary delays.</p>
-          <p>If you're paying out of pocket, you'll receive <strong>honest recommendations and transparent pricing</strong>—<span class="hl">no pressure, no upselling.</span> And if your lease turn-in is coming up, we can take care of <strong>dents, scratches, and wear-and-tear</strong> to help you avoid costly return fees.</p>
+          <p>If you're paying out of pocket, you'll receive <strong>honest recommendations and transparent pricing.</strong> <span class="hl">No pressure, no upselling.</span> And if your lease turn-in is coming up, we can take care of <strong>dents, scratches, and wear-and-tear</strong> to help you avoid costly return fees.</p>
           <p>Whatever brings you in, we'll make sure you feel <strong>informed, comfortable, and taken care of.</strong></p>
         </div>
       </div>
@@ -970,7 +968,7 @@
   <div style="max-width:780px;margin:0 auto;position:relative;z-index:1;">
     <p class="eyebrow" style="color:#fff;margin-bottom:28px;">Our Mission</p>
     <p style="font-family:'Montserrat',sans-serif;font-size:clamp(18px,2.8vw,26px);font-weight:800;color:#fff;line-height:1.3;letter-spacing:-0.3px;margin-bottom:40px;">
-      <em style="font-style:normal;color:#CC0000;">"We've been meeting great people by accident since 1991</em>—and we've been in your corner every step of the way."
+      <em style="font-style:normal;color:#CC0000;">"We've been meeting great people by accident since 1991,</em> and we've been in your corner every step of the way."
     </p>
     <div style="width:48px;height:3px;background:#8B0000;margin:0 auto 40px;"></div>
     <p style="font-family:'Inter',sans-serif;font-size:16px;font-weight:400;color:rgba(255,255,255,0.72);line-height:1.75;margin-bottom:18px;">
@@ -1022,9 +1020,10 @@
     btn.addEventListener('click', function(){
       expanded = !expanded;
       hidden.forEach(function(p){ p.style.display = expanded ? '' : 'none'; });
+      btn.setAttribute('aria-expanded', expanded ? 'true' : 'false');
       btn.innerHTML = expanded
-        ? '<svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/></svg> See Less'
-        : '<svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> See More';
+        ? '<svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/></svg> See Less'
+        : '<svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> See More';
       setTimeout(reportHeight, 300);
     });
   }
