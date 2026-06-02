@@ -115,8 +115,10 @@
     /* ════════════════════════════
        2. PHOTO STRIP
     ════════════════════════════ */
-    .strip{display:flex;width:100%;height:380px;}
-    .panel{flex:1;position:relative;overflow:hidden;cursor:pointer;}
+    .strip{display:flex;width:100%;}
+    .panel{flex:1;position:relative;overflow:hidden;cursor:pointer;aspect-ratio:8/5;}
+    /* Accessories card holds a labeled diagram — match the card to the image ratio so it fills with no crop and no letterbox; never zoom on hover (would clip labels) */
+    .acc-panel:hover .panel-bg{transform:none;}
     .panel-bg{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform .5s ease;}
     .panel:hover .panel-bg{transform:scale(1.05);}
     .panel-overlay{position:absolute;inset:0;background:linear-gradient(160deg,rgba(0,0,0,.62) 0%,rgba(0,0,0,.35) 100%);transition:background .4s ease;}
@@ -315,7 +317,7 @@
     }
     @media(max-width:680px){
       .strip{flex-direction:column;height:auto;}
-      .panel{height:280px;flex:none;}
+      .panel{flex:none;}
       .panel-sep{display:block;width:100%;height:3px;background:#8B0000;}
     }
     @media(max-width:600px){
@@ -437,8 +439,8 @@
     </div>
   </div>
   <div class="panel-sep"></div>
-  <div class="panel">
-    <div class="panel-bg" style="background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/truck-accessories-targets-800x500px.webp');background-size:contain;background-repeat:no-repeat;background-position:center;background-color:#0d0f12;"></div>
+  <div class="panel acc-panel">
+    <div class="panel-bg" style="background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/truck-accessories-targets-800x500px.webp');"></div>
     <div class="panel-overlay"></div>
     <div class="panel-content">
       <h2 class="panel-title">Accessories &amp;<br>Upgrades</h2>
