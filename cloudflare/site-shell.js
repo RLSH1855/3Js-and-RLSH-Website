@@ -113,6 +113,7 @@
     0%  {transform:translateX(calc(min(320px,86vw) - 22px)) scale(0.90);border-radius:16px;box-shadow:-10px 0 28px rgba(0,0,0,.40);}
     100%{transform:translateX(0) scale(1);border-radius:0;box-shadow:none;}
   }
+  body.ss-menu-open #ss-page-wrap,body.ss-menu-closing #ss-page-wrap{min-height:0;}
   body.ss-menu-open #ss-page-wrap{animation:ssPageOpen .52s cubic-bezier(.22,1,.36,1) forwards;overflow:hidden;pointer-events:none;height:100vh;}
   body.ss-menu-closing #ss-page-wrap{animation:ssPageClose .46s cubic-bezier(.22,1,.36,1) forwards;overflow:hidden;height:100vh;}
   /* ── Overlay — between drawer and page ── */
@@ -132,11 +133,11 @@
   .ssd-garage-icon img{width:22px;height:22px;object-fit:contain;filter:brightness(0) invert(1);}
   .ssd-garage-info{flex:1;}
   .ssd-garage-label{display:block;font-family:'Inter',Arial,sans-serif;font-size:9px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:#BBBBB9;}
-  .ssd-garage-val{display:block;font-family:'Inter',Arial,sans-serif;font-size:13px;font-weight:800;color:#1A1A1A;margin-top:2px;}
+  .ssd-garage-val{display:block;font-family:'Inter',Arial,sans-serif;font-size:15px;font-weight:800;color:#1A1A1A;margin-top:2px;}
   .ssd-garage-arr{font-size:16px;color:#CCCCCA;flex-shrink:0;}
   .ssd-nav{flex:1;overflow-y:auto;overflow-x:hidden;background:#fff;}
   .ssd-section{padding:14px 20px 5px;font-family:'Inter',Arial,sans-serif;font-size:9px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:#C0BEBE;}
-  .ssd-item{display:flex;align-items:center;justify-content:space-between;padding:15px 20px;font-family:'Inter',Arial,sans-serif;font-size:14px;font-weight:700;letter-spacing:.2px;color:#1A1A1A;text-decoration:none;border-bottom:1px solid #F2F1EF;background:#fff;cursor:pointer;width:100%;text-align:left;border-left:none;border-right:none;border-top:none;transition:background .15s;}
+  .ssd-item{display:flex;align-items:center;justify-content:space-between;padding:15px 20px;font-family:'Inter',Arial,sans-serif;font-size:16px;font-weight:700;letter-spacing:.2px;color:#1A1A1A;text-decoration:none;border-bottom:1px solid #F2F1EF;background:#fff;cursor:pointer;width:100%;text-align:left;border-left:none;border-right:none;border-top:none;transition:background .15s;}
   .ssd-item:hover{background:#F7F6F4;}
   .ssd-item.ssd-red{color:#8B0000;}
   .ssd-item-arr{font-size:14px;color:#CCCCCA;flex-shrink:0;transition:transform .3s cubic-bezier(.22,1,.36,1);display:inline-block;}
@@ -145,7 +146,7 @@
   .ssd-sub.ssd-sub-open{grid-template-rows:1fr;}
   .ssd-sub-inner{overflow:hidden;}
   .ssd-sub-label{display:block;padding:11px 20px 4px 28px;font-family:'Inter',Arial,sans-serif;font-size:8px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.30);}
-  .ssd-sub-item{display:flex;align-items:center;gap:10px;padding:12px 20px 12px 28px;font-family:'Inter',Arial,sans-serif;font-size:13px;font-weight:600;color:rgba(255,255,255,.75);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.06);transition:color .15s,background .15s;}
+  .ssd-sub-item{display:flex;align-items:center;gap:10px;padding:12px 20px 12px 28px;font-family:'Inter',Arial,sans-serif;font-size:15px;font-weight:600;color:rgba(255,255,255,.75);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.06);transition:color .15s,background .15s;}
   .ssd-sub-item:last-child{border-bottom:none;margin-bottom:6px;}
   .ssd-sub-item:hover{color:#fff;background:rgba(255,255,255,.06);}
   .ssd-sub-item::before{content:'';width:4px;height:4px;background:#8B0000;flex-shrink:0;}

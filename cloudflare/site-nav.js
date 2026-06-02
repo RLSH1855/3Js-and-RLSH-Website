@@ -336,6 +336,7 @@
       100%{transform:translateX(0) scale(1);border-radius:0;box-shadow:none;}
     }
     body.sn-menu-open,body.sn-menu-closing{background:#F7F6F4;}
+    body.sn-menu-open #sn-page-wrap,body.sn-menu-closing #sn-page-wrap{min-height:0;}
     body.sn-menu-open #sn-page-wrap{animation:snPageOpen .52s cubic-bezier(0.22,1,0.36,1) forwards;overflow:hidden;pointer-events:none;height:100vh;}
     body.sn-menu-closing #sn-page-wrap{animation:snPageClose .46s cubic-bezier(0.22,1,0.36,1) forwards;overflow:hidden;height:100vh;}
     /* ── Overlay ── */
@@ -365,14 +366,14 @@
     .snd-garage-icon svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:2;}
     .snd-garage-info{flex:1;}
     .snd-garage-label{display:block;font-family:'Montserrat',Arial,sans-serif;font-size:9px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:#BBBBB9;}
-    .snd-garage-val{display:block;font-family:'Montserrat',Arial,sans-serif;font-size:13px;font-weight:800;color:#1A1A1A;margin-top:2px;}
+    .snd-garage-val{display:block;font-family:'Montserrat',Arial,sans-serif;font-size:15px;font-weight:800;color:#1A1A1A;margin-top:2px;}
     .snd-garage-arr{font-size:16px;color:#CCCCCA;flex-shrink:0;}
     .snd-nav{flex:1;overflow-y:auto;overflow-x:hidden;background:#fff;}
     .snd-section{padding:14px 20px 5px;font-family:'Montserrat',Arial,sans-serif;font-size:9px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:#C0BEBE;}
     .snd-item{
       display:flex;align-items:center;justify-content:space-between;
       padding:15px 20px;
-      font-family:'Montserrat',Arial,sans-serif;font-size:14px;font-weight:700;letter-spacing:0.2px;color:#1A1A1A;
+      font-family:'Montserrat',Arial,sans-serif;font-size:16px;font-weight:700;letter-spacing:0.2px;color:#1A1A1A;
       text-decoration:none;border-bottom:1px solid #F2F1EF;
       background:#fff;cursor:pointer;width:100%;text-align:left;
       border-left:none;border-right:none;border-top:none;
@@ -396,7 +397,7 @@
     .snd-sub-item{
       display:flex;align-items:center;gap:10px;
       padding:12px 20px 12px 28px;
-      font-family:'Montserrat',Arial,sans-serif;font-size:13px;font-weight:600;
+      font-family:'Montserrat',Arial,sans-serif;font-size:15px;font-weight:600;
       color:rgba(255,255,255,0.75);text-decoration:none;
       border-bottom:1px solid rgba(255,255,255,0.06);
       transition:color 0.15s,background 0.15s;
