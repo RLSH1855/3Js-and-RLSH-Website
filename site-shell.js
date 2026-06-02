@@ -49,7 +49,7 @@
   .ss-tb-btn.blue:hover{background:#2d5a7a;}
 
   /* pinned menu row */
-  .ss-nav{background:var(--ssn);display:flex;align-items:stretch;justify-content:center;padding:0 16px 0 40px;position:relative;box-shadow:0 2px 0 0 rgba(0,0,0,.25);}
+  .ss-nav{background:var(--ssn);display:flex;align-items:center;justify-content:center;min-height:60px;padding:0 16px 0 40px;position:relative;box-shadow:0 2px 0 0 rgba(0,0,0,.25);}
   .ss-links{display:flex;align-items:stretch;flex-wrap:wrap;}
   .ss-links > a{display:inline-flex;align-items:center;gap:5px;padding:18px 22px;margin:0;
     font-family:var(--ssnav-font),sans-serif;font-size:13px;font-weight:500;line-height:1;
@@ -61,7 +61,7 @@
   .ss-shell.ss-shrunk .ss-links > a{padding-top:14px;padding-bottom:14px;}
 
   /* My Garage pill */
-  .ss-garage{margin-left:auto;align-self:center;display:flex;align-items:center;gap:8px;padding:8px 18px 8px 12px;min-width:210px;
+  .ss-garage{margin-left:auto;align-self:center;display:flex;align-items:center;gap:10px;padding:0 20px 0 16px;width:350px;height:60px;box-sizing:border-box;
     border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.07);text-decoration:none;cursor:pointer;border-radius:0;
     transition:border-color .15s,background .15s;}
   .ss-garage:hover{border-color:var(--ssr);background:rgba(255,255,255,.11);}
@@ -84,7 +84,7 @@
   /* My Garage popup overlay (blurred dark backdrop) */
   .ss-garage-ov{position:fixed;inset:0;z-index:1300;display:none;align-items:center;justify-content:center;background:rgba(7,12,22,.55);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);opacity:0;transition:opacity .3s ease;padding:24px;}
   .ss-garage-ov.ss-open{display:flex;opacity:1;}
-  .ss-garage-frame{width:min(960px,100%);height:min(600px,88vh);border:none;background:#fff;box-shadow:0 40px 100px rgba(0,0,0,.6);}
+  .ss-garage-frame{width:min(1260px,100%);height:min(630px,92vh);border:none;background:#fff;box-shadow:0 40px 100px rgba(0,0,0,.6);}
   @media(max-width:640px){.ss-garage-ov{padding:0;}.ss-garage-frame{width:100%;height:100%;}}
 
   /* ── Hamburger (mobile) ── */
@@ -257,6 +257,24 @@
 
   document.body.insertAdjacentHTML('afterbegin', header);
   document.body.insertAdjacentHTML('beforeend', footer);
+
+  /* ════════ SPACER = EXACT HEADER HEIGHT (kills the blank strip on every page) ════════ */
+  (function(){
+    var shell=document.getElementById('ssShell');
+    var spacer=document.querySelector('.ss-spacer');
+    if(!shell||!spacer) return;
+    function fit(){
+      /* only measure in the full (un-shrunk) state so the spacer always clears the tallest header */
+      if(shell.classList.contains('ss-shrunk')) return;
+      spacer.style.height=shell.offsetHeight+'px';
+    }
+    fit();
+    window.addEventListener('load',fit);
+    window.addEventListener('resize',fit);
+    /* fonts/logos can change header height after first paint */
+    [120,400,900,2000].forEach(function(t){setTimeout(fit,t);});
+    if(document.fonts&&document.fonts.ready){document.fonts.ready.then(fit);}
+  })();
 
   /* ════════ SHRINK-ON-SCROLL ════════ */
   (function(){
