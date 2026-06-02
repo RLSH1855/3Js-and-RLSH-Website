@@ -103,17 +103,18 @@
 
   /* ── Page wrap — sits ON TOP of drawer; lifts, slides right, scales ── */
   #ss-page-wrap{position:relative;z-index:5;min-height:100vh;will-change:transform;transform-origin:50% 50vh;}
+  body.ss-menu-open,body.ss-menu-closing{background:#F7F6F4;}
   @keyframes ssPageOpen{
     0%  {transform:translateX(0) scale(1);border-radius:0;box-shadow:none;}
     7%  {transform:translateX(6px) scale(1.02);}
-    100%{transform:translateX(calc(min(320px,86vw) - 22px)) scale(0.93);border-radius:16px;box-shadow:-10px 0 28px rgba(0,0,0,.40);}
+    100%{transform:translateX(calc(min(320px,86vw) - 22px)) scale(0.90);border-radius:16px;box-shadow:-10px 0 28px rgba(0,0,0,.40);}
   }
   @keyframes ssPageClose{
-    0%  {transform:translateX(calc(min(320px,86vw) - 22px)) scale(0.93);border-radius:16px;box-shadow:-10px 0 28px rgba(0,0,0,.40);}
+    0%  {transform:translateX(calc(min(320px,86vw) - 22px)) scale(0.90);border-radius:16px;box-shadow:-10px 0 28px rgba(0,0,0,.40);}
     100%{transform:translateX(0) scale(1);border-radius:0;box-shadow:none;}
   }
-  body.ss-menu-open #ss-page-wrap{animation:ssPageOpen .52s cubic-bezier(.22,1,.36,1) forwards;overflow:hidden;pointer-events:none;}
-  body.ss-menu-closing #ss-page-wrap{animation:ssPageClose .46s cubic-bezier(.22,1,.36,1) forwards;}
+  body.ss-menu-open #ss-page-wrap{animation:ssPageOpen .52s cubic-bezier(.22,1,.36,1) forwards;overflow:hidden;pointer-events:none;height:100vh;}
+  body.ss-menu-closing #ss-page-wrap{animation:ssPageClose .46s cubic-bezier(.22,1,.36,1) forwards;overflow:hidden;height:100vh;}
   /* ── Overlay — between drawer and page ── */
   .ss-drawer-ov{position:fixed;inset:0;z-index:3;background:rgba(0,0,0,.45);opacity:0;pointer-events:none;transition:opacity .44s ease;}
   body.ss-menu-open .ss-drawer-ov{opacity:1;pointer-events:all;}
