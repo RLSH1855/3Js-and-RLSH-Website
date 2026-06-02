@@ -33,7 +33,7 @@
     /* ── RESET & BASE ── */
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
     html{}
-    body{font-family:'Inter',sans-serif;background:#0A0A0A;color:#fff;overflow-x:clip;}
+    body{font-family:'Inter',sans-serif;background:#0A0A0A;color:#fff;overflow-x:hidden;}
     h1,h2,h3{font-family:'Montserrat',sans-serif;text-wrap:balance;}
     p{text-wrap:pretty;}
     .skip-link{position:absolute;top:-100%;left:16px;z-index:9999;background:#8B0000;color:#fff;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:8px 20px;text-decoration:none;}
@@ -84,10 +84,14 @@
     .hero-stats{display:flex;gap:36px;margin-top:52px;padding-top:32px;border-top:1px solid rgba(255,255,255,0.12);}
     .hero-stats .stat{display:flex;flex-direction:column;gap:3px;}
     .hero-stats .stat-num{font-size:clamp(20px,2.5vw,28px);font-weight:900;color:#fff;letter-spacing:-1px;line-height:1;}
-    .hero-stats .stat-num span{color:#8B0000;}
+    .hero-stats .stat-num span{color:rgba(255,255,255,0.6);}
     .hero-stats .stat-label{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.45);}
     .hero-bottom-bar{position:absolute;bottom:0;left:0;right:0;height:4px;background:linear-gradient(to right,#8B0000,#8B0000 60%,transparent);z-index:3;}
-    .river-rat{position:absolute;bottom:22px;left:80px;font-size:9px;font-weight:600;color:rgba(255,255,255,0.22);letter-spacing:0.5px;font-style:italic;z-index:3;}
+    .river-rat{position:absolute;bottom:22px;left:80px;font-size:9px;font-weight:600;color:rgba(255,255,255,0.40);letter-spacing:0.5px;font-style:italic;z-index:3;}
+    .hero-trust{display:flex;flex-wrap:wrap;gap:6px 0;margin-top:20px;align-items:center;}
+    .hero-trust-item{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.72);}
+    .hero-trust-sep{color:rgba(255,255,255,0.30);margin:0 8px;font-size:9px;}
+    @media(max-width:640px){.hero-trust{justify-content:center;}.hero-trust-item{font-size:8px;}}
     .scroll-hint{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;opacity:0;z-index:3;animation:hintFadeIn 0.9s 1.2s ease-out forwards;}
     .scroll-hint span{font-size:8px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:#fff;}
     .scroll-hint svg{width:22px;height:22px;stroke:#fff;stroke-width:2.5;}
@@ -125,7 +129,7 @@
     .panel:hover .panel-overlay{background:linear-gradient(160deg,rgba(0,0,0,.72) 0%,rgba(0,0,0,.50) 100%);}
 
     .panel-content{position:relative;z-index:4;padding:28px 24px;height:100%;display:flex;flex-direction:column;justify-content:flex-start;}
-    .panel-eyebrow{font-size:9px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:#cc2222;margin-bottom:8px;}
+    .panel-eyebrow{font-size:9px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:#8B0000;margin-bottom:8px;}
     .panel-title{font-family:'Montserrat',sans-serif;font-size:clamp(18px,2.2vw,26px);font-weight:900;color:#fff;letter-spacing:-.3px;line-height:1.15;text-transform:uppercase;margin-bottom:12px;}
     .panel-sub{font-family:'Inter',sans-serif;font-size:13px;font-weight:400;color:rgba(255,255,255,.78);line-height:1.65;max-width:280px;}
     .panel-link{margin-top:auto;display:inline-flex;align-items:center;gap:7px;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#fff;text-decoration:none;border-bottom:2px solid #8B0000;padding-bottom:2px;width:fit-content;transition:color .2s;}
@@ -143,13 +147,13 @@
     .awards-eyebrow{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:#8B0000;margin-bottom:14px;}
     .awards-heading{font-family:'Montserrat',sans-serif;font-size:clamp(22px,3.5vw,38px);font-weight:900;letter-spacing:-.5px;margin-bottom:8px;color:var(--neutral);}
     .awards-heading em{font-style:normal;color:#8B0000;}
-    .awards-sub{font-family:'Inter',sans-serif;font-size:13px;color:#888;margin-bottom:52px;letter-spacing:.3px;}
+    .awards-sub{font-family:'Inter',sans-serif;font-size:13px;color:#666;margin-bottom:52px;letter-spacing:.3px;}
     .awards-grid{display:flex;justify-content:center;gap:24px;flex-wrap:wrap;margin-bottom:48px;}
     .award-card{background:#fff;border:1px solid #e0e0e0;padding:36px 40px;min-width:260px;flex:1;max-width:320px;position:relative;transition:border-color .25s,transform .25s,box-shadow .25s;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.06);}
     .award-card:hover{border-color:#8B0000;transform:translateY(-4px);box-shadow:0 12px 36px rgba(139,0,0,.12);}
     .award-year{font-family:'Montserrat',sans-serif;font-size:clamp(52px,8vw,80px);font-weight:900;letter-spacing:-3px;line-height:1;color:#8B0000;margin-bottom:12px;}
     .award-title{font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--neutral);margin-bottom:6px;}
-    .award-source{font-family:'Inter',sans-serif;font-size:11px;font-weight:500;color:#999;line-height:1.6;}
+    .award-source{font-family:'Inter',sans-serif;font-size:11px;font-weight:500;color:#767676;line-height:1.6;}
     .award-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(139,0,0,.08);border:1px solid rgba(139,0,0,.25);padding:5px 12px;margin-top:14px;font-family:'Montserrat',sans-serif;font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#8B0000;}
     .award-card.featured{border-color:#8B0000;box-shadow:0 8px 32px rgba(139,0,0,.14);}
     .award-card.featured::after{content:'MOST RECENT';position:absolute;top:12px;right:12px;font-family:'Montserrat',sans-serif;font-size:8px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:rgba(139,0,0,.7);}
@@ -224,10 +228,10 @@
     /* ════════════════════════════
        6. ABOUT / WARRANTY
     ════════════════════════════ */
-    .red-section{position:relative;background:#8B0000;padding:clamp(36px,7vw,72px) clamp(18px,4vw,32px) clamp(72px,13vw,160px);background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/crimson-spray-divider.webp');background-size:100% auto;background-position:bottom center;background-repeat:no-repeat;}
+    .red-section{position:relative;background:#111111;border-top:4px solid #8B0000;padding:clamp(36px,7vw,72px) clamp(18px,4vw,32px) clamp(40px,6vw,72px);}
     .about-inner{max-width:1180px;margin:0 auto;}
-    .about-eyebrow{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.5);display:inline-flex;align-items:center;gap:10px;margin-bottom:18px;}
-    .about-eyebrow::before{content:'';width:24px;height:2px;background:rgba(255,255,255,.4);flex-shrink:0;}
+    .about-eyebrow{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.75);display:inline-flex;align-items:center;gap:10px;margin-bottom:18px;}
+    .about-eyebrow::before{content:'';width:24px;height:2px;background:rgba(255,255,255,.55);flex-shrink:0;}
     .about-intro{display:grid;grid-template-columns:1fr;gap:24px;align-items:end;margin-bottom:40px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.14);}
     .about-h2{font-family:'Montserrat',sans-serif;font-size:clamp(24px,6vw,52px);font-weight:900;letter-spacing:-1px;line-height:1.05;color:#fff;margin-bottom:16px;}
     .about-lead{font-family:'Inter',sans-serif;font-size:clamp(14px,3.5vw,17px);color:rgba(255,255,255,.78);line-height:1.65;max-width:600px;}
@@ -235,7 +239,7 @@
     .warranty-badge .wsub{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.55);display:block;margin-bottom:10px;}
     .warranty-badge .wdesc{font-family:'Inter',sans-serif;font-size:14px;color:rgba(255,255,255,.72);line-height:1.55;max-width:340px;}
     .about-body{display:grid;grid-template-columns:1fr;gap:40px;}
-    .col-label{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.45);display:block;margin-bottom:18px;}
+    .col-label{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.65);display:block;margin-bottom:18px;}
     .service-grid-about{display:grid;grid-template-columns:1fr 1fr;gap:0 20px;}
     .service-grid-about li{list-style:none;display:flex;align-items:center;gap:10px;font-family:'Inter',sans-serif;font-size:14px;font-weight:500;color:rgba(255,255,255,.9);padding:9px 0;border-top:1px solid rgba(255,255,255,.22);}
     .service-grid-about li:first-child,.service-grid-about li:nth-child(2){border-top:none;}
@@ -283,12 +287,12 @@
     .ig-sub{font-family:'Montserrat',sans-serif;font-size:13px;font-weight:500;color:#555;margin-bottom:32px;}
     .ig-profile{display:inline-flex;align-items:center;gap:14px;background:#141414;border:1px solid #222;border-radius:0;padding:10px 22px 10px 10px;margin-bottom:36px;text-decoration:none;transition:border-color .2s,background .2s;}
     .ig-profile:hover{background:#1a1a1a;border-color:#8B0000;}
-    .ig-avatar{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#8B0000,#a00000,#c00000);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+    .ig-avatar{width:42px;height:42px;border-radius:0;background:linear-gradient(135deg,#8B0000,#a00000,#c00000);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
     .ig-avatar svg{width:20px;height:20px;}
     .ig-info{text-align:left;}
     .ig-handle{font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;color:#fff;}
     .ig-name{font-family:'Montserrat',sans-serif;font-size:11px;font-weight:500;color:#555;margin-top:1px;}
-    .ig-grid{display:flex;gap:4px;width:100%;margin:0 0 36px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+    .ig-grid{display:flex;gap:4px;width:100%;margin:0 0 36px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;touch-action:pan-y;}
     .ig-grid::-webkit-scrollbar{display:none;}
     .ig-tile{flex:1 1 0;min-width:0;position:relative;aspect-ratio:1;background:#111;overflow:hidden;cursor:pointer;text-decoration:none;display:block;}
     .ig-tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .4s ease;}
@@ -387,6 +391,15 @@
         Get a Free Quote
       </a>
     </div>
+    <div class="hero-trust">
+      <span class="hero-trust-item">I-CAR Gold Class</span>
+      <span class="hero-trust-sep">·</span>
+      <span class="hero-trust-item">ASE Certified</span>
+      <span class="hero-trust-sep">·</span>
+      <span class="hero-trust-item">Works with all major insurers</span>
+      <span class="hero-trust-sep">·</span>
+      <span class="hero-trust-item">Rhino Liner Installer</span>
+    </div>
     <div class="hero-stats">
       <div class="stat">
         <div class="stat-num">30<span>+</span></div>
@@ -454,8 +467,8 @@
 ═══════════════════════════════════ -->
 <section class="awards-section">
   <div class="awards-content">
-    <p class="awards-eyebrow">Recognized by the Community</p>
-    <h2 class="awards-heading">Voted Best Body Shop — <em>Twice.</em></h2>
+    <p class="awards-eyebrow" data-anim="fade-up">Recognized by the Community</p>
+    <h2 class="awards-heading" data-anim="fade-up" data-delay="100">Voted Best Body Shop — <em>Twice.</em></h2>
     <p class="awards-sub">Press-Telegram &amp; Grunion Gazette · Readers' Choice Awards · Signal Hill &amp; Long Beach</p>
     <div class="awards-grid">
       <div class="award-card legacy">
@@ -495,8 +508,8 @@
 <section class="services-section">
   <div class="services-inner">
     <div class="services-header">
-      <span class="eyebrow" style="color:rgba(255,255,255,.4);">What We Do</span>
-      <h2 class="services-title">Our Top <em>Services</em></h2>
+      <span class="eyebrow" data-anim="fade-up" style="color:rgba(255,255,255,.4);">What We Do</span>
+      <h2 class="services-title" data-anim="fade-up" data-delay="100">Our Top <em>Services</em></h2>
     </div>
     <div class="services-grid">
 
@@ -646,7 +659,7 @@
     <div class="about-intro">
       <div>
         <span class="about-eyebrow">3J's Auto Body · Signal Hill, CA · Est. 1991</span>
-        <h2 class="about-h2">Repairs Done <span style="border-bottom:4px solid #fff;padding-bottom:3px;">RIGHT</span>.<br>Every Time.<br>Guaranteed.</h2>
+        <h2 class="about-h2" data-anim="fade-up">Repairs Done <span style="border-bottom:4px solid #fff;padding-bottom:3px;">RIGHT</span>.<br>Every Time.<br>Guaranteed.</h2>
         <p class="about-lead">A damaged vehicle is stressful. Our job is to make the rest of it easy — from your first call to the day you drive away confident.</p>
       </div>
       <div class="warranty-badge">
@@ -687,7 +700,7 @@
   <div class="about-inner">
     <div class="rlsh-head">
       <span class="about-eyebrow">Rhino Linings of Signal Hill</span>
-      <h2>Southern California's <em>#1</em> spot for CUSTOM truck, Jeep &amp; car accessories.</h2>
+      <h2 data-anim="fade-up">Southern California's <em>#1</em> spot for CUSTOM truck, Jeep &amp; car accessories.</h2>
       <p class="about-lead">Custom, professional installs for trucks, Jeeps, commercial vans and more. If you're ready to take your build to the next level, you're in the right place.</p>
     </div>
     <div class="stat-row">
@@ -723,8 +736,8 @@
 <section class="faq-section">
   <div class="faq-inner">
     <div class="faq-header">
-      <span class="eyebrow">Got Questions?</span>
-      <h2 class="faq-title">Common <em>FAQ</em></h2>
+      <span class="eyebrow" data-anim="fade-up">Got Questions?</span>
+      <h2 class="faq-title" data-anim="fade-up" data-delay="100">Common <em>FAQ</em></h2>
       <p class="faq-sub">Everything you need to know before bringing your vehicle in.</p>
     </div>
     <div class="faq-list">
@@ -760,7 +773,7 @@
       </a>
       <a href="https://www.carwise.com/online-photo-estimate/3js-autobody-paint-inc-signal-hill-ca-90755/479382?source=shop.profile&referer=estimate.cccone.com" target="_blank" class="btn-outline-red btn">
         <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-        Free Online Estimate
+        Free Online Estimate ↗
       </a>
     </div>
   </div>
@@ -772,7 +785,7 @@
 <section class="ig-section">
   <div class="ig-header">
     <span class="ig-eyebrow">Follow the Build</span>
-    <h2 class="ig-heading">See Our Work on <em>Instagram</em></h2>
+    <h2 class="ig-heading" data-anim="fade-up" data-delay="100">See Our Work on <em>Instagram</em></h2>
     <p class="ig-sub">Real trucks. Real jobs. Real results — straight from the shop.</p>
     <a class="ig-profile" href="https://www.instagram.com/rlofsignalhill/" target="_blank" rel="noopener">
       <div class="ig-avatar">
@@ -802,7 +815,7 @@
       <div class="ig-tile-hover"><div class="ig-tile-hover-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg><span>View on Instagram</span></div></div>
     </a>
     <a class="ig-tile" href="https://www.instagram.com/rlofsignalhill/" target="_blank" rel="noopener">
-      <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/IMG_3269.webp" alt="3J's Auto Body work" loading="lazy"/>
+      <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/72%20land%20cruiser%20full%20exterior%20paint%20job.webp" alt="72 Land Cruiser full exterior paint job" loading="lazy"/>
       <div class="ig-tile-hover"><div class="ig-tile-hover-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg><span>View on Instagram</span></div></div>
     </a>
     <a class="ig-tile" href="https://www.instagram.com/rlofsignalhill/" target="_blank" rel="noopener">
