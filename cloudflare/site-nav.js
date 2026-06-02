@@ -781,15 +781,15 @@
       items.forEach(function(el){
         el.style.opacity='0'; el.style.transform='translateY(18px)'; el.style.transition='none';
       });
-      // After page settles, stagger items up
+      // Start revealing text halfway through page animation (~260ms)
       setTimeout(function(){
         items.forEach(function(el,i){
           setTimeout(function(){
-            el.style.transition='opacity 0.45s ease,transform 0.55s cubic-bezier(0.22,1,0.36,1)';
+            el.style.transition='opacity 0.5s ease,transform 0.6s cubic-bezier(0.22,1,0.36,1)';
             el.style.opacity='1'; el.style.transform='translateY(0)';
           }, i*45);
         });
-      }, 480);
+      }, 260);
     }
   }
 
