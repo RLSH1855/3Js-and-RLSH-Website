@@ -327,15 +327,15 @@
     /* ── Page wrap — ON TOP of drawer; lifts, slides right, scales ── */
     #sn-page-wrap{position:relative;z-index:5;min-height:100vh;will-change:transform;transform-origin:center center;}
     @keyframes snPageOpen{
-      0%  {transform:translateX(0) scale(1);border-radius:0;}
-      8%  {transform:translateX(5px) scale(1.02);}
-      100%{transform:translateX(65px) scale(0.95);border-radius:14px;}
+      0%  {transform:translateX(0) scale(1);border-radius:0;box-shadow:none;}
+      7%  {transform:translateX(6px) scale(1.02);}
+      100%{transform:translateX(calc(min(320px,86vw) - 22px)) scale(0.93);border-radius:16px;box-shadow:-10px 0 28px rgba(0,0,0,.40);}
     }
     @keyframes snPageClose{
-      0%  {transform:translateX(65px) scale(0.95);border-radius:14px;}
-      100%{transform:translateX(0) scale(1);border-radius:0;}
+      0%  {transform:translateX(calc(min(320px,86vw) - 22px)) scale(0.93);border-radius:16px;box-shadow:-10px 0 28px rgba(0,0,0,.40);}
+      100%{transform:translateX(0) scale(1);border-radius:0;box-shadow:none;}
     }
-    body.sn-menu-open #sn-page-wrap{animation:snPageOpen .50s cubic-bezier(0.22,1,0.36,1) forwards;overflow:hidden;pointer-events:none;}
+    body.sn-menu-open #sn-page-wrap{animation:snPageOpen .52s cubic-bezier(0.22,1,0.36,1) forwards;overflow:hidden;pointer-events:none;}
     body.sn-menu-closing #sn-page-wrap{animation:snPageClose .46s cubic-bezier(0.22,1,0.36,1) forwards;}
     /* ── Overlay ── */
     .sn-overlay{position:fixed;inset:0;z-index:3;background:rgba(0,0,0,0.45);opacity:0;pointer-events:none;transition:opacity 0.44s ease;}
