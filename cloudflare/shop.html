@@ -41,12 +41,23 @@
     .gb-link:hover{color:#fff;}
 
     /* ── PAGE HEADER ── */
-    .page-header{background:#111;padding:20px 16px 18px;border-bottom:3px solid #8B0000;}
-    .page-header-inner{max-width:1200px;margin:0 auto;display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:12px;}
-    .page-header-left .eyebrow{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:#8B0000;display:block;margin-bottom:5px;}
-    .page-header-left h1{font-family:'Montserrat',sans-serif;font-size:clamp(20px,3vw,28px);font-weight:800;color:#fff;letter-spacing:-0.5px;text-transform:uppercase;line-height:1.0;}
+    .page-header{background:linear-gradient(180deg,#161616 0%,#0e0e0e 100%);padding:clamp(28px,4vw,44px) 16px clamp(18px,2.4vw,26px);border-bottom:3px solid #8B0000;position:relative;overflow:hidden;}
+    .page-header-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:24px;}
+    .page-header-left{flex:1 1 360px;min-width:0;}
+    .page-header-left .eyebrow{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:#c9ccd1;display:block;margin-bottom:8px;}
+    .page-header-left h1{font-family:'Montserrat',sans-serif;font-size:clamp(24px,4vw,40px);font-weight:900;color:#fff;letter-spacing:-0.5px;text-transform:uppercase;line-height:1.0;}
     .page-header-left h1 em{color:#8B0000;font-style:normal;}
-    .page-header-right{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+    .gh-cta{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap;}
+    .gh-btn-primary{display:inline-flex;align-items:center;justify-content:center;height:44px;padding:0 24px;background:#8B0000;color:#fff;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;border:2px solid #a00000;transition:background .2s,color .2s,border-color .2s;}
+    .gh-btn-primary:hover{background:#fff;color:#000;border-color:#8B0000;}
+    .gh-btn-ghost{display:inline-flex;align-items:center;justify-content:center;height:44px;padding:0 24px;background:transparent;color:#fff;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;border:1.5px solid rgba(255,255,255,.4);cursor:pointer;transition:background .2s,border-color .2s;}
+    .gh-btn-ghost:hover{background:rgba(255,255,255,.1);border-color:#fff;}
+    .gh-art{position:relative;flex:0 0 auto;width:clamp(210px,30vw,360px);}
+    .gh-art[hidden]{display:none;}
+    .gh-art img{width:100%;height:auto;display:block;object-fit:contain;}
+    .gh-tag{position:absolute;left:6px;bottom:6px;background:rgba(0,0,0,.72);color:#fff;font-family:'Montserrat',sans-serif;font-size:9px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:5px 10px;border-left:2px solid #8B0000;}
+    .page-header-pills{max-width:1200px;margin:16px auto 0;display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+    @media(max-width:760px){.gh-art{display:none;}.page-header-pills{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;}.page-header-pills::-webkit-scrollbar{display:none;}}
     .cat-pill{display:inline-flex;align-items:center;height:32px;padding:0 14px;font-family:'Montserrat',sans-serif;font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.5);border:1px solid rgba(255,255,255,0.15);border-radius:0;cursor:pointer;transition:all 0.2s;background:transparent;}
     .cat-pill:hover{color:#fff;border-color:rgba(255,255,255,0.4);}
     .cat-pill.active{background:#8B0000;color:#fff;border-color:#8B0000;}
@@ -187,19 +198,27 @@
   </div>
 </div>
 
-<!-- ── PAGE HEADER ── -->
+<!-- ── PAGE HEADER / HERO ── -->
 <div class="page-header">
   <div class="page-header-inner">
     <div class="page-header-left">
       <span class="eyebrow" id="header-eyebrow">3J's Auto Body · Signal Hill, CA</span>
       <h1 id="header-title">Shop <em>Accessories</em></h1>
+      <div class="gh-cta">
+        <a class="gh-btn-primary" href="tel:5624246744">Call for a Quote</a>
+        <button class="gh-btn-ghost" id="gh-truck-btn" type="button">Set My Truck</button>
+      </div>
     </div>
-    <div class="page-header-right" id="header-cat-pills">
-      <button class="cat-pill active" data-cat="all">All</button>
-      <button class="cat-pill" data-cat="tonneau">Tonneau Covers</button>
-      <button class="cat-pill" data-cat="steps">Steps &amp; Boards</button>
-      <button class="cat-pill" data-cat="racks">Headache Racks</button>
+    <div class="gh-art" id="gh-art" hidden>
+      <img id="gh-art-img" src="" alt="">
+      <div class="gh-tag">Fits Your Truck</div>
     </div>
+  </div>
+  <div class="page-header-pills" id="header-cat-pills">
+    <button class="cat-pill active" data-cat="all">All</button>
+    <button class="cat-pill" data-cat="tonneau">Tonneau Covers</button>
+    <button class="cat-pill" data-cat="steps">Steps &amp; Boards</button>
+    <button class="cat-pill" data-cat="racks">Headache Racks</button>
   </div>
 </div>
 
@@ -335,6 +354,33 @@ var CATALOG_HERO = {
   steps:   { eyebrow:'Steps & Running Boards · All Brands', title:'Steps &amp; Running <em>Boards</em>' },
   racks:   { eyebrow:'Headache Racks · BackRack', title:'Headache <em>Racks</em>' }
 };
+
+/* ── My Garage hero truck renders (make|model -> image) ── */
+var GARAGE_HERO = {
+  'Ford|F-150':'MY GARAGE IMAGES/F-150 MY GARAGE.webp',
+  'Ford|F-150 Lightning':'MY GARAGE IMAGES/FORD LIGHTNING MY GARAGE.webp',
+  'Ford|Super Duty F-250/F-350':'MY GARAGE IMAGES/F-250 MY GARAGE.webp',
+  'Ford|Ranger':'MY GARAGE IMAGES/FORD RANGER MY GARAGE.webp',
+  'Ford|Maverick':'MY GARAGE IMAGES/FORD MAVERICK MY GARAGE.webp',
+  'Chevrolet|Silverado 1500':'MY GARAGE IMAGES/CHEVY SILVERADO 1500 MY GARAGE.webp',
+  'Chevrolet|Silverado 2500HD/3500HD':'MY GARAGE IMAGES/CHEVY SILVERADO HD MY GARAGE.webp',
+  'Chevrolet|Colorado':'MY GARAGE IMAGES/CHEVY COLORADO MY GARAGE.webp',
+  'GMC|Sierra 1500':'MY GARAGE IMAGES/GMC SIRERA 1500 MY GARAGE.webp',
+  'GMC|Sierra 2500HD/3500HD':'MY GARAGE IMAGES/GMC SIRERA 2500 MY GARAGE.webp',
+  'GMC|Sierra EV':'MY GARAGE IMAGES/GMC EV MY GARAGE.webp',
+  'GMC|Canyon':'MY GARAGE IMAGES/GMC CANYON MY GARAGE.webp',
+  'GMC|Canyon AT4':'MY GARAGE IMAGES/GMC CANYON AT4 MY GAGRAGE.webp',
+  'RAM|1500':'MY GARAGE IMAGES/RAM 1500 MY GARAGE.webp',
+  'RAM|1500 TRX':'MY GARAGE IMAGES/RAM TRX MY GARAGE.webp',
+  'RAM|1500 RHO':'MY GARAGE IMAGES/RAM RHO MY GAGRAGE.webp',
+  'RAM|2500/3500':'MY GARAGE IMAGES/RAM 2500 MY GARAGE.webp',
+  'Toyota|Tacoma':'MY GARAGE IMAGES/TOYOTA TACOMA MY GARAGE.webp',
+  'Toyota|Tundra':'MY GARAGE IMAGES/TOYOTA TUNDRA MY GARAGE.webp',
+  'Toyota|Pickup':'MY GARAGE IMAGES/TOYOTA PICKUP MY GARAGE.webp',
+  'Toyota|T100':'MY GARAGE IMAGES/TOYOTA T100 MY GARAGE.webp',
+  'Nissan|Frontier':'MY GARAGE IMAGES/NISSAN FRONTIER MY GARAGE.png'
+};
+function getGarageHero(g){ return (g && g.make && g.model) ? (GARAGE_HERO[g.make+'|'+g.model] || null) : null; }
 
 /* ── Product type mapping ── */
 var TONNEAU_TYPES = {
@@ -1005,7 +1051,7 @@ function updateYMMBar() {
 function clearGarage() {
   try { localStorage.removeItem(GARAGE_KEY); } catch(e) {}
   state.garage = null; state.fitActive = false;
-  updateGarageBar(); updateYMMBar();
+  updateHeader(); updateGarageBar(); updateYMMBar();
   buildYMMDropdowns();
   render();
 }
@@ -1077,7 +1123,7 @@ document.getElementById('ymm-go-btn').addEventListener('click', function(){
   var g = { year:yr, make:mk, model:mdl };
   try { localStorage.setItem(GARAGE_KEY, JSON.stringify(g)); } catch(e) {}
   state.garage = g; state.fitActive = true;
-  updateGarageBar(); updateYMMBar(); render();
+  updateHeader(); updateGarageBar(); updateYMMBar(); render();
   document.getElementById('product-grid').scrollIntoView({behavior:'smooth',block:'start'});
 });
 
@@ -1086,9 +1132,47 @@ document.getElementById('ymm-go-btn').addEventListener('click', function(){
 ════════════════════════════════════════════════ */
 function updateHeader() {
   var h = CATALOG_HERO[state.activeCat] || CATALOG_HERO.all;
-  document.getElementById('header-eyebrow').textContent = h.eyebrow;
+  var g = state.garage;
+  var hasVeh = !!(g && g.year);
+  document.getElementById('header-eyebrow').textContent = hasVeh ? (g.year + ' ' + g.make + ' ' + g.model) : h.eyebrow;
   document.getElementById('header-title').innerHTML = h.title;
+  // Saved-vehicle truck render
+  var art = document.getElementById('gh-art');
+  var img = document.getElementById('gh-art-img');
+  var heroImg = getGarageHero(g);
+  if (hasVeh && heroImg) {
+    img.src = heroImg; img.alt = g.year + ' ' + g.make + ' ' + g.model;
+    art.hidden = false;
+  } else {
+    art.hidden = true; img.removeAttribute('src');
+  }
+  var btn = document.getElementById('gh-truck-btn');
+  if (btn) btn.textContent = hasVeh ? 'Change Vehicle' : 'Set My Truck';
 }
+
+/* Hero "Set My Truck" / "Change Vehicle" → open the shared My Garage popup */
+(function(){
+  var btn = document.getElementById('gh-truck-btn');
+  if (!btn) return;
+  btn.addEventListener('click', function(){
+    var sb = document.getElementById('ss-garage-btn');     // site-shell garage popup trigger
+    if (sb) { sb.click(); }
+    else { window.location.href = 'my-garage-v2.html'; }   // fallback if shell not present
+  });
+})();
+
+/* Re-sync hero/bar/grid when the garage changes anywhere (shell popup, other tab) */
+function syncGarageFromStorage(){
+  try { state.garage = JSON.parse(localStorage.getItem(GARAGE_KEY)); } catch(e){ state.garage = null; }
+  state.fitActive = !!(state.garage && state.garage.year);
+  updateHeader(); updateGarageBar(); updateYMMBar(); render();
+}
+window.addEventListener('storage', function(e){ if (e.key === GARAGE_KEY) syncGarageFromStorage(); });
+window.addEventListener('garageUpdated', syncGarageFromStorage);
+window.addEventListener('message', function(e){
+  var d; try { d = typeof e.data === 'string' ? JSON.parse(e.data) : e.data; } catch(_){ return; }
+  if (d && (d.type === 'garage_saved' || d.type === 'garage_clear')) syncGarageFromStorage();
+});
 
 function updateCatPills() {
   document.querySelectorAll('.cat-pill').forEach(function(btn){
