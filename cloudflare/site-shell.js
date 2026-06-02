@@ -178,7 +178,7 @@
   var st=document.createElement('style');st.textContent=css;document.head.appendChild(st);
 
   /* ════════ ICONS ════════ */
-  var icoTruck='<svg viewBox="0 0 24 24"><path d="M1 6h13v9H1z"/><path d="M14 9h5l3 3v3h-8z"/><circle cx="6" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg>';
+  var icoTruck='<svg viewBox="0 0 24 24"><rect x="1" y="4.5" width="22" height="15" rx="1.5"/><rect x="3" y="6.5" width="18" height="11" rx="0.5"/><circle cx="2" cy="8" r="0.75"/><circle cx="22" cy="8" r="0.75"/><line x1="3" y1="9.5" x2="21" y2="9.5"/><text x="12" y="15.5" text-anchor="middle" font-family="Arial,sans-serif" font-size="5.5" font-weight="900" letter-spacing="0.8" style="fill:currentColor;stroke:none">RLSH</text></svg>';
   var icoSwap='<svg viewBox="0 0 24 24"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>';
 
   /* ════════ HEADER HTML ════════ */
