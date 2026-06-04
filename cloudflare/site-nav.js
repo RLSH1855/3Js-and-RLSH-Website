@@ -704,9 +704,7 @@
           <div class="snd-editorial" id="sndEditorial">
             <div class="snd-editorial-top-bar"></div>
             <div class="snd-editorial-body">
-              <div class="snd-headline">We Restore.<br><span>You Drive.</span></div>
-              <div class="snd-em-dash"></div>
-              <div class="snd-tagline"><span id="sndTagwriter2"></span><span class="snd-tagline-cursor">&thinsp;</span></div>
+              <div class="snd-headline">Meeting Great<br>People <span>By Accident</span></div>
             </div>
           </div>
           <div class="snd-divider"></div>

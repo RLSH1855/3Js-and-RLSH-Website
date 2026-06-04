@@ -401,9 +401,7 @@
           '<div class="ssd-editorial" id="ssdEditorial">'+
             '<div class="ssd-editorial-top-bar"></div>'+
             '<div class="ssd-editorial-body">'+
-              '<div class="ssd-headline">We Restore.<br><span>You Drive.</span></div>'+
-              '<div class="ssd-em-dash"></div>'+
-              '<div class="ssd-tagline"><span id="ssdTagwriter"></span><span class="ssd-tagline-cursor">&thinsp;</span></div>'+
+              '<div class="ssd-headline">Meeting Great<br>People <span>By Accident</span></div>'+
             '</div>'+
           '</div>'+
           '<div class="ssd-divider"></div>'+
