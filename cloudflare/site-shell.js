@@ -121,7 +121,7 @@
   body.ss-menu-open .ss-drawer-ov{opacity:1;pointer-events:all;}
   body.ss-menu-closing .ss-drawer-ov{opacity:0;pointer-events:none;}
   /* ── Drawer panel — behind page, items start hidden ── */
-  .ss-drawer{position:fixed;left:0;top:0;bottom:0;height:100%;width:min(360px,90vw);background:#fff;z-index:4;display:flex;flex-direction:column;overflow:hidden;}
+  .ss-drawer{position:fixed;left:0;top:0;height:100vh;height:100dvh;width:min(360px,90vw);background:#fff;z-index:4;display:flex;flex-direction:column;overflow:hidden;}
   /* Close: blur + move left with page */
   body.ss-menu-closing .ss-drawer{filter:blur(6px);transform:translateX(-50px);opacity:0;transition:filter .12s ease,transform .46s cubic-bezier(.22,1,.36,1),opacity .32s ease .06s;}
   /* Cinematic keyframes */
@@ -134,43 +134,38 @@
   .ss-sheen-red::after{content:'';position:absolute;top:-50%;left:-120px;width:70px;height:200%;background:linear-gradient(105deg,transparent 20%,rgba(255,255,255,.28) 50%,transparent 80%);animation:ssSheen 2.6s cubic-bezier(.4,0,.6,1) infinite;}
   .ss-sheen-outline{position:relative;overflow:hidden;}
   .ss-sheen-outline::after{content:'';position:absolute;top:-50%;left:-120px;width:70px;height:200%;background:linear-gradient(105deg,transparent 20%,rgba(255,255,255,.14) 50%,transparent 80%);animation:ssSheen 2.6s cubic-bezier(.4,0,.6,1) infinite 1.1s;}
-  /* In-flow drawer header bar */
-  .ssd-header{flex-shrink:0;height:46px;display:flex;align-items:center;justify-content:space-between;padding:0 14px 0 20px;background:#fff;border-bottom:1px solid rgba(0,0,0,.08);}
-  .ssd-menu-label{font-family:'Montserrat',sans-serif;font-weight:800;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(0,0,0,.22);}
-  .ssd-x{width:28px;height:28px;border:none;cursor:pointer;background:rgba(0,0,0,.08);border-radius:50%;display:flex;align-items:center;justify-content:center;color:rgba(0,0,0,.5);font-size:13px;font-weight:600;font-family:system-ui,sans-serif;}
+  /* Floating close button — top-right over editorial */
+  .ssd-x{position:absolute;top:10px;right:12px;z-index:30;width:30px;height:30px;border:none;cursor:pointer;background:rgba(0,0,0,.07);border-radius:50%;display:flex;align-items:center;justify-content:center;color:rgba(0,0,0,.5);font-size:13px;font-weight:600;font-family:system-ui,sans-serif;}
   .ssd-x:hover{background:rgba(0,0,0,.15);}
-  /* Drawer scroll container (flexes between header + pinned footer) */
+  /* Drawer scroll container (flexes above pinned footer) */
   .ssd-scroll{flex:1;min-height:0;display:flex;flex-direction:column;background:#fff;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;-ms-overflow-style:none;scrollbar-width:none;}
   .ssd-scroll::-webkit-scrollbar{display:none;}
   .ssd-divider{height:1px;background:rgba(0,0,0,.08);flex-shrink:0;}
   /* Editorial panel */
   .ssd-editorial{position:relative;flex-shrink:0;overflow:hidden;background:#fff;border-bottom:2px solid #8B0000;}
   .ssd-editorial-top-bar{position:absolute;top:0;left:0;right:0;height:3px;background:#8B0000;pointer-events:none;}
-  .ssd-editorial-body{position:relative;z-index:2;padding:15px 22px 15px;}
-  .ssd-eyebrow{font-family:'Montserrat',sans-serif;font-weight:800;font-size:8.5px;letter-spacing:3px;text-transform:uppercase;color:#8B0000;margin-bottom:7px;opacity:.9;}
-  .ssd-headline{font-family:'Montserrat',sans-serif;font-weight:900;font-size:23px;line-height:1.05;letter-spacing:-.7px;text-transform:uppercase;color:#1a1a1a;}
+  .ssd-editorial-body{position:relative;z-index:2;padding:14px 22px 12px;}
+  .ssd-eyebrow{font-family:'Montserrat',sans-serif;font-weight:800;font-size:8.5px;letter-spacing:2.5px;text-transform:uppercase;color:#8B0000;margin-bottom:6px;opacity:.9;padding-right:34px;}
+  .ssd-headline{font-family:'Montserrat',sans-serif;font-weight:900;font-size:22px;line-height:1.05;letter-spacing:-.7px;text-transform:uppercase;color:#1a1a1a;}
   .ssd-headline span{color:#8B0000;}
-  .ssd-em-dash{width:28px;height:2.5px;background:#8B0000;margin:9px 0 8px;}
-  .ssd-tagline{font-family:'Inter',sans-serif;font-style:italic;font-size:11px;color:rgba(0,0,0,.38);margin-bottom:12px;min-height:15px;}
+  .ssd-em-dash{width:28px;height:2.5px;background:#8B0000;margin:7px 0 6px;}
+  .ssd-tagline{font-family:'Inter',sans-serif;font-style:italic;font-size:11px;color:rgba(0,0,0,.38);margin-bottom:0;min-height:14px;}
   .ssd-tagline-cursor{border-right:1.5px solid rgba(0,0,0,.3);margin-left:1px;}
   .ssd-ed-ctas{display:flex;flex-direction:column;gap:8px;}
   .ssd-ed-btn-red{height:42px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;background:#8B0000;color:#fff;font-family:'Oswald',sans-serif;font-weight:700;font-size:13px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;box-shadow:inset 0 1px 0 rgba(255,255,255,.15),inset 0 -2px 0 rgba(0,0,0,.2);}
   .ssd-ed-btn-phone{height:34px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;border:1px solid rgba(0,0,0,.15);color:rgba(0,0,0,.45);font-family:'Oswald',sans-serif;font-weight:500;font-size:11px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;}
   /* Garage row */
-  .ssd-garage{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;background:#fff;border:none;border-bottom:1px solid rgba(0,0,0,.09);cursor:pointer;width:100%;text-align:left;flex-shrink:0;transition:background .15s;box-shadow:0 1px 3px rgba(0,0,0,.04),inset 0 -1px 0 rgba(0,0,0,.10);}
+  .ssd-garage{display:flex;align-items:center;gap:11px;padding:10px 20px;background:#fff;border:none;border-bottom:1px solid rgba(0,0,0,.09);cursor:pointer;width:100%;text-align:left;flex-shrink:0;transition:background .15s;box-shadow:0 1px 3px rgba(0,0,0,.04),inset 0 -1px 0 rgba(0,0,0,.10);}
   .ssd-garage:hover,.ssd-garage:active{background:rgba(139,0,0,.04);}
-  .ssd-garage-left{display:flex;align-items:center;gap:12px;}
-  .ssd-garage-icon{width:42px;height:42px;background:#8B0000;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-  .ssd-garage-icon img{width:22px;height:22px;object-fit:contain;filter:brightness(0) invert(1);}
-  .ssd-garage-info{flex:1;}
-  .ssd-garage-label{display:block;font-family:'Montserrat',sans-serif;font-size:9px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:#8B0000;margin-bottom:2px;}
-  .ssd-garage-val{display:block;font-family:'Montserrat',sans-serif;font-size:15px;font-weight:800;letter-spacing:-.2px;color:#1a1a1a;}
+  .ssd-garage-icon{width:28px;height:28px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .ssd-garage-icon img{width:28px;height:28px;object-fit:contain;}
+  .ssd-garage-val{flex:1;font-family:'Montserrat',sans-serif;font-size:15px;font-weight:800;letter-spacing:-.2px;color:#1a1a1a;}
   .ssd-garage-arr{color:rgba(0,0,0,.25);flex-shrink:0;display:flex;}
   /* Nav */
   .ssd-nav{background:#fff;}
-  .ssd-section{display:flex;align-items:center;position:relative;z-index:1;background:#2d2d2d;box-shadow:inset 0 2px 0 rgba(255,255,255,.12),inset 0 -2px 0 rgba(0,0,0,.5);padding:12px 20px 12px 30px;}
+  .ssd-section{display:flex;align-items:center;position:relative;z-index:1;background:#2d2d2d;box-shadow:inset 0 2px 0 rgba(255,255,255,.12),inset 0 -2px 0 rgba(0,0,0,.5);padding:8px 20px 8px 30px;}
   .ssd-section span{font-family:'Oswald',sans-serif;font-weight:800;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.92);text-shadow:0 1px 2px rgba(0,0,0,.6);}
-  .ssd-item{display:flex;align-items:center;justify-content:space-between;padding:14px 20px 14px 17px;background:#fff;border-bottom:1px solid rgba(0,0,0,.09);border-left:3px solid transparent;border-right:none;border-top:none;cursor:pointer;width:100%;text-align:left;transition:background .1s ease,border-left-color .15s ease;box-shadow:0 1px 3px rgba(0,0,0,.04),inset 0 -1px 0 rgba(0,0,0,.10);text-decoration:none;color:inherit;}
+  .ssd-item{display:flex;align-items:center;justify-content:space-between;padding:10px 20px 10px 17px;background:#fff;border-bottom:1px solid rgba(0,0,0,.09);border-left:3px solid transparent;border-right:none;border-top:none;cursor:pointer;width:100%;text-align:left;transition:background .1s ease,border-left-color .15s ease;box-shadow:0 1px 3px rgba(0,0,0,.04),inset 0 -1px 0 rgba(0,0,0,.10);text-decoration:none;color:inherit;}
   .ssd-item:hover,.ssd-item.ssd-active{background:rgba(0,0,0,.03);border-left-color:#8B0000;}
   .ssd-item:active{background:rgba(0,0,0,.05);}
   .ssd-item.ssd-open{border-left-color:#8B0000;}
@@ -194,14 +189,14 @@
   .ssd-sub-item.ss-slidein{animation:ssSlideInLeft 320ms cubic-bezier(.22,1,.36,1) both;}
   .ssd-sub-spacer{height:6px;background:#2d2d2d;}
   /* Drawer footer */
-  .ssd-footer{background:#1a1a1f;padding:16px 20px 20px;flex-shrink:0;}
-  .ssd-brand-line{display:flex;align-items:center;gap:6px;margin-bottom:16px;}
+  .ssd-footer{background:#1a1a1f;padding:11px 20px 13px;flex-shrink:0;}
+  .ssd-brand-line{display:flex;align-items:center;gap:6px;margin-bottom:9px;}
   .ssd-brand-dot{width:5px;height:5px;background:#8B0000;flex-shrink:0;}
-  .ssd-brand-text{font-family:'Montserrat',sans-serif;font-weight:800;font-size:8.5px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.38);}
-  .ssd-footer-btns{display:flex;flex-direction:column;gap:8px;}
-  .ssd-cta-red{display:flex;align-items:center;justify-content:center;gap:8px;height:44px;background:#8B0000;color:#fff;font-family:'Montserrat',sans-serif;font-weight:800;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;text-decoration:none;border:none;cursor:pointer;}
-  .ssd-cta-outline{display:flex;align-items:center;justify-content:center;gap:8px;height:44px;border:1.5px solid rgba(255,255,255,.18);color:rgba(255,255,255,.72);font-family:'Montserrat',sans-serif;font-weight:700;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;text-decoration:none;background:transparent;cursor:pointer;}
-  .ssd-contact{margin-top:12px;text-align:center;font-family:'Inter',sans-serif;font-size:11px;color:rgba(255,255,255,.28);}
+  .ssd-brand-text{font-family:'Montserrat',sans-serif;font-weight:800;font-size:7.5px;letter-spacing:.6px;text-transform:uppercase;color:rgba(255,255,255,.38);white-space:nowrap;}
+  .ssd-footer-btns{display:flex;flex-direction:column;gap:7px;}
+  .ssd-cta-red{display:flex;align-items:center;justify-content:center;gap:8px;height:40px;background:#8B0000;color:#fff;font-family:'Montserrat',sans-serif;font-weight:800;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;text-decoration:none;border:none;cursor:pointer;}
+  .ssd-cta-outline{display:flex;align-items:center;justify-content:center;gap:8px;height:40px;border:1.5px solid rgba(255,255,255,.18);color:rgba(255,255,255,.72);font-family:'Montserrat',sans-serif;font-weight:700;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;text-decoration:none;background:transparent;cursor:pointer;}
+  .ssd-contact{margin-top:8px;text-align:center;font-family:'Inter',sans-serif;font-size:11px;color:rgba(255,255,255,.28);}
   @media(prefers-reduced-motion:reduce){#ss-page-wrap,.ss-drawer,.ss-drawer-ov,.ssd-sub{transition:none!important;}}
 
   @media(max-width:960px){
@@ -400,10 +395,7 @@
 
   var ssDrawerHTML =
     '<div class="ss-drawer" id="ssDrawer" aria-label="Mobile navigation" aria-hidden="true">'+
-      '<div class="ssd-header">'+
-        '<span class="ssd-menu-label">Menu</span>'+
-        '<button class="ssd-x" id="ssDrawerClose" aria-label="Close menu">&#x2715;</button>'+
-      '</div>'+
+      '<button class="ssd-x" id="ssDrawerClose" aria-label="Close menu">&#x2715;</button>'+
       '<div class="ssd-scroll" id="ssdScroll">'+
           '<div class="ssd-editorial" id="ssdEditorial">'+
             '<div class="ssd-editorial-top-bar"></div>'+
@@ -416,13 +408,8 @@
           '</div>'+
           '<div class="ssd-divider"></div>'+
           '<button class="ssd-garage" id="ss-mob-garage-btn">'+
-            '<div class="ssd-garage-left">'+
-              '<div class="ssd-garage-icon">'+icoTruck+'</div>'+
-              '<div class="ssd-garage-info">'+
-                '<span class="ssd-garage-label">My Garage</span>'+
-                '<span class="ssd-garage-val" id="ssMobGarageVeh">Select Your Vehicle</span>'+
-              '</div>'+
-            '</div>'+
+            '<span class="ssd-garage-icon">'+icoTruck+'</span>'+
+            '<span class="ssd-garage-val" id="ssMobGarageVeh">My Garage</span>'+
             '<span class="ssd-garage-arr">'+ssChevR+'</span>'+
           '</button>'+
           '<div class="ssd-nav">'+
