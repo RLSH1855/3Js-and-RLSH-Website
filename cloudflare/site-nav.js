@@ -329,13 +329,13 @@
     @keyframes snPageOpen{
       0%  {transform:translateX(0) scale(1);border-radius:0;box-shadow:none;}
       7%  {transform:translateX(6px) scale(1.02);}
-      100%{transform:translateX(calc(min(320px,86vw) - 22px)) scale(0.93);border-radius:16px;box-shadow:-10px 0 28px rgba(0,0,0,.40);}
+      100%{transform:translateX(calc(min(320px,86vw) - 22px)) scale(0.80);border-radius:16px;box-shadow:-16px 0 52px rgba(0,0,0,.30),-2px 0 8px rgba(0,0,0,.12);}
     }
     @keyframes snPageClose{
-      0%  {transform:translateX(calc(min(320px,86vw) - 22px)) scale(0.93);border-radius:16px;box-shadow:-10px 0 28px rgba(0,0,0,.40);}
+      0%  {transform:translateX(calc(min(320px,86vw) - 22px)) scale(0.80);border-radius:16px;box-shadow:-16px 0 52px rgba(0,0,0,.30),-2px 0 8px rgba(0,0,0,.12);}
       100%{transform:translateX(0) scale(1);border-radius:0;box-shadow:none;}
     }
-    body.sn-menu-open,body.sn-menu-closing{background:#F7F6F4;}
+    body.sn-menu-open,body.sn-menu-closing{background:#f5f5f5;}
     body.sn-menu-open #sn-page-wrap,body.sn-menu-closing #sn-page-wrap{min-height:0;}
     body.sn-menu-open #sn-page-wrap{animation:snPageOpen .52s cubic-bezier(0.22,1,0.36,1) forwards;overflow:hidden;pointer-events:none;height:100vh;}
     body.sn-menu-closing #sn-page-wrap{animation:snPageClose .46s cubic-bezier(0.22,1,0.36,1) forwards;overflow:hidden;height:100vh;}
@@ -347,71 +347,85 @@
     .sn-drawer{position:fixed;left:0;top:0;height:100%;width:min(320px,86vw);background:#F7F6F4;z-index:4;display:flex;flex-direction:column;overflow:hidden;}
     /* Close: blur + move left with page */
     body.sn-menu-closing .sn-drawer{filter:blur(6px);transform:translateX(-50px);opacity:0;transition:filter .12s ease,transform .46s cubic-bezier(0.22,1,0.36,1),opacity .32s ease .06s;}
-    .snd-close-row{padding:16px 20px 14px;background:#fff;border-bottom:1px solid #ECEAE6;flex-shrink:0;}
-    .snd-close{
-      font-family:'Montserrat',Arial,sans-serif;font-size:10px;font-weight:700;
-      letter-spacing:1.5px;text-transform:uppercase;color:#AAAAAA;
-      background:none;border:none;cursor:pointer;padding:0;
-      display:flex;align-items:center;gap:7px;
-    }
-    .snd-close:hover{color:#555;}
-    .snd-garage{
-      display:flex;align-items:center;gap:14px;padding:16px 20px;
-      background:#fff;border:none;border-bottom:2px solid #E8E5E0;
-      cursor:pointer;width:100%;text-align:left;flex-shrink:0;
-      transition:background 0.15s;
-    }
-    .snd-garage:hover{background:#F2F1EF;}
-    .snd-garage-icon{width:40px;height:40px;background:#8B0000;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-    .snd-garage-icon svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:2;}
+    /* Cinematic keyframes */
+    @keyframes snDrawRight{from{transform:scaleX(0);transform-origin:left center;}to{transform:scaleX(1);transform-origin:left center;}}
+    @keyframes snScanDown{0%{top:2px;opacity:1;}85%{opacity:.6;}100%{top:100%;opacity:0;}}
+    @keyframes snFadeUpIn{from{opacity:0;transform:translateY(5px);}to{opacity:1;transform:translateY(0);}}
+    @keyframes snSlideInLeft{from{opacity:0;transform:translateX(-14px);}to{opacity:1;transform:translateX(0);}}
+    @keyframes snSheen{0%{left:-120px}100%{left:140%}}
+    .sn-sheen-red{position:relative;overflow:hidden;}
+    .sn-sheen-red::after{content:'';position:absolute;top:-50%;left:-120px;width:70px;height:200%;background:linear-gradient(105deg,transparent 20%,rgba(255,255,255,.28) 50%,transparent 80%);animation:snSheen 2.6s cubic-bezier(.4,0,.6,1) infinite;}
+    .sn-sheen-outline{position:relative;overflow:hidden;}
+    .sn-sheen-outline::after{content:'';position:absolute;top:-50%;left:-120px;width:70px;height:200%;background:linear-gradient(105deg,transparent 20%,rgba(255,255,255,.14) 50%,transparent 80%);animation:snSheen 2.6s cubic-bezier(.4,0,.6,1) infinite 1.1s;}
+    /* Floating drawer header */
+    .snd-header{position:absolute;top:0;left:0;right:0;height:58px;z-index:20;display:flex;align-items:flex-end;justify-content:space-between;padding:0 14px 10px 20px;pointer-events:none;}
+    .snd-menu-label{font-family:'Montserrat',Arial,sans-serif;font-weight:800;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(0,0,0,.22);}
+    .snd-x{pointer-events:auto;width:28px;height:28px;border:none;cursor:pointer;background:rgba(0,0,0,.08);border-radius:50%;display:flex;align-items:center;justify-content:center;color:rgba(0,0,0,.5);font-size:13px;font-weight:600;font-family:system-ui,sans-serif;}
+    .snd-x:hover{background:rgba(0,0,0,.15);}
+    /* Drawer scroll container */
+    .snd-scroll{height:100%;display:flex;flex-direction:column;background:#fff;overflow-y:auto;overflow-x:hidden;-ms-overflow-style:none;scrollbar-width:none;}
+    .snd-scroll::-webkit-scrollbar{display:none;}
+    .snd-spacer{height:60px;flex-shrink:0;}
+    .snd-divider{height:1px;background:rgba(0,0,0,.08);flex-shrink:0;}
+    /* Editorial panel */
+    .snd-editorial{position:relative;flex-shrink:0;overflow:hidden;background:#fff;border-bottom:2px solid #8B0000;}
+    .snd-editorial-top-bar{position:absolute;top:0;left:0;right:0;height:3px;background:#8B0000;pointer-events:none;}
+    .snd-editorial-body{position:relative;z-index:2;padding:26px 22px 24px;}
+    .snd-eyebrow{font-family:'Montserrat',Arial,sans-serif;font-weight:800;font-size:8.5px;letter-spacing:3px;text-transform:uppercase;color:#8B0000;margin-bottom:12px;opacity:.9;}
+    .snd-headline{font-family:'Montserrat',Arial,sans-serif;font-weight:900;font-size:34px;line-height:1.04;letter-spacing:-1px;text-transform:uppercase;color:#1a1a1a;}
+    .snd-headline span{color:#8B0000;}
+    .snd-em-dash{width:32px;height:2.5px;background:#8B0000;margin:14px 0 12px;}
+    .snd-tagline{font-family:'Inter',Arial,sans-serif;font-style:italic;font-size:11px;color:rgba(0,0,0,.38);margin-bottom:20px;min-height:16px;}
+    .snd-tagline-cursor{border-right:1.5px solid rgba(0,0,0,.3);margin-left:1px;}
+    .snd-ed-ctas{display:flex;flex-direction:column;gap:8px;}
+    .snd-ed-btn-red{height:44px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;background:#8B0000;color:#fff;font-family:'Oswald',Arial,sans-serif;font-weight:700;font-size:13px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;box-shadow:inset 0 1px 0 rgba(255,255,255,.15),inset 0 -2px 0 rgba(0,0,0,.2);}
+    .snd-ed-btn-phone{height:36px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;border:1px solid rgba(0,0,0,.15);color:rgba(0,0,0,.45);font-family:'Oswald',Arial,sans-serif;font-weight:500;font-size:11px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;}
+    /* Garage row */
+    .snd-garage{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;background:#fff;border:none;border-bottom:1px solid rgba(0,0,0,.09);cursor:pointer;width:100%;text-align:left;flex-shrink:0;transition:background .15s;box-shadow:0 1px 3px rgba(0,0,0,.04),inset 0 -1px 0 rgba(0,0,0,.10);}
+    .snd-garage:hover,.snd-garage:active{background:rgba(139,0,0,.04);}
+    .snd-garage-left{display:flex;align-items:center;gap:12px;}
+    .snd-garage-icon{width:42px;height:42px;background:#8B0000;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+    .snd-garage-icon svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:1.75;}
     .snd-garage-info{flex:1;}
-    .snd-garage-label{display:block;font-family:'Montserrat',Arial,sans-serif;font-size:9px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:#BBBBB9;}
-    .snd-garage-val{display:block;font-family:'Montserrat',Arial,sans-serif;font-size:15px;font-weight:800;color:#1A1A1A;margin-top:2px;}
-    .snd-garage-arr{font-size:16px;color:#CCCCCA;flex-shrink:0;}
+    .snd-garage-label{display:block;font-family:'Montserrat',Arial,sans-serif;font-size:9px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:#8B0000;margin-bottom:2px;}
+    .snd-garage-val{display:block;font-family:'Montserrat',Arial,sans-serif;font-size:15px;font-weight:800;letter-spacing:-.2px;color:#1a1a1a;}
+    .snd-garage-arr{color:rgba(0,0,0,.25);flex-shrink:0;display:flex;}
+    /* Nav */
     .snd-nav{flex:1;overflow-y:auto;overflow-x:hidden;background:#fff;}
-    .snd-section{padding:14px 20px 5px;font-family:'Montserrat',Arial,sans-serif;font-size:9px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:#C0BEBE;}
-    .snd-item{
-      display:flex;align-items:center;justify-content:space-between;
-      padding:15px 20px;
-      font-family:'Montserrat',Arial,sans-serif;font-size:16px;font-weight:700;letter-spacing:0.2px;color:#1A1A1A;
-      text-decoration:none;border-bottom:1px solid #F2F1EF;
-      background:#fff;cursor:pointer;width:100%;text-align:left;
-      border-left:none;border-right:none;border-top:none;
-      transition:background 0.15s;
-    }
-    .snd-item:hover{background:#F7F6F4;}
-    .snd-item.snd-red{color:#8B0000;}
-    .snd-item-arr{
-      font-size:14px;color:#CCCCCA;flex-shrink:0;
-      transition:transform 0.3s cubic-bezier(0.22,1,0.36,1);display:inline-block;
-    }
-    .snd-item.snd-open .snd-item-arr{transform:rotate(90deg);}
-    /* Sub-menu — FAQ-style smooth expand, charcoal depth */
-    .snd-sub{
-      display:grid;grid-template-rows:0fr;background:#303647;
-      transition:grid-template-rows 540ms cubic-bezier(0.22,1,0.36,1);
-    }
+    .snd-section{display:flex;align-items:center;position:relative;z-index:1;background:#2d2d2d;box-shadow:inset 0 2px 0 rgba(255,255,255,.12),inset 0 -2px 0 rgba(0,0,0,.5);padding:12px 20px 12px 30px;}
+    .snd-section span{font-family:'Oswald',Arial,sans-serif;font-weight:800;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.92);text-shadow:0 1px 2px rgba(0,0,0,.6);}
+    .snd-item{display:flex;align-items:center;justify-content:space-between;padding:14px 20px 14px 17px;background:#fff;border-bottom:1px solid rgba(0,0,0,.09);border-left:3px solid transparent;border-right:none;border-top:none;cursor:pointer;width:100%;text-align:left;transition:background .1s ease,border-left-color .15s ease;box-shadow:0 1px 3px rgba(0,0,0,.04),inset 0 -1px 0 rgba(0,0,0,.10);text-decoration:none;color:inherit;}
+    .snd-item:hover,.snd-item.snd-active{background:rgba(0,0,0,.03);border-left-color:#8B0000;}
+    .snd-item:active{background:rgba(0,0,0,.05);}
+    .snd-item.snd-open{border-left-color:#8B0000;}
+    .snd-item-text{display:flex;flex-direction:column;gap:2px;}
+    .snd-item-label{font-family:'Montserrat',Arial,sans-serif;font-size:14px;font-weight:700;letter-spacing:-.1px;color:#1a1a1a;line-height:1.2;}
+    .snd-item-desc{font-family:'Inter',Arial,sans-serif;font-size:10.5px;font-weight:400;color:rgba(0,0,0,.38);letter-spacing:.1px;line-height:1.3;}
+    .snd-item-arr{color:rgba(0,0,0,.2);flex-shrink:0;display:inline-flex;transition:transform .3s cubic-bezier(0.22,1,0.36,1);}
+    .snd-item.snd-open .snd-item-arr{transform:rotate(180deg);}
+    /* Submenu */
+    .snd-sub{display:grid;grid-template-rows:0fr;background:#2d2d2d;transition:grid-template-rows 420ms cubic-bezier(0.22,1,0.36,1);}
     .snd-sub.snd-sub-open{grid-template-rows:1fr;}
-    .snd-sub-inner{overflow:hidden;}
-    .snd-sub-label{display:block;padding:11px 20px 4px 28px;font-family:'Montserrat',Arial,sans-serif;font-size:8px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.30);}
-    .snd-sub-item{
-      display:flex;align-items:center;gap:10px;
-      padding:12px 20px 12px 28px;
-      font-family:'Montserrat',Arial,sans-serif;font-size:15px;font-weight:600;
-      color:rgba(255,255,255,0.75);text-decoration:none;
-      border-bottom:1px solid rgba(255,255,255,0.06);
-      transition:color 0.15s,background 0.15s;
-    }
-    .snd-sub-item:last-child{border-bottom:none;margin-bottom:6px;}
-    .snd-sub-item:hover{color:#fff;background:rgba(255,255,255,0.06);}
-    .snd-sub-item::before{content:'';width:4px;height:4px;background:#8B0000;flex-shrink:0;}
-    .snd-sub-top-line{height:2px;background:#8B0000;flex-shrink:0;}
-    .snd-ctas{padding:14px 16px;background:#FAFAF8;border-top:1px solid #ECEAE6;flex-shrink:0;display:flex;flex-direction:column;gap:8px;}
-    .snd-cta-red{display:block;text-align:center;text-decoration:none;background:#8B0000;color:#fff;font-family:'Montserrat',Arial,sans-serif;font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:14px;border:none;cursor:pointer;transition:background 0.2s;}
-    .snd-cta-red:hover{background:#700000;}
-    .snd-cta-outline{display:block;text-align:center;text-decoration:none;background:transparent;color:#8B0000;font-family:'Montserrat',Arial,sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:13px;border:1.5px solid #D4C0C0;cursor:pointer;transition:border-color 0.2s;}
-    .snd-cta-outline:hover{border-color:#8B0000;}
-    .snd-contact{text-align:center;font-family:'Inter',Arial,sans-serif;font-size:11px;color:#BBBBBB;letter-spacing:0.3px;}
+    .snd-sub-inner{overflow:hidden;min-height:0;position:relative;}
+    .snd-sub-bar{height:2px;background:#8B0000;flex-shrink:0;}
+    .snd-sub-bar.sn-drawn{animation:snDrawRight 400ms cubic-bezier(0.22,1,0.36,1) 30ms both;}
+    .snd-scan-line{position:absolute;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent 0%,#8B0000 40%,rgba(255,100,100,.6) 60%,transparent 100%);top:2px;z-index:5;pointer-events:none;animation:snScanDown 550ms ease-out 60ms forwards;}
+    .snd-sub-label{display:block;font-family:'Oswald',Arial,sans-serif;font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.92);background:#1d1d1d;border-top:2px solid #000;border-bottom:1.5px solid rgba(255,255,255,.18);text-shadow:0 1px 2px rgba(0,0,0,.6);padding:15px 20px 15px 30px;}
+    .snd-sub-label.sn-fadein{animation:snFadeUpIn 300ms cubic-bezier(0.22,1,0.36,1) both;}
+    .snd-sub-item{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;font-family:'Inter',Arial,sans-serif;font-size:13px;font-weight:500;color:rgba(255,255,255,.82);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.05);transition:background .12s ease;}
+    .snd-sub-item:last-of-type{margin-bottom:6px;}
+    .snd-sub-item:hover,.snd-sub-item:active{background:rgba(139,0,0,.40);}
+    .snd-sub-item.sn-slidein{animation:snSlideInLeft 320ms cubic-bezier(0.22,1,0.36,1) both;}
+    .snd-sub-spacer{height:6px;background:#2d2d2d;}
+    /* Drawer footer */
+    .snd-footer{background:#1a1a1f;padding:20px 20px 38px;flex-shrink:0;}
+    .snd-brand-line{display:flex;align-items:center;gap:6px;margin-bottom:16px;}
+    .snd-brand-dot{width:5px;height:5px;background:#8B0000;flex-shrink:0;}
+    .snd-brand-text{font-family:'Montserrat',Arial,sans-serif;font-weight:800;font-size:8.5px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.38);}
+    .snd-footer-btns{display:flex;flex-direction:column;gap:8px;}
+    .snd-cta-red{display:flex;align-items:center;justify-content:center;gap:8px;height:44px;background:#8B0000;color:#fff;font-family:'Montserrat',Arial,sans-serif;font-weight:800;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;text-decoration:none;border:none;cursor:pointer;}
+    .snd-cta-outline{display:flex;align-items:center;justify-content:center;gap:8px;height:44px;border:1.5px solid rgba(255,255,255,.18);color:rgba(255,255,255,.72);font-family:'Montserrat',Arial,sans-serif;font-weight:700;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;text-decoration:none;background:transparent;cursor:pointer;}
+    .snd-contact{margin-top:12px;text-align:center;font-family:'Inter',Arial,sans-serif;font-size:11px;color:rgba(255,255,255,.28);}
     @media(prefers-reduced-motion:reduce){#sn-page-wrap,.sn-drawer,.sn-overlay,.snd-sub{transition:none!important;}}
 
     /* ── Mobile top bar adjustments ── */
@@ -684,67 +698,108 @@
   /* ════════════════════════════════
      DRAWER HTML
   ════════════════════════════════ */
+  var snChevR = '<svg width="8" height="14" viewBox="0 0 8 14" fill="none" stroke="rgba(0,0,0,0.2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1l6 6-6 6"/></svg>';
+  var snChevD = '<svg width="11" height="7" viewBox="0 0 11 7" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1 5.5 6 10 1" stroke="rgba(0,0,0,0.28)"/></svg>';
+  var snChevSub = '<svg width="6" height="10" viewBox="0 0 8 14" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1l6 6-6 6"/></svg>';
+
   var drawerHTML = `
     <div class="sn-drawer" id="sn-drawer" aria-label="Mobile navigation" aria-hidden="true">
-      <div class="snd-close-row">
-        <button class="snd-close" id="sn-drawer-close">
-          <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-          Close menu
-        </button>
-      </div>
-      <button class="snd-garage" id="sn-mob-garage-btn">
-        <div class="snd-garage-icon">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-        </div>
-        <div class="snd-garage-info">
-          <span class="snd-garage-label">My Garage</span>
-          <span class="snd-garage-val" id="snd-garage-val">No Vehicle Saved</span>
-        </div>
-        <span class="snd-garage-arr" aria-hidden="true">›</span>
-      </button>
-      <div class="snd-nav">
-        <div class="snd-section">Navigate</div>
-        <a href="https://www.3jsautobody.com/inside-3js" class="snd-item">Inside 3J's<span class="snd-item-arr" aria-hidden="true">›</span></a>
-        <a href="https://www.3jsautobody.com/body-paint-repairs" class="snd-item">Body &amp; Paint<span class="snd-item-arr" aria-hidden="true">›</span></a>
-        <button class="snd-item" id="snd-acc-btn" aria-expanded="false">Truck Accessories<span class="snd-item-arr" aria-hidden="true">›</span></button>
-        <div class="snd-sub" id="snd-acc-sub">
-          <div class="snd-sub-inner">
-            <div class="snd-sub-top-line"></div>
-            <span class="snd-sub-label">Bed Protection</span>
-            <a href="https://www.3jsautobody.com/rhino-liner" class="snd-sub-item">Rhino Liner</a>
-            <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/floor-liners.html" class="snd-sub-item">Floor Liners</a>
-            <span class="snd-sub-label">Covers &amp; Steps</span>
-            <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/tonneau-covers.html" class="snd-sub-item">Tonneau Covers</a>
-            <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/steps-running-boards.html" class="snd-sub-item">Steps &amp; Running Boards</a>
-            <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/towing-hitches.html" class="snd-sub-item">Towing &amp; Hitches</a>
-            <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/lighting.html" class="snd-sub-item">Lighting</a>
-            <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/headache-racks.html" class="snd-sub-item">Headache Racks</a>
+      <div style="position:relative;height:100%;overflow:hidden;">
+        <div class="snd-scroll" id="sndScroll">
+          <div class="snd-header">
+            <span class="snd-menu-label">Menu</span>
+            <button class="snd-x" id="sn-drawer-close" aria-label="Close menu">&#x2715;</button>
+          </div>
+          <div class="snd-spacer"></div>
+          <div class="snd-divider"></div>
+          <div class="snd-editorial" id="sndEditorial">
+            <div class="snd-editorial-top-bar"></div>
+            <div class="snd-editorial-body">
+              <div class="snd-eyebrow">Body &amp; Paint &middot; Signal Hill &middot; Est. 1995</div>
+              <div class="snd-headline">We Restore.<br><span>You Drive.</span></div>
+              <div class="snd-em-dash"></div>
+              <div class="snd-tagline"><span id="sndTagwriter2"></span><span class="snd-tagline-cursor">&thinsp;</span></div>
+              <div class="snd-ed-ctas">
+                <a href="https://www.carwise.com/online-photo-estimate/3js-autobody-paint-inc-signal-hill-ca-90755/479382?source=shop.profile&referer=estimate.cccone.com" class="snd-ed-btn-red sn-sheen-red" target="_top">
+                  <span>Free Estimate</span>
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+                <a href="tel:+15624246744" class="snd-ed-btn-phone" target="_top">
+                  <span>562-424-6744</span>
+                  <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.63A2 2 0 012 .18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="snd-divider"></div>
+          <button class="snd-garage" id="sn-mob-garage-btn">
+            <div class="snd-garage-left">
+              <div class="snd-garage-icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true" width="22" height="22"><path d="M5 17H3a2 2 0 01-2-2V9a2 2 0 012-2h11v10H5z"/><path d="M14 7h4l3 4v4h-7V7z"/><circle cx="7.5" cy="17" r="2"/><circle cx="18.5" cy="17" r="2"/></svg>
+              </div>
+              <div class="snd-garage-info">
+                <span class="snd-garage-label">My Garage</span>
+                <span class="snd-garage-val" id="snd-garage-val">Select Your Vehicle</span>
+              </div>
+            </div>
+            <span class="snd-garage-arr">${snChevR}</span>
+          </button>
+          <div class="snd-nav">
+            <div class="snd-section"><span>Navigate</span></div>
+            <a href="https://www.3jsautobody.com/inside-3js" class="snd-item"><div class="snd-item-text"><span class="snd-item-label">Inside 3J's</span><span class="snd-item-desc">Our story &amp; team</span></div><span class="snd-item-arr">${snChevR}</span></a>
+            <a href="https://www.3jsautobody.com/body-paint-repairs" class="snd-item"><div class="snd-item-text"><span class="snd-item-label">Body &amp; Paint</span><span class="snd-item-desc">Collision repair &middot; paint matching</span></div><span class="snd-item-arr">${snChevR}</span></a>
+            <button class="snd-item" id="snd-acc-btn" aria-expanded="false"><div class="snd-item-text"><span class="snd-item-label">Truck Accessories</span><span class="snd-item-desc">Liners, covers, steps &amp; more</span></div><span class="snd-item-arr" id="snd-acc-arr">${snChevD}</span></button>
+            <div class="snd-sub" id="snd-acc-sub">
+              <div class="snd-sub-inner">
+                <div class="snd-sub-bar" id="snd-acc-bar"></div>
+                <span class="snd-sub-label">Bed Protection</span>
+                <a href="https://www.3jsautobody.com/rhino-liner" class="snd-sub-item">Rhino Liner${snChevSub}</a>
+                <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/floor-liners.html" class="snd-sub-item">Floor Liners${snChevSub}</a>
+                <span class="snd-sub-label">Covers &amp; Steps</span>
+                <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/tonneau-covers.html" class="snd-sub-item">Tonneau Covers${snChevSub}</a>
+                <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/steps-running-boards.html" class="snd-sub-item">Steps &amp; Running Boards${snChevSub}</a>
+                <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/towing-hitches.html" class="snd-sub-item">Towing &amp; Hitches${snChevSub}</a>
+                <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/lighting.html" class="snd-sub-item">Lighting${snChevSub}</a>
+                <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/headache-racks.html" class="snd-sub-item">Headache Racks${snChevSub}</a>
+                <div class="snd-sub-spacer"></div>
+              </div>
+            </div>
+            <button class="snd-item" id="snd-areas-btn" aria-expanded="false"><div class="snd-item-text"><span class="snd-item-label">Areas We Service</span><span class="snd-item-desc">Greater Signal Hill area</span></div><span class="snd-item-arr" id="snd-areas-arr">${snChevD}</span></button>
+            <div class="snd-sub" id="snd-areas-sub">
+              <div class="snd-sub-inner">
+                <div class="snd-sub-bar" id="snd-areas-bar"></div>
+                <span class="snd-sub-label">South Bay</span>
+                <a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_LONG_BEACH.html" class="snd-sub-item">Long Beach${snChevSub}</a>
+                <a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_TORRANCE.html" class="snd-sub-item">Torrance${snChevSub}</a>
+                <a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_CARSON.html" class="snd-sub-item">Carson${snChevSub}</a>
+                <a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_LAKEWOOD.html" class="snd-sub-item">Lakewood${snChevSub}</a>
+                <span class="snd-sub-label">Southeast LA</span>
+                <a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_COMPTON.html" class="snd-sub-item">Compton${snChevSub}</a>
+                <a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_DOWNEY.html" class="snd-sub-item">Downey${snChevSub}</a>
+                <a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_BELLFLOWER.html" class="snd-sub-item">Bellflower${snChevSub}</a>
+                <div class="snd-sub-spacer"></div>
+              </div>
+            </div>
+            <div class="snd-section"><span>More</span></div>
+            <a href="https://www.3jsautobody.com/rhino-liner" class="snd-item"><div class="snd-item-text"><span class="snd-item-label">Rhino Liner</span><span class="snd-item-desc">Bed liner &amp; truck protection</span></div><span class="snd-item-arr">${snChevR}</span></a>
+            <a href="https://www.3jsautobody.com/contact-us" class="snd-item"><div class="snd-item-text"><span class="snd-item-label">Contact Us</span><span class="snd-item-desc">Get in touch &middot; 562-424-6744</span></div><span class="snd-item-arr">${snChevR}</span></a>
+            <a href="https://www.3jsautobody.com/faq" class="snd-item"><div class="snd-item-text"><span class="snd-item-label">FAQ</span><span class="snd-item-desc">Common questions answered</span></div><span class="snd-item-arr">${snChevR}</span></a>
+          </div>
+          <div class="snd-footer" id="sndFooter">
+            <div class="snd-brand-line"><div class="snd-brand-dot"></div><span class="snd-brand-text">3J'S AUTO BODY &middot; RHINO LININGS OF SIGNAL HILL</span></div>
+            <div class="snd-footer-btns">
+              <a href="https://www.3jsautobody.com/rhino-lining-quote" class="snd-cta-red sn-sheen-red" target="_top">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-10 2a2 2 0 100 4 2 2 0 000-4z"/></svg>
+                Bed-Liner Quote
+              </a>
+              <a href="https://www.carwise.com/online-photo-estimate/3js-autobody-paint-inc-signal-hill-ca-90755/479382?source=shop.profile&referer=estimate.cccone.com" class="snd-cta-outline sn-sheen-outline" target="_top">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                Free Auto Body Estimate
+              </a>
+            </div>
+            <div class="snd-contact">562-424-6744 &nbsp;&middot;&nbsp; Mon&ndash;Fri 8AM&ndash;5PM</div>
           </div>
         </div>
-        <button class="snd-item" id="snd-areas-btn" aria-expanded="false">Areas We Service<span class="snd-item-arr" aria-hidden="true">›</span></button>
-        <div class="snd-sub" id="snd-areas-sub">
-          <div class="snd-sub-inner">
-            <div class="snd-sub-top-line"></div>
-            <span class="snd-sub-label">South Bay</span>
-            <a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_LONG_BEACH.html" class="snd-sub-item">Long Beach</a>
-            <a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_TORRANCE.html" class="snd-sub-item">Torrance</a>
-            <a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_CARSON.html" class="snd-sub-item">Carson</a>
-            <a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_LAKEWOOD.html" class="snd-sub-item">Lakewood</a>
-            <span class="snd-sub-label">Southeast LA</span>
-            <a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_COMPTON.html" class="snd-sub-item">Compton</a>
-            <a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_DOWNEY.html" class="snd-sub-item">Downey</a>
-            <a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_BELLFLOWER.html" class="snd-sub-item">Bellflower</a>
-          </div>
-        </div>
-        <div class="snd-section">Quick Links</div>
-        <a href="https://www.3jsautobody.com/rhino-liner" class="snd-item snd-red">Rhino Liner<span class="snd-item-arr" aria-hidden="true">›</span></a>
-        <a href="https://www.3jsautobody.com/contact-us" class="snd-item">Contact Us<span class="snd-item-arr" aria-hidden="true">›</span></a>
-        <a href="https://www.3jsautobody.com/faq" class="snd-item">FAQ<span class="snd-item-arr" aria-hidden="true">›</span></a>
-      </div>
-      <div class="snd-ctas">
-        <a href="https://www.3jsautobody.com/rhino-lining-quote" class="snd-cta-red">Bed-Liner Quote</a>
-        <a href="https://www.carwise.com/online-photo-estimate/3js-autobody-paint-inc-signal-hill-ca-90755/479382?source=shop.profile&referer=estimate.cccone.com" class="snd-cta-outline">Free Auto Body Estimate</a>
-        <div class="snd-contact">562-424-6744 &nbsp;·&nbsp; Mon–Fri 8AM–5PM</div>
       </div>
     </div>
     <div class="sn-overlay" id="sn-overlay"></div>
@@ -772,6 +827,29 @@
   var snOverlay = document.getElementById('sn-overlay');
   var snDrawerClose = document.getElementById('sn-drawer-close');
 
+  var snTwTimer=null, snTwInterval=null;
+
+  function snTwStart(){
+    var el=document.getElementById('sndTagwriter2');
+    if(!el) return;
+    clearTimeout(snTwTimer); clearInterval(snTwInterval);
+    el.textContent='';
+    var text='"Meeting great people by accident"';
+    var i=0;
+    snTwTimer=setTimeout(function(){
+      snTwInterval=setInterval(function(){
+        i++; el.textContent=text.slice(0,i);
+        if(i>=text.length) clearInterval(snTwInterval);
+      }, 38);
+    }, 280);
+  }
+
+  function snTwStop(){
+    clearTimeout(snTwTimer); clearInterval(snTwInterval);
+    var el=document.getElementById('sndTagwriter2');
+    if(el) el.textContent='';
+  }
+
   function snOpenDrawer(){
     document.body.classList.remove('sn-menu-closing');
     document.body.classList.add('sn-menu-open');
@@ -779,26 +857,27 @@
     if(hamburger){ hamburger.classList.add('sn-open'); hamburger.setAttribute('aria-expanded','true'); }
     document.body.style.overflow = 'hidden';
     if(snDrawer){
-      var items = snDrawer.querySelectorAll('.snd-close-row,.snd-garage,.snd-section,.snd-item,.snd-ctas');
+      var items = snDrawer.querySelectorAll('.snd-editorial,.snd-garage,.snd-section,.snd-item,.snd-footer');
       items.forEach(function(el){
-        el.style.opacity='0'; el.style.transform='translateY(18px)'; el.style.transition='none';
+        el.style.opacity='0'; el.style.transform='translateX(-12px)'; el.style.transition='none';
       });
-      // Start revealing text halfway through page animation (~260ms)
       setTimeout(function(){
         items.forEach(function(el,i){
           setTimeout(function(){
             el.style.transition='opacity 0.5s ease,transform 0.6s cubic-bezier(0.22,1,0.36,1)';
-            el.style.opacity='1'; el.style.transform='translateY(0)';
+            el.style.opacity='1'; el.style.transform='translateX(0)';
           }, i*45);
         });
+        snTwStart();
       }, 260);
     }
   }
 
   function snCloseDrawer(){
+    snTwStop();
     if(snDrawer){
-      var items = snDrawer.querySelectorAll('.snd-close-row,.snd-garage,.snd-section,.snd-item,.snd-ctas');
-      items.forEach(function(el){ el.style.opacity='0'; el.style.transform='translateY(18px)'; el.style.transition='none'; });
+      var items = snDrawer.querySelectorAll('.snd-editorial,.snd-garage,.snd-section,.snd-item,.snd-footer');
+      items.forEach(function(el){ el.style.opacity='0'; el.style.transform='translateX(-12px)'; el.style.transition='none'; });
     }
     document.body.classList.add('sn-menu-closing');
     requestAnimationFrame(function(){ requestAnimationFrame(function(){
@@ -820,18 +899,39 @@
   /* ════════════════════════════════
      DRAWER ACCORDION TOGGLES
   ════════════════════════════════ */
-  function initSndAccordion(btnId, subId){
+  function initSndAccordion(btnId, subId, barId){
     var btn = document.getElementById(btnId);
     var sub = document.getElementById(subId);
+    var bar = barId ? document.getElementById(barId) : null;
     if(!btn || !sub) return;
     btn.addEventListener('click', function(){
       var isOpen = sub.classList.toggle('snd-sub-open');
       btn.classList.toggle('snd-open', isOpen);
       btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      if(isOpen){
+        if(bar){bar.classList.remove('sn-drawn');void bar.offsetWidth;bar.classList.add('sn-drawn');}
+        var existing=sub.querySelector('.snd-scan-line');
+        if(existing) existing.remove();
+        var scan=document.createElement('div');
+        scan.className='snd-scan-line';
+        var inner=sub.querySelector('.snd-sub-inner');
+        if(inner) inner.appendChild(scan);
+        setTimeout(function(){if(scan.parentNode)scan.remove();},700);
+        sub.querySelectorAll('.snd-sub-label').forEach(function(el,i){
+          el.classList.remove('sn-fadein');void el.offsetWidth;
+          el.style.animationDelay=(i*80+80)+'ms';
+          el.classList.add('sn-fadein');
+        });
+        sub.querySelectorAll('.snd-sub-item').forEach(function(el,i){
+          el.classList.remove('sn-slidein');void el.offsetWidth;
+          el.style.animationDelay=(i*45+100)+'ms';
+          el.classList.add('sn-slidein');
+        });
+      }
     });
   }
-  initSndAccordion('snd-acc-btn',   'snd-acc-sub');
-  initSndAccordion('snd-areas-btn', 'snd-areas-sub');
+  initSndAccordion('snd-acc-btn',   'snd-acc-sub', 'snd-acc-bar');
+  initSndAccordion('snd-areas-btn', 'snd-areas-sub', 'snd-areas-bar');
 
   /* ════════════════════════════════
      DESKTOP PHONE MODAL

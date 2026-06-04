@@ -103,14 +103,14 @@
 
   /* ── Page wrap — sits ON TOP of drawer; lifts, slides right, scales ── */
   #ss-page-wrap{position:relative;z-index:5;min-height:100vh;will-change:transform;transform-origin:50% 50vh;}
-  body.ss-menu-open,body.ss-menu-closing{background:#F7F6F4;}
+  body.ss-menu-open,body.ss-menu-closing{background:#f5f5f5;}
   @keyframes ssPageOpen{
     0%  {transform:translateX(0) scale(1);border-radius:0;box-shadow:none;}
     7%  {transform:translateX(6px) scale(1.02);}
-    100%{transform:translateX(calc(min(320px,86vw) - 22px)) scale(0.90);border-radius:16px;box-shadow:-10px 0 28px rgba(0,0,0,.40);}
+    100%{transform:translateX(calc(min(320px,86vw) - 22px)) scale(0.80);border-radius:16px;box-shadow:-16px 0 52px rgba(0,0,0,.30),-2px 0 8px rgba(0,0,0,.12);}
   }
   @keyframes ssPageClose{
-    0%  {transform:translateX(calc(min(320px,86vw) - 22px)) scale(0.90);border-radius:16px;box-shadow:-10px 0 28px rgba(0,0,0,.40);}
+    0%  {transform:translateX(calc(min(320px,86vw) - 22px)) scale(0.80);border-radius:16px;box-shadow:-16px 0 52px rgba(0,0,0,.30),-2px 0 8px rgba(0,0,0,.12);}
     100%{transform:translateX(0) scale(1);border-radius:0;box-shadow:none;}
   }
   body.ss-menu-open #ss-page-wrap,body.ss-menu-closing #ss-page-wrap{min-height:0;}
@@ -122,41 +122,87 @@
   body.ss-menu-closing .ss-drawer-ov{opacity:0;pointer-events:none;}
   /* ── Drawer panel — behind page, items start hidden ── */
   .ss-drawer{position:fixed;left:0;top:0;height:100%;width:min(320px,86vw);background:#F7F6F4;z-index:4;display:flex;flex-direction:column;overflow:hidden;}
-  /* Close: blur immediately + move left with page */
+  /* Close: blur + move left with page */
   body.ss-menu-closing .ss-drawer{filter:blur(6px);transform:translateX(-50px);opacity:0;transition:filter .12s ease,transform .46s cubic-bezier(.22,1,.36,1),opacity .32s ease .06s;}
-  .ssd-close-row{padding:16px 20px 14px;background:#fff;border-bottom:1px solid #ECEAE6;flex-shrink:0;}
-  .ssd-close{font-family:'Inter',Arial,sans-serif;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#AAAAAA;background:none;border:none;cursor:pointer;padding:0;display:flex;align-items:center;gap:7px;}
-  .ssd-close:hover{color:#555;}
-  .ssd-garage{display:flex;align-items:center;gap:14px;padding:16px 20px;background:#fff;border:none;border-bottom:2px solid #E8E5E0;cursor:pointer;width:100%;text-align:left;flex-shrink:0;transition:background .15s;}
-  .ssd-garage:hover{background:#F2F1EF;}
-  .ssd-garage-icon{width:40px;height:40px;background:#8B0000;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  /* Cinematic keyframes */
+  @keyframes ssDrawRight{from{transform:scaleX(0);transform-origin:left center;}to{transform:scaleX(1);transform-origin:left center;}}
+  @keyframes ssScanDown{0%{top:2px;opacity:1;}85%{opacity:.6;}100%{top:100%;opacity:0;}}
+  @keyframes ssFadeUpIn{from{opacity:0;transform:translateY(5px);}to{opacity:1;transform:translateY(0);}}
+  @keyframes ssSlideInLeft{from{opacity:0;transform:translateX(-14px);}to{opacity:1;transform:translateX(0);}}
+  @keyframes ssSheen{0%{left:-120px}100%{left:140%}}
+  .ss-sheen-red{position:relative;overflow:hidden;}
+  .ss-sheen-red::after{content:'';position:absolute;top:-50%;left:-120px;width:70px;height:200%;background:linear-gradient(105deg,transparent 20%,rgba(255,255,255,.28) 50%,transparent 80%);animation:ssSheen 2.6s cubic-bezier(.4,0,.6,1) infinite;}
+  .ss-sheen-outline{position:relative;overflow:hidden;}
+  .ss-sheen-outline::after{content:'';position:absolute;top:-50%;left:-120px;width:70px;height:200%;background:linear-gradient(105deg,transparent 20%,rgba(255,255,255,.14) 50%,transparent 80%);animation:ssSheen 2.6s cubic-bezier(.4,0,.6,1) infinite 1.1s;}
+  /* Floating drawer header */
+  .ssd-header{position:absolute;top:0;left:0;right:0;height:58px;z-index:20;display:flex;align-items:flex-end;justify-content:space-between;padding:0 14px 10px 20px;pointer-events:none;}
+  .ssd-menu-label{font-family:'Montserrat',sans-serif;font-weight:800;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(0,0,0,.22);}
+  .ssd-x{pointer-events:auto;width:28px;height:28px;border:none;cursor:pointer;background:rgba(0,0,0,.08);border-radius:50%;display:flex;align-items:center;justify-content:center;color:rgba(0,0,0,.5);font-size:13px;font-weight:600;font-family:system-ui,sans-serif;}
+  .ssd-x:hover{background:rgba(0,0,0,.15);}
+  /* Drawer scroll container */
+  .ssd-scroll{height:100%;display:flex;flex-direction:column;background:#fff;overflow-y:auto;overflow-x:hidden;-ms-overflow-style:none;scrollbar-width:none;}
+  .ssd-scroll::-webkit-scrollbar{display:none;}
+  .ssd-spacer{height:60px;flex-shrink:0;}
+  .ssd-divider{height:1px;background:rgba(0,0,0,.08);flex-shrink:0;}
+  /* Editorial panel */
+  .ssd-editorial{position:relative;flex-shrink:0;overflow:hidden;background:#fff;border-bottom:2px solid #8B0000;}
+  .ssd-editorial-top-bar{position:absolute;top:0;left:0;right:0;height:3px;background:#8B0000;pointer-events:none;}
+  .ssd-editorial-body{position:relative;z-index:2;padding:26px 22px 24px;}
+  .ssd-eyebrow{font-family:'Montserrat',sans-serif;font-weight:800;font-size:8.5px;letter-spacing:3px;text-transform:uppercase;color:#8B0000;margin-bottom:12px;opacity:.9;}
+  .ssd-headline{font-family:'Montserrat',sans-serif;font-weight:900;font-size:34px;line-height:1.04;letter-spacing:-1px;text-transform:uppercase;color:#1a1a1a;}
+  .ssd-headline span{color:#8B0000;}
+  .ssd-em-dash{width:32px;height:2.5px;background:#8B0000;margin:14px 0 12px;}
+  .ssd-tagline{font-family:'Inter',sans-serif;font-style:italic;font-size:11px;color:rgba(0,0,0,.38);margin-bottom:20px;min-height:16px;}
+  .ssd-tagline-cursor{border-right:1.5px solid rgba(0,0,0,.3);margin-left:1px;}
+  .ssd-ed-ctas{display:flex;flex-direction:column;gap:8px;}
+  .ssd-ed-btn-red{height:44px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;background:#8B0000;color:#fff;font-family:'Oswald',sans-serif;font-weight:700;font-size:13px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;box-shadow:inset 0 1px 0 rgba(255,255,255,.15),inset 0 -2px 0 rgba(0,0,0,.2);}
+  .ssd-ed-btn-phone{height:36px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;border:1px solid rgba(0,0,0,.15);color:rgba(0,0,0,.45);font-family:'Oswald',sans-serif;font-weight:500;font-size:11px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;}
+  /* Garage row */
+  .ssd-garage{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;background:#fff;border:none;border-bottom:1px solid rgba(0,0,0,.09);cursor:pointer;width:100%;text-align:left;flex-shrink:0;transition:background .15s;box-shadow:0 1px 3px rgba(0,0,0,.04),inset 0 -1px 0 rgba(0,0,0,.10);}
+  .ssd-garage:hover,.ssd-garage:active{background:rgba(139,0,0,.04);}
+  .ssd-garage-left{display:flex;align-items:center;gap:12px;}
+  .ssd-garage-icon{width:42px;height:42px;background:#8B0000;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
   .ssd-garage-icon img{width:22px;height:22px;object-fit:contain;filter:brightness(0) invert(1);}
   .ssd-garage-info{flex:1;}
-  .ssd-garage-label{display:block;font-family:'Inter',Arial,sans-serif;font-size:9px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:#BBBBB9;}
-  .ssd-garage-val{display:block;font-family:'Inter',Arial,sans-serif;font-size:15px;font-weight:800;color:#1A1A1A;margin-top:2px;}
-  .ssd-garage-arr{font-size:16px;color:#CCCCCA;flex-shrink:0;}
+  .ssd-garage-label{display:block;font-family:'Montserrat',sans-serif;font-size:9px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:#8B0000;margin-bottom:2px;}
+  .ssd-garage-val{display:block;font-family:'Montserrat',sans-serif;font-size:15px;font-weight:800;letter-spacing:-.2px;color:#1a1a1a;}
+  .ssd-garage-arr{color:rgba(0,0,0,.25);flex-shrink:0;display:flex;}
+  /* Nav */
   .ssd-nav{flex:1;overflow-y:auto;overflow-x:hidden;background:#fff;}
-  .ssd-section{padding:14px 20px 5px;font-family:'Inter',Arial,sans-serif;font-size:9px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:#C0BEBE;}
-  .ssd-item{display:flex;align-items:center;justify-content:space-between;padding:15px 20px;font-family:'Inter',Arial,sans-serif;font-size:16px;font-weight:700;letter-spacing:.2px;color:#1A1A1A;text-decoration:none;border-bottom:1px solid #F2F1EF;background:#fff;cursor:pointer;width:100%;text-align:left;border-left:none;border-right:none;border-top:none;transition:background .15s;}
-  .ssd-item:hover{background:#F7F6F4;}
-  .ssd-item.ssd-red{color:#8B0000;}
-  .ssd-item-arr{font-size:14px;color:#CCCCCA;flex-shrink:0;transition:transform .3s cubic-bezier(.22,1,.36,1);display:inline-block;}
-  .ssd-item.ssd-open .ssd-item-arr{transform:rotate(90deg);}
-  .ssd-sub{display:grid;grid-template-rows:0fr;background:#303647;transition:grid-template-rows 540ms cubic-bezier(.22,1,.36,1);}
+  .ssd-section{display:flex;align-items:center;position:relative;z-index:1;background:#2d2d2d;box-shadow:inset 0 2px 0 rgba(255,255,255,.12),inset 0 -2px 0 rgba(0,0,0,.5);padding:12px 20px 12px 30px;}
+  .ssd-section span{font-family:'Oswald',sans-serif;font-weight:800;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.92);text-shadow:0 1px 2px rgba(0,0,0,.6);}
+  .ssd-item{display:flex;align-items:center;justify-content:space-between;padding:14px 20px 14px 17px;background:#fff;border-bottom:1px solid rgba(0,0,0,.09);border-left:3px solid transparent;border-right:none;border-top:none;cursor:pointer;width:100%;text-align:left;transition:background .1s ease,border-left-color .15s ease;box-shadow:0 1px 3px rgba(0,0,0,.04),inset 0 -1px 0 rgba(0,0,0,.10);text-decoration:none;color:inherit;}
+  .ssd-item:hover,.ssd-item.ssd-active{background:rgba(0,0,0,.03);border-left-color:#8B0000;}
+  .ssd-item:active{background:rgba(0,0,0,.05);}
+  .ssd-item.ssd-open{border-left-color:#8B0000;}
+  .ssd-item-text{display:flex;flex-direction:column;gap:2px;}
+  .ssd-item-label{font-family:'Montserrat',sans-serif;font-size:14px;font-weight:700;letter-spacing:-.1px;color:#1a1a1a;line-height:1.2;}
+  .ssd-item-desc{font-family:'Inter',sans-serif;font-size:10.5px;font-weight:400;color:rgba(0,0,0,.38);letter-spacing:.1px;line-height:1.3;}
+  .ssd-item-arr{color:rgba(0,0,0,.2);flex-shrink:0;display:inline-flex;transition:transform .3s cubic-bezier(.22,1,.36,1);}
+  .ssd-item.ssd-open .ssd-item-arr{transform:rotate(180deg);}
+  /* Submenu */
+  .ssd-sub{display:grid;grid-template-rows:0fr;background:#2d2d2d;transition:grid-template-rows 420ms cubic-bezier(.22,1,.36,1);}
   .ssd-sub.ssd-sub-open{grid-template-rows:1fr;}
-  .ssd-sub-inner{overflow:hidden;}
-  .ssd-sub-label{display:block;padding:11px 20px 4px 28px;font-family:'Inter',Arial,sans-serif;font-size:8px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.30);}
-  .ssd-sub-item{display:flex;align-items:center;gap:10px;padding:12px 20px 12px 28px;font-family:'Inter',Arial,sans-serif;font-size:15px;font-weight:600;color:rgba(255,255,255,.75);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.06);transition:color .15s,background .15s;}
-  .ssd-sub-item:last-child{border-bottom:none;margin-bottom:6px;}
-  .ssd-sub-item:hover{color:#fff;background:rgba(255,255,255,.06);}
-  .ssd-sub-item::before{content:'';width:4px;height:4px;background:#8B0000;flex-shrink:0;}
-  .ssd-sub-top-line{height:2px;background:#8B0000;flex-shrink:0;}
-  .ssd-ctas{padding:14px 16px;background:#FAFAF8;border-top:1px solid #ECEAE6;flex-shrink:0;display:flex;flex-direction:column;gap:8px;}
-  .ssd-cta-red{display:block;text-align:center;text-decoration:none;background:#8B0000;color:#fff;font-family:'Inter',Arial,sans-serif;font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:14px;border:none;cursor:pointer;transition:background .2s;}
-  .ssd-cta-red:hover{background:#700000;}
-  .ssd-cta-outline{display:block;text-align:center;text-decoration:none;background:transparent;color:#8B0000;font-family:'Inter',Arial,sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:13px;border:1.5px solid #D4C0C0;cursor:pointer;transition:border-color .2s;}
-  .ssd-cta-outline:hover{border-color:#8B0000;}
-  .ssd-contact{text-align:center;font-family:'Inter',Arial,sans-serif;font-size:11px;color:#BBBBBB;letter-spacing:.3px;}
+  .ssd-sub-inner{overflow:hidden;min-height:0;position:relative;}
+  .ssd-sub-bar{height:2px;background:#8B0000;flex-shrink:0;}
+  .ssd-sub-bar.ss-drawn{animation:ssDrawRight 400ms cubic-bezier(.22,1,.36,1) 30ms both;}
+  .ssd-scan-line{position:absolute;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent 0%,#8B0000 40%,rgba(255,100,100,.6) 60%,transparent 100%);top:2px;z-index:5;pointer-events:none;animation:ssScanDown 550ms ease-out 60ms forwards;}
+  .ssd-sub-label{display:block;font-family:'Oswald',sans-serif;font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.92);background:#1d1d1d;border-top:2px solid #000;border-bottom:1.5px solid rgba(255,255,255,.18);text-shadow:0 1px 2px rgba(0,0,0,.6);padding:15px 20px 15px 30px;}
+  .ssd-sub-label.ss-fadein{animation:ssFadeUpIn 300ms cubic-bezier(.22,1,.36,1) both;}
+  .ssd-sub-item{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;font-family:'Inter',sans-serif;font-size:13px;font-weight:500;color:rgba(255,255,255,.82);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.05);transition:background .12s ease;}
+  .ssd-sub-item:last-of-type{margin-bottom:6px;}
+  .ssd-sub-item:hover,.ssd-sub-item:active{background:rgba(139,0,0,.40);}
+  .ssd-sub-item.ss-slidein{animation:ssSlideInLeft 320ms cubic-bezier(.22,1,.36,1) both;}
+  .ssd-sub-spacer{height:6px;background:#2d2d2d;}
+  /* Drawer footer */
+  .ssd-footer{background:#1a1a1f;padding:20px 20px 38px;flex-shrink:0;}
+  .ssd-brand-line{display:flex;align-items:center;gap:6px;margin-bottom:16px;}
+  .ssd-brand-dot{width:5px;height:5px;background:#8B0000;flex-shrink:0;}
+  .ssd-brand-text{font-family:'Montserrat',sans-serif;font-weight:800;font-size:8.5px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.38);}
+  .ssd-footer-btns{display:flex;flex-direction:column;gap:8px;}
+  .ssd-cta-red{display:flex;align-items:center;justify-content:center;gap:8px;height:44px;background:#8B0000;color:#fff;font-family:'Montserrat',sans-serif;font-weight:800;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;text-decoration:none;border:none;cursor:pointer;}
+  .ssd-cta-outline{display:flex;align-items:center;justify-content:center;gap:8px;height:44px;border:1.5px solid rgba(255,255,255,.18);color:rgba(255,255,255,.72);font-family:'Montserrat',sans-serif;font-weight:700;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;text-decoration:none;background:transparent;cursor:pointer;}
+  .ssd-contact{margin-top:12px;text-align:center;font-family:'Inter',sans-serif;font-size:11px;color:rgba(255,255,255,.28);}
   @media(prefers-reduced-motion:reduce){#ss-page-wrap,.ss-drawer,.ss-drawer-ov,.ssd-sub{transition:none!important;}}
 
   @media(max-width:960px){
@@ -349,67 +395,108 @@
   </div>
 </footer>`;
 
+  var ssChevR = '<svg width="8" height="14" viewBox="0 0 8 14" fill="none" stroke="rgba(0,0,0,0.2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1l6 6-6 6"/></svg>';
+  var ssChevD = '<svg width="11" height="7" viewBox="0 0 11 7" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1 5.5 6 10 1" stroke="rgba(0,0,0,0.28)"/></svg>';
+  var ssChevSub = '<svg width="6" height="10" viewBox="0 0 8 14" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1l6 6-6 6"/></svg>';
+
   var ssDrawerHTML =
     '<div class="ss-drawer" id="ssDrawer" aria-label="Mobile navigation" aria-hidden="true">'+
-      '<div class="ssd-close-row">'+
-        '<button class="ssd-close" id="ssDrawerClose">'+
-          '<svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>'+
-          'Close menu'+
-        '</button>'+
-      '</div>'+
-      '<button class="ssd-garage" id="ss-mob-garage-btn">'+
-        '<div class="ssd-garage-icon">'+icoTruck+'</div>'+
-        '<div class="ssd-garage-info">'+
-          '<span class="ssd-garage-label">My Garage</span>'+
-          '<span class="ssd-garage-val" id="ssMobGarageVeh">Set your truck</span>'+
-        '</div>'+
-        '<span class="ssd-garage-arr" aria-hidden="true">&#8250;</span>'+
-      '</button>'+
-      '<div class="ssd-nav">'+
-        '<div class="ssd-section">Navigate</div>'+
-        '<a href="/" class="ssd-item" target="_top">Home<span class="ssd-item-arr" aria-hidden="true">&#8250;</span></a>'+
-        '<a href="/inside-3js" class="ssd-item" target="_top">Inside 3J\'s<span class="ssd-item-arr" aria-hidden="true">&#8250;</span></a>'+
-        '<a href="/body-paint-repairs" class="ssd-item" target="_top">Body &amp; Paint<span class="ssd-item-arr" aria-hidden="true">&#8250;</span></a>'+
-        '<button class="ssd-item" id="ssd-acc-btn" aria-expanded="false">Truck Accessories<span class="ssd-item-arr" aria-hidden="true">&#8250;</span></button>'+
-        '<div class="ssd-sub" id="ssd-acc-sub">'+
-          '<div class="ssd-sub-inner">'+
-            '<div class="ssd-sub-top-line"></div>'+
-            '<span class="ssd-sub-label">Bed Protection</span>'+
-            '<a href="/rhino-liner" class="ssd-sub-item" target="_top">Rhino Liner</a>'+
-            '<a href="/floor-liners" class="ssd-sub-item" target="_top">Floor Liners</a>'+
-            '<span class="ssd-sub-label">Covers &amp; Steps</span>'+
-            '<a href="/tonneau-covers" class="ssd-sub-item" target="_top">Tonneau Covers</a>'+
-            '<a href="/steps-running-boards" class="ssd-sub-item" target="_top">Steps &amp; Running Boards</a>'+
-            '<a href="/towing-hitches" class="ssd-sub-item" target="_top">Towing &amp; Hitches</a>'+
-            '<a href="/lighting" class="ssd-sub-item" target="_top">Lighting</a>'+
-            '<a href="/headache-racks" class="ssd-sub-item" target="_top">Headache Racks</a>'+
+      '<div style="position:relative;height:100%;overflow:hidden;">'+
+        '<div class="ssd-scroll" id="ssdScroll">'+
+          '<div class="ssd-header">'+
+            '<span class="ssd-menu-label">Menu</span>'+
+            '<button class="ssd-x" id="ssDrawerClose" aria-label="Close menu">&#x2715;</button>'+
+          '</div>'+
+          '<div class="ssd-spacer"></div>'+
+          '<div class="ssd-divider"></div>'+
+          '<div class="ssd-editorial" id="ssdEditorial">'+
+            '<div class="ssd-editorial-top-bar"></div>'+
+            '<div class="ssd-editorial-body">'+
+              '<div class="ssd-eyebrow">Body &amp; Paint &middot; Signal Hill &middot; Est. 1995</div>'+
+              '<div class="ssd-headline">We Restore.<br><span>You Drive.</span></div>'+
+              '<div class="ssd-em-dash"></div>'+
+              '<div class="ssd-tagline"><span id="ssdTagwriter"></span><span class="ssd-tagline-cursor">&thinsp;</span></div>'+
+              '<div class="ssd-ed-ctas">'+
+                '<a href="https://www.carwise.com/online-photo-estimate/3js-autobody-paint-inc-signal-hill-ca-90755/479382?source=shop.profile&referer=estimate.cccone.com" class="ssd-ed-btn-red ss-sheen-red" target="_top">'+
+                  '<span>Free Estimate</span>'+
+                  '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>'+
+                '</a>'+
+                '<a href="tel:+15624246744" class="ssd-ed-btn-phone" target="_top">'+
+                  '<span>562-424-6744</span>'+
+                  '<svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.63A2 2 0 012 .18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>'+
+                '</a>'+
+              '</div>'+
+            '</div>'+
+          '</div>'+
+          '<div class="ssd-divider"></div>'+
+          '<button class="ssd-garage" id="ss-mob-garage-btn">'+
+            '<div class="ssd-garage-left">'+
+              '<div class="ssd-garage-icon">'+icoTruck+'</div>'+
+              '<div class="ssd-garage-info">'+
+                '<span class="ssd-garage-label">My Garage</span>'+
+                '<span class="ssd-garage-val" id="ssMobGarageVeh">Select Your Vehicle</span>'+
+              '</div>'+
+            '</div>'+
+            '<span class="ssd-garage-arr">'+ssChevR+'</span>'+
+          '</button>'+
+          '<div class="ssd-nav">'+
+            '<div class="ssd-section"><span>Navigate</span></div>'+
+            '<a href="/" class="ssd-item" target="_top"><div class="ssd-item-text"><span class="ssd-item-label">Home</span><span class="ssd-item-desc">Start here</span></div><span class="ssd-item-arr">'+ssChevR+'</span></a>'+
+            '<a href="/inside-3js" class="ssd-item" target="_top"><div class="ssd-item-text"><span class="ssd-item-label">Inside 3J\'s</span><span class="ssd-item-desc">Our story &amp; team</span></div><span class="ssd-item-arr">'+ssChevR+'</span></a>'+
+            '<a href="/body-paint-repairs" class="ssd-item" target="_top"><div class="ssd-item-text"><span class="ssd-item-label">Body &amp; Paint</span><span class="ssd-item-desc">Collision repair &middot; paint matching</span></div><span class="ssd-item-arr">'+ssChevR+'</span></a>'+
+            '<button class="ssd-item" id="ssd-acc-btn" aria-expanded="false"><div class="ssd-item-text"><span class="ssd-item-label">Truck Accessories</span><span class="ssd-item-desc">Liners, covers, steps &amp; more</span></div><span class="ssd-item-arr" id="ssd-acc-arr">'+ssChevD+'</span></button>'+
+            '<div class="ssd-sub" id="ssd-acc-sub">'+
+              '<div class="ssd-sub-inner">'+
+                '<div class="ssd-sub-bar" id="ssd-acc-bar"></div>'+
+                '<span class="ssd-sub-label">Bed Protection</span>'+
+                '<a href="/rhino-liner" class="ssd-sub-item" target="_top">Rhino Liner'+ssChevSub+'</a>'+
+                '<a href="/floor-liners" class="ssd-sub-item" target="_top">Floor Liners'+ssChevSub+'</a>'+
+                '<span class="ssd-sub-label">Covers &amp; Steps</span>'+
+                '<a href="/tonneau-covers" class="ssd-sub-item" target="_top">Tonneau Covers'+ssChevSub+'</a>'+
+                '<a href="/steps-running-boards" class="ssd-sub-item" target="_top">Steps &amp; Running Boards'+ssChevSub+'</a>'+
+                '<a href="/towing-hitches" class="ssd-sub-item" target="_top">Towing &amp; Hitches'+ssChevSub+'</a>'+
+                '<a href="/lighting" class="ssd-sub-item" target="_top">Lighting'+ssChevSub+'</a>'+
+                '<a href="/headache-racks" class="ssd-sub-item" target="_top">Headache Racks'+ssChevSub+'</a>'+
+                '<div class="ssd-sub-spacer"></div>'+
+              '</div>'+
+            '</div>'+
+            '<button class="ssd-item" id="ssd-areas-btn" aria-expanded="false"><div class="ssd-item-text"><span class="ssd-item-label">Areas We Service</span><span class="ssd-item-desc">Greater Signal Hill area</span></div><span class="ssd-item-arr" id="ssd-areas-arr">'+ssChevD+'</span></button>'+
+            '<div class="ssd-sub" id="ssd-areas-sub">'+
+              '<div class="ssd-sub-inner">'+
+                '<div class="ssd-sub-bar" id="ssd-areas-bar"></div>'+
+                '<span class="ssd-sub-label">South Bay</span>'+
+                '<a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_LONG_BEACH.html" class="ssd-sub-item" target="_top">Long Beach'+ssChevSub+'</a>'+
+                '<a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_TORRANCE.html" class="ssd-sub-item" target="_top">Torrance'+ssChevSub+'</a>'+
+                '<a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_CARSON.html" class="ssd-sub-item" target="_top">Carson'+ssChevSub+'</a>'+
+                '<a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_LAKEWOOD.html" class="ssd-sub-item" target="_top">Lakewood'+ssChevSub+'</a>'+
+                '<span class="ssd-sub-label">Southeast LA</span>'+
+                '<a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_COMPTON.html" class="ssd-sub-item" target="_top">Compton'+ssChevSub+'</a>'+
+                '<a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_DOWNEY.html" class="ssd-sub-item" target="_top">Downey'+ssChevSub+'</a>'+
+                '<a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_BELLFLOWER.html" class="ssd-sub-item" target="_top">Bellflower'+ssChevSub+'</a>'+
+                '<div class="ssd-sub-spacer"></div>'+
+              '</div>'+
+            '</div>'+
+            '<div class="ssd-section"><span>More</span></div>'+
+            '<a href="/bundles" class="ssd-item" target="_top"><div class="ssd-item-text"><span class="ssd-item-label">Bundles &amp; Packages</span><span class="ssd-item-desc">Best value combinations</span></div><span class="ssd-item-arr">'+ssChevR+'</span></a>'+
+            '<a href="/shop" class="ssd-item" target="_top"><div class="ssd-item-text"><span class="ssd-item-label">Shop</span><span class="ssd-item-desc">Browse all products</span></div><span class="ssd-item-arr">'+ssChevR+'</span></a>'+
+            '<a href="/contact" class="ssd-item" target="_top"><div class="ssd-item-text"><span class="ssd-item-label">Contact Us</span><span class="ssd-item-desc">Get in touch &middot; 562-424-6744</span></div><span class="ssd-item-arr">'+ssChevR+'</span></a>'+
+            '<a href="/FAQ_PAGE_V2" class="ssd-item" target="_top"><div class="ssd-item-text"><span class="ssd-item-label">FAQ</span><span class="ssd-item-desc">Common questions answered</span></div><span class="ssd-item-arr">'+ssChevR+'</span></a>'+
+          '</div>'+
+          '<div class="ssd-footer" id="ssdFooter">'+
+            '<div class="ssd-brand-line"><div class="ssd-brand-dot"></div><span class="ssd-brand-text">3J\'S AUTO BODY &middot; RHINO LININGS OF SIGNAL HILL</span></div>'+
+            '<div class="ssd-footer-btns">'+
+              '<a href="https://www.3jsautobody.com/rhino-lining-quote" class="ssd-cta-red ss-sheen-red" target="_top">'+
+                '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-10 2a2 2 0 100 4 2 2 0 000-4z"/></svg>'+
+                'Bed-Liner Quote'+
+              '</a>'+
+              '<a href="https://www.carwise.com/online-photo-estimate/3js-autobody-paint-inc-signal-hill-ca-90755/479382?source=shop.profile&referer=estimate.cccone.com" class="ssd-cta-outline ss-sheen-outline" target="_top">'+
+                '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>'+
+                'Free Auto Body Estimate'+
+              '</a>'+
+            '</div>'+
+            '<div class="ssd-contact">562-424-6744 &nbsp;&middot;&nbsp; Mon&ndash;Fri 8AM&ndash;5PM</div>'+
           '</div>'+
         '</div>'+
-        '<button class="ssd-item" id="ssd-areas-btn" aria-expanded="false">Areas We Service<span class="ssd-item-arr" aria-hidden="true">&#8250;</span></button>'+
-        '<div class="ssd-sub" id="ssd-areas-sub">'+
-          '<div class="ssd-sub-inner">'+
-            '<div class="ssd-sub-top-line"></div>'+
-            '<span class="ssd-sub-label">South Bay</span>'+
-            '<a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_LONG_BEACH.html" class="ssd-sub-item" target="_top">Long Beach</a>'+
-            '<a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_TORRANCE.html" class="ssd-sub-item" target="_top">Torrance</a>'+
-            '<a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_CARSON.html" class="ssd-sub-item" target="_top">Carson</a>'+
-            '<a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_LAKEWOOD.html" class="ssd-sub-item" target="_top">Lakewood</a>'+
-            '<span class="ssd-sub-label">Southeast LA</span>'+
-            '<a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_COMPTON.html" class="ssd-sub-item" target="_top">Compton</a>'+
-            '<a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_DOWNEY.html" class="ssd-sub-item" target="_top">Downey</a>'+
-            '<a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_BELLFLOWER.html" class="ssd-sub-item" target="_top">Bellflower</a>'+
-          '</div>'+
-        '</div>'+
-        '<div class="ssd-section">More</div>'+
-        '<a href="/bundles" class="ssd-item" target="_top">Bundles &amp; Packages<span class="ssd-item-arr" aria-hidden="true">&#8250;</span></a>'+
-        '<a href="/shop" class="ssd-item" target="_top">Shop<span class="ssd-item-arr" aria-hidden="true">&#8250;</span></a>'+
-        '<a href="/contact" class="ssd-item" target="_top">Contact Us<span class="ssd-item-arr" aria-hidden="true">&#8250;</span></a>'+
-        '<a href="/FAQ_PAGE_V2" class="ssd-item" target="_top">FAQ<span class="ssd-item-arr" aria-hidden="true">&#8250;</span></a>'+
-      '</div>'+
-      '<div class="ssd-ctas">'+
-        '<a href="https://www.3jsautobody.com/rhino-lining-quote" class="ssd-cta-red" target="_top">Bed-Liner Quote</a>'+
-        '<a href="https://www.carwise.com/online-photo-estimate/3js-autobody-paint-inc-signal-hill-ca-90755/479382?source=shop.profile&referer=estimate.cccone.com" class="ssd-cta-outline" target="_top">Free Auto Body Estimate</a>'+
-        '<div class="ssd-contact">562-424-6744 &nbsp;&middot;&nbsp; Mon&ndash;Fri 8AM&ndash;5PM</div>'+
       '</div>'+
     '</div>'+
     '<div class="ss-drawer-ov" id="ssDrawerOv"></div>';
@@ -463,37 +550,58 @@
     var ov=document.getElementById('ssDrawerOv');
     var closeBtn=document.getElementById('ssDrawerClose');
 
+    var ssTwTimer=null, ssTwInterval=null;
+
+    function ssTwStart(){
+      var el=document.getElementById('ssdTagwriter');
+      if(!el) return;
+      clearTimeout(ssTwTimer); clearInterval(ssTwInterval);
+      el.textContent='';
+      var text='“Meeting great people by accident”';
+      var i=0;
+      ssTwTimer=setTimeout(function(){
+        ssTwInterval=setInterval(function(){
+          i++; el.textContent=text.slice(0,i);
+          if(i>=text.length) clearInterval(ssTwInterval);
+        }, 38);
+      }, 280);
+    }
+
+    function ssTwStop(){
+      clearTimeout(ssTwTimer); clearInterval(ssTwInterval);
+      var el=document.getElementById('ssdTagwriter');
+      if(el) el.textContent='';
+    }
+
     function ssOpenDrawer(){
       document.body.classList.remove('ss-menu-closing');
       document.body.classList.add('ss-menu-open');
       if(drawer) drawer.setAttribute('aria-hidden','false');
       if(burger){ burger.classList.add('ss-open'); burger.setAttribute('aria-expanded','true'); }
       document.body.style.overflow='hidden';
-      // Reset items to hidden immediately
       if(drawer){
-        var items=drawer.querySelectorAll('.ssd-close-row,.ssd-garage,.ssd-section,.ssd-item,.ssd-ctas');
+        var items=drawer.querySelectorAll('.ssd-editorial,.ssd-garage,.ssd-section,.ssd-item,.ssd-footer');
         items.forEach(function(el){
-          el.style.opacity='0'; el.style.transform='translateY(18px)'; el.style.transition='none';
+          el.style.opacity='0'; el.style.transform='translateX(-12px)'; el.style.transition='none';
         });
-        // Start revealing text halfway through page animation (~260ms)
         setTimeout(function(){
           items.forEach(function(el,i){
             setTimeout(function(){
               el.style.transition='opacity .5s ease,transform .6s cubic-bezier(.22,1,.36,1)';
-              el.style.opacity='1'; el.style.transform='translateY(0)';
+              el.style.opacity='1'; el.style.transform='translateX(0)';
             }, i*45);
           });
+          ssTwStart();
         }, 260);
       }
     }
 
     function ssCloseDrawer(){
-      // Immediately hide items so they don't show on next open before stagger
+      ssTwStop();
       if(drawer){
-        var items=drawer.querySelectorAll('.ssd-close-row,.ssd-garage,.ssd-section,.ssd-item,.ssd-ctas');
-        items.forEach(function(el){ el.style.opacity='0'; el.style.transform='translateY(18px)'; el.style.transition='none'; });
+        var items=drawer.querySelectorAll('.ssd-editorial,.ssd-garage,.ssd-section,.ssd-item,.ssd-footer');
+        items.forEach(function(el){ el.style.opacity='0'; el.style.transform='translateX(-12px)'; el.style.transition='none'; });
       }
-      // Switch class: add closing before removing open to prevent snap
       document.body.classList.add('ss-menu-closing');
       requestAnimationFrame(function(){ requestAnimationFrame(function(){
         document.body.classList.remove('ss-menu-open');
@@ -511,19 +619,44 @@
     if(closeBtn) closeBtn.addEventListener('click',ssCloseDrawer);
     document.addEventListener('keydown',function(e){ if(e.key==='Escape') ssCloseDrawer(); });
 
-    // Accordion toggles
-    function initAcc(btnId,subId){
+    // Accordion toggles with cinematic animations
+    function initAcc(btnId,subId,barId){
       var btn=document.getElementById(btnId);
       var sub=document.getElementById(subId);
+      var bar=barId?document.getElementById(barId):null;
       if(!btn||!sub) return;
       btn.addEventListener('click',function(){
         var open=sub.classList.toggle('ssd-sub-open');
         btn.classList.toggle('ssd-open',open);
         btn.setAttribute('aria-expanded',open?'true':'false');
+        if(open){
+          // Draw bar
+          if(bar){bar.classList.remove('ss-drawn');void bar.offsetWidth;bar.classList.add('ss-drawn');}
+          // Scan line
+          var existing=sub.querySelector('.ssd-scan-line');
+          if(existing) existing.remove();
+          var scan=document.createElement('div');
+          scan.className='ssd-scan-line';
+          var inner=sub.querySelector('.ssd-sub-inner');
+          if(inner) inner.appendChild(scan);
+          setTimeout(function(){if(scan.parentNode)scan.remove();},700);
+          // Fade-in sub-labels
+          sub.querySelectorAll('.ssd-sub-label').forEach(function(el,i){
+            el.classList.remove('ss-fadein');void el.offsetWidth;
+            el.style.animationDelay=(i*80+80)+'ms';
+            el.classList.add('ss-fadein');
+          });
+          // Slide-in sub-items
+          sub.querySelectorAll('.ssd-sub-item').forEach(function(el,i){
+            el.classList.remove('ss-slidein');void el.offsetWidth;
+            el.style.animationDelay=(i*45+100)+'ms';
+            el.classList.add('ss-slidein');
+          });
+        }
       });
     }
-    initAcc('ssd-acc-btn','ssd-acc-sub');
-    initAcc('ssd-areas-btn','ssd-areas-sub');
+    initAcc('ssd-acc-btn','ssd-acc-sub','ssd-acc-bar');
+    initAcc('ssd-areas-btn','ssd-areas-sub','ssd-areas-bar');
   })();
 
   /* ════════ BUTTERY INERTIA SCROLL (desktop only) ════════ */

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drawer Preview · 3J's</title>
+  <style>
+    html { overscroll-behavior: none; }
+    body { overflow-x: hidden; margin:0; font-family:'Inter',Arial,sans-serif; }
+    .demo-hero{min-height:100vh;background:#1a1a1a;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 20px;}
+    .demo-hero h1{font-family:'Montserrat',sans-serif;font-weight:900;font-size:32px;text-transform:uppercase;letter-spacing:-1px;margin:0 0 12px;}
+    .demo-hero h1 span{color:#8B0000;}
+    .demo-hero p{color:rgba(255,255,255,.6);max-width:420px;line-height:1.6;}
+    .demo-note{margin-top:30px;font-size:13px;color:#8B0000;font-weight:700;letter-spacing:1px;text-transform:uppercase;}
+  </style>
+</head>
+<body>
+  <section class="demo-hero">
+    <h1>We Restore. <span>You Drive.</span></h1>
+    <p>This is a local preview page. Shrink your browser to mobile width (or use device toolbar in DevTools) and tap the hamburger ☰ in the top bar to test the new drawer.</p>
+    <div class="demo-note">Tap ☰ top-right to open the menu</div>
+  </section>
+
+  <!-- Loads the LOCAL site-shell.js from this same folder -->
+  <script src="site-shell.js"></script>
+</body>
+</html>
