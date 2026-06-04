@@ -339,6 +339,9 @@
     body.sn-menu-open #sn-page-wrap,body.sn-menu-closing #sn-page-wrap{min-height:0;}
     body.sn-menu-open #sn-page-wrap{animation:snPageOpen .52s cubic-bezier(0.22,1,0.36,1) forwards;overflow:hidden;pointer-events:none;height:100vh;height:100dvh;}
     body.sn-menu-closing #sn-page-wrap{animation:snPageClose .46s cubic-bezier(0.22,1,0.36,1) forwards;overflow:hidden;height:100vh;height:100dvh;}
+    /* dark overlay over the pushed page card — keeps it consistent across pages */
+    .sn-page-dim{position:absolute;inset:0;background:rgba(8,10,18,.6);opacity:0;pointer-events:none;transition:opacity .42s ease;z-index:2147483000;}
+    body.sn-menu-open .sn-page-dim{opacity:1;}
     /* ── Overlay ── */
     .sn-overlay{position:fixed;inset:0;z-index:3;background:rgba(0,0,0,0.45);opacity:0;pointer-events:none;transition:opacity 0.44s ease;}
     body.sn-menu-open .sn-overlay{opacity:1;pointer-events:all;}
@@ -385,7 +388,7 @@
     .snd-garage-icon img{width:28px;height:28px;object-fit:contain;}
     .snd-garage-val{flex:1;font-family:'Montserrat',Arial,sans-serif;font-size:15px;font-weight:800;letter-spacing:-.2px;color:#1a1a1a;}
     .snd-garage-val.snd-wave span{display:inline-block;animation:sndGwave 5s ease-in-out infinite;}
-    @keyframes sndGwave{0%,20%,100%{transform:translateY(0);}10%{transform:translateY(-3px);}}
+    @keyframes sndGwave{0%,20%,100%{transform:translateY(0);}10%{transform:translateY(-5px);}}
     .snd-garage-arr{color:rgba(0,0,0,.25);flex-shrink:0;display:flex;}
     /* Nav */
     .snd-nav{background:#fff;}
@@ -785,6 +788,8 @@
   snWrap.id = 'sn-page-wrap';
   var snNodes = Array.prototype.slice.call(document.body.childNodes);
   snNodes.forEach(function(n){ snWrap.appendChild(n); });
+  // Dark overlay over the page card (sits inside wrap so it scales/rounds with it)
+  snWrap.insertAdjacentHTML('beforeend','<div class="sn-page-dim"></div>');
   document.body.appendChild(snWrap);
   // Add overlay + drawer outside the wrap (so they aren't scaled)
   document.body.insertAdjacentHTML('beforeend', drawerHTML);
