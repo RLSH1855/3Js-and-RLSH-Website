@@ -103,14 +103,14 @@
 
   /* ── Page wrap — sits ON TOP of drawer; lifts, slides right, scales ── */
   #ss-page-wrap{position:relative;z-index:5;min-height:100vh;will-change:transform;transform-origin:50% 50vh;}
-  body.ss-menu-open,body.ss-menu-closing{background:#f5f5f5;}
+  body.ss-menu-open,body.ss-menu-closing{background:#ffffff;}
   @keyframes ssPageOpen{
     0%  {transform:translateX(0) scale(1);border-radius:0;box-shadow:none;}
     7%  {transform:translateX(6px) scale(1.02);}
-    100%{transform:translateX(calc(min(320px,86vw) - 22px)) scale(0.80);border-radius:16px;box-shadow:-16px 0 52px rgba(0,0,0,.30),-2px 0 8px rgba(0,0,0,.12);}
+    100%{transform:translateX(calc(min(360px,90vw) - 22px)) scale(0.80);border-radius:16px;box-shadow:-16px 0 52px rgba(0,0,0,.30),-2px 0 8px rgba(0,0,0,.12);}
   }
   @keyframes ssPageClose{
-    0%  {transform:translateX(calc(min(320px,86vw) - 22px)) scale(0.80);border-radius:16px;box-shadow:-16px 0 52px rgba(0,0,0,.30),-2px 0 8px rgba(0,0,0,.12);}
+    0%  {transform:translateX(calc(min(360px,90vw) - 22px)) scale(0.80);border-radius:16px;box-shadow:-16px 0 52px rgba(0,0,0,.30),-2px 0 8px rgba(0,0,0,.12);}
     100%{transform:translateX(0) scale(1);border-radius:0;box-shadow:none;}
   }
   body.ss-menu-open #ss-page-wrap,body.ss-menu-closing #ss-page-wrap{min-height:0;}
@@ -121,7 +121,7 @@
   body.ss-menu-open .ss-drawer-ov{opacity:1;pointer-events:all;}
   body.ss-menu-closing .ss-drawer-ov{opacity:0;pointer-events:none;}
   /* ── Drawer panel — behind page, items start hidden ── */
-  .ss-drawer{position:fixed;left:0;top:0;height:100%;width:min(320px,86vw);background:#F7F6F4;z-index:4;display:flex;flex-direction:column;overflow:hidden;}
+  .ss-drawer{position:fixed;left:0;top:0;bottom:0;height:100%;width:min(360px,90vw);background:#fff;z-index:4;display:flex;flex-direction:column;overflow:hidden;}
   /* Close: blur + move left with page */
   body.ss-menu-closing .ss-drawer{filter:blur(6px);transform:translateX(-50px);opacity:0;transition:filter .12s ease,transform .46s cubic-bezier(.22,1,.36,1),opacity .32s ease .06s;}
   /* Cinematic keyframes */
@@ -134,15 +134,14 @@
   .ss-sheen-red::after{content:'';position:absolute;top:-50%;left:-120px;width:70px;height:200%;background:linear-gradient(105deg,transparent 20%,rgba(255,255,255,.28) 50%,transparent 80%);animation:ssSheen 2.6s cubic-bezier(.4,0,.6,1) infinite;}
   .ss-sheen-outline{position:relative;overflow:hidden;}
   .ss-sheen-outline::after{content:'';position:absolute;top:-50%;left:-120px;width:70px;height:200%;background:linear-gradient(105deg,transparent 20%,rgba(255,255,255,.14) 50%,transparent 80%);animation:ssSheen 2.6s cubic-bezier(.4,0,.6,1) infinite 1.1s;}
-  /* Floating drawer header */
-  .ssd-header{position:absolute;top:0;left:0;right:0;height:58px;z-index:20;display:flex;align-items:flex-end;justify-content:space-between;padding:0 14px 10px 20px;pointer-events:none;}
+  /* In-flow drawer header bar */
+  .ssd-header{flex-shrink:0;height:46px;display:flex;align-items:center;justify-content:space-between;padding:0 14px 0 20px;background:#fff;border-bottom:1px solid rgba(0,0,0,.08);}
   .ssd-menu-label{font-family:'Montserrat',sans-serif;font-weight:800;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(0,0,0,.22);}
-  .ssd-x{pointer-events:auto;width:28px;height:28px;border:none;cursor:pointer;background:rgba(0,0,0,.08);border-radius:50%;display:flex;align-items:center;justify-content:center;color:rgba(0,0,0,.5);font-size:13px;font-weight:600;font-family:system-ui,sans-serif;}
+  .ssd-x{width:28px;height:28px;border:none;cursor:pointer;background:rgba(0,0,0,.08);border-radius:50%;display:flex;align-items:center;justify-content:center;color:rgba(0,0,0,.5);font-size:13px;font-weight:600;font-family:system-ui,sans-serif;}
   .ssd-x:hover{background:rgba(0,0,0,.15);}
-  /* Drawer scroll container */
-  .ssd-scroll{position:absolute;inset:0;display:flex;flex-direction:column;background:#fff;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;-ms-overflow-style:none;scrollbar-width:none;}
+  /* Drawer scroll container (flexes between header + pinned footer) */
+  .ssd-scroll{flex:1;min-height:0;display:flex;flex-direction:column;background:#fff;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;-ms-overflow-style:none;scrollbar-width:none;}
   .ssd-scroll::-webkit-scrollbar{display:none;}
-  .ssd-spacer{height:60px;flex-shrink:0;}
   .ssd-divider{height:1px;background:rgba(0,0,0,.08);flex-shrink:0;}
   /* Editorial panel */
   .ssd-editorial{position:relative;flex-shrink:0;overflow:hidden;background:#fff;border-bottom:2px solid #8B0000;}
@@ -168,7 +167,7 @@
   .ssd-garage-val{display:block;font-family:'Montserrat',sans-serif;font-size:15px;font-weight:800;letter-spacing:-.2px;color:#1a1a1a;}
   .ssd-garage-arr{color:rgba(0,0,0,.25);flex-shrink:0;display:flex;}
   /* Nav */
-  .ssd-nav{flex:1;overflow-y:auto;overflow-x:hidden;background:#fff;}
+  .ssd-nav{background:#fff;}
   .ssd-section{display:flex;align-items:center;position:relative;z-index:1;background:#2d2d2d;box-shadow:inset 0 2px 0 rgba(255,255,255,.12),inset 0 -2px 0 rgba(0,0,0,.5);padding:12px 20px 12px 30px;}
   .ssd-section span{font-family:'Oswald',sans-serif;font-weight:800;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.92);text-shadow:0 1px 2px rgba(0,0,0,.6);}
   .ssd-item{display:flex;align-items:center;justify-content:space-between;padding:14px 20px 14px 17px;background:#fff;border-bottom:1px solid rgba(0,0,0,.09);border-left:3px solid transparent;border-right:none;border-top:none;cursor:pointer;width:100%;text-align:left;transition:background .1s ease,border-left-color .15s ease;box-shadow:0 1px 3px rgba(0,0,0,.04),inset 0 -1px 0 rgba(0,0,0,.10);text-decoration:none;color:inherit;}
@@ -195,7 +194,7 @@
   .ssd-sub-item.ss-slidein{animation:ssSlideInLeft 320ms cubic-bezier(.22,1,.36,1) both;}
   .ssd-sub-spacer{height:6px;background:#2d2d2d;}
   /* Drawer footer */
-  .ssd-footer{background:#1a1a1f;padding:20px 20px 38px;flex-shrink:0;}
+  .ssd-footer{background:#1a1a1f;padding:16px 20px 20px;flex-shrink:0;}
   .ssd-brand-line{display:flex;align-items:center;gap:6px;margin-bottom:16px;}
   .ssd-brand-dot{width:5px;height:5px;background:#8B0000;flex-shrink:0;}
   .ssd-brand-text{font-family:'Montserrat',sans-serif;font-weight:800;font-size:8.5px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.38);}
@@ -401,14 +400,11 @@
 
   var ssDrawerHTML =
     '<div class="ss-drawer" id="ssDrawer" aria-label="Mobile navigation" aria-hidden="true">'+
-      '<div style="position:absolute;inset:0;overflow:hidden;">'+
-        '<div class="ssd-scroll" id="ssdScroll">'+
-          '<div class="ssd-header">'+
-            '<span class="ssd-menu-label">Menu</span>'+
-            '<button class="ssd-x" id="ssDrawerClose" aria-label="Close menu">&#x2715;</button>'+
-          '</div>'+
-          '<div class="ssd-spacer"></div>'+
-          '<div class="ssd-divider"></div>'+
+      '<div class="ssd-header">'+
+        '<span class="ssd-menu-label">Menu</span>'+
+        '<button class="ssd-x" id="ssDrawerClose" aria-label="Close menu">&#x2715;</button>'+
+      '</div>'+
+      '<div class="ssd-scroll" id="ssdScroll">'+
           '<div class="ssd-editorial" id="ssdEditorial">'+
             '<div class="ssd-editorial-top-bar"></div>'+
             '<div class="ssd-editorial-body">'+
@@ -482,7 +478,8 @@
             '<a href="/contact" class="ssd-item" target="_top"><div class="ssd-item-text"><span class="ssd-item-label">Contact Us</span><span class="ssd-item-desc">Get in touch &middot; 562-424-6744</span></div><span class="ssd-item-arr">'+ssChevR+'</span></a>'+
             '<a href="/FAQ_PAGE_V2" class="ssd-item" target="_top"><div class="ssd-item-text"><span class="ssd-item-label">FAQ</span><span class="ssd-item-desc">Common questions answered</span></div><span class="ssd-item-arr">'+ssChevR+'</span></a>'+
           '</div>'+
-          '<div class="ssd-footer" id="ssdFooter">'+
+        '</div>'+
+        '<div class="ssd-footer" id="ssdFooter">'+
             '<div class="ssd-brand-line"><div class="ssd-brand-dot"></div><span class="ssd-brand-text">3J\'S AUTO BODY &middot; RHINO LININGS OF SIGNAL HILL</span></div>'+
             '<div class="ssd-footer-btns">'+
               '<a href="https://www.3jsautobody.com/rhino-lining-quote" class="ssd-cta-red ss-sheen-red" target="_top">'+
@@ -495,9 +492,7 @@
               '</a>'+
             '</div>'+
             '<div class="ssd-contact">562-424-6744 &nbsp;&middot;&nbsp; Mon&ndash;Fri 8AM&ndash;5PM</div>'+
-          '</div>'+
         '</div>'+
-      '</div>'+
     '</div>'+
     '<div class="ss-drawer-ov" id="ssDrawerOv"></div>';
 

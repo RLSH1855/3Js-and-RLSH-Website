@@ -329,13 +329,13 @@
     @keyframes snPageOpen{
       0%  {transform:translateX(0) scale(1);border-radius:0;box-shadow:none;}
       7%  {transform:translateX(6px) scale(1.02);}
-      100%{transform:translateX(calc(min(320px,86vw) - 22px)) scale(0.80);border-radius:16px;box-shadow:-16px 0 52px rgba(0,0,0,.30),-2px 0 8px rgba(0,0,0,.12);}
+      100%{transform:translateX(calc(min(360px,90vw) - 22px)) scale(0.80);border-radius:16px;box-shadow:-16px 0 52px rgba(0,0,0,.30),-2px 0 8px rgba(0,0,0,.12);}
     }
     @keyframes snPageClose{
-      0%  {transform:translateX(calc(min(320px,86vw) - 22px)) scale(0.80);border-radius:16px;box-shadow:-16px 0 52px rgba(0,0,0,.30),-2px 0 8px rgba(0,0,0,.12);}
+      0%  {transform:translateX(calc(min(360px,90vw) - 22px)) scale(0.80);border-radius:16px;box-shadow:-16px 0 52px rgba(0,0,0,.30),-2px 0 8px rgba(0,0,0,.12);}
       100%{transform:translateX(0) scale(1);border-radius:0;box-shadow:none;}
     }
-    body.sn-menu-open,body.sn-menu-closing{background:#f5f5f5;}
+    body.sn-menu-open,body.sn-menu-closing{background:#ffffff;}
     body.sn-menu-open #sn-page-wrap,body.sn-menu-closing #sn-page-wrap{min-height:0;}
     body.sn-menu-open #sn-page-wrap{animation:snPageOpen .52s cubic-bezier(0.22,1,0.36,1) forwards;overflow:hidden;pointer-events:none;height:100vh;}
     body.sn-menu-closing #sn-page-wrap{animation:snPageClose .46s cubic-bezier(0.22,1,0.36,1) forwards;overflow:hidden;height:100vh;}
@@ -344,7 +344,7 @@
     body.sn-menu-open .sn-overlay{opacity:1;pointer-events:all;}
     body.sn-menu-closing .sn-overlay{opacity:0;pointer-events:none;}
     /* ── Drawer panel — behind page, items start hidden ── */
-    .sn-drawer{position:fixed;left:0;top:0;height:100%;width:min(320px,86vw);background:#F7F6F4;z-index:4;display:flex;flex-direction:column;overflow:hidden;}
+    .sn-drawer{position:fixed;left:0;top:0;bottom:0;height:100%;width:min(360px,90vw);background:#fff;z-index:4;display:flex;flex-direction:column;overflow:hidden;}
     /* Close: blur + move left with page */
     body.sn-menu-closing .sn-drawer{filter:blur(6px);transform:translateX(-50px);opacity:0;transition:filter .12s ease,transform .46s cubic-bezier(0.22,1,0.36,1),opacity .32s ease .06s;}
     /* Cinematic keyframes */
@@ -357,15 +357,14 @@
     .sn-sheen-red::after{content:'';position:absolute;top:-50%;left:-120px;width:70px;height:200%;background:linear-gradient(105deg,transparent 20%,rgba(255,255,255,.28) 50%,transparent 80%);animation:snSheen 2.6s cubic-bezier(.4,0,.6,1) infinite;}
     .sn-sheen-outline{position:relative;overflow:hidden;}
     .sn-sheen-outline::after{content:'';position:absolute;top:-50%;left:-120px;width:70px;height:200%;background:linear-gradient(105deg,transparent 20%,rgba(255,255,255,.14) 50%,transparent 80%);animation:snSheen 2.6s cubic-bezier(.4,0,.6,1) infinite 1.1s;}
-    /* Floating drawer header */
-    .snd-header{position:absolute;top:0;left:0;right:0;height:58px;z-index:20;display:flex;align-items:flex-end;justify-content:space-between;padding:0 14px 10px 20px;pointer-events:none;}
+    /* In-flow drawer header bar */
+    .snd-header{flex-shrink:0;height:46px;display:flex;align-items:center;justify-content:space-between;padding:0 14px 0 20px;background:#fff;border-bottom:1px solid rgba(0,0,0,.08);}
     .snd-menu-label{font-family:'Montserrat',Arial,sans-serif;font-weight:800;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(0,0,0,.22);}
-    .snd-x{pointer-events:auto;width:28px;height:28px;border:none;cursor:pointer;background:rgba(0,0,0,.08);border-radius:50%;display:flex;align-items:center;justify-content:center;color:rgba(0,0,0,.5);font-size:13px;font-weight:600;font-family:system-ui,sans-serif;}
+    .snd-x{width:28px;height:28px;border:none;cursor:pointer;background:rgba(0,0,0,.08);border-radius:50%;display:flex;align-items:center;justify-content:center;color:rgba(0,0,0,.5);font-size:13px;font-weight:600;font-family:system-ui,sans-serif;}
     .snd-x:hover{background:rgba(0,0,0,.15);}
-    /* Drawer scroll container */
-    .snd-scroll{position:absolute;inset:0;display:flex;flex-direction:column;background:#fff;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;-ms-overflow-style:none;scrollbar-width:none;}
+    /* Drawer scroll container (flexes between header + pinned footer) */
+    .snd-scroll{flex:1;min-height:0;display:flex;flex-direction:column;background:#fff;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;-ms-overflow-style:none;scrollbar-width:none;}
     .snd-scroll::-webkit-scrollbar{display:none;}
-    .snd-spacer{height:60px;flex-shrink:0;}
     .snd-divider{height:1px;background:rgba(0,0,0,.08);flex-shrink:0;}
     /* Editorial panel */
     .snd-editorial{position:relative;flex-shrink:0;overflow:hidden;background:#fff;border-bottom:2px solid #8B0000;}
@@ -391,7 +390,7 @@
     .snd-garage-val{display:block;font-family:'Montserrat',Arial,sans-serif;font-size:15px;font-weight:800;letter-spacing:-.2px;color:#1a1a1a;}
     .snd-garage-arr{color:rgba(0,0,0,.25);flex-shrink:0;display:flex;}
     /* Nav */
-    .snd-nav{flex:1;overflow-y:auto;overflow-x:hidden;background:#fff;}
+    .snd-nav{background:#fff;}
     .snd-section{display:flex;align-items:center;position:relative;z-index:1;background:#2d2d2d;box-shadow:inset 0 2px 0 rgba(255,255,255,.12),inset 0 -2px 0 rgba(0,0,0,.5);padding:12px 20px 12px 30px;}
     .snd-section span{font-family:'Oswald',Arial,sans-serif;font-weight:800;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.92);text-shadow:0 1px 2px rgba(0,0,0,.6);}
     .snd-item{display:flex;align-items:center;justify-content:space-between;padding:14px 20px 14px 17px;background:#fff;border-bottom:1px solid rgba(0,0,0,.09);border-left:3px solid transparent;border-right:none;border-top:none;cursor:pointer;width:100%;text-align:left;transition:background .1s ease,border-left-color .15s ease;box-shadow:0 1px 3px rgba(0,0,0,.04),inset 0 -1px 0 rgba(0,0,0,.10);text-decoration:none;color:inherit;}
@@ -418,7 +417,7 @@
     .snd-sub-item.sn-slidein{animation:snSlideInLeft 320ms cubic-bezier(0.22,1,0.36,1) both;}
     .snd-sub-spacer{height:6px;background:#2d2d2d;}
     /* Drawer footer */
-    .snd-footer{background:#1a1a1f;padding:20px 20px 38px;flex-shrink:0;}
+    .snd-footer{background:#1a1a1f;padding:16px 20px 20px;flex-shrink:0;}
     .snd-brand-line{display:flex;align-items:center;gap:6px;margin-bottom:16px;}
     .snd-brand-dot{width:5px;height:5px;background:#8B0000;flex-shrink:0;}
     .snd-brand-text{font-family:'Montserrat',Arial,sans-serif;font-weight:800;font-size:8.5px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.38);}
@@ -704,14 +703,11 @@
 
   var drawerHTML = `
     <div class="sn-drawer" id="sn-drawer" aria-label="Mobile navigation" aria-hidden="true">
-      <div style="position:absolute;inset:0;overflow:hidden;">
-        <div class="snd-scroll" id="sndScroll">
-          <div class="snd-header">
-            <span class="snd-menu-label">Menu</span>
-            <button class="snd-x" id="sn-drawer-close" aria-label="Close menu">&#x2715;</button>
-          </div>
-          <div class="snd-spacer"></div>
-          <div class="snd-divider"></div>
+      <div class="snd-header">
+        <span class="snd-menu-label">Menu</span>
+        <button class="snd-x" id="sn-drawer-close" aria-label="Close menu">&#x2715;</button>
+      </div>
+      <div class="snd-scroll" id="sndScroll">
           <div class="snd-editorial" id="sndEditorial">
             <div class="snd-editorial-top-bar"></div>
             <div class="snd-editorial-body">
@@ -785,7 +781,8 @@
             <a href="https://www.3jsautobody.com/contact-us" class="snd-item"><div class="snd-item-text"><span class="snd-item-label">Contact Us</span><span class="snd-item-desc">Get in touch &middot; 562-424-6744</span></div><span class="snd-item-arr">${snChevR}</span></a>
             <a href="https://www.3jsautobody.com/faq" class="snd-item"><div class="snd-item-text"><span class="snd-item-label">FAQ</span><span class="snd-item-desc">Common questions answered</span></div><span class="snd-item-arr">${snChevR}</span></a>
           </div>
-          <div class="snd-footer" id="sndFooter">
+        </div>
+        <div class="snd-footer" id="sndFooter">
             <div class="snd-brand-line"><div class="snd-brand-dot"></div><span class="snd-brand-text">3J'S AUTO BODY &middot; RHINO LININGS OF SIGNAL HILL</span></div>
             <div class="snd-footer-btns">
               <a href="https://www.3jsautobody.com/rhino-lining-quote" class="snd-cta-red sn-sheen-red" target="_top">
@@ -798,9 +795,7 @@
               </a>
             </div>
             <div class="snd-contact">562-424-6744 &nbsp;&middot;&nbsp; Mon&ndash;Fri 8AM&ndash;5PM</div>
-          </div>
         </div>
-      </div>
     </div>
     <div class="sn-overlay" id="sn-overlay"></div>
   `;
