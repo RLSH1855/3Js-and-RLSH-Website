@@ -325,7 +325,7 @@
     .sn-hamburger.sn-open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
 
     /* ── Page wrap — ON TOP of drawer; lifts, slides right, scales ── */
-    #sn-page-wrap{position:relative;z-index:5;min-height:100vh;will-change:transform;transform-origin:50% 50vh;}
+    #sn-page-wrap{position:relative;z-index:5;min-height:100vh;will-change:transform;transform-origin:50% 50%;}
     @keyframes snPageOpen{
       0%  {transform:translateX(0) scale(1);border-radius:0;box-shadow:none;}
       7%  {transform:translateX(6px) scale(1.02);}
@@ -337,8 +337,8 @@
     }
     body.sn-menu-open,body.sn-menu-closing{background:#ffffff;}
     body.sn-menu-open #sn-page-wrap,body.sn-menu-closing #sn-page-wrap{min-height:0;}
-    body.sn-menu-open #sn-page-wrap{animation:snPageOpen .52s cubic-bezier(0.22,1,0.36,1) forwards;overflow:hidden;pointer-events:none;height:100vh;}
-    body.sn-menu-closing #sn-page-wrap{animation:snPageClose .46s cubic-bezier(0.22,1,0.36,1) forwards;overflow:hidden;height:100vh;}
+    body.sn-menu-open #sn-page-wrap{animation:snPageOpen .52s cubic-bezier(0.22,1,0.36,1) forwards;overflow:hidden;pointer-events:none;height:100vh;height:100dvh;}
+    body.sn-menu-closing #sn-page-wrap{animation:snPageClose .46s cubic-bezier(0.22,1,0.36,1) forwards;overflow:hidden;height:100vh;height:100dvh;}
     /* ── Overlay ── */
     .sn-overlay{position:fixed;inset:0;z-index:3;background:rgba(0,0,0,0.45);opacity:0;pointer-events:none;transition:opacity 0.44s ease;}
     body.sn-menu-open .sn-overlay{opacity:1;pointer-events:all;}
