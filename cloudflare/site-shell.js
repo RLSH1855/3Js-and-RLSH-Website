@@ -161,6 +161,8 @@
   .ssd-garage-icon{width:28px;height:28px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
   .ssd-garage-icon img{width:28px;height:28px;object-fit:contain;}
   .ssd-garage-val{flex:1;font-family:'Montserrat',sans-serif;font-size:15px;font-weight:800;letter-spacing:-.2px;color:#1a1a1a;}
+  .ssd-garage-val.ssd-wave span{display:inline-block;animation:ssdGwave 5s ease-in-out infinite;}
+  @keyframes ssdGwave{0%,20%,100%{transform:translateY(0);}10%{transform:translateY(-3px);}}
   .ssd-garage-arr{color:rgba(0,0,0,.25);flex-shrink:0;display:flex;}
   /* Nav */
   .ssd-nav{background:#fff;}
@@ -700,7 +702,22 @@
       var label=(v&&v.year)?(v.year+' '+v.make+' '+v.model+(v.trim?' '+v.trim:'')):'Set your truck';
       if(pill) pill.classList.toggle('ss-saved',saved);
       if(veh) veh.textContent=label;
-      if(mveh) mveh.textContent=(v&&v.year)?(v.year+' '+v.make+' '+v.model+(v.trim?' '+v.trim:'')):'My Garage';
+      if(mveh){
+        var mlabel=(v&&v.year)?(v.year+' '+v.make+' '+v.model+(v.trim?' '+v.trim:'')):'My Garage';
+        if(mlabel==='My Garage'){
+          // Wrap each letter so it can ripple (wave) on a 5s loop
+          mveh.classList.add('ssd-wave');
+          var html='';
+          for(var i=0;i<mlabel.length;i++){
+            var ch=mlabel.charAt(i)===' '?'&nbsp;':mlabel.charAt(i);
+            html+='<span style="animation-delay:'+(i*0.07).toFixed(2)+'s">'+ch+'</span>';
+          }
+          mveh.innerHTML=html;
+        } else {
+          mveh.classList.remove('ssd-wave');
+          mveh.textContent=mlabel;
+        }
+      }
     }
     sync();
     window.addEventListener('storage',function(e){if(e.key==='garage_vehicle')sync();});

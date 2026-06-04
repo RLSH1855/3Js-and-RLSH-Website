@@ -384,6 +384,8 @@
     .snd-garage-icon{width:28px;height:28px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
     .snd-garage-icon img{width:28px;height:28px;object-fit:contain;}
     .snd-garage-val{flex:1;font-family:'Montserrat',Arial,sans-serif;font-size:15px;font-weight:800;letter-spacing:-.2px;color:#1a1a1a;}
+    .snd-garage-val.snd-wave span{display:inline-block;animation:sndGwave 5s ease-in-out infinite;}
+    @keyframes sndGwave{0%,20%,100%{transform:translateY(0);}10%{transform:translateY(-3px);}}
     .snd-garage-arr{color:rgba(0,0,0,.25);flex-shrink:0;display:flex;}
     /* Nav */
     .snd-nav{background:#fff;}
@@ -1048,7 +1050,21 @@
       var mob=document.getElementById('sn-mob-garage-btn');
       if(mob){ mob.classList.toggle('sn-garage-saved',saved); }
       var valEl=document.getElementById('snd-garage-val');
-      if(valEl){ valEl.textContent=label; }
+      if(valEl){
+        if(label==='My Garage'){
+          // Wrap each letter so it can ripple (wave) on a 5s loop
+          valEl.classList.add('snd-wave');
+          var html='';
+          for(var i=0;i<label.length;i++){
+            var ch=label.charAt(i)===' '?'&nbsp;':label.charAt(i);
+            html+='<span style="animation-delay:'+(i*0.07).toFixed(2)+'s">'+ch+'</span>';
+          }
+          valEl.innerHTML=html;
+        } else {
+          valEl.classList.remove('snd-wave');
+          valEl.textContent=label;
+        }
+      }
     }
     snSyncGarage();
     window.addEventListener('storage',function(e){if(e.key==='garage_vehicle')snSyncGarage();});
