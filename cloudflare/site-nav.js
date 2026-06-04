@@ -344,7 +344,7 @@
     body.sn-menu-open .sn-overlay{opacity:1;pointer-events:all;}
     body.sn-menu-closing .sn-overlay{opacity:0;pointer-events:none;}
     /* ── Drawer panel — behind page, items start hidden ── */
-    .sn-drawer{position:fixed;left:0;top:0;height:100vh;height:100dvh;width:min(360px,90vw);background:#fff;z-index:4;display:flex;flex-direction:column;overflow:hidden;}
+    .sn-drawer{position:fixed;left:0;top:0;height:100vh;height:100dvh;width:100vw;padding-right:calc(100vw - min(340px,85vw));box-sizing:border-box;background:#fff;z-index:4;display:flex;flex-direction:column;overflow:hidden;}
     /* Close: blur + move left with page */
     body.sn-menu-closing .sn-drawer{filter:blur(6px);transform:translateX(-50px);opacity:0;transition:filter .12s ease,transform .46s cubic-bezier(0.22,1,0.36,1),opacity .32s ease .06s;}
     /* Cinematic keyframes */
