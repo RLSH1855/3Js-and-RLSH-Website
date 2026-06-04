@@ -715,16 +715,6 @@
               <div class="snd-headline">We Restore.<br><span>You Drive.</span></div>
               <div class="snd-em-dash"></div>
               <div class="snd-tagline"><span id="sndTagwriter2"></span><span class="snd-tagline-cursor">&thinsp;</span></div>
-              <div class="snd-ed-ctas">
-                <a href="https://www.carwise.com/online-photo-estimate/3js-autobody-paint-inc-signal-hill-ca-90755/479382?source=shop.profile&referer=estimate.cccone.com" class="snd-ed-btn-red sn-sheen-red" target="_top">
-                  <span>Free Estimate</span>
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </a>
-                <a href="tel:+15624246744" class="snd-ed-btn-phone" target="_top">
-                  <span>562-424-6744</span>
-                  <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.63A2 2 0 012 .18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
-                </a>
-              </div>
             </div>
           </div>
           <div class="snd-divider"></div>
