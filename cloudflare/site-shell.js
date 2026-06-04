@@ -117,8 +117,8 @@
   body.ss-menu-open #ss-page-wrap{animation:ssPageOpen .52s cubic-bezier(.22,1,.36,1) forwards;overflow:hidden;pointer-events:none;height:100vh;height:100dvh;}
   body.ss-menu-closing #ss-page-wrap{animation:ssPageClose .46s cubic-bezier(.22,1,.36,1) forwards;overflow:hidden;height:100vh;height:100dvh;}
   /* dark overlay over the pushed page card — keeps it consistent across pages */
-  .ss-page-dim{position:absolute;inset:0;background:rgba(8,10,18,.6);opacity:0;pointer-events:none;transition:opacity .42s ease;z-index:2147483000;}
-  body.ss-menu-open .ss-page-dim{opacity:1;}
+  .ss-page-dim{position:absolute;inset:0;background:rgba(8,10,18,.6);opacity:0;pointer-events:none;transition:opacity .42s ease;z-index:2147483000;cursor:pointer;}
+  body.ss-menu-open .ss-page-dim{opacity:1;pointer-events:auto;}
   /* ── Overlay — between drawer and page ── */
   .ss-drawer-ov{position:fixed;inset:0;z-index:3;background:rgba(0,0,0,.45);opacity:0;pointer-events:none;transition:opacity .44s ease;}
   body.ss-menu-open .ss-drawer-ov{opacity:1;pointer-events:all;}
@@ -591,8 +591,10 @@
       }, 500);
     }
 
+    var pageDim=document.querySelector('.ss-page-dim');
     if(burger) burger.addEventListener('click',ssOpenDrawer);
     if(ov) ov.addEventListener('click',ssCloseDrawer);
+    if(pageDim) pageDim.addEventListener('click',ssCloseDrawer);
     if(closeBtn) closeBtn.addEventListener('click',ssCloseDrawer);
     document.addEventListener('keydown',function(e){ if(e.key==='Escape') ssCloseDrawer(); });
 
