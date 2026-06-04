@@ -329,10 +329,10 @@
     @keyframes snPageOpen{
       0%  {transform:translateX(0) scale(1);border-radius:0;box-shadow:none;}
       7%  {transform:translateX(6px) scale(1.02);}
-      100%{transform:translateX(calc(min(360px,90vw) - 22px)) scale(0.80);border-radius:16px;box-shadow:-16px 0 52px rgba(0,0,0,.30),-2px 0 8px rgba(0,0,0,.12);}
+      100%{transform:translateX(calc(min(340px,85vw) - 10vw)) scale(0.80);border-radius:16px;box-shadow:-16px 0 52px rgba(0,0,0,.30),-2px 0 8px rgba(0,0,0,.12);}
     }
     @keyframes snPageClose{
-      0%  {transform:translateX(calc(min(360px,90vw) - 22px)) scale(0.80);border-radius:16px;box-shadow:-16px 0 52px rgba(0,0,0,.30),-2px 0 8px rgba(0,0,0,.12);}
+      0%  {transform:translateX(calc(min(340px,85vw) - 10vw)) scale(0.80);border-radius:16px;box-shadow:-16px 0 52px rgba(0,0,0,.30),-2px 0 8px rgba(0,0,0,.12);}
       100%{transform:translateX(0) scale(1);border-radius:0;box-shadow:none;}
     }
     body.sn-menu-open,body.sn-menu-closing{background:#ffffff;}
@@ -344,7 +344,8 @@
     body.sn-menu-open .sn-overlay{opacity:1;pointer-events:all;}
     body.sn-menu-closing .sn-overlay{opacity:0;pointer-events:none;}
     /* ── Drawer panel — behind page, items start hidden ── */
-    .sn-drawer{position:fixed;left:0;top:0;height:100vh;height:100dvh;width:100vw;padding-right:calc(100vw - min(340px,85vw));box-sizing:border-box;background:#fff;z-index:4;display:flex;flex-direction:column;overflow:hidden;}
+    .sn-drawer{position:fixed;left:0;top:0;height:100vh;height:100dvh;width:100vw;padding-right:calc(100vw - min(340px,85vw));box-sizing:border-box;background:#fff;z-index:4;display:flex;flex-direction:column;overflow:hidden;visibility:hidden;}
+    body.sn-menu-open .sn-drawer,body.sn-menu-closing .sn-drawer{visibility:visible;}
     /* Close: blur + move left with page */
     body.sn-menu-closing .sn-drawer{filter:blur(6px);transform:translateX(-50px);opacity:0;transition:filter .12s ease,transform .46s cubic-bezier(0.22,1,0.36,1),opacity .32s ease .06s;}
     /* Cinematic keyframes */
@@ -358,8 +359,8 @@
     .sn-sheen-outline{position:relative;overflow:hidden;}
     .sn-sheen-outline::after{content:'';position:absolute;top:-50%;left:-120px;width:70px;height:200%;background:linear-gradient(105deg,transparent 20%,rgba(255,255,255,.14) 50%,transparent 80%);animation:snSheen 2.6s cubic-bezier(.4,0,.6,1) infinite 1.1s;}
     /* Floating close button — top-right over editorial */
-    .snd-x{position:absolute;top:10px;right:12px;z-index:30;width:30px;height:30px;border:none;cursor:pointer;background:rgba(0,0,0,.07);border-radius:50%;display:flex;align-items:center;justify-content:center;color:rgba(0,0,0,.5);font-size:13px;font-weight:600;font-family:system-ui,sans-serif;}
-    .snd-x:hover{background:rgba(0,0,0,.15);}
+    .snd-x{position:absolute;top:9px;right:11px;z-index:30;width:38px;height:38px;border:none;cursor:pointer;background:rgba(0,0,0,.06);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#2d2d2d;font-size:20px;font-weight:700;line-height:1;font-family:system-ui,sans-serif;}
+    .snd-x:hover{background:rgba(0,0,0,.12);}
     /* Drawer scroll container (flexes above pinned footer) */
     .snd-scroll{flex:1;min-height:0;display:flex;flex-direction:column;background:#fff;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;-ms-overflow-style:none;scrollbar-width:none;}
     .snd-scroll::-webkit-scrollbar{display:none;}
