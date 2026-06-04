@@ -363,23 +363,23 @@
     .snd-x{pointer-events:auto;width:28px;height:28px;border:none;cursor:pointer;background:rgba(0,0,0,.08);border-radius:50%;display:flex;align-items:center;justify-content:center;color:rgba(0,0,0,.5);font-size:13px;font-weight:600;font-family:system-ui,sans-serif;}
     .snd-x:hover{background:rgba(0,0,0,.15);}
     /* Drawer scroll container */
-    .snd-scroll{height:100%;display:flex;flex-direction:column;background:#fff;overflow-y:auto;overflow-x:hidden;-ms-overflow-style:none;scrollbar-width:none;}
+    .snd-scroll{position:absolute;inset:0;display:flex;flex-direction:column;background:#fff;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;-ms-overflow-style:none;scrollbar-width:none;}
     .snd-scroll::-webkit-scrollbar{display:none;}
     .snd-spacer{height:60px;flex-shrink:0;}
     .snd-divider{height:1px;background:rgba(0,0,0,.08);flex-shrink:0;}
     /* Editorial panel */
     .snd-editorial{position:relative;flex-shrink:0;overflow:hidden;background:#fff;border-bottom:2px solid #8B0000;}
     .snd-editorial-top-bar{position:absolute;top:0;left:0;right:0;height:3px;background:#8B0000;pointer-events:none;}
-    .snd-editorial-body{position:relative;z-index:2;padding:26px 22px 24px;}
-    .snd-eyebrow{font-family:'Montserrat',Arial,sans-serif;font-weight:800;font-size:8.5px;letter-spacing:3px;text-transform:uppercase;color:#8B0000;margin-bottom:12px;opacity:.9;}
-    .snd-headline{font-family:'Montserrat',Arial,sans-serif;font-weight:900;font-size:34px;line-height:1.04;letter-spacing:-1px;text-transform:uppercase;color:#1a1a1a;}
+    .snd-editorial-body{position:relative;z-index:2;padding:15px 22px 15px;}
+    .snd-eyebrow{font-family:'Montserrat',Arial,sans-serif;font-weight:800;font-size:8.5px;letter-spacing:3px;text-transform:uppercase;color:#8B0000;margin-bottom:7px;opacity:.9;}
+    .snd-headline{font-family:'Montserrat',Arial,sans-serif;font-weight:900;font-size:23px;line-height:1.05;letter-spacing:-.7px;text-transform:uppercase;color:#1a1a1a;}
     .snd-headline span{color:#8B0000;}
-    .snd-em-dash{width:32px;height:2.5px;background:#8B0000;margin:14px 0 12px;}
-    .snd-tagline{font-family:'Inter',Arial,sans-serif;font-style:italic;font-size:11px;color:rgba(0,0,0,.38);margin-bottom:20px;min-height:16px;}
+    .snd-em-dash{width:28px;height:2.5px;background:#8B0000;margin:9px 0 8px;}
+    .snd-tagline{font-family:'Inter',Arial,sans-serif;font-style:italic;font-size:11px;color:rgba(0,0,0,.38);margin-bottom:12px;min-height:15px;}
     .snd-tagline-cursor{border-right:1.5px solid rgba(0,0,0,.3);margin-left:1px;}
     .snd-ed-ctas{display:flex;flex-direction:column;gap:8px;}
-    .snd-ed-btn-red{height:44px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;background:#8B0000;color:#fff;font-family:'Oswald',Arial,sans-serif;font-weight:700;font-size:13px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;box-shadow:inset 0 1px 0 rgba(255,255,255,.15),inset 0 -2px 0 rgba(0,0,0,.2);}
-    .snd-ed-btn-phone{height:36px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;border:1px solid rgba(0,0,0,.15);color:rgba(0,0,0,.45);font-family:'Oswald',Arial,sans-serif;font-weight:500;font-size:11px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;}
+    .snd-ed-btn-red{height:42px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;background:#8B0000;color:#fff;font-family:'Oswald',Arial,sans-serif;font-weight:700;font-size:13px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;box-shadow:inset 0 1px 0 rgba(255,255,255,.15),inset 0 -2px 0 rgba(0,0,0,.2);}
+    .snd-ed-btn-phone{height:34px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;border:1px solid rgba(0,0,0,.15);color:rgba(0,0,0,.45);font-family:'Oswald',Arial,sans-serif;font-weight:500;font-size:11px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;}
     /* Garage row */
     .snd-garage{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;background:#fff;border:none;border-bottom:1px solid rgba(0,0,0,.09);cursor:pointer;width:100%;text-align:left;flex-shrink:0;transition:background .15s;box-shadow:0 1px 3px rgba(0,0,0,.04),inset 0 -1px 0 rgba(0,0,0,.10);}
     .snd-garage:hover,.snd-garage:active{background:rgba(139,0,0,.04);}
@@ -704,7 +704,7 @@
 
   var drawerHTML = `
     <div class="sn-drawer" id="sn-drawer" aria-label="Mobile navigation" aria-hidden="true">
-      <div style="position:relative;height:100%;overflow:hidden;">
+      <div style="position:absolute;inset:0;overflow:hidden;">
         <div class="snd-scroll" id="sndScroll">
           <div class="snd-header">
             <span class="snd-menu-label">Menu</span>
