@@ -389,7 +389,7 @@
     .snd-nav{background:#fff;}
     .snd-section{display:flex;align-items:center;position:relative;z-index:1;background:#2d2d2d;box-shadow:inset 0 2px 0 rgba(255,255,255,.12),inset 0 -2px 0 rgba(0,0,0,.5);padding:8px 20px 8px 30px;}
     .snd-section span{font-family:'Oswald',Arial,sans-serif;font-weight:800;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.92);text-shadow:0 1px 2px rgba(0,0,0,.6);}
-    .snd-item{display:flex;align-items:center;justify-content:space-between;padding:10px 20px 10px 17px;background:#fff;border-bottom:1px solid rgba(0,0,0,.09);border-left:3px solid transparent;border-right:none;border-top:none;cursor:pointer;width:100%;text-align:left;transition:background .1s ease,border-left-color .15s ease;box-shadow:0 1px 3px rgba(0,0,0,.04),inset 0 -1px 0 rgba(0,0,0,.10);text-decoration:none;color:inherit;}
+    .snd-item{display:flex;align-items:center;justify-content:space-between;padding:7px 20px 7px 17px;background:#fff;border-bottom:1px solid rgba(0,0,0,.09);border-left:3px solid transparent;border-right:none;border-top:none;cursor:pointer;width:100%;text-align:left;transition:background .1s ease,border-left-color .15s ease;box-shadow:0 1px 3px rgba(0,0,0,.04),inset 0 -1px 0 rgba(0,0,0,.10);text-decoration:none;color:inherit;}
     .snd-item:hover,.snd-item.snd-active{background:rgba(0,0,0,.03);border-left-color:#8B0000;}
     .snd-item:active{background:rgba(0,0,0,.05);}
     .snd-item.snd-open{border-left-color:#8B0000;}
@@ -704,7 +704,6 @@
           <div class="snd-editorial" id="sndEditorial">
             <div class="snd-editorial-top-bar"></div>
             <div class="snd-editorial-body">
-              <div class="snd-eyebrow">Body &amp; Paint &middot; Signal Hill &middot; Est. 1995</div>
               <div class="snd-headline">We Restore.<br><span>You Drive.</span></div>
               <div class="snd-em-dash"></div>
               <div class="snd-tagline"><span id="sndTagwriter2"></span><span class="snd-tagline-cursor">&thinsp;</span></div>
