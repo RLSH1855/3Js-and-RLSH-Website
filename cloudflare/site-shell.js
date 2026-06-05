@@ -102,7 +102,7 @@
   .ss-burger.ss-open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
 
   /* ── Page wrap — sits ON TOP of drawer; lifts, slides right, scales ── */
-  #ss-page-wrap{position:relative;z-index:5;min-height:100vh;will-change:transform;transform-origin:50% 50%;display:flow-root;}
+  #ss-page-wrap{position:relative;z-index:5;min-height:100vh;will-change:transform;transform-origin:50% 50%;display:flow-root;background:#111;}
   body.ss-menu-open,body.ss-menu-closing{background:#ffffff;}
   @keyframes ssPageOpen{
     0%  {transform:translateX(0) scale(1);border-radius:0;box-shadow:none;}
