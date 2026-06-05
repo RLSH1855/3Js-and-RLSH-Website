@@ -243,14 +243,15 @@
     /* ════════════════════════════
        6. ABOUT / WARRANTY
     ════════════════════════════ */
-    .red-section{position:relative;background:#111111;border-top:4px solid #8B0000;padding:clamp(36px,7vw,72px) clamp(18px,4vw,32px) clamp(40px,6vw,72px);}
+    .red-section{position:relative;background:#8B0000;padding:clamp(48px,7vw,72px) clamp(20px,4vw,32px) clamp(56px,7vw,72px);}
+    .grunge-divider{width:100%;height:80px;background:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/images/divider-grunge.png') center/cover no-repeat;display:block;margin:0;}
     .about-inner{max-width:1180px;margin:0 auto;}
     .about-eyebrow{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.75);display:inline-flex;align-items:center;gap:10px;margin-bottom:18px;}
     .about-eyebrow::before{content:'';width:24px;height:2px;background:rgba(255,255,255,.55);flex-shrink:0;}
-    .about-intro{display:grid;grid-template-columns:1fr;gap:24px;align-items:end;margin-bottom:40px;padding-bottom:40px;border-bottom:1px solid var(--red-40);}
+    .about-intro{display:grid;grid-template-columns:1fr;gap:24px;align-items:end;margin-bottom:48px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,0.2);}
     .about-h2{font-family:'Montserrat',sans-serif;font-size:clamp(24px,6vw,52px);font-weight:900;letter-spacing:-1px;line-height:1.05;color:#fff;margin-bottom:16px;}
     .about-lead{font-family:'Inter',sans-serif;font-size:clamp(15px,3.5vw,17px);color:rgba(255,255,255,.78);line-height:1.65;max-width:600px;}
-    .warranty-badge .wnum{font-family:'Montserrat',sans-serif;font-size:clamp(44px,11vw,84px);font-weight:900;letter-spacing:-2px;color:var(--red-dark);line-height:.9;margin-bottom:6px;}
+    .warranty-badge .wnum{font-family:'Montserrat',sans-serif;font-size:clamp(44px,11vw,84px);font-weight:900;letter-spacing:-2px;color:#fff;line-height:.9;margin-bottom:6px;}
     .warranty-badge .wsub{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.55);display:block;margin-bottom:10px;}
     .warranty-badge .wdesc{font-family:'Inter',sans-serif;font-size:16px;color:rgba(255,255,255,.72);line-height:1.65;max-width:340px;}
     .about-body{display:grid;grid-template-columns:1fr;gap:40px;}
@@ -267,8 +268,8 @@
     .btn-about-ghost{display:inline-flex;align-items:center;gap:10px;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;height:50px;padding:0 28px;background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.45);transition:background .2s,border-color .2s;}
     .btn-about-ghost:hover{background:var(--red-08);border-color:#8B0000;color:#8B0000;}
     .btn-about svg,.btn-about-ghost svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2.4;flex-shrink:0;}
-    .black-section{background:var(--black);padding:clamp(36px,7vw,72px) clamp(18px,4vw,32px) clamp(40px,6vw,72px);border-top:4px solid #8B0000;}
-    .rlsh-head{margin-bottom:36px;padding-bottom:32px;border-bottom:1px solid rgba(255,255,255,.1);}
+    .black-section{background:var(--black);padding:clamp(48px,7vw,72px) clamp(20px,4vw,32px) clamp(56px,7vw,72px);}
+    .rlsh-head{margin-bottom:40px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.1);}
     .rlsh-head h2{font-family:'Montserrat',sans-serif;font-size:clamp(24px,6vw,52px);font-weight:900;letter-spacing:-1px;color:#fff;line-height:1.05;margin-bottom:14px;}
     .rlsh-head h2 em{font-style:normal;color:var(--red-dark);}
     .rlsh-head .about-lead{margin-top:6px;}
@@ -683,7 +684,7 @@
     <div class="about-intro">
       <div>
         <span class="about-eyebrow">3J's Auto Body · Signal Hill, CA · Est. 1991</span>
-        <h2 class="about-h2" data-anim="fade-up">Repairs Done <span style="border-bottom:4px solid #8B0000;padding-bottom:3px;">RIGHT</span>.<br>Every Time.<br>GUARANTEED.</h2>
+        <h2 class="about-h2" data-anim="fade-up">Repairs Done <span style="border-bottom:4px solid rgba(255,255,255,0.7);padding-bottom:3px;">RIGHT</span>.<br>Every Time.<br><span style="color:rgba(255,255,255,0.55);">GUARANTEED.</span></h2>
         <p class="about-lead">A damaged vehicle is stressful. Our job is to make the rest of it easy, from your first call to the day you drive away confident.</p>
       </div>
       <div class="warranty-badge">
@@ -723,6 +724,7 @@
   </div>
 </section>
 
+<div class="grunge-divider"></div>
 <section class="black-section">
   <div class="about-inner">
     <div class="rlsh-head">
