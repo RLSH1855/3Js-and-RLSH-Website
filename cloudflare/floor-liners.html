@@ -282,20 +282,20 @@
     /* Gallery strip */
     .gallery-strip{
       display:grid;
-      grid-template-columns:repeat(4,1fr);
+      grid-template-columns:repeat(2,1fr);
       gap:10px;
     }
     .gallery-item{
       border-radius:0;overflow:hidden;position:relative;
     }
     .gallery-item img{
-      width:100%;height:200px;
+      width:100%;height:320px;
       object-fit:cover;display:block;
       transition:transform 0.5s ease;
     }
-    
-    .gallery-item:first-child{grid-column:span 2;}
-    .gallery-item:first-child img{height:200px;}
+
+    .gallery-item:first-child{grid-column:span 1;}
+    .gallery-item:first-child img{height:320px;}
 
     /* ══════════════════════════════════════════════
        WHY FLOOR LINERS
@@ -463,7 +463,8 @@
       .why-grid{grid-template-columns:repeat(2,1fr);}
       .more-grid{grid-template-columns:repeat(2,1fr);}
       .gallery-strip{grid-template-columns:repeat(2,1fr);}
-      .gallery-item:first-child{grid-column:span 2;}
+      .gallery-item:first-child{grid-column:span 1;}
+      .gallery-item img,.gallery-item:first-child img{height:260px;}
     }
     @media(max-width:640px){
       .hero{min-height:620px;}
