@@ -102,7 +102,7 @@
   .ss-burger.ss-open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
 
   /* ── Page wrap — sits ON TOP of drawer; lifts, slides right, scales ── */
-  #ss-page-wrap{position:relative;z-index:5;min-height:100vh;will-change:transform;transform-origin:50% 50%;display:flow-root;background:#111;}
+  #ss-page-wrap{position:relative;z-index:5;min-height:100vh;will-change:transform;transform-origin:50% 50%;}
   body.ss-menu-open,body.ss-menu-closing{background:#ffffff;}
   @keyframes ssPageOpen{
     0%  {transform:translateX(0) scale(1);border-radius:0;box-shadow:none;}
@@ -221,7 +221,8 @@
   }
 
   /* ════════ FOOTER ════════ */
-  .footer{background:#111;color:#fff;padding:56px 40px 0;}
+  .footer{background:#111;color:#fff;padding:56px 40px 0;position:relative;}
+  .footer::before{content:'';position:absolute;top:-40px;left:0;right:0;height:40px;background:#111;pointer-events:none;}
   .footer-top{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,0.08);}
   .footer-brand{text-align:center;}
   .footer-logos{display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:16px;flex-wrap:wrap;}
