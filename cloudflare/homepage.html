@@ -203,10 +203,10 @@
     .svc-cta svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2.5;stroke-linecap:round;}
 
     /* CTA band */
-    .cta-band{background:#fff;padding:clamp(40px,5vw,64px) 20px;text-align:center;position:relative;overflow:hidden;border-top:1px solid #e8e8e8;}
+    .cta-band{background:#111;padding:clamp(48px,5vw,64px) 20px;text-align:center;position:relative;overflow:hidden;}
     .cta-band-inner{position:relative;z-index:1;}
-    .cta-band h2{font-family:'Montserrat',sans-serif;font-size:clamp(22px,3.5vw,38px);font-weight:900;margin-bottom:10px;color:#1a1a1a;}
-    .cta-band p{font-family:'Inter',sans-serif;font-size:16px;color:#666;max-width:480px;margin:0 auto 28px;line-height:1.65;}
+    .cta-band h2{font-family:'Montserrat',sans-serif;font-size:clamp(22px,3.5vw,38px);font-weight:900;margin-bottom:10px;color:#fff;}
+    .cta-band p{font-family:'Inter',sans-serif;font-size:16px;color:rgba(255,255,255,0.72);max-width:480px;margin:0 auto 28px;line-height:1.65;}
 
     /* ════════════════════════════
        5. FAQ
@@ -243,17 +243,27 @@
     /* ════════════════════════════
        6. ABOUT / WARRANTY
     ════════════════════════════ */
-    .red-section{position:relative;background:#8B0000;padding:clamp(48px,7vw,72px) clamp(20px,4vw,32px) clamp(56px,7vw,72px);}
-    .grunge-divider{width:100%;height:80px;background:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/images/divider-grunge.png') center/cover no-repeat;display:block;margin:0;}
+    .red-section{position:relative;background:#fff;padding:clamp(48px,7vw,72px) clamp(20px,4vw,32px) clamp(56px,7vw,72px);}
+    .grunge-divider{width:100%;height:80px;background:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/images/divider-grunge.png') center bottom/cover no-repeat;display:block;margin:0;}
+    /* Repairs section — white background overrides */
+    .red-section .about-eyebrow{color:#8B0000;}
+    .red-section .about-eyebrow::before{background:#8B0000;}
+    .red-section .about-h2{color:#1a1a1a;}
+    .red-section .about-lead{color:#424954;}
+    .red-section .col-label{color:#8B0000;}
+    .red-section .service-grid-about li{color:#1a1a1a;border-top-color:#e0e0e0;}
+    .red-section .about-intro{border-bottom-color:#e0e0e0;}
+    .red-section .about-cta-block .pitch{color:#424954;}
+    .red-section .about-cta-block .pitch strong{color:#1a1a1a;}
     .about-inner{max-width:1180px;margin:0 auto;}
     .about-eyebrow{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.75);display:inline-flex;align-items:center;gap:10px;margin-bottom:18px;}
     .about-eyebrow::before{content:'';width:24px;height:2px;background:rgba(255,255,255,.55);flex-shrink:0;}
     .about-intro{display:grid;grid-template-columns:1fr;gap:24px;align-items:end;margin-bottom:48px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,0.2);}
     .about-h2{font-family:'Montserrat',sans-serif;font-size:clamp(24px,6vw,52px);font-weight:900;letter-spacing:-1px;line-height:1.05;color:#fff;margin-bottom:16px;}
     .about-lead{font-family:'Inter',sans-serif;font-size:clamp(15px,3.5vw,17px);color:rgba(255,255,255,.78);line-height:1.65;max-width:600px;}
-    .warranty-badge .wnum{font-family:'Montserrat',sans-serif;font-size:clamp(44px,11vw,84px);font-weight:900;letter-spacing:-2px;color:#fff;line-height:.9;margin-bottom:6px;}
-    .warranty-badge .wsub{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.55);display:block;margin-bottom:10px;}
-    .warranty-badge .wdesc{font-family:'Inter',sans-serif;font-size:16px;color:rgba(255,255,255,.72);line-height:1.65;max-width:340px;}
+    .warranty-badge .wnum{font-family:'Montserrat',sans-serif;font-size:clamp(44px,11vw,84px);font-weight:900;letter-spacing:-2px;color:#8B0000;line-height:.9;margin-bottom:6px;}
+    .warranty-badge .wsub{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:#666;display:block;margin-bottom:10px;}
+    .warranty-badge .wdesc{font-family:'Inter',sans-serif;font-size:16px;color:#424954;line-height:1.65;max-width:340px;}
     .about-body{display:grid;grid-template-columns:1fr;gap:40px;}
     .col-label{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.65);display:block;margin-bottom:18px;}
     .service-grid-about{display:grid;grid-template-columns:1fr 1fr;gap:0 20px;}
@@ -674,6 +684,7 @@
       </a>
     </div>
   </div>
+  <div class="grunge-divider"></div>
 </section>
 
 <!-- ═══════════════════════════════════
@@ -684,7 +695,7 @@
     <div class="about-intro">
       <div>
         <span class="about-eyebrow">3J's Auto Body · Signal Hill, CA · Est. 1991</span>
-        <h2 class="about-h2" data-anim="fade-up">Repairs Done <span style="border-bottom:4px solid rgba(255,255,255,0.7);padding-bottom:3px;">RIGHT</span>.<br>Every Time.<br><span style="color:rgba(255,255,255,0.55);">GUARANTEED.</span></h2>
+        <h2 class="about-h2" data-anim="fade-up">Repairs Done <span style="border-bottom:4px solid #8B0000;padding-bottom:3px;">RIGHT</span>.<br>Every Time.<br><span style="color:#8B0000;">GUARANTEED.</span></h2>
         <p class="about-lead">A damaged vehicle is stressful. Our job is to make the rest of it easy, from your first call to the day you drive away confident.</p>
       </div>
       <div class="warranty-badge">
@@ -715,7 +726,7 @@
       <div class="about-cta-block">
         <span class="col-label">Get Started</span>
         <p class="pitch">Tell us about your vehicle and we'll send a <strong>complimentary quote</strong> back — no obligation, no pressure.</p>
-        <a href="https://www.3jsautobody.com/request-a-quote" class="btn-ghost btn" target="_top">
+        <a href="https://www.3jsautobody.com/request-a-quote" class="btn-red btn" target="_top">
           <svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
           Get a Free Quote
         </a>
@@ -724,7 +735,6 @@
   </div>
 </section>
 
-<div class="grunge-divider"></div>
 <section class="black-section">
   <div class="about-inner">
     <div class="rlsh-head">
