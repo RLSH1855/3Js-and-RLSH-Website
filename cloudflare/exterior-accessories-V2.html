@@ -53,7 +53,7 @@
     .cat-tag{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,0.50);margin-bottom:6px;}
     .cat-name{font-family:'Montserrat',sans-serif;font-size:22px;font-weight:900;color:#fff;letter-spacing:-0.3px;line-height:1.05;text-transform:uppercase;margin-bottom:6px;}
     .cat-brands{font-size:11px;font-weight:400;color:rgba(255,255,255,0.65);line-height:1.5;margin-bottom:14px;}
-    .cat-btn{display:inline-flex;align-items:center;gap:6px;height:44px;padding:0 16px;background:var(--crimson);color:#fff;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;border:none;transition:background 0.2s;}
+    .cat-btn{display:inline-flex;align-items:center;gap:6px;height:48px;padding:0 16px;background:var(--crimson);color:#fff;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;border:2px solid #a00000;border-radius:0;transition:background 0.2s;}
     .cat-card:hover .cat-btn{background:#fff;color:var(--crimson);}
     .cat-btn svg{width:12px;height:12px;flex-shrink:0;}
 
@@ -65,9 +65,9 @@
     .cta-band h2 em{font-style:normal;color:#111;}
     .cta-band p{font-size:15px;color:rgba(255,255,255,0.90);line-height:1.65;margin-bottom:28px;}
     .cta-btns{display:flex;gap:12px;flex-direction:column;align-items:center;flex-wrap:wrap;}
-    .btn-red{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:48px;padding:0 32px;background:var(--crimson);color:#fff;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border:none;transition:background 0.2s;touch-action:manipulation;width:100%;max-width:320px;}
+    .btn-red{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:48px;padding:0 32px;background:var(--crimson);color:#fff;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border:2px solid #a00000;transition:background 0.2s;touch-action:manipulation;width:100%;max-width:320px;}
     .btn-red:hover{background:#a50000;}
-    .btn-ghost{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:48px;padding:0 32px;background:rgba(255,255,255,0.15);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);color:#fff;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border:1.5px solid rgba(255,255,255,0.55);transition:all 0.2s;touch-action:manipulation;width:100%;max-width:320px;}
+    .btn-ghost{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:48px;padding:0 32px;background:rgba(255,255,255,0.15);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);color:#fff;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border:1.5px solid rgba(255,255,255,0.55);transition:all 0.2s;touch-action:manipulation;width:100%;max-width:320px;}
     .btn-ghost:hover{background:rgba(255,255,255,0.28);border-color:rgba(255,255,255,0.9);}.btn-ghost:active{background:rgba(255,255,255,0.38);}
     .btn-red svg,.btn-ghost svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2.2;}
 
@@ -100,8 +100,8 @@
     *:focus{outline:none;}*:focus-visible{outline:2px solid var(--crimson);outline-offset:3px;}
 
     /* CTA band button overrides for red background */
-    .cta-band .btn-red{background:#111;border:none;}
-    .cta-band .btn-red:hover{background:#000;}
+    .cta-band .btn-red{background:var(--crimson);border:2px solid #a00000;}
+    .cta-band .btn-red:hover{background:#a50000;}
     .cta-band .btn-ghost{border-color:rgba(255,255,255,0.75);background:rgba(255,255,255,0.12);}
     .cta-band .btn-ghost:hover{background:rgba(255,255,255,0.25);border-color:#fff;}
 
