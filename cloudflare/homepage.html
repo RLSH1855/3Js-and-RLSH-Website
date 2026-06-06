@@ -183,20 +183,40 @@
     .services-header .eyebrow{color:rgba(255,255,255,.55);}
     .services-title{font-family:'Montserrat',sans-serif;font-size:clamp(22px,3.5vw,38px);font-weight:900;letter-spacing:-1px;color:#fff;text-transform:uppercase;}
     .services-title em{font-style:normal;color:var(--red-dark);}
-    .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;}
-    .svc-card{background:var(--black-2);border:1px solid #1a1a1a;overflow:hidden;display:flex;flex-direction:column;transition:border-color .2s;}
-    .svc-card:hover{border-color:#8B0000;}
-    .svc-img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;}
-    .svc-img-wrap{overflow:hidden;position:relative;}
-    .svc-img-wrap video{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;}
-    .svc-body{padding:22px 20px 24px;flex:1;display:flex;flex-direction:column;}
-    .svc-num{font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:6px;}
-    .svc-name{font-family:'Montserrat',sans-serif;font-size:18px;font-weight:900;letter-spacing:-.3px;text-transform:uppercase;color:#fff;margin-bottom:12px;line-height:1.15;}
-    .svc-name em{font-style:normal;color:var(--red-dark);}
-    .svc-list{list-style:none;display:flex;flex-direction:column;gap:12px;margin-bottom:20px;}
-    .svc-list li{font-family:'Inter',sans-serif;font-size:16px;font-weight:500;color:rgba(255,255,255,.85);display:flex;align-items:center;gap:8px;letter-spacing:.3px;line-height:1.65;}
-    .svc-list li::before{content:'';width:8px;height:1.5px;background:#8B0000;flex-shrink:0;}
-    .svc-cta{margin-top:auto;display:inline-flex;align-items:center;justify-content:center;gap:6px;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#fff;text-decoration:none;background:#8B0000;height:48px;padding:0 32px;border:2px solid #a00000;border-radius:0;transition:background .2s;}
+    /* ── Desktop: two-tier layout ── */
+    .services-desktop{display:block;}
+    .svc-slider-wrap{display:none;}
+    /* Hero row — 2 featured panels */
+    .svc-hero-row{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-bottom:2px;}
+    .svc-hero-card{position:relative;height:420px;overflow:hidden;display:block;text-decoration:none;}
+    .svc-hero-card img,.svc-hero-card video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s cubic-bezier(0.22,1,0.36,1);}
+    .svc-hero-card:hover img,.svc-hero-card:hover video{transform:scale(1.04);}
+    .svc-hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.90) 0%,rgba(0,0,0,.48) 50%,rgba(0,0,0,.08) 100%);z-index:1;}
+    .svc-hero-content{position:absolute;bottom:0;left:0;right:0;padding:28px 28px 32px;z-index:2;}
+    .svc-hero-eyebrow{display:block;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:#8B0000;margin-bottom:8px;}
+    .svc-hero-name{font-family:'Montserrat',sans-serif;font-size:clamp(20px,2vw,28px);font-weight:900;letter-spacing:-.4px;text-transform:uppercase;color:#fff;margin-bottom:14px;line-height:1.1;text-wrap:balance;}
+    .svc-hero-name em{font-style:normal;color:rgba(255,255,255,.65);}
+    .svc-hero-list{list-style:none;display:flex;flex-direction:column;gap:7px;margin-bottom:22px;}
+    .svc-hero-list li{font-family:'Inter',sans-serif;font-size:13px;font-weight:600;color:rgba(255,255,255,.82);display:flex;align-items:center;gap:7px;letter-spacing:.2px;}
+    .svc-hero-list li::before{content:'';width:6px;height:1.5px;background:#8B0000;flex-shrink:0;}
+    .svc-hero-cta{display:inline-flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#fff;text-decoration:none;background:#8B0000;height:48px;padding:0 32px;border:2px solid rgba(255,255,255,.2);border-radius:0;transition:background .2s,border-color .2s;text-shadow:none;}
+    .svc-hero-cta:hover{background:var(--red-hot);border-color:rgba(255,255,255,.4);}
+    /* Compact strip — 4 tiles */
+    .svc-compact-row{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;}
+    .svc-compact-card{display:flex;flex-direction:column;text-decoration:none;background:var(--black-2);overflow:hidden;}
+    .svc-compact-img-wrap{overflow:hidden;flex-shrink:0;}
+    .svc-compact-img{width:100%;height:155px;object-fit:cover;display:block;transition:transform .4s cubic-bezier(0.22,1,0.36,1);}
+    .svc-compact-card:hover .svc-compact-img{transform:scale(1.05);}
+    .svc-compact-body{padding:14px 16px 18px;flex:1;display:flex;flex-direction:column;justify-content:space-between;}
+    .svc-compact-name{display:block;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:#fff;line-height:1.3;margin-bottom:8px;}
+    .svc-compact-link{font-family:'Inter',sans-serif;font-size:12px;font-weight:600;color:#8B0000;letter-spacing:.5px;text-transform:uppercase;}
+    /* Mobile slider — dots only (slider CSS in media query) */
+    .svc-slide-body *{text-shadow:none;}
+    .svc-dots{display:flex;justify-content:center;gap:8px;padding-top:20px;padding-bottom:4px;}
+    .svc-dot{width:7px;height:7px;border-radius:0;border:none;background:#d0d0d0;cursor:pointer;padding:0;transition:background .2s,width .2s;}
+    .svc-dot.active{background:#8B0000;width:20px;}
+    /* legacy .svc-cta kept */
+    .svc-cta{margin-top:auto;display:inline-flex;align-items:center;justify-content:center;gap:6px;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#fff;text-decoration:none;background:#8B0000;height:48px;padding:0 32px;border:2px solid #a00000;border-radius:0;transition:background .2s;text-shadow:none;}
     .svc-cta:hover{background:var(--red-hot);}
 
     /* CTA band */
@@ -343,7 +363,12 @@
 
     /* ── MOBILE ── */
     @media(max-width:960px){
-      .services-grid{grid-template-columns:repeat(2,1fr);}
+      .svc-hero-card{height:360px;}
+      .svc-compact-img{height:130px;}
+    }
+    @media(max-width:768px){
+      .svc-hero-card{height:300px;}
+      .svc-compact-row{grid-template-columns:repeat(2,1fr);}
     }
     @media(max-width:680px){
       .strip{flex-direction:column;height:auto;}
@@ -358,9 +383,24 @@
       .awards-grid{flex-direction:column;align-items:center;}
       .award-card{min-width:0;width:100%;max-width:100%;}
       .winner-callout{flex-direction:column;text-align:center;gap:10px;padding:18px 20px;}
-      .services-grid{grid-template-columns:1fr;}
-      .services-inner{padding-left:0;padding-right:0;}
-      .services-header{padding-left:20px;padding-right:20px;}
+      .services-section{background:#fff;padding:clamp(40px,6vw,56px) 0 clamp(48px,7vw,64px);}
+      .services-header .eyebrow{color:#8B0000;}
+      .services-title{color:#1a1a1a;}
+      .services-title em{color:#8B0000;}
+      .services-inner{padding:0;}
+      .services-header{padding:0 20px;margin-bottom:24px;}
+      .services-desktop{display:none;}
+      .svc-slider-wrap{display:block;}
+      .svc-slider{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;gap:12px;padding:0 20px;scrollbar-width:none;scroll-padding-left:20px;}
+      .svc-slider::-webkit-scrollbar{display:none;}
+      .svc-slide{min-width:86vw;scroll-snap-align:start;background:#fff;border:1px solid #ebebeb;overflow:hidden;flex-shrink:0;}
+      .svc-slide-img-wrap{overflow:hidden;}
+      .svc-slide-img-wrap img,.svc-slide-img-wrap video{width:100%;height:210px;object-fit:cover;display:block;}
+      .svc-slide-body{padding:16px 18px 22px;}
+      .svc-slide-eyebrow{display:block;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:#8B0000;margin-bottom:8px;}
+      .svc-slide-name{font-family:'Montserrat',sans-serif;font-size:18px;font-weight:900;letter-spacing:-.3px;text-transform:uppercase;color:#1a1a1a;margin-bottom:16px;line-height:1.15;}
+      .svc-slide-name em{font-style:normal;color:#8B0000;}
+      .svc-slide-cta{display:inline-flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#fff;text-decoration:none;background:#8B0000;height:44px;padding:0 24px;border:none;border-radius:0;}
       .faq-section{padding:48px 20px 56px;}
       .faq-cta{flex-direction:column;align-items:stretch;}
       .ig-tile{flex:0 0 140px;}
@@ -591,125 +631,174 @@
       <span class="eyebrow" data-anim="fade-up" style="color:rgba(255,255,255,.4);">What We Do</span>
       <h2 class="services-title" data-anim="fade-up" data-delay="100">Our Top <em>Services</em></h2>
     </div>
-    <div class="services-grid">
+    <!-- ═══ DESKTOP: Two-tier layout ═══ -->
+    <div class="services-desktop">
 
-      <!-- 01 Rhino Liner -->
-      <div class="svc-card">
-        <div class="svc-img-wrap">
-          <img class="svc-img" src="https://rlsh1855.github.io/3Js-and-RLSH-Website/BEDLINER%20WITH%20LOGO.webp" alt="Spray-In Rhino Liner" loading="lazy" width="640" height="360"/>
-        </div>
-        <div class="svc-body">
-          <span class="svc-num">01</span>
-          <div class="svc-name">Spray-In <em>Rhino Liner</em></div>
-          <ul class="svc-list">
-            <li>Certified Rhino Liner Installer</li>
-            <li>Same-Day Service Available</li>
-            <li>Lifetime Warranty Included</li>
-            <li>Color Match Options</li>
-          </ul>
-          <a href="https://www.3jsautobody.com/rhino-lining-quote" class="svc-cta" target="_top">
-            Get a Quote          </a>
-        </div>
+      <!-- Hero row: 2 featured panels -->
+      <div class="svc-hero-row">
+
+        <a href="https://www.3jsautobody.com/rhino-lining-quote" class="svc-hero-card" target="_top">
+          <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/BEDLINER%20WITH%20LOGO.webp" alt="Spray-In Rhino Liner" loading="lazy" width="640" height="420"/>
+          <div class="svc-hero-overlay"></div>
+          <div class="svc-hero-content">
+            <span class="svc-hero-eyebrow">Certified Installer &middot; Lifetime Warranty</span>
+            <div class="svc-hero-name">Spray-In <em>Rhino Liner</em></div>
+            <ul class="svc-hero-list">
+              <li>Same-Day Service Available</li>
+              <li>Nationwide Lifetime Warranty</li>
+              <li>Color Match Options</li>
+            </ul>
+            <span class="svc-hero-cta">Get a Quote</span>
+          </div>
+        </a>
+
+        <a href="https://www.3jsautobody.com/body-paint-repairs" class="svc-hero-card" target="_top">
+          <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/72%20land%20cruiser%20full%20exterior%20paint%20job.webp" alt="Collision and Paint Repair" loading="lazy" width="640" height="420"/>
+          <div class="svc-hero-overlay"></div>
+          <div class="svc-hero-content">
+            <span class="svc-hero-eyebrow">I-CAR Gold Class &middot; All Insurance Accepted</span>
+            <div class="svc-hero-name">Collision <em>&amp; Paint Repair</em></div>
+            <ul class="svc-hero-list">
+              <li>Computer Color Matching</li>
+              <li>Single Panel or Full Repaint</li>
+              <li>Factory Finish Quality</li>
+            </ul>
+            <span class="svc-hero-cta">Learn More</span>
+          </div>
+        </a>
+
       </div>
 
-      <!-- 02 Tonneau -->
-      <div class="svc-card">
-        <div class="svc-img-wrap">
-          <img class="svc-img" src="https://rlsh1855.github.io/3Js-and-RLSH-Website/bak-bakflip-mx4-2016-ford-f150-blue-beach-lifestyle-05.webp" alt="Tonneau Cover" loading="lazy" width="640" height="360"/>
-        </div>
-        <div class="svc-body">
-          <span class="svc-num">02</span>
-          <div class="svc-name">Tonneau <em>Covers</em></div>
-          <ul class="svc-list">
-            <li>Soft Roll-Up &amp; Hard Folding</li>
-            <li>Retractable Cover Installs</li>
-            <li>All Major Brands Available</li>
-            <li>Professional Installation</li>
-          </ul>
-          <a href="https://www.3jsautobody.com/exterior-accessories/tonneau-covers" class="svc-cta" target="_top">
-            Shop Covers          </a>
-        </div>
-      </div>
+      <!-- Compact strip: 4 supporting services -->
+      <div class="svc-compact-row">
 
-      <!-- 03 Running Boards -->
-      <div class="svc-card">
-        <div class="svc-img-wrap">
-          <video autoplay loop muted playsinline preload="metadata" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;" aria-label="Running boards demo">
-            <source src="https://rlsh1855.github.io/3Js-and-RLSH-Website/step_gif_1080x720__1_.mp4" type="video/mp4">
-          </video>
-        </div>
-        <div class="svc-body">
-          <span class="svc-num">03</span>
-          <div class="svc-name">Running Boards <em>&amp; Steps</em></div>
-          <ul class="svc-list">
-            <li>Fixed &amp; Nerf Bar Options</li>
-            <li>Power Retractable Steps</li>
-            <li>Lifted Vehicle Friendly</li>
-            <li>All Makes &amp; Models</li>
-          </ul>
-          <a href="https://www.3jsautobody.com/exterior-accessories/steps-running-boards" class="svc-cta" target="_top">
-            Shop Steps          </a>
-        </div>
-      </div>
+        <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/tonneau-covers.html" class="svc-compact-card" target="_top">
+          <div class="svc-compact-img-wrap">
+            <img class="svc-compact-img" src="https://rlsh1855.github.io/3Js-and-RLSH-Website/bak-bakflip-mx4-2016-ford-f150-blue-beach-lifestyle-05.webp" alt="Tonneau Covers" loading="lazy" width="400" height="155"/>
+          </div>
+          <div class="svc-compact-body">
+            <span class="svc-compact-name">Tonneau Covers</span>
+            <span class="svc-compact-link">Shop Covers &rsaquo;</span>
+          </div>
+        </a>
 
-      <!-- 04 Paint Jobs -->
-      <div class="svc-card">
-        <div class="svc-img-wrap">
-          <img class="svc-img" src="https://rlsh1855.github.io/3Js-and-RLSH-Website/72%20land%20cruiser%20full%20exterior%20paint%20job.webp" alt="Full exterior paint job" loading="lazy" width="640" height="360"/>
-        </div>
-        <div class="svc-body">
-          <span class="svc-num">04</span>
-          <div class="svc-name">Full Exterior <em>Paint Jobs</em></div>
-          <ul class="svc-list">
-            <li>Computer Color Matching</li>
-            <li>Single Panel or Full Repaint</li>
-            <li>Custom Colors Available</li>
-            <li>Factory Finish Quality</li>
-          </ul>
-          <a href="https://www.3jsautobody.com/body-paint-repairs" class="svc-cta" target="_top">
-            Learn More          </a>
-        </div>
-      </div>
+        <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/steps-running-boards.html" class="svc-compact-card" target="_top">
+          <div class="svc-compact-img-wrap">
+            <video class="svc-compact-img" autoplay loop muted playsinline preload="metadata" aria-label="Running boards">
+              <source src="https://rlsh1855.github.io/3Js-and-RLSH-Website/step_gif_1080x720__1_.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="svc-compact-body">
+            <span class="svc-compact-name">Running Boards</span>
+            <span class="svc-compact-link">Shop Steps &rsaquo;</span>
+          </div>
+        </a>
 
-      <!-- 05 Rock Guard -->
-      <div class="svc-card">
-        <div class="svc-img-wrap">
-          <img class="svc-img" src="https://rlsh1855.github.io/3Js-and-RLSH-Website/Bedliner-Jeep_exterior.webp" alt="Rock guard protection" loading="lazy" width="640" height="360"/>
-        </div>
-        <div class="svc-body">
-          <span class="svc-num">05</span>
-          <div class="svc-name">Rock Guard <em>Protection</em></div>
-          <ul class="svc-list">
-            <li>Rhino Linings Material</li>
-            <li>Color Match Available</li>
-            <li>On &amp; Off-Road Protection</li>
-            <li>Stops Chips &amp; Debris</li>
-          </ul>
-          <a href="https://www.3jsautobody.com/rhino-lining-quote" class="svc-cta" target="_top">
-            Get a Quote          </a>
-        </div>
-      </div>
+        <a href="https://www.3jsautobody.com/rhino-lining-quote" class="svc-compact-card" target="_top">
+          <div class="svc-compact-img-wrap">
+            <img class="svc-compact-img" src="https://rlsh1855.github.io/3Js-and-RLSH-Website/Bedliner-Jeep_exterior.webp" alt="Rock Guard Protection" loading="lazy" width="400" height="155"/>
+          </div>
+          <div class="svc-compact-body">
+            <span class="svc-compact-name">Rock Guard</span>
+            <span class="svc-compact-link">Get a Quote &rsaquo;</span>
+          </div>
+        </a>
 
-      <!-- 06 Undercarriage -->
-      <div class="svc-card">
-        <div class="svc-img-wrap">
-          <img class="svc-img" src="https://rlsh1855.github.io/3Js-and-RLSH-Website/Bedliner-Color-Undercarriage.webp" alt="Undercarriage coating" loading="lazy" width="640" height="360"/>
-        </div>
-        <div class="svc-body">
-          <span class="svc-num">06</span>
-          <div class="svc-name">Undercarriage <em>Coating</em></div>
-          <ul class="svc-list">
-            <li>Full Undercarriage Coverage</li>
-            <li>Seals Out Moisture &amp; Salt</li>
-            <li>Rust &amp; Corrosion Protection</li>
-            <li>Coast &amp; Off-Road Recommended</li>
-          </ul>
-          <a href="https://www.3jsautobody.com/rhino-lining-quote" class="svc-cta" target="_top">
-            Get a Quote          </a>
-        </div>
-      </div>
+        <a href="https://www.3jsautobody.com/rhino-lining-quote" class="svc-compact-card" target="_top">
+          <div class="svc-compact-img-wrap">
+            <img class="svc-compact-img" src="https://rlsh1855.github.io/3Js-and-RLSH-Website/Bedliner-Color-Undercarriage.webp" alt="Undercarriage Coating" loading="lazy" width="400" height="155"/>
+          </div>
+          <div class="svc-compact-body">
+            <span class="svc-compact-name">Undercarriage Coating</span>
+            <span class="svc-compact-link">Get a Quote &rsaquo;</span>
+          </div>
+        </a>
 
-    </div>
+      </div>
+    </div><!-- /services-desktop -->
+
+    <!-- ═══ MOBILE: Scroll-snap slider ═══ -->
+    <div class="svc-slider-wrap">
+      <div class="svc-slider" id="svcSlider">
+
+        <div class="svc-slide">
+          <div class="svc-slide-img-wrap">
+            <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/BEDLINER%20WITH%20LOGO.webp" alt="Spray-In Rhino Liner" loading="lazy" width="640" height="360"/>
+          </div>
+          <div class="svc-slide-body">
+            <span class="svc-slide-eyebrow">Certified Installer</span>
+            <div class="svc-slide-name">Spray-In <em>Rhino Liner</em></div>
+            <a href="https://www.3jsautobody.com/rhino-lining-quote" class="svc-slide-cta" target="_top">Get a Quote</a>
+          </div>
+        </div>
+
+        <div class="svc-slide">
+          <div class="svc-slide-img-wrap">
+            <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/72%20land%20cruiser%20full%20exterior%20paint%20job.webp" alt="Collision and Paint Repair" loading="lazy" width="640" height="360"/>
+          </div>
+          <div class="svc-slide-body">
+            <span class="svc-slide-eyebrow">I-CAR Gold Class</span>
+            <div class="svc-slide-name">Collision <em>&amp; Paint Repair</em></div>
+            <a href="https://www.3jsautobody.com/body-paint-repairs" class="svc-slide-cta" target="_top">Learn More</a>
+          </div>
+        </div>
+
+        <div class="svc-slide">
+          <div class="svc-slide-img-wrap">
+            <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/bak-bakflip-mx4-2016-ford-f150-blue-beach-lifestyle-05.webp" alt="Tonneau Covers" loading="lazy" width="640" height="360"/>
+          </div>
+          <div class="svc-slide-body">
+            <span class="svc-slide-eyebrow">All Major Brands</span>
+            <div class="svc-slide-name">Tonneau <em>Covers</em></div>
+            <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/tonneau-covers.html" class="svc-slide-cta" target="_top">Shop Covers</a>
+          </div>
+        </div>
+
+        <div class="svc-slide">
+          <div class="svc-slide-img-wrap">
+            <video autoplay loop muted playsinline preload="metadata" style="width:100%;height:210px;object-fit:cover;display:block;" aria-label="Running boards">
+              <source src="https://rlsh1855.github.io/3Js-and-RLSH-Website/step_gif_1080x720__1_.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="svc-slide-body">
+            <span class="svc-slide-eyebrow">Power &amp; Fixed Options</span>
+            <div class="svc-slide-name">Running Boards <em>&amp; Steps</em></div>
+            <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/steps-running-boards.html" class="svc-slide-cta" target="_top">Shop Steps</a>
+          </div>
+        </div>
+
+        <div class="svc-slide">
+          <div class="svc-slide-img-wrap">
+            <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/Bedliner-Jeep_exterior.webp" alt="Rock Guard Protection" loading="lazy" width="640" height="360"/>
+          </div>
+          <div class="svc-slide-body">
+            <span class="svc-slide-eyebrow">Rhino Linings Material</span>
+            <div class="svc-slide-name">Rock Guard <em>Protection</em></div>
+            <a href="https://www.3jsautobody.com/rhino-lining-quote" class="svc-slide-cta" target="_top">Get a Quote</a>
+          </div>
+        </div>
+
+        <div class="svc-slide">
+          <div class="svc-slide-img-wrap">
+            <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/Bedliner-Color-Undercarriage.webp" alt="Undercarriage Coating" loading="lazy" width="640" height="360"/>
+          </div>
+          <div class="svc-slide-body">
+            <span class="svc-slide-eyebrow">Coast &amp; Off-Road</span>
+            <div class="svc-slide-name">Undercarriage <em>Coating</em></div>
+            <a href="https://www.3jsautobody.com/rhino-lining-quote" class="svc-slide-cta" target="_top">Get a Quote</a>
+          </div>
+        </div>
+
+      </div><!-- /svc-slider -->
+      <div class="svc-dots" id="svcDots" aria-hidden="true">
+        <button class="svc-dot active" data-idx="0" aria-label="Service 1"></button>
+        <button class="svc-dot" data-idx="1" aria-label="Service 2"></button>
+        <button class="svc-dot" data-idx="2" aria-label="Service 3"></button>
+        <button class="svc-dot" data-idx="3" aria-label="Service 4"></button>
+        <button class="svc-dot" data-idx="4" aria-label="Service 5"></button>
+        <button class="svc-dot" data-idx="5" aria-label="Service 6"></button>
+      </div>
+    </div><!-- /svc-slider-wrap -->
   </div>
 
   <!-- CTA Band -->
@@ -927,6 +1016,29 @@
   });
 
   if(window.ResizeObserver){new ResizeObserver(reportHeight).observe(document.body);}
+
+  /* Mobile service slider — dot indicators */
+  (function(){
+    var slider=document.getElementById('svcSlider');
+    var dots=document.querySelectorAll('.svc-dot');
+    if(!slider||!dots.length)return;
+    function updateDots(){
+      var sl=slider.scrollLeft,best=0,bestD=Infinity;
+      for(var i=0;i<slider.children.length;i++){
+        var d=Math.abs(slider.children[i].offsetLeft-sl);
+        if(d<bestD){bestD=d;best=i;}
+      }
+      dots.forEach(function(dot,i){dot.classList.toggle('active',i===best);});
+    }
+    dots.forEach(function(dot){
+      dot.addEventListener('click',function(){
+        var idx=parseInt(dot.dataset.idx,10);
+        var t=slider.children[idx];
+        if(t)slider.scrollTo({left:t.offsetLeft-20,behavior:'smooth'});
+      });
+    });
+    slider.addEventListener('scroll',updateDots,{passive:true});
+  })();
 
   /* FAQ accordion — measured height transition */
   function faqClose(item){var p=item.querySelector('.faq-body');p.style.height=p.scrollHeight+'px';void p.offsetHeight;p.style.height='0px';item.classList.remove('open');item.querySelector('.faq-trigger').setAttribute('aria-expanded','false');}
