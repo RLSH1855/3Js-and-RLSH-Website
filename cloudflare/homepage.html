@@ -56,16 +56,16 @@
     /* ── SHARED BUTTONS ── */
     .btn-red{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:48px;padding:0 32px;background:var(--red);color:#fff;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border:2px solid #a00000;transition:background .2s,color .2s,border-color .2s;}
     .btn-red:hover{background:#fff;color:#000;border-color:#8B0000;}
-    .btn-ghost{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:48px;padding:0 28px;background:rgba(255,255,255,.15);backdrop-filter:blur(12px);color:#fff;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border:1.5px solid rgba(255,255,255,.55);transition:background .2s;}
+    .btn-ghost{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:48px;padding:0 32px;background:rgba(255,255,255,.15);backdrop-filter:blur(12px);color:#fff;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border:1.5px solid rgba(255,255,255,.55);transition:background .2s;}
     .btn-ghost:hover{background:rgba(255,255,255,.28);}
-    .btn-outline-red{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:48px;padding:0 28px;background:transparent;color:var(--red);font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border:2px solid var(--red);transition:background .2s,color .2s;}
+    .btn-outline-red{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:48px;padding:0 32px;background:transparent;color:var(--red);font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border:2px solid var(--red);transition:background .2s,color .2s;}
     .btn-outline-red:hover{background:var(--red);color:#fff;}
     .btn-white{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:48px;padding:0 32px;background:#fff;color:var(--red);font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border:2px solid #8B0000;transition:background .2s;}
     .btn-white:hover{background:#f0f0f0;}
     .btn svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;}
 
     /* ── EYEBROW ── */
-    .eyebrow{font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:12px;display:block;}
+    .eyebrow{font-family:'Montserrat',sans-serif;font-size:12px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:12px;display:block;}
 
     /* ════════════════════════════
        1. HERO
@@ -81,7 +81,7 @@
     .hero-eyebrow{position:absolute;top:40px;left:80px;display:flex;flex-direction:column;align-items:flex-start;gap:10px;z-index:4;}
     .eyebrow-row{display:flex;align-items:center;gap:12px;}
     .eyebrow-line{width:36px;height:2px;background:#8B0000;flex-shrink:0;}
-    .eyebrow-text{font-size:13px;font-weight:800;letter-spacing:3.5px;text-transform:uppercase;color:rgba(255,255,255,0.70);}
+    .eyebrow-text{font-size:12px;font-weight:800;letter-spacing:3.5px;text-transform:uppercase;color:rgba(255,255,255,0.70);}
     .hero-headline{font-size:clamp(44px,6.5vw,90px);font-weight:900;letter-spacing:-3px;line-height:0.92;text-transform:uppercase;margin-bottom:0;color:#fff;}
     .hero-headline .line-red{color:var(--red-dark);}
     .hero-rule{width:52px;height:4px;background:#8B0000;margin:32px 0;}
@@ -116,7 +116,7 @@
       .hero-content{padding:230px 28px 48px 28px;max-width:100%;}
       .hero-eyebrow{top:18px;left:16px;right:16px;flex-direction:column;align-items:center;gap:8px;justify-content:center;}
       .eyebrow-line{width:28px;}
-      .eyebrow-text{text-align:center;white-space:normal;font-size:13px;letter-spacing:2px;}
+      .eyebrow-text{text-align:center;white-space:normal;font-size:12px;letter-spacing:2px;}
       .hero-overlay{background:rgba(0,0,0,0.62);}
       .hero-content{grid-template-columns:1fr;}
       .hero-ctas{flex-direction:column;}
@@ -139,7 +139,7 @@
     .panel:hover .panel-overlay{background:linear-gradient(160deg,rgba(0,0,0,.82) 0%,rgba(0,0,0,.62) 100%);}
 
     .panel-content{position:relative;z-index:4;padding:28px 24px;height:100%;display:flex;flex-direction:column;justify-content:flex-start;}
-    .panel-eyebrow{font-size:13px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.75);margin-bottom:8px;display:inline-flex;align-items:center;gap:8px;}
+    .panel-eyebrow{font-size:12px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.75);margin-bottom:8px;display:inline-flex;align-items:center;gap:8px;}
     .panel-eyebrow::before{content:'';width:12px;height:1.5px;background:#8B0000;flex-shrink:0;}
     .panel-title{font-family:'Montserrat',sans-serif;font-size:clamp(20px,2.2vw,26px);font-weight:900;color:#fff;letter-spacing:-.3px;line-height:1.15;text-transform:uppercase;margin-bottom:12px;}
     .panel-sub{font-family:'Inter',sans-serif;font-size:16px;font-weight:400;color:rgba(255,255,255,.78);line-height:1.65;max-width:280px;}
@@ -155,7 +155,7 @@
     .awards-section::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(0,0,0,.06) 1px,transparent 1px);background-size:28px 28px;pointer-events:none;}
     .awards-section::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(139,0,0,.05) 0%,transparent 65%);pointer-events:none;}
     .awards-content{position:relative;z-index:1;max-width:1000px;margin:0 auto;}
-    .awards-eyebrow{font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:#8B0000;margin-bottom:14px;}
+    .awards-eyebrow{font-family:'Montserrat',sans-serif;font-size:12px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:#8B0000;margin-bottom:14px;}
     .awards-heading{font-family:'Montserrat',sans-serif;font-size:clamp(22px,3.5vw,38px);font-weight:900;letter-spacing:-.5px;margin-bottom:8px;color:var(--neutral);}
     .awards-heading em{font-style:normal;color:#8B0000;}
     .awards-sub{font-family:'Inter',sans-serif;font-size:16px;color:#666;margin-bottom:52px;letter-spacing:.3px;}
@@ -197,15 +197,14 @@
     .svc-list{list-style:none;display:flex;flex-direction:column;gap:12px;margin-bottom:20px;}
     .svc-list li{font-family:'Inter',sans-serif;font-size:16px;font-weight:500;color:rgba(255,255,255,.85);display:flex;align-items:center;gap:8px;letter-spacing:.3px;line-height:1.65;}
     .svc-list li::before{content:'';width:8px;height:1.5px;background:#8B0000;flex-shrink:0;}
-    .svc-cta{margin-top:auto;display:inline-flex;align-items:center;gap:6px;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#fff;text-decoration:none;background:#8B0000;height:48px;padding:0 16px;border:2px solid #a00000;border-radius:0;transition:background .2s;width:fit-content;}
+    .svc-cta{margin-top:auto;display:inline-flex;align-items:center;justify-content:center;gap:6px;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#fff;text-decoration:none;background:#8B0000;height:48px;padding:0 32px;border:2px solid #a00000;border-radius:0;transition:background .2s;}
     .svc-cta:hover{background:var(--red-hot);}
-    .svc-cta svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2.5;stroke-linecap:round;}
 
     /* CTA band */
     .cta-band{background:#111;padding:clamp(48px,5vw,64px) 20px;text-align:center;position:relative;overflow:hidden;}
     .cta-band-inner{position:relative;z-index:1;}
     .cta-band h2{font-family:'Montserrat',sans-serif;font-size:clamp(22px,3.5vw,38px);font-weight:900;margin-bottom:10px;color:#fff;}
-    .cta-band p{font-family:'Inter',sans-serif;font-size:16px;color:rgba(255,255,255,0.72);max-width:480px;margin:0 auto 28px;line-height:1.65;}
+    .cta-band p{font-family:'Inter',sans-serif;font-size:16px;font-weight:500;color:rgba(255,255,255,0.85);max-width:480px;margin:0 auto 28px;line-height:1.65;letter-spacing:0.3px;}
 
     /* ════════════════════════════
        5. FAQ
@@ -224,7 +223,7 @@
     .faq-trigger{width:100%;background:none;border:none;padding:0;cursor:pointer;display:block;text-align:left;}
     .faq-trigger-inner{display:flex;align-items:center;gap:16px;padding:18px 20px;transition:background 0.15s;}
     .faq-trigger:hover .faq-trigger-inner,.faq-item.open .faq-trigger-inner{background:#f4f4f4;}
-    .q-badge{flex-shrink:0;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:900;color:#AAAAAA;padding:3px 8px;border:1px solid #E8ECF0;border-radius:0;background:#fff;align-self:flex-start;margin-top:2px;box-shadow:0 1px 4px rgba(0,0,0,0.07);}
+    .q-badge{flex-shrink:0;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:900;color:#AAAAAA;padding:3px 8px;border:1px solid #E8ECF0;border-radius:0;background:#fff;align-self:flex-start;margin-top:2px;box-shadow:0 1px 4px rgba(0,0,0,0.07);}
     .q-label{flex:1;font-family:'Montserrat',sans-serif;font-size:14px;font-weight:700;color:#1a1a1a;line-height:1.45;}
     .faq-item.open .q-label{color:#1a1a1a;}
     .toggle-icon{flex-shrink:0;width:40px;height:40px;border-radius:0;background:transparent;border:none;display:flex;align-items:center;justify-content:center;transition:transform 0.3s ease;color:#111;}
@@ -254,7 +253,7 @@
     .red-section .about-cta-block .pitch{color:#424954;}
     .red-section .about-cta-block .pitch strong{color:#1a1a1a;}
     .about-inner{max-width:1180px;margin:0 auto;}
-    .about-eyebrow{font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.75);display:inline-flex;align-items:center;gap:10px;margin-bottom:18px;}
+    .about-eyebrow{font-family:'Montserrat',sans-serif;font-size:12px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.75);display:inline-flex;align-items:center;gap:10px;margin-bottom:18px;}
     .about-eyebrow::before{content:'';width:24px;height:2px;background:rgba(255,255,255,.55);flex-shrink:0;}
     .about-intro{display:grid;grid-template-columns:1fr;gap:24px;align-items:end;margin-bottom:48px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,0.2);}
     .about-h2{font-family:'Montserrat',sans-serif;font-size:clamp(24px,6vw,52px);font-weight:900;letter-spacing:-1px;line-height:1.05;color:#fff;margin-bottom:16px;}
@@ -271,11 +270,10 @@
     .about-cta-block{display:flex;flex-direction:column;align-items:flex-start;gap:16px;}
     .about-cta-block .pitch{font-family:'Inter',sans-serif;font-size:16px;color:rgba(255,255,255,.75);line-height:1.65;}
     .about-cta-block .pitch strong{color:#fff;font-weight:600;}
-    .btn-about{display:inline-flex;align-items:center;gap:10px;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;height:50px;padding:0 28px;background:#fff;color:#8B0000;border:2px solid #8B0000;border-radius:0;transition:background .2s;}
+    .btn-about{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;height:48px;padding:0 32px;background:#fff;color:#8B0000;border:2px solid #8B0000;border-radius:0;transition:background .2s;}
     .btn-about:hover{background:#f0f0f0;}
-    .btn-about-ghost{display:inline-flex;align-items:center;gap:10px;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;height:50px;padding:0 28px;background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.45);transition:background .2s,border-color .2s;}
+    .btn-about-ghost{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;height:48px;padding:0 32px;background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.45);transition:background .2s,border-color .2s;}
     .btn-about-ghost:hover{background:var(--red-08);border-color:#8B0000;color:#8B0000;}
-    .btn-about svg,.btn-about-ghost svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2.4;flex-shrink:0;}
     .black-section{background:var(--black);padding:clamp(48px,7vw,72px) clamp(20px,4vw,32px) clamp(56px,7vw,72px);}
     .rlsh-head{margin-bottom:40px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.1);}
     .rlsh-head h2{font-family:'Montserrat',sans-serif;font-size:clamp(24px,6vw,52px);font-weight:900;letter-spacing:-1px;color:#fff;line-height:1.05;margin-bottom:14px;}
@@ -305,7 +303,7 @@
     ════════════════════════════ */
     .ig-section{background:var(--black);padding:56px 0 64px;text-align:center;border-top:3px solid #8B0000;}
     .ig-header{padding:0 24px;}
-    .ig-eyebrow{font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.75);margin-bottom:12px;display:inline-flex;align-items:center;gap:8px;}
+    .ig-eyebrow{font-family:'Montserrat',sans-serif;font-size:12px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.75);margin-bottom:12px;display:inline-flex;align-items:center;gap:8px;}
     .ig-eyebrow::before{content:'';width:16px;height:2px;background:#8B0000;flex-shrink:0;}
     .ig-heading{font-family:'Montserrat',sans-serif;font-size:clamp(22px,3.5vw,36px);font-weight:900;letter-spacing:-.5px;margin-bottom:6px;}
     .ig-heading em{font-style:normal;color:var(--red-dark);}
@@ -351,6 +349,8 @@
       .panel-link{font-size:14px;}
     }
     @media(max-width:600px){
+      .btn-red,.btn-ghost,.btn-outline-red,.btn-white,.btn-about,.btn-about-ghost,.svc-cta,.ig-btn,.panel-link{font-size:14px;}
+      .river-rat{bottom:36px;}
       .hero-ctas{flex-direction:column;align-items:stretch;}
       .awards-grid{flex-direction:column;align-items:center;}
       .award-card{min-width:0;width:100%;max-width:100%;}
@@ -421,14 +421,8 @@
       </div>
       <div class="hero-cta-group">
         <div class="hero-ctas">
-          <a href="tel:+15624246744" class="btn-red btn" target="_top">
-            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.7 10.82 19.79 19.79 0 01.67 2.18 2 2 0 012.66 0h3a2 2 0 012 1.72c.13 1 .36 1.97.7 2.91a2 2 0 01-.45 2.11L6.91 7.74a16 16 0 006.29 6.29l1-.99a2 2 0 012.11-.45c.94.34 1.91.57 2.91.7A2 2 0 0122 16.92z"/></svg>
-            Call 562-424-6744
-          </a>
-          <a href="https://www.3jsautobody.com/request-a-quote" class="btn-ghost btn" target="_top">
-            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-            Get a Free Quote
-          </a>
+          <a href="tel:+15624246744" class="btn-red btn" target="_top">Call 562-424-6744</a>
+          <a href="https://www.3jsautobody.com/request-a-quote" class="btn-ghost btn" target="_top">Get a Free Quote</a>
         </div>
         <div class="hero-trust">
           <img src="images/brands/icar-ase-logos.png" alt="I-CAR Gold Class & ASE Certified" class="trust-logo">
@@ -563,8 +557,7 @@
             <li>Color Match Options</li>
           </ul>
           <a href="https://www.3jsautobody.com/rhino-lining-quote" class="svc-cta" target="_top">
-            Get a Quote <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
-          </a>
+            Get a Quote          </a>
         </div>
       </div>
 
@@ -583,8 +576,7 @@
             <li>Professional Installation</li>
           </ul>
           <a href="https://www.3jsautobody.com/exterior-accessories/tonneau-covers" class="svc-cta" target="_top">
-            Shop Covers <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
-          </a>
+            Shop Covers          </a>
         </div>
       </div>
 
@@ -605,8 +597,7 @@
             <li>All Makes &amp; Models</li>
           </ul>
           <a href="https://www.3jsautobody.com/exterior-accessories/steps-running-boards" class="svc-cta" target="_top">
-            Shop Steps <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
-          </a>
+            Shop Steps          </a>
         </div>
       </div>
 
@@ -625,8 +616,7 @@
             <li>Factory Finish Quality</li>
           </ul>
           <a href="https://www.3jsautobody.com/body-paint-repairs" class="svc-cta" target="_top">
-            Learn More <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
-          </a>
+            Learn More          </a>
         </div>
       </div>
 
@@ -645,8 +635,7 @@
             <li>Stops Chips &amp; Debris</li>
           </ul>
           <a href="https://www.3jsautobody.com/rhino-lining-quote" class="svc-cta" target="_top">
-            Get a Quote <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
-          </a>
+            Get a Quote          </a>
         </div>
       </div>
 
@@ -665,8 +654,7 @@
             <li>Coast &amp; Off-Road Recommended</li>
           </ul>
           <a href="https://www.3jsautobody.com/rhino-lining-quote" class="svc-cta" target="_top">
-            Get a Quote <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
-          </a>
+            Get a Quote          </a>
         </div>
       </div>
 
@@ -678,10 +666,7 @@
     <div class="cta-band-inner">
       <h2>Ready to Get Started?</h2>
       <p>Walk in Mon–Fri 8AM–5PM · Free estimates · Signal Hill, CA · Same-day Rhino Liner installs available.</p>
-      <a href="https://www.3jsautobody.com/request-a-quote" class="btn-red btn" target="_top">
-        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-        Get a Free Quote
-      </a>
+      <a href="https://www.3jsautobody.com/request-a-quote" class="btn-red btn" target="_top">Get a Free Quote</a>
     </div>
   </div>
 </section>
@@ -725,10 +710,7 @@
       <div class="about-cta-block">
         <span class="col-label">Get Started</span>
         <p class="pitch">Tell us about your vehicle and we'll send a <strong>complimentary quote</strong> back — no obligation, no pressure.</p>
-        <a href="https://www.3jsautobody.com/request-a-quote" class="btn-red btn" target="_top">
-          <svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
-          Get a Free Quote
-        </a>
+        <a href="https://www.3jsautobody.com/request-a-quote" class="btn-red btn" target="_top">Get a Free Quote</a>
       </div>
     </div>
   </div>
@@ -760,10 +742,7 @@
     </div>
     <div class="rlsh-foot">
       <p>From bed liners to full off-road builds, RLSH crews handle the install start to finish — under the same roof as 3J's Auto Body.</p>
-      <a href="https://www.3jsautobody.com/request-a-quote" class="btn-about-ghost" target="_top">
-        Build Your Rig
-        <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </a>
+      <a href="https://www.3jsautobody.com/request-a-quote" class="btn-about-ghost" target="_top">Build Your Rig</a>
     </div>
   </div>
 </section>
@@ -810,14 +789,8 @@
     </div>
     <p style="font-family:'Inter',sans-serif;font-size:16px;color:#666;text-align:center;line-height:1.7;max-width:520px;margin:0 auto 28px;">The <strong style="color:#1F2937;">Free Online Estimate</strong> button takes you to our secure online portal. Fill in your vehicle info and snap a couple photos of the damage so we can write you the most accurate estimate possible.</p>
     <div class="faq-cta">
-      <a href="tel:+15624246744" class="btn-red btn" target="_top">
-        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.7 10.82 19.79 19.79 0 01.67 2.18 2 2 0 012.66 0h3a2 2 0 012 1.72c.13 1 .36 1.97.7 2.91a2 2 0 01-.45 2.11L6.91 7.74a16 16 0 006.29 6.29l1-.99a2 2 0 012.11-.45c.94.34 1.91.57 2.91.7A2 2 0 0122 16.92z"/></svg>
-        Call 562-424-6744
-      </a>
-      <a href="https://www.carwise.com/online-photo-estimate/3js-autobody-paint-inc-signal-hill-ca-90755/479382?source=shop.profile&referer=estimate.cccone.com" target="_blank" class="btn-outline-red btn" aria-label="Free Online Estimate (opens secure estimate portal)">
-        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-        Free Online Estimate ↗
-      </a>
+      <a href="tel:+15624246744" class="btn-red btn" target="_top">Call 562-424-6744</a>
+      <a href="https://www.carwise.com/online-photo-estimate/3js-autobody-paint-inc-signal-hill-ca-90755/479382?source=shop.profile&referer=estimate.cccone.com" target="_blank" class="btn-outline-red btn" aria-label="Free Online Estimate (opens secure estimate portal)">Free Online Estimate ↗</a>
     </div>
   </div>
 </section>
@@ -866,10 +839,7 @@
       <div class="ig-tile-hover"><div class="ig-tile-hover-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg><span>View on Instagram</span></div></div>
     </a>
   </div>
-  <a class="ig-btn" href="https://www.instagram.com/rlofsignalhill/" target="_blank" rel="noopener">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-    Follow @rlofsignalhill
-  </a>
+  <a class="ig-btn" href="https://www.instagram.com/rlofsignalhill/" target="_blank" rel="noopener">Follow @rlofsignalhill</a>
 </section>
 
 </main>
