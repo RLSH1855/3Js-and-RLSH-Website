@@ -393,7 +393,7 @@
     /* Nav */
     .snd-nav{background:#fff;}
     .snd-section{display:flex;align-items:center;position:relative;z-index:1;background:#2d2d2d;box-shadow:inset 0 2px 0 rgba(255,255,255,.12),inset 0 -2px 0 rgba(0,0,0,.5);padding:8px 20px 8px 30px;}
-    .snd-section span{font-family:'Oswald',Arial,sans-serif;font-weight:800;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.92);text-shadow:0 1px 2px rgba(0,0,0,.6);}
+    .snd-section span{font-family:'Oswald',Arial,sans-serif;font-weight:800;font-size:13px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.92);text-shadow:0 1px 2px rgba(0,0,0,.6);}
     .snd-item{display:flex;align-items:center;justify-content:space-between;padding:7px 20px 7px 17px;background:#fff;border-bottom:1px solid rgba(0,0,0,.09);border-left:3px solid transparent;border-right:none;border-top:none;cursor:pointer;width:100%;text-align:left;transition:background .1s ease,border-left-color .15s ease;box-shadow:0 1px 3px rgba(0,0,0,.04),inset 0 -1px 0 rgba(0,0,0,.10);text-decoration:none;color:inherit;}
     .snd-item:hover,.snd-item.snd-active{background:rgba(0,0,0,.03);border-left-color:#8B0000;}
     .snd-item:active{background:rgba(0,0,0,.05);}
@@ -410,7 +410,7 @@
     .snd-sub-bar{height:2px;background:#8B0000;flex-shrink:0;}
     .snd-sub-bar.sn-drawn{animation:snDrawRight 400ms cubic-bezier(0.22,1,0.36,1) 30ms both;}
     .snd-scan-line{position:absolute;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent 0%,#8B0000 40%,rgba(255,100,100,.6) 60%,transparent 100%);top:2px;z-index:5;pointer-events:none;animation:snScanDown 550ms ease-out 60ms forwards;}
-    .snd-sub-label{display:block;font-family:'Oswald',Arial,sans-serif;font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.92);background:#1d1d1d;border-top:2px solid #000;border-bottom:1.5px solid rgba(255,255,255,.18);text-shadow:0 1px 2px rgba(0,0,0,.6);padding:15px 20px 15px 30px;}
+    .snd-sub-label{display:block;font-family:'Oswald',Arial,sans-serif;font-size:13px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.92);background:#1d1d1d;border-top:2px solid #000;border-bottom:1.5px solid rgba(255,255,255,.18);text-shadow:0 1px 2px rgba(0,0,0,.6);padding:15px 20px 15px 30px;}
     .snd-sub-label.sn-fadein{animation:snFadeUpIn 300ms cubic-bezier(0.22,1,0.36,1) both;}
     .snd-sub-item{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;font-family:'Inter',Arial,sans-serif;font-size:16px;font-weight:500;color:rgba(255,255,255,.82);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.05);transition:background .12s ease;}
     .snd-sub-item:last-of-type{margin-bottom:6px;}
@@ -721,41 +721,44 @@
           <div class="snd-nav">
             <div class="snd-section"><span>Navigate</span></div>
             <a href="https://www.3jsautobody.com/inside-3js" class="snd-item"><div class="snd-item-text"><span class="snd-item-label">Inside 3J's</span><span class="snd-item-desc">Our story &amp; team</span></div><span class="snd-item-arr">${snChevR}</span></a>
-            <a href="https://www.3jsautobody.com/body-paint-repairs" class="snd-item"><div class="snd-item-text"><span class="snd-item-label">Body &amp; Paint</span><span class="snd-item-desc">Collision repair &middot; paint matching</span></div><span class="snd-item-arr">${snChevR}</span></a>
-            <button class="snd-item" id="snd-acc-btn" aria-expanded="false"><div class="snd-item-text"><span class="snd-item-label">Truck Accessories</span><span class="snd-item-desc">Liners, covers, steps &amp; more</span></div><span class="snd-item-arr" id="snd-acc-arr">${snChevD}</span></button>
-            <div class="snd-sub" id="snd-acc-sub">
+            <a href="https://www.3jsautobody.com/body-paint-repairs" class="snd-item"><div class="snd-item-text"><span class="snd-item-label">Body &amp; Paint Repairs</span><span class="snd-item-desc">Collision repair &middot; paint matching</span></div><span class="snd-item-arr">${snChevR}</span></a>
+            <button class="snd-item" id="snd-rhino-btn" aria-expanded="false"><div class="snd-item-text"><span class="snd-item-label">Rhino Liner +</span><span class="snd-item-desc">Bed liner &amp; truck protection</span></div><span class="snd-item-arr" id="snd-rhino-arr">${snChevD}</span></button>
+            <div class="snd-sub" id="snd-rhino-sub">
               <div class="snd-sub-inner">
-                <div class="snd-sub-bar" id="snd-acc-bar"></div>
-                <span class="snd-sub-label">Bed Protection</span>
+                <div class="snd-sub-bar" id="snd-rhino-bar"></div>
+                <a href="https://www.3jsautobody.com/rhino-lining-quote" class="snd-sub-item">Rhino Liner Quote${snChevSub}</a>
+                <a href="https://www.3jsautobody.com/our-work" class="snd-sub-item">Our Work${snChevSub}</a>
+                <div class="snd-sub-spacer"></div>
+              </div>
+            </div>
+            <button class="snd-item" id="snd-bundles-btn" aria-expanded="false"><div class="snd-item-text"><span class="snd-item-label">Bundles &amp; Packages +</span><span class="snd-item-desc">Best value combinations</span></div><span class="snd-item-arr" id="snd-bundles-arr">${snChevD}</span></button>
+            <div class="snd-sub" id="snd-bundles-sub">
+              <div class="snd-sub-inner">
+                <div class="snd-sub-bar" id="snd-bundles-bar"></div>
+                <a href="https://www.3jsautobody.com/bundles" class="snd-sub-item">The 405 Essential${snChevSub}</a>
+                <a href="https://www.3jsautobody.com/bundles" class="snd-sub-item">The Working Man${snChevSub}</a>
+                <a href="https://www.3jsautobody.com/bundles" class="snd-sub-item">The 3 Wise Men &mdash; Standard${snChevSub}</a>
+                <a href="https://www.3jsautobody.com/bundles" class="snd-sub-item">The 3 Wise Men &mdash; Premium${snChevSub}</a>
+                <div class="snd-sub-spacer"></div>
+              </div>
+            </div>
+            <button class="snd-item" id="snd-ext-btn" aria-expanded="false"><div class="snd-item-text"><span class="snd-item-label">Exterior Accessories +</span><span class="snd-item-desc">Covers, steps, lighting &amp; more</span></div><span class="snd-item-arr" id="snd-ext-arr">${snChevD}</span></button>
+            <div class="snd-sub" id="snd-ext-sub">
+              <div class="snd-sub-inner">
+                <div class="snd-sub-bar" id="snd-ext-bar"></div>
+                <span class="snd-sub-label">Bedliner &amp; Bed Accessories</span>
                 <a href="https://www.3jsautobody.com/rhino-liner" class="snd-sub-item">Rhino Liner${snChevSub}</a>
-                <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/floor-liners.html" class="snd-sub-item">Floor Liners${snChevSub}</a>
-                <span class="snd-sub-label">Covers &amp; Steps</span>
+                <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/floor-liners.html" class="snd-sub-item">Floor Liners &amp; Mats${snChevSub}</a>
+                <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/headache-racks.html" class="snd-sub-item">Headache Rack${snChevSub}</a>
+                <span class="snd-sub-label">Exterior Upgrades</span>
                 <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/tonneau-covers.html" class="snd-sub-item">Tonneau Covers${snChevSub}</a>
-                <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/steps-running-boards.html" class="snd-sub-item">Steps &amp; Running Boards${snChevSub}</a>
-                <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/towing-hitches.html" class="snd-sub-item">Towing &amp; Hitches${snChevSub}</a>
+                <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/steps-running-boards.html" class="snd-sub-item">Running Boards${snChevSub}</a>
+                <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/towing-hitches.html" class="snd-sub-item">Towing${snChevSub}</a>
                 <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/lighting.html" class="snd-sub-item">Lighting${snChevSub}</a>
-                <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/headache-racks.html" class="snd-sub-item">Headache Racks${snChevSub}</a>
                 <div class="snd-sub-spacer"></div>
               </div>
             </div>
-            <button class="snd-item" id="snd-areas-btn" aria-expanded="false"><div class="snd-item-text"><span class="snd-item-label">Areas We Service</span><span class="snd-item-desc">Greater Signal Hill area</span></div><span class="snd-item-arr" id="snd-areas-arr">${snChevD}</span></button>
-            <div class="snd-sub" id="snd-areas-sub">
-              <div class="snd-sub-inner">
-                <div class="snd-sub-bar" id="snd-areas-bar"></div>
-                <span class="snd-sub-label">South Bay</span>
-                <a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_LONG_BEACH.html" class="snd-sub-item">Long Beach${snChevSub}</a>
-                <a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_TORRANCE.html" class="snd-sub-item">Torrance${snChevSub}</a>
-                <a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_CARSON.html" class="snd-sub-item">Carson${snChevSub}</a>
-                <a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_LAKEWOOD.html" class="snd-sub-item">Lakewood${snChevSub}</a>
-                <span class="snd-sub-label">Southeast LA</span>
-                <a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_COMPTON.html" class="snd-sub-item">Compton${snChevSub}</a>
-                <a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_DOWNEY.html" class="snd-sub-item">Downey${snChevSub}</a>
-                <a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_BELLFLOWER.html" class="snd-sub-item">Bellflower${snChevSub}</a>
-                <div class="snd-sub-spacer"></div>
-              </div>
-            </div>
-            <div class="snd-section"><span>More</span></div>
-            <a href="https://www.3jsautobody.com/rhino-liner" class="snd-item"><div class="snd-item-text"><span class="snd-item-label">Rhino Liner</span><span class="snd-item-desc">Bed liner &amp; truck protection</span></div><span class="snd-item-arr">${snChevR}</span></a>
+            <a href="https://www.3jsautobody.com/shop" class="snd-item"><div class="snd-item-text"><span class="snd-item-label">Shop</span><span class="snd-item-desc">Browse all products</span></div><span class="snd-item-arr">${snChevR}</span></a>
             <a href="https://www.3jsautobody.com/contact-us" class="snd-item"><div class="snd-item-text"><span class="snd-item-label">Contact Us</span><span class="snd-item-desc">Get in touch &middot; 562-424-6744</span></div><span class="snd-item-arr">${snChevR}</span></a>
             <a href="https://www.3jsautobody.com/faq" class="snd-item"><div class="snd-item-text"><span class="snd-item-label">FAQ</span><span class="snd-item-desc">Common questions answered</span></div><span class="snd-item-arr">${snChevR}</span></a>
           </div>
@@ -907,8 +910,9 @@
       }
     });
   }
-  initSndAccordion('snd-acc-btn',   'snd-acc-sub', 'snd-acc-bar');
-  initSndAccordion('snd-areas-btn', 'snd-areas-sub', 'snd-areas-bar');
+  initSndAccordion('snd-rhino-btn',   'snd-rhino-sub',   'snd-rhino-bar');
+  initSndAccordion('snd-bundles-btn', 'snd-bundles-sub', 'snd-bundles-bar');
+  initSndAccordion('snd-ext-btn',     'snd-ext-sub',     'snd-ext-bar');
 
   /* ════════════════════════════════
      DESKTOP PHONE MODAL
