@@ -379,8 +379,8 @@
     .snd-tagline{font-family:'Inter',Arial,sans-serif;font-style:italic;font-size:11px;color:rgba(0,0,0,.38);margin-bottom:0;min-height:14px;}
     .snd-tagline-cursor{border-right:1.5px solid rgba(0,0,0,.3);margin-left:1px;}
     .snd-ed-ctas{display:flex;flex-direction:column;gap:8px;}
-    .snd-ed-btn-red{height:42px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;background:#8B0000;color:#fff;font-family:'Oswald',Arial,sans-serif;font-weight:700;font-size:13px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;box-shadow:inset 0 1px 0 rgba(255,255,255,.15),inset 0 -2px 0 rgba(0,0,0,.2);}
-    .snd-ed-btn-phone{height:34px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;border:1px solid rgba(0,0,0,.15);color:rgba(0,0,0,.45);font-family:'Oswald',Arial,sans-serif;font-weight:500;font-size:11px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;}
+    .snd-ed-btn-red{height:42px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;background:#8B0000;color:#fff;font-family:'Oswald',Arial,sans-serif;font-weight:700;font-size:16px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;box-shadow:inset 0 1px 0 rgba(255,255,255,.15),inset 0 -2px 0 rgba(0,0,0,.2);}
+    .snd-ed-btn-phone{height:34px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;border:1px solid rgba(0,0,0,.15);color:rgba(0,0,0,.45);font-family:'Oswald',Arial,sans-serif;font-weight:500;font-size:16px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;}
     /* Garage row */
     .snd-garage{display:flex;align-items:center;gap:11px;padding:10px 20px;background:#fff;border:none;border-bottom:1px solid rgba(0,0,0,.09);cursor:pointer;width:100%;text-align:left;flex-shrink:0;transition:background .15s;box-shadow:0 1px 3px rgba(0,0,0,.04),inset 0 -1px 0 rgba(0,0,0,.10);}
     .snd-garage:hover,.snd-garage:active{background:rgba(139,0,0,.04);}
@@ -399,7 +399,7 @@
     .snd-item:active{background:rgba(0,0,0,.05);}
     .snd-item.snd-open{border-left-color:#8B0000;}
     .snd-item-text{display:flex;flex-direction:column;gap:2px;}
-    .snd-item-label{font-family:'Montserrat',Arial,sans-serif;font-size:14px;font-weight:700;letter-spacing:-.1px;color:#1a1a1a;line-height:1.2;}
+    .snd-item-label{font-family:'Montserrat',Arial,sans-serif;font-size:16px;font-weight:700;letter-spacing:-.1px;color:#1a1a1a;line-height:1.2;}
     .snd-item-desc{font-family:'Inter',Arial,sans-serif;font-size:10.5px;font-weight:400;color:rgba(0,0,0,.38);letter-spacing:.1px;line-height:1.3;}
     .snd-item-arr{color:rgba(0,0,0,.2);flex-shrink:0;display:inline-flex;transition:transform .3s cubic-bezier(0.22,1,0.36,1);}
     .snd-item.snd-open .snd-item-arr{transform:rotate(180deg);}
@@ -412,7 +412,7 @@
     .snd-scan-line{position:absolute;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent 0%,#8B0000 40%,rgba(255,100,100,.6) 60%,transparent 100%);top:2px;z-index:5;pointer-events:none;animation:snScanDown 550ms ease-out 60ms forwards;}
     .snd-sub-label{display:block;font-family:'Oswald',Arial,sans-serif;font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.92);background:#1d1d1d;border-top:2px solid #000;border-bottom:1.5px solid rgba(255,255,255,.18);text-shadow:0 1px 2px rgba(0,0,0,.6);padding:15px 20px 15px 30px;}
     .snd-sub-label.sn-fadein{animation:snFadeUpIn 300ms cubic-bezier(0.22,1,0.36,1) both;}
-    .snd-sub-item{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;font-family:'Inter',Arial,sans-serif;font-size:13px;font-weight:500;color:rgba(255,255,255,.82);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.05);transition:background .12s ease;}
+    .snd-sub-item{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;font-family:'Inter',Arial,sans-serif;font-size:16px;font-weight:500;color:rgba(255,255,255,.82);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.05);transition:background .12s ease;}
     .snd-sub-item:last-of-type{margin-bottom:6px;}
     .snd-sub-item:hover,.snd-sub-item:active{background:rgba(139,0,0,.40);}
     .snd-sub-item.sn-slidein{animation:snSlideInLeft 320ms cubic-bezier(0.22,1,0.36,1) both;}
@@ -423,8 +423,8 @@
     .snd-brand-dot{width:5px;height:5px;background:#8B0000;flex-shrink:0;}
     .snd-brand-text{font-family:'Montserrat',Arial,sans-serif;font-weight:800;font-size:7.5px;letter-spacing:.6px;text-transform:uppercase;color:rgba(255,255,255,.38);white-space:nowrap;}
     .snd-footer-btns{display:flex;flex-direction:column;gap:7px;}
-    .snd-cta-red{display:flex;align-items:center;justify-content:center;gap:8px;height:40px;background:#8B0000;color:#fff;font-family:'Montserrat',Arial,sans-serif;font-weight:800;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;text-decoration:none;border:none;cursor:pointer;}
-    .snd-cta-outline{display:flex;align-items:center;justify-content:center;gap:8px;height:40px;border:1.5px solid rgba(255,255,255,.18);color:rgba(255,255,255,.72);font-family:'Montserrat',Arial,sans-serif;font-weight:700;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;text-decoration:none;background:transparent;cursor:pointer;}
+    .snd-cta-red{display:flex;align-items:center;justify-content:center;gap:8px;height:40px;background:#8B0000;color:#fff;font-family:'Montserrat',Arial,sans-serif;font-weight:800;font-size:16px;letter-spacing:2.5px;text-transform:uppercase;text-decoration:none;border:none;cursor:pointer;}
+    .snd-cta-outline{display:flex;align-items:center;justify-content:center;gap:8px;height:40px;border:1.5px solid rgba(255,255,255,.18);color:rgba(255,255,255,.72);font-family:'Montserrat',Arial,sans-serif;font-weight:700;font-size:16px;letter-spacing:2.5px;text-transform:uppercase;text-decoration:none;background:transparent;cursor:pointer;}
     .snd-contact{margin-top:8px;text-align:center;font-family:'Inter',Arial,sans-serif;font-size:11px;color:rgba(255,255,255,.28);}
     @media(prefers-reduced-motion:reduce){#sn-page-wrap,.sn-drawer,.sn-overlay,.snd-sub{transition:none!important;}}
 
