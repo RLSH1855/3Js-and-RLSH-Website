@@ -99,9 +99,8 @@
     .hero-bottom-bar{position:absolute;bottom:0;left:0;right:0;height:4px;background:linear-gradient(to right,#8B0000,#8B0000 60%,transparent);z-index:3;}
     .river-rat{position:absolute;bottom:22px;left:80px;font-size:10px;font-weight:600;color:rgba(255,255,255,0.55);letter-spacing:0.5px;font-style:italic;z-index:3;}
     .hero-trust{display:flex;flex-wrap:wrap;gap:4px 0;margin-top:16px;align-items:center;justify-content:center;align-self:stretch;}
-    .hero-trust-item{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.92);}
-    .hero-trust-sep{color:rgba(255,255,255,0.50);margin:0 8px;font-size:10px;}
-    @media(max-width:640px){.hero-trust{justify-content:center;}.hero-trust-item{font-size:10px;}.hero-cta-group{width:100%;}}
+    .trust-logo{height:48px;width:auto;display:block;filter:drop-shadow(0 1px 4px rgba(0,0,0,0.5));}
+    @media(max-width:640px){.hero-trust{justify-content:center;}.trust-logo{height:40px;}.hero-cta-group{width:100%;}}
     .scroll-hint{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;opacity:0;z-index:3;animation:hintFadeIn 0.9s 1.2s ease-out forwards;}
     .scroll-hint span{font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:#fff;}
     .scroll-hint svg{width:22px;height:22px;stroke:#fff;stroke-width:2.5;}
@@ -431,13 +430,7 @@
           </a>
         </div>
         <div class="hero-trust">
-          <span class="hero-trust-item">I-CAR Gold Class</span>
-          <span class="hero-trust-sep">·</span>
-          <span class="hero-trust-item">ASE Certified</span>
-          <span class="hero-trust-sep">·</span>
-          <span class="hero-trust-item">Works with all major insurers</span>
-          <span class="hero-trust-sep">·</span>
-          <span class="hero-trust-item">Rhino Liner Installer</span>
+          <img src="images/brands/icar-ase-logos.png" alt="I-CAR Gold Class & ASE Certified" class="trust-logo">
         </div>
       </div>
     </div>
