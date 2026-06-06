@@ -42,7 +42,7 @@
 
     /* ── SHARED TOKENS ── */
     :root{
-      --red:#8B0000;--red-hot:#A00000;--red-dark:var(--red-dark);
+      --red:#8B0000;--red-hot:#A00000;--red-dark:#8B0000;
       --red-08:rgba(139,0,0,.08);
       --red-12:rgba(139,0,0,.12);
       --red-14:rgba(139,0,0,.14);
@@ -93,7 +93,7 @@
     .hero-ctas{display:flex;flex-wrap:wrap;gap:14px;}
     .hero-stats{display:grid;grid-template-columns:1fr 1fr;gap:28px 20px;margin-top:0;padding-top:0;border-top:none;border-left:1px solid rgba(255,255,255,0.12);padding-left:40px;align-self:center;}
     .hero-stats .stat{display:flex;flex-direction:column;gap:3px;}
-    .hero-stats .stat-num{font-size:clamp(20px,2.5vw,28px);font-weight:900;color:#fff;letter-spacing:-1px;line-height:1;}
+    .hero-stats .stat-num{font-size:clamp(26px,2.5vw,32px);font-weight:900;color:#fff;letter-spacing:-1px;line-height:1;}
     .hero-stats .stat-num span{color:#8B0000;}
     .hero-stats .stat-label{font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.45);}
     .hero-bottom-bar{position:absolute;bottom:0;left:0;right:0;height:4px;background:linear-gradient(to right,#8B0000,#8B0000 60%,transparent);z-index:3;}
@@ -113,7 +113,7 @@
     @media(max-width:640px){
       .hero{min-height:700px;align-items:flex-start;}
       .hero-bg{background-size:125%;background-position:center top;}
-      .hero-content{padding:230px 28px 48px 28px;max-width:100%;}
+      .hero-content{padding:230px 28px 84px 28px;max-width:100%;}
       .hero-eyebrow{top:18px;left:16px;right:16px;flex-direction:column;align-items:center;gap:8px;justify-content:center;}
       .eyebrow-line{width:28px;}
       .eyebrow-text{text-align:center;white-space:normal;font-size:12px;letter-spacing:2px;}
@@ -163,12 +163,12 @@
     .award-card{background:#fff;border:1px solid #e0e0e0;padding:36px 40px;min-width:260px;flex:1;max-width:320px;position:relative;transition:border-color .25s,transform .25s,box-shadow .25s;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.06);}
     .award-card:hover{border-color:#8B0000;transform:translateY(-4px);box-shadow:0 12px 36px var(--red-12);}
     .award-year{font-family:'Montserrat',sans-serif;font-size:clamp(52px,8vw,80px);font-weight:900;letter-spacing:-3px;line-height:1;color:#8B0000;margin-bottom:12px;}
-    .award-title{font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--neutral);margin-bottom:6px;}
-    .award-source{font-family:'Inter',sans-serif;font-size:13px;font-weight:500;color:#767676;line-height:1.6;}
+    .award-title{font-family:'Montserrat',sans-serif;font-size:15px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--neutral);margin-bottom:6px;}
+    .award-source{font-family:'Inter',sans-serif;font-size:16px;font-weight:500;color:#767676;line-height:1.6;}
     .award-badge{display:inline-flex;align-items:center;gap:6px;background:var(--red-08);border:1px solid var(--red-25);padding:5px 12px;margin-top:14px;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#8B0000;}
     .award-card.featured{border-color:#8B0000;box-shadow:0 8px 32px var(--red-14);}
     .award-card.featured::after{content:'MOST RECENT';position:absolute;top:12px;right:12px;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#8B0000;}
-    .award-card.legacy::after{content:'2021 AWARD';position:absolute;top:12px;right:12px;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#888;}
+    .award-card.legacy::after{content:'2021 AWARD';position:absolute;top:12px;right:12px;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#1a1a1a;}
     .winner-callout{display:inline-flex;align-items:center;gap:16px;background:#8B0000;padding:18px 32px;box-shadow:0 8px 32px var(--red-25);}
     .winner-icon{width:44px;height:44px;background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
     .winner-icon svg{width:22px;height:22px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
@@ -178,9 +178,9 @@
     /* ════════════════════════════
        4. TOP SERVICES — COMPACT
     ════════════════════════════ */
-    .services-section{background:var(--black);padding:clamp(56px,7vw,80px) 0 0;}
+    .services-section{background:var(--black);padding:clamp(48px,7vw,80px) 0 0;}
     .services-inner{max-width:1100px;margin:0 auto;padding:0 20px;}
-    .services-header{text-align:center;margin-bottom:48px;}
+    .services-header{text-align:center;margin-bottom:32px;}
     .services-header .eyebrow{color:rgba(255,255,255,.55);}
     .services-title{font-family:'Montserrat',sans-serif;font-size:clamp(22px,3.5vw,38px);font-weight:900;letter-spacing:-1px;color:#fff;text-transform:uppercase;}
     .services-title em{font-style:normal;color:var(--red-dark);}
@@ -235,7 +235,7 @@
     .answer-text{font-family:'Inter',sans-serif;font-size:14px;font-weight:500;color:#3B3B3B;line-height:1.8;}
     .answer-text strong{color:#1F2937;font-weight:700;}
     @media(max-width:640px){.faq-answer{padding:0 14px 18px 14px;}.q-badge{display:none;}}
-    .faq-cta{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:48px;}
+    .faq-cta{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:32px;}
 
     /* ════════════════════════════
        6. ABOUT / WARRANTY
@@ -247,7 +247,7 @@
     .red-section .about-h2{color:#1a1a1a;}
     .red-section .about-lead{color:#424954;}
     .red-section .col-label{color:#8B0000;}
-    .red-section .service-grid-about li{color:#1a1a1a;border-top-color:#e0e0e0;}
+    .red-section .service-grid-about li{color:#1a1a1a;}
     .red-section .about-intro{border-bottom-color:#e0e0e0;}
     .red-section .about-cta-block .pitch{color:#424954;}
     .red-section .about-cta-block .pitch strong{color:#1a1a1a;}
@@ -256,32 +256,32 @@
     .about-eyebrow::before{content:'';width:24px;height:2px;background:rgba(255,255,255,.55);flex-shrink:0;}
     .about-intro{display:grid;grid-template-columns:1fr;gap:24px;align-items:end;margin-bottom:48px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,0.2);}
     .about-h2{font-family:'Montserrat',sans-serif;font-size:clamp(24px,6vw,52px);font-weight:900;letter-spacing:-1px;line-height:1.05;color:#fff;margin-bottom:16px;}
-    .about-lead{font-family:'Inter',sans-serif;font-size:clamp(15px,3.5vw,17px);color:rgba(255,255,255,.78);line-height:1.65;max-width:600px;}
+    .about-lead{font-family:'Inter',sans-serif;font-size:16px;color:rgba(255,255,255,.78);line-height:1.65;max-width:600px;}
     .warranty-badge .wnum{font-family:'Montserrat',sans-serif;font-size:clamp(44px,11vw,84px);font-weight:900;letter-spacing:-2px;color:#8B0000;line-height:.9;margin-bottom:6px;}
     .warranty-badge .wsub{font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:#666;display:block;margin-bottom:10px;}
     .warranty-badge .wdesc{font-family:'Inter',sans-serif;font-size:16px;color:#424954;line-height:1.65;max-width:340px;}
     .about-body{display:grid;grid-template-columns:1fr;gap:40px;}
-    .col-label{font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.65);display:block;margin-bottom:18px;}
+    .col-label{font-family:'Montserrat',sans-serif;font-size:14px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.65);display:block;margin-bottom:18px;}
     .service-grid-about{display:grid;grid-template-columns:1fr 1fr;gap:0 20px;}
-    .service-grid-about li{list-style:none;display:flex;align-items:center;gap:10px;font-family:'Inter',sans-serif;font-size:16px;font-weight:500;color:rgba(255,255,255,.9);padding:9px 0;border-top:1px solid rgba(255,255,255,.22);line-height:1.65;}
-    .service-grid-about li:first-child,.service-grid-about li:nth-child(2){border-top:none;}
+    .service-grid-about li{list-style:none;display:flex;align-items:center;gap:10px;font-family:'Inter',sans-serif;font-size:16px;font-weight:500;color:rgba(255,255,255,.9);padding:8px 0;line-height:1.65;}
     .service-grid-about li::before{content:'';width:5px;height:5px;background:#8B0000;flex-shrink:0;transform:rotate(45deg);}
     .about-cta-block{display:flex;flex-direction:column;align-items:flex-start;gap:16px;}
     .about-cta-block .pitch{font-family:'Inter',sans-serif;font-size:16px;color:rgba(255,255,255,.75);line-height:1.65;}
     .about-cta-block .pitch strong{color:#fff;font-weight:600;}
     .btn-about{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;height:48px;padding:0 32px;background:#fff;color:#8B0000;border:2px solid #8B0000;border-radius:0;transition:background .2s;}
     .btn-about:hover{background:#f0f0f0;}
-    .btn-about-ghost{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;height:48px;padding:0 32px;background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.45);transition:background .2s,border-color .2s;}
+    .btn-about-ghost{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;height:48px;padding:0 32px;background:rgba(255,255,255,.15);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);color:#fff;border:1.5px solid rgba(255,255,255,.55);transition:background .2s,border-color .2s;}
     .btn-about-ghost:hover{background:var(--red-08);border-color:#8B0000;color:#8B0000;}
     .black-section{background:var(--black);padding:clamp(48px,7vw,72px) clamp(20px,4vw,32px) clamp(56px,7vw,72px);}
     .rlsh-head{margin-bottom:40px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.1);}
-    .rlsh-head h2{font-family:'Montserrat',sans-serif;font-size:clamp(24px,6vw,52px);font-weight:900;letter-spacing:-1px;color:#fff;line-height:1.05;margin-bottom:14px;}
+    .rlsh-head h2{font-family:'Montserrat',sans-serif;font-size:clamp(28px,6vw,52px);font-weight:900;letter-spacing:-2px;line-height:0.95;text-transform:uppercase;color:#fff;margin-bottom:14px;}
+    .rlsh-section-logo{height:72px;width:auto;display:block;margin-bottom:28px;}
     .rlsh-head h2 em{font-style:normal;color:var(--red-dark);}
     .rlsh-head .about-lead{margin-top:6px;}
     .stat-row{display:grid;grid-template-columns:1fr;margin-bottom:36px;border-top:1px solid rgba(255,255,255,.1);border-bottom:1px solid rgba(255,255,255,.1);}
     .ab-stat{padding:clamp(18px,4vw,28px) clamp(16px,3.5vw,28px);border-top:1px solid rgba(255,255,255,.1);}
     .ab-stat:first-child{border-top:none;}
-    .ab-stat .snum{font-family:'Montserrat',sans-serif;font-size:clamp(28px,7vw,46px);font-weight:900;letter-spacing:-1.5px;color:#fff;line-height:1;margin-bottom:6px;}
+    .ab-stat .snum{font-family:'Montserrat',sans-serif;font-size:clamp(36px,7vw,54px);font-weight:900;letter-spacing:-1.5px;color:#fff;line-height:1;margin-bottom:6px;}
     .ab-stat .snum em{font-style:normal;color:#8B0000;}
     .ab-stat .slbl{font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:8px;display:block;}
     .ab-stat .stxt{font-family:'Inter',sans-serif;font-size:16px;color:rgba(255,255,255,.7);line-height:1.65;}
@@ -349,7 +349,7 @@
     }
     @media(max-width:600px){
       .btn-red,.btn-ghost,.btn-outline-red,.btn-white,.btn-about,.btn-about-ghost,.svc-cta,.ig-btn,.panel-link{font-size:14px;}
-      .river-rat{bottom:36px;}
+      .river-rat{bottom:64px;}
       .hero-ctas{flex-direction:column;align-items:stretch;}
       .awards-grid{flex-direction:column;align-items:center;}
       .award-card{min-width:0;width:100%;max-width:100%;}
@@ -357,10 +357,10 @@
       .services-grid{grid-template-columns:1fr;}
       .services-inner{padding-left:0;padding-right:0;}
       .services-header{padding-left:20px;padding-right:20px;}
-      .faq-section{padding:48px 20px 72px;}
+      .faq-section{padding:48px 20px 56px;}
       .faq-cta{flex-direction:column;align-items:stretch;}
       .ig-tile{flex:0 0 140px;}
-      .ig-section{padding:40px 0 48px;}
+      .ig-section{padding:40px 0 64px;}
       p,li,.about-lead,.hero-body,.panel-sub,.cta-band p,.pitch,.stxt,.wdesc,.rlsh-foot p{line-height:1.7;}
     }
     @media(min-width:601px){
@@ -519,9 +519,6 @@
       </div>
     </div>
     <div class="winner-callout">
-      <div class="winner-icon">
-        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-      </div>
       <div class="winner-text">
         <div class="wt-top">2-Time Award Winner · Family Owned Since 1991</div>
         <div class="wt-main">The community has spoken. Twice. We're honored every time.</div>
@@ -678,7 +675,7 @@
     <div class="about-intro">
       <div>
         <span class="about-eyebrow">3J's Auto Body · Signal Hill, CA · Est. 1991</span>
-        <h2 class="about-h2" data-anim="fade-up">Repairs Done <span style="border-bottom:4px solid #8B0000;padding-bottom:3px;">RIGHT</span>.<br>Every Time.<br><span style="color:#8B0000;">GUARANTEED.</span></h2>
+        <h2 class="about-h2" data-anim="fade-up">Repairs Done <span style="color:#8B0000;border-bottom:4px solid #8B0000;padding-bottom:3px;">RIGHT</span>.<br>Every Time.<br><span style="color:#8B0000;">GUARANTEED.</span></h2>
         <p class="about-lead">A damaged vehicle is stressful. Our job is to make the rest of it easy, from your first call to the day you drive away confident.</p>
       </div>
       <div class="warranty-badge">
@@ -718,8 +715,8 @@
 <section class="black-section">
   <div class="about-inner">
     <div class="rlsh-head">
-      <span class="about-eyebrow">Rhino Linings of Signal Hill: Same shop. Same crew. Same address as 3J's.</span>
-      <h2 data-anim="fade-up">Southern California's <em>#1</em> spot for <span style="color:var(--red-dark);">CUSTOM</span> truck, Jeep &amp; SUV <span style="color:var(--red-dark);">Accessories</span>.</h2>
+      <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/rlsh-logo-white.webp" alt="Rhino Linings of Signal Hill" class="rlsh-section-logo">
+      <h2 data-anim="fade-up">Southern California's <em>#1</em> Spot for <span style="color:#8B0000;">Custom</span> Truck, Jeep &amp; SUV <span style="color:#8B0000;">Accessories.</span></h2>
       <p class="about-lead">Custom, professional installs for trucks, Jeeps, commercial vans and more. If you're ready to take your build to the next level, you're in the right place.</p>
     </div>
     <div class="stat-row">
@@ -786,7 +783,7 @@
         <div class="faq-body"><div class="faq-body-inner"><div class="faq-answer"><p class="answer-text">Click the <strong>"Free Online Estimate"</strong> button and you'll be taken to our secure online portal. Fill in your vehicle info, then snap a <strong>couple photos of the damage</strong> from a few angles. That's it. We review your submission and get back to you with the most accurate estimate we can write remotely. <strong>No appointment needed, no obligation.</strong></p></div></div></div>
       </div>
     </div>
-    <p style="font-family:'Inter',sans-serif;font-size:16px;color:#666;text-align:center;line-height:1.7;max-width:520px;margin:0 auto 28px;">The <strong style="color:#1F2937;">Free Online Estimate</strong> button takes you to our secure online portal. Fill in your vehicle info and snap a couple photos of the damage so we can write you the most accurate estimate possible.</p>
+    <p style="font-family:'Inter',sans-serif;font-size:16px;color:#666;text-align:center;line-height:1.7;max-width:520px;margin:32px auto;">The <strong style="color:#1F2937;">Free Online Estimate</strong> button takes you to our secure online portal. Fill in your vehicle info and snap a couple photos of the damage so we can write you the most accurate estimate possible.</p>
     <div class="faq-cta">
       <a href="tel:+15624246744" class="btn-red btn" target="_top">Call 562-424-6744</a>
       <a href="https://www.carwise.com/online-photo-estimate/3js-autobody-paint-inc-signal-hill-ca-90755/479382?source=shop.profile&referer=estimate.cccone.com" target="_blank" class="btn-outline-red btn" aria-label="Free Online Estimate (opens secure estimate portal)">Free Online Estimate ↗</a>
