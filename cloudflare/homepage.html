@@ -95,15 +95,15 @@
     .hero-stats .stat{display:flex;flex-direction:column;gap:3px;}
     .hero-stats .stat-num{font-size:clamp(20px,2.5vw,28px);font-weight:900;color:#fff;letter-spacing:-1px;line-height:1;}
     .hero-stats .stat-num span{color:rgba(255,255,255,0.6);}
-    .hero-stats .stat-label{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.45);}
+    .hero-stats .stat-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.45);}
     .hero-bottom-bar{position:absolute;bottom:0;left:0;right:0;height:4px;background:linear-gradient(to right,#8B0000,#8B0000 60%,transparent);z-index:3;}
-    .river-rat{position:absolute;bottom:22px;left:80px;font-size:9px;font-weight:600;color:rgba(255,255,255,0.55);letter-spacing:0.5px;font-style:italic;z-index:3;}
+    .river-rat{position:absolute;bottom:22px;left:80px;font-size:10px;font-weight:600;color:rgba(255,255,255,0.55);letter-spacing:0.5px;font-style:italic;z-index:3;}
     .hero-trust{display:flex;flex-wrap:wrap;gap:4px 0;margin-top:16px;align-items:center;justify-content:center;align-self:stretch;}
-    .hero-trust-item{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.92);}
-    .hero-trust-sep{color:rgba(255,255,255,0.50);margin:0 8px;font-size:9px;}
+    .hero-trust-item{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.92);}
+    .hero-trust-sep{color:rgba(255,255,255,0.50);margin:0 8px;font-size:10px;}
     @media(max-width:640px){.hero-trust{justify-content:center;}.hero-trust-item{font-size:10px;}.hero-cta-group{width:100%;}}
     .scroll-hint{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;opacity:0;z-index:3;animation:hintFadeIn 0.9s 1.2s ease-out forwards;}
-    .scroll-hint span{font-size:8px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:#fff;}
+    .scroll-hint span{font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:#fff;}
     .scroll-hint svg{width:22px;height:22px;stroke:#fff;stroke-width:2.5;}
     @keyframes hintFadeIn{from{opacity:0;transform:translateX(-50%) translateY(-6px);}to{opacity:0.80;transform:translateX(-50%) translateY(0);}}
     @media(max-width:900px){
@@ -117,13 +117,13 @@
       .hero-content{padding:230px 28px 48px 28px;max-width:100%;}
       .hero-eyebrow{top:18px;left:16px;right:16px;flex-direction:column;align-items:center;gap:8px;justify-content:center;}
       .eyebrow-line{width:28px;}
-      .eyebrow-text{text-align:center;white-space:normal;font-size:8px;letter-spacing:2px;}
+      .eyebrow-text{text-align:center;white-space:normal;font-size:10px;letter-spacing:2px;}
       .hero-overlay{background:rgba(0,0,0,0.62);}
       .hero-content{grid-template-columns:1fr;}
       .hero-ctas{flex-direction:column;}
       .hero-stats{border-left:none;padding-left:0;border-top:1px solid rgba(255,255,255,0.12);padding-top:24px;margin-top:24px;gap:16px 12px;}
       .scroll-hint{display:none;}
-      .river-rat{left:20px;font-size:8px;}
+      .river-rat{left:20px;font-size:10px;}
     }
     @media(prefers-reduced-motion:reduce){.scroll-hint{animation:none;opacity:0.80;}}
 
@@ -140,7 +140,7 @@
     .panel:hover .panel-overlay{background:linear-gradient(160deg,rgba(0,0,0,.82) 0%,rgba(0,0,0,.62) 100%);}
 
     .panel-content{position:relative;z-index:4;padding:28px 24px;height:100%;display:flex;flex-direction:column;justify-content:flex-start;}
-    .panel-eyebrow{font-size:9px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.75);margin-bottom:8px;display:inline-flex;align-items:center;gap:8px;}
+    .panel-eyebrow{font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.75);margin-bottom:8px;display:inline-flex;align-items:center;gap:8px;}
     .panel-eyebrow::before{content:'';width:12px;height:1.5px;background:#8B0000;flex-shrink:0;}
     .panel-title{font-family:'Montserrat',sans-serif;font-size:clamp(18px,2.2vw,26px);font-weight:900;color:#fff;letter-spacing:-.3px;line-height:1.15;text-transform:uppercase;margin-bottom:12px;}
     .panel-sub{font-family:'Inter',sans-serif;font-size:16px;font-weight:400;color:rgba(255,255,255,.78);line-height:1.65;max-width:280px;}
@@ -166,10 +166,10 @@
     .award-year{font-family:'Montserrat',sans-serif;font-size:clamp(52px,8vw,80px);font-weight:900;letter-spacing:-3px;line-height:1;color:#8B0000;margin-bottom:12px;}
     .award-title{font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--neutral);margin-bottom:6px;}
     .award-source{font-family:'Inter',sans-serif;font-size:11px;font-weight:500;color:#767676;line-height:1.6;}
-    .award-badge{display:inline-flex;align-items:center;gap:6px;background:var(--red-08);border:1px solid var(--red-25);padding:5px 12px;margin-top:14px;font-family:'Montserrat',sans-serif;font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#8B0000;}
+    .award-badge{display:inline-flex;align-items:center;gap:6px;background:var(--red-08);border:1px solid var(--red-25);padding:5px 12px;margin-top:14px;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#8B0000;}
     .award-card.featured{border-color:#8B0000;box-shadow:0 8px 32px var(--red-14);}
-    .award-card.featured::after{content:'MOST RECENT';position:absolute;top:12px;right:12px;font-family:'Montserrat',sans-serif;font-size:8px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#8B0000;}
-    .award-card.legacy::after{content:'2021 AWARD';position:absolute;top:12px;right:12px;font-family:'Montserrat',sans-serif;font-size:8px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#888;}
+    .award-card.featured::after{content:'MOST RECENT';position:absolute;top:12px;right:12px;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#8B0000;}
+    .award-card.legacy::after{content:'2021 AWARD';position:absolute;top:12px;right:12px;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#888;}
     .winner-callout{display:inline-flex;align-items:center;gap:16px;background:#8B0000;padding:18px 32px;box-shadow:0 8px 32px var(--red-25);}
     .winner-icon{width:44px;height:44px;background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
     .winner-icon svg{width:22px;height:22px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
@@ -402,9 +402,9 @@
   <div class="hero-content">
     <div class="hero-left">
       <h1 class="hero-headline">
-        30+ Years.<br>
-        One Location.<br>
-        <span class="line-red">One Family.</span>
+        30+ <span style="color:#8B0000;">Years</span>.<br>
+        <span style="color:#8B0000;">One</span> Location.<br>
+        One <span style="color:#8B0000;">Family</span>.
       </h1>
       <div class="hero-rule"></div>
       <div class="hero-body">
