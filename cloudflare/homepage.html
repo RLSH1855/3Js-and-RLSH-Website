@@ -33,7 +33,7 @@
   <style>
     /* ── RESET & BASE ── */
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    html{overscroll-behavior:none;}
+    html{overscroll-behavior-x:none;}
     body{font-family:'Inter',sans-serif;background:#0A0A0A;color:#fff;overflow-x:hidden;}
     h1,h2,h3{font-family:'Montserrat',sans-serif;text-wrap:balance;}
     p{text-wrap:pretty;}
@@ -159,16 +159,16 @@
     .awards-heading em{font-style:normal;color:#8B0000;}
     .awards-sub{font-family:'Inter',sans-serif;font-size:16px;font-weight:500;letter-spacing:0.3px;color:#666;margin-bottom:52px;line-height:1.65;}
     .awards-grid{display:flex;justify-content:center;gap:24px;flex-wrap:wrap;margin-bottom:48px;}
-    .award-card{background:#fff;border:1px solid #e0e0e0;padding:36px 40px;min-width:260px;flex:1;max-width:320px;position:relative;transition:border-color .25s,transform .25s,box-shadow .25s;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.06);}
-    .award-card:hover{border-color:#8B0000;transform:translateY(-4px);box-shadow:0 12px 36px var(--red-12);}
+    .award-card{background:#fff;border:1px solid #e0e0e0;padding:36px 40px;min-width:260px;flex:1;max-width:320px;position:relative;transition:border-color .25s,transform .25s;overflow:hidden;}
+    .award-card:hover{border-color:#8B0000;transform:translateY(-4px);}
     .award-year{font-family:'Montserrat',sans-serif;font-size:clamp(52px,8vw,80px);font-weight:900;letter-spacing:-3px;line-height:1;color:#8B0000;margin-bottom:12px;}
     .award-title{font-family:'Montserrat',sans-serif;font-size:15px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--neutral);margin-bottom:6px;}
     .award-source{font-family:'Inter',sans-serif;font-size:16px;font-weight:500;letter-spacing:0.3px;color:#767676;line-height:1.65;}
     .award-badge{display:inline-flex;align-items:center;gap:6px;background:var(--red-08);border:1px solid var(--red-25);padding:5px 12px;margin-top:14px;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#8B0000;}
-    .award-card.featured{border-color:#8B0000;box-shadow:0 8px 32px var(--red-14);}
+    .award-card.featured{border-color:#8B0000;}
     .award-card.featured::after{content:'MOST RECENT';position:absolute;top:12px;right:12px;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#8B0000;}
     .award-card.legacy::after{content:'2021 AWARD';position:absolute;top:12px;right:12px;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#1a1a1a;}
-    .winner-callout{display:inline-flex;align-items:center;gap:16px;background:#8B0000;padding:18px 32px;box-shadow:0 8px 32px var(--red-25);}
+    .winner-callout{display:inline-flex;align-items:center;gap:16px;background:#8B0000;padding:18px 32px;}
     .winner-icon{width:44px;height:44px;background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
     .winner-icon svg{width:22px;height:22px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
     .winner-text .wt-top{font-family:'Montserrat',sans-serif;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:3px;}
@@ -903,10 +903,11 @@
 </main>
 
 <script>
-  /* Only hide overflow when inside Wix iframe */
+  /* Only lock scroll when inside Wix iframe */
   if(window.self !== window.top){
     document.documentElement.style.overflowY = 'hidden';
     document.body.style.overflowY = 'hidden';
+    document.documentElement.style.overscrollBehavior = 'none';
   }
 
   /* Height reporting for Wix iframe auto-resize */
