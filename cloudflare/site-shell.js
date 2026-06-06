@@ -156,8 +156,8 @@
   .ssd-tagline{font-family:'Inter',sans-serif;font-style:italic;font-size:11px;color:rgba(0,0,0,.38);margin-bottom:0;min-height:14px;}
   .ssd-tagline-cursor{border-right:1.5px solid rgba(0,0,0,.3);margin-left:1px;}
   .ssd-ed-ctas{display:flex;flex-direction:column;gap:8px;}
-  .ssd-ed-btn-red{height:42px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;background:#8B0000;color:#fff;font-family:'Oswald',sans-serif;font-weight:700;font-size:13px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;box-shadow:inset 0 1px 0 rgba(255,255,255,.15),inset 0 -2px 0 rgba(0,0,0,.2);}
-  .ssd-ed-btn-phone{height:34px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;border:1px solid rgba(0,0,0,.15);color:rgba(0,0,0,.45);font-family:'Oswald',sans-serif;font-weight:500;font-size:11px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;}
+  .ssd-ed-btn-red{height:42px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;background:#8B0000;color:#fff;font-family:'Oswald',sans-serif;font-weight:700;font-size:16px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;box-shadow:inset 0 1px 0 rgba(255,255,255,.15),inset 0 -2px 0 rgba(0,0,0,.2);}
+  .ssd-ed-btn-phone{height:34px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;border:1px solid rgba(0,0,0,.15);color:rgba(0,0,0,.45);font-family:'Oswald',sans-serif;font-weight:500;font-size:16px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;}
   /* Garage row */
   .ssd-garage{display:flex;align-items:center;gap:11px;padding:10px 20px;background:#fff;border:none;border-bottom:1px solid rgba(0,0,0,.09);cursor:pointer;width:100%;text-align:left;flex-shrink:0;transition:background .15s;box-shadow:0 1px 3px rgba(0,0,0,.04),inset 0 -1px 0 rgba(0,0,0,.10);}
   .ssd-garage:hover,.ssd-garage:active{background:rgba(139,0,0,.04);}
@@ -170,13 +170,13 @@
   /* Nav */
   .ssd-nav{background:#fff;}
   .ssd-section{display:flex;align-items:center;position:relative;z-index:1;background:#2d2d2d;box-shadow:inset 0 2px 0 rgba(255,255,255,.12),inset 0 -2px 0 rgba(0,0,0,.5);padding:8px 20px 8px 30px;}
-  .ssd-section span{font-family:'Oswald',sans-serif;font-weight:800;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.92);text-shadow:0 1px 2px rgba(0,0,0,.6);}
+  .ssd-section span{font-family:'Oswald',sans-serif;font-weight:800;font-size:13px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.92);text-shadow:0 1px 2px rgba(0,0,0,.6);}
   .ssd-item{display:flex;align-items:center;justify-content:space-between;padding:7px 20px 7px 17px;background:#fff;border-bottom:1px solid rgba(0,0,0,.09);border-left:3px solid transparent;border-right:none;border-top:none;cursor:pointer;width:100%;text-align:left;transition:background .1s ease,border-left-color .15s ease;box-shadow:0 1px 3px rgba(0,0,0,.04),inset 0 -1px 0 rgba(0,0,0,.10);text-decoration:none;color:inherit;}
   .ssd-item:hover,.ssd-item.ssd-active{background:rgba(0,0,0,.03);border-left-color:#8B0000;}
   .ssd-item:active{background:rgba(0,0,0,.05);}
   .ssd-item.ssd-open{border-left-color:#8B0000;}
   .ssd-item-text{display:flex;flex-direction:column;gap:2px;}
-  .ssd-item-label{font-family:'Montserrat',sans-serif;font-size:14px;font-weight:700;letter-spacing:-.1px;color:#1a1a1a;line-height:1.2;}
+  .ssd-item-label{font-family:'Montserrat',sans-serif;font-size:16px;font-weight:700;letter-spacing:-.1px;color:#1a1a1a;line-height:1.2;}
   .ssd-item-desc{font-family:'Inter',sans-serif;font-size:10.5px;font-weight:400;color:rgba(0,0,0,.38);letter-spacing:.1px;line-height:1.3;}
   .ssd-item-arr{color:rgba(0,0,0,.2);flex-shrink:0;display:inline-flex;transition:transform .3s cubic-bezier(.22,1,.36,1);}
   .ssd-item.ssd-open .ssd-item-arr{transform:rotate(180deg);}
@@ -187,9 +187,9 @@
   .ssd-sub-bar{height:2px;background:#8B0000;flex-shrink:0;}
   .ssd-sub-bar.ss-drawn{animation:ssDrawRight 400ms cubic-bezier(.22,1,.36,1) 30ms both;}
   .ssd-scan-line{position:absolute;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent 0%,#8B0000 40%,rgba(255,100,100,.6) 60%,transparent 100%);top:2px;z-index:5;pointer-events:none;animation:ssScanDown 550ms ease-out 60ms forwards;}
-  .ssd-sub-label{display:block;font-family:'Oswald',sans-serif;font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.92);background:#1d1d1d;border-top:2px solid #000;border-bottom:1.5px solid rgba(255,255,255,.18);text-shadow:0 1px 2px rgba(0,0,0,.6);padding:15px 20px 15px 30px;}
+  .ssd-sub-label{display:block;font-family:'Oswald',sans-serif;font-size:13px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.92);background:#1d1d1d;border-top:2px solid #000;border-bottom:1.5px solid rgba(255,255,255,.18);text-shadow:0 1px 2px rgba(0,0,0,.6);padding:15px 20px 15px 30px;}
   .ssd-sub-label.ss-fadein{animation:ssFadeUpIn 300ms cubic-bezier(.22,1,.36,1) both;}
-  .ssd-sub-item{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;font-family:'Inter',sans-serif;font-size:13px;font-weight:500;color:rgba(255,255,255,.82);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.05);transition:background .12s ease;}
+  .ssd-sub-item{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;font-family:'Inter',sans-serif;font-size:16px;font-weight:500;color:rgba(255,255,255,.82);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.05);transition:background .12s ease;}
   .ssd-sub-item:last-of-type{margin-bottom:6px;}
   .ssd-sub-item:hover,.ssd-sub-item:active{background:rgba(139,0,0,.40);}
   .ssd-sub-item.ss-slidein{animation:ssSlideInLeft 320ms cubic-bezier(.22,1,.36,1) both;}
@@ -200,8 +200,8 @@
   .ssd-brand-dot{width:5px;height:5px;background:#8B0000;flex-shrink:0;}
   .ssd-brand-text{font-family:'Montserrat',sans-serif;font-weight:800;font-size:7.5px;letter-spacing:.6px;text-transform:uppercase;color:rgba(255,255,255,.38);white-space:nowrap;}
   .ssd-footer-btns{display:flex;flex-direction:column;gap:7px;}
-  .ssd-cta-red{display:flex;align-items:center;justify-content:center;gap:8px;height:40px;background:#8B0000;color:#fff;font-family:'Montserrat',sans-serif;font-weight:800;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;text-decoration:none;border:none;cursor:pointer;}
-  .ssd-cta-outline{display:flex;align-items:center;justify-content:center;gap:8px;height:40px;border:1.5px solid rgba(255,255,255,.18);color:rgba(255,255,255,.72);font-family:'Montserrat',sans-serif;font-weight:700;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;text-decoration:none;background:transparent;cursor:pointer;}
+  .ssd-cta-red{display:flex;align-items:center;justify-content:center;gap:8px;height:40px;background:#8B0000;color:#fff;font-family:'Montserrat',sans-serif;font-weight:800;font-size:13px;letter-spacing:2.5px;text-transform:uppercase;text-decoration:none;border:none;cursor:pointer;}
+  .ssd-cta-outline{display:flex;align-items:center;justify-content:center;gap:8px;height:40px;border:1.5px solid rgba(255,255,255,.18);color:rgba(255,255,255,.72);font-family:'Montserrat',sans-serif;font-weight:700;font-size:13px;letter-spacing:2.5px;text-transform:uppercase;text-decoration:none;background:transparent;cursor:pointer;}
   .ssd-contact{margin-top:8px;text-align:center;font-family:'Inter',sans-serif;font-size:11px;color:rgba(255,255,255,.28);}
   @media(prefers-reduced-motion:reduce){#ss-page-wrap,.ss-drawer,.ss-drawer-ov,.ssd-sub{transition:none!important;}}
 
@@ -420,41 +420,44 @@
             '<div class="ssd-section"><span>Navigate</span></div>'+
             '<a href="/" class="ssd-item" target="_top"><div class="ssd-item-text"><span class="ssd-item-label">Home</span><span class="ssd-item-desc">Start here</span></div><span class="ssd-item-arr">'+ssChevR+'</span></a>'+
             '<a href="/inside-3js" class="ssd-item" target="_top"><div class="ssd-item-text"><span class="ssd-item-label">Inside 3J\'s</span><span class="ssd-item-desc">Our story &amp; team</span></div><span class="ssd-item-arr">'+ssChevR+'</span></a>'+
-            '<a href="/body-paint-repairs" class="ssd-item" target="_top"><div class="ssd-item-text"><span class="ssd-item-label">Body &amp; Paint</span><span class="ssd-item-desc">Collision repair &middot; paint matching</span></div><span class="ssd-item-arr">'+ssChevR+'</span></a>'+
-            '<button class="ssd-item" id="ssd-acc-btn" aria-expanded="false"><div class="ssd-item-text"><span class="ssd-item-label">Truck Accessories</span><span class="ssd-item-desc">Liners, covers, steps &amp; more</span></div><span class="ssd-item-arr" id="ssd-acc-arr">'+ssChevD+'</span></button>'+
-            '<div class="ssd-sub" id="ssd-acc-sub">'+
+            '<a href="/body-paint-repairs" class="ssd-item" target="_top"><div class="ssd-item-text"><span class="ssd-item-label">Body &amp; Paint Repairs</span><span class="ssd-item-desc">Collision repair &middot; paint matching</span></div><span class="ssd-item-arr">'+ssChevR+'</span></a>'+
+            '<button class="ssd-item" id="ssd-rhino-btn" aria-expanded="false"><div class="ssd-item-text"><span class="ssd-item-label">Rhino Liner</span><span class="ssd-item-desc">Bedliner &middot; floor protection</span></div><span class="ssd-item-arr" id="ssd-rhino-arr">'+ssChevD+'</span></button>'+
+            '<div class="ssd-sub" id="ssd-rhino-sub">'+
               '<div class="ssd-sub-inner">'+
-                '<div class="ssd-sub-bar" id="ssd-acc-bar"></div>'+
-                '<span class="ssd-sub-label">Bed Protection</span>'+
-                '<a href="/rhino-liner" class="ssd-sub-item" target="_top">Rhino Liner'+ssChevSub+'</a>'+
-                '<a href="/floor-liners" class="ssd-sub-item" target="_top">Floor Liners'+ssChevSub+'</a>'+
-                '<span class="ssd-sub-label">Covers &amp; Steps</span>'+
-                '<a href="/tonneau-covers" class="ssd-sub-item" target="_top">Tonneau Covers'+ssChevSub+'</a>'+
-                '<a href="/steps-running-boards" class="ssd-sub-item" target="_top">Steps &amp; Running Boards'+ssChevSub+'</a>'+
-                '<a href="/towing-hitches" class="ssd-sub-item" target="_top">Towing &amp; Hitches'+ssChevSub+'</a>'+
-                '<a href="/lighting" class="ssd-sub-item" target="_top">Lighting'+ssChevSub+'</a>'+
-                '<a href="/headache-racks" class="ssd-sub-item" target="_top">Headache Racks'+ssChevSub+'</a>'+
+                '<div class="ssd-sub-bar" id="ssd-rhino-bar"></div>'+
+                '<a href="https://www.3jsautobody.com/rhino-lining-quote" class="ssd-sub-item" target="_top">Rhino Liner Quote'+ssChevSub+'</a>'+
+                '<a href="/inside-3js" class="ssd-sub-item" target="_top">Our Work'+ssChevSub+'</a>'+
                 '<div class="ssd-sub-spacer"></div>'+
               '</div>'+
             '</div>'+
-            '<button class="ssd-item" id="ssd-areas-btn" aria-expanded="false"><div class="ssd-item-text"><span class="ssd-item-label">Areas We Service</span><span class="ssd-item-desc">Greater Signal Hill area</span></div><span class="ssd-item-arr" id="ssd-areas-arr">'+ssChevD+'</span></button>'+
-            '<div class="ssd-sub" id="ssd-areas-sub">'+
+            '<button class="ssd-item" id="ssd-acc-btn" aria-expanded="false"><div class="ssd-item-text"><span class="ssd-item-label">Exterior Accessories</span><span class="ssd-item-desc">Covers, steps, towing &amp; more</span></div><span class="ssd-item-arr" id="ssd-acc-arr">'+ssChevD+'</span></button>'+
+            '<div class="ssd-sub" id="ssd-acc-sub">'+
               '<div class="ssd-sub-inner">'+
-                '<div class="ssd-sub-bar" id="ssd-areas-bar"></div>'+
-                '<span class="ssd-sub-label">South Bay</span>'+
-                '<a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_LONG_BEACH.html" class="ssd-sub-item" target="_top">Long Beach'+ssChevSub+'</a>'+
-                '<a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_TORRANCE.html" class="ssd-sub-item" target="_top">Torrance'+ssChevSub+'</a>'+
-                '<a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_CARSON.html" class="ssd-sub-item" target="_top">Carson'+ssChevSub+'</a>'+
-                '<a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_LAKEWOOD.html" class="ssd-sub-item" target="_top">Lakewood'+ssChevSub+'</a>'+
-                '<span class="ssd-sub-label">Southeast LA</span>'+
-                '<a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_COMPTON.html" class="ssd-sub-item" target="_top">Compton'+ssChevSub+'</a>'+
-                '<a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_DOWNEY.html" class="ssd-sub-item" target="_top">Downey'+ssChevSub+'</a>'+
-                '<a href="https://rlsh1855.github.io/RLSH1855-3js-seo-pages/SERVICE_AREA_BELLFLOWER.html" class="ssd-sub-item" target="_top">Bellflower'+ssChevSub+'</a>'+
+                '<div class="ssd-sub-bar" id="ssd-acc-bar"></div>'+
+                '<span class="ssd-sub-label">Bedliner &amp; Bed Accessories</span>'+
+                '<a href="/rhino-liner" class="ssd-sub-item" target="_top">Rhino Liner'+ssChevSub+'</a>'+
+                '<a href="/floor-liners" class="ssd-sub-item" target="_top">Floor Liners &amp; Mats'+ssChevSub+'</a>'+
+                '<a href="/headache-racks" class="ssd-sub-item" target="_top">Headache Rack'+ssChevSub+'</a>'+
+                '<span class="ssd-sub-label">Exterior Upgrades</span>'+
+                '<a href="/tonneau-covers" class="ssd-sub-item" target="_top">Tonneau Covers'+ssChevSub+'</a>'+
+                '<a href="/steps-running-boards" class="ssd-sub-item" target="_top">Running Boards'+ssChevSub+'</a>'+
+                '<a href="/towing-hitches" class="ssd-sub-item" target="_top">Towing &amp; Hitches'+ssChevSub+'</a>'+
+                '<a href="/lighting" class="ssd-sub-item" target="_top">Lighting'+ssChevSub+'</a>'+
                 '<div class="ssd-sub-spacer"></div>'+
               '</div>'+
             '</div>'+
             '<div class="ssd-section"><span>More</span></div>'+
-            '<a href="/bundles" class="ssd-item" target="_top"><div class="ssd-item-text"><span class="ssd-item-label">Bundles &amp; Packages</span><span class="ssd-item-desc">Best value combinations</span></div><span class="ssd-item-arr">'+ssChevR+'</span></a>'+
+            '<button class="ssd-item" id="ssd-bundles-btn" aria-expanded="false"><div class="ssd-item-text"><span class="ssd-item-label">Bundles &amp; Packages</span><span class="ssd-item-desc">Best value combinations</span></div><span class="ssd-item-arr" id="ssd-bundles-arr">'+ssChevD+'</span></button>'+
+            '<div class="ssd-sub" id="ssd-bundles-sub">'+
+              '<div class="ssd-sub-inner">'+
+                '<div class="ssd-sub-bar" id="ssd-bundles-bar"></div>'+
+                '<a href="/bundles" class="ssd-sub-item" target="_top">The 405 Essential'+ssChevSub+'</a>'+
+                '<a href="/bundles" class="ssd-sub-item" target="_top">The Working Man'+ssChevSub+'</a>'+
+                '<a href="/bundles" class="ssd-sub-item" target="_top">The 3 Wise Men Standard'+ssChevSub+'</a>'+
+                '<a href="/bundles" class="ssd-sub-item" target="_top">The 3 Wise Men Premium'+ssChevSub+'</a>'+
+                '<div class="ssd-sub-spacer"></div>'+
+              '</div>'+
+            '</div>'+
             '<a href="/shop" class="ssd-item" target="_top"><div class="ssd-item-text"><span class="ssd-item-label">Shop</span><span class="ssd-item-desc">Browse all products</span></div><span class="ssd-item-arr">'+ssChevR+'</span></a>'+
             '<a href="/contact" class="ssd-item" target="_top"><div class="ssd-item-text"><span class="ssd-item-label">Contact Us</span><span class="ssd-item-desc">Get in touch &middot; 562-424-6744</span></div><span class="ssd-item-arr">'+ssChevR+'</span></a>'+
             '<a href="/FAQ_PAGE_V2" class="ssd-item" target="_top"><div class="ssd-item-text"><span class="ssd-item-label">FAQ</span><span class="ssd-item-desc">Common questions answered</span></div><span class="ssd-item-arr">'+ssChevR+'</span></a>'+
@@ -635,8 +638,9 @@
         }
       });
     }
+    initAcc('ssd-rhino-btn','ssd-rhino-sub','ssd-rhino-bar');
     initAcc('ssd-acc-btn','ssd-acc-sub','ssd-acc-bar');
-    initAcc('ssd-areas-btn','ssd-areas-sub','ssd-areas-bar');
+    initAcc('ssd-bundles-btn','ssd-bundles-sub','ssd-bundles-bar');
   })();
 
   /* ════════ BUTTERY INERTIA SCROLL (desktop only) ════════ */
