@@ -430,17 +430,21 @@
     .carriers-heading{font-family:'Montserrat',sans-serif;font-size:clamp(22px,3.5vw,38px);font-weight:900;color:#1a1a1a;letter-spacing:-0.5px;margin-bottom:12px;text-wrap:balance;}
     .carriers-heading em{font-style:normal;color:#8B0000;}
     .carriers-sub{font-family:'Inter',sans-serif;font-size:16px;font-weight:500;letter-spacing:0.3px;color:#555;max-width:560px;margin:0 auto;line-height:1.65;text-wrap:pretty;}
-    .logo-marquee-wrap{position:relative;overflow:hidden;max-width:100%;margin:0 auto 28px;-webkit-mask-image:linear-gradient(to right,transparent 0%,#000 10%,#000 90%,transparent 100%);mask-image:linear-gradient(to right,transparent 0%,#000 10%,#000 90%,transparent 100%);}
-    .logo-marquee-track{display:flex;align-items:center;gap:48px;width:max-content;animation:logoScroll 32s linear infinite;}
+    .logo-marquee-wrap{position:relative;overflow:hidden;max-width:100%;margin:0 auto 28px;display:flex;flex-direction:column;gap:20px;-webkit-mask-image:linear-gradient(to right,transparent 0%,#000 10%,#000 90%,transparent 100%);mask-image:linear-gradient(to right,transparent 0%,#000 10%,#000 90%,transparent 100%);}
+    .logo-marquee-row{overflow:hidden;}
+    .logo-marquee-track{display:flex;align-items:center;gap:48px;width:max-content;}
+    .logo-marquee-track.left{animation:logoScrollL 28s linear infinite;}
+    .logo-marquee-track.right{animation:logoScrollR 28s linear infinite;}
     .logo-marquee-track:hover{animation-play-state:paused;}
-    @keyframes logoScroll{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+    @keyframes logoScrollL{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+    @keyframes logoScrollR{0%{transform:translateX(-50%);}100%{transform:translateX(0);}}
     .logo-tile{display:flex;align-items:center;justify-content:center;flex-shrink:0;}
     .logo-tile img{width:100px;height:36px;object-fit:contain;display:block;opacity:0.80;transition:opacity 0.2s;}
     .logo-tile img:hover{opacity:1;}
     .carriers-note{font-family:'Inter',sans-serif;font-size:14px;font-weight:500;color:#555;padding:0 24px;}
     .carriers-note a{color:#8B0000;text-decoration:none;}
     .carriers-note a:hover{text-decoration:underline;}
-    @media(max-width:600px){.logo-marquee-track{gap:32px;}.logo-tile img{width:80px;height:30px;}}
+    @media(max-width:600px){.logo-marquee-wrap{gap:16px;}.logo-marquee-track{gap:32px;}.logo-tile img{width:80px;height:30px;}}
 
     /* ── TEXT SHADOWS — dark/image sections only ── */
     .hero-content *,.hero-eyebrow *,.river-rat,.hero-trust-item,.hero-trust-sep,.scroll-hint span{text-shadow:0 1px 4px rgba(0,0,0,0.60);}
@@ -533,44 +537,53 @@
     <p class="carriers-sub">We handle the paperwork directly with your insurance company so you don't have to. Just bring your vehicle in — we take it from there.</p>
   </div>
   <div class="logo-marquee-wrap" aria-label="Insurance carriers we work with">
-    <div class="logo-marquee-track">
-      <div class="logo-tile"><img src="ins-state-farm.webp" alt="State Farm" loading="lazy"></div>
-      <div class="logo-tile"><img src="ins-geico.webp" alt="Geico" loading="lazy"></div>
-      <div class="logo-tile"><img src="ins-progressive.webp" alt="Progressive" loading="lazy"></div>
-      <div class="logo-tile"><img src="ins-allstate.webp" alt="Allstate" loading="lazy"></div>
-      <div class="logo-tile"><img src="ins-farmers.webp" alt="Farmers Insurance" loading="lazy"></div>
-      <div class="logo-tile"><img src="ins-usaa.webp" alt="USAA" loading="lazy"></div>
-      <div class="logo-tile"><img src="ins-liberty-mutual.webp" alt="Liberty Mutual" loading="lazy"></div>
-      <div class="logo-tile"><img src="ins-metlife.webp" alt="MetLife" loading="lazy"></div>
-      <div class="logo-tile"><img src="ins-nationwide.webp" alt="Nationwide" loading="lazy"></div>
-      <div class="logo-tile"><img src="ins-safeco.webp" alt="Safeco Insurance" loading="lazy"></div>
-      <div class="logo-tile"><img src="ins-21st-century.webp" alt="21st Century Insurance" loading="lazy"></div>
-      <div class="logo-tile"><img src="ins-kemper.webp" alt="Kemper" loading="lazy"></div>
-      <div class="logo-tile"><img src="ins-bristol-west.webp" alt="Bristol West" loading="lazy"></div>
-      <div class="logo-tile"><img src="ins-infinity.webp" alt="Infinity Insurance" loading="lazy"></div>
-      <div class="logo-tile"><img src="ins-national-general.webp" alt="National General" loading="lazy"></div>
-      <div class="logo-tile"><img src="ins-winsurance.png" alt="W Insurance" loading="lazy"></div>
-      <div class="logo-tile"><img src="ins-hartford.webp" alt="The Hartford" loading="lazy"></div>
-      <div class="logo-tile"><img src="ins-american-family.webp" alt="American Family Insurance" loading="lazy"></div>
-      <!-- duplicate set for seamless loop -->
-      <div class="logo-tile" aria-hidden="true"><img src="ins-state-farm.webp" alt="" loading="lazy"></div>
-      <div class="logo-tile" aria-hidden="true"><img src="ins-geico.webp" alt="" loading="lazy"></div>
-      <div class="logo-tile" aria-hidden="true"><img src="ins-progressive.webp" alt="" loading="lazy"></div>
-      <div class="logo-tile" aria-hidden="true"><img src="ins-allstate.webp" alt="" loading="lazy"></div>
-      <div class="logo-tile" aria-hidden="true"><img src="ins-farmers.webp" alt="" loading="lazy"></div>
-      <div class="logo-tile" aria-hidden="true"><img src="ins-usaa.webp" alt="" loading="lazy"></div>
-      <div class="logo-tile" aria-hidden="true"><img src="ins-liberty-mutual.webp" alt="" loading="lazy"></div>
-      <div class="logo-tile" aria-hidden="true"><img src="ins-metlife.webp" alt="" loading="lazy"></div>
-      <div class="logo-tile" aria-hidden="true"><img src="ins-nationwide.webp" alt="" loading="lazy"></div>
-      <div class="logo-tile" aria-hidden="true"><img src="ins-safeco.webp" alt="" loading="lazy"></div>
-      <div class="logo-tile" aria-hidden="true"><img src="ins-21st-century.webp" alt="" loading="lazy"></div>
-      <div class="logo-tile" aria-hidden="true"><img src="ins-kemper.webp" alt="" loading="lazy"></div>
-      <div class="logo-tile" aria-hidden="true"><img src="ins-bristol-west.webp" alt="" loading="lazy"></div>
-      <div class="logo-tile" aria-hidden="true"><img src="ins-infinity.webp" alt="" loading="lazy"></div>
-      <div class="logo-tile" aria-hidden="true"><img src="ins-national-general.webp" alt="" loading="lazy"></div>
-      <div class="logo-tile" aria-hidden="true"><img src="ins-winsurance.png" alt="" loading="lazy"></div>
-      <div class="logo-tile" aria-hidden="true"><img src="ins-hartford.webp" alt="" loading="lazy"></div>
-      <div class="logo-tile" aria-hidden="true"><img src="ins-american-family.webp" alt="" loading="lazy"></div>
+    <!-- Row 1 — scrolls left -->
+    <div class="logo-marquee-row">
+      <div class="logo-marquee-track left">
+        <div class="logo-tile"><img src="ins-state-farm.webp" alt="State Farm" loading="lazy"></div>
+        <div class="logo-tile"><img src="ins-geico.webp" alt="Geico" loading="lazy"></div>
+        <div class="logo-tile"><img src="ins-progressive.webp" alt="Progressive" loading="lazy"></div>
+        <div class="logo-tile"><img src="ins-allstate.webp" alt="Allstate" loading="lazy"></div>
+        <div class="logo-tile"><img src="ins-farmers.webp" alt="Farmers Insurance" loading="lazy"></div>
+        <div class="logo-tile"><img src="ins-usaa.webp" alt="USAA" loading="lazy"></div>
+        <div class="logo-tile"><img src="ins-liberty-mutual.webp" alt="Liberty Mutual" loading="lazy"></div>
+        <div class="logo-tile"><img src="ins-metlife.webp" alt="MetLife" loading="lazy"></div>
+        <div class="logo-tile"><img src="ins-nationwide.webp" alt="Nationwide" loading="lazy"></div>
+        <!-- duplicate for seamless loop -->
+        <div class="logo-tile" aria-hidden="true"><img src="ins-state-farm.webp" alt="" loading="lazy"></div>
+        <div class="logo-tile" aria-hidden="true"><img src="ins-geico.webp" alt="" loading="lazy"></div>
+        <div class="logo-tile" aria-hidden="true"><img src="ins-progressive.webp" alt="" loading="lazy"></div>
+        <div class="logo-tile" aria-hidden="true"><img src="ins-allstate.webp" alt="" loading="lazy"></div>
+        <div class="logo-tile" aria-hidden="true"><img src="ins-farmers.webp" alt="" loading="lazy"></div>
+        <div class="logo-tile" aria-hidden="true"><img src="ins-usaa.webp" alt="" loading="lazy"></div>
+        <div class="logo-tile" aria-hidden="true"><img src="ins-liberty-mutual.webp" alt="" loading="lazy"></div>
+        <div class="logo-tile" aria-hidden="true"><img src="ins-metlife.webp" alt="" loading="lazy"></div>
+        <div class="logo-tile" aria-hidden="true"><img src="ins-nationwide.webp" alt="" loading="lazy"></div>
+      </div>
+    </div>
+    <!-- Row 2 — scrolls right -->
+    <div class="logo-marquee-row">
+      <div class="logo-marquee-track right">
+        <div class="logo-tile"><img src="ins-safeco.webp" alt="Safeco Insurance" loading="lazy"></div>
+        <div class="logo-tile"><img src="ins-21st-century.webp" alt="21st Century Insurance" loading="lazy"></div>
+        <div class="logo-tile"><img src="ins-kemper.webp" alt="Kemper" loading="lazy"></div>
+        <div class="logo-tile"><img src="ins-bristol-west.webp" alt="Bristol West" loading="lazy"></div>
+        <div class="logo-tile"><img src="ins-infinity.webp" alt="Infinity Insurance" loading="lazy"></div>
+        <div class="logo-tile"><img src="ins-national-general.webp" alt="National General" loading="lazy"></div>
+        <div class="logo-tile"><img src="ins-winsurance.png" alt="W Insurance" loading="lazy"></div>
+        <div class="logo-tile"><img src="ins-hartford.webp" alt="The Hartford" loading="lazy"></div>
+        <div class="logo-tile"><img src="ins-american-family.webp" alt="American Family Insurance" loading="lazy"></div>
+        <!-- duplicate for seamless loop -->
+        <div class="logo-tile" aria-hidden="true"><img src="ins-safeco.webp" alt="" loading="lazy"></div>
+        <div class="logo-tile" aria-hidden="true"><img src="ins-21st-century.webp" alt="" loading="lazy"></div>
+        <div class="logo-tile" aria-hidden="true"><img src="ins-kemper.webp" alt="" loading="lazy"></div>
+        <div class="logo-tile" aria-hidden="true"><img src="ins-bristol-west.webp" alt="" loading="lazy"></div>
+        <div class="logo-tile" aria-hidden="true"><img src="ins-infinity.webp" alt="" loading="lazy"></div>
+        <div class="logo-tile" aria-hidden="true"><img src="ins-national-general.webp" alt="" loading="lazy"></div>
+        <div class="logo-tile" aria-hidden="true"><img src="ins-winsurance.png" alt="" loading="lazy"></div>
+        <div class="logo-tile" aria-hidden="true"><img src="ins-hartford.webp" alt="" loading="lazy"></div>
+        <div class="logo-tile" aria-hidden="true"><img src="ins-american-family.webp" alt="" loading="lazy"></div>
+      </div>
     </div>
   </div>
   <p class="carriers-note">Don't see your carrier? <strong>We work with everyone.</strong> Call us at <a href="tel:+15624246744" target="_top">562-424-6744</a>.</p>
