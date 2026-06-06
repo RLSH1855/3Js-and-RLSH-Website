@@ -939,6 +939,31 @@
   document.querySelectorAll('.faq-body').forEach(function(p){p.addEventListener('transitionend',function(e){if(e.propertyName!=='height')return;if(p.closest('.faq-item').classList.contains('open'))p.style.height='auto';});});
   document.querySelectorAll('.faq-trigger').forEach(function(btn){btn.addEventListener('click',function(){var item=btn.closest('.faq-item'),wasOpen=item.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(faqClose);if(!wasOpen)faqOpen(item);setTimeout(reportHeight,350);});});
 
+  /* Insurance logo optical normalization */
+  (function(){
+    var TARGET_FILL = 0.82;
+    function normalize(img){
+      img.style.transform = '';
+      var nat = img.naturalWidth / img.naturalHeight;
+      var boxW = img.offsetWidth, boxH = img.offsetHeight;
+      if(!boxW || !boxH || !img.naturalWidth) return;
+      var rendW = Math.min(boxW, boxH * nat);
+      var rendH = Math.min(boxH, boxW / nat);
+      var fill = Math.max(rendW / boxW, rendH / boxH);
+      if(fill > 0 && fill < TARGET_FILL){
+        img.style.transform = 'scale(' + (TARGET_FILL / fill).toFixed(3) + ')';
+      }
+    }
+    function run(){
+      document.querySelectorAll('.logo-tile img').forEach(function(img){
+        if(img.complete && img.naturalWidth) normalize(img);
+        else img.addEventListener('load', function(){ normalize(img); });
+      });
+    }
+    if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', run);
+    else run();
+  })();
+
   /* Parts counter animation */
   (function(){
     var el=document.getElementById('parts-counter');
