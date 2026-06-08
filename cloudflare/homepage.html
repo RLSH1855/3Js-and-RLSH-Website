@@ -428,6 +428,9 @@
        INSURANCE CARRIERS
     ════════════════════════════ */
     .carriers-section{background:#fff;padding:clamp(64px,7vw,96px) clamp(16px,4vw,24px);text-align:center;}
+    .carriers-certs{display:flex;flex-wrap:wrap;gap:18px 32px;align-items:center;justify-content:center;margin-bottom:clamp(28px,3.5vw,40px);}
+    .carriers-certs .cert-logo{height:40px;width:auto;display:block;}
+    @media(max-width:640px){.carriers-certs .cert-logo{height:32px;}}
     .carriers-header{margin-bottom:clamp(32px,4vw,48px);}
     .carriers-eyebrow{font-family:'Montserrat',sans-serif;font-size:12px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:#8B0000;margin-bottom:10px;}
     .carriers-heading{font-family:'Montserrat',sans-serif;font-size:clamp(22px,3.5vw,38px);font-weight:900;color:#1a1a1a;letter-spacing:-0.5px;margin-bottom:12px;text-wrap:balance;}
@@ -497,14 +500,6 @@
           <a href="tel:+15624246744" class="btn-red btn" target="_top">Call 562-424-6744</a>
           <a href="https://www.3jsautobody.com/request-a-quote" class="btn-ghost btn" target="_top">Get a Free Quote</a>
         </div>
-        <div class="hero-trust">
-          <div class="trust-logo-wrap">
-            <img src="images/brands/icar-logo.png" alt="I-CAR Gold Class Certified" class="trust-logo icar">
-          </div>
-          <div class="trust-logo-wrap">
-            <img src="images/brands/ase-logo.png" alt="ASE Certified" class="trust-logo ase">
-          </div>
-        </div>
       </div>
     </div>
     <div class="hero-stats">
@@ -539,6 +534,10 @@
      2. INSURANCE CARRIERS
 ═══════════════════════════════════ -->
 <section class="carriers-section">
+  <div class="carriers-certs">
+    <img src="images/brands/icar-logo.png" alt="I-CAR Gold Class Certified" class="cert-logo">
+    <img src="images/brands/ase-logo.png" alt="ASE Certified" class="cert-logo">
+  </div>
   <div class="carriers-header">
     <p class="carriers-eyebrow">Insurance Claims</p>
     <h2 class="carriers-heading">We Work With <em>All Major Carriers</em></h2>
