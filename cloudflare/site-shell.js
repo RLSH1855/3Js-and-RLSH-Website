@@ -272,7 +272,7 @@
   var header =
   '<header class="ss-shell" id="ssShell">'+
     '<div class="ss-top">'+
-      '<a href="https://www.3jsautobody.com/rhino-lining-quote" class="ss-tb-btn red" target="_top">Bed-Liner Quote</a>'+
+      '<a href="/rhino-lining-quote" class="ss-tb-btn red" target="_top">Bed-Liner Quote</a>'+
       '<div class="ss-logos">'+
         '<a href="/" target="_top"><img class="ss-logo-rlsh" src="https://static.wixstatic.com/media/b95bd9_8e3e4f256c85462d960aaa1e3ef740c8~mv2.png" alt="RLSH Rhino Lining of Signal Hill"></a>'+
         '<a href="/" target="_top"><img class="ss-logo-3js" src="https://static.wixstatic.com/media/b95bd9_86c7cf1e525d4b9e961a2738ed9af502~mv2.png" alt="3J\'s Auto Body & Paint"></a>'+
@@ -350,10 +350,10 @@
     <div>
       <p class="footer-col-title">Quick Links</p>
       <ul class="footer-links">
-        <li><a href="https://www.3jsautobody.com/" target="_top">Home</a></li>
-        <li><a href="https://www.3jsautobody.com/body-paint-repairs" target="_top">Body &amp; Paint Repairs</a></li>
-        <li><a href="https://www.3jsautobody.com/rhino-liner" target="_top">Rhino Linings</a></li>
-        <li><a href="https://www.3jsautobody.com/exterior-accessories" target="_top">Truck &amp; SUV Accessories</a></li>
+        <li><a href="/" target="_top">Home</a></li>
+        <li><a href="/body-paint-repairs" target="_top">Body &amp; Paint Repairs</a></li>
+        <li><a href="/rhino-liner" target="_top">Rhino Linings</a></li>
+        <li><a href="/exterior-accessories-V2" target="_top">Truck &amp; SUV Accessories</a></li>
         <li><a href="https://www.3jsautobody.com/request-a-quote" target="_top">Get a Quote</a></li>
       </ul>
     </div>
@@ -390,8 +390,8 @@
   <div class="footer-bottom">
     <p class="footer-copy">&copy; 2025 <span>3J's Auto Body &amp; Paint</span>. All rights reserved.</p>
     <div class="footer-bottom-links">
-      <a href="https://www.3jsautobody.com/privacy-policy" target="_top">Privacy Policy</a>
-      <a href="https://www.3jsautobody.com/terms-conditions" target="_top">Terms of Service</a>
+      <a href="/privacy-policy" target="_top">Privacy Policy</a>
+      <a href="/terms-conditions" target="_top">Terms of Service</a>
     </div>
   </div>
 </footer>`;
@@ -425,8 +425,8 @@
             '<div class="ssd-sub" id="ssd-rhino-sub">'+
               '<div class="ssd-sub-inner">'+
                 '<div class="ssd-sub-bar" id="ssd-rhino-bar"></div>'+
-                '<a href="https://www.3jsautobody.com/rhino-lining-quote" class="ssd-sub-item" target="_top">Rhino Liner Quote'+ssChevSub+'</a>'+
-                '<a href="/inside-3js" class="ssd-sub-item" target="_top">Our Work'+ssChevSub+'</a>'+
+                '<a href="/rhino-lining-quote" class="ssd-sub-item" target="_top">Rhino Liner Quote'+ssChevSub+'</a>'+
+                '<a href="/before-after" class="ssd-sub-item" target="_top">Our Work'+ssChevSub+'</a>'+
                 '<div class="ssd-sub-spacer"></div>'+
               '</div>'+
             '</div>'+
@@ -466,7 +466,7 @@
         '<div class="ssd-footer" id="ssdFooter">'+
             '<div class="ssd-brand-line"><div class="ssd-brand-dot"></div><span class="ssd-brand-text">3J\'S AUTO BODY &middot; RHINO LININGS OF SIGNAL HILL</span></div>'+
             '<div class="ssd-footer-btns">'+
-              '<a href="https://www.3jsautobody.com/rhino-lining-quote" class="ssd-cta-red ss-sheen-red" target="_top">'+
+              '<a href="/rhino-lining-quote" class="ssd-cta-red ss-sheen-red" target="_top">'+
                 '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-10 2a2 2 0 100 4 2 2 0 000-4z"/></svg>'+
                 'Bed-Liner Quote'+
               '</a>'+
@@ -773,6 +773,7 @@
       var d; try{ d=typeof e.data==='string'?JSON.parse(e.data):e.data; }catch(ex){ return; }
       if(!d||!d.type) return;
       if(d.type==='garage_saved'){ sync(); closeGarage(); }
+      else if(d.type==='garage_sync'){ sync(); }
       else if(d.type==='garage_clear'){ sync(); }
       else if(d.type==='close_garage'){ closeGarage(); }
       else if(d.type==='browse_accessories'){ closeGarage(); window.location.href='/exterior-accessories-V2'; }

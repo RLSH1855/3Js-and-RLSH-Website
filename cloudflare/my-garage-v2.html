@@ -776,6 +776,12 @@ function togglePicker(name){
   if(!isOpen){
     panel.classList.add('open');
     btn.classList.add('open');
+    /* On phones the absolutely-positioned dropdown can extend past the scrollable
+       screen area and get clipped (lower options unreachable). Bring the open panel
+       fully into view within the scrolling screen. Harmless on desktop (no-op if visible). */
+    setTimeout(function(){
+      try{ panel.scrollIntoView({behavior:'smooth',block:'nearest'}); }catch(e){}
+    },20);
   }
 }
 function closePicker(name){
@@ -925,6 +931,11 @@ function saveVehicle(){
     label:vehicleLabel
   };
   try{ localStorage.setItem('garage_vehicle',JSON.stringify(currentVehicle)); }catch(e){}
+  /* Notify the parent shell immediately so the nav garage button (desktop + mobile)
+     updates the moment the vehicle is saved — not only when the popup is later closed.
+     garage_sync updates the label WITHOUT closing the popup (we're showing screen-3). */
+  try{ window.dispatchEvent(new Event('garageUpdated')); }catch(e){}
+  try{ if(window.parent){ window.parent.postMessage({type:'garage_sync',vehicle:currentVehicle},'*'); } }catch(e){}
 
   transitionTo('screen-3','forward');
 }
