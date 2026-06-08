@@ -493,6 +493,18 @@
   // Inject drawer + overlay outside wrap
   document.body.insertAdjacentHTML('beforeend', ssDrawerHTML);
 
+  // Move shell + fixed overlays outside #ss-page-wrap so the wrap's
+  // pointer-events:none (applied while the mobile drawer is open) never
+  // blocks the hamburger or nav links.
+  (function(){
+    var wrap=document.getElementById('ss-page-wrap');
+    if(!wrap) return;
+    ['ssShell','ssScrim','ssGarageOv'].forEach(function(id){
+      var el=document.getElementById(id);
+      if(el&&el.parentNode===wrap) document.body.insertBefore(el,wrap);
+    });
+  })();
+
   /* ════════ SPACER = EXACT HEADER HEIGHT (kills the blank strip on every page) ════════ */
   (function(){
     var shell=document.getElementById('ssShell');
