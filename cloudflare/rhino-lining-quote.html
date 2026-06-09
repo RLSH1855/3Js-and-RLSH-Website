@@ -14,64 +14,75 @@
       --red: #8B0000;
       --red-hot: #a30000;
       --navy: #0b1220;
-      --navy-2: #131c30;
       --fg: #1F2937;
       --fg-muted: #424954;
       --border: #e2e8f0;
       --surface: #f7f7f7;
     }
     html { overscroll-behavior: none; -webkit-font-smoothing: antialiased; }
-    body { font-family: 'Inter', sans-serif; color: var(--fg); background: #fff; overflow-x: hidden; }
+    body { font-family: 'Inter', sans-serif; font-size: 16px; font-weight: 500; letter-spacing: 0.3px; line-height: 1.65; color: var(--fg); background: #fff; overflow-x: hidden; }
 
     /* ── HERO ── */
-    .hero { background: var(--navy); background-image: linear-gradient(135deg, var(--navy) 0%, var(--navy-2) 100%); height: 280px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 40px 20px; text-align: center; position: relative; overflow: hidden; }
-    .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 110%, rgba(139,0,0,.45) 0%, transparent 65%); pointer-events: none; }
-    .hero-eyebrow { font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 800; letter-spacing: 3.5px; text-transform: uppercase; color: rgba(255,255,255,0.70); text-shadow: 0 1px 4px rgba(0,0,0,0.60); margin-bottom: 16px; position: relative; }
-    .hero h1 { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: clamp(32px,6vw,56px); line-height: 1.0; letter-spacing: -2px; text-transform: uppercase; color: #fff; max-width: 780px; margin: 0 auto 16px; position: relative; text-wrap: balance; }
+    .hero { position: relative; height: 280px; display: flex; align-items: flex-start; overflow: hidden; background: var(--navy); }
+    .hero-bg { position: absolute; inset: 0; background-image: url('https://rlsh1855.github.io/3Js-and-RLSH-Website/rhino-liner-hero.webp'); background-size: cover; background-position: center 35%; z-index: 0; }
+    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to right, rgba(0,0,0,.86) 0%, rgba(0,0,0,.62) 55%, rgba(0,0,0,.34) 100%); z-index: 1; }
+    .hero-content { position: relative; z-index: 2; width: 100%; max-width: 100%; padding: 40px 20px; color: #fff; }
+    .hero-eyebrow { font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.70); text-shadow: 0 2px 8px rgba(0,0,0,0.80); margin-bottom: 12px; display: block; text-align: left; }
+    .hero h1 { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: clamp(32px,6vw,56px); line-height: 1.0; letter-spacing: -2px; text-transform: uppercase; color: #fff; max-width: 780px; margin: 0 auto 16px; text-align: center; text-wrap: balance; }
     .hero h1 em { font-style: normal; color: var(--red); }
-    .hero-sub { font-family: 'Inter', sans-serif; font-size: 16px; font-weight: 500; color: rgba(255,255,255,.82); max-width: 600px; margin: 0 auto 28px; line-height: 1.65; position: relative; text-wrap: pretty; }
-    .hero-badges { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; position: relative; }
-    .hero-badge { display: inline-flex; align-items: center; gap: 9px; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.16); padding: 11px 18px; font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; color: #fff; }
-    .hero-badge .dot { width: 7px; height: 7px; background: var(--red); box-shadow: 0 0 0 3px rgba(139,0,0,.30); flex-shrink: 0; }
+    .hero-sub { font-family: 'Inter', sans-serif; font-size: 16px; font-weight: 500; letter-spacing: 0.3px; color: rgba(255,255,255,.90); max-width: 600px; margin: 0 auto 24px; line-height: 1.65; text-align: center; text-wrap: pretty; }
+    .hero-badges { display: flex; flex-wrap: wrap; gap: 14px 28px; justify-content: center; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 10px; font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 800; letter-spacing: 1.4px; text-transform: uppercase; color: #fff; }
+    .hero-badge svg { width: 24px; height: 24px; flex-shrink: 0; stroke: #fff; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 
     /* ── FORM SECTION ── */
-    .form-section { background: var(--surface); padding: 48px 20px 64px; }
+    .form-section { background: var(--surface); padding: 48px 20px; }
     .form-intro { max-width: 760px; margin: 0 auto 28px; text-align: center; }
-    .form-intro .eyebrow { font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; color: var(--red); margin-bottom: 10px; }
-    .form-intro h2 { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: clamp(22px, 3vw, 28px); color: #111; margin-bottom: 12px; text-wrap: balance; }
-    .form-intro p { font-size: 16px; font-weight: 500; line-height: 1.65; color: var(--fg-muted); text-wrap: pretty; }
+    .form-intro .eyebrow { font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; color: var(--red); margin-bottom: 10px; }
+    .form-intro h2 { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: clamp(26px,4vw,40px); line-height: 1.1; letter-spacing: -1px; color: #111; margin-bottom: 12px; text-wrap: balance; }
+    .form-intro p { font-size: 16px; font-weight: 500; letter-spacing: 0.3px; line-height: 1.65; color: var(--fg-muted); text-wrap: pretty; }
 
     .sm-embed { max-width: 820px; margin: 0 auto; background: #fff; border: 1px solid var(--border); box-shadow: 0 18px 50px rgba(15,30,46,.08); }
-    /* Shopmonkey form is cross-origin so it can't auto-size — give it generous responsive
-       height so the form never clips. Tweak if the form length changes. */
-    .sm-embed iframe { width: 100%; height: 1600px; border: 0; display: block; }
-    @media (max-width: 640px) { .sm-embed iframe { height: 1900px; } }
+    /* Right-sized so there's no blank gap under the submit button. The auto-resize
+       listener below will fine-tune to the real form height if Shopmonkey posts it. */
+    .sm-embed iframe { width: 100%; height: 840px; border: 0; display: block; }
+    @media (max-width: 640px) { .sm-embed iframe { height: 1060px; } }
 
-    /* ── TRUST STRIP ── */
-    .trust { max-width: 820px; margin: 36px auto 0; display: grid; grid-template-columns: 1fr; gap: 12px; }
-    .trust-item { background: #fff; border: 1px solid var(--border); border-left: 3px solid var(--red); padding: 16px 20px; }
-    .trust-item strong { display: block; font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 800; color: #111; margin-bottom: 4px; letter-spacing: 0.2px; }
-    .trust-item span { font-size: 14px; font-weight: 500; color: var(--fg-muted); line-height: 1.55; }
+    /* ── RHINO FEATURE ICONS ── */
+    .rhino-feats { max-width: 900px; margin: 44px auto 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px 12px; }
+    .rfeat { display: flex; flex-direction: column; align-items: center; text-align: center; }
+    .rfeat img { width: 96px; height: 96px; object-fit: contain; }
+    .rfeat figcaption { font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 800; letter-spacing: 1.2px; text-transform: uppercase; color: var(--fg); margin-top: 10px; }
 
     @media (min-width: 601px) {
       .hero { height: 420px; }
+      .hero-content { padding: 56px 80px; }
     }
     @media (min-width: 768px) {
-      .form-section { padding: 64px 24px 88px; }
-      .trust { grid-template-columns: repeat(3, 1fr); gap: 14px; }
+      .form-section { padding: 64px 24px; }
+      .rhino-feats { grid-template-columns: repeat(4, 1fr); }
     }
   </style>
 </head>
 <body>
 
   <section class="hero">
-    <div class="hero-eyebrow">Rhino Linings of Signal Hill</div>
-    <h1>Get Your Free <em>Bed-Liner</em> Quote</h1>
-    <p class="hero-sub">Tell us about your truck and we'll get you a no-obligation quote on a permanent, spray-on Rhino Linings bedliner — backed by a nationwide lifetime warranty.</p>
-    <div class="hero-badges">
-      <div class="hero-badge"><span class="dot"></span> Lifetime Warranty</div>
-      <div class="hero-badge"><span class="dot"></span> Expert Installation</div>
-      <div class="hero-badge"><span class="dot"></span> Signal Hill, CA</div>
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">Rhino Linings of Signal Hill</div>
+      <h1>Get Your Free <em>Bed-Liner</em> Quote</h1>
+      <p class="hero-sub">Tell us about your truck and we'll get you a no-obligation quote on a permanent, spray-on Rhino Linings bedliner — backed by a nationwide lifetime warranty.</p>
+      <div class="hero-badges">
+        <div class="hero-badge">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l8 3v6c0 5-3.4 8.6-8 11-4.6-2.4-8-6-8-11V5l8-3z"/><polyline points="8.5 12 11 14.5 15.5 9.5"/></svg>
+          Lifetime Warranty
+        </div>
+        <div class="hero-badge">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.6 6.3a3.8 3.8 0 0 1-5 5L4.5 16.4a2 2 0 1 0 2.8 2.8l5.1-5.1a3.8 3.8 0 0 0 5-5l-2.6 2.6-2.3-.6-.6-2.3 2.6-2.6z"/></svg>
+          Expert Install
+        </div>
+      </div>
     </div>
   </section>
 
@@ -84,24 +95,31 @@
 
     <!-- Shopmonkey embedded quote form -->
     <div class="sm-embed">
-      <iframe src="https://app.shopmonkey.cloud/public/quote-request/5c63714b0b11410a81a66899" title="Rhino Linings Bed-Liner Quote Request" loading="lazy"></iframe>
+      <iframe src="https://app.shopmonkey.cloud/public/quote-request/5c63714b0b11410a81a66899" title="Rhino Linings Bed-Liner Quote Request"></iframe>
     </div>
 
-    <div class="trust">
-      <div class="trust-item"><strong>Permanent Protection</strong><span>Spray-on liner bonds to your bed — it won't crack, warp, or rattle like a drop-in.</span></div>
-      <div class="trust-item"><strong>Lifetime Warranty</strong><span>Backed nationwide for as long as you own your truck.</span></div>
-      <div class="trust-item"><strong>Done Right</strong><span>Prepped and applied in-house by the 3J's team — no shortcuts.</span></div>
+    <!-- Rhino Linings spray-on protection — feature icons -->
+    <div class="rhino-feats">
+      <figure class="rfeat"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/images/icons/Abrasion%20Resistant.png" alt="Scratch and abrasion resistant" loading="lazy" width="96" height="96"><figcaption>Scratch Resistant</figcaption></figure>
+      <figure class="rfeat"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/images/icons/Chemical%20Resistant.png" alt="Chemical and corrosion resistant" loading="lazy" width="96" height="96"><figcaption>Corrosion Resistant</figcaption></figure>
+      <figure class="rfeat"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/images/icons/Impact%20Resistant.png" alt="Impact resistant" loading="lazy" width="96" height="96"><figcaption>Impact Resistant</figcaption></figure>
+      <figure class="rfeat"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/images/icons/SlipResistant.png" alt="Slip resistant" loading="lazy" width="96" height="96"><figcaption>Slip Resistant</figcaption></figure>
     </div>
   </section>
 
-<!-- GTM dataLayer bridge — forwards Shopmonkey form events into the dataLayer for Google Tag Manager -->
+<!-- Shopmonkey bridge: GTM dataLayer forwarding + best-effort iframe auto-resize -->
 <script>
 window.addEventListener('message', function(e) {
   if (e.origin !== 'https://app.shopmonkey.cloud') return;
-  if (e.data && e.data.source === 'sm_wrf' && e.data.dataLayer) {
+  var d = e.data;
+  if (d && d.source === 'sm_wrf' && d.dataLayer) {
     window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push(e.data.dataLayer);
+    window.dataLayer.push(d.dataLayer);
   }
+  // If Shopmonkey posts a real content height, size the iframe to it (kills any blank gap).
+  var h = d && (d.height || d.frameHeight || (d.payload && d.payload.height));
+  var f = document.querySelector('.sm-embed iframe');
+  if (f && typeof h === 'number' && h > 200 && h < 5000) { f.style.height = h + 'px'; }
 });
 </script>
 

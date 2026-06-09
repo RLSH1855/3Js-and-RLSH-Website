@@ -439,6 +439,7 @@
             '<div class="ssd-sub" id="ssd-rhino-sub">'+
               '<div class="ssd-sub-inner">'+
                 '<div class="ssd-sub-bar" id="ssd-rhino-bar"></div>'+
+                '<a href="/rhino-liner" class="ssd-sub-item" target="_top">Rhino Liner Overview'+ssChevSub+'</a>'+
                 '<a href="/rhino-lining-quote" class="ssd-sub-item" target="_top">Rhino Liner Quote'+ssChevSub+'</a>'+
                 '<a href="/before-after" class="ssd-sub-item" target="_top">Our Work'+ssChevSub+'</a>'+
                 '<div class="ssd-sub-spacer"></div>'+
@@ -449,7 +450,6 @@
               '<div class="ssd-sub-inner">'+
                 '<div class="ssd-sub-bar" id="ssd-acc-bar"></div>'+
                 '<span class="ssd-sub-label">Bedliner &amp; Bed Accessories</span>'+
-                '<a href="/rhino-liner" class="ssd-sub-item" target="_top">Rhino Liner'+ssChevSub+'</a>'+
                 '<a href="/floor-liners" class="ssd-sub-item" target="_top">Floor Liners &amp; Mats'+ssChevSub+'</a>'+
                 '<a href="/headache-racks" class="ssd-sub-item" target="_top">Headache Rack'+ssChevSub+'</a>'+
                 '<span class="ssd-sub-label">Exterior Upgrades</span>'+
