@@ -55,7 +55,7 @@
 
     /* ── HERO ── */
     .hero{
-      position:relative;min-height:320px;
+      position:relative;height:420px;
       display:flex;align-items:flex-start;
       overflow:hidden;background:var(--black);
     }
@@ -67,9 +67,9 @@
     .hero-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,.92) 0%,rgba(0,0,0,.65) 55%,rgba(0,0,0,.25) 100%);z-index:1;}
     .hero-vignette{position:absolute;bottom:0;left:0;right:0;height:200px;background:linear-gradient(to top,rgba(10,10,10,1) 0%,rgba(10,10,10,.6) 40%,transparent 100%);z-index:2;}
     .hero-accent{position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--red);z-index:3;}
-    .hero-content{position:relative;z-index:3;padding:72px 20px 64px;max-width:680px;color:#fff;}
+    .hero-content{position:relative;z-index:3;padding:40px 20px;max-width:680px;color:#fff;}
     .hero-eyebrow{font-family:'Montserrat',sans-serif;font-size:12px;font-weight:800;letter-spacing:3.5px;text-transform:uppercase;color:rgba(255,255,255,0.70);text-shadow:0 1px 4px rgba(0,0,0,0.60);margin-bottom:14px;display:block;}
-    .hero h1{font-family:'Montserrat',sans-serif;font-size:clamp(32px,5.5vw,72px);font-weight:900;letter-spacing:-2px;line-height:.95;text-transform:uppercase;color:#fff;margin-bottom:20px;}
+    .hero h1{font-family:'Montserrat',sans-serif;font-size:clamp(32px,6vw,56px);font-weight:900;letter-spacing:-2px;line-height:1.0;text-transform:uppercase;color:#fff;margin-bottom:20px;}
     .hero h1 em{font-style:normal;color:var(--red);}
     .hero-rule{width:52px;height:4px;background:var(--red);margin:0 0 22px;}
     .hero-sub{font-family:'Inter',sans-serif;font-size:16px;font-weight:400;color:rgba(255,255,255,.8);line-height:1.75;max-width:480px;margin-bottom:32px;}
@@ -198,9 +198,9 @@
     .btn-white svg,.btn-glass-white svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;}
 
     /* ── RESPONSIVE — mobile-first, scale up ── */
-    .hero{min-height:0;height:auto;}
-    .hero-content{padding:36px 20px 32px;max-width:100%;}
-    .hero h1{font-size:clamp(28px,8vw,42px);letter-spacing:-1px;}
+    .hero{height:280px;}
+    .hero-content{padding:40px 20px;max-width:100%;}
+    .hero h1{font-size:clamp(32px,6vw,56px);letter-spacing:-2px;}
     .hero-sub{font-size:14px;margin-bottom:24px;}
     .hero-ctas{display:flex;gap:12px;flex-wrap:wrap;flex-direction:column;align-items:stretch;}
     .stat{border-right:none;padding:0;}
@@ -209,9 +209,9 @@
     @media(min-width:481px){
       .cat-grid{grid-template-columns:1fr 1fr;}
     }
-    @media(min-width:768px){
-      .hero{min-height:420px;}
-      .hero-content{padding:72px 20px 64px;max-width:680px;}
+    @media(min-width:601px){
+      .hero{height:420px;}
+      .hero-content{padding:40px 20px;max-width:680px;}
       .hero-ctas{flex-direction:row;align-items:flex-start;}
       .stats-inner{grid-template-columns:repeat(4,1fr);gap:0;}
       .stat{border-right:1px solid rgba(255,255,255,.2);padding:0 12px;}
@@ -249,9 +249,9 @@
     <a href="https://www.3jsautobody.com/exterior-accessories" style="display:inline-flex;align-items:center;justify-content:center;padding:14px 18px;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;color:rgba(255,255,255,.45);border-bottom:3px solid transparent;border-right:1px solid rgba(255,255,255,.1);white-space:nowrap;flex-shrink:0;min-height:48px;" target="_top">All</a>
     <a href="https://www.3jsautobody.com/exterior-accessories/tonneau-covers" style="display:inline-flex;align-items:center;justify-content:center;padding:14px 18px;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;color:rgba(255,255,255,.45);border-bottom:3px solid transparent;border-right:1px solid rgba(255,255,255,.1);white-space:nowrap;flex-shrink:0;min-height:48px;" target="_top">Tonneau Covers</a>
     <a href="https://www.3jsautobody.com/exterior-accessories/steps-running-boards" style="display:inline-flex;align-items:center;justify-content:center;padding:14px 18px;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;color:rgba(255,255,255,.45);border-bottom:3px solid transparent;border-right:1px solid rgba(255,255,255,.1);white-space:nowrap;flex-shrink:0;min-height:48px;" target="_top">Running Boards</a>
-    <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/floor-liners.html" style="display:inline-flex;align-items:center;justify-content:center;padding:14px 18px;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;color:rgba(255,255,255,.45);border-bottom:3px solid transparent;border-right:1px solid rgba(255,255,255,.1);white-space:nowrap;flex-shrink:0;min-height:48px;" target="_top">Floor Liners</a>
-    <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/lighting.html" style="display:inline-flex;align-items:center;justify-content:center;padding:14px 18px;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;color:#fff;border-bottom:3px solid #8B0000;border-right:1px solid rgba(255,255,255,.1);white-space:nowrap;flex-shrink:0;min-height:48px;" target="_top">Lighting</a>
-    <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/headache-racks.html" style="display:inline-flex;align-items:center;justify-content:center;padding:14px 18px;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;color:rgba(255,255,255,.45);border-bottom:3px solid transparent;border-right:1px solid rgba(255,255,255,.1);white-space:nowrap;flex-shrink:0;min-height:48px;" target="_top">Headache Racks</a>
+    <a href="https://www.3jsautobody.com/exterior-accessories/floor-liners" style="display:inline-flex;align-items:center;justify-content:center;padding:14px 18px;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;color:rgba(255,255,255,.45);border-bottom:3px solid transparent;border-right:1px solid rgba(255,255,255,.1);white-space:nowrap;flex-shrink:0;min-height:48px;" target="_top">Floor Liners</a>
+    <a href="https://www.3jsautobody.com/exterior-accessories/premium-led-offroad-lighting" style="display:inline-flex;align-items:center;justify-content:center;padding:14px 18px;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;color:#fff;border-bottom:3px solid #8B0000;border-right:1px solid rgba(255,255,255,.1);white-space:nowrap;flex-shrink:0;min-height:48px;" target="_top">Lighting</a>
+    <a href="https://www.3jsautobody.com/exterior-accessories/headache-racks" style="display:inline-flex;align-items:center;justify-content:center;padding:14px 18px;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;color:rgba(255,255,255,.45);border-bottom:3px solid transparent;border-right:1px solid rgba(255,255,255,.1);white-space:nowrap;flex-shrink:0;min-height:48px;" target="_top">Headache Racks</a>
     <a href="https://www.3jsautobody.com/exterior-accessories/towing" style="display:inline-flex;align-items:center;justify-content:center;padding:14px 18px;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;color:rgba(255,255,255,.45);border-bottom:3px solid transparent;white-space:nowrap;flex-shrink:0;min-height:48px;" target="_top">Towing</a>
   </div>
 </nav>

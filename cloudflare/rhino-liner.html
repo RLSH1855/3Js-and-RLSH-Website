@@ -95,14 +95,14 @@
     .red{color:var(--crimson);}
 
     /* ── HERO ── */
-    .hero{position:relative;min-height:540px;display:flex;align-items:flex-start;overflow:hidden;background:var(--black-1);}
+    .hero{position:relative;height:420px;display:flex;align-items:flex-start;overflow:hidden;background:var(--black-1);}
     .hero-bg{position:absolute;inset:0;background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/rhino-liner-hero.webp');background-size:cover;background-position:center 30%;z-index:0;}
     .hero-overlay{position:absolute;inset:0;background:linear-gradient(to right, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.38) 45%, rgba(0,0,0,0.08) 100%);z-index:1;}
     .hero-vignette{position:absolute;bottom:0;left:0;right:0;height:180px;background:linear-gradient(to top, rgba(10,10,10,0.45) 0%, rgba(10,10,10,0.18) 40%, transparent 100%);z-index:2;}
     .hero-accent{position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--crimson);z-index:3;}
-    .hero-content{position:relative;z-index:3;padding:100px 72px 100px 80px;max-width:700px;color:#fff;}
+    .hero-content{position:relative;z-index:3;padding:40px 72px 40px 80px;max-width:700px;color:#fff;}
     .hero-content .eyebrow{font-family:'Montserrat',sans-serif;font-size:12px;font-weight:800;letter-spacing:3.5px;text-transform:uppercase;color:rgba(255,255,255,0.70);text-shadow:0 1px 4px rgba(0,0,0,0.60);}
-    .hero h1{font-size:clamp(42px,6vw,88px);font-weight:900;letter-spacing:-3px;line-height:0.92;text-transform:uppercase;color:#fff;margin-bottom:0;font-family:'Montserrat',sans-serif;}
+    .hero h1{font-size:clamp(32px,6vw,56px);font-weight:900;letter-spacing:-2px;line-height:1.0;text-transform:uppercase;color:#fff;margin-bottom:0;font-family:'Montserrat',sans-serif;}
     .hero h1 span{color:var(--crimson);}
     .hero-rule{width:52px;height:4px;background:var(--crimson);margin:28px 0;}
     .hero-body{font-size:clamp(14px,1.6vw,17px);font-weight:400;color:rgba(255,255,255,0.82);line-height:1.85;max-width:500px;margin-bottom:36px;}
@@ -325,9 +325,9 @@
       .hero-content{padding:72px 40px 64px 48px;}
     }
     @media(max-width:640px){
-      .hero{min-height:380px;}
-      .hero-content{padding:80px 20px 48px 24px;max-width:100%;}
-      .hero h1{letter-spacing:-2px;font-size:36px;}
+      .hero{height:280px;}
+      .hero-content{padding:40px 20px 40px 24px;max-width:100%;}
+      .hero h1{letter-spacing:-2px;}
       .hero-stats{display:none;}
       .hero-rule{margin:16px 0;}
       .hero-body{font-size:13px;margin-bottom:20px;}

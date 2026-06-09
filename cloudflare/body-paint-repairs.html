@@ -121,7 +121,7 @@
     .texture-light .two-col{position:relative;z-index:1;}
 
     /* PAGE HEADER */
-    .page-header{color:var(--white);min-height:340px;display:flex;align-items:flex-start;justify-content:flex-start;text-align:left;padding:clamp(40px,6vw,64px) clamp(20px,4vw,48px) 0;position:relative;overflow:hidden;flex-direction:column;}
+    .page-header{color:var(--white);height:280px;display:flex;align-items:flex-start;justify-content:flex-start;text-align:left;padding:40px clamp(20px,4vw,48px) 0;position:relative;overflow:hidden;flex-direction:column;}
     .page-header-bg{position:absolute;inset:0;z-index:0;}
     .page-header-bg img{width:100%;height:100%;object-fit:cover;display:block;}
     .page-header-content{position:relative;z-index:1;}
@@ -130,7 +130,7 @@
     .page-header h1 em{font-style:normal;color:var(--crimson);}
     .page-header h1 .big-repairs{display:block;font-size:clamp(46px,9vw,88px);letter-spacing:-2.5px;line-height:0.95;margin-top:4px;}
     .page-header-bar{position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(to right,transparent,var(--crimson) 25%,var(--crimson) 75%,transparent);z-index:2;}
-    @media(min-width:601px){.page-header{min-height:480px;}}
+    @media(min-width:601px){.page-header{height:420px;}}
 
     /* CERT STRIP */
     .cert-strip{background:var(--crimson);padding:20px 24px;display:flex;justify-content:center;align-items:center;gap:32px;flex-wrap:wrap;}
@@ -239,7 +239,7 @@
     @media(max-width:640px){.faq-answer{padding:0 14px 18px 14px;}.q-badge{display:none;}}
 
     /* RESPONSIVE — mobile-first */
-    .page-header{min-height:340px;padding-top:16px;}
+    .page-header{height:280px;padding-top:32px;}
     .two-col{grid-template-columns:1fr;padding:48px 16px;gap:14px;}
     .two-col.flip .col-text{order:1;}
     .two-col.flip .col-visual{order:2;}
@@ -267,7 +267,7 @@
     .step-item.open .step-body-text{padding:0 0 16px 36px;}
 
     @media(min-width:601px){
-      .page-header{min-height:480px;padding-top:48px;}
+      .page-header{height:420px;padding-top:40px;}
       .two-col{padding:clamp(56px,8vw,100px) clamp(20px,4vw,40px);gap:28px;}
       .visual-box{aspect-ratio:4/3;}
       .num-badge{display:block;}

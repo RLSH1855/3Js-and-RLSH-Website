@@ -13,11 +13,11 @@
     body{font-family:'Inter',sans-serif;background:#F0F0EE;color:#1a1a1a;min-height:100vh;}
 
     /* ── PAGE HEADER ── */
-    .page-header{background:#0A0A0A;padding:clamp(28px,4vw,40px) clamp(20px,4vw,40px);border-bottom:3px solid #8B0000;position:relative;overflow:hidden;}
+    .page-header{background:#0A0A0A;height:420px;display:flex;flex-direction:column;justify-content:center;padding:40px clamp(20px,4vw,40px);border-bottom:3px solid #8B0000;position:relative;overflow:hidden;}
     .page-header::after{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,0.03) 1px,transparent 1px);background-size:26px 26px;pointer-events:none;}
     .page-header-inner{position:relative;z-index:1;max-width:1240px;margin:0 auto;}
-    .page-header .eyebrow{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:4px;text-transform:uppercase;color:#8B0000;margin-bottom:10px;display:block;}
-    .page-header h1{font-family:'Montserrat',sans-serif;font-size:clamp(24px,4vw,38px);font-weight:900;color:#fff;letter-spacing:-1px;line-height:1.05;}
+    .page-header .eyebrow{font-family:'Montserrat',sans-serif;font-size:12px;font-weight:800;letter-spacing:3.5px;text-transform:uppercase;color:rgba(255,255,255,0.70);text-shadow:0 1px 4px rgba(0,0,0,0.60);margin-bottom:16px;display:block;}
+    .page-header h1{font-family:'Montserrat',sans-serif;font-size:clamp(32px,6vw,56px);font-weight:900;color:#fff;letter-spacing:-2px;line-height:1.0;}
     .page-header .sub{font-family:'Inter',sans-serif;font-size:13px;font-weight:400;color:rgba(255,255,255,0.50);margin-top:8px;}
 
     /* ── OUTER WRAP ── */
@@ -152,6 +152,9 @@
     #success-state .back-link:hover{background:#8B0000;}
 
     /* ── RESPONSIVE ── */
+    @media(max-width:600px){
+      .page-header{height:280px;padding:40px 20px;}
+    }
     @media(max-width:1100px){
       .quote-layout{grid-template-columns:1fr 220px;}
       .trust-panel{display:none;}
@@ -412,7 +415,7 @@
       </div>
       <div class="featured-grid">
 
-        <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/product-detail-page.html?brand=BAK&product=BAKFlip%20MX4&cat=Tonneau%20Covers&catUrl=parts-catalog.html" class="feat-card">
+        <a href="product-detail-page.html?brand=BAK&product=BAKFlip%20MX4&cat=Tonneau%20Covers&catUrl=parts-catalog.html" class="feat-card">
           <div class="feat-img" style="background:#1a1a2e;">
             <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/images/products/bakflip-mx4.webp" alt="BAKFlip MX4" loading="lazy" onerror="this.style.display='none'"/>
             <span style="position:absolute;">MX4</span>
