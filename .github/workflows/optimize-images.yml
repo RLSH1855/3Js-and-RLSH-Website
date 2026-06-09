@@ -10,6 +10,7 @@ on:
     branches: [ main ]
     paths:
       - 'images/**'
+  workflow_dispatch:   # allow manual runs (scans all images/ — re-optimizes anything not yet compressed)
 
 # Stop the bot's own commit from re-triggering an endless loop.
 permissions:
@@ -23,7 +24,7 @@ jobs:
       - name: Check out repo
         uses: actions/checkout@v4
         with:
-          fetch-depth: 2   # need the previous commit to diff against
+          fetch-depth: 0   # full history so the post-optimize rebase-retry push works reliably
 
       - name: Install image tools
         run: sudo apt-get update && sudo apt-get install -y imagemagick webp pngquant
@@ -73,7 +74,20 @@ jobs:
           # Only commit if compression actually produced a smaller/different file.
           if git diff --cached --quiet; then
             echo "No size change — nothing to commit."
-          else
-            git commit -m "Auto-optimize images (compress + resize to 1920px max)"
-            git push
+            exit 0
           fi
+          git commit -m "Auto-optimize images (compress + resize to 1920px max)"
+          # Resilient push: a concurrent push to main (e.g. a dev pushing at the same
+          # time) used to fail this job. Rebase our optimize commit on top and retry.
+          for attempt in 1 2 3 4 5; do
+            if git push; then
+              echo "Pushed on attempt $attempt."
+              exit 0
+            fi
+            echo "Push rejected (attempt $attempt) — fetching latest main and rebasing..."
+            git fetch origin main
+            git rebase origin/main || { git rebase --abort; }
+            sleep $(( (RANDOM % 4) + 2 ))
+          done
+          echo "::error::Could not push optimized images after 5 attempts."
+          exit 1
