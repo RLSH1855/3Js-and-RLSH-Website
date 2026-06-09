@@ -40,13 +40,13 @@
     .section-body .hl{font-weight:600;color:var(--crimson);}
 
     /* PAGE HEADER */
-    .page-header{background:var(--black-1);color:var(--white);height:360px;display:flex;align-items:center;justify-content:center;text-align:center;padding:40px 24px 80px;position:relative;overflow:hidden;flex-direction:column;gap:0;}
+    .page-header{background:var(--black-1);color:var(--white);height:360px;display:flex;align-items:flex-start;justify-content:flex-start;text-align:left;padding:0;position:relative;overflow:hidden;flex-direction:column;gap:0;}
     .page-header-bg{position:absolute;inset:0;background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/images/inside-3js-hero-image.png');background-size:cover;background-position:center;z-index:0;}
     .page-header::before{content:'';position:absolute;inset:0;background:rgba(0,0,0,0.55);z-index:1;pointer-events:none;}
     .page-header::after{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,0.025) 1px,transparent 1px);background-size:26px 26px;z-index:2;pointer-events:none;}
-    .page-header-content{position:relative;z-index:3;display:flex;flex-direction:column;align-items:center;}
-    .page-header .eyebrow{font-family:'Montserrat',sans-serif;font-size:12px;font-weight:800;letter-spacing:3.5px;text-transform:uppercase;color:rgba(255,255,255,0.70);text-shadow:0 1px 4px rgba(0,0,0,0.60);margin-bottom:16px;}
-    .page-header h1{font-family:'Montserrat',sans-serif;font-size:clamp(32px,6vw,56px);font-weight:900;letter-spacing:-2px;line-height:1.0;text-transform:uppercase;}
+    .page-header-content{position:relative;z-index:3;padding:40px 20px;width:100%;}
+    .page-header .eyebrow{font-family:'Montserrat',sans-serif;font-size:12px;font-weight:800;letter-spacing:3.5px;text-transform:uppercase;color:rgba(255,255,255,0.70);text-shadow:0 2px 8px rgba(0,0,0,0.80);margin-bottom:12px;display:block;text-align:left;}
+    .page-header h1{font-family:'Montserrat',sans-serif;font-size:clamp(32px,6vw,56px);font-weight:900;letter-spacing:-2px;line-height:1.0;text-transform:uppercase;text-align:center;text-wrap:balance;}
     .page-header h1 em{font-style:normal;color:var(--crimson);}
     .page-header-bar{position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(to right,transparent,var(--crimson) 25%,var(--crimson) 75%,transparent);}
 
@@ -159,7 +159,8 @@
     .stat-bar{grid-template-columns:1fr 1fr;}
     .stat{padding:28px 16px;}
     .stat-number{font-size:36px;}
-    .page-header{height:280px;padding-top:32px;justify-content:center;padding-bottom:56px;}
+    .page-header{height:280px;}
+    .page-header-content{padding:40px 20px;}
     .section-title{font-size:clamp(20px,3.5vw,38px);}
     .section-body{font-size:16px;line-height:1.7;}
     .eyebrow{font-size:12px;}
@@ -182,7 +183,8 @@
       .stat{padding:32px 24px;}
       .stat-number{font-size:clamp(36px,4vw,48px);}
       .stat-label{font-size:12px;}
-      .page-header{height:420px;padding-top:40px;justify-content:center;padding-bottom:60px;}
+      .page-header{height:420px;}
+      .page-header-content{padding:48px 40px;}
       .section-body{font-size:16px;line-height:1.65;}
       .eyebrow{font-size:12px;}
       .red-band-btn{width:auto;justify-content:center;}

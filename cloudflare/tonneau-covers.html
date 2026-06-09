@@ -117,15 +117,15 @@
       text-transform:uppercase;color:var(--crimson);
       display:block;margin-bottom:10px;
     }
-    .hero .eyebrow{font-family:'Montserrat',sans-serif;font-size:12px;font-weight:800;letter-spacing:3.5px;text-transform:uppercase;color:rgba(255,255,255,0.70);text-shadow:0 1px 4px rgba(0,0,0,0.60);}
+    .hero .eyebrow{font-family:'Montserrat',sans-serif;font-size:12px;font-weight:800;letter-spacing:3.5px;text-transform:uppercase;color:rgba(255,255,255,0.70);text-shadow:0 2px 8px rgba(0,0,0,0.80);display:block;text-align:left;margin-bottom:12px;}
 
     /* ─── HERO ─── */
     .hero{
       background:var(--black-2);
       height:420px;
-      display:flex;flex-direction:column;align-items:center;justify-content:center;
-      padding:40px 40px;
-      text-align:center;
+      display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;
+      padding:0;
+      text-align:left;
       position:relative;
       overflow:hidden;
     }
@@ -143,13 +143,13 @@
       background:linear-gradient(to right,transparent,#8B0000 25%,#8B0000 75%,transparent);
       z-index:2;
     }
-    .hero-content{position:relative;z-index:1;}
+    .hero-content{position:relative;z-index:1;padding:56px 80px;width:100%;max-width:100%;}
     .hero h1{
       font-family:'Montserrat',sans-serif;
       font-size:clamp(32px,6vw,56px);font-weight:900;
       letter-spacing:-2px;line-height:1.0;
       text-transform:uppercase;color:#fff;
-      margin-bottom:16px;text-wrap:balance;
+      margin-bottom:16px;text-wrap:balance;text-align:center;
     }
     .hero h1 em{font-style:normal;color:var(--crimson);}
     .hero-sub{
@@ -544,7 +544,8 @@
     .mfr-card:hover .mfr-bar{transform:scaleX(1);}
 
     /* ─── RESPONSIVE (mobile-first) ─── */
-    .hero{height:280px;padding:40px 20px;}
+    .hero{height:280px;}
+    .hero-content{padding:40px 20px;}
     .hero-ctas{gap:10px;}
     .hero-sub{font-size:16px;}
 
@@ -584,7 +585,8 @@
     }
 
     @media(min-width:760px){
-      .hero{height:420px;padding:40px 32px;}
+      .hero{height:420px;}
+      .hero-content{padding:48px 40px;}
       .hero-ctas{gap:14px;}
       .intro-strip{padding:28px 24px;gap:0;}
       .intro-stat-divider{display:block;}
@@ -606,7 +608,8 @@
       .mfr-header{margin-bottom:40px;}
     }
     @media(min-width:1024px){
-      .hero{height:420px;padding:40px 40px;}
+      .hero{height:420px;}
+      .hero-content{padding:56px 80px;}
       .section-head{padding:60px 40px 40px;}
       .cards-section{padding:0 40px 72px;}
       .why-strip{padding:64px 40px;}

@@ -14,13 +14,13 @@
     h1,h2,h3,.eyebrow{font-family:'Montserrat',sans-serif;}
 
     /* PAGE HEADER */
-    .page-header{background:#0A0A0A;color:#fff;height:260px;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px 24px 0;position:relative;overflow:hidden;flex-direction:column;}
+    .page-header{background:#0A0A0A;color:#fff;height:260px;display:flex;align-items:flex-start;justify-content:flex-start;text-align:left;padding:0;position:relative;overflow:hidden;flex-direction:column;}
     .page-header::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(139,0,0,0.16) 0%,transparent 65%);pointer-events:none;}
     .page-header::after{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,0.035) 1px,transparent 1px);background-size:26px 26px;pointer-events:none;}
-    .page-header-content{position:relative;z-index:1;}
+    .page-header-content{position:relative;z-index:1;padding:40px 20px;width:100%;}
     .eyebrow{font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:#8B0000;margin-bottom:12px;}
-    .page-header .eyebrow{color:#8B0000;}
-    .page-header h1{font-family:'Montserrat',sans-serif;font-size:clamp(32px,6vw,56px);font-weight:900;letter-spacing:-2px;line-height:1.0;text-transform:uppercase;}
+    .page-header .eyebrow{font-family:'Montserrat',sans-serif;font-size:12px;font-weight:800;letter-spacing:3.5px;text-transform:uppercase;color:rgba(255,255,255,0.70);text-shadow:0 2px 8px rgba(0,0,0,0.80);margin-bottom:12px;display:block;text-align:left;}
+    .page-header h1{font-family:'Montserrat',sans-serif;font-size:clamp(32px,6vw,56px);font-weight:900;letter-spacing:-2px;line-height:1.0;text-transform:uppercase;text-align:center;text-wrap:balance;}
     .page-header h1 em{font-style:normal;color:#8B0000;}
     .page-header-bar{position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(to right,transparent,#8B0000 25%,#8B0000 75%,transparent);}
 
@@ -73,7 +73,8 @@
     /* RESPONSIVE */
     @media(max-width:768px){
       .gallery-grid{grid-template-columns:1fr;gap:36px;}
-      .page-header{height:160px;}
+      .page-header{height:200px;}
+      .page-header-content{padding:28px 20px;}
       .gallery{padding:40px 16px 60px;}
       .intro{padding:40px 16px;}
     }

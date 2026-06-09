@@ -130,14 +130,14 @@
     .hero-accent{position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--crimson);z-index:3;}
     .hero-content{
       position:relative;z-index:3;
-      padding:40px 20px;
-      max-width:660px;color:#fff;
+      padding:56px 80px;
+      width:100%;max-width:100%;color:#fff;
     }
-    .hero-content .eyebrow{font-family:'Montserrat',sans-serif;font-size:12px;font-weight:800;letter-spacing:3.5px;text-transform:uppercase;color:rgba(255,255,255,0.70);text-shadow:0 1px 4px rgba(0,0,0,0.60);}
+    .hero-content .eyebrow{font-family:'Montserrat',sans-serif;font-size:12px;font-weight:800;letter-spacing:3.5px;text-transform:uppercase;color:rgba(255,255,255,0.70);text-shadow:0 2px 8px rgba(0,0,0,0.80);display:block;text-align:left;margin-bottom:12px;}
     .hero h1{
       font-size:clamp(32px,6vw,56px);font-weight:900;
       letter-spacing:-2px;line-height:1.0;
-      text-transform:uppercase;color:#fff;
+      text-transform:uppercase;color:#fff;text-align:center;text-wrap:balance;
     }
     .hero h1 span{color:var(--crimson);}
     .hero-rule{width:52px;height:4px;background:var(--crimson);border-radius:2px;margin:26px 0;}
@@ -468,7 +468,7 @@
     }
     @media(max-width:640px){
       .hero{height:280px;}
-      .hero-content{padding:40px 20px;max-width:100%;}
+      .hero-content{padding:40px 20px;width:100%;max-width:100%;}
       .hero h1{letter-spacing:-2px;}
       .hero-ctas{flex-direction:column;}
       .btn-red,.btn-ghost{width:100%;justify-content:center;}
