@@ -200,7 +200,7 @@
     .acc-section{background:var(--white);padding:clamp(40px,5vw,64px) clamp(20px,4vw,24px);border-bottom:1px solid var(--divider);}
     .mission-pad{background:var(--black-1);padding:clamp(56px,8vw,90px) clamp(20px,4vw,24px);text-align:center;position:relative;overflow:hidden;}
     /* PHONE STRIP */
-    .phone-strip{background:#0A0A0A;border-bottom:1px solid #1e1e1e;padding:10px 16px;display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;}
+    .phone-strip{position:absolute;bottom:3px;left:0;right:0;z-index:3;background:rgba(0,0,0,0.72);padding:10px 16px;display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;}
     .phone-strip-link{font-family:'Montserrat',sans-serif;font-size:14px;font-weight:900;color:#fff;letter-spacing:0.5px;text-decoration:none;display:flex;align-items:center;gap:8px;transition:color 0.2s;}
     .phone-strip-link:hover{color:var(--crimson);}
     .phone-strip-link svg{flex-shrink:0;opacity:0.7;}
@@ -338,6 +338,13 @@
     <p class="eyebrow">Signal Hill, CA · Est. 1991</p>
     <h1>Inside <em>3J's</em> Auto Body</h1>
   </div>
+  <div class="phone-strip">
+    <a href="tel:+15624246744" class="phone-strip-link">
+      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.7 10.82 19.79 19.79 0 01.67 2.18 2 2 0 012.66 0h3a2 2 0 012 1.72c.13 1 .36 1.97.7 2.91a2 2 0 01-.45 2.11L6.91 7.74a16 16 0 006.29 6.29l1-.99a2 2 0 012.11-.45c.94.34 1.91.57 2.91.7A2 2 0 0122 16.92z"/></svg>
+      562-424-6744
+    </a>
+    <span class="phone-strip-hours">Mon–Fri 8AM–5PM &nbsp;·&nbsp; Walk-Ins Welcome &nbsp;·&nbsp; Free Estimates</span>
+  </div>
   <div class="page-header-bar"></div>
 </header>
 
@@ -347,15 +354,6 @@
   <div class="stat"><div class="stat-number">3</div><div class="stat-label">Generations of Family</div></div>
   <div class="stat"><div class="stat-number">5★</div><div class="stat-label">Yelp Rating</div></div>
   <div class="stat"><div class="stat-number">1</div><div class="stat-label">Location · Always</div></div>
-</div>
-
-<!-- PHONE STRIP -->
-<div class="phone-strip">
-  <a href="tel:+15624246744" class="phone-strip-link">
-    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.7 10.82 19.79 19.79 0 01.67 2.18 2 2 0 012.66 0h3a2 2 0 012 1.72c.13 1 .36 1.97.7 2.91a2 2 0 01-.45 2.11L6.91 7.74a16 16 0 006.29 6.29l1-.99a2 2 0 012.11-.45c.94.34 1.91.57 2.91.7A2 2 0 0122 16.92z"/></svg>
-    562-424-6744
-  </a>
-  <span class="phone-strip-hours">Mon–Fri 8AM–5PM &nbsp;·&nbsp; Walk-Ins Welcome &nbsp;·&nbsp; Free Estimates</span>
 </div>
 
 <!-- OUR STORY + REPAIR TIMELINE -->
