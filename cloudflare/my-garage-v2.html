@@ -21,14 +21,16 @@
 
     /* ── CLOSE BTN ── */
     .close-btn{
-      position:absolute;top:14px;right:16px;
-      background:none;border:none;
-      color:#9aa3af;font-size:16px;
-      cursor:pointer;z-index:20;padding:4px 8px;
-      transition:color 0.2s;line-height:1;
-      font-family:'Inter',sans-serif;font-weight:300;
+      position:absolute;top:12px;right:12px;
+      background:rgba(0,0,0,0.55);border:none;
+      color:#fff;font-size:18px;
+      cursor:pointer;z-index:20;
+      width:36px;height:36px;
+      display:flex;align-items:center;justify-content:center;
+      transition:background 0.2s;line-height:1;
+      font-family:'Inter',sans-serif;font-weight:400;
     }
-    .close-btn:hover{color:#111;}
+    .close-btn:hover{background:rgba(0,0,0,0.8);}
 
     /* ── LEFT PANEL: persistent image (stays dark for contrast) ── */
     .image-panel{
@@ -139,7 +141,7 @@
     .picker-btn{
       width:100%;padding:10px 12px;
       background:#fff;border:1px solid #cbd5e0;
-      font-family:'Inter',sans-serif;font-size:14px;font-weight:700;
+      font-family:'Inter',sans-serif;font-size:14px;font-weight:800;
       color:#111;letter-spacing:1.5px;
       display:flex;align-items:center;justify-content:space-between;gap:8px;
       cursor:pointer;text-align:left;min-height:42px;
@@ -167,7 +169,7 @@
     .year-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;}
     .picker-cell{
       padding:7px 4px;text-align:center;
-      font-family:'Inter',sans-serif;font-size:13px;font-weight:700;
+      font-family:'Inter',sans-serif;font-size:13px;font-weight:800;
       color:#333;cursor:pointer;letter-spacing:1px;
       transition:background 0.12s,color 0.12s;
     }
@@ -181,7 +183,7 @@
     .model-list{display:grid;grid-template-columns:1fr;gap:2px;}
     .model-cell{
       padding:9px 12px;
-      font-family:'Inter',sans-serif;font-size:13px;font-weight:700;
+      font-family:'Inter',sans-serif;font-size:13px;font-weight:800;
       color:#333;cursor:pointer;letter-spacing:1px;
       transition:background 0.12s,color 0.12s;
     }
