@@ -84,6 +84,17 @@
   /* spacer clears the fixed shell */
   .ss-spacer{height:174px;}
 
+  /* breadcrumb trail — thin bar under nav, above hero */
+  .ss-crumbs{background:#f4f5f7;border-bottom:1px solid #e3e7ec;padding:12px 40px;font-family:'Inter',sans-serif;}
+  .ss-crumbs ol{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;align-items:center;}
+  .ss-crumbs li{display:inline-flex;align-items:center;}
+  .ss-crumbs a,.ss-crumb-current{font-size:13px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;line-height:1.5;}
+  .ss-crumbs a{color:#6b7280;text-decoration:none;transition:color .15s;}
+  .ss-crumbs a:hover{color:#8b0000;}
+  .ss-crumb-current{color:#1a1a1a;font-weight:700;}
+  .ss-crumb-sep{margin:0 9px;color:#c2c8d0;font-size:12px;font-weight:400;}
+  @media(max-width:960px){.ss-crumbs{padding:11px 16px;}.ss-crumbs a,.ss-crumb-current{font-size:12px;letter-spacing:.8px;}.ss-crumb-sep{margin:0 7px;}}
+
   /* blur scrim behind open mega menu */
   .ss-scrim{position:fixed;inset:0;z-index:900;background:rgba(7,12,22,.34);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);opacity:0;pointer-events:none;transition:opacity .38s ease;}
   .ss-scrim.ss-show{opacity:1;pointer-events:auto;}
@@ -507,6 +518,74 @@
       var el=document.getElementById(id);
       if(el&&el.parentNode===wrap) document.body.insertBefore(el,wrap);
     });
+  })();
+
+  /* ════════ BREADCRUMB TRAIL (under nav, above hero) ════════ */
+  (function(){
+    var EXT=['Exterior Accessories','/exterior-accessories-V2'];
+    var TON=['Tonneau Covers','/tonneau-covers'];
+    /* slug → ancestor trail (Home is auto-prepended; last item = current page, no link) */
+    var map={
+      'inside-3js':            [['Inside 3J\'s',null]],
+      'about-3js':             [['Inside 3J\'s','/inside-3js'],['About',null]],
+      'body-paint-repairs':    [['Body & Paint Repairs',null]],
+      'before-after':          [['Body & Paint Repairs','/body-paint-repairs'],['Before & After',null]],
+      'rhino-liner':           [['Rhino Liner',null]],
+      'rhino-lining-quote':    [['Rhino Liner','/rhino-liner'],['Bed-Liner Quote',null]],
+      'exterior-accessories-V2':[['Exterior Accessories',null]],
+      'tonneau-covers':        [EXT,['Tonneau Covers',null]],
+      'floor-liners':          [EXT,['Floor Liners',null]],
+      'headache-racks':        [EXT,['Headache Racks',null]],
+      'steps-running-boards':  [EXT,['Running Boards',null]],
+      'running-boards':        [EXT,['Running Boards',null]],
+      'towing-hitches':        [EXT,['Towing & Hitches',null]],
+      'lighting':              [EXT,['Lighting',null]],
+      'bundles':               [['Bundles & Packages',null]],
+      'shop':                  [['Shop',null]],
+      'parts-catalog':         [['Shop','/shop'],['Parts Catalog',null]],
+      'parts-quote':           [['Shop','/shop'],['Request a Quote',null]],
+      'contact':               [['Contact Us',null]],
+      'FAQ_PAGE_V2':           [['FAQ',null]],
+      'warranty':              [['Warranty',null]],
+      'privacy-policy':        [['Privacy Policy',null]],
+      'terms-conditions':      [['Terms & Conditions',null]],
+      'bakflip-f1':            [EXT,TON,['BAKFlip F1',null]],
+      'bakflip-g2':            [EXT,TON,['BAKFlip G2',null]],
+      'bakflip-mx4':           [EXT,TON,['BAKFlip MX4',null]],
+      'bakflip-mx4-ts':        [EXT,TON,['BAKFlip MX4 Tonneau System',null]],
+      'bakflip-tonneau':       [EXT,TON,['BAKFlip Tonneau',null]],
+      'revolver-x2':           [EXT,TON,['Revolver X2',null]],
+      'revolver-x4s':          [EXT,TON,['Revolver X4s',null]],
+      'revolver-x4ts':         [EXT,TON,['Revolver X4ts',null]]
+    };
+    var slug=location.pathname.replace(/\/+$/,'').split('/').pop().replace(/\.html$/i,'');
+    var trail=map[slug];
+    if(!trail) return; /* Home + unmapped pages: no breadcrumb */
+    var wrap=document.getElementById('ss-page-wrap');
+    var spacer=wrap?wrap.querySelector('.ss-spacer'):null;
+    if(!spacer) return;
+    var full=[['Home','/']].concat(trail);
+    function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+    var html='<nav class="ss-crumbs" aria-label="Breadcrumb"><ol>';
+    full.forEach(function(c,i){
+      var last=(i===full.length-1);
+      html+='<li>';
+      if(last||!c[1]) html+='<span class="ss-crumb-current" aria-current="page">'+esc(c[0])+'</span>';
+      else html+='<a href="'+c[1]+'" target="_top">'+esc(c[0])+'</a>';
+      if(!last) html+='<span class="ss-crumb-sep" aria-hidden="true">/</span>';
+      html+='</li>';
+    });
+    html+='</ol></nav>';
+    spacer.insertAdjacentHTML('afterend',html);
+    /* BreadcrumbList schema for SEO */
+    var base=location.origin;
+    var items=full.map(function(c,i){
+      return {"@type":"ListItem","position":i+1,"name":c[0],"item":(c[1]?base+c[1]:location.href)};
+    });
+    var ld=document.createElement('script');
+    ld.type='application/ld+json';
+    ld.textContent=JSON.stringify({"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":items});
+    document.head.appendChild(ld);
   })();
 
   /* ════════ SPACER = EXACT HEADER HEIGHT (kills the blank strip on every page) ════════ */

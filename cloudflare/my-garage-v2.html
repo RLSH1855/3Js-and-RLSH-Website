@@ -34,19 +34,19 @@
 
     /* ── LEFT PANEL: persistent image (stays dark for contrast) ── */
     .image-panel{
-      width:100%;height:26vh;max-height:30vh;flex-shrink:0;
+      width:100%;height:38vh;max-height:42vh;flex-shrink:0;
       position:relative;overflow:hidden;background:#080808;
     }
     @media(min-width:641px){
-      .image-panel{width:50%;height:100%;}
+      .image-panel{width:50%;height:100%;max-height:none;}
     }
     .image-panel img{
       width:100%;height:100%;
-      object-fit:cover;object-position:center 30%;
+      object-fit:contain;object-position:center 60%;
       display:block;
     }
     @media(min-width:641px){
-      .image-panel img{object-position:center;}
+      .image-panel img{object-fit:cover;object-position:center;}
     }
     .image-panel-overlay{
       position:absolute;inset:0;
