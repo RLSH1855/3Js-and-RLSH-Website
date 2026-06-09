@@ -51,11 +51,17 @@
     .page-header-bar{position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(to right,transparent,var(--crimson) 25%,var(--crimson) 75%,transparent);}
 
     /* STAT BAR */
-    .stat-bar{background:#e0e0e0;border-top:1px solid var(--divider);border-bottom:1px solid var(--divider);display:grid;grid-template-columns:1fr 1fr;gap:1px;padding:0;}
-    .stat{background:var(--white);flex:none;min-width:0;max-width:none;text-align:center;padding:28px 16px;border-right:none;}
-    .stat:last-child{border-right:none;}
-    .stat-number{font-family:'Montserrat',sans-serif;font-size:36px;font-weight:900;color:var(--crimson);letter-spacing:-1px;line-height:1;}
-    .stat-label{font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#5e6470;margin-top:8px;}
+    .owner-section{position:relative;overflow:hidden;background:#0A0A0A;}
+    .owner-grid{display:grid;grid-template-columns:1fr;gap:48px;max-width:1100px;margin:0 auto;padding:clamp(56px,8vw,96px) clamp(20px,4vw,48px);position:relative;z-index:1;}
+    .owner-text .eyebrow{color:#8B0000;margin-bottom:16px;}
+    .owner-text h2{font-family:'Montserrat',sans-serif;font-size:clamp(28px,4vw,52px);font-weight:900;letter-spacing:-1.5px;line-height:1.05;color:#fff;margin-bottom:20px;text-wrap:balance;}
+    .owner-text h2 em{font-style:normal;color:#8B0000;}
+    .owner-text p{font-family:'Inter',sans-serif;font-size:16px;font-weight:400;color:rgba(255,255,255,0.72);line-height:1.75;max-width:520px;text-wrap:pretty;}
+    .owner-stats{display:flex;flex-direction:column;gap:0;}
+    .owner-stat{border-top:1px solid rgba(255,255,255,0.10);padding:28px 0;}
+    .owner-num{font-family:'Montserrat',sans-serif;font-size:clamp(52px,7vw,84px);font-weight:900;letter-spacing:-3px;line-height:1;color:#fff;}
+    .owner-lbl{font-family:'Inter',sans-serif;font-size:13px;font-weight:500;color:rgba(255,255,255,0.50);margin-top:6px;line-height:1.5;}
+    @media(min-width:640px){.owner-grid{grid-template-columns:1fr 1fr;gap:80px;align-items:center;}}
 
     /* SECTION BASE */
     .section{padding:clamp(48px,7vw,80px) clamp(20px,4vw,24px);}
@@ -156,9 +162,7 @@
 
     /* RESPONSIVE — mobile-first */
     .section{padding:48px 20px 56px;}
-    .stat-bar{grid-template-columns:1fr 1fr;}
-    .stat{padding:28px 16px;}
-    .stat-number{font-size:36px;}
+
     .page-header{height:280px;}
     .page-header-content{padding:40px 20px;}
     .section-title{font-size:clamp(20px,3.5vw,38px);}
@@ -179,9 +183,6 @@
 
     @media(min-width:601px){
       .section{padding:clamp(48px,7vw,80px) clamp(20px,4vw,24px);}
-      .stat-bar{grid-template-columns:repeat(4,1fr);gap:1px;padding:0;}
-      .stat{padding:32px 24px;}
-      .stat-number{font-size:clamp(36px,4vw,48px);}
       .stat-label{font-size:12px;}
       .page-header{height:420px;}
       .page-header-content{padding:48px 40px;}
@@ -351,13 +352,35 @@
   <div class="page-header-bar"></div>
 </header>
 
-<!-- STAT BAR -->
-<div class="stat-bar">
-  <div class="stat"><div class="stat-number">30+</div><div class="stat-label">Years in Business</div></div>
-  <div class="stat"><div class="stat-number">3</div><div class="stat-label">Generations of Family</div></div>
-  <div class="stat"><div class="stat-number">5★</div><div class="stat-label">Yelp Rating</div></div>
-  <div class="stat"><div class="stat-number">1</div><div class="stat-label">Location · Always</div></div>
-</div>
+<!-- OWNER SECTION -->
+<section class="owner-section">
+  <div style="position:absolute;inset:0;background-image:repeating-linear-gradient(-45deg,rgba(139,0,0,0.04) 0px,rgba(139,0,0,0.04) 1px,transparent 1px,transparent 10px);pointer-events:none;"></div>
+  <div class="owner-grid">
+    <div class="owner-text">
+      <p class="eyebrow">The 3J's Story</p>
+      <h2>Family Built. <em>Community Trusted.</em></h2>
+      <p>Three generations of the Sferrazza family have worked, learned, and built something lasting right here at 1855 E 29th Street. No franchises, no corporate ownership — just a family that takes every repair personally.</p>
+    </div>
+    <div class="owner-stats">
+      <div class="owner-stat">
+        <div class="owner-num">30+</div>
+        <div class="owner-lbl">Years at the same Signal Hill location</div>
+      </div>
+      <div class="owner-stat">
+        <div class="owner-num">3</div>
+        <div class="owner-lbl">Generations of the Sferrazza family</div>
+      </div>
+      <div class="owner-stat">
+        <div class="owner-num">5★</div>
+        <div class="owner-lbl">Yelp rating — consistent across 30 years</div>
+      </div>
+      <div class="owner-stat">
+        <div class="owner-num">1</div>
+        <div class="owner-lbl">Location — always. Never moved, never franchised.</div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- OUR STORY + REPAIR TIMELINE -->
 <section class="section">
