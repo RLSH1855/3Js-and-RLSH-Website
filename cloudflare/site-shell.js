@@ -558,9 +558,20 @@
       'revolver-x4s':          [EXT,TON,['Revolver X4s',null]],
       'revolver-x4ts':         [EXT,TON,['Revolver X4ts',null]]
     };
+    /* Home + dev/partial pages never get a breadcrumb */
+    var SKIP={'':1,'homepage':1,'index':1,'my-garage':1,'my-garage-v2':1,'effects-sandbox':1,'card-mockup':1,'nav-scroll-demo':1,'drawer-preview':1,'product-detail-page':1,'brands-carousel':1,'instagram-section':1,'insurance-carousel':1,'reviews-banner':1,'site-footer':1,'homepage-faq':1,'interactive-truck-diagram':1};
     var slug=location.pathname.replace(/\/+$/,'').split('/').pop().replace(/\.html$/i,'');
-    var trail=map[slug];
-    if(!trail) return; /* Home + unmapped pages: no breadcrumb */
+    if(SKIP[slug]) return;
+    function pretty(s){return s.replace(/[-_]+/g,' ').replace(/\b\w/g,function(m){return m.toUpperCase();}).trim();}
+    function autoLabel(){
+      var h1=document.querySelector('#ss-page-wrap h1');
+      if(h1){var t=h1.textContent.replace(/\s+/g,' ').trim();if(t&&t.length<=40)return t;}
+      var dt=(document.title||'').split(/[|·–—]/)[0].replace(/\s+/g,' ').trim();
+      if(dt&&dt.length<=50)return dt;
+      return pretty(slug);
+    }
+    /* curated pages keep full hierarchy; any future/unmapped page auto-gets Home / <page> */
+    var trail=map[slug]||[[autoLabel(),null]];
     var wrap=document.getElementById('ss-page-wrap');
     var spacer=wrap?wrap.querySelector('.ss-spacer'):null;
     if(!spacer) return;
