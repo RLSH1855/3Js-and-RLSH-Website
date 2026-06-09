@@ -14,7 +14,7 @@
       --crimson:#8B0000;
       --crimson-hover:#A00000;
       --crimson-active:#6B0000;
-      --crimson-dark:#CC0000;
+      --crimson-dark:#8B0000;
       --black-1:#0A0A0A;
       --black-2:#111111;
       --white:#ffffff;
@@ -45,7 +45,7 @@
     .page-header::before{content:'';position:absolute;inset:0;background:rgba(0,0,0,0.58);z-index:1;pointer-events:none;}
     .page-header::after{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,0.025) 1px,transparent 1px);background-size:26px 26px;z-index:2;pointer-events:none;}
     .page-header-content{position:relative;z-index:3;}
-    .page-header .eyebrow{color:rgba(255,255,255,0.65);margin-bottom:12px;}
+    .page-header .eyebrow{color:rgba(255,255,255,0.80);margin-bottom:12px;}
     .page-header h1{font-family:'Montserrat',sans-serif;font-size:clamp(32px,6vw,56px);font-weight:900;letter-spacing:-2px;line-height:1.0;text-transform:uppercase;}
     .page-header h1 em{font-style:normal;color:var(--crimson);}
     .page-header-bar{position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(to right,transparent,var(--crimson) 25%,var(--crimson) 75%,transparent);}
@@ -55,15 +55,15 @@
     .stat{flex:1;min-width:140px;max-width:200px;text-align:center;padding:12px 20px;border-right:1px solid #e0e0e0;}
     .stat:last-child{border-right:none;}
     .stat-number{font-family:'Montserrat',sans-serif;font-size:clamp(28px,4vw,42px);font-weight:900;color:var(--crimson);letter-spacing:-1px;line-height:1;}
-    .stat-label{font-family:'Inter',sans-serif;font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#767676;margin-top:6px;}
+    .stat-label{font-family:'Inter',sans-serif;font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:#5e6470;margin-top:6px;}
 
     /* SECTION BASE */
     .section{padding:clamp(48px,7vw,80px) clamp(20px,4vw,24px);}
     .section-inner{max-width:1100px;margin:0 auto;}
-    .eyebrow{font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--crimson);margin-bottom:12px;}
+    .eyebrow{font-size:12px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--crimson);margin-bottom:12px;}
     .section-title{font-size:clamp(22px,3.5vw,38px);font-weight:800;letter-spacing:-0.5px;line-height:1.1;margin-bottom:20px;color:var(--neutral-dark);text-wrap:balance;}
     .section-title em{font-style:normal;color:var(--crimson);}
-    .section-body{font-family:'Inter',sans-serif;font-size:16px;font-weight:400;color:var(--body-text);line-height:1.65;max-width:560px;text-wrap:pretty;}
+    .section-body{font-family:'Inter',sans-serif;font-size:16px;font-weight:500;color:var(--body-text);line-height:1.65;letter-spacing:0.3px;max-width:560px;text-wrap:pretty;}
     .section-body p+p{margin-top:14px;}
 
     /* TWO-COL */
@@ -99,11 +99,11 @@
     .tl-track::before{content:'';position:absolute;left:7px;top:8px;bottom:8px;width:1.5px;background:#D8D8D8;}
     .tl-step{position:relative;margin-bottom:20px;}
     .tl-step:last-child{margin-bottom:0;}
-    .tl-dot{position:absolute;left:-32px;top:5px;width:14px;height:14px;border-radius:50%;border:2px solid var(--crimson);background:#fff;z-index:1;}
+    .tl-dot{position:absolute;left:-32px;top:5px;width:14px;height:14px;border-radius:50%;border:2px solid var(--crimson);background:var(--crimson);z-index:1;}
     .tl-card{padding:0;}
-    .tl-num{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--crimson);display:block;margin-bottom:4px;}
+    .tl-num{font-family:'Montserrat',sans-serif;font-size:12px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--crimson);display:block;margin-bottom:4px;}
     .tl-card h3{font-family:'Montserrat',sans-serif;font-size:14px;font-weight:800;color:var(--neutral-dark);margin-bottom:5px;line-height:1.25;}
-    .tl-card p{font-family:'Inter',sans-serif;font-size:16px;font-weight:400;color:var(--body-text);line-height:1.6;}
+    .tl-card p{font-family:'Inter',sans-serif;font-size:16px;font-weight:500;color:var(--body-text);line-height:1.6;letter-spacing:0.3px;}
     /* STORY + TIMELINE two-col layout */
     .story-tl-grid{display:grid;grid-template-columns:1fr;gap:40px;}
     @media(min-width:768px){.story-tl-grid{grid-template-columns:1fr 1fr;gap:56px;align-items:start;}}
@@ -111,27 +111,26 @@
     .tl-col-head{margin-bottom:24px;}
     .tl-col-head h2{font-family:'Montserrat',sans-serif;font-size:clamp(18px,2vw,24px);font-weight:800;letter-spacing:-0.3px;color:var(--neutral-dark);margin-bottom:8px;text-wrap:balance;}
     .tl-col-head h2 em{font-style:normal;color:var(--crimson);}
-    .tl-col-head p{font-family:'Inter',sans-serif;font-size:16px;font-weight:400;color:var(--body-text);line-height:1.6;text-wrap:pretty;}
+    .tl-col-head p{font-family:'Inter',sans-serif;font-size:16px;font-weight:500;color:var(--body-text);line-height:1.6;letter-spacing:0.3px;text-wrap:pretty;}
     /* CERT PILLS */
     .cert-pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px;}
     .cert-pill{display:inline-flex;align-items:center;gap:8px;background:var(--off-white);border:1px solid #e0e0e0;padding:8px 14px;}
-    .cert-dot{width:7px;height:7px;border-radius:50%;background:var(--crimson);flex-shrink:0;}
-    .cert-label{font-family:'Inter',sans-serif;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--body-text);}
+    .cert-label{font-family:'Inter',sans-serif;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--body-text);}
     /* THREE GENERATIONS */
     .gen-block{margin-top:24px;border:1px solid #e8e8e8;background:#fff;overflow:hidden;}
     .gen-block-inner{padding:24px 24px 20px;}
     .gen-list{list-style:none;}
     .gen-item{display:flex;align-items:flex-start;gap:14px;padding:14px 0;border-bottom:1px solid var(--divider);}
     .gen-item:last-child{border-bottom:none;}
-    .gen-generation{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:900;letter-spacing:2px;color:var(--crimson);text-transform:uppercase;flex-shrink:0;padding-top:2px;min-width:32px;}
+    .gen-generation{font-family:'Montserrat',sans-serif;font-size:12px;font-weight:900;letter-spacing:1.5px;color:var(--crimson);text-transform:uppercase;flex-shrink:0;padding-top:2px;min-width:32px;}
     .gen-name{font-family:'Montserrat',sans-serif;font-size:14px;font-weight:800;color:var(--neutral-dark);margin-bottom:2px;}
-    .gen-sub{font-family:'Inter',sans-serif;font-size:12px;font-weight:500;color:#767676;letter-spacing:0.5px;text-transform:uppercase;}
+    .gen-sub{font-family:'Inter',sans-serif;font-size:13px;font-weight:500;color:#5e6470;letter-spacing:1.2px;text-transform:uppercase;}
 
     /* RED CTA BAND */
     .red-band{background:var(--crimson);padding:clamp(40px,5vw,56px) clamp(20px,4vw,24px);text-align:center;}
     .red-band h2{font-family:'Montserrat',sans-serif;font-size:clamp(20px,3vw,32px);font-weight:900;letter-spacing:-0.5px;margin-bottom:10px;color:var(--white);}
-    .red-band p{font-family:'Inter',sans-serif;font-size:16px;font-weight:400;color:rgba(255,255,255,0.80);max-width:540px;margin:0 auto 28px;line-height:1.65;}
-    .red-band-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--white);color:var(--crimson);font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;text-decoration:none;height:48px;padding:0 32px;border-radius:0;border:2px solid #8B0000;cursor:pointer;transition:all 0.3s ease;letter-spacing:2px;text-transform:uppercase;touch-action:manipulation;-webkit-tap-highlight-color:transparent;}
+    .red-band p{font-family:'Inter',sans-serif;font-size:16px;font-weight:500;color:rgba(255,255,255,0.85);max-width:540px;margin:0 auto 28px;line-height:1.65;}
+    .red-band-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--white);color:var(--crimson);font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;text-decoration:none;height:48px;padding:0 32px;border-radius:0;border:2px solid #8B0000;cursor:pointer;transition:all 0.3s ease;letter-spacing:2px;text-transform:uppercase;touch-action:manipulation;-webkit-tap-highlight-color:transparent;}
     .red-band-btn:hover{background:var(--off-white);}
 
     /* FAQ — homepage standard */
@@ -164,15 +163,19 @@
     .page-header{height:110px;padding-top:12px;}
     .section-title{font-size:clamp(20px,3.5vw,38px);}
     .section-body{font-size:16px;}
-    .eyebrow{font-size:10px;}
+    .eyebrow{font-size:12px;}
     .gallery-more-wrap{text-align:center;margin-top:16px;}
-    .gallery-more-btn{display:inline-flex;align-items:center;gap:8px;background:var(--crimson);color:var(--white);font-family:'Montserrat',sans-serif;font-size:11px;font-weight:900;letter-spacing:1.5px;text-transform:uppercase;border:2px solid var(--crimson-hover);border-radius:0;cursor:pointer;height:48px;padding:0 28px;transition:background 0.2s,border-color 0.2s;}
+    .gallery-more-btn{display:inline-flex;align-items:center;gap:8px;background:var(--crimson);color:var(--white);font-family:'Montserrat',sans-serif;font-size:13px;font-weight:900;letter-spacing:1.5px;text-transform:uppercase;border:2px solid var(--crimson-hover);border-radius:0;cursor:pointer;height:48px;padding:0 28px;transition:background 0.2s,border-color 0.2s;}
     .gallery-more-btn:hover{background:var(--crimson-hover);border-color:var(--crimson-hover);}
     @media(prefers-reduced-motion:reduce){.bento-cell img{transition:none!important;}}
     .red-band-btn{width:100%;justify-content:center;}
     .hide-mobile{display:none;}
     .svc-card{height:280px;}
     .svc-name{font-size:18px;}
+
+    @media(max-width:600px){
+      .red-band-btn,.gallery-more-btn,.svc-cta{font-size:14px;}
+    }
 
     @media(min-width:601px){
       .section{padding:clamp(48px,7vw,80px) clamp(20px,4vw,24px);}
@@ -181,7 +184,7 @@
       .stat-number{font-size:clamp(28px,4vw,42px);}
       .page-header{height:260px;padding-top:24px;}
       .section-body{font-size:16px;}
-      .eyebrow{font-size:10px;}
+      .eyebrow{font-size:12px;}
       .red-band-btn{width:auto;justify-content:center;}
       .hide-mobile{display:block;}
       .faq-answer{padding:0 20px 20px 60px;}
@@ -202,13 +205,13 @@
     .phone-strip-link{font-family:'Montserrat',sans-serif;font-size:14px;font-weight:900;color:#fff;letter-spacing:0.5px;text-decoration:none;display:flex;align-items:center;gap:8px;transition:color 0.2s;}
     .phone-strip-link:hover{color:var(--crimson);}
     .phone-strip-link svg{flex-shrink:0;opacity:0.7;}
-    .phone-strip-hours{font-family:'Inter',sans-serif;font-size:12px;font-weight:500;color:rgba(255,255,255,0.45);letter-spacing:0.3px;}
+    .phone-strip-hours{font-family:'Inter',sans-serif;font-size:13px;font-weight:500;color:rgba(255,255,255,0.80);letter-spacing:0.3px;}
     /* TRUST GROUP WRAPPER */
     .trust-group-header{background:var(--black-1);padding:clamp(36px,4.5vw,52px) clamp(20px,4vw,24px);text-align:center;border-bottom:1px solid #1e1e1e;}
-    .trust-group-header .eyebrow{color:rgba(255,255,255,0.5);margin-bottom:10px;}
+    .trust-group-header .eyebrow{color:rgba(255,255,255,0.80);margin-bottom:10px;}
     .trust-group-header h2{font-family:'Montserrat',sans-serif;font-size:clamp(20px,3vw,32px);font-weight:800;letter-spacing:-0.5px;color:#fff;margin-bottom:10px;text-wrap:balance;}
     .trust-group-header h2 em{font-style:normal;color:var(--crimson-dark);}
-    .trust-group-header p{font-family:'Inter',sans-serif;font-size:16px;font-weight:400;color:rgba(255,255,255,0.65);line-height:1.65;max-width:560px;margin:0 auto;text-wrap:pretty;}
+    .trust-group-header p{font-family:'Inter',sans-serif;font-size:16px;font-weight:500;color:rgba(255,255,255,0.80);line-height:1.65;max-width:560px;margin:0 auto;text-wrap:pretty;}
     .trust-wrap{background:var(--warm-gray);}
     .trust-wrap .section{padding:28px clamp(20px,4vw,24px);}
     .trust-wrap .section-divider{background:#e0e0e0;}
@@ -236,7 +239,7 @@
     .svc-body{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:18px 20px;}
     .svc-name{font-family:'Montserrat',sans-serif;font-size:17px;font-weight:900;color:var(--white);letter-spacing:-0.3px;line-height:1.1;text-transform:uppercase;margin-bottom:6px;}
     .svc-desc{font-family:'Inter',sans-serif;font-size:16px;font-weight:500;color:rgba(255,255,255,0.90);line-height:1.55;margin-bottom:12px;}
-    .svc-cta{display:inline-flex;align-items:center;gap:8px;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--white);background:var(--crimson);height:48px;padding:0 20px;border:2px solid #a00000;border-radius:0;transition:background 0.2s,border-color 0.2s;cursor:pointer;}
+    .svc-cta{display:inline-flex;align-items:center;gap:8px;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--white);background:var(--crimson);height:48px;padding:0 20px;border:2px solid #a00000;border-radius:0;transition:background 0.2s,border-color 0.2s;cursor:pointer;}
     .svc-cta:hover{background:var(--crimson-hover);}
     .svc-cta svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2.5;}
       *:focus{outline:none;}*:focus-visible{outline:2px solid #8B0000;outline-offset:3px;}
@@ -290,10 +293,10 @@
         </div>
         <!-- Cert pills -->
         <div class="cert-pills">
-          <div class="cert-pill"><div class="cert-dot"></div><span class="cert-label">I-CAR Gold Class Certified</span></div>
-          <div class="cert-pill"><div class="cert-dot"></div><span class="cert-label">ASE Certified</span></div>
-          <div class="cert-pill"><div class="cert-dot"></div><span class="cert-label">Rhino Liner Certified</span></div>
-          <div class="cert-pill"><div class="cert-dot"></div><span class="cert-label">Est. 1991</span></div>
+          <div class="cert-pill"><span class="cert-label">I-CAR Gold Class Certified</span></div>
+          <div class="cert-pill"><span class="cert-label">ASE Certified</span></div>
+          <div class="cert-pill"><span class="cert-label">Rhino Liner Certified</span></div>
+          <div class="cert-pill"><span class="cert-label">Est. 1991</span></div>
         </div>
         <!-- Three Generations -->
         <div class="gen-block">
@@ -578,7 +581,7 @@
 <!-- DUAL ACCORDION — SIDE BY SIDE -->
 <style>
   .dual-acc-wrap{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr;gap:40px;align-items:start;}
-  .acc-col-label{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--crimson);margin-bottom:8px;display:block;}
+  .acc-col-label{font-family:'Montserrat',sans-serif;font-size:12px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--crimson);margin-bottom:8px;display:block;}
   .acc-col-title{font-family:'Montserrat',sans-serif;font-size:clamp(18px,2vw,24px);font-weight:800;letter-spacing:-0.5px;color:var(--neutral-dark);margin-bottom:20px;line-height:1.15;}
   .acc-col-title em{font-style:normal;color:var(--crimson);}
   .acc-list{display:flex;flex-direction:column;gap:6px;}
@@ -761,32 +764,32 @@
         <div style="background:#0A0A0A;border:1px solid #1e1e1e;color:#fff;position:relative;overflow:hidden;">
           <div style="position:absolute;inset:0;background-image:repeating-linear-gradient(45deg,rgba(139,0,0,0.03) 0px,rgba(139,0,0,0.03) 1px,transparent 1px,transparent 8px);pointer-events:none;"></div>
           <div style="position:relative;z-index:1;padding:28px 28px 0;">
-            <p style="font-family:'Montserrat',sans-serif;font-size:9px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:14px;">Lease Turn-In</p>
-            <h3 style="font-family:'Montserrat',sans-serif;font-size:clamp(16px,2vw,21px);font-weight:900;line-height:1.1;color:#fff;margin-bottom:14px;">PERFORM A <span style="color:#CC0000;">PRE-INSPECTION</span><br>&amp; FIX MINOR DAMAGE.</h3>
+            <p style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.80);margin-bottom:14px;">Lease Turn-In</p>
+            <h3 style="font-family:'Montserrat',sans-serif;font-size:clamp(16px,2vw,21px);font-weight:900;line-height:1.1;color:#fff;margin-bottom:14px;">PERFORM A <span style="color:#8B0000;">PRE-INSPECTION</span><br>&amp; FIX MINOR DAMAGE.</h3>
             <div style="width:36px;height:3px;background:#8B0000;margin-bottom:16px;"></div>
-            <p style="font-family:'Inter',sans-serif;font-size:16px;font-weight:400;color:rgba(255,255,255,0.65);line-height:1.6;margin-bottom:16px;">Have <strong style="font-weight:600;color:#fff;">3J's Auto Body</strong> perform a damage inspection before your lease ends.</p>
+            <p style="font-family:'Inter',sans-serif;font-size:16px;font-weight:500;color:rgba(255,255,255,0.85);line-height:1.6;margin-bottom:16px;">Have <strong style="font-weight:600;color:#fff;">3J's Auto Body</strong> perform a damage inspection before your lease ends.</p>
             <div style="background:#8B0000;padding:16px 20px;margin-bottom:16px;">
-              <p style="font-family:'Inter',sans-serif;font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.75);margin-bottom:5px;">Schedule an Inspection</p>
+              <p style="font-family:'Inter',sans-serif;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.85);margin-bottom:5px;">Schedule an Inspection</p>
               <p style="font-family:'Montserrat',sans-serif;font-size:28px;font-weight:900;color:#fff;letter-spacing:-1px;line-height:1;">30–60 DAYS</p>
-              <p style="font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;color:rgba(255,255,255,0.85);letter-spacing:1.5px;text-transform:uppercase;margin-top:4px;">Before Your Lease Ends</p>
+              <p style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:800;color:rgba(255,255,255,0.85);letter-spacing:1.5px;text-transform:uppercase;margin-top:4px;">Before Your Lease Ends</p>
             </div>
             <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;">
               <div style="border:1px solid #2a2a2a;padding:14px 8px;text-align:center;">
                 <svg width="22" height="22" fill="none" stroke="#8B0000" stroke-width="2" viewBox="0 0 24 24" style="display:block;margin:0 auto 8px;"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                <p style="font-family:'Inter',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;color:#999;line-height:1.5;">Avoid<br>Expensive<br>Lease Fees</p>
+                <p style="font-family:'Inter',sans-serif;font-size:12px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:rgba(255,255,255,0.80);line-height:1.5;">Avoid<br>Expensive<br>Lease Fees</p>
               </div>
               <div style="border:1px solid #2a2a2a;padding:14px 8px;text-align:center;">
                 <svg width="22" height="22" fill="none" stroke="#8B0000" stroke-width="2" viewBox="0 0 24 24" style="display:block;margin:0 auto 8px;"><polyline points="20 6 9 17 4 12"/></svg>
-                <p style="font-family:'Inter',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;color:#999;line-height:1.5;">Fix Damage<br>On Your<br>Terms</p>
+                <p style="font-family:'Inter',sans-serif;font-size:12px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:rgba(255,255,255,0.80);line-height:1.5;">Fix Damage<br>On Your<br>Terms</p>
               </div>
               <div style="border:1px solid #2a2a2a;padding:14px 8px;text-align:center;">
                 <svg width="22" height="22" fill="none" stroke="#8B0000" stroke-width="2" viewBox="0 0 24 24" style="display:block;margin:0 auto 8px;"><rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-                <p style="font-family:'Inter',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;color:#999;line-height:1.5;">Return With<br>Confidence</p>
+                <p style="font-family:'Inter',sans-serif;font-size:12px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:rgba(255,255,255,0.80);line-height:1.5;">Return With<br>Confidence</p>
               </div>
             </div>
           </div>
           <div style="background:#8B0000;padding:14px 28px;margin-top:18px;">
-            <p style="font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;color:#fff;letter-spacing:0.5px;line-height:1.5;">A LITTLE PREP NOW CAN SAVE YOU HUNDREDS LATER. <span style="color:rgba(255,255,255,0.75);">WE'RE HERE TO HELP.</span></p>
+            <p style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:800;color:#fff;letter-spacing:1.2px;line-height:1.5;">A LITTLE PREP NOW CAN SAVE YOU HUNDREDS LATER. <span style="color:rgba(255,255,255,0.85);">WE'RE HERE TO HELP.</span></p>
           </div>
         </div>
       </div>
@@ -925,36 +928,36 @@
           <div style="position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(139,0,0,0.12) 0%,transparent 65%);pointer-events:none;"></div>
           <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,0.025) 1px,transparent 1px);background-size:24px 24px;pointer-events:none;"></div>
           <div style="position:relative;z-index:1;padding:40px 36px;">
-            <p style="font-family:'Montserrat',sans-serif;font-size:9px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:24px;">Est. 1991 · Signal Hill, CA</p>
-            <p style="font-family:'Montserrat',sans-serif;font-size:clamp(18px,2.2vw,24px);font-weight:900;line-height:1.2;color:#fff;margin-bottom:10px;">"Meeting great people<br><span style="color:#CC0000;">by accident</span><br>since 1991."</p>
+            <p style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.80);margin-bottom:24px;">Est. 1991 · Signal Hill, CA</p>
+            <p style="font-family:'Montserrat',sans-serif;font-size:clamp(18px,2.2vw,24px);font-weight:900;line-height:1.2;color:#fff;margin-bottom:10px;">"Meeting great people<br><span style="color:#8B0000;">by accident</span><br>since 1991."</p>
             <div style="width:40px;height:3px;background:#8B0000;margin:24px 0;"></div>
-            <p style="font-family:'Inter',sans-serif;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:20px;">Three Generations</p>
+            <p style="font-family:'Inter',sans-serif;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.80);margin-bottom:20px;">Three Generations</p>
             <div style="display:flex;flex-direction:column;gap:0;">
               <div style="display:flex;align-items:center;gap:16px;padding:16px 0;border-bottom:1px solid #1e1e1e;">
-                <span style="font-family:'Montserrat',sans-serif;font-size:10px;font-weight:900;color:rgba(255,255,255,0.55);letter-spacing:2px;min-width:32px;">1ST</span>
+                <span style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:900;color:rgba(255,255,255,0.80);letter-spacing:1.5px;min-width:32px;">1ST</span>
                 <div>
                   <div style="font-family:'Montserrat',sans-serif;font-size:16px;font-weight:800;color:#fff;">Jim Sferrazza</div>
-                  <div style="font-family:'Inter',sans-serif;font-size:11px;font-weight:500;color:rgba(255,255,255,0.45);letter-spacing:0.5px;text-transform:uppercase;margin-top:2px;">Founder · The Original</div>
+                  <div style="font-family:'Inter',sans-serif;font-size:13px;font-weight:500;color:rgba(255,255,255,0.80);letter-spacing:1.2px;text-transform:uppercase;margin-top:2px;">Founder · The Original</div>
                 </div>
               </div>
               <div style="display:flex;align-items:center;gap:16px;padding:16px 0;border-bottom:1px solid #1e1e1e;">
-                <span style="font-family:'Montserrat',sans-serif;font-size:10px;font-weight:900;color:rgba(255,255,255,0.55);letter-spacing:2px;min-width:32px;">2ND</span>
+                <span style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:900;color:rgba(255,255,255,0.80);letter-spacing:1.5px;min-width:32px;">2ND</span>
                 <div>
                   <div style="font-family:'Montserrat',sans-serif;font-size:16px;font-weight:800;color:#fff;">Jimmy Sferrazza</div>
-                  <div style="font-family:'Inter',sans-serif;font-size:11px;font-weight:500;color:rgba(255,255,255,0.45);letter-spacing:0.5px;text-transform:uppercase;margin-top:2px;">Owner · Built the Business</div>
+                  <div style="font-family:'Inter',sans-serif;font-size:13px;font-weight:500;color:rgba(255,255,255,0.80);letter-spacing:1.2px;text-transform:uppercase;margin-top:2px;">Owner · Built the Business</div>
                 </div>
               </div>
               <div style="display:flex;align-items:center;gap:16px;padding:16px 0;">
-                <span style="font-family:'Montserrat',sans-serif;font-size:10px;font-weight:900;color:rgba(255,255,255,0.55);letter-spacing:2px;min-width:32px;">3RD</span>
+                <span style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:900;color:rgba(255,255,255,0.80);letter-spacing:1.5px;min-width:32px;">3RD</span>
                 <div>
                   <div style="font-family:'Montserrat',sans-serif;font-size:16px;font-weight:800;color:#fff;">James Sferrazza</div>
-                  <div style="font-family:'Inter',sans-serif;font-size:11px;font-weight:500;color:rgba(255,255,255,0.45);letter-spacing:0.5px;text-transform:uppercase;margin-top:2px;">Current Owner · Running the Shop</div>
+                  <div style="font-family:'Inter',sans-serif;font-size:13px;font-weight:500;color:rgba(255,255,255,0.80);letter-spacing:1.2px;text-transform:uppercase;margin-top:2px;">Current Owner · Running the Shop</div>
                 </div>
               </div>
             </div>
           </div>
           <div style="background:#8B0000;padding:14px 36px;">
-            <p style="font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;color:#fff;letter-spacing:0.5px;">FAMILY OWNED &amp; OPERATED · SIGNAL HILL, CA · SINCE 1991</p>
+            <p style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:800;color:#fff;letter-spacing:1.2px;">FAMILY OWNED &amp; OPERATED · SIGNAL HILL, CA · SINCE 1991</p>
           </div>
         </div>
       </div>
@@ -971,13 +974,13 @@
   <div style="max-width:780px;margin:0 auto;position:relative;z-index:1;">
     <p class="eyebrow" style="color:#fff;margin-bottom:28px;">Our Mission</p>
     <p style="font-family:'Montserrat',sans-serif;font-size:clamp(18px,2.8vw,26px);font-weight:800;color:#fff;line-height:1.3;letter-spacing:-0.3px;margin-bottom:40px;">
-      <em style="font-style:normal;color:#CC0000;">"We've been meeting great people by accident since 1991,</em> and we've been in your corner every step of the way."
+      <em style="font-style:normal;color:#8B0000;">"We've been meeting great people by accident since 1991,</em> and we've been in your corner every step of the way."
     </p>
     <div style="width:48px;height:3px;background:#8B0000;margin:0 auto 40px;"></div>
-    <p style="font-family:'Inter',sans-serif;font-size:16px;font-weight:400;color:rgba(255,255,255,0.72);line-height:1.75;margin-bottom:18px;">
+    <p style="font-family:'Inter',sans-serif;font-size:16px;font-weight:500;color:rgba(255,255,255,0.80);line-height:1.75;margin-bottom:18px;">
       Our mission is simple: to be the <strong style="font-weight:600;color:#fff;">most trusted auto body and automotive service provider</strong> in our community. Every repair we complete isn't just about fixing a vehicle—it's about helping you get back to <strong style="font-weight:600;color:#fff;">your routine, your family, and what matters most.</strong>
     </p>
-    <p style="font-family:'Inter',sans-serif;font-size:16px;font-weight:400;color:rgba(255,255,255,0.72);line-height:1.75;">
+    <p style="font-family:'Inter',sans-serif;font-size:16px;font-weight:500;color:rgba(255,255,255,0.80);line-height:1.75;">
       We're committed to delivering <strong style="font-weight:600;color:#fff;">quality workmanship, honest service,</strong> and a customer experience you can rely on. From the moment you walk through our doors to the day you're back on the road, our focus is on making the process <strong style="font-weight:600;color:#fff;">smooth, transparent, and stress-free</strong>—so you can <em style="font-style:normal;color:#fff;">move forward with confidence.</em>
     </p>
   </div>
