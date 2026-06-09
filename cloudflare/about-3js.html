@@ -10,7 +10,7 @@
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
     html{margin:0;padding:0;background:#0A0A0A;}
-    body{font-family:'Inter',sans-serif;margin:0;padding:0;overflow-x:hidden;background:#0A0A0A;}
+    body{font-family:'Inter',sans-serif;margin:0;padding:0;overflow-x:hidden;background:#0A0A0A;letter-spacing:0.3px;}
 
     .skip-link{position:absolute;top:-100%;left:16px;z-index:9999;background:#fff;color:#8B0000;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:8px 20px;text-decoration:none;}
     .skip-link:focus{top:16px;}
@@ -20,7 +20,7 @@
     .red-section .eyebrow,.black-section .eyebrow{font-size:10px;font-weight:800;letter-spacing:3px;color:rgba(255,255,255,0.70);text-shadow:0 1px 4px rgba(0,0,0,0.60);}
     h2{font-family:'Montserrat',sans-serif;font-size:clamp(26px,4vw,40px);font-weight:800;letter-spacing:-1px;line-height:1.1;color:#fff;text-wrap:balance;margin-bottom:clamp(14px,3vw,22px);}
     h2 em{font-style:normal;color:rgba(255,255,255,0.50);}
-    .lead{font-family:'Inter',sans-serif;font-size:clamp(15px,3.6vw,17px);font-weight:400;color:rgba(255,255,255,0.78);line-height:1.65;max-width:600px;text-wrap:pretty;}
+    .lead{font-family:'Inter',sans-serif;font-size:clamp(15px,3.6vw,17px);font-weight:500;color:rgba(255,255,255,0.78);line-height:1.65;max-width:600px;text-wrap:pretty;}
 
     .inner{max-width:1180px;margin:0 auto;}
 
@@ -40,7 +40,7 @@
     .warranty-badge{display:flex;flex-direction:column;align-items:flex-start;}
     .warranty-badge .num{font-family:'Montserrat',sans-serif;font-size:clamp(44px,11vw,84px);font-weight:900;letter-spacing:-2px;color:#fff;line-height:0.9;margin-bottom:6px;}
     .warranty-badge .sub{font-family:'Montserrat',sans-serif;font-size:clamp(10px,2.6vw,11px);font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:10px;}
-    .warranty-badge .desc{font-family:'Inter',sans-serif;font-size:clamp(15px,3.4vw,16px);font-weight:400;color:rgba(255,255,255,0.72);line-height:1.55;max-width:340px;text-wrap:pretty;}
+    .warranty-badge .desc{font-family:'Inter',sans-serif;font-size:clamp(15px,3.4vw,16px);font-weight:500;color:rgba(255,255,255,0.72);line-height:1.65;max-width:340px;text-wrap:pretty;}
 
     .body-block{display:grid;grid-template-columns:1fr;gap:clamp(28px,5vw,48px);}
     @media(min-width:860px){.body-block{grid-template-columns:1.4fr 1fr;gap:64px;}}
@@ -53,7 +53,7 @@
     .service-grid li::before{content:'';width:5px;height:5px;background:rgba(255,255,255,0.55);flex-shrink:0;transform:rotate(45deg);}
 
     .cta-block{display:flex;flex-direction:column;align-items:flex-start;gap:clamp(12px,2.5vw,18px);}
-    .cta-block .pitch{font-family:'Inter',sans-serif;font-size:clamp(15px,3.4vw,16px);font-weight:400;color:rgba(255,255,255,0.75);line-height:1.6;text-wrap:pretty;}
+    .cta-block .pitch{font-family:'Inter',sans-serif;font-size:clamp(15px,3.4vw,16px);font-weight:500;color:rgba(255,255,255,0.75);line-height:1.65;text-wrap:pretty;}
     .cta-block .pitch strong{color:#fff;font-weight:600;}
 
     .cta{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;height:48px;padding:0 32px;background:#fff;color:#8B0000;border-radius:0;border:2px solid #8B0000;transition:background 0.2s,transform 0.2s;touch-action:manipulation;cursor:pointer;}
@@ -86,10 +86,10 @@
     .stat .num{font-family:'Montserrat',sans-serif;font-size:clamp(28px,7vw,46px);font-weight:900;letter-spacing:-1.5px;color:#fff;line-height:1;margin-bottom:6px;}
     .stat .num em{font-style:normal;color:#8B0000;}
     .stat .lbl{font-family:'Montserrat',sans-serif;font-size:clamp(9px,2.4vw,10px);font-weight:800;letter-spacing:clamp(2px,0.6vw,2.5px);text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:8px;display:block;}
-    .stat .txt{font-family:'Inter',sans-serif;font-size:clamp(12px,3.2vw,13px);font-weight:400;color:rgba(255,255,255,0.70);line-height:1.55;text-wrap:pretty;}
+    .stat .txt{font-family:'Inter',sans-serif;font-size:clamp(12px,3.2vw,13px);font-weight:500;color:rgba(255,255,255,0.70);line-height:1.65;text-wrap:pretty;}
 
     .rlsh-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:clamp(16px,3vw,24px);}
-    .rlsh-foot p{font-family:'Inter',sans-serif;font-size:clamp(13px,3.4vw,15px);font-weight:400;color:rgba(255,255,255,0.78);line-height:1.6;max-width:560px;text-wrap:pretty;}
+    .rlsh-foot p{font-family:'Inter',sans-serif;font-size:clamp(13px,3.4vw,15px);font-weight:500;color:rgba(255,255,255,0.78);line-height:1.65;max-width:560px;text-wrap:pretty;}
     .rlsh-foot p strong{color:#fff;font-weight:600;}
 
     @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;}}

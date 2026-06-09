@@ -28,7 +28,7 @@
     }
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
     html{margin:0;padding:0;}
-    body{margin:0;padding:0;width:100%;overflow-x:hidden;}
+    body{margin:0;padding:0;width:100%;overflow-x:hidden;letter-spacing:0.3px;}
     body{font-family:'Inter',sans-serif;font-size:16px;color:var(--body-text);background:var(--white);}
     .skip-link{position:absolute;top:-100%;left:16px;z-index:9999;background:#8B0000;color:#fff;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:8px 20px;text-decoration:none;}
     .skip-link:focus{top:16px;}
@@ -56,11 +56,11 @@
     .owner-text .eyebrow{color:#8B0000;margin-bottom:16px;}
     .owner-text h2{font-family:'Montserrat',sans-serif;font-size:clamp(26px,4vw,40px);font-weight:800;letter-spacing:-1px;line-height:1.1;color:#fff;margin-bottom:20px;text-wrap:balance;}
     .owner-text h2 em{font-style:normal;color:#8B0000;}
-    .owner-text p{font-family:'Inter',sans-serif;font-size:16px;font-weight:400;color:rgba(255,255,255,0.72);line-height:1.75;max-width:520px;text-wrap:pretty;}
+    .owner-text p{font-family:'Inter',sans-serif;font-size:16px;font-weight:500;color:rgba(255,255,255,0.72);line-height:1.65;max-width:520px;text-wrap:pretty;}
     .owner-stats{display:flex;flex-direction:column;gap:0;}
     .owner-stat{border-top:1px solid rgba(255,255,255,0.10);padding:28px 0;}
     .owner-num{font-family:'Montserrat',sans-serif;font-size:clamp(52px,7vw,84px);font-weight:900;letter-spacing:-3px;line-height:1;color:#fff;}
-    .owner-lbl{font-family:'Inter',sans-serif;font-size:13px;font-weight:500;color:rgba(255,255,255,0.50);margin-top:6px;line-height:1.5;}
+    .owner-lbl{font-family:'Inter',sans-serif;font-size:13px;font-weight:500;color:rgba(255,255,255,0.50);margin-top:6px;line-height:1.65;}
     @media(min-width:640px){.owner-grid{grid-template-columns:1fr 1fr;gap:80px;align-items:center;}}
 
     /* SECTION BASE */
@@ -108,7 +108,7 @@
     .tl-card{padding:0;}
     .tl-num{font-family:'Montserrat',sans-serif;font-size:12px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--crimson);display:block;margin-bottom:4px;}
     .tl-card h3{font-family:'Montserrat',sans-serif;font-size:14px;font-weight:800;color:var(--neutral-dark);margin-bottom:5px;line-height:1.25;}
-    .tl-card p{font-family:'Inter',sans-serif;font-size:16px;font-weight:500;color:var(--body-text);line-height:1.6;letter-spacing:0.3px;}
+    .tl-card p{font-family:'Inter',sans-serif;font-size:16px;font-weight:500;color:var(--body-text);line-height:1.65;letter-spacing:0.3px;}
     /* STORY + TIMELINE two-col layout */
     .story-tl-grid{display:grid;grid-template-columns:1fr;gap:40px;}
     @media(min-width:768px){.story-tl-grid{grid-template-columns:1fr 1fr;gap:56px;align-items:start;}}
@@ -116,7 +116,7 @@
     .tl-col-head{margin-bottom:24px;}
     .tl-col-head h2{font-family:'Montserrat',sans-serif;font-size:clamp(18px,2vw,24px);font-weight:800;letter-spacing:-0.3px;color:var(--neutral-dark);margin-bottom:8px;text-wrap:balance;}
     .tl-col-head h2 em{font-style:normal;color:var(--crimson);}
-    .tl-col-head p{font-family:'Inter',sans-serif;font-size:16px;font-weight:500;color:var(--body-text);line-height:1.6;letter-spacing:0.3px;text-wrap:pretty;}
+    .tl-col-head p{font-family:'Inter',sans-serif;font-size:16px;font-weight:500;color:var(--body-text);line-height:1.65;letter-spacing:0.3px;text-wrap:pretty;}
     /* CERT PILLS */
     .cert-pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px;}
     .cert-pill{display:inline-flex;align-items:center;gap:8px;background:var(--off-white);border:1px solid #e0e0e0;padding:8px 14px;}
@@ -166,7 +166,7 @@
     .page-header{height:280px;}
     .page-header-content{padding:40px 20px;}
     .section-title{font-size:clamp(26px,4vw,40px);}
-    .section-body{font-size:16px;line-height:1.7;}
+    .section-body{font-size:16px;line-height:1.65;}
     .eyebrow{font-size:12px;}
     .gallery-more-wrap{text-align:center;margin-top:16px;}
     .gallery-more-btn{display:inline-flex;align-items:center;gap:8px;background:var(--crimson);color:var(--white);font-family:'Montserrat',sans-serif;font-size:13px;font-weight:900;letter-spacing:1.5px;text-transform:uppercase;border:2px solid var(--crimson-hover);border-radius:0;cursor:pointer;height:48px;padding:0 28px;transition:background 0.2s,border-color 0.2s;}
@@ -241,7 +241,7 @@
     .svc-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.96) 0%,rgba(0,0,0,0.70) 45%,rgba(0,0,0,0.15) 100%);}
     .svc-body{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:18px 20px;}
     .svc-name{font-family:'Montserrat',sans-serif;font-size:17px;font-weight:900;color:var(--white);letter-spacing:-0.3px;line-height:1.1;text-transform:uppercase;margin-bottom:6px;}
-    .svc-desc{font-family:'Inter',sans-serif;font-size:16px;font-weight:500;color:rgba(255,255,255,0.90);line-height:1.55;margin-bottom:12px;}
+    .svc-desc{font-family:'Inter',sans-serif;font-size:16px;font-weight:500;color:rgba(255,255,255,0.90);line-height:1.65;margin-bottom:12px;}
     .svc-cta{display:inline-flex;align-items:center;gap:8px;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--white);background:var(--crimson);height:48px;padding:0 20px;border:2px solid #a00000;border-radius:0;transition:background 0.2s,border-color 0.2s;cursor:pointer;}
     .svc-cta:hover{background:var(--crimson-hover);}
     .svc-cta svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2.5;}
@@ -278,7 +278,7 @@
     .cta-band-inner{position:relative;z-index:1;max-width:700px;margin:0 auto;}
     .cta-band h2{font-family:'Montserrat',sans-serif;font-size:clamp(26px,4vw,40px);font-weight:800;letter-spacing:-1px;line-height:1.1;margin-bottom:18px;color:#fff;text-wrap:balance;}
     .cta-band h2 em{font-style:normal;color:#8B0000;}
-    .cta-band p{font-family:'Inter',sans-serif;font-size:16px;font-weight:500;color:rgba(255,255,255,0.78);max-width:520px;margin:0 auto 36px;line-height:1.7;letter-spacing:0.3px;text-wrap:pretty;}
+    .cta-band p{font-family:'Inter',sans-serif;font-size:16px;font-weight:500;color:rgba(255,255,255,0.78);max-width:520px;margin:0 auto 36px;line-height:1.65;letter-spacing:0.3px;text-wrap:pretty;}
     .cta-btn-row{display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;margin-bottom:22px;}
     .cta-btn-white{display:inline-flex;align-items:center;justify-content:center;height:48px;padding:0 32px;background:#fff;color:#000;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border:2px solid #8B0000;border-radius:0;transition:background .25s,color .25s,border-color .25s;}
     .cta-btn-white:hover{background:#8B0000;color:#fff;border-color:#8B0000;}
@@ -301,7 +301,7 @@
       .trust-slider-counter{font-family:'Montserrat',sans-serif;font-size:12px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--crimson);display:block;margin-bottom:10px;}
       .trust-slider-title{font-family:'Montserrat',sans-serif;font-size:22px;font-weight:800;color:#111;line-height:1.1;text-wrap:balance;margin-bottom:4px;}
       .trust-slider-title em{font-style:normal;color:var(--crimson);}
-      .trust-slider-sub{font-family:'Inter',sans-serif;font-size:14px;font-weight:500;color:#5e6470;line-height:1.55;margin-top:8px;}
+      .trust-slider-sub{font-family:'Inter',sans-serif;font-size:14px;font-weight:500;color:#5e6470;line-height:1.65;margin-top:8px;}
       .trust-slide-track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;gap:12px;padding:0 20px;scrollbar-width:none;scroll-padding-left:20px;}
       .trust-slide-track::-webkit-scrollbar{display:none;}
       .trust-slide{min-width:82vw;scroll-snap-align:start;background:#fff;border:1px solid #e8e8e8;overflow:hidden;flex-shrink:0;}
@@ -324,7 +324,7 @@
     .trust-modal-eyebrow{font-family:'Montserrat',sans-serif;font-size:12px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:#8B0000;display:block;margin-bottom:8px;}
     .trust-modal-title{font-family:'Montserrat',sans-serif;font-size:20px;font-weight:800;color:#1a1a1a;margin-bottom:16px;line-height:1.2;text-wrap:balance;padding-right:40px;}
     .trust-modal-title em{font-style:normal;color:#8B0000;}
-    .trust-modal-body{font-family:'Inter',sans-serif;font-size:16px;font-weight:500;color:#424954;line-height:1.7;letter-spacing:0.3px;}
+    .trust-modal-body{font-family:'Inter',sans-serif;font-size:16px;font-weight:500;color:#424954;line-height:1.65;letter-spacing:0.3px;}
     .trust-modal-body p+p{margin-top:14px;}
     .trust-modal-body strong{color:#1F2937;font-weight:600;}
     .trust-modal-body .hl{color:#8B0000;font-weight:600;}
@@ -1023,7 +1023,7 @@
             <p style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.80);margin-bottom:14px;">Lease Turn-In</p>
             <h3 style="font-family:'Montserrat',sans-serif;font-size:clamp(16px,2vw,21px);font-weight:900;line-height:1.1;color:#fff;margin-bottom:14px;">PERFORM A <span style="color:#8B0000;">PRE-INSPECTION</span><br>&amp; FIX MINOR DAMAGE.</h3>
             <div style="width:36px;height:3px;background:#8B0000;margin-bottom:16px;"></div>
-            <p style="font-family:'Inter',sans-serif;font-size:16px;font-weight:500;color:rgba(255,255,255,0.85);line-height:1.6;margin-bottom:16px;">Have <strong style="font-weight:600;color:#fff;">3J's Auto Body</strong> perform a damage inspection before your lease ends.</p>
+            <p style="font-family:'Inter',sans-serif;font-size:16px;font-weight:500;color:rgba(255,255,255,0.85);line-height:1.65;margin-bottom:16px;">Have <strong style="font-weight:600;color:#fff;">3J's Auto Body</strong> perform a damage inspection before your lease ends.</p>
             <div style="background:#8B0000;padding:16px 20px;margin-bottom:16px;">
               <p style="font-family:'Inter',sans-serif;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.85);margin-bottom:5px;">Schedule an Inspection</p>
               <p style="font-family:'Montserrat',sans-serif;font-size:28px;font-weight:900;color:#fff;letter-spacing:-1px;line-height:1;">30–60 DAYS</p>
@@ -1032,20 +1032,20 @@
             <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;">
               <div style="border:1px solid #2a2a2a;padding:14px 8px;text-align:center;">
                 <svg width="22" height="22" fill="none" stroke="#8B0000" stroke-width="2" viewBox="0 0 24 24" style="display:block;margin:0 auto 8px;"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                <p style="font-family:'Inter',sans-serif;font-size:12px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:rgba(255,255,255,0.80);line-height:1.5;">Avoid<br>Expensive<br>Lease Fees</p>
+                <p style="font-family:'Inter',sans-serif;font-size:12px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:rgba(255,255,255,0.80);line-height:1.65;">Avoid<br>Expensive<br>Lease Fees</p>
               </div>
               <div style="border:1px solid #2a2a2a;padding:14px 8px;text-align:center;">
                 <svg width="22" height="22" fill="none" stroke="#8B0000" stroke-width="2" viewBox="0 0 24 24" style="display:block;margin:0 auto 8px;"><polyline points="20 6 9 17 4 12"/></svg>
-                <p style="font-family:'Inter',sans-serif;font-size:12px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:rgba(255,255,255,0.80);line-height:1.5;">Fix Damage<br>On Your<br>Terms</p>
+                <p style="font-family:'Inter',sans-serif;font-size:12px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:rgba(255,255,255,0.80);line-height:1.65;">Fix Damage<br>On Your<br>Terms</p>
               </div>
               <div style="border:1px solid #2a2a2a;padding:14px 8px;text-align:center;">
                 <svg width="22" height="22" fill="none" stroke="#8B0000" stroke-width="2" viewBox="0 0 24 24" style="display:block;margin:0 auto 8px;"><rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-                <p style="font-family:'Inter',sans-serif;font-size:12px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:rgba(255,255,255,0.80);line-height:1.5;">Return With<br>Confidence</p>
+                <p style="font-family:'Inter',sans-serif;font-size:12px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:rgba(255,255,255,0.80);line-height:1.65;">Return With<br>Confidence</p>
               </div>
             </div>
           </div>
           <div style="background:#8B0000;padding:14px 28px;margin-top:18px;">
-            <p style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:800;color:#fff;letter-spacing:1.2px;line-height:1.5;">A LITTLE PREP NOW CAN SAVE YOU HUNDREDS LATER. <span style="color:rgba(255,255,255,0.85);">WE'RE HERE TO HELP.</span></p>
+            <p style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:800;color:#fff;letter-spacing:1.2px;line-height:1.65;">A LITTLE PREP NOW CAN SAVE YOU HUNDREDS LATER. <span style="color:rgba(255,255,255,0.85);">WE'RE HERE TO HELP.</span></p>
           </div>
         </div>
       </div>
@@ -1233,10 +1233,10 @@
       <em style="font-style:normal;color:#8B0000;">"We've been meeting great people by accident since 1991,</em> and we've been in your corner every step of the way."
     </p>
     <div style="width:48px;height:3px;background:#8B0000;margin:0 auto 40px;"></div>
-    <p style="font-family:'Inter',sans-serif;font-size:16px;font-weight:500;color:rgba(255,255,255,0.80);line-height:1.75;margin-bottom:18px;">
+    <p style="font-family:'Inter',sans-serif;font-size:16px;font-weight:500;color:rgba(255,255,255,0.80);line-height:1.65;margin-bottom:18px;">
       Our mission is simple: to be the <strong style="font-weight:600;color:#fff;">most trusted auto body and automotive service provider</strong> in our community. Every repair we complete isn't just about fixing a vehicle—it's about helping you get back to <strong style="font-weight:600;color:#fff;">your routine, your family, and what matters most.</strong>
     </p>
-    <p style="font-family:'Inter',sans-serif;font-size:16px;font-weight:500;color:rgba(255,255,255,0.80);line-height:1.75;">
+    <p style="font-family:'Inter',sans-serif;font-size:16px;font-weight:500;color:rgba(255,255,255,0.80);line-height:1.65;">
       We're committed to delivering <strong style="font-weight:600;color:#fff;">quality workmanship, honest service,</strong> and a customer experience you can rely on. From the moment you walk through our doors to the day you're back on the road, our focus is on making the process <strong style="font-weight:600;color:#fff;">smooth, transparent, and stress-free</strong>—so you can <em style="font-style:normal;color:#fff;">move forward with confidence.</em>
     </p>
   </div>

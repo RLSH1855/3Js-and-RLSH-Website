@@ -85,7 +85,7 @@
 
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
     html{}
-    body{overflow-x:hidden;}
+    body{overflow-x:hidden;letter-spacing:0.3px;}
     html{scrollbar-width:none;}
     html::-webkit-scrollbar{display:none;}
     body{font-family:'Inter',sans-serif;max-width:100%;background:#fff;}
@@ -105,7 +105,7 @@
     .hero h1{font-size:clamp(32px,6vw,56px);font-weight:900;letter-spacing:-2px;line-height:1.0;text-transform:uppercase;color:#fff;margin-bottom:0;font-family:'Montserrat',sans-serif;text-align:center;text-wrap:balance;}
     .hero h1 span{color:var(--crimson);}
     .hero-rule{width:52px;height:4px;background:var(--crimson);margin:28px 0;}
-    .hero-body{font-size:clamp(14px,1.6vw,17px);font-weight:400;color:rgba(255,255,255,0.82);line-height:1.85;max-width:500px;margin-bottom:36px;}
+    .hero-body{font-size:clamp(14px,1.6vw,17px);font-weight:500;color:rgba(255,255,255,0.82);line-height:1.65;max-width:500px;margin-bottom:36px;}
     .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;}
     .btn-red{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--crimson);color:#fff;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;height:48px;padding:0 32px;border-radius:0;border:2px solid #a00000;box-shadow:0 4px 22px rgba(139,0,0,0.45);transition:background 0.2s;cursor:pointer;touch-action:manipulation;}
     .btn-red:hover{background:#a50000;}
@@ -127,7 +127,7 @@
     .diagram-label p{font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--crimson);margin-bottom:10px;font-family:'Montserrat',sans-serif;}
     .diagram-label h2{font-size:clamp(26px,4vw,40px);font-weight:800;letter-spacing:-1px;color:#fff;font-family:'Montserrat',sans-serif;}
     .diagram-label h2 em{font-style:normal;color:var(--crimson);}
-    .diagram-label .hint{font-size:12px;font-weight:400;color:rgba(255,255,255,0.40);margin-top:8px;}
+    .diagram-label .hint{font-size:12px;font-weight:500;color:rgba(255,255,255,0.40);margin-top:8px;}
     .truck-wrap{position:relative;width:100%;max-width:1200px;margin:0 auto;}
     .truck-img{width:100%;height:auto;display:block;}
     .truck-darken{position:absolute;inset:0;background:rgba(0,0,0,0.30);pointer-events:none;}
@@ -164,7 +164,7 @@
     .popup-close{position:absolute;top:6px;right:8px;width:28px;height:28px;background:none;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--neutral-dark);font-size:18px;font-weight:700;line-height:1;-webkit-tap-highlight-color:transparent;touch-action:manipulation;}
     .popup-tag{font-size:9px;font-weight:700;letter-spacing:1.3px;text-transform:uppercase;color:var(--crimson);margin-bottom:4px;font-family:'Montserrat',sans-serif;}
     .popup-title{font-size:13px;font-weight:800;color:#1B2A3B;margin-bottom:5px;line-height:1.3;font-family:'Montserrat',sans-serif;}
-    .popup-desc{font-size:11.5px;font-weight:400;color:#4A5568;line-height:1.65;}
+    .popup-desc{font-size:11.5px;font-weight:500;color:#4A5568;line-height:1.65;}
     .popup::after{content:'';position:absolute;width:9px;height:9px;background:#fff;transform:rotate(45deg);}
     .p-above{bottom:calc(100% + 12px);left:50%;transform:translateX(-50%);}
     .p-above::after{bottom:-4px;left:50%;margin-left:-4px;}
@@ -181,7 +181,7 @@
     .intro-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
     .intro-text .eyebrow{color:var(--crimson);}
     .intro-text .section-title{color:var(--black-2);}
-    .intro-text p{font-size:16px;font-weight:400;color:#555;line-height:1.85;margin-bottom:14px;}
+    .intro-text p{font-size:16px;font-weight:500;color:#555;line-height:1.65;margin-bottom:14px;}
     .feature-list{list-style:none;margin-top:24px;display:flex;flex-direction:column;gap:10px;}
     .feature-list li{display:flex;align-items:center;gap:10px;font-size:12px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:#222;font-family:'Montserrat',sans-serif;}
     .feature-list li::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--crimson);flex-shrink:0;}
@@ -201,13 +201,13 @@
     .hybrid-header .eyebrow{color:var(--crimson);text-align:center;}
     .hybrid-header .section-title{color:#fff;margin-bottom:18px;}
     .hybrid-header sup{font-size:0.5em;vertical-align:super;}
-    .hybrid-intro{font-size:16px;font-weight:400;color:rgba(255,255,255,0.60);line-height:1.85;}
+    .hybrid-intro{font-size:16px;font-weight:500;color:rgba(255,255,255,0.60);line-height:1.65;}
     .hybrid-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-bottom:36px;}
     .hybrid-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:0;padding:28px 26px;transition:border-color 0.3s,background 0.3s;}
     .hybrid-card:hover{border-color:rgba(139,0,0,0.40);background:rgba(139,0,0,0.05);}
     .hybrid-card h3{font-size:14px;font-weight:900;text-transform:uppercase;letter-spacing:0.3px;color:#fff;margin-bottom:6px;line-height:1.2;font-family:'Montserrat',sans-serif;}
     .hybrid-card-sub{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--crimson);margin-bottom:10px;font-family:'Montserrat',sans-serif;}
-    .hybrid-card p{font-size:16px;font-weight:400;color:rgba(255,255,255,0.60);line-height:1.75;}
+    .hybrid-card p{font-size:16px;font-weight:500;color:rgba(255,255,255,0.60);line-height:1.65;}
     .hybrid-card p strong{color:rgba(255,255,255,0.90);font-weight:600;}
     .hybrid-perfect{background:rgba(139,0,0,0.08);border:1px solid rgba(139,0,0,0.20);border-radius:0;padding:20px 26px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;}
     .hybrid-perfect-label{font-size:9px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:var(--crimson);white-space:nowrap;flex-shrink:0;font-family:'Montserrat',sans-serif;}
@@ -225,7 +225,7 @@
     .why-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:0;padding:28px 24px;transition:border-color 0.3s,background 0.3s;}
     .why-card:hover{border-color:rgba(139,0,0,0.4);background:rgba(139,0,0,0.06);}
     .why-card h3{font-size:14px;font-weight:900;text-transform:uppercase;letter-spacing:0.5px;color:#fff;margin-bottom:10px;font-family:'Montserrat',sans-serif;}
-    .why-card p{font-size:16px;font-weight:400;color:rgba(255,255,255,0.70);line-height:1.75;}
+    .why-card p{font-size:16px;font-weight:500;color:rgba(255,255,255,0.70);line-height:1.65;}
 
     /* ── APPLICATIONS ── */
     .apps-section{background:#0d0d0d;padding:88px 40px;position:relative;overflow:hidden;}
@@ -233,7 +233,7 @@
     .apps-section > *{position:relative;z-index:1;}
     .apps-section .eyebrow{color:var(--crimson);text-align:center;}
     .apps-section .section-title{color:#fff;text-align:center;margin-bottom:8px;}
-    .apps-sub{text-align:center;font-size:16px;font-weight:400;color:rgba(255,255,255,0.55);max-width:500px;margin:0 auto 52px;line-height:1.7;}
+    .apps-sub{text-align:center;font-size:16px;font-weight:500;color:rgba(255,255,255,0.55);max-width:500px;margin:0 auto 52px;line-height:1.65;}
     .apps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;max-width:1100px;margin:0 auto;overflow:hidden;}
     .app-card{position:relative;height:280px;overflow:hidden;}
     .app-card-bg{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform 0.6s ease;}
@@ -242,7 +242,7 @@
     .app-card:hover .app-card-overlay{background:linear-gradient(180deg, rgba(139,0,0,0.25) 0%, rgba(0,0,0,0.88) 100%);}
     .app-card-content{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding:22px 20px;}
     .app-card h3{font-size:17px;font-weight:900;text-transform:uppercase;color:#fff;letter-spacing:-0.2px;line-height:1.1;margin-bottom:5px;font-family:'Montserrat',sans-serif;}
-    .app-card p{font-size:12px;font-weight:400;color:rgba(255,255,255,0.80);line-height:1.6;}
+    .app-card p{font-size:12px;font-weight:500;color:rgba(255,255,255,0.80);line-height:1.65;}
     .app-card-num{font-size:32px;font-weight:900;color:rgba(139,0,0,0.3);letter-spacing:-2px;line-height:1;margin-bottom:6px;font-family:'Montserrat',sans-serif;}
 
     /* ── GALLERY ── */
@@ -250,7 +250,7 @@
     .gallery-section > *{position:relative;z-index:1;}
     .gallery-section .eyebrow{color:var(--crimson);}
     .gallery-section .section-title{color:var(--black-2);margin-bottom:6px;}
-    .gallery-sub{font-size:16px;font-weight:400;color:#777;line-height:1.7;max-width:520px;margin-bottom:48px;}
+    .gallery-sub{font-size:16px;font-weight:500;color:#777;line-height:1.65;max-width:520px;margin-bottom:48px;}
     .gallery-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;max-width:1100px;margin:0 auto;}
     .gallery-item{overflow:hidden;position:relative;aspect-ratio:1/1;}
     .gallery-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s ease;}
@@ -267,14 +267,14 @@
     .step{display:flex;flex-direction:column;align-items:center;text-align:center;position:relative;z-index:1;}
     .step-num{width:56px;height:56px;background:var(--crimson);color:#fff;font-size:20px;font-weight:900;display:flex;align-items:center;justify-content:center;margin-bottom:20px;font-family:'Montserrat',sans-serif;}
     .step h3{font-size:14px;font-weight:900;text-transform:uppercase;letter-spacing:0.5px;color:var(--black-2);margin-bottom:8px;font-family:'Montserrat',sans-serif;}
-    .step p{font-size:16px;font-weight:400;color:#666;line-height:1.7;}
+    .step p{font-size:16px;font-weight:500;color:#666;line-height:1.65;}
 
     /* ── CTA ── */
     .cta-section{background:var(--crimson);padding:64px 40px;text-align:center;position:relative;overflow:hidden;}
     .cta-section::before{content:'';position:absolute;inset:0;background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/backgound%20strip%20with%20rlsh%20logo.webp');background-size:cover;background-position:center;opacity:0.25;}
     .cta-inner{position:relative;z-index:1;max-width:700px;margin:0 auto;}
     .cta-section h2{font-size:clamp(26px,4vw,40px);font-weight:800;text-transform:uppercase;letter-spacing:-1px;color:#fff;margin-bottom:14px;line-height:1.0;font-family:'Montserrat',sans-serif;}
-    .cta-section p{font-size:16px;font-weight:400;color:rgba(255,255,255,0.85);margin-bottom:36px;line-height:1.75;}
+    .cta-section p{font-size:16px;font-weight:500;color:rgba(255,255,255,0.85);margin-bottom:36px;line-height:1.65;}
     .cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
     .btn-white{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:#fff;color:var(--crimson);font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;height:48px;padding:0 32px;border-radius:0;border:2px solid #8B0000;transition:background 0.2s;cursor:pointer;touch-action:manipulation;}
     .btn-white:hover{background:#f0f0f0;}
@@ -339,7 +339,7 @@
       .apps-grid{grid-template-columns:1fr;gap:0;}
       .app-card{height:220px;}
       .app-card h3{font-size:22px;letter-spacing:-0.5px;margin-bottom:6px;}
-      .app-card p{font-size:13px;line-height:1.55;}
+      .app-card p{font-size:13px;line-height:1.65;}
       .app-card-content{padding:20px 20px;}
       .app-card-num{display:none;}
       .why-grid{grid-template-columns:1fr;}
@@ -701,7 +701,7 @@
             document.getElementById('mob-popup-content').innerHTML=
               (tag?'<div style="font-size:9px;font-weight:700;letter-spacing:1.3px;text-transform:uppercase;color:var(--crimson);margin-bottom:6px;font-family:\'Montserrat\',sans-serif;">'+tag.textContent+'</div>':'')+
               (title?'<div style="font-size:14px;font-weight:800;color:#1B2A3B;margin-bottom:8px;line-height:1.3;font-family:\'Montserrat\',sans-serif;">'+title.innerHTML+'</div>':'')+
-              (desc?'<div style="font-size:12px;font-weight:400;color:#4A5568;line-height:1.65;">'+desc.textContent+'</div>':'');
+              (desc?'<div style="font-size:12px;font-weight:500;color:#4A5568;line-height:1.65;">'+desc.textContent+'</div>':'');
             mobOv.style.display='flex';
           }
         }
