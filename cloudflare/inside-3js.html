@@ -286,6 +286,44 @@
     @keyframes grain{0%,100%{transform:translate(0,0);}10%{transform:translate(-2%,-3%);}20%{transform:translate(3%,1%);}30%{transform:translate(-1%,4%);}40%{transform:translate(4%,-2%);}50%{transform:translate(-3%,3%);}60%{transform:translate(2%,-4%);}70%{transform:translate(-4%,1%);}80%{transform:translate(1%,3%);}90%{transform:translate(3%,-1%);}}
     .grain::before{content:'';position:absolute;inset:-50%;width:200%;height:200%;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");background-size:200px 200px;opacity:0.038;animation:grain 0.8s steps(1) infinite;pointer-events:none;z-index:0;}
     @media(max-width:600px){.cta-btn{font-size:14px!important;}}
+
+    /* ── MOBILE TRUST SLIDER ── */
+    .trust-slider-section{display:none;}
+    @media(max-width:600px){
+      .trust-group-header{display:none;}
+      .trust-wrap{display:none;}
+      .trust-slider-section{display:block;background:var(--warm-gray);padding:48px 0 56px;}
+      .trust-slider-header{padding:0 20px 24px;}
+      .trust-slider-counter{font-family:'Montserrat',sans-serif;font-size:12px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--crimson);display:block;margin-bottom:10px;}
+      .trust-slider-title{font-family:'Montserrat',sans-serif;font-size:22px;font-weight:800;color:#111;line-height:1.1;text-wrap:balance;margin-bottom:4px;}
+      .trust-slider-title em{font-style:normal;color:var(--crimson);}
+      .trust-slider-sub{font-family:'Inter',sans-serif;font-size:14px;font-weight:500;color:#5e6470;line-height:1.55;margin-top:8px;}
+      .trust-slide-track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;gap:12px;padding:0 20px;scrollbar-width:none;scroll-padding-left:20px;}
+      .trust-slide-track::-webkit-scrollbar{display:none;}
+      .trust-slide{min-width:82vw;scroll-snap-align:start;background:#fff;border:1px solid #e8e8e8;overflow:hidden;flex-shrink:0;}
+      .trust-slide-img{width:100%;height:200px;object-fit:cover;display:block;}
+      .trust-slide-img.logo-img{object-fit:contain;background:#f8f8f8;padding:28px;}
+      .trust-slide-body{padding:16px 18px 20px;}
+      .trust-slide-eyebrow{display:block;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:#8B0000;margin-bottom:6px;}
+      .trust-slide-name{font-family:'Montserrat',sans-serif;font-size:17px;font-weight:800;color:#1a1a1a;margin-bottom:14px;line-height:1.2;text-wrap:balance;}
+      .trust-slide-name em{font-style:normal;color:#8B0000;}
+      .trust-details-btn{display:inline-flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#fff;background:#8B0000;height:44px;padding:0 24px;border:none;border-radius:0;cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent;}
+      .trust-details-btn:active{background:#6b0000;}
+    }
+    /* ── TRUST MODALS ── */
+    .trust-modal{position:fixed;inset:0;z-index:9000;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity 0.25s ease;}
+    .trust-modal.active{opacity:1;pointer-events:all;}
+    .trust-modal-backdrop{position:absolute;inset:0;background:rgba(0,0,0,0.72);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);}
+    .trust-modal-box{position:relative;z-index:1;background:#fff;width:100%;max-width:480px;max-height:80vh;overflow-y:auto;padding:28px 24px 32px;}
+    .trust-modal-close{position:absolute;top:14px;right:14px;width:36px;height:36px;background:none;border:1.5px solid #e0e0e0;border-radius:0;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#333;font-size:20px;line-height:1;touch-action:manipulation;-webkit-tap-highlight-color:transparent;}
+    .trust-modal-close:hover,.trust-modal-close:active{background:#f4f4f4;}
+    .trust-modal-eyebrow{font-family:'Montserrat',sans-serif;font-size:12px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:#8B0000;display:block;margin-bottom:8px;}
+    .trust-modal-title{font-family:'Montserrat',sans-serif;font-size:20px;font-weight:800;color:#1a1a1a;margin-bottom:16px;line-height:1.2;text-wrap:balance;padding-right:40px;}
+    .trust-modal-title em{font-style:normal;color:#8B0000;}
+    .trust-modal-body{font-family:'Inter',sans-serif;font-size:16px;font-weight:500;color:#424954;line-height:1.7;letter-spacing:0.3px;}
+    .trust-modal-body p+p{margin-top:14px;}
+    .trust-modal-body strong{color:#1F2937;font-weight:600;}
+    .trust-modal-body .hl{color:#8B0000;font-weight:600;}
   </style>
 </head>
 <body>
@@ -760,6 +798,108 @@
   </div>
 </section>
 
+<!-- MOBILE TRUST SLIDER (hidden on desktop) -->
+<div class="trust-slider-section">
+  <div class="trust-slider-header">
+    <span class="trust-slider-counter" id="trustCounter">1 OF 10</span>
+    <h2 class="trust-slider-title">What Sets 3J's <em>Apart</em></h2>
+    <p class="trust-slider-sub">Do it right, stand behind it, and take care of the person who trusted us with their truck.</p>
+  </div>
+  <div class="trust-slide-track" id="trustSlideTrack">
+
+    <div class="trust-slide">
+      <img class="trust-slide-img logo-img" src="https://rlsh1855.github.io/3Js-and-RLSH-Website/warranty-stamp.webp" alt="Limited Lifetime Warranty" loading="lazy">
+      <div class="trust-slide-body">
+        <span class="trust-slide-eyebrow">Our Promise</span>
+        <div class="trust-slide-name">Lifetime <em>Warranty</em></div>
+        <button class="trust-details-btn" data-modal="tmodal-warranty">Details</button>
+      </div>
+    </div>
+
+    <div class="trust-slide">
+      <img class="trust-slide-img" src="https://rlsh1855.github.io/3Js-and-RLSH-Website/trust-transparency.webp" alt="Trust and Transparency" loading="lazy">
+      <div class="trust-slide-body">
+        <span class="trust-slide-eyebrow">Our Commitment</span>
+        <div class="trust-slide-name">Trust &amp; <em>Transparency</em></div>
+        <button class="trust-details-btn" data-modal="tmodal-trust">Details</button>
+      </div>
+    </div>
+
+    <div class="trust-slide">
+      <img class="trust-slide-img" src="https://rlsh1855.github.io/3Js-and-RLSH-Website/autobody-repairs-red-bmw.webp" alt="Auto Body Repair" loading="lazy">
+      <div class="trust-slide-body">
+        <span class="trust-slide-eyebrow">Collision Repair</span>
+        <div class="trust-slide-name">Auto Body <em>Repair</em></div>
+        <button class="trust-details-btn" data-modal="tmodal-autobody">Details</button>
+      </div>
+    </div>
+
+    <div class="trust-slide">
+      <img class="trust-slide-img" src="https://rlsh1855.github.io/3Js-and-RLSH-Website/72%20land%20cruiser%20full%20exterior%20paint%20job.webp" alt="Direct Repair and Lease Turn-In" loading="lazy">
+      <div class="trust-slide-body">
+        <span class="trust-slide-eyebrow">Insurance · Cash · Lease</span>
+        <div class="trust-slide-name">Direct Repair &amp; <em>Lease Turn-In</em></div>
+        <button class="trust-details-btn" data-modal="tmodal-lease">Details</button>
+      </div>
+    </div>
+
+    <div class="trust-slide">
+      <img class="trust-slide-img logo-img" src="https://rlsh1855.github.io/3Js-and-RLSH-Website/gold-class.webp" alt="I-CAR Gold Class Certified" loading="lazy">
+      <div class="trust-slide-body">
+        <span class="trust-slide-eyebrow">Industry Certified</span>
+        <div class="trust-slide-name">I-CAR Gold Class <em>Certified</em></div>
+        <button class="trust-details-btn" data-modal="tmodal-icar">Details</button>
+      </div>
+    </div>
+
+    <div class="trust-slide">
+      <img class="trust-slide-img" src="https://rlsh1855.github.io/3Js-and-RLSH-Website/Paint-booth-inside-view.webp" alt="State-of-the-Art Equipment" loading="lazy">
+      <div class="trust-slide-body">
+        <span class="trust-slide-eyebrow">Built to Perform</span>
+        <div class="trust-slide-name">State-of-the-Art <em>Equipment</em></div>
+        <button class="trust-details-btn" data-modal="tmodal-equipment">Details</button>
+      </div>
+    </div>
+
+    <div class="trust-slide">
+      <img class="trust-slide-img" src="https://rlsh1855.github.io/3Js-and-RLSH-Website/paintless-dent-repair.webp" alt="Paintless Dent Repair" loading="lazy">
+      <div class="trust-slide-body">
+        <span class="trust-slide-eyebrow">Fast &amp; Affordable</span>
+        <div class="trust-slide-name">Paintless Dent <em>Repair</em></div>
+        <button class="trust-details-btn" data-modal="tmodal-pdr">Details</button>
+      </div>
+    </div>
+
+    <div class="trust-slide">
+      <img class="trust-slide-img" src="https://rlsh1855.github.io/3Js-and-RLSH-Website/glass-replacement.webp" alt="Glass Repair and Replacement" loading="lazy">
+      <div class="trust-slide-body">
+        <span class="trust-slide-eyebrow">Safety First</span>
+        <div class="trust-slide-name">Glass Repair &amp; <em>Replacement</em></div>
+        <button class="trust-details-btn" data-modal="tmodal-glass">Details</button>
+      </div>
+    </div>
+
+    <div class="trust-slide">
+      <img class="trust-slide-img" src="https://rlsh1855.github.io/3Js-and-RLSH-Website/bedliner.webp" alt="Certified Rhino Liner" loading="lazy">
+      <div class="trust-slide-body">
+        <span class="trust-slide-eyebrow">Certified Installer</span>
+        <div class="trust-slide-name">Certified Rhino <em>Liner Installer</em></div>
+        <button class="trust-details-btn" data-modal="tmodal-rhino">Details</button>
+      </div>
+    </div>
+
+    <div class="trust-slide">
+      <img class="trust-slide-img" src="https://rlsh1855.github.io/3Js-and-RLSH-Website/images/inside-3js-hero-image.png" alt="Family Atmosphere at 3J's" loading="lazy">
+      <div class="trust-slide-body">
+        <span class="trust-slide-eyebrow">People First</span>
+        <div class="trust-slide-name">Family <em>Atmosphere</em></div>
+        <button class="trust-details-btn" data-modal="tmodal-family">Details</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
 <!-- TRUST GROUP: Warranty → Family Atmosphere -->
 <section class="trust-group-header">
   <p class="eyebrow">Our Standards</p>
@@ -1163,11 +1303,209 @@
   document.querySelectorAll('img').forEach(function(img){img.addEventListener('load',reportHeight);});
 </script>
 </main>
+<!-- ── TRUST MODALS ── -->
+<div class="trust-modal" id="tmodal-warranty" aria-hidden="true" role="dialog" aria-modal="true">
+  <div class="trust-modal-backdrop"></div>
+  <div class="trust-modal-box">
+    <button class="trust-modal-close" aria-label="Close">&#215;</button>
+    <span class="trust-modal-eyebrow">Our Promise</span>
+    <h2 class="trust-modal-title">Lifetime <em>Warranty</em></h2>
+    <div class="trust-modal-body">
+      <p>We stand behind our work on every vehicle with a <strong>written limited lifetime warranty.</strong> We get the job done right and get you back on the road safely. <span class="hl">Guaranteed.</span></p>
+      <p>While we're confident the repairs are done right, we're also available to help if something goes wrong. <strong>We'll correct the problem free of charge</strong> as long as you own your vehicle.</p>
+    </div>
+  </div>
+</div>
+
+<div class="trust-modal" id="tmodal-trust" aria-hidden="true" role="dialog" aria-modal="true">
+  <div class="trust-modal-backdrop"></div>
+  <div class="trust-modal-box">
+    <button class="trust-modal-close" aria-label="Close">&#215;</button>
+    <span class="trust-modal-eyebrow">Our Commitment</span>
+    <h2 class="trust-modal-title">Trust &amp; <em>Transparency</em></h2>
+    <div class="trust-modal-body">
+      <p>We understand that <strong>trust has to be earned,</strong> especially when it comes to your vehicle. That's why we focus on <strong>clear communication, honest service,</strong> and doing exactly what we say we will.</p>
+      <p>From start to finish, we keep you updated so you <strong>always know what's happening with your vehicle.</strong> <span class="hl">No surprises, no confusion</span>: just straightforward information and support when you need it.</p>
+      <p>We work with <strong>all major insurance companies</strong> and help guide you through the process, making things easier during what can be a stressful time.</p>
+      <p>At the end of the day, our goal is simple: <span class="hl">take care of you, stand behind our work,</span> and get you back on the road with <strong>total confidence.</strong></p>
+    </div>
+  </div>
+</div>
+
+<div class="trust-modal" id="tmodal-autobody" aria-hidden="true" role="dialog" aria-modal="true">
+  <div class="trust-modal-backdrop"></div>
+  <div class="trust-modal-box">
+    <button class="trust-modal-close" aria-label="Close">&#215;</button>
+    <span class="trust-modal-eyebrow">Collision Repair</span>
+    <h2 class="trust-modal-title">Auto Body <em>Repair</em></h2>
+    <div class="trust-modal-body">
+      <p>We know being in an accident can be <strong>stressful, inconvenient, and sometimes overwhelming.</strong> That's why our goal is simple: to make the repair process <span class="hl">as easy and worry-free as possible</span> for you.</p>
+      <p>We work with <strong>all major insurance companies</strong> and handle the communication directly, helping move your claim along without the back-and-forth. Whether you're going through insurance or paying out of pocket, <strong>we'll walk you through everything clearly</strong> so you always know what to expect.</p>
+      <p>Our experienced, <span class="hl">I-CAR certified technicians</span> repair your vehicle using the proper methods and attention to detail it deserves. From small cosmetic fixes to major collision repairs, we focus on <strong>doing the job right</strong> — so you can get back on the road <strong>safely and confidently.</strong></p>
+    </div>
+  </div>
+</div>
+
+<div class="trust-modal" id="tmodal-lease" aria-hidden="true" role="dialog" aria-modal="true">
+  <div class="trust-modal-backdrop"></div>
+  <div class="trust-modal-box">
+    <button class="trust-modal-close" aria-label="Close">&#215;</button>
+    <span class="trust-modal-eyebrow">Insurance · Cash · Lease</span>
+    <h2 class="trust-modal-title">Direct Repair &amp; <em>Lease Turn-In</em></h2>
+    <div class="trust-modal-body">
+      <p>No matter your situation, we're here to help. We work with <strong>all major insurance companies</strong> to simplify the repair process and help avoid unnecessary delays.</p>
+      <p>If you're paying out of pocket, you'll receive <strong>honest recommendations and transparent pricing.</strong> <span class="hl">No pressure, no upselling.</span> And if your lease turn-in is coming up, we can take care of <strong>dents, scratches, and wear-and-tear</strong> to help you avoid costly return fees.</p>
+      <p>Whatever brings you in, we'll make sure you feel <strong>informed, comfortable, and taken care of.</strong></p>
+    </div>
+  </div>
+</div>
+
+<div class="trust-modal" id="tmodal-icar" aria-hidden="true" role="dialog" aria-modal="true">
+  <div class="trust-modal-backdrop"></div>
+  <div class="trust-modal-box">
+    <button class="trust-modal-close" aria-label="Close">&#215;</button>
+    <span class="trust-modal-eyebrow">Industry Certified</span>
+    <h2 class="trust-modal-title">I-CAR Gold Class <em>Certified</em></h2>
+    <div class="trust-modal-body">
+      <p>Your vehicle is a big investment, and you shouldn't trust it with just anyone. Our shop holds the <span class="hl">I-CAR Gold Class designation</span> — <strong>the highest level of training</strong> in the collision repair industry.</p>
+      <p>That means our technicians are <strong>continuously trained</strong> in the latest repair techniques, materials, and vehicle technologies. Whether it's a minor repair or significant structural damage, we have the <strong>knowledge and experience</strong> to restore your vehicle the right way.</p>
+      <p>For you, that means <span class="hl">peace of mind</span> knowing your vehicle is being repaired by professionals who take pride in their work and <strong>prioritize your safety.</strong></p>
+    </div>
+  </div>
+</div>
+
+<div class="trust-modal" id="tmodal-equipment" aria-hidden="true" role="dialog" aria-modal="true">
+  <div class="trust-modal-backdrop"></div>
+  <div class="trust-modal-box">
+    <button class="trust-modal-close" aria-label="Close">&#215;</button>
+    <span class="trust-modal-eyebrow">Built to Perform</span>
+    <h2 class="trust-modal-title">State-of-the-Art <em>Equipment</em></h2>
+    <div class="trust-modal-body">
+      <p>Your vehicle deserves more than a quick fix — it deserves to be <strong>repaired properly.</strong> That's why we've invested in <strong>advanced, state-of-the-art equipment</strong> to ensure every repair is done with <span class="hl">precision.</span></p>
+      <p>From structural repairs to paint matching, we use <strong>high-quality tools and materials</strong> designed to deliver <strong>long-lasting results.</strong> This allows us to work on <strong>all makes and models</strong> while maintaining the level of quality your vehicle deserves.</p>
+    </div>
+  </div>
+</div>
+
+<div class="trust-modal" id="tmodal-pdr" aria-hidden="true" role="dialog" aria-modal="true">
+  <div class="trust-modal-backdrop"></div>
+  <div class="trust-modal-box">
+    <button class="trust-modal-close" aria-label="Close">&#215;</button>
+    <span class="trust-modal-eyebrow">Fast &amp; Affordable</span>
+    <h2 class="trust-modal-title">Paintless Dent <em>Repair</em></h2>
+    <div class="trust-modal-body">
+      <p>Got <strong>small dents, door dings, or hail damage?</strong> We offer paintless dent repair as a <span class="hl">fast and cost-effective</span> way to restore your vehicle <strong>without repainting.</strong></p>
+      <p>Because we <strong>preserve your original factory finish,</strong> the process is typically <strong>quicker and more affordable</strong> than traditional repairs. It's a great option for keeping your vehicle looking its best <span class="hl">without unnecessary work.</span></p>
+    </div>
+  </div>
+</div>
+
+<div class="trust-modal" id="tmodal-glass" aria-hidden="true" role="dialog" aria-modal="true">
+  <div class="trust-modal-backdrop"></div>
+  <div class="trust-modal-box">
+    <button class="trust-modal-close" aria-label="Close">&#215;</button>
+    <span class="trust-modal-eyebrow">Safety First</span>
+    <h2 class="trust-modal-title">Glass Repair &amp; <em>Replacement</em></h2>
+    <div class="trust-modal-body">
+      <p>Damaged or cracked glass can affect both your <strong>safety and visibility.</strong> We provide <strong>professional glass repair and replacement services</strong> to get your vehicle back to proper condition.</p>
+      <p>Whether it's a windshield, side window, or other glass, we make sure everything is <strong>installed correctly and meets safety standards</strong> — so you can <span class="hl">drive with confidence.</span></p>
+    </div>
+  </div>
+</div>
+
+<div class="trust-modal" id="tmodal-rhino" aria-hidden="true" role="dialog" aria-modal="true">
+  <div class="trust-modal-backdrop"></div>
+  <div class="trust-modal-box">
+    <button class="trust-modal-close" aria-label="Close">&#215;</button>
+    <span class="trust-modal-eyebrow">Certified Installer</span>
+    <h2 class="trust-modal-title">Certified Rhino <em>Liner Installer</em></h2>
+    <div class="trust-modal-body">
+      <p>We're a <span class="hl">certified Rhino Liner installer,</span> offering professional spray-on protection that's built to last. Unlike drop-in liners, this is a <strong>permanent application that bonds directly</strong> to your truck bed for <strong>maximum durability.</strong></p>
+      <p>It provides a <strong>tough, textured finish</strong> that protects against <strong>scratches, dents, rust, and everyday wear.</strong> We also offer applications for <strong>wheel wells and undercarriages</strong> for added protection where it matters most.</p>
+      <p>Most installs can be completed <span class="hl">the same day</span> and are backed by a <strong>lifetime warranty</strong> — so you can count on it for the long haul.</p>
+    </div>
+  </div>
+</div>
+
+<div class="trust-modal" id="tmodal-family" aria-hidden="true" role="dialog" aria-modal="true">
+  <div class="trust-modal-backdrop"></div>
+  <div class="trust-modal-box">
+    <button class="trust-modal-close" aria-label="Close">&#215;</button>
+    <span class="trust-modal-eyebrow">People First</span>
+    <h2 class="trust-modal-title">Family <em>Atmosphere</em></h2>
+    <div class="trust-modal-body">
+      <p>We believe <strong>great service starts with how you're treated.</strong> From the moment you walk through our doors, you'll notice the difference — <span class="hl">we treat our customers like family.</span></p>
+      <p>That means being <strong>honest, respectful, and transparent</strong> in everything we do. We take the time to explain the process, answer your questions, and keep you updated every step of the way so you always feel <strong>comfortable and informed.</strong></p>
+      <p>It's all part of what we mean when we say we're <span class="hl">"meeting great people by accident."</span> Even in an unexpected situation, our goal is to turn your experience into a positive one by taking care of you the right way. <strong>No confusing lingo. No runaround.</strong> Just real people who genuinely care about <strong>doing right by you.</strong></p>
+    </div>
+  </div>
+</div>
+
 <div id="height-sentinel" style="height:1px;width:1px;visibility:hidden;pointer-events:none;"></div>
 <script>document.querySelectorAll('a[href^="tel:"]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();window.location.href=a.getAttribute('href');});});</script>
 <script>
 (function(){var active=false,startY=0,lastY=0,rafId=null;document.addEventListener('mousedown',function(e){if(e.button!==1)return;if(e.target.closest('a'))return;e.preventDefault();active=true;startY=e.clientY;lastY=e.clientY;document.body.style.cursor='ns-resize';tick();});document.addEventListener('mousemove',function(e){if(active)lastY=e.clientY;});document.addEventListener('mouseup',function(e){if(e.button!==1||!active)return;active=false;document.body.style.cursor='';if(rafId){cancelAnimationFrame(rafId);rafId=null;}});function tick(){if(!active){rafId=null;return;}var dy=lastY-startY;if(Math.abs(dy)>5)window.scrollBy(0,dy*0.12);rafId=requestAnimationFrame(tick);}})();
 </script> 
+<script>
+/* ── TRUST SLIDER: counter + modal open/close ── */
+(function(){
+  var track = document.getElementById('trustSlideTrack');
+  var counter = document.getElementById('trustCounter');
+  var savedScrollY = 0;
+  var TOTAL = 10;
+
+  /* Counter: update on scroll */
+  if(track && counter){
+    track.addEventListener('scroll', function(){
+      var slides = track.querySelectorAll('.trust-slide');
+      var best = 0, minDist = Infinity;
+      slides.forEach(function(slide, i){
+        var dist = Math.abs(slide.getBoundingClientRect().left - track.getBoundingClientRect().left);
+        if(dist < minDist){ minDist = dist; best = i; }
+      });
+      counter.textContent = (best + 1) + ' OF ' + TOTAL;
+    }, {passive: true});
+  }
+
+  /* Modal open */
+  document.addEventListener('click', function(e){
+    var btn = e.target.closest('[data-modal]');
+    if(!btn) return;
+    var id = btn.getAttribute('data-modal');
+    var modal = document.getElementById(id);
+    if(!modal) return;
+    savedScrollY = window.scrollY;
+    document.body.style.overflow = 'hidden';
+    modal.classList.add('active');
+    modal.setAttribute('aria-hidden', 'false');
+    reportHeight && reportHeight();
+  });
+
+  /* Modal close — close button or backdrop */
+  document.addEventListener('click', function(e){
+    if(e.target.closest('.trust-modal-close') || e.target.classList.contains('trust-modal-backdrop')){
+      var modal = e.target.closest('.trust-modal');
+      if(!modal) return;
+      closeModal(modal);
+    }
+  });
+
+  /* Close on Escape */
+  document.addEventListener('keydown', function(e){
+    if(e.key !== 'Escape') return;
+    var modal = document.querySelector('.trust-modal.active');
+    if(modal) closeModal(modal);
+  });
+
+  function closeModal(modal){
+    modal.classList.remove('active');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    window.scrollTo(0, savedScrollY);
+    reportHeight && reportHeight();
+  }
+})();
+</script>
 <script src="site-shell.js"></script>
 </body>
 </html>
