@@ -301,7 +301,9 @@
     .black-section{background:var(--black);padding:0 clamp(20px,4vw,32px) clamp(64px,7vw,96px);}
     .rlsh-head{margin-bottom:0;padding-bottom:32px;}
     .rlsh-head h2{font-family:'Montserrat',sans-serif;font-size:clamp(26px,4vw,40px);font-weight:800;letter-spacing:-1px;line-height:1.1;text-transform:uppercase;color:#fff;margin-bottom:14px;}
-    .rlsh-section-logo{height:190px;width:auto;display:block;margin:-91px auto 8px;position:relative;z-index:10;}
+    .rlsh-section-logo{height:240px;width:fit-content;display:block;margin:-115px auto 8px;position:relative;z-index:10;}
+    .rlsh-sparkle{position:relative;display:block;line-height:0;}
+    .rlsh-sparkle>canvas{position:absolute;top:0;left:0;pointer-events:none;}
     .rlsh-head h2 em{font-style:normal;color:var(--red-dark);}
     .rlsh-head .about-lead{margin-top:6px;}
     .stat-row{display:grid;grid-template-columns:1fr;margin-bottom:36px;border-top:1px solid rgba(255,255,255,.1);border-bottom:1px solid rgba(255,255,255,.1);}
@@ -906,7 +908,10 @@
 <section class="black-section">
   <div class="about-inner">
     <div class="rlsh-head">
-      <img src="images/brands/rlsh-metal-logo-v2.png" alt="Rhino Linings of Signal Hill" class="rlsh-section-logo">
+      <span class="rlsh-sparkle rlsh-section-logo" data-rlsh>
+        <img src="images/brands/rlsh-metal-logo-v2.png" alt="Rhino Linings of Signal Hill" style="height:100%;width:auto;display:block;">
+        <canvas></canvas>
+      </span>
       <h2 data-anim="fade-up">Southern California's <em>#1</em> Spot for <span style="color:#8B0000;">Custom</span> Truck, Jeep &amp; SUV <span style="color:#8B0000;">Accessories.</span></h2>
       <p class="about-lead">Custom, professional installs for trucks, Jeeps, commercial vans and more. If you're ready to take your build to the next level, you're in the right place.</p>
     </div>
@@ -1165,6 +1170,7 @@
 (function(){var COLOR='#8B0000',DURATION=700,BORDER=2;function getPL(w,h){return 2*(w+h);}function ptP(x,y,w,h){if(y<=BORDER)return x;if(x>=w-BORDER)return w+y;if(y>=h-BORDER)return w+h+(w-x);return w+h+w+(h-y);}function initCard(card){if(card.querySelector('.card-border-sweep'))return;var wrap=document.createElement('div');wrap.className='card-border-sweep';var cvs=document.createElement('canvas');wrap.appendChild(cvs);card.appendChild(wrap);var raf=null,startP=0,progress=0,animStart=0,leaving=false,leaveStart=0,leaveOpacity=0;function resize(){cvs.width=card.offsetWidth;cvs.height=card.offsetHeight;}resize();new ResizeObserver(resize).observe(card);function draw(now){var w=cvs.width,h=cvs.height,ctx=cvs.getContext('2d');ctx.clearRect(0,0,w,h);var perim=getPL(w,h),opacity=1;if(leaving){var elapsed=now-leaveStart;opacity=leaveOpacity*(1-Math.min(elapsed/350,1));if(opacity<=0){raf=null;return;}}else{var elapsed2=now-animStart;progress=Math.min(elapsed2/DURATION,1);progress=1-Math.pow(1-progress,3);}var sweepLen=perim*progress,segs=[{x1:0,y1:0,x2:w,y2:0},{x1:w,y1:0,x2:w,y2:h},{x1:w,y1:h,x2:0,y2:h},{x1:0,y1:h,x2:0,y2:0}],sLens=[w,h,w,h],drawn=0,s=startP%perim,started=false;ctx.save();ctx.strokeStyle=COLOR;ctx.lineWidth=BORDER;ctx.globalAlpha=opacity;ctx.beginPath();for(var pass=0;pass<2;pass++){var cum=0;for(var i=0;i<4;i++){var sLen=sLens[i],sStart=cum,sEnd=cum+sLen;cum+=sLen;if(!started){if(sEnd<=s)continue;var t=(s-sStart)/sLen,sx=segs[i].x1+(segs[i].x2-segs[i].x1)*t,sy=segs[i].y1+(segs[i].y2-segs[i].y1)*t;ctx.moveTo(sx,sy);started=true;var rem=sLen*(1-t),canDraw=Math.min(rem,sweepLen-drawn),t2=t+canDraw/sLen;ctx.lineTo(segs[i].x1+(segs[i].x2-segs[i].x1)*t2,segs[i].y1+(segs[i].y2-segs[i].y1)*t2);drawn+=canDraw;}else{var canDraw2=Math.min(sLen,sweepLen-drawn),t3=canDraw2/sLen;ctx.lineTo(segs[i].x1+(segs[i].x2-segs[i].x1)*t3,segs[i].y1+(segs[i].y2-segs[i].y1)*t3);drawn+=canDraw2;}if(drawn>=sweepLen)break;}if(drawn>=sweepLen||pass===1)break;s=0;}ctx.stroke();ctx.restore();raf=requestAnimationFrame(draw);}card.addEventListener('mouseenter',function(e){leaving=false;var rect=card.getBoundingClientRect();startP=ptP(e.clientX-rect.left,e.clientY-rect.top,cvs.width,cvs.height);progress=0;animStart=performance.now();if(!raf)raf=requestAnimationFrame(draw);});card.addEventListener('mouseleave',function(){leaving=true;leaveStart=performance.now();leaveOpacity=progress;});}document.addEventListener('DOMContentLoaded',function(){document.querySelectorAll('.product-card,.mfr-card').forEach(initCard);});})();
 (function(){if(window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;var bg=document.querySelector('.hero-bg');if(!bg)return;window.addEventListener('scroll',function(){bg.style.transform='scale(1.04) translateY('+(window.scrollY*0.28)+'px)';},{passive:true});})();
 </script>
+<script src="rlsh-sparkle.js" defer></script>
 <!-- Locked site shell: nav + mega menu + footer (skips itself inside Wix iframes) -->
 <script src="site-shell.js?v=3"></script>
 </body>
