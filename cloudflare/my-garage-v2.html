@@ -308,7 +308,7 @@
     }
     .s3-title .s3-check-icon{color:#1a7a3a;}
     .s3-sub{
-      font-family:'Barlow',sans-serif;font-size:12px;color:#777;letter-spacing:0.3px;
+      font-family:'Barlow',sans-serif;font-size:12px;color:#424954;letter-spacing:0.3px;
       font-weight:400;
     }
     .s3-vehicle{
@@ -319,13 +319,18 @@
     }
     .s3-vehicle .year-tag{color:#8B0000;}
 
-    /* Saved vehicles list (multi-vehicle garage) */
+    /* Saved vehicles list (multi-vehicle garage) — collapsible dropdown */
     .saved-vehicles{width:100%;text-align:left;}
-    .saved-vehicles-label{
+    .saved-dropdown-btn{
+      width:100%;display:flex;align-items:center;justify-content:space-between;gap:8px;
+      border:none;background:none;cursor:pointer;padding:0 0 8px;margin:0;
       font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;color:#424954;
-      letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px;
+      letter-spacing:1.5px;text-transform:uppercase;
     }
-    .saved-list{display:flex;flex-direction:column;gap:6px;}
+    .saved-dropdown-btn .dropdown-arrow{font-size:9px;color:#8B0000;transition:transform 0.2s;flex-shrink:0;}
+    .saved-dropdown.open .saved-dropdown-btn .dropdown-arrow{transform:rotate(180deg);}
+    .saved-list{display:none;flex-direction:column;gap:6px;}
+    .saved-dropdown.open .saved-list{display:flex;}
     .saved-row{
       display:flex;align-items:center;justify-content:space-between;gap:8px;
       border:1.5px solid #cbd5e0;background:#fff;
@@ -376,18 +381,6 @@
     }
     .s3-btn-clear:hover{background:#424954;color:#fff;border-color:#424954;}
 
-    .s3-close{
-      margin-top:auto;align-self:center;
-      display:inline-flex;align-items:center;justify-content:center;
-      padding:0 14px;height:30px;width:fit-content;
-      background:#f4f4f4;border:1px solid #e2e8f0;
-      font-family:'Barlow',sans-serif;font-size:9px;font-weight:700;
-      letter-spacing:2px;text-transform:uppercase;color:#424954;
-      cursor:pointer;transition:background 0.2s,border-color 0.2s,color 0.2s;
-      text-decoration:none;
-    }
-    .s3-close:hover{background:#ececec;border-color:#cbd5e0;color:#333;}
-
     /* Scrollbar */
     .picker-panel::-webkit-scrollbar{width:4px;}
     .picker-panel::-webkit-scrollbar-track{background:#f1f1f1;}
@@ -417,7 +410,6 @@
     .s3-title{font-size:18px;}
     .s3-actions{flex-direction:column;align-items:stretch;gap:8px;}
     .s3-btn-primary,.s3-btn-secondary,.s3-btn-clear{width:100%;text-align:center;padding:10px 16px;}
-    .s3-close{margin-top:8px;}
 
     /* ── DESKTOP OVERRIDES ── */
     @media(min-width:641px){
@@ -442,7 +434,6 @@
       .s3-title{font-size:18px;}
       .s3-actions{flex-direction:row;align-items:center;gap:10px;}
       .s3-btn-primary,.s3-btn-secondary,.s3-btn-clear{width:auto;height:48px;padding:0 24px;font-size:13px;}
-      .s3-close{margin-top:auto;}
 
       /* Desktop: dropdown panels open downward, anchored to the field (standard site behavior) */
       .picker-panel{
@@ -601,7 +592,7 @@
       <button class="back-btn" onclick="transitionTo('screen-2','back')">← Back</button>
       <div class="screen-3-inner">
         <div class="s3-title">Garage Locked In <span class="s3-check-icon">✓</span></div>
-        <div class="s3-sub">Parts that fit your truck — across every page.</div>
+        <div class="s3-sub">Parts that fit your vehicle — across every page.</div>
         <div class="s3-vehicle" id="s3-vehicle">—</div>
         <div class="saved-vehicles" id="saved-vehicles" style="display:none;"></div>
         <div class="s3-actions">
@@ -610,7 +601,6 @@
           <button class="s3-btn-clear" onclick="clearAllVehicles()">Clear All</button>
         </div>
       </div>
-      <button class="s3-close" onclick="closeGarage()">Close</button>
     </div>
 
   </div><!-- /content-panel -->
@@ -1094,7 +1084,16 @@ function renderSavedVehicles(){
     return;
   }
   wrap.style.display='block';
-  wrap.innerHTML='<div class="saved-vehicles-label">Your Saved Vehicles</div><div class="saved-list"></div>';
+  wrap.innerHTML='<div class="saved-dropdown" id="saved-dropdown">'+
+    '<button type="button" class="saved-dropdown-btn" id="saved-dropdown-btn">'+
+    '<span>Your Saved Vehicles ('+list.length+')</span>'+
+    '<span class="dropdown-arrow">▼</span>'+
+    '</button>'+
+    '<div class="saved-list"></div>'+
+    '</div>';
+  document.getElementById('saved-dropdown-btn').onclick=function(){
+    document.getElementById('saved-dropdown').classList.toggle('open');
+  };
   var listEl=wrap.querySelector('.saved-list');
   list.forEach(function(v){
     var row=document.createElement('div');
