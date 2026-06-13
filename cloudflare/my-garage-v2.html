@@ -817,7 +817,15 @@ function togglePicker(name){
   if(!isOpen){
     panel.classList.add('open');
     btn.classList.add('open');
-    if(backdrop) backdrop.classList.add('open');
+    if(backdrop){
+      /* .screen has its own transform-based stacking context, which traps
+         .picker-panel's z-index below a backdrop living outside it. Move the
+         backdrop into the active screen so it stacks correctly beneath the
+         panel (z-index 250 vs 300) instead of covering it. */
+      var screen=panel.closest('.screen');
+      if(screen && backdrop.parentNode!==screen) screen.appendChild(backdrop);
+      backdrop.classList.add('open');
+    }
     if(window.matchMedia('(min-width:641px)').matches){
       /* Desktop: dropdown opens downward from the field — bring it fully into view
          within the scrolling screen if needed. */
