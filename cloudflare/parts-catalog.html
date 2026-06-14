@@ -1276,9 +1276,9 @@ function HeroBanner({ garage, onSwapVehicle, catDef }) {
 function Breadcrumbs({ catLabel }) {
   return (
     <nav className="crumbs">
-      <a href="https://www.3jsautobody.com/">Home</a>
+      <a href="/">Home</a>
       <span className="crumb-sep">/</span>
-      <a href="exterior-accessories.html">Parts &amp; Accessories</a>
+      <a href="/exterior-accessories-V2">Parts &amp; Accessories</a>
       <span className="crumb-sep">/</span>
       <span className="crumb-now">{catLabel || 'Tonneau Covers'}</span>
     </nav>
@@ -1620,8 +1620,8 @@ function Footer() {
         <div className="ftr-col">
           <h5>Shop</h5>
           <a href="parts-catalog.html">Tonneau Covers</a>
-          <a href="exterior-accessories.html">Accessories</a>
-          <a href="https://www.3jsautobody.com/rhino-lining-quote">Rhino Liner Quote</a>
+          <a href="/exterior-accessories-V2">Accessories</a>
+          <a href="/rhino-lining-quote">Rhino Liner Quote</a>
         </div>
         <div className="ftr-col">
           <h5>Service</h5>
@@ -1638,7 +1638,7 @@ function Footer() {
       </div>
       <div className="ftr-bottom">
         <span>© 2026 3J's Auto Body &amp; Rhino Linings · Signal Hill, CA</span>
-        <span className="ftr-links"><a href="https://www.3jsautobody.com/privacy-policy">Privacy</a></span>
+        <span className="ftr-links"><a href="/privacy-policy">Privacy</a></span>
       </div>
     </footer>
   );

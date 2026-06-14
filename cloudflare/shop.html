@@ -19,7 +19,7 @@
   <script src="https://rlsh1855.github.io/3Js-and-RLSH-Website/amp-data.js"></script>
   <script src="https://rlsh1855.github.io/3Js-and-RLSH-Website/westin-data.js"></script>
   <script src="https://rlsh1855.github.io/3Js-and-RLSH-Website/lund-data.js"></script>
-  <script src="https://rlsh1855.github.io/3Js-and-RLSH-Website/headache-racks-data.js"></script>
+  <script src="headache-racks-data.js"></script>
   <script src="https://rlsh1855.github.io/3Js-and-RLSH-Website/product-content.js"></script>
 
   <style>
@@ -347,7 +347,6 @@
 /* ════════════════════════════════════════════════
    CONSTANTS & CONFIG
 ════════════════════════════════════════════════ */
-var QUOTE_URL = 'parts-quote.html';
 var GARAGE_KEY = 'garage_vehicle';
 var CATALOG_HERO = {
   all:     { eyebrow:'3J\'s Auto Body · Signal Hill, CA', title:'Shop <em>Accessories</em>' },
@@ -702,7 +701,7 @@ function render() {
         + priceHtml
         + '<div class="card-btns">'
           + '<button class="card-btn card-btn-view" onclick="viewProduct(\'' + esc(e.brand).replace(/'/g,"\\'") + '\',\'' + esc(e.product).replace(/'/g,"\\'") + '\')">Details</button>'
-          + '<a href="' + QUOTE_URL + '" target="_top" class="card-btn card-btn-quote">Get a Quote</a>'
+          + '<a href="parts-quote.html?product=' + encodeURIComponent(e.brand + ' ' + e.product) + '" target="_top" class="card-btn card-btn-quote">Get a Quote</a>'
         + '</div>'
       + '</div>'
       + '</div>';
@@ -714,7 +713,7 @@ function render() {
 }
 
 function viewProduct(brand, product) {
-  var url = 'product-detail.html?brand=' + encodeURIComponent(brand) + '&product=' + encodeURIComponent(product);
+  var url = 'product-detail-page.html?brand=' + encodeURIComponent(brand) + '&product=' + encodeURIComponent(product);
   window.location.href = url;
 }
 

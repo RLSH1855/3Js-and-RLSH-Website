@@ -982,7 +982,7 @@ function Header({ garage }) {
         </div>
       </div>
       <div className="hdr-main">
-        <a href="https://www.3jsautobody.com" className="logo">
+        <a href="/" className="logo">
           <img src={LOGO_URL} alt="3J's Auto Body & Rhino Linings" />
         </a>
         <div className="hdr-actions"></div>
@@ -1006,7 +1006,7 @@ function Breadcrumbs({ productName, brandName, coverType }) {
   const fullName = [brandName, productName].filter(Boolean).join(' ');
   return (
     <nav className="crumbs">
-      <a href="https://www.3jsautobody.com">Home</a><span className="crumb-sep">/</span>
+      <a href="/">Home</a><span className="crumb-sep">/</span>
       <a href="exterior-accessories-V2.html">Exterior Accessories</a><span className="crumb-sep">/</span>
       <a href={catUrl}>{cat}</a><span className="crumb-sep">/</span>
       {type && <React.Fragment><a href={catUrl}>{type}</a><span className="crumb-sep">/</span></React.Fragment>}

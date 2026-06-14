@@ -23,7 +23,7 @@
     '<div class="gc-saved" id="gc-saved">'+
     '<p class="gc-saved-title">Vehicle Saved!</p>'+
     '<p class="gc-saved-pill" id="gc-saved-pill">&#8212;</p>'+
-    '<div class="gc-saved-actions"><a href="https://www.3jsautobody.com/exterior-accessories" class="gc-saved-btn red">Shop Accessories</a><button class="gc-saved-btn out" id="gc-change-btn">Change Vehicle</button></div>'+
+    '<div class="gc-saved-actions"><a href="/exterior-accessories-V2" class="gc-saved-btn red">Shop Accessories</a><button class="gc-saved-btn out" id="gc-change-btn">Change Vehicle</button></div>'+
     '<button class="gc-continue-btn" id="gc-continue-btn">Continue Browsing</button>'+
     '<button class="gc-clear-btn" id="gc-clear-btn">Clear Vehicle</button>'+
     '</div>'+
