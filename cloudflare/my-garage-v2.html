@@ -140,7 +140,7 @@
     /* Picker button */
     .picker-btn{
       width:100%;padding:10px 12px;
-      background:#fff;border:1px solid #cbd5e0;
+      background:#fff;border:1px solid #a3afc0;
       font-family:'Inter',sans-serif;font-size:14px;font-weight:800;
       color:#111;letter-spacing:1.5px;
       display:flex;align-items:center;justify-content:space-between;gap:8px;
@@ -149,8 +149,8 @@
     }
     .picker-btn:hover{border-color:#8B0000;}
     .picker-btn.open{border-color:#8B0000;}
-    .picker-btn .ph{color:#9aa3af;font-weight:600;}
-    .picker-btn.disabled-state{opacity:0.4;cursor:not-allowed;pointer-events:none;background:#f6f7f9;}
+    .picker-btn .ph{color:#6b7785;font-weight:600;}
+    .picker-btn.disabled-state{cursor:not-allowed;pointer-events:none;background:#f6f7f9;border-color:#e2e8f0;}
     .picker-arrow{font-size:9px;color:#8B0000;transition:transform 0.2s;flex-shrink:0;}
     .picker-btn.open .picker-arrow{transform:rotate(180deg);}
 
@@ -158,7 +158,7 @@
     .picker-panel{
       display:none;
       position:fixed;left:16px;right:16px;bottom:16px;
-      background:#fff;border:1px solid #cbd5e0;
+      background:#fff;border:1px solid #a3afc0;
       box-shadow:0 12px 40px rgba(15,30,46,0.25);
       z-index:300;padding:10px;
       max-height:50vh;overflow-y:auto;
@@ -201,12 +201,22 @@
     }
     .vin-input{
       width:100%;padding:12px 14px;
-      background:#fff;border:1px solid #cbd5e0;
+      background:#fff;border:1px solid #a3afc0;
       font-family:'Inter',sans-serif;font-size:16px;font-weight:700;
       letter-spacing:2px;text-transform:uppercase;color:#111;
       margin-bottom:6px;min-height:46px;
     }
-    .vin-input::placeholder{color:#9aa3af;letter-spacing:1px;font-weight:600;}
+    .vin-input::placeholder{color:#6b7785;letter-spacing:1px;font-weight:600;}
+
+    .trim-input{
+      width:100%;padding:10px 12px;
+      background:#fff;border:1px solid #a3afc0;
+      font-family:'Inter',sans-serif;font-size:16px;font-weight:700;
+      letter-spacing:0.5px;color:#111;
+      min-height:42px;
+    }
+    .trim-input::placeholder{color:#6b7785;font-weight:600;letter-spacing:0.5px;}
+    .trim-input:focus{outline:none;border-color:#8B0000;}
     .vin-input:focus{outline:none;border-color:#8B0000;}
     .vin-hint{font-family:'Barlow',sans-serif;font-size:12px;color:#1F2937;letter-spacing:0.3px;margin-bottom:14px;}
     .vin-status{
@@ -308,12 +318,12 @@
     }
     .s3-title .s3-check-icon{color:#1a7a3a;}
     .s3-sub{
-      font-family:'Barlow',sans-serif;font-size:12px;color:#424954;letter-spacing:0.3px;
-      font-weight:400;
+      font-family:'Barlow',sans-serif;font-size:13px;color:#1F2937;letter-spacing:0.3px;
+      font-weight:500;
     }
     .s3-vehicle{
       font-family:'Inter',sans-serif;font-weight:900;
-      font-size:clamp(13px,2vw,17px);
+      font-size:clamp(15px,2.2vw,18px);
       letter-spacing:1px;
       color:#111;line-height:1.3;
     }
@@ -395,7 +405,7 @@
     .step-pill{margin-bottom:8px;}
     .step-text{font-size:10px;letter-spacing:3px;}
     .picker-label,.s2-label,.confirm-label,.color-row-label{font-size:13px;}
-    .picker-cell,.model-cell{font-size:14px;}
+    .picker-cell,.model-cell{font-size:16px;}
     .entry-tabs{margin-bottom:10px;}
     .s1-heading{font-size:22px;line-height:1.25;margin-bottom:12px;}
     .picker-field{margin-bottom:6px;}
@@ -408,7 +418,7 @@
     .color-row{margin-bottom:12px;}
     .screen-3-inner{padding-top:8px;gap:10px;}
     .s3-title{font-size:18px;}
-    .s3-actions{flex-direction:column;align-items:stretch;gap:8px;}
+    .s3-actions{flex-direction:column;align-items:stretch;gap:14px;}
     .s3-btn-primary,.s3-btn-secondary,.s3-btn-clear{width:100%;text-align:center;padding:10px 16px;}
 
     /* ── DESKTOP OVERRIDES ── */
@@ -424,7 +434,7 @@
       .picker-field{margin-bottom:10px;}
       .picker-label{margin-bottom:5px;font-size:10px;}
       .s2-label,.confirm-label,.color-row-label{font-size:10px;}
-      .picker-cell,.model-cell{font-size:13px;}
+      .picker-cell,.model-cell{font-size:14px;}
       .picker-btn{font-size:14px;min-height:42px;padding:10px 12px;}
       .next-btn,.save-btn,.vin-btn{height:48px;font-size:13px;}
       .confirm-vehicle{font-size:17px;margin-bottom:24px;padding-bottom:16px;}
@@ -566,16 +576,8 @@
 
       <div class="s2-field" id="trim-field">
         <span class="s2-label">Trim Level <span class="opt">• optional</span></span>
-        <div class="picker-wrap" id="trim-wrap">
-          <button type="button" class="picker-btn" id="trim-btn" onclick="togglePicker('trim')">
-            <span id="trim-label" class="ph">Unknown / Not Listed</span>
-            <span class="picker-arrow">▼</span>
-          </button>
-          <div class="picker-panel" id="trim-panel">
-            <div class="model-list" id="trim-grid"></div>
-          </div>
-        </div>
-        <input type="hidden" id="val-trim"/>
+        <input type="text" class="trim-input" id="trim-input" list="trim-datalist" placeholder="e.g. XLT, FX4, Sport" autocomplete="off"/>
+        <datalist id="trim-datalist"></datalist>
       </div>
 
       <div class="color-row">
@@ -620,14 +622,28 @@ var MAKES={
 
 var TRIMS={
   "F-150":          ["XL","XLT","Lariat","King Ranch","Platinum","Limited","Raptor","Raptor R"],
+  "F-150 Lightning":["Pro","XLT","Flash","Lariat","Platinum"],
+  "Super Duty F-250/F-350":["XL","XLT","Lariat","King Ranch","Platinum","Limited"],
+  "Maverick":       ["XL","XLT","Lariat","Tremor"],
   "Silverado 1500": ["WT","Custom","LT","RST","LTZ","High Country","ZR2","Trail Boss"],
+  "Silverado 2500HD/3500HD":["WT","Custom","LT","LTZ","High Country","ZR2"],
   "Sierra 1500":    ["Pro","SLE","SLT","AT4","Denali","Denali Ultimate"],
+  "Sierra 2500HD/3500HD":["Pro","SLE","SLT","AT4","Denali","Denali Ultimate"],
   "1500":           ["Tradesman","Big Horn","Lone Star","Laramie","Rebel","Limited","Longhorn"],
+  "1500 TRX":       ["TRX","TRX Final Edition"],
+  "1500 RHO":       ["RHO"],
+  "2500/3500":      ["Tradesman","Big Horn","Laramie","Power Wagon","Rebel","Limited","Longhorn"],
   "Tacoma":         ["SR","SR5","TRD Sport","TRD Off-Road","Limited","TRD Pro","Trailhunter"],
   "Tundra":         ["SR","SR5","Limited","Platinum","1794 Edition","TRD Pro","Capstone"],
+  "Pickup":         ["DX","SR5","Deluxe"],
+  "T100":           ["DX","SR5"],
   "Ranger":         ["XL","XLT","Lariat","Raptor"],
   "Colorado":       ["WT","LT","Z71","ZR2","Trail Boss"],
   "Canyon":         ["Pro","SLE","Elevation","SLT","AT4X","Denali"],
+  "Titan":          ["S","SV","Pro-4X","SL","Platinum Reserve"],
+  "Titan XD":       ["S","SV","Pro-4X","SL","Platinum Reserve"],
+  "Frontier":       ["S","SV","Pro-X","Pro-4X","SL"],
+  "Ridgeline":      ["Sport","RTL","RTL-E","Black Edition"],
   "Gladiator":      ["Sport","Sport S","Willys","Rubicon","Mojave"],
 };
 
@@ -797,7 +813,7 @@ function togglePicker(name){
   var btn=document.getElementById(name+'-btn');
   var panel=document.getElementById(name+'-panel');
   var isOpen=panel.classList.contains('open');
-  ['year','make','model','trim','bed'].forEach(function(n){
+  ['year','make','model','bed'].forEach(function(n){
     var p=document.getElementById(n+'-panel');
     var b=document.getElementById(n+'-btn');
     if(p) p.classList.remove('open');
@@ -832,7 +848,7 @@ function closePicker(name){
   var b=document.getElementById(name+'-btn');
   if(p) p.classList.remove('open');
   if(b) b.classList.remove('open');
-  var anyOpen=['year','make','model','trim','bed'].some(function(n){
+  var anyOpen=['year','make','model','bed'].some(function(n){
     var panel=document.getElementById(n+'-panel');
     return panel&&panel.classList.contains('open');
   });
@@ -842,11 +858,11 @@ function closePicker(name){
   }
 }
 function closeAllPickers(){
-  ['year','make','model','trim','bed'].forEach(closePicker);
+  ['year','make','model','bed'].forEach(closePicker);
 }
 
 document.addEventListener('click',function(e){
-  ['year','make','model','trim','bed'].forEach(function(n){
+  ['year','make','model','bed'].forEach(function(n){
     var wrap=document.getElementById(n+'-wrap');
     if(wrap&&!wrap.contains(e.target)) closePicker(n);
   });
@@ -861,49 +877,16 @@ function goStep2(){
   document.getElementById('confirm-name').textContent=year+' '+make+' '+model;
 
   var trims=TRIMS[model]||[];
-  var trimGrid=document.getElementById('trim-grid');
-  var trimBtn=document.getElementById('trim-btn');
-  var trimLabel=document.getElementById('trim-label');
-  document.getElementById('val-trim').value='';
-  trimLabel.textContent='Unknown / Not Listed';
-  trimLabel.classList.add('ph');
-  trimGrid.innerHTML='';
-  if(trims.length){
-    trimBtn.classList.remove('disabled-state');
-    var unknown=document.createElement('div');
-    unknown.className='model-cell';
-    unknown.textContent='Unknown / Not Listed';
-    unknown.onclick=function(){
-      document.getElementById('val-trim').value='';
-      trimLabel.textContent='Unknown / Not Listed';
-      trimLabel.classList.add('ph');
-      trimGrid.querySelectorAll('.model-cell').forEach(function(x){x.classList.remove('selected');});
-      unknown.classList.add('selected');
-      closePicker('trim');
-    };
-    trimGrid.appendChild(unknown);
-    trims.forEach(function(t){
-      var c=document.createElement('div');
-      c.className='model-cell';
-      c.textContent=t;
-      c.onclick=function(){
-        document.getElementById('val-trim').value=t;
-        trimLabel.textContent=t;
-        trimLabel.classList.remove('ph');
-        trimGrid.querySelectorAll('.model-cell').forEach(function(x){x.classList.remove('selected');});
-        c.classList.add('selected');
-        closePicker('trim');
-      };
-      trimGrid.appendChild(c);
-      // VIN pre-fill: auto-select matching trim
-      if(pendingTrim && t.toLowerCase()===pendingTrim.toLowerCase()){ c.click(); }
-    });
-  } else {
-    trimBtn.classList.add('disabled-state');
-    trimLabel.textContent='No trim data';
-  }
+  var trimInput=document.getElementById('trim-input');
+  var trimList=document.getElementById('trim-datalist');
+  trimList.innerHTML='';
+  trims.forEach(function(t){
+    var opt=document.createElement('option');
+    opt.value=t;
+    trimList.appendChild(opt);
+  });
+  trimInput.value=pendingTrim||'';
   pendingTrim='';
-  document.getElementById('trim-field').style.display='block';
 
   var beds=BED_SIZES[model]||[];
   var bedGrid=document.getElementById('bed-grid');
@@ -955,7 +938,7 @@ function buildSwatches(){
 }
 
 function saveVehicle(){
-  var trim=document.getElementById('val-trim').value;
+  var trim=document.getElementById('trim-input').value.trim();
   var bedVal=document.getElementById('val-bed').value;
   var beds=BED_SIZES[pendingVehicle.model]||[];
   var bedLabel='';
