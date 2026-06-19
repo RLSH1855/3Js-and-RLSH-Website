@@ -180,7 +180,9 @@
       line-height:1.0;
       color:#fff;
       text-transform:uppercase;
-      margin-bottom:20px;
+      margin-bottom:0;
+      text-align:center;
+      text-wrap:balance;
     }
     .page-hero h1 span{color:var(--crimson);}
     .page-hero p{
@@ -316,8 +318,22 @@
        CONTACT SECTION — form + info
     ══════════════════════════════════════════════ */
     .contact-section{
-      background:var(--black-2);
+      background:var(--black-2) url('trail-bg.webp') center/cover no-repeat;
+      background-blend-mode:overlay;
       padding:48px 20px;
+      position:relative;
+    }
+    .contact-section::before{
+      content:'';
+      position:absolute;
+      inset:0;
+      background:rgba(17,17,17,0.75);
+      pointer-events:none;
+      z-index:0;
+    }
+    .contact-inner{
+      position:relative;
+      z-index:1;
     }
     .contact-inner{
       max-width:1100px;
@@ -417,12 +433,12 @@
     .info-item{display:flex;align-items:flex-start;gap:14px;}
     .info-icon{
       width:40px;height:40px;flex-shrink:0;
-      background:rgba(139,0,0,0.15);
-      border:1px solid rgba(139,0,0,0.35);
+      background:none;
+      border:none;
       border-radius:0;
       display:flex;align-items:center;justify-content:center;
     }
-    .info-icon svg{width:18px;height:18px;stroke:var(--crimson);fill:none;stroke-width:2;}
+    .info-icon svg{width:18px;height:18px;stroke:rgba(255,255,255,0.85);fill:none;stroke-width:2;}
     .info-item-text{flex:1;}
     .info-item-label{
       font-size:13px;font-weight:800;letter-spacing:2px;
@@ -440,7 +456,7 @@
     /* Hours table */
     .hours-block{
       position:relative;
-      background:#fff url('trail-bg.webp') center/cover no-repeat;
+      background:#fff;
       border:1px solid var(--divider);
       border-radius:0;
       padding:20px 22px;
