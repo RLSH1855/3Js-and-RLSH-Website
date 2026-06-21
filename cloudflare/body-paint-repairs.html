@@ -25,9 +25,9 @@
       --divider-dark:rgba(255,255,255,0.08);
     }
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    html{overflow-y:scroll;scrollbar-width:none;}
+    html{overflow-y:scroll;scrollbar-width:none;overscroll-behavior:none;}
     html::-webkit-scrollbar{display:none;}
-    body{font-family:'Inter',sans-serif;font-size:16px;color:var(--body-text);max-width:100%;letter-spacing:0.3px;}
+    body{font-family:'Inter',sans-serif;font-size:16px;color:var(--body-text);max-width:100%;letter-spacing:0.3px;overflow-x:hidden;}
     .skip-link{position:absolute;top:-100%;left:16px;z-index:9999;background:#8B0000;color:#fff;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:8px 20px;text-decoration:none;}
     .skip-link:focus{top:16px;}
 
@@ -71,7 +71,7 @@
     .feature-list li{font-family:'Inter',sans-serif;display:flex;align-items:center;gap:10px;font-size:13px;font-weight:600;letter-spacing:0.8px;text-transform:uppercase;}
     .feature-list li::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--crimson);flex-shrink:0;}
 
-    .cta-link{display:inline-flex;align-items:center;gap:8px;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;margin-top:24px;padding:0 24px;height:48px;border-radius:0;transition:background 0.2s,color 0.2s,border-color 0.2s;}
+    .cta-link{display:inline-flex;align-items:center;gap:8px;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;margin-top:24px;padding:0 32px;height:48px;border-radius:0;transition:background 0.2s,color 0.2s,border-color 0.2s;}
     .cta-link svg{width:14px;height:14px;}
 
     .two-col{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;max-width:1100px;margin:0 auto;padding:clamp(56px,8vw,100px) clamp(20px,4vw,40px);}
@@ -86,7 +86,7 @@
 
     /* DARK */
     .dark{background:var(--black-1);color:var(--white);position:relative;}
-    .dark::before{content:'';position:absolute;inset:0;background-image:url('https://rlsh1855.github.io/3Js-and-RLSH-Website/AUTO%20GEARS%20BACKGROUND%20BLACK%20WITH%20WHITE.webp');background-size:cover;background-position:center;opacity:0.08;pointer-events:none;z-index:0;}
+    .dark::before{content:'';position:absolute;inset:0;background-image:url('AUTO%20GEARS%20BACKGROUND%20BLACK%20WITH%20WHITE.webp');background-size:cover;background-position:center;opacity:0.08;pointer-events:none;z-index:0;}
     .dark>*{position:relative;z-index:1;}
     .dark .eyebrow{color:rgba(255,255,255,0.45);}
     .dark .section-title em{color:var(--crimson);}
@@ -225,10 +225,10 @@
     .cta-band h2 em{font-style:normal;color:var(--crimson);}
     .cta-band p{font-family:'Inter',sans-serif;font-size:16px;font-weight:500;letter-spacing:0.3px;color:rgba(255,255,255,0.82);max-width:480px;margin:0 auto 32px;line-height:1.65;text-wrap:pretty;}
     .cta-buttons{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;}
-    .btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--crimson);color:var(--white);font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;text-decoration:none;padding:0 30px;height:48px;border-radius:0;border:2px solid #a00000;transition:background 0.2s;letter-spacing:2px;}
+    .btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--crimson);color:var(--white);font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;text-decoration:none;padding:0 32px;height:48px;border-radius:0;border:2px solid #a00000;transition:background 0.2s;letter-spacing:2px;}
     .btn-primary:hover{background:var(--crimson-hover);}
     .btn-primary:active{background:var(--crimson-active);}
-    .btn-secondary{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.15);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);color:var(--white);font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;text-decoration:none;padding:0 30px;height:48px;border-radius:0;border:1.5px solid rgba(255,255,255,0.55);transition:background 0.2s,border-color 0.2s;letter-spacing:2px;}
+    .btn-secondary{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.15);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);color:var(--white);font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;text-decoration:none;padding:0 32px;height:48px;border-radius:0;border:1.5px solid rgba(255,255,255,0.55);transition:background 0.2s,border-color 0.2s;letter-spacing:2px;}
     .btn-secondary:hover{background:rgba(255,255,255,0.28);border-color:rgba(255,255,255,0.9);}
     .btn-secondary:active{background:rgba(255,255,255,0.38);}
 
@@ -246,7 +246,7 @@
     .faq-trigger-inner{display:flex;align-items:center;gap:16px;padding:18px 20px;transition:background 0.15s;}
     .faq-trigger:hover .faq-trigger-inner,.faq-item.open .faq-trigger-inner{background:#f4f4f4;}
     .q-badge{flex-shrink:0;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:900;color:#AAAAAA;padding:3px 8px;border:1px solid #E8ECF0;border-radius:0;background:#fff;align-self:flex-start;margin-top:2px;box-shadow:0 1px 4px rgba(0,0,0,0.07);}
-    .q-label{flex:1;font-family:'Montserrat',sans-serif;font-size:16px;font-weight:700;color:#1a1a1a;line-height:1.45;}
+    .q-label{flex:1;font-family:'Montserrat',sans-serif;font-size:14px;font-weight:700;color:#1a1a1a;line-height:1.45;}
     .toggle-icon{flex-shrink:0;width:40px;height:40px;display:flex;align-items:center;justify-content:center;transition:transform 0.3s ease;color:#111;}
     .toggle-icon svg{width:20px;height:20px;}
     .faq-item.open .toggle-icon{transform:rotate(45deg);}
@@ -320,11 +320,11 @@
     .owner-text .eyebrow{color:rgba(255,255,255,0.45);margin-bottom:16px;}
     .owner-text h2{font-family:'Montserrat',sans-serif;font-size:clamp(26px,4vw,40px);font-weight:800;letter-spacing:-1px;line-height:1.1;color:#fff;margin-bottom:20px;text-wrap:balance;}
     .owner-text h2 em{font-style:normal;color:#8B0000;}
-    .owner-text p{font-family:'Inter',sans-serif;font-size:16px;font-weight:500;color:rgba(255,255,255,0.72);line-height:1.65;max-width:520px;text-wrap:pretty;}
+    .owner-text p{font-family:'Inter',sans-serif;font-size:16px;font-weight:500;color:rgba(255,255,255,0.82);line-height:1.65;max-width:520px;text-wrap:pretty;}
     .owner-stats{display:flex;flex-direction:column;gap:0;}
     .owner-stat{border-top:1px solid rgba(255,255,255,0.10);padding:28px 0;}
     .owner-num{font-family:'Montserrat',sans-serif;font-size:clamp(52px,7vw,84px);font-weight:900;letter-spacing:-3px;line-height:1;color:#8B0000;}
-    .owner-lbl{font-family:'Inter',sans-serif;font-size:16px;font-weight:500;letter-spacing:0.3px;line-height:1.65;color:rgba(255,255,255,0.72);margin-top:6px;}
+    .owner-lbl{font-family:'Inter',sans-serif;font-size:16px;font-weight:500;letter-spacing:0.3px;line-height:1.65;color:rgba(255,255,255,0.82);margin-top:6px;}
     @media(min-width:640px){
       .owner-grid{grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
     }
@@ -472,8 +472,8 @@
       <span class="num-badge">01</span>
       <div class="visual-box" style="overflow:hidden;">
         <div class="ba-slider" data-slider style="aspect-ratio:4/3;">
-          <div class="ba-img before"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/ba-audi-before.webp" alt="Before collision repair" loading="lazy"></div>
-          <div class="ba-img after"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/ba-audi-after.webp" alt="After collision repair" loading="lazy"></div>
+          <div class="ba-img before"><img src="ba-audi-before.webp" alt="Before collision repair" loading="lazy"></div>
+          <div class="ba-img after"><img src="ba-audi-after.webp" alt="After collision repair" loading="lazy"></div>
           <div class="ba-handle" data-handle><div class="ba-handle-knob"><svg width="18" height="18" fill="none" stroke="#8B0000" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/><polyline points="9 6 3 12 9 18"/></svg></div></div>
           <span class="ba-badge before">Before</span>
           <span class="ba-badge after">After</span>
@@ -506,7 +506,7 @@
     <div class="col-visual">
       <span class="num-badge">02</span>
       <div class="visual-box">
-        <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/mirror-paint-finish.webp" alt="Mirror paint finish at 3J's Auto Body" loading="lazy">
+        <img src="mirror-paint-finish.webp" alt="Mirror paint finish at 3J's Auto Body" loading="lazy">
       </div>
     </div>
   </div>
@@ -532,7 +532,7 @@
     <div class="col-visual">
       <span class="num-badge">03</span>
       <div class="visual-box">
-        <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/paintless-dent-repair.webp" alt="Paintless dent repair" loading="lazy">
+        <img src="paintless-dent-repair.webp" alt="Paintless dent repair" loading="lazy">
       </div>
     </div>
   </div>
@@ -543,7 +543,7 @@
 <!-- 4. FRAME & STRUCTURAL — full-bleed -->
 <section class="frame-bleed">
   <div class="frame-bleed-bg">
-    <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/frame-straightening.webp" alt="Frame straightening at 3J's Auto Body" loading="lazy">
+    <img src="frame-straightening.webp" alt="Frame straightening at 3J's Auto Body" loading="lazy">
   </div>
   <div class="frame-bleed-content">
     <p class="eyebrow">Service 04 — Safety Critical</p>
@@ -584,7 +584,7 @@
     <div class="col-visual">
       <span class="num-badge">05</span>
       <div class="visual-box">
-        <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/lease-turn-in.webp" alt="Lease turn-in vehicle repair" loading="lazy">
+        <img src="lease-turn-in.webp" alt="Lease turn-in vehicle repair" loading="lazy">
       </div>
     </div>
   </div>
@@ -596,21 +596,21 @@
   <h2>We Work With <em>All Major Carriers</em></h2>
   <p>You shouldn't have to fight your insurance company on your own. We work directly with <strong>all major carriers</strong> as a preferred repair facility — handling the claim process so you can focus on getting back on the road.</p>
   <div class="ins-grid">
-    <div class="ins-logo-tile"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/ins-state-farm.webp" alt="State Farm" loading="lazy"></div>
-    <div class="ins-logo-tile"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/ins-geico.webp" alt="Geico" loading="lazy"></div>
-    <div class="ins-logo-tile"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/ins-progressive.webp" alt="Progressive" loading="lazy"></div>
-    <div class="ins-logo-tile"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/ins-allstate.webp" alt="Allstate" loading="lazy"></div>
-    <div class="ins-logo-tile"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/ins-farmers.webp" alt="Farmers" loading="lazy"></div>
-    <div class="ins-logo-tile"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/ins-usaa.webp" alt="USAA" loading="lazy"></div>
-    <div class="ins-logo-tile"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/ins-liberty-mutual.webp" alt="Liberty Mutual" loading="lazy"></div>
-    <div class="ins-logo-tile"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/ins-nationwide.webp" alt="Nationwide" loading="lazy"></div>
-    <div class="ins-logo-tile"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/ins-safeco.webp" alt="Safeco" loading="lazy"></div>
-    <div class="ins-logo-tile"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/ins-kemper.webp" alt="Kemper" loading="lazy"></div>
-    <div class="ins-logo-tile"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/ins-21st-century.webp" alt="21st Century" loading="lazy"></div>
-    <div class="ins-logo-tile"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/ins-metlife.webp" alt="MetLife" loading="lazy"></div>
-    <div class="ins-logo-tile"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/ins-hartford.webp" alt="The Hartford" loading="lazy"></div>
-    <div class="ins-logo-tile"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/ins-bristol-west.webp" alt="Bristol West" loading="lazy"></div>
-    <div class="ins-logo-tile"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/ins-american-family.webp" alt="American Family" loading="lazy"></div>
+    <div class="ins-logo-tile"><img src="ins-state-farm.webp" alt="State Farm" loading="lazy"></div>
+    <div class="ins-logo-tile"><img src="ins-geico.webp" alt="Geico" loading="lazy"></div>
+    <div class="ins-logo-tile"><img src="ins-progressive.webp" alt="Progressive" loading="lazy"></div>
+    <div class="ins-logo-tile"><img src="ins-allstate.webp" alt="Allstate" loading="lazy"></div>
+    <div class="ins-logo-tile"><img src="ins-farmers.webp" alt="Farmers" loading="lazy"></div>
+    <div class="ins-logo-tile"><img src="ins-usaa.webp" alt="USAA" loading="lazy"></div>
+    <div class="ins-logo-tile"><img src="ins-liberty-mutual.webp" alt="Liberty Mutual" loading="lazy"></div>
+    <div class="ins-logo-tile"><img src="ins-nationwide.webp" alt="Nationwide" loading="lazy"></div>
+    <div class="ins-logo-tile"><img src="ins-safeco.webp" alt="Safeco" loading="lazy"></div>
+    <div class="ins-logo-tile"><img src="ins-kemper.webp" alt="Kemper" loading="lazy"></div>
+    <div class="ins-logo-tile"><img src="ins-21st-century.webp" alt="21st Century" loading="lazy"></div>
+    <div class="ins-logo-tile"><img src="ins-metlife.webp" alt="MetLife" loading="lazy"></div>
+    <div class="ins-logo-tile"><img src="ins-hartford.webp" alt="The Hartford" loading="lazy"></div>
+    <div class="ins-logo-tile"><img src="ins-bristol-west.webp" alt="Bristol West" loading="lazy"></div>
+    <div class="ins-logo-tile"><img src="ins-american-family.webp" alt="American Family" loading="lazy"></div>
   </div>
 </section>
 
@@ -623,8 +623,8 @@
   <div class="ba-grid">
     <div>
       <div class="ba-slider" data-slider>
-        <div class="ba-img before"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/ba-audi-before.webp" alt="Audi before repair" loading="lazy"></div>
-        <div class="ba-img after"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/ba-audi-after.webp" alt="Audi after repair" loading="lazy"></div>
+        <div class="ba-img before"><img src="ba-audi-before.webp" alt="Audi before repair" loading="lazy"></div>
+        <div class="ba-img after"><img src="ba-audi-after.webp" alt="Audi after repair" loading="lazy"></div>
         <div class="ba-handle" data-handle><div class="ba-handle-knob"><svg width="18" height="18" fill="none" stroke="#8B0000" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/><polyline points="9 6 3 12 9 18"/></svg></div></div>
         <span class="ba-badge before">Before</span><span class="ba-badge after">After</span>
       </div>
@@ -632,8 +632,8 @@
     </div>
     <div>
       <div class="ba-slider" data-slider>
-        <div class="ba-img before"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/ba-dodge-before.webp" alt="Dodge before repair" loading="lazy"></div>
-        <div class="ba-img after"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/ba-dodge-after.webp" alt="Dodge after repair" loading="lazy"></div>
+        <div class="ba-img before"><img src="ba-dodge-before.webp" alt="Dodge before repair" loading="lazy"></div>
+        <div class="ba-img after"><img src="ba-dodge-after.webp" alt="Dodge after repair" loading="lazy"></div>
         <div class="ba-handle" data-handle><div class="ba-handle-knob"><svg width="18" height="18" fill="none" stroke="#8B0000" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/><polyline points="9 6 3 12 9 18"/></svg></div></div>
         <span class="ba-badge before">Before</span><span class="ba-badge after">After</span>
       </div>
@@ -641,8 +641,8 @@
     </div>
     <div>
       <div class="ba-slider" data-slider>
-        <div class="ba-img before"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/ba-jeep-before.webp" alt="Jeep before repair" loading="lazy"></div>
-        <div class="ba-img after"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/ba-jeep-after.webp" alt="Jeep after repair" loading="lazy"></div>
+        <div class="ba-img before"><img src="ba-jeep-before.webp" alt="Jeep before repair" loading="lazy"></div>
+        <div class="ba-img after"><img src="ba-jeep-after.webp" alt="Jeep after repair" loading="lazy"></div>
         <div class="ba-handle" data-handle><div class="ba-handle-knob"><svg width="18" height="18" fill="none" stroke="#8B0000" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/><polyline points="9 6 3 12 9 18"/></svg></div></div>
         <span class="ba-badge before">Before</span><span class="ba-badge after">After</span>
       </div>
@@ -672,7 +672,7 @@
     <p>Walk in Mon–Fri 8AM–5PM · No appointment needed for estimates · Signal Hill, CA</p>
     <div class="cta-buttons">
       <a href="tel:+15624246744" class="btn-primary"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.7 10.82 19.79 19.79 0 01.67 2.18 2 2 0 012.66 0h3a2 2 0 012 1.72c.13 1 .36 1.97.7 2.91a2 2 0 01-.45 2.11L6.91 7.74a16 16 0 006.29 6.29l1-.99a2 2 0 012.11-.45c.94.34 1.91.57 2.91.7A2 2 0 0122 16.92z"/></svg>Call 562-424-6744</a>
-      <a href="https://www.carwise.com/online-photo-estimate/3js-autobody-paint-inc-signal-hill-ca-90755/479382?source=shop.profile&referer=estimate.cccone.com" class="btn-secondary"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>Free Online Estimate</a>
+      <a href="https://www.carwise.com/online-photo-estimate/3js-autobody-paint-inc-signal-hill-ca-90755/479382?source=shop.profile&referer=estimate.cccone.com" target="_blank" class="btn-secondary"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>Free Online Estimate</a>
     </div>
   </div>
 </section>
@@ -707,21 +707,10 @@
   function faqClose(item){var p=item.querySelector('.faq-body');p.style.height=p.scrollHeight+'px';void p.offsetHeight;p.style.height='0px';item.classList.remove('open');item.querySelector('.faq-trigger').setAttribute('aria-expanded','false');}
   function faqOpen(item){var p=item.querySelector('.faq-body');item.classList.add('open');item.querySelector('.faq-trigger').setAttribute('aria-expanded','true');p.style.height=p.querySelector('.faq-body-inner').offsetHeight+'px';}
   document.querySelectorAll('.faq-body').forEach(function(p){p.addEventListener('transitionend',function(e){if(e.propertyName!=='height')return;if(p.closest('.faq-item').classList.contains('open'))p.style.height='auto';});});
-  document.querySelectorAll('.faq-trigger').forEach(function(btn){btn.addEventListener('click',function(){var item=btn.closest('.faq-item'),wasOpen=item.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(faqClose);if(!wasOpen){faqOpen(item);}setTimeout(reportHeight,350);});});
-  function reportHeight(){
-    var sentinel=document.getElementById('height-sentinel');
-    var h=sentinel?(sentinel.offsetTop+sentinel.offsetHeight):Math.max(document.body.scrollHeight,document.body.offsetHeight,document.documentElement.scrollHeight,document.documentElement.offsetHeight);
-    window.parent.postMessage(JSON.stringify({height:h}),'*');
-  }
-  document.addEventListener('DOMContentLoaded',reportHeight);
-  window.addEventListener('load',function(){[0,200,500,1000,2000,3500].forEach(function(t){setTimeout(reportHeight,t);});});
-  window.addEventListener('resize',reportHeight);
-  if(window.ResizeObserver){new ResizeObserver(reportHeight).observe(document.body);}
-  document.querySelectorAll('img').forEach(function(img){img.addEventListener('load',reportHeight);});
+  document.querySelectorAll('.faq-trigger').forEach(function(btn){btn.addEventListener('click',function(){var item=btn.closest('.faq-item'),wasOpen=item.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(faqClose);if(!wasOpen){faqOpen(item);}});});
 </script>
 
 </main>
-<div id="height-sentinel" style="height:1px;width:1px;visibility:hidden;pointer-events:none;"></div>
 
 <script>
 (function(){var active=false,startY=0,lastY=0,rafId=null;document.addEventListener('mousedown',function(e){if(e.button!==1)return;if(e.target.closest('a'))return;e.preventDefault();active=true;startY=e.clientY;lastY=e.clientY;document.body.style.cursor='ns-resize';tick();});document.addEventListener('mousemove',function(e){if(active)lastY=e.clientY;});document.addEventListener('mouseup',function(e){if(e.button!==1||!active)return;active=false;document.body.style.cursor='';if(rafId){cancelAnimationFrame(rafId);rafId=null;}});function tick(){if(!active){rafId=null;return;}var dy=lastY-startY;if(Math.abs(dy)>5)window.scrollBy(0,dy*0.12);rafId=requestAnimationFrame(tick);}})();
