@@ -596,7 +596,7 @@
     /* BreadcrumbList schema for SEO */
     var base=location.origin;
     var items=full.map(function(c,i){
-      return {"@type":"ListItem","position":i+1,"name":c[0],"item":(c[1]?base+c[1]:location.href)};
+      return {"@type":"ListItem","position":i+1,"name":c[0],"item":(c[1]?base+'/'+c[1]:location.href)};
     });
     var ld=document.createElement('script');
     ld.type='application/ld+json';
