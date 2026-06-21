@@ -2,7 +2,7 @@
    3J's SITE SHELL — locked unit: nav + mega menu + footer
    ------------------------------------------------------------
    One include per page (before </body>):
-     <script src="https://rlsh1855.github.io/3Js-and-RLSH-Website/site-shell.js"></script>
+     <script src="site-shell.js"></script>
    - Skips itself inside Wix iframes (only renders standalone / on Cloudflare)
    - Injects: navy/Inter nav (shrink-on-scroll + flicker fix), My Garage pill,
      mobile hamburger menu, footer
@@ -37,7 +37,7 @@
     background:var(--ssn);transform:translateZ(0);will-change:transform;backface-visibility:hidden;-webkit-backface-visibility:hidden;}
 
   /* top branding bar (collapses on scroll) */
-  .ss-top{background:var(--ssn) url('https://rlsh1855.github.io/3Js-and-RLSH-Website/1-BG_dark_blue_gradiant_edited_edited.jpg') center/cover no-repeat;
+  .ss-top{background:var(--ssn) url('1-BG_dark_blue_gradiant_edited_edited.jpg') center/cover no-repeat;
     display:flex;align-items:center;justify-content:space-between;gap:24px;padding:14px 40px;
     max-height:120px;opacity:1;overflow:hidden;
     transition:max-height .7s cubic-bezier(.4,0,.2,1),opacity .55s cubic-bezier(.4,0,.2,1),padding .7s cubic-bezier(.4,0,.2,1);}
@@ -292,25 +292,25 @@
   var header =
   '<header class="ss-shell" id="ssShell">'+
     '<div class="ss-top">'+
-      '<a href="/rhino-lining-quote" class="ss-tb-btn red" target="_top">Bed-Liner Quote</a>'+
+      '<a href="rhino-lining-quote.html" class="ss-tb-btn red">Bed-Liner Quote</a>'+
       '<div class="ss-logos">'+
-        '<a href="/" target="_top"><img class="ss-logo-rlsh" src="https://static.wixstatic.com/media/b95bd9_8e3e4f256c85462d960aaa1e3ef740c8~mv2.png" alt="RLSH Rhino Lining of Signal Hill"></a>'+
-        '<a href="/" target="_top"><img class="ss-logo-3js" src="https://static.wixstatic.com/media/b95bd9_86c7cf1e525d4b9e961a2738ed9af502~mv2.png" alt="3J\'s Auto Body & Paint"></a>'+
+        '<a href="homepage.html"><img class="ss-logo-rlsh" src="rlsh-logo-white.webp" alt="RLSH Rhino Lining of Signal Hill"></a>'+
+        '<a href="homepage.html"><img class="ss-logo-3js" src="3js-logo-white.webp" alt="3J\'s Auto Body & Paint"></a>'+
       '</div>'+
-      '<a href="https://www.carwise.com/online-photo-estimate/3js-autobody-paint-inc-signal-hill-ca-90755/479382?source=shop.profile&referer=estimate.cccone.com" class="ss-tb-btn blue" target="_top">Free Online Repair Estimate</a>'+
+      '<a href="https://www.carwise.com/online-photo-estimate/3js-autobody-paint-inc-signal-hill-ca-90755/479382?source=shop.profile&referer=estimate.cccone.com" class="ss-tb-btn blue" target="_blank">Free Online Repair Estimate</a>'+
       '<button class="ss-burger" id="ssBurger" aria-label="Open menu"><span></span><span></span><span></span></button>'+
     '</div>'+
     '<nav class="ss-nav" aria-label="Main navigation">'+
       '<div class="ss-links">'+
-        '<a href="/" target="_top">Home</a>'+
-        '<a href="/inside-3js" target="_top">Inside 3J\'s</a>'+
-        '<a href="/body-paint-repairs" target="_top">Body &amp; Paint Repairs</a>'+
-        '<a href="/rhino-liner" id="sn-trigger-rhino" target="_top">Rhino Liner +</a>'+
-        '<a href="/bundles" id="sn-trigger-bundles" target="_top">Bundles &amp; Packages +</a>'+
-        '<a href="/exterior-accessories-V2" id="sn-trigger-exterior" target="_top">Exterior Accessories +</a>'+
-        '<a href="/shop" target="_top">Shop</a>'+
-        '<a href="/contact" target="_top">Contact Us</a>'+
-        '<a href="/FAQ_PAGE_V2" target="_top">FAQ</a>'+
+        '<a href="homepage.html">Home</a>'+
+        '<a href="inside-3js.html">Inside 3J\'s</a>'+
+        '<a href="body-paint-repairs.html">Body &amp; Paint Repairs</a>'+
+        '<a href="rhino-liner.html" id="sn-trigger-rhino">Rhino Liner +</a>'+
+        '<a href="bundles.html" id="sn-trigger-bundles">Bundles &amp; Packages +</a>'+
+        '<a href="exterior-accessories-V2.html" id="sn-trigger-exterior">Exterior Accessories +</a>'+
+        '<a href="shop.html">Shop</a>'+
+        '<a href="contact.html">Contact Us</a>'+
+        '<a href="FAQ_PAGE_V2.html">FAQ</a>'+
       '</div>'+
       '<a href="#" class="ss-garage" id="ss-garage-btn">'+
         '<span class="ss-garage-ico">'+icoTruck+'</span>'+
@@ -328,22 +328,22 @@
   <div class="footer-top">
     <div class="footer-brand">
       <div class="footer-logos">
-        <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/3js-logo-white.webp" alt="3J's Auto Body &amp; Paint" loading="lazy" class="footer-logo">
-        <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/rlsh-logo-white.webp" alt="Rhino Linings of Signal Hill" loading="lazy" class="footer-logo">
+        <img src="3js-logo-white.webp" alt="3J's Auto Body &amp; Paint" loading="lazy" class="footer-logo">
+        <img src="rlsh-logo-white.webp" alt="Rhino Linings of Signal Hill" loading="lazy" class="footer-logo">
       </div>
       <p class="footer-tagline">Signal Hill's trusted auto body, paint, and truck accessory shop. Serving the community since day one.</p>
       <div class="social-group">
         <p class="social-label">RLSH — Rhino Linings</p>
         <div class="social-row">
-          <a class="social-btn" href="https://www.instagram.com/rlofsignalhill/" target="_top">
+          <a class="social-btn" href="https://www.instagram.com/rlofsignalhill/" target="_blank">
             <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
             Instagram
           </a>
-          <a class="social-btn" href="https://www.facebook.com/RLsignalhill/" target="_top">
+          <a class="social-btn" href="https://www.facebook.com/RLsignalhill/" target="_blank">
             <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
             Facebook
           </a>
-          <a class="social-btn" href="https://www.yelp.com/biz/rhino-linings-of-signal-hill-signal-hill-3" target="_top">
+          <a class="social-btn" href="https://www.yelp.com/biz/rhino-linings-of-signal-hill-signal-hill-3" target="_blank">
             <svg viewBox="0 0 24 24"><path d="M20.16 12.594l-4.995 1.433c-.96.275-1.854-.8-1.29-1.67l2.718-4.416c.564-.917 1.88-.57 1.976.51l.57 4.143zM12.16 19.594l-1.98 4.687c-.39.925-1.688.925-2.078 0L6.12 19.594c-.39-.924.39-1.924 1.388-1.737l3.264.617c.998.188 1.776 1.188 1.388 2.12zm-7.12-8.344L.946 9.816C.024 9.44 0 8.152.91 7.73l4.375-2.016c.91-.42 1.854.44 1.584 1.404L5.71 11.25c-.27.964-1.584 1.14-2.67 0zm5.484-9.984L8.336 5.57c-.39.924-1.688.924-2.078 0L4.27 1.266C3.88.342 4.66-.657 5.66-.47l3.264.617c.998.188 1.428 1.188 1.6 1.12zM14.16 7.97l2.718-4.416c.564-.917-.096-2.063-1.17-1.917L10.87.52c-.96-.137-1.584.87-1.02 1.64l4.32 5.81z"/></svg>
             Yelp
           </a>
@@ -352,15 +352,15 @@
       <div class="social-group">
         <p class="social-label">3J's Auto Body</p>
         <div class="social-row">
-          <a class="social-btn" href="https://www.instagram.com/3jsautobody/" target="_top">
+          <a class="social-btn" href="https://www.instagram.com/3jsautobody/" target="_blank">
             <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
             Instagram
           </a>
-          <a class="social-btn" href="https://www.facebook.com/3jsAutoBodyPaintInc/" target="_top">
+          <a class="social-btn" href="https://www.facebook.com/3jsAutoBodyPaintInc/" target="_blank">
             <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
             Facebook
           </a>
-          <a class="social-btn" href="https://www.yelp.com/biz/3-js-auto-body-and-paint-signal-hill-3" target="_top">
+          <a class="social-btn" href="https://www.yelp.com/biz/3-js-auto-body-and-paint-signal-hill-3" target="_blank">
             <svg viewBox="0 0 24 24"><path d="M20.16 12.594l-4.995 1.433c-.96.275-1.854-.8-1.29-1.67l2.718-4.416c.564-.917 1.88-.57 1.976.51l.57 4.143zM12.16 19.594l-1.98 4.687c-.39.925-1.688.925-2.078 0L6.12 19.594c-.39-.924.39-1.924 1.388-1.737l3.264.617c.998.188 1.776 1.188 1.388 2.12zm-7.12-8.344L.946 9.816C.024 9.44 0 8.152.91 7.73l4.375-2.016c.91-.42 1.854.44 1.584 1.404L5.71 11.25c-.27.964-1.584 1.14-2.67 0zm5.484-9.984L8.336 5.57c-.39.924-1.688.924-2.078 0L4.27 1.266C3.88.342 4.66-.657 5.66-.47l3.264.617c.998.188 1.428 1.188 1.6 1.12zM14.16 7.97l2.718-4.416c.564-.917-.096-2.063-1.17-1.917L10.87.52c-.96-.137-1.584.87-1.02 1.64l4.32 5.81z"/></svg>
             Yelp
           </a>
@@ -370,11 +370,11 @@
     <div>
       <p class="footer-col-title">Quick Links</p>
       <ul class="footer-links">
-        <li><a href="/" target="_top">Home</a></li>
-        <li><a href="/body-paint-repairs" target="_top">Body &amp; Paint Repairs</a></li>
-        <li><a href="/rhino-liner" target="_top">Rhino Linings</a></li>
-        <li><a href="/exterior-accessories-V2" target="_top">Truck &amp; SUV Accessories</a></li>
-        <li><a href="https://www.3jsautobody.com/request-a-quote" target="_top">Get a Quote</a></li>
+        <li><a href="homepage.html">Home</a></li>
+        <li><a href="body-paint-repairs.html">Body &amp; Paint Repairs</a></li>
+        <li><a href="rhino-liner.html">Rhino Linings</a></li>
+        <li><a href="exterior-accessories-V2.html">Truck &amp; SUV Accessories</a></li>
+        <li><a href="parts-quote.html">Get a Quote</a></li>
       </ul>
     </div>
     <div>
@@ -410,8 +410,8 @@
   <div class="footer-bottom">
     <p class="footer-copy">&copy; 2025 <span>3J's Auto Body &amp; Paint</span>. All rights reserved.</p>
     <div class="footer-bottom-links">
-      <a href="/privacy-policy" target="_top">Privacy Policy</a>
-      <a href="/terms-conditions" target="_top">Terms of Service</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="terms-conditions.html">Terms of Service</a>
     </div>
   </div>
 </footer>`;
@@ -438,16 +438,16 @@
           '</button>'+
           '<div class="ssd-nav">'+
             '<div class="ssd-section"><span>Navigate</span></div>'+
-            '<a href="/" class="ssd-item" target="_top"><div class="ssd-item-text"><span class="ssd-item-label">Home</span><span class="ssd-item-desc">Start here</span></div><span class="ssd-item-arr">'+ssChevR+'</span></a>'+
-            '<a href="/inside-3js" class="ssd-item" target="_top"><div class="ssd-item-text"><span class="ssd-item-label">Inside 3J\'s</span><span class="ssd-item-desc">Our story &amp; team</span></div><span class="ssd-item-arr">'+ssChevR+'</span></a>'+
-            '<a href="/body-paint-repairs" class="ssd-item" target="_top"><div class="ssd-item-text"><span class="ssd-item-label">Body &amp; Paint Repairs</span><span class="ssd-item-desc">Collision repair &middot; paint matching</span></div><span class="ssd-item-arr">'+ssChevR+'</span></a>'+
+            '<a href="homepage.html" class="ssd-item"><div class="ssd-item-text"><span class="ssd-item-label">Home</span><span class="ssd-item-desc">Start here</span></div><span class="ssd-item-arr">'+ssChevR+'</span></a>'+
+            '<a href="inside-3js.html" class="ssd-item"><div class="ssd-item-text"><span class="ssd-item-label">Inside 3J\'s</span><span class="ssd-item-desc">Our story &amp; team</span></div><span class="ssd-item-arr">'+ssChevR+'</span></a>'+
+            '<a href="body-paint-repairs.html" class="ssd-item"><div class="ssd-item-text"><span class="ssd-item-label">Body &amp; Paint Repairs</span><span class="ssd-item-desc">Collision repair &middot; paint matching</span></div><span class="ssd-item-arr">'+ssChevR+'</span></a>'+
             '<button class="ssd-item" id="ssd-rhino-btn" aria-expanded="false"><div class="ssd-item-text"><span class="ssd-item-label">Rhino Liner</span><span class="ssd-item-desc">Bedliner &middot; floor protection</span></div><span class="ssd-item-arr" id="ssd-rhino-arr">'+ssChevD+'</span></button>'+
             '<div class="ssd-sub" id="ssd-rhino-sub">'+
               '<div class="ssd-sub-inner">'+
                 '<div class="ssd-sub-bar" id="ssd-rhino-bar"></div>'+
-                '<a href="/rhino-liner" class="ssd-sub-item" target="_top">Rhino Liner Overview'+ssChevSub+'</a>'+
-                '<a href="/rhino-lining-quote" class="ssd-sub-item" target="_top">Rhino Liner Quote'+ssChevSub+'</a>'+
-                '<a href="/before-after" class="ssd-sub-item" target="_top">Our Work'+ssChevSub+'</a>'+
+                '<a href="rhino-liner.html" class="ssd-sub-item">Rhino Liner Overview'+ssChevSub+'</a>'+
+                '<a href="rhino-lining-quote.html" class="ssd-sub-item">Rhino Liner Quote'+ssChevSub+'</a>'+
+                '<a href="before-after.html" class="ssd-sub-item">Our Work'+ssChevSub+'</a>'+
                 '<div class="ssd-sub-spacer"></div>'+
               '</div>'+
             '</div>'+
@@ -456,13 +456,13 @@
               '<div class="ssd-sub-inner">'+
                 '<div class="ssd-sub-bar" id="ssd-acc-bar"></div>'+
                 '<span class="ssd-sub-label">Bedliner &amp; Bed Accessories</span>'+
-                '<a href="/floor-liners" class="ssd-sub-item" target="_top">Floor Liners &amp; Mats'+ssChevSub+'</a>'+
-                '<a href="/headache-racks" class="ssd-sub-item" target="_top">Headache Rack'+ssChevSub+'</a>'+
+                '<a href="floor-liners.html" class="ssd-sub-item">Floor Liners &amp; Mats'+ssChevSub+'</a>'+
+                '<a href="headache-racks.html" class="ssd-sub-item">Headache Rack'+ssChevSub+'</a>'+
                 '<span class="ssd-sub-label">Exterior Upgrades</span>'+
-                '<a href="/tonneau-covers" class="ssd-sub-item" target="_top">Tonneau Covers'+ssChevSub+'</a>'+
-                '<a href="/steps-running-boards" class="ssd-sub-item" target="_top">Running Boards'+ssChevSub+'</a>'+
-                '<a href="/towing-hitches" class="ssd-sub-item" target="_top">Towing &amp; Hitches'+ssChevSub+'</a>'+
-                '<a href="/lighting" class="ssd-sub-item" target="_top">Lighting'+ssChevSub+'</a>'+
+                '<a href="tonneau-covers.html" class="ssd-sub-item">Tonneau Covers'+ssChevSub+'</a>'+
+                '<a href="steps-running-boards.html" class="ssd-sub-item">Running Boards'+ssChevSub+'</a>'+
+                '<a href="towing-hitches.html" class="ssd-sub-item">Towing &amp; Hitches'+ssChevSub+'</a>'+
+                '<a href="lighting.html" class="ssd-sub-item">Lighting'+ssChevSub+'</a>'+
                 '<div class="ssd-sub-spacer"></div>'+
               '</div>'+
             '</div>'+
@@ -471,26 +471,26 @@
             '<div class="ssd-sub" id="ssd-bundles-sub">'+
               '<div class="ssd-sub-inner">'+
                 '<div class="ssd-sub-bar" id="ssd-bundles-bar"></div>'+
-                '<a href="/bundles" class="ssd-sub-item" target="_top">The 405 Essential'+ssChevSub+'</a>'+
-                '<a href="/bundles" class="ssd-sub-item" target="_top">The Working Man'+ssChevSub+'</a>'+
-                '<a href="/bundles" class="ssd-sub-item" target="_top">The 3 Wise Men Standard'+ssChevSub+'</a>'+
-                '<a href="/bundles" class="ssd-sub-item" target="_top">The 3 Wise Men Premium'+ssChevSub+'</a>'+
+                '<a href="bundles.html" class="ssd-sub-item">The 405 Essential'+ssChevSub+'</a>'+
+                '<a href="bundles.html" class="ssd-sub-item">The Working Man'+ssChevSub+'</a>'+
+                '<a href="bundles.html" class="ssd-sub-item">The 3 Wise Men Standard'+ssChevSub+'</a>'+
+                '<a href="bundles.html" class="ssd-sub-item">The 3 Wise Men Premium'+ssChevSub+'</a>'+
                 '<div class="ssd-sub-spacer"></div>'+
               '</div>'+
             '</div>'+
-            '<a href="/shop" class="ssd-item" target="_top"><div class="ssd-item-text"><span class="ssd-item-label">Shop</span><span class="ssd-item-desc">Browse all products</span></div><span class="ssd-item-arr">'+ssChevR+'</span></a>'+
-            '<a href="/contact" class="ssd-item" target="_top"><div class="ssd-item-text"><span class="ssd-item-label">Contact Us</span><span class="ssd-item-desc">Get in touch &middot; 562-424-6744</span></div><span class="ssd-item-arr">'+ssChevR+'</span></a>'+
-            '<a href="/FAQ_PAGE_V2" class="ssd-item" target="_top"><div class="ssd-item-text"><span class="ssd-item-label">FAQ</span><span class="ssd-item-desc">Common questions answered</span></div><span class="ssd-item-arr">'+ssChevR+'</span></a>'+
+            '<a href="shop.html" class="ssd-item"><div class="ssd-item-text"><span class="ssd-item-label">Shop</span><span class="ssd-item-desc">Browse all products</span></div><span class="ssd-item-arr">'+ssChevR+'</span></a>'+
+            '<a href="contact.html" class="ssd-item"><div class="ssd-item-text"><span class="ssd-item-label">Contact Us</span><span class="ssd-item-desc">Get in touch &middot; 562-424-6744</span></div><span class="ssd-item-arr">'+ssChevR+'</span></a>'+
+            '<a href="FAQ_PAGE_V2.html" class="ssd-item"><div class="ssd-item-text"><span class="ssd-item-label">FAQ</span><span class="ssd-item-desc">Common questions answered</span></div><span class="ssd-item-arr">'+ssChevR+'</span></a>'+
           '</div>'+
         '</div>'+
         '<div class="ssd-footer" id="ssdFooter">'+
             '<div class="ssd-brand-line"><div class="ssd-brand-dot"></div><span class="ssd-brand-text">3J\'S AUTO BODY &middot; RHINO LININGS OF SIGNAL HILL</span></div>'+
             '<div class="ssd-footer-btns">'+
-              '<a href="/rhino-lining-quote" class="ssd-cta-red ss-sheen-red" target="_top">'+
+              '<a href="rhino-lining-quote.html" class="ssd-cta-red ss-sheen-red">'+
                 '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-10 2a2 2 0 100 4 2 2 0 000-4z"/></svg>'+
                 'Bed-Liner Quote'+
               '</a>'+
-              '<a href="https://www.carwise.com/online-photo-estimate/3js-autobody-paint-inc-signal-hill-ca-90755/479382?source=shop.profile&referer=estimate.cccone.com" class="ssd-cta-outline ss-sheen-outline" target="_top">'+
+              '<a href="https://www.carwise.com/online-photo-estimate/3js-autobody-paint-inc-signal-hill-ca-90755/479382?source=shop.profile&referer=estimate.cccone.com" class="ssd-cta-outline ss-sheen-outline" target="_blank">'+
                 '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>'+
                 'Free Auto Body Estimate'+
               '</a>'+
@@ -527,16 +527,16 @@
 
   /* ════════ BREADCRUMB TRAIL (under nav, above hero) ════════ */
   (function(){
-    var EXT=['Exterior Accessories','/exterior-accessories-V2'];
-    var TON=['Tonneau Covers','/tonneau-covers'];
+    var EXT=['Exterior Accessories','exterior-accessories-V2.html'];
+    var TON=['Tonneau Covers','tonneau-covers.html'];
     /* slug → ancestor trail (Home is auto-prepended; last item = current page, no link) */
     var map={
       'inside-3js':            [['Inside 3J\'s',null]],
-      'about-3js':             [['Inside 3J\'s','/inside-3js'],['About',null]],
+      'about-3js':             [['Inside 3J\'s','inside-3js.html'],['About',null]],
       'body-paint-repairs':    [['Body & Paint Repairs',null]],
-      'before-after':          [['Body & Paint Repairs','/body-paint-repairs'],['Before & After',null]],
+      'before-after':          [['Body & Paint Repairs','body-paint-repairs.html'],['Before & After',null]],
       'rhino-liner':           [['Rhino Liner',null]],
-      'rhino-lining-quote':    [['Rhino Liner','/rhino-liner'],['Bed-Liner Quote',null]],
+      'rhino-lining-quote':    [['Rhino Liner','rhino-liner.html'],['Bed-Liner Quote',null]],
       'exterior-accessories-V2':[['Exterior Accessories',null]],
       'tonneau-covers':        [EXT,['Tonneau Covers',null]],
       'floor-liners':          [EXT,['Floor Liners',null]],
@@ -547,8 +547,8 @@
       'lighting':              [EXT,['Lighting',null]],
       'bundles':               [['Bundles & Packages',null]],
       'shop':                  [['Shop',null]],
-      'parts-catalog':         [['Shop','/shop'],['Parts Catalog',null]],
-      'parts-quote':           [['Shop','/shop'],['Request a Quote',null]],
+      'parts-catalog':         [['Shop','shop.html'],['Parts Catalog',null]],
+      'parts-quote':           [['Shop','shop.html'],['Request a Quote',null]],
       'contact':               [['Contact Us',null]],
       'FAQ_PAGE_V2':           [['FAQ',null]],
       'warranty':              [['Warranty',null]],
@@ -580,14 +580,14 @@
     var wrap=document.getElementById('ss-page-wrap');
     var spacer=wrap?wrap.querySelector('.ss-spacer'):null;
     if(!spacer) return;
-    var full=[['Home','/']].concat(trail);
+    var full=[['Home','homepage.html']].concat(trail);
     function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
     var html='<nav class="ss-crumbs" aria-label="Breadcrumb"><ol>';
     full.forEach(function(c,i){
       var last=(i===full.length-1);
       html+='<li>';
       if(last||!c[1]) html+='<span class="ss-crumb-current" aria-current="page">'+esc(c[0])+'</span>';
-      else html+='<a href="'+c[1]+'" target="_top">'+esc(c[0])+'</a>';
+      else html+='<a href="'+c[1]+'">'+esc(c[0])+'</a>';
       if(!last) html+='<span class="ss-crumb-sep" aria-hidden="true">/</span>';
       html+='</li>';
     });
@@ -890,7 +890,7 @@
       else if(d.type==='garage_sync'){ sync(); }
       else if(d.type==='garage_clear'){ sync(); }
       else if(d.type==='close_garage'){ closeGarage(); }
-      else if(d.type==='browse_accessories'){ closeGarage(); window.location.href='/exterior-accessories-V2'; }
+      else if(d.type==='browse_accessories'){ closeGarage(); window.location.href='exterior-accessories-V2.html'; }
     });
   })();
 
