@@ -152,23 +152,22 @@
     .process-header .eyebrow{color:var(--crimson);}
     .process-header h2{font-family:'Montserrat',sans-serif;font-size:clamp(26px,4vw,40px);font-weight:800;color:var(--neutral-dark);letter-spacing:-1px;line-height:1.1;text-wrap:balance;}
     .process-header h2 em{font-style:normal;color:var(--crimson);}
-    .steps{display:flex;flex-direction:column;gap:56px;position:relative;max-width:900px;margin:0 auto;}
-    .steps::before{content:'';position:absolute;left:50%;transform:translateX(-50%);top:0;bottom:0;width:2px;background:var(--crimson);z-index:0;display:none;}
-    .step{display:grid;grid-template-columns:1fr;gap:16px;position:relative;z-index:1;text-align:center;padding:0 20px;}
+    .steps{display:flex;flex-direction:column;gap:40px;position:relative;max-width:900px;margin:0 auto;padding:0 20px;}
+    .steps::before{content:'';position:absolute;left:50%;transform:translateX(-50%);top:0;bottom:0;width:2px;background:linear-gradient(to bottom,transparent,var(--crimson) 10%,var(--crimson) 90%,transparent);z-index:0;display:none;}
+    .step{position:relative;z-index:1;text-align:center;}
+    .step-spacer{display:none;}
+    .step-content{margin-bottom:16px;}
     .step-num{width:64px;height:64px;border-radius:0;background:var(--white);border:2px solid var(--crimson);display:flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-size:18px;font-weight:900;color:var(--crimson);margin:0 auto;}
     .step-title{font-family:'Montserrat',sans-serif;font-size:16px;font-weight:800;color:var(--neutral-dark);margin-bottom:8px;}
     .step-desc{font-family:'Inter',sans-serif;font-size:16px;font-weight:500;letter-spacing:0.3px;color:var(--body-text);line-height:1.65;text-wrap:pretty;}
     @media(min-width:769px){
-      .steps{gap:72px;}
+      .steps{gap:0;padding:0;}
       .steps::before{display:block;}
-      .step{grid-template-columns:1fr 64px 1fr;align-items:center;text-align:left;padding:0;}
-      .step-num{order:2;margin:0;}
-      .step:nth-child(odd) .step-num{order:2;}
-      .step:nth-child(odd) .step-title,
-      .step:nth-child(odd) .step-desc{order:1;text-align:right;padding-right:40px;}
-      .step:nth-child(even) .step-num{order:2;}
-      .step:nth-child(even) .step-title,
-      .step:nth-child(even) .step-desc{order:3;text-align:left;padding-left:40px;}
+      .step{display:grid;grid-template-columns:1fr 64px 1fr;gap:0;align-items:center;padding:32px 0;}
+      .step-spacer{display:block;}
+      .step-content{margin-bottom:0;}
+      .step:nth-child(odd) .step-content{text-align:right;padding-right:40px;}
+      .step:nth-child(even) .step-content{text-align:left;padding-left:40px;}
     }
 
     /* DIVIDERS */
@@ -380,24 +379,36 @@
     </div>
     <div class="steps">
       <div class="step">
+        <div class="step-content">
+          <div class="step-title">Free Estimate</div>
+          <div class="step-desc">Walk in or call us. We assess the damage, go over everything with you, and give you a <strong>straightforward quote</strong> — no surprises.</div>
+        </div>
         <div class="step-num">1</div>
-        <div class="step-title">Free Estimate</div>
-        <div class="step-desc">Walk in or call us. We assess the damage, go over everything with you, and give you a <strong>straightforward quote</strong> — no surprises.</div>
+        <div class="step-spacer"></div>
       </div>
       <div class="step">
+        <div class="step-spacer"></div>
         <div class="step-num">2</div>
-        <div class="step-title">Insurance or Direct Pay</div>
-        <div class="step-desc">We work directly with <strong>all major insurance carriers</strong> or with customers paying out of pocket. We handle the paperwork — you don't have to.</div>
+        <div class="step-content">
+          <div class="step-title">Insurance or Direct Pay</div>
+          <div class="step-desc">We work directly with <strong>all major insurance carriers</strong> or with customers paying out of pocket. We handle the paperwork — you don't have to.</div>
+        </div>
       </div>
       <div class="step">
+        <div class="step-content">
+          <div class="step-title">Repair &amp; Paint</div>
+          <div class="step-desc"><strong>I-CAR certified technicians</strong> restore your vehicle to pre-accident condition using factory-spec repair methods and computer-matched paint.</div>
+        </div>
         <div class="step-num">3</div>
-        <div class="step-title">Repair &amp; Paint</div>
-        <div class="step-desc"><strong>I-CAR certified technicians</strong> restore your vehicle to pre-accident condition using factory-spec repair methods and computer-matched paint.</div>
+        <div class="step-spacer"></div>
       </div>
       <div class="step">
+        <div class="step-spacer"></div>
         <div class="step-num">4</div>
-        <div class="step-title">Drive Away Confident</div>
-        <div class="step-desc">We do a final quality check before you pick up. Every repair is backed by our <strong>lifetime warranty</strong> on workmanship.</div>
+        <div class="step-content">
+          <div class="step-title">Drive Away Confident</div>
+          <div class="step-desc">We do a final quality check before you pick up. Every repair is backed by our <strong>lifetime warranty</strong> on workmanship.</div>
+        </div>
       </div>
     </div>
   </div>
