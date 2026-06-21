@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Frequently Asked Questions | 3J's Auto Body &amp; Paint | Signal Hill, CA</title>
   <meta name="description" content="Got questions? Find answers about collision repair, spray-in bedliners, tonneau covers, insurance claims, warranties &amp; more at 3J's Auto Body in Signal Hill, CA." />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 
   <script type="application/ld+json">
   {
@@ -49,19 +49,17 @@
       --radius-sm:   0px;
     }
 
-    html, body { margin: 0; padding: 0; overflow-x: hidden; overflow-y: hidden; }
+    html { margin: 0; padding: 0; overscroll-behavior: none; }
+    body { margin: 0; padding: 0; overflow-x: hidden; }
 
     body {
-      font-family: 'Montserrat', sans-serif;
-      background: var(--off-white);
+      font-family: 'Inter', 'Montserrat', sans-serif;
+      background: var(--white);
       color: var(--text);
-      font-size: 15px;
-      line-height: 1.6;
+      font-size: 16px;
+      line-height: 1.65;
       -webkit-font-smoothing: antialiased;
       width: 100%;
-      margin: 0;
-      padding: 0;
-      overflow-x: hidden;
     }
 
     /* ═══════════════════════════════════════
@@ -123,7 +121,7 @@
       font-weight: 800;
       letter-spacing: 3.5px;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.70);
+      color: rgba(255,255,255,0.80);
       text-shadow: 0 1px 4px rgba(0,0,0,0.60);
       margin-bottom: 16px;
     }
@@ -141,9 +139,10 @@
     }
 
     .hero-sub {
-      font-size: 15px;
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
       font-weight: 500;
-      color: rgba(255,255,255,0.65);
+      color: rgba(255,255,255,0.80);
       max-width: 540px;
       margin: 0 auto 32px;
       line-height: 1.7;
@@ -223,12 +222,11 @@
     #faqSearch {
       width: 100%;
       padding: 13px 16px 13px 48px;
-      font-size: 16px;
       background: var(--off-white);
       border: 2px solid var(--border);
       border-radius: var(--radius-sm);
-      font-family: 'Montserrat', sans-serif;
-      font-size: 14px;
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
       font-weight: 500;
       color: var(--text);
       outline: none;
@@ -296,7 +294,8 @@
     .faq-main {
       max-width: 900px;
       margin: 0 auto;
-      padding: 44px 24px 72px;
+      padding: 48px 24px 72px;
+      background: #fff;
     }
 
     /* ── SECTION ── */
@@ -388,11 +387,11 @@
       font-family: 'Montserrat', sans-serif;
       font-size: 14px;
       font-weight: 700;
-      color: var(--text);
+      color: #1a1a1a;
       line-height: 1.45;
       letter-spacing: -0.1px;
     }
-    .faq-item.open .q-label { color: var(--navy-2); }
+    .faq-item.open .q-label { color: #1a1a1a; }
 
     .toggle-icon {
       flex-shrink: 0;
@@ -430,11 +429,11 @@
     .answer-text {
       font-size: 13px;
       font-weight: 500;
-      color: var(--text-mid);
+      color: #3B3B3B;
       line-height: 1.8;
       margin-bottom: 4px;
     }
-    .answer-text strong { color: var(--navy-2); font-weight: 700; }
+    .answer-text strong { color: #1F2937; font-weight: 700; }
     .answer-text + .answer-text { margin-top: 10px; }
 
     .answer-chip {
@@ -490,9 +489,10 @@
     }
     .cta-section h2 em { font-style: normal; color: var(--orange-hot); }
     .cta-section p {
-      font-size: 15px;
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
       font-weight: 500;
-      color: rgba(255,255,255,0.65);
+      color: rgba(255,255,255,0.80);
       margin-bottom: 32px;
       max-width: 460px;
       margin-left: auto;
@@ -1072,7 +1072,7 @@
       <div class="faq-body" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
         <div class="faq-body-inner">
           <div class="faq-answer" itemprop="text">
-            <p class="answer-text">Pricing depends on your truck bed size and any custom coverage areas (tailgate, wheel wells, etc.). <strong>Call us at 562-424-6744 for a free quote</strong>, or submit a request online at <strong>www.3jsautobody.com/rhino-lining-quote</strong>.</p>
+            <p class="answer-text">Pricing depends on your truck bed size and any custom coverage areas (tailgate, wheel wells, etc.). <strong>Call us at 562-424-6744 for a free quote</strong>, or submit a request online at <a href="/rhino-lining-quote" style="color:#8B0000;font-weight:700;text-decoration:none;"><strong>3jsautobody.com/rhino-lining-quote</strong></a>.</p>
             <span class="answer-chip">💲 Free Quote Available</span>
           </div>
         </div>
@@ -1336,7 +1336,7 @@
             <p class="answer-text">
               📞 <strong>Call:</strong> 562-424-6744<br/>
               📍 <strong>Walk in:</strong> 1855 E 29th St, Signal Hill, CA 90755<br/>
-              💻 <strong>Online:</strong> www.3jsautobody.com/rhino-lining-quote
+              💻 <strong>Online:</strong> <a href="/rhino-lining-quote" style="color:#8B0000;font-weight:700;text-decoration:none;">3jsautobody.com/rhino-lining-quote</a>
             </p>
             <span class="answer-chip">💲 Free Estimates</span>
           </div>
@@ -1488,17 +1488,6 @@
 
 })();
 
-/* ── Report height to Wix parent (kills iframe scroll) ── */
-function reportHeight(){
-  var h = document.documentElement.offsetHeight || document.body.offsetHeight;
-  window.parent.postMessage(JSON.stringify({height: h}), '*');
-}
-window.addEventListener('load', function(){ reportHeight(); setTimeout(reportHeight, 600); });
-window.addEventListener('resize', reportHeight);
-if(window.ResizeObserver){ new ResizeObserver(reportHeight).observe(document.body); }
-document.querySelectorAll('.faq-item').forEach(function(el){
-  el.addEventListener('click', function(){ setTimeout(reportHeight, 350); });
-});
 </script>
 
 </body>
