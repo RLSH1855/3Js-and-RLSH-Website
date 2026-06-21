@@ -627,8 +627,8 @@
     var shell=document.getElementById('ssShell'),ticking=false;
     function update(){
       var y=window.pageYOffset||document.documentElement.scrollTop;
-      if(y>70) shell.classList.add('ss-shrunk');
-      else if(y<50) shell.classList.remove('ss-shrunk');
+      if(y>10) shell.classList.add('ss-shrunk');
+      else if(y<3) shell.classList.remove('ss-shrunk');
       ticking=false;
     }
     window.addEventListener('scroll',function(){if(!ticking){requestAnimationFrame(update);ticking=true;}},{passive:true});
