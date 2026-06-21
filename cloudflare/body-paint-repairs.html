@@ -166,10 +166,14 @@
       .steps::before{display:block;}
       .step{display:grid;grid-template-columns:1fr 64px 1fr;gap:0;align-items:center;padding:32px 0;}
       .step-spacer{display:block;}
-      .step-num{order:unset;}
-      .step-content{order:unset;margin-top:0;}
-      .step:nth-child(odd) .step-content{text-align:right;padding-right:40px;}
-      .step:nth-child(even) .step-content{text-align:left;padding-left:40px;}
+      .step-num{order:0;margin:0 auto;}
+      .step-content{order:0;margin-top:0;}
+      .step:nth-child(odd) .step-content{grid-column:1;grid-row:1;text-align:right;padding-right:40px;}
+      .step:nth-child(odd) .step-num{grid-column:2;grid-row:1;}
+      .step:nth-child(odd) .step-spacer{grid-column:3;grid-row:1;}
+      .step:nth-child(even) .step-spacer{grid-column:1;grid-row:1;}
+      .step:nth-child(even) .step-num{grid-column:2;grid-row:1;}
+      .step:nth-child(even) .step-content{grid-column:3;grid-row:1;text-align:left;padding-left:40px;}
     }
 
     /* DIVIDERS */
