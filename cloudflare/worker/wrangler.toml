@@ -1,0 +1,6 @@
+name = "3js-quote-api"
+main = "quote-api.js"
+compatibility_date = "2024-01-01"
+
+[vars]
+FALLBACK_SHEETS_URL = "https://script.google.com/macros/s/AKfycbyn_Lhl96O0vAujT3ddSavZmcbFqts5miqCditRFYYknMwutEJAvKe5YFAjUNLb98-hTw/exec"

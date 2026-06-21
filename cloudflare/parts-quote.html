@@ -8,6 +8,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
   <style>
+    html{overscroll-behavior:none;}
+    body{overflow-x:hidden;}
     html,body{max-width:100%;}
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
     body{font-family:'Inter',sans-serif;background:#F0F0EE;color:#1a1a1a;min-height:100vh;}
@@ -441,7 +443,7 @@
           </div>
         </a>
 
-        <a href="/rhino-lining-quote" class="feat-card">
+        <a href="rhino-lining-quote.html" class="feat-card">
           <div class="feat-img" style="background:#1a0a0a;">
             <span style="position:absolute;font-size:14px;text-align:center;padding:0 16px;line-height:1.3;">SPRAY-IN<br/>BEDLINER</span>
           </div>
@@ -489,7 +491,7 @@
 if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
 window.scrollTo({ top: 0, behavior: 'instant' });
 
-var SHEETS_URL = 'https://script.google.com/macros/s/AKfycbyn_Lhl96O0vAujT3ddSavZmcbFqts5miqCditRFYYknMwutEJAvKe5YFAjUNLb98-hTw/exec';
+var QUOTE_API_URL = '/api/quote';
 
 // ── URL params ──
 var params  = new URLSearchParams(window.location.search);
@@ -582,32 +584,25 @@ document.getElementById('quote-form').addEventListener('submit', function(e){
   btn.textContent = 'Sending...';
   document.getElementById('form-error').style.display = 'none';
 
-  var now = new Date();
-  var dateStr = (now.getMonth()+1) + '/' + now.getDate() + '/' + now.getFullYear();
-
   var record = {
-    formType:       'parts-quote',
-    date:           dateStr,
     firstName:      firstName,
     lastName:       lastName,
-    name:           firstName + ' ' + lastName,
     phone:          phone,
     email:          email,
-    vehicle:        vehicleStr || 'Not saved',
-    garageYear:     (garage && garage.year)    ? garage.year    : '',
-    garageMake:     (garage && garage.make)    ? garage.make    : '',
-    garageModel:    (garage && garage.model)   ? garage.model   : '',
-    garageTrim:     (garage && garage.trim)    ? garage.trim    : '',
-    garageBedSize:  (garage && garage.bedSize) ? garage.bedSize : '',
-    garageVin:      (garage && garage.vin)     ? garage.vin     : '',
     product:        product,
-    partNum:        partNum,
-    quoteType:      'Part + Installation',
+    partNumber:     partNum,
+    vehicleYear:    (garage && garage.year)    ? garage.year    : '',
+    vehicleMake:    (garage && garage.make)    ? garage.make    : '',
+    vehicleModel:   (garage && garage.model)   ? garage.model   : '',
+    vehicleTrim:    (garage && garage.trim)    ? garage.trim    : '',
+    vehicleBedSize: (garage && garage.bedSize) ? garage.bedSize : '',
+    vin:            (garage && garage.vin)     ? garage.vin     : '',
     addOns:         addOnsList.length ? addOnsList.join(', ') : 'None'
   };
 
-  fetch(SHEETS_URL, {
+  fetch(QUOTE_API_URL, {
     method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(record)
   }).then(function(r){ return r.json(); })
     .then(function(data){
@@ -649,19 +644,5 @@ document.getElementById('f-phone').addEventListener('input', function(e){
 </script>
 
 <script src="site-shell.js"></script>
-<script>
-  function reportHeight(){
-    var h = Math.max(document.body.scrollHeight,document.body.offsetHeight,document.documentElement.scrollHeight,document.documentElement.offsetHeight);
-    window.parent.postMessage(JSON.stringify({height:h}),'*');
-  }
-  document.addEventListener('DOMContentLoaded',reportHeight);
-  window.addEventListener('load',function(){
-    [0,200,500,1000,2000,3500].forEach(function(t){setTimeout(reportHeight,t);});
-  });
-  window.addEventListener('resize',reportHeight);
-  if(window.ResizeObserver){new ResizeObserver(reportHeight).observe(document.body);}
-</script>
-<script>
-(function(){var active=false,startY=0,lastY=0,rafId=null;document.addEventListener('mousedown',function(e){if(e.button!==1)return;if(e.target.closest('a'))return;e.preventDefault();active=true;startY=e.clientY;lastY=e.clientY;document.body.style.cursor='ns-resize';tick();});document.addEventListener('mousemove',function(e){if(active)lastY=e.clientY;});document.addEventListener('mouseup',function(e){if(e.button!==1||!active)return;active=false;document.body.style.cursor='';if(rafId){cancelAnimationFrame(rafId);rafId=null;}});function tick(){if(!active){rafId=null;return;}var dy=lastY-startY;if(Math.abs(dy)>5)window.scrollBy(0,dy*0.12);rafId=requestAnimationFrame(tick);}})();
-</script></body>
+</body>
 </html>
