@@ -42,10 +42,11 @@
     .form-intro h2 { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: clamp(26px,4vw,40px); line-height: 1.1; letter-spacing: -1px; color: #111; margin-bottom: 12px; text-wrap: balance; }
     .form-intro p { font-size: 16px; font-weight: 500; letter-spacing: 0.3px; line-height: 1.65; color: var(--fg-muted); text-wrap: pretty; }
 
-    .sm-embed { max-width: 1000px; margin: 0 auto; background: #fff; border: 1px solid var(--border); box-shadow: 0 18px 50px rgba(15,30,46,.08); }
+    .sm-embed { width: 100%; margin: 0 auto; background: #fff; border: 1px solid var(--border); box-shadow: 0 18px 50px rgba(15,30,46,.08); overflow: hidden; }
     /* Right-sized so there's no blank gap under the submit button. The auto-resize
        listener below will fine-tune to the real form height if Shopmonkey posts it. */
-    .sm-embed iframe { width: 100%; min-height: 600px; height: auto; border: 0; display: block; }
+    .sm-embed iframe { width: 100%; min-height: 800px; height: auto; border: 0; display: block; }
+    @media (min-width: 768px) { .sm-embed { max-width: 1000px; } }
 
     /* ── RHINO FEATURE ICONS ── */
     .rhino-feats { max-width: 900px; margin: 44px auto 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px 12px; }
