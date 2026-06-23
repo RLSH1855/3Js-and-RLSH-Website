@@ -106,6 +106,16 @@
     .tl-step:last-child{margin-bottom:0;}
     .tl-dot{position:absolute;left:-32px;top:5px;width:14px;height:14px;border-radius:50%;border:2px solid var(--crimson);background:var(--crimson);z-index:1;}
     .tl-card{padding:0;}
+    @media(max-width:600px){
+      .tl-track{padding-left:0;padding-right:0;}
+      .tl-track::before{left:50%;transform:translateX(-50%);top:0;bottom:0;width:2px;background:#D8D8D8;}
+      .tl-step{position:relative;margin-bottom:48px;min-height:80px;}
+      .tl-step:nth-child(odd){padding-left:50%;padding-right:0;text-align:left;}
+      .tl-step:nth-child(odd) .tl-card{margin-left:16px;}
+      .tl-step:nth-child(even){padding-left:0;padding-right:50%;text-align:right;}
+      .tl-step:nth-child(even) .tl-card{margin-right:16px;}
+      .tl-dot{position:absolute;left:50%;transform:translateX(-50%);top:0;width:14px;height:14px;border-radius:50%;border:2px solid var(--crimson);background:var(--crimson);z-index:1;}
+    }
     .tl-num{font-family:'Montserrat',sans-serif;font-size:12px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--crimson);display:block;margin-bottom:4px;}
     .tl-card h3{font-family:'Montserrat',sans-serif;font-size:14px;font-weight:800;color:var(--neutral-dark);margin-bottom:5px;line-height:1.25;}
     .tl-card p{font-family:'Inter',sans-serif;font-size:16px;font-weight:500;color:var(--body-text);line-height:1.65;letter-spacing:0.3px;}
