@@ -50,7 +50,7 @@
   .hdr-promo .bolt { color: var(--accent); display:inline-flex; }
   .hdr-promo .bolt svg { width: 14px; height: 14px; }
   .hdr-ticker { display:flex; white-space:nowrap; animation: ticker-scroll 38s linear infinite; }
-  .hdr-ticker-item { display:inline-flex; align-items:center; gap: 8px; padding: 0 60px; }
+  .hdr-ticker-item { display:inline-flex; align-items:center; gap: 8px; padding: 0 60px; letter-spacing: 1.8px; }
   @keyframes ticker-scroll { 0% { transform:translateX(0); } 100% { transform:translateX(-50%); } }
   .hdr-main { display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center; padding: 10px 16px; }
   .logo { display:flex; align-items:center; }
@@ -103,14 +103,14 @@
   .pdp-type-badge { display:inline-block; font-family: var(--mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; background: var(--surface2); border: 1px solid var(--border-strong); padding: 4px 10px; color: var(--fg-muted); }
 
   /* Fitment block */
-  .pdp-fit { display:flex; align-items: center; gap: 12px; padding: 14px 16px; background: var(--surface2); border-top: 3px solid #097530; }
+  .pdp-fit { display:flex; align-items: center; gap: 8px; padding: 8px 12px; background: var(--surface2); border-top: 3px solid #097530; }
   .pdp-fit.no-fit { border-top-color: var(--accent); }
   .pdp-fit.no-garage { border-top-color: var(--border-strong); }
-  .pdp-fit-ico { width: 36px; height: 36px; color: #097530; display:inline-flex; align-items: center; justify-content: center; flex-shrink: 0; }
-  .pdp-fit-ico svg { width: 20px; height: 20px; }
+  .pdp-fit-ico { width: 22px; height: 22px; color: #097530; display:inline-flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .pdp-fit-ico svg { width: 14px; height: 14px; }
   .pdp-fit-body { flex: 1; min-width: 0; }
   .pdp-fit-label { font-family: var(--mono); font-size: 10px; letter-spacing: .15em; text-transform: uppercase; color: var(--fg-dim); }
-  .pdp-fit-vehicle { font-family: var(--display); font-weight: 700; font-size: 17px; letter-spacing: .02em; text-transform: uppercase; color: var(--fg); margin-top: 2px; }
+  .pdp-fit-vehicle { font-family: var(--display); font-weight: 700; font-size: 13px; letter-spacing: .02em; text-transform: uppercase; color: var(--fg); margin-top: 1px; }
   .pdp-fit-link { font-size: 12px; color: var(--accent); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; font-weight: 500; }
 
   /* Variants */
@@ -127,7 +127,7 @@
   .pdp-price-from { font-family: var(--mono); font-size: 11px; letter-spacing: .1em; color: var(--fg-dim); align-self: center; }
   .pdp-stock { display:inline-flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: 11px; letter-spacing: .08em; color: #097530; padding-top: 6px; }
   .pdp-stock-dot { width: 8px; height: 8px; border-radius: 50%; background: #097530; }
-  .pdp-cta { background: var(--accent); color: #fff; border: 0; width: 100%; height: 52px; font-family: var(--display); font-weight: 700; letter-spacing: .1em; text-transform: uppercase; font-size: 15px; cursor: pointer; transition: filter .15s; display:inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 0 18px; border-radius: 0; text-decoration: none; }
+  .pdp-cta { background: var(--accent); color: #fff; border: 0; width: 100%; height: 42px; font-family: var(--display); font-weight: 700; letter-spacing: .1em; text-transform: uppercase; font-size: 13px; cursor: pointer; transition: filter .15s; display:inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 0 18px; border-radius: 0; text-decoration: none; }
   .pdp-cta:hover { filter: brightness(1.12); }
   .pdp-cta svg { width: 18px; height: 18px; }
   .pdp-secondary { display:flex; gap: 8px; flex-wrap: wrap; }
@@ -155,7 +155,7 @@
   .pdp-tabs { margin-top: 56px; border-top: 1px solid var(--border); }
   .tabs-bar { display:flex; gap: 0; border-bottom: 1px solid var(--border); overflow-x: auto; scrollbar-width: none; }
   .tabs-bar::-webkit-scrollbar { display: none; }
-  .tab-btn { background: transparent; border: 0; padding: 18px 22px; font-family: var(--display); font-weight: 700; letter-spacing: .08em; text-transform: uppercase; font-size: 14px; color: var(--fg-muted); cursor: pointer; border-bottom: 3px solid transparent; margin-bottom: -1px; white-space: nowrap; transition: color .15s, border-color .15s; }
+  .tab-btn { background: transparent; border: 0; padding: 18px 22px; font-family: var(--display); font-weight: 700; letter-spacing: .08em; text-transform: uppercase; font-size: 14px; color: #555; cursor: pointer; border-bottom: 3px solid transparent; margin-bottom: -1px; white-space: nowrap; transition: color .15s, border-color .15s; }
   .tab-btn:hover { color: var(--fg); }
   .tab-btn.on { color: var(--fg); border-bottom-color: var(--accent); }
   .tab-count { font-family: var(--mono); font-weight: 400; font-size: 11px; margin-left: 6px; color: var(--fg-dim); letter-spacing: .04em; text-transform: none; }
@@ -167,7 +167,7 @@
   .desc p { font-size: 15px; line-height: 1.65; color: var(--fg); margin: 0 0 16px; max-width: 680px; }
   /* Feat grid — mobile base: single column */
   .feat-grid { display:grid; grid-template-columns: 1fr; gap: 14px; margin: 18px 0 8px; }
-  .feat-card { background: var(--surface2); border-top: 2px solid var(--accent); padding: 14px 16px; }
+  .feat-card { background: transparent; border: 1px solid var(--border); border-top: 2px solid var(--accent); padding: 14px 16px; }
   .feat-card-title { font-family: var(--display); font-weight: 700; font-size: 14px; letter-spacing: .05em; text-transform: uppercase; margin-bottom: 4px; }
   .feat-card-body { font-size: 12px; color: var(--fg-muted); line-height: 1.5; }
 
@@ -181,12 +181,11 @@
   /* Aside */
   .tab-aside { display:flex; flex-direction: column; gap: 16px; }
   .install-card { background: var(--surface2); border: 1px solid var(--border); padding: 20px; }
-  .install-card-eyebrow { font-family: var(--mono); font-size: 10px; letter-spacing: .15em; text-transform: uppercase; color: var(--fg-dim); margin-bottom: 6px; }
+  .install-card-eyebrow { font-family: var(--mono); font-size: 10px; letter-spacing: .15em; text-transform: uppercase; color: var(--fg-muted); margin-bottom: 6px; }
   .install-card h4 { font-family: var(--display); font-weight: 700; font-size: 18px; letter-spacing: .03em; text-transform: uppercase; margin: 0 0 8px; }
   .install-card p { font-size: 13px; line-height: 1.5; color: var(--fg-muted); margin: 0 0 12px; }
   .install-card .row-btns { display:flex; gap: 8px; flex-wrap: wrap; }
-  .install-card .row-btns a { font-family: var(--display); font-weight: 600; letter-spacing: .06em; text-transform: uppercase; font-size: 11px; padding: 8px 12px; border: 1px solid var(--border-strong); cursor: pointer; display:inline-block; }
-  .install-card .row-btns a:hover { border-color: var(--accent); color: var(--accent); }
+  .install-card .row-btns a { display:inline-flex; align-items: center; text-decoration: none; }
 
   /* Reviews — mobile base: single column */
   .reviews-summary { display:grid; grid-template-columns: 1fr; gap: 16px; padding-bottom: 24px; border-bottom: 1px solid var(--border); margin-bottom: 24px; align-items: start; }
@@ -284,7 +283,7 @@
 
   /* Desktop */
   @media (min-width: 1024px) {
-    .hdr-promo { display: flex; background: #000; color: #fff; font-size: 12px; height: 34px; overflow: hidden; align-items:center; mask-image: linear-gradient(to right, transparent 0%, #000 10%, #000 90%, transparent 100%); -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 10%, #000 90%, transparent 100%); }
+    .hdr-promo { display: flex; background: #000; color: rgba(255,255,255,0.82); font-size: 12px; height: 34px; overflow: hidden; align-items:center; mask-image: linear-gradient(to right, transparent 0%, #000 10%, #000 90%, transparent 100%); -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 10%, #000 90%, transparent 100%); }
     .hdr-main { padding: 12px 24px; }
     .logo img { height: 60px; }
     .garage-pill { padding: 8px 14px; }
@@ -1283,8 +1282,8 @@ function InstallAside() {
         <h4>Free Pro Install</h4>
         <p>Bring your truck to our shop in Signal Hill, CA. We'll install your cover in under an hour while you wait — free with purchase.</p>
         <div className="row-btns">
-          <a href={QUOTE_URL}>Book Appointment</a>
-          <a href="tel:+15624246744">Call (562) 424-6744</a>
+          <a href={QUOTE_URL} className="btn-primary">Book Appointment</a>
+          <a href="tel:+15624246744" className="btn-ghost">Call (562) 424-6744</a>
         </div>
       </div>
       <div className="install-card" style={{background:'var(--accent)',borderColor:'var(--accent)'}}>
