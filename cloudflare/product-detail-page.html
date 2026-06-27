@@ -2,24 +2,24 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<title>Tonneau Cover · RLSH Truck &amp; Jeep Outfitters</title>
+<title>Product Detail · 3J's Auto Body &amp; Paint</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700;800;900&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg:#ffffff; --surface:#ffffff; --surface2:#f2f2f2;
     --border:rgba(0,0,0,.10); --border-strong:rgba(0,0,0,.20);
     --fg:#1a1815; --fg-muted:rgba(26,24,21,.62); --fg-dim:rgba(26,24,21,.42);
     --accent:#8B0000;
-    --display:'Barlow Condensed', Impact, sans-serif;
+    --display:'Oswald', Impact, sans-serif;
     --body:'Inter', system-ui, sans-serif;
-    --mono:'JetBrains Mono', ui-monospace, monospace;
+    --mono:'Inter', system-ui, sans-serif;
   }
   *,*::before,*::after { box-sizing: border-box; }
-  html,body { margin:0; padding:0; }
-  body { font-family: var(--body); background: var(--bg); color: var(--fg); -webkit-font-smoothing: antialiased; }
+  html { margin:0; padding:0; overscroll-behavior: none; }
+  body { font-family: var(--body); background: var(--bg); color: var(--fg); -webkit-font-smoothing: antialiased; overflow-x: hidden; margin:0; padding:0; }
   a { color: inherit; text-decoration: none; }
   button { font-family: inherit; }
   svg { display:inline-block; vertical-align: middle; }
@@ -44,58 +44,61 @@
   .btn-ghost { background: transparent; color: var(--fg); border: 1px solid var(--border-strong); padding: 12px 18px; font-family: var(--display); font-weight: 600; letter-spacing: .08em; text-transform: uppercase; font-size: 13px; cursor: pointer; border-radius: 0; }
   .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
 
-  /* Header */
+  /* Header — mobile base */
   .hdr { position: sticky; top: 0; z-index: 50; background: rgba(10,10,12,.97); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,.08); }
-  .hdr-promo { background: #000; color: #fff; font-size: 12px; height: 34px; overflow: hidden; display:flex; align-items:center; mask-image: linear-gradient(to right, transparent 0%, #000 10%, #000 90%, transparent 100%); -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 10%, #000 90%, transparent 100%); }
+  .hdr-promo { display: none; }
   .hdr-promo .bolt { color: var(--accent); display:inline-flex; }
   .hdr-promo .bolt svg { width: 14px; height: 14px; }
   .hdr-ticker { display:flex; white-space:nowrap; animation: ticker-scroll 38s linear infinite; }
   .hdr-ticker-item { display:inline-flex; align-items:center; gap: 8px; padding: 0 60px; }
   @keyframes ticker-scroll { 0% { transform:translateX(0); } 100% { transform:translateX(-50%); } }
-  .hdr-main { display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center; padding: 12px 24px; }
+  .hdr-main { display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center; padding: 10px 16px; }
   .logo { display:flex; align-items:center; }
-  .logo img { height: 60px; display:block; }
+  .logo img { height: 44px; display:block; }
   .hdr-actions { display:flex; align-items:center; gap: 10px; }
-  .garage-pill { display:flex; align-items:center; gap: 12px; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.15); color: #fff; padding: 8px 14px; cursor: pointer; transition: border-color .15s, background .15s; border-radius: 0; }
+  .garage-pill { display:flex; align-items:center; gap: 12px; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.15); color: #fff; padding: 8px; cursor: pointer; transition: border-color .15s, background .15s; border-radius: 0; }
   .garage-pill:hover { border-color: var(--accent); background: rgba(255,255,255,.11); }
   .garage-pill-ico { color: var(--accent); display:inline-flex; flex-shrink:0; }
   .garage-pill-ico svg { width: 24px; height: 24px; }
-  .garage-pill-txt { display:flex; flex-direction: column; align-items: flex-start; line-height: 1.15; }
+  .garage-pill-txt { display: none; flex-direction: column; align-items: flex-start; line-height: 1.15; }
   .garage-pill-label { font-family: var(--mono); font-size: 9.5px; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.45); }
   .garage-pill-vehicle { font-family: var(--display); font-weight: 700; font-size: 15px; letter-spacing: .03em; color: #fff; }
-  .hdr-nav { display:flex; align-items: center; gap: 4px; padding: 0 18px; border-top: 1px solid rgba(255,255,255,.07); overflow-x: auto; scrollbar-width: none; }
+  .hdr-nav { display:flex; align-items: center; gap: 4px; padding: 0 8px; border-top: 1px solid rgba(255,255,255,.07); overflow-x: auto; scrollbar-width: none; }
   .hdr-nav::-webkit-scrollbar { display: none; }
-  .nav-item { font-family: var(--display); font-weight: 600; letter-spacing: .08em; text-transform: uppercase; font-size: 13px; padding: 14px 14px; color: rgba(255,255,255,.5); white-space: nowrap; cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -1px; transition: color .15s, border-color .15s; }
+  .nav-item { font-family: var(--display); font-weight: 600; letter-spacing: .08em; text-transform: uppercase; font-size: 12px; padding: 12px 10px; color: rgba(255,255,255,.5); white-space: nowrap; cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -1px; transition: color .15s, border-color .15s; }
   .nav-item:hover { color: #fff; }
   .nav-item.active { color: #fff; border-bottom-color: var(--accent); }
 
   /* Crumbs */
-  .crumbs { max-width: 1440px; margin: 0 auto; padding: 16px 24px 12px; font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--fg-muted); display:flex; align-items:center; gap: 10px; flex-wrap: wrap; }
+  .crumbs { max-width: 1440px; margin: 0 auto; padding: 14px 16px 12px; font-family: var(--body); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; font-weight: 500; color: var(--fg-muted); display:flex; align-items:center; gap: 10px; flex-wrap: wrap; }
   .crumbs a { cursor: pointer; }
   .crumbs a:hover { color: var(--accent); }
   .crumb-sep { color: var(--fg-dim); }
-  .crumb-now { color: var(--accent); font-weight: 500; }
+  .crumb-now { color: #000; font-weight: 700; }
 
-  /* PDP Layout */
-  .pdp { max-width: 1440px; margin: 0 auto; padding: 0 24px 80px; }
-  .pdp-top { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 48px; align-items: start; padding-top: 8px; }
+  /* PDP Layout — mobile base */
+  .pdp { max-width: 1440px; margin: 0 auto; padding: 0 16px 100px; }
+  .pdp-top { display: grid; grid-template-columns: 1fr; gap: 28px; align-items: start; padding-top: 8px; }
 
-  /* Gallery */
-  .gallery { display: grid; grid-template-columns: 92px 1fr; gap: 14px; align-items: start; }
-  .gal-thumbs { display:flex; flex-direction: column; gap: 10px; }
-  .gal-thumb { width: 92px; height: 92px; background: var(--surface2); border: 1.5px solid var(--border); cursor: pointer; overflow: hidden; transition: border-color .15s; padding: 0; position: relative; }
+  /* Gallery — mobile base: main image top, horizontal thumb row below */
+  .gallery { display: grid; grid-template-columns: 1fr; gap: 14px; align-items: start; }
+  .gal-thumbs { display:flex; flex-direction: row; gap: 10px; overflow-x: auto; scrollbar-width: none; padding-bottom: 4px; }
+  .gal-thumbs::-webkit-scrollbar { display: none; }
+  .gal-thumb { width: 72px; height: 72px; background: var(--surface2); border: 1.5px solid var(--border); cursor: pointer; overflow: hidden; transition: border-color .15s; padding: 0; position: relative; flex-shrink: 0; }
   .gal-thumb:hover { border-color: var(--border-strong); }
   .gal-thumb.active { border-color: var(--accent); }
   .gal-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .gal-thumb-more { position: relative; }
+  .gal-more-overlay { position: absolute; inset: 0; background: rgba(10,10,12,.65); display:flex; align-items: center; justify-content: center; font-family: var(--display); font-weight: 700; font-size: 16px; color: #fff; letter-spacing: .04em; }
   .gal-main { position: relative; aspect-ratio: 4/3; background: var(--surface2); overflow: hidden; border: 1px solid var(--border); }
   .gal-main img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .gal-main-placeholder { width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:12px;color:var(--fg-dim);letter-spacing:.08em;text-transform:uppercase; }
 
-  /* Info column */
-  .pdp-info { display:flex; flex-direction: column; gap: 14px; position: sticky; top: 130px; align-self: start; padding-right: 4px; }
+  /* Info column — mobile base: not sticky */
+  .pdp-info { display:flex; flex-direction: column; gap: 14px; position: relative; top: 0; align-self: start; padding-right: 4px; }
   .pdp-brand { font-family: var(--mono); font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--fg-muted); font-weight: 600; }
   .pdp-brand .sep { color: var(--fg-dim); margin: 0 8px; }
-  .pdp-title { font-family: var(--display); font-weight: 800; font-size: clamp(34px, 4vw, 48px); line-height: .98; letter-spacing: -.005em; text-transform: uppercase; margin: 0; color: var(--fg); }
+  .pdp-title { font-family: var(--display); font-weight: 800; font-size: clamp(28px, 7vw, 38px); line-height: .98; letter-spacing: -.005em; text-transform: uppercase; margin: 0; color: var(--fg); }
   .pdp-sub { font-size: 14px; color: var(--fg-muted); line-height: 1.55; max-width: 480px; margin: 0; }
   .pdp-type-badge { display:inline-block; font-family: var(--mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; background: var(--surface2); border: 1px solid var(--border-strong); padding: 4px 10px; color: var(--fg-muted); }
 
@@ -120,7 +123,7 @@
 
   /* Price + CTA */
   .pdp-price-row { display:flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
-  .pdp-price { font-family: var(--display); font-weight: 800; font-size: 42px; letter-spacing: .01em; line-height: 1; color: var(--fg); }
+  .pdp-price { font-family: var(--display); font-weight: 800; font-size: 36px; letter-spacing: .01em; line-height: 1; color: var(--fg); }
   .pdp-price-from { font-family: var(--mono); font-size: 11px; letter-spacing: .1em; color: var(--fg-dim); align-self: center; }
   .pdp-stock { display:inline-flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: 11px; letter-spacing: .08em; color: #097530; padding-top: 6px; }
   .pdp-stock-dot { width: 8px; height: 8px; border-radius: 50%; background: #097530; }
@@ -132,8 +135,8 @@
   .pdp-sec-btn:hover { border-color: var(--accent); color: var(--accent); }
   .pdp-sec-btn svg { width: 14px; height: 14px; }
 
-  /* Trust badges */
-  .trust { display:grid; grid-template-columns: repeat(3, 1fr); gap: 14px; padding: 16px 0 4px; border-top: 1px solid var(--border); margin-top: 4px; }
+  /* Trust badges — mobile base: single column */
+  .trust { display:grid; grid-template-columns: 1fr; gap: 10px; padding: 16px 0 4px; border-top: 1px solid var(--border); margin-top: 4px; }
   .trust-item { display:flex; gap: 10px; align-items: flex-start; }
   .trust-ico { color: var(--accent); flex-shrink: 0; padding-top: 2px; }
   .trust-ico svg { width: 22px; height: 22px; }
@@ -156,12 +159,14 @@
   .tab-btn:hover { color: var(--fg); }
   .tab-btn.on { color: var(--fg); border-bottom-color: var(--accent); }
   .tab-count { font-family: var(--mono); font-weight: 400; font-size: 11px; margin-left: 6px; color: var(--fg-dim); letter-spacing: .04em; text-transform: none; }
-  .tab-panel { padding: 32px 0; display:grid; grid-template-columns: 1fr 340px; gap: 48px; align-items: start; }
+  /* Tab panel — mobile base: single column */
+  .tab-panel { padding: 32px 0; display:grid; grid-template-columns: 1fr; gap: 32px; align-items: start; }
 
   /* Description panel */
   .desc h3 { font-family: var(--display); font-weight: 700; font-size: 22px; letter-spacing: .03em; text-transform: uppercase; margin: 0 0 12px; }
   .desc p { font-size: 15px; line-height: 1.65; color: var(--fg); margin: 0 0 16px; max-width: 680px; }
-  .feat-grid { display:grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin: 18px 0 8px; }
+  /* Feat grid — mobile base: single column */
+  .feat-grid { display:grid; grid-template-columns: 1fr; gap: 14px; margin: 18px 0 8px; }
   .feat-card { background: var(--surface2); border-top: 2px solid var(--accent); padding: 14px 16px; }
   .feat-card-title { font-family: var(--display); font-weight: 700; font-size: 14px; letter-spacing: .05em; text-transform: uppercase; margin-bottom: 4px; }
   .feat-card-body { font-size: 12px; color: var(--fg-muted); line-height: 1.5; }
@@ -170,7 +175,7 @@
   .specs-table { width: 100%; border-collapse: collapse; border-top: 1px solid var(--border); }
   .specs-table tr { border-bottom: 1px solid var(--border); }
   .specs-table td { padding: 12px 0; font-size: 13px; vertical-align: top; }
-  .specs-table td:first-child { font-family: var(--mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--fg-muted); width: 40%; }
+  .specs-table td:first-child { font-family: var(--mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--fg-muted); width: 50%; }
   .specs-table td:last-child { color: var(--fg); font-weight: 500; }
 
   /* Aside */
@@ -183,8 +188,8 @@
   .install-card .row-btns a { font-family: var(--display); font-weight: 600; letter-spacing: .06em; text-transform: uppercase; font-size: 11px; padding: 8px 12px; border: 1px solid var(--border-strong); cursor: pointer; display:inline-block; }
   .install-card .row-btns a:hover { border-color: var(--accent); color: var(--accent); }
 
-  /* Reviews */
-  .reviews-summary { display:grid; grid-template-columns: 200px 1fr; gap: 28px; padding-bottom: 24px; border-bottom: 1px solid var(--border); margin-bottom: 24px; align-items: start; }
+  /* Reviews — mobile base: single column */
+  .reviews-summary { display:grid; grid-template-columns: 1fr; gap: 16px; padding-bottom: 24px; border-bottom: 1px solid var(--border); margin-bottom: 24px; align-items: start; }
   .rev-big-num { font-family: var(--display); font-weight: 800; font-size: 72px; line-height: 1; color: var(--fg); }
   .rev-stars { padding-top: 8px; }
   .rev-count { font-family: var(--mono); font-size: 11px; color: var(--fg-muted); margin-top: 6px; }
@@ -217,12 +222,12 @@
   .qa-ask-text { font-size: 13px; }
   .qa-ask-text strong { font-family: var(--display); font-weight: 700; font-size: 14px; letter-spacing: .04em; text-transform: uppercase; display: block; margin-bottom: 2px; }
 
-  /* Related */
+  /* Related — mobile base: 1 col */
   .product-strip { margin-top: 56px; }
   .strip-head { display:flex; justify-content: space-between; align-items: baseline; margin-bottom: 18px; flex-wrap: wrap; gap: 8px; }
   .strip-head h2 { font-family: var(--display); font-weight: 800; font-size: 28px; letter-spacing: .04em; text-transform: uppercase; margin: 0; }
   .strip-head a { font-family: var(--mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); cursor: pointer; }
-  .strip-grid { display:grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+  .strip-grid { display:grid; grid-template-columns: 1fr; gap: 18px; }
   .rel-card { background: var(--surface); border: 1px solid var(--border); transition: border-color .15s; overflow: hidden; cursor: pointer; display:flex; flex-direction: column; text-decoration: none; }
   .rel-card:hover { border-color: var(--accent); }
   .rel-media { aspect-ratio: 4/3; background: var(--surface2); overflow: hidden; position: relative; }
@@ -241,7 +246,7 @@
   .faq-eyebrow { font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; color: var(--fg-muted, rgba(26,24,21,.62)); text-align: center; margin-bottom: 10px; }
   .faq-head { font-family: 'Montserrat', sans-serif; font-size: clamp(22px, 6vw, 42px); font-weight: 900; letter-spacing: -1px; line-height: 1.05; text-align: center; margin: 0 0 8px; text-transform: uppercase; color: #1a1a1a; }
   .faq-head em { font-style: normal; color: #8B0000; }
-  .faq-sub { font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 400; color: #888; text-align: center; margin: 0 0 48px; line-height: 1.7; padding: 0 8px; }
+  .faq-sub { font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 400; color: #555; text-align: center; margin: 0 0 48px; line-height: 1.7; padding: 0 8px; }
   .faq-list { border-top: 1px solid #e0e0e0; }
   .faq-item { border-bottom: 1px solid #e0e0e0; }
   .faq-q { width: 100%; background: none; border: 0; display:flex; align-items: flex-start; justify-content: space-between; padding: 20px 0; cursor: pointer; font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 700; color: #1a1a1a; text-transform: uppercase; letter-spacing: 2px; text-align: left; gap: 16px; line-height: 1.5; transition: color .22s ease; }
@@ -262,46 +267,48 @@
   .faq-cta .faq-btn-secondary:hover { background: #8B0000; color: #fff; }
   .faq-cta a svg { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
 
-  /* Mobile buy bar */
-  .mobile-buy-bar { display: none; }
+  /* Mobile buy bar — visible on mobile */
+  .mobile-buy-bar { display:flex; position: fixed; bottom: 0; left: 0; right: 0; background: rgba(10,10,12,.97); backdrop-filter: blur(12px); border-top: 1px solid rgba(255,255,255,.1); padding: 10px 14px; gap: 12px; z-index: 60; align-items: center; }
+  .mbb-info { flex: 1; display:flex; flex-direction: column; gap: 0; }
+  .mbb-price { font-family: var(--display); font-weight: 800; font-size: 22px; color: #fff; line-height: 1; }
+  .mbb-stock { font-family: var(--mono); font-size: 10px; color: #6ddf9b; letter-spacing: .1em; margin-top: 2px; }
+  .mbb-cta { background: var(--accent); color: #fff; border: 0; padding: 14px 22px; font-family: var(--display); font-weight: 700; letter-spacing: .08em; text-transform: uppercase; font-size: 14px; cursor: pointer; border-radius: 0; text-decoration: none; display:inline-flex; align-items:center; }
 
-  /* Responsive */
-  @media (max-width: 1100px) {
-    .strip-grid { grid-template-columns: repeat(3, 1fr); }
-    .tab-panel { grid-template-columns: 1fr; gap: 32px; }
-    .pdp-info { position: relative; top: 0; max-height: none; }
-  }
-  @media (max-width: 900px) {
-    .hdr-promo { display: none; }
-    .hdr-main { padding: 10px 16px; }
-    .logo img { height: 44px; }
-    .garage-pill-txt { display: none; }
-    .garage-pill { padding: 8px; }
-    .hdr-nav { padding: 0 8px; }
-    .nav-item { padding: 12px 10px; font-size: 12px; }
-    .pdp { padding: 0 16px 60px; }
-    .pdp-top { grid-template-columns: 1fr; gap: 28px; }
-    .gallery { grid-template-columns: 1fr; }
-    .gal-thumbs { flex-direction: row; order: 2; overflow-x: auto; padding-bottom: 4px; }
-    .gal-thumb { width: 72px; height: 72px; flex-shrink: 0; }
-    .pdp-title { font-size: clamp(28px, 7vw, 38px); }
-    .pdp-price { font-size: 36px; }
-    .trust { grid-template-columns: 1fr; gap: 10px; }
+  /* Tablet */
+  @media (min-width: 768px) {
     .strip-grid { grid-template-columns: repeat(2, 1fr); }
-    .reviews-summary { grid-template-columns: 1fr; gap: 16px; }
-    .feat-grid { grid-template-columns: 1fr; }
-    .mobile-buy-bar { display:flex; position: fixed; bottom: 0; left: 0; right: 0; background: rgba(10,10,12,.97); backdrop-filter: blur(12px); border-top: 1px solid rgba(255,255,255,.1); padding: 10px 14px; gap: 12px; z-index: 60; align-items: center; }
-    .mbb-info { flex: 1; display:flex; flex-direction: column; gap: 0; }
-    .mbb-price { font-family: var(--display); font-weight: 800; font-size: 22px; color: #fff; line-height: 1; }
-    .mbb-stock { font-family: var(--mono); font-size: 10px; color: #6ddf9b; letter-spacing: .1em; margin-top: 2px; }
-    .mbb-cta { background: var(--accent); color: #fff; border: 0; padding: 14px 22px; font-family: var(--display); font-weight: 700; letter-spacing: .08em; text-transform: uppercase; font-size: 14px; cursor: pointer; border-radius: 0; text-decoration: none; display:inline-flex; align-items:center; }
-    .pdp { padding-bottom: 100px; }
+    .feat-grid { grid-template-columns: repeat(2, 1fr); }
+    .reviews-summary { grid-template-columns: 200px 1fr; gap: 28px; }
+    .pdp { padding: 0 20px 100px; }
   }
-  @media (max-width: 560px) {
-    .strip-grid { grid-template-columns: 1fr; }
-    .specs-table td:first-child { width: 50%; }
-    .faq-cta { flex-direction: column; align-items: stretch; }
-    .faq-cta a { width: 100%; }
+
+  /* Desktop */
+  @media (min-width: 1024px) {
+    .hdr-promo { display: flex; background: #000; color: #fff; font-size: 12px; height: 34px; overflow: hidden; align-items:center; mask-image: linear-gradient(to right, transparent 0%, #000 10%, #000 90%, transparent 100%); -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 10%, #000 90%, transparent 100%); }
+    .hdr-main { padding: 12px 24px; }
+    .logo img { height: 60px; }
+    .garage-pill { padding: 8px 14px; }
+    .garage-pill-txt { display: flex; }
+    .hdr-nav { padding: 0 18px; }
+    .nav-item { padding: 14px 14px; font-size: 13px; }
+    .pdp { padding: 0 24px 80px; }
+    .pdp-top { grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 48px; }
+    .gallery { grid-template-columns: 92px 1fr; }
+    .gal-thumbs { flex-direction: column; overflow-x: unset; padding-bottom: 0; }
+    .gal-thumb { width: 92px; height: 92px; flex-shrink: 1; }
+    .pdp-info { position: sticky; top: 130px; }
+    .pdp-title { font-size: clamp(34px, 4vw, 48px); }
+    .pdp-price { font-size: 42px; }
+    .trust { grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .tab-panel { grid-template-columns: 1fr 340px; gap: 48px; }
+    .strip-grid { grid-template-columns: repeat(3, 1fr); }
+    .specs-table td:first-child { width: 40%; }
+    .mobile-buy-bar { display: none; }
+  }
+
+  /* Wide desktop */
+  @media (min-width: 1280px) {
+    .strip-grid { grid-template-columns: repeat(4, 1fr); }
   }
     *:focus{outline:none;}*:focus-visible{outline:2px solid #8B0000;outline-offset:3px;}
   </style>
@@ -313,15 +320,6 @@
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
 <script type="text/babel">
-// Tell Wix outer page to scroll to top and match iframe height
-(function() {
-  function reportHeight() {
-    window.parent.postMessage({ type: 'setHeight', height: document.body.scrollHeight }, '*');
-  }
-  window.parent.postMessage({ type: 'scrollToTop' }, '*');
-  reportHeight();
-  new ResizeObserver(reportHeight).observe(document.body);
-})();
 const { useState, useEffect, useMemo } = React;
 
 const _qParams = new URLSearchParams(window.location.search);
@@ -975,27 +973,29 @@ function Header({ garage }) {
   const ticker = [...tickers, ...tickers];
   const garageLabel = garage ? `${garage.year} ${garage.make} ${garage.model}` : 'Add Your Truck';
   return (
-    <header className="hdr">
+    <>
       <div className="hdr-promo">
         <div className="hdr-ticker">
           {ticker.map((t,i) => <span key={i} className="hdr-ticker-item"><span className="bolt" style={{color:'#8B0000',display:'inline-flex'}}>{Icon.bolt}</span><span>{t}</span></span>)}
         </div>
       </div>
-      <div className="hdr-main">
-        <a href="/" className="logo">
-          <img src={LOGO_URL} alt="3J's Auto Body & Rhino Linings" />
-        </a>
-        <div className="hdr-actions"></div>
-      </div>
-      <nav className="hdr-nav">
-        <a href="parts-catalog.html" className="nav-item active">Tonneau Covers</a>
-        <a href="running-boards.html" className="nav-item">Running Boards</a>
-        <a href="headache-racks.html" className="nav-item">Headache Racks</a>
-        <a href="lighting.html" className="nav-item">Lighting</a>
-        <a href="rhino-liner.html" className="nav-item">Rhino Linings</a>
-        <a href="contact.html" className="nav-item">Contact</a>
-      </nav>
-    </header>
+      <header className="hdr">
+        <div className="hdr-main">
+          <a href="/" className="logo">
+            <img src={LOGO_URL} alt="3J's Auto Body & Paint" />
+          </a>
+          <div className="hdr-actions"></div>
+        </div>
+        <nav className="hdr-nav">
+          <a href="parts-catalog.html" className="nav-item active">Tonneau Covers</a>
+          <a href="running-boards.html" className="nav-item">Running Boards</a>
+          <a href="headache-racks.html" className="nav-item">Headache Racks</a>
+          <a href="lighting.html" className="nav-item">Lighting</a>
+          <a href="rhino-liner.html" className="nav-item">Rhino Linings</a>
+          <a href="contact.html" className="nav-item">Contact</a>
+        </nav>
+      </header>
+    </>
   );
 }
 
@@ -1017,15 +1017,29 @@ function Breadcrumbs({ productName, brandName, coverType }) {
 
 function Gallery({ images, productName, fits, garage }) {
   const [active, setActive] = useState(0);
+  const [expanded, setExpanded] = useState(false);
+  const MAX_VIS = 5;
   const safeActive = Math.min(active, images.length - 1);
+  const hasMore = images.length > MAX_VIS && !expanded;
+  const visible = hasMore ? images.slice(0, MAX_VIS - 1) : images;
   return (
     <div className="gallery">
       <div className="gal-thumbs">
-        {images.length > 0 ? images.map((src, i) => (
-          <button key={i} className={`gal-thumb ${safeActive===i?'active':''}`} onClick={() => setActive(i)}>
-            <img src={src} alt={`${productName} view ${i+1}`} />
-          </button>
-        )) : (
+        {images.length > 0 ? (
+          <>
+            {visible.map((src, i) => (
+              <button key={i} className={`gal-thumb ${safeActive===i?'active':''}`} onClick={() => setActive(i)}>
+                <img src={src} alt={`${productName} view ${i+1}`} />
+              </button>
+            ))}
+            {hasMore && (
+              <button className="gal-thumb gal-thumb-more" onClick={() => { setExpanded(true); setActive(MAX_VIS - 1); }}>
+                <img src={images[MAX_VIS - 1]} alt={`${productName} view ${MAX_VIS}`} />
+                <div className="gal-more-overlay">+{images.length - (MAX_VIS - 1)}</div>
+              </button>
+            )}
+          </>
+        ) : (
           <button className="gal-thumb active">
             <div style={{width:'100%',height:'100%',background:'#f4f4f1'}} />
           </button>
@@ -1224,11 +1238,11 @@ function ReviewsPane() {
 
 function QAPane() {
   const qa = [
-    {q:'Will this fit over my bed liner?',a:'Yes — most covers install above the bed liner without modification on a standard liner. If you have a high-lip aftermarket liner, you may need a rail extension kit. Bring your truck by and we\'ll confirm in 5 minutes.',meta:'Answered by RLSH Spec Team'},
-    {q:'Can I drive on the highway with the cover open?',a:'Yes. Fold or roll the cover to the cab and secure it with the included hardware. Most manufacturers recommend a 70 mph maximum when folded — more than enough for highway use.',meta:'Answered by RLSH Spec Team'},
-    {q:'Is professional installation required?',a:'No — most truck owners install in 30–45 minutes with basic tools. If you\'d rather not, we install for free with purchase at our Signal Hill shop.',meta:'Answered by RLSH Spec Team'},
-    {q:'What does the warranty cover?',a:'The manufacturer warranty covers defects in materials and workmanship — panels, hinges, latches, and finish. Normal wear is not covered. We handle warranty claims directly for local customers.',meta:'Answered by RLSH Spec Team'},
-    {q:'Will it work with my toolbox?',a:'Yes, with an optional rail-extension kit on most covers. The kit raises the cover over standard over-rail toolboxes so both stay usable. Call us with your toolbox brand to confirm.',meta:'Answered by RLSH Spec Team'},
+    {q:'Will this fit over my bed liner?',a:'Yes — most covers install above the bed liner without modification on a standard liner. If you have a high-lip aftermarket liner, you may need a rail extension kit. Bring your truck by and we\'ll confirm in 5 minutes.',meta:'Answered by 3J's Spec Team'},
+    {q:'Can I drive on the highway with the cover open?',a:'Yes. Fold or roll the cover to the cab and secure it with the included hardware. Most manufacturers recommend a 70 mph maximum when folded — more than enough for highway use.',meta:'Answered by 3J's Spec Team'},
+    {q:'Is professional installation required?',a:'No — most truck owners install in 30–45 minutes with basic tools. If you\'d rather not, we install for free with purchase at our Signal Hill shop.',meta:'Answered by 3J's Spec Team'},
+    {q:'What does the warranty cover?',a:'The manufacturer warranty covers defects in materials and workmanship — panels, hinges, latches, and finish. Normal wear is not covered. We handle warranty claims directly for local customers.',meta:'Answered by 3J's Spec Team'},
+    {q:'Will it work with my toolbox?',a:'Yes, with an optional rail-extension kit on most covers. The kit raises the cover over standard over-rail toolboxes so both stay usable. Call us with your toolbox brand to confirm.',meta:'Answered by 3J's Spec Team'},
   ];
   return (
     <div className="desc">
@@ -1447,7 +1461,7 @@ function App() {
     return single ? [single] : [];
   }, [productName]);
 
-  useEffect(() => { document.title = `${productName} · ${brandName} Tonneau Cover · RLSH`; }, [productName, brandName]);
+  useEffect(() => { document.title = `${productName} · ${brandName} Tonneau Cover · 3J's Auto Body`; }, [productName, brandName]);
 
   if (!entries.length) {
     return (
