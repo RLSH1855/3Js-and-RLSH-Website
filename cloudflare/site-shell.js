@@ -627,8 +627,10 @@
     var shell=document.getElementById('ssShell'),ticking=false;
     function update(){
       var y=window.pageYOffset||document.documentElement.scrollTop;
-      if(y>10) shell.classList.add('ss-shrunk');
-      else if(y<3) shell.classList.remove('ss-shrunk');
+      /* When at or near the very top, always restore the full header (promo bar flush at top: 0).
+         Check y < 5 first so it takes priority over the shrink threshold. */
+      if(y<5){shell.classList.remove('ss-shrunk');}
+      else if(y>10){shell.classList.add('ss-shrunk');}
       ticking=false;
     }
     window.addEventListener('scroll',function(){if(!ticking){requestAnimationFrame(update);ticking=true;}},{passive:true});
