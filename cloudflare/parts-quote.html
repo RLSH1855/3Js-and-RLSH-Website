@@ -6,6 +6,7 @@
   <title>Get a Quote — 3J's Auto Body &amp; Paint</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="canonical" href="https://3js-and-rlsh-website.pages.dev/parts-quote.html" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
   <style>
     html{overscroll-behavior:none;}
@@ -630,6 +631,17 @@ document.getElementById('quote-form').addEventListener('submit', function(e){
       err.style.display = 'block';
       err.textContent = 'Something went wrong. Please try again or call (562) 424-6744.';
     });
+});
+
+// ── Enter key advances to next field (same as Tab) ──
+document.addEventListener('keydown', function(e) {
+  if (e.key !== 'Enter') return;
+  var inputs = Array.from(document.querySelectorAll('#quote-form input, #quote-form select, #quote-form textarea'));
+  var idx = inputs.indexOf(document.activeElement);
+  if (idx >= 0 && idx < inputs.length - 1) {
+    e.preventDefault();
+    inputs[idx + 1].focus();
+  }
 });
 
 // ── Phone formatter ──
