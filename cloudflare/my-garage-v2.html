@@ -4,10 +4,13 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>My Garage — 3J's Auto Body</title>
+  <link rel="canonical" href="https://3js-and-rlsh-website.pages.dev/my-garage-v2.html"/>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Inter:wght@400;500;600;700;800;900&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet"/>
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    html,body{height:100%;overflow:hidden;background:#fff;touch-action:pan-y;}
+    html,body{height:100%;background:#fff;touch-action:pan-y;}
+    html{overscroll-behavior:none;}
+    body{overflow:hidden;}
 
     /* ── POPUP (fills lightbox iframe) ── */
     .popup{
@@ -288,7 +291,7 @@
     .color-row-label .opt{color:#9aa0a8;font-weight:600;}
     .swatches{display:flex;gap:6px;flex-wrap:wrap;}
     .swatch{
-      width:20px;height:20px;border-radius:50%;
+      width:20px;height:20px;border-radius:0;
       border:2px solid transparent;cursor:pointer;flex-shrink:0;
       transition:transform 0.15s,border-color 0.15s;
     }
@@ -598,7 +601,7 @@
         <div class="s3-vehicle" id="s3-vehicle">—</div>
         <div class="saved-vehicles" id="saved-vehicles" style="display:none;"></div>
         <div class="s3-actions">
-          <button class="s3-btn-primary" onclick="browseAccessories()">Browse Accessories</button>
+          <a href="parts-catalog.html" class="s3-btn-primary">Shop for Your Vehicle</a>
           <button class="s3-btn-secondary" onclick="addAnotherVehicle()">Change Vehicle</button>
           <button class="s3-btn-clear" onclick="clearAllVehicles()">Clear All</button>
         </div>
@@ -672,6 +675,7 @@ var selectedColor=COLORS[0];
 var pendingVehicle={};
 var currentVehicle=null;
 var pendingTrim='';  // used when VIN pre-fills a trim
+var pendingVIN='';   // captured when VIN decode is used; saved to garage_vehicle schema
 
 (function(){
   function checkMobile(){
@@ -804,6 +808,7 @@ function decodeVIN(){
       document.getElementById('val-make').value=make;
       document.getElementById('val-model').value=model;
       pendingTrim=trim||'';
+      pendingVIN=vin;
       goStep2();
     })
     .catch(function(){btn.disabled=false;status.className='vin-status err';status.textContent='Decode failed — check your connection.';});
@@ -959,10 +964,12 @@ function saveVehicle(){
     make:make,
     model:model,
     trim:trim||'',
+    vin:pendingVIN||'',
     bedSize:bedLabel||'',
     color:selectedColor.name,
     label:vehicleLabel
   };
+  pendingVIN='';
 
   addSavedVehicle(vehicle);
   updateS3Display(vehicle);
@@ -1227,18 +1234,6 @@ window.addEventListener('load',function(){
 function browseAccessories(){
   window.parent.postMessage({type:'browse_accessories',vehicle:currentVehicle||null},'*');
 }
-</script>
-<script>
-  function reportHeight(){
-    var h = Math.max(document.body.scrollHeight,document.body.offsetHeight,document.documentElement.scrollHeight,document.documentElement.offsetHeight);
-    window.parent.postMessage(JSON.stringify({height:h}),'*');
-  }
-  document.addEventListener('DOMContentLoaded',reportHeight);
-  window.addEventListener('load',function(){
-    [0,200,500,1000,2000,3500].forEach(function(t){setTimeout(reportHeight,t);});
-  });
-  window.addEventListener('resize',reportHeight);
-  if(window.ResizeObserver){new ResizeObserver(reportHeight).observe(document.body);}
 </script>
 <script src="site-shell.js"></script>
 </body>
