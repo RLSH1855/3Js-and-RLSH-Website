@@ -581,7 +581,7 @@ function renderGrid(){
           price,
           '<div class="card-btns">',
             '<div class="card-btn card-btn-part">', esc(e[2]), '</div>',
-            '<a href="' + QUOTE_URL + '" class="card-btn card-btn-quote">Get a Quote</a>',
+            '<a href="' + QUOTE_URL + '?product=' + encodeURIComponent(e[1]) + '" class="card-btn card-btn-quote">Get a Quote</a>',
           '</div>',
         '</div>',
       '</div>'
