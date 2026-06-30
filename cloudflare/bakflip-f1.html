@@ -10,12 +10,12 @@
   <meta name="author" content="3J's Auto Body & Paint">
   <meta name="geo.region" content="US-CA">
   <meta name="geo.placename" content="Signal Hill, California">
-  <link rel="canonical" href="https://rlsh1855.github.io/3Js-and-RLSH-Website/bakflip-f1.html">
+  <link rel="canonical" href="https://3js-and-rlsh-website.pages.dev/bakflip-f1.html">
   <meta property="og:type" content="product">
   <meta property="og:title" content="BAKFlip F1 Tonneau Cover — 3J's Auto Body & Paint">
   <meta property="og:description" content="Top-of-the-line BAKFlip with FRP surface over heavy-duty aluminum. 400 lb capacity, 3-year warranty, professionally installed at 3J's Auto Body Signal Hill CA.">
   <meta property="og:image" content="https://sdda.semadata.org/Standard/RealTruck%20Inc/BAKBK_FlipF1_F150_Closed_H.jpg">
-  <meta property="og:url" content="https://rlsh1855.github.io/3Js-and-RLSH-Website/bakflip-f1.html">
+  <meta property="og:url" content="https://3js-and-rlsh-website.pages.dev/bakflip-f1.html">
   <meta property="og:site_name" content="3J's Auto Body & Paint">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="BAKFlip F1 Tonneau Cover — 3J's Auto Body">
@@ -113,7 +113,7 @@
     .feat-strip-content{position:relative;z-index:1;padding:30px 18px;}
     .feat-strip-content .label{color:var(--white);opacity:0.75;margin-bottom:14px;}
     .feat-strip-content h2{font-size:clamp(26px,3.5vw,44px);font-weight:900;letter-spacing:-2px;line-height:1.0;color:var(--white);text-transform:uppercase;margin-bottom:16px;}
-    .feat-strip-content h2 em{color:var(--crimson);font-style:normal;}
+    .feat-strip-content h2 em{color:rgba(255,255,255,0.85);font-style:normal;}
     .feat-strip-content p{font-size:16px;color:rgba(255,255,255,0.82);max-width:520px;margin:0 auto;line-height:1.7;}
     @media(min-width:601px){.feat-strip{min-height:340px;}.feat-strip-content{padding:56px 36px;}}
     .features-tiles{padding:48px 18px 56px;max-width:1200px;margin:0 auto;}
@@ -227,7 +227,7 @@
       <li><span></span>3-Year Extended Warranty</li>
       <li><span></span>Made in America</li>
     </ul>
-    <a href="parts-quote.html?product=BAKFlip%20F1" target="_top" class="hero-cta" data-a="up" data-d="4">
+    <a href="parts-quote.html?product=BAKFlip%20F1" class="hero-cta" data-a="up" data-d="4">
       <svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
       Get a Quote
     </a>
@@ -323,7 +323,7 @@
         <li><span></span>Locks with tailgate</li>
       </ul>
     </div>
-    <a href="parts-quote.html?product=BAKFlip%20F1" target="_top" class="s-cta" data-a="up" data-d="3">
+    <a href="parts-quote.html?product=BAKFlip%20F1" class="s-cta" data-a="up" data-d="3">
       <svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
       Schedule Your Install
     </a>
@@ -396,7 +396,7 @@
     <div class="cta-btn-wrap" data-a="up">
       <div style="display:flex;flex-wrap:wrap;gap:14px;justify-content:center;align-items:center;">
         <a href="tel:+15624246744" class="cta-phone"><svg viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>Call Us: (562) 424-6744</a>
-        <a href="my-garage-v2.html" target="_top" class="cta-phone btn-glass"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/car-garage-flat-icon.webp" alt="" aria-hidden="true" loading="lazy" style="width:16px;height:16px;object-fit:contain;filter:brightness(0) invert(1);flex-shrink:0;">My Garage</a>
+        <a href="my-garage-v2.html" class="cta-phone btn-glass"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/car-garage-flat-icon.webp" alt="" aria-hidden="true" loading="lazy" style="width:16px;height:16px;object-fit:contain;filter:brightness(0) invert(1);flex-shrink:0;">My Garage</a>
       </div>
       <div class="cta-address">Mon &ndash; Fri 8AM &ndash; 5PM &nbsp;·&nbsp; 1855 E 29th St, Signal Hill, CA 90755</div>
     </div>
@@ -411,9 +411,7 @@
 function faqClose(item){var p=item.querySelector('.faq-body');p.style.height=p.scrollHeight+'px';void p.offsetHeight;p.style.height='0px';item.classList.remove('open');item.querySelector('.faq-trigger').setAttribute('aria-expanded','false');}
 function faqOpen(item){var p=item.querySelector('.faq-body');item.classList.add('open');item.querySelector('.faq-trigger').setAttribute('aria-expanded','true');p.style.height=p.querySelector('.faq-body-inner').offsetHeight+'px';}
 document.querySelectorAll('.faq-body').forEach(function(p){p.addEventListener('transitionend',function(e){if(e.propertyName!=='height')return;if(p.closest('.faq-item').classList.contains('open'))p.style.height='auto';});});
-document.querySelectorAll('.faq-trigger').forEach(function(btn){btn.addEventListener('click',function(){var item=btn.closest('.faq-item'),wasOpen=item.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(faqClose);if(!wasOpen){faqOpen(item);}setTimeout(reportHeight,350);});});
-function reportHeight(){var h=Math.max(document.body.scrollHeight,document.body.offsetHeight,document.documentElement.scrollHeight,document.documentElement.offsetHeight);window.parent.postMessage(JSON.stringify({height:h}),'*');}
-window.addEventListener('load',reportHeight);window.addEventListener('resize',reportHeight);
+document.querySelectorAll('.faq-trigger').forEach(function(btn){btn.addEventListener('click',function(){var item=btn.closest('.faq-item'),wasOpen=item.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(faqClose);if(!wasOpen){faqOpen(item);}});});
 </script>
 <script>
 (function(){var active=false,startY=0,lastY=0,rafId=null;document.addEventListener('mousedown',function(e){if(e.button!==1)return;if(e.target.closest('a'))return;e.preventDefault();active=true;startY=e.clientY;lastY=e.clientY;document.body.style.cursor='ns-resize';tick();});document.addEventListener('mousemove',function(e){if(active)lastY=e.clientY;});document.addEventListener('mouseup',function(e){if(e.button!==1||!active)return;active=false;document.body.style.cursor='';if(rafId){cancelAnimationFrame(rafId);rafId=null;}});function tick(){if(!active){rafId=null;return;}var dy=lastY-startY;if(Math.abs(dy)>5)window.scrollBy(0,dy*0.12);rafId=requestAnimationFrame(tick);}})();
