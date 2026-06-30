@@ -12,13 +12,13 @@
   <meta name="author" content="3J's Auto Body &amp; Paint">
   <meta name="geo.region" content="US-CA">
   <meta name="geo.placename" content="Signal Hill, California">
-  <link rel="canonical" href="https://www.3jsautobody.com/bundles">
+  <link rel="canonical" href="https://3js-and-rlsh-website.pages.dev/bundles.html">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Bundle Deals — 3J's Auto Body & Paint | Signal Hill CA">
   <meta property="og:description" content="The 405 Essential, The Working Man, The 3 Wise Men — hand-picked service bundles for truck owners. Call (562) 424-6744 for pricing.">
-  <meta property="og:url" content="https://www.3jsautobody.com/bundles">
+  <meta property="og:url" content="https://3js-and-rlsh-website.pages.dev/bundles.html">
   <meta property="og:site_name" content="3J's Auto Body &amp; Paint">
 
   <!-- Structured Data -->
@@ -349,7 +349,7 @@
     .includes-list li::before{
       content:'';
       width:7px;height:7px;
-      border-radius:50%;background:#8B0000;
+      border-radius:0;background:#8B0000;
       flex-shrink:0;margin-top:4px;
     }
     .includes-list li span{
@@ -696,7 +696,7 @@
       </ul>
       <p class="card-target">Built for: <strong>The SoCal Truck Owner</strong> · Ages 25–55 · Daily Driver</p>
       <div class="bundle-price"><span class="bundle-price-label">Starting at</span><span class="bundle-price-amount">$998</span><span class="bundle-price-note">· call for exact quote</span></div>
-      <a href="https://www.3jsautobody.com/the-405-essentials" target="_top" class="btn-call">
+      <a href="parts-quote.html?product=The+405+Essential" class="btn-call">
         <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         View This Bundle
       </a>
@@ -733,7 +733,7 @@
       </ul>
       <p class="card-target">Built for: <strong>The Working Truck Owner</strong> · Ages 25–55 · Work &amp; Weekend</p>
       <div class="bundle-price"><span class="bundle-price-label">Starting at</span><span class="bundle-price-amount">$1,550</span><span class="bundle-price-note">· call for exact quote</span></div>
-      <a href="https://www.3jsautobody.com/the-working-man" target="_top" class="btn-call">
+      <a href="parts-quote.html?product=The+Working+Man" class="btn-call">
         <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         View This Bundle
       </a>
@@ -782,7 +782,7 @@
           </ul>
           <p class="card-target">Built for: <strong>Every Truck Owner</strong> · Practical Daily Upgrade</p>
           <div class="bundle-price"><span class="bundle-price-label">Starting at</span><span class="bundle-price-amount">$800</span><span class="bundle-price-note">· call for exact quote</span></div>
-          <a href="https://www.3jsautobody.com/the-3-wise-men-standard" target="_top" class="btn-call">
+          <a href="parts-quote.html?product=The+3+Wise+Men+Standard" class="btn-call">
             <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
             View This Bundle
           </a>
@@ -816,7 +816,7 @@
           </ul>
           <p class="card-target">Built for: <strong>The Truck Enthusiast</strong> · Inside &amp; Out Upgrade</p>
           <div class="bundle-price"><span class="bundle-price-label">Starting at</span><span class="bundle-price-amount">$875</span><span class="bundle-price-note">· call for exact quote</span></div>
-          <a href="https://www.3jsautobody.com/the-3-wise-men-premium" target="_top" class="btn-call">
+          <a href="parts-quote.html?product=The+3+Wise+Men+Premium" class="btn-call">
             <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
             View This Bundle
           </a>
@@ -867,29 +867,6 @@
   </div>
 </section>
 
-<script>
-  var _lastHeight=0;
-  function reportHeight(){
-    var sentinel=document.getElementById('height-sentinel');
-    var h=sentinel?(sentinel.offsetTop+sentinel.offsetHeight):Math.max(document.body.scrollHeight,document.body.offsetHeight,document.documentElement.scrollHeight,document.documentElement.offsetHeight);
-    if(h!==_lastHeight){
-      _lastHeight=h;
-      if(window.Wix && window.Wix.setHeight){window.Wix.setHeight(h);}
-      window.parent.postMessage(JSON.stringify({height:h}),'*');
-    }
-  }
-  var _roTimer;
-  var _ro=window.ResizeObserver?new ResizeObserver(function(){clearTimeout(_roTimer);_roTimer=setTimeout(reportHeight,100);}):null;
-  window.addEventListener('load',function(){
-    if(_ro) _ro.observe(document.body);
-    reportHeight();
-    setTimeout(reportHeight,500);
-    setTimeout(function(){reportHeight();if(_ro)_ro.disconnect();},2000);
-  });
-  document.addEventListener('DOMContentLoaded',reportHeight);
-</script>
-
-<div id="height-sentinel" style="height:1px;width:1px;visibility:hidden;pointer-events:none;"></div>
 
 
 <script>

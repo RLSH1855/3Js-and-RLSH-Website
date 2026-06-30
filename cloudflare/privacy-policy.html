@@ -70,7 +70,7 @@
 
     <div class="doc">
       <p>3jsautobody.com takes great care in making sure that your shopping experience with us is safe. As you browse our site, we are continually working to ensure your personal information remains <strong>secure and private</strong>.</p>
-      <p>From phishing scams to viruses to spam e-mails and more, Internet threats are always increasing, and without a proper understanding of what to look out for with regard to security and privacy, becoming a victim can be just a few misguided clicks away. RLSH greatly appreciates your continued business, and we settle for nothing less than a safe, convenient, and altogether enjoyable shopping experience. Should you have any questions, comments, or concerns about our site, please feel free to <a href="/contact" style="color:#8B0000;font-weight:700;text-decoration:none;">contact us</a>.</p>
+      <p>From phishing scams to viruses to spam e-mails and more, Internet threats are always increasing, and without a proper understanding of what to look out for with regard to security and privacy, becoming a victim can be just a few misguided clicks away. RLSH greatly appreciates your continued business, and we settle for nothing less than a safe, convenient, and altogether enjoyable shopping experience. Should you have any questions, comments, or concerns about our site, please feel free to <a href="tel:+15624246744" style="color:#8B0000;font-weight:700;text-decoration:none;">contact us</a>.</p>
 
       <h2>Our Privacy Policy</h2>
       <p>Your privacy is important to us. To best serve your shopping needs, we endeavor to provide products, services and offers of value to you. We're able to present meaningful offers to you through the information we collect from our interactions with you, from other customers and from other parties.</p>
@@ -127,17 +127,5 @@
   </div>
 
 <script src="site-shell.js"></script>
-<script>
-  function reportHeight(){
-    var h = Math.max(document.body.scrollHeight,document.body.offsetHeight,document.documentElement.scrollHeight,document.documentElement.offsetHeight);
-    window.parent.postMessage(JSON.stringify({height:h}),'*');
-  }
-  document.addEventListener('DOMContentLoaded',reportHeight);
-  window.addEventListener('load',function(){
-    [0,200,500,1000,2000,3500].forEach(function(t){setTimeout(reportHeight,t);});
-  });
-  window.addEventListener('resize',reportHeight);
-  if(window.ResizeObserver){new ResizeObserver(reportHeight).observe(document.body);}
-</script>
 </body>
 </html>

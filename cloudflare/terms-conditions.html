@@ -76,7 +76,7 @@
       <p>When you place an order or request service, you agree to provide current, complete, and accurate information. We reserve the right to refuse or cancel any order at our discretion. Payment terms will be confirmed at the time of service or purchase.</p>
 
       <h2>Warranties</h2>
-      <p>Rhino Linings spray-on bedliners are backed by the applicable manufacturer's warranty. Repair and paint work is warranted as described at the time of service. <strong>Warranty coverage is described in your service documentation</strong> and does not cover damage from accidents, abuse, normal wear, or modifications performed by others. See our <a href="/warranty" style="color:#8B0000;font-weight:700;text-decoration:none;">warranty page</a> for details.</p>
+      <p>Rhino Linings spray-on bedliners are backed by the applicable manufacturer's warranty. Repair and paint work is warranted as described at the time of service. <strong>Warranty coverage is described in your service documentation</strong> and does not cover damage from accidents, abuse, normal wear, or modifications performed by others. See our <a href="warranty.html" style="color:#8B0000;font-weight:700;text-decoration:none;">warranty page</a> for details.</p>
 
       <h2>Intellectual Property</h2>
       <p>All content on this Site — including text, graphics, logos, images, and design — is the property of 3J's Auto Body &amp; Paint / Rhino Linings of Signal Hill or its content suppliers and is protected by applicable intellectual property laws. You may not reproduce, distribute, or use any content without our prior written permission.</p>
@@ -100,17 +100,5 @@
   </div>
 
 <script src="site-shell.js"></script>
-<script>
-  function reportHeight(){
-    var h = Math.max(document.body.scrollHeight,document.body.offsetHeight,document.documentElement.scrollHeight,document.documentElement.offsetHeight);
-    window.parent.postMessage(JSON.stringify({height:h}),'*');
-  }
-  document.addEventListener('DOMContentLoaded',reportHeight);
-  window.addEventListener('load',function(){
-    [0,200,500,1000,2000,3500].forEach(function(t){setTimeout(reportHeight,t);});
-  });
-  window.addEventListener('resize',reportHeight);
-  if(window.ResizeObserver){new ResizeObserver(reportHeight).observe(document.body);}
-</script>
 </body>
 </html>
