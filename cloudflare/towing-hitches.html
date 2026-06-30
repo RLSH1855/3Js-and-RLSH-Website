@@ -12,14 +12,14 @@
   <meta name="author" content="3J's Auto Body &amp; Paint">
   <meta name="geo.region" content="US-CA">
   <meta name="geo.placename" content="Signal Hill, California">
-  <link rel="canonical" href="https://rlsh1855.github.io/3Js-and-RLSH-Website/towing-hitches.html">
+  <link rel="canonical" href="https://3js-and-rlsh-website.pages.dev/towing-hitches.html">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Towing & Hitches — CURT, B&W | 3J's Auto Body Signal Hill CA">
   <meta property="og:description" content="Trailer hitches, ball mounts, wiring harnesses, and more — professionally installed at 3J's Auto Body in Signal Hill, CA. CURT and B&W Hitches dealer.">
   <meta property="og:image" content="https://rlsh1855.github.io/3Js-and-RLSH-Website/CHEVY%20BOAT%20LAUNCH%20RAMP.webp">
-  <meta property="og:url" content="https://rlsh1855.github.io/3Js-and-RLSH-Website/towing-hitches.html">
+  <meta property="og:url" content="https://3js-and-rlsh-website.pages.dev/towing-hitches.html">
   <meta property="og:site_name" content="3J's Auto Body &amp; Paint">
 
   <!-- Twitter Card -->
@@ -152,7 +152,7 @@
       color:#fff;text-align:center;text-wrap:balance;
     }
     .hero h1 span{color:var(--crimson);}
-    .hero-rule{width:52px;height:4px;background:var(--crimson);border-radius:2px;margin:26px 0;}
+    .hero-rule{width:52px;height:4px;background:var(--crimson);border-radius:0;margin:26px 0;}
     .hero-body{
       font-family:'Inter',sans-serif;
       font-size:16px;
@@ -404,7 +404,7 @@
     }
     .bw-features li::before{
       content:'';width:6px;height:6px;
-      border-radius:50%;background:var(--crimson);flex-shrink:0;
+      border-radius:0;background:var(--crimson);flex-shrink:0;
     }
     .btn-dark{
       display:inline-flex;align-items:center;justify-content:center;gap:8px;
@@ -680,7 +680,7 @@
       Trailer hitches, ball mounts, wiring harnesses, brake controllers, and weight distribution — professionally installed right here in Signal Hill. CURT and B&W Hitches dealer. We sell it and install it ourselves.
     </p>
     <div class="hero-ctas">
-      <a href="parts-quote.html" class="btn-red" target="_top">
+      <a href="parts-quote.html" class="btn-red">
         <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
         Get a Free Quote
       </a>
@@ -805,7 +805,7 @@
         <p class="eyebrow">Heavy Duty Line</p>
         <h3>CURT Rebellion<span> XD</span></h3>
         <p>CURT's toughest receiver hitch — the Rebellion XD is engineered for extreme-duty towing with a high-strength steel weld construction, XD anti-rattle technology, and a raw steel finish ready for paint or powder coat. Built for trucks that actually work.</p>
-        <a href="parts-quote.html" target="_top" class="btn-red-sm">
+        <a href="parts-quote.html" class="btn-red-sm">
           <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
           Get a Quote
         </a>
@@ -838,7 +838,7 @@
         <li>Made in the USA</li>
         <li>Precision-engineered for your truck</li>
       </ul>
-      <a href="parts-quote.html" target="_top" class="btn-dark">
+      <a href="parts-quote.html" class="btn-dark">
         <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
         Get a B&amp;W Quote
       </a>
@@ -945,7 +945,7 @@
     <h2>Ready to Tow?</h2>
     <p>Get a free quote online or call us. We'll spec the right setup for your truck and what you're towing — often same-week installation.</p>
     <div class="cta-btns">
-      <a href="parts-quote.html" class="btn-white" target="_top">
+      <a href="parts-quote.html" class="btn-white">
         <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
         Get a Free Quote
       </a>
@@ -995,24 +995,12 @@
 </section>
 
 <script>
-  function reportHeight(){
-    var sentinel=document.getElementById('height-sentinel');
-    var h=sentinel?(sentinel.offsetTop+sentinel.offsetHeight):Math.max(document.body.scrollHeight,document.body.offsetHeight,document.documentElement.scrollHeight,document.documentElement.offsetHeight);
-    window.parent.postMessage(JSON.stringify({height:h}),'*');
-  }
-  document.addEventListener('DOMContentLoaded',reportHeight);
-  window.addEventListener('load',function(){[0,200,500,1000,2000,3500].forEach(function(t){setTimeout(reportHeight,t);});});
-  window.addEventListener('resize',reportHeight);
-  if(window.ResizeObserver){new ResizeObserver(reportHeight).observe(document.body);}
 
   function faqClose(item){item.querySelector('.faq-a').style.display='none';item.classList.remove('open');item.querySelector('.faq-q').setAttribute('aria-expanded','false');}
-  function faqOpen(item){item.querySelector('.faq-a').style.display='block';item.classList.add('open');item.querySelector('.faq-q').setAttribute('aria-expanded','true');reportHeight();setTimeout(reportHeight,50);}
+  function faqOpen(item){item.querySelector('.faq-a').style.display='block';item.classList.add('open');item.querySelector('.faq-q').setAttribute('aria-expanded','true');}
   document.querySelectorAll('.faq-q').forEach(function(btn){btn.addEventListener('click',function(){var item=btn.closest('.faq-item');var wasOpen=item.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(faqClose);if(!wasOpen){faqOpen(item);}});});
 </script>
 <script src="site-shell.js"></script>
-
-<div id="height-sentinel" style="height:1px;width:1px;visibility:hidden;pointer-events:none;"></div>
-
 <script>
 (function(){var active=false,startY=0,lastY=0,rafId=null;document.addEventListener('mousedown',function(e){if(e.button!==1)return;if(e.target.closest('a'))return;e.preventDefault();active=true;startY=e.clientY;lastY=e.clientY;document.body.style.cursor='ns-resize';tick();});document.addEventListener('mousemove',function(e){if(active)lastY=e.clientY;});document.addEventListener('mouseup',function(e){if(e.button!==1||!active)return;active=false;document.body.style.cursor='';if(rafId){cancelAnimationFrame(rafId);rafId=null;}});function tick(){if(!active){rafId=null;return;}var dy=lastY-startY;if(Math.abs(dy)>5)window.scrollBy(0,dy*0.12);rafId=requestAnimationFrame(tick);}})();
 </script><!-- EFFECTS: grain Â· scroll-reveal Â· border sweep Â· parallax Â· inertia -->
