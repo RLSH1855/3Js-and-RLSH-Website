@@ -7,6 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700;800;900&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+<link rel="canonical" href="https://3js-and-rlsh-website.pages.dev/product-detail-page.html">
 <style>
   :root {
     --bg:#ffffff; --surface:#ffffff; --surface2:#f2f2f2;
@@ -315,6 +316,7 @@
 <body>
 <div id="root"></div>
 <script src="catalog-data.js"></script>
+<script src="product-content.js"></script>
 <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
@@ -917,7 +919,23 @@ function getGenericInfo(productName, coverType) {
 }
 
 function getProductInfo(productName, coverType) {
-  return PRODUCT_INFO[productName] || getGenericInfo(productName, coverType);
+  // 1. Rich inline content takes priority
+  if (PRODUCT_INFO[productName]) return PRODUCT_INFO[productName];
+  // 2. Fall back to PRODUCT_CONTENT (product-content.js) if available for this product
+  if (typeof PRODUCT_CONTENT !== 'undefined' && PRODUCT_CONTENT[productName]) {
+    const pc = PRODUCT_CONTENT[productName];
+    const ct = pc.coverType || coverType;
+    const generic = getGenericInfo(productName, ct);
+    return Object.assign({}, generic, {
+      desc: pc.desc || generic.desc,
+      highlights: pc.features && pc.features.length ? pc.features : generic.highlights,
+      features: pc.features && pc.features.length
+        ? pc.features.slice(0, 4).map(f => ({ title: f.split(' ').slice(0, 3).join(' '), body: f }))
+        : generic.features,
+    });
+  }
+  // 3. Generic fallback by cover type
+  return getGenericInfo(productName, coverType);
 }
 
 function matchesTruck(row, garage) {
