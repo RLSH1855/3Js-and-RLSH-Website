@@ -121,16 +121,17 @@
     .texture-light .two-col{position:relative;z-index:1;}
 
     /* PAGE HEADER */
-    .page-header{color:var(--white);height:280px;display:flex;align-items:flex-start;justify-content:flex-start;text-align:left;padding:0;position:relative;overflow:hidden;flex-direction:column;}
+    .page-header{color:var(--white);height:260px;display:flex;align-items:flex-start;justify-content:flex-start;text-align:left;padding:0;position:relative;overflow:hidden;flex-direction:column;}
     .page-header-bg{position:absolute;inset:0;z-index:0;}
-    .page-header-bg img{width:100%;height:100%;object-fit:fill;display:block;}
+    .page-header-bg img{width:100%;height:100%;object-fit:cover;object-position:center center;display:block;}
     .page-header-content{position:relative;z-index:1;padding:40px 20px;width:100%;}
     .page-header .eyebrow{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.80);text-shadow:0 2px 8px rgba(0,0,0,0.80);margin-bottom:12px;display:block;text-align:left;}
     .page-header h1{font-family:'Montserrat',sans-serif;font-size:clamp(32px,6vw,56px);font-weight:900;letter-spacing:-2px;line-height:1.0;text-transform:uppercase;text-align:left;text-wrap:balance;}
     .page-header h1 em{font-style:normal;color:var(--crimson);}
     .page-header h1 .big-repairs{display:block;font-size:clamp(46px,9vw,88px);letter-spacing:-2.5px;line-height:0.95;margin-top:4px;}
     .page-header-bar{position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(to right,transparent,var(--crimson) 25%,var(--crimson) 75%,transparent);z-index:2;}
-    @media(min-width:601px){.page-header{height:420px;}}
+    @media(min-width:601px){.page-header{height:500px;}}
+    @media(min-width:1024px){.page-header{height:620px;}}
 
     /* CERT STRIP */
     .cert-strip{background:var(--crimson);padding:20px 24px;display:flex;justify-content:center;align-items:center;gap:32px;flex-wrap:wrap;}
