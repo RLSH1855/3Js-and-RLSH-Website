@@ -308,7 +308,7 @@
         '<a href="rhino-liner.html" id="sn-trigger-rhino">Rhino Liner +</a>'+
         '<a href="bundles.html" id="sn-trigger-bundles">Bundles &amp; Packages +</a>'+
         '<a href="exterior-accessories-V2.html" id="sn-trigger-exterior">Exterior Accessories +</a>'+
-        '<a href="shop.html">Shop</a>'+
+        '<a href="parts-catalog.html">Shop</a>'+
         '<a href="contact.html">Contact Us</a>'+
         '<a href="FAQ_PAGE_V2.html">FAQ</a>'+
       '</div>'+
@@ -478,7 +478,7 @@
                 '<div class="ssd-sub-spacer"></div>'+
               '</div>'+
             '</div>'+
-            '<a href="shop.html" class="ssd-item"><div class="ssd-item-text"><span class="ssd-item-label">Shop</span><span class="ssd-item-desc">Browse all products</span></div><span class="ssd-item-arr">'+ssChevR+'</span></a>'+
+            '<a href="parts-catalog.html" class="ssd-item"><div class="ssd-item-text"><span class="ssd-item-label">Shop</span><span class="ssd-item-desc">Browse all products</span></div><span class="ssd-item-arr">'+ssChevR+'</span></a>'+
             '<a href="contact.html" class="ssd-item"><div class="ssd-item-text"><span class="ssd-item-label">Contact Us</span><span class="ssd-item-desc">Get in touch &middot; 562-424-6744</span></div><span class="ssd-item-arr">'+ssChevR+'</span></a>'+
             '<a href="FAQ_PAGE_V2.html" class="ssd-item"><div class="ssd-item-text"><span class="ssd-item-label">FAQ</span><span class="ssd-item-desc">Common questions answered</span></div><span class="ssd-item-arr">'+ssChevR+'</span></a>'+
           '</div>'+
@@ -547,8 +547,8 @@
       'lighting':              [EXT,['Lighting',null]],
       'bundles':               [['Bundles & Packages',null]],
       'shop':                  [['Shop',null]],
-      'parts-catalog':         [['Shop','shop.html'],['Parts Catalog',null]],
-      'parts-quote':           [['Shop','shop.html'],['Request a Quote',null]],
+      'parts-catalog':         [['Shop','parts-catalog.html'],['Parts Catalog',null]],
+      'parts-quote':           [['Shop','parts-catalog.html'],['Request a Quote',null]],
       'contact':               [['Contact Us',null]],
       'FAQ_PAGE_V2':           [['FAQ',null]],
       'warranty':              [['Warranty',null]],
