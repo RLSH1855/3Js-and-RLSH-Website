@@ -609,11 +609,8 @@
     var shell=document.getElementById('ssShell');
     var spacer=document.querySelector('.ss-spacer');
     if(!shell||!spacer) return;
-    function fit(){
-      /* only measure in the full (un-shrunk) state so the spacer always clears the tallest header */
-      if(shell.classList.contains('ss-shrunk')) return;
-      spacer.style.height=shell.offsetHeight+'px';
-    }
+    window._ssSyncSpacer=function(){spacer.style.height=shell.offsetHeight+'px';};
+    function fit(){window._ssSyncSpacer();}
     fit();
     window.addEventListener('load',fit);
     window.addEventListener('resize',fit);
@@ -627,10 +624,13 @@
     var shell=document.getElementById('ssShell'),ticking=false;
     function update(){
       var y=window.pageYOffset||document.documentElement.scrollTop;
-      /* When at or near the very top, always restore the full header (promo bar flush at top: 0).
-         Check y < 5 first so it takes priority over the shrink threshold. */
+      var wasShrunk=shell.classList.contains('ss-shrunk');
       if(y<5){shell.classList.remove('ss-shrunk');}
       else if(y>10){shell.classList.add('ss-shrunk');}
+      /* Sync spacer height during and after the CSS transition whenever state changes */
+      if(wasShrunk!==shell.classList.contains('ss-shrunk')&&window._ssSyncSpacer){
+        [0,80,200,450,750].forEach(function(t){setTimeout(window._ssSyncSpacer,t);});
+      }
       ticking=false;
     }
     window.addEventListener('scroll',function(){if(!ticking){requestAnimationFrame(update);ticking=true;}},{passive:true});

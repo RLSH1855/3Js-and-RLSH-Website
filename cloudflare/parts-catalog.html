@@ -75,7 +75,7 @@
   /* ── Garage iframe popup ── */
   .garage-popup-root { position: fixed; inset: 0; z-index: 500; display: flex; align-items: center; justify-content: center; }
   .garage-popup-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,.72); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); animation: fadeIn .2s ease-out; }
-  .garage-popup-card { position: relative; z-index: 1; width: 680px; max-width: 95vw; max-height: 88vh; overflow-y: auto; animation: fadeIn .22s ease-out; box-shadow: 0 24px 64px rgba(0,0,0,.6); background: #fff; }
+  .garage-popup-card { position: relative; z-index: 1; width: 960px; max-width: 95vw; max-height: 88vh; overflow-y: auto; animation: fadeIn .22s ease-out; box-shadow: 0 24px 64px rgba(0,0,0,.6); background: #fff; }
   .garage-popup-close { position: absolute; top: 12px; right: 12px; z-index: 10; background: rgba(0,0,0,.55); border: 1px solid rgba(255,255,255,.15); color: #fff; width: 36px; height: 36px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 20px; line-height: 1; transition: background .15s; }
   .garage-popup-close:hover { background: var(--accent); }
   .garage-popup-iframe { width: 100%; height: 720px; border: 0; display: block; }
@@ -84,10 +84,10 @@
   .garage-popup-skip:hover { color: #666; }
   .garage-popup-clear { flex: 1; padding: 12px; background: none; border: none; border-left: 1px solid #e8e8e8; font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #8B0000; cursor: pointer; text-align: center; transition: color .15s; }
   .garage-popup-clear:hover { color: #6d0000; }
-  @media (max-width: 680px) {
+  @media (max-width: 767px) {
     .garage-popup-root { align-items: flex-end; }
-    .garage-popup-card { width: 100%; max-width: 100%; max-height: 88vh; border-top-left-radius: 0; border-top-right-radius: 0; }
-    .garage-popup-iframe { height: min(520px, 62vh); }
+    .garage-popup-card { width: 100%; max-width: 100%; max-height: 92vh; }
+    .garage-popup-iframe { height: min(560px, 70vh); }
   }
   /* ── Product Detail Popup ── */
   .detail-popup-root { position: fixed; inset: 0; z-index: 500; display: flex; align-items: flex-end; justify-content: center; }
@@ -252,28 +252,31 @@
 
   /* ── Grid ── */
   .grid { display:grid; grid-template-columns: repeat(var(--cols), minmax(0, 1fr)); gap: var(--gap); }
-  .card { display:flex; flex-direction: column; background: var(--surface); border: 1px solid var(--border); transition: border-color .15s, transform .15s; overflow: hidden; }
+  /* ── Product Card — Dark Panel ── */
+  .card { display:flex; flex-direction:column; overflow:hidden; border:1px solid #2a2a2a; background:#1a1a1a; transition:border-color .15s; cursor:pointer; }
   .card:hover { border-color: var(--accent); }
-  .card:hover .card-media { transform: scale(1.02); }
-  .card-media { position: relative; aspect-ratio: 4/3; overflow: hidden; background: #0d0d0e; transition: transform .3s; }
-  .card-heart { position: absolute; top: 10px; right: 10px; width: 32px; height: 32px; background: rgba(0,0,0,.5); backdrop-filter: blur(6px); border: 1px solid rgba(255,255,255,.1); color: #fff; cursor: pointer; display:inline-flex; align-items: center; justify-content: center; border-radius: 2px; opacity: 0; transition: opacity .15s, color .15s; }
-  .card:hover .card-heart { opacity: 1; }
-  .card-heart:hover { color: var(--accent); }
-  .card-heart svg { width: 16px; height: 16px; }
-  .card-fit { position: absolute; bottom: 0; left: 0; right: 0; padding: 8px 12px; background: rgba(4,16,8,.84); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-top: 1px solid rgba(62,194,124,.25); display:flex; align-items: center; gap: 8px; font-family: var(--display); font-size: 11px; font-weight: 700; letter-spacing: 2px; color: #fff; text-transform: uppercase; }
-  .card-fit-dot { width: 8px; height: 8px; background: #3ea47c; flex-shrink: 0; }
-  .card-body { padding: 14px 16px 16px; display:flex; flex-direction: column; gap: 4px; flex: 1; }
-  .card-name { font-family: var(--display); font-weight: 700; font-size: 16px; letter-spacing: .02em; text-transform: uppercase; line-height: 1.1; }
-  .card-sub { color: var(--fg-muted); font-size: 12px; line-height: 1.5; flex: 1; }
-  .card-type { font-family: var(--mono); font-size: 9.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--fg-dim); margin-bottom: 4px; }
-  .card-meta { display:flex; align-items: center; gap: 8px; margin-top: 4px; font-size: 12px; }
-  .card-foot { display:flex; align-items: center; justify-content: space-between; margin-top: auto; padding-top: 10px; gap: 8px; flex-wrap: wrap; }
+  .card-img { background:#0d0d0e; aspect-ratio:4/3; position:relative; overflow:hidden; }
+  .card-img img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.4s ease; }
+  .card:hover .card-img img { transform:scale(1.03); }
+  .card-badge { position:absolute; top:12px; right:12px; background:#1a1a1a; color:#fff; font-family:'Montserrat',sans-serif; font-size:8px; font-weight:800; letter-spacing:2px; text-transform:uppercase; padding:4px 10px; z-index:2; }
+  .card-info { display:flex; flex-direction:column; flex:1; padding:16px; background:linear-gradient(to bottom,#222,#141414); border-top:1px solid #2e2e2e; }
+  .card-cols { display:grid; grid-template-columns:55% 45%; gap:12px; }
+  .card-name { font-family:'Montserrat',sans-serif; font-size:15px; font-weight:800; line-height:1.1; letter-spacing:-0.3px; margin-bottom:6px; color:#fff; }
+  .card-tagline { font-family:'Inter',sans-serif; font-size:11px; font-weight:400; line-height:1.5; color:rgba(255,255,255,0.55); margin:0; }
+  .card-specs { display:flex; flex-direction:column; gap:8px; padding-left:12px; border-left:1px solid #333; }
+  .spec-label { font-family:'Montserrat',sans-serif; font-size:8px; font-weight:800; letter-spacing:2px; text-transform:uppercase; color:#8B0000; display:block; margin-bottom:2px; }
+  .spec-val { font-family:'Inter',sans-serif; font-size:11px; font-weight:400; line-height:1.4; color:rgba(255,255,255,0.80); display:block; }
+  .card-fit-row { display:flex; align-items:center; gap:8px; padding-top:10px; margin-top:auto; }
+  .card-fit-check { width:18px; height:18px; flex-shrink:0; display:flex; align-items:center; justify-content:center; background:#1a5c1a; }
+  .card-fit-main { font-family:'Montserrat',sans-serif; font-size:10px; font-weight:800; letter-spacing:0.5px; color:#fff; line-height:1.2; }
+  .card-fit-sub { font-family:'Inter',sans-serif; font-size:10px; font-weight:400; color:rgba(255,255,255,0.55); margin-top:1px; }
+  .card-cta-wrap { margin-top:14px; }
+  .card-cta { display:block; width:100%; background:#8B0000; color:#fff; font-family:'Montserrat',sans-serif; font-size:10px; font-weight:800; letter-spacing:2.5px; text-transform:uppercase; text-align:center; padding:12px; border:none; cursor:pointer; transition:background 0.2s; }
+  .card-cta:hover { background:#a00000; }
+  /* List row price + quote */
   .card-price { font-family: var(--display); font-weight: 800; font-size: 22px; letter-spacing: .04em; }
-  .card-brand-label { font-family: var(--body); font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--fg-muted); margin-bottom: 2px; }
-  .card-cta { background: #8B0000; color: #fff; border:0; border-radius:0; height:48px; padding: 0 16px; font-family: var(--display); font-weight: 800; letter-spacing: .07em; text-transform: uppercase; font-size: 12px; cursor: pointer; white-space: nowrap; transition: filter .15s; }
-  .card-cta:hover { filter: brightness(1.15); }
-  .card-pdp { display:inline-flex; align-items:center; height:48px; padding: 0 12px; font-family: var(--display); font-weight: 700; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); border:1.5px solid var(--accent); white-space:nowrap; transition: background .15s, color .15s; }
-  .card-pdp:hover { background: var(--accent); color:#fff; }
+  .row-cta { background:#8B0000; color:#fff; border:0; height:40px; padding:0 16px; font-family:var(--display); font-weight:800; letter-spacing:.07em; text-transform:uppercase; font-size:11px; cursor:pointer; transition:filter .15s; }
+  .row-cta:hover { filter:brightness(1.15); }
 
   /* ── List view ── */
   .list { display:flex; flex-direction: column; gap: 12px; }
@@ -434,7 +437,6 @@
     .row { grid-template-columns: 100px 1fr; padding: 10px; gap: 12px; }
     .row-name { font-size: 15px; }
     .row-cta { width: 100%; }
-    .card-foot { gap: 6px; }
     .ftr-cols { grid-template-columns: 1fr; gap: 28px; }
     .ftr { padding: 32px 16px 20px; }
   }
@@ -520,6 +522,56 @@ const PRODUCT_TYPES = {
   'RetraxONE MX':'Retractable','RetraxONE XR':'Retractable','RetraxPRO MX':'Retractable','RetraxPRO XR':'Retractable',
   'PowertraxPRO MX':'Retractable','PowertraxPRO XR':'Retractable','Retrax EQ':'Retractable','Retrax IX':'Retractable',
   'Pro X15':'Retractable','Pro X15 TS':'Retractable',
+};
+
+// ── Material lookup ──
+const PRODUCT_MATERIAL = {
+  'BAKFlip MX4':'Aircraft-grade aluminum','BAKFlip MX4 TS':'Aircraft-grade aluminum',
+  'BAKFlip F1':'Fiberglass','BAKFlip FiberMax':'Fiberglass','BAKFlip G2':'Aluminum',
+  'BAKFlip X4S':'Aluminum','Revolver X2':'Aluminum slats','Revolver X4s':'Aluminum slats',
+  'Revolver X4ts':'Aluminum slats','ArmorFlex':'Aluminum','Solid Fold ALX':'Aluminum',
+  'Solid Fold 2.0 Toolbox':'Aluminum','Endure ALX':'Aluminum','Ultra Flex':'Aluminum slats',
+  'Deuce':'Aluminum/Vinyl','Sentry':'Aluminum slats','Sentry CT':'Aluminum slats',
+  'Trifecta 2.0':'Vinyl/Aluminum frame','Trifecta ALX':'Aluminum-reinforced vinyl',
+  'Trifecta Signature 2.0':'TriTex fabric/Aluminum','Trifecta Toolbox 2.0':'Vinyl/Aluminum frame',
+  'Trifecta e-Series':'Vinyl/Aluminum frame',
+  'Lo Pro':'Vinyl','TruXport':'Vinyl','Lux':'Vinyl','Fusion':'Vinyl','Select':'Vinyl',
+  'Flex':'Vinyl','Roll-X':'Aluminum slats','E-Series':'Aluminum',
+  'E-Series XT':'Aluminum','A-Series':'Aluminum','A-Series XT':'Aluminum',
+  'M-Series':'Aluminum','M-Series XT':'Aluminum',
+  'RetraxONE MX':'Aluminum','RetraxONE XR':'Aluminum',
+  'RetraxPRO MX':'Polycarbonate','RetraxPRO XR':'Polycarbonate',
+  'PowertraxPRO MX':'Polycarbonate','PowertraxPRO XR':'Polycarbonate',
+  'Retrax EQ':'Aluminum','Retrax IX':'Polycarbonate',
+  'Pro X15':'Aluminum','Pro X15 TS':'Aluminum',
+  'Elite':'Fiberglass','Elite LX':'Fiberglass','Elite Smooth':'Fiberglass',
+  'SE':'Fiberglass','SE Smooth':'Fiberglass',
+};
+// ── Warranty lookup ──
+const PRODUCT_WARRANTY = {
+  'BAKFlip MX4':'5-year limited','BAKFlip MX4 TS':'5-year limited',
+  'BAKFlip F1':'5-year limited','BAKFlip FiberMax':'5-year limited',
+  'BAKFlip G2':'3-year limited','BAKFlip X4S':'5-year limited',
+  'Revolver X2':'5-year limited','Revolver X4s':'5-year limited','Revolver X4ts':'5-year limited',
+  'ArmorFlex':'Lifetime limited','Solid Fold ALX':'Lifetime limited',
+  'Solid Fold 2.0 Toolbox':'Lifetime limited','Endure ALX':'Lifetime limited',
+  'Ultra Flex':'Lifetime limited','Deuce':'Lifetime limited',
+  'Sentry':'5-year limited','Sentry CT':'5-year limited',
+  'Trifecta 2.0':'Lifetime limited','Trifecta ALX':'Lifetime limited',
+  'Trifecta Signature 2.0':'Lifetime limited','Trifecta Toolbox 2.0':'Lifetime limited',
+  'Trifecta e-Series':'Lifetime limited',
+  'Lo Pro':'5-year limited','TruXport':'5-year limited','Lux':'5-year limited',
+  'Fusion':'5-year limited','Select':'5-year limited','Flex':'5-year limited',
+  'Roll-X':'3-year limited','E-Series':'Limited lifetime','E-Series XT':'Limited lifetime',
+  'A-Series':'Limited lifetime','A-Series XT':'Limited lifetime',
+  'M-Series':'Limited lifetime','M-Series XT':'Limited lifetime',
+  'RetraxONE MX':'Limited lifetime','RetraxONE XR':'Limited lifetime',
+  'RetraxPRO MX':'Limited lifetime','RetraxPRO XR':'Limited lifetime',
+  'PowertraxPRO MX':'Limited lifetime','PowertraxPRO XR':'Limited lifetime',
+  'Retrax EQ':'Limited lifetime','Retrax IX':'Limited lifetime',
+  'Pro X15':'Limited lifetime','Pro X15 TS':'Limited lifetime',
+  'Elite':'3-year limited','Elite LX':'3-year limited','Elite Smooth':'3-year limited',
+  'SE':'3-year limited','SE Smooth':'3-year limited',
 };
 
 // ── Brand bg colors for placeholder ──
@@ -1469,30 +1521,40 @@ function Toolbar({ count, sort, setSort, view, setView, garage }) {
 function ProductCard({ p, onOpenDetail }) {
   const imgSrc = PRODUCT_IMAGES[p.name];
   const quoteUrl = `parts-quote.html?product=${encodeURIComponent(p.brand + ' ' + p.name)}${p.partNum ? '&partNum=' + encodeURIComponent(p.partNum) : ''}`;
+  const desc = getProdDesc(p.name, p.type);
+  const material = PRODUCT_MATERIAL[p.name] || '';
+  const warranty = PRODUCT_WARRANTY[p.name] || '';
   return (
-    <div className="card" onClick={() => onOpenDetail(p.brand, p.name)} style={{cursor:'pointer'}}>
-      <div className="card-media">
+    <div className="card" onClick={() => onOpenDetail(p.brand, p.name)}>
+      <div className="card-img">
         {imgSrc
-          ? <img src={imgSrc} alt={p.name} style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}} />
+          ? <img src={imgSrc} alt={p.name} loading="lazy" />
           : <ProductPlaceholder brand={p.brand} name={p.name} />}
-        <button className="card-heart" aria-label="Save" onClick={e=>e.stopPropagation()}>{Icon.heart}</button>
+        <span className="card-badge">{p.brand}</span>
+      </div>
+      <div className="card-info">
+        <div className="card-cols">
+          <div className="card-left">
+            <div className="card-name">{p.name}</div>
+            {desc && <p className="card-tagline">{desc}</p>}
+          </div>
+          <div className="card-specs">
+            {p.type && <div><span className="spec-label">Type</span><span className="spec-val">{p.type}</span></div>}
+            {material && <div><span className="spec-label">Material</span><span className="spec-val">{material}</span></div>}
+            {warranty && <div><span className="spec-label">Warranty</span><span className="spec-val">{warranty}</span></div>}
+            {p.minPrice && <div><span className="spec-label">Starting at</span><span className="spec-val">$${p.minPrice.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})}</span></div>}
+          </div>
+        </div>
         {p.fits && (
-          <div className="card-fit">
-            <span className="card-fit-dot"></span>
-            <span>Fits Your Truck</span>
+          <div className="card-fit-row">
+            <div className="card-fit-check">
+              <svg viewBox="0 0 12 12" fill="none" stroke="#fff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="2,6 5,9 10,3"/></svg>
+            </div>
+            <div className="card-fit-main">Fits your truck</div>
           </div>
         )}
-      </div>
-      <div className="card-body">
-        <div className="card-brand-label">{p.brand}</div>
-        <div className="card-name">{p.name}</div>
-        <div className="card-sub">{p.type || ' '}</div>
-        <div className="card-foot">
-          <span className="card-price">{p.minPrice ? `Starting at $${p.minPrice.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})}` : '—'}</span>
-          <div style={{display:'flex',gap:'8px',flexWrap:'wrap'}}>
-            {PDP_MAP[p.name] && <a className="card-pdp" href={PDP_MAP[p.name]} onClick={e=>e.stopPropagation()}>View Details</a>}
-            <button className="card-cta" onClick={e=>{e.stopPropagation();window.location=quoteUrl;}}>Quote</button>
-          </div>
+        <div className="card-cta-wrap">
+          <button className="card-cta" onClick={e=>{e.stopPropagation();window.location=quoteUrl;}}>Get a Quote</button>
         </div>
       </div>
     </div>
@@ -1513,7 +1575,7 @@ function ProductRow({ p, garage, onOpenDetail }) {
       </div>
       <div className="row-side">
         <span className="card-price">{p.minPrice ? `Starting at $${p.minPrice.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})}` : '—'}</span>
-        <button className="card-cta row-cta" onClick={e=>{e.stopPropagation();window.location=quoteUrl;}}>Quote this</button>
+        <button className="row-cta" onClick={e=>{e.stopPropagation();window.location=quoteUrl;}}>Quote this</button>
       </div>
     </div>
   );
