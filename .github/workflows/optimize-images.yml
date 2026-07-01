@@ -56,8 +56,8 @@ jobs:
               *.webp|*.jpg|*.jpeg)
                 echo "Optimizing: $f"
                 # -strip: drop metadata  | -resize '1920>': only shrink if wider
-                # -quality 82: strong compression, no visible loss on photos
-                mogrify -strip -resize '1920>' -quality 82 "$f"
+                # -quality 92: high quality — preserves reflections, paint detail, sharp edges
+                mogrify -strip -resize '1920>' -quality 92 "$f"
                 CHANGED=1
                 ;;
               *) ;;
