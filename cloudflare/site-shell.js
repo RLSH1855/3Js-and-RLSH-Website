@@ -88,7 +88,7 @@
   .ss-garage.ss-saved:hover{background:#f5f5f5;border-color:rgba(0,0,0,.2);}
 
   /* spacer clears the fixed shell */
-  .ss-spacer{height:174px;}
+  .ss-spacer{height:174px;transition:height .7s cubic-bezier(.4,0,.2,1);}
 
   /* breadcrumb trail — thin bar under nav, above hero */
   .ss-crumbs{background:#f4f5f7;border-bottom:1px solid #e3e7ec;padding:12px 40px;font-family:'Inter',sans-serif;}
@@ -609,27 +609,34 @@
     var shell=document.getElementById('ssShell');
     var spacer=document.querySelector('.ss-spacer');
     if(!shell||!spacer) return;
-    window._ssSyncSpacer=function(){spacer.style.height=shell.offsetHeight+'px';};
-    function fit(){window._ssSyncSpacer();}
+    var navEl=document.querySelector('.ss-nav');
+    window._ssFullH=174;
+    window._ssShrunkH=navEl?navEl.offsetHeight:60;
+    function fit(){
+      if(shell.classList.contains('ss-shrunk')) return;
+      window._ssFullH=shell.offsetHeight;
+      spacer.style.height=window._ssFullH+'px';
+    }
     fit();
     window.addEventListener('load',fit);
     window.addEventListener('resize',fit);
-    /* fonts/logos can change header height after first paint */
     [120,400,900,2000].forEach(function(t){setTimeout(fit,t);});
     if(document.fonts&&document.fonts.ready){document.fonts.ready.then(fit);}
   })();
 
   /* ════════ SHRINK-ON-SCROLL ════════ */
   (function(){
-    var shell=document.getElementById('ssShell'),ticking=false;
+    var shell=document.getElementById('ssShell');
+    var spacer=document.querySelector('.ss-spacer');
+    var ticking=false;
     function update(){
       var y=window.pageYOffset||document.documentElement.scrollTop;
       var wasShrunk=shell.classList.contains('ss-shrunk');
       if(y<5){shell.classList.remove('ss-shrunk');}
       else if(y>10){shell.classList.add('ss-shrunk');}
-      /* Sync spacer height during and after the CSS transition whenever state changes */
-      if(wasShrunk!==shell.classList.contains('ss-shrunk')&&window._ssSyncSpacer){
-        [0,80,200,450,750].forEach(function(t){setTimeout(window._ssSyncSpacer,t);});
+      var isShrunk=shell.classList.contains('ss-shrunk');
+      if(wasShrunk!==isShrunk&&spacer){
+        spacer.style.height=(isShrunk?window._ssShrunkH:window._ssFullH)+'px';
       }
       ticking=false;
     }
