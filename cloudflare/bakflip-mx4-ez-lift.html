@@ -307,8 +307,12 @@
     .video-section .label{color:var(--white);margin-bottom:14px;display:block;}
     .video-section h2{font-size:clamp(26px,3.5vw,44px);font-weight:900;letter-spacing:4px;word-spacing:-4px;line-height:1.0;color:var(--white);text-transform:uppercase;margin-bottom:24px;}
     .video-section h2 em{color:var(--crimson);font-style:normal;}
-    .video-wrap{position:relative;max-width:960px;margin:0 auto;aspect-ratio:16/9;overflow:hidden;}
+    .video-wrap{position:relative;max-width:960px;margin:0 auto;aspect-ratio:16/9;overflow:hidden;cursor:pointer;background:#000;}
     .video-wrap iframe{width:100%;height:100%;display:block;border:0;}
+    .video-facade-img{width:100%;height:100%;object-fit:cover;display:block;}
+    .video-play-btn{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:76px;height:76px;background:rgba(139,0,0,0.92);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:background 0.2s,transform 0.2s;}
+    .video-wrap:hover .video-play-btn{background:#a30000;transform:translate(-50%,-50%) scale(1.06);}
+    .video-play-btn svg{width:28px;height:28px;fill:#fff;margin-left:4px;}
     @media(min-width:601px){.video-section{padding:64px 36px;}.video-section h2{margin-bottom:48px;}}
     @media(min-width:961px){.video-section{padding:88px 64px;}}
 
@@ -589,8 +593,9 @@
 <section class="video-section">
   <span class="label" data-a="up">See It In Action</span>
   <h2 data-a="up" data-d="1">The EZ-Lift <em>Up Close</em></h2>
-  <div class="video-wrap" data-a="scale" data-d="2">
-    <iframe src="https://www.youtube.com/embed/IKfKlIqz-kU" title="BAKFlip MX4 EZ-Lift" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+  <div class="video-wrap" data-a="scale" data-d="2" id="ezlift-video-facade">
+    <img class="video-facade-img" src="https://img.youtube.com/vi/IKfKlIqz-kU/maxresdefault.jpg" alt="BAKFlip MX4 EZ-Lift video — click to play" loading="lazy">
+    <div class="video-play-btn" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
   </div>
 </section>
 
@@ -765,6 +770,23 @@
     });
   },{threshold:0.5});
   nums.forEach(function(el){ io.observe(el); });
+})();
+
+/* ── Video facade — load YouTube iframe only on click (keeps scroll from getting captured) ── */
+(function(){
+  var wrap = document.getElementById('ezlift-video-facade');
+  if(!wrap) return;
+  wrap.addEventListener('click', function(){
+    var iframe = document.createElement('iframe');
+    iframe.src = 'https://www.youtube.com/embed/IKfKlIqz-kU?autoplay=1';
+    iframe.title = 'BAKFlip MX4 EZ-Lift';
+    iframe.frameBorder = '0';
+    iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+    iframe.allowFullscreen = true;
+    wrap.innerHTML = '';
+    wrap.style.cursor = 'default';
+    wrap.appendChild(iframe);
+  });
 })();
 
 /* ── FAQ accordion ── */
