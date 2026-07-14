@@ -20,7 +20,7 @@
 
     /* ── Top bar ── */
     .sn-top{
-      background:#081523 url('https://rlsh1855.github.io/3Js-and-RLSH-Website/1-BG_dark_blue_gradiant_edited_edited.jpg') center center / cover no-repeat;
+      background:#081523 url('1-BG_dark_blue_gradiant_edited_edited.jpg') center center / cover no-repeat;
       padding:0;
     }
     .sn-top-inner{
@@ -549,8 +549,8 @@
       <div class="sn-top">
         <div class="sn-top-inner">
           <div class="sn-logo-3js">
-            <a href="https://www.3jsautobody.com/">
-              <img src="https://static.wixstatic.com/media/b95bd9_86c7cf1e525d4b9e961a2738ed9af502~mv2.png" alt="3J's Auto Body & Paint — Signal Hill CA">
+            <a href="homepage.html">
+              <img src="3js-logo-white.png" alt="3J's Auto Body & Paint — Signal Hill CA">
             </a>
           </div>
           <div class="sn-btns">
@@ -561,8 +561,8 @@
             <a href="https://www.carwise.com/online-photo-estimate/3js-autobody-paint-inc-signal-hill-ca-90755/479382?source=shop.profile&referer=estimate.cccone.com" class="sn-btn-blue">Free Auto Body Estimate</a>
           </div>
           <div class="sn-logo-rlsh">
-            <a href="https://www.3jsautobody.com/">
-              <img src="https://static.wixstatic.com/media/b95bd9_8e3e4f256c85462d960aaa1e3ef740c8~mv2.png" alt="RLSH Rhino Lining of Signal Hill">
+            <a href="homepage.html">
+              <img src="rlsh-logo-white.png" alt="RLSH Rhino Lining of Signal Hill">
             </a>
           </div>
           <button class="sn-hamburger" id="sn-hamburger" aria-label="Open menu">
@@ -573,8 +573,8 @@
 
       <nav class="sn-nav" aria-label="Main navigation">
 
-        <a href="https://www.3jsautobody.com/inside-3js">Inside 3J's</a>
-        <a href="https://www.3jsautobody.com/body-paint-repairs">Body &amp; Paint</a>
+        <a href="inside-3js.html">Inside 3J's</a>
+        <a href="body-paint-repairs.html">Body &amp; Paint</a>
 
         <!-- Truck Accessories mega menu — image grid -->
         <div class="sn-mega">
@@ -582,32 +582,32 @@
           <div class="sn-mega-panel sn-grid-panel">
             <div class="sn-mega-grid-header">Truck Accessories &amp; Upgrades</div>
             <div class="sn-mega-grid">
-              <a href="https://www.3jsautobody.com/rhino-liner" class="sn-mega-item">
-                <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/PROTECTION%20-%20RHINO%20LININGS.webp" alt="Rhino Liner">
+              <a href="rhino-liner.html" class="sn-mega-item">
+                <img src="PROTECTION%20-%20RHINO%20LININGS.webp" alt="Rhino Liner">
                 <span>Rhino Liner</span>
               </a>
-              <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/tonneau-covers.html" class="sn-mega-item">
-                <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/MEGA%20MENU%20IMAGES/TONNEAU%20COVER.webp" alt="Tonneau Covers">
+              <a href="tonneau-covers.html" class="sn-mega-item">
+                <img src="MEGA%20MENU%20IMAGES/TONNEAU%20COVER.png" alt="Tonneau Covers">
                 <span>Tonneau Covers</span>
               </a>
-              <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/steps-running-boards.html" class="sn-mega-item">
-                <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/MEGA%20MENU%20IMAGES/RUNNING%20BOARDS%20-%20SIDE%20STEPS.webp" alt="Steps &amp; Running Boards">
+              <a href="steps-running-boards.html" class="sn-mega-item">
+                <img src="MEGA%20MENU%20IMAGES/RUNNING%20BOARDS%20-%20SIDE%20STEPS.png" alt="Steps &amp; Running Boards">
                 <span>Steps &amp; Running Boards</span>
               </a>
-              <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/towing-hitches.html" class="sn-mega-item">
-                <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/MEGA%20MENU%20IMAGES/TOWING.webp" alt="Towing &amp; Hitches">
+              <a href="towing-hitches.html" class="sn-mega-item">
+                <img src="MEGA%20MENU%20IMAGES/TOWING.png" alt="Towing &amp; Hitches">
                 <span>Towing &amp; Hitches</span>
               </a>
-              <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/floor-liners.html" class="sn-mega-item">
-                <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/MEGA%20MENU%20IMAGES/FLOOR%20MATS.webp" alt="Floor Liners">
+              <a href="floor-liners.html" class="sn-mega-item">
+                <img src="MEGA%20MENU%20IMAGES/FLOOR%20MATS.png" alt="Floor Liners">
                 <span>Floor Liners</span>
               </a>
-              <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/lighting.html" class="sn-mega-item">
+              <a href="lighting.html" class="sn-mega-item">
                 <div style="width:80px;height:60px;display:flex;align-items:center;justify-content:center;margin-bottom:10px;"><svg viewBox="0 0 40 36" width="64" height="58" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="0" width="40" height="12" fill="#8B0000"/><circle cx="8" cy="6" r="3.5" fill="#FFD700"/><circle cx="20" cy="6" r="3.5" fill="#FFD700"/><circle cx="32" cy="6" r="3.5" fill="#FFD700"/><rect x="0" y="14" width="40" height="4" fill="#8B0000" opacity="0.35"/><path d="M18 20L10 36h8l-2 0 6-12 6 12h-2l8 0-8-16z" fill="#8B0000" opacity="0.5"/></svg></div>
                 <span>Lighting</span>
               </a>
-              <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/headache-racks.html" class="sn-mega-item">
-                <img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/MEGA%20MENU%20IMAGES/RUNNING%20BOARDS%20-%20SIDE%20STEPS.webp" alt="Headache Racks">
+              <a href="headache-racks.html" class="sn-mega-item">
+                <img src="MEGA%20MENU%20IMAGES/RUNNING%20BOARDS%20-%20SIDE%20STEPS.png" alt="Headache Racks">
                 <span>Headache Racks</span>
               </a>
             </div>
@@ -641,11 +641,11 @@
           </div>
         </div>
 
-        <a href="https://www.3jsautobody.com/rhino-liner" id="sn-trigger-rhino">Rhino Liner +</a>
-        <a href="https://www.3jsautobody.com/bundles" id="sn-trigger-bundles">Bundles &amp; Packages +</a>
-        <a href="https://www.3jsautobody.com/exterior-accessories" id="sn-trigger-exterior">Exterior Accessories +</a>
-        <a href="https://www.3jsautobody.com/contact-us">Contact Us</a>
-        <a href="https://www.3jsautobody.com/faq">FAQ</a>
+        <a href="rhino-liner.html" id="sn-trigger-rhino">Rhino Liner +</a>
+        <a href="bundles.html" id="sn-trigger-bundles">Bundles &amp; Packages +</a>
+        <a href="exterior-accessories-V2.html" id="sn-trigger-exterior">Exterior Accessories +</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="FAQ_PAGE_V2.html">FAQ</a>
 
       </nav>
 
@@ -660,15 +660,15 @@
       <div class="sn-footer-grid">
         <div class="sn-footer-col">
           <div class="sn-footer-heading">Help</div>
-          <a href="https://www.3jsautobody.com/contact-us">Contact Us</a>
+          <a href="contact.html">Contact Us</a>
           <a href="https://www.3jsautobody.com/shipping-policy">Shipping Policy</a>
-          <a href="https://www.3jsautobody.com/terms-conditions">Terms &amp; Conditions</a>
-          <a href="https://www.3jsautobody.com/returns-warranties">Returns and Warranties</a>
-          <a href="https://www.3jsautobody.com/privacy-policy">Privacy Policy</a>
+          <a href="terms-conditions.html">Terms &amp; Conditions</a>
+          <a href="warranty.html">Returns and Warranties</a>
+          <a href="privacy-policy.html">Privacy Policy</a>
         </div>
         <div class="sn-footer-col">
           <div class="sn-footer-heading">Resources</div>
-          <a href="https://www.3jsautobody.com/company-information">Company Information</a>
+          <a href="about-3js.html">Company Information</a>
           <a href="https://www.3jsautobody.com/testimonials">Customer Testimonials</a>
           <a href="https://www.3jsautobody.com/sitemap">Sitemap</a>
         </div>
@@ -714,20 +714,20 @@
           </div>
           <div class="snd-divider"></div>
           <button class="snd-garage" id="sn-mob-garage-btn">
-            <span class="snd-garage-icon"><img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/images/my-garage-icon.png" alt="" width="28" height="28"></span>
+            <span class="snd-garage-icon"><img src="images/my-garage-icon.png" alt="" width="28" height="28"></span>
             <span class="snd-garage-val" id="snd-garage-val">My Garage</span>
             <span class="snd-garage-arr">${snChevR}</span>
           </button>
           <div class="snd-nav">
             <div class="snd-section"><span>Navigate</span></div>
-            <a href="https://www.3jsautobody.com/inside-3js" class="snd-item"><div class="snd-item-text"><span class="snd-item-label">Inside 3J's</span><span class="snd-item-desc">Our story &amp; team</span></div><span class="snd-item-arr">${snChevR}</span></a>
-            <a href="https://www.3jsautobody.com/body-paint-repairs" class="snd-item"><div class="snd-item-text"><span class="snd-item-label">Body &amp; Paint Repairs</span><span class="snd-item-desc">Collision repair &middot; paint matching</span></div><span class="snd-item-arr">${snChevR}</span></a>
+            <a href="inside-3js.html" class="snd-item"><div class="snd-item-text"><span class="snd-item-label">Inside 3J's</span><span class="snd-item-desc">Our story &amp; team</span></div><span class="snd-item-arr">${snChevR}</span></a>
+            <a href="body-paint-repairs.html" class="snd-item"><div class="snd-item-text"><span class="snd-item-label">Body &amp; Paint Repairs</span><span class="snd-item-desc">Collision repair &middot; paint matching</span></div><span class="snd-item-arr">${snChevR}</span></a>
             <button class="snd-item" id="snd-rhino-btn" aria-expanded="false"><div class="snd-item-text"><span class="snd-item-label">Rhino Liner +</span><span class="snd-item-desc">Bed liner &amp; truck protection</span></div><span class="snd-item-arr" id="snd-rhino-arr">${snChevD}</span></button>
             <div class="snd-sub" id="snd-rhino-sub">
               <div class="snd-sub-inner">
                 <div class="snd-sub-bar" id="snd-rhino-bar"></div>
                 <a href="https://www.3jsautobody.com/rhino-lining-quote" class="snd-sub-item">Rhino Liner Quote${snChevSub}</a>
-                <a href="https://www.3jsautobody.com/our-work" class="snd-sub-item">Our Work${snChevSub}</a>
+                <a href="before-after.html" class="snd-sub-item">Our Work${snChevSub}</a>
                 <div class="snd-sub-spacer"></div>
               </div>
             </div>
@@ -735,10 +735,10 @@
             <div class="snd-sub" id="snd-bundles-sub">
               <div class="snd-sub-inner">
                 <div class="snd-sub-bar" id="snd-bundles-bar"></div>
-                <a href="https://www.3jsautobody.com/bundles" class="snd-sub-item">The 405 Essential${snChevSub}</a>
-                <a href="https://www.3jsautobody.com/bundles" class="snd-sub-item">The Working Man${snChevSub}</a>
-                <a href="https://www.3jsautobody.com/bundles" class="snd-sub-item">The 3 Wise Men &mdash; Standard${snChevSub}</a>
-                <a href="https://www.3jsautobody.com/bundles" class="snd-sub-item">The 3 Wise Men &mdash; Premium${snChevSub}</a>
+                <a href="bundles.html" class="snd-sub-item">The 405 Essential${snChevSub}</a>
+                <a href="bundles.html" class="snd-sub-item">The Working Man${snChevSub}</a>
+                <a href="bundles.html" class="snd-sub-item">The 3 Wise Men &mdash; Standard${snChevSub}</a>
+                <a href="bundles.html" class="snd-sub-item">The 3 Wise Men &mdash; Premium${snChevSub}</a>
                 <div class="snd-sub-spacer"></div>
               </div>
             </div>
@@ -747,20 +747,20 @@
               <div class="snd-sub-inner">
                 <div class="snd-sub-bar" id="snd-ext-bar"></div>
                 <span class="snd-sub-label">Bedliner &amp; Bed Accessories</span>
-                <a href="https://www.3jsautobody.com/rhino-liner" class="snd-sub-item">Rhino Liner${snChevSub}</a>
-                <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/floor-liners.html" class="snd-sub-item">Floor Liners &amp; Mats${snChevSub}</a>
-                <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/headache-racks.html" class="snd-sub-item">Headache Rack${snChevSub}</a>
+                <a href="rhino-liner.html" class="snd-sub-item">Rhino Liner${snChevSub}</a>
+                <a href="floor-liners.html" class="snd-sub-item">Floor Liners &amp; Mats${snChevSub}</a>
+                <a href="headache-racks.html" class="snd-sub-item">Headache Rack${snChevSub}</a>
                 <span class="snd-sub-label">Exterior Upgrades</span>
-                <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/tonneau-covers.html" class="snd-sub-item">Tonneau Covers${snChevSub}</a>
-                <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/steps-running-boards.html" class="snd-sub-item">Running Boards${snChevSub}</a>
-                <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/towing-hitches.html" class="snd-sub-item">Towing${snChevSub}</a>
-                <a href="https://rlsh1855.github.io/3Js-and-RLSH-Website/lighting.html" class="snd-sub-item">Lighting${snChevSub}</a>
+                <a href="tonneau-covers.html" class="snd-sub-item">Tonneau Covers${snChevSub}</a>
+                <a href="steps-running-boards.html" class="snd-sub-item">Running Boards${snChevSub}</a>
+                <a href="towing-hitches.html" class="snd-sub-item">Towing${snChevSub}</a>
+                <a href="lighting.html" class="snd-sub-item">Lighting${snChevSub}</a>
                 <div class="snd-sub-spacer"></div>
               </div>
             </div>
-            <a href="https://www.3jsautobody.com/shop" class="snd-item"><div class="snd-item-text"><span class="snd-item-label">Shop</span><span class="snd-item-desc">Browse all products</span></div><span class="snd-item-arr">${snChevR}</span></a>
-            <a href="https://www.3jsautobody.com/contact-us" class="snd-item"><div class="snd-item-text"><span class="snd-item-label">Contact Us</span><span class="snd-item-desc">Get in touch &middot; 562-424-6744</span></div><span class="snd-item-arr">${snChevR}</span></a>
-            <a href="https://www.3jsautobody.com/faq" class="snd-item"><div class="snd-item-text"><span class="snd-item-label">FAQ</span><span class="snd-item-desc">Common questions answered</span></div><span class="snd-item-arr">${snChevR}</span></a>
+            <a href="parts-catalog.html" class="snd-item"><div class="snd-item-text"><span class="snd-item-label">Shop</span><span class="snd-item-desc">Browse all products</span></div><span class="snd-item-arr">${snChevR}</span></a>
+            <a href="contact.html" class="snd-item"><div class="snd-item-text"><span class="snd-item-label">Contact Us</span><span class="snd-item-desc">Get in touch &middot; 562-424-6744</span></div><span class="snd-item-arr">${snChevR}</span></a>
+            <a href="FAQ_PAGE_V2.html" class="snd-item"><div class="snd-item-text"><span class="snd-item-label">FAQ</span><span class="snd-item-desc">Common questions answered</span></div><span class="snd-item-arr">${snChevR}</span></a>
           </div>
         </div>
         <div class="snd-footer" id="sndFooter">
@@ -1025,7 +1025,7 @@
       }
       _widgetLoading=true;
       var s=document.createElement('script');
-      s.src='https://rlsh1855.github.io/3Js-and-RLSH-Website/my-garage-widget.js';
+      s.src='my-garage-widget.js';
       s.onload=function(){_widgetLoading=false;cb&&cb();};
       s.onerror=function(){_widgetLoading=false;};
       document.head.appendChild(s);

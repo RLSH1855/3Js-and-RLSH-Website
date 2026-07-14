@@ -8,7 +8,7 @@
   'use strict';
 
   var KEYS={year:'rlsh_year',make:'rlsh_make',model:'rlsh_model'};
-  var IMAGE='https://rlsh1855.github.io/3Js-and-RLSH-Website/steps-hero-bg.webp';
+  var IMAGE='steps-hero-bg.webp';
 
   var YMM={makes:{
     'Ford':['F-150','F-250','F-350','Ranger','Bronco','Explorer','Expedition'],

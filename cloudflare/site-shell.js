@@ -285,7 +285,7 @@
   var st=document.createElement('style');st.textContent=css;document.head.appendChild(st);
 
   /* ════════ ICONS ════════ */
-  var icoTruck='<img src="https://rlsh1855.github.io/3Js-and-RLSH-Website/images/my-garage-icon.png" alt="" width="32" height="32">';
+  var icoTruck='<img src="images/my-garage-icon.png" alt="" width="32" height="32">';
   var icoSwap='<svg viewBox="0 0 24 24"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>';
 
   /* ════════ HEADER HTML ════════ */

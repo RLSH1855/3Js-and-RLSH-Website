@@ -329,7 +329,7 @@ const _garageQS = _garage && _garage.year
   ? `&year=${encodeURIComponent(_garage.year)}&make=${encodeURIComponent(_garage.make)}&model=${encodeURIComponent(_garage.model)}`
   : '';
 const QUOTE_URL = `parts-quote.html?product=${encodeURIComponent((_qParams.get('brand')||'BAK') + ' ' + (_qParams.get('product')||'BAKFlip F1'))}${_garageQS}`;
-const LOGO_URL = 'https://static.wixstatic.com/media/b95bd9_86c7cf1e525d4b9e961a2738ed9af502~mv2.png';
+const LOGO_URL = '3js-logo-white.png';
 
 const F = { brand:0, product:1, partNum:2, bedIn:3, bedSize:4, startYear:5, endYear:6, make:7, model:8, desc:9, fitNote:10, map:11, img:12 };
 

@@ -95,7 +95,7 @@ var PRODUCT_CONTENT = {
   'BAKFlip F1': {
     brandFull: 'BAK Industries',
     coverType: 'Hard Folding',
-    img: 'https://rlsh1855.github.io/3Js-and-RLSH-Website/bak-bakflip-f1-2019-chevrolet-silverado-red.png',
+    img: 'bak-bakflip-f1-2019-chevrolet-silverado-red.png',
     desc: "The BAKFlip F1 is BAK's premium fiberglass tonneau cover, engineered to give your truck a factory OEM appearance. Hard-coated fiberglass top panels are paintable to match your exact truck color — factory finish, next-level protection.",
     features: [
       'Hard-coated fiberglass top panels — OEM-level appearance',
