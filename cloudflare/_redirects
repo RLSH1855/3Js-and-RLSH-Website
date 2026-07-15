@@ -4,3 +4,6 @@
 # Serve the homepage at the root URL without renaming homepage.html
 # (renaming would break the live Wix iframe embed while Wix is still up)
 /    /homepage.html    200
+
+# Retired duplicate page — redirect to canonical Steps & Running Boards page
+/running-boards.html  /steps-running-boards.html  301
