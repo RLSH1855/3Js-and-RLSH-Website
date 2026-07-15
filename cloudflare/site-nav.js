@@ -557,7 +557,7 @@
             <button class="sn-garage-btn" id="sn-garage-btn" title="My Garage" aria-label="My Garage">
               <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
             </button>
-            <a href="https://www.3jsautobody.com/rhino-lining-quote" class="sn-btn-red">Bed-Liner Quote</a>
+            <a href="https://www.3jsautobody.com/rhino-lining-quote" target="_top" class="sn-btn-red">Bed-Liner Quote</a>
             <a href="https://www.carwise.com/online-photo-estimate/3js-autobody-paint-inc-signal-hill-ca-90755/479382?source=shop.profile&referer=estimate.cccone.com" class="sn-btn-blue">Free Auto Body Estimate</a>
           </div>
           <div class="sn-logo-rlsh">
@@ -726,7 +726,7 @@
             <div class="snd-sub" id="snd-rhino-sub">
               <div class="snd-sub-inner">
                 <div class="snd-sub-bar" id="snd-rhino-bar"></div>
-                <a href="https://www.3jsautobody.com/rhino-lining-quote" class="snd-sub-item">Rhino Liner Quote${snChevSub}</a>
+                <a href="https://www.3jsautobody.com/rhino-lining-quote" target="_top" class="snd-sub-item">Rhino Liner Quote${snChevSub}</a>
                 <a href="before-after.html" class="snd-sub-item">Our Work${snChevSub}</a>
                 <div class="snd-sub-spacer"></div>
               </div>
