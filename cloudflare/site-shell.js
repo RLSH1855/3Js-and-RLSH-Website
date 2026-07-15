@@ -241,46 +241,52 @@
   }
 
   /* ════════ FOOTER ════════ */
-  .footer{background:#111;color:#fff;padding:56px 40px 0;position:relative;}
-  .footer::before{content:'';position:absolute;top:-40px;left:0;right:0;height:40px;background:#111;pointer-events:none;}
-  .footer-top{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,0.08);}
-  .footer-brand{text-align:center;}
-  .footer-logos{display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:16px;flex-wrap:wrap;}
-  .footer-logo{height:60px;width:auto;display:block;}
-  .footer-tagline{font-family:'Inter',sans-serif;font-size:13px;font-weight:400;color:rgba(255,255,255,0.55);line-height:1.7;max-width:220px;margin:0 auto 20px;}
-  .social-group{margin-bottom:10px;}
-  .social-label{font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#fff;margin-bottom:8px;}
-  .social-row{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;}
-  .social-btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.8);background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:0;min-height:44px;padding:0 20px;text-decoration:none;cursor:pointer;transition:all 0.3s ease;white-space:nowrap;}
-  .social-btn:hover{background:#8B0000;color:#fff;border-color:#8B0000;}
-  .social-btn svg{width:13px;height:13px;fill:currentColor;flex-shrink:0;}
-  .footer-col-title{font-size:10px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,0.9);margin-bottom:16px;display:inline-block;padding-bottom:5px;border-bottom:2px solid #8B0000;}
-  .footer-links{list-style:none;}
-  .footer-links li{margin-bottom:10px;}
-  .footer-links a{font-family:'Inter',sans-serif;font-size:14px;font-weight:400;color:rgba(255,255,255,0.65);text-decoration:none;transition:color 0.2s;}
-  .footer-links a:hover{color:#fff;}
-  .hours-row{display:flex;gap:10px;font-family:'Inter',sans-serif;font-size:13px;font-weight:400;color:rgba(255,255,255,0.65);margin-bottom:8px;}
-  .hours-row span:first-child{color:rgba(255,255,255,0.9);font-weight:600;min-width:76px;}
-  .hours-closed{color:#8B0000 !important;}
-  .day-short{display:none;}.day-full{display:inline;}
-  .contact-title-row{display:flex;align-items:center;justify-content:flex-start;gap:14px;margin-bottom:14px;}
-  .contact-phone-inline{font-size:11px;font-weight:700;color:rgba(255,255,255,0.85);white-space:nowrap;}
-  .contact-phone-inline a{color:rgba(255,255,255,0.85);text-decoration:none;transition:color 0.2s;}
-  .contact-phone-inline a:hover{color:#fff;}
-  .contact-details{display:flex;flex-direction:column;gap:10px;}
-  .contact-item{display:flex;align-items:flex-start;gap:8px;}
-  .contact-item svg{width:14px;height:14px;fill:#8B0000;flex-shrink:0;margin-top:2px;}
-  .contact-item p{font-family:'Inter',sans-serif;font-size:13px;font-weight:400;color:rgba(255,255,255,0.65);line-height:1.6;}
-  .contact-item a{color:rgba(255,255,255,0.65);text-decoration:none;transition:color 0.2s;}
-  .contact-item a:hover{color:#fff;}
-  .footer-bottom{padding:20px 0;display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;}
-  .footer-copy{font-size:11px;font-weight:500;color:rgba(255,255,255,0.35);}
-  .footer-copy span{color:#8B0000;}
-  .footer-bottom-links{display:flex;gap:20px;}
-  .footer-bottom-links a{font-size:11px;font-weight:500;color:rgba(255,255,255,0.35);text-decoration:none;transition:color 0.2s;}
-  .footer-bottom-links a:hover{color:#fff;}
-  @media(max-width:768px){.footer{padding:36px 20px 0;}.footer-top{grid-template-columns:1fr 1fr;gap:28px;}.footer-brand{grid-column:1/-1;}}
-  @media(max-width:480px){.footer{padding:20px 16px 0;}.footer-top{grid-template-columns:1fr 1fr;gap:14px;padding-bottom:20px;}.footer-brand{grid-column:1/-1;}.footer-logo{height:44px;}.footer-tagline{font-size:11px;margin-bottom:10px;max-width:100%;}.social-label{font-size:8px;margin-bottom:5px;}.social-btn{font-size:9px;padding:0 10px;gap:4px;min-height:36px;}.social-btn svg{width:11px;height:11px;}.social-group{margin-bottom:6px;}.social-row{flex-wrap:nowrap;}.hours-row{font-size:10px;margin-bottom:3px;}.hours-row span:first-child{min-width:36px;}.day-short{display:inline;}.day-full{display:none;}.contact-title-row{flex-direction:column;align-items:flex-start;gap:4px;margin-bottom:10px;}.contact-item p{font-size:11px;}.contact-phone-inline{font-size:11px;}.footer-links li{margin-bottom:6px;}.footer-links a{font-size:11px;}.footer-col-title{font-size:10px;margin-bottom:8px;}.footer-brand~div:last-of-type{grid-column:1/-1;}.footer-bottom{flex-direction:column;align-items:flex-start;gap:6px;padding:12px 0;}.footer-copy,.footer-bottom-links a{font-size:10px;}}
+  .fb{background:#111;color:#fff;position:relative;--rhino:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='r'%3E%3CfeTurbulence type='turbulence' baseFrequency='0.88 0.82' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.22 0 0 0 0 0.22 0 0 0 0 0.22 5 0 0 0 -1.6'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23r)'/%3E%3C/svg%3E");}
+  .fb-cta{background:#8B0000;border-top:1px solid rgb(169,0,0);border-bottom:1px solid rgb(169,0,0);padding:20px 40px;display:flex;align-items:center;justify-content:space-between;gap:24px;position:relative;overflow:hidden;}
+  .fb-cta-ey{font-family:'Inter',sans-serif;font-size:10px;font-weight:600;letter-spacing:1px;color:rgba(255,255,255,0.61);margin-bottom:3px;}
+  .fb-cta-h{font-family:'Montserrat',sans-serif;font-size:15px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:#fff;}
+  .fb-acts{display:flex;gap:10px;align-items:center;flex-shrink:0;}
+  .fb-btn-w{display:inline-flex;align-items:center;justify-content:center;height:44px;padding:0 22px;background:#fff;color:#8B0000;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;white-space:nowrap;transition:background 200ms ease;border-radius:0;}
+  .fb-btn-w:hover{background:rgba(255,255,255,.88);}
+  .fb-btn-o{display:inline-flex;align-items:center;justify-content:center;height:44px;padding:0 20px;background:transparent;color:rgba(255,255,255,.88);font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border:1px solid rgba(255,255,255,.35);white-space:nowrap;transition:border-color 200ms ease,background 200ms ease,color 200ms ease;border-radius:0;}
+  .fb-btn-o:hover{border-color:rgba(255,255,255,.7);background:rgba(255,255,255,.08);color:#fff;}
+  .fb-body{padding:0 40px;position:relative;overflow:hidden;}
+  .fb-cols{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:48px;padding:44px 0 40px;border-bottom:1px solid rgba(255,255,255,0.08);position:relative;z-index:1;}
+  .fb-logos{display:flex;align-items:center;gap:14px;margin-bottom:13px;flex-wrap:wrap;}
+  .fb-logo{height:46px;width:auto;}
+  .fb-tag{font-family:'Inter',sans-serif;font-size:12px;color:rgba(255,255,255,0.62);line-height:1.65;margin-bottom:18px;}
+  .fb-sgl{font-family:'Montserrat',sans-serif;font-size:8px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,0.55);display:block;margin-bottom:6px;}
+  .fb-sg{display:flex;flex-direction:column;gap:10px;}
+  .fb-sr{display:flex;gap:5px;}
+  .fb-gap{margin-top:22px;}
+  .col-ttl{display:block;font-family:'Montserrat',sans-serif;font-size:9px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,0.9);margin-bottom:15px;padding-bottom:7px;border-bottom:1.5px solid #8B0000;}
+  .soc-btn{width:36px;height:36px;display:inline-flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.09);color:rgba(255,255,255,0.82);text-decoration:none;transition:background 200ms ease,border-color 200ms ease,color 200ms ease;flex-shrink:0;border-radius:0;}
+  .soc-btn:hover{background:#8B0000;border-color:#8B0000;color:#fff;}
+  .soc-btn svg{width:13px;height:13px;fill:currentColor;display:block;}
+  .nl{list-style:none;display:flex;flex-direction:column;gap:9px;}
+  .nl a{font-family:'Inter',sans-serif;font-size:13px;color:rgba(255,255,255,0.62);text-decoration:none;transition:color 200ms ease;}
+  .nl a:hover{color:#fff;}
+  .hrs{display:flex;flex-direction:column;gap:7px;}
+  .hr{display:flex;gap:8px;font-family:'Inter',sans-serif;font-size:12px;color:rgba(255,255,255,0.62);}
+  .hr .dy{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:600;letter-spacing:.3px;text-transform:uppercase;color:rgba(255,255,255,0.82);min-width:74px;flex-shrink:0;}
+  .closed{color:#5c0000 !important;}
+  .ct{display:flex;flex-direction:column;gap:10px;}
+  .ci{display:flex;align-items:flex-start;gap:8px;}
+  .ci svg{width:13px;height:13px;fill:#8B0000;flex-shrink:0;margin-top:2px;}
+  .ci p{font-family:'Inter',sans-serif;font-size:12px;color:rgba(255,255,255,0.62);line-height:1.62;}
+  .ci a{color:rgba(255,255,255,0.62);text-decoration:none;transition:color 200ms ease;}
+  .ci a:hover{color:#fff;}
+  .ftm{padding:16px 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;border-top:1px solid rgba(255,255,255,0.08);position:relative;z-index:1;}
+  .fcp{font-family:'Inter',sans-serif;font-size:11px;color:rgba(255,255,255,0.42);}
+  .fcp span{color:rgba(139,0,0,.75);}
+  .fbl{display:flex;gap:16px;}
+  .fbl a{font-family:'Inter',sans-serif;font-size:11px;color:rgba(255,255,255,0.42);text-decoration:none;transition:color 200ms ease;}
+  .fbl a:hover{color:rgba(255,255,255,.6);}
+  .fb-body::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;background-image:var(--rhino);background-size:200px 200px;mix-blend-mode:overlay;opacity:.22;}
+  .fb-cta::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;background-image:var(--rhino);background-size:200px 200px;mix-blend-mode:soft-light;opacity:.45;}
+  .fb-cta>*{position:relative;z-index:1;}
+  @media(max-width:768px){.fb-cta{flex-direction:column;align-items:flex-start;gap:14px;padding:20px 24px;}.fb-body{padding:0 24px;}.fb-cols{grid-template-columns:1fr 1fr;gap:28px;padding:36px 0 32px;}.fb-cols>div:first-child{grid-column:1/-1;}}
+  @media(max-width:480px){.fb-cta{padding:18px 16px;}.fb-acts{flex-direction:column;align-items:stretch;width:100%;}.fb-btn-w,.fb-btn-o{justify-content:center;}.fb-body{padding:0 16px;}.fb-cols{grid-template-columns:1fr;gap:22px;padding:28px 0 24px;}.ftm{flex-direction:column;align-items:flex-start;gap:6px;}}
   `;
   var st=document.createElement('style');st.textContent=css;document.head.appendChild(st);
 
@@ -324,94 +330,77 @@
   '<div class="ss-garage-ov" id="ssGarageOv"><iframe class="ss-garage-frame" id="ssGarageFrame" title="My Garage"></iframe></div>';
 
   /* ════════ FOOTER HTML ════════ */
-  var footer = `<footer class="footer">
-  <div class="footer-top">
-    <div class="footer-brand">
-      <div class="footer-logos">
-        <img src="3js-logo-white.webp" alt="3J's Auto Body &amp; Paint" loading="lazy" class="footer-logo">
-        <img src="rlsh-logo-white.webp" alt="Rhino Linings of Signal Hill" loading="lazy" class="footer-logo">
-      </div>
-      <p class="footer-tagline">Signal Hill's trusted auto body, paint, and truck accessory shop. Serving the community since day one.</p>
-      <div class="social-group">
-        <p class="social-label">RLSH — Rhino Linings</p>
-        <div class="social-row">
-          <a class="social-btn" href="https://www.instagram.com/rlofsignalhill/" target="_blank">
-            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-            Instagram
-          </a>
-          <a class="social-btn" href="https://www.facebook.com/RLsignalhill/" target="_blank">
-            <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-            Facebook
-          </a>
-          <a class="social-btn" href="https://www.yelp.com/biz/rhino-linings-of-signal-hill-signal-hill-3" target="_blank">
-            <svg viewBox="0 0 24 24"><path d="M20.16 12.594l-4.995 1.433c-.96.275-1.854-.8-1.29-1.67l2.718-4.416c.564-.917 1.88-.57 1.976.51l.57 4.143zM12.16 19.594l-1.98 4.687c-.39.925-1.688.925-2.078 0L6.12 19.594c-.39-.924.39-1.924 1.388-1.737l3.264.617c.998.188 1.776 1.188 1.388 2.12zm-7.12-8.344L.946 9.816C.024 9.44 0 8.152.91 7.73l4.375-2.016c.91-.42 1.854.44 1.584 1.404L5.71 11.25c-.27.964-1.584 1.14-2.67 0zm5.484-9.984L8.336 5.57c-.39.924-1.688.924-2.078 0L4.27 1.266C3.88.342 4.66-.657 5.66-.47l3.264.617c.998.188 1.428 1.188 1.6 1.12zM14.16 7.97l2.718-4.416c.564-.917-.096-2.063-1.17-1.917L10.87.52c-.96-.137-1.584.87-1.02 1.64l4.32 5.81z"/></svg>
-            Yelp
-          </a>
-        </div>
-      </div>
-      <div class="social-group">
-        <p class="social-label">3J's Auto Body</p>
-        <div class="social-row">
-          <a class="social-btn" href="https://www.instagram.com/3jsautobody/" target="_blank">
-            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-            Instagram
-          </a>
-          <a class="social-btn" href="https://www.facebook.com/3jsAutoBodyPaintInc/" target="_blank">
-            <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-            Facebook
-          </a>
-          <a class="social-btn" href="https://www.yelp.com/biz/3-js-auto-body-and-paint-signal-hill-3" target="_blank">
-            <svg viewBox="0 0 24 24"><path d="M20.16 12.594l-4.995 1.433c-.96.275-1.854-.8-1.29-1.67l2.718-4.416c.564-.917 1.88-.57 1.976.51l.57 4.143zM12.16 19.594l-1.98 4.687c-.39.925-1.688.925-2.078 0L6.12 19.594c-.39-.924.39-1.924 1.388-1.737l3.264.617c.998.188 1.776 1.188 1.388 2.12zm-7.12-8.344L.946 9.816C.024 9.44 0 8.152.91 7.73l4.375-2.016c.91-.42 1.854.44 1.584 1.404L5.71 11.25c-.27.964-1.584 1.14-2.67 0zm5.484-9.984L8.336 5.57c-.39.924-1.688.924-2.078 0L4.27 1.266C3.88.342 4.66-.657 5.66-.47l3.264.617c.998.188 1.428 1.188 1.6 1.12zM14.16 7.97l2.718-4.416c.564-.917-.096-2.063-1.17-1.917L10.87.52c-.96-.137-1.584.87-1.02 1.64l4.32 5.81z"/></svg>
-            Yelp
-          </a>
-        </div>
-      </div>
-    </div>
+  var footer = `<footer class="fb">
+  <div class="fb-cta">
     <div>
-      <p class="footer-col-title">Quick Links</p>
-      <ul class="footer-links">
-        <li><a href="homepage.html">Home</a></li>
-        <li><a href="body-paint-repairs.html">Body &amp; Paint Repairs</a></li>
-        <li><a href="rhino-liner.html">Rhino Linings</a></li>
-        <li><a href="exterior-accessories-V2.html">Truck &amp; SUV Accessories</a></li>
-        <li><a href="parts-quote.html">Get a Quote</a></li>
-      </ul>
+      <p class="fb-cta-ey">Free estimates — no appointment needed</p>
+      <p class="fb-cta-h">Get a Free Estimate Today</p>
     </div>
-    <div>
-      <p class="footer-col-title">Hours</p>
-      <div class="hours-row"><span><span class="day-full">Monday</span><span class="day-short">Mon</span></span><span>8AM &ndash; 5PM</span></div>
-      <div class="hours-row"><span><span class="day-full">Tuesday</span><span class="day-short">Tue</span></span><span>8AM &ndash; 5PM</span></div>
-      <div class="hours-row"><span><span class="day-full">Wednesday</span><span class="day-short">Wed</span></span><span>8AM &ndash; 5PM</span></div>
-      <div class="hours-row"><span><span class="day-full">Thursday</span><span class="day-short">Thu</span></span><span>8AM &ndash; 5PM</span></div>
-      <div class="hours-row"><span><span class="day-full">Friday</span><span class="day-short">Fri</span></span><span>8AM &ndash; 5PM</span></div>
-      <div class="hours-row"><span><span class="day-full">Saturday</span><span class="day-short">Sat</span></span><span class="hours-closed">Closed</span></div>
-      <div class="hours-row"><span><span class="day-full">Sunday</span><span class="day-short">Sun</span></span><span class="hours-closed">Closed</span></div>
-    </div>
-    <div>
-      <div class="contact-title-row">
-        <p class="footer-col-title" style="margin-bottom:0;">Contact Us</p>
-        <span class="contact-phone-inline">
-          <svg viewBox="0 0 24 24" style="width:11px;height:11px;fill:#8B0000;vertical-align:middle;margin-right:4px;"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-          <a href="tel:+15624246744">(562) 424-6744</a>
-        </span>
-      </div>
-      <div class="contact-details">
-        <div class="contact-item">
-          <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-          <p>1855 East 29th Street<br>Signal Hill, CA 90755</p>
-        </div>
-        <div class="contact-item">
-          <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-          <p><a href="mailto:info@3jsautobody.com">info@3jsautobody.com</a></p>
-        </div>
-      </div>
+    <div class="fb-acts">
+      <a href="parts-quote.html" class="fb-btn-w">Request Estimate →</a>
+      <a href="tel:+15624246744" class="fb-btn-o">Call 562-424-6744</a>
     </div>
   </div>
-  <div class="footer-bottom">
-    <p class="footer-copy">&copy; 2025 <span>3J's Auto Body &amp; Paint</span>. All rights reserved.</p>
-    <div class="footer-bottom-links">
-      <a href="privacy-policy.html">Privacy Policy</a>
-      <a href="terms-conditions.html">Terms of Service</a>
+  <div class="fb-body">
+    <div class="fb-cols">
+      <div>
+        <div class="fb-logos">
+          <img src="3js-logo-white.webp" alt="3J's Auto Body &amp; Paint" loading="lazy" class="fb-logo">
+          <img src="rlsh-logo-white.webp" alt="Rhino Linings of Signal Hill" loading="lazy" class="fb-logo">
+        </div>
+        <p class="fb-tag">Signal Hill's trusted auto body, paint, and truck accessory shop — serving the community since day one.</p>
+        <div class="fb-sg">
+          <div>
+            <span class="fb-sgl">Rhino Linings SH</span>
+            <div class="fb-sr">
+              <a href="https://www.instagram.com/rlofsignalhill/" class="soc-btn" title="RLSH Instagram" target="_blank"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+              <a href="https://www.facebook.com/RLsignalhill/" class="soc-btn" title="RLSH Facebook" target="_blank"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+              <a href="https://www.yelp.com/biz/rhino-linings-of-signal-hill-signal-hill-3" class="soc-btn" title="RLSH Yelp" target="_blank"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M20.16 12.594l-4.995 1.433c-.96.275-1.854-.8-1.29-1.67l2.718-4.416c.564-.917 1.88-.57 1.976.51l.57 4.143zM12.16 19.594l-1.98 4.687c-.39.925-1.688.925-2.078 0L6.12 19.594c-.39-.924.39-1.924 1.388-1.737l3.264.617c.998.188 1.776 1.188 1.388 2.12zm-7.12-8.344L.946 9.816C.024 9.44 0 8.152.91 7.73l4.375-2.016c.91-.42 1.854.44 1.584 1.404L5.71 11.25c-.27.964-1.584 1.14-2.67 0zm5.484-9.984L8.336 5.57c-.39.924-1.688.924-2.078 0L4.27 1.266C3.88.342 4.66-.657 5.66-.47l3.264.617c.998.188 1.428 1.188 1.6 1.12zM14.16 7.97l2.718-4.416c.564-.917-.096-2.063-1.17-1.917L10.87.52c-.96-.137-1.584.87-1.02 1.64l4.32 5.81z"/></svg></a>
+            </div>
+          </div>
+          <div>
+            <span class="fb-sgl">3J's Auto Body</span>
+            <div class="fb-sr">
+              <a href="https://www.instagram.com/3jsautobody/" class="soc-btn" title="3J's Instagram" target="_blank"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+              <a href="https://www.facebook.com/3jsAutoBodyPaintInc/" class="soc-btn" title="3J's Facebook" target="_blank"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+              <a href="https://www.yelp.com/biz/3-js-auto-body-and-paint-signal-hill-3" class="soc-btn" title="3J's Yelp" target="_blank"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M20.16 12.594l-4.995 1.433c-.96.275-1.854-.8-1.29-1.67l2.718-4.416c.564-.917 1.88-.57 1.976.51l.57 4.143zM12.16 19.594l-1.98 4.687c-.39.925-1.688.925-2.078 0L6.12 19.594c-.39-.924.39-1.924 1.388-1.737l3.264.617c.998.188 1.776 1.188 1.388 2.12zm-7.12-8.344L.946 9.816C.024 9.44 0 8.152.91 7.73l4.375-2.016c.91-.42 1.854.44 1.584 1.404L5.71 11.25c-.27.964-1.584 1.14-2.67 0zm5.484-9.984L8.336 5.57c-.39.924-1.688.924-2.078 0L4.27 1.266C3.88.342 4.66-.657 5.66-.47l3.264.617c.998.188 1.428 1.188 1.6 1.12zM14.16 7.97l2.718-4.416c.564-.917-.096-2.063-1.17-1.917L10.87.52c-.96-.137-1.584.87-1.02 1.64l4.32 5.81z"/></svg></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <span class="col-ttl">Quick Links</span>
+        <ul class="nl">
+          <li><a href="homepage.html">Home</a></li>
+          <li><a href="body-paint-repairs.html">Body &amp; Paint Repairs</a></li>
+          <li><a href="rhino-liner.html">Rhino Linings</a></li>
+          <li><a href="exterior-accessories-V2.html">Truck &amp; SUV Accessories</a></li>
+          <li><a href="parts-quote.html">Get a Quote</a></li>
+        </ul>
+      </div>
+      <div>
+        <span class="col-ttl">Hours</span>
+        <div class="hrs">
+          <div class="hr"><span class="dy">Mon – Fri</span><span>8AM – 5PM</span></div>
+          <div class="hr"><span class="dy">Saturday</span><span class="closed">Closed</span></div>
+          <div class="hr"><span class="dy">Sunday</span><span class="closed">Closed</span></div>
+        </div>
+        <div class="fb-gap">
+          <span class="col-ttl">Contact</span>
+          <div class="ct">
+            <div class="ci"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg><p><a href="tel:+15624246744">(562) 424-6744</a></p></div>
+            <div class="ci"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg><p>1855 East 29th Street<br>Signal Hill, CA 90755</p></div>
+            <div class="ci"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg><p><a href="mailto:info@3jsautobody.com">info@3jsautobody.com</a></p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="ftm">
+      <p class="fcp">© 2026 <span>3J's Auto Body &amp; Paint</span>. All rights reserved.</p>
+      <div class="fbl">
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="terms-conditions.html">Terms of Service</a>
+      </div>
     </div>
   </div>
 </footer>`;
