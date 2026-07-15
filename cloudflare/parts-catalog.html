@@ -1029,6 +1029,15 @@ function App() {
     });
   };
 
+  // Land on the category the user came from (?cat=<id> from a category
+  // page or PDP link) instead of always defaulting to Tonneau Covers.
+  useEffect(() => {
+    const catParam = new URLSearchParams(window.location.search).get('cat');
+    if (catParam && catParam !== 'tonneau' && CATEGORY_DEFS.some(c => c.id === catParam)) {
+      handleCatChange(catParam);
+    }
+  }, []);
+
   const openDetail = (brand, name) => {
     // Products with dedicated PDP pages — go there directly, no garage required
     if (PDP_MAP[name]) {
@@ -1040,7 +1049,7 @@ function App() {
       openGaragePopup();
       return;
     }
-    const p = new URLSearchParams({ brand, product: name, cat: selectedCat.catLabel, catUrl: 'parts-catalog.html' });
+    const p = new URLSearchParams({ brand, product: name, cat: selectedCat.catLabel, catId: selectedCat.id, catUrl: 'parts-catalog.html' });
     if (filters.types.size === 1) p.set('type', [...filters.types][0]);
     window.location.href = `product-detail-page.html?${p}`;
   };
