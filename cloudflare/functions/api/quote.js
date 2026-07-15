@@ -55,19 +55,37 @@ async function findOrCreateCustomer(data, env) {
   var body = {
     firstName: data.firstName,
     lastName: data.lastName,
+    customerType: 'Customer',
   };
-  if (data.email) body.email = [data.email];
-  if (data.phone) body.phone = [{ number: data.phone, type: 'mobile' }];
 
   var created = await smFetch('/customer', env, {
     method: 'POST',
     body: JSON.stringify(body),
   });
-  return created.data || created;
+  var customer = created.data || created;
+
+  // Shopmonkey's /customer create endpoint silently drops email/phone if
+  // sent inline — they must be attached via separate follow-up calls.
+  if (data.email) {
+    await smFetch('/customer/' + customer.id + '/email', env, {
+      method: 'POST',
+      body: JSON.stringify({ email: data.email }),
+    });
+  }
+  if (data.phone) {
+    await smFetch('/customer/' + customer.id, env, {
+      method: 'PUT',
+      body: JSON.stringify({
+        phoneNumbers: [{ number: data.phone.replace(/\D/g, ''), type: 'Mobile' }],
+      }),
+    });
+  }
+
+  return customer;
 }
 
 async function createVehicle(customerId, data, env) {
-  var body = { customerId: customerId };
+  var body = { customerId: customerId, size: 'LightDuty' };
   if (data.vehicleYear) body.year = parseInt(data.vehicleYear, 10);
   if (data.vehicleMake) body.make = data.vehicleMake;
   if (data.vehicleModel) body.model = data.vehicleModel;
@@ -103,10 +121,10 @@ async function createOrderWithServices(customerId, vehicleId, data, env) {
   if (data.product) {
     await smFetch('/order/' + orderId + '/service', env, {
       method: 'POST',
-      body: JSON.stringify({
+      body: JSON.stringify([{
         name: data.product,
         note: data.partNumber ? 'Part #' + data.partNumber : '',
-      }),
+      }]),
     });
   }
 
@@ -116,7 +134,7 @@ async function createOrderWithServices(customerId, vehicleId, data, env) {
       if (addOnItems[i]) {
         await smFetch('/order/' + orderId + '/service', env, {
           method: 'POST',
-          body: JSON.stringify({ name: addOnItems[i], note: 'Web quote add-on' }),
+          body: JSON.stringify([{ name: addOnItems[i], note: 'Web quote add-on' }]),
         });
       }
     }
