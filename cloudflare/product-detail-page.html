@@ -326,6 +326,8 @@
 const { useState, useEffect, useMemo } = React;
 
 const _qParams = new URLSearchParams(window.location.search);
+const _catId = _qParams.get('catId') || 'tonneau';
+const _catalogUrl = `parts-catalog.html?cat=${_catId}`;
 const _garage = (() => { try { return JSON.parse(localStorage.getItem('garage_vehicle')); } catch(e) { return null; } })();
 const _garageQS = _garage && _garage.year
   ? `&year=${encodeURIComponent(_garage.year)}&make=${encodeURIComponent(_garage.make)}&model=${encodeURIComponent(_garage.model)}`
@@ -1006,7 +1008,7 @@ function Header({ garage }) {
           <div className="hdr-actions"></div>
         </div>
         <nav className="hdr-nav">
-          <a href="parts-catalog.html" className="nav-item active">Tonneau Covers</a>
+          <a href={_catalogUrl} className="nav-item active">Tonneau Covers</a>
           <a href="steps-running-boards.html" className="nav-item">Running Boards</a>
           <a href="headache-racks.html" className="nav-item">Headache Racks</a>
           <a href="lighting.html" className="nav-item">Lighting</a>
@@ -1082,7 +1084,7 @@ function FitmentBlock({ garage, fits }) {
           <div className="pdp-fit-label">Check fitment for your truck</div>
           <div className="pdp-fit-vehicle" style={{fontSize:14,color:'var(--fg-muted)',fontFamily:'var(--body)',fontWeight:400,textTransform:'none'}}>Add your vehicle to see if this fits</div>
         </div>
-        <a href="parts-catalog.html" className="pdp-fit-link">Add Truck</a>
+        <a href={_catalogUrl} className="pdp-fit-link">Add Truck</a>
       </div>
     );
   }
@@ -1095,7 +1097,7 @@ function FitmentBlock({ garage, fits }) {
         <div className="pdp-fit-label">{fits ? 'Confirmed fit for' : 'May not fit'}</div>
         <div className="pdp-fit-vehicle">{garage.year} {garage.make} {garage.model}</div>
       </div>
-      <a href="parts-catalog.html" className="pdp-fit-link">Change</a>
+      <a href={_catalogUrl} className="pdp-fit-link">Change</a>
     </div>
   );
 }
@@ -1367,7 +1369,7 @@ function RelatedStrip({ currentBrand, currentProduct, garage }) {
     <section className="product-strip related">
       <div className="strip-head">
         <h2>More from {currentBrand}</h2>
-        <a href="parts-catalog.html">View all covers →</a>
+        <a href={_catalogUrl}>View all covers →</a>
       </div>
       <div className="strip-grid">
         {related.map((r,i) => {
@@ -1487,7 +1489,7 @@ function App() {
       <div style={{maxWidth:600,margin:'120px auto',textAlign:'center',fontFamily:'var(--body)',padding:'0 24px'}}>
         <div style={{fontFamily:'var(--display)',fontSize:32,fontWeight:800,textTransform:'uppercase',marginBottom:12}}>Product Not Found</div>
         <p style={{color:'var(--fg-muted)',marginBottom:24}}>We couldn't find "{productName}" in our catalog.</p>
-        <a href="parts-catalog.html" className="btn-primary">← Back to Catalog</a>
+        <a href={_catalogUrl} className="btn-primary">← Back to Catalog</a>
       </div>
     );
   }
