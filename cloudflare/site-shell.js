@@ -269,7 +269,7 @@
   .hrs{display:flex;flex-direction:column;gap:7px;}
   .hr{display:flex;gap:8px;font-family:'Inter',sans-serif;font-size:12px;color:rgba(255,255,255,0.62);}
   .hr .dy{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:600;letter-spacing:.3px;text-transform:uppercase;color:rgba(255,255,255,0.82);min-width:74px;flex-shrink:0;}
-  .closed{color:#5c0000 !important;}
+  .closed{color:rgba(255,255,255,0.62) !important;}
   .ct{display:flex;flex-direction:column;gap:10px;}
   .ci{display:flex;align-items:flex-start;gap:8px;}
   .ci svg{width:13px;height:13px;fill:#8B0000;flex-shrink:0;margin-top:2px;}
