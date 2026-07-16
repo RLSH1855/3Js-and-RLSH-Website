@@ -119,7 +119,7 @@
   .ss-burger.ss-open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
 
   /* ── Page wrap — sits ON TOP of drawer; lifts, slides right, scales ── */
-  #ss-page-wrap{position:relative;z-index:5;min-height:100vh;will-change:transform;transform-origin:50% 50%;}
+  #ss-page-wrap{position:relative;z-index:5;min-height:100vh;transform-origin:50% 50%;}
   body.ss-menu-open,body.ss-menu-closing{background:#ffffff;}
   @keyframes ssPageOpen{
     0%  {transform:translateX(0);}
@@ -130,8 +130,8 @@
     100%{transform:translateX(0);}
   }
   body.ss-menu-open #ss-page-wrap,body.ss-menu-closing #ss-page-wrap{min-height:0;}
-  body.ss-menu-open #ss-page-wrap{animation:ssPageOpen 1.0s cubic-bezier(.22,1,.36,1) forwards;overflow:hidden;pointer-events:none;height:100vh;height:100dvh;}
-  body.ss-menu-closing #ss-page-wrap{animation:ssPageClose .95s cubic-bezier(.22,1,.36,1) forwards;overflow:hidden;height:100vh;height:100dvh;}
+  body.ss-menu-open #ss-page-wrap{will-change:transform;animation:ssPageOpen 1.0s cubic-bezier(.22,1,.36,1) forwards;overflow:hidden;pointer-events:none;height:100vh;height:100dvh;}
+  body.ss-menu-closing #ss-page-wrap{will-change:transform;animation:ssPageClose .95s cubic-bezier(.22,1,.36,1) forwards;overflow:hidden;height:100vh;height:100dvh;}
   /* dark overlay over the pushed page card — keeps it consistent across pages */
   .ss-page-dim{position:absolute;inset:0;background:rgba(8,10,18,.6);opacity:0;pointer-events:none;transition:opacity .90s ease;z-index:2147483000;cursor:pointer;}
   body.ss-menu-open .ss-page-dim{opacity:1;pointer-events:auto;}
