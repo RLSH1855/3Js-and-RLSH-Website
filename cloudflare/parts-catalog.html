@@ -1057,11 +1057,6 @@ function App() {
       window.location.href = PDP_MAP[name];
       return;
     }
-    // All other products — require vehicle selection first
-    if (!garage) {
-      openGaragePopup();
-      return;
-    }
     const p = new URLSearchParams({ brand, product: name, cat: selectedCat.catLabel, catId: selectedCat.id, catUrl: 'parts-catalog.html' });
     if (filters.types.size === 1) p.set('type', [...filters.types][0]);
     window.location.href = `product-detail-page.html?${p}`;
