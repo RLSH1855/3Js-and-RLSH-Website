@@ -1259,11 +1259,11 @@ function ReviewsPane() {
 
 function QAPane() {
   const qa = [
-    {q:'Will this fit over my bed liner?',a:'Yes — most covers install above the bed liner without modification on a standard liner. If you have a high-lip aftermarket liner, you may need a rail extension kit. Bring your truck by and we\'ll confirm in 5 minutes.',meta:'Answered by 3J's Spec Team'},
-    {q:'Can I drive on the highway with the cover open?',a:'Yes. Fold or roll the cover to the cab and secure it with the included hardware. Most manufacturers recommend a 70 mph maximum when folded — more than enough for highway use.',meta:'Answered by 3J's Spec Team'},
-    {q:'Is professional installation required?',a:'No — most truck owners install in 30–45 minutes with basic tools. If you\'d rather not, we install for free with purchase at our Signal Hill shop.',meta:'Answered by 3J's Spec Team'},
-    {q:'What does the warranty cover?',a:'The manufacturer warranty covers defects in materials and workmanship — panels, hinges, latches, and finish. Normal wear is not covered. We handle warranty claims directly for local customers.',meta:'Answered by 3J's Spec Team'},
-    {q:'Will it work with my toolbox?',a:'Yes, with an optional rail-extension kit on most covers. The kit raises the cover over standard over-rail toolboxes so both stay usable. Call us with your toolbox brand to confirm.',meta:'Answered by 3J's Spec Team'},
+    {q:'Will this fit over my bed liner?',a:'Yes — most covers install above the bed liner without modification on a standard liner. If you have a high-lip aftermarket liner, you may need a rail extension kit. Bring your truck by and we\'ll confirm in 5 minutes.',meta:'Answered by 3J\'s Spec Team'},
+    {q:'Can I drive on the highway with the cover open?',a:'Yes. Fold or roll the cover to the cab and secure it with the included hardware. Most manufacturers recommend a 70 mph maximum when folded — more than enough for highway use.',meta:'Answered by 3J\'s Spec Team'},
+    {q:'Is professional installation required?',a:'No — most truck owners install in 30–45 minutes with basic tools. If you\'d rather not, we install for free with purchase at our Signal Hill shop.',meta:'Answered by 3J\'s Spec Team'},
+    {q:'What does the warranty cover?',a:'The manufacturer warranty covers defects in materials and workmanship — panels, hinges, latches, and finish. Normal wear is not covered. We handle warranty claims directly for local customers.',meta:'Answered by 3J\'s Spec Team'},
+    {q:'Will it work with my toolbox?',a:'Yes, with an optional rail-extension kit on most covers. The kit raises the cover over standard over-rail toolboxes so both stay usable. Call us with your toolbox brand to confirm.',meta:'Answered by 3J\'s Spec Team'},
   ];
   return (
     <div className="desc">
@@ -1483,6 +1483,37 @@ function App() {
   }, [productName]);
 
   useEffect(() => { document.title = `${productName} · ${brandName} Tonneau Cover · 3J's Auto Body`; }, [productName, brandName]);
+
+  // ── Product/Offer JSON-LD — only emitted when we actually have resolved data rows,
+  // so we never publish schema for a product that failed to load. ──
+  useEffect(() => {
+    const existing = document.getElementById('product-schema-ld');
+    if (existing) existing.remove();
+    if (!entries.length) return;
+    const image = entries.find(e => e[F.img])?.[F.img] || '';
+    const desc = entries.find(e => e[F.desc])?.[F.desc] || `${brandName} ${productName}`;
+    const schema = {
+      '@context': 'https://schema.org',
+      '@type': 'Product',
+      name: `${brandName} ${productName}`,
+      brand: { '@type': 'Brand', name: brandName },
+      sku: entries[0][F.partNum] || undefined,
+      image: image || undefined,
+      description: desc,
+      offers: {
+        '@type': 'Offer',
+        priceCurrency: 'USD',
+        price: minPrice != null ? minPrice : undefined,
+        availability: 'https://schema.org/InStock',
+        url: window.location.href,
+      },
+    };
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.id = 'product-schema-ld';
+    script.textContent = JSON.stringify(schema);
+    document.head.appendChild(script);
+  }, [entries, minPrice, productName, brandName]);
 
   if (!entries.length) {
     return (
