@@ -744,9 +744,9 @@ const Icon = {
 const PRODUCT_IMAGES = {
   // BAK
   'BAKFlip MX4':              'bak-bakflip-mx4-2016-ford-f150-HERO-IMAGE-08.webp',
-  'BAKFlip MX4 TS':           'MX4-TS/bak-bakflip-mx4-ts-ghost.webp',
+  'BAKFlip MX4 TS':           'bak-bakflip-mx4-ts-2024-ford-f150-449339ts-ov-0174-ghost.jpg',
   'BAKFlip F1':               'BAKFlip F1 Hard Folding Tonneau Cover-cover_img.webp',
-  'BAKFlip G2':               'BAK-G2/BAK-G2 (1).webp',
+  'BAKFlip G2':               'bak-g2-cover.webp',
   'BAKFlip FiberMax':         'fibermax-main-image.webp',
   'BAKFlip Fibermax':         'fibermax-main-image.webp',
   'Revolver X4s':             'bak-revolver-x4s.webp',
@@ -1586,7 +1586,7 @@ function ProductCard({ p, onOpenDetail }) {
             {p.type && <div><span className="spec-label">Type</span><span className="spec-val">{p.type}</span></div>}
             {material && <div><span className="spec-label">Material</span><span className="spec-val">{material}</span></div>}
             {warranty && <div><span className="spec-label">Warranty</span><span className="spec-val">{warranty}</span></div>}
-            {p.minPrice && <div><span className="spec-label">Starting at</span><span className="spec-val">$${p.minPrice.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})}</span></div>}
+            {p.minPrice && <div><span className="spec-label">Starting at</span><span className="spec-val">${p.minPrice.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})}</span></div>}
           </div>
         </div>
         {p.fits && (
