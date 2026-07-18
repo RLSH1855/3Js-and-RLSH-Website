@@ -113,7 +113,7 @@
 
   /* ── Hamburger (mobile) ── */
   .ss-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none;}
-  .ss-burger span{display:block;width:24px;height:2px;background:#fff;border-radius:2px;transition:transform .42s cubic-bezier(.7,0,.2,1),opacity .2s ease;transform-origin:center;will-change:transform;}
+  .ss-burger span{display:block;width:24px;height:2px;background:#fff;border-radius:0;transition:transform .42s cubic-bezier(.7,0,.2,1),opacity .2s ease;transform-origin:center;will-change:transform;}
   .ss-burger.ss-open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
   .ss-burger.ss-open span:nth-child(2){opacity:0;transform:scaleX(0);}
   .ss-burger.ss-open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
@@ -149,13 +149,8 @@
   @keyframes ssScanDown{0%{top:2px;opacity:1;}85%{opacity:.6;}100%{top:100%;opacity:0;}}
   @keyframes ssFadeUpIn{from{opacity:0;transform:translateY(5px);}to{opacity:1;transform:translateY(0);}}
   @keyframes ssSlideInLeft{from{opacity:0;transform:translateX(-14px);}to{opacity:1;transform:translateX(0);}}
-  @keyframes ssSheen{0%{left:-120px}100%{left:140%}}
-  .ss-sheen-red{position:relative;overflow:hidden;}
-  .ss-sheen-red::after{content:'';position:absolute;top:-50%;left:-120px;width:70px;height:200%;background:linear-gradient(105deg,transparent 20%,rgba(255,255,255,.28) 50%,transparent 80%);animation:ssSheen 2.6s cubic-bezier(.4,0,.6,1) infinite;}
-  .ss-sheen-outline{position:relative;overflow:hidden;}
-  .ss-sheen-outline::after{content:'';position:absolute;top:-50%;left:-120px;width:70px;height:200%;background:linear-gradient(105deg,transparent 20%,rgba(255,255,255,.14) 50%,transparent 80%);animation:ssSheen 2.6s cubic-bezier(.4,0,.6,1) infinite 1.1s;}
   /* Floating close button — top-right over editorial */
-  .ssd-x{position:absolute;top:9px;right:calc(100vw - min(340px,85vw) + 11px);z-index:30;width:38px;height:38px;border:none;cursor:pointer;background:rgba(0,0,0,.06);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#2d2d2d;font-size:20px;font-weight:700;line-height:1;font-family:system-ui,sans-serif;}
+  .ssd-x{position:absolute;top:9px;right:calc(100vw - min(340px,85vw) + 11px);z-index:30;width:38px;height:38px;border:none;cursor:pointer;background:rgba(0,0,0,.06);border-radius:0;display:flex;align-items:center;justify-content:center;color:#2d2d2d;font-size:20px;font-weight:700;line-height:1;font-family:system-ui,sans-serif;}
   .ssd-x:hover{background:rgba(0,0,0,.12);}
   /* Drawer scroll container (flexes above pinned footer) */
   .ssd-scroll{flex:1;min-height:0;display:flex;flex-direction:column;background:#fff;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;-ms-overflow-style:none;scrollbar-width:none;}
@@ -165,22 +160,15 @@
   .ssd-editorial{position:relative;flex-shrink:0;overflow:hidden;background:#fff;border-bottom:2px solid #8B0000;}
   .ssd-editorial-top-bar{position:absolute;top:0;left:0;right:0;height:3px;background:#8B0000;pointer-events:none;}
   .ssd-editorial-body{position:relative;z-index:2;padding:14px 22px 12px;}
-  .ssd-eyebrow{font-family:'Montserrat',sans-serif;font-weight:800;font-size:8.5px;letter-spacing:2.5px;text-transform:uppercase;color:#8B0000;margin-bottom:6px;opacity:.9;padding-right:34px;}
   .ssd-headline{font-family:'Montserrat',sans-serif;font-weight:900;font-size:22px;line-height:1.05;letter-spacing:-.7px;text-transform:uppercase;color:#1a1a1a;}
   .ssd-headline span{color:#8B0000;}
-  .ssd-em-dash{width:28px;height:2.5px;background:#8B0000;margin:7px 0 6px;}
-  .ssd-tagline{font-family:'Inter',sans-serif;font-style:italic;font-size:11px;color:rgba(0,0,0,.38);margin-bottom:0;min-height:14px;}
-  .ssd-tagline-cursor{border-right:1.5px solid rgba(0,0,0,.3);margin-left:1px;}
-  .ssd-ed-ctas{display:flex;flex-direction:column;gap:8px;}
-  .ssd-ed-btn-red{height:42px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;background:#8B0000;color:#fff;font-family:'Oswald',sans-serif;font-weight:700;font-size:16px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;box-shadow:inset 0 1px 0 rgba(255,255,255,.15),inset 0 -2px 0 rgba(0,0,0,.2);}
-  .ssd-ed-btn-phone{height:34px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;border:1px solid rgba(0,0,0,.15);color:rgba(0,0,0,.45);font-family:'Oswald',sans-serif;font-weight:500;font-size:16px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;}
   /* Garage row */
   .ssd-garage{display:flex;align-items:center;gap:11px;padding:10px 20px;background:#fff;border:none;border-bottom:1px solid rgba(0,0,0,.09);cursor:pointer;width:100%;text-align:left;flex-shrink:0;transition:background .15s;box-shadow:0 1px 3px rgba(0,0,0,.04),inset 0 -1px 0 rgba(0,0,0,.10);}
   .ssd-garage:hover,.ssd-garage:active{background:rgba(139,0,0,.04);}
   .ssd-garage-icon{width:28px;height:28px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
   .ssd-garage-icon img{width:28px;height:28px;object-fit:contain;}
   .ssd-garage-val{flex:1;font-family:'Montserrat',sans-serif;font-size:15px;font-weight:800;letter-spacing:-.2px;color:#1a1a1a;}
-  .ssd-garage-val.ssd-wave span{display:inline-block;animation:ssdGwave 5s ease-in-out infinite;}
+  .ssd-garage-val.ssd-wave span{display:inline-block;animation:ssdGwave 1.4s ease-in-out 1;}
   @keyframes ssdGwave{0%,20%,100%{transform:translateY(0);}10%{transform:translateY(-5px);}}
   .ssd-garage-arr{color:rgba(0,0,0,.25);flex-shrink:0;display:flex;}
   /* Nav */
@@ -214,12 +202,14 @@
   .ssd-footer{background:#1a1a1f;padding:11px 20px 13px;flex-shrink:0;}
   .ssd-brand-line{display:flex;align-items:center;gap:6px;margin-bottom:9px;}
   .ssd-brand-dot{width:5px;height:5px;background:#8B0000;flex-shrink:0;}
-  .ssd-brand-text{font-family:'Montserrat',sans-serif;font-weight:800;font-size:7.5px;letter-spacing:.6px;text-transform:uppercase;color:rgba(255,255,255,.38);white-space:nowrap;}
+  .ssd-brand-text{font-family:'Montserrat',sans-serif;font-weight:800;font-size:7.5px;letter-spacing:1.2px;text-transform:uppercase;color:rgba(255,255,255,.80);white-space:nowrap;}
   .ssd-footer-btns{display:flex;flex-direction:column;gap:7px;}
   .ssd-cta-red{display:flex;align-items:center;justify-content:center;gap:8px;height:40px;background:#8B0000;color:#fff;font-family:'Montserrat',sans-serif;font-weight:800;font-size:13px;letter-spacing:2.5px;text-transform:uppercase;text-decoration:none;border:none;cursor:pointer;}
-  .ssd-cta-outline{display:flex;align-items:center;justify-content:center;gap:8px;height:40px;border:1.5px solid rgba(255,255,255,.18);color:rgba(255,255,255,.72);font-family:'Montserrat',sans-serif;font-weight:700;font-size:13px;letter-spacing:2.5px;text-transform:uppercase;text-decoration:none;background:transparent;cursor:pointer;}
-  .ssd-contact{margin-top:8px;text-align:center;font-family:'Inter',sans-serif;font-size:11px;color:rgba(255,255,255,.28);}
+  .ssd-cta-outline{display:flex;align-items:center;justify-content:center;gap:8px;height:40px;border:1.5px solid rgba(255,255,255,.18);color:rgba(255,255,255,.90);font-family:'Montserrat',sans-serif;font-weight:700;font-size:13px;letter-spacing:2.5px;text-transform:uppercase;text-decoration:none;background:transparent;cursor:pointer;}
+  .ssd-contact{margin-top:8px;text-align:center;font-family:'Inter',sans-serif;font-size:11px;color:rgba(255,255,255,.85);}
   @media(prefers-reduced-motion:reduce){#ss-page-wrap,.ss-drawer,.ss-drawer-ov,.ssd-sub{transition:none!important;}}
+  .ss-drawer a:focus-visible,.ss-drawer button:focus-visible{outline:2px solid #8B0000;outline-offset:-2px;}
+  .ssd-x:focus-visible{outline:2px solid #8B0000;outline-offset:2px;}
 
   @media(max-width:960px){
     .ss-top{padding:14px 16px;justify-content:space-evenly;gap:10px;}
@@ -476,10 +466,10 @@
             '<div class="ssd-sub" id="ssd-bundles-sub">'+
               '<div class="ssd-sub-inner">'+
                 '<div class="ssd-sub-bar" id="ssd-bundles-bar"></div>'+
-                '<a href="bundles.html" class="ssd-sub-item">The 405 Essential'+ssChevSub+'</a>'+
-                '<a href="bundles.html" class="ssd-sub-item">The Working Man'+ssChevSub+'</a>'+
-                '<a href="bundles.html" class="ssd-sub-item">The 3 Wise Men Standard'+ssChevSub+'</a>'+
-                '<a href="bundles.html" class="ssd-sub-item">The 3 Wise Men Premium'+ssChevSub+'</a>'+
+                '<a href="bundles.html#bundle-405-essential" class="ssd-sub-item">The 405 Essential'+ssChevSub+'</a>'+
+                '<a href="bundles.html#bundle-working-man" class="ssd-sub-item">The Working Man'+ssChevSub+'</a>'+
+                '<a href="bundles.html#bundle-wise-men-standard" class="ssd-sub-item">The 3 Wise Men Standard'+ssChevSub+'</a>'+
+                '<a href="bundles.html#bundle-wise-men-premium" class="ssd-sub-item">The 3 Wise Men Premium'+ssChevSub+'</a>'+
                 '<div class="ssd-sub-spacer"></div>'+
               '</div>'+
             '</div>'+
@@ -491,11 +481,11 @@
         '<div class="ssd-footer" id="ssdFooter">'+
             '<div class="ssd-brand-line"><div class="ssd-brand-dot"></div><span class="ssd-brand-text">3J\'S AUTO BODY &middot; RHINO LININGS OF SIGNAL HILL</span></div>'+
             '<div class="ssd-footer-btns">'+
-              '<a href="rhino-lining-quote.html" class="ssd-cta-red ss-sheen-red">'+
+              '<a href="rhino-lining-quote.html" class="ssd-cta-red">'+
                 '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-10 2a2 2 0 100 4 2 2 0 000-4z"/></svg>'+
                 'Bed-Liner Quote'+
               '</a>'+
-              '<a href="https://www.carwise.com/online-photo-estimate/3js-autobody-paint-inc-signal-hill-ca-90755/479382?source=shop.profile&referer=estimate.cccone.com" class="ssd-cta-outline ss-sheen-outline" target="_blank">'+
+              '<a href="https://www.carwise.com/online-photo-estimate/3js-autobody-paint-inc-signal-hill-ca-90755/479382?source=shop.profile&referer=estimate.cccone.com" class="ssd-cta-outline" target="_blank">'+
                 '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>'+
                 'Free Auto Body Estimate'+
               '</a>'+
@@ -660,35 +650,13 @@
     var ov=document.getElementById('ssDrawerOv');
     var closeBtn=document.getElementById('ssDrawerClose');
 
-    var ssTwTimer=null, ssTwInterval=null;
-
-    function ssTwStart(){
-      var el=document.getElementById('ssdTagwriter');
-      if(!el) return;
-      clearTimeout(ssTwTimer); clearInterval(ssTwInterval);
-      el.textContent='';
-      var text='“Meeting great people by accident”';
-      var i=0;
-      ssTwTimer=setTimeout(function(){
-        ssTwInterval=setInterval(function(){
-          i++; el.textContent=text.slice(0,i);
-          if(i>=text.length) clearInterval(ssTwInterval);
-        }, 38);
-      }, 280);
-    }
-
-    function ssTwStop(){
-      clearTimeout(ssTwTimer); clearInterval(ssTwInterval);
-      var el=document.getElementById('ssdTagwriter');
-      if(el) el.textContent='';
-    }
-
     function ssOpenDrawer(){
       document.body.classList.remove('ss-menu-closing');
       document.body.classList.add('ss-menu-open');
       if(drawer) drawer.setAttribute('aria-hidden','false');
-      if(burger){ burger.classList.add('ss-open'); burger.setAttribute('aria-expanded','true'); }
+      if(burger){ burger.classList.add('ss-open'); burger.setAttribute('aria-expanded','true'); burger.setAttribute('aria-label','Close menu'); }
       document.body.style.overflow='hidden';
+      if(closeBtn) setTimeout(function(){ closeBtn.focus(); }, 50);
       if(drawer){
         var items=drawer.querySelectorAll('.ssd-editorial,.ssd-garage,.ssd-section,.ssd-item,.ssd-footer');
         items.forEach(function(el){
@@ -701,13 +669,11 @@
               el.style.opacity='1'; el.style.transform='translateX(0)';
             }, i*45);
           });
-          ssTwStart();
         }, 260);
       }
     }
 
     function ssCloseDrawer(){
-      ssTwStop();
       if(drawer){
         var items=drawer.querySelectorAll('.ssd-editorial,.ssd-garage,.ssd-section,.ssd-item,.ssd-footer');
         items.forEach(function(el){ el.style.opacity='0'; el.style.transform='translateX(-12px)'; el.style.transition='none'; });
@@ -716,8 +682,9 @@
       requestAnimationFrame(function(){ requestAnimationFrame(function(){
         document.body.classList.remove('ss-menu-open');
       }); });
-      if(burger){ burger.classList.remove('ss-open'); burger.setAttribute('aria-expanded','false'); }
+      if(burger){ burger.classList.remove('ss-open'); burger.setAttribute('aria-expanded','false'); burger.setAttribute('aria-label','Open menu'); }
       document.body.style.overflow='';
+      if(burger) burger.focus();
       setTimeout(function(){
         document.body.classList.remove('ss-menu-closing');
         if(drawer) drawer.setAttribute('aria-hidden','true');
@@ -733,6 +700,19 @@
     if(pageDim) pageDim.addEventListener('click',ssCloseDrawer);
     if(closeBtn) closeBtn.addEventListener('click',ssCloseDrawer);
     document.addEventListener('keydown',function(e){ if(e.key==='Escape') ssCloseDrawer(); });
+
+    // Trap Tab focus inside the drawer while it's open
+    document.addEventListener('keydown',function(e){
+      if(e.key!=='Tab') return;
+      if(!document.body.classList.contains('ss-menu-open')) return;
+      if(!drawer) return;
+      var focusable=drawer.querySelectorAll('a[href],button:not([disabled]),input,select,textarea,[tabindex]:not([tabindex="-1"])');
+      if(!focusable.length) return;
+      var first=focusable[0], last=focusable[focusable.length-1];
+      if(e.shiftKey && document.activeElement===first){ e.preventDefault(); last.focus(); }
+      else if(!e.shiftKey && document.activeElement===last){ e.preventDefault(); first.focus(); }
+      else if(!drawer.contains(document.activeElement)){ e.preventDefault(); first.focus(); }
+    });
 
     // Accordion toggles with cinematic animations
     function initAcc(btnId,subId,barId){
@@ -767,6 +747,11 @@
             el.style.animationDelay=(i*45+100)+'ms';
             el.classList.add('ss-slidein');
           });
+          // Bring the opened item to the top of the scroll area so its
+          // submenu isn't hidden below the pinned footer
+          setTimeout(function(){
+            btn.scrollIntoView({behavior:'smooth',block:'start'});
+          }, 440);
         }
       });
     }
