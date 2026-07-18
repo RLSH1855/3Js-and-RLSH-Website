@@ -1598,7 +1598,7 @@ function ProductCard({ p, onOpenDetail }) {
           </div>
         )}
         <div className="card-cta-wrap">
-          <button className="card-cta" onClick={e=>{e.stopPropagation();window.location=quoteUrl;}}>Get a Quote</button>
+          <button className="card-cta" onClick={e=>{e.stopPropagation();if(window.RLSHQuoteCart){window.RLSHQuoteCart.add({brand:p.brand,product:p.brand+' '+p.name,partNum:p.partNum||''});}else{window.location=quoteUrl;}}}>Add to Quote</button>
         </div>
       </div>
     </div>
@@ -1619,7 +1619,7 @@ function ProductRow({ p, garage, onOpenDetail }) {
       </div>
       <div className="row-side">
         <span className="card-price">{p.minPrice ? `Starting at $${p.minPrice.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})}` : '—'}</span>
-        <button className="row-cta" onClick={e=>{e.stopPropagation();window.location=quoteUrl;}}>Quote this</button>
+        <button className="row-cta" onClick={e=>{e.stopPropagation();if(window.RLSHQuoteCart){window.RLSHQuoteCart.add({brand:p.brand,product:p.brand+' '+p.name,partNum:p.partNum||''});}else{window.location=quoteUrl;}}}>Add to quote</button>
       </div>
     </div>
   );

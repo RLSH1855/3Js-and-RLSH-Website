@@ -917,6 +917,16 @@
     });
   })();
 
+  /* ════════ QUOTE CART — load widget (quote-cart.js) ════════
+     Same pattern as mega-menu.js: one shared script, injects the nav cart
+     icon (next to My Garage), the review panel, and the add-to-quote
+     click delegate for [data-quote-add] buttons sitewide. */
+  (function(){
+    var s=document.createElement('script');
+    s.src='quote-cart.js';
+    document.head.appendChild(s);
+  })();
+
   /* ════════ SCROLL-REVEAL (sitewide, non-catalog) ════════
      Approved fade-up reveal from effects-sandbox. Auto-applies to section content
      blocks on pages that don't already animate; leaves explicitly-tagged pages alone.
