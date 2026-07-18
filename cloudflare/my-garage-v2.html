@@ -280,7 +280,7 @@
       display:block;margin-bottom:5px;
     }
     .s2-label .req{color:#8B0000;}
-    .s2-label .opt{color:#9aa0a8;font-weight:600;}
+    .s2-label .opt{color:#8B0000;font-weight:600;}
 
     /* Color row */
     .color-row{display:flex;align-items:center;gap:10px;margin-bottom:22px;}
@@ -288,7 +288,7 @@
       font-family:'Barlow',sans-serif;font-size:9px;font-weight:800;
       letter-spacing:2px;text-transform:uppercase;color:#424954;white-space:nowrap;
     }
-    .color-row-label .opt{color:#9aa0a8;font-weight:600;}
+    .color-row-label .opt{color:#8B0000;font-weight:600;}
     .swatches{display:flex;gap:6px;flex-wrap:wrap;}
     .swatch{
       width:20px;height:20px;border-radius:0;
@@ -369,6 +369,7 @@
       background:#8B0000;color:#fff;border:2px solid #8B0000;
       font-family:'Montserrat',sans-serif;font-size:14px;font-weight:800;
       letter-spacing:2px;text-transform:uppercase;cursor:pointer;
+      text-decoration:none;
       display:inline-flex;align-items:center;justify-content:center;
       transition:background 0.2s,color 0.2s,border-color 0.2s;
     }
@@ -393,6 +394,15 @@
       transition:background 0.2s,color 0.2s,border-color 0.2s;
     }
     .s3-btn-clear:hover{background:#424954;color:#fff;border-color:#424954;}
+    .s3-btn-browse{
+      display:block;margin:16px auto 0;
+      background:none;border:none;
+      font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;
+      letter-spacing:1.5px;text-transform:uppercase;color:#8B0000;
+      cursor:pointer;text-decoration:underline;padding:6px;
+      transition:color 0.2s;
+    }
+    .s3-btn-browse:hover{color:#6d0000;}
 
     /* Scrollbar */
     .picker-panel::-webkit-scrollbar{width:4px;}
@@ -452,6 +462,10 @@
       .picker-panel{
         position:absolute;left:0;right:0;bottom:auto;top:calc(100% + 4px);
         max-height:220px;z-index:200;
+      }
+      /* Flips upward only when there isn't room below but there is room above (see togglePicker) */
+      .picker-panel.flip-up{
+        top:auto;bottom:calc(100% + 4px);
       }
       .picker-backdrop{display:none!important;}
     }
@@ -579,8 +593,16 @@
 
       <div class="s2-field" id="trim-field">
         <span class="s2-label">Trim Level <span class="opt">• optional</span></span>
-        <input type="text" class="trim-input" id="trim-input" list="trim-datalist" placeholder="e.g. XLT, FX4, Sport" autocomplete="off"/>
-        <datalist id="trim-datalist"></datalist>
+        <div class="picker-wrap" id="trim-wrap">
+          <button type="button" class="picker-btn" id="trim-btn" onclick="togglePicker('trim')">
+            <span id="trim-label" class="ph">Select Trim</span>
+            <span class="picker-arrow">▼</span>
+          </button>
+          <div class="picker-panel" id="trim-panel">
+            <div class="model-list" id="trim-grid"></div>
+          </div>
+        </div>
+        <input type="hidden" id="val-trim"/>
       </div>
 
       <div class="color-row">
@@ -605,6 +627,7 @@
           <button class="s3-btn-secondary" onclick="addAnotherVehicle()">Change Vehicle</button>
           <button class="s3-btn-clear" onclick="clearAllVehicles()">Clear All</button>
         </div>
+        <button class="s3-btn-browse" onclick="closeGarage()">← Back to Browsing</button>
       </div>
     </div>
 
@@ -814,18 +837,34 @@ function decodeVIN(){
     .catch(function(){btn.disabled=false;status.className='vin-status err';status.textContent='Decode failed — check your connection.';});
 }
 
+var PICKER_NAMES=['year','make','model','bed','trim'];
+
 function togglePicker(name){
   var btn=document.getElementById(name+'-btn');
   var panel=document.getElementById(name+'-panel');
+  var wrap=document.getElementById(name+'-wrap');
   var isOpen=panel.classList.contains('open');
-  ['year','make','model','bed'].forEach(function(n){
+  PICKER_NAMES.forEach(function(n){
     var p=document.getElementById(n+'-panel');
     var b=document.getElementById(n+'-btn');
-    if(p) p.classList.remove('open');
+    if(p){ p.classList.remove('open'); p.classList.remove('flip-up'); }
     if(b) b.classList.remove('open');
   });
   var backdrop=document.getElementById('picker-backdrop');
   if(!isOpen){
+    if(window.matchMedia('(min-width:641px)').matches){
+      /* Flip the panel upward only when there isn't room below within the
+         popup but there IS enough room above — otherwise it overflows the
+         popup edge and forces a scroll/bounce. */
+      var popupRect=document.getElementById('popup').getBoundingClientRect();
+      var wrapRect=wrap.getBoundingClientRect();
+      var estPanelH=224;
+      var spaceBelow=popupRect.bottom-wrapRect.bottom;
+      var spaceAbove=wrapRect.top-popupRect.top;
+      if(spaceBelow<estPanelH && spaceAbove>spaceBelow && spaceAbove>=estPanelH){
+        panel.classList.add('flip-up');
+      }
+    }
     panel.classList.add('open');
     btn.classList.add('open');
     if(backdrop){
@@ -837,13 +876,6 @@ function togglePicker(name){
       if(screen && backdrop.parentNode!==screen) screen.appendChild(backdrop);
       backdrop.classList.add('open');
     }
-    if(window.matchMedia('(min-width:641px)').matches){
-      /* Desktop: dropdown opens downward from the field — bring it fully into view
-         within the scrolling screen if needed. */
-      setTimeout(function(){
-        try{ panel.scrollIntoView({behavior:'smooth',block:'nearest'}); }catch(e){}
-      },20);
-    }
   } else if(backdrop){
     backdrop.classList.remove('open');
   }
@@ -851,9 +883,9 @@ function togglePicker(name){
 function closePicker(name){
   var p=document.getElementById(name+'-panel');
   var b=document.getElementById(name+'-btn');
-  if(p) p.classList.remove('open');
+  if(p){ p.classList.remove('open'); p.classList.remove('flip-up'); }
   if(b) b.classList.remove('open');
-  var anyOpen=['year','make','model','bed'].some(function(n){
+  var anyOpen=PICKER_NAMES.some(function(n){
     var panel=document.getElementById(n+'-panel');
     return panel&&panel.classList.contains('open');
   });
@@ -863,11 +895,11 @@ function closePicker(name){
   }
 }
 function closeAllPickers(){
-  ['year','make','model','bed'].forEach(closePicker);
+  PICKER_NAMES.forEach(closePicker);
 }
 
 document.addEventListener('click',function(e){
-  ['year','make','model','bed'].forEach(function(n){
+  PICKER_NAMES.forEach(function(n){
     var wrap=document.getElementById(n+'-wrap');
     if(wrap&&!wrap.contains(e.target)) closePicker(n);
   });
@@ -881,16 +913,45 @@ function goStep2(){
   pendingVehicle={year:year,make:make,model:model};
   document.getElementById('confirm-name').textContent=year+' '+make+' '+model;
 
-  var trims=TRIMS[model]||[];
-  var trimInput=document.getElementById('trim-input');
-  var trimList=document.getElementById('trim-datalist');
-  trimList.innerHTML='';
+  var trims=(TRIMS[model]||[]).slice();
+  if(pendingTrim && trims.indexOf(pendingTrim)===-1) trims.unshift(pendingTrim);
+  var trimGrid=document.getElementById('trim-grid');
+  var trimLabel=document.getElementById('trim-label');
+  document.getElementById('val-trim').value=pendingTrim||'';
+  trimGrid.innerHTML='';
+  var unknownCell=document.createElement('div');
+  unknownCell.className='model-cell'+(pendingTrim?'':' selected');
+  unknownCell.textContent='Unknown / Not Listed';
+  unknownCell.onclick=function(){
+    document.getElementById('val-trim').value='';
+    trimLabel.textContent='Unknown / Not Listed';
+    trimLabel.classList.remove('ph');
+    trimGrid.querySelectorAll('.model-cell').forEach(function(x){x.classList.remove('selected');});
+    unknownCell.classList.add('selected');
+    closePicker('trim');
+  };
+  trimGrid.appendChild(unknownCell);
   trims.forEach(function(t){
-    var opt=document.createElement('option');
-    opt.value=t;
-    trimList.appendChild(opt);
+    var c=document.createElement('div');
+    c.className='model-cell'+(t===pendingTrim?' selected':'');
+    c.textContent=t;
+    c.onclick=function(){
+      document.getElementById('val-trim').value=t;
+      trimLabel.textContent=t;
+      trimLabel.classList.remove('ph');
+      trimGrid.querySelectorAll('.model-cell').forEach(function(x){x.classList.remove('selected');});
+      c.classList.add('selected');
+      closePicker('trim');
+    };
+    trimGrid.appendChild(c);
   });
-  trimInput.value=pendingTrim||'';
+  if(pendingTrim){
+    trimLabel.textContent=pendingTrim;
+    trimLabel.classList.remove('ph');
+  } else {
+    trimLabel.textContent='Select Trim';
+    trimLabel.classList.add('ph');
+  }
   pendingTrim='';
 
   var beds=BED_SIZES[model]||[];
@@ -943,7 +1004,7 @@ function buildSwatches(){
 }
 
 function saveVehicle(){
-  var trim=document.getElementById('trim-input').value.trim();
+  var trim=document.getElementById('val-trim').value.trim();
   var bedVal=document.getElementById('val-bed').value;
   var beds=BED_SIZES[pendingVehicle.model]||[];
   var bedLabel='';
