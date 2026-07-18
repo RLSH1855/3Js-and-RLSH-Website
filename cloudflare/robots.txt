@@ -6,7 +6,6 @@ Disallow: /effects-sandbox.html
 Disallow: /nav-scroll-demo.html
 Disallow: /drawer-preview.html
 Disallow: /RLSH%20Sparkle%20(website-ready).html
-Disallow: /my-garage.html
 Disallow: /my-garage-v2.html
 Disallow: /site-footer.html
 
