@@ -74,6 +74,13 @@
     .info-card.amber .card-eyebrow{color:#d4860a;}
     .card-title{font-family:'Montserrat',sans-serif;font-size:20px;font-weight:900;color:#0A0A0A;line-height:1.2;margin-bottom:4px;}
     .card-part{font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;color:#666;margin-top:6px;}
+    .q-line{display:flex;align-items:flex-start;gap:12px;padding:10px 0;border-bottom:1px solid #F0F0EE;}
+    .q-line:last-child{border-bottom:none;padding-bottom:0;}
+    .q-line-txt{flex:1;min-width:0;}
+    .q-line-name{font-family:'Montserrat',sans-serif;font-size:17px;font-weight:900;color:#0A0A0A;line-height:1.25;}
+    .q-line-part{font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;color:#666;margin-top:2px;}
+    .q-line-rm{width:26px;height:26px;border:1px solid #E8E8E8;background:#fff;cursor:pointer;font-size:13px;font-weight:700;color:#999;line-height:1;display:flex;align-items:center;justify-content:center;border-radius:0;flex-shrink:0;margin-top:2px;transition:background .15s,border-color .15s,color .15s;}
+    .q-line-rm:hover{background:#8B0000;border-color:#8B0000;color:#fff;}
     .no-vehicle-note{font-size:13px;font-weight:700;color:#5c4000;background:#fff8e1;border:1px solid #ffe082;padding:14px 18px;margin-bottom:14px;}
     .no-vehicle-note a{color:#8B0000;font-weight:800;}
 
@@ -194,8 +201,8 @@
   <!-- No Product State -->
   <div id="no-product">
     <div style="font-size:36px;margin-bottom:16px;">🔍</div>
-    <h2>No Product Selected</h2>
-    <p>Head back to the catalog to find what you need, then click "Get a Quote" on any product.</p>
+    <h2>Your Quote List Is Empty</h2>
+    <p>Head back to the catalog to find what you need, then click "Add to Quote" on any product — you can queue up as many as you want and submit one request for everything.</p>
     <a href="parts-catalog.html">Browse Accessories</a>
   </div>
 
@@ -276,11 +283,10 @@
       <!-- ════ CENTER: FORM COLUMN ════ -->
       <div class="form-col">
 
-        <!-- Product Card -->
+        <!-- Product Card — one product from the URL, or the full quote list -->
         <div class="info-card" id="product-card">
-          <div class="card-eyebrow">Selected Product</div>
-          <div class="card-title" id="display-product">—</div>
-          <div class="card-part" id="display-partnum"></div>
+          <div class="card-eyebrow" id="product-card-eyebrow">Selected Product</div>
+          <div id="product-items"></div>
         </div>
 
         <!-- Vehicle Card -->
@@ -511,13 +517,57 @@ if(!garage && urlYear && urlMake && urlModel){
   garage = { year:urlYear, make:urlMake, model:urlModel, trim:'', bedSize:'', vin:'' };
 }
 
-// ── Init ──
-if(!product){
+// ── Quote list ──
+// The sitewide quote cart (quote-cart.js) queues products in localStorage.
+// This page quotes everything in that list, plus a ?product= from the URL
+// (direct links from marketing pages still work exactly like before).
+var CART_KEY = 'quote_cart';
+var cartItems = [];
+try { cartItems = JSON.parse(localStorage.getItem(CART_KEY)) || []; } catch(e){}
+if(!Array.isArray(cartItems)) cartItems = [];
+
+var quoteItems = cartItems.slice();
+if(product){
+  var urlDupe = false;
+  for(var qi = 0; qi < quoteItems.length; qi++){
+    if(quoteItems[qi].product === product){ urlDupe = true; break; }
+  }
+  // URL product gets no id — it wasn't saved to the cart, so no remove button
+  if(!urlDupe) quoteItems.unshift({ id:'', product:product, partNum:partNum });
+}
+
+function escHtml(s){
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function renderQuoteItems(){
+  var wrap = document.getElementById('product-items');
+  var eyebrow = document.getElementById('product-card-eyebrow');
+  eyebrow.textContent = quoteItems.length > 1 ? 'Your Quote List (' + quoteItems.length + ' Items)' : 'Selected Product';
+  var html = '';
+  quoteItems.forEach(function(it){
+    html += '<div class="q-line">'
+      + '<div class="q-line-txt">'
+      + '<div class="q-line-name">' + escHtml(it.product) + '</div>'
+      + (it.partNum ? '<div class="q-line-part">Part #' + escHtml(it.partNum) + '</div>' : '')
+      + '</div>'
+      + (it.id ? '<button type="button" class="q-line-rm" data-remove="' + escHtml(it.id) + '" aria-label="Remove ' + escHtml(it.product) + '">&#x2715;</button>' : '')
+      + '</div>';
+  });
+  wrap.innerHTML = html;
+}
+
+function showEmptyState(){
+  document.getElementById('form-wrap').style.display = 'none';
   document.getElementById('no-product').style.display = 'block';
+}
+
+// ── Init ──
+if(!quoteItems.length){
+  showEmptyState();
 } else {
   document.getElementById('form-wrap').style.display = 'block';
-  document.getElementById('display-product').textContent = product;
-  if(partNum) document.getElementById('display-partnum').textContent = 'Part #' + partNum;
+  renderQuoteItems();
 
   if(garage && garage.year){
     var vLabel = garage.year + ' ' + garage.make + ' ' + garage.model;
@@ -530,6 +580,19 @@ if(!product){
     document.getElementById('garage-prompt').style.display = 'block';
   }
 }
+
+// ── Remove item from the list (and from the saved cart) ──
+document.getElementById('product-items').addEventListener('click', function(e){
+  var btn = e.target.closest ? e.target.closest('[data-remove]') : null;
+  if(!btn) return;
+  var id = btn.getAttribute('data-remove');
+  quoteItems = quoteItems.filter(function(it){ return it.id !== id; });
+  cartItems = cartItems.filter(function(it){ return it.id !== id; });
+  try { localStorage.setItem(CART_KEY, JSON.stringify(cartItems)); } catch(err){}
+  try { window.dispatchEvent(new Event('quoteCartUpdated')); } catch(err){}
+  if(!quoteItems.length) showEmptyState();
+  else renderQuoteItems();
+});
 
 // ── Bedliner toggle ──
 var addBedliner = false;
@@ -587,13 +650,18 @@ document.getElementById('quote-form').addEventListener('submit', function(e){
   btn.textContent = 'Sending...';
   document.getElementById('form-error').style.display = 'none';
 
+  // Multiple queued products go out as one joined string — the /api/quote
+  // backend contract (single product + partNumber field) stays untouched.
+  var productStr = quoteItems.map(function(it){ return it.product; }).join(', ');
+  var partNumStr = quoteItems.map(function(it){ return it.partNum; }).filter(function(p){ return !!p; }).join(', ');
+
   var record = {
     firstName:      firstName,
     lastName:       lastName,
     phone:          phone,
     email:          email,
-    product:        product,
-    partNumber:     partNum,
+    product:        productStr,
+    partNumber:     partNumStr,
     vehicleYear:    (garage && garage.year)    ? garage.year    : '',
     vehicleMake:    (garage && garage.make)    ? garage.make    : '',
     vehicleModel:   (garage && garage.model)   ? garage.model   : '',
@@ -610,8 +678,11 @@ document.getElementById('quote-form').addEventListener('submit', function(e){
   }).then(function(r){ return r.json(); })
     .then(function(data){
       if(data.ok || data.status === 'ok'){
+        // Quote sent — clear the saved cart so the nav badge resets everywhere
+        try { localStorage.removeItem(CART_KEY); } catch(err){}
+        try { window.dispatchEvent(new Event('quoteCartUpdated')); } catch(err){}
         // Build success summary
-        var allItems = [product].concat(addOnsList);
+        var allItems = quoteItems.map(function(it){ return it.product; }).concat(addOnsList);
         var list = document.getElementById('success-items-list');
         var container = document.getElementById('success-items');
         allItems.forEach(function(item){
