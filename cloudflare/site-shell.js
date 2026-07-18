@@ -472,7 +472,6 @@
                 '<div class="ssd-sub-spacer"></div>'+
               '</div>'+
             '</div>'+
-            '<div class="ssd-section"><span>More</span></div>'+
             '<button class="ssd-item" id="ssd-bundles-btn" aria-expanded="false"><div class="ssd-item-text"><span class="ssd-item-label">Bundles &amp; Packages</span><span class="ssd-item-desc">Best value combinations</span></div><span class="ssd-item-arr" id="ssd-bundles-arr">'+ssChevD+'</span></button>'+
             '<div class="ssd-sub" id="ssd-bundles-sub">'+
               '<div class="ssd-sub-inner">'+
