@@ -333,6 +333,15 @@ const _garageQS = _garage && _garage.year
   ? `&year=${encodeURIComponent(_garage.year)}&make=${encodeURIComponent(_garage.make)}&model=${encodeURIComponent(_garage.model)}`
   : '';
 const QUOTE_URL = `parts-quote.html?product=${encodeURIComponent((_qParams.get('brand')||'BAK') + ' ' + (_qParams.get('product')||'BAKFlip F1'))}${_garageQS}`;
+const QUOTE_LABEL = (_qParams.get('brand')||'BAK') + ' ' + (_qParams.get('product')||'BAKFlip F1');
+// Adds this product to the sitewide quote cart (quote-cart.js). Falls back to
+// navigating to the quote page when the cart isn't loaded (no-JS / embedded).
+function addToQuoteCart(e){
+  if(window.RLSHQuoteCart){
+    e.preventDefault();
+    window.RLSHQuoteCart.add({ brand:_qParams.get('brand')||'BAK', product:QUOTE_LABEL, partNum:'' });
+  }
+}
 const LOGO_URL = '3js-logo-white.png';
 
 const F = { brand:0, product:1, partNum:2, bedIn:3, bedSize:4, startYear:5, endYear:6, make:7, model:8, desc:9, fitNote:10, map:11, img:12 };
@@ -1123,9 +1132,9 @@ function Info({ productName, brandName, coverType, minPrice, bedSizes, info, gar
         <div className="pdp-stock"><span className="pdp-stock-dot"></span>IN STOCK · FREE LOCAL INSTALL</div>
       </div>
 
-      <a href={QUOTE_URL} className="pdp-cta">
+      <a href={QUOTE_URL} className="pdp-cta" onClick={addToQuoteCart}>
         {Icon.quote}
-        Get a Quote
+        Add to Quote
       </a>
 
       <div className="pdp-secondary">
@@ -1444,7 +1453,7 @@ function MobileBuyBar({ minPrice }) {
         <span className="mbb-price">{minPrice ? `FROM $${minPrice.toLocaleString('en-US',{minimumFractionDigits:0,maximumFractionDigits:0})}` : 'Call for Price'}</span>
         <span className="mbb-stock">● IN STOCK · FREE LOCAL INSTALL</span>
       </div>
-      <a href={QUOTE_URL} className="mbb-cta">Get a Quote</a>
+      <a href={QUOTE_URL} className="mbb-cta" onClick={addToQuoteCart}>Add to Quote</a>
     </div>
   );
 }
