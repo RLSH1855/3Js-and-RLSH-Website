@@ -5,35 +5,44 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>My Garage — 3J's Auto Body</title>
   <link rel="canonical" href="https://3js-and-rlsh-website.pages.dev/my-garage-v2.html"/>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Inter:wght@400;500;600;700;800;900&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    html,body{height:100%;background:#fff;touch-action:pan-y;}
+    html,body{height:100%;background:transparent;touch-action:pan-y;}
     html{overscroll-behavior:none;}
-    body{overflow-x: hidden;}
+    body{overflow-x: hidden;display:flex;align-items:center;justify-content:center;}
 
-    /* ── POPUP (fills lightbox iframe) ── */
+    /* ── POPUP (sized to match the My Garage widget modal) ── */
     .popup{
       width:100%;height:100vh;height:100dvh;
       display:flex;flex-direction:column;
       position:fixed;top:0;left:0;right:0;bottom:0;overflow:hidden;
+      background:#fff;
     }
     @media(min-width:641px){
-      .popup{flex-direction:row;}
+      .popup{
+        flex-direction:row;
+        position:static;
+        width:100%;max-width:820px;height:auto;max-height:90vh;
+        margin:16px auto;overflow-y:auto;
+        animation:gPop 0.25s ease;
+      }
     }
+    @keyframes gPop{from{transform:scale(0.94) translateY(16px);opacity:0;}to{transform:none;opacity:1;}}
 
     /* ── CLOSE BTN ── */
     .close-btn{
-      position:absolute;top:8px;right:8px;
-      background:rgba(0,0,0,0.55);border:none;
-      color:#fff;font-size:20px;
+      position:absolute;top:12px;right:12px;
+      background:#8B0000;border:none;
+      color:#fff;font-size:18px;
       cursor:pointer;z-index:20;
-      width:44px;height:44px;
+      width:40px;height:40px;
       display:flex;align-items:center;justify-content:center;
       transition:background 0.2s;line-height:1;
-      font-family:'Inter',sans-serif;font-weight:400;
+      box-shadow:0 2px 10px rgba(0,0,0,0.45);
+      font-family:'Montserrat',sans-serif;font-weight:400;
     }
-    .close-btn:hover{background:rgba(0,0,0,0.8);}
+    .close-btn:hover{background:#A00000;}
 
     /* ── LEFT PANEL: persistent image (stays dark for contrast) ── */
     .image-panel{
@@ -53,8 +62,21 @@
     }
     .image-panel-overlay{
       position:absolute;inset:0;
-      background:rgba(0,0,0,0.15);
+      background:linear-gradient(to top,rgba(0,0,0,0.82) 0%,rgba(0,0,0,0.30) 55%,rgba(0,0,0,0.0) 100%);
     }
+    .image-panel-txt{
+      position:absolute;left:0;right:0;bottom:0;z-index:2;
+      padding:22px 26px;
+    }
+    .image-eyebrow{
+      display:block;font-family:'Montserrat',sans-serif;font-size:9px;font-weight:800;
+      letter-spacing:3px;text-transform:uppercase;color:#fff;margin-bottom:6px;
+    }
+    .image-title{
+      font-family:'Montserrat',sans-serif;font-size:clamp(18px,3vw,24px);font-weight:800;
+      letter-spacing:-0.5px;color:#fff;line-height:1.1;text-transform:uppercase;
+    }
+    .image-title em{font-style:normal;color:#8B0000;}
 
     /* ── RIGHT PANEL (WHITE) ── */
     .content-panel{
@@ -99,7 +121,7 @@
       width:6px;height:6px;background:#8B0000;
     }
     .step-text{
-      font-family:'Barlow',sans-serif;font-size:9px;font-weight:700;
+      font-family:'Montserrat',sans-serif;font-size:9px;font-weight:700;
       letter-spacing:2.5px;text-transform:uppercase;color:#878F9A;
     }
     .step-text span{color:#3A404A;}
@@ -107,13 +129,13 @@
     /* ── ENTRY TABS (YMM / VIN) ── */
     .entry-tabs{
       display:flex;gap:0;margin-bottom:16px;
-      border:1px solid #e2e8f0;
+      border:2px solid #e8e8e8;
     }
     .entry-tab{
-      flex:1;padding:10px 8px;
-      background:#fff;border:none;border-right:1px solid #e2e8f0;
-      font-family:'Montserrat',sans-serif;font-size:12px;font-weight:800;
-      letter-spacing:1.8px;text-transform:uppercase;color:#424954;
+      flex:1;padding:11px 8px;
+      background:#fff;border:none;border-right:1px solid #e8e8e8;
+      font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;
+      letter-spacing:1.5px;text-transform:uppercase;color:#999;
       cursor:pointer;transition:background 0.18s,color 0.18s;
     }
     .entry-tab:last-child{border-right:none;}
@@ -124,7 +146,7 @@
 
     /* ── SCREEN 1 ── */
     .s1-heading{
-      font-family:'Inter',sans-serif;font-size:clamp(22px,2.6vw,32px);
+      font-family:'Montserrat',sans-serif;font-size:clamp(22px,2.6vw,32px);
       font-weight:900;letter-spacing:-0.5px;text-transform:uppercase;
       color:#111;line-height:1.35;margin-bottom:18px;text-align:center;
     }
@@ -133,8 +155,8 @@
     /* Custom pickers shared */
     .picker-field{margin-bottom:10px;}
     .picker-label{
-      font-family:'Barlow',sans-serif;font-size:9px;font-weight:800;
-      letter-spacing:2px;text-transform:uppercase;color:#424954;
+      font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;
+      letter-spacing:0.5px;text-transform:uppercase;color:#1a1a1a;
       display:block;margin-bottom:5px;
     }
     .picker-label .opt{color:#9aa0a8;font-weight:600;}
@@ -142,10 +164,10 @@
 
     /* Picker button */
     .picker-btn{
-      width:100%;padding:10px 12px;
-      background:#fff;border:1px solid #a3afc0;
-      font-family:'Inter',sans-serif;font-size:14px;font-weight:800;
-      color:#111;letter-spacing:1.5px;
+      width:100%;padding:11px 12px;
+      background:#fff;border:2px solid #e8e8e8;
+      font-family:'Montserrat',sans-serif;font-size:13px;font-weight:700;
+      color:#1a1a1a;letter-spacing:1.5px;
       display:flex;align-items:center;justify-content:space-between;gap:8px;
       cursor:pointer;text-align:left;min-height:42px;
       transition:border-color 0.2s;
@@ -176,7 +198,7 @@
     .year-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;}
     .picker-cell{
       padding:7px 4px;text-align:center;
-      font-family:'Inter',sans-serif;font-size:13px;font-weight:800;
+      font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;
       color:#333;cursor:pointer;letter-spacing:1px;
       transition:background 0.12s,color 0.12s;
     }
@@ -190,7 +212,7 @@
     .model-list{display:grid;grid-template-columns:1fr;gap:2px;}
     .model-cell{
       padding:9px 12px;
-      font-family:'Inter',sans-serif;font-size:13px;font-weight:800;
+      font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;
       color:#333;cursor:pointer;letter-spacing:1px;
       transition:background 0.12s,color 0.12s;
     }
@@ -199,13 +221,13 @@
 
     /* ── VIN PANE ── */
     .vin-intro{
-      font-family:'Barlow',sans-serif;font-size:13px;color:#424954;letter-spacing:0.3px;
+      font-family:'Montserrat',sans-serif;font-size:13px;color:#424954;letter-spacing:0.3px;
       line-height:1.6;margin-bottom:14px;text-align:center;
     }
     .vin-input{
       width:100%;padding:12px 14px;
       background:#fff;border:1px solid #a3afc0;
-      font-family:'Inter',sans-serif;font-size:16px;font-weight:700;
+      font-family:'Montserrat',sans-serif;font-size:16px;font-weight:700;
       letter-spacing:2px;text-transform:uppercase;color:#111;
       margin-bottom:6px;min-height:46px;
     }
@@ -214,16 +236,16 @@
     .trim-input{
       width:100%;padding:10px 12px;
       background:#fff;border:1px solid #a3afc0;
-      font-family:'Inter',sans-serif;font-size:16px;font-weight:700;
+      font-family:'Montserrat',sans-serif;font-size:16px;font-weight:700;
       letter-spacing:0.5px;color:#111;
       min-height:42px;
     }
     .trim-input::placeholder{color:#6b7785;font-weight:600;letter-spacing:0.5px;}
     .trim-input:focus{outline:none;border-color:#8B0000;}
     .vin-input:focus{outline:none;border-color:#8B0000;}
-    .vin-hint{font-family:'Barlow',sans-serif;font-size:12px;color:#1F2937;letter-spacing:0.3px;margin-bottom:14px;}
+    .vin-hint{font-family:'Montserrat',sans-serif;font-size:12px;color:#1F2937;letter-spacing:0.3px;margin-bottom:14px;}
     .vin-status{
-      font-family:'Barlow',sans-serif;font-size:11px;font-weight:700;
+      font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;
       letter-spacing:1.3px;min-height:16px;margin-bottom:12px;color:#424954;
     }
     .vin-status.err{color:#8B0000;}
@@ -235,7 +257,7 @@
       letter-spacing:2px;text-transform:uppercase;cursor:pointer;
       transition:background 0.2s,color 0.2s,border-color 0.2s;
     }
-    .vin-btn:hover{background:#fff;color:#8B0000;}
+    .vin-btn:hover{background:#6d0000;}
     .vin-btn:disabled{opacity:0.5;cursor:default;}
 
     /* Next btn */
@@ -249,25 +271,25 @@
       opacity:0.3;pointer-events:none;
     }
     .next-btn.ready{opacity:1;pointer-events:all;}
-    .next-btn:hover{background:#fff;color:#8B0000;border-color:#8B0000;}
+    .next-btn:hover{background:#6d0000;border-color:#6d0000;}
 
     /* ── SCREEN 2 ── */
     .back-btn{
       display:inline-flex;align-items:center;gap:6px;
       padding:0 14px;height:30px;width:fit-content;margin-bottom:14px;
       background:#f4f4f4;border:1px solid #e2e8f0;
-      font-family:'Barlow',sans-serif;font-size:9px;font-weight:700;
+      font-family:'Montserrat',sans-serif;font-size:9px;font-weight:700;
       letter-spacing:2px;text-transform:uppercase;color:#424954;
       cursor:pointer;transition:background 0.2s,border-color 0.2s,color 0.2s;
     }
     .back-btn:hover{background:#ececec;border-color:#cbd5e0;color:#333;}
 
     .confirm-label{
-      font-family:'Barlow',sans-serif;font-size:9px;font-weight:800;
-      letter-spacing:2px;text-transform:uppercase;color:#424954;margin-bottom:4px;
+      font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;
+      letter-spacing:0.5px;text-transform:uppercase;color:#1a1a1a;margin-bottom:4px;
     }
     .confirm-vehicle{
-      font-family:'Inter',sans-serif;font-size:17px;font-weight:900;
+      font-family:'Montserrat',sans-serif;font-size:17px;font-weight:900;
       text-transform:uppercase;letter-spacing:0.5px;color:#111;
       margin-bottom:24px;padding-bottom:16px;
       border-bottom:1px solid #e8e8e8;line-height:1.2;
@@ -275,8 +297,8 @@
 
     .s2-field{margin-bottom:18px;}
     .s2-label{
-      font-family:'Barlow',sans-serif;font-size:9px;font-weight:800;
-      letter-spacing:2px;text-transform:uppercase;color:#424954;
+      font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;
+      letter-spacing:0.5px;text-transform:uppercase;color:#1a1a1a;
       display:block;margin-bottom:5px;
     }
     .s2-label .req{color:#8B0000;}
@@ -285,13 +307,13 @@
     /* Color row */
     .color-row{display:flex;align-items:center;gap:10px;margin-bottom:22px;}
     .color-row-label{
-      font-family:'Barlow',sans-serif;font-size:9px;font-weight:800;
-      letter-spacing:2px;text-transform:uppercase;color:#424954;white-space:nowrap;
+      font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;
+      letter-spacing:0.5px;text-transform:uppercase;color:#1a1a1a;white-space:nowrap;
     }
     .color-row-label .opt{color:#9aa0a8;font-weight:600;}
     .swatches{display:flex;gap:6px;flex-wrap:wrap;}
     .swatch{
-      width:20px;height:20px;border-radius:0;
+      width:24px;height:24px;border-radius:50%;
       border:2px solid transparent;cursor:pointer;flex-shrink:0;
       transition:transform 0.15s,border-color 0.15s;
     }
@@ -306,7 +328,7 @@
       letter-spacing:2px;text-transform:uppercase;cursor:pointer;
       transition:background 0.2s,color 0.2s,border-color 0.2s;
     }
-    .save-btn:hover{background:#fff;color:#8B0000;border-color:#8B0000;}
+    .save-btn:hover{background:#6d0000;border-color:#6d0000;}
 
     /* ── SCREEN 3 ── */
     .screen-3-inner{
@@ -316,16 +338,16 @@
       padding-top:8px;
     }
     .s3-title{
-      font-family:'Inter',sans-serif;font-size:18px;font-weight:900;
+      font-family:'Montserrat',sans-serif;font-size:18px;font-weight:900;
       text-transform:uppercase;letter-spacing:1px;color:#111;
     }
     .s3-title .s3-check-icon{color:#1a7a3a;}
     .s3-sub{
-      font-family:'Barlow',sans-serif;font-size:13px;color:#1F2937;letter-spacing:0.3px;
+      font-family:'Montserrat',sans-serif;font-size:13px;color:#1F2937;letter-spacing:0.3px;
       font-weight:500;
     }
     .s3-vehicle{
-      font-family:'Inter',sans-serif;font-weight:900;
+      font-family:'Montserrat',sans-serif;font-weight:900;
       font-size:clamp(15px,2.2vw,18px);
       letter-spacing:1px;
       color:#111;line-height:1.3;
@@ -352,7 +374,7 @@
     .saved-row.active{border-color:#8B0000;background:#fdf4f4;}
     .saved-row-label{
       flex:1;text-align:left;background:none;border:none;cursor:pointer;
-      padding:10px 12px;font-family:'Inter',sans-serif;font-size:13px;font-weight:600;color:#1F2937;
+      padding:10px 12px;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:600;color:#1F2937;
     }
     .saved-row-label .year-tag{color:#8B0000;font-weight:800;margin-right:4px;}
     .saved-row.active .saved-row-label{font-weight:700;}
@@ -372,26 +394,28 @@
       display:inline-flex;align-items:center;justify-content:center;
       transition:background 0.2s,color 0.2s,border-color 0.2s;
     }
-    .s3-btn-primary:hover{background:#fff;color:#8B0000;border-color:#8B0000;}
+    .s3-btn-primary:hover{background:#6d0000;border-color:#6d0000;}
     .s3-btn-secondary{
-      height:48px;padding:0 24px;
-      background:transparent;color:#424954;
-      border:1.5px solid #424954;
-      font-family:'Montserrat',sans-serif;font-size:14px;font-weight:800;
-      letter-spacing:2px;text-transform:uppercase;cursor:pointer;
+      height:44px;padding:0 20px;
+      background:#fff;color:#1a1a1a;
+      border:2px solid #e8e8e8;
+      font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;
+      letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;
       display:inline-flex;align-items:center;justify-content:center;
-      transition:all 0.2s;
+      transition:border-color 0.2s;
     }
-    .s3-btn-secondary:hover{background:#424954;color:#fff;border-color:#424954;}
+    .s3-btn-secondary:hover{border-color:#1a1a1a;}
     .s3-btn-clear{
-      height:48px;padding:0 24px;
-      background:transparent;color:#424954;
-      border:1.5px solid #424954;
-      font-family:'Montserrat',sans-serif;font-size:14px;font-weight:800;
-      letter-spacing:2px;text-transform:uppercase;cursor:pointer;
+      height:auto;padding:4px;
+      background:none;color:#aaa;
+      border:none;
+      font-family:'Montserrat',sans-serif;font-size:9px;font-weight:600;
+      letter-spacing:1px;text-transform:uppercase;cursor:pointer;
+      text-decoration:underline;
       display:inline-flex;align-items:center;justify-content:center;
-      transition:background 0.2s,color 0.2s,border-color 0.2s;
+      transition:color 0.2s;
     }
+    .s3-btn-clear:hover{color:#8B0000;}
     .s3-btn-clear:hover{background:#424954;color:#fff;border-color:#424954;}
 
     /* Scrollbar */
@@ -414,7 +438,7 @@
     .picker-field{margin-bottom:6px;}
     .picker-label{margin-bottom:3px;}
     .picker-btn{font-size:16px;min-height:44px;padding:10px 10px;}
-    .next-btn,.save-btn,.vin-btn{height:48px;margin-top:12px;}
+    .next-btn,.save-btn,.vin-btn{height:48px;margin-top:12px;font-size:11px;}
     .vin-btn{margin-top:0;}
     .confirm-vehicle{font-size:14px;margin-bottom:14px;padding-bottom:10px;}
     .s2-field{margin-bottom:10px;}
@@ -422,7 +446,8 @@
     .screen-3-inner{padding-top:16px;gap:18px;justify-content:flex-start;}
     .s3-title{font-size:18px;}
     .s3-actions{flex-direction:column;align-items:stretch;gap:14px;margin-top:12px;}
-    .s3-btn-primary,.s3-btn-secondary,.s3-btn-clear{width:100%;text-align:center;padding:10px 16px;}
+    .s3-btn-primary,.s3-btn-secondary{width:100%;text-align:center;padding:10px 16px;font-size:11px;}
+    .s3-btn-clear{width:auto;margin:0 auto;}
 
     /* ── DESKTOP OVERRIDES ── */
     @media(min-width:641px){
@@ -439,14 +464,15 @@
       .s2-label,.confirm-label,.color-row-label{font-size:10px;}
       .picker-cell,.model-cell{font-size:14px;}
       .picker-btn{font-size:14px;min-height:42px;padding:10px 12px;}
-      .next-btn,.save-btn,.vin-btn{height:48px;font-size:13px;}
+      .next-btn,.save-btn,.vin-btn{height:48px;font-size:11px;}
       .confirm-vehicle{font-size:17px;margin-bottom:24px;padding-bottom:16px;}
       .s2-field{margin-bottom:18px;}
       .color-row{margin-bottom:22px;}
       .screen-3-inner{padding-top:8px;gap:18px;}
       .s3-title{font-size:18px;}
       .s3-actions{flex-direction:row;align-items:center;gap:10px;}
-      .s3-btn-primary,.s3-btn-secondary,.s3-btn-clear{width:auto;height:48px;padding:0 24px;font-size:13px;}
+      .s3-btn-primary,.s3-btn-secondary{width:auto;padding:0 20px;font-size:10px;}
+      .s3-btn-clear{width:auto;}
 
       /* Desktop: dropdown panels open downward, anchored to the field (standard site behavior) */
       .picker-panel{
@@ -462,15 +488,19 @@
 <div class="popup" id="popup">
 
   <!-- Close -->
-  <button class="close-btn" onclick="closeGarage()">✕</button>
+  <button class="close-btn" onclick="closeGarage()"><svg viewBox="0 0 16 16" width="16" height="16"><line x1="2" y1="2" x2="14" y2="14" stroke="#fff" stroke-width="3" stroke-linecap="round"/><line x1="14" y1="2" x2="2" y2="14" stroke="#fff" stroke-width="3" stroke-linecap="round"/></svg></button>
 
   <!-- Backdrop for mobile bottom-sheet pickers -->
   <div class="picker-backdrop" id="picker-backdrop" onclick="closeAllPickers()"></div>
 
   <!-- LEFT: persistent image -->
   <div class="image-panel">
-    <img src="images/trucks/garage-hero-raptor.png" alt="Truck"/>
+    <img src="My_Garage_Header_image.png" alt="Truck"/>
     <div class="image-panel-overlay"></div>
+    <div class="image-panel-txt">
+      <span class="image-eyebrow">3J's Auto Body</span>
+      <h2 class="image-title">My <em>Garage</em></h2>
+    </div>
   </div>
 
   <!-- RIGHT: screens -->
