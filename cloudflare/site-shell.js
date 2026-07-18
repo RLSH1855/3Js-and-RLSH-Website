@@ -572,6 +572,24 @@
     }
     /* curated pages keep full hierarchy; any future/unmapped page auto-gets Home / <page> */
     var trail=map[slug]||[[autoLabel(),null]];
+
+    /* Quote-landing pages are linked from many different pages sitewide, so a
+       single fixed parent in the map above is wrong most of the time. Use the
+       actual referring page's own trail instead, falling back to the map's
+       default (Shop) if there's no usable referrer. */
+    var QUOTE_PAGES={'parts-quote':1,'rhino-lining-quote':1};
+    if(QUOTE_PAGES[slug] && document.referrer){
+      try{
+        var refUrl=new URL(document.referrer);
+        if(refUrl.origin===location.origin){
+          var refSlug=refUrl.pathname.replace(/\/+$/,'').split('/').pop().replace(/\.html$/i,'');
+          if(refSlug && refSlug!==slug && map[refSlug]){
+            var refTrail=map[refSlug].map(function(c){return [c[0], c[1]||(refSlug+'.html')];});
+            trail=refTrail.concat([trail[trail.length-1]]);
+          }
+        }
+      }catch(e){}
+    }
     var wrap=document.getElementById('ss-page-wrap');
     var spacer=wrap?wrap.querySelector('.ss-spacer'):null;
     if(!spacer) return;
