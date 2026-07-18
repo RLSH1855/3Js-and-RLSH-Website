@@ -799,11 +799,13 @@
     var GARAGE_URL='my-garage-v2.html';
     var ov=document.getElementById('ssGarageOv');
     var frame=document.getElementById('ssGarageFrame');
-    var frameLoaded=false;
 
     function openGarage(){
       if(!ov||!frame) return;
-      if(!frameLoaded){ frame.src=GARAGE_URL; frameLoaded=true; }
+      /* Reload fresh every open (not just the first) so the popup always
+         re-checks localStorage and lands on the saved-vehicle screen
+         instead of getting stuck wherever it was left last time. */
+      frame.src=GARAGE_URL+'?t='+Date.now();
       ov.classList.add('ss-open');
       document.documentElement.style.overflow='hidden';
     }
