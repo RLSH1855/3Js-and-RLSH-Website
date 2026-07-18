@@ -52,7 +52,16 @@
     /* ── RHINO FEATURE ICONS ── */
     .rhino-feats { max-width: 900px; margin: 44px auto 0; }
     .rhino-feats img { display: block; width: 100%; height: auto; }
+    .rhino-feats-grid { display: none; }
 
+    @media (max-width: 767px) {
+      .rhino-feats { display: none; }
+      .rhino-feats-grid {
+        display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+        margin: 36px -20px 0; width: calc(100% + 40px);
+      }
+      .rhino-feats-grid img { display: block; width: 100%; height: auto; }
+    }
     @media (min-width: 601px) {
       .hero { height: 420px; }
       .hero-content { padding: 56px 80px; }
@@ -97,9 +106,17 @@
       <iframe src="https://app.shopmonkey.cloud/public/quote-request/5c63714b0b11410a81a66899" width="100%" height="1650" frameborder="0" title="Request a Rhino Linings bed-liner quote"></iframe>
     </div>
 
-    <!-- Rhino Linings spray-on protection — feature panel -->
+    <!-- Rhino Linings spray-on protection — feature panel (desktop/tablet) -->
     <div class="rhino-feats">
       <img src="images/icons/rhino-feature-panel.png" alt="Rhino Linings protection: slip resistant, impact resistant, chemical resistant, abrasion resistant" loading="lazy">
+    </div>
+
+    <!-- Rhino Linings spray-on protection — 2x2 full-bleed grid (mobile) -->
+    <div class="rhino-feats-grid">
+      <img src="images/icons/rhino-feat-slip-resistant.png" alt="Slip resistant — prevents loss of traction on slippery surfaces" loading="lazy">
+      <img src="images/icons/rhino-feat-impact-resistant.png" alt="Impact resistant — absorbs and deflects impact energy" loading="lazy">
+      <img src="images/icons/rhino-feat-chemical-resistant.png" alt="Chemical resistant — withstands contact with harmful chemicals" loading="lazy">
+      <img src="images/icons/rhino-feat-abrasion-resistant.png" alt="Abrasion resistant — resists wear and surface damage" loading="lazy">
     </div>
   </section>
 

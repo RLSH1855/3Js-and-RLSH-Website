@@ -312,6 +312,8 @@
 
     .gallery-item:first-child{grid-column:span 1;}
     .gallery-item:first-child img{height:320px;}
+    .gallery-item-caption{position:absolute;left:0;right:0;bottom:0;padding:24px 16px 14px;background:linear-gradient(to top, rgba(0,0,0,.78) 0%, rgba(0,0,0,0) 100%);pointer-events:none;}
+    .gallery-item-caption span{font-family:'Montserrat',sans-serif;font-size:12px;font-weight:800;letter-spacing:1.3px;text-transform:uppercase;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.6);}
 
     /* ══════════════════════════════════════════════
        WHY FLOOR LINERS
@@ -499,6 +501,8 @@
       .cta-btns{flex-direction:column;align-items:center;}
       .btn-white,.btn-outline-white{width:100%;max-width:340px;justify-content:center;}
       .brands-bar{padding:20px 24px;}
+      .eyebrow{font-size:13px;letter-spacing:2px;}
+      .product-features li{font-size:12px;letter-spacing:0.6px;}
     }
         /* ── SHOP NAV STRIP ── */
     /* ── SHOP NAV STRIP ── */
@@ -664,18 +668,22 @@
   <div class="gallery-item">
     <img src="Husky%20Liner%20images/3d_icons%20%2820%29.png"
          alt="Husky floor liner rear row installed" loading="lazy">
+    <div class="gallery-item-caption"><span>Full Rear-Row Coverage</span></div>
   </div>
   <div class="gallery-item">
     <img src="Husky%20Liner%20images/3d_icons%20%2828%29.png"
          alt="Boots on Husky floor liner" loading="lazy">
+    <div class="gallery-item-caption"><span>Built to Take a Beating</span></div>
   </div>
   <div class="gallery-item">
     <img src="Husky%20Liner%20images/3d_icons%20%282%29.png"
          alt="Husky under-seat storage with floor liners" loading="lazy">
+    <div class="gallery-item-caption"><span>Under-Seat Storage Fit</span></div>
   </div>
   <div class="gallery-item">
     <img src="Husky%20Liner%20images/3d_icons%20%2825%29.png"
          alt="Husky floor mat in vehicle" loading="lazy">
+    <div class="gallery-item-caption"><span>Drop-In, Every Row</span></div>
   </div>
 </div>
 

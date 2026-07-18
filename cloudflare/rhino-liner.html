@@ -338,7 +338,7 @@
       .intro-section,.gallery-section,.process-section{padding:56px 24px;}
       .apps-section,.why-section,.hybrid-section{padding:56px 24px;}
       .cta-section{padding:48px 24px;}
-      .diagram-section{padding:56px 0 64px;}
+      .diagram-section{padding:56px 0 0 0;}
       .hero-content{padding:48px 40px;}
     }
     @media(max-width:640px){
@@ -372,7 +372,7 @@
       .hs-icon{width:32px;height:32px;}
       .center-dot{width:11px;height:11px;}
       .center-dot::after{animation:none;opacity:0;}
-      .diagram-section{padding:24px 0 32px;}
+      .diagram-section{padding:24px 0 0 0;}
       .diagram-label{margin-bottom:16px;}
       .diagram-label h2{font-size:18px;}
       .diagram-label .hint{font-size:11px;}
@@ -698,13 +698,13 @@
     // Mobile popup overlay — injected into truck-wrap so it stays within the image
     var mobOv=document.createElement('div');
     mobOv.id='mob-popup-ov';
-    mobOv.style.cssText='display:none;position:absolute;inset:0;z-index:9999;background:rgba(0,0,0,0.72);align-items:center;justify-content:center;padding:16px;';
+    mobOv.style.cssText='display:none;position:absolute;inset:0;z-index:9999;background:rgba(0,0,0,0.40);align-items:center;justify-content:center;padding:16px;';
     mobOv.innerHTML='<div style="background:#fff;width:100%;max-width:290px;position:relative;box-shadow:0 24px 64px rgba(0,0,0,0.9);"><button id="mob-popup-close" style="position:absolute;top:0;right:0;width:36px;height:36px;background:var(--neutral-dark);border:none;color:#fff;font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;z-index:1;">&#x2715;</button><div id="mob-popup-content" style="padding:18px 48px 18px 18px;"></div></div>';
     wrap.appendChild(mobOv);
-    document.getElementById('mob-popup-close').addEventListener('click',function(){mobOv.style.display='none';});
-    mobOv.addEventListener('click',function(e){if(e.target===mobOv)mobOv.style.display='none';});
+    document.getElementById('mob-popup-close').addEventListener('click',function(){mobOv.style.display='none';hotspots.forEach(function(h){h.classList.remove('active');});deactivateSpotlight();});
+    mobOv.addEventListener('click',function(e){if(e.target===mobOv){mobOv.style.display='none';hotspots.forEach(function(h){h.classList.remove('active');});deactivateSpotlight();}});
 
-    hotspots.forEach(function(hs){
+    hotspots.forEach(function(hs,i){
       hs.querySelector('.hs-icon').addEventListener('click',function(e){
         e.stopPropagation();
         var wasActive=hs.classList.contains('active');
@@ -712,6 +712,8 @@
         if(!wasActive){
           hs.classList.add('active');
           if(window.innerWidth<=640){
+            clearTimeout(spotlightTimeout);
+            activateSpotlight(hs,i);
             var tag=hs.querySelector('.popup-tag');
             var title=hs.querySelector('.popup-title');
             var desc=hs.querySelector('.popup-desc');
@@ -721,10 +723,12 @@
               (desc?'<div style="font-size:12px;font-weight:500;color:#4A5568;line-height:1.65;">'+desc.textContent+'</div>':'');
             mobOv.style.display='flex';
           }
+        } else {
+          deactivateSpotlight();
         }
       });
       var close=hs.querySelector('.popup-close');
-      if(close){close.addEventListener('click',function(e){e.stopPropagation();hs.classList.remove('active');});}
+      if(close){close.addEventListener('click',function(e){e.stopPropagation();hs.classList.remove('active');deactivateSpotlight();});}
     });
     document.addEventListener('click',function(){hotspots.forEach(function(h){h.classList.remove('active');});});
 

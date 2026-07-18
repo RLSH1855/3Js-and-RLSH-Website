@@ -193,7 +193,7 @@
   .ssd-item.ssd-open{border-left-color:#8B0000;}
   .ssd-item-text{display:flex;flex-direction:column;gap:2px;}
   .ssd-item-label{font-family:'Montserrat',sans-serif;font-size:16px;font-weight:700;letter-spacing:-.1px;color:#1a1a1a;line-height:1.2;}
-  .ssd-item-desc{font-family:'Inter',sans-serif;font-size:10.5px;font-weight:400;color:rgba(0,0,0,.38);letter-spacing:.1px;line-height:1.3;}
+  .ssd-item-desc{font-family:'Inter',sans-serif;font-size:10.5px;font-weight:400;color:rgba(0,0,0,.60);letter-spacing:.1px;line-height:1.3;}
   .ssd-item-arr{color:rgba(0,0,0,.2);flex-shrink:0;display:inline-flex;transition:transform .3s cubic-bezier(.22,1,.36,1);}
   .ssd-item.ssd-open .ssd-item-arr{transform:rotate(180deg);}
   /* Submenu */
@@ -285,8 +285,25 @@
   .fb-body::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;background-image:var(--rhino);background-size:200px 200px;mix-blend-mode:overlay;opacity:.22;}
   .fb-cta::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;background-image:var(--rhino);background-size:200px 200px;mix-blend-mode:soft-light;opacity:.45;}
   .fb-cta>*{position:relative;z-index:1;}
-  @media(max-width:768px){.fb-cta{flex-direction:column;align-items:flex-start;gap:14px;padding:20px 24px;}.fb-body{padding:0 24px;}.fb-cols{grid-template-columns:1fr 1fr;gap:28px;padding:36px 0 32px;}.fb-cols>div:first-child{grid-column:1/-1;}}
-  @media(max-width:480px){.fb-cta{padding:18px 16px;}.fb-acts{flex-direction:column;align-items:stretch;width:100%;}.fb-btn-w,.fb-btn-o{justify-content:center;}.fb-body{padding:0 16px;}.fb-cols{grid-template-columns:1fr;gap:22px;padding:28px 0 24px;}.ftm{flex-direction:column;align-items:flex-start;gap:6px;}}
+  @media(max-width:768px){
+    .fb-cta{flex-direction:column;align-items:flex-start;gap:14px;padding:20px 24px;}
+    .fb-body{padding:0 24px;}
+    .fb-cols{grid-template-columns:1fr 1fr;gap:28px;padding:36px 0 32px;}
+    .fb-cols>div:first-child{grid-column:1/-1;}
+    .fb-cta-ey{font-size:11px;}
+    .fb-cta-h{font-size:16px;}
+    .fb-btn-w,.fb-btn-o{font-size:11px;}
+    .fb-tag{font-size:13px;}
+    .fb-sgl{font-size:9px;}
+    .col-ttl{font-size:15px;}
+    .nl a{font-size:14px;}
+    .hr{font-size:13px;}
+    .hr .dy{font-size:11px;}
+    .ci p{font-size:13px;}
+    .fcp{font-size:12px;}
+    .fbl a{font-size:12px;}
+  }
+  @media(max-width:480px){.fb-cta{padding:18px 16px;}.fb-acts{flex-direction:column;align-items:stretch;width:100%;}.fb-btn-w,.fb-btn-o{justify-content:center;}.fb-body{padding:0 16px;}.fb-cols{gap:18px;padding:28px 0 24px;}.ftm{flex-direction:column;align-items:flex-start;gap:6px;}}
   `;
   var st=document.createElement('style');st.textContent=css;document.head.appendChild(st);
 
@@ -444,14 +461,14 @@
             '<div class="ssd-sub" id="ssd-acc-sub">'+
               '<div class="ssd-sub-inner">'+
                 '<div class="ssd-sub-bar" id="ssd-acc-bar"></div>'+
-                '<span class="ssd-sub-label">Bedliner &amp; Bed Accessories</span>'+
-                '<a href="floor-liners.html" class="ssd-sub-item">Floor Liners &amp; Mats'+ssChevSub+'</a>'+
-                '<a href="headache-racks.html" class="ssd-sub-item">Headache Rack'+ssChevSub+'</a>'+
                 '<span class="ssd-sub-label">Exterior Upgrades</span>'+
                 '<a href="tonneau-covers.html" class="ssd-sub-item">Tonneau Covers'+ssChevSub+'</a>'+
                 '<a href="steps-running-boards.html" class="ssd-sub-item">Running Boards'+ssChevSub+'</a>'+
                 '<a href="towing-hitches.html" class="ssd-sub-item">Towing &amp; Hitches'+ssChevSub+'</a>'+
                 '<a href="lighting.html" class="ssd-sub-item">Lighting'+ssChevSub+'</a>'+
+                '<span class="ssd-sub-label">Bedliner &amp; Bed Accessories</span>'+
+                '<a href="headache-racks.html" class="ssd-sub-item">Headache Rack'+ssChevSub+'</a>'+
+                '<a href="floor-liners.html" class="ssd-sub-item">Floor Liners &amp; Mats'+ssChevSub+'</a>'+
                 '<div class="ssd-sub-spacer"></div>'+
               '</div>'+
             '</div>'+
