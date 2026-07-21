@@ -46,7 +46,7 @@ export async function onRequestPost({ request, env }) {
   try {
     result = await callClaude({ apiKey: env.ANTHROPIC_API_KEY, history: anthropicHistory });
   } catch (err) {
-    return jsonResponse({ error: 'Assistant is temporarily unavailable, please call 562-424-6744.' }, 502);
+    return jsonResponse({ error: 'Assistant is temporarily unavailable, please call 562-424-6744.', debug: String(err && err.message || err) }, 502);
   }
 
   await saveMessage(env.DB, conversationId, 'assistant', result.replyText);
