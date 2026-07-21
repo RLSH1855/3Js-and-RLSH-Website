@@ -1,0 +1,9 @@
+# cloudflare/wrangler.toml
+name = "3js-and-rlsh-website"
+pages_build_output_dir = "cloudflare"
+compatibility_date = "2024-01-01"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "3js-ai-assistant"
+database_id = "PASTE_THE_ID_FROM_STEP_2_HERE"
