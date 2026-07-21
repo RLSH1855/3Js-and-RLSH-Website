@@ -58,7 +58,7 @@
     convList.classList.remove('hidden');
   });
 
-  document.getElementById('login-btn').addEventListener('click', async function () {
+  async function attemptLogin() {
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
     const res = await fetch('/api/auth/login', {
@@ -70,6 +70,22 @@
       await tryLoadDashboard();
     } else {
       document.getElementById('login-error').textContent = 'Invalid username or password.';
+    }
+  }
+
+  document.getElementById('login-btn').addEventListener('click', attemptLogin);
+
+  document.getElementById('username').addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      document.getElementById('password').focus();
+    }
+  });
+
+  document.getElementById('password').addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      attemptLogin();
     }
   });
 
