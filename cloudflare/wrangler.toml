@@ -1,6 +1,6 @@
 # cloudflare/wrangler.toml
 name = "3js-and-rlsh-website"
-pages_build_output_dir = "cloudflare"
+pages_build_output_dir = "."
 compatibility_date = "2024-01-01"
 
 [[d1_databases]]
