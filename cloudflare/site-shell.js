@@ -972,4 +972,12 @@
     if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init); else init();
   })();
 
+  /* ── AI Website Assistant widget ── */
+  if(!document.getElementById('ai-widget-script')){
+    var aiScript=document.createElement('script');
+    aiScript.id='ai-widget-script';
+    aiScript.src='widget/assistant-widget.js?v=1';
+    document.body.appendChild(aiScript);
+  }
+
 })();
