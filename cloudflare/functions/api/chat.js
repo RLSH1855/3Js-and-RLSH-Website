@@ -27,6 +27,10 @@ export async function onRequestPost({ request, env }) {
     return jsonResponse({ error: 'Invalid JSON body' }, 400);
   }
 
+  if (!body || typeof body !== 'object') {
+    return jsonResponse({ error: 'Invalid JSON body' }, 400);
+  }
+
   const { conversationId, message } = body;
   if (!conversationId || !message || typeof message !== 'string') {
     return jsonResponse({ error: 'conversationId and message are required' }, 400);
