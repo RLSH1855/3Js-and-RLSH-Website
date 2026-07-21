@@ -19,7 +19,9 @@ function extractFaqs(html) {
   const questions = [...html.matchAll(/<span class="q-label"[^>]*>([\s\S]*?)<\/span>/g)]
     .map(m => stripTags(m[1]));
   const answerBlocks = [...html.matchAll(/<div class="faq-answer"[^>]*>([\s\S]*?)<\/div>\s*(?:<\/div>)?/g)]
-    .map(m => stripTags(m[1]));
+    .map(m => [...m[1].matchAll(/<p class="answer-text"[^>]*>([\s\S]*?)<\/p>/g)]
+      .map(p => stripTags(p[1]))
+      .join(' '));
   const count = Math.min(questions.length, answerBlocks.length);
   const result = [];
   for (let i = 0; i < count; i++) {
