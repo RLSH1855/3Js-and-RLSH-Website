@@ -49,6 +49,10 @@ async function callClaude({ apiKey, history }) {
     }
   }
 
+  if (!replyText && capturedLead) {
+    replyText = "Got it — I've passed your info along to the team and someone will follow up with you soon. Is there anything else I can help you with?";
+  }
+
   return { replyText, capturedLead };
 }
 
