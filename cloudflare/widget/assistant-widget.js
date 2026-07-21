@@ -16,13 +16,16 @@
 
   const css = `
     .ai-bubble{position:fixed;bottom:20px;right:20px;width:56px;height:56px;background:${RED};
-      border:2px solid #a00000;border-radius:0;display:flex;align-items:center;justify-content:center;
+      border:2px solid ${RED};border-radius:0;display:flex;align-items:center;justify-content:center;
       cursor:pointer;z-index:9999;box-shadow:0 4px 16px rgba(0,0,0,.3);}
     .ai-bubble svg{width:26px;height:26px;stroke:#fff;fill:none;stroke-width:2;}
     .ai-panel{position:fixed;bottom:88px;right:20px;width:min(340px,calc(100vw - 40px));
       max-height:min(480px,calc(100vh - 140px));background:#111;border:1px solid #333;border-radius:0;
       display:none;flex-direction:column;z-index:9999;font-family:'Inter',Arial,sans-serif;overflow:hidden;}
     .ai-panel.open{display:flex;}
+    @media (min-width: 768px){
+      .ai-panel{width:380px;max-height:560px;}
+    }
     .ai-header{background:${RED};color:#fff;padding:14px 16px;font-family:'Montserrat',sans-serif;
       font-weight:800;font-size:13px;letter-spacing:1px;text-transform:uppercase;}
     .ai-messages{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px;}
