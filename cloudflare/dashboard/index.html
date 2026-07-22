@@ -1043,19 +1043,27 @@
         <div class="conv-toolbar">
           <div>
             <h2>Traffic &amp; Rankings</h2>
-            <p>Organic performance across the site, last 30 days.</p>
+            <p>Google Search performance for 3jsautobody.com, last 28 days.</p>
           </div>
-          <span class="pill pill-good">▲ 8.4% vs. last month</span>
+          <span class="pill" id="traffic-delta-pill">—</span>
+        </div>
+
+        <div id="seo-freshness" style="font-size:12px; color:var(--text-3); margin-bottom:14px;"></div>
+
+        <div style="display:flex; gap:8px; margin-bottom:16px; flex-wrap:wrap;">
+          <button type="button" class="btn btn-ghost" data-seo-export="daily">Export daily history (CSV)</button>
+          <button type="button" class="btn btn-ghost" data-seo-export="queries">Export top queries (CSV)</button>
+          <button type="button" class="btn btn-ghost" data-seo-export="pages">Export top pages (CSV)</button>
         </div>
 
         <div class="grid grid-12" style="margin-bottom:16px;">
           <div class="card" style="grid-column:span 12;">
             <div class="card-head" style="align-items:center;">
               <div>
-                <h3>Organic Sessions Over Time</h3>
-                <p>Daily site visits from search, last 30 days</p>
+                <h3>Clicks From Google Search</h3>
+                <p>People who saw you in Google and clicked through, last 30 days</p>
               </div>
-              <span class="pill pill-accent">4,812 total</span>
+              <span class="pill pill-accent" id="traffic-total-pill">—</span>
             </div>
             <div class="chart-wrap">
               <svg class="chart-svg" id="traffic-chart" viewBox="0 0 760 230" preserveAspectRatio="none"></svg>
@@ -1281,8 +1289,8 @@
   function showDashboard(){
     loginView.style.display = 'none';
     dashView.classList.add('active');
-    setTimeout(drawTrafficChart, 60);
     loadConversations();
+    loadSeo();
   }
 
   loginBtn.addEventListener('click', attemptLogin);
@@ -1666,18 +1674,73 @@
   renderHealthTable();
 
   /* ---------- TRAFFIC / QUERIES DATA ---------- */
-  var queries = [
-    { q:'auto body shop signal hill', pos:2.1, clicks:312, imp:4102 },
-    { q:'rhino lining near me', pos:4.6, clicks:198, imp:3320 },
-    { q:'truck bed liner signal hill ca', pos:1.8, clicks:174, imp:1890 },
-    { q:'collision repair long beach', pos:6.2, clicks:121, imp:5210 },
-    { q:'bakflip mx4 installer', pos:3.4, clicks:88, imp:1240 },
-    { q:'running board install signal hill', pos:5.9, clicks:64, imp:1080 },
-    { q:'auto paint shop near signal hill', pos:8.1, clicks:41, imp:2670 }
-  ];
-  document.getElementById('queries-tbody').innerHTML = queries.map(function(q){
-    return '<tr><td>'+q.q+'</td><td class="mono">'+q.pos.toFixed(1)+'</td><td class="mono">'+q.clicks+'</td><td class="mono">'+q.imp.toLocaleString()+'</td></tr>';
-  }).join('');
+  // Query labels are search terms typed by the public, so they are escaped
+  // exactly like chat messages are.
+  function renderQueries(rows){
+    var tbody = document.getElementById('queries-tbody');
+    if(!rows.length){
+      tbody.innerHTML = '<tr><td colspan="4" style="color:var(--text-3);">No query data yet.</td></tr>';
+      return;
+    }
+    tbody.innerHTML = rows.map(function(q){
+      return '<tr><td>'+esc(q.label)+'</td>'
+        + '<td class="mono">'+q.position.toFixed(1)+'</td>'
+        + '<td class="mono">'+q.clicks+'</td>'
+        + '<td class="mono">'+q.impressions.toLocaleString()+'</td></tr>';
+    }).join('');
+  }
+
+  function fmtStamp(iso){
+    var d = new Date(iso);
+    return d.toLocaleString('en-US', { month:'short', day:'numeric', hour:'numeric', minute:'2-digit', hour12:true });
+  }
+
+  async function loadSeo(){
+    var res = await fetch('/api/dashboard/seo');
+    if(!res.ok) return;
+    var r = await res.json();
+
+    var recent = r.series.slice(-30);
+    trafficData = recent.map(function(p){ return p.clicks; });
+    trafficDates = recent.map(function(p){ return p.date; });
+    trafficIncomplete = recent.map(function(p){ return p.incomplete; });
+    var prior = r.series.slice(-60, -30);
+    prevPeriodData = recent.map(function(_, i){ return prior[i] ? prior[i].clicks : 0; });
+
+    renderQueries(r.queries);
+
+    var totalPill = document.getElementById('traffic-total-pill');
+    totalPill.textContent = r.totals.clicks.value.toLocaleString() + ' clicks in 28 days';
+
+    var pill = document.getElementById('traffic-delta-pill');
+    var d = r.totals.clicks.delta;
+    if(d === null){
+      pill.textContent = 'No prior period to compare';
+      pill.className = 'pill';
+    } else {
+      pill.textContent = (d >= 0 ? '▲ ' : '▼ ') + Math.abs(d).toFixed(1) + '% vs. previous 28 days';
+      pill.className = 'pill ' + (d >= 0 ? 'pill-good' : 'pill-bad');
+    }
+
+    var fresh = document.getElementById('seo-freshness');
+    if(!r.updatedAt){
+      fresh.innerHTML = '<strong style="color:var(--warn);">No Search Console data yet</strong> — the nightly sync has not run.';
+    } else if(r.stale){
+      fresh.innerHTML = '<strong style="color:var(--warn);">Data may be out of date</strong> — last updated '
+        + esc(fmtStamp(r.updatedAt)) + '. The nightly sync has not succeeded in over 48 hours.';
+    } else {
+      fresh.textContent = 'Updated ' + fmtStamp(r.updatedAt)
+        + ' · totals exclude the last 3 days, which Google is still finalizing.';
+    }
+
+    drawTrafficChart();
+  }
+
+  Array.prototype.forEach.call(document.querySelectorAll('[data-seo-export]'), function(btn){
+    btn.addEventListener('click', function(){
+      window.location.href = '/api/dashboard/seo-export?type=' + btn.getAttribute('data-seo-export');
+    });
+  });
 
   var kwOpportunities = [
     { name:'"tacoma bed liner spray-in"', pos:'Pos 14' },
@@ -1895,13 +1958,11 @@
   renderActionItems();
 
   /* ---------- TRAFFIC CHART (SVG, smoothed area + previous-period comparison + tooltip) ---------- */
-  var trafficData = [
-    120,132,128,145,150,142,160,171,168,180,190,185,205,198,
-    212,220,215,230,245,238,252,260,248,265,280,272,290,305,298,312
-  ];
-  var prevPeriodData = trafficData.map(function(v,i){
-    return Math.max(15, Math.round(v * 0.90 + Math.sin(i * 0.65) * 7 - 9));
-  });
+  // Populated by loadSeo() from real Search Console data.
+  var trafficData = [];
+  var prevPeriodData = [];
+  var trafficDates = [];
+  var trafficIncomplete = [];
   function smoothPath(pts){
     if(pts.length < 2) return '';
     var d = 'M'+pts[0][0]+','+pts[0][1];
@@ -1920,9 +1981,12 @@
   function drawTrafficChart(){
     var svg = document.getElementById('traffic-chart');
     var tooltip = document.getElementById('traffic-tooltip');
+    if(trafficData.length < 2){ svg.innerHTML = ''; return; }
     var W = 760, H = 230, padL = 40, padR = 8, padT = 14, padB = 28;
     var innerW = W - padL - padR, innerH = H - padT - padB;
-    var max = Math.max.apply(null, trafficData) * 1.12;
+    // Real click counts can be small and flat; keep a floor so the chart never
+    // collapses to a single line or divides by zero.
+    var max = Math.max(Math.max.apply(null, trafficData) * 1.12, 4);
     var min = 0;
     var stepX = innerW / (trafficData.length - 1);
 
@@ -1935,8 +1999,12 @@
     var prevLinePath = smoothPath(prevPts);
     var areaPath = linePath + ' L'+xAt(trafficData.length-1)+','+(padT+innerH)+' L'+xAt(0)+','+(padT+innerH)+' Z';
 
-    var todayRef = new Date(2026, 6, 22);
-    function dateAt(i){ var d = new Date(todayRef); d.setDate(d.getDate() - (trafficData.length - 1 - i)); return d; }
+    // Local midnight, not UTC: parsing as UTC then formatting locally shifts
+    // every label back a day in Pacific time.
+    function dateAt(i){
+      var p = String(trafficDates[i] || '').split('-');
+      return new Date(Number(p[0]), Number(p[1]) - 1, Number(p[2]));
+    }
 
     var gridLines = '', yLabels = '';
     for(var g=0; g<=3; g++){
