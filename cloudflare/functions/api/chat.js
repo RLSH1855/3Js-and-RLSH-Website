@@ -1,6 +1,6 @@
 // cloudflare/functions/api/chat.js
 const { callClaude } = require('../_lib/claude-client.js');
-const { ensureConversation, saveMessage, saveLead, getConversationHistory } = require('../_lib/db.js');
+const { ensureConversation, setCustomerName, saveMessage, saveLead, getConversationHistory } = require('../_lib/db.js');
 
 const CORS_HEADERS = {
   'Access-Control-Allow-Origin': '*',
@@ -36,7 +36,12 @@ export async function onRequestPost({ request, env }) {
     return jsonResponse({ error: 'conversationId and message are required' }, 400);
   }
 
+  const customerName = typeof body.customerName === 'string'
+    ? body.customerName.trim().slice(0, 40)
+    : '';
+
   await ensureConversation(env.DB, conversationId);
+  await setCustomerName(env.DB, conversationId, customerName);
   await saveMessage(env.DB, conversationId, 'user', message);
 
   const history = await getConversationHistory(env.DB, conversationId);
@@ -44,7 +49,11 @@ export async function onRequestPost({ request, env }) {
 
   let result;
   try {
-    result = await callClaude({ apiKey: env.ANTHROPIC_API_KEY, history: anthropicHistory });
+    result = await callClaude({
+      apiKey: env.ANTHROPIC_API_KEY,
+      history: anthropicHistory,
+      customerName
+    });
   } catch (err) {
     return jsonResponse({ error: 'Assistant is temporarily unavailable, please call 562-424-6744.' }, 502);
   }

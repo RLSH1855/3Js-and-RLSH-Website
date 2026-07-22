@@ -6,6 +6,13 @@ async function ensureConversation(db, conversationId) {
   ).bind(conversationId).run();
 }
 
+async function setCustomerName(db, conversationId, name) {
+  if (!name) return;
+  await db.prepare(
+    `UPDATE conversations SET customer_name = ? WHERE id = ? AND (customer_name IS NULL OR customer_name = '')`
+  ).bind(name, conversationId).run();
+}
+
 async function saveMessage(db, conversationId, role, content) {
   await db.prepare(
     `INSERT INTO messages (conversation_id, role, content) VALUES (?, ?, ?)`
@@ -27,7 +34,7 @@ async function getConversationHistory(db, conversationId) {
 
 async function listConversations(db) {
   const { results } = await db.prepare(
-    `SELECT c.id, c.started_at, c.last_message_at,
+    `SELECT c.id, c.started_at, c.last_message_at, c.customer_name,
             (SELECT COUNT(*) FROM leads l WHERE l.conversation_id = c.id) AS lead_count
      FROM conversations c
      ORDER BY c.last_message_at DESC`
@@ -48,6 +55,7 @@ async function getUserByUsername(db, username) {
 
 module.exports = {
   ensureConversation,
+  setCustomerName,
   saveMessage,
   saveLead,
   getConversationHistory,

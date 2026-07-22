@@ -6,6 +6,25 @@
   const convDetail = document.getElementById('conv-detail');
   const convMessages = document.getElementById('conv-messages');
 
+  /* Customer-supplied text (names) is rendered into innerHTML below — escape it
+     so a visitor can't inject markup into the owner's dashboard. */
+  function escapeHtml(value) {
+    return String(value ?? '').replace(/[&<>"']/g, function (ch) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch];
+    });
+  }
+
+  function formatTime(raw) {
+    if (!raw) return '';
+    const iso = raw.includes('T') ? raw : raw.replace(' ', 'T') + 'Z';
+    const d = new Date(iso);
+    if (isNaN(d.getTime())) return raw;
+    return d.toLocaleString('en-US', {
+      month: 'short', day: 'numeric', year: 'numeric',
+      hour: 'numeric', minute: '2-digit', hour12: true
+    });
+  }
+
   async function tryLoadDashboard() {
     const res = await fetch('/api/dashboard/conversations');
     if (!res.ok) return false;
@@ -23,7 +42,8 @@
     conversations.forEach(function (c) {
       const item = document.createElement('div');
       item.className = 'conv-item';
-      item.innerHTML = `<div>${c.id}</div><div style="font-size:12px;color:#999;">${c.last_message_at}</div>` +
+      const who = c.customer_name ? `${escapeHtml(c.customer_name)} — ${c.id}` : c.id;
+      item.innerHTML = `<div>${who}</div><div style="font-size:12px;color:#999;">${formatTime(c.last_message_at)}</div>` +
         (c.lead_count > 0 ? `<div class="lead-flag">LEAD (${c.lead_count})</div>` : '');
       item.addEventListener('click', function () { openConversation(c.id); });
       convList.appendChild(item);

@@ -16,7 +16,7 @@ const CAPTURE_LEAD_TOOL = {
   }
 };
 
-async function callClaude({ apiKey, history }) {
+async function callClaude({ apiKey, history, customerName }) {
   const response = await fetch('https://api.anthropic.com/v1/messages', {
     method: 'POST',
     headers: {
@@ -27,7 +27,7 @@ async function callClaude({ apiKey, history }) {
     body: JSON.stringify({
       model: 'claude-sonnet-5',
       max_tokens: 1024,
-      system: buildSystemPrompt(),
+      system: buildSystemPrompt(customerName),
       tools: [CAPTURE_LEAD_TOOL],
       messages: history
     })

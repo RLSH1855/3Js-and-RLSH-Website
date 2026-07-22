@@ -976,7 +976,7 @@
   if(!document.getElementById('ai-widget-script')){
     var aiScript=document.createElement('script');
     aiScript.id='ai-widget-script';
-    aiScript.src='widget/assistant-widget.js?v=1';
+    aiScript.src='widget/assistant-widget.js?v=2';
     document.body.appendChild(aiScript);
   }
 
