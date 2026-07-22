@@ -77,10 +77,10 @@
   /* ── Garage iframe popup ── */
   .garage-popup-root { position: fixed; inset: 0; z-index: 500; display: flex; align-items: center; justify-content: center; }
   .garage-popup-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,.72); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); animation: fadeIn .2s ease-out; }
-  .garage-popup-card { position: relative; z-index: 1; width: 960px; max-width: 95vw; max-height: 88vh; overflow-y: auto; animation: fadeIn .22s ease-out; box-shadow: 0 24px 64px rgba(0,0,0,.6); background: #fff; }
+  .garage-popup-card { position: relative; z-index: 1; width: min(1260px, 95vw); max-height: 92vh; overflow-y: auto; animation: fadeIn .22s ease-out; box-shadow: 0 24px 64px rgba(0,0,0,.6); background: #fff; }
   .garage-popup-close { position: absolute; top: 12px; right: 12px; z-index: 10; background: rgba(0,0,0,.55); border: 1px solid rgba(255,255,255,.15); color: #fff; width: 36px; height: 36px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 20px; line-height: 1; transition: background .15s; }
   .garage-popup-close:hover { background: var(--accent); }
-  .garage-popup-iframe { width: 100%; height: 720px; border: 0; display: block; }
+  .garage-popup-iframe { width: 100%; height: min(630px, 92vh); border: 0; display: block; }
   .garage-popup-footer { display: flex; border-top: 1px solid #e8e8e8; }
   .garage-popup-skip { flex: 1; padding: 12px; background: none; border: none; font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #aaa; cursor: pointer; text-align: center; transition: color .15s; }
   .garage-popup-skip:hover { color: #666; }
@@ -1504,8 +1504,8 @@ function FilterSection({ title, defaultOpen=false, children }) {
 
 function CheckRow({ label, count, checked, onChange }) {
   return (
-    <label className="check-row" onClick={onChange}>
-      <input type="checkbox" checked={!!checked} readOnly />
+    <label className="check-row">
+      <input type="checkbox" checked={!!checked} onChange={onChange} />
       <span className="check-box"><span className="check-mark">{Icon.check}</span></span>
       <span className="check-label">{label}</span>
       {count != null && <span className="check-count">{count}</span>}
