@@ -1366,8 +1366,8 @@ function FilterSection({ title, defaultOpen=false, children }) {
 
 function CheckRow({ label, count, checked, onChange }) {
   return (
-    <label className="check-row" onClick={onChange}>
-      <input type="checkbox" checked={!!checked} readOnly />
+    <label className="check-row">
+      <input type="checkbox" checked={!!checked} onChange={onChange} />
       <span className="check-box"><span className="check-mark">{Icon.check}</span></span>
       <span className="check-label">{label}</span>
       {count != null && <span className="check-count">{count}</span>}
