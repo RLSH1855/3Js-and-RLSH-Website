@@ -1,6 +1,7 @@
 User-agent: *
 Allow: /
 
+Disallow: /dashboard/
 Disallow: /card-mockup.html
 Disallow: /effects-sandbox.html
 Disallow: /nav-scroll-demo.html
