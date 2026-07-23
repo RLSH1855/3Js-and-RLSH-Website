@@ -1,9 +1,80 @@
 # Cloudflare Pages redirects/rewrites
-# (Wix ignores this file — it only affects the Cloudflare site)
+# (Wix ignores this file - it only affects the Cloudflare site)
 
 # Serve the homepage at the root URL without renaming homepage.html
 # (renaming would break the live Wix iframe embed while Wix is still up)
 /    /homepage.html    200
 
-# Retired duplicate page — redirect to canonical Steps & Running Boards page
+# Retired duplicate page - redirect to canonical Steps & Running Boards page
 /running-boards.html  /steps-running-boards.html  301
+
+# ---------------------------------------------------------------------------
+# WIX -> CLOUDFLARE MIGRATION MAP
+# Every path below earned Google impressions on the Wix site in the 16 months
+# to 2026-07-20 and has no equivalent file in this repo. Without these rules
+# each one returns 404 on cutover and Google drops the ranking it earned.
+# Source: Search Console, sc-domain:3jsautobody.com. 331 URLs audited.
+# ---------------------------------------------------------------------------
+
+# Old Wix store - 271 product pages, 380 clicks, 29,714 impressions (22% of all
+# search visibility). These were Addictive Desert Designs / DV8 products which
+# the new catalog does not yet carry. Pointing them at the catalog keeps
+# visitors on site, but Google treats a mass redirect to a generic page as a
+# soft 404 and will NOT carry these rankings over. The real fix is loading the
+# ADD/DV8 product data so these can point at equivalent product pages.
+/product-page/*  /parts-catalog  301
+
+# Same page, new filename - or an obvious Wix duplicate
+/exterior-accessories                                 /exterior-accessories-V2  301
+/rhino-linings-installation                           /rhino-liner  301
+/inside3js                                            /inside-3js  301
+/auto-body-and-paint-repairs                          /body-paint-repairs  301
+/rigid-off-road-lights                                /lighting  301
+/about                                                /about-3js  301
+/exterior-truck-accessories                           /exterior-accessories-V2  301
+/our-story                                            /about-3js  301
+/copy-of-bakflip-mx4                                  /bakflip-mx4  301
+/auto-body-repair-paint-collision-repair              /body-paint-repairs  301
+/faq                                                  /FAQ_PAGE_V2  301
+/shop                                                 /parts-catalog  301
+/terms-and-conditions                                 /terms-conditions  301
+/exterior-accessories/floor-liners-mats               /floor-liners  301
+/blank                                                /  301
+/top-selling-automotive-products                      /parts-catalog  301
+/copy-of-bakflip-revolver-x4                          /revolver-x4s  301
+/floor-mats-and-floor-liners                          /floor-liners  301
+/faqs                                                 /FAQ_PAGE_V2  301
+/exterior-accessories/steps-running-boards            /steps-running-boards  301
+/contact-us                                           /contact  301
+/exterior-accessories/premium-led-offroad-lighting    /lighting  301
+/rhino-linings-quote                                  /rhino-lining-quote  301
+/top-selling-products                                 /parts-catalog  301
+/terms-and-conditions-1                               /terms-conditions  301
+/returns-warranties                                   /warranty  301
+/kiosk-mode                                           /  301
+/website-terms-of-use                                 /terms-conditions  301
+/exterior-accessories/towing                          /towing-hitches  301
+/exterior-accessories/headacherack                    /headache-racks  301
+/exterior-accessories/tonneau-covers/bak-revolver-x2  /revolver-x2  301
+/floor-liners-mats                                    /floor-liners  301
+
+# Closest surviving home - the original page was not rebuilt
+/top-selling                      /parts-catalog  301
+/gallery                          /before-after  301
+/bundles/the-405-essentials       /bundles  301
+/bundles/the-working-man          /bundles  301
+/bundles/the-3-wise-men-standard  /bundles  301
+/the-3-wise-men-premium           /bundles  301
+/bundles/the-3-wise-men-premium   /bundles  301
+/the-405-essentials               /bundles  301
+
+# Retired pages with no direct equivalent
+/2019-truck-jeep-fest                        /  301
+/performance-parts                           /parts-catalog  301
+/services                                    /body-paint-repairs  301
+/why-should-i-choose-a-local-auto-body-shop  /blog  301
+/shipping-policy                             /terms-conditions  301
+/reviews                                     /about-3js  301
+/request-a-quote                             /parts-quote  301
+/price-match                                 /  301
+/4x4-resource-center                         /blog  301
