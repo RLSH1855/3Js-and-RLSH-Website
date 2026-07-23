@@ -164,9 +164,25 @@ const PRODUCT_DESC = {
 };
 
 // ── Get short description for a product ──
+// The four tonneau styles are the only types the word "cover" belongs on.
+// Appending it to everything printed "Bumper cover" under every bumper.
+const COVER_TYPES = new Set(['Hard Folding', 'Soft Folding', 'Roll-Up', 'Retractable']);
+
 function getProdDesc(name, type) {
   if (PRODUCT_DESC[name]) return PRODUCT_DESC[name];
-  if (type) return type + ' cover';
+  // Vendor-supplied products carry their own selling copy; use its opening
+  // sentence as the card tagline.
+  const H = window.HPAG;
+  if (H) {
+    for (const cat in H) {
+      const entry = H[cat].content && H[cat].content[name];
+      if (entry && entry.desc) {
+        const first = entry.desc.split(/(?<=\.)\s+/)[0] || entry.desc;
+        return first.length > 110 ? first.slice(0, 107).trimEnd() + '…' : first;
+      }
+    }
+  }
+  if (type) return COVER_TYPES.has(type) ? type + ' cover' : type;
   return '';
 }
 
@@ -337,12 +353,28 @@ const PDP_MAP = {
 };
 
 
+// The type shown in the sidebar filter. PRODUCT_TYPES only ever covered the
+// tonneau covers, so every generated product came through with no type and the
+// filter section rendered empty ("BUMPER TYPE" with nothing under it). The
+// vendor data carries the real type, so fall back to that.
+function productType(name) {
+  if (PRODUCT_TYPES[name]) return PRODUCT_TYPES[name];
+  const H = window.HPAG;
+  if (H) {
+    for (const cat in H) {
+      const entry = H[cat].content && H[cat].content[name];
+      if (entry && entry.coverType) return entry.coverType;
+    }
+  }
+  return '';
+}
+
 // Build unique product list from raw data rows
 function buildProducts(data) {
   const pm = {};
   (data || []).forEach(row => {
     const key = `${row[F.brand]}|${row[F.product]}`;
-    if (!pm[key]) pm[key] = { id:key, brand:row[F.brand], name:row[F.product], type:PRODUCT_TYPES[row[F.product]]||'', minPrice:null, fitments:[] };
+    if (!pm[key]) pm[key] = { id:key, brand:row[F.brand], name:row[F.product], type:productType(row[F.product]), minPrice:null, fitments:[] };
     if (row[F.map] && (pm[key].minPrice === null || row[F.map] < pm[key].minPrice)) pm[key].minPrice = row[F.map];
     pm[key].fitments.push(row);
   });
