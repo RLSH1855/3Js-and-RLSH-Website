@@ -693,8 +693,20 @@ function getProductInfo(productName, coverType) {
     const pc = PRODUCT_CONTENT[productName];
     const ct = pc.coverType || coverType;
     const generic = getGenericInfo(productName, ct);
+    // The generic copy is written for tonneau covers. When an entry carries its
+    // own specs (the vendor-generated brands do), prefer those over wording
+    // that would describe a bumper as a "hard-folding aluminum tonneau cover".
+    const sp = pc.specs || {};
+    const hasSpecs = Object.keys(sp).length > 0;
+    const firstSentence = (pc.desc || '').split(/(?<=\.)\s+/)[0] || '';
     return Object.assign({}, generic, {
       desc: pc.desc || generic.desc,
+      tagline: hasSpecs ? firstSentence || pc.desc : generic.tagline,
+      material: sp['Material'] || generic.material,
+      warranty: sp['Warranty'] || generic.warranty,
+      installType: sp['Install Time'] ? `${sp['Install Time']} install${sp['Install Difficulty'] ? ` · difficulty ${sp['Install Difficulty']}` : ''}` : generic.installType,
+      specs: hasSpecs ? sp : undefined,
+      installPdf: pc.installPdf,
       highlights: pc.features && pc.features.length ? pc.features : generic.highlights,
       features: pc.features && pc.features.length ? pc.features.slice(0, 4).map(f => ({
         title: f.split(' ').slice(0, 3).join(' '),
@@ -889,7 +901,7 @@ function Stars({
 function Header({
   garage
 }) {
-  const tickers = ['FREE LOCAL INSTALL ON TONNEAU COVERS', 'SIGNAL HILL, CA', '(562) 424-6744', '30-DAY FIT GUARANTEE', 'FREE SHIPPING OVER $99'];
+  const tickers = [`FREE LOCAL INSTALL ON ${_catDef.catLabel.toUpperCase()}`, 'SIGNAL HILL, CA', '(562) 424-6744', '30-DAY FIT GUARANTEE', 'FREE SHIPPING OVER $99'];
   const ticker = [...tickers, ...tickers];
   const garageLabel = garage ? `${garage.year} ${garage.make} ${garage.model}` : 'Add Your Truck';
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
@@ -922,7 +934,7 @@ function Header({
   }, /*#__PURE__*/React.createElement("a", {
     href: _catalogUrl,
     className: "nav-item active"
-  }, "Tonneau Covers"), /*#__PURE__*/React.createElement("a", {
+  }, _catDef.catLabel), /*#__PURE__*/React.createElement("a", {
     href: "steps-running-boards.html",
     className: "nav-item"
   }, "Running Boards"), /*#__PURE__*/React.createElement("a", {
@@ -944,7 +956,7 @@ function Breadcrumbs({
   brandName,
   coverType
 }) {
-  const cat = _qParams.get('cat') || 'Tonneau Covers';
+  const cat = _qParams.get('cat') || _catDef.catLabel;
   const catUrl = _qParams.get('catUrl') || 'parts-catalog.html';
   const type = _qParams.get('type') || coverType;
   const fullName = [brandName, productName].filter(Boolean).join(' ');

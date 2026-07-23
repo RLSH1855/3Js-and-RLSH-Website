@@ -1,6 +1,7 @@
 // GENERATED FILE — DO NOT EDIT.
 // Source: cloudflare/catalog-app.jsx
 // Rebuild with: node tools/build-jsx.mjs
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const {
   useState,
   useMemo,
@@ -201,6 +202,13 @@ const BRAND_BG = {
   'Roll N Lock': '#2a1a1a',
   'TruXedo': '#1a1a2a',
   'UnderCover': '#201a10'
+};
+
+// ── Brand filter labels ──
+// Cards stay badged with the short code; the filter list spells the brand out
+// so a shopper who doesn't know the abbreviation still recognises it.
+const BRAND_FILTER_LABELS = {
+  'ADD': 'Addictive Desert Designs (ADD)'
 };
 
 // ── Short product descriptions ──
@@ -742,6 +750,7 @@ function App() {
     fitOnly: !!loadGarage()
   });
   const [sort, setSort] = useState('featured');
+  const [query, setQuery] = useState('');
   const [view, setView] = useState(() => localStorage.getItem('catalog_view') || 'grid');
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [garageOpen, setGarageOpen] = useState(() => {
@@ -790,11 +799,16 @@ function App() {
 
   // Land on the category the user came from (?cat=<id> from a category
   // page or PDP link) instead of always defaulting to Tonneau Covers.
+  // ?q=<terms> pre-fills the search — retired Wix product URLs redirect here,
+  // so an old link for "stealth fighter front bumper" lands on those products.
   useEffect(() => {
-    const catParam = new URLSearchParams(window.location.search).get('cat');
+    const params = new URLSearchParams(window.location.search);
+    const catParam = params.get('cat');
     if (catParam && catParam !== 'tonneau' && CATEGORY_DEFS.some(c => c.id === catParam)) {
       handleCatChange(catParam);
     }
+    const qParam = params.get('q');
+    if (qParam) setQuery(qParam);
   }, []);
   const openDetail = (brand, name) => {
     // Products with dedicated PDP pages — go there directly, no garage required
@@ -1000,13 +1014,22 @@ function App() {
         partNum: matchRow ? matchRow[F.partNum] : p.fitments.length === 1 ? p.fitments[0][F.partNum] : ''
       };
     });
+    // Free-text search across name, brand, type and part number. Every term
+    // must match somewhere, so "stealth fighter front" narrows properly.
+    const terms = query.trim().toLowerCase().split(/\s+/).filter(Boolean);
+    if (terms.length) {
+      list = list.filter(p => {
+        const hay = `${p.brand} ${p.name} ${p.type || ''} ${p.fitments.map(r => `${r[F.partNum]} ${r[F.make]} ${r[F.model]}`).join(' ')}`.toLowerCase();
+        return terms.every(t => hay.includes(t));
+      });
+    }
     if (filters.brands.size) list = list.filter(p => filters.brands.has(p.brand));
     if (filters.types.size) list = list.filter(p => filters.types.has(p.type));
     list = list.filter(p => p.minPrice === null || p.minPrice >= filters.priceMin && p.minPrice <= filters.priceMax);
     if (filters.fitOnly && garage) list = list.filter(p => p.fits);
     if (sort === 'price-asc') list.sort((a, b) => (a.minPrice || 9999) - (b.minPrice || 9999));else if (sort === 'price-desc') list.sort((a, b) => (b.minPrice || 0) - (a.minPrice || 0));else if (sort === 'brand') list.sort((a, b) => a.brand.localeCompare(b.brand));else list.sort((a, b) => (b.fits ? 1 : 0) - (a.fits ? 1 : 0));
     return list;
-  }, [allProducts, filters, sort, garage]);
+  }, [allProducts, filters, sort, garage, query]);
 
   // ── ItemList JSON-LD for the current grid — regenerated on category/filter change,
   // capped so payload stays reasonable. Only emitted once real product data has loaded. ──
@@ -1110,7 +1133,10 @@ function App() {
     className: "app"
   }, /*#__PURE__*/React.createElement(Header, {
     garage: garage,
-    onSwapVehicle: openGaragePopup
+    onSwapVehicle: openGaragePopup,
+    catDef: selectedCat,
+    query: query,
+    setQuery: setQuery
   }), /*#__PURE__*/React.createElement(MobileVehicleBar, {
     garage: garage,
     onSwap: openGaragePopup
@@ -1156,7 +1182,8 @@ function App() {
     garage: garage,
     onSwapVehicle: openGaragePopup,
     brandCounts: brandCounts,
-    typeCounts: typeCounts
+    typeCounts: typeCounts,
+    catDef: selectedCat
   })), /*#__PURE__*/React.createElement("section", {
     className: "results"
   }, /*#__PURE__*/React.createElement(Toolbar, {
@@ -1208,6 +1235,7 @@ function App() {
     },
     brandCounts: brandCounts,
     typeCounts: typeCounts,
+    catDef: selectedCat,
     mobile: true
   })), garageOpen && /*#__PURE__*/React.createElement(GaragePopup, {
     onClose: () => setGarageOpen(false),
@@ -1267,8 +1295,18 @@ function GaragePopup({
 // ── Header ──
 function Header({
   garage,
-  onSwapVehicle
+  onSwapVehicle,
+  catDef,
+  query,
+  setQuery
 }) {
+  const searchHint = `Search ${catDef && catDef.noun || 'parts'}, brands…`;
+  // These inputs were placeholder-only until now — typing in them did nothing.
+  const searchProps = {
+    value: query,
+    onChange: e => setQuery(e.target.value),
+    'aria-label': searchHint
+  };
   const vehicleLabel = garage ? `${garage.year} ${garage.make} ${garage.model}` : 'Set your truck';
   const mobBtnLabel = garage ? `${garage.year} ${garage.model}` : 'My Truck';
   return /*#__PURE__*/React.createElement("header", {
@@ -1300,13 +1338,13 @@ function Header({
     className: "search"
   }, /*#__PURE__*/React.createElement("span", {
     className: "search-ico"
-  }, Icon.search), /*#__PURE__*/React.createElement("input", {
-    placeholder: "Search tonneau covers, brands\u2026"
-  }))), /*#__PURE__*/React.createElement("div", {
+  }, Icon.search), /*#__PURE__*/React.createElement("input", _extends({
+    placeholder: searchHint
+  }, searchProps)))), /*#__PURE__*/React.createElement("div", {
     className: "mob-search-row"
-  }, Icon.search, /*#__PURE__*/React.createElement("input", {
-    placeholder: "Search tonneau covers, brands\u2026"
-  })));
+  }, Icon.search, /*#__PURE__*/React.createElement("input", _extends({
+    placeholder: searchHint
+  }, searchProps))));
 }
 
 // ── Mobile Vehicle Bar ──
@@ -1535,8 +1573,11 @@ function FilterPanel({
   onSwapVehicle,
   brandCounts,
   typeCounts,
-  mobile
+  mobile,
+  catDef
 }) {
+  const typeLabel = catDef && catDef.typeLabel || 'Product Type';
+  const noun = catDef && catDef.noun || 'parts';
   return /*#__PURE__*/React.createElement("div", {
     className: "filter-panel"
   }, /*#__PURE__*/React.createElement(GarageWidget, {
@@ -1570,17 +1611,17 @@ function FilterPanel({
     className: "fit-toggle-track"
   }, /*#__PURE__*/React.createElement("span", {
     className: "fit-toggle-thumb"
-  })), /*#__PURE__*/React.createElement("span", null, "Only show covers that fit"))), /*#__PURE__*/React.createElement(FilterSection, {
+  })), /*#__PURE__*/React.createElement("span", null, "Only show ", noun, " that fit"))), /*#__PURE__*/React.createElement(FilterSection, {
     title: "Brand",
     defaultOpen: true
   }, Object.keys(brandCounts).sort().map(b => /*#__PURE__*/React.createElement(CheckRow, {
     key: b,
-    label: b,
+    label: BRAND_FILTER_LABELS[b] || b,
     count: brandCounts[b],
     checked: filters.brands.has(b),
     onChange: () => toggleSet('brands', b)
   }))), /*#__PURE__*/React.createElement(FilterSection, {
-    title: "Cover Type",
+    title: typeLabel,
     defaultOpen: true
   }, Object.keys(typeCounts).sort().map(t => /*#__PURE__*/React.createElement(CheckRow, {
     key: t,

@@ -114,9 +114,11 @@
 
   /* ── Category tabs ── */
   .cat-tabs { background: #111; border-bottom: 1px solid rgba(255,255,255,.08); }
-  .cat-tabs-inner { display:flex; overflow-x:auto; white-space:nowrap; scrollbar-width:none; padding:0 16px; max-width:1440px; margin:0 auto; }
+  /* 20 categories no longer fit on one scrolling line, so the strip wraps and
+     each row stretches to fill the full width. */
+  .cat-tabs-inner { display:flex; flex-wrap:wrap; scrollbar-width:none; padding:0 16px; max-width:1600px; margin:0 auto; }
   .cat-tabs-inner::-webkit-scrollbar { display:none; }
-  .cat-tab { display:inline-flex; align-items:center; gap:8px; padding:14px 18px; font-family:var(--display); font-size:13px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,.4); background:none; border:none; border-bottom:2px solid transparent; margin-bottom:-1px; white-space:nowrap; flex-shrink:0; min-height:48px; cursor:pointer; transition:color .2s,border-color .2s; }
+  .cat-tab { display:inline-flex; align-items:center; justify-content:center; gap:6px; padding:11px 12px; font-family:var(--display); font-size:11px; font-weight:700; letter-spacing:1.2px; text-transform:uppercase; color:rgba(255,255,255,.4); background:none; border:none; border-bottom:2px solid transparent; margin-bottom:-1px; white-space:nowrap; flex:1 1 auto; min-height:42px; cursor:pointer; transition:color .2s,border-color .2s; }
   .cat-tab:hover:not(.cat-tab-empty) { color:rgba(255,255,255,.80); }
   .cat-tab.cat-tab-active { color:#fff; border-bottom-color:var(--accent); }
   .cat-tab.cat-tab-empty { opacity:.35; cursor:default; }

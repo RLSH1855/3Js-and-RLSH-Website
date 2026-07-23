@@ -81,6 +81,11 @@ const PRODUCT_WARRANTY = {
 // ── Brand bg colors for placeholder ──
 const BRAND_BG = { 'BAK':'#1a1a2e','Extang':'#16213e','Retrax':'#1a2a1a','Roll N Lock':'#2a1a1a','TruXedo':'#1a1a2a','UnderCover':'#201a10' };
 
+// ── Brand filter labels ──
+// Cards stay badged with the short code; the filter list spells the brand out
+// so a shopper who doesn't know the abbreviation still recognises it.
+const BRAND_FILTER_LABELS = { 'ADD':'Addictive Desert Designs (ADD)' };
+
 // ── Short product descriptions ──
 const PRODUCT_DESC = {
   // BAK Tonneaus
@@ -418,6 +423,7 @@ function App() {
     fitOnly: !!loadGarage(),
   });
   const [sort, setSort] = useState('featured');
+  const [query, setQuery] = useState('');
   const [view, setView] = useState(() => localStorage.getItem('catalog_view') || 'grid');
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [garageOpen, setGarageOpen] = useState(() => {
@@ -451,11 +457,16 @@ function App() {
 
   // Land on the category the user came from (?cat=<id> from a category
   // page or PDP link) instead of always defaulting to Tonneau Covers.
+  // ?q=<terms> pre-fills the search — retired Wix product URLs redirect here,
+  // so an old link for "stealth fighter front bumper" lands on those products.
   useEffect(() => {
-    const catParam = new URLSearchParams(window.location.search).get('cat');
+    const params = new URLSearchParams(window.location.search);
+    const catParam = params.get('cat');
     if (catParam && catParam !== 'tonneau' && CATEGORY_DEFS.some(c => c.id === catParam)) {
       handleCatChange(catParam);
     }
+    const qParam = params.get('q');
+    if (qParam) setQuery(qParam);
   }, []);
 
   const openDetail = (brand, name) => {
@@ -594,6 +605,16 @@ function App() {
         partNum: matchRow ? matchRow[F.partNum] : (p.fitments.length === 1 ? p.fitments[0][F.partNum] : '')
       };
     });
+    // Free-text search across name, brand, type and part number. Every term
+    // must match somewhere, so "stealth fighter front" narrows properly.
+    const terms = query.trim().toLowerCase().split(/\s+/).filter(Boolean);
+    if (terms.length) {
+      list = list.filter(p => {
+        const hay = `${p.brand} ${p.name} ${p.type || ''} ${
+          p.fitments.map(r => `${r[F.partNum]} ${r[F.make]} ${r[F.model]}`).join(' ')}`.toLowerCase();
+        return terms.every(t => hay.includes(t));
+      });
+    }
     if (filters.brands.size) list = list.filter(p => filters.brands.has(p.brand));
     if (filters.types.size) list = list.filter(p => filters.types.has(p.type));
     list = list.filter(p => p.minPrice === null || (p.minPrice >= filters.priceMin && p.minPrice <= filters.priceMax));
@@ -603,7 +624,7 @@ function App() {
     else if (sort === 'brand') list.sort((a,b) => a.brand.localeCompare(b.brand));
     else list.sort((a,b) => (b.fits?1:0)-(a.fits?1:0));
     return list;
-  }, [allProducts, filters, sort, garage]);
+  }, [allProducts, filters, sort, garage, query]);
 
   // ── ItemList JSON-LD for the current grid — regenerated on category/filter change,
   // capped so payload stays reasonable. Only emitted once real product data has loaded. ──
@@ -654,7 +675,7 @@ function App() {
 
   return (
     <div className="app">
-      <Header garage={garage} onSwapVehicle={openGaragePopup} />
+      <Header garage={garage} onSwapVehicle={openGaragePopup} catDef={selectedCat} query={query} setQuery={setQuery} />
       <MobileVehicleBar garage={garage} onSwap={openGaragePopup} />
       <HeroBanner garage={garage} onSwapVehicle={openGaragePopup} catDef={selectedCat} />
       <CategoryTabs cats={CATEGORY_DEFS} selectedId={selectedCatId} onSelect={handleCatChange} loading={catLoading} loadedCount={allProducts.length} />
@@ -677,7 +698,7 @@ function App() {
 
         <div className="layout layout-sidebar">
           <aside className="sidebar" ref={sidebarRef}>
-            <FilterPanel filters={filters} setFilters={setFilters} toggleSet={toggleSet} garage={garage} onSwapVehicle={openGaragePopup} brandCounts={brandCounts} typeCounts={typeCounts} />
+            <FilterPanel filters={filters} setFilters={setFilters} toggleSet={toggleSet} garage={garage} onSwapVehicle={openGaragePopup} brandCounts={brandCounts} typeCounts={typeCounts} catDef={selectedCat} />
           </aside>
           <section className="results">
             <Toolbar count={filtered.length} sort={sort} setSort={setSort} view={view} setView={setView} garage={garage} catLabel={selectedCat.catLabel} />
@@ -706,7 +727,7 @@ function App() {
 
 
       <FilterDrawer open={drawerOpen} onClose={() => setDrawerOpen(false)}>
-        <FilterPanel filters={filters} setFilters={setFilters} toggleSet={toggleSet} garage={garage} onSwapVehicle={()=>{setDrawerOpen(false);openGaragePopup();}} brandCounts={brandCounts} typeCounts={typeCounts} mobile />
+        <FilterPanel filters={filters} setFilters={setFilters} toggleSet={toggleSet} garage={garage} onSwapVehicle={()=>{setDrawerOpen(false);openGaragePopup();}} brandCounts={brandCounts} typeCounts={typeCounts} catDef={selectedCat} mobile />
       </FilterDrawer>
 
       {garageOpen && <GaragePopup onClose={() => setGarageOpen(false)} onClear={() => { setGarage(null); setGarageOpen(false); }} hasVehicle={!!garage} />}
@@ -747,7 +768,14 @@ function GaragePopup({ onClose, onClear, hasVehicle }) {
 // ── Product Detail Popup ──
 
 // ── Header ──
-function Header({ garage, onSwapVehicle }) {
+function Header({ garage, onSwapVehicle, catDef, query, setQuery }) {
+  const searchHint = `Search ${(catDef && catDef.noun) || 'parts'}, brands…`;
+  // These inputs were placeholder-only until now — typing in them did nothing.
+  const searchProps = {
+    value: query,
+    onChange: e => setQuery(e.target.value),
+    'aria-label': searchHint,
+  };
   const vehicleLabel = garage ? `${garage.year} ${garage.make} ${garage.model}` : 'Set your truck';
   const mobBtnLabel = garage ? `${garage.year} ${garage.model}` : 'My Truck';
   return (
@@ -767,12 +795,12 @@ function Header({ garage, onSwapVehicle }) {
       <div className="hdr-main">
         <div className="search">
           <span className="search-ico">{Icon.search}</span>
-          <input placeholder="Search tonneau covers, brands…" />
+          <input placeholder={searchHint} {...searchProps} />
         </div>
       </div>
       <div className="mob-search-row">
         {Icon.search}
-        <input placeholder="Search tonneau covers, brands…" />
+        <input placeholder={searchHint} {...searchProps} />
       </div>
     </header>
   );
@@ -878,7 +906,9 @@ function MobileBar({ count, onOpenFilters, sort, setSort }) {
 
 // ── Mobile Garage Tab ──
 // ── Filter Panel ──
-function FilterPanel({ filters, setFilters, toggleSet, garage, onSwapVehicle, brandCounts, typeCounts, mobile }) {
+function FilterPanel({ filters, setFilters, toggleSet, garage, onSwapVehicle, brandCounts, typeCounts, mobile, catDef }) {
+  const typeLabel = (catDef && catDef.typeLabel) || 'Product Type';
+  const noun = (catDef && catDef.noun) || 'parts';
   return (
     <div className="filter-panel">
       <GarageWidget garage={garage} onSwap={onSwapVehicle} />
@@ -889,17 +919,17 @@ function FilterPanel({ filters, setFilters, toggleSet, garage, onSwapVehicle, br
         <label className="fit-toggle">
           <input type="checkbox" checked={filters.fitOnly && !!garage} disabled={!garage} onChange={e => setFilters(f=>({...f,fitOnly:e.target.checked&&!!garage}))} />
           <span className="fit-toggle-track"><span className="fit-toggle-thumb"/></span>
-          <span>Only show covers that fit</span>
+          <span>Only show {noun} that fit</span>
         </label>
       </div>
 
       <FilterSection title="Brand" defaultOpen>
         {Object.keys(brandCounts).sort().map(b =>
-          <CheckRow key={b} label={b} count={brandCounts[b]} checked={filters.brands.has(b)} onChange={() => toggleSet('brands', b)} />
+          <CheckRow key={b} label={BRAND_FILTER_LABELS[b] || b} count={brandCounts[b]} checked={filters.brands.has(b)} onChange={() => toggleSet('brands', b)} />
         )}
       </FilterSection>
 
-      <FilterSection title="Cover Type" defaultOpen>
+      <FilterSection title={typeLabel} defaultOpen>
         {Object.keys(typeCounts).sort().map(t =>
           <CheckRow key={t} label={t} count={typeCounts[t]} checked={filters.types.has(t)} onChange={() => toggleSet('types', t)} />
         )}
