@@ -128,7 +128,7 @@
 
     /* bundles variant */
     '.jj-mega.jj-bundles .jj-tile{grid-template-columns:1fr;padding:16px;}',
-    '.jj-mega.jj-bundles .jj-timg{aspect-ratio:4/3;width:100%;margin-bottom:12px;}',
+    '.jj-mega.jj-bundles .jj-timg{aspect-ratio:4/3;width:100%;margin-bottom:12px;background-size:contain!important;background-repeat:no-repeat;background-position:center;background-color:#14161a;}',
     '.jj-mega.jj-bundles .jj-tile h3{font-size:16px;}',
 
     /* exterior variant */
@@ -263,8 +263,8 @@
       '</div>',
       '<div class="jj-foot">',
         '<div class="jj-foot-links">',
-          '<a href="/bundles" class="jj-foot-link"><span class="jj-foot-dot"></span> Build your own bundle</a>',
-          '<a href="/bundles" class="jj-foot-link"><span class="jj-foot-dot"></span> Financing &mdash; 0% / 12mo</a>',
+          '<a href="/bundles" class="jj-foot-link"><span class="jj-foot-dot"></span> Compare bundles</a>',
+          '<a href="/contact" class="jj-foot-link"><span class="jj-foot-dot"></span> Talk to an expert</a>',
           '<a href="/bundles" class="jj-foot-link"><span class="jj-foot-dot"></span> See what\'s included</a>',
         '</div>',
         '<div class="jj-foot-ctr"><b>3J\'s Auto Body</b><span class="jj-sep">|</span><b>Rhino Linings of Signal Hill</b><span class="jj-addr">1855 E 29th St Ste A, Signal Hill, CA 90755</span></div>',
@@ -329,8 +329,8 @@
       '<div class="jj-foot">',
         '<div class="jj-foot-links">',
           '<a href="/exterior-accessories-V2" class="jj-foot-link"><span class="jj-foot-dot"></span> Browse all accessories</a>',
-          '<a href="/exterior-accessories-V2" class="jj-foot-link"><span class="jj-foot-dot"></span> Fitment guide</a>',
-          '<a href="/exterior-accessories-V2" class="jj-foot-link"><span class="jj-foot-dot"></span> Brand directory</a>',
+          '<a href="/parts-catalog" class="jj-foot-link"><span class="jj-foot-dot"></span> Check fitment</a>',
+          '<a href="/parts-catalog" class="jj-foot-link"><span class="jj-foot-dot"></span> Shop all brands</a>',
         '</div>',
         '<div class="jj-foot-ctr"><b>3J\'s Auto Body</b><span class="jj-sep">|</span><b>Rhino Linings of Signal Hill</b><span class="jj-addr">1855 E 29th St Ste A, Signal Hill, CA 90755</span></div>',
         '<div class="jj-foot-phone"><span>&#9679;</span> CALL (562) 424-6744</div>',

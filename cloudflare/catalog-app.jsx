@@ -408,6 +408,7 @@ function CategoryTabs({ cats, selectedId, onSelect, loading, loadedCount }) {
 
 // ── App ──
 function App() {
+  const sidebarRef = useRef(null);
   const [garage, setGarageState] = useState(() => loadGarage());
   const [filters, setFilters] = useState({
     brands: new Set(),
@@ -473,6 +474,29 @@ function App() {
 
   // Persist view
   useEffect(() => { localStorage.setItem('catalog_view', view); }, [view]);
+
+  // Mouse-wheel over the filter sidebar: scroll the sidebar, and once it hits
+  // its top/bottom edge (or has nothing to scroll) pass the wheel through to the
+  // page. Without this the sticky, overflow:auto sidebar swallowed the wheel and
+  // you had to drag its scrollbar by hand.
+  useEffect(() => {
+    const sb = sidebarRef.current;
+    if (!sb) return;
+    const onWheel = (e) => {
+      const canScroll = sb.scrollHeight > sb.clientHeight + 1;
+      const atTop = sb.scrollTop <= 0;
+      const atBottom = Math.ceil(sb.scrollTop + sb.clientHeight) >= sb.scrollHeight;
+      const up = e.deltaY < 0, down = e.deltaY > 0;
+      if (canScroll && !((down && atBottom) || (up && atTop))) {
+        sb.scrollTop += e.deltaY;           // scroll the sidebar itself
+      } else {
+        window.scrollBy(0, e.deltaY);       // at an edge → scroll the page
+      }
+      e.preventDefault();
+    };
+    sb.addEventListener('wheel', onWheel, { passive: false });
+    return () => sb.removeEventListener('wheel', onWheel);
+  }, []);
 
   // First-catalog-visit auto-prompt fires at most once per session
   useEffect(() => { if (garageOpen) { try { sessionStorage.setItem('catalog_garage_prompted','1'); } catch(e){} } }, []);
@@ -652,7 +676,7 @@ function App() {
         }
 
         <div className="layout layout-sidebar">
-          <aside className="sidebar">
+          <aside className="sidebar" ref={sidebarRef}>
             <FilterPanel filters={filters} setFilters={setFilters} toggleSet={toggleSet} garage={garage} onSwapVehicle={openGaragePopup} brandCounts={brandCounts} typeCounts={typeCounts} />
           </aside>
           <section className="results">
@@ -973,8 +997,16 @@ function Toolbar({ count, sort, setSort, view, setView, garage, catLabel }) {
 }
 
 // ── Product Card ──
+// Card image: prefer the curated PRODUCT_IMAGES map, otherwise fall back to the
+// first fitment row that carries an image. Spaces (e.g. ".../RealTruck Inc/...")
+// are encoded so the URL actually resolves instead of showing a placeholder.
+function cardImage(p) {
+  var raw = PRODUCT_IMAGES[p.name] || ((p.fitments || []).find(function(row){ return row[F.img]; }) || [])[F.img];
+  return raw ? raw.replace(/ /g, '%20') : null;
+}
+
 function ProductCard({ p, onOpenDetail }) {
-  const imgSrc = PRODUCT_IMAGES[p.name];
+  const imgSrc = cardImage(p);
   const quoteUrl = `parts-quote.html?product=${encodeURIComponent(p.brand + ' ' + p.name)}${p.partNum ? '&partNum=' + encodeURIComponent(p.partNum) : ''}`;
   const desc = getProdDesc(p.name, p.type);
   const material = PRODUCT_MATERIAL[p.name] || '';
@@ -1021,7 +1053,7 @@ function ProductRow({ p, garage, onOpenDetail }) {
   const quoteUrl = `parts-quote.html?product=${encodeURIComponent(p.brand + ' ' + p.name)}${p.partNum ? '&partNum=' + encodeURIComponent(p.partNum) : ''}`;
   return (
     <div className="row" onClick={() => onOpenDetail(p.brand, p.name)} style={{cursor:'pointer'}}>
-      <div className="row-media">{PRODUCT_IMAGES[p.name] ? <img src={PRODUCT_IMAGES[p.name]} alt={p.name} style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}} /> : <ProductPlaceholder brand={p.brand} name={p.name} />}</div>
+      <div className="row-media">{cardImage(p) ? <img src={cardImage(p)} alt={p.name} loading="lazy" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}} /> : <ProductPlaceholder brand={p.brand} name={p.name} />}</div>
       <div className="row-body">
         <div className="card-brand-label">{p.brand}</div>
         <div className="row-name">{p.name}</div>
