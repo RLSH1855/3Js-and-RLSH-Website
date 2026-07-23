@@ -694,6 +694,21 @@
   .msg.assistant{ align-self:flex-end; }
   .msg.assistant .bubble{ background:var(--accent-2); color:white; border-bottom-right-radius:4px; border:1px solid oklch(70% 0.15 25 / 0.55); }
   .msg.assistant .time{ text-align:right; }
+  /* Hex writes markdown — rendered by widget/markdown.js, styled here. */
+  .msg .bubble .md-p{ margin:0 0 8px; }
+  .msg .bubble .md-p:last-child{ margin-bottom:0; }
+  .msg .bubble .md-ul{ margin:0 0 8px; padding-left:18px; list-style:disc; }
+  .msg .bubble .md-ul:last-child{ margin-bottom:0; }
+  .msg .bubble .md-ul li{ margin:0 0 4px; }
+  .msg .bubble .md-ul li:last-child{ margin-bottom:0; }
+  .msg .bubble strong{ font-weight:700; }
+  .msg.assistant .bubble strong{ color:#fff; }
+  /* Emoji wash out on the solid red assistant bubble — give them a soft
+     dark halo and a touch of breathing room so they stay legible. */
+  .msg .bubble .md-emoji{ display:inline-block; padding:0 1px; }
+  .msg.assistant .bubble .md-emoji{
+    text-shadow:0 0 2px rgba(0,0,0,.65), 0 1px 1px rgba(0,0,0,.45);
+  }
 
   /* Punch list / page health */
   .health-row-name{ font-weight:600; color:var(--text-0); }
@@ -1177,6 +1192,7 @@
   </div>
 </div>
 
+<script src="../widget/markdown.js?v=3"></script>
 <script>
 (function(){
   "use strict";
@@ -1351,6 +1367,14 @@
       .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
   }
 
+  /* Shared with the customer-facing widget (widget/markdown.js). Falls back to
+     plain escaped text if that file ever fails to load — never raw HTML. */
+  var MD = window.HexMarkdown || null;
+  function msgHtml(text){
+    if(MD) return MD.renderToHtml(text, { wrapEmoji: true });
+    return esc(text);
+  }
+
   function initialsFrom(name, id){
     var src = String(name || '').trim();
     if(src){
@@ -1480,8 +1504,11 @@
       detailLead.innerHTML = '';
     }
 
+    /* Hex replies in markdown. renderToHtml() escapes every character of the
+       message before emitting its own fixed tag set, so nothing a visitor
+       types can become markup here — same guarantee esc() gave us. */
     convMessages.innerHTML = (c.messages || []).map(function(m){
-      return '<div class="msg '+esc(m.who)+'"><div class="bubble">'+esc(m.text)+'</div>'
+      return '<div class="msg '+esc(m.who)+'"><div class="bubble">'+msgHtml(m.text)+'</div>'
         + '<div class="time">'+esc(m.time)+'</div></div>';
     }).join('');
   }

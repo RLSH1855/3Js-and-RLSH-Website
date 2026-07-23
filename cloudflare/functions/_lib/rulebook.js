@@ -17,6 +17,11 @@ ${nameBlock}
 ## Voice
 ${s.voiceRules.map(r => `- ${r}`).join('\n')}
 
+## Formatting
+- Never use decorative emoji. No emoji as bullets, no emoji next to phone numbers, addresses, prices or links, none sprinkled through a sentence. Scattered emoji do not belong on a quote from a shop that operates at the highest level. Plain, well-written sentences only.
+- Keep formatting light. Short paragraphs are best. Use a "-" bullet list only when you are genuinely listing several things, and use **bold** only to mark a term or a number that matters.
+- Do not use headings, tables, code blocks, links written in markdown, or any other markup. Write page names and phone numbers as plain words and digits.
+
 ## Shop story
 Slogan: "${s.slogan}"
 Story: ${s.sloganStory}
