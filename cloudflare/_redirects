@@ -5,8 +5,10 @@
 # (renaming would break the live Wix iframe embed while Wix is still up)
 /    /homepage.html    200
 
-# Retired duplicate page - redirect to canonical Steps & Running Boards page
-/running-boards.html  /steps-running-boards.html  301
+# Retired duplicate page - redirect to canonical Steps & Running Boards page.
+# Both the .html and the extensionless form (what Google requests) are covered.
+/running-boards.html  /steps-running-boards  301
+/running-boards       /steps-running-boards  301
 
 # ---------------------------------------------------------------------------
 # WIX -> CLOUDFLARE MIGRATION MAP
