@@ -1,3 +1,5 @@
 .superpowers/
 .wrangler/
 node_modules/
+# Babel download cache for tools/build-jsx.mjs (re-downloaded on demand)
+tools/.cache/
