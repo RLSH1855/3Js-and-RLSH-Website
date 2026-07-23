@@ -185,6 +185,32 @@ def yr(row, key):
     return v if 1950 <= v <= 2040 else None
 
 
+def load_clearance(path):
+    """Current price for parts on the workbook's "Clearance - Non MAP" tab.
+
+    Those parts are no longer MAP-protected and their real price is lower than
+    the master sheet's MSRP. Publishing the MSRP would quote a customer more
+    than the part actually costs.
+    """
+    prices = {}
+    try:
+        rows = load_rows(path, 'xl/worksheets/sheet3.xml')
+    except KeyError:
+        return prices
+    for r in rows:
+        part = clean(r.get(4, ''))
+        raw = clean(r.get(64, ''))  # USA MSRP/MAP column on this tab
+        if not part or not raw:
+            continue
+        try:
+            val = round(float(raw), 2)
+        except ValueError:
+            continue
+        if val > 0:
+            prices[part.upper()] = val
+    return prices
+
+
 def image_name(part):
     """Filename for a part's image.
 
@@ -263,8 +289,10 @@ def main():
         for fn in os.listdir(IMG_DIR):
             have_images.add(os.path.splitext(fn)[0].upper())
 
+    clearance = load_clearance(src)
     raw = load_rows(src)
     rows = []
+    discounted = 0
     content = OrderedDict()
     line_rows = defaultdict(list)
     skipped = []
@@ -316,7 +344,9 @@ def main():
         fit_note = ' | '.join(note_bits)[:600] or None
 
         desc = g(r, 'desclong') or title
-        price = money(r, 'msrp')
+        if part.upper() in clearance:
+            discounted += 1
+        price = clearance.get(part.upper()) or money(r, 'msrp')
         bed = g(r, 'bed') or None
         safe = image_name(part)
         img = (IMG_REL + safe + '.webp') if safe.upper() in have_images else None
@@ -427,6 +457,7 @@ def main():
         print('  %-22s %6d %9d %8.0f KB' % (cat, nrows, nprod, size / 1024))
     print('\nfitment rows : %d' % len(rows))
     print('product lines: %d' % len(content))
+    print('clearance px : %d parts priced from the Clearance tab' % discounted)
     print('with images  : %d / %d part numbers'
           % (len({r[2] for r in rows if r[12]}), len({r[2] for r in rows})))
     if skipped:
