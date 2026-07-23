@@ -25,3 +25,10 @@ test('system prompt includes hours and phone number', () => {
   assert.ok(prompt.includes('562-424-6744'));
   assert.ok(prompt.includes('Saturday: Closed'));
 });
+
+test('system prompt forbids decorative emoji and heavy markup', () => {
+  const prompt = buildSystemPrompt();
+  assert.ok(prompt.includes('## Formatting'));
+  assert.ok(prompt.includes('Never use decorative emoji'));
+  assert.ok(prompt.includes('Do not use headings, tables, code blocks'));
+});

@@ -80,8 +80,16 @@
     .ai-messages{flex:1 1 auto;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px;
       scroll-behavior:smooth;overscroll-behavior:contain;}
     .ai-msg{max-width:85%;padding:10px 12px;border-radius:0;font-size:14px;line-height:1.55;
-      white-space:pre-wrap;word-wrap:break-word;
+      word-wrap:break-word;overflow-wrap:anywhere;
       animation:aiIn .26s cubic-bezier(.2,.8,.3,1) both;}
+    .ai-msg.user{white-space:pre-wrap;}
+    .ai-msg .md-p{margin:0 0 8px;}
+    .ai-msg .md-p:last-child{margin-bottom:0;}
+    .ai-msg .md-ul{margin:0 0 8px;padding-left:18px;list-style:disc;}
+    .ai-msg .md-ul:last-child{margin-bottom:0;}
+    .ai-msg .md-ul li{margin:0 0 4px;}
+    .ai-msg .md-ul li:last-child{margin-bottom:0;}
+    .ai-msg strong{font-weight:700;color:#fff;}
     @keyframes aiIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:none;}}
     @media (prefers-reduced-motion: reduce){ .ai-msg{animation:none;} }
     .ai-msg.user{align-self:flex-end;background:${RED};color:#fff;}
@@ -191,9 +199,16 @@
   }
 
   /* Builds message content as DOM nodes (never innerHTML) so customer text and
-     model output can never inject markup. Phone numbers become tap-to-call. */
+     model output can never inject markup. Phone numbers become tap-to-call.
+     Hex replies in markdown, so assistant text goes through the shared
+     renderer in widget/markdown.js; if that file somehow fails to load we fall
+     back to plain text rather than showing nothing. */
+  const MD = window.HexMarkdown || null;
+  const MD_OPTS = { linkifyPhones: true };
   const PHONE_RE = /(\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4})/g;
+
   function appendText(target, text) {
+    if (MD) { MD.renderPlainToDom(target, text, document, MD_OPTS); return; }
     const parts = String(text).split(PHONE_RE);
     parts.forEach(function (part, i) {
       if (!part) return;
@@ -208,10 +223,17 @@
     });
   }
 
+  /* Assistant copy only — renders **bold**, "-" bullets and paragraph breaks. */
+  function appendMarkdown(target, text) {
+    if (MD) { MD.renderToDom(target, text, document, MD_OPTS); return; }
+    appendText(target, text);
+  }
+
   function addMessage(role, text) {
     const el = document.createElement('div');
     el.className = 'ai-msg ' + role;
-    appendText(el, text);
+    if (role === 'assistant') appendMarkdown(el, text);
+    else appendText(el, text);
     messagesEl.appendChild(el);
     scrollToBottom();
     return el;
@@ -236,7 +258,7 @@
     messagesEl.appendChild(el);
 
     if (reduceMotion) {
-      appendText(el, text);
+      appendMarkdown(el, text);
       scrollToBottom();
       return Promise.resolve();
     }
@@ -247,12 +269,13 @@
     return new Promise(function (resolve) {
       (function tick() {
         if (i >= words.length) { resolve(); return; }
-        let chunk = '';
         const take = Math.min(words.length - i, words.length > 160 ? 4 : 2);
-        for (let k = 0; k < take; k++) chunk += words[i + k];
         i += take;
         el.textContent = '';
-        appendText(el, words.slice(0, i).join(''));
+        /* Trim a half-typed "**" so the customer never sees stray asterisks
+           flicker while the reply is still revealing. */
+        const partial = words.slice(0, i).join('');
+        appendMarkdown(el, MD ? MD.trimPartial(partial) : partial);
         scrollToBottom();
         setTimeout(tick, step);
       })();

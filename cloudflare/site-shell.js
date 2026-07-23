@@ -974,9 +974,18 @@
 
   /* ── AI Website Assistant widget ── */
   if(!document.getElementById('ai-widget-script')){
+    /* markdown.js must run first — the widget reads window.HexMarkdown at load.
+       async=false keeps dynamically inserted scripts in document order. */
+    var mdScript=document.createElement('script');
+    mdScript.id='ai-markdown-script';
+    mdScript.async=false;
+    mdScript.src='widget/markdown.js?v=3';
+    document.body.appendChild(mdScript);
+
     var aiScript=document.createElement('script');
     aiScript.id='ai-widget-script';
-    aiScript.src='widget/assistant-widget.js?v=2';
+    aiScript.async=false;
+    aiScript.src='widget/assistant-widget.js?v=3';
     document.body.appendChild(aiScript);
   }
 
