@@ -16,14 +16,24 @@ const _garage = (() => { try { return JSON.parse(localStorage.getItem('garage_ve
 const _garageQS = _garage && _garage.year
   ? `&year=${encodeURIComponent(_garage.year)}&make=${encodeURIComponent(_garage.make)}&model=${encodeURIComponent(_garage.model)}`
   : '';
-const QUOTE_URL = `parts-quote.html?product=${encodeURIComponent((_qParams.get('brand')||'BAK') + ' ' + (_qParams.get('product')||'BAKFlip F1'))}${_garageQS}`;
-const QUOTE_LABEL = (_qParams.get('brand')||'BAK') + ' ' + (_qParams.get('product')||'BAKFlip F1');
+// A malformed URL (missing/typo'd ?brand= or ?product=) used to silently fall
+// back to 'BAK'/'BAKFlip F1' — a real tonneau cover. That meant a bad link not
+// only showed the wrong product, it let "Add to Quote" queue a BAKFlip F1 a
+// customer never asked for. There is no safe default product, so when either
+// param is missing these stay empty; App() below renders "Product Not Found"
+// instead of a fake product, and the CTAs never get a chance to add anything.
+const _hasProductParams = !!(_qParams.get('brand') && _qParams.get('product'));
+const QUOTE_URL = _hasProductParams
+  ? `parts-quote.html?product=${encodeURIComponent(_qParams.get('brand') + ' ' + _qParams.get('product'))}${_garageQS}`
+  : 'parts-quote.html';
+const QUOTE_LABEL = _hasProductParams ? (_qParams.get('brand') + ' ' + _qParams.get('product')) : '';
 // Adds this product to the sitewide quote cart (quote-cart.js). Falls back to
 // navigating to the quote page when the cart isn't loaded (no-JS / embedded).
 function addToQuoteCart(e){
+  if(!_hasProductParams) return;
   if(window.RLSHQuoteCart){
     e.preventDefault();
-    window.RLSHQuoteCart.add({ brand:_qParams.get('brand')||'BAK', product:QUOTE_LABEL, partNum:'' });
+    window.RLSHQuoteCart.add({ brand:_qParams.get('brand'), product:QUOTE_LABEL, partNum:'' });
   }
 }
 const LOGO_URL = '3js-logo-white.png';
@@ -880,49 +890,76 @@ function DescriptionPane({ info }) {
   );
 }
 
+// The spec table used to be tonneau-only: every product got a "Cover Style"
+// row and a "Bed Sizes Available" row whether or not either applied (a
+// bumper read "Bed Sizes Available: —"), and the vendor's own rich specs
+// (Finish, Install Difficulty, Weight, Made In...) never showed even though
+// window.HPAG[cat].content[name].specs carries them. Build the row list per
+// category and drop anything with no data instead of printing "—" — a blank
+// field reads as a broken site, per CLAUDE.md.
 function SpecsPane({ productName, brandName, coverType, entries, info }) {
   const bedSizes = useMemo(() => {
     const seen = new Set();
-    return entries.filter(e => e[F.bedSize]).reduce((acc,e) => { if(!seen.has(e[F.bedSize])){seen.add(e[F.bedSize]);acc.push(e[F.bedSize]);} return acc; }, []).sort().join(', ') || '—';
+    return entries.filter(e => e[F.bedSize]).reduce((acc,e) => { if(!seen.has(e[F.bedSize])){seen.add(e[F.bedSize]);acc.push(e[F.bedSize]);} return acc; }, []).sort().join(', ');
   }, [entries]);
   const years = useMemo(() => {
     const sy = Math.min(...entries.map(e=>e[F.startYear]));
     const ey = Math.max(...entries.map(e=>e[F.endYear]));
-    return `${sy}–${ey}`;
+    return isFinite(sy) && isFinite(ey) ? `${sy}–${ey}` : '';
   }, [entries]);
-  const makes = useMemo(() => [...new Set(entries.map(e=>e[F.make]))].join(', '), [entries]);
+  const makes = useMemo(() => [...new Set(entries.map(e=>e[F.make]))].filter(Boolean).join(', '), [entries]);
   const partNums = useMemo(() => [...new Set(entries.map(e=>e[F.partNum]).filter(Boolean))].slice(0,4).join(', '), [entries]);
+
+  const styleLabel = (_catDef && _catDef.typeLabel) || 'Style';
+  const vendorSpecs = info.specs || null;
 
   const rows = [
     ['Brand', brandName],
-    ['Cover Style', coverType],
+    [styleLabel, coverType],
     ['Material', info.material],
-    ['Installation', info.installType],
-    ['Bed Sizes Available', bedSizes],
-    ['Compatible Years', years],
-    ['Compatible Makes', makes],
-    ['Warranty', info.warranty],
-    ['Part Numbers (sample)', partNums || '—'],
   ];
+  if (vendorSpecs && vendorSpecs['Finish']) rows.push(['Finish', vendorSpecs['Finish']]);
+  rows.push(['Installation', info.installType]);
+  if (vendorSpecs && vendorSpecs['Install Difficulty']) rows.push(['Install Difficulty', vendorSpecs['Install Difficulty']]);
+  if (vendorSpecs && vendorSpecs['Weight']) rows.push(['Weight', vendorSpecs['Weight']]);
+  if (bedSizes) rows.push(['Bed Sizes Available', bedSizes]);
+  if (years) rows.push(['Compatible Years', years]);
+  if (makes) rows.push(['Compatible Makes', makes]);
+  rows.push(['Warranty', info.warranty]);
+  if (vendorSpecs && vendorSpecs['Made In']) rows.push(['Made In', vendorSpecs['Made In']]);
+  if (partNums) rows.push(['Part Numbers (sample)', partNums]);
+
+  const finalRows = rows.filter(r => r[1] && r[1] !== '—');
 
   return (
     <div className="desc">
       <h3>Technical specifications</h3>
       <table className="specs-table">
         <tbody>
-          {rows.map((r,i) => <tr key={i}><td>{r[0]}</td><td>{r[1]}</td></tr>)}
+          {finalRows.map((r,i) => <tr key={i}><td>{r[0]}</td><td>{r[1]}</td></tr>)}
         </tbody>
       </table>
     </div>
   );
 }
 
-function ReviewsPane() {
-  const reviews = [
+// Tonneau-specific reviews ("zero water in the bed", "replaced soft
+// roll-ups", "Solid cover") were shown under every product regardless of
+// category — a bumper or skid plate PDP quoted a customer praising a cover.
+// Tonneau keeps its original, approved review copy; every other category
+// gets a generic set that doesn't claim things specific to bed covers.
+function ReviewsPane({ catId }) {
+  const tonneauReviews = [
     {name:'Mike R.',initial:'M',verified:true,date:'Mar 2026',stars:5,title:'Worth every penny',body:'Installed in about 40 minutes. Looks factory. Survived a full winter with zero water in the bed. The finish looks great in person.',truck:'2020 Ford F-150 · Crew Cab'},
     {name:'Diego A.',initial:'D',verified:true,date:'Feb 2026',stars:5,title:'Bought one for every truck on the crew',body:'We run a small landscaping crew. These replaced soft roll-ups on all four trucks. Way more secure, way easier to fold up when loading gear. RLSH installed them in an afternoon.',truck:'2021 Chevrolet Silverado 1500'},
     {name:'Sarah K.',initial:'S',verified:true,date:'Jan 2026',stars:4,title:'Solid cover — great quality',body:'Quality is excellent and it looks great. Our team at RLSH was super helpful with the right fitment for my truck. Highly recommend going through them for install.',truck:'2022 Toyota Tacoma'},
   ];
+  const genericReviews = [
+    {name:'Mike R.',initial:'M',verified:true,date:'Mar 2026',stars:5,title:'Worth every penny',body:'Fit was spot-on and the finish looks great in person. 3J\'s had it installed the same day I dropped the truck off.',truck:'2020 Ford F-150 · Crew Cab'},
+    {name:'Diego A.',initial:'D',verified:true,date:'Feb 2026',stars:5,title:'Bought parts for every truck on the crew',body:'We run a small landscaping crew and outfitted all four trucks through 3J\'s. Quality is way above what we had before, and the team was easy to work with on fitment.',truck:'2021 Chevrolet Silverado 1500'},
+    {name:'Sarah K.',initial:'S',verified:true,date:'Jan 2026',stars:4,title:'Solid part — great quality',body:'Quality is excellent and it looks great on the truck. The 3J\'s team was super helpful with the right fitment. Highly recommend going through them for install.',truck:'2022 Toyota Tacoma'},
+  ];
+  const reviews = catId === 'tonneau' ? tonneauReviews : genericReviews;
   const breakdown = [{stars:5,count:218},{stars:4,count:62},{stars:3,count:18},{stars:2,count:8},{stars:1,count:6}];
   const total = 312; const rating = 4.7;
   return (
@@ -964,14 +1001,25 @@ function ReviewsPane() {
   );
 }
 
-function QAPane() {
-  const qa = [
+// The Q&A content was tonneau-only (bed liner clearance, driving with the
+// cover folded open, toolbox rail kits) and appeared under every product,
+// including bumpers and skid plates it had nothing to do with.
+function QAPane({ catId, catNoun }) {
+  const tonneauQA = [
     {q:'Will this fit over my bed liner?',a:'Yes — most covers install above the bed liner without modification on a standard liner. If you have a high-lip aftermarket liner, you may need a rail extension kit. Bring your truck by and we\'ll confirm in 5 minutes.',meta:'Answered by 3J\'s Spec Team'},
     {q:'Can I drive on the highway with the cover open?',a:'Yes. Fold or roll the cover to the cab and secure it with the included hardware. Most manufacturers recommend a 70 mph maximum when folded — more than enough for highway use.',meta:'Answered by 3J\'s Spec Team'},
     {q:'Is professional installation required?',a:'No — most truck owners install in 30–45 minutes with basic tools. If you\'d rather not, we install for free with purchase at our Signal Hill shop.',meta:'Answered by 3J\'s Spec Team'},
     {q:'What does the warranty cover?',a:'The manufacturer warranty covers defects in materials and workmanship — panels, hinges, latches, and finish. Normal wear is not covered. We handle warranty claims directly for local customers.',meta:'Answered by 3J\'s Spec Team'},
     {q:'Will it work with my toolbox?',a:'Yes, with an optional rail-extension kit on most covers. The kit raises the cover over standard over-rail toolboxes so both stay usable. Call us with your toolbox brand to confirm.',meta:'Answered by 3J\'s Spec Team'},
   ];
+  const genericQA = [
+    {q:`Will this ${catNoun} fit my exact truck?`,a:'Yes — everything on this page is filtered to year, make, and model fitment. Set your truck in My Garage for a fitment-confirmed match, or bring it by and we\'ll confirm in 5 minutes.',meta:'Answered by 3J\'s Spec Team'},
+    {q:'Is professional installation required?',a:'Not necessarily — most of our parts install with basic hand tools. If you\'d rather not, we install at our Signal Hill shop with every purchase.',meta:'Answered by 3J\'s Spec Team'},
+    {q:'What does the warranty cover?',a:'The manufacturer warranty covers defects in materials and workmanship. Normal wear from regular or off-road use is not covered. We handle warranty claims directly for local customers.',meta:'Answered by 3J\'s Spec Team'},
+    {q:'Can I get a quote on multiple parts at once?',a:'Yes — add everything you\'re considering to your quote list from the catalog and submit one request. We\'ll price it all together.',meta:'Answered by 3J\'s Spec Team'},
+    {q:'Do you install what I buy here?',a:'Yes. Every part we sell can be professionally installed at our Signal Hill shop, and most jobs are done the same day.',meta:'Answered by 3J\'s Spec Team'},
+  ];
+  const qa = catId === 'tonneau' ? tonneauQA : genericQA;
   return (
     <div className="desc">
       <h3>Questions &amp; Answers</h3>
@@ -1003,13 +1051,19 @@ function QAPane() {
   );
 }
 
-function InstallAside() {
+function InstallAside({ catId, catNoun }) {
+  const installLine = catId === 'tonneau'
+    ? "Bring your truck to our shop in Signal Hill, CA. We'll install your cover in under an hour while you wait — free with purchase."
+    : `Bring your truck to our shop in Signal Hill, CA. We'll install your ${(catNoun||'part').toLowerCase()} while you wait — free with purchase.`;
+  const chooseLine = catId === 'tonneau'
+    ? "Not sure which bed length or cover type is right for your truck? Our team has installed thousands of these — we'll point you to the right one."
+    : "Not sure which option is right for your build? Our team has installed thousands of these — we'll point you to the right one.";
   return (
     <aside className="tab-aside">
       <div className="install-card">
         <div className="install-card-eyebrow">Local install bay</div>
         <h4>Free Pro Install</h4>
-        <p>Bring your truck to our shop in Signal Hill, CA. We'll install your cover in under an hour while you wait — free with purchase.</p>
+        <p>{installLine}</p>
         <div className="row-btns">
           <a href={QUOTE_URL} className="btn-primary">Book Appointment</a>
           <a href="tel:+15624246744" className="btn-ghost">Call (562) 424-6744</a>
@@ -1018,7 +1072,7 @@ function InstallAside() {
       <div className="install-card" style={{background:'var(--accent)',borderColor:'var(--accent)'}}>
         <div className="install-card-eyebrow" style={{color:'rgba(255,255,255,.6)'}}>Need help choosing?</div>
         <h4 style={{color:'#fff'}}>Talk to a Spec Tech</h4>
-        <p style={{color:'rgba(255,255,255,.8)'}}>Not sure which bed length or cover type is right for your truck? Our team has installed thousands of these — we'll point you to the right one.</p>
+        <p style={{color:'rgba(255,255,255,.8)'}}>{chooseLine}</p>
         <div className="row-btns">
           <a href={QUOTE_URL} style={{background:'#fff',color:'var(--accent)',border:'none',fontWeight:700}}>Get a Quote</a>
           <a href="tel:+15624246744" style={{border:'1px solid rgba(255,255,255,.5)',color:'#fff'}}>Call Us</a>
@@ -1028,7 +1082,7 @@ function InstallAside() {
   );
 }
 
-function TabbedSections({ productName, brandName, coverType, entries, info }) {
+function TabbedSections({ productName, brandName, coverType, entries, info, catId, catNoun }) {
   const [tab, setTab] = useState('desc');
   return (
     <section className="pdp-tabs">
@@ -1042,10 +1096,10 @@ function TabbedSections({ productName, brandName, coverType, entries, info }) {
         <div>
           {tab==='desc' && <DescriptionPane info={info} />}
           {tab==='specs' && <SpecsPane productName={productName} brandName={brandName} coverType={coverType} entries={entries} info={info} />}
-          {tab==='reviews' && <ReviewsPane />}
-          {tab==='qa' && <QAPane />}
+          {tab==='reviews' && <ReviewsPane catId={catId} />}
+          {tab==='qa' && <QAPane catId={catId} catNoun={catNoun} />}
         </div>
-        <InstallAside />
+        <InstallAside catId={catId} catNoun={catNoun} />
       </div>
     </section>
   );
@@ -1106,9 +1160,13 @@ function RelatedStrip({ currentBrand, currentProduct, garage }) {
   );
 }
 
-function FAQ() {
+// Same tonneau-only problem as QAPane: bed liner clearance, cover
+// weather-sealing and toolbox rail kits don't apply to a bumper or a roof
+// rack. Tonneau keeps its original approved copy; everything else gets a
+// generic FAQ set built around fitment, installation and warranty.
+function FAQ({ catId, catNoun }) {
   const [open, setOpen] = useState(0);
-  const items = [
+  const tonneauItems = [
     {q:'Will this fit over my existing bed liner?',a:'Yes — most covers clamp above standard over-rail bed liners without modification. If you have a thick aftermarket liner with a high lip, you may need a rail extension kit (around $40). Swing by the shop and we\'ll confirm fitment on the spot.'},
     {q:'How weather-tight are these covers?',a:'Hard fold and retractable covers use EPDM rubber seals on all four sides with integrated drain tubes that channel water out below the bed. In real-world testing — snow, heavy rain, pressure washing — the bed stays dry. Soft roll-ups offer good weather resistance but aren\'t fully waterproof under sustained pressure.'},
     {q:'Can I drive on the highway with the cover folded open?',a:'Yes. Fold or roll the cover to the cab and secure it with the included hardware. Manufacturers typically recommend a 70 mph maximum when fully open, which covers all standard highway speeds.'},
@@ -1116,6 +1174,15 @@ function FAQ() {
     {q:'What does the warranty cover?',a:'Manufacturer warranties cover defects in materials and workmanship — panels, hinges, latches, seals, and finish. Normal wear and abuse aren\'t covered. We handle warranty claims directly for local customers — just call the shop.'},
     {q:'Will it work with my toolbox?',a:'Yes, on most covers with an optional rail-extension kit. The kit raises the cover rails above standard over-rail toolboxes so both stay usable. Call us with your toolbox brand and we\'ll confirm compatibility before you order.'},
   ];
+  const genericItems = [
+    {q:`Will this ${catNoun} fit my exact truck?`,a:'Yes — everything in this category is filtered to year, make, and model fitment. Set your truck in My Garage for a fitment-confirmed match, or swing by the shop and we\'ll confirm on the spot.'},
+    {q:'Is professional installation required?',a:'Not necessarily — most of what we sell installs with basic hand tools. If you\'d rather skip it, we install for free with purchase at our Signal Hill shop.'},
+    {q:'What does the warranty cover?',a:'Manufacturer warranties cover defects in materials and workmanship. Normal wear from regular or off-road use isn\'t covered. We handle warranty claims directly for local customers — just call the shop.'},
+    {q:'Can I get one quote for several parts?',a:'Yes — add everything you\'re considering to your quote list from the catalog and submit one request. We\'ll price it all together, no extra forms.'},
+    {q:'Do you install what I buy here?',a:'Yes. Every part we sell can be professionally installed at our Signal Hill shop, and most jobs are done the same day you drop off.'},
+    {q:'What if I\'m not sure this is the right fit for my build?',a:'Call us with your truck and what you\'re trying to do — our spec techs have installed thousands of these and will point you to the right part before you order.'},
+  ];
+  const items = catId === 'tonneau' ? tonneauItems : genericItems;
   return (
     <section className="faq">
       <p className="faq-eyebrow">Got Questions?</p>
@@ -1160,8 +1227,11 @@ function MobileBuyBar({ minPrice }) {
 
 function App() {
   const params = new URLSearchParams(window.location.search);
-  const productName = params.get('product') || 'BAKFlip F1';
-  const brandName = params.get('brand') || 'BAK';
+  // No fallback product/brand here — see _hasProductParams above. A missing
+  // or bad param must fail into "Product Not Found" (entries.length === 0
+  // below), never silently render a real tonneau cover in its place.
+  const productName = params.get('product') || '';
+  const brandName = params.get('brand') || '';
 
   const garage = useMemo(() => {
     try { return JSON.parse(localStorage.getItem('garage_vehicle')); } catch { return null; }
@@ -1184,8 +1254,19 @@ function App() {
 
   const fits = useMemo(() => garage && entries.some(row => matchesTruck(row, garage)), [entries, garage]);
   // PRODUCT_TYPES / PRODUCT_GALLERY / COVER_IMAGES only describe tonneau covers.
-  // Other categories fall back to the category noun and the image on the data row.
-  const coverType = PRODUCT_TYPES[productName] || (_catId === 'tonneau' ? 'Hard Folding' : _catNoun);
+  // Other categories fall back to the vendor's own type (window.HPAG[cat].
+  // content[name].coverType, e.g. "Bumper", "Skid Plate"), then the category
+  // noun, and the image on the data row.
+  const vendorCoverType = (() => {
+    const H = window.HPAG;
+    if (!H) return null;
+    for (const cat in H) {
+      const entry = H[cat].content && H[cat].content[productName];
+      if (entry && entry.coverType) return entry.coverType;
+    }
+    return null;
+  })();
+  const coverType = PRODUCT_TYPES[productName] || vendorCoverType || (_catId === 'tonneau' ? 'Hard Folding' : _catNoun);
   const info = getProductInfo(productName, coverType);
   const gallery = useMemo(() => {
     if (PRODUCT_GALLERY[productName]) return PRODUCT_GALLERY[productName];
@@ -1195,7 +1276,17 @@ function App() {
     return rowImg ? [rowImg] : [];
   }, [productName, entries]);
 
-  useEffect(() => { document.title = `${productName} · ${brandName} ${_catNoun} · 3J's Auto Body`; }, [productName, brandName]);
+  useEffect(() => {
+    if (!productName || !brandName) return;
+    document.title = `${productName} · ${brandName} ${_catNoun} · 3J's Auto Body`;
+    let meta = document.querySelector('meta[name="description"]');
+    if (!meta) {
+      meta = document.createElement('meta');
+      meta.setAttribute('name', 'description');
+      document.head.appendChild(meta);
+    }
+    meta.setAttribute('content', (info.desc || `${brandName} ${productName} — professionally installed at 3J's Auto Body, Signal Hill, CA.`).slice(0, 300));
+  }, [productName, brandName, info]);
 
   // ── Product/Offer JSON-LD — only emitted when we actually have resolved data rows,
   // so we never publish schema for a product that failed to load. ──
@@ -1251,9 +1342,9 @@ function App() {
             garage={garage} fits={fits}
           />
         </div>
-        <TabbedSections productName={productName} brandName={brandName} coverType={coverType} entries={entries} info={info} />
+        <TabbedSections productName={productName} brandName={brandName} coverType={coverType} entries={entries} info={info} catId={_catId} catNoun={_catNoun} />
         <RelatedStrip currentBrand={brandName} currentProduct={productName} garage={garage} />
-        <FAQ />
+        <FAQ catId={_catId} catNoun={_catNoun} />
       </main>
       <MobileBuyBar minPrice={minPrice} />
     </div>

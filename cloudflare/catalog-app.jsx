@@ -79,12 +79,36 @@ const PRODUCT_WARRANTY = {
 };
 
 // ── Brand bg colors for placeholder ──
-const BRAND_BG = { 'BAK':'#1a1a2e','Extang':'#16213e','Retrax':'#1a2a1a','Roll N Lock':'#2a1a1a','TruXedo':'#1a1a2a','UnderCover':'#201a10' };
+// ADD and DV8 had no entry, so their 3 photo-less products (see landmine notes
+// in FABLE5_CATALOG_FIX_PROMPT.md) fell through to the plain #181818 default.
+const BRAND_BG = {
+  'BAK':'#1a1a2e','Extang':'#16213e','Retrax':'#1a2a1a','Roll N Lock':'#2a1a1a','TruXedo':'#1a1a2a','UnderCover':'#201a10',
+  'ADD':'#1a1512','DV8':'#12161a',
+};
 
 // ── Brand filter labels ──
 // Cards stay badged with the short code; the filter list spells the brand out
 // so a shopper who doesn't know the abbreviation still recognises it.
 const BRAND_FILTER_LABELS = { 'ADD':'Addictive Desert Designs (ADD)' };
+
+// ── Every brand carried anywhere in the catalog, across all 20 categories ──
+// James was explicit: the Brand filter must always list every brand the shop
+// carries, even in a category that brand doesn't make anything for — showing
+// "Extang 0" under Bumpers tells a shopper something true (Extang doesn't make
+// off-road bumpers); letting Extang silently vanish from the list reads as a
+// broken site. Building the option list from only the current category's
+// loaded products can't produce that, because a brand absent from THIS
+// category would never appear at all. This is a roster of brand identities,
+// not a per-product lookup table, so it isn't the kind of hard-coded map this
+// codebase is being swept for — it only needs to grow the day a new brand is
+// added to the shop.
+const BRAND_UNIVERSE = [
+  'ADD','AMP Research','AVS','AlphaRex','Aries','B&W','BAK','BackRack','Baja Designs',
+  'Bushwacker','CURT','DV8','Diode Dynamics','Extang','Form Lighting','Go Rhino',
+  'Husky Liners','KC HiLites','Lund','Morimoto','N-Fab','Oracle Lighting','Retrax',
+  'Rigid Industries','Roll N Lock','Smittybilt','Spyder Auto','Stampede','Tonno Pro',
+  'TrailFX','TruXedo','UnderCover','Vision X','Westin','XK Glow',
+];
 
 // ── Short product descriptions ──
 const PRODUCT_DESC = {
@@ -369,6 +393,33 @@ function productType(name) {
   return '';
 }
 
+// Same fallback pattern as productType(): hard-coded map first, then the
+// vendor's own specs. PRODUCT_MATERIAL/PRODUCT_WARRANTY only ever covered the
+// tonneau lineup, so every ADD/DV8 card printed blank Material/Warranty lines
+// even though the vendor data has both (window.HPAG[cat].content[name].specs).
+function productMaterial(name) {
+  if (PRODUCT_MATERIAL[name]) return PRODUCT_MATERIAL[name];
+  const H = window.HPAG;
+  if (H) {
+    for (const cat in H) {
+      const entry = H[cat].content && H[cat].content[name];
+      if (entry && entry.specs && entry.specs['Material']) return entry.specs['Material'];
+    }
+  }
+  return '';
+}
+function productWarranty(name) {
+  if (PRODUCT_WARRANTY[name]) return PRODUCT_WARRANTY[name];
+  const H = window.HPAG;
+  if (H) {
+    for (const cat in H) {
+      const entry = H[cat].content && H[cat].content[name];
+      if (entry && entry.specs && entry.specs['Warranty']) return entry.specs['Warranty'];
+    }
+  }
+  return '';
+}
+
 // Build unique product list from raw data rows
 function buildProducts(data) {
   const pm = {};
@@ -614,9 +665,14 @@ function App() {
     return buildProducts(selectedCat.getData ? selectedCat.getData() : []);
   }, [selectedCatId, catLoading]);
 
-  // Brand/type counts
+  // Brand/type counts.
+  // Brand counts start from the FULL brand universe (every brand=0), not just
+  // the brands present in this category, so the sidebar always lists every
+  // brand the shop carries — a brand that makes nothing in this category
+  // still shows, at 0, rather than disappearing. See BRAND_UNIVERSE above.
   const brandCounts = useMemo(() => {
     const c = {};
+    BRAND_UNIVERSE.forEach(b => { c[b] = 0; });
     allProducts.forEach(p => { c[p.brand] = (c[p.brand]||0)+1; });
     return c;
   }, [allProducts]);
@@ -657,6 +713,22 @@ function App() {
     else list.sort((a,b) => (b.fits?1:0)-(a.fits?1:0));
     return list;
   }, [allProducts, filters, sort, garage, query]);
+
+  // ── Page <title> and meta description — these were hard-coded in the HTML
+  // head as "Tonneau Covers", so every one of the 20 categories showed the
+  // same tonneau title/description in the tab, in search results, and in
+  // link previews. Now they follow whichever category is selected. ──
+  useEffect(() => {
+    if (catLoading) return;
+    document.title = `${selectedCat.name} — RLSH Truck & Jeep Outfitters · Signal Hill, CA`;
+    let meta = document.querySelector('meta[name="description"]');
+    if (!meta) {
+      meta = document.createElement('meta');
+      meta.setAttribute('name', 'description');
+      document.head.appendChild(meta);
+    }
+    meta.setAttribute('content', `${selectedCat.heroSub || selectedCat.heroTitle} Professionally installed at 3J's Auto Body, Signal Hill, CA.`);
+  }, [selectedCatId, catLoading, selectedCat]);
 
   // ── ItemList JSON-LD for the current grid — regenerated on category/filter change,
   // capped so payload stays reasonable. Only emitted once real product data has loaded. ──
@@ -957,13 +1029,13 @@ function FilterPanel({ filters, setFilters, toggleSet, garage, onSwapVehicle, br
 
       <FilterSection title="Brand" defaultOpen>
         {Object.keys(brandCounts).sort().map(b =>
-          <CheckRow key={b} label={BRAND_FILTER_LABELS[b] || b} count={brandCounts[b]} checked={filters.brands.has(b)} onChange={() => toggleSet('brands', b)} />
+          <CheckRow key={b} label={BRAND_FILTER_LABELS[b] || b} count={brandCounts[b]} checked={filters.brands.has(b)} onChange={() => toggleSet('brands', b)} disabled={brandCounts[b] === 0} />
         )}
       </FilterSection>
 
       <FilterSection title={typeLabel} defaultOpen>
         {Object.keys(typeCounts).sort().map(t =>
-          <CheckRow key={t} label={t} count={typeCounts[t]} checked={filters.types.has(t)} onChange={() => toggleSet('types', t)} />
+          <CheckRow key={t} label={t} count={typeCounts[t]} checked={filters.types.has(t)} onChange={() => toggleSet('types', t)} disabled={typeCounts[t] === 0} />
         )}
       </FilterSection>
 
@@ -994,10 +1066,13 @@ function FilterSection({ title, defaultOpen=false, children }) {
   );
 }
 
-function CheckRow({ label, count, checked, onChange }) {
+// Zero-count rows stay visible and legible — James was explicit that a
+// silently-vanished option reads as a broken site, but a visible "0" reads as
+// an answer. They're just not selectable, since there's nothing to filter to.
+function CheckRow({ label, count, checked, onChange, disabled }) {
   return (
-    <label className="check-row">
-      <input type="checkbox" checked={!!checked} onChange={onChange} />
+    <label className={`check-row ${disabled ? 'check-row-zero' : ''}`} style={disabled ? {opacity:0.6, cursor:'not-allowed'} : undefined}>
+      <input type="checkbox" checked={!!checked} onChange={onChange} disabled={!!disabled} />
       <span className="check-box"><span className="check-mark">{Icon.check}</span></span>
       <span className="check-label">{label}</span>
       {count != null && <span className="check-count">{count}</span>}
@@ -1071,8 +1146,8 @@ function ProductCard({ p, onOpenDetail }) {
   const imgSrc = cardImage(p);
   const quoteUrl = `parts-quote.html?product=${encodeURIComponent(p.brand + ' ' + p.name)}${p.partNum ? '&partNum=' + encodeURIComponent(p.partNum) : ''}`;
   const desc = getProdDesc(p.name, p.type);
-  const material = PRODUCT_MATERIAL[p.name] || '';
-  const warranty = PRODUCT_WARRANTY[p.name] || '';
+  const material = productMaterial(p.name);
+  const warranty = productWarranty(p.name);
   return (
     <div className="card" onClick={() => onOpenDetail(p.brand, p.name)}>
       <div className="card-img">
