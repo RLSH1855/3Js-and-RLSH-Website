@@ -43,15 +43,14 @@ async function smFetch(path, env, options) {
   return res.json();
 }
 
-async function findOrCreateCustomer(data, env) {
-  var query = data.email || data.phone;
-  var searchRes = await smFetch('/customer?query=' + encodeURIComponent(query), env);
-  var customers = searchRes.data || searchRes;
-
-  if (Array.isArray(customers) && customers.length > 0) {
-    return customers[0];
-  }
-
+// Always create a fresh customer from exactly what the person typed into the
+// quote form. We deliberately do NOT search for an existing customer first:
+// Shopmonkey's /customer search ignores the query term and returns the entire
+// customer list, so the old "find first match" logic attached every single
+// quote to whoever happened to be first in that list. A repeat customer may
+// appear twice (harmless, mergeable in Shopmonkey) — that is far safer than
+// mis-filing a real lead onto the wrong person and losing their contact info.
+async function createCustomer(data, env) {
   var body = {
     firstName: data.firstName,
     lastName: data.lastName,
@@ -209,7 +208,7 @@ export async function onRequestPost(context) {
   }
 
   try {
-    var customer = await findOrCreateCustomer(data, env);
+    var customer = await createCustomer(data, env);
     var customerId = customer.id;
 
     var vehicleId = null;
