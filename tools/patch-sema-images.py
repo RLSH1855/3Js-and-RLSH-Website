@@ -10,6 +10,7 @@ hardcoded null image, regardless of whether a real photo exists. The
 brand's own SEMA export usually has one.
 
 Usage: python tools/patch-sema-images.py <brand> <sema_export.txt> <target_data.js> [<target_data.js> ...]
+       python tools/patch-sema-images.py --strip-prefix ORC <brand> <sema_export.txt> <target_data.js> [...]
 """
 import re
 import sys
@@ -34,7 +35,7 @@ def build_image_map(sema_path):
                 image_map[part_num] = urls[0].replace(' ', '%20')
     return image_map
 
-def patch_file(brand, image_map, target_path):
+def patch_file(brand, image_map, target_path, strip_prefix=None):
     part_re = re.compile(r'^\["' + re.escape(brand) + r'","(?:[^"\\]|\\.)*","([^"]*)"')
     null_img_re = re.compile(r',null\](,?)\s*$')
 
@@ -52,9 +53,10 @@ def patch_file(brand, image_map, target_path):
         if not nm:
             continue
         part_num = m.group(1)
-        if part_num in image_map:
+        lookup = part_num[len(strip_prefix):] if strip_prefix and part_num.startswith(strip_prefix) else part_num
+        if lookup in image_map:
             trailing_comma = nm.group(1)
-            lines[i] = line[:nm.start()] + ',"' + image_map[part_num] + '"]' + trailing_comma + '\n'
+            lines[i] = line[:nm.start()] + ',"' + image_map[lookup] + '"]' + trailing_comma + '\n'
             patched += 1
 
     with open(target_path, 'w', encoding='utf-8') as f:
@@ -63,11 +65,16 @@ def patch_file(brand, image_map, target_path):
     print(f"  {target_path}: {brand} rows scanned={total}, patched={patched}")
 
 def main():
-    brand, sema_path, *targets = sys.argv[1:]
+    args = sys.argv[1:]
+    strip_prefix = None
+    if args and args[0] == '--strip-prefix':
+        strip_prefix = args[1]
+        args = args[2:]
+    brand, sema_path, *targets = args
     image_map = build_image_map(sema_path)
     print(f"{brand}: {len(image_map)} part numbers with a photo in SEMA export")
     for t in targets:
-        patch_file(brand, image_map, t)
+        patch_file(brand, image_map, t, strip_prefix)
 
 if __name__ == '__main__':
     main()
