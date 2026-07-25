@@ -719,7 +719,9 @@ document.addEventListener('keydown', function(e) {
 
 // ── Phone formatter ──
 document.getElementById('f-phone').addEventListener('input', function(e){
-  var d = e.target.value.replace(/\D/g,'').slice(0,10);
+  var d = e.target.value.replace(/\D/g,'');
+  if(d.length === 11 && d[0] === '1') d = d.slice(1);
+  d = d.slice(0,10);
   var f = '';
   if(d.length > 6)      f = '('+d.slice(0,3)+') '+d.slice(3,6)+'-'+d.slice(6);
   else if(d.length > 3) f = '('+d.slice(0,3)+') '+d.slice(3);

@@ -71,15 +71,26 @@ async function createCustomer(data, env) {
       body: JSON.stringify({ email: data.email }),
     });
   }
+  // A phone number Shopmonkey's validator rejects (e.g. an unstripped leading
+  // "1" producing a bogus area code) must not lose the whole lead — the
+  // customer's name and email are already saved above. Note the raw number
+  // on the order instead of failing the entire submission.
+  var phoneWarning = null;
   if (data.phone) {
-    await smFetch('/customer/' + customer.id, env, {
-      method: 'PUT',
-      body: JSON.stringify({
-        phoneNumbers: [{ number: data.phone.replace(/\D/g, ''), type: 'Mobile' }],
-      }),
-    });
+    try {
+      await smFetch('/customer/' + customer.id, env, {
+        method: 'PUT',
+        body: JSON.stringify({
+          phoneNumbers: [{ number: data.phone.replace(/\D/g, ''), type: 'Mobile' }],
+        }),
+      });
+    } catch (phoneError) {
+      console.error('Phone attach failed, continuing without it:', phoneError.message);
+      phoneWarning = 'Phone as entered: ' + data.phone + ' (rejected by Shopmonkey, needs manual follow-up)';
+    }
   }
 
+  customer._phoneWarning = phoneWarning;
   return customer;
 }
 
@@ -97,8 +108,9 @@ async function createVehicle(customerId, data, env) {
   return created.data || created;
 }
 
-async function createOrderWithServices(customerId, vehicleId, data, env) {
+async function createOrderWithServices(customerId, vehicleId, data, env, phoneWarning) {
   var noteParts = [];
+  if (phoneWarning) noteParts.push(phoneWarning);
   if (data.partNumber) noteParts.push('Part #' + data.partNumber);
   if (data.addOns && data.addOns !== 'None') noteParts.push('Add-ons: ' + data.addOns);
   if (data.message) noteParts.push('Message: ' + data.message);
@@ -217,7 +229,7 @@ export async function onRequestPost(context) {
       vehicleId = vehicle.id;
     }
 
-    var order = await createOrderWithServices(customerId, vehicleId, data, env);
+    var order = await createOrderWithServices(customerId, vehicleId, data, env, customer._phoneWarning);
 
     return jsonResponse({
       ok: true,
