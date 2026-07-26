@@ -622,7 +622,24 @@ function getGenericInfo(productName, coverType) {
     'Roll-Up':{ tagline:`${productName} — soft roll-up tonneau cover. Low-profile, simple operation, no-drill install.`, desc:`${productName} is a soft roll-up tonneau cover that gives you easy access and a low-profile look. The cover rolls up to a compact bundle at the cab when you need full bed access, and snaps down for weather protection in seconds. Lightweight and simple to operate with one hand.`, highlights:['Rolls up to compact bundle at the cab','Low-profile design','Simple one-handed operation','Weather-resistant vinyl','No-drill clamp-on installation','Manufacturer warranty included'], features:[{title:'Roll-Up Design',body:'Rolls into a compact bundle at the cab for full bed access.'},{title:'Low-Profile',body:'Sits close to the bed rail for a clean truck look.'},{title:'One-Hand Op',body:'Open and close in seconds with one hand.'},{title:'No-Drill Install',body:'Clamp-on fits standard bed rails without modification.'}], warranty:'Manufacturer warranty', material:'Vinyl, aluminum frame', installType:'No-drill clamp-on' },
     'Retractable':{ tagline:`${productName} — retractable tonneau cover. Slides open smoothly, locks at any position.`, desc:`${productName} is a retractable tonneau cover that slides open on sealed rails into a compact canister at the cab. Lock the cover at any position for partial or full access. The rigid slat construction handles heavy loads and stands up to years of daily use.`, highlights:['Retracts into compact canister at the cab','Locks at any position for partial or full access','Rigid slat construction handles heavy loads','No-drill stake pocket installation','Manufacturer warranty included'], features:[{title:'Retractable Design',body:'Slides smoothly into canister — no folding, no fumbling.'},{title:'Lock Anywhere',body:'Lock at any open position for hands-free access.'},{title:'Rigid Slats',body:'Solid slat construction stands up to load and daily use.'},{title:'No-Drill Mount',body:'Stake pocket clamps install without modifying the bed.'}], warranty:'Manufacturer warranty', material:'Aluminum or polycarbonate slats', installType:'Stake pocket mount, no-drill' },
   };
-  return typeDefaults[coverType] || typeDefaults['Hard Folding'];
+  if (_catId === 'tonneau') return typeDefaults[coverType] || typeDefaults['Hard Folding'];
+  // Non-tonneau categories used to fall through to the tonneau "Hard Folding"
+  // template above (coverType here is the category noun, e.g. "Running Board",
+  // which never matches a tonneau key) — a running board's spec sheet would
+  // claim it was a "hard-folding aluminum tonneau cover". Build an honest,
+  // category-neutral fallback instead; no fabricated technical claims.
+  const noun = (coverType || _catNoun || 'part').toLowerCase();
+  return {
+    tagline: `${productName} — professional-grade ${noun} for your truck.`,
+    desc: `The ${productName} is built for daily-driver durability with a clean, factory-style fit. 3J's installs it in-house so it's set up right the first time.`,
+    highlights: ['Built for daily-driver durability', 'Professional installation available in-house', 'Manufacturer warranty included', 'Confirm exact fitment by adding your truck to the garage'],
+    features: [
+      { title: 'Durable Build', body: 'Constructed to handle daily use without premature wear.' },
+      { title: 'Pro Install', body: "Installed in-house at 3J's — done right, not a DIY guess." },
+      { title: 'Warranty', body: "Backed by the manufacturer's warranty." },
+    ],
+    warranty: 'Manufacturer warranty', material: null, installType: 'Professional installation available',
+  };
 }
 
 function getProductInfo(productName, coverType) {
