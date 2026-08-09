@@ -448,6 +448,7 @@ function CategoryTabs({ cats, selectedId, onSelect, loading, loadedCount }) {
 
   return (
     <nav className="cat-tabs" aria-label="Product categories" style={{position:'relative'}}>
+      <p className="cat-tabs-hint">Select a category to view products</p>
       <div className="cat-tabs-inner">
         {cats.map(cat => {
           const isActive = cat.id === selectedId;

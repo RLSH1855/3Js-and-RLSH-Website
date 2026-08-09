@@ -114,14 +114,15 @@
   .nav-item.active { color: #fff; border-bottom-color: var(--accent); }
 
   /* ── Category tabs ── */
-  .cat-tabs { background: #111; border-bottom: 1px solid rgba(255,255,255,.08); }
-  /* 20 categories no longer fit on one scrolling line, so the strip wraps and
-     each row stretches to fill the full width. */
-  .cat-tabs-inner { display:flex; flex-wrap:wrap; scrollbar-width:none; padding:0 16px; max-width:1600px; margin:0 auto; }
+  .cat-tabs { background: #212530; border-top: 1px solid rgba(255,255,255,.06); border-bottom: 2px solid var(--accent); }
+  .cat-tabs-hint { display:flex; align-items:center; gap:8px; padding:8px 20px; font-family:var(--display); font-size:10px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--accent); background:rgba(139,0,0,.08); border-bottom:1px solid rgba(139,0,0,.12); }
+  .cat-tabs-hint::before { content:''; display:block; width:3px; height:14px; background:var(--accent); flex-shrink:0; }
+  .cat-tabs-inner { display:flex; overflow-x:auto; scrollbar-width:none; padding:0; }
   .cat-tabs-inner::-webkit-scrollbar { display:none; }
-  .cat-tab { display:inline-flex; align-items:center; justify-content:center; gap:6px; padding:11px 12px; font-family:var(--display); font-size:11px; font-weight:700; letter-spacing:1.2px; text-transform:uppercase; color:rgba(255,255,255,.4); background:none; border:none; border-bottom:2px solid transparent; margin-bottom:-1px; white-space:nowrap; flex:1 1 auto; min-height:42px; cursor:pointer; transition:color .2s,border-color .2s; }
-  .cat-tab:hover:not(.cat-tab-empty) { color:rgba(255,255,255,.80); }
-  .cat-tab.cat-tab-active { color:#fff; border-bottom-color:var(--accent); }
+  .cat-tab { display:inline-flex; align-items:center; justify-content:center; gap:6px; padding:14px 18px; font-family:var(--display); font-size:11px; font-weight:800; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,.90); background:none; border:none; border-bottom:3px solid transparent; border-right:1px solid rgba(255,255,255,.10); white-space:nowrap; flex:0 0 auto; min-height:48px; cursor:pointer; transition:color .2s,border-color .2s,background .2s; }
+  .cat-tab:last-child { border-right:none; }
+  .cat-tab:hover:not(.cat-tab-empty) { color:#fff; background:rgba(255,255,255,.08); }
+  .cat-tab.cat-tab-active { color:#fff; border-bottom-color:var(--accent); letter-spacing:2.5px; }
   .cat-tab.cat-tab-empty { opacity:.35; cursor:default; }
   .cat-tab-badge { background:rgba(255,255,255,.1); font-size:9px; font-weight:800; padding:2px 6px; letter-spacing:1px; }
   .cat-tab.cat-tab-active .cat-tab-badge { background:var(--accent); }
@@ -193,8 +194,8 @@
 
   /* ── Layout ── */
   .catalog { max-width: 1440px; margin: 0 auto; padding-bottom: 80px; }
-  .layout { display: grid; gap: 32px; padding: 0 24px; }
-  .layout-sidebar { grid-template-columns: 260px 1fr; }
+  .layout { display: grid; gap: 32px; padding: 0 24px 0 8px; }
+  .layout-sidebar { grid-template-columns: 220px 1fr; }
 
   /* ── Sidebar ── */
   .sidebar { position: sticky; top: 168px; align-self: start; max-height: calc(100vh - 180px); overflow-y: auto; padding-right: 8px; scrollbar-width: thin; scrollbar-color: var(--border-strong) transparent; }

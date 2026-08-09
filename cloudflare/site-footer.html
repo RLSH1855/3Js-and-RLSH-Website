@@ -30,11 +30,11 @@
     }
 
     /* Brand column */
-    .footer-brand{text-align:center;}
+    .footer-brand{text-align:left;}
     .footer-logos{
       display:flex;
       align-items:center;
-      justify-content:center;
+      justify-content:flex-start;
       gap:16px;
       margin-bottom:16px;
       flex-wrap:wrap;
@@ -49,34 +49,32 @@
       font-size:13px;font-weight:400;
       color:rgba(255,255,255,0.55);
       line-height:1.7;
-      max-width:220px;
-      margin:0 auto 20px;
+      margin:0 0 20px;
     }
 
     /* Social icons */
-    .social-group{margin-bottom:10px;}
+    .social-group{margin-bottom:14px;}
     .social-label{
       font-size:9px;font-weight:800;letter-spacing:2px;
-      text-transform:uppercase;color:#fff;
-      margin-bottom:8px;
+      text-transform:uppercase;color:rgba(255,255,255,0.5);
+      margin-bottom:10px;
     }
-    .social-row{justify-content:center;}
     .social-row{display:flex;gap:8px;flex-wrap:wrap;}
     .social-btn{
-      display:inline-flex;align-items:center;justify-content:center;gap:6px;
+      display:inline-flex;align-items:center;justify-content:center;gap:8px;
       font-family:'Montserrat',sans-serif;
-      font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
-      color:rgba(255,255,255,0.8);
+      font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
+      color:rgba(255,255,255,0.85);
       background:rgba(255,255,255,0.06);
-      border:1px solid rgba(255,255,255,0.1);
+      border:1px solid rgba(255,255,255,0.12);
       border-radius:0;
-      min-height:44px;padding:0 20px;
+      min-height:52px;padding:0 22px;
       text-decoration:none;cursor:pointer;
-      transition:all 0.3s ease;
+      transition:all 0.2s ease;
       white-space:nowrap;
     }
     .social-btn:hover{background:#8B0000;color:#fff;border-color:#8B0000;}
-    .social-btn svg{width:13px;height:13px;fill:currentColor;flex-shrink:0;}
+    .social-btn svg{width:16px;height:16px;fill:currentColor;flex-shrink:0;}
 
     /* Columns */
     .footer-col-title{

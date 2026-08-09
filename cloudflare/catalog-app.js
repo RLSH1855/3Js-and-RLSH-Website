@@ -765,7 +765,9 @@ function CategoryTabs({
     style: {
       position: 'relative'
     }
-  }, /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("p", {
+    className: "cat-tabs-hint"
+  }, "Select a category to view products"), /*#__PURE__*/React.createElement("div", {
     className: "cat-tabs-inner"
   }, cats.map(cat => {
     const isActive = cat.id === selectedId;
