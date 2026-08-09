@@ -459,7 +459,8 @@ const _loaded = new Set([
   'deflectors-data.js','fender-flares-data.js','towing-data.js',
   'bw-hitches-data.js','westin-data.js','lund-data.js','amp-data.js',
   'husky-data.js','grille-guards-data.js','grilles-data.js',
-  'bull-bars-data.js','lighting-data.js','headache-racks-data.js'
+  'bull-bars-data.js','lighting-data.js','headache-racks-data.js',
+  'husky-extra-data.js'
 ]);
 function loadDataScript(file) {
   return new Promise(res => {
@@ -488,6 +489,7 @@ function loadDataFiles(files) {
 <script src="lund-data.js"></script>
 <script src="amp-data.js"></script>
 <script src="husky-data.js"></script>
+<script src="husky-extra-data.js"></script>
 <script src="grille-guards-data.js"></script>
 <script src="grilles-data.js"></script>
 <script src="bull-bars-data.js"></script>
@@ -862,13 +864,13 @@ const CATEGORY_DEFS = [
     id:'fender-flares', name:'Fender Flares', catLabel:'Fender Flares',
     heroTitle:'Fender Flares', heroSub:'Bushwacker, Stampede, and Lund fender flares. Professionally installed.',
     files: ['fender-flares-data.js'], approxCount: 180,
-    getData: () => [...safeArr(FF_CATALOG),...safeArr(LUND_FF),...safeArr(ARIES_FF),...safeArr(TRAILFX_FF)]
+    getData: () => [...safeArr(FF_CATALOG),...safeArr(LUND_FF),...safeArr(ARIES_FF),...safeArr(TRAILFX_FF),...safeArr(HUSKY_FF)]
   },
   {
     id:'deflectors', name:'Deflectors', catLabel:'Hood & Window Deflectors',
     heroTitle:'Hood & Window Deflectors', heroSub:'AVS Aeroskin, Ventvisor, and Ventshade. Installed at 3J\'s.',
     files: ['deflectors-data.js'], approxCount: 220,
-    getData: () => [...safeArr(DEF_CATALOG),...safeArr(TRAILFX_DEF)]
+    getData: () => [...safeArr(DEF_CATALOG),...safeArr(TRAILFX_DEF),...safeArr(HUSKY_DEF)]
   },
   {
     id:'lighting', name:'Lighting', catLabel:'Lighting',
@@ -923,6 +925,12 @@ const CATEGORY_DEFS = [
     heroTitle:'Jeep & Off-Road', heroSub:'Smittybilt bumpers, winches, soft tops and off-road gear. Professionally installed at 3J\'s.',
     files: ['smittybilt-data.js'], approxCount: 196,
     getData: () => safeArr(SMITTYBILT_CATALOG)
+  },
+  {
+    id:'mud-flaps', name:'Mud Flaps', catLabel:'Mud Flaps',
+    heroTitle:'Mud Flaps', heroSub:'Husky Liners mud flaps, vehicle-specific and universal fit. Professionally installed at 3J\'s.',
+    files: ['husky-extra-data.js'], approxCount: 159,
+    getData: () => safeArr(HUSKY_MUD)
   },
 ];
 
