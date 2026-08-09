@@ -1784,7 +1784,7 @@ function CheckRow({
     className: `check-row ${disabled ? 'check-row-zero' : ''}`,
     style: disabled ? {
       opacity: 0.6,
-      cursor: 'not-allowed'
+      cursor: 'default'
     } : undefined
   }, /*#__PURE__*/React.createElement("input", {
     type: "checkbox",

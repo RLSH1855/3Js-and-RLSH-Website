@@ -115,7 +115,7 @@
 
   /* ── Category tabs ── */
   .cat-tabs { background: #212530; border-top: 1px solid rgba(255,255,255,.06); border-bottom: 2px solid var(--accent); }
-  .cat-tabs-hint { display:flex; align-items:center; gap:8px; padding:8px 20px; font-family:var(--display); font-size:10px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--accent); background:rgba(139,0,0,.08); border-bottom:1px solid rgba(139,0,0,.12); }
+  .cat-tabs-hint { display:flex; align-items:center; gap:8px; padding:8px 20px; font-family:var(--display); font-size:10px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:rgba(255,255,255,.85); background:none; border-bottom:1px solid rgba(255,255,255,.08); }
   .cat-tabs-hint::before { content:''; display:block; width:3px; height:14px; background:var(--accent); flex-shrink:0; }
   .cat-tabs-inner { display:flex; overflow-x:auto; scrollbar-width:none; padding:0; }
   .cat-tabs-inner::-webkit-scrollbar { display:none; }
@@ -198,7 +198,7 @@
   .layout-sidebar { grid-template-columns: 220px 1fr; }
 
   /* ── Sidebar ── */
-  .sidebar { position: sticky; top: 168px; align-self: start; max-height: calc(100vh - 180px); overflow-y: auto; padding-right: 8px; scrollbar-width: thin; scrollbar-color: var(--border-strong) transparent; }
+  .sidebar { position: sticky; top: 168px; align-self: start; max-height: calc(100vh - 180px); overflow-y: auto; overscroll-behavior: contain; padding-right: 8px; scrollbar-width: thin; scrollbar-color: var(--border-strong) transparent; }
   .sidebar::-webkit-scrollbar { width: 6px; }
   .sidebar::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 4px; }
 

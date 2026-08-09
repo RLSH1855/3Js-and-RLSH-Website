@@ -1072,7 +1072,7 @@ function FilterSection({ title, defaultOpen=false, children }) {
 // an answer. They're just not selectable, since there's nothing to filter to.
 function CheckRow({ label, count, checked, onChange, disabled }) {
   return (
-    <label className={`check-row ${disabled ? 'check-row-zero' : ''}`} style={disabled ? {opacity:0.6, cursor:'not-allowed'} : undefined}>
+    <label className={`check-row ${disabled ? 'check-row-zero' : ''}`} style={disabled ? {opacity:0.6, cursor:'default'} : undefined}>
       <input type="checkbox" checked={!!checked} onChange={onChange} disabled={!!disabled} />
       <span className="check-box"><span className="check-mark">{Icon.check}</span></span>
       <span className="check-label">{label}</span>
