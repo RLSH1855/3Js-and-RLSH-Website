@@ -1,4 +1,4 @@
-﻿// Lund Bull Bars - Revolution and Standard w/Light
+// Lund Bull Bars - Revolution and Standard w/Light
 // 144 entries
 var BULLBAR_CATALOG=[
 ["Lund","BULL BAR W/LIGHT & WIRING-SS","47021201",null,null,2020,2025,"CHEVROLET","SILVERADO 2500 HD","Bull Bar With Led Light Bar-Stainless Steel",null,849.99,"https://sdda.semadata.org/Standard/RealTruck Inc/47021201_p04_hr.jpg"],
@@ -96,7 +96,7 @@ var BULLBAR_CATALOG=[
 ["Lund","BULL BAR W/LIGHT & WIRING-BLK","47121221",null,null,2019,2025,"FORD","RANGER","Bull Bar With Led Light Bar-Black",null,749.99,"https://sdda.semadata.org/Standard/RealTruck Inc/Lund_3.5_-BullBar_black_47121221_p04.jpg"],
 ["Lund","BULL BAR W/LIGHT & WIRING-BLK","47121308",null,null,2019,2025,"RAM","2500","Bull Bar With Led Light Bar-Black",null,749.99,"https://sdda.semadata.org/Standard/RealTruck Inc/Lund_bullbar_black_47121308_p04.jpg"],
 ["Lund","BULL BAR W/LIGHT & WIRING-BLK","47121308",null,null,2019,2025,"RAM","3500","Bull Bar With Led Light Bar-Black",null,749.99,"https://sdda.semadata.org/Standard/RealTruck Inc/Lund_bullbar_black_47121308_p04.jpg"],
-["Lund","BUll BAR LIGHT KIT WIRE HARNES","7713725",null,"BULL BAR LIGHT KIT WIRING HARNESS",1999,2026,"UNIVERSAL","","BUll BAR LIGHT KIT WIRE HARNES",null,null,null],
+["Lund","BUll BAR LIGHT KIT WIRE HARNES","7713725",null,"BULL BAR LIGHT KIT WIRING HARNESS",1999,2026,"UNIVERSAL","","BUll BAR LIGHT KIT WIRE HARNES",null,null,"https://sdda.semadata.org/Standard/RealTruck%20Inc/7713725_P04_HR_1.jpg"],
 ["Lund","REVOLUTION BULL BAR","86521201",null,null,2020,2025,"CHEVROLET","SILVERADO 2500 HD","Revolution Bull Bar",null,949.99,"https://sdda.semadata.org/Standard/RealTruck Inc/lund_revolutionbullbar_86521201.jpg"],
 ["Lund","REVOLUTION BULL BAR","86521201",null,null,2020,2025,"CHEVROLET","SILVERADO 3500 HD","Revolution Bull Bar",null,949.99,"https://sdda.semadata.org/Standard/RealTruck Inc/lund_revolutionbullbar_86521201.jpg"],
 ["Lund","REVOLUTION BULL BAR","86521201",null,null,2020,2025,"GMC","SIERRA 2500 HD","Revolution Bull Bar",null,949.99,"https://sdda.semadata.org/Standard/RealTruck Inc/lund_revolutionbullbar_86521201.jpg"],

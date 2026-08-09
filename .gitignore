@@ -1,3 +1,9 @@
 .superpowers/
 .wrangler/
 node_modules/
+# Babel download cache for tools/build-jsx.mjs (re-downloaded on demand)
+tools/.cache/
+
+# Resume state for tools/fetch-hpag-images.py (not part of the site)
+tools/.hpag-images-state.json
+tools/__pycache__/

@@ -32,8 +32,28 @@
     #no-product{display:none;text-align:center;padding:72px 24px;background:#fff;border:1px solid #E8E8E8;margin-top:0;}
     #no-product h2{font-family:'Montserrat',sans-serif;font-size:18px;font-weight:900;color:#1a1a1a;margin-bottom:10px;}
     #no-product p{font-size:16px;color:#666;margin-bottom:24px;line-height:1.65;}
-    #no-product a{display:inline-flex;align-items:center;padding:0 28px;height:48px;background:#8B0000;color:#fff;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border:2px solid #a00000;border-radius:0;transition:background 0.2s;}
-    #no-product a:hover{background:#6d0000;}
+    #no-product a.no-product-browse{display:inline-flex;align-items:center;padding:0 28px;height:48px;background:#8B0000;color:#fff;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border:2px solid #a00000;border-radius:0;transition:background 0.2s;}
+    #no-product a.no-product-browse:hover{background:#6d0000;}
+
+    /* ── EMPTY-STATE: direct quote form + call/email block ── */
+    .empty-quote-form{max-width:560px;margin:40px auto 0;background:#fff;border:1px solid #E8E8E8;border-top:3px solid #8B0000;padding:28px 24px;text-align:left;}
+    textarea{width:100%;padding:12px 14px;border:2px solid #E8E8E8;border-radius:0;font-family:'Inter',sans-serif;font-size:16px;font-weight:500;color:#1a1a1a;background:#fff;resize:vertical;min-height:96px;outline:none;transition:border-color 0.15s;}
+    textarea:focus{border-color:#8B0000;}
+    .empty-direct-contact{max-width:560px;margin:20px auto 0;background:#F8F8F6;border:1px solid #E8E8E8;padding:24px;text-align:left;}
+    .edc-title{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:900;letter-spacing:3px;text-transform:uppercase;color:#8B0000;margin-bottom:14px;}
+    .edc-row{display:flex;align-items:flex-start;gap:10px;padding:6px 0;font-size:14px;color:#333;line-height:1.5;}
+    .edc-row a{color:#1a1a1a;font-weight:700;text-decoration:none;}
+    .edc-row a:hover{color:#8B0000;text-decoration:underline;}
+
+    /* ── CROSS-SELL: not what you came for? ── */
+    .cross-sell-block{max-width:720px;margin:48px auto 0;padding:40px 20px 0;border-top:2px solid #E0E0DC;text-align:center;}
+    .cross-sell-heading{font-family:'Montserrat',sans-serif;font-size:20px;font-weight:900;color:#0A0A0A;margin-bottom:20px;line-height:1.35;}
+    .cross-sell-buttons{display:flex;flex-direction:column;gap:12px;max-width:520px;margin:0 auto;}
+    .cs-btn{flex:1;display:inline-flex;align-items:center;justify-content:center;height:52px;padding:0 24px;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;border-radius:0;transition:background 0.2s,color 0.2s;}
+    .cs-btn-solid{background:#8B0000;color:#fff;border:2px solid #8B0000;}
+    .cs-btn-solid:hover{background:#6d0000;}
+    .cs-btn-outline{background:transparent;color:#8B0000;border:2px solid #8B0000;}
+    .cs-btn-outline:hover{background:#8B0000;color:#fff;}
 
     /* ── 3-COLUMN LAYOUT ── */
     #form-wrap{display:none;}
@@ -164,6 +184,9 @@
     #success-state .back-link:hover{background:#8B0000;}
 
     /* ── RESPONSIVE ── */
+    @media(min-width:600px){
+      .cross-sell-buttons{flex-direction:row;justify-content:center;}
+    }
     @media(max-width:600px){
       .page-header{height:280px;padding:40px 20px;}
     }
@@ -203,7 +226,47 @@
     <div style="font-size:36px;margin-bottom:16px;">🔍</div>
     <h2>Your Quote List Is Empty</h2>
     <p>Head back to the catalog to find what you need, then click "Add to Quote" on any product — you can queue up as many as you want and submit one request for everything.</p>
-    <a href="parts-catalog.html">Browse Accessories</a>
+    <a href="parts-catalog.html" class="no-product-browse">Browse Accessories</a>
+
+    <!-- Direct quote request — reaches the same /api/quote endpoint as the normal flow -->
+    <form id="empty-quote-form" class="empty-quote-form" novalidate>
+      <div class="form-section-title">Or Request a Quote Directly</div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="eq-firstname">First Name <span class="req">*</span></label>
+          <input type="text" id="eq-firstname" placeholder="John" required autocomplete="given-name" style="text-transform:capitalize;"/>
+        </div>
+        <div class="form-group">
+          <label for="eq-lastname">Last Name <span class="req">*</span></label>
+          <input type="text" id="eq-lastname" placeholder="Smith" required autocomplete="family-name" style="text-transform:capitalize;"/>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="eq-phone">Phone <span class="req">*</span></label>
+          <input type="tel" id="eq-phone" placeholder="(562) 555-0100" required autocomplete="tel" inputmode="numeric"/>
+        </div>
+        <div class="form-group">
+          <label for="eq-email">Email <span class="req">*</span></label>
+          <input type="email" id="eq-email" placeholder="you@email.com" required autocomplete="email" style="text-transform:lowercase;"/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="eq-message">What do you need? <span class="req">*</span></label>
+        <textarea id="eq-message" placeholder="Tell us what part, service, or vehicle you're asking about..." required></textarea>
+      </div>
+      <button type="submit" class="submit-btn" id="eq-submit-btn">Request Quote</button>
+      <div id="eq-form-error" style="display:none;background:#fdecea;border:1px solid #f5c6cb;padding:12px 16px;margin-top:12px;font-size:12px;font-weight:600;color:#721c24;">Something went wrong. Please try again or call us at (562) 424-6744.</div>
+    </form>
+
+    <!-- Direct contact — for anyone who'd rather just call or email -->
+    <div class="empty-direct-contact">
+      <div class="edc-title">Or Reach Us Directly</div>
+      <div class="edc-row">📞 <a href="tel:5624246744" target="_top">(562) 424-6744</a></div>
+      <div class="edc-row">✉️ <a href="mailto:info@3jsautobody.com" target="_top">info@3jsautobody.com</a></div>
+      <div class="edc-row">🕗 Mon–Fri 8AM–5PM</div>
+      <div class="edc-row">📍 1855 E 29th Street, Signal Hill, CA 90755</div>
+    </div>
   </div>
 
   <!-- ── FORM WRAP (3-col layout) ── -->
@@ -481,6 +544,16 @@
 
   </div><!-- /form-wrap -->
 
+  <!-- Cross-sell — catches visitors who came for something other than parts.
+       Visible under both the empty-cart state and the normal quote form. -->
+  <div class="cross-sell-block">
+    <div class="cross-sell-heading">Looking for a spray-on bed liner quote,<br/>or auto body repair and paint?</div>
+    <div class="cross-sell-buttons">
+      <a href="rhino-lining-quote.html" class="cs-btn cs-btn-solid" target="_top">Rhino Linings Quote</a>
+      <a href="https://www.carwise.com/online-photo-estimate/3js-autobody-paint-inc-signal-hill-ca-90755/479382?source=shop.profile&amp;referer=estimate.cccone.com" class="cs-btn cs-btn-outline" target="_blank" rel="noopener">Auto Body Repair &amp; Paint</a>
+    </div>
+  </div>
+
   <!-- Success State -->
   <div id="success-state">
     <div class="success-check">✓</div>
@@ -614,7 +687,48 @@ function toggleUpsell(key){
   chk.textContent = upsells[key] ? '✓' : '';
 }
 
-// ── Submit ──
+// ── Shared submit logic — both the normal quote form and the empty-cart
+// direct-contact form post to the same /api/quote endpoint so every lead,
+// with or without a product attached, lands in Shopmonkey the same way. ──
+function postQuoteRequest(record, btn, errEl, onSuccess){
+  var origLabel = btn.textContent;
+  btn.disabled = true;
+  btn.textContent = 'Sending...';
+  errEl.style.display = 'none';
+
+  fetch(QUOTE_API_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(record)
+  }).then(function(r){ return r.json(); })
+    .then(function(data){
+      if(data.ok || data.status === 'ok'){
+        onSuccess();
+      } else {
+        throw new Error(data.error || 'Unknown');
+      }
+    }).catch(function(){
+      btn.disabled = false;
+      btn.textContent = origLabel;
+      errEl.style.display = 'block';
+      errEl.textContent = 'Something went wrong. Please try again or call (562) 424-6744.';
+    });
+}
+
+function showSuccessItems(items){
+  var list = document.getElementById('success-items-list');
+  var container = document.getElementById('success-items');
+  items.forEach(function(item){
+    var div = document.createElement('div');
+    div.className = 'success-item-line';
+    div.textContent = '✓ ' + item;
+    list.appendChild(div);
+  });
+  if(items.length > 0) container.style.display = 'block';
+  document.getElementById('success-state').style.display = 'block';
+}
+
+// ── Submit: normal quote-cart flow ──
 document.getElementById('quote-form').addEventListener('submit', function(e){
   e.preventDefault();
   var firstName = document.getElementById('f-firstname').value.trim();
@@ -646,9 +760,7 @@ document.getElementById('quote-form').addEventListener('submit', function(e){
   if(upsells['grille-guard']) addOnsList.push('Grille Guard');
 
   var btn = document.getElementById('submit-btn');
-  btn.disabled = true;
-  btn.textContent = 'Sending...';
-  document.getElementById('form-error').style.display = 'none';
+  var errEl = document.getElementById('form-error');
 
   // Multiple queued products go out as one joined string — the /api/quote
   // backend contract (single product + partNumber field) stays untouched.
@@ -671,45 +783,58 @@ document.getElementById('quote-form').addEventListener('submit', function(e){
     addOns:         addOnsList.length ? addOnsList.join(', ') : 'None'
   };
 
-  fetch(QUOTE_API_URL, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(record)
-  }).then(function(r){ return r.json(); })
-    .then(function(data){
-      if(data.ok || data.status === 'ok'){
-        // Quote sent — clear the saved cart so the nav badge resets everywhere
-        try { localStorage.removeItem(CART_KEY); } catch(err){}
-        try { window.dispatchEvent(new Event('quoteCartUpdated')); } catch(err){}
-        // Build success summary
-        var allItems = quoteItems.map(function(it){ return it.product; }).concat(addOnsList);
-        var list = document.getElementById('success-items-list');
-        var container = document.getElementById('success-items');
-        allItems.forEach(function(item){
-          var div = document.createElement('div');
-          div.className = 'success-item-line';
-          div.textContent = '✓ ' + item;
-          list.appendChild(div);
-        });
-        if(allItems.length > 0) container.style.display = 'block';
-        document.getElementById('form-wrap').style.display = 'none';
-        document.getElementById('success-state').style.display = 'block';
-      } else {
-        throw new Error(data.error || 'Unknown');
-      }
-    }).catch(function(){
-      btn.disabled = false;
-      btn.textContent = 'Request Quote';
-      var err = document.getElementById('form-error');
-      err.style.display = 'block';
-      err.textContent = 'Something went wrong. Please try again or call (562) 424-6744.';
-    });
+  postQuoteRequest(record, btn, errEl, function(){
+    // Quote sent — clear the saved cart so the nav badge resets everywhere
+    try { localStorage.removeItem(CART_KEY); } catch(err){}
+    try { window.dispatchEvent(new Event('quoteCartUpdated')); } catch(err){}
+    var allItems = quoteItems.map(function(it){ return it.product; }).concat(addOnsList);
+    document.getElementById('form-wrap').style.display = 'none';
+    showSuccessItems(allItems);
+  });
+});
+
+// ── Submit: empty-cart direct contact form (Blocker 1) ──
+document.getElementById('empty-quote-form').addEventListener('submit', function(e){
+  e.preventDefault();
+  var firstName = document.getElementById('eq-firstname').value.trim();
+  var lastName  = document.getElementById('eq-lastname').value.trim();
+  var phone     = document.getElementById('eq-phone').value.trim();
+  var email     = document.getElementById('eq-email').value.trim();
+  var message   = document.getElementById('eq-message').value.trim();
+
+  var errEl = document.getElementById('eq-form-error');
+  if(!firstName || !lastName || !phone || !email || !message){
+    errEl.style.display = 'block';
+    errEl.textContent = 'Please fill in all required fields.';
+    return;
+  }
+
+  var record = {
+    firstName:  firstName,
+    lastName:   lastName,
+    phone:      phone,
+    email:      email,
+    product:    'General Inquiry (no product selected on site)',
+    partNumber: '',
+    message:    message,
+    vehicleYear:'', vehicleMake:'', vehicleModel:'', vehicleTrim:'', vehicleBedSize:'', vin:'',
+    addOns:     'None'
+  };
+
+  var btn = document.getElementById('eq-submit-btn');
+  postQuoteRequest(record, btn, errEl, function(){
+    document.getElementById('no-product').style.display = 'none';
+    showSuccessItems([message]);
+  });
 });
 
 // ── Enter key advances to next field (same as Tab) ──
 document.addEventListener('keydown', function(e) {
   if (e.key !== 'Enter') return;
-  var inputs = Array.from(document.querySelectorAll('#quote-form input, #quote-form select, #quote-form textarea'));
+  var inputs = Array.from(document.querySelectorAll(
+    '#quote-form input, #quote-form select, #quote-form textarea,' +
+    '#empty-quote-form input, #empty-quote-form select, #empty-quote-form textarea'
+  ));
   var idx = inputs.indexOf(document.activeElement);
   if (idx >= 0 && idx < inputs.length - 1) {
     e.preventDefault();
@@ -718,7 +843,7 @@ document.addEventListener('keydown', function(e) {
 });
 
 // ── Phone formatter ──
-document.getElementById('f-phone').addEventListener('input', function(e){
+function formatPhoneInput(e){
   var d = e.target.value.replace(/\D/g,'');
   if(d.length === 11 && d[0] === '1') d = d.slice(1);
   d = d.slice(0,10);
@@ -727,7 +852,9 @@ document.getElementById('f-phone').addEventListener('input', function(e){
   else if(d.length > 3) f = '('+d.slice(0,3)+') '+d.slice(3);
   else if(d.length > 0) f = '('+d;
   e.target.value = f;
-});
+}
+document.getElementById('f-phone').addEventListener('input', formatPhoneInput);
+document.getElementById('eq-phone').addEventListener('input', formatPhoneInput);
 </script>
 
 <script src="site-shell.js"></script>

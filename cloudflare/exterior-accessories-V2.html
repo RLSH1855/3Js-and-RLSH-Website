@@ -23,7 +23,7 @@
     .skip-link:focus{top:16px;}
 
     /* ── SHOP NAV STRIP ── */
-    .shop-nav{background:var(--black-1);border-bottom:2px solid #1e1e1e;}
+    .shop-nav{background:#212530;border-top:1px solid rgba(255,255,255,0.06);border-bottom:2px solid var(--crimson);}
     .shop-nav-hint{display:flex;align-items:center;gap:12px;padding:12px 20px 0;font-family:'Inter',sans-serif;font-size:11px;font-weight:500;color:rgba(255,255,255,0.60);letter-spacing:0.3px;}
     .shop-nav-hint::before{content:'';display:block;width:3px;height:14px;background:var(--crimson);flex-shrink:0;}
     .shop-nav-tabs{display:flex;overflow-x:auto;white-space:nowrap;scrollbar-width:none;padding:0 8px;}
@@ -61,11 +61,11 @@
     .cat-btn svg{width:12px;height:12px;flex-shrink:0;}
 
     /* ── CTA BAND ── */
-    .cta-band{background:#8B0000;padding:48px 16px 56px;text-align:center;position:relative;overflow:hidden;}
+    .cta-band{background:#101216;padding:48px 16px 56px;text-align:center;position:relative;overflow:hidden;}
     .cta-band::before{display:none;}
     .cta-band-inner{position:relative;z-index:1;max-width:600px;margin:0 auto;}
     .cta-band h2{font-family:'Montserrat',sans-serif;font-size:clamp(22px,3.5vw,36px);font-weight:900;letter-spacing:-0.5px;color:#fff;margin-bottom:10px;}
-    .cta-band h2 em{font-style:normal;color:#111;}
+    .cta-band h2 em{font-style:normal;color:var(--crimson);}
     .cta-band p{font-size:16px;color:rgba(255,255,255,0.90);line-height:1.65;margin-bottom:28px;}
     .cta-btns{display:flex;gap:12px;flex-direction:column;align-items:center;flex-wrap:wrap;}
     .btn-red{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:48px;padding:0 32px;background:var(--crimson);color:#fff;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border:2px solid #a00000;transition:background 0.2s;touch-action:manipulation;width:100%;max-width:320px;}
@@ -143,7 +143,7 @@
     <a href="floor-liners.html" class="shop-nav-link">Floor Liners</a>
     <a href="lighting.html" class="shop-nav-link">Lighting</a>
     <a href="headache-racks.html" class="shop-nav-link">Headache Racks</a>
-    <a href="parts-quote.html" class="shop-nav-link">Elevate Rack</a>
+    <a href="parts-catalog.html" class="shop-nav-link">Elevate Rack</a>
     <a href="towing-hitches.html" class="shop-nav-link">Towing &amp; Hitches</a>
     <a href="parts-catalog.html?cat=bull-bars" class="shop-nav-link">Bull Bars</a>
     <a href="parts-catalog.html?cat=tool-boxes" class="shop-nav-link">Tool Boxes</a>
@@ -208,7 +208,7 @@
   .gb-ymm-row{display:grid;grid-template-columns:1fr 1.2fr 1.2fr;gap:10px;}
   .gb-sel{position:relative;min-width:0;}
   .gb-sel__label{display:block;font-family:"JetBrains Mono",monospace;font-size:9px;font-weight:500;letter-spacing:0.28em;color:#E0E0E0;text-transform:uppercase;margin:0 0 6px 0;line-height:1;}
-  .gb-sel select,.gb-sel input{appearance:none;-webkit-appearance:none;width:100%;height:48px;background:#0c0c0c;color:#fff;border:1px solid rgba(255,255,255,0.18);border-radius:0;padding:0 36px 0 12px;font-family:"Montserrat",sans-serif;font-size:14px;font-weight:600;letter-spacing:0.02em;cursor:pointer;transition:border-color 120ms ease;outline:none;}
+  .gb-sel select,.gb-sel input{appearance:none;-webkit-appearance:none;width:100%;height:48px;background:#0c0c0c;color:#fff;border:1px solid rgba(255,255,255,0.18);border-radius:0;padding:0 36px 0 12px;font-family:"Montserrat",sans-serif;font-size:13px;font-weight:700;letter-spacing:0.02em;cursor:pointer;transition:border-color 120ms ease;outline:none;}
   .gb-sel select:focus,.gb-sel input:focus{border-color:#8B0000;background:#0e0e0e;}
   .gb-sel select:disabled{color:rgba(224,224,224,0.35);cursor:not-allowed;background:#0a0a0a;}
   .gb-sel::after{content:"";position:absolute;right:14px;bottom:19px;width:7px;height:7px;border-right:1.5px solid #fff;border-bottom:1.5px solid #fff;transform:rotate(45deg);pointer-events:none;}
@@ -460,26 +460,26 @@
   <div class="shop-grid">
 
     <!-- TONNEAU COVERS -->
-    <a href="tonneau-covers.html" class="cat-card">
+    <a href="parts-catalog.html?cat=tonneau" class="cat-card">
       <div class="cat-bg" style="background-image:url('TRUCK%20BED%20COVERS%20IMAGE.webp');background-position:center 55%;"></div>
       <div class="cat-overlay"></div>
       <div class="cat-body">
         <div class="cat-tag">Bed Protection</div>
         <div class="cat-name">Tonneau Covers</div>
         <div class="cat-brands">BAK · Extang · Retrax · TruXedo · UnderCover · Roll N Lock</div>
-        <div class="cat-btn">Shop Now <svg aria-hidden="true" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
+        <div class="cat-btn">View Products <svg aria-hidden="true" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
       </div>
     </a>
 
     <!-- RUNNING BOARDS -->
-    <a href="steps-running-boards.html" class="cat-card">
+    <a href="parts-catalog.html?cat=running-boards" class="cat-card">
       <div class="cat-bg" style="background-image:url('IMG_3961.webp');background-position:center 50%;"></div>
       <div class="cat-overlay"></div>
       <div class="cat-body">
         <div class="cat-tag">Side Steps</div>
         <div class="cat-name">Running Boards</div>
         <div class="cat-brands">AMP Research · Go Rhino · Aries · N-Fab · Westin</div>
-        <div class="cat-btn">Shop Now <svg aria-hidden="true" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
+        <div class="cat-btn">View Products <svg aria-hidden="true" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
       </div>
     </a>
 
@@ -491,67 +491,67 @@
         <div class="cat-tag">Front Protection</div>
         <div class="cat-name">Bull Bars &amp; Grille Guards</div>
         <div class="cat-brands">Go Rhino · Aries · Westin</div>
-        <div class="cat-btn">Shop Now <svg aria-hidden="true" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
+        <div class="cat-btn">View Products <svg aria-hidden="true" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
       </div>
     </a>
 
     <!-- FENDER FLARES -->
-    <a href="parts-quote.html" class="cat-card">
+    <a href="parts-catalog.html?cat=fender-flares" class="cat-card">
       <div class="cat-bg" style="background-image:url('Bedliner-Jeep_exterior.webp');background-position:center 50%;"></div>
       <div class="cat-overlay"></div>
       <div class="cat-body">
         <div class="cat-tag">Exterior Styling</div>
         <div class="cat-name">Fender Flares</div>
         <div class="cat-brands">Bushwacker · Lund · AVS</div>
-        <div class="cat-btn">Get a Quote <svg aria-hidden="true" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
+        <div class="cat-btn">View Products <svg aria-hidden="true" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
       </div>
     </a>
 
     <!-- BED ACCESSORIES -->
-    <a href="parts-quote.html" class="cat-card">
+    <a href="parts-catalog.html?cat=bed-protection" class="cat-card">
       <div class="cat-bg" style="background-image:url('bedliner.webp');background-position:center 60%;"></div>
       <div class="cat-overlay"></div>
       <div class="cat-body">
         <div class="cat-tag">Truck Bed</div>
         <div class="cat-name">Bed Accessories</div>
         <div class="cat-brands">AMP Research BedStep · BedExtender · Bed Rail Caps · BedRug</div>
-        <div class="cat-btn">Get a Quote <svg aria-hidden="true" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
+        <div class="cat-btn">View Products <svg aria-hidden="true" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
       </div>
     </a>
 
     <!-- VENT VISORS -->
-    <a href="parts-quote.html" class="cat-card">
+    <a href="parts-catalog.html?cat=deflectors" class="cat-card">
       <div class="cat-bg" style="background-image:url('bak-bakflip-mx4-2016-ford-f150-blue-beach-lifestyle-05.webp');background-position:center 30%;"></div>
       <div class="cat-overlay"></div>
       <div class="cat-body">
         <div class="cat-tag">Wind &amp; Weather</div>
         <div class="cat-name">Vent Visors</div>
         <div class="cat-brands">AVS VentVisor · Aeroskin Hood Deflectors · Lund</div>
-        <div class="cat-btn">Get a Quote <svg aria-hidden="true" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
+        <div class="cat-btn">View Products <svg aria-hidden="true" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
       </div>
     </a>
 
     <!-- FLOOR LINERS -->
-    <a href="floor-liners.html" class="cat-card">
+    <a href="parts-catalog.html?cat=floor-liners" class="cat-card">
       <div class="cat-bg" style="background-image:url('FLOOR%20LINERS%20IMAGE.webp');background-position:center 50%;"></div>
       <div class="cat-overlay"></div>
       <div class="cat-body">
         <div class="cat-tag">Interior Protection</div>
         <div class="cat-name">Floor Liners</div>
         <div class="cat-brands">Husky Liners · WeatherTech</div>
-        <div class="cat-btn">Shop Now <svg aria-hidden="true" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
+        <div class="cat-btn">View Products <svg aria-hidden="true" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
       </div>
     </a>
 
     <!-- ROOF RACKS -->
-    <a href="parts-quote.html" class="cat-card">
+    <a href="parts-catalog.html?cat=roof-racks" class="cat-card">
       <div class="cat-bg" style="background-image:url('RLSH-ford-truck.webp');background-position:center 30%;"></div>
       <div class="cat-overlay"></div>
       <div class="cat-body">
         <div class="cat-tag">Cargo &amp; Storage</div>
         <div class="cat-name">Roof Racks</div>
-        <div class="cat-brands">Go Rhino SRM 300/400/500 · Ceros Low Profile</div>
-        <div class="cat-btn">Get a Quote <svg aria-hidden="true" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
+        <div class="cat-brands">DV8 Offroad · Addictive Desert Designs</div>
+        <div class="cat-btn">View Products <svg aria-hidden="true" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
       </div>
     </a>
 
@@ -563,43 +563,43 @@
         <div class="cat-tag">Off-Road &amp; Work</div>
         <div class="cat-name">Lighting</div>
         <div class="cat-brands">Rigid Industries · Baja Designs · Spider Auto</div>
-        <div class="cat-btn">Shop Now <svg aria-hidden="true" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
+        <div class="cat-btn">View Products <svg aria-hidden="true" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
       </div>
     </a>
 
     <!-- ELEVATE RACK SYSTEM -->
-    <a href="parts-quote.html" class="cat-card">
+    <a href="parts-catalog.html" class="cat-card">
       <div class="cat-bg" style="background-image:url('elevate-rack.webp');background-position:center 40%;"></div>
       <div class="cat-overlay"></div>
       <div class="cat-body">
         <div class="cat-tag">Bed Rack System</div>
         <div class="cat-name">Elevate Rack System</div>
         <div class="cat-brands">RealTruck Elevate · Bike &amp; Kayak Carriers · Cargo Baskets</div>
-        <div class="cat-btn">Get a Quote <svg aria-hidden="true" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
+        <div class="cat-btn">View Products <svg aria-hidden="true" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
       </div>
     </a>
 
     <!-- TOWING -->
-    <a href="towing-hitches.html" class="cat-card">
+    <a href="parts-catalog.html?cat=towing" class="cat-card">
       <div class="cat-bg" style="background-image:url('B%26W%20Hitches%201.webp');background-position:center 50%;"></div>
       <div class="cat-overlay"></div>
       <div class="cat-body">
         <div class="cat-tag">Towing</div>
         <div class="cat-name">Towing Equipment</div>
         <div class="cat-brands">CURT · B&amp;W Trailer Hitches · Draw-Tite</div>
-        <div class="cat-btn">Shop Now <svg aria-hidden="true" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
+        <div class="cat-btn">View Products <svg aria-hidden="true" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
       </div>
     </a>
 
     <!-- HEADACHE RACKS -->
-    <a href="headache-racks.html" class="cat-card">
+    <a href="parts-catalog.html?cat=headache-racks" class="cat-card">
       <div class="cat-bg" style="background-image:url('aftermarket%20upgrades.webp');background-position:center 30%;"></div>
       <div class="cat-overlay"></div>
       <div class="cat-body">
         <div class="cat-tag">Cab Protection</div>
         <div class="cat-name">Headache Racks</div>
         <div class="cat-brands">BackRack · Go Rhino · Aries</div>
-        <div class="cat-btn">Shop Now <svg aria-hidden="true" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
+        <div class="cat-btn">View Products <svg aria-hidden="true" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
       </div>
     </a>
 
@@ -611,7 +611,106 @@
         <div class="cat-tag">Bed Storage</div>
         <div class="cat-name">Tool Boxes</div>
         <div class="cat-brands">Dee Zee · Delta · UWS · Lund</div>
-        <div class="cat-btn">Shop Now <svg aria-hidden="true" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
+        <div class="cat-btn">View Products <svg aria-hidden="true" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
+      </div>
+    </a>
+
+    <!-- OFF-ROAD BUMPERS -->
+    <a href="parts-catalog.html?cat=bumpers" class="cat-card">
+      <div class="cat-bg" style="background-image:url('images/products/hpag/F371192740103.webp');background-position:center 55%;"></div>
+      <div class="cat-overlay"></div>
+      <div class="cat-body">
+        <div class="cat-tag">Off-Road</div>
+        <div class="cat-name">Off-Road Bumpers</div>
+        <div class="cat-brands">Addictive Desert Designs · DV8 Offroad</div>
+        <div class="cat-btn">View Products <svg aria-hidden="true" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
+      </div>
+    </a>
+
+    <!-- SKID PLATES -->
+    <a href="parts-catalog.html?cat=skid-plates" class="cat-card">
+      <div class="cat-bg" style="background-image:url('images/products/hpag/SPBR-03.webp');background-position:center 50%;"></div>
+      <div class="cat-overlay"></div>
+      <div class="cat-body">
+        <div class="cat-tag">Underbody Armor</div>
+        <div class="cat-name">Skid Plates</div>
+        <div class="cat-brands">DV8 Offroad · Addictive Desert Designs</div>
+        <div class="cat-btn">View Products <svg aria-hidden="true" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
+      </div>
+    </a>
+
+    <!-- ROCK SLIDERS -->
+    <a href="parts-catalog.html?cat=rock-sliders" class="cat-card">
+      <div class="cat-bg" style="background-image:url('images/products/hpag/SRBR-02.webp');background-position:center 55%;"></div>
+      <div class="cat-overlay"></div>
+      <div class="cat-body">
+        <div class="cat-tag">Rocker Protection</div>
+        <div class="cat-name">Rock Sliders &amp; Steps</div>
+        <div class="cat-brands">DV8 Offroad · Addictive Desert Designs</div>
+        <div class="cat-btn">View Products <svg aria-hidden="true" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
+      </div>
+    </a>
+
+    <!-- MOLLE & STORAGE -->
+    <a href="parts-catalog.html?cat=molle-storage" class="cat-card">
+      <div class="cat-bg" style="background-image:url('images/products/hpag/RRTF3-02EMD.webp');background-position:center 50%;"></div>
+      <div class="cat-overlay"></div>
+      <div class="cat-body">
+        <div class="cat-tag">Cargo &amp; Storage</div>
+        <div class="cat-name">MOLLE &amp; Storage</div>
+        <div class="cat-brands">DV8 Offroad · Addictive Desert Designs</div>
+        <div class="cat-btn">View Products <svg aria-hidden="true" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
+      </div>
+    </a>
+
+    <!-- OFF-ROAD ACCESSORIES -->
+    <a href="parts-catalog.html?cat=offroad-accessories" class="cat-card">
+      <div class="cat-bg" style="background-image:url('images/products/hpag/HDMBJL-TA.webp');background-position:center 55%;"></div>
+      <div class="cat-overlay"></div>
+      <div class="cat-body">
+        <div class="cat-tag">Off-Road</div>
+        <div class="cat-name">Off-Road Accessories</div>
+        <div class="cat-brands">Brackets · Mounts · Body Panels · Recovery</div>
+        <div class="cat-btn">View Products <svg aria-hidden="true" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
+      </div>
+    </a>
+
+    <!-- GRILLES — existed in CATEGORY_DEFS with no card or tile anywhere on
+         the site, so it was reachable only by typing the URL. -->
+    <a href="parts-catalog.html?cat=grilles" class="cat-card">
+      <div class="cat-bg" style="background:#1a1614;"></div>
+      <div class="cat-overlay"></div>
+      <div class="cat-body">
+        <div class="cat-tag">Front End</div>
+        <div class="cat-name">Grilles</div>
+        <div class="cat-brands">Morimoto XB LED · OEM-Style</div>
+        <div class="cat-btn">View Products <svg aria-hidden="true" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
+      </div>
+    </a>
+
+    <!-- GRILLE GUARDS — same gap. The Bull Bars card links only to
+         ?cat=bull-bars even though it reads "Bull Bars & Grille Guards", so
+         Grille Guards itself had no card of its own. -->
+    <a href="parts-catalog.html?cat=grille-guards" class="cat-card">
+      <div class="cat-bg" style="background:#141a16;"></div>
+      <div class="cat-overlay"></div>
+      <div class="cat-body">
+        <div class="cat-tag">Front Protection</div>
+        <div class="cat-name">Grille Guards</div>
+        <div class="cat-brands">Aries · TrailFX</div>
+        <div class="cat-btn">View Products <svg aria-hidden="true" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
+      </div>
+    </a>
+
+    <!-- JEEP & OFF-ROAD -->
+    <a href="parts-catalog.html?cat=jeep-offroad" class="cat-card">
+      <div class="cat-bg" style="background:#16141a;"></div>
+      <div class="cat-overlay"></div>
+      <div class="cat-body">
+        <div class="cat-tag">Jeep Builds</div>
+        <div class="cat-name">Jeep &amp; Off-Road</div>
+        <div class="cat-brands">Smittybilt Bumpers · Winches · Soft Tops</div>
+        <div class="cat-btn">View Products <svg aria-hidden="true" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
       </div>
     </a>
 
