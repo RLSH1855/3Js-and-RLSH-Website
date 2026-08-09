@@ -28,8 +28,9 @@
     .ai-bubble{position:fixed;bottom:20px;right:20px;width:56px;height:56px;background:${RED};
       border:2px solid ${RED};border-radius:0;display:flex;align-items:center;justify-content:center;
       cursor:pointer;z-index:9999;box-shadow:0 4px 16px rgba(0,0,0,.3);
-      transition:transform .22s cubic-bezier(.2,.8,.3,1),box-shadow .22s ease;}
+      transition:transform .22s cubic-bezier(.2,.8,.3,1),box-shadow .22s ease,opacity .18s ease;}
     .ai-bubble:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(0,0,0,.42);}
+    .ai-bubble.ai-scroll-hide{opacity:0;pointer-events:none;transform:translateY(8px);}
     .ai-bubble:focus-visible{outline:2px solid #fff;outline-offset:2px;}
     .ai-bubble svg{width:26px;height:26px;stroke:#fff;fill:none;stroke-width:2;
       transition:opacity .18s ease,transform .18s ease;}
@@ -42,6 +43,7 @@
       line-height:1.4;padding:10px 12px;max-width:210px;z-index:9998;box-shadow:0 4px 16px rgba(0,0,0,.35);
       opacity:0;transform:translateX(8px);transition:opacity .3s ease,transform .3s ease;pointer-events:none;}
     .ai-nudge.show{opacity:1;transform:translateX(0);}
+    .ai-nudge.ai-scroll-hide{opacity:0;transform:translateX(8px);}
 
     .ai-panel{position:fixed;bottom:88px;right:20px;width:min(340px,calc(100vw - 40px));
       max-height:min(480px,calc(100vh - 140px));background:#111;border:1px solid #333;border-radius:0;
@@ -357,6 +359,21 @@
   bubble.addEventListener('click', function () { setOpen(!isOpen); });
   closeBtn.addEventListener('click', function () { setOpen(false); });
   nudge.addEventListener('click', function () { setOpen(true); });
+
+  /* Hide the bubble (and any nudge) while the page is actively scrolling,
+     so it doesn't sit over content/buttons near the bottom of the screen.
+     Never hides while the chat panel itself is open. */
+  let scrollHideTimer = null;
+  window.addEventListener('scroll', function () {
+    if (isOpen) return;
+    bubble.classList.add('ai-scroll-hide');
+    nudge.classList.add('ai-scroll-hide');
+    clearTimeout(scrollHideTimer);
+    scrollHideTimer = setTimeout(function () {
+      bubble.classList.remove('ai-scroll-hide');
+      nudge.classList.remove('ai-scroll-hide');
+    }, 500);
+  }, { passive: true });
 
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape' && isOpen) setOpen(false);
