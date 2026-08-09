@@ -10,4 +10,4 @@ Disallow: /RLSH%20Sparkle%20(website-ready).html
 Disallow: /my-garage-v2.html
 Disallow: /site-footer.html
 
-Sitemap: https://3js-and-rlsh-website.pages.dev/sitemap.xml
+Sitemap: https://www.3jsautobody.com/sitemap.xml
