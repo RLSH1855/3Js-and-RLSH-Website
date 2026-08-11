@@ -263,23 +263,36 @@
       [data-a]{opacity:1;transform:none;transition:none;}
     }
       *:focus{outline:none;}*:focus-visible{outline:2px solid #8B0000;outline-offset:3px;}
+      /* ── SHOP NAV STRIP ── */
+      .shop-nav{background:#212530;border-top:1px solid rgba(255,255,255,0.06);border-bottom:2px solid var(--crimson);}
+      .shop-nav-hint{display:flex;align-items:center;gap:12px;padding:12px 20px 0;font-family:'Inter',sans-serif;font-size:11px;font-weight:500;color:rgba(255,255,255,.6);letter-spacing:.3px;}
+      .shop-nav-hint::before{content:'';display:block;width:3px;height:14px;background:var(--crimson);flex-shrink:0;}
+      .shop-nav-tabs{display:flex;overflow-x:auto;white-space:nowrap;scrollbar-width:none;padding:0 8px;}
+      .shop-nav-tabs::-webkit-scrollbar{display:none;}
+      .shop-nav-link{display:inline-flex;align-items:center;justify-content:center;padding:14px 18px;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;color:rgba(255,255,255,.90);border-bottom:3px solid transparent;border-right:1px solid rgba(255,255,255,.1);transition:color .2s,border-color .2s,background .2s;white-space:nowrap;flex-shrink:0;min-height:48px;}
+      .shop-nav-link:last-child{border-right:none;}
+      .shop-nav-link:hover{color:#fff;background:rgba(255,255,255,.08);}
+      .shop-nav-link.active{color:#fff;border-bottom-color:var(--crimson);letter-spacing:2.5px;}
+      @media(min-width:768px){.shop-nav-tabs{justify-content:center;}.shop-nav-hint{justify-content:center;}}
+      @media(max-width:480px){.shop-nav-link{font-size:10px;padding:12px 14px;}.shop-nav-hint{font-size:10px;}}
   </style>
 </head>
 <body>
 
 <!-- ── SHOP NAV STRIP ── -->
-<nav style="background:#0a0a0a;border-bottom:2px solid #1e1e1e;">
-  <p style="display:flex;align-items:center;gap:12px;padding:10px 20px 0;font-family:'Inter',sans-serif;font-size:11px;font-weight:500;color:rgba(255,255,255,.6);">
-    <span style="display:block;width:3px;height:14px;background:#8B0000;flex-shrink:0;"></span>Select a category
-  </p>
-  <div style="display:flex;overflow-x:auto;white-space:nowrap;scrollbar-width:none;padding:0 8px;">
-    <a href="exterior-accessories-V2.html" style="display:inline-flex;align-items:center;justify-content:center;padding:14px 18px;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;color:rgba(255,255,255,.45);border-bottom:3px solid transparent;border-right:1px solid rgba(255,255,255,.1);white-space:nowrap;flex-shrink:0;min-height:48px;">All</a>
-    <a href="tonneau-covers.html" style="display:inline-flex;align-items:center;justify-content:center;padding:14px 18px;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;color:rgba(255,255,255,.45);border-bottom:3px solid transparent;border-right:1px solid rgba(255,255,255,.1);white-space:nowrap;flex-shrink:0;min-height:48px;">Tonneau Covers</a>
-    <a href="steps-running-boards.html" style="display:inline-flex;align-items:center;justify-content:center;padding:14px 18px;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;color:#fff;border-bottom:3px solid #8B0000;border-right:1px solid rgba(255,255,255,.1);white-space:nowrap;flex-shrink:0;min-height:48px;">Running Boards</a>
-    <a href="floor-liners.html" style="display:inline-flex;align-items:center;justify-content:center;padding:14px 18px;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;color:rgba(255,255,255,.45);border-bottom:3px solid transparent;border-right:1px solid rgba(255,255,255,.1);white-space:nowrap;flex-shrink:0;min-height:48px;">Floor Liners</a>
-    <a href="lighting.html" style="display:inline-flex;align-items:center;justify-content:center;padding:14px 18px;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;color:rgba(255,255,255,.45);border-bottom:3px solid transparent;border-right:1px solid rgba(255,255,255,.1);white-space:nowrap;flex-shrink:0;min-height:48px;">Lighting</a>
-    <a href="headache-racks.html" style="display:inline-flex;align-items:center;justify-content:center;padding:14px 18px;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;color:rgba(255,255,255,.45);border-bottom:3px solid transparent;border-right:1px solid rgba(255,255,255,.1);white-space:nowrap;flex-shrink:0;min-height:48px;">Headache Racks</a>
-    <a href="towing-hitches.html" style="display:inline-flex;align-items:center;justify-content:center;padding:14px 18px;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;color:rgba(255,255,255,.45);border-bottom:3px solid transparent;white-space:nowrap;flex-shrink:0;min-height:48px;">Towing</a>
+<nav class="shop-nav">
+  <p class="shop-nav-hint">Select a category to view products</p>
+  <div class="shop-nav-tabs">
+    <a href="exterior-accessories-V2.html" class="shop-nav-link"><svg aria-hidden="true" style="width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;flex-shrink:0;margin-right:6px;" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>All</a>
+    <a href="tonneau-covers.html" class="shop-nav-link">Tonneau Covers</a>
+    <a href="steps-running-boards.html" class="shop-nav-link active">Steps &amp; Running Boards</a>
+    <a href="floor-liners.html" class="shop-nav-link">Floor Liners</a>
+    <a href="lighting.html" class="shop-nav-link">Lighting</a>
+    <a href="headache-racks.html" class="shop-nav-link">Headache Racks</a>
+    <a href="tonneau-covers.html#elevate-rack" class="shop-nav-link">Elevate Rack</a>
+    <a href="towing-hitches.html" class="shop-nav-link">Towing &amp; Hitches</a>
+    <a href="parts-catalog.html?cat=bull-bars" class="shop-nav-link">Bull Bars</a>
+    <a href="parts-catalog.html?cat=tool-boxes" class="shop-nav-link">Tool Boxes</a>
   </div>
 </nav>
 

@@ -634,14 +634,14 @@
       .mfr-section{padding:64px 24px;}
     }
     /* ── SHOP NAV STRIP ── */
-    .shop-nav{background:var(--black-1);border-bottom:2px solid #1e1e1e;}
+    .shop-nav{background:#212530;border-top:1px solid rgba(255,255,255,0.06);border-bottom:2px solid var(--crimson);}
     .shop-nav-hint{display:flex;align-items:center;gap:12px;padding:12px 20px 0;font-family:'Inter',sans-serif;font-size:11px;font-weight:500;color:rgba(255,255,255,0.60);letter-spacing:0.3px;}
     .shop-nav-hint::before{content:'';display:block;width:3px;height:14px;background:var(--crimson);flex-shrink:0;}
     .shop-nav-tabs{display:flex;overflow-x:auto;white-space:nowrap;scrollbar-width:none;padding:0 8px;}
     .shop-nav-tabs::-webkit-scrollbar{display:none;}
-    .shop-nav-link{display:inline-flex;align-items:center;justify-content:center;padding:14px 18px;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;color:rgba(255,255,255,0.45);border-bottom:3px solid transparent;border-right:1px solid rgba(255,255,255,0.10);transition:color 0.2s,border-color 0.2s;white-space:nowrap;flex-shrink:0;min-height:48px;}
+    .shop-nav-link{display:inline-flex;align-items:center;justify-content:center;padding:14px 18px;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;color:rgba(255,255,255,0.90);border-bottom:3px solid transparent;border-right:1px solid rgba(255,255,255,0.10);transition:color 0.2s,border-color 0.2s,background 0.2s;white-space:nowrap;flex-shrink:0;min-height:48px;}
     .shop-nav-link:last-child{border-right:none;}
-    .shop-nav-link:hover{color:rgba(255,255,255,0.85);}
+    .shop-nav-link:hover{color:#fff;background:rgba(255,255,255,0.08);}
     .shop-nav-link.active{color:#fff;border-bottom-color:var(--crimson);letter-spacing:2.5px;}
     @media(min-width:768px){.shop-nav-tabs{justify-content:center;}.shop-nav-hint{justify-content:center;}}
     @media(max-width:480px){.shop-nav-link{font-size:10px;padding:12px 14px;}.shop-nav-hint{font-size:10px;}}
@@ -654,16 +654,16 @@
 <nav class="shop-nav">
   <p class="shop-nav-hint">Select a category to view products</p>
   <div class="shop-nav-tabs">
-    <a href="exterior-accessories-V2.html" class="shop-nav-link"><svg style="width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;flex-shrink:0;margin-right:6px;" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>All</a>
+    <a href="exterior-accessories-V2.html" class="shop-nav-link"><svg aria-hidden="true" style="width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;flex-shrink:0;margin-right:6px;" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>All</a>
     <a href="tonneau-covers.html" class="shop-nav-link active">Tonneau Covers</a>
     <a href="steps-running-boards.html" class="shop-nav-link">Steps &amp; Running Boards</a>
     <a href="floor-liners.html" class="shop-nav-link">Floor Liners</a>
     <a href="lighting.html" class="shop-nav-link">Lighting</a>
     <a href="headache-racks.html" class="shop-nav-link">Headache Racks</a>
-    <a href="parts-quote.html" class="shop-nav-link">Elevate Rack</a>
-    <a href="parts-quote.html" class="shop-nav-link">Towing &amp; Hitches</a>
-    <a href="parts-quote.html" class="shop-nav-link">Bull Bars</a>
-    <a href="parts-quote.html" class="shop-nav-link">Tool Boxes</a>
+    <a href="tonneau-covers.html#elevate-rack" class="shop-nav-link">Elevate Rack</a>
+    <a href="towing-hitches.html" class="shop-nav-link">Towing &amp; Hitches</a>
+    <a href="parts-catalog.html?cat=bull-bars" class="shop-nav-link">Bull Bars</a>
+    <a href="parts-catalog.html?cat=tool-boxes" class="shop-nav-link">Tool Boxes</a>
   </div>
 </nav>
 
@@ -1016,6 +1016,10 @@
 }
 
   .elevate-section{background:var(--black-1);padding:80px 24px;position:relative;overflow:hidden;}
+  /* Deep-linked from the "Elevate Rack" tab on every category page. The site
+     header is fixed (~152px), so without this the section heading lands
+     underneath it. Only affects #elevate-rack anchor scrolling. */
+  #elevate-rack{scroll-margin-top:168px;}
   .elevate-section::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,0.02) 1px,transparent 1px);background-size:28px 28px;pointer-events:none;}
   .elevate-section::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right,transparent,#8B0000 25%,#8B0000 75%,transparent);}
   .elevate-inner{max-width:1000px;margin:0 auto;position:relative;z-index:1;}
@@ -1074,20 +1078,9 @@
     .elevate-cta{padding-left:16px;padding-right:16px;}
     .elevate-card-name,.elevate-card-desc,.elevate-card-link{padding-left:16px;padding-right:16px;}
   }
-    /* ── SHOP NAV STRIP ── */
-    .shop-nav{background:var(--black-1);border-bottom:2px solid #1e1e1e;}
-    .shop-nav-hint{display:flex;align-items:center;gap:12px;padding:12px 20px 0;font-family:'Inter',sans-serif;font-size:11px;font-weight:500;color:rgba(255,255,255,0.60);letter-spacing:0.3px;}
-    .shop-nav-hint::before{content:'';display:block;width:3px;height:14px;background:var(--crimson);flex-shrink:0;}
-    .shop-nav-tabs{display:flex;overflow-x:auto;white-space:nowrap;scrollbar-width:none;padding:0 8px;}
-    .shop-nav-tabs::-webkit-scrollbar{display:none;}
-    .shop-nav-link{display:inline-flex;align-items:center;justify-content:center;padding:14px 18px;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;color:rgba(255,255,255,0.45);border-bottom:3px solid transparent;border-right:1px solid rgba(255,255,255,0.10);transition:color 0.2s,border-color 0.2s;white-space:nowrap;flex-shrink:0;min-height:48px;}
-    .shop-nav-link:last-child{border-right:none;}
-    .shop-nav-link:hover{color:rgba(255,255,255,0.85);}
-    .shop-nav-link.active{color:#fff;border-bottom-color:var(--crimson);letter-spacing:2.5px;}
-    @media(min-width:768px){.shop-nav-tabs{justify-content:center;}.shop-nav-hint{justify-content:center;}}
-    @media(max-width:480px){.shop-nav-link{font-size:10px;padding:12px 14px;}.shop-nav-hint{font-size:10px;}}</style>
+</style>
 
-<section class="elevate-section">
+<section class="elevate-section" id="elevate-rack">
   <div class="elevate-inner">
 
     <div class="elevate-header" data-anim="fade-up">
@@ -1310,6 +1303,29 @@
     });
   },{threshold:0.12});
   els.forEach(function(el){ io.observe(el); });
+
+  /* Catch-up pass. IntersectionObserver only reports a CHANGE in state, so
+     anything already on screen when it initialises can be missed entirely and
+     sit at opacity 0 until the user scrolls — on this page that meant the hero
+     eyebrow, headline, sub-copy, CTAs and the trust band. It's a load-timing
+     race, so it reproduces on fast/local loads and hides on slow ones.
+     Also covers deep links (#elevate-rack), where the anchor jump happens
+     before the observer's first pass.
+     Only touches elements already in the viewport — below-fold items still
+     reveal on scroll as normal. The delay matters: adding .visible on a later
+     tick (not during initial paint) lets the 0.65s CSS fade play. */
+  function revealInView(){
+    els.forEach(function(el){
+      var r = el.getBoundingClientRect();
+      if(r.top < window.innerHeight && r.bottom > 0){
+        el.classList.add('visible');
+        io.unobserve(el);
+      }
+    });
+  }
+  setTimeout(revealInView, 120);
+  /* Same-page anchor jumps don't re-run this script, so catch those too. */
+  window.addEventListener('hashchange', function(){ setTimeout(revealInView, 120); });
 })();
 
 /* ── FAQ accordion ── */
