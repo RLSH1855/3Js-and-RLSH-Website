@@ -138,9 +138,9 @@
     },
     {
       id: 'towing', noun: 'hitches & towing gear', typeLabel: 'Product Type', name: 'Towing', catLabel: 'Towing Equipment',
-      heroTitle: 'Towing Equipment', heroSub: 'CURT and B&W hitches, gooseneck, 5th wheel, ball mounts and wiring. Professionally installed.',
-      files: ['towing-data.js', 'bw-hitches-data.js'], approxCount: 400,
-      getData: function () { return [].concat(safeArr(g.CURT_CATALOG), safeArr(g.BW_CATALOG)); }
+      heroTitle: 'Towing Equipment', heroSub: 'B&W gooseneck, 5th wheel and turnoverball hitches. Professionally installed.',
+      files: ['bw-hitches-data.js'], approxCount: 14,
+      getData: function () { return safeArr(g.BW_CATALOG); }
     },
     {
       id: 'tool-boxes', noun: 'tool boxes & bed storage', typeLabel: 'Product Type', name: 'Tool Boxes', catLabel: 'Tool Boxes & Bed Storage',
