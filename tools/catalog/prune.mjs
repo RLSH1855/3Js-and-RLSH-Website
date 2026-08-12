@@ -60,8 +60,10 @@ const RULES = [
       // TonneauMate hardware is required to mount on GM trucks without a track system
       && !/TonneauMate/i.test(name)],
 
+  // "REP. KIT" / "HDW KIT" are Rigid's abbreviations for replacement and hardware
+  // kits. Spelling out "replacement" alone misses all of them.
   ['spare / replacement part',
-    (name) => /\breplacement\b|\bspare\b|repair kit|rebuild/i.test(name)],
+    (name) => /\breplacement\b|\bspare\b|repair kit|rebuild|REP\.? ?KIT|HDW ?KIT|\bHDW\b|SAE\/METRIC HW/i.test(name)],
 ];
 
 function classify(brand, name) {
