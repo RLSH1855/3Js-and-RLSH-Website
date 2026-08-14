@@ -226,7 +226,7 @@ const BRAND_FILTER_LABELS = {
 // not a per-product lookup table, so it isn't the kind of hard-coded map this
 // codebase is being swept for — it only needs to grow the day a new brand is
 // added to the shop.
-const BRAND_UNIVERSE = ['ADD', 'AMP Research', 'AVS', 'AlphaRex', 'Aries', 'B&W', 'BAK', 'BackRack', 'Baja Designs', 'Bushwacker', 'CURT', 'DV8', 'Diode Dynamics', 'Extang', 'Form Lighting', 'Go Rhino', 'Husky Liners', 'KC HiLites', 'Lund', 'Morimoto', 'N-Fab', 'Oracle Lighting', 'Retrax', 'Rigid Industries', 'Roll N Lock', 'Smittybilt', 'Spyder Auto', 'Stampede', 'Tonno Pro', 'TrailFX', 'TruXedo', 'UnderCover', 'Vision X', 'Westin', 'XK Glow'];
+const BRAND_UNIVERSE = ['ADD', 'AMP Research', 'AVS', 'AlphaRex', 'Aries', 'B&W', 'BAK', 'BackRack', 'Baja Designs', 'Bushwacker', 'DV8', 'Diode Dynamics', 'Extang', 'Form Lighting', 'Go Rhino', 'Husky Liners', 'KC HiLites', 'Lund', 'Morimoto', 'N-Fab', 'Oracle Lighting', 'Retrax', 'Rigid Industries', 'Roll N Lock', 'Smittybilt', 'Spyder Auto', 'Stampede', 'Tonno Pro', 'TrailFX', 'TruXedo', 'UnderCover', 'Vision X', 'Westin', 'XK Glow'];
 
 // ── Short product descriptions ──
 const PRODUCT_DESC = {
@@ -300,7 +300,7 @@ const PRODUCT_DESC = {
   // Towing
   'Turnoverball Gooseneck Hitch': 'Underbed gooseneck hitch that flips down when not in use — clean, flat bed when empty.',
   '5th Wheel Hitch': 'B&W Companion 5th wheel hitch — mounts in your truck bed for fifth-wheel towing.',
-  'Receiver Hitch': 'Bolt-on receiver hitch. CURT-engineered for max tongue weight and tow capacity.',
+  'Receiver Hitch': 'Bolt-on receiver hitch, engineered for max tongue weight and tow capacity.',
   'Weight Distribution Hitch': 'Levels your load for safer, smoother towing with heavy trailers.',
   'Gooseneck Ball & Safety Chain': 'OEM-matched gooseneck ball kit with dual safety chain rings.'
 };

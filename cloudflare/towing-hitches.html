@@ -81,10 +81,10 @@
         "@type": "FAQPage",
         "mainEntity": [
           {"@type":"Question","name":"How long does trailer hitch installation take?","acceptedAnswer":{"@type":"Answer","text":"Most trailer hitch installs take 1–2 hours at 3J's Auto Body. We handle both the hitch and wiring harness in the same visit so you leave fully ready to tow."}},
-          {"@type":"Question","name":"Do I need to drill for a trailer hitch?","acceptedAnswer":{"@type":"Answer","text":"CURT hitches are vehicle-specific and bolt on using existing factory holes. No drilling required on most applications. We'll confirm fitment for your exact vehicle."}},
+          {"@type":"Question","name":"Do I need to drill for a trailer hitch?","acceptedAnswer":{"@type":"Answer","text":"Most hitches are vehicle-specific and bolt on using existing factory holes. No drilling required on most applications. We'll confirm fitment for your exact vehicle."}},
           {"@type":"Question","name":"What hitch class do I need?","acceptedAnswer":{"@type":"Answer","text":"Hitch class depends on your vehicle and what you're towing. Class I–II for lighter loads like bike racks and small trailers. Class III–V for boats, campers, and heavy equipment. Call us at (562) 424-6744 and we'll spec the right setup for your tow rating."}},
           {"@type":"Question","name":"Do you install wiring harnesses too?","acceptedAnswer":{"@type":"Answer","text":"Yes — we install the full towing package. Hitch, ball mount, and wiring harness in one visit. We carry plug-and-play T-One connectors and custom wiring for all major truck and SUV applications."}},
-          {"@type":"Question","name":"What's the difference between CURT and B&W Hitches?","acceptedAnswer":{"@type":"Answer","text":"CURT is the go-to for receiver hitches, ball mounts, wiring, and everyday towing needs — excellent quality at accessible price points. B&W is the premium choice for heavy-duty applications like gooseneck, fifth wheel, and turnoverball hitches. We carry both."}},
+          {"@type":"Question","name":"Why B&W Hitches?","acceptedAnswer":{"@type":"Answer","text":"B&W is the premium choice for heavy-duty towing — gooseneck, fifth wheel, and turnoverball hitches built in the USA with best-in-class tow ratings. We stock B&W and install it ourselves, from spec to torque-test."}},
           {"@type":"Question","name":"Can you install a brake controller?","acceptedAnswer":{"@type":"Answer","text":"Yes — we install trailer brake controllers for trailers with electric brakes. This is required for most states when towing trailers over a certain weight. We'll make sure your setup is legal and safe."}}
         ]
       }
@@ -292,103 +292,57 @@
     }
 
     /* ══════════════════════════════════════════════
-       CURT FEATURED
+       INSTALLATION PROCESS
     ══════════════════════════════════════════════ */
-    .curt-section{
+    .install-section{
       background:#0d0d0d;
       padding:88px 40px;
       position:relative;overflow:hidden;
     }
-    .curt-section::before{
+    .install-section::before{
       content:'';position:absolute;inset:0;
       background-image:url('imgi_212_diagonal-line-abstract-background-vector-14199909.png');
       background-size:cover;background-position:center;
       opacity:0.05;pointer-events:none;z-index:0;
     }
-    .curt-section > *{position:relative;z-index:1;}
-    .curt-inner{max-width:1100px;margin:0 auto;}
-    .curt-header{margin-bottom:52px;}
-    .curt-header .eyebrow{color:var(--crimson);}
-    .curt-header .section-title{color:#fff;}
-    .curt-header p{
+    .install-section > *{position:relative;z-index:1;}
+    .install-inner{max-width:1100px;margin:0 auto;}
+    .install-header{margin-bottom:52px;}
+    .install-header .eyebrow{color:var(--crimson);}
+    .install-header .section-title{color:#fff;}
+    .install-header p{
       font-family:'Inter',sans-serif;
       font-size:16px;font-weight:500;
       color:rgba(255,255,255,0.60);
       line-height:1.65;max-width:640px;margin-top:14px;
     }
-
-    /* 3-col product image grid */
-    .curt-grid{
+    .install-steps{
       display:grid;
       grid-template-columns:repeat(3,1fr);
-      gap:12px;
-      margin-bottom:48px;
+      gap:24px;
     }
-    .curt-product{
+    .install-step{
       background:#181818;
       border:1px solid rgba(255,255,255,0.07);
       border-radius:0;
-      overflow:hidden;
+      padding:32px 26px;
       transition:border-color 0.2s;
     }
-    .curt-product:hover{border-color:rgba(139,0,0,0.40);}
-    .curt-product-img{
-      width:100%;height:220px;
-      object-fit:contain;
-      background:#fff;
-      display:block;
-      padding:16px;
-    }
-    .curt-product-info{padding:16px 18px;}
-    .curt-product-tag{
-      font-size:8px;font-weight:800;letter-spacing:2px;text-transform:uppercase;
-      color:var(--crimson);margin-bottom:5px;
-    }
-    .curt-product-name{
-      font-size:13px;font-weight:900;color:#fff;margin-bottom:6px;line-height:1.2;
-    }
-    .curt-product-desc{
-      font-size:11px;font-weight:500;
-      color:rgba(255,255,255,0.55);line-height:1.65;
-    }
-
-    .curt-rebellion{
-      background:rgba(139,0,0,0.08);
-      border:1px solid rgba(139,0,0,0.22);
-      border-radius:0;
-      padding:32px;
-      display:grid;grid-template-columns:1fr 1fr;
-      gap:48px;align-items:center;
-    }
-    .rebellion-text .eyebrow{color:var(--crimson);}
-    .rebellion-text h3{
-      font-size:clamp(22px,3vw,38px);font-weight:900;
-      letter-spacing:-1px;line-height:1.0;
-      color:#fff;margin-bottom:14px;text-transform:uppercase;
-    }
-    .rebellion-text h3 span{color:var(--crimson);}
-    .rebellion-text p{
-      font-size:13px;font-weight:500;
-      color:rgba(255,255,255,0.65);line-height:1.65;
-      margin-bottom:24px;
-    }
-    .btn-red-sm{
-      display:inline-flex;align-items:center;justify-content:center;gap:8px;
-      background:var(--crimson);color:#fff;
+    .install-step:hover{border-color:rgba(139,0,0,0.40);}
+    .install-step-num{
       font-family:'Montserrat',sans-serif;
-      font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
-      text-decoration:none;min-height:44px;padding:0 20px;border-radius:0;border:none;
-      transition:all 0.3s ease;cursor:pointer;
+      font-size:11px;font-weight:800;letter-spacing:2px;
+      color:var(--crimson);margin-bottom:14px;
     }
-    .btn-red-sm:hover{background:#a50000;}
-    .btn-red-sm svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2.5;}
-    .rebellion-img{
-      border-radius:0;overflow:hidden;
-      background:#fff;
-      padding:24px;
-      display:flex;align-items:center;justify-content:center;
+    .install-step h3{
+      font-size:16px;font-weight:900;text-transform:uppercase;
+      letter-spacing:0.3px;color:#fff;margin-bottom:10px;
     }
-    .rebellion-img img{width:100%;height:auto;max-height:280px;object-fit:contain;display:block;}
+    .install-step p{
+      font-family:'Inter',sans-serif;
+      font-size:14px;font-weight:500;
+      color:rgba(255,255,255,0.60);line-height:1.65;
+    }
 
     /* ══════════════════════════════════════════════
        B&W HITCHES
@@ -485,6 +439,14 @@
       padding:12px;
       margin-bottom:18px;
     }
+    .acc-icon-wrap{
+      width:100%;height:160px;
+      background:#f7f7f7;
+      border-radius:0;
+      display:flex;align-items:center;justify-content:center;
+      margin-bottom:18px;
+    }
+    .acc-icon-wrap svg{width:52px;height:52px;stroke:var(--crimson);fill:none;stroke-width:1.6;}
     .acc-tag{
       font-size:8px;font-weight:800;letter-spacing:2px;text-transform:uppercase;
       color:var(--crimson);margin-bottom:5px;
@@ -608,17 +570,15 @@
     /* ══════════════════════════════════════════════
        RESPONSIVE — mobile-first, scale up
     ══════════════════════════════════════════════ */
-    /* cat card image */
-    .cat-img{width:100%;height:120px;object-fit:contain;mix-blend-mode:multiply;margin-bottom:16px;display:block;}
     /* Base = mobile */
     .hero{height:280px;}
     .hero-content{padding:40px 20px;width:100%;max-width:100%;}
     .hero-ctas{flex-direction:column;align-items:stretch;}
     .btn-red,.btn-ghost{width:100%;justify-content:center;}
     .section-title{font-size:22px;letter-spacing:-0.3px;line-height:1.2;}
-    .categories,.curt-section,.bw-section,.acc-section{padding:48px 0 56px;}
+    .categories,.install-section,.bw-section,.acc-section{padding:48px 0 56px;}
     .why-section{padding:48px 20px 56px;}
-    .categories .section-header,.curt-header,.bw-text{padding-left:20px;padding-right:20px;}
+    .categories .section-header,.install-header,.bw-text{padding-left:20px;padding-right:20px;}
     .acc-section .eyebrow,.acc-section .section-title,.acc-section .acc-sub{padding-left:20px;padding-right:20px;}
     .faq-section{padding:48px 20px 56px;}
     .cta-section{padding:48px 20px 56px;}
@@ -626,15 +586,13 @@
     .btn-white,.btn-outline-white{width:100%;max-width:340px;justify-content:center;}
     .cat-grid{grid-template-columns:1fr;}
     .cat-card{display:flex;align-items:flex-start;gap:16px;padding:16px;}
-    .cat-img{width:88px;height:88px;flex-shrink:0;margin-bottom:0;}
+    .cat-icon{margin-bottom:0;flex-shrink:0;}
     .cat-card h3{font-size:13px;margin-bottom:6px;}
     .cat-card p{font-size:14px;}
-    .curt-grid{grid-template-columns:1fr;}
-    .curt-rebellion{grid-template-columns:1fr;gap:32px;padding:20px;}
+    .install-steps{grid-template-columns:1fr;gap:16px;}
     .bw-inner{grid-template-columns:1fr;gap:40px;}
     .bw-img-main img{height:200px;}
     .bw-img-sm img{height:130px;}
-    .curt-product-img{height:160px;}
     .acc-grid{grid-template-columns:1fr;}
     .acc-card{padding:20px 16px;}
     .why-grid{grid-template-columns:1fr;}
@@ -647,22 +605,19 @@
       .hero-ctas{flex-direction:row;align-items:flex-start;}
       .btn-red,.btn-ghost{width:auto;}
       .section-title{font-size:clamp(26px,4vw,40px);letter-spacing:-1px;line-height:1.1;}
-      .categories,.curt-section,.bw-section,.acc-section,.why-section{padding:64px 0;}
+      .categories,.install-section,.bw-section,.acc-section,.why-section{padding:64px 0;}
       .faq-section{padding:64px 0;}
       .cta-section{padding:64px 0;}
       .cta-btns{flex-direction:row;align-items:initial;}
       .btn-white,.btn-outline-white{width:auto;max-width:none;}
       .cat-grid{grid-template-columns:repeat(2,1fr);}
       .cat-card{display:block;padding:20px 16px;}
-      .cat-img{width:100%;height:120px;margin-bottom:16px;}
       .cat-card h3{font-size:14px;}
       .cat-card p{font-size:16px;}
-      .curt-grid{grid-template-columns:repeat(2,1fr);}
-      .curt-rebellion{grid-template-columns:1fr 1fr;gap:48px;padding:32px;}
+      .install-steps{grid-template-columns:repeat(3,1fr);}
       .bw-inner{grid-template-columns:1fr 1fr;gap:48px;}
       .bw-img-main img{height:260px;}
       .bw-img-sm img{height:170px;}
-      .curt-product-img{height:220px;}
       .acc-grid{grid-template-columns:repeat(2,1fr);}
       .why-grid{grid-template-columns:repeat(2,1fr);}
       .brands-bar{padding:20px 32px;}
@@ -670,7 +625,6 @@
     }
     @media(min-width:961px){
       .cat-grid{grid-template-columns:repeat(4,1fr);}
-      .curt-grid{grid-template-columns:repeat(3,1fr);}
       .acc-grid{grid-template-columns:repeat(3,1fr);}
       .why-grid{grid-template-columns:repeat(3,1fr);}
     }
@@ -722,7 +676,7 @@
     <h1>Tow More.<br><span>Worry Less.</span></h1>
     <div class="hero-rule"></div>
     <p class="hero-body">
-      Trailer hitches, ball mounts, wiring harnesses, brake controllers, and weight distribution — professionally installed right here in Signal Hill. CURT and B&W Hitches dealer. We sell it and install it ourselves.
+      Trailer hitches, ball mounts, wiring harnesses, brake controllers, and weight distribution — professionally installed right here in Signal Hill. B&W Hitches dealer. We spec it, install it, and torque-test it ourselves.
     </p>
     <div class="hero-ctas">
       <a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-red">
@@ -735,7 +689,7 @@
       </a>
     </div>
     <div class="hero-tags">
-      <span class="hero-tag">CURT Dealer</span>
+      <span class="hero-tag">Gooseneck &amp; 5th Wheel</span>
       <span class="hero-tag">B&amp;W Hitches</span>
       <span class="hero-tag">Wiring &amp; Brake Controllers</span>
       <span class="hero-tag">Class I – V Hitches</span>
@@ -749,10 +703,9 @@
 ══════════════════════════════════════════════ -->
 <div class="brands-bar">
   <div class="brands-bar-inner">
-    <span class="brands-label">Brands We Carry</span>
+    <span class="brands-label">Featured Brand</span>
     <div class="brands-divider"></div>
     <div class="brands-logos">
-      <img src="curt.webp" alt="CURT" loading="lazy" class="brand-logo-img">
       <span class="brand-logo-text" style="color:rgba(255,255,255,0.50);">B&amp;W Hitches</span>
     </div>
   </div>
@@ -771,25 +724,25 @@
     <div class="cat-grid">
 
       <div class="cat-card">
-        <img class="cat-img" src="https://www.catalograck.com/ImgVDHR/CUR/11000_3008x1990_a.jpg" alt="CURT Class III Trailer Hitch" loading="lazy" onerror="this.style.display='none'">
+        <div class="cat-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="10" width="11" height="5" rx="1"/><circle cx="18" cy="12" r="4"/></svg></div>
         <h3>Trailer Hitches</h3>
         <p>Class I through Class V receiver hitches for every truck, SUV, and car. Vehicle-specific — bolts on with no drilling on most applications.</p>
       </div>
 
       <div class="cat-card">
-        <img class="cat-img" src="https://www.catalograck.com/ImgVDHR/CUR/110003_3008x1990_a.jpg" alt="CURT Ball Mount and Hitch Ball" loading="lazy" onerror="this.style.display='none'">
+        <div class="cat-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="5"/><line x1="12" y1="13" x2="12" y2="21"/><line x1="7" y1="21" x2="17" y2="21"/></svg></div>
         <h3>Ball Mounts</h3>
         <p>Fixed and adjustable ball mounts, hitch balls, and pins for all tow ratings. We'll match the right drop and rise to your setup.</p>
       </div>
 
       <div class="cat-card">
-        <img class="cat-img" src="https://www.catalograck.com/ImgVDHR/CUR/56000_3008x1990_a.jpg" alt="CURT T-One Wiring Harness" loading="lazy" onerror="this.style.display='none'">
+        <div class="cat-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
         <h3>Wiring Harnesses</h3>
         <p>Plug-and-play T-One connectors and custom 4-pin and 7-pin wiring for your trailer lights — installed clean and routed right.</p>
       </div>
 
       <div class="cat-card">
-        <img class="cat-img" src="https://www.catalograck.com/ImgVDHR/CUR/51140_3008x1990_a.jpg" alt="CURT Trailer Brake Controller" loading="lazy" onerror="this.style.display='none'">
+        <div class="cat-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><line x1="12" y1="12" x2="16" y2="8"/><circle cx="12" cy="12" r="1.4" fill="#fff" stroke="none"/></svg></div>
         <h3>Brake Controllers</h3>
         <p>Trailer brake controllers for electric brake trailers — required by law in most states over a certain tow weight. We handle the wiring and installation.</p>
       </div>
@@ -800,64 +753,32 @@
 
 
 <!-- ══════════════════════════════════════════════
-     CURT — FEATURED BRAND
+     INSTALLATION PROCESS
 ══════════════════════════════════════════════ -->
-<section class="curt-section">
-  <div class="curt-inner">
+<section class="install-section">
+  <div class="install-inner">
 
-    <div class="curt-header">
-      <p class="eyebrow">Featured Brand</p>
-      <h2 class="section-title">CURT Manufacturing</h2>
-      <p>CURT is the #1 selling trailer hitch brand in North America — and for good reason. Every hitch is engineered for your exact year, make, and model. Powder-coated for rust resistance. Tested to SAE J684 safety standards. We stock CURT and install it ourselves.</p>
+    <div class="install-header">
+      <p class="eyebrow">Our Process</p>
+      <h2 class="section-title">How We Install It.</h2>
+      <p>Every hitch job at 3J's goes through the same three steps — no shortcuts, no guessing. We spec the right hardware for your vehicle and tow rating, install it to torque spec, and test it before you leave the lot.</p>
     </div>
 
-    <div class="curt-grid">
-      <div class="curt-product">
-        <img class="curt-product-img"
-             src="https://www.catalograck.com/ImgVDHR/CUR/11000_3008x1990_a.jpg"
-             alt="CURT Class III Trailer Hitch" loading="lazy">
-        <div class="curt-product-info">
-          <div class="curt-product-tag">CURT · Class III</div>
-          <div class="curt-product-name">Receiver Trailer Hitch</div>
-          <div class="curt-product-desc">Round-tube main body, open-back receiver, precision welded. Vehicle-specific design for a custom fit. Made in the USA.</div>
-        </div>
+    <div class="install-steps">
+      <div class="install-step">
+        <div class="install-step-num">Step 01</div>
+        <h3>We Spec It</h3>
+        <p>We confirm your vehicle's tow rating, hitch class, and exactly what you're towing — then match the right hitch, ball mount, and wiring for the job.</p>
       </div>
-      <div class="curt-product">
-        <img class="curt-product-img"
-             src="https://www.catalograck.com/ImgVDHR/CUR/110003_3008x1990_a.jpg"
-             alt="CURT Ball Mount" loading="lazy">
-        <div class="curt-product-info">
-          <div class="curt-product-tag">CURT · Ball Mount</div>
-          <div class="curt-product-name">Trailer Ball Mount</div>
-          <div class="curt-product-desc">Can be flipped to provide drop or rise. Works with all standard hitch balls. Solid steel construction with durable finish.</div>
-        </div>
+      <div class="install-step">
+        <div class="install-step-num">Step 02</div>
+        <h3>We Install It</h3>
+        <p>Hardware goes on using factory mounting points on most applications. Wiring is routed clean and zip-tied — no exposed wires, no shortcuts.</p>
       </div>
-      <div class="curt-product">
-        <img class="curt-product-img"
-             src="https://www.catalograck.com/ImgVDHR/CUR/102906_3008x1990_a.jpg"
-             alt="CURT Towing Accessory" loading="lazy">
-        <div class="curt-product-info">
-          <div class="curt-product-tag">CURT · Accessories</div>
-          <div class="curt-product-name">Towing Accessories</div>
-          <div class="curt-product-desc">Hitch pins, balls, safety chains, wiring adapters, and more. Everything you need to tow — in stock and ready to install.</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Rebellion XD Feature -->
-    <div class="curt-rebellion">
-      <div class="rebellion-text">
-        <p class="eyebrow">Heavy Duty Line</p>
-        <h3>CURT Rebellion<span> XD</span></h3>
-        <p>CURT's toughest receiver hitch — the Rebellion XD is engineered for extreme-duty towing with a high-strength steel weld construction, XD anti-rattle technology, and a raw steel finish ready for paint or powder coat. Built for trucks that actually work.</p>
-        <a href="https://www.3jsautobody.com/request-a-quote" target="_top" class="btn-red-sm" data-quote-add="CURT Rebellion XD">
-          <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-          Add to Quote
-        </a>
-      </div>
-      <div class="rebellion-img">
-        <img src="Curt%20Rebellion%20XD.webp"
-             alt="CURT Rebellion XD Heavy Duty Trailer Hitch" loading="lazy">
+      <div class="install-step">
+        <div class="install-step-num">Step 03</div>
+        <h3>We Test It</h3>
+        <p>Every bolt is torqued to spec and every trailer light and brake connection is tested before you tow away. Done right, the first time.</p>
       </div>
     </div>
 
@@ -919,31 +840,25 @@
     <div class="acc-grid">
 
       <div class="acc-card">
-        <img class="acc-img"
-             src="https://www.catalograck.com/ImgVDHR/CUR/56000_3008x1990_a.jpg"
-             alt="CURT T-One wiring harness" loading="lazy"
-             onerror="this.style.display='none'">
-        <div class="acc-tag">CURT</div>
+        <div class="acc-icon-wrap"><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+        <div class="acc-tag">Wiring</div>
         <div class="acc-name">Trailer Wiring</div>
         <div class="acc-desc">Plug-and-play T-One connectors and 4-pin/7-pin custom harnesses for all major truck and SUV applications. Installed clean — no hacking into factory wiring.</div>
       </div>
 
       <div class="acc-card">
-        <img class="acc-img"
-             src="https://www.catalograck.com/ImgVDHR/CUR/51140_3008x1990_a.jpg"
-             alt="CURT brake controller" loading="lazy"
-             onerror="this.style.display='none'">
-        <div class="acc-tag">CURT</div>
+        <div class="acc-icon-wrap"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><line x1="12" y1="12" x2="16" y2="8"/><circle cx="12" cy="12" r="1.4" fill="var(--crimson)" stroke="none"/></svg></div>
+        <div class="acc-tag">Brakes</div>
         <div class="acc-name">Brake Controllers</div>
         <div class="acc-desc">Proportional and time-delayed brake controllers for trailers with electric brakes. Required in most states for trailers over 3,000 lbs. We wire it right the first time.</div>
       </div>
 
       <div class="acc-card">
         <img class="acc-img"
-             src="https://www.catalograck.com/ImgVDHR/CUR/17422_3008x1990_xb.jpg"
-             alt="CURT weight distribution system" loading="lazy"
+             src="https://sdda.semadata.org/Standard/B%26W%20Trailer%20Hitches/GNXA171x.png"
+             alt="B&W Continuum weight distribution hitch" loading="lazy"
              onerror="this.style.display='none'">
-        <div class="acc-tag">CURT</div>
+        <div class="acc-tag">B&amp;W</div>
         <div class="acc-name">Weight Distribution</div>
         <div class="acc-desc">Weight distribution systems level out heavy tongue weight loads and reduce sway — essential for towing large campers, horse trailers, and heavy equipment.</div>
       </div>
@@ -974,7 +889,7 @@
 
       <div class="why-card">
         <h3>We Sell & Install</h3>
-        <p>One stop. We carry CURT and B&W in stock, spec the right hitch class and accessories for your vehicle, and install it the same day in most cases.</p>
+        <p>One stop. We stock B&W and source the right hitch and hardware for your vehicle, spec the right class, and install it the same day in most cases.</p>
       </div>
 
     </div>
@@ -1017,7 +932,7 @@
     </div>
     <div class="faq-item">
       <button class="faq-q" aria-expanded="false">Do I need to drill holes to install a hitch? <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
-      <div class="faq-a"><div class="faq-a-inner">CURT hitches are vehicle-specific and bolt on using your existing factory holes. No drilling required on most applications. We'll confirm fitment for your exact vehicle before we start.</div></div>
+      <div class="faq-a"><div class="faq-a-inner">Most hitches are vehicle-specific and bolt on using your existing factory holes. No drilling required on most applications. We'll confirm fitment for your exact vehicle before we start.</div></div>
     </div>
     <div class="faq-item">
       <button class="faq-q" aria-expanded="false">What hitch class do I need? <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
@@ -1028,8 +943,8 @@
       <div class="faq-a"><div class="faq-a-inner">Yes — we install the full towing package. Hitch, ball mount, and wiring harness in one visit. We carry plug-and-play T-One connectors for most trucks and SUVs.</div></div>
     </div>
     <div class="faq-item">
-      <button class="faq-q" aria-expanded="false">What's the difference between CURT and B&W Hitches? <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
-      <div class="faq-a"><div class="faq-a-inner">CURT is ideal for standard receiver hitches, ball mounts, wiring, and everyday towing at excellent value. B&W is the premium choice for heavy-duty gooseneck, fifth wheel, and turnoverball applications. We carry both and will recommend the right one for your needs.</div></div>
+      <button class="faq-q" aria-expanded="false">Why B&amp;W Hitches? <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+      <div class="faq-a"><div class="faq-a-inner">B&W is the premium choice for heavy-duty towing — gooseneck, fifth wheel, and turnoverball hitches built in the USA with best-in-class tow ratings. We stock B&W and install it ourselves, from spec to torque-test.</div></div>
     </div>
     <div class="faq-item">
       <button class="faq-q" aria-expanded="false">Can you install a trailer brake controller? <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>

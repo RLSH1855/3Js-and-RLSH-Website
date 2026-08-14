@@ -315,7 +315,7 @@
             '<div class="jj-tbody"><p>Custom-cut, all-weather coverage — WeatherTech, Husky &amp; OEM-matched options.</p></div>',
           '</a>',
           '<a href="/towing-hitches" class="jj-tile">',
-            '<div class="jj-timg" style="background-image:url(\'CURT%20Reb%20Hitch%20Email.webp\');background-size:cover;background-position:center;"></div>',
+            '<div class="jj-timg" style="background-image:url(\'B%26W%20Hitches%201.webp\');background-size:cover;background-position:center;"></div>',
             '<h3>Towing &amp; Hitches</h3>',
             '<div class="jj-tbody"><p>Hitches, wiring harnesses, brake controllers &amp; weight-distribution setups — installed &amp; tested.</p></div>',
           '</a>',
