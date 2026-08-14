@@ -851,7 +851,14 @@ function GaragePopup({ onClose, onClear, hasVehicle }) {
       document.body.style.overflow = '';
     };
   }, [onClose]);
-  return (
+  // Rendered through a portal on document.body. The catalog app lives inside
+  // site-shell's #ss-page-wrap, which sets z-index:5 and therefore creates a
+  // stacking context — so the popup's own z-index:1400 could never beat the
+  // fixed site header (z 1000) while nested there. That left the close button
+  // sitting underneath the header, where clicks hit the nav's garage link
+  // instead of closing. Portalling to body puts it in the root stacking
+  // context, where 1400 wins as intended.
+  return ReactDOM.createPortal(
     <div className="garage-popup-root">
       <div className="garage-popup-backdrop" onClick={onClose} />
       <div className="garage-popup-card">
@@ -866,7 +873,8 @@ function GaragePopup({ onClose, onClear, hasVehicle }) {
           {hasVehicle && <button className="garage-popup-clear" onClick={onClear}>Remove Vehicle</button>}
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }
 

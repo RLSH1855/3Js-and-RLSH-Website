@@ -77,7 +77,11 @@
 
   /* ── Garage iframe popup ── */
   /* z-index sits ABOVE the sitewide nav (z 1000); at 500 the full-height nav
-     overlapped and clipped the top of the popup. */
+     overlapped and clipped the top of the popup.
+     NOTE: this 1400 only takes effect because GaragePopup portals to
+     document.body (see catalog-app.jsx). Rendered in place it would be trapped
+     inside site-shell's #ss-page-wrap (z-index:5), which creates a stacking
+     context — the nav would win regardless of the value here. */
   .garage-popup-root { position: fixed; inset: 0; z-index: 1400; display: flex; align-items: center; justify-content: center; }
   .garage-popup-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,.72); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); animation: fadeIn .2s ease-out; }
   .garage-popup-card { position: relative; z-index: 1; width: min(1260px, 95vw); max-height: 92vh; overflow-y: auto; animation: fadeIn .22s ease-out; box-shadow: 0 24px 64px rgba(0,0,0,.6); background: #fff; }
