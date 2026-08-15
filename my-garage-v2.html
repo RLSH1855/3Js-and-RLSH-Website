@@ -601,35 +601,18 @@ var TRIMS={
   "Gladiator":      ["Sport","Sport S","Willys","Rubicon","Mojave"],
 };
 
-/* Bed options per model — [label, inches, class]. Derived from the live
-   catalog's actual bedIn column (cloudflare/catalog-data.js +
-   extra-tonneau-data.js), cross-checked against the OEM bed-length
-   reference DB. "inches" is a representative display value only — fitment
-   matching runs on "class" (short/standard/long), never on raw inches,
-   because supplier-reported inches are too noisy to match on directly. */
 var BED_SIZES={
-  "F-150":                 [["5'7\" Short",68.4,"short"],["6'7\" Standard",80.4,"standard"],["8'2\" Long",97.6,"long"]],
-  "F-150 Lightning":       [["5'7\" Short",68.4,"short"]],
-  "Super Duty F-250/F-350":[["6'10\" Standard",82,"standard"],["8'2\" Long",98.1,"long"]],
-  "Ranger":                [["5' Short",60,"short"],["6'1\" Standard",73.2,"standard"]],
-  "Maverick":              [["4'5\" Short",54,"short"]],
-  "Silverado 1500":        [["5'9\" Short",70.8,"short"],["6'7\" Standard",80.4,"standard"],["8'2\" Long",98.2,"long"]],
-  "Silverado 2500HD/3500HD":[["6'10\" Standard",82,"standard"],["8'2\" Long",98.2,"long"]],
-  "Colorado":              [["5'2\" Short",62.4,"short"],["6'2\" Standard",74.4,"standard"]],
-  "Sierra 1500":           [["5'9\" Short",70.8,"short"],["6'7\" Standard",80.4,"standard"],["8'2\" Long",98.2,"long"]],
-  "Sierra 2500HD/3500HD":  [["6'10\" Standard",82,"standard"],["8'2\" Long",98.2,"long"]],
-  "Canyon":                [["5'2\" Short",62.4,"short"],["6'2\" Standard",74.4,"standard"]],
-  "1500":                  [["5'7\" Short",67.4,"short"],["6'4\" Standard",76.3,"standard"],["8' Long",96.3,"long"]],
-  "1500 TRX":              [["5'7\" Short",67.4,"short"]],
-  "1500 RHO":              [["5'7\" Short",67.4,"short"]],
-  "2500/3500":             [["5'7\" Short",67.4,"short"],["6'4\" Standard",76.3,"standard"],["8' Long",98.3,"long"]],
-  "Tacoma":                [["5' Short",60,"short"],["6'2\" Standard",74.4,"standard"]],
-  "Tundra":                [["5'7\" Short",68.4,"short"],["6'7\" Standard",80.4,"standard"],["8'2\" Long",97.6,"long"]],
-  "Titan":                 [["5'7\" Short",68.4,"short"],["6'7\" Standard",80.4,"standard"],["8'3\" Long",98.5,"long"]],
-  "Titan XD":              [["6'7\" Standard",80.4,"standard"]],
-  "Frontier":              [["5' Short",60,"short"],["6'1\" Standard",73.2,"standard"]],
-  "Ridgeline":             [["5'4\" Short",64.8,"short"]],
-  "Gladiator":             [["5' Short",60,"short"]],
+  "F-150":                 [["5'6\" Short",66],["6'6\" Standard",78]],
+  "Super Duty F-250/F-350":[["6'9\" Standard",81],["8' Long",96]],
+  "Silverado 1500":        [["5'9\" Short",69],["6'7\" Standard",79]],
+  "Sierra 1500":           [["5'9\" Short",69],["6'7\" Standard",79]],
+  "1500":                  [["5'7\" Short",67],["6'4\" Standard",76],["8' Long",96]],
+  "Tacoma":                [["5' Short",60],["6' Standard",72]],
+  "Tundra":                [["5'6\" Short",66],["6'6\" Standard",78],["8' Long",96]],
+  "Ranger":                [["5' Short",60],["6' Standard",72]],
+  "Colorado":              [["5'2\" Short",62],["6'7\" Standard",79]],
+  "Canyon":                [["5'2\" Short",62],["6'7\" Standard",79]],
+  "Frontier":              [["5' Short",60],["6' Standard",72]],
 };
 
 var COLORS=[
@@ -916,11 +899,9 @@ function saveVehicle(){
   var bedVal=document.getElementById('val-bed').value;
   var beds=BED_SIZES[pendingVehicle.model]||[];
   var bedLabel='';
-  var bedClass='';
   if(bedVal){
     var match=beds.find(function(b){return b[1]==bedVal;});
     bedLabel=match?match[0]:'';
-    bedClass=match?(match[2]||''):'';
   }
 
   var yr=String(pendingVehicle.year).slice(2);
@@ -940,8 +921,6 @@ function saveVehicle(){
     model:model,
     trim:trim||'',
     bedSize:bedLabel||'',
-    bedIn:bedVal?Number(bedVal):null,
-    bedClass:bedClass||'',
     color:selectedColor.name,
     label:vehicleLabel
   };
