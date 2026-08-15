@@ -676,21 +676,53 @@ function getProductInfo(productName, coverType) {
   return getGenericInfo(productName, coverType);
 }
 
+// Bed length is noisy across suppliers (the same physical bed can show up as
+// a dozen+ distinct inch values), so match on class, not raw inches.
+function bedClassOf(inches) {
+  if (inches == null || isNaN(inches)) return null;
+  return inches < 72 ? 'short' : (inches <= 88 ? 'standard' : 'long');
+}
+function up(s) { return (s == null ? '' : String(s)).toUpperCase(); }
+const BED_CLASS_ORDER = { short:0, standard:1, long:2 };
+// Same physical bed shows up under many different supplier labels (e.g. 5.8',
+// 5'8", 5'9" are all the same short bed). Group by class and surface one
+// representative label per class (the most common raw label seen for it),
+// instead of listing every noisy label as if it were a distinct bed size.
+function distinctBedSizes(entries) {
+  const byClass = {};
+  entries.forEach(e => {
+    if (!e[F.bedSize]) return;
+    const cls = bedClassOf(e[F.bedIn]);
+    if (!cls) return;
+    if (!byClass[cls]) byClass[cls] = { bedIn: e[F.bedIn], counts: {} };
+    byClass[cls].counts[e[F.bedSize]] = (byClass[cls].counts[e[F.bedSize]] || 0) + 1;
+    if (e[F.bedIn] < byClass[cls].bedIn) byClass[cls].bedIn = e[F.bedIn];
+  });
+  return Object.keys(byClass)
+    .sort((a,b) => BED_CLASS_ORDER[a] - BED_CLASS_ORDER[b])
+    .map(cls => {
+      const counts = byClass[cls].counts;
+      const label = Object.keys(counts).sort((a,b) => counts[b]-counts[a])[0];
+      return { cls, label, bedIn: byClass[cls].bedIn };
+    });
+}
 function matchesTruck(row, garage) {
   if (!garage) return false;
   const year = parseInt(garage.year);
   if (year < row[F.startYear] || year > row[F.endYear]) return false;
-  const cm = row[F.make], gm = garage.make;
-  const mkOk = cm===gm||(gm==='Chevrolet'&&(cm==='GMC'||cm==='Chevrolet'))||(gm==='GMC'&&(cm==='GMC'||cm==='Chevrolet'));
+  // Supplier feeds mix casing on make/model — compare uppercased.
+  const cm = up(row[F.make]), gm = up(garage.make);
+  const mkOk = cm===gm||(gm==='CHEVROLET'&&(cm==='GMC'||cm==='CHEVROLET'))||(gm==='GMC'&&(cm==='GMC'||cm==='CHEVROLET'));
   if (!mkOk) return false;
-  const cmo = row[F.model], gmo = garage.model;
+  const cmo = up(row[F.model]), gmo = up(garage.model);
   const moOk = cmo===gmo||cmo.indexOf(gmo)!==-1||gmo.indexOf(cmo)!==-1
-    ||(cmo==='Silverado/Sierra'&&(gmo.indexOf('Silverado')!==-1||gmo.indexOf('Sierra')!==-1))
-    ||(cmo==='Canyon/Colorado'&&(gmo==='Canyon'||gmo==='Colorado'))
-    ||(cmo==='1500/2500/3500'&&(gmo.indexOf('Ram')!==-1||gmo.indexOf('1500')!==-1||gmo.indexOf('2500')!==-1));
+    ||(cmo==='SILVERADO/SIERRA'&&(gmo.indexOf('SILVERADO')!==-1||gmo.indexOf('SIERRA')!==-1))
+    ||(cmo==='CANYON/COLORADO'&&(gmo==='CANYON'||gmo==='COLORADO'))
+    ||(cmo==='1500/2500/3500'&&(gmo.indexOf('RAM')!==-1||gmo.indexOf('1500')!==-1||gmo.indexOf('2500')!==-1));
   if (!moOk) return false;
-  const bedIn = garage.bedIn||null;
-  if (bedIn&&row[F.bedIn]&&Math.abs(row[F.bedIn]-bedIn)>2) return false;
+  const gBedClass = garage.bedClass || (garage.bedIn ? bedClassOf(garage.bedIn) : null);
+  const rBedClass = bedClassOf(row[F.bedIn]);
+  if (gBedClass && rBedClass && gBedClass !== rBedClass) return false;
   return true;
 }
 
@@ -916,8 +948,7 @@ function DescriptionPane({ info }) {
 // field reads as a broken site, per CLAUDE.md.
 function SpecsPane({ productName, brandName, coverType, entries, info }) {
   const bedSizes = useMemo(() => {
-    const seen = new Set();
-    return entries.filter(e => e[F.bedSize]).reduce((acc,e) => { if(!seen.has(e[F.bedSize])){seen.add(e[F.bedSize]);acc.push(e[F.bedSize]);} return acc; }, []).sort().join(', ');
+    return distinctBedSizes(entries).map(b => b.label).join(', ');
   }, [entries]);
   const years = useMemo(() => {
     const sy = Math.min(...entries.map(e=>e[F.startYear]));
@@ -1261,13 +1292,7 @@ function App() {
     return prices.length ? Math.min(...prices) : null;
   }, [entries]);
 
-  const bedSizes = useMemo(() => {
-    const seen = new Set();
-    return entries.filter(e => e[F.bedSize]).reduce((acc,e) => {
-      if (!seen.has(e[F.bedSize])) { seen.add(e[F.bedSize]); acc.push({label:e[F.bedSize],bedIn:e[F.bedIn]}); }
-      return acc;
-    }, []).sort((a,b) => (a.bedIn||0)-(b.bedIn||0));
-  }, [entries]);
+  const bedSizes = useMemo(() => distinctBedSizes(entries), [entries]);
 
   const fits = useMemo(() => garage && entries.some(row => matchesTruck(row, garage)), [entries, garage]);
   // PRODUCT_TYPES / PRODUCT_GALLERY / COVER_IMAGES only describe tonneau covers.

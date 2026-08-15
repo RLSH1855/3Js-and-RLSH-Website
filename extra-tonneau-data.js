@@ -1,4 +1,4 @@
-// Extra Tonneau Covers — Lund & Tonno Pro (Light Truck Master 10.14.25)
+﻿// Extra Tonneau Covers — Lund & Tonno Pro (Light Truck Master 10.14.25)
 // [brand,product,partNum,bedIn,bedSize,startYear,endYear,make,model,desc,fitNote,map,img]
 // 956 entries
 var EXTRA_TONNEAU=[
@@ -357,7 +357,7 @@ var EXTRA_TONNEAU=[
 ["Lund","Lund Hard Fold Tonneau","969450",67.0,"5.5' BED, INCLUDES UTILITY TRACK ADAPTER KIT",2017,2024,"Nissan","TITAN","2017-2024 Nissan TITAN",null,699.0,null],
 ["Lund","Lund Hard Fold Tonneau","969451",78.9,"6.7' BED, INCLUDES UTILITY TRACK ADAPTER KIT",2017,2024,"Nissan","TITAN","2017-2024 Nissan TITAN",null,699.0,null],
 ["Lund","Lund Hard Fold Tonneau","969454",67.1,"5.5' BED, INCLUDES UTILITY TRACK ADAPTER KIT",2004,2015,"Nissan","TITAN","2004-2015 Nissan TITAN",null,699.0,null],
-["Lund","Lund Hard Fold Tonneau","969458",67.3,"6.7' BED, INCLUDES UTILITY TRACK ADAPTER KIT",2004,2015,"Nissan","TITAN","2004-2015 Nissan TITAN",null,699.0,null],
+["Lund","Lund Hard Fold Tonneau","969458",80.4,"6.7' BED, INCLUDES UTILITY TRACK ADAPTER KIT",2004,2015,"Nissan","TITAN","2004-2015 Nissan TITAN",null,699.0,null],
 ["Lund","Lund Hard Fold Tonneau","969250",76.3,"6.4' BED, EXCLUDES BEDS WITH RAMBOX CARGO MGMT",2011,2018,"RAM","1500","2011-2018 RAM 1500",null,699.0,null],
 ["Lund","Lund Hard Fold Tonneau","969251",67.4,"5.7' BED, EXCLUDES BEDS WITH RAMBOX CARGO MGMT",2011,2018,"RAM","1500","2011-2018 RAM 1500",null,699.0,null],
 ["Lund","Lund Hard Fold Tonneau","969254",96.3,"8' BED, EXCLUDES BEDS WITH RAMBOX CARGO MGMT",2011,2019,"RAM","1500","2011-2019 RAM 1500",null,699.0,null],
@@ -411,7 +411,7 @@ var EXTRA_TONNEAU=[
 ["Tonno Pro","Tonno Pro Hard Fold Tonneau","HF-153",72.8,"6' BED",2004,2012,"Chevrolet","COLORADO","2004-2012 Chevrolet COLORADO",null,649.0,null],
 ["Tonno Pro","Tonno Pro Hard Fold Tonneau","HF-164",61.7,"5' BED",2015,2022,"Chevrolet","COLORADO","2015-2022 Chevrolet COLORADO",null,649.0,null],
 ["Tonno Pro","Tonno Pro Hard Fold Tonneau","HF-165",74.0,"6' BED",2015,2022,"Chevrolet","COLORADO","2015-2022 Chevrolet COLORADO",null,649.0,null],
-["Tonno Pro","Tonno Pro Hard Fold Tonneau","HF-169",52.2,"5' 0\"",2023,2026,"Chevrolet","COLORADO","2023-2026 Chevrolet COLORADO",null,649.0,null],
+["Tonno Pro","Tonno Pro Hard Fold Tonneau","HF-169",60,"5' 0\"",2023,2026,"Chevrolet","COLORADO","2023-2026 Chevrolet COLORADO",null,649.0,null],
 ["Tonno Pro","Tonno Pro Hard Fold Tonneau","HF-150",78.0,"6.6' BED",1988,1999,"Chevrolet","K1500","1988-1999 Chevrolet K1500",null,649.0,null],
 ["Tonno Pro","Tonno Pro Hard Fold Tonneau","HF-156",96.0,"8' BED",1988,1999,"Chevrolet","K1500","1988-1999 Chevrolet K1500",null,649.0,null],
 ["Tonno Pro","Tonno Pro Hard Fold Tonneau","HF-150",78.0,"6.6' BED",1988,1999,"Chevrolet","K2500","1988-1999 Chevrolet K2500",null,649.0,null],
@@ -482,7 +482,7 @@ var EXTRA_TONNEAU=[
 ["Tonno Pro","Tonno Pro Hard Fold Tonneau","HF-153",72.8,"6' BED",2004,2012,"GMC","CANYON","2004-2012 GMC CANYON",null,649.0,null],
 ["Tonno Pro","Tonno Pro Hard Fold Tonneau","HF-164",61.7,"5' BED",2015,2022,"GMC","CANYON","2015-2022 GMC CANYON",null,649.0,null],
 ["Tonno Pro","Tonno Pro Hard Fold Tonneau","HF-165",74.0,"6' BED",2015,2022,"GMC","CANYON","2015-2022 GMC CANYON",null,649.0,null],
-["Tonno Pro","Tonno Pro Hard Fold Tonneau","HF-169",52.2,"5' 0\"",2023,2026,"GMC","CANYON","2023-2026 GMC CANYON",null,649.0,null],
+["Tonno Pro","Tonno Pro Hard Fold Tonneau","HF-169",60,"5' 0\"",2023,2026,"GMC","CANYON","2023-2026 GMC CANYON",null,649.0,null],
 ["Tonno Pro","Tonno Pro Hard Fold Tonneau","HF-150",78.0,"6.6' BED",1988,1999,"GMC","K1500","1988-1999 GMC K1500",null,649.0,null],
 ["Tonno Pro","Tonno Pro Hard Fold Tonneau","HF-156",96.0,"8' BED",1988,1999,"GMC","K1500","1988-1999 GMC K1500",null,649.0,null],
 ["Tonno Pro","Tonno Pro Hard Fold Tonneau","HF-150",78.0,"6.6' BED",1999,2006,"GMC","SIERRA 1500","1999-2006 GMC SIERRA 1500",null,649.0,null],

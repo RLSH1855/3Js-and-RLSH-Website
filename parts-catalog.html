@@ -584,21 +584,30 @@ function getProdDesc(name, type) {
 }
 
 // ── Fitment match ──
+// Bed length is noisy across suppliers (the same physical bed can show up as
+// a dozen+ distinct inch values), so match on class, not raw inches.
+function bedClassOf(inches) {
+  if (inches == null || isNaN(inches)) return null;
+  return inches < 72 ? 'short' : (inches <= 88 ? 'standard' : 'long');
+}
+function up(s) { return (s == null ? '' : String(s)).toUpperCase(); }
 function matchesTruck(row, garage) {
   if (!garage) return false;
   const year = parseInt(garage.year);
   if (year < row[F.startYear] || year > row[F.endYear]) return false;
-  const cm = row[F.make], gm = garage.make;
-  const mkOk = cm === gm || (gm==='Chevrolet'&&(cm==='GMC'||cm==='Chevrolet')) || (gm==='GMC'&&(cm==='GMC'||cm==='Chevrolet'));
+  // Supplier feeds mix casing on make/model — compare uppercased.
+  const cm = up(row[F.make]), gm = up(garage.make);
+  const mkOk = cm === gm || (gm==='CHEVROLET'&&(cm==='GMC'||cm==='CHEVROLET')) || (gm==='GMC'&&(cm==='GMC'||cm==='CHEVROLET'));
   if (!mkOk) return false;
-  const cmo = row[F.model], gmo = garage.model;
+  const cmo = up(row[F.model]), gmo = up(garage.model);
   const moOk = cmo===gmo || cmo.indexOf(gmo)!==-1 || gmo.indexOf(cmo)!==-1
-    || (cmo==='Silverado/Sierra'&&(gmo.indexOf('Silverado')!==-1||gmo.indexOf('Sierra')!==-1))
-    || (cmo==='Canyon/Colorado'&&(gmo==='Canyon'||gmo==='Colorado'))
-    || (cmo==='1500/2500/3500'&&(gmo.indexOf('Ram')!==-1||gmo.indexOf('1500')!==-1||gmo.indexOf('2500')!==-1));
+    || (cmo==='SILVERADO/SIERRA'&&(gmo.indexOf('SILVERADO')!==-1||gmo.indexOf('SIERRA')!==-1))
+    || (cmo==='CANYON/COLORADO'&&(gmo==='CANYON'||gmo==='COLORADO'))
+    || (cmo==='1500/2500/3500'&&(gmo.indexOf('RAM')!==-1||gmo.indexOf('1500')!==-1||gmo.indexOf('2500')!==-1));
   if (!moOk) return false;
-  const bedIn = garage.bedIn || null;
-  if (bedIn && row[F.bedIn] && Math.abs(row[F.bedIn] - bedIn) > 2) return false;
+  const gBedClass = garage.bedClass || (garage.bedIn ? bedClassOf(garage.bedIn) : null);
+  const rBedClass = bedClassOf(row[F.bedIn]);
+  if (gBedClass && rBedClass && gBedClass !== rBedClass) return false;
   return true;
 }
 
