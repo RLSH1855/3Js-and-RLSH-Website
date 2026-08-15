@@ -250,9 +250,9 @@
   .fb-sr{display:flex;gap:5px;}
   .fb-gap{margin-top:22px;}
   .col-ttl{display:block;font-family:'Montserrat',sans-serif;font-size:14px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.9);margin-bottom:15px;padding-bottom:7px;border-bottom:1.5px solid #8B0000;}
-  .soc-btn{width:36px;height:36px;display:inline-flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.09);color:rgba(255,255,255,0.82);text-decoration:none;transition:background 200ms ease,border-color 200ms ease,color 200ms ease;flex-shrink:0;border-radius:0;}
+  .soc-btn{width:44px;height:44px;display:inline-flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.09);color:rgba(255,255,255,0.82);text-decoration:none;transition:background 200ms ease,border-color 200ms ease,color 200ms ease;flex-shrink:0;border-radius:0;}
   .soc-btn:hover{background:#8B0000;border-color:#8B0000;color:#fff;}
-  .soc-btn svg{width:13px;height:13px;fill:currentColor;display:block;}
+  .soc-btn svg{width:20px;height:20px;fill:currentColor;display:block;}
   .nl{list-style:none;display:flex;flex-direction:column;gap:9px;}
   .nl a{font-family:'Inter',sans-serif;font-size:13px;color:rgba(255,255,255,0.62);text-decoration:none;transition:color 200ms ease;}
   .nl a:hover{color:#fff;}
@@ -267,8 +267,8 @@
   .ci a{color:rgba(255,255,255,0.62);text-decoration:none;transition:color 200ms ease;}
   .ci a:hover{color:#fff;}
   .ftm{padding:16px 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;border-top:1px solid rgba(255,255,255,0.08);position:relative;z-index:1;}
-  .fcp{font-family:'Inter',sans-serif;font-size:11px;color:rgba(255,255,255,0.42);}
-  .fcp span{color:rgba(139,0,0,.75);}
+  .fcp{font-family:'Inter',sans-serif;font-size:11px;color:rgba(255,255,255,0.72);}
+  .fcp span{color:rgba(255,255,255,0.95);font-weight:700;}
   .fbl{display:flex;gap:16px;}
   .fbl a{font-family:'Inter',sans-serif;font-size:11px;color:rgba(255,255,255,0.42);text-decoration:none;transition:color 200ms ease;}
   .fbl a:hover{color:rgba(255,255,255,.6);}
