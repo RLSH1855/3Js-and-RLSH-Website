@@ -695,7 +695,10 @@ var BED_SIZES={
   "1500":                  [["5'7\" Short",67.4,"short"],["6'4\" Standard",76.3,"standard"],["8' Long",96.3,"long"]],
   "1500 TRX":              [["5'7\" Short",67.4,"short"]],
   "1500 RHO":              [["5'7\" Short",67.4,"short"]],
-  "2500/3500":             [["5'7\" Short",67.4,"short"],["6'4\" Standard",76.3,"standard"],["8' Long",98.3,"long"]],
+  /* Ram HD has no 5'7" bed — the short box IS the 6'4". The class token stays
+     "standard" because that is what the catalog's inches bucket to; the label
+     is display only. */
+  "2500/3500":             [["6'4\" Short Box",76.3,"standard"],["8' Long Box",98.3,"long"]],
   "Tacoma":                [["5' Short",60,"short"],["6'2\" Standard",74.4,"standard"]],
   "Tundra":                [["5'7\" Short",68.4,"short"],["6'7\" Standard",80.4,"standard"],["8'2\" Long",97.6,"long"]],
   "Titan":                 [["5'7\" Short",68.4,"short"],["6'7\" Standard",80.4,"standard"],["8'3\" Long",98.5,"long"]],
