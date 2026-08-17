@@ -676,19 +676,74 @@ function getProductInfo(productName, coverType) {
   return getGenericInfo(productName, coverType);
 }
 
+const up = s => String(s == null ? '' : s).toUpperCase().trim();
+
+// Suppliers spell the same make several ways — RAM/Ram, DODGE/Dodge, FORD/Ford
+// — and the garage picker offers no "Dodge", so a pre-2011 Ram owner selects
+// RAM. Group the spellings that name one vehicle family.
+const MAKE_FAMILY = { CHEVROLET:'GM', CHEVY:'GM', GMC:'GM', RAM:'RAM', DODGE:'RAM' };
+function makeMatches(cm, gm) {
+  const c = up(cm), m = up(gm);
+  if (c === m) return true;
+  const cf = MAKE_FAMILY[c], mf = MAKE_FAMILY[m];
+  return !!cf && cf === mf;
+}
+
+// Ram-family models that are NOT a 1500/2500/3500 pickup. A pickup owner must
+// never be shown these, even if a size token leaks in from the description.
+const RAM_NOT_PICKUP = /\b(DAKOTA|DURANGO|PROMASTER|RAMCHARGER|SPRINTER|CHARGER|CHALLENGER|JOURNEY|CARAVAN|NEON|NITRO|DART|MAGNUM|VIPER|HORNET|INTREPID|STRATUS|AVENGER|CALIBER|RAM 50|RAM (1500|2500|3500) VAN|[DWB]\d{3}|CB300|RD200|M3[05]0)\b/;
+
+function sizeTokens(s) {
+  const out = [], str = up(s), re = /([A-Z]*)([1-5]500)(?![0-9])/g;
+  let m;
+  while ((m = re.exec(str))) {
+    // A single letter in front means a model code, not a size class — C1500 and
+    // K2500 are Chevy/GMC, B2500 is a Dodge van. A longer word in front is just
+    // a supplier missing a space ("New Body Style1500 only").
+    if (m[1].length === 1) continue;
+    if (!m[1].length) { const p = str.charAt(m.index - 1); if (p >= '0' && p <= '9') continue; }
+    if (out.indexOf(m[2]) === -1) out.push(m[2]);
+  }
+  return out;
+}
+
+// Which size classes a Ram row fits. The model field is often useless ("Ram",
+// "Ram W/O Ram Box", "DS") — BAK, TruXedo, Retrax and UnderCover name the truck
+// in the description instead ("09-18 & 19-23 Classic 1500 Dodge Ram W/O Ram
+// Box"). Returns null for a non-pickup, [] when nothing identifiable is found.
+function ramSizes(row) {
+  if (RAM_NOT_PICKUP.test(up(row[F.model]))) return null;
+  const fromModel = sizeTokens(row[F.model]);
+  return fromModel.length ? fromModel : sizeTokens(row[F.desc]);
+}
+
+function modelMatches(row, garage) {
+  const cmo = row[F.model], gmo = garage.model;
+  const legacy = cmo===gmo||cmo.indexOf(gmo)!==-1||gmo.indexOf(cmo)!==-1
+    ||(cmo==='Silverado/Sierra'&&(gmo.indexOf('Silverado')!==-1||gmo.indexOf('Sierra')!==-1))
+    ||(cmo==='Canyon/Colorado'&&(gmo==='Canyon'||gmo==='Colorado'))
+    ||(cmo==='1500/2500/3500'&&(gmo.indexOf('Ram')!==-1||gmo.indexOf('1500')!==-1||gmo.indexOf('2500')!==-1));
+  const isRam = up(garage.make) === 'RAM';
+  if (legacy) {
+    // "ProMaster 1500" used to slip through on the bare "1500" substring.
+    if (isRam && RAM_NOT_PICKUP.test(up(cmo)) && !RAM_NOT_PICKUP.test(up(gmo))) return false;
+    return true;
+  }
+  if (!isRam) return false;
+  const want = sizeTokens(gmo);
+  if (!want.length) return false;
+  const has = ramSizes(row);
+  if (!has || !has.length) return false;
+  for (let i = 0; i < want.length; i++) if (has.indexOf(want[i]) !== -1) return true;
+  return false;
+}
+
 function matchesTruck(row, garage) {
   if (!garage) return false;
   const year = parseInt(garage.year);
   if (year < row[F.startYear] || year > row[F.endYear]) return false;
-  const cm = row[F.make], gm = garage.make;
-  const mkOk = cm===gm||(gm==='Chevrolet'&&(cm==='GMC'||cm==='Chevrolet'))||(gm==='GMC'&&(cm==='GMC'||cm==='Chevrolet'));
-  if (!mkOk) return false;
-  const cmo = row[F.model], gmo = garage.model;
-  const moOk = cmo===gmo||cmo.indexOf(gmo)!==-1||gmo.indexOf(cmo)!==-1
-    ||(cmo==='Silverado/Sierra'&&(gmo.indexOf('Silverado')!==-1||gmo.indexOf('Sierra')!==-1))
-    ||(cmo==='Canyon/Colorado'&&(gmo==='Canyon'||gmo==='Colorado'))
-    ||(cmo==='1500/2500/3500'&&(gmo.indexOf('Ram')!==-1||gmo.indexOf('1500')!==-1||gmo.indexOf('2500')!==-1));
-  if (!moOk) return false;
+  if (!makeMatches(row[F.make], garage.make)) return false;
+  if (!modelMatches(row, garage)) return false;
   const bedIn = garage.bedIn||null;
   if (bedIn&&row[F.bedIn]&&Math.abs(row[F.bedIn]-bedIn)>2) return false;
   return true;
