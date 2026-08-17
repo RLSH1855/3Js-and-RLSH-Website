@@ -301,14 +301,26 @@ function modelMatches(row, garage) {
   return false;
 }
 
+// Bed length is noisy across suppliers — the same physical bed shows up under
+// a dozen+ distinct inch values (one 2020 Silverado short bed appears as 67.5,
+// 68, 69.6, 70 and 70.8). Matching raw inches with a ±2" tolerance hid 388 of
+// 632 F-150 rows over a 0.4" miss, so match on class instead.
+function bedClassOf(inches) {
+  if (inches == null || isNaN(inches)) return null;
+  return inches < 72 ? 'short' : (inches <= 88 ? 'standard' : 'long');
+}
+
 function matchesTruck(row, garage) {
   if (!garage) return false;
   const year = parseInt(garage.year);
   if (year < row[F.startYear] || year > row[F.endYear]) return false;
   if (!makeMatches(row[F.make], garage.make)) return false;
   if (!modelMatches(row, garage)) return false;
-  const bedIn = garage.bedIn || null;
-  if (bedIn && row[F.bedIn] && Math.abs(row[F.bedIn] - bedIn) > 2) return false;
+  // Fails OPEN when either side is unknown, so a garage saved before bedClass
+  // existed keeps seeing the full catalog rather than an empty grid.
+  const gBedClass = garage.bedClass || (garage.bedIn ? bedClassOf(garage.bedIn) : null);
+  const rBedClass = bedClassOf(row[F.bedIn]);
+  if (gBedClass && rBedClass && gBedClass !== rBedClass) return false;
   return true;
 }
 
