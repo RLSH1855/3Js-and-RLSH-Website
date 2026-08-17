@@ -252,12 +252,36 @@ function ramSizes(row) {
   return fromModel.length ? fromModel : sizeTokens(row[F.desc]);
 }
 
+// Nameplates that share a name but are different trucks whose parts do not
+// interchange. Plain substring matching cannot tell them apart — most Nissan
+// rows say only "Titan" — so both sides must agree on the qualifier.
+const DISTINCT_NAMEPLATES = [
+  { base: /\bTITAN\b/, qualifier: /\bXD\b/ }
+];
+function nameplateConflict(cmo, gmo) {
+  for (let i = 0; i < DISTINCT_NAMEPLATES.length; i++) {
+    const d = DISTINCT_NAMEPLATES[i];
+    if (!d.base.test(cmo) || !d.base.test(gmo)) continue;
+    const want = d.qualifier.test(gmo);
+    // A row can name both ("Titan, Titan XD"), so it conflicts only when every
+    // alternative it lists disagrees with the garage vehicle.
+    const parts = cmo.split(/[,/]|\bAND\b/);
+    let ok = false;
+    for (let j = 0; j < parts.length && !ok; j++) {
+      if (d.base.test(parts[j]) && d.qualifier.test(parts[j]) === want) ok = true;
+    }
+    if (!ok) return true;
+  }
+  return false;
+}
+
 // Compared uppercased for the same reason makes are: suppliers ship SILVERADO
 // 1500, RANGER and TACOMA in caps while the garage picker stores them in title
 // case. The hardcoded model literals below must be uppercased to match — leave
 // 'Silverado/Sierra' in title case here and Silverado tonneau drops 52 to 21.
 function modelMatches(row, garage) {
   const cmo = up(row[F.model]), gmo = up(garage.model);
+  if (nameplateConflict(cmo, gmo)) return false;
   const legacy = cmo===gmo || cmo.indexOf(gmo)!==-1 || gmo.indexOf(cmo)!==-1
     || (cmo==='SILVERADO/SIERRA'&&(gmo.indexOf('SILVERADO')!==-1||gmo.indexOf('SIERRA')!==-1))
     || (cmo==='CANYON/COLORADO'&&(gmo==='CANYON'||gmo==='COLORADO'))
