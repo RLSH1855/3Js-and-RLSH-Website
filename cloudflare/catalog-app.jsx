@@ -252,16 +252,20 @@ function ramSizes(row) {
   return fromModel.length ? fromModel : sizeTokens(row[F.desc]);
 }
 
+// Compared uppercased for the same reason makes are: suppliers ship SILVERADO
+// 1500, RANGER and TACOMA in caps while the garage picker stores them in title
+// case. The hardcoded model literals below must be uppercased to match — leave
+// 'Silverado/Sierra' in title case here and Silverado tonneau drops 52 to 21.
 function modelMatches(row, garage) {
-  const cmo = row[F.model], gmo = garage.model;
+  const cmo = up(row[F.model]), gmo = up(garage.model);
   const legacy = cmo===gmo || cmo.indexOf(gmo)!==-1 || gmo.indexOf(cmo)!==-1
-    || (cmo==='Silverado/Sierra'&&(gmo.indexOf('Silverado')!==-1||gmo.indexOf('Sierra')!==-1))
-    || (cmo==='Canyon/Colorado'&&(gmo==='Canyon'||gmo==='Colorado'))
-    || (cmo==='1500/2500/3500'&&(gmo.indexOf('Ram')!==-1||gmo.indexOf('1500')!==-1||gmo.indexOf('2500')!==-1));
+    || (cmo==='SILVERADO/SIERRA'&&(gmo.indexOf('SILVERADO')!==-1||gmo.indexOf('SIERRA')!==-1))
+    || (cmo==='CANYON/COLORADO'&&(gmo==='CANYON'||gmo==='COLORADO'))
+    || (cmo==='1500/2500/3500'&&(gmo.indexOf('RAM')!==-1||gmo.indexOf('1500')!==-1||gmo.indexOf('2500')!==-1));
   const isRam = up(garage.make) === 'RAM';
   if (legacy) {
     // "ProMaster 1500" used to slip through on the bare "1500" substring.
-    if (isRam && RAM_NOT_PICKUP.test(up(cmo)) && !RAM_NOT_PICKUP.test(up(gmo))) return false;
+    if (isRam && RAM_NOT_PICKUP.test(cmo) && !RAM_NOT_PICKUP.test(gmo)) return false;
     return true;
   }
   if (!isRam) return false;
