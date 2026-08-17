@@ -380,14 +380,44 @@ function ramSizes(row) {
   const fromModel = sizeTokens(row[F.model]);
   return fromModel.length ? fromModel : sizeTokens(row[F.desc]);
 }
+
+// Nameplates that share a name but are different trucks whose parts do not
+// interchange. Plain substring matching cannot tell them apart — most Nissan
+// rows say only "Titan" — so both sides must agree on the qualifier.
+const DISTINCT_NAMEPLATES = [{
+  base: /\bTITAN\b/,
+  qualifier: /\bXD\b/
+}];
+function nameplateConflict(cmo, gmo) {
+  for (let i = 0; i < DISTINCT_NAMEPLATES.length; i++) {
+    const d = DISTINCT_NAMEPLATES[i];
+    if (!d.base.test(cmo) || !d.base.test(gmo)) continue;
+    const want = d.qualifier.test(gmo);
+    // A row can name both ("Titan, Titan XD"), so it conflicts only when every
+    // alternative it lists disagrees with the garage vehicle.
+    const parts = cmo.split(/[,/]|\bAND\b/);
+    let ok = false;
+    for (let j = 0; j < parts.length && !ok; j++) {
+      if (d.base.test(parts[j]) && d.qualifier.test(parts[j]) === want) ok = true;
+    }
+    if (!ok) return true;
+  }
+  return false;
+}
+
+// Compared uppercased for the same reason makes are: suppliers ship SILVERADO
+// 1500, RANGER and TACOMA in caps while the garage picker stores them in title
+// case. The hardcoded model literals below must be uppercased to match — leave
+// 'Silverado/Sierra' in title case here and Silverado tonneau drops 52 to 21.
 function modelMatches(row, garage) {
-  const cmo = row[F.model],
-    gmo = garage.model;
-  const legacy = cmo === gmo || cmo.indexOf(gmo) !== -1 || gmo.indexOf(cmo) !== -1 || cmo === 'Silverado/Sierra' && (gmo.indexOf('Silverado') !== -1 || gmo.indexOf('Sierra') !== -1) || cmo === 'Canyon/Colorado' && (gmo === 'Canyon' || gmo === 'Colorado') || cmo === '1500/2500/3500' && (gmo.indexOf('Ram') !== -1 || gmo.indexOf('1500') !== -1 || gmo.indexOf('2500') !== -1);
+  const cmo = up(row[F.model]),
+    gmo = up(garage.model);
+  if (nameplateConflict(cmo, gmo)) return false;
+  const legacy = cmo === gmo || cmo.indexOf(gmo) !== -1 || gmo.indexOf(cmo) !== -1 || cmo === 'SILVERADO/SIERRA' && (gmo.indexOf('SILVERADO') !== -1 || gmo.indexOf('SIERRA') !== -1) || cmo === 'CANYON/COLORADO' && (gmo === 'CANYON' || gmo === 'COLORADO') || cmo === '1500/2500/3500' && (gmo.indexOf('RAM') !== -1 || gmo.indexOf('1500') !== -1 || gmo.indexOf('2500') !== -1);
   const isRam = up(garage.make) === 'RAM';
   if (legacy) {
     // "ProMaster 1500" used to slip through on the bare "1500" substring.
-    if (isRam && RAM_NOT_PICKUP.test(up(cmo)) && !RAM_NOT_PICKUP.test(up(gmo))) return false;
+    if (isRam && RAM_NOT_PICKUP.test(cmo) && !RAM_NOT_PICKUP.test(gmo)) return false;
     return true;
   }
   if (!isRam) return false;
