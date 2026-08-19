@@ -246,11 +246,12 @@ function sizeTokens(s) {
 // "Ram W/O Ram Box", "DS") — BAK, TruXedo, Retrax and UnderCover name the truck
 // in the description instead ("09-18 & 19-23 Classic 1500 Dodge Ram W/O Ram
 // Box"). Returns null for a non-pickup, [] when nothing identifiable is found.
-function ramSizes(row) {
-  if (RAM_NOT_PICKUP.test(up(row[F.model]))) return null;
+function familySizes(row, family) {
+  if (family === 'RAM' && RAM_NOT_PICKUP.test(up(row[F.model]))) return null;
   const fromModel = sizeTokens(row[F.model]);
   return fromModel.length ? fromModel : sizeTokens(row[F.desc]);
 }
+function ramSizes(row) { return familySizes(row, 'RAM'); }
 
 // Nameplates that share a name but are different trucks whose parts do not
 // interchange. Plain substring matching cannot tell them apart — most Nissan
@@ -283,13 +284,26 @@ function modelMatches(row, garage) {
   const cmo = up(row[F.model]), gmo = up(garage.model);
   if (nameplateConflict(cmo, gmo)) return false;
   const legacy = cmo===gmo || cmo.indexOf(gmo)!==-1 || gmo.indexOf(cmo)!==-1
-    || (cmo==='SILVERADO/SIERRA'&&(gmo.indexOf('SILVERADO')!==-1||gmo.indexOf('SIERRA')!==-1))
+    || (cmo.indexOf('SILVERADO/SIERRA')!==-1&&(gmo.indexOf('SILVERADO')!==-1||gmo.indexOf('SIERRA')!==-1))
     || (cmo==='CANYON/COLORADO'&&(gmo==='CANYON'||gmo==='COLORADO'))
     || (cmo==='1500/2500/3500'&&(gmo.indexOf('RAM')!==-1||gmo.indexOf('1500')!==-1||gmo.indexOf('2500')!==-1));
-  const isRam = up(garage.make) === 'RAM';
+  const family = MAKE_FAMILY[up(garage.make)];
+  const isRam = family === 'RAM';
   if (legacy) {
     // "ProMaster 1500" used to slip through on the bare "1500" substring.
     if (isRam && RAM_NOT_PICKUP.test(cmo) && !RAM_NOT_PICKUP.test(gmo)) return false;
+    // A Silverado 1500 and a 2500HD share a nameplate AND a bed class but not
+    // their parts, so bed matching cannot separate them. 942 GM rows name the
+    // size only in the description, which is why this reads the same fields
+    // ramSizes always has. Veto only when BOTH sides name a size and none of
+    // them agree; an unlabelled row still fails open exactly as before.
+    if (isRam || family === 'GM') {
+      const want = sizeTokens(gmo), has = familySizes(row, family);
+      if (want.length && has && has.length) {
+        for (let i = 0; i < want.length; i++) if (has.indexOf(want[i]) !== -1) return true;
+        return false;
+      }
+    }
     return true;
   }
   if (!isRam) return false;
