@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Retargeting Setup Checklist – 3J's Auto Body & RLSH</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #0d0d0d;
+      color: #e0e0e0;
+      padding: 2rem;
+      line-height: 1.65;
+    }
+    h1 {
+      font-size: 1.8rem;
+      color: #ff4d00;
+      border-bottom: 2px solid #ff4d00;
+      padding-bottom: .5rem;
+      margin-bottom: 1.5rem;
+    }
+    h2 {
+      font-size: 1.15rem;
+      color: #ffaa00;
+      margin: 2rem 0 .75rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+    .section { margin-bottom: 1.5rem; }
+    .item {
+      display: flex;
+      align-items: flex-start;
+      gap: .75rem;
+      margin: .45rem 0;
+      padding: .5rem .75rem;
+      background: #1a1a1a;
+      border-left: 3px solid #333;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: border-color .2s;
+    }
+    .item:hover { border-left-color: #ff4d00; }
+    .item.done { opacity: .5; border-left-color: #28a745; }
+    .item.done label { text-decoration: line-through; }
+    input[type="checkbox"] {
+      margin-top: 3px;
+      width: 16px;
+      height: 16px;
+      accent-color: #ff4d00;
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+    label { cursor: pointer; font-size: .92rem; }
+    .note {
+      font-size: .78rem;
+      color: #888;
+      margin-top: .2rem;
+    }
+    .badge {
+      display: inline-block;
+      font-size: .65rem;
+      padding: 1px 6px;
+      border-radius: 3px;
+      margin-left: .4rem;
+      font-weight: 700;
+      vertical-align: middle;
+    }
+    .badge.free { background: #1a4731; color: #4caf50; }
+    .badge.paid { background: #4a1f00; color: #ff9800; }
+    .badge.req  { background: #2a0a0a; color: #f44336; }
+    progress-bar {
+      display: block;
+      background: #1a1a1a;
+      border-radius: 6px;
+      overflow: hidden;
+      height: 10px;
+      margin: .5rem 0 1.5rem;
+    }
+    #progressFill {
+      display: block;
+      height: 100%;
+      background: #ff4d00;
+      width: 0%;
+      transition: width .3s;
+    }
+    #progressText { font-size: .8rem; color: #888; margin-bottom: 1rem; }
+    .tip {
+      background: #111a2b;
+      border-left: 3px solid #2979ff;
+      padding: .6rem .9rem;
+      border-radius: 4px;
+      font-size: .82rem;
+      color: #aac4ff;
+      margin: .75rem 0;
+    }
+    footer { margin-top: 3rem; font-size: .75rem; color: #444; border-top: 1px solid #222; padding-top: 1rem; }
+  </style>
+</head>
+<body>
+
+<h1>Retargeting Setup Checklist<br><small style="font-size:.6em;color:#aaa">3J's Auto Body &amp; Paint / Rhino Linings Signal Hill</small></h1>
+
+<div id="progressText">0 of 0 tasks complete</div>
+<progress-bar><span id="progressFill"></span></progress-bar>
+
+<!-- ─────────────────────────── 1. WEBSITE ─────────────────────────── -->
+<div class="section">
+  <h2>1. Website — Pixel &amp; Tag Installation</h2>
+  <div class="tip">All pixels go inside <code>&lt;head&gt;</code> on EVERY page. Use Google Tag Manager to manage them all from one place.</div>
+
+  <div class="item" onclick="toggle(this)">
+    <input type="checkbox" />
+    <div>
+      <label>Install Google Tag Manager (GTM) on all 25 HTML pages</label>
+      <div class="note">Create a free GTM account → get your GTM-XXXXXXX container snippet → paste the &lt;script&gt; in &lt;head&gt; and the &lt;noscript&gt; right after &lt;body&gt; on every page. <span class="badge free">FREE</span></div>
+    </div>
+  </div>
+
+  <div class="item" onclick="toggle(this)">
+    <input type="checkbox" />
+    <div>
+      <label>Add Meta (Facebook/Instagram) Pixel via GTM</label>
+      <div class="note">Go to Meta Events Manager → Create Pixel → copy Pixel ID → add as a Custom HTML tag in GTM. Fire on "All Pages". <span class="badge free">FREE</span></div>
+    </div>
+  </div>
+
+  <div class="item" onclick="toggle(this)">
+    <input type="checkbox" />
+    <div>
+      <label>Add Google Ads Remarketing Tag via GTM</label>
+      <div class="note">In GTM, add a new tag → Google Ads Remarketing → enter your Google Ads Conversion ID → fire on "All Pages". <span class="badge free">FREE</span></div>
+    </div>
+  </div>
+
+  <div class="item" onclick="toggle(this)">
+    <input type="checkbox" />
+    <div>
+      <label>Add Google Analytics 4 (GA4) via GTM</label>
+      <div class="note">Create a GA4 property → get your Measurement ID (G-XXXXXXXX) → add as GA4 Configuration tag in GTM. <span class="badge free">FREE</span></div>
+    </div>
+  </div>
+
+  <div class="item" onclick="toggle(this)">
+    <input type="checkbox" />
+    <div>
+      <label>Set up Meta Pixel Standard Events on key pages</label>
+      <div class="note">Fire <code>ViewContent</code> on service pages; <code>Lead</code> on contact form submit (Formspree success); <code>Contact</code> on phone/map click. Add these as extra GTM triggers. <span class="badge free">FREE</span></div>
+    </div>
+  </div>
+
+  <div class="item" onclick="toggle(this)">
+    <input type="checkbox" />
+    <div>
+      <label>Verify all pixels fire correctly with GTM Preview + Meta Pixel Helper</label>
+      <div class="note">Use GTM's built-in Preview mode. Install the free "Meta Pixel Helper" Chrome extension to confirm Pixel fires on every page. <span class="badge free">FREE</span></div>
+    </div>
+  </div>
+
+  <div class="item" onclick="toggle(this)">
+    <input type="checkbox" />
+    <div>
+      <label>Add a Cookie Consent banner (CCPA compliance)</label>
+      <div class="note">California law (CCPA) requires opt-out for data collection. Use a free tool like Cookiebot or CookieYes. Load pixels only after consent. <span class="badge req">REQUIRED</span></div>
+    </div>
+  </div>
+
+  <div class="item" onclick="toggle(this)">
+    <input type="checkbox" />
+    <div>
+      <label>Update Privacy Policy page to mention retargeting &amp; cookies</label>
+      <div class="note">Disclose that you use Facebook Pixel, Google Ads, and GA4 to show targeted ads. Add a link in your footer. <span class="badge req">REQUIRED</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ─────────────────────────── 2. META / INSTAGRAM ─────────────────── -->
+<div class="section">
+  <h2>2. Meta (Facebook &amp; Instagram) Retargeting</h2>
+
+  <div class="item" onclick="toggle(this)">
+    <input type="checkbox" />
+    <div>
+      <label>Create / verify your Meta Business Suite account</label>
+      <div class="note">business.facebook.com → confirm your business is verified so ads can run without interruption. <span class="badge free">FREE</span></div>
+    </div>
+  </div>
+
+  <div class="item" onclick="toggle(this)">
+    <input type="checkbox" />
+    <div>
+      <label>Link your Facebook Page + Instagram account to Business Suite</label>
+      <div class="note">Both accounts must be connected before running cross-platform retargeting ads. <span class="badge free">FREE</span></div>
+    </div>
+  </div>
+
+  <div class="item" onclick="toggle(this)">
+    <input type="checkbox" />
+    <div>
+      <label>Build Custom Audiences from website visitors</label>
+      <div class="note">Audiences → Create → Website → All Visitors (180 days). Also make: Visited Contact Page, Visited Services pages, Form Submitters. <span class="badge free">FREE</span></div>
+    </div>
+  </div>
+
+  <div class="item" onclick="toggle(this)">
+    <input type="checkbox" />
+    <div>
+      <label>Upload Customer List as a Custom Audience</label>
+      <div class="note">Export past customer emails/phones from your records → upload to Audiences → Customer List. Meta matches to Facebook profiles. <span class="badge free">FREE</span></div>
+    </div>
+  </div>
+
+  <div class="item" onclick="toggle(this)">
+    <input type="checkbox" />
+    <div>
+      <label>Create Lookalike Audiences (1–3%) from best custom audiences</label>
+      <div class="note">Expand reach to Signal Hill / Long Beach area people who look like your existing customers. <span class="badge free">FREE</span></div>
+    </div>
+  </div>
+
+  <div class="item" onclick="toggle(this)">
+    <input type="checkbox" />
+    <div>
+      <label>Launch a Website Traffic retargeting campaign</label>
+      <div class="note">Objective: Traffic or Leads → target your Custom Audiences → use before/after photos, testimonials, and a strong CTA ("Get a Free Estimate"). <span class="badge paid">AD SPEND</span></div>
+    </div>
+  </div>
+
+  <div class="item" onclick="toggle(this)">
+    <input type="checkbox" />
+    <div>
+      <label>Set up a Lead Gen form ad for "Free Estimate" on Facebook/Instagram</label>
+      <div class="note">Retarget visitors with an in-app form so they never leave the platform. Sync leads to email via Zapier. <span class="badge paid">AD SPEND</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ─────────────────────────── 3. GOOGLE ───────────────────────────── -->
+<div class="section">
+  <h2>3. Google Ads Retargeting</h2>
+
+  <div class="item" onclick="toggle(this)">
+    <input type="checkbox" />
+    <div>
+      <label>Create / verify Google Ads account and link to GA4</label>
+      <div class="note">ads.google.com → Link accounts under Tools → Linked Accounts → GA4. <span class="badge free">FREE</span></div>
+    </div>
+  </div>
+
+  <div class="item" onclick="toggle(this)">
+    <input type="checkbox" />
+    <div>
+      <label>Build Remarketing Audience lists in Google Ads</label>
+      <div class="note">Tools → Audience Manager → Website Visitors: All Visitors, Service Page Visitors, Contact Page Visitors. Set 90-day membership duration. <span class="badge free">FREE</span></div>
+    </div>
+  </div>
+
+  <div class="item" onclick="toggle(this)">
+    <input type="checkbox" />
+    <div>
+      <label>Launch Display Remarketing campaign (Google Display Network)</label>
+      <div class="note">Show banner ads to past visitors as they browse the web. Use responsive display ads with your logo + before/after images. Target signal hill + surrounding zip codes. <span class="badge paid">AD SPEND</span></div>
+    </div>
+  </div>
+
+  <div class="item" onclick="toggle(this)">
+    <input type="checkbox" />
+    <div>
+      <label>Launch Search Remarketing (RLSA) campaign</label>
+      <div class="note">Bid higher when a past site visitor searches "auto body shop near me" or "Rhino liner Signal Hill". Add audience to existing search campaigns with bid adjustment. <span class="badge paid">AD SPEND</span></div>
+    </div>
+  </div>
+
+  <div class="item" onclick="toggle(this)">
+    <input type="checkbox" />
+    <div>
+      <label>Set up Google Ads conversion tracking for phone calls &amp; form fills</label>
+      <div class="note">Add a Google Ads conversion action for the Formspree thank-you event and for click-to-call on mobile. <span class="badge free">FREE</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ─────────────────────────── 4. LOCAL / GBP ──────────────────────── -->
+<div class="section">
+  <h2>4. Google Business Profile &amp; Local Retargeting</h2>
+
+  <div class="item" onclick="toggle(this)">
+    <input type="checkbox" />
+    <div>
+      <label>Claim and fully fill out Google Business Profile (GBP)</label>
+      <div class="note">business.google.com → add all services, hours, photos, and a booking link. Critical for Local Services Ads retargeting. <span class="badge free">FREE</span></div>
+    </div>
+  </div>
+
+  <div class="item" onclick="toggle(this)">
+    <input type="checkbox" />
+    <div>
+      <label>Enable Google Local Services Ads (LSA) – "Google Guaranteed"</label>
+      <div class="note">Auto body shops qualify. Pay per lead, not per click. Appears above regular search ads. <span class="badge paid">AD SPEND</span></div>
+    </div>
+  </div>
+
+  <div class="item" onclick="toggle(this)">
+    <input type="checkbox" />
+    <div>
+      <label>Post weekly updates / offers to Google Business Profile</label>
+      <div class="note">Keeps your profile active and re-engages people who found you via Google Maps. <span class="badge free">FREE</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ─────────────────────────── 5. EMAIL ────────────────────────────── -->
+<div class="section">
+  <h2>5. Email Retargeting</h2>
+
+  <div class="item" onclick="toggle(this)">
+    <input type="checkbox" />
+    <div>
+      <label>Set up a free email marketing account (Mailchimp or Brevo)</label>
+      <div class="note">Free tiers handle up to 500–1,000 contacts. Use to re-engage past customers and form submitters. <span class="badge free">FREE</span></div>
+    </div>
+  </div>
+
+  <div class="item" onclick="toggle(this)">
+    <input type="checkbox" />
+    <div>
+      <label>Connect Formspree form submissions to your email list via Zapier</label>
+      <div class="note">Zapier free plan: Formspree → Mailchimp/Brevo. New estimate requests auto-added to a "Leads" list. <span class="badge free">FREE</span></div>
+    </div>
+  </div>
+
+  <div class="item" onclick="toggle(this)">
+    <input type="checkbox" />
+    <div>
+      <label>Create a 3-email follow-up sequence for new leads</label>
+      <div class="note">Email 1 (day 1): Confirm estimate request. Email 2 (day 3): Showcase before/after photos. Email 3 (day 7): Limited-time offer or testimonial. <span class="badge free">FREE</span></div>
+    </div>
+  </div>
+
+  <div class="item" onclick="toggle(this)">
+    <input type="checkbox" />
+    <div>
+      <label>Upload email list to Meta + Google for Customer Match retargeting</label>
+      <div class="note">Reactivate cold email subscribers with social/search ads. Works best with 1,000+ emails. <span class="badge free">FREE</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ─────────────────────────── 6. TRACKING / ANALYTICS ─────────────── -->
+<div class="section">
+  <h2>6. Tracking &amp; Analytics Setup</h2>
+
+  <div class="item" onclick="toggle(this)">
+    <input type="checkbox" />
+    <div>
+      <label>Confirm GA4 is recording sessions, events, and conversions</label>
+      <div class="note">GA4 DebugView + Realtime report. Verify: page_view, scroll, click, form_submit events all fire. <span class="badge free">FREE</span></div>
+    </div>
+  </div>
+
+  <div class="item" onclick="toggle(this)">
+    <input type="checkbox" />
+    <div>
+      <label>Set up GA4 Conversion events: generate_lead, contact</label>
+      <div class="note">Mark form_submit as a key event in GA4 Admin → Events. This feeds Google Ads Smart Bidding. <span class="badge free">FREE</span></div>
+    </div>
+  </div>
+
+  <div class="item" onclick="toggle(this)">
+    <input type="checkbox" />
+    <div>
+      <label>Enable UTM parameter tracking on all ad links</label>
+      <div class="note">Use Google's Campaign URL Builder: utm_source, utm_medium, utm_campaign on every ad link so you know which platform drives leads. <span class="badge free">FREE</span></div>
+    </div>
+  </div>
+
+  <div class="item" onclick="toggle(this)">
+    <input type="checkbox" />
+    <div>
+      <label>Set up call tracking (CallRail free trial or Google forwarding number)</label>
+      <div class="note">Know which ad platforms drive phone calls. CallRail 14-day free trial; Google Ads has a free forwarding number option. <span class="badge free">FREE / TRIAL</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ─────────────────────────── 7. CREATIVE ─────────────────────────── -->
+<div class="section">
+  <h2>7. Ad Creative Assets to Prepare</h2>
+  <div class="tip">Prepare these before launching any ads — creative is everything for retargeting.</div>
+
+  <div class="item" onclick="toggle(this)">
+    <input type="checkbox" />
+    <div><label>5–10 high-quality before/after repair photos (square + landscape versions)</label></div>
+  </div>
+
+  <div class="item" onclick="toggle(this)">
+    <input type="checkbox" />
+    <div><label>2–3 short video clips (15–30 sec) of work in progress or finished jobs</label></div>
+  </div>
+
+  <div class="item" onclick="toggle(this)">
+    <input type="checkbox" />
+    <div><label>Logo on transparent background (PNG) for display banners</label></div>
+  </div>
+
+  <div class="item" onclick="toggle(this)">
+    <input type="checkbox" />
+    <div><label>3–5 written customer testimonials / 5-star review quotes</label></div>
+  </div>
+
+  <div class="item" onclick="toggle(this)">
+    <input type="checkbox" />
+    <div><label>Clear offer / CTA copy: "Free Estimate", "I-CAR Gold Class Certified", "Family Owned Since 1991"</label></div>
+  </div>
+
+  <div class="item" onclick="toggle(this)">
+    <input type="checkbox" />
+    <div><label>Rhino Liner specific creative: truck photos with bedliner, tonneau covers, running boards</label></div>
+  </div>
+</div>
+
+<!-- ─────────────────────────── SCRIPT ──────────────────────────────── -->
+<script>
+  function toggle(el) {
+    const cb = el.querySelector('input[type="checkbox"]');
+    cb.checked = !cb.checked;
+    el.classList.toggle('done', cb.checked);
+    updateProgress();
+    saveState();
+  }
+
+  function updateProgress() {
+    const all = document.querySelectorAll('.item input[type="checkbox"]');
+    const done = [...all].filter(cb => cb.checked).length;
+    const pct = all.length ? Math.round((done / all.length) * 100) : 0;
+    document.getElementById('progressFill').style.width = pct + '%';
+    document.getElementById('progressText').textContent = done + ' of ' + all.length + ' tasks complete (' + pct + '%)';
+  }
+
+  function saveState() {
+    const states = [...document.querySelectorAll('.item input[type="checkbox"]')].map(cb => cb.checked);
+    localStorage.setItem('retargetingChecklist', JSON.stringify(states));
+  }
+
+  function loadState() {
+    const saved = JSON.parse(localStorage.getItem('retargetingChecklist') || '[]');
+    const items = document.querySelectorAll('.item');
+    items.forEach((item, i) => {
+      if (saved[i]) {
+        item.querySelector('input[type="checkbox"]').checked = true;
+        item.classList.add('done');
+      }
+    });
+    updateProgress();
+  }
+
+  loadState();
+</script>
+
+<footer>
+  Open this file in your browser — checkboxes save automatically to localStorage.<br>
+  3J's Auto Body &amp; Paint / Rhino Linings of Signal Hill — Retargeting Checklist
+</footer>
+</body>
+</html>
