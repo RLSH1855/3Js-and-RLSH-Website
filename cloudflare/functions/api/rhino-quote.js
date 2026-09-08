@@ -56,25 +56,64 @@ export async function onRequestPost({ request, env }) {
     return respond({ error: 'We need a phone number or an email to send your quote to.' }, 422);
   }
 
+  /* ⚠️ CHECKED HERE TOO, not only in the page. The browser validation is a
+     courtesy to whoever is filling the form in; this is the rule. Anything can
+     POST to this route, and a request with no vehicle and no description is a
+     row nobody can quote from — it would sit in the Requests lane looking like
+     work and be worth nothing. */
+  const make = String(data.make || '').trim();
+  const model = String(data.model || '').trim();
+  const message = String(data.message || '').trim();
   const year = /^\d{4}$/.test(String(data.year || '').trim()) ? Number(data.year) : null;
+
+  if (!year || !make || !model) {
+    return respond({ error: 'Please tell us the year, make and model of your truck.' }, 422);
+  }
+  if (!message) {
+    return respond({ error: 'Please tell us a little about the job so we can quote it properly.' }, 422);
+  }
+
+  /* VIN and plate are both optional and neither is validated beyond its
+     shape. A VIN typed with an O for a zero should reach the shop looking
+     wrong so a person can query it, not be rejected at the door or silently
+     "corrected" into a different truck. */
+  const vin = String(data.vin || '').trim().toUpperCase().slice(0, 17) || null;
+  const plate = String(data.plate || '').trim().toUpperCase().slice(0, 10) || null;
+
+  /* The tonneau add-on, stored as structured data in `services_wanted` — the
+     column that exists for exactly this. Glued into the message it would be
+     prose somebody has to read; here the shop manager can show it as a choice.
+     Ignored unless BOTH halves were picked: a half-answered add-on is worse
+     than none, because it reads as a decision the customer made. */
+  const t = data.tonneau;
+  const tonneau = t && String(t.style || '').trim() && String(t.material || '').trim()
+    ? { style: String(t.style).trim(), material: String(t.material).trim() }
+    : null;
+  const servicesWanted = JSON.stringify(
+    tonneau ? ['Rhino bed liner', `Tonneau cover — ${tonneau.style}, ${tonneau.material}`]
+            : ['Rhino bed liner']
+  );
 
   try {
     await env.SHOP_DB
       .prepare(
         `INSERT INTO quote_requests
-           (source, name, phone_e164, phone_display, email, year, make, model,
-            message, sms_consent, status, ip_hash, user_agent)
-         VALUES ('website', ?, ?, ?, ?, ?, ?, ?, ?, ?, 'new', ?, ?)`
+           (source, name, phone_e164, phone_display, email, vin, plate, year, make, model,
+            services_wanted, message, sms_consent, status, ip_hash, user_agent)
+         VALUES ('website', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'new', ?, ?)`
       )
       .bind(
         name,
         phone.e164,
         phone.display,
         email,
+        vin,
+        plate,
         year,
-        String(data.make || '').trim() || null,
-        String(data.model || '').trim() || null,
-        String(data.message || '').trim() || null,
+        make,
+        model,
+        servicesWanted,
+        message,
         // The form carries the text/email disclosure above the button, so
         // submitting it IS the opt-in. Recorded as web_form on conversion.
         1,
