@@ -45,9 +45,43 @@
     .form-intro h2 { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: clamp(26px,4vw,40px); line-height: 1.1; letter-spacing: -1px; color: #111; margin-bottom: 12px; text-wrap: balance; }
     .form-intro p { font-size: 16px; font-weight: 500; letter-spacing: 0.3px; line-height: 1.65; color: var(--fg-muted); text-wrap: pretty; }
 
-    /* ── SHOPMONKEY QUOTE EMBED ── */
-    .quote-embed-wrap { max-width: 680px; margin: 0 auto; background: #fff; overflow: hidden; }
-    .quote-embed-wrap iframe { display: block; width: 100%; min-height: 1650px; border: 0; }
+    /* ── QUOTE FORM ── */
+    .quote-form-wrap { max-width: 680px; margin: 0 auto; background: #fff; }
+    .form-section-label { font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: #111; margin-bottom: 14px; padding-bottom: 8px; border-bottom: 2px solid #eee; }
+    .form-row { display: grid; grid-template-columns: 1fr; gap: 14px; margin-bottom: 14px; }
+    .form-group { display: flex; flex-direction: column; }
+    .form-group label { font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.4px; color: #444; margin-bottom: 6px; }
+    .form-group .req { color: var(--red); }
+    .form-group input, .form-group textarea {
+      font-family: 'Inter', sans-serif; font-size: 15px; color: #111;
+      padding: 12px 14px; border: 1px solid #ccc; border-radius: 0; background: #fff;
+      transition: border-color 0.15s ease;
+    }
+    .form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--red); }
+    .form-group textarea { min-height: 110px; resize: vertical; }
+    .submit-btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      width: 100%; height: 54px; margin-top: 6px;
+      background: var(--red); color: #fff; border: 2px solid #a00000; border-radius: 0;
+      font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 800;
+      letter-spacing: 2.5px; text-transform: uppercase; cursor: pointer;
+      transition: background 0.2s ease;
+    }
+    .submit-btn:hover { background: #6d0000; }
+    .submit-btn:disabled { background: #aaa; border-color: #aaa; cursor: not-allowed; }
+    .form-error { display: none; margin-top: 12px; padding: 12px 16px; background: #fdecea; border: 1px solid #f5c6cb; font-size: 12px; font-weight: 600; color: #721c24; }
+    /* Consent disclosure. Submitting the form IS the opt-in, so it sits with
+       the button that submits it. Carries what A2P 10DLC vetting looks for. */
+    .consent-note { margin-top: 12px; font-family: 'Inter', sans-serif; font-size: 11px; line-height: 1.6; color: #555; }
+    #success-state { display: none; max-width: 680px; margin: 0 auto; text-align: center; padding: 48px 20px; }
+    #success-state .success-check { width: 64px; height: 64px; margin: 0 auto 20px; border: 3px solid var(--red); color: var(--red); font-size: 32px; line-height: 58px; }
+    #success-state h2 { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: clamp(22px,3.4vw,32px); color: #111; margin-bottom: 12px; }
+    #success-state p { font-size: 15px; line-height: 1.7; color: #555; margin-bottom: 8px; }
+
+    @media (min-width: 768px) {
+      .form-row.two-col { grid-template-columns: 1fr 1fr; }
+      .form-row.three-col { grid-template-columns: 1fr 1fr 1fr; }
+    }
 
     /* ── RHINO FEATURE ICONS ── */
     .rhino-feats { max-width: 900px; margin: 44px auto 0; }
@@ -101,9 +135,70 @@
       <p>Fill out the form below and our team will reach out with your custom bed-liner quote. It only takes a minute.</p>
     </div>
 
-    <!-- Shopmonkey native quote-request form -->
-    <div class="quote-embed-wrap">
-      <iframe src="https://app.shopmonkey.cloud/public/quote-request/5c63714b0b11410a81a66899" width="100%" height="1650" frameborder="0" title="Request a Rhino Linings bed-liner quote"></iframe>
+    <!-- Quote form. Posts to /api/rhino-quote, which writes straight into the
+         shop manager's Requests lane. -->
+    <div class="quote-form-wrap" id="form-wrap">
+      <div class="form-section-label">Contact Info</div>
+
+      <form id="rhino-form" novalidate>
+        <div class="form-row two-col">
+          <div class="form-group">
+            <label for="f-firstname">First Name <span class="req">*</span></label>
+            <input type="text" id="f-firstname" placeholder="John" required autocomplete="given-name"/>
+          </div>
+          <div class="form-group">
+            <label for="f-lastname">Last Name <span class="req">*</span></label>
+            <input type="text" id="f-lastname" placeholder="Smith" required autocomplete="family-name"/>
+          </div>
+        </div>
+
+        <div class="form-row two-col">
+          <div class="form-group">
+            <label for="f-phone">Phone <span class="req">*</span></label>
+            <input type="tel" id="f-phone" placeholder="562-555-0100" required autocomplete="tel" inputmode="numeric"/>
+          </div>
+          <div class="form-group">
+            <label for="f-email">Email <span class="req">*</span></label>
+            <input type="email" id="f-email" placeholder="you@email.com" required autocomplete="email" style="text-transform:lowercase;"/>
+          </div>
+        </div>
+
+        <div class="form-section-label" style="margin-top:24px;">Your Vehicle</div>
+
+        <div class="form-row three-col">
+          <div class="form-group">
+            <label for="f-year">Year</label>
+            <input type="text" id="f-year" placeholder="2022" maxlength="4" inputmode="numeric" autocomplete="off"/>
+          </div>
+          <div class="form-group">
+            <label for="f-make">Make</label>
+            <input type="text" id="f-make" placeholder="Ford" autocomplete="off"/>
+          </div>
+          <div class="form-group">
+            <label for="f-model">Model</label>
+            <input type="text" id="f-model" placeholder="F-150" autocomplete="off"/>
+          </div>
+        </div>
+
+        <div class="form-section-label" style="margin-top:24px;">Any Notes</div>
+
+        <div class="form-group" style="margin-bottom:20px;">
+          <label for="f-notes">Message (optional)</label>
+          <textarea id="f-notes" placeholder="Custom color, full spray-in vs. drop-in, anything specific about your truck..."></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn" id="submit-btn">Get My Free Quote</button>
+        <div class="form-error" id="form-error">Please fill in your name, phone and email.</div>
+        <p class="consent-note">By submitting this form, you agree that 3J's Auto Body &amp; Paint may contact you by text and email about your quote and your vehicle's status. Message frequency varies. Message and data rates may apply. Reply STOP to opt out, HELP for help.</p>
+      </form>
+    </div><!-- /quote-form-wrap -->
+
+    <!-- Success state -->
+    <div id="success-state">
+      <div class="success-check">&#10003;</div>
+      <h2>Quote Request Received!</h2>
+      <p>We'll be in touch with your custom Rhino Linings bed-liner quote — usually the same business day.</p>
+      <p>Questions? Call us directly at <strong>562-424-6744</strong>.</p>
     </div>
 
     <!-- Rhino Linings spray-on protection — feature panel (desktop/tablet) -->
@@ -121,14 +216,76 @@
   </section>
 
 <script>
-// Bridge Shopmonkey's quote-request iframe events into GTM's dataLayer
-window.addEventListener('message', function(e) {
-  if (e.origin !== 'https://app.shopmonkey.cloud') return;
-  if (e.data && e.data.source === 'sm_wrf' && e.data.dataLayer) {
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push(e.data.dataLayer);
-  }
-});
+(function () {
+  var form    = document.getElementById('rhino-form');
+  var button  = document.getElementById('submit-btn');
+  var errBox  = document.getElementById('form-error');
+  var wrap    = document.getElementById('form-wrap');
+  var success = document.getElementById('success-state');
+
+  var val = function (id) { return (document.getElementById(id).value || '').trim(); };
+
+  // Phone formats itself as it is typed, the same way it does in the shop
+  // manager — a number the customer can read back is a number they can check.
+  document.getElementById('f-phone').addEventListener('input', function (e) {
+    var d = e.target.value.replace(/\D/g, '').slice(0, 10);
+    e.target.value = d.length > 6 ? d.slice(0,3) + '-' + d.slice(3,6) + '-' + d.slice(6)
+                   : d.length > 3 ? d.slice(0,3) + '-' + d.slice(3)
+                   : d;
+  });
+
+  // Enter moves to the next field instead of submitting — required on every
+  // form in this site (CLAUDE.md).
+  form.addEventListener('keydown', function (e) {
+    if (e.key !== 'Enter' || e.target.tagName === 'TEXTAREA') return;
+    e.preventDefault();
+    var fields = Array.prototype.slice.call(form.querySelectorAll('input, textarea'));
+    var next = fields[fields.indexOf(e.target) + 1];
+    if (next) next.focus(); else form.requestSubmit();
+  });
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    errBox.style.display = 'none';
+
+    if (!val('f-firstname') || !val('f-lastname') || !val('f-phone') || !val('f-email')) {
+      errBox.textContent = 'Please fill in your name, phone and email.';
+      errBox.style.display = 'block';
+      return;
+    }
+
+    button.disabled = true;
+    button.textContent = 'Sending…';
+
+    fetch('/api/rhino-quote', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        firstName: val('f-firstname'), lastName: val('f-lastname'),
+        phone: val('f-phone'), email: val('f-email'),
+        year: val('f-year'), make: val('f-make'), model: val('f-model'),
+        message: val('f-notes')
+      })
+    })
+      .then(function (r) { return r.json().then(function (b) { return { ok: r.ok, body: b }; }); })
+      .then(function (res) {
+        if (!res.ok) throw new Error((res.body && res.body.error) || 'Something went wrong.');
+        wrap.style.display = 'none';
+        success.style.display = 'block';
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ event: 'rhino_quote_submitted' });
+        if (typeof reportHeight === 'function') reportHeight();
+        success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      })
+      .catch(function (err) {
+        // Never a dead end: the phone number is always the way through.
+        errBox.textContent = err.message || 'Something went wrong. Please call us at 562-424-6744.';
+        errBox.style.display = 'block';
+        button.disabled = false;
+        button.textContent = 'Get My Free Quote';
+      });
+  });
+})();
 </script>
 
 <script src="site-shell.js"></script>
