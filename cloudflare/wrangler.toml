@@ -7,37 +7,3 @@ compatibility_date = "2024-01-01"
 binding = "DB"
 database_name = "3js-ai-assistant"
 database_id = "c054bea5-16d0-4ccb-ab90-d966b44cc228"
-
-# The Rhino Shop Manager's own database. Website quote requests are written
-# straight into its `quote_requests` table (functions/api/rhino-quote.js).
-#
-# A binding rather than an HTTP call, deliberately: Cloudflare Access fronts
-# rhino-shop-manager, and calling it over HTTP would mean opening a public
-# route into the system that holds every customer record. A D1 binding is not
-# reachable from the internet.
-[[d1_databases]]
-binding = "SHOP_DB"
-database_name = "rhino-shop"
-database_id = "feeb42ae-927b-4d47-a026-817359d77869"
-
-# ── PREVIEW ────────────────────────────────────────────────────────
-# Pages applies the bindings above to PRODUCTION only. Without this block a
-# preview deployment gets no databases at all, so /api/chat and
-# /api/rhino-quote both fail there for a reason that has nothing to do with
-# the change being previewed — which is exactly the kind of false negative
-# that makes people stop trusting previews.
-#
-# Same databases as production, deliberately: the point of previewing the
-# quote form is to watch a real request land in the real `quote_requests`
-# table and show up on the board. A preview pointed at an empty copy would
-# prove nothing about the binding, which is the part most likely to be wrong.
-[env.preview]
-[[env.preview.d1_databases]]
-binding = "DB"
-database_name = "3js-ai-assistant"
-database_id = "c054bea5-16d0-4ccb-ab90-d966b44cc228"
-
-[[env.preview.d1_databases]]
-binding = "SHOP_DB"
-database_name = "rhino-shop"
-database_id = "feeb42ae-927b-4d47-a026-817359d77869"
