@@ -412,6 +412,10 @@
     .btn-submit:hover{background:var(--crimson-hover);box-shadow:0 6px 32px rgba(139,0,0,0.55);}
     .btn-submit svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2.2;}
 
+    /* Consent disclosure. Submitting the form IS the opt-in, so this sits with
+       the button that submits it — not in the footer, not behind a link. */
+    .consent-note{margin-top:12px;font-family:'Inter',sans-serif;font-size:11px;line-height:1.6;color:#555;}
+
     /* Form success/error messages */
     .form-message{
       display:none;
@@ -728,6 +732,7 @@
           <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
           Send Message
         </button>
+        <p class="consent-note">By submitting this form, you agree that 3J's Auto Body &amp; Paint may contact you by text and email about your quote and your vehicle's status. Message frequency varies. Message and data rates may apply. Reply STOP to opt out, HELP for help.</p>
 
       </form>
     </div>
