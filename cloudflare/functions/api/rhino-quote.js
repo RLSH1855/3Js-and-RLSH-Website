@@ -13,24 +13,12 @@
  * EST number and those numbers are never recycled.
  */
 
+import { checkPhone, checkEmail } from '../_lib/contactCheck.js';
+
 const JSON_HEADERS = { 'Content-Type': 'application/json' };
 
 const respond = (body, status = 200) =>
   new Response(JSON.stringify(body), { status, headers: JSON_HEADERS });
-
-/* 10 digits, or 11 starting with 1. Anything else is handed back unchanged
-   rather than mangled — a bad number should look wrong to the person reading
-   it, not be silently "fixed" into a different one. */
-function normalizePhone(raw) {
-  const digits = String(raw || '').replace(/\D/g, '');
-  const ten = digits.length === 11 && digits.startsWith('1') ? digits.slice(1) : digits;
-  if (ten.length !== 10) return { e164: null, display: String(raw || '').trim() || null };
-  return {
-    e164: `+1${ten}`,
-    // 562-424-6744 — the format CLAUDE.md fixes for this business.
-    display: `${ten.slice(0, 3)}-${ten.slice(3, 6)}-${ten.slice(6)}`,
-  };
-}
 
 export async function onRequestPost({ request, env }) {
   if (!env.SHOP_DB) {
@@ -48,13 +36,26 @@ export async function onRequestPost({ request, env }) {
   }
 
   const name = [data.firstName, data.lastName].map((s) => String(s || '').trim()).filter(Boolean).join(' ');
-  const email = String(data.email || '').trim() || null;
-  const phone = normalizePhone(data.phone);
-
   if (!name) return respond({ error: 'Please give us your name.' }, 422);
-  if (!phone.e164 && !email) {
-    return respond({ error: 'We need a phone number or an email to send your quote to.' }, 422);
-  }
+
+  /* ⚠️ BOTH MUST BE REACHABLE, his rule 2026-09-08: "the phone number and
+     email must be genuine ... not a fake number if thats possible to detect."
+
+     What this rejects is what CANNOT EXIST — an area code starting with 1, a
+     555 directory number, ten identical digits, an address with no domain.
+     It does NOT prove the line is in service or the mailbox receives mail;
+     nothing inside this request can. That needs a carrier lookup (Twilio
+     Lookup) and a mail-host check, both paid per call.
+
+     The bias is deliberate and it runs one way: a junk row costs him thirty
+     seconds to delete, and a wrongly rejected customer is a lead he never
+     learns existed. See functions/_lib/contactCheck.js. */
+  const phone = checkPhone(data.phone);
+  if (!phone.ok) return respond({ error: phone.reason }, 422);
+
+  const emailCheck = checkEmail(data.email);
+  if (!emailCheck.ok) return respond({ error: emailCheck.reason }, 422);
+  const email = emailCheck.value;
 
   /* ⚠️ CHECKED HERE TOO, not only in the page. The browser validation is a
      courtesy to whoever is filling the form in; this is the rule. Anything can
