@@ -53,6 +53,32 @@ async function getUserByUsername(db, username) {
   return db.prepare(`SELECT id, username, password_hash FROM dashboard_users WHERE username = ?`).bind(username).first();
 }
 
+// Failed-login lockout for the dashboard. Five failures in fifteen minutes
+// locks the account out for that window — enough to stop guessing, not
+// enough to lock James out over a mistyped password or two.
+const LOGIN_ATTEMPT_LIMIT = 5;
+const LOGIN_ATTEMPT_WINDOW_MIN = 15;
+
+async function recordFailedLogin(db, username) {
+  await db.prepare(`INSERT INTO login_attempts (username) VALUES (?)`).bind(username).run();
+}
+
+async function recentFailedLogins(db, username) {
+  const row = await db.prepare(
+    `SELECT COUNT(*) AS n FROM login_attempts
+      WHERE username = ? AND created_at >= datetime('now', ?)`
+  ).bind(username, `-${LOGIN_ATTEMPT_WINDOW_MIN} minutes`).first();
+  return row ? row.n : 0;
+}
+
+async function isLoginLocked(db, username) {
+  return (await recentFailedLogins(db, username)) >= LOGIN_ATTEMPT_LIMIT;
+}
+
+async function clearFailedLogins(db, username) {
+  await db.prepare(`DELETE FROM login_attempts WHERE username = ?`).bind(username).run();
+}
+
 module.exports = {
   ensureConversation,
   setCustomerName,
@@ -61,5 +87,9 @@ module.exports = {
   getConversationHistory,
   listConversations,
   listLeadsForConversation,
-  getUserByUsername
+  getUserByUsername,
+  recordFailedLogin,
+  isLoginLocked,
+  clearFailedLogins,
+  LOGIN_ATTEMPT_WINDOW_MIN
 };
