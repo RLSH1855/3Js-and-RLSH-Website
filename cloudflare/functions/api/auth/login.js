@@ -3,7 +3,12 @@ const { verifyPassword, signSession } = require('../../_lib/session.js');
 const { getUserByUsername } = require('../../_lib/db.js');
 
 export async function onRequestPost({ request, env }) {
-  const { username, password } = await request.json();
+  let username, password;
+  try {
+    ({ username, password } = await request.json());
+  } catch (e) {
+    return new Response(JSON.stringify({ error: 'Invalid request body' }), { status: 400 });
+  }
   if (!username || !password) {
     return new Response(JSON.stringify({ error: 'Username and password required' }), { status: 400 });
   }
