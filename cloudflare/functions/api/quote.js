@@ -9,6 +9,8 @@
  *   5. Falls back to Google Sheets on any Shopmonkey failure
  */
 
+import { checkPhone, checkEmail } from '../_lib/contactCheck.js';
+
 const SM_BASE = 'https://api.shopmonkey.cloud/v3';
 
 const CORS_HEADERS = {
@@ -215,9 +217,21 @@ export async function onRequestPost(context) {
   if (!data.firstName || !data.lastName) {
     return jsonResponse({ error: 'First name and last name are required' }, 400);
   }
-  if (!data.email && !data.phone) {
-    return jsonResponse({ error: 'Email or phone is required' }, 400);
-  }
+
+  /* ⚠️ BOTH REQUIRED, not phone-or-email. This used to accept either, which
+     is looser than the rest of the site — rhino-quote.js has required both
+     since 2026-09-08, and a name with only a phone number is not enough to
+     email an estimate, while a name with only an email is not enough to text
+     an update once that ships. Checked with the same rules as rhino-quote.js
+     (functions/_lib/contactCheck.js): structurally-impossible numbers and
+     disposable/reserved-domain addresses are rejected, everything else is let
+     through — a wrongly rejected lead costs more than a junk row. */
+  var phoneCheck = checkPhone(data.phone);
+  if (!phoneCheck.ok) return jsonResponse({ error: phoneCheck.reason }, 422);
+
+  var emailCheck = checkEmail(data.email);
+  if (!emailCheck.ok) return jsonResponse({ error: emailCheck.reason }, 422);
+  data.email = emailCheck.value;
 
   try {
     var customer = await createCustomer(data, env);
